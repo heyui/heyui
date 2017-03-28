@@ -1,0 +1,24 @@
+{
+  "name": "heyui",
+  "version": "0.0.3",
+  "description": "UI Toolkit for Web",
+  "keywords": "ui, web, js, css, es6, vue",
+  "main": "index.js",
+  "bin": {
+  },
+  "scripts": {},
+  "author": "vvpvvp",
+  "email": "alias8516@sina.com.com",
+  "bugs": "https://github.com/heyui/heyui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heyui/heyui.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  }
+}
