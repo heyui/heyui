@@ -1,24 +1,37 @@
 {
-  "name": "heyui",
-  "version": "0.0.3",
-  "description": "UI Toolkit for Web",
-  "keywords": "ui, web, js, css, es6, vue",
-  "main": "index.js",
-  "bin": {
-  },
-  "scripts": {},
-  "author": "vvpvvp",
-  "email": "alias8516@sina.com.com",
-  "bugs": "https://github.com/heyui/heyui/issues",
+  "name": "vue-router-tiny",
+  "version": "1.1.5",
+  "description": "A router for Vue.js",
+  "main": "build/vue-router.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heyui/heyui.git"
+    "url": "git+https://github.com/vvpvvp/vue-router.git"
   },
-  "license": "MIT",
+  "keywords": [
+    "vue-router",
+    "vue",
+    "router"
+  ],
+  "author": {
+    "name": "alias"
+  },
+  "license": "The MIT License",
+  "_npmUser": {
+    "name": "vvpvvp",
+    "email": "a8918929@sina.com.cn"
+  },
   "dependencies": {
+    "highlight.js": "^9.10.0",
+    "jquery": "^3.2.1",
+    "vue": "^2.2.4",
+    "vue-highlightjs": "^1.2.2",
+    "vue-router": "^2.3.0"
   },
-  "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
-  }
+  "readmeFilename": "README.md",
+  "scripts": {
+    "build": "babel --presets=es2015 src -d build"
+  },
+  "browserslist": [
+    "ie >= 9"
+  ]
 }

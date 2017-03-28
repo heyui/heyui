@@ -1,0 +1,67 @@
+@import (css) "../normalize.css";
+@import (less) "../var.less";
+
+body {
+  font-family: @font-family;
+  font-size: @font-size;
+  line-height: @line-height;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, table, ul, dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object, a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span, strong, sub, sup, tt, var, legend, fieldset {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  -webkit-appearance: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+
+a, .link{
+  color: @link-color;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition: color @transition-time ease;
+  &:hover {
+    color: darken(@link-color, 10%);
+  }
+  &:active {
+    color: darken(@link-color, 20%);
+  }
+  &:active, &:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+  &[disabled] {
+    color: #ccc;
+    cursor: default;
+  }
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(113, 113, 113, 0.44);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(113, 113, 113, 0.8);
+}

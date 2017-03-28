@@ -1,0 +1,100 @@
+<template>
+  <div class="page-component">
+    <com-head></com-head>
+    <com-frame class="page-body">
+      <div slot="left-frame">
+        <ul>
+          <li class="title">样式</li>
+          <ul>
+            <li class="title">Basic</li>
+            <li><router-link to="/component/basic/grid">Grid 栅格</router-link></li>
+            <li><router-link to="/component/basic/color">Color 颜色</router-link></li>
+            <li><router-link to="/component/basic/icon">Icon 图标</router-link></li>
+            <li><router-link to="/component/basic/extend">Extend 扩展</router-link></li>
+            <li><router-link to="/component/basic/button">Button 按钮</router-link></li>
+          </ul>
+          <ul>
+            <li class="title">Form</li>
+            <li><router-link to="/component/form/input">Input 输入框</router-link></li>
+            <li><router-link to="/component/form/textarea">Textarea 文本框</router-link></li>
+            <li><router-link to="/component/form/radio">Radio 单选</router-link></li>
+            <li><router-link to="/component/form/switchlist">SwitchList 选项切换</router-link></li>
+            <li><router-link to="/component/form/switch">Switch 开关</router-link></li>
+            <li><router-link to="/component/form/checkbox">Checkbox 多选</router-link></li>
+            <li><router-link to="/component/form/slider">Slider 滑块</router-link></li>
+            <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
+            <li><router-link to="/component/form/form">Form 表单</router-link></li>
+          </ul>
+          <li class="title">Data</li>
+          <ul>
+            <li class="title">Plugin</li>
+            <li><router-link to="/component/data/plugin/select">Select 下拉选择</router-link></li>
+            <li><router-link to="/component/data/plugin/auto">AutoPicker 自动补全</router-link></li>
+            <li><router-link to="/component/data/plugin/date">DatePicker 日期选择</router-link></li>
+            <li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
+            <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>
+            <li><router-link to="/component/data/plugin/taginput">TagInput 标签</router-link></li>
+            <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
+            <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>
+          </ul>
+          <ul>
+            <li class="title">View</li>
+            <li><router-link to="/component/data/view/searchinput">SearchInput 搜索框</router-link></li>
+            <li><router-link to="/component/data/view/table">Table 表格</router-link></li>
+            <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
+            <li><router-link to="/component/data/view/spin">Spin 加载中</router-link></li>
+            <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
+            <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
+            <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li>
+          </ul>
+          <li class="title">Plugin</li>
+          <ul>
+            <li><router-link to="/component/plugin/tree">Tree 树</router-link></li>
+            <li><router-link to="/component/plugin/dialog">Dialog 弹框</router-link></li>
+            <li><router-link to="/component/plugin/dropdown">Dropdown 原生下拉控件</router-link></li>
+            <li><router-link to="/component/plugin/dropdownmenu">DropdownMenu 下拉菜单</router-link></li>
+            <li><router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link></li>
+          </ul>
+          <li class="title">Message</li>
+          <ul>
+            <li><router-link to="/component/message/tip">Tip 提示</router-link></li>
+            <li><router-link to="/component/message/notice">Notice 通知</router-link></li>
+            <li><router-link to="/component/message/modal">Modal 弹框显示</router-link></li>
+            <li><router-link to="/component/message/tooltip">Tooltip 文字提示</router-link></li>
+            <li><router-link to="/component/message/poptip">Poptip 自定义提示</router-link></li>
+          </ul>
+          <li class="title">View</li>
+          <ul>
+            <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
+            <li><router-link to="/component/view/card">Card 卡片</router-link></li>
+            <li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>
+            <li><router-link to="/component/view/tab">Tab 标签页</router-link></li>
+            <li><router-link to="/component/view/timeline">Timeline 时间轴</router-link></li>
+            <li><router-link to="/component/view/breadcrumb">Breadcrumb 面包屑</router-link></li>
+          </ul>
+          <li class="title">Other</li>
+          <ul>
+            <li><router-link to="/component/other/affix">Affix 图钉</router-link></li>
+            <li><router-link to="/component/other/backtop">BackTop 返回顶部</router-link></li>
+          </ul>
+        </ul>
+      </div>
+      <div slot="right-frame">
+        <router-view></router-view>
+      </div>
+    </com-frame>
+    <com-foot></com-foot>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+      return {
+        pass: '',
+        error: false
+      }
+    },
+    methods: {},
+    components: {}
+}
+</script>

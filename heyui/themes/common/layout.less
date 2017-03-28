@@ -1,0 +1,21 @@
+@import (less) "../var.less";
+
+@row-prefix: ~"@{prefix}row";
+@col-prefix: ~"@{prefix}col";
+@grid-columns: 24;
+@class:col;
+
+.row{
+  .clearfix;
+}
+
+.loop-grid-columns(@index, @class) when (@index > 0) {
+    .@{class}-@{index} {
+        float: left;
+        display: block;
+        width: percentage((@index / @grid-columns));
+    }
+    .loop-grid-columns((@index - 1), @class);
+}
+
+.loop-grid-columns(@grid-columns, @class);
