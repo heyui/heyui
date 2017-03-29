@@ -7,7 +7,7 @@
           <li class="title">样式</li>
           <ul>
             <li class="title">Basic</li>
-            <li><router-link to="/component/basic/grid">Grid 栅格</router-link></li>
+            <li><router-link to="/component/basic/grid">Grid 布局</router-link></li>
             <li><router-link to="/component/basic/color">Color 颜色</router-link></li>
             <li><router-link to="/component/basic/icon">Icon 图标</router-link></li>
             <li><router-link to="/component/basic/extend">Extend 扩展</router-link></li>

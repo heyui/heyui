@@ -15,7 +15,8 @@ module.exports = {
     },
     global: {
       Vue: "vue",
-      $: "jquery"
+      $: "jquery",
+      Utils: "hey-utils"
     },
     devServer: {
       historyApiFallback: true

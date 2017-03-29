@@ -3,14 +3,14 @@ body {
   color: @dark-color;
 }
 
-h2,h3,h4{
+h2, h3, h4 {
   font-weight: 300;
   color: #000;
 }
 
-h3{
+h3 {
   font-size: 19px;
-  margin: 30px 0 10px;
+  margin: 50px 0 10px;
 }
 
 h2 {
@@ -105,7 +105,6 @@ h2 {
     width: 280px;
     padding: 0px 20px 10px 30px;
     line-height: 2.5;
-    overflow-y: auto;
     >div>ul {
       >li.title {
         font-size: 18px;
@@ -135,11 +134,9 @@ h2 {
 }
 
 .doc {
-  
-  p{
-    margin:3px 0;
+  p {
+    margin: 3px 0;
   }
-
   code {
     color: @primary-color;
     background-color: #e1f0ff;
@@ -149,15 +146,14 @@ h2 {
     font-size: 12px;
     border-radius: 3px;
   }
-  pre{
-    code{
-      color:inherit;
+  pre {
+    code {
+      color: inherit;
       background-color: transparent;
       font-size: 14px;
     }
   }
-
-  blockquote{
+  blockquote {
     padding: 5px 5px 3px 10px;
     line-height: 1.5;
     border-left: 4px solid @primary-color;
@@ -168,46 +164,43 @@ h2 {
   }
 }
 
-.demo-box{
+.demo-box {
   border: @border;
   border-radius: @border-radius * 2;
   margin-bottom: 20px;
   margin-top: 3px;
   position: relative;
   transition: all 0.2s ease-in-out;
-  &:hover{
+  &:hover {
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
     border-color: transparent;
     position: relative;
   }
-
-  >.demo{
+  >.demo {
     padding: 10px 15px;
     position: relative;
   }
-
-  >.desc{
+  >.desc {
     border-bottom: @border;
     padding: 10px 15px;
   }
-
-  >pre{
+  >pre {
     transition: all 0.4s;
     padding: 10px 5px;
     border-top: 2px dashed @border-color;
     margin: 0;
     overflow: hidden;
     max-height: 15px;
-
-    &.expand{
+    &.expand {
       max-height: 1000px;
-      &:hover+.expand-button{
+      overflow-x: auto;
+      &:hover+.expand-button {
         opacity: 1;
       }
+      margin-bottom: 35px;
     }
   }
-
-  >.expand-button{
+  >.expand-button {
     position: absolute;
     left: 0;
     right: 0;
@@ -217,7 +210,7 @@ h2 {
     text-align: center;
     opacity: 0;
     transition: opacity 0.2s;
-    &:hover{
+    &:hover {
       opacity: 1;
       background-color: rgba(0, 0, 0, 0.02);
     }
@@ -230,4 +223,53 @@ h2 {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: @primary-color;
+}
+
+@media (max-width: 992px) {
+  .com-frame {
+    display: block;
+    position: static;
+    .left-frame {
+      width: auto;
+      >div>ul {
+        >ul {
+          .clearfix();
+          >li{
+            &.title{
+            }
+            float: left;
+            margin-right: 10px;
+          }
+
+        }
+      }
+    }
+  }
+  .page-component {
+    position: static;
+  }
+  .comm-header {
+    position: static;
+    height: auto;
+    .header-nav-list{
+      .clearfix();
+      float: none;
+    }
+  }
+  .comm-footer {
+    position: static;
+  }
+
+  .page-home .part h1{
+    font-size: 25px;
+  }
+
+  .page-home{
+    .page-body{
+      top: 120px;
+    }
+    .comm-footer {
+      position: absolute;
+    }
+  }
 }

@@ -21,6 +21,7 @@
     "email": "a8918929@sina.com.cn"
   },
   "dependencies": {
+    "hey-utils": "0.0.2",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
     "vue": "^2.2.4",
