@@ -1,6 +1,6 @@
 const titles = {
   'basicGrid': 'Grid 布局',
-  'basicColor': 'Color 颜色',
+  'basicColor': 'Color 色彩',
   'basicIcon': 'Icon 图标',
   'basicExtend': 'Extend 扩展',
   'basicButton': 'Button 按钮',

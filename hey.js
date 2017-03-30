@@ -18,6 +18,7 @@ module.exports = {
       $: "jquery",
       Utils: "hey-utils"
     },
+    globalVars: './static/css/var.less',
     devServer: {
       historyApiFallback: true
     },

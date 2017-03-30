@@ -15,9 +15,6 @@ const getHalf = (width, hasRemainder) => {
 export default {
   props: {
     width: [Number, String],
-    order: [Number, String],
-    push: [Number, String],
-    pull: [Number, String],
     flex: [Number, String],
     className: String,
     xs: [Number, Object],
