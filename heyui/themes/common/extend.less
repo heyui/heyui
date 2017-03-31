@@ -1,15 +1,3 @@
-.generate-font-size(@i: 12, @end: 18) when (@i =< @end) {
-  .font@{i} {
-    font-size: @i + 0px;
-  }
-  .generate-font-size((@i + 1), @end);
-}
-.generate-font-size(12,18);
-
-.bold {
-  font-weight: 500;
-}
-
 .generate-color(@color){
   @var-color: ~'@{color}-color';
   .@{var-color}{
@@ -82,16 +70,6 @@
 
 .overflow-y {
   overflow-y: auto;
-}
-
-.float-left {
-  float: left;
-}
-
-.float-center {
-  float: left;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .float-right {

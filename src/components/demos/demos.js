@@ -8,4 +8,6 @@ export default {
   icon: () => System.import('./icon'),
   timeline1: () => System.import('./timeline1'),
   timeline2: () => System.import('./timeline2'),
+  extend1: () => System.import('./extend1'),
+  extend2: () => System.import('./extend2'),
 }

@@ -1,19 +1,14 @@
+<style lang="less" scoped>
+</style>
 <template>
   <div class="doc">
-  extend
+    <h2>Extend 扩展</h2>
+    <h3>原生样式</h3>
+    <p>框架的样式除了一些基本标准格式，还输出一些基本的class调用。</p>
+    <example demo="extend1"></example>
+    
+    <h3>Directive 样式</h3>
+    <p>使用基本的directive调用实现简单的样式调整。</p>
+    <example demo="extend2"></example>
   </div>
 </template>
-
-<script>
-
-export default {
-  data () {
-    return {
-    }
-  },
-  methods: {
-  },
-  components:{
-  }
-}
-</script>
