@@ -13,3 +13,10 @@
     <div class="h-col-6 bg-gray3-color"></div>
   </div>
 </template>
+<script>
+  export default {
+    data: function () {
+      return {}
+    }
+  }
+</script>

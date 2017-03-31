@@ -10,7 +10,7 @@
 <template>
   <Row :space="9">
     <Col v-for="n in 8" :key="n" width="6"><div>{{n}}</div></Col>
-    <Col><div>Top</div></Col>
+    <Col width="24"><div>Top</div></Col>
     <Col width="6" ><div>Left</div></Col>
     <Col width="18" ><div>Right</div></Col>
     <Col width="18" ><div>Left</div></Col>

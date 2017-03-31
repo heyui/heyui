@@ -190,7 +190,7 @@ export default {
     }
   ],
   guide: [{
-    path: '',
+    path: 'guide',
     name: 'guide',
     component: (resolve) => require(['../../components/guide/guide'], resolve)
   }, {

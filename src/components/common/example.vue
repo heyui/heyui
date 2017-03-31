@@ -8,12 +8,8 @@
   </div>
 </template>
 <script>
-import grid1 from "../demos/grid1.vue";
-import grid2 from "../demos/grid2.vue";
-import grid3 from "../demos/grid3.vue";
-import grid4 from "../demos/grid4.vue";
-import grid5 from "../demos/grid5.vue";
-import grid6 from "../demos/grid6.vue";
+
+import components from '../demos/demos';
 export default {
   props:['demo'],
   data() {
@@ -28,13 +24,6 @@ export default {
         this.sourcecode=resp;
       })
     },
-    components:{
-      grid1,
-      grid2,
-      grid3,
-      grid4,
-      grid5,
-      grid6
-    }
+    components
 }
 </script>

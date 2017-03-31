@@ -1,6 +1,5 @@
 <template>
   <div class="page-resource">
-    <com-head></com-head>
     <com-frame class="page-body">
       <div slot="left-frame">
         <ul>
@@ -40,7 +39,6 @@
       </div>
       </com-frame>
     </com-frame>
-    <com-foot></com-foot>
   </div>
 </template>
 <script>

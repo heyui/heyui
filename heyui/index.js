@@ -36,7 +36,6 @@
 // import Table from './components/table';
 // import Tabs from './components/tabs';
 // import Tag from './components/tag';
-// import Timeline from './components/timeline';
 // import TimePicker from './components/time-picker';
 // import Tooltip from './components/tooltip';
 // import Transfer from './components/transfer';
@@ -46,6 +45,7 @@ import {
   Row,
   Col
 } from './components/layout';
+import Timeline from './components/timeline';
 // import { Select, Option, OptionGroup } from './components/select';
 // import locale from './locale';
 
@@ -96,7 +96,9 @@ const components = {
   // Rate,
   Row,
   // iCol: Col,
-  Col: Col
+  Col: Col,
+  Timeline,
+  TimelineItem:Timeline.Item
     // iSelect: Select,
     // Slider,
     // Spin,
@@ -120,7 +122,8 @@ const directives = {
   width: style.width,
   color: style.color,
   "bg-color": style.bgColor,
-  height: style.height
+  height: style.height,
+  font: style.font,
 }
 
 

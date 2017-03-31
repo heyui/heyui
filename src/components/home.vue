@@ -1,6 +1,5 @@
 <template>
   <div class="page-home">
-    <com-head></com-head>
     <div class="page-body">
       <div class="part">
         <h1>HEYUI，快速构建前端工具。</h1>
@@ -13,7 +12,6 @@
         </p>
       </div>
     </div>
-    <com-foot></com-foot>
   </div>
 </template>
 

@@ -11,18 +11,25 @@ export default {
       el.style.width = binding.value + "px";
     }
   },
-  color: (el, binding) => {
+  font: (el, binding) => {
     if(binding.value){
-      el.style.color = binding.value;
-    }else if(binding.arg){
-      Utils.addClass(el, `${binding.arg}-color`);
+      el.style.fontSize = binding.value + "px";
+    }
+  },
+  color: (el, binding) => {
+    let color = binding.value||binding.arg;
+    if(color.startsWith("#")){
+      el.style.color = color;
+    }else{
+      Utils.addClass(el, `${color}-color`);
     }
   },
   bgColor: (el, binding) => {
-    if(binding.value){
-      el.style.backgroundColor = binding.value;
-    }else if(binding.arg){
-      Utils.addClass(el, `bg-${binding.arg}-color`);
+    let color = binding.value||binding.arg;
+    if(color.startsWith("#")){
+      el.style.backgroundColor = color;
+    }else{
+      Utils.addClass(el, `bg-${color}-color`);
     }
   },
 }

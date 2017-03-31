@@ -28,6 +28,14 @@
     "vue-highlightjs": "^1.2.2",
     "vue-router": "^2.3.0"
   },
+  "devDependencies": {
+    "bdd-lazy-var": "^1.2.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-html": "^1.5.5",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-vue": "^0.1.1"
+  },
   "readmeFilename": "README.md",
   "scripts": {
     "build": "babel --presets=es2015 src -d build"

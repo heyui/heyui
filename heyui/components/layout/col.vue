@@ -20,32 +20,28 @@ export default {
     xs: [Number, Object],
     sm: [Number, Object],
     md: [Number, Object],
-    lg: [Number, Object]
-  },
-  data() {
-    return {
-      space: 0
-    };
+    lg: [Number, Object],
+    xl: [Number, Object]
   },
   computed: {
     classes() {
       let width = this.width;
       let classList = [`${prefixCls}`];
-
-      let noOtherWidth = width==undefined&&this.flex == undefined;
-      for(let size of ['xs', 'sm', 'md', 'lg']){
-        if (Utils.isNumber(this[size])) {
-          noOtherWidth = false;
-          classList.push(`${prefixCls}-${size}-${this[size]}`);
-        }
-      }
-      if(noOtherWidth){
-        width = 24;
-      }
       classList.push({
         [`${prefixCls}-${width}`]: width,
         [`${this.className}`]: !!this.className
       });
+
+      // let noOtherWidth = width==undefined&&this.flex == undefined;
+      for(let size of ['xs', 'sm', 'md', 'lg', 'xl']){
+        if (Utils.isNumber(this[size])) {
+          // noOtherWidth = false;
+          classList.push(`${prefixCls}-${size}-${this[size]}`);
+        }
+      }
+      // if(noOtherWidth){
+      //   width = 24;
+      // }
 
       return classList;
     },

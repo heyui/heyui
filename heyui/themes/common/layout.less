@@ -4,20 +4,24 @@
 @col-prefix-sm: ~"@{prefix}col-sm";
 @col-prefix-md: ~"@{prefix}col-md";
 @col-prefix-lg: ~"@{prefix}col-lg";
+@col-prefix-xl: ~"@{prefix}col-xl";
 @grid-columns: 24;
 
 .loop-grid-columns(@index, @class) when (@index > 0) {
     .@{class}-@{index} {
-        float: left;
-        display: block;
-        width: percentage((@index / @grid-columns));
+      float: left;
+      display: block;
+      width: percentage((@index / @grid-columns));
     }
     .loop-grid-columns((@index - 1), @class);
 }
 
 .loop-grid-columns(@grid-columns, @col-prefix);
 
-@media (min-width: 1200px){
+@media (min-width: 1800px){
+  .loop-grid-columns(@grid-columns, @col-prefix-xl);
+}
+@media (min-width: 1200px) and (max-width: 1800px){
   .loop-grid-columns(@grid-columns, @col-prefix-lg);
 }
 @media (min-width: 992px) and (max-width: 1200px){
@@ -29,7 +33,6 @@
 @media (max-width: 768px){
   .loop-grid-columns(@grid-columns, @col-prefix-xs);
 }
-
 
 .@{row-prefix}{
   .clearfix();

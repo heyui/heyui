@@ -1,4 +1,4 @@
-@import (less) "../../heyui/themes/common/extend.less";
+@import (less) "../../heyui/themes/common/mixins.less";
 body {
   color: @dark-color;
 }
@@ -36,6 +36,53 @@ h2 {
       margin-right: 10px;
       display: inline-block;
       vertical-align: middle;
+    }
+
+    .header-logo {
+      position: relative;
+      display: inline-block;
+      height: 26px;
+      width: 30px;
+      box-sizing: content-box;
+      margin-right: 10px;
+      >span {
+        position: absolute;
+        display: inline-block;
+        width: 5px;
+        height: 30px;
+        background-color: #3399ff;
+      }
+      &::before {
+        content: "";
+        top: 13px;
+        position: absolute;
+        background-color: @white-color;
+        transform: scaleX(0);
+        transform-origin: left;
+        width: 30px;
+        height: 5px;
+        transition: .3s;
+      }
+      &::after {
+        content: "";
+        background-color: @white-color;
+        position: absolute;
+        right: 0;
+        width: 5px;
+        height: 30px;
+        transform: scaleY(0);
+        transition: .3s;
+      }
+    }
+    &:hover>.header-logo {
+      &::before {
+        background-color: @yellow-color;
+        transform: scaleY(1);
+      }
+      &::after {
+        background-color: @green-color;
+        transform: scaleX(1);
+      }
     }
   }
   .header-nav-list {
@@ -134,7 +181,7 @@ h2 {
 }
 
 .doc {
-  p {
+  >p {
     margin: 3px 0;
   }
   code {
@@ -162,15 +209,15 @@ h2 {
     font-size: 14px;
     margin: 12px 0;
   }
-  .table{
+  .table {
     border-spacing: 0;
     width: 100%;
-    td,th{
+    td, th {
       text-align: left;
       padding: 8px 8px;
       border-bottom: @border;
     }
-    th{
+    th {
       background-color: @gray3-color;
     }
   }
@@ -189,7 +236,7 @@ h2 {
     position: relative;
   }
   >.demo {
-    padding: 10px 15px;
+    padding: 15px 15px;
     position: relative;
   }
   >.desc {
@@ -246,13 +293,11 @@ h2 {
       >div>ul {
         >ul {
           .clearfix();
-          >li{
-            &.title{
-            }
+          >li {
+            &.title {}
             float: left;
             margin-right: 10px;
           }
-
         }
       }
     }
@@ -263,7 +308,7 @@ h2 {
   .comm-header {
     position: static;
     height: auto;
-    .header-nav-list{
+    .header-nav-list {
       .clearfix();
       float: none;
     }
@@ -271,13 +316,11 @@ h2 {
   .comm-footer {
     position: static;
   }
-
-  .page-home .part h1{
+  .page-home .part h1 {
     font-size: 25px;
   }
-
-  .page-home{
-    .page-body{
+  .page-home {
+    .page-body {
       top: 120px;
     }
     .comm-footer {

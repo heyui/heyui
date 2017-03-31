@@ -85,10 +85,6 @@ export default {
 
       return style;
     }
-  },
-  methods: {
-  },
-  ready() {
   }
 };
 </script>
