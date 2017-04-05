@@ -35,8 +35,8 @@
     </div>
     <h4>自定义颜色</h4>
       <div>
-        <span v-bg-color="'#ff49e9'" v-color:white>背景自定义</span>
-        <span v-color="'#ff49e9'" >自定义</span>
+        <span v-bg-color:#ff49e9 v-color:white>背景自定义</span>
+        <span v-color="'#ff49e9'" >自定义颜色</span>
       </div>
     <h4>字体大小</h4>
     <div>

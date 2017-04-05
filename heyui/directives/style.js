@@ -17,7 +17,7 @@ export default {
     }
   },
   color: (el, binding) => {
-    let color = binding.value||binding.arg;
+    let color = binding.value||binding.arg||binding.expression;
     if(color.startsWith("#")){
       el.style.color = color;
     }else{

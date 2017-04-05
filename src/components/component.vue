@@ -78,7 +78,7 @@
           </ul>
         </ul>
       </div>
-      <div slot="right-frame">
+      <div slot="right-frame" v-if="$route.matched.length>0">
         <router-view></router-view>
       </div>
     </com-frame>
