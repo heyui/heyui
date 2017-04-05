@@ -46,10 +46,12 @@ import {
   Col
 } from './components/layout';
 import Timeline from './components/timeline';
+import {Button,ButtonGroup} from './components/button';
 // import { Select, Option, OptionGroup } from './components/select';
 // import locale from './locale';
 
 import style from './directives/style';
+import prop from './directives/prop';
 
 const components = {
   // Affix,
@@ -58,8 +60,9 @@ const components = {
   // Badge,
   // Breadcrumb,
   // BreadcrumbItem: Breadcrumb.Item,
-  // iButton: Button,
-  // ButtonGroup: Button.Group,
+  Button: Button,
+  hButton: Button,
+  ButtonGroup: ButtonGroup,
   // Card,
   // Carousel,
   // CarouselItem: Carousel.Item,
@@ -95,7 +98,7 @@ const components = {
   // RadioGroup: Radio.Group,
   // Rate,
   Row,
-  // iCol: Col,
+  hCol: Col,
   Col: Col,
   Timeline,
   TimelineItem:Timeline.Item
@@ -124,6 +127,7 @@ const directives = {
   "bg-color": style.bgColor,
   height: style.height,
   font: style.font,
+  prop: prop.prop
 }
 
 

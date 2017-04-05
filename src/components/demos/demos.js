@@ -9,7 +9,9 @@ const demos = [
   'timeline1',
   'timeline2',
   'extend1',
-  'extend2'
+  'extend2',
+  'button1',
+  'button2'
 ]
 
 const components = {};
