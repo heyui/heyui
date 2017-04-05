@@ -38,7 +38,7 @@
     <div>
       <Button color="primary" :loading='true'>loading</Button>
       <Button color="green" :loading='loading1' @click.native="loading1=!loading1">提交</Button>
-      <Button text-color="red" icon="trash" :loading='loading2' @click.native="loading2=!loading2">点击删除</Button>
+      <Button text-color="red" icon="trash" :loading='loading2' @click.native="loading2=!loading2">删除</Button>
     </div>
     <h4>圆角</h4>
     <div>
@@ -54,7 +54,8 @@
       <Button>正常</Button>
       <Button size="s" icon="inbox">下载</Button>
       <Button size="xs">超小</Button>
-      <Button size="xs" :text="true">超小</Button>
+      <Button size="xs" :text="true">分享</Button>
+      <Button size="xs" :text="true">选择</Button>
     </div>
     <h4>按钮组</h4>
     <div>
@@ -64,7 +65,7 @@
       </ButtonGroup>
       <ButtonGroup>
         <Button icon="inbox">新建</Button>
-        <Button icon="trash">删除</Button>
+        <Button icon="trash" :disabled="true">删除</Button>
         <Button icon="refresh">刷新</Button>
         <Button icon="star">收藏</Button>
       </ButtonGroup>
