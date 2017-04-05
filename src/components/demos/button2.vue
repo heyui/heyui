@@ -36,8 +36,8 @@
     </div>
     <h4>loading</h4>
     <div>
-      <Button color="primary" :loading='true'></Button>
-      <Button color="green" :loading='loading1' @click.native="loading1=!loading1">点击提交</Button>
+      <Button color="primary" :loading='true'>loading</Button>
+      <Button color="green" :loading='loading1' @click.native="loading1=!loading1">提交</Button>
       <Button text-color="red" icon="trash" :loading='loading2' @click.native="loading2=!loading2">点击删除</Button>
     </div>
     <h4>圆角</h4>

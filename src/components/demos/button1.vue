@@ -38,20 +38,10 @@
     <div>
       <button class="h-btn h-btn-primary h-btn-loading"><i class="h-icon-loading"></i><span>loading</span></button>
       <button class="h-btn h-btn-primary" :class="{'h-btn-loading':loading1}" @click="loading1=!loading1">
-        <template v-if="!loading1">
-          <span>点击提交</span>
-        </template>
-        <template v-else>
-          <i class="h-icon-loading"></i><span>loading</span>
-        </template>
+          <i class="h-icon-loading" v-if="loading1"></i><span>提交</span>
       </button>
       <button class="h-btn h-btn-text-red" :class="{'h-btn-loading':loading2}" @click="loading2=!loading2">
-        <template v-if="!loading2">
-          <i class="h-icon-trash"></i><span>点击删除</span>
-        </template>
-        <template v-else>
-          <i class="h-icon-loading"></i><span>loading</span>
-        </template>
+          <i class="h-icon-trash" v-if="!loading2"></i><i v-else class="h-icon-loading"></i><span>点击删除</span>
       </button>
     </div>
     <h4>圆角</h4>

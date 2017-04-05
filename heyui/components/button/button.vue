@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonCls" v-prop="!!this.disabled">
-    <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText&&!loading"><slot></slot></span><span v-if="loading">loading</span>
+    <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
 <script>
