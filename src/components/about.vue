@@ -5,9 +5,10 @@
     </div>
   </div>
 </template>
+
 <script>
-export default {
-  data() {
+  export default {
+    data() {
       return {
         pass: '',
         error: false
@@ -15,5 +16,5 @@ export default {
     },
     methods: {},
     components: {}
-}
+  }
 </script>

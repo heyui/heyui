@@ -20,7 +20,7 @@
         "allow": [
           "_status",
           "_msg",
-          "_body",
+          "_body"
         ]
       }
     ],

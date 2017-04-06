@@ -7,11 +7,11 @@ module.exports = {
     output: {
       "./*html": {
         entry: "./src/app",
-        commons:['common']
+        commons: ['common']
       }
     },
     commonTrunk: {
-      common:['jquery','vue','vue-router','vue-highlightjs']
+      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs']
     },
     global: {
       Vue: "vue",
@@ -24,5 +24,5 @@ module.exports = {
     },
     externals: {}
   },
-  copy: ["./static/images/**/*","./src/components/demos/**/*.vue"]
+  copy: ["./static/images/**/*", "./src/components/demos/**/*.vue"]
 };
