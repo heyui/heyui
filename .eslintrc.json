@@ -8,11 +8,15 @@
   "globals": {
     "WEBPACK_DEBUG": false,
     "request": false,
-    "require": false
+    "require": false,
+    "import": false,
+    "log": false,
+    "Utils": false
   },
   "plugins": [
     "html"
   ],
+  "ext": [".js", ".css", ".vue"],
   "extends": "airbnb-base",
   "rules": {
     "no-underscore-dangle": [

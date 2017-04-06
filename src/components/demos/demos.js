@@ -11,13 +11,23 @@ const demos = [
   'extend1',
   'extend2',
   'button1',
-  'button2'
+  'button2',
+  'input1',
+  'input2',
+  'input3',
+  'input4',
+  'input5',
+  'input6',
+  'radio1',
+  'radio2',
+  'radio3'
 ]
 
 const components = {};
 
-for(let d of demos){
-  components[d] = ()=>import(`./${d}`)
+for (let d of demos) {
+  components[d] = () =>
+    import (`./${d}`)
 }
 
 export default components

@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonCls" v-prop="!!this.disabled">
+  <button :class="buttonCls" :disabled="!!this.disabled">
     <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText"><slot></slot></span>
   </button>
 </template>

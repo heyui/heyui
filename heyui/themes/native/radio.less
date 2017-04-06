@@ -1,0 +1,57 @@
+@radio-prefix: ~"@{prefix}radio";
+@radio-border: 1px solid @gray2-color;
+input[type=radio] {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin: 0px;
+  border: @radio-border;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 5px;
+  transition: all linear @transition-time;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  font-family: inherit;
+  outline: none;
+  margin-right: 5px;
+  &:checked {
+    border-color: @primary-color;
+    &::after {
+      content: "";
+      display: block;
+      background-color: @primary-color;
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      position: relative;
+      left: 3px;
+      top: 3px;
+    }
+  }
+  &:hover {
+    border-color: @primary-color;
+  }
+  &[disabled],
+  &[readonly] {
+    pointer-events: painted;
+    cursor: @disabled-cursor;
+    border-color: @gray1-color;
+    background-color: @gray1-color;
+    &:checked {
+      background-color: @gray1-color;
+       &:after {
+        background-color: @gray-color;
+      }
+    }
+  }
+}
+
+.@{radio-prefix} {
+  display: inline-block;
+  >label {
+    margin-right: 10px;
+  }
+}

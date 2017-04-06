@@ -27,7 +27,7 @@
 // import Page from './components/page';
 // import Poptip from './components/poptip';
 // import Progress from './components/progress';
-// import Radio from './components/radio';
+import Radio from './components/radio';
 // import Rate from './components/rate';
 // import Slider from './components/slider';
 // import Spin from './components/spin';
@@ -46,12 +46,13 @@ import {
   Col
 } from './components/layout';
 import Timeline from './components/timeline';
-import {Button,ButtonGroup} from './components/button';
+import { Button, ButtonGroup } from './components/button';
 // import { Select, Option, OptionGroup } from './components/select';
 // import locale from './locale';
 
 import style from './directives/style';
-import prop from './directives/prop';
+import autosize from './directives/autosize';
+
 
 const components = {
   // Affix,
@@ -60,9 +61,9 @@ const components = {
   // Badge,
   // Breadcrumb,
   // BreadcrumbItem: Breadcrumb.Item,
-  Button: Button,
+  Button,
   hButton: Button,
-  ButtonGroup: ButtonGroup,
+  ButtonGroup,
   // Card,
   // Carousel,
   // CarouselItem: Carousel.Item,
@@ -78,7 +79,6 @@ const components = {
   // FormItem: Form.Item,
   // Collapse,
   // Icon,
-  // iInput: Input,
   // InputNumber,
   // LoadingBar,
   // Menu,
@@ -94,14 +94,14 @@ const components = {
   // Panel: Collapse.Panel,
   // Poptip,
   // Progress,
-  // Radio,
+  Radio,
   // RadioGroup: Radio.Group,
   // Rate,
   Row,
   hCol: Col,
-  Col: Col,
+  Col,
   Timeline,
-  TimelineItem:Timeline.Item
+  TimelineItem: Timeline.Item
     // iSelect: Select,
     // Slider,
     // Spin,
@@ -127,15 +127,18 @@ const directives = {
   "bg-color": style.bgColor,
   height: style.height,
   font: style.font,
-  prop: prop.prop
+  autosize
 }
 
 
-const install = function(Vue, opts = {}) {
+const install = function (Vue, opts = {}) {
   // locale.use(opts.locale);
   // locale.i18n(opts.i18n);
 
   if (install.installed) return;
+  if (opts) {
+
+  }
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);

@@ -5,21 +5,19 @@
         <ul>
           <li class="title">hey-cli 脚手架</li>
           <ul>
-            <li><a to="/basic/grid">入门</a></li>
-            <li><a to="/basic/grid">快速上手</a></li>
+            <li><a to="/basic/grid">简介</a></li>
+          </ul>
+          <li class="title">hey-utils</li>
+          <ul>
+            <li><a to="/basic/grid">简介</a></li>
           </ul>
           <li class="title">model 数据转换</li>
           <ul>
-            <li><a to="/basic/grid">入门</a></li>
-            <li><a to="/basic/grid">Parse 输入</a></li>
-            <li><a to="/basic/color">Parse 输出</a></li>
-            <li><a to="/basic/icon">金额转换</a></li>
-            <li><a to="/basic/extend">日期转换</a></li>
-            <li><a to="/basic/button">默认执行</a></li>
+            <li><a to="/basic/grid">简介</a></li>
           </ul>
           <li class="title">manba 日期格式化</li>
           <ul>
-            <li><a to="/form/Input">简介</a></li>
+            <li><a to="/basic/grid">简介</a></li>
           </ul>
           <li class="title">ajax封装</li>
           <ul>

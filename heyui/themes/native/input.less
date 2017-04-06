@@ -1,0 +1,94 @@
+@input-prefix: ~"@{prefix}input";
+@input-border: 1px solid @gray2-color;
+input[type=text],
+input[type=password],
+input[type=search],
+textarea {
+  background-color: @white-color;
+  border-radius: @border-radius;
+  border: @input-border;
+  padding: 4px 0px 4px 10px;
+  width: 200px;
+  font-size: inherit;
+  transition: all linear @transition-time;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  font-family: inherit;
+  vertical-align: top;
+  outline: none;
+  &:hover {
+    border-color: lighten(@primary-color, 10%);
+  }
+  &:focus {
+    border-color: @primary-color;
+    box-shadow: 0 0 0 2px lighten(@primary-color, 32%);
+  }
+  &[disabled],
+  &[readonly] {
+    border-color: @gray1-color;
+    color: @gray1-color;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  &[disabled] {
+    background-color: @gray4-color;
+    pointer-events: painted;
+    cursor: @disabled-cursor;
+  }
+}
+
+.@{input-prefix} {
+  position: relative;
+  display: inline-block;
+  >[class^="@{icon-prefix}"],
+  >[class*=" @{icon-prefix}"] {
+    position: absolute;
+    right: 8px;
+    .middle;
+  }
+  &-group {
+    position: relative;
+    display: inline-table !important;
+    border-collapse: separate;
+    >input,>.@{input-prefix} {
+      width: 100%;
+      display: table-cell;
+      vertical-align: middle;
+      float: left;
+      >input{
+        width: 100%;
+      }
+    }
+    >input:not(:last-child),>.@{input-prefix}:not(:last-child)>input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    >.@{input-prefix}-addon {
+      text-align: center;
+      background-color: @gray3-color;
+      border-top: @input-border;
+      border-bottom: @input-border;
+      vertical-align: middle;
+      padding: 0px 5px;
+      white-space: nowrap;
+      line-height: 1;
+      color: @gray-color;
+      display: table-cell;
+      &:first-child {
+        border-radius: @border-radius 0 0 @border-radius;
+        border-left: @input-border;
+      }
+      &:last-child,
+      &.last-child {
+        border-radius: 0 @border-radius @border-radius 0;
+        border-right: @input-border;
+      }
+      +input,
+      +textarea,+.@{input-prefix}>input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
