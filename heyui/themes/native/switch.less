@@ -30,12 +30,13 @@ input[type=checkbox].@{switch-prefix},.@{switch-prefix} {
   border-radius: 16px;
   box-sizing: border-box;
   background: @gray1-color;
-  vertical-align: -35%;
+  vertical-align: -38%;
   margin-right: 5px;
   transition: all .3s; 
   .switchset(@switch-hight);
   &.@{switch-prefix}-small {
     .switchset(@min-switch-height);
+    vertical-align: -25%;
   }
   &:after {
     background-color: @white-color;

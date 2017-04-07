@@ -1,6 +1,6 @@
 <template>
   <div class="h-radio" :disabled="disabled">
-    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="key==value" :disabled="disabled" /></span>{{v}}</label>
+    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="key==value" :disabled="disabled"></span>{{v}}</label>
   </div>
 </template>
 <script>
@@ -18,6 +18,7 @@ export default {
   },
   methods: {
     setvalue(key) {
+      if (this.disabled) return;
       this.$emit('input', key);
     }
   },
