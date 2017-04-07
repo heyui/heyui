@@ -17,7 +17,7 @@ module.exports = {
       Vue: "vue",
       $: "jquery",
       Utils: "hey-utils",
-      log: "fancy-log"
+      log: "hey-log"
     },
     globalVars: './static/css/var.less',
     devServer: {

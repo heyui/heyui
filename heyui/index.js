@@ -10,7 +10,8 @@
 // import Card from './components/card';
 // import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
-// import Checkbox from './components/checkbox';
+import Checkbox from './components/checkbox';
+import SwitchList from './components/switchlist';
 // import Circle from './components/circle';
 // import Collapse from './components/collapse';
 // import DatePicker from './components/date-picker';
@@ -32,7 +33,7 @@ import Radio from './components/radio';
 // import Slider from './components/slider';
 // import Spin from './components/spin';
 // import Steps from './components/steps';
-// import Switch from './components/switch';
+import Switch from './components/switch';
 // import Table from './components/table';
 // import Tabs from './components/tabs';
 // import Tag from './components/tag';
@@ -68,7 +69,7 @@ const components = {
   // Carousel,
   // CarouselItem: Carousel.Item,
   // Cascader,
-  // Checkbox,
+  Checkbox,
   // CheckboxGroup: Checkbox.Group,
   // Circle,
   // DatePicker,
@@ -101,24 +102,25 @@ const components = {
   hCol: Col,
   Col,
   Timeline,
-  TimelineItem: Timeline.Item
-    // iSelect: Select,
-    // Slider,
-    // Spin,
-    // Step: Steps.Step,
-    // Steps,
-    // Switch,
-    // iTable: Table,
-    // Tabs: Tabs,
-    // TabPane: Tabs.Pane,
-    // Tag,
-    // Timeline,
-    // TimelineItem: Timeline.Item,
-    // TimePicker,
-    // Tooltip,
-    // Transfer,
-    // Tree,
-    // Upload
+  TimelineItem: Timeline.Item,
+  // iSelect: Select,
+  // Slider,
+  // Spin,
+  // Step: Steps.Step,
+  // Steps,
+  hSwitch: Switch,
+  SwitchList,
+  // iTable: Table,
+  // Tabs: Tabs,
+  // TabPane: Tabs.Pane,
+  // Tag,
+  // Timeline,
+  // TimelineItem: Timeline.Item,
+  // TimePicker,
+  // Tooltip,
+  // Transfer,
+  // Tree,
+  // Upload
 };
 
 const directives = {

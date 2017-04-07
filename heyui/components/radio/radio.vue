@@ -1,6 +1,6 @@
 <template>
-  <div class="h-radio">
-    <label v-for="(v, key) in arr"><input type="radio" :checked="key==value" @click="setvalue(key)" :disabled="disabled" />{{v}}</label>
+  <div class="h-radio" :disabled="disabled">
+    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="key==value" :disabled="disabled" /></span>{{v}}</label>
   </div>
 </template>
 <script>

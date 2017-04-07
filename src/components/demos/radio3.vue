@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     onchange(value) {
-      alert(value);
+      console.log(value);
     }
   }
 };

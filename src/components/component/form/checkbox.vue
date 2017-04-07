@@ -1,19 +1,39 @@
 <template>
   <div class="doc">
-  button
+    <div class="bottom-line"><label><input type="checkbox" value="3" :indeterminate="checks.length>0&&checks.length<3" :checked="checks.length==3"/>全选</label></div>
+    <div class="h-checkbox">
+      <label><input type="checkbox" value="1" v-model="checks"/>测试1</label>
+      <label><input type="checkbox" value="2" v-model="checks"/>测试2</label>
+      <label><input type="checkbox" value="3" v-model="checks"/>测试3</label>
+    </div>
+    <br>
+    <div class="h-checkbox" disabled>
+      <label><input type="checkbox" disabled value="1" v-model="checks"/>测试1</label>
+      <label><input type="checkbox" disabled value="2" v-model="checks"/>测试2</label>
+      <label><input type="checkbox" disabled value="3" v-model="checks"/>测试3</label>
+    </div>
+    <br>
+    {{checks}}
+    <br>
+    <div><Checkbox v-model="value1" :datas="param1" @input="onchange"></Checkbox></div>
+    <div><Checkbox v-model="value1" :datas="param1" :disabled="true"></Checkbox></div>
+    <p v-color:gray>{{value1}}</p>
   </div>
 </template>
-
 <script>
 
 export default {
-  data () {
+  data() {
     return {
+      checks: [],
+      value1: ['选择1'],
+      param1: ['选择1', '选择2', '选择3'],
     }
   },
   methods: {
-  },
-  components:{
+    onchange(value) {
+      console.log(value);
+    }
   }
 }
 </script>

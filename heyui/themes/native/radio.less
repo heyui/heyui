@@ -1,7 +1,8 @@
 @radio-prefix: ~"@{prefix}radio";
 @radio-border: 1px solid @gray2-color;
-input[type=radio] {
+input[type=radio],.@{radio-prefix}>label>span {
   -webkit-appearance: none;
+  display: inline-block;
   width: 16px;
   height: 16px;
   margin: 0px;
@@ -13,13 +14,12 @@ input[type=radio] {
   margin-right: 5px;
   transition: all linear @transition-time;
   box-sizing: border-box;
-  -webkit-appearance: none;
   font-family: inherit;
   outline: none;
   margin-right: 5px;
-  &:checked {
+  &:checked,&[checked] {
     border-color: @primary-color;
-    &::after {
+    &:after {
       content: "";
       display: block;
       background-color: @primary-color;
@@ -34,13 +34,12 @@ input[type=radio] {
   &:hover {
     border-color: @primary-color;
   }
-  &[disabled],
-  &[readonly] {
+  &[disabled]{
     pointer-events: painted;
     cursor: @disabled-cursor;
     border-color: @gray1-color;
     background-color: @gray1-color;
-    &:checked {
+    &:checked,&[checked] {
       background-color: @gray1-color;
        &:after {
         background-color: @gray-color;
@@ -53,5 +52,17 @@ input[type=radio] {
   display: inline-block;
   >label {
     margin-right: 10px;
+    &:hover>span{
+      border-color: @primary-color;
+    }
+  }
+
+  &[disabled]>label{
+    color: @gray1-color;
+    pointer-events: painted;
+    cursor: @disabled-cursor;
+    &:hover>span{
+      border-color: @gray1-color;
+    }
   }
 }
