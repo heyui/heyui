@@ -3,6 +3,10 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-04-08</p><p>20:34</p></div>
+        <div slot="content">Form</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-04-07</p><p>15:19</p></div>
         <div slot="content">Rate</div>
       </TimelineItem>

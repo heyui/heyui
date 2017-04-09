@@ -22,7 +22,7 @@
     "hey-utils": "0.0.5",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
-    "smooth-scroll": "github:cferdinandi/smooth-scroll",
+    "jquery-smooth-scroll": "^2.1.2",
     "vue": "^2.2.4",
     "vue-highlightjs": "^1.2.2",
     "vue-router": "^2.3.0"

@@ -11,7 +11,9 @@
     "require": false,
     "import": false,
     "log": false,
-    "Utils": false
+    "Utils": false,
+    "$": false,
+    "Vue": false
   },
   "plugins": [
     "html"

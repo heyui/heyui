@@ -9,13 +9,26 @@
   </div>
 </template>
 <script>
+
 export default {
   data() {
-      return {
-        pass: '',
-        error: false
-      }
-    },
-    methods: {}
+    return {
+      pass: '',
+      error: false
+    }
+  },
+  methods: {},
+  mounted() {
+    this.$nextTick(() => {
+      // $.smoothScroll({
+      //   scrollElement: $('.left-frame')
+      // });
+      $('.left-frame a', this.$el).smoothScroll();
+
+      // $('.left-frame a', this.$el).click(() => {
+      // });
+      // $('.right-frame a', this.$el).smoothScroll();
+    });
+  }
 }
 </script>

@@ -4,7 +4,6 @@ import App from './App.vue';
 import HeyUI from '../heyui/index';
 import titleConfig from './js/config/title-config';
 import VueHighlightJS from 'vue-highlightjs';
-import smoothScroll from 'smooth-scroll';
 import 'highlight.js/styles/github-gist.css';
 
 import comHead from './components/common/header';
@@ -16,13 +15,6 @@ import routerConfig from './js/config/router-config';
 require('../heyui/themes/common.less');
 require('../static/css/doc.less');
 
-smoothScroll.init({
-  selector: 'a', // Selector for links (must be a class, ID, data attribute, or element tag)
-  selectorHeader: null, // Selector for fixed headers (must be a valid CSS selector) [optional]
-  speed: 500, // Integer. How fast to complete the scroll in milliseconds
-  easing: 'easeInOutCubic', // Easing pattern to use
-  offset: 0,
-});
 Vue.use(VueHighlightJS)
 
 Vue.use(VueRouter);
@@ -68,9 +60,15 @@ router.beforeEach((to, from, next) => {
   }
   next();
 })
-
+router.afterEach(() => {
+  Vue.nextTick(() => {
+    $('.right-frame').scrollTop(0);
+  });
+})
 const app = new Vue({
   router,
   el: '#app',
   render: h => h(App)
 });
+
+export default app;

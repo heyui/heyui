@@ -1,7 +1,10 @@
 <template>
   <div :class="formItemCls">
     <label :style="labelStyleCls" class="h-form-item-label">{{this.label}}</label>
-    <div class="h-form-item-content" :style="contentStyleCls"><slot></slot></div>
+    <div class="h-form-item-content" :style="contentStyleCls">
+      <div class="h-form-item-wrap"><slot></slot></div>
+      <div class="h-form-item-error">{{errorMessage}}</div>
+    </div>
   </div>
 </template>
 <script>
@@ -17,7 +20,8 @@ export default {
     single: {
       type: Boolean,
       default: false
-    }
+    },
+    errorMessage: String
   },
   data() {
     return {

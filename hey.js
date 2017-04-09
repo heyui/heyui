@@ -11,7 +11,7 @@ module.exports = {
       }
     },
     commonTrunk: {
-      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs']
+      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs', 'jquery-smooth-scroll']
     },
     global: {
       Vue: "vue",

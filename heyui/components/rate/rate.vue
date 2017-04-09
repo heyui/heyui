@@ -1,8 +1,5 @@
 <template>
-  <div class="h-rate" :readonly="readonly" @mouseleave="mouseleave()">
-    <span  v-for="n in 5" @click="setvalue(n)" @mouseover="mouseover(n)"><i :class="starCls(n)"></i></span>
-    <span v-if="showText" class="h-rate-value">{{value}}</span>
-  </div>
+  <div class="h-rate" :readonly="readonly" @mouseleave="mouseleave()"><span  v-for="n in 5" @click="setvalue(n)" @mouseover="mouseover(n)"><i :class="starCls(n)"></i></span><span v-if="showText" class="h-rate-value">{{value}}</span></div>
 </template>
 <script>
 export default {

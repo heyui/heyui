@@ -78,7 +78,7 @@ export default {
         input: '',
         textarea: '',
         radio: 1,
-        rate: 3.6,
+        rate: null,
         checkbox: [1],
         inputs: [{
           value: '2'

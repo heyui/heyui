@@ -12,10 +12,10 @@
 
 .@{form-prefix} {
   .clearfix();
-  margin-bottom: -8px;
+  margin-bottom: -24px;
   .@{form-prefix} {
     &-item {
-      padding-bottom: 8px;
+      padding-bottom: 24px;
       &-label {
         display: inline-block;
         text-align: right;
@@ -38,9 +38,18 @@
         }
       }
       &-content {
-        position: relative;
         line-height: 32px;
         font-size: @font-size-mini;
+      }
+      &-wrap {
+        position: relative;
+        .clearfix();
+      }
+      &-error {
+        position: absolute;
+        margin-top: 3px;
+        color: @red-color;
+        line-height: 1;
       }
     }
   }
