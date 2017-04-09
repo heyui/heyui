@@ -4,11 +4,12 @@ input[type=text],
 input[type=password],
 input[type=search],
 textarea {
+  position: relative;
   background-color: @white-color;
   border-radius: @border-radius;
   border: @input-border;
   padding: 4px 0px 4px 10px;
-  width: 200px;
+  // width: 200px;
   font-size: inherit;
   transition: all linear @transition-time;
   box-sizing: border-box;
@@ -38,27 +39,40 @@ textarea {
   }
 }
 
+input[type=text],
+input[type=password]{
+  height: 32px;
+  line-height: 32px;
+}
+
 .@{input-prefix} {
   position: relative;
   display: inline-block;
+  // width: 200px;
   >[class^="@{icon-prefix}"],
   >[class*=" @{icon-prefix}"] {
     position: absolute;
     right: 8px;
     .middle;
+    z-index: 3;
+  }
+  
+  >input{
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
   &-group {
     position: relative;
-    display: inline-table !important;
+    display: table;
     border-collapse: separate;
     >input,>.@{input-prefix} {
       width: 100%;
       display: table-cell;
       vertical-align: middle;
       float: left;
-      >input{
-        width: 100%;
-      }
+      position: relative;
+      z-index: 2;
     }
     >input:not(:last-child),>.@{input-prefix}:not(:last-child)>input{
         border-top-right-radius: 0;
@@ -71,6 +85,7 @@ textarea {
       border-bottom: @input-border;
       vertical-align: middle;
       padding: 0px 5px;
+      min-width: 24px;
       white-space: nowrap;
       line-height: 1;
       color: @gray-color;

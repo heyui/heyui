@@ -1,6 +1,6 @@
 <template>
   <div class="h-checkbox" :disabled="disabled">
-    <label v-for="(v, key) in arr"><input type="checkbox" :checked="key | isInclude(value)" @click="setvalue(key)" :disabled="disabled" />{{v}}</label>
+    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="isInclude(key)" :disabled="disabled"></span>{{v}}</label>
   </div>
 </template>
 <script>
@@ -21,16 +21,15 @@ export default {
   },
   methods: {
     setvalue(key) {
-      if (this.value.includes(key)) {
+      if (this.isInclude(key)) {
         this.value.splice(this.value.indexOf(key), 1);
       } else {
         this.value.push(key);
       }
       this.$emit('input', this.value);
-    }
-  },
-  filters: {
-    isInclude(key, value) {
+    },
+    isInclude(key) {
+      let value = this.value.map(item => String(item));
       return value.includes(key);
     }
   },

@@ -3,16 +3,16 @@ import Utils from '../utils/utils';
 export default {
   height: (el, binding) => {
     if (binding.value) {
-      el.style.height = binding.value + "px";
+      el.style.height = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
     }
   },
   width: (el, binding) => {
     if (binding.value) {
-      el.style.width = binding.value + "px";
+      el.style.width = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
     }
   },
   font: (el, binding) => {
-    if (binding.value) {
+    if (binding && binding.value) {
       el.style.fontSize = binding.value + "px";
     }
   },

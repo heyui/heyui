@@ -10,25 +10,30 @@ input[type=radio],.@{radio-prefix}>label>span {
   border-radius: 8px;
   cursor: pointer;
   position: relative;
-  vertical-align: middle;
+  vertical-align: -16%;
   margin-right: 5px;
   transition: all linear @transition-time;
   box-sizing: border-box;
   font-family: inherit;
   outline: none;
   margin-right: 5px;
+  &:after {
+    content: "";
+    display: block;
+    background-color: @primary-color;
+    transition: all linear @transition-time;
+    transform: scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    position: relative;
+    left: 3px;
+    top: 3px;
+  }
   &:checked,&[checked] {
     border-color: @primary-color;
     &:after {
-      content: "";
-      display: block;
-      background-color: @primary-color;
-      width: 8px;
-      height: 8px;
-      border-radius: 4px;
-      position: relative;
-      left: 3px;
-      top: 3px;
+      transform: scale(1);
     }
   }
   &:hover {
@@ -51,7 +56,10 @@ input[type=radio],.@{radio-prefix}>label>span {
 .@{radio-prefix} {
   display: inline-block;
   >label {
-    margin-right: 10px;
+    margin-right: 15px;
+    height: 16px;
+    line-height: 16px;
+    display: inline-block;
     &:hover>span{
       border-color: @primary-color;
     }
