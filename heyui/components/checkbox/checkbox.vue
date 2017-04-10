@@ -4,6 +4,8 @@
   </div>
 </template>
 <script>
+import utils from '../../utils/utils';
+
 export default {
   props: {
     datas: [Object, Array],
@@ -27,6 +29,9 @@ export default {
         this.value.push(key);
       }
       this.$emit('input', this.value);
+      let event = document.createEvent("CustomEvent");
+      event.initCustomEvent("setvalue", true, true, this.value);
+      this.$el.dispatchEvent(event);
     },
     isInclude(key) {
       let value = this.value.map(item => String(item));
@@ -36,8 +41,8 @@ export default {
   computed: {
     arr() {
       let arr = this.datas || {};
-      if (Utils.isArray(this.datas)) {
-        arr = Utils.toObject(this.datas);
+      if (utils.isArray(this.datas)) {
+        arr = utils.toObject(this.datas);
       }
       return arr;
     }

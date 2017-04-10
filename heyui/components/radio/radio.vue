@@ -4,6 +4,8 @@
   </div>
 </template>
 <script>
+import utils from '../../utils/utils';
+
 export default {
   props: {
     datas: [Object, Array],
@@ -20,13 +22,16 @@ export default {
     setvalue(key) {
       if (this.disabled) return;
       this.$emit('input', key);
+      let event = document.createEvent("CustomEvent");
+      event.initCustomEvent("setvalue", true, true, this.value);
+      this.$el.dispatchEvent(event);
     }
   },
   computed: {
     arr() {
       let arr = this.datas || {};
-      if (Utils.isArray(this.datas)) {
-        arr = Utils.toObject(this.datas);
+      if (utils.isArray(this.datas)) {
+        arr = utils.toObject(this.datas);
       }
       return arr;
     }

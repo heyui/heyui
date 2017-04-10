@@ -9,6 +9,7 @@ textarea {
   border-radius: @border-radius;
   border: @input-border;
   padding: 4px 0px 4px 10px;
+  line-height: inherit;
   // width: 200px;
   font-size: inherit;
   transition: all linear @transition-time;
@@ -36,6 +37,12 @@ textarea {
     background-color: @gray4-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
+  }
+  .@{prefix}form-item-valid-error &{
+    border-color: @red-color;
+    &:focus{
+      box-shadow: 0 0 0 2px lighten(@red-color, 40%);
+    }
   }
 }
 
@@ -66,15 +73,19 @@ input[type=password]{
     position: relative;
     display: table;
     border-collapse: separate;
-    >input,>.@{input-prefix} {
-      width: 100%;
+    >input,>div {
+      width: 100% !important;
       display: table-cell;
       vertical-align: middle;
       float: left;
       position: relative;
       z-index: 2;
+      margin:0; 
     }
-    >input:not(:last-child),>.@{input-prefix}:not(:last-child)>input{
+    >div{
+      padding: 0 !important;
+    }
+    >input:not(:last-child),>div:not(:last-child) input{
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
@@ -100,7 +111,7 @@ input[type=password]{
         border-right: @input-border;
       }
       +input,
-      +textarea,+.@{input-prefix}>input {
+      +div input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }

@@ -15,7 +15,7 @@
     <br>
     {{checks}}
     <br>
-    <div><Checkbox v-model="value1" :datas="param1" @input="onchange"></Checkbox></div>
+    <div><Checkbox v-model="value1" :datas="param1" @input="onchange" class="test1111"></Checkbox></div>
     <div><Checkbox v-model="value1" :datas="param1" :disabled="true"></Checkbox></div>
     <p v-color:gray>{{value1}}</p>
   </div>
@@ -32,8 +32,15 @@ export default {
   },
   methods: {
     onchange(value) {
-      console.log(value);
+      // console.log(value);
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      $(".test1111", this.$el).on("setvalue", (event) => {
+        log(event.detail);
+      })
+    });
   }
 }
 </script>

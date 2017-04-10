@@ -24,6 +24,9 @@ export default {
     setvalue(key) {
       if (this.disabled) return;
       this.$emit('input', key);
+      let event = document.createEvent("CustomEvent");
+      event.initCustomEvent("setvalue", true, true, this.value);
+      this.$el.dispatchEvent(event);
     }
   },
   computed: {

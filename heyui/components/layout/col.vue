@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Utils from '../../utils/utils';
+import utils from '../../utils/utils';
 
 const prefixCls = 'h-col';
 
@@ -34,7 +34,7 @@ export default {
 
       // let noOtherWidth = width==undefined&&this.flex == undefined;
       for(let size of ['xs', 'sm', 'md', 'lg', 'xl']){
-        if (Utils.isNumber(this[size])) {
+        if (utils.isNumber(this[size])) {
           // noOtherWidth = false;
           classList.push(`${prefixCls}-${size}-${this[size]}`);
         }
@@ -55,7 +55,7 @@ export default {
         styletype = 'margin';
       }
 
-      if (Utils.isNumber(this.$parent.space) && this.$parent.space !== 0) {
+      if (utils.isNumber(this.$parent.space) && this.$parent.space !== 0) {
         const leftTop = getHalf(this.$parent.space, true);
         const rightBottom = getHalf(this.$parent.space, false);
         style[`${styletype}Left`] = leftTop;
@@ -64,12 +64,12 @@ export default {
         style[`${styletype}Bottom`] = rightBottom;
       }
 
-      if (Utils.isNumber(this.$parent.spaceX) && this.$parent.spaceX !== 0) {
+      if (utils.isNumber(this.$parent.spaceX) && this.$parent.spaceX !== 0) {
         style[`${styletype}Left`] = getHalf(this.$parent.spaceX, true);
         style[`${styletype}Right`] = getHalf(this.$parent.spaceX, false);
       }
 
-      if (Utils.isNumber(this.$parent.spaceY) && this.$parent.spaceY !== 0) {
+      if (utils.isNumber(this.$parent.spaceY) && this.$parent.spaceY !== 0) {
         style[`${styletype}Top`] = getHalf(this.$parent.spaceY, true);
         style[`${styletype}Bottom`] = getHalf(this.$parent.spaceY, false);
       }
