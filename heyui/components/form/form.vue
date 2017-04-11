@@ -16,40 +16,28 @@ export default {
     },
     model: [Object, Array],
     labelWidth: Number,
+    rules: Object,
     labelPosition: String
   },
   data() {
     return {
-      errorMessages: {}
+      // errorMessages: {}
     };
   },
-  mounted() {
-    // this.validField();
-    this.$nextTick(() => {
-      // this.$el.addEventListener("blur", (event) => {
-      //   log(event.target.parentNode);
-      // }, true);
-      // this.$el.addEventListener("setvalue", (event) => {
-      //   log(event);
-      // });
-    });
-  },
   methods: {
-    clearValidField(prop) {
-      delete this.errorMessages[prop];
-    },
-    validField(prop, field) {
+    validField(prop) {
       let value = utils.valueForKeypath(this.model, prop);
-      log(prop);
+      // log(prop);
       // let ruleKey = prop.replace(/\[\w+\]/, "[]");
-      // let rule = this.rules[ruleKey];
-      // log(value);
-      this.clearValidField(prop);
-      if (value == '1') {
+      let rule = (this.rules || { required: [] }).required.includes(prop);
+      // log(rule);
+      // this.clearValidField(prop);
+      if (rule && (utils.isNull(value) || value == '')) {
         // utils.removeClass('validor-error');
-        return true;
+        return { message: `值不能为空` };
       }
-      this.errorMessages[prop] = `${field}值不等于1`;
+      return true;
+      // this.errorMessages[prop] = ;
     }
   },
   computed: {

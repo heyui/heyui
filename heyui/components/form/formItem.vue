@@ -3,7 +3,7 @@
     <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">{{this.label}}</label>
     <div class="h-form-item-content" :style="contentStyleCls">
       <div class="h-form-item-wrap"><slot></slot></div>
-      <div class="h-form-item-error" v-if="!!errorMessage" >{{errorMessage}}</div>
+      <div class="h-form-item-error" v-if="validResult" >{{label}}{{validResult.message}}</div>
     </div>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      errorMessage: this.getErrorMessage()
+      validResult: null
     };
   },
   mounted() {
@@ -49,26 +49,29 @@ export default {
       });
     });
   },
-  beforeDestroy() {
-    if (this.prop) {
-      this.getParent().clearValidField(this.prop);
-    }
-  },
   methods: {
     getParent() {
       let parent = this.$parent;
-      while (parent != null && parent.$options._componentTag != 'Form' && parent.$options._componentTag != 'iForm'){
+      let filterTag = new Set(['Form', 'iForm']);
+      while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
+      }
+      if (!parent) {
+        log.error('请将formItem组件置于Form组件内');
       }
       return parent;
     },
-    getErrorMessage() {
-      if (!this.validable || utils.isNull(this.prop)) {
-        return false;
-      }
-      return this.getParent().errorMessages[this.prop];
-    },
+    // getErrorMessage() {
+    //   if (!this.validable || utils.isNull(this.prop)) {
+    //     return false;
+    //   }
+    //   let parent = this.getParent();
+    //   if (parent) return this.getParent().errorMessages[this.prop];
+    //   return '';
+    // },
     trigger(evt) {
+      let parent = this.getParent();
+      if (!parent) return false;
       let target = evt.srcElement;
       // target.getAttribute("prop")
       let prop = this.prop;
@@ -78,17 +81,25 @@ export default {
       // this.showMessage = true;
       // let tagName = target.tagName;
       // let selfProp = true;
-      let label = target.getAttribute("label") || this.label;
+      // let label = target.getAttribute("label") || this.label;
       // log(prop, label, tagName);
-      this.getParent().validField(prop, label);
-      this.errorMessage = this.getErrorMessage();
+      let result = this.getParent().validField(prop);
+      if (result === true) {
+        // this.errorMessage = null;
+        this.validResult = null;
+      } else {
+        this.validResult = result;
+        // this.errorMessage = result.message;
+      }
     },
   },
   computed: {
     initLabelWidth() {
+      let parent = this.$parent;
+      // if (!parent) return 'auto';
       let mode = this.$parent.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
-      let width = hasWidth ? (this.labelWidth || this.$parent.labelWidth || false) : false;
+      let width = hasWidth ? (this.labelWidth || parent.labelWidth || false) : false;
       return width ? `${width}px` : 'auto';
     },
     formItemCls() {
@@ -96,7 +107,7 @@ export default {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
         [`${prefixCls}-required`]: this.required,
-        [`${prefixCls}-valid-error`]: !!this.errorMessage
+        [`${prefixCls}-valid-error`]: !!this.validResult
       }
     },
     labelCls() {

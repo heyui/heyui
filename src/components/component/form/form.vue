@@ -6,9 +6,14 @@
     <br/>
     <div class="demo-box">
       <div class="demo">
-        <Form :label-width="90" :mode="mode" :model="data">
-          <!--<FormItem :single="true" label="输入框" prop="input" :required="true"><input type="text" v-model="data.input"/></FormItem>
-          
+        <Form :label-width="90" :mode="mode" :model="data" :rules="validationRules">
+          <FormItemList>
+            <FormItem v-for="(item, index) of data.inputs" :key="item.uuid" :label="'输入框'+(index+1)" :required="true" :prop="'inputs['+index+'].value'">
+              <Col width="18"><input type="text" v-model="item.value"/></Col><Col width="6" class="text-right"><Button text-color="red" v-width="'90%'" :block="true" @click="remove(index)" icon="trash">删除</Button></Col>
+            </FormItem>
+          </FormItemList>
+          <FormItem :single="true"><Button size="s" text-color="blue" @click="add">添加输入框</Button></FormItem>
+          <FormItem :single="true" label="输入框" prop="input" :required="true"><input type="text" v-model="data.input"/></FormItem>
           <FormItem label="金额" :required="true">
             <div class="h-input-group">
               <FormItem prop="money.min" label="起始金额" :show-label="false"><input type="text" placeholder="起始金额" v-model="data.money.min"/></FormItem>
@@ -16,13 +21,8 @@
               <FormItem prop="money.max" label="结束金额" :show-label="false"><input type="text" placeholder="结束金额" v-model="data.money.max"/></FormItem>
               <span class="h-input-addon">K</span>
             </div>
-          </FormItem>-->
-          <FormItem v-for="(item, index) of data.inputs" :key="item" :label="'输入框'+(index+1)" :required="true" :prop="'inputs['+index+'].value'">
-            <Col width="18"><input type="text" v-model="item.value"/></Col><Col width="6" class="text-right"><Button text-color="red" v-width="'90%'" :block="true" @click="remove(index)" icon="trash">删除</Button></Col>
           </FormItem>
-          <FormItem :single="true"><Button size="s" text-color="blue" @click="add">添加输入框</Button></FormItem>
-          <p><span>ceshi</span></p>
-          <!--<FormItem label="日期" :required="true" prop="date">
+          <FormItem label="日期" :required="true" prop="date">
             <input type="text" placeholder="日期" v-model="data.date"/>
           </FormItem>
           <FormItem label="评分" :required="true" prop="rate">
@@ -32,7 +32,7 @@
           <FormItem label="单选" prop="radio"><Radio v-model="data.radio" :datas="dataParam"></Radio></FormItem>
           <FormItem label="多选" prop="checkbox"><Checkbox v-model="data.checkbox" :datas="dataParam"></Checkbox></FormItem>
           <FormItem><Button color="primary" size="l" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading" size="l">取消</Button></FormItem>
-        --></Form>
+        </Form>
       </div>
     </div>
     {{data}}
@@ -96,12 +96,26 @@ export default {
         single: '默认single',
         block: '标题独立一行',
         twocolumn: '两列一行',
+      },
+      validationRules: {
+        required: [
+          'inputs[].value',
+          'input',
+          'textarea',
+          'radio',
+          'rate',
+          'checkbox',
+          'money',
+          'date',
+          'money.min',
+          'money.max'
+        ]
       }
     }
   },
   methods: {
     add() {
-      this.data.inputs.push({ value: '' });
+      this.data.inputs.push({ value: '', uuid: Utils.uuid() });
     },
     remove(index) {
       this.data.inputs.splice(index, 1);

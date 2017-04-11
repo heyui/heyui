@@ -79,6 +79,7 @@ const components = {
   iForm: Form,
   Form,
   FormItem: Form.Item,
+  FormItemList: Form.ItemList,
   // Collapse,
   // Icon,
   // InputNumber,
