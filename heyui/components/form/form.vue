@@ -28,8 +28,8 @@ export default {
     validField(prop) {
       let value = utils.valueForKeypath(this.model, prop);
       // log(prop);
-      // let ruleKey = prop.replace(/\[\w+\]/, "[]");
-      let rule = (this.rules || { required: [] }).required.includes(prop);
+      let ruleKey = prop.replace(/\[\w+\]/, "[]");
+      let rule = (this.rules || { required: [] }).required.includes(ruleKey);
       // log(rule);
       // this.clearValidField(prop);
       if (rule && (utils.isNull(value) || value == '')) {

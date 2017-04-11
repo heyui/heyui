@@ -22,7 +22,6 @@ import Form from './components/form';
 // import InputNumber from './components/input-number';
 // import LoadingBar from './components/loading-bar';
 // import Menu from './components/menu';
-// import Message from './components/message';
 // import Modal from './components/modal';
 // import Notice from './components/notice';
 // import Page from './components/page';
@@ -52,7 +51,9 @@ import { Button, ButtonGroup } from './components/button';
 // import locale from './locale';
 
 import style from './directives/style';
+import tooltip from './directives/tooltip';
 import autosize from './directives/autosize';
+import Message from './plugins/message';
 
 
 const components = {
@@ -131,7 +132,8 @@ const directives = {
   "bg-color": style.bgColor,
   height: style.height,
   font: style.font,
-  autosize
+  autosize,
+  tooltip
 }
 
 
@@ -154,7 +156,7 @@ const install = function (Vue, opts = {}) {
   });
 
   // Vue.prototype.$Loading = LoadingBar;
-  // Vue.prototype.$Message = Message;
+  Vue.prototype.$Message = Message;
   // Vue.prototype.$Modal = Modal;
   // Vue.prototype.$Notice = Notice;
 };

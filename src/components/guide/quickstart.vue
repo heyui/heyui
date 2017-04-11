@@ -1,6 +1,6 @@
 <template>
   <div class="doc">
-  button
+    <h2>快速上手</h2>
   </div>
 </template>
 

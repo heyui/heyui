@@ -33,7 +33,7 @@ const titles = {
   'pluginDropdown': 'Dropdown 原生下拉控件',
   'pluginDropdownmenu': 'DropdownMenu 下拉菜单',
   'pluginLoadingbar': 'LoadingBar 加载进度条',
-  'messageTip': 'Tip 提示',
+  'messageTip': 'Message 提示',
   'messageNotice': 'Notice 通知',
   'messageModal': 'Modal 弹框显示',
   'messageTooltip': 'Tooltip 文字提示',

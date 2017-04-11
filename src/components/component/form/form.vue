@@ -8,7 +8,7 @@
       <div class="demo">
         <Form :label-width="90" :mode="mode" :model="data" :rules="validationRules">
           <FormItemList>
-            <FormItem v-for="(item, index) of data.inputs" :key="item.uuid" :label="'输入框'+(index+1)" :required="true" :prop="'inputs['+index+'].value'">
+            <FormItem v-for="(item, index) of data.inputs" :key="item" :label="'输入框'+(index+1)" :required="true" :prop="'inputs['+index+'].value'">
               <Col width="18"><input type="text" v-model="item.value"/></Col><Col width="6" class="text-right"><Button text-color="red" v-width="'90%'" :block="true" @click="remove(index)" icon="trash">删除</Button></Col>
             </FormItem>
           </FormItemList>
@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     add() {
-      this.data.inputs.push({ value: '', uuid: Utils.uuid() });
+      this.data.inputs.push({ value: '' });
     },
     remove(index) {
       this.data.inputs.splice(index, 1);

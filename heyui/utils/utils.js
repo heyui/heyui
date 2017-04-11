@@ -71,7 +71,11 @@ export default Utils.extend({}, Utils, {
 
     return this;
   },
-
+  removeDom(elem) {
+    if (elem.parentNode) {
+      elem.parentNode.removeChild(elem);
+    }
+  },
   hasClass(elem, selector) {
     let className;
     className = ` ${selector} `;

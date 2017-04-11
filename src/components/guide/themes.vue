@@ -1,6 +1,6 @@
 <template>
   <div class="doc">
-  button
+    <h2>更换主题</h2>
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-import autosize from '../plugins/autosize/autosize';
+import autosize from '../plugins/autosize';
 
 export default {
   inserted(el) {
