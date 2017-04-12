@@ -1,0 +1,39 @@
+@modal-prefix: ~"@{prefix}modal";
+@notify-prefix: ~"@{prefix}notify";
+@modal-padding: 15px;
+.@{modal-prefix} {
+    z-index: @zindex-modal;
+    .@{notify-prefix} {
+        &-container {
+            min-width: 350px;
+            header {
+                min-height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                padding-left: @modal-padding;
+            }
+            footer {
+                padding: 10px @modal-padding;
+                text-align: right;
+            }
+        }
+        &-content {
+            padding: 10px @modal-padding;
+            &.@{notify-prefix}-content-component{
+                padding: 0;
+                >div{
+                    padding:10px @modal-padding;
+                }
+            }
+        }
+    }
+
+    &.@{notify-prefix} {
+        &-show {
+            .@{notify-prefix}-container-center {
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
