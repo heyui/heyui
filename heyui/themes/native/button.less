@@ -17,7 +17,7 @@
   border-color: @color;
   color: @color;
   &:hover {
-    border-color: lighten(@color, 30%);
+    border-color: lighten(@color, 10%);
     color: lighten(@color, 10%);
   }
   &:active {
@@ -97,6 +97,10 @@
     &-loading {
       pointer-events: none;
       opacity: 0.8;
+    }
+    &-block {
+      display: block;
+      width: 100%;
     }
   }
   &[disabled] {

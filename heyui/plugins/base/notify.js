@@ -6,62 +6,69 @@ const Default = {
   content: '',
   style: null,
   buttons: [],
-  fixed: false,
-  mate: false,
-  closeOnMate: true,
-  closeButtonName: '关闭',
-  iconCloseButton: false,
-  closeButton: true,
-  hasFooter: true,
+  hasMask: false,
+  closeOnMask: true,
+  hasCloseIcon: false,
   timeout: 0,
   width: false,
   global: false,
   noPadding: false
 };
 
-const notificationCls = 'h-notification';
-const notificationHasCloseCls = 'h-notification-has-close';
-const notificationContentCls = 'h-notification-content';
-const notificationContainerCls = 'h-notification-container';
-const notificationCloseCls = 'h-notification-close';
-const notificationMateCls = 'h-notification-mate';
-const notificationShowCls = 'h-notification-show';
+const notifyCls = 'h-notify';
+const notifyHasCloseCls = 'h-notify-has-close';
+const notifyContentCls = 'h-notify-content';
+const notifyContainerCls = 'h-notify-container';
+const notifyCloseCls = 'h-notify-close';
+const notifyMaskCls = 'h-notify-mask';
+const notifyShowCls = 'h-notify-show';
 const closeIcon = 'h-icon-close';
 
-class Notification {
+class Notify {
   constructor(orignalparam) {
     const that = this;
     let param = this.param = utils.extend({}, Default, orignalparam, true);
-    let html = `<div class="${notificationContainerCls}">`;
-    if (param.iconCloseButton) html += `<span class="${notificationCloseCls} ${closeIcon}"></span>`;
+    let html = '';
+    if (param.hasMask) {
+      html += `<div class="${notifyMaskCls}"></div>`;
+    }
+    html += `<div class="${notifyContainerCls}">`;
+    if (param.hasCloseIcon) html += `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
     if (param.title) html += `<header>${param.title}</header>`;
-    html += `<div class="${notificationContentCls}"></div>`;
-
-    // if (param.hasFooter) {
-    //   let footeHtml = '';
-    //   if (param.buttons) {
-    //     if (!(param.buttons instanceof Array)) {
-    //       param.buttons = [param.buttons];
-    //     }
-    //     for (const b of param.buttons) {
-    //       footeHtml += `<button class='btn purple ${b.color || ''}`;
-    //       footeHtml += `' tag='${param.buttons.indexOf(b)}'>${b.name}</button>`;
-    //     }
-    //   }
-    //   if (param.closeButton && param.closeButtonName) footeHtml += `<button class="btn white closeButton">${param.closeButtonName}</button>`;
-    //   html += `<footer>${footeHtml}</footer>`;
-    // } else if (param.type == TYPE.DIALOG) {
-    //   param.noPadding = true;
-    // }
+    html += `<div class="${notifyContentCls}"></div>`;
+    param.hasFooter = utils.isArray(param.buttons) && param.buttons.length > 0;
+    if (param.hasFooter) {
+      let footeHtml = '';
+      for (const b of param.buttons) {
+        let name = '';
+        let attr = '';
+        let color = '';
+        if (b == 'cancel' || b.type == 'cancel') {
+          name = b.name || '取消';
+          attr = b;
+        } else if (b == 'ok' || b.type == 'ok') {
+          name = b.name || '确定';
+          attr = 'ok';
+          color = 'primary';
+        } else if (utils.isObject(b)) {
+          attr = b.type;
+          name = b.name;
+          color = b.color || 'primary';
+        }
+        if (color) color = `h-btn-${color}`;
+        footeHtml += `<button class="h-btn ${color}" attr="${attr}" >${name}</button>`;
+      }
+      html += `<footer>${footeHtml}</footer>`;
+    }
 
     html += '</div>';
-
     let $body = document.createElement(`div`);
-    utils.addClass($body, notificationCls);
+    utils.addClass($body, notifyCls);
     $body.innerHTML = html;
-    let $content = that.$content = $body.querySelector(`.${notificationContentCls}`);
-    let $container = that.$container = $body.querySelector(`.${notificationContainerCls}`);
+    let $content = that.$content = $body.querySelector(`.${notifyContentCls}`);
+    let $container = that.$container = $body.querySelector(`.${notifyContainerCls}`);
     that.$body = $body;
+    
     let content = param.content;
     if (content.nodeType === 1) {
       $content.appendChild(content);
@@ -72,12 +79,8 @@ class Notification {
       $content.innerHTML = content;
     }
 
-    if (param.mate) {
-      utils.addClass($body, notificationMateCls);
-    }
-
-    if (param.iconCloseButton) {
-      utils.addClass($body, notificationHasCloseCls);
+    if (param.hasCloseIcon) {
+      utils.addClass($body, notifyHasCloseCls);
     }
 
     if (param.type) {
@@ -97,52 +100,35 @@ class Notification {
       utils.addClass($body, param.style);
     }
 
-    document.body.appendChild($body);
+    let parentDom = param.parent || document.body;
+    parentDom.appendChild($body);
     // $("").append($body);
     // let openedComponent = $('.systab_component.selected');
     // if (openedComponent.size() == 0 || param.global) openedComponent = $('body');
     // openedComponent.append($body);
-    if (param.iconCloseButton) {
-      $body.querySelector(`.${notificationCloseCls}`).onclick = function () {
+    if (param.hasCloseIcon) {
+      $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
         that.close();
       }
     }
-      // $('.close, footer .closeButton', $body).on('click', function () {
-      //   that.close();
-      // });
-
-    // if (param.buttons) {
-    //   $('footer button[tag]', $body).on('click', function () {
-    //     const tag = parseInt($(this).attr('tag'), 10);
-    //     if (typeof param.buttons[tag].func == 'function') {
-    //       param.buttons[tag].func.call(that, $body);
-    //     }
-    //   });
-    // }
-    // $body.fadeIn();
-    // $body.children('div').animate({
-    //   top: `${param.top}%`,
-    // }, 400);
+    if (param.hasFooter) {
+      $body.querySelectorAll(`.${notifyContainerCls}>footer>button`).forEach((b) => {
+        b.onclick = function (event) {
+          let attr = event.target.getAttribute('attr');
+          if (attr) {
+            if (attr == 'cancel') {
+              that.close();
+            }
+            that.trigger(attr);
+          }
+        }
+      }, this);
+    }
 
     window.setTimeout(function () {
-      utils.addClass($body, notificationShowCls);
+      utils.addClass($body, notifyShowCls);
     }, 20);
 
-    // if (param.plugin != undefined) {
-    //   that.vue = new Vue({
-    //     el: $content.get(0),
-    //     template: `<div><plugin v-ref:${param.plugin.name}></plugin></div>`,
-    //     data() {
-    //       return $.extend({
-    //         dialog: that,
-    //       }, param.plugin.data, true)
-    //     },
-    //     methods: param.plugin.methods,
-    //     components: {
-    //       plugin: param.plugin.component,
-    //     },
-    //   })
-    // }
     if (param.events && utils.isFunction(param.events.init)) {
       param.events.init.call(that, $content);
     }
@@ -151,29 +137,33 @@ class Notification {
         that.close();
       }, param.timeout);
     }
-    if (param.closeOnMate) {
-      $body.onclick = (event) => {
-        if (event.target == event.currentTarget) {
-          this.close();
-        }
+    if (param.closeOnMask && param.hasMask) {
+      $body.querySelector(`.${notifyMaskCls}`).onclick = () => {
+        this.close();
       }
+    }
+  }
+
+  trigger(event) {
+    let param = this.param;
+    if (param.events && utils.isFunction(param.events[event])) {
+      param.events[event].call(this, this);
     }
   }
 
   close() {
     let that = this;
-    let param = this.param;
     const $body = this.$body;
     if (this.vm) {
       that.vm.$destroy();
     }
 
-    if (param.events && utils.isFunction(param.events.close)) {
-      param.events.close.call(that, that.$content);
-    }
-    utils.removeClass($body, notificationShowCls);
-    $body.addEventListener("transitionend", () => {
-      if ($body) {
+    this.trigger('close');
+
+    utils.removeClass($body, notifyShowCls);
+
+    $body.addEventListener("transitionend", (event) => {
+      if ((event.propertyName == 'top' || event.propertyName == 'right') && $body) {
         utils.removeDom($body);
       }
     });
@@ -226,9 +216,9 @@ class Notification {
 //     width: null,
 //     global: true,
 //     hasFooter: false,
-//     mate: false,
+//     mask: false,
 //     top: 10,
-//     iconCloseButton: true
+//     hasCloseIcon: true
 //   };
 //   if (otherParam != undefined) {
 //     $.extend(param, otherParam);
@@ -244,7 +234,7 @@ class Notification {
 //   return new _Dialog({
 //     type: TYPE.CONFIRM,
 //     content,
-//     iconCloseButton: false,
+//     hasCloseIcon: false,
 //     closeButtonName: '取消',
 //     global: true,
 //     width: 360,
@@ -266,5 +256,5 @@ class Notification {
 // }
 
 export default function (param) {
-  return new Notification(param);
+  return new Notify(param);
 }

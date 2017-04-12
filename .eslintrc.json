@@ -42,6 +42,9 @@
     "eqeqeq": [
       "off"
     ],
+    "no-param-reassign": [
+      "off"
+    ],
     "no-plusplus": [
       "error", {
         "allowForLoopAfterthoughts": true

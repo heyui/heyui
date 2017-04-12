@@ -8,7 +8,7 @@
     </div>
     <br>
     <div>
-      <button class="h-btn" v-tooltip ref-el="demo" placement="bottom" theme="white">自定义内容</button>
+      <button class="h-btn" v-tooltip ref-el="demo" trigger="click" placement="bottom-end" theme="white">自定义内容</button>
       <button class="h-btn" @click="change()">修改提醒内容</button>
       <div tmpl='demo'><p class="red-color">{{a}}测试测试</p><p>{{a}}测试测试</p><p>{{a}}测试测试</p></div>
     </div>

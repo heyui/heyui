@@ -1,29 +1,28 @@
 <template>
   <div class="doc">
     <h2>Message 提示</h2>
-    <div><button class='h-btn' @click="info()">提示</button></div>
-    <br>
-    <div>
+    <p><button class='h-btn' @click="info()">提示</button></p>
+    <p><button class='h-btn' @click="config()">设置全局的timeout时间为1秒</button></p>
+    <p>
       <button class='h-btn' @click="message('info')">消息</button>
       <button class='h-btn' @click="message('success')">成功</button>
       <button class='h-btn' @click="message('warn')">警告</button>
       <button class='h-btn' @click="message('error')">错误</button>
-    </div>
-    <br>
-    <div>
+    </p>
+    <p>
       <button class='h-btn' @click="message2('info')">消息</button>
       <button class='h-btn' @click="message2('success')">成功</button>
       <button class='h-btn' @click="message2('warn')">警告</button>
       <button class='h-btn' @click="message2('error')">错误</button>
-    </div>
+    </p>
     <h3>不自动关闭</h3>
-    <div>
+    <p>
       <button class='h-btn' @click="message3('info')">不自动关闭</button>
-    </div>
+    </p>
     <h3>loading</h3>
-    <div>
+    <p>
       <button class='h-btn' @click="message5('loading')">显示加载中</button>
-    </div>
+    </p>
   </div>
 </template>
 
@@ -35,6 +34,11 @@ export default {
     }
   },
   methods: {
+    config() {
+      this.$Message.config({
+        timeout: 1000,
+      });
+    },
     info() {
       this.$Message('这是一个普通的提醒');
     },

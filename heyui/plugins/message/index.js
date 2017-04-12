@@ -1,4 +1,4 @@
-import Notification from '../base/notification';
+import Notify from '../base/notify';
 import utils from '../../utils/utils';
 
 const prefixCls = 'h-message';
@@ -33,8 +33,8 @@ function Message(content, timeout, type, onClose) {
     timeout
   };
   param = utils.extend({}, Default, param, true);
-  if (param.timeout < 1) param.iconCloseButton = true;
-  return new Notification(param);
+  if (param.timeout < 1) param.hasCloseIcon = true;
+  return Notify(param);
 }
 
 function message(content, timeout, onClose) {
@@ -65,10 +65,7 @@ message.loading = (content, timeout, onClose) => {
 };
 
 message.config = (options) => {
-  if (options.top) {
-    Default.top = options.top;
-  }
-  if (options.timeout) {
+  if (options.timeout != undefined) {
     Default.timeout = options.timeout;
   }
 };

@@ -20,6 +20,10 @@
       <Button text-color="red">RED按钮</Button>
       <Button text-color="blue">BLUE按钮</Button>
     </div>
+    <h4>block</h4>
+    <div>
+      <div v-width="300"><Button :block="true" text-color="red">整行按钮</Button></div>
+    </div>
     <h4>禁用</h4>
     <div>
       <Button :disabled="true">默认</Button>

@@ -1,9 +1,10 @@
 @message-prefix: ~"@{prefix}message";
-@notification-prefix: ~"@{prefix}notification";
+@notify-prefix: ~"@{prefix}notify";
 @icon-prefix: ~"@{prefix}icon";
 
 .@{message-prefix}{
-    .@{notification-prefix}{
+    z-index: @zindex-message;
+    .@{notify-prefix}{
         &-content{
             padding: 8px 18px;
             [class^="h-icon"], [class*=" h-icon"]{
@@ -12,8 +13,8 @@
             }
         }
     }
-    &.@{notification-prefix}-has-close{
-        .@{notification-prefix}-content{
+    &.@{notify-prefix}-has-close{
+        .@{notify-prefix}-content{
             padding-right: 40px;
         }
     }

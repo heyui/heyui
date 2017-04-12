@@ -20,6 +20,10 @@
       <button class="h-btn h-btn-text-red">RED按钮</button>
       <button class="h-btn h-btn-text-blue">BLUE按钮</button>
     </div>
+    <h4>block</h4>
+    <div>
+      <div v-width="300"><button class="h-btn h-btn-text-red h-btn-block">整行按钮</button></div>
+    </div>
     <h4>禁用</h4>
     <div>
       <button class="h-btn" disabled>默认</button>

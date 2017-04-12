@@ -1,205 +1,108 @@
-@notification-prefix: ~"@{prefix}notification";
-
-@notice-width: 335px;
+@notice-prefix: ~"@{prefix}notice";
+@notice-width: 350px;
 @notice-padding: 16px;
 @notice-margin-bottom: 10px;
-
-.@{notification-prefix} {
-
-    z-index: @zindex-notification;
-
-    .@{notification-prefix} {
-        &-container{
-            position: fixed;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            background-color: @white-color;
-            border-radius: 3px;
-            top: -50px;
-            box-shadow: @box-shadow;
-            transition: .4s;
-            z-index: @zindex-notification;
-            opacity: 0.3;
-        }
-        &-content{
-            position: relative;
-        }
-        &-close{
-            display: block;
-            position: absolute;
-            right: 8px;
-            top: 10px;
-            height: 22px;
-            width: 21px;
-            text-align: center;
-            font-size: 17px;
-            z-index: 1;
-            .link;
-        }
-    }
-
-    &.@{notification-prefix}{
-        &-show{
-            .@{notification-prefix}-container{
-                top: 50px;
-                opacity: 1;
-            }
-        }
-        &-mate{
+.@{notice-prefix} {
+    &-container{
         position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.16);
-        z-index: @zindex-notification - 1;
-        .@{notification-prefix} {
-            &-container{
-                margin: 30px 0;
-            }
-            &-content{
+        top: 50px;
+        right: 10px;
+    }
+    transition: .7s;
+    .@{notify-prefix} {
+        &-container {
+            min-width: @notice-width;
+            top: auto;
+            right: -100px;
+            margin-bottom: 20px;
+            left: auto;
+            transform: none;
+            position: relative;
+            max-height: 0;
+            overflow: hidden;
 
+            header {
+                min-height: 20px;
+                line-height: 20px;
+                font-size: 16px;
+                padding: @notice-padding 0 0 @notice-padding;
             }
-            &-close{
-                
-            }
-            &-show{
-                
+        }
+        
+        &-content {
+            padding: @notice-padding - 4px @notice-padding;
+            color: @gray-color;
+            [class^="h-icon"], [class*=" h-icon"]{
+                margin-right: 10px;
+                display: inline-block;
             }
         }
     }
+    
+    &.@{notice-prefix}-has-icon{
+        header{
+            margin-left: 40px;
+        }
+        .@{notify-prefix}-content{
+            margin-left: 40px;
+
+            [class^="h-icon"], [class*=" h-icon"]{
+                margin-right: 10px;
+                float:left;
+                font-size: 30px;
+                position: absolute;
+                left: -25px;
+                top: -20px;
+            }
+        }
+    }
+
+    &.@{notify-prefix} {
+
+        &-show {
+            .@{notify-prefix}-container {
+                top: auto;
+                right: 0px;
+                max-height: 1000px;
+            }
+        }
     }
 }
 
+// @notice-prefix: ~"@{prefix}notice";
+// @notice-width: 350px;
+// @notice-padding: 16px;
+// @notice-margin-bottom: 10px;
+// .@{notice-prefix} {
+//     position: fixed;
+//     right: -100px;
+//     margin-top: 40px;
+//     transition: @transition-time;
+//     .@{notify-prefix} {
+//         &-container {
+//             min-width: @notice-width;
+//             top: auto;
+//             left: auto;
+//             transform: none;
+//             position: static;
+//             transition: none;
 
-// .dialog .dialog_content {
-//     position: relative;
-//     overflow-y: auto;
-//     padding: 20px 30px;
-// }
+//             header {
+//                 min-height: 20px;
+//                 line-height: 20px;
+//                 font-size: 16px;
+//                 padding: @notice-padding 0 0 @notice-padding;
+//             }
+//         }
+//         &-content {
+//             padding: 10px @notice-padding @notice-padding;
+//             color: @gray-color;
+//         }
+//     }
 
-// .dialog header {
-//     text-align: center;
-//     font-size: 16px;
-//     line-height: 20px;
-//     padding: 10px 30px;
-//     /* border-bottom: 1px solid #EEE; */
-// }
-
-// .dialog footer {
-//     text-align: center;
-//     padding: 15px 0 15px;
-//     /* border-top: 1px solid #eee; */
-// }
-
-// .dialog>div>div>span.close {
-    
-// }
-
-// .dialog>div>div>span.close:hover {
-//     color: #232323;
-// }
-
-// .dialog.no_mate .box {
-//     /* box-shadow: 1px 1px 4px 0 #E1E1E1,1px 1px 8px #eee; */
-// }
-
-// .box.red,.box.red span.close{
-//     background-color: #FF6666 !important;
-//     color: #FFF;
-// }
-
-// .box.yellow,.box.yellow span.close{
-//     background-color: #FED030 !important;
-//     color: #fff;
-// }
-
-// .box.green,.box.green span.close{
-//     background-color: #27C24C !important;
-//     color: #fff;
-// }
-
-// .box.red span.close:hover,.box.yellow span.close:hover,.box.green span.close:hover{
-//     color: #ffdada;
-// }
-
-// .dialog.no_mate .box.red {
-//     box-shadow: none;
-// }
-
-// .dialog.Message .dialog_content {
-//     padding: 15px 30px 15px 15px;
-//     font-size: 15px;
-//     text-align: center;
-// }
-
-// .dialog.Message .icon-bell {
-//     margin-right: 10px;
-//     color: #ee5154;
-// }
-
-// .dialog.Message>div {
-//     transform: none;
-//     left: 0;
-//     right: 0;
-// }
-
-// .dialog.Message>div>.box{
-//     display: block;
-//     min-height: 59px;
-//     box-shadow: none;
-//     background-color: rgb(255, 255, 255);
-//     border-radius: 0;
-// }
-
-// .dialog.Message .icon-simple-remove {
-//     font-size: 20px;
-//     right: 15px;
-//     top: 18px;
-// }
-
-// .dialog.Tip {
-//     z-index: 100;
-//     text-align: center;
-// }
-
-// .dialog.no-padding .dialog_content {
-//     padding:0;
-// }
-
-
-// .dialog.Tip .dialog_content {
-//     padding: 6px 30px 6px 20px;
-// }
-
-
-// .dialog.Tip>div {
-//     z-index: 100;
-// }
-
-
-// .dialog.Tip .icon-simple-remove {
-//     top: 6px;
-// }
-
-// .dialog.Alert {
-//     text-align: center;
-// }
-
-// .dialog.Alert .dialog_content{
-//     padding: 10px 30px 10px 20px;
-// }
-
-// .dialog.Alert .dialog_content>.icon-alert,.dialog.Confirm .dialog_content>.icon-alert{
-//     font-size: 18px;
-//     margin-right: 6px;
-//     line-height: 22px;
-//     vertical-align: -3px;
-//     color: #D14F4F;
-// } 
-
-// .dialog.Confirm .dialog_content>.icon-alert{
-//     color: #e6b248;
-//     font-size: 25px;
-//     float:left;
+//     &.@{notify-prefix} {
+//         &-show {
+//             right: 10px;
+//         }
+//     }
 // }

@@ -16,6 +16,7 @@ export default {
     icon: String,
     loading: Boolean,
     circle: Boolean,
+    block: Boolean,
     disabled: {
       type: Boolean,
       default: false
@@ -52,6 +53,7 @@ export default {
         [`${prefix}-icon-circle`]: !!this.iconCircle,
         [`${prefix}-text`]: !!this.text,
         [`${prefix}-loading`]: !!this.loading,
+        [`${prefix}-block`]: !!this.block,
         [`${prefix}-text-${this.textColor}`]: !!this.textColor,
         [`${prefix}-${this.color}`]: !!this.color,
         [`${prefix}-${this.size}`]: !!this.size,

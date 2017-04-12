@@ -22,7 +22,7 @@ import Form from './components/form';
 // import InputNumber from './components/input-number';
 // import LoadingBar from './components/loading-bar';
 // import Menu from './components/menu';
-// import Modal from './components/modal';
+import modal from './components/modal';
 // import Notice from './components/notice';
 // import Page from './components/page';
 // import Poptip from './components/poptip';
@@ -53,7 +53,10 @@ import { Button, ButtonGroup } from './components/button';
 import style from './directives/style';
 import tooltip from './directives/tooltip';
 import autosize from './directives/autosize';
-import Message from './plugins/message';
+import $Modal from './plugins/modal';
+import $Confirm from './plugins/confirm';
+import $Message from './plugins/message';
+import $Notice from './plugins/notice';
 
 
 const components = {
@@ -90,7 +93,8 @@ const components = {
   // MenuItem: Menu.Item,
   // Submenu: Menu.Sub,
   // Message,
-  // Modal,
+  Modal: modal.Modal,
+  ModalComponent: modal.ModalComponent,
   // Notice,
   // iOption: Option,
   // OptionGroup,
@@ -156,9 +160,10 @@ const install = function (Vue, opts = {}) {
   });
 
   // Vue.prototype.$Loading = LoadingBar;
-  Vue.prototype.$Message = Message;
-  // Vue.prototype.$Modal = Modal;
-  // Vue.prototype.$Notice = Notice;
+  Vue.prototype.$Message = $Message;
+  Vue.prototype.$Modal = $Modal;
+  Vue.prototype.$Confirm = $Confirm;
+  Vue.prototype.$Notice = $Notice;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
