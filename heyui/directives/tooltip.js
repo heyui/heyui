@@ -1,4 +1,5 @@
 import Tooltip from '../plugins/tooltip';
+import utils from '../utils/utils';
 
 const TooltipControl = {
   init(el, vnode) {
@@ -11,23 +12,13 @@ const TooltipControl = {
     let ref = attr.attrs['ref-el'];
     if (ref) {
       param.content = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
-      if (param.content) {
-        param.content.style.display = "none";
-      }
       param.html = true;
     }
-    if (attr.attrs.placement) {
-      param.placement = attr.attrs.placement;
-    }
-    if (attr.attrs.theme) {
-      param.theme = attr.attrs.theme;
-    }
-    if (attr.attrs.delay) {
-      param.delay = attr.attrs.delay;
-    }
-    if (attr.attrs.trigger) {
-      param.trigger = attr.attrs.trigger;
-    }
+    // param.boundariesElement = document.body;
+    param = utils.initParam(param, attr.attrs, ['placement', 'theme', 'delay', 'trigger']);
+    param.template = `<div class="h-tooltip${param.theme ? (' h-tooltip-' + param.theme) : ''}" role="tooltip"><div class="h-tooltip-arrow"></div><div class="h-tooltip-inner"></div></div>`;
+    param.arrowSelector = '.h-tooltip-arrow, .h-tooltip__arrow';
+    param.innerSelector = '.h-tooltip-inner, .h-tooltip__inner';
     el.tooltip = new Tooltip(el, param);
   },
   destroy(el) {
@@ -41,7 +32,6 @@ const TooltipControl = {
 export default {
   inserted(el, binding, vnode) {
     TooltipControl.init(el, vnode);
-      log('inserted')
   },
   update(el, binding, vnode) {
     // TooltipControl.destroy(el);
@@ -50,6 +40,5 @@ export default {
   },
   unbind(el) {
     TooltipControl.destroy(el);
-      log('unbind')
   }
 }

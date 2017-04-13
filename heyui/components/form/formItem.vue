@@ -52,7 +52,7 @@ export default {
   methods: {
     getParent() {
       let parent = this.$parent;
-      let filterTag = new Set(['Form', 'iForm']);
+      let filterTag = new Set(['Form', 'hForm']);
       while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
       }

@@ -1,7 +1,7 @@
-@tag-prefix-cls: ~"@{css-prefix}tag";
-@tag-close-prefix-cls: ivu-icon-ios-close-empty;
+@tag-prefix: ~"@{css-prefix}tag";
+@tag-close-prefix: h-icon-close;
 
-.@{tag-prefix-cls} {
+.@{tag-prefix} {
     display: inline-block;
     height: 22px;
     line-height: 22px;
@@ -35,7 +35,7 @@
             position: relative;
             top: 1px;
         }
-        .@{tag-close-prefix-cls} {
+        .@{tag-close-prefix} {
             color: #666 !important;
             margin-left: 12px !important;
         }
@@ -49,7 +49,7 @@
         background: #fff !important;
         position: relative;
 
-        .@{tag-close-prefix-cls} {
+        .@{tag-close-prefix} {
             color: #666 !important;
             margin-left: 12px !important;
         }
@@ -65,56 +65,56 @@
             right: 22px;
         }
 
-        &.@{tag-prefix-cls}-closable {
+        &.@{tag-prefix}-closable {
             &:after{
                 display: block;
             }
-            .@{tag-close-prefix-cls} {
+            .@{tag-close-prefix} {
                 margin-left: 18px !important;
             }
         }
 
-        &.@{tag-prefix-cls}-blue {
+        &.@{tag-prefix}-blue {
             color: @link-color !important;
             border: 1px solid @link-color !important;
 
             &:after{
                 background: @link-color;
             }
-            .@{tag-close-prefix-cls}{
+            .@{tag-close-prefix}{
                 color: @link-color !important;
             }
         }
-        &.@{tag-prefix-cls}-green {
+        &.@{tag-prefix}-green {
             color: @success-color !important;
             border: 1px solid @success-color !important;
 
             &:after{
                 background: @success-color;
             }
-            .@{tag-close-prefix-cls}{
+            .@{tag-close-prefix}{
                 color: @success-color !important;
             }
         }
-        &.@{tag-prefix-cls}-yellow {
+        &.@{tag-prefix}-yellow {
             color: @warning-color !important;
             border: 1px solid @warning-color !important;
 
             &:after{
                 background: @warning-color;
             }
-            .@{tag-close-prefix-cls}{
+            .@{tag-close-prefix}{
                 color: @warning-color !important;
             }
         }
-        &.@{tag-prefix-cls}-red {
+        &.@{tag-prefix}-red {
             color: @error-color !important;
             border: 1px solid @error-color !important;
 
             &:after{
                 background: @error-color;
             }
-            .@{tag-close-prefix-cls}{
+            .@{tag-close-prefix}{
                 color: @error-color !important;
             }
         }
@@ -138,7 +138,7 @@
         }
     }
 
-    .@{tag-close-prefix-cls} {
+    .@{tag-close-prefix} {
         .iconfont-size-under-12px(20px);
         cursor: pointer;
         margin-left: 8px;
@@ -161,8 +161,8 @@
         &,
         a,
         a:hover,
-        .@{tag-close-prefix-cls},
-        .@{tag-close-prefix-cls}:hover {
+        .@{tag-close-prefix},
+        .@{tag-close-prefix}:hover {
             color: #fff;
         }
     }

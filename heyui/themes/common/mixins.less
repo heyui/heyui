@@ -5,3 +5,24 @@
     clear: both;
   }
 }
+
+.select-item(@select-prefix, @select-item-prefix){
+  
+}
+
+.li-hover(){
+  cursor: default;
+  transition: @transition-time;
+  &:hover{
+    background-color: @gray4-color;
+  }
+}
+
+.link-hover(){
+  color: @link-color;
+  cursor: pointer;
+  transition: color @transition-time ease;
+  &:hover {
+    color: darken(@link-color, 10%);
+  }
+}

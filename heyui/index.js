@@ -47,7 +47,7 @@ import {
 } from './components/layout';
 import Timeline from './components/timeline';
 import { Button, ButtonGroup } from './components/button';
-// import { Select, Option, OptionGroup } from './components/select';
+import Select from './components/select';
 // import locale from './locale';
 
 import style from './directives/style';
@@ -80,7 +80,7 @@ const components = {
   // Dropdown,
   // DropdownItem: Dropdown.Item,
   // DropdownMenu: Dropdown.Menu,
-  iForm: Form,
+  hForm: Form,
   Form,
   FormItem: Form.Item,
   FormItemList: Form.ItemList,
@@ -110,7 +110,8 @@ const components = {
   Col,
   Timeline,
   TimelineItem: Timeline.Item,
-  // iSelect: Select,
+  hSelect: Select,
+  Select,
   // Slider,
   // Spin,
   // Step: Steps.Step,
@@ -146,9 +147,9 @@ const install = function (Vue, opts = {}) {
   // locale.i18n(opts.i18n);
 
   if (install.installed) return;
-  if (opts) {
+  // if (opts) {
 
-  }
+  // }
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);

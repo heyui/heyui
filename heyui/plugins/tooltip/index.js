@@ -53,53 +53,51 @@ class Tooltip {
     // reference.jquery && (reference = reference[0]);
     this.reference = reference;
 
-    options.template = `<div class="h-tooltip${options.theme ? (' h-tooltip-' + options.theme) : ''}" role="tooltip"><div class="h-tooltip-arrow"></div><div class="h-tooltip-inner"></div></div>`;
+    // options.template = 
     this.options = options;
 
     const events = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
       return ['click', 'hover', 'focus'].indexOf(trigger) !== -1;
     }) : [];
 
-    this._isOpen = false;
+    this.isOpen = false;
 
-    this.arrowSelector = '.h-tooltip-arrow, .h-tooltip__arrow';
-    this.innerSelector = '.h-tooltip-inner, .h-tooltip__inner';
-    this._events = [];
+    this.arrowSelector = options.arrowSelector;
+    this.innerSelector = options.innerSelector;
+    this.events = [];
 
-    this._setEventListeners(reference, events, options);
+    this.initTooltipNode(reference, options);
+    this.tooltipNode.style.display = 'none';
+    this.popperInstance.update();
+    this.hide();
+    this.tooltipNode.setAttribute('aria-hidden', 'true');
+    this.setEventListeners(reference, events, options);
   }
 
-  show() {
-    this._show(this.reference, this.options);
-  }
+  // show() {
+  //   this.show(this.reference, this.options);
+  // }
 
-  hide() {
-    this._hide();
-  }
-
-  dispose() {
-    this._dispose();
-  }
   toggle() {
-      if (this._isOpen) {
-        return this.hide();
-      } else {
-        return this.show();
-      }
+    if (this.isOpen) {
+      return this.hide();
+    } else {
+      return this.show();
     }
-    // show = () => this._show(this.reference, this.options);
+  }
+    // show = () => this.show(this.reference, this.options);
 
-  // hide = () => this._hide();
-  // dispose = () => this._dispose();
+  // hide = () => this.hide();
+  // dispose = () => this.dispose();
   // toggle = () => {
-  //   if (this._isOpen) {
+  //   if (this.isOpen) {
   //     return this.hide();
   //   } else {
   //     return this.show();
   //   }
   // }
 
-  _create(reference, template, content, allowHtml) {
+  create(reference, template, content, allowHtml) {
     const tooltipGenerator = window.document.createElement('div');
     tooltipGenerator.innerHTML = template;
     const tooltipNode = tooltipGenerator.childNodes[0];
@@ -122,73 +120,79 @@ class Tooltip {
     return tooltipNode;
   }
 
-  _show(reference, options) {
-    if (this._isOpen) { return this; }
-    this._isOpen = true;
-
-    if (this._tooltipNode) {
-      this._tooltipNode.style.display = '';
-      this._tooltipNode.setAttribute('aria-hidden', 'false');
-      this.popperInstance.update();
-      return this;
-    }
+  initTooltipNode(reference, options) {
 
     const content = reference.getAttribute('content') || options.content;
 
     if (!content) { return this; }
 
-    const tooltipNode = this._create(reference, options.template, content, options.html);
+    const tooltipNode = this.create(reference, options.template, content, options.html);
 
     tooltipNode.setAttribute('aria-describedby', tooltipNode.id);
 
-    const container = this._findContainer(options.container, reference);
+    const container = this.findContainer(options.container, reference);
 
-    this._append(tooltipNode, container);
+    this.append(tooltipNode, container);
 
     const popperOptions = {
       placement: options.placement,
       arrowElement: this.arrowSelector,
     };
-
     if (options.boundariesElement) {
       popperOptions.boundariesElement = options.boundariesElement;
     }
-
     this.popperInstance = new Popper(reference, tooltipNode, popperOptions);
-
-    this._tooltipNode = tooltipNode;
-
-    return this;
+    this.tooltipNode = tooltipNode;
   }
 
+  show() {
+    if (this.isOpen) { return this; }
+    this.isOpen = true;
 
-  _hide() {
-    if (!this._isOpen) { return this; }
+    if (this.tooltipNode) {
+      this.tooltipNode.style.display = '';
 
-    this._isOpen = false;
-    this._tooltipNode.style.display = 'none';
-    this._tooltipNode.setAttribute('aria-hidden', 'true');
-
-    return this;
-  }
-
-  _dispose() {
-    if (this._tooltipNode) {
-      this._hide();
-
-      this.popperInstance.destroy();
-
-      this._events.forEach(({ func, event }) => {
-        this._tooltipNode.removeEventListener(event, func);
-      });
-      this._events = [];
-      this._tooltipNode.parentNode.removeChild(this._tooltipNode);
-      this._tooltipNode = null;
+      setTimeout(() => {
+        this.tooltipNode.setAttribute('aria-hidden', 'false');
+      }, 0);
+      this.popperInstance.update();
+      return this;
     }
     return this;
   }
 
-  _findContainer(container, reference) {
+
+  hide() {
+    if (!this.isOpen) { return this; }
+
+    this.isOpen = false;
+    this.tooltipNode.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      this.tooltipNode.style.display = 'none';
+    }, this.options.delay);
+    return this;
+  }
+
+  dispose() {
+    if (this.documentHandler) {
+      document.removeEventListener('click', this.documentHandler);
+    }
+    if (this.tooltipNode) {
+      this.hide();
+
+      this.popperInstance.destroy();
+
+      this.events.forEach(({ func, event }) => {
+        this.tooltipNode.removeEventListener(event, func);
+      });
+      this.events = [];
+      this.tooltipNode.parentNode.removeChild(this.tooltipNode);
+      this.tooltipNode = null;
+    }
+    return this;
+  }
+
+  findContainer(container, reference) {
     if (typeof container === 'string') {
       container = window.document.querySelector(container);
     } else if (container === false) {
@@ -196,82 +200,94 @@ class Tooltip {
     }
     return container;
   }
-  _append(tooltipNode, container) {
+  append(tooltipNode, container) {
     container.appendChild(tooltipNode);
   }
 
-  _setEventListeners(reference, events, options) {
+  setEventListeners(reference, events, options) {
     const directEvents = [];
     const oppositeEvents = [];
 
     events.forEach((event) => {
       switch (event) {
-      case 'hover':
-        directEvents.push('mouseenter');
-        oppositeEvents.push('mouseleave');
-      case 'focus':
-        directEvents.push('focus');
-        oppositeEvents.push('blur');
-      case 'click':
-        directEvents.push('click');
-        oppositeEvents.push('click');
+        case 'hover':
+          directEvents.push('mouseenter');
+          oppositeEvents.push('mouseleave');
+        case 'focus':
+          directEvents.push('focus');
+          oppositeEvents.push('blur');
+        case 'click':
+          directEvents.push('click');
+          oppositeEvents.push('click');
+        default:
+          break;
       }
     });
 
     directEvents.forEach((event) => {
       const func = (evt) => {
-        if (this._isOpen === true) { return; }
+        if (this.isOpen === true) { return; }
         evt.usedByTooltip = true;
-        this._scheduleShow(reference, options.delay, options, evt);
+        this.scheduleShow(reference, options.delay, options, evt);
       };
-      this._events.push({ event, func });
+      this.events.push({ event, func });
       reference.addEventListener(event, func);
     });
 
     oppositeEvents.forEach((event) => {
       const func = (evt) => {
         if (evt.usedByTooltip === true) { return; }
-        this._scheduleHide(reference, options.delay, options, evt);
+        this.scheduleHide(reference, options.delay, options, evt);
       };
-      this._events.push({ event, func });
+      this.events.push({ event, func });
       reference.addEventListener(event, func);
     });
+
+    if (options.triggerOnBody) {
+      this.documentHandler = (e) => {
+        if (reference.contains(e.target) || this.tooltipNode.contains(e.target)) {
+          return false;
+        }
+        this.hide();
+      };
+      document.addEventListener('click', this.documentHandler);
+    }
   }
 
-  _scheduleShow(reference, delay, options) {
-    const computedDelay = (delay && delay.show) || delay || 0;
-    window.setTimeout(() => this._show(reference, options), computedDelay);
+  scheduleShow(reference, delay, options) {
+    // const computedDelay = (delay && delay.show) || delay || 0;
+    window.setTimeout(() => this.show(reference, options), 0);
   }
 
-  _scheduleHide(reference, delay, options, evt) {
-    const computedDelay = (delay && delay.hide) || delay || 0;
+  scheduleHide(reference, delay, options, evt) {
+    // const computedDelay = (delay && delay.hide) || delay || 0;
     window.setTimeout(() => {
-      if (this._isOpen === false) { return; }
-      if (!document.body.contains(this._tooltipNode)) { return; }
+      if (this.isOpen === false) { return; }
+      if (!document.body.contains(this.tooltipNode)) { return; }
       if (evt.type === 'mouseleave') {
-        const isSet = this._setTooltipNodeEvent(evt, reference, delay, options);
+        const isSet = this.setTooltipNodeEvent(evt, reference, delay, options);
         if (isSet) { return; }
       }
 
-      this._hide(reference, options);
-    }, computedDelay);
+      this.hide(reference, options);
+    }, 0);
   }
 
-  _setTooltipNodeEvent(evt, reference, delay, options) {
+  setTooltipNodeEvent(evt, reference, delay, options) {
     const relatedreference = evt.relatedreference || evt.toElement;
 
     const callback = (evt2) => {
       const relatedreference2 = evt2.relatedreference || evt2.toElement;
 
-      this._tooltipNode.removeEventListener(evt.type, callback);
+      this.tooltipNode.removeEventListener(evt.type, callback);
 
       if (!reference.contains(relatedreference2)) {
-        this._scheduleHide(reference, options.delay, options, evt2);
+        this.scheduleHide(reference, options.delay, options, evt2);
       }
     };
 
-    if (this._tooltipNode.contains(relatedreference)) {
-      this._tooltipNode.addEventListener(evt.type, callback);
+    if (this.tooltipNode.contains(relatedreference)) {
+      this.tooltipNode.addEventListener(evt.type, callback);
       return true;
     }
 
