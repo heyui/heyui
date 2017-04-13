@@ -18,7 +18,7 @@
   },
   "license": "The MIT License",
   "dependencies": {
-    "hey-utils": "0.0.5",
+    "hey-utils": "^0.0.10",
     "popper.js": "^1.0.8"
   },
   "devDependencies": {
