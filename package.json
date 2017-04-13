@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A UI components Library.",
   "main": "index.js",
   "repository": {
@@ -13,14 +13,12 @@
     "ui",
     "framework"
   ],
-  "main": "index.js",
   "author": {
     "name": "vvpvvp"
   },
   "license": "The MIT License",
   "dependencies": {
-    "hey-utils": "0.0.5",
-    "jquery": "^3.2.1"
+    "hey-utils": "0.0.5"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
