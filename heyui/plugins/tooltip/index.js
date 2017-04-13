@@ -62,11 +62,11 @@ class Tooltip {
 
     this._isOpen = false;
 
-    this._setEventListeners(reference, events, options);
-
     this.arrowSelector = '.h-tooltip-arrow, .h-tooltip__arrow';
     this.innerSelector = '.h-tooltip-inner, .h-tooltip__inner';
     this._events = [];
+
+    this._setEventListeners(reference, events, options);
   }
 
   show() {
