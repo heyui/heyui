@@ -32,7 +32,7 @@ export default {
   methods: {
     config() {
       this.$Notice.config({
-        timeout: 0,
+        timeout: 1000,
       });
     },
     info() {

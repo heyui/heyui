@@ -23,7 +23,7 @@ textarea {
   }
   &:focus {
     border-color: @primary-color;
-    box-shadow: 0 0 0 2px lighten(@primary-color, 32%);
+    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
   }
   &[disabled],
   &[readonly] {
@@ -41,7 +41,7 @@ textarea {
   .@{prefix}form-item-valid-error &{
     border-color: @red-color;
     &:focus{
-      box-shadow: 0 0 0 2px lighten(@red-color, 40%);
+      box-shadow: 0 0 0 2px fade(@red-color, 20%);
     }
   }
 }

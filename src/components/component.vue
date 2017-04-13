@@ -48,7 +48,6 @@
           <li class="title">Plugin</li>
           <ul>
             <li><router-link to="/component/plugin/tree">Tree 树</router-link></li>
-            <li><router-link to="/component/plugin/dialog">Dialog 弹框</router-link></li>
             <li><router-link to="/component/plugin/dropdown">Dropdown 原生下拉控件</router-link></li>
             <li><router-link to="/component/plugin/dropdownmenu">DropdownMenu 下拉菜单</router-link></li>
             <li><router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link></li>

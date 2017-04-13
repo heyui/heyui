@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     validField(prop) {
+      if (!this.model) return true;
       let value = utils.valueForKeypath(this.model, prop);
       // log(prop);
       let ruleKey = prop.replace(/\[\w+\]/, "[]");
