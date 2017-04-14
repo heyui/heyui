@@ -3,7 +3,7 @@
     <h2>Select 下拉菜单</h2>
     <div>
       <p>{{select1}}</p>
-      <div v-width="300"><Select v-model="select1" :datas="param1"></Select></div>
+      <div v-width="300"><Select v-model="select1" :datas="param1" :no-border="true"></Select></div>
     </div>
     <div>
       <p>{{select4}}</p>

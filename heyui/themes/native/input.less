@@ -71,16 +71,13 @@ input[type=password]{
   }
   &-group {
     position: relative;
-    display: table;
-    border-collapse: separate;
+    display: flex;
     >input,>div {
-      width: 100% !important;
-      display: table-cell;
-      vertical-align: middle;
-      float: left;
+      display: inline-block;
       position: relative;
       z-index: 2;
-      margin:0; 
+      margin:0;
+      flex: 1;
     }
     >div{
       padding: 0 !important;
@@ -89,7 +86,12 @@ input[type=password]{
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
+    >span{
+        line-height: 30px;
+    }
     >.@{input-prefix}-addon {
+      
+      flex: inherit;
       text-align: center;
       background-color: @gray3-color;
       border-top: @input-border;
@@ -98,9 +100,8 @@ input[type=password]{
       padding: 0px 5px;
       min-width: 24px;
       white-space: nowrap;
-      line-height: 1;
       color: @gray-color;
-      display: table-cell;
+      display: inline-block;
       &:first-child {
         border-radius: @border-radius 0 0 @border-radius;
         border-left: @input-border;

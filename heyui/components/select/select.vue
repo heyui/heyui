@@ -1,6 +1,6 @@
 <template>
   <div class="h-select">
-    <div class="h-select-input h-select-input-border">
+    <div :class="inputCls">
       <div class="h-select-value">
         <div v-if="mutiple&&objects" class="h-select-mutiple-tag"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
         <div v-if="!mutiple&&codes&&objects">{{objects[title]}}</div>
@@ -50,6 +50,10 @@ export default {
       type: Boolean,
       default: true
     },
+    noBorder: {
+      type: Boolean,
+      default: false
+    },
     placeholder: String,
     render: Function,
     value: [Number, String, Array, Object]
@@ -61,7 +65,7 @@ export default {
       html: config.render_field,
       codes: null,
       objects: null,
-      optionsMap: {}
+      // optionsMap: {}
     };
   },
   watch: {
@@ -78,7 +82,8 @@ export default {
       let content = this.$el.querySelector('.h-select-group');
       this.dropdown = new Dropdown(el, {
         content,
-        equalWidth: true
+        equalWidth: true,
+        container: document.body
       });
     });
   },
@@ -141,11 +146,22 @@ export default {
     }
   },
   computed: {
+    inputCls() {
+      return {
+        'h-select-input': true,
+        'h-select-input-border': !this.noBorder
+      }
+    },
     groupCls() {
       return {
         'h-select-group': true,
         [`${prefix}-mutiple`]: this.mutiple
       }
+    },
+    optionsMap() {
+      let optionsMap = utils.toObject(this.options, this.key);
+      delete optionsMap.null;
+      return optionsMap;
     },
     options() {
       // config.key_field
@@ -172,7 +188,6 @@ export default {
           options[config.render_field] = this.render.call(null, item);
         })
       }
-      this.optionsMap = utils.toObject(options, this.key);
       if (!this.mutiple && this.nullOption) {
         options.unshift({ [`${config.key_field}`]: null, [`${config.title_field}`]: '请选择' });
       }

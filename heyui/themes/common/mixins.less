@@ -7,10 +7,10 @@
 }
 
 .li-hover(){
-  cursor: default;
+  cursor: pointer;
   transition: @transition-time;
   &:hover{
-    background-color: @gray4-color;
+    background-color: @hover-background-color;
   }
 }
 
@@ -33,6 +33,11 @@
     transform: translate(0, -50%);
     transition: all @transition-time;
     color: @gray-color;
+  }
+  &:hover{
+    >.h-icon-down{
+      color: @primary-color;
+    }
   }
 
   &.@{pop-ref-prefix}>.h-icon-down{

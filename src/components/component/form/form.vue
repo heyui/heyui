@@ -9,13 +9,14 @@
         <Form :label-width="90" :mode="mode" :model="data" :rules="validationRules">
           <FormItemList>
             <FormItem v-for="(item, index) of data.inputs" :key="item" :label="'输入框'+(index+1)" :required="true" :prop="'inputs['+index+'].value'">
-              <Col width="18"><input type="text" v-model="item.value"/></Col><Col width="6" class="text-right"><Button text-color="red" v-width="'90%'" :block="true" @click="remove(index)" icon="trash">删除</Button></Col>
+              <Col width="18"><input type="text" v-model="item.value"/></Col><Col width="6" class="text-right"><Button text-color="red" v-width="'90%'" @click="remove(index)" icon="trash">删除</Button></Col>
             </FormItem>
           </FormItemList>
           <FormItem :single="true"><Button size="s" text-color="blue" @click="add">添加输入框</Button></FormItem>
           <FormItem :single="true" label="输入框" prop="input" :required="true"><input type="text" v-model="data.input"/></FormItem>
           <FormItem label="金额" :required="true">
             <div class="h-input-group">
+              <div class="h-input-addon"><Select v-model="data.select1" :datas="param1" :no-border="true" :null-option="false"></Select></div>
               <FormItem prop="money.min" label="起始金额" :show-label="false"><input type="text" placeholder="起始金额" v-model="data.money.min"/></FormItem>
               <span class="h-input-addon">-</span>
               <FormItem prop="money.max" label="结束金额" :show-label="false"><input type="text" placeholder="结束金额" v-model="data.money.max"/></FormItem>
@@ -79,6 +80,7 @@ export default {
         radio: 1,
         rate: null,
         checkbox: [1],
+        select1: '人民币',
         money: {
           min: null,
           max: null
@@ -91,6 +93,7 @@ export default {
         2: '女',
         3: '其他'
       },
+      param1: ['美金', '人民币', '卢布'],
       isLoading: false,
       modeParam: {
         single: '默认single',

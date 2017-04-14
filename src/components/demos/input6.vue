@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="h-input-group" v-width="500">
-      <span class="h-input-addon">现金</span>
+      <div class="h-input-addon"><Select v-model="select1" :datas="param1" :no-border="true" :null-option="false"></Select></div>
       <input type="text" placeholder="起始金额" />
       <span class="h-input-addon">-</span>
       <input type="text" placeholder="结束金额" />
@@ -27,3 +27,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      select1: '人民币',
+      param1: ['美金', '人民币', '卢布']
+    }
+  },
+  methods: {
+  },
+  components: {}
+}
+</script>

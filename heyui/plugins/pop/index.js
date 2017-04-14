@@ -156,7 +156,7 @@ class Pop {
       this.popNode.setAttribute('aria-hidden', 'false');
     }
     if (this.options.equalWidth) {
-      this.popNode.style.width = `${this.reference.clientWidth}px`;
+      this.popNode.style.minWidth = `${this.reference.clientWidth}px`;
     }
 
     this.popNode.style.display = '';
