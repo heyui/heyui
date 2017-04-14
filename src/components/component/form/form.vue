@@ -107,6 +107,7 @@ export default {
       },
       validationRules: {
         required: [
+          'select2',
           'inputs[].value',
           'input',
           'textarea',

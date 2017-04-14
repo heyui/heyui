@@ -29,6 +29,8 @@
             <li><router-link to="/component/data/plugin/select">Select 下拉选择</router-link></li>
             <li><router-link to="/component/data/plugin/auto">AutoPicker 自动补全</router-link></li>
             <li><router-link to="/component/data/plugin/date">DatePicker 日期选择</router-link></li>
+            <li><router-link to="/component/data/plugin/time">TimePicker 时间选择</router-link></li>
+            <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
             <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>
             <li><router-link to="/component/data/plugin/taginput">TagInput 标签</router-link></li>

@@ -1,6 +1,5 @@
 @select-prefix: ~"@{prefix}select";
 @select-item-prefix: ~"@{select-prefix}-item";
-@select-group-prefix: ~"@{select-prefix}-group";
 @select-check-prefix: h-icon-check;
 @select-close-prefix: h-icon-close;
 .@{select-prefix} {
@@ -69,20 +68,17 @@
   }
 }
 
-.@{select-group-prefix} {
-  display: block;
-  box-sizing: border-box;
+.@{select-prefix}-group {
   outline: none;
   user-select: none;
   position: relative;
   font-size: @font-size-mini;
-  box-shadow: @box-shadow;
   background-color: @white-color;
-  border-radius: @border-radius;
   padding: 5px 0px;
   max-height: 300px;
   overflow-y: auto;
   .@{select-item-prefix} {
+    color: @gray-color;
     .li-hover();
     padding: 8px 10px;
     position: relative;

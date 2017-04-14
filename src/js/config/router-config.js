@@ -68,6 +68,14 @@ export default {
     name: 'pluginDate',
     component: (resolve) => require(['../../components/component/data/plugin/date'], resolve)
   }, {
+    path: 'data/plugin/time',
+    name: 'pluginTime',
+    component: (resolve) => require(['../../components/component/data/plugin/time'], resolve)
+  }, {
+    path: 'data/plugin/datetime',
+    name: 'pluginDatetime',
+    component: (resolve) => require(['../../components/component/data/plugin/datetime'], resolve)
+  }, {
     path: 'data/plugin/city',
     name: 'pluginCity',
     component: (resolve) => require(['../../components/component/data/plugin/city'], resolve)

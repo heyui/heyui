@@ -23,8 +23,9 @@ export default {
   },
   methods: {
     setvalue(key) {
-      if (this.isInclude(key)) {
-        this.value.splice(this.value.indexOf(key), 1);
+      let index = this.check(key);
+      if (index > -1) {
+        this.value.splice(index, 1);
       } else {
         this.value.push(key);
       }
@@ -33,9 +34,12 @@ export default {
       event.initCustomEvent("setvalue", true, true, this.value);
       this.$el.dispatchEvent(event);
     },
-    isInclude(key) {
+    check(key) {
       let value = this.value.map(item => String(item));
-      return value.includes(key);
+      return value.indexOf(String(key));
+    },
+    isInclude(key) {
+      return this.check(key) > -1;
     }
   },
   computed: {

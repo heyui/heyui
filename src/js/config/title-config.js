@@ -16,6 +16,8 @@ const titles = {
   'pluginSelect': 'Select 下拉选择',
   'pluginAuto': 'AutoPicker 自动补全',
   'pluginDate': 'DatePicker 日期选择',
+  'pluginTime': 'TimePicker 时间选择',
+  'pluginDatetime': 'DatetimePicker 日期时间选择',
   'pluginCity': 'CityPicker 城市选择',
   'dataPluginTree': 'TreePicker 树选择',
   'pluginTaginput': 'TagInput 标签',

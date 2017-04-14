@@ -23,6 +23,7 @@
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
     "jquery-smooth-scroll": "^2.1.2",
+    "manba": "0.0.10",
     "popper.js": "^1.0.8",
     "vue": "^2.2.4",
     "vue-highlightjs": "^1.2.2",

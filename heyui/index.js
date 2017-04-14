@@ -14,7 +14,7 @@ import Checkbox from './components/checkbox';
 import SwitchList from './components/switchlist';
 // import Circle from './components/circle';
 // import Collapse from './components/collapse';
-// import DatePicker from './components/date-picker';
+import Datetime from './components/datetime';
 // import Dropdown from './components/dropdown';
 import Form from './components/form';
 // import Icon from './components/icon';
@@ -80,6 +80,9 @@ const components = {
   // Dropdown,
   // DropdownItem: Dropdown.Item,
   // DropdownMenu: Dropdown.Menu,
+  DatePicker: Datetime.DatePicker,
+  TimePicker: Datetime.TimePicker,
+  DatetimePicker: Datetime.DatetimePicker,
   hForm: Form,
   Form,
   FormItem: Form.Item,

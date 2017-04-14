@@ -1,9 +1,7 @@
 <template>
   <div class="doc">
-    <h2>DatePicker 日期控件</h2>
-    <div>
-      <DatePicker v-model="value1"></DatePicker>
-    </div>
+    <h2>DatetimePicker 日期时间控件</h2>
+    <div></div>
     <div></div>
   </div>
 </template>
@@ -13,8 +11,11 @@
 export default {
   data() {
     return {
-      value1: ''
     }
+  },
+  methods: {
+  },
+  components:{
   }
 }
 </script>

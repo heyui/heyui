@@ -7,6 +7,12 @@
     max-height: 500px;
     opacity: 0;
     padding: 3px 0;
+    >div{
+      display: block;
+      box-sizing: border-box;
+      border-radius: @border-radius;
+      box-shadow: @box-shadow;
+    }
   }
   &[aria-hidden=false] .@{dropdown-prefix}-inner {
     transform: scale(1);

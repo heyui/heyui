@@ -1,0 +1,48 @@
+@date-picker-prefix: ~"@{prefix}date";
+@time-picker-prefix: ~"@{prefix}time";
+@datetime-picker-prefix: ~"@{prefix}datetime";
+@input-prefix: ~"@{prefix}datetime-input";
+
+@date-picker-cells-width: 196px;
+
+.@{input-prefix} {
+    
+}
+
+.@{date-picker-prefix}{
+  &-picker{
+    padding: 5px;
+
+    .@{date-picker-prefix}{
+      &-header{
+        text-align: center;
+        line-height: @input-height;
+        >span{
+          .text-hover();
+          display: inline-block;
+        }
+        &-show{
+          margin: 0 3px;
+        }
+        .@{date-picker-prefix}{
+          &-year-left-picker, &-year-right-picker{
+            >i+i{
+              margin-left: -7px;
+            }
+          }
+          &-month-left-picker, &-year-left-picker, &-month-right-picker, &-year-right-picker{
+            color: @gray-color;
+            font-size: 12px;
+            margin:0 3px;
+          }
+          &-month-left-picker, &-year-left-picker{
+            float: left;
+          }
+          &-month-right-picker, &-year-right-picker{
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
