@@ -94,27 +94,18 @@ export default {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-select-input');
       let content = this.$el.querySelector('.h-select-group');
-      let observer = new MutationObserver(() => {
-        // log(1);
-        log(1);
-        content.style.width = this.$el.offsetWidth + 'px';
-      });
-      // log();
-      content.style.width = this.$el.offsetWidth + 'px';
-      observer.observe(this.$el, { attributesFilter: ['style', 'class'], attributes: true });
       this.tooltip = new Tooltip(el, {
         content,
         trigger: 'click',
         triggerOnBody: true,
         html: true,
+        placement: 'bottom-start',
         template: `<div role="select" class="h-select-dropdown"><div class="h-select-arrow"></div><div class="h-select-inner"></div></div>`,
         arrowSelector: '.h-select-arrow, .h-select__arrow',
         innerSelector: '.h-select-inner, .h-select__inner',
-        container: document.body,
-        delay: 300,
-        onUpdate: () => {
-          
-        }
+        equalWidth: true,
+        // container: document.body,
+        delay: 300
       });
     });
   },
@@ -155,6 +146,11 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
+      if (this.mutiple) {
+        this.tooltip.popperInstance.update();
+      } else {
+        this.tooltip.hide();
+      }
     },
     getLiCls(option) {
       let code = option[this.key];

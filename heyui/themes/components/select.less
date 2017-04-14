@@ -9,7 +9,6 @@
   box-sizing: border-box;
   vertical-align: middle;
   font-size: @font-size;
-  //position: relative;
   line-height: normal;
   width: 100%;
   .@{select-input-prefix} {
@@ -20,9 +19,7 @@
     padding: 4px 0px 4px 10px;
     min-height: 30px;
     line-height: inherit;
-    // width: 200px;
     font-size: inherit;
-    // transition: all linear @transition-time;
     box-sizing: border-box;
     -webkit-appearance: none;
     font-family: inherit;
@@ -42,11 +39,13 @@
   position: relative;
   font-size: @font-size-mini;
   // box-shadow: 0 0 7px 0 @shadow-color;
+  box-shadow: @box-shadow;
   background-color: @white-color;
   border-radius: @border-radius;
+  padding: 5px 0px;
   max-height: 300px;
   overflow-y: auto;
-  border: @border;
+  // border: @border;
   .@{select-prefix}-arrow:nth-of-type(1) {
     display: none;
     cursor: pointer;
@@ -54,7 +53,7 @@
 
   .@{select-item-prefix} {
     .li-hover();
-    padding: 6px 10px;
+    padding: 8px 10px;
     position: relative;
     &.@{select-item-prefix}-selected {
       color: @white-color;
@@ -84,11 +83,11 @@
 }
 
 .h-select-dropdown {
+  z-index: @zindex-select;
   .h-select-inner{
     transition: all .25s cubic-bezier(.24,.22,.015,1.56);
     transform: scale(.8);
     max-height: 500px;
-    transform-origin: center;
     opacity: 0;
   }
 
@@ -100,5 +99,13 @@
 
   .h-select-inner {
     padding: 3px 0;
+  }
+
+  &[x-placement=top-start] .h-select-inner{
+    transform-origin: bottom left;
+  }
+
+  &[x-placement=bottom-start] .h-select-inner{
+    transform-origin: top left;
   }
 }

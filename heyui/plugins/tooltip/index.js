@@ -9,6 +9,7 @@ const DEFAULT_OPTIONS = {
   content: '',
   trigger: 'hover focus',
   offset: 0,
+  equalWidth: false
 };
 
 /**
@@ -66,11 +67,14 @@ class Tooltip {
     this.innerSelector = options.innerSelector;
     this.events = [];
 
-    this.initTooltipNode(reference, options);
-    this.tooltipNode.style.display = 'none';
-    this.popperInstance.update();
-    this.hide();
-    this.tooltipNode.setAttribute('aria-hidden', 'true');
+    if (options.content.nodeType === 1) {
+      options.content.style.display = "none";
+    }
+
+    // this.tooltipNode.style.display = 'none';
+    // this.popperInstance.update();
+    // this.hide();
+    // this.tooltipNode.setAttribute('aria-hidden', 'true');
     this.setEventListeners(reference, events, options);
   }
 
@@ -103,9 +107,6 @@ class Tooltip {
     const tooltipNode = tooltipGenerator.childNodes[0];
 
     tooltipNode.id = `tooltip_${Math.random().toString(36).substr(2, 10)}`;
-
-    tooltipNode.setAttribute('aria-hidden', 'false');
-
     const contentNode = tooltipGenerator.querySelector(this.innerSelector);
     if (content.nodeType === 1) {
       allowHtml && contentNode.appendChild(content);
@@ -120,8 +121,9 @@ class Tooltip {
     return tooltipNode;
   }
 
-  initTooltipNode(reference, options) {
-
+  initTooltipNode() {
+    let reference = this.reference;
+    let options = this.options
     const content = reference.getAttribute('content') || options.content;
 
     if (!content) { return this; }
@@ -149,15 +151,19 @@ class Tooltip {
     if (this.isOpen) { return this; }
     this.isOpen = true;
 
-    if (this.tooltipNode) {
-      this.tooltipNode.style.display = '';
-
-      setTimeout(() => {
-        this.tooltipNode.setAttribute('aria-hidden', 'false');
-      }, 0);
-      this.popperInstance.update();
-      return this;
+    if (!this.tooltipNode) {
+      this.initTooltipNode();
+      this.tooltipNode.setAttribute('aria-hidden', 'false');
     }
+    if (this.options.equalWidth) {
+      this.tooltipNode.style.width = `${this.reference.clientWidth}px`;
+    }
+
+    this.tooltipNode.style.display = '';
+    setTimeout(() => {
+      this.tooltipNode.setAttribute('aria-hidden', 'false');
+    }, 0);
+    this.popperInstance.update();
     return this;
   }
 
@@ -228,7 +234,7 @@ class Tooltip {
       const func = (evt) => {
         if (this.isOpen === true) { return; }
         evt.usedByTooltip = true;
-        this.scheduleShow(reference, options.delay, options, evt);
+        this.scheduleShow(reference, options, evt);
       };
       this.events.push({ event, func });
       reference.addEventListener(event, func);
@@ -237,7 +243,7 @@ class Tooltip {
     oppositeEvents.forEach((event) => {
       const func = (evt) => {
         if (evt.usedByTooltip === true) { return; }
-        this.scheduleHide(reference, options.delay, options, evt);
+        this.scheduleHide(reference, options, evt);
       };
       this.events.push({ event, func });
       reference.addEventListener(event, func);
@@ -245,6 +251,7 @@ class Tooltip {
 
     if (options.triggerOnBody) {
       this.documentHandler = (e) => {
+        if (!this.tooltipNode) return;
         if (reference.contains(e.target) || this.tooltipNode.contains(e.target)) {
           return false;
         }
@@ -254,26 +261,24 @@ class Tooltip {
     }
   }
 
-  scheduleShow(reference, delay, options) {
+  scheduleShow() {
     // const computedDelay = (delay && delay.show) || delay || 0;
-    window.setTimeout(() => this.show(reference, options), 0);
+    this.show();
   }
 
-  scheduleHide(reference, delay, options, evt) {
+  scheduleHide(reference, options, evt) {
     // const computedDelay = (delay && delay.hide) || delay || 0;
-    window.setTimeout(() => {
-      if (this.isOpen === false) { return; }
-      if (!document.body.contains(this.tooltipNode)) { return; }
-      if (evt.type === 'mouseleave') {
-        const isSet = this.setTooltipNodeEvent(evt, reference, delay, options);
-        if (isSet) { return; }
-      }
+    if (this.isOpen === false) { return; }
+    if (!document.body.contains(this.tooltipNode)) { return; }
+    if (evt.type === 'mouseleave') {
+      const isSet = this.setTooltipNodeEvent(evt, reference, options);
+      if (isSet) { return; }
+    }
 
-      this.hide(reference, options);
-    }, 0);
+    this.hide(reference, options);
   }
 
-  setTooltipNodeEvent(evt, reference, delay, options) {
+  setTooltipNodeEvent(evt, reference, options) {
     const relatedreference = evt.relatedreference || evt.toElement;
 
     const callback = (evt2) => {
@@ -282,7 +287,7 @@ class Tooltip {
       this.tooltipNode.removeEventListener(evt.type, callback);
 
       if (!reference.contains(relatedreference2)) {
-        this.scheduleHide(reference, options.delay, options, evt2);
+        this.scheduleHide(reference, options, evt2);
       }
     };
 

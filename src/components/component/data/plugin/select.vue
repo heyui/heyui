@@ -15,7 +15,7 @@
     </div>
     <div>
       <p>{{select3}}</p>
-      <div v-width="300"><Select v-model="select3" :datas="param3" :mutiple="true" type="object"></Select></div>
+      <div v-width="'50%'"><Select v-model="select3" :datas="param3" :mutiple="true" type="object"></Select></div>
     </div>
   </div>
 </template>
