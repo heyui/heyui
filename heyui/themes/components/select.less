@@ -7,7 +7,6 @@
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
-  font-size: @font-size;
   line-height: normal;
   .@{select-prefix} {
     &-placeholder{
@@ -16,8 +15,9 @@
     &-input{
       cursor: default;
       padding: 4px 30px 4px 10px;
+      font-size: @font-size-mini;
       position: relative;
-      min-height: 30px;
+      min-height: @input-height;
       font-size: inherit;
       line-height: inherit;
       box-sizing: border-box;

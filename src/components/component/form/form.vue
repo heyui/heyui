@@ -23,6 +23,9 @@
               <span class="h-input-addon">K</span>
             </div>
           </FormItem>
+          <FormItem label="选择" :required="true" prop="select2">
+            <Select v-model="data.select2" :datas="param2"></Select>
+          </FormItem>
           <FormItem label="日期" :required="true" prop="date">
             <input type="text" placeholder="日期" v-model="data.date"/>
           </FormItem>
@@ -32,7 +35,7 @@
           <FormItem label="多文本" :single="true" :required="true" prop="textarea"><textarea rows="3" v-autosize v-model="data.textarea"></textarea></FormItem>
           <FormItem label="单选" prop="radio"><Radio v-model="data.radio" :datas="dataParam"></Radio></FormItem>
           <FormItem label="多选" prop="checkbox"><Checkbox v-model="data.checkbox" :datas="dataParam"></Checkbox></FormItem>
-          <FormItem><Button color="primary" size="l" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading" size="l">取消</Button></FormItem>
+          <FormItem><Button color="primary" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading">取消</Button></FormItem>
         </Form>
       </div>
     </div>
@@ -81,6 +84,7 @@ export default {
         rate: null,
         checkbox: [1],
         select1: '人民币',
+        select2: '',
         money: {
           min: null,
           max: null
@@ -94,6 +98,7 @@ export default {
         3: '其他'
       },
       param1: ['美金', '人民币', '卢布'],
+      param2: ['选择1', '选择2', '选择3'],
       isLoading: false,
       modeParam: {
         single: '默认single',

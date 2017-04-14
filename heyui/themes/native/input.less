@@ -47,8 +47,8 @@ textarea {
 
 input[type=text],
 input[type=password]{
-  height: 32px;
-  line-height: 32px;
+  height: @input-height;
+  line-height: @input-height;
 }
 
 .@{input-prefix} {
@@ -86,7 +86,7 @@ input[type=password]{
         border-bottom-right-radius: 0;
     }
     >span{
-        line-height: 30px;
+        line-height: @input-height - 2px;
     }
     >.@{input-prefix}-addon {
       
@@ -95,6 +95,7 @@ input[type=password]{
       background-color: @gray3-color;
       border-top: @border;
       border-bottom: @border;
+      height: @input-height;
       vertical-align: middle;
       padding: 0px 5px;
       min-width: 24px;
