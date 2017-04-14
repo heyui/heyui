@@ -12,9 +12,9 @@
 
 ```js
 	import Vue from 'vue'
-	import Element from 'heyui'
+	import HeyUI from 'heyui'
 	
-	Vue.use(Element)
+	Vue.use(HeyUI)
 ```
 
 ## Changelog
