@@ -1,11 +1,11 @@
 <template>
   <div class="h-select">
-    <div class="h-select-input">
+    <div class="h-select-input h-select-input-border">
       <div class="h-select-value">
-        <div v-if="mutiple&&objects"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
+        <div v-if="mutiple&&objects" class="h-select-mutiple-tag"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
         <div v-if="!mutiple&&codes&&objects">{{objects[title]}}</div>
       </div>
-      <i class=""></i>
+      <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
       <ul class="h-select-ul">
@@ -21,30 +21,9 @@
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
-import Tooltip from '../../plugins/tooltip';
+import Dropdown from '../../plugins/dropdown';
 
 const prefix = 'h-select';
-
-const watch = (obj, attr, callback) => {
-  if (typeof obj.defaultValues == 'undefined') {
-    obj.defaultValues = {};
-    for (let p in obj) {
-      if (typeof obj[p] !== 'object') {
-        obj.defaultValues[p] = obj[p];
-      }
-    }
-  }
-  if (typeof obj.setAttr == 'undefined') {
-    obj.setAttr = function (attr, value) {
-      if (this[attr] != value) {
-        this.defaultValues[attr] = this[attr];
-        this[attr] = value;
-        return callback(this);
-      }
-      return this;             
-    };
-  }
-}
 
 export default {
   props: {
@@ -63,6 +42,9 @@ export default {
     type: {
       type: [String],
       default: 'key'  //object
+    },
+    limit: {
+      type: Number
     },
     nullOption: {
       type: Boolean,
@@ -94,18 +76,9 @@ export default {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-select-input');
       let content = this.$el.querySelector('.h-select-group');
-      this.tooltip = new Tooltip(el, {
+      this.dropdown = new Dropdown(el, {
         content,
-        trigger: 'click',
-        triggerOnBody: true,
-        html: true,
-        placement: 'bottom-start',
-        template: `<div role="select" class="h-select-dropdown"><div class="h-select-arrow"></div><div class="h-select-inner"></div></div>`,
-        arrowSelector: '.h-select-arrow, .h-select__arrow',
-        innerSelector: '.h-select-inner, .h-select__inner',
-        equalWidth: true,
-        // container: document.body,
-        delay: 300
+        equalWidth: true
       });
     });
   },
@@ -136,6 +109,10 @@ export default {
       if (this.readonly) return;
       let code = option[this.key];
       if (this.mutiple) {
+        if (!utils.isNull(this.limit) && !this.codes.includes(code) && this.codes.length >= this.limit) {
+          this.$Message.error(`您最多可以选${this.limit}个选项`);
+          return;
+        }
         utils.toggleValue(this.codes, code);
       } else {
         this.codes = code;
@@ -147,9 +124,9 @@ export default {
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
       if (this.mutiple) {
-        this.tooltip.popperInstance.update();
+        this.dropdown.popperInstance.update();
       } else {
-        this.tooltip.hide();
+        this.dropdown.hide();
       }
     },
     getLiCls(option) {
