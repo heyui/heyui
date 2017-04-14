@@ -1,5 +1,4 @@
 @input-prefix: ~"@{prefix}input";
-@input-border: 1px solid @gray2-color;
 input[type=text],
 input[type=password],
 input[type=search],
@@ -7,7 +6,7 @@ textarea {
   position: relative;
   background-color: @white-color;
   border-radius: @border-radius;
-  border: @input-border;
+  border: @border;
   padding: 4px 0px 4px 10px;
   line-height: inherit;
   // width: 200px;
@@ -94,8 +93,8 @@ input[type=password]{
       flex: inherit;
       text-align: center;
       background-color: @gray3-color;
-      border-top: @input-border;
-      border-bottom: @input-border;
+      border-top: @border;
+      border-bottom: @border;
       vertical-align: middle;
       padding: 0px 5px;
       min-width: 24px;
@@ -104,12 +103,12 @@ input[type=password]{
       display: inline-block;
       &:first-child {
         border-radius: @border-radius 0 0 @border-radius;
-        border-left: @input-border;
+        border-left: @border;
       }
       &:last-child,
       &.last-child {
         border-radius: 0 @border-radius @border-radius 0;
-        border-right: @input-border;
+        border-right: @border;
       }
       +input,
       +div input {

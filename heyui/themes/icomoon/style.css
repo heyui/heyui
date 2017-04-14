@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'heyui';
-  src:  url('fonts/heyui.eot?t4208h');
-  src:  url('fonts/heyui.eot?t4208h#iefix') format('embedded-opentype'),
-    url('fonts/heyui.ttf?t4208h') format('truetype'),
-    url('fonts/heyui.woff?t4208h') format('woff'),
-    url('fonts/heyui.svg?t4208h#heyui') format('svg');
+  src:  url('fonts/heyui.eot?kh9cg');
+  src:  url('fonts/heyui.eot?kh9cg#iefix') format('embedded-opentype'),
+    url('fonts/heyui.ttf?kh9cg') format('truetype'),
+    url('fonts/heyui.woff?kh9cg') format('woff'),
+    url('fonts/heyui.svg?kh9cg#heyui') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -90,7 +90,7 @@
 .h-icon-warn:before {
   content: "\e902";
 }
-.h-icon-check:before {
+.h-icon-success:before {
   content: "\e903";
 }
 .h-icon-error:before {
@@ -123,7 +123,7 @@
 .h-icon-minus:before {
   content: "\e115";
 }
-.h-icon-check2:before {
+.h-icon-check:before {
   content: "\e116";
 }
 

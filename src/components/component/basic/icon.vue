@@ -41,7 +41,7 @@ export default {
       list:[
         'h-icon-info',
         'h-icon-warn',
-        'h-icon-check',
+        'h-icon-success',
         'h-icon-error',
         'h-icon-close',
         'h-icon-down',

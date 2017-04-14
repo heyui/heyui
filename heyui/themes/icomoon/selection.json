@@ -689,7 +689,7 @@
         "isMulticolor2": false,
         "grid": 32,
         "tags": [
-          "check"
+          "success"
         ]
       },
       "attrs": [
@@ -698,7 +698,7 @@
       "properties": {
         "order": 1312,
         "id": 114,
-        "name": "check",
+        "name": "success",
         "prevSize": 32,
         "code": 59651
       },
@@ -1008,7 +1008,7 @@
         "order": 1323,
         "prevSize": 32,
         "code": 57622,
-        "name": "check2"
+        "name": "check"
       },
       "setIdx": 1,
       "setId": 1,

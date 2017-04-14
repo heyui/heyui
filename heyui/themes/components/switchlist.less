@@ -1,5 +1,4 @@
 @switchlist-prefix: ~"@{prefix}switchlist";
-@switchlist-border: 1px solid @gray1-color;
 .@{switchlist-prefix} {
   display: inline-block;
   >span {
@@ -12,7 +11,7 @@
     cursor: pointer;
     transition: all @transition-time;
     background-color: #FFF;
-    border: 1px solid @gray1-color;
+    border: @border;
     float: left;
     +span {
       margin-left: -1px;

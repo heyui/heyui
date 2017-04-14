@@ -1,9 +1,10 @@
 <template>
-  <div class="h-select">
+  <div :class="selectCls">
     <div :class="inputCls">
       <div class="h-select-value">
-        <div v-if="mutiple&&objects" class="h-select-mutiple-tag"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
+        <div v-if="mutiple&&objects" class="h-select-mutiple-tags"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
         <div v-if="!mutiple&&codes&&objects">{{objects[title]}}</div>
+        <div v-if="!codes||codes.length==0" class="h-select-placeholder">请选择</div>
       </div>
       <i class="h-icon-down"></i>
     </div>
@@ -69,7 +70,7 @@ export default {
     };
   },
   watch: {
-    values() {
+    value() {
       this.parse();
     }
   },
@@ -106,7 +107,11 @@ export default {
           return this.type == 'key' ? item : item[this.key];
         })
       } else {
-        this.codes = this.value;
+        if (this.type == 'key') {
+          this.codes = this.value;
+        } else if (utils.isObject(this.value)) {
+          this.codes = this.value[this.key];
+        }
       }
       this.setObjects();
     },
@@ -146,15 +151,21 @@ export default {
     }
   },
   computed: {
+    selectCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-mutiple`]: this.mutiple
+      }
+    },
     inputCls() {
       return {
-        'h-select-input': true,
-        'h-select-input-border': !this.noBorder
+        [`${prefix}-input`]: true
       }
     },
     groupCls() {
       return {
-        'h-select-group': true,
+        [`${prefix}-group`]: true,
         [`${prefix}-mutiple`]: this.mutiple
       }
     },
@@ -185,11 +196,11 @@ export default {
       }
       if (this.render) {
         options.forEach((item) => {
-          options[config.render_field] = this.render.call(null, item);
+          item[config.render_field] = this.render.call(null, item);
         })
       }
       if (!this.mutiple && this.nullOption) {
-        options.unshift({ [`${config.key_field}`]: null, [`${config.title_field}`]: '请选择' });
+        options.unshift({ [`${config.key_field}`]: null, [`${config.title_field}`]: '请选择', [`${config.render_field}`]: '请选择' });
       }
       return options;
     }

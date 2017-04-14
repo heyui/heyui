@@ -43,7 +43,7 @@ export default {
       let param = {
         type,
         title: text,
-        content: `这是一个${text}的消息`
+        content: `<p>这是一个${text}的消息</p><p>这是一个${text}的消息</p>`
       };
       this.$Notice(param);
     },

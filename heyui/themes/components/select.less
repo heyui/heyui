@@ -9,8 +9,10 @@
   vertical-align: middle;
   font-size: @font-size;
   line-height: normal;
-  width: 100%;
   .@{select-prefix} {
+    &-placeholder{
+      color: @gray-color;
+    }
     &-input{
       cursor: default;
       padding: 4px 30px 4px 10px;
@@ -24,18 +26,44 @@
       outline: none;
       .rotate-icon-down();
     }
-    &-input-border {
-      background-color: @white-color;
-      border-radius: @border-radius;
-      border: @input-border;
-      vertical-align: top;
-      transition: all linear @transition-time;
-      &:hover {
-        border-color: lighten(@primary-color, 10%);
+
+    &-mutiple-tags {
+      >span{
+        .tag-span-func();
+        border: @border;
+        font-size: 12px;
+        padding: 2px 8px;
       }
-      &.@{pop-ref-prefix} {
-        border-color: @primary-color;
-        box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+    }
+  }
+
+  &-input-border {
+    width: 100%;
+    .@{select-prefix} {
+      &-input{
+        background-color: @white-color;
+        border-radius: @border-radius;
+        border: @border;
+        vertical-align: top;
+        transition: all linear @transition-time;
+        &:hover {
+          border-color: lighten(@primary-color, 10%);
+        }
+        &.@{pop-ref-prefix} {
+          border-color: @primary-color;
+          box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+        }
+      }
+    }
+  }
+
+  &-mutiple {
+    .@{select-prefix} {
+      &-input{
+        padding: 2px 30px 0px 5px;
+      }
+      &-placeholder{
+        padding: 2px 0 0 5px;
       }
     }
   }
