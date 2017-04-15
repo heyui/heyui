@@ -2,22 +2,28 @@
   <div :class="dateCls">
     <input type="text" v-model="nowDate" @change="changeEvent" :placeholder="placeholder" :disabled="disabled"/>
     <i class="h-icon-calendar"></i>
-    <div class="h-date-picker">
-      <div class="h-date-header">
-        <span class="h-date-year-left-picker" @click="updateView('year', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
-        <span class="h-date-month-left-picker" @click="updateView('month', -1)" v-show="view=='date'"><i class="h-icon-left"></i></span>
-        <span class="h-date-header-show" @click="changeView('year')" v-if="view != 'year'">{{nowView.year()}}年</span>
-        <span class="h-date-header-show" v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
-        <span class="h-date-header-show" @click="changeView('month')" v-show="view=='date'">{{nowView.month()}}月</span>
-        <span class="h-date-year-right-picker" @click="updateView('year', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
-        <span class="h-date-month-right-picker" @click="updateView('month', 1)" v-show="view=='date'"><i class="h-icon-right"></i></span>
+    <div :class="datePickerCls" class="h-date-picker">
+    <div class="h-date-container">
+      <div v-if="shortcuts.length>0" class="h-date-shortcut">
+        <div v-for="s of shortcuts" @click="setShortcutValue(s)">{{s.title}}</div>
       </div>
-      <div :class="dateBodyCls">
-        <div class="h-date-body-weeks" v-if="view=='date'"><span v-for="w of weeks">{{w}}</span></div>
-        <div class="h-date-body-pickers"><span v-for="d of dates" :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-disabled': d.disabled}" @click="chooseDate(d)">{{d.show}}</span></div>
+      <div class="h-date-content">
+        <div class="h-date-header">
+          <span class="h-date-year-left-picker" @click="updateView('year', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
+          <span class="h-date-month-left-picker" @click="updateView('month', -1)" v-show="view=='date'"><i class="h-icon-left"></i></span>
+          <span class="h-date-header-show" @click="changeView('year')" v-if="view != 'year'">{{nowView.year()}}年</span>
+          <span class="h-date-header-show" v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
+          <span class="h-date-header-show" @click="changeView('month')" v-show="view=='date'">{{nowView.month()}}月</span>
+          <span class="h-date-year-right-picker" @click="updateView('year', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
+          <span class="h-date-month-right-picker" @click="updateView('month', 1)" v-show="view=='date'"><i class="h-icon-right"></i></span>
+        </div>
+        <div :class="dateBodyCls">
+          <div class="h-date-body-weeks" v-if="view=='date'"><span v-for="w of weeks">{{w}}</span></div>
+          <div class="h-date-body-pickers"><span v-for="d of dates" :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-disabled': d.disabled}" @click="chooseDate(d)">{{d.show}}</span></div>
+        </div>
       </div>
-      <div class="h-date-footer">
-      </div>
+    </div>
+      
     </div>
   </div>
 </template>
@@ -78,7 +84,6 @@ export default {
       nowView: manba(),
       nowFormat: this.format || config.format[this.type],
       today: manba(),
-      // inputValue: '',
       view: this.type =='week'?'date':this.type, //month //year
     };
   },
@@ -103,6 +108,11 @@ export default {
     });
   },
   methods: {
+    setShortcutValue(s){
+      let value = s.value.call(null);
+      this.parse(value);
+      this.setvalue(this.nowDate);
+    },
     changeView(view){
       this.view = view;
     },
@@ -170,6 +180,23 @@ export default {
     },
     weeks() {
       return config.weeks;
+    },
+    shortcuts() {
+      let shortcuts = [];
+      let shortcutsConfig = null;
+      if(this.option && this.option.shortcuts){
+        shortcutsConfig = this.option.shortcuts;
+      }
+      if(utils.isArray(shortcutsConfig)){
+        for(let s of shortcutsConfig){
+          if(utils.isString(s)){
+            shortcuts.push(config.datePickerOptions.shortcuts[s]);
+          }else if(utils.isObject(s)){
+            shortcuts.push(s);
+          }
+        }
+      }
+      return shortcuts;
     },
     dates() {
       let nowDate = this.nowView;
@@ -246,6 +273,11 @@ export default {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,
         [`${prefix}-disabled`]: this.disabled
+      }
+    },
+    datePickerCls() {
+      return {
+        [`${prefix}-has-shortcut`]: this.shortcuts.length>0
       }
     }
   }

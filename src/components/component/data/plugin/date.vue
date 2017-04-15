@@ -14,6 +14,10 @@
     <div>
       <DatePicker v-model="value4" :option="param"></DatePicker>
     </div>
+    <h3>快捷方式</h3>
+    <div>
+      <DatePicker v-model="value5" :option="param2"></DatePicker>
+    </div>
     <h3>选择年月控件</h3>
     <div>
       <DatePicker v-model="value2" type="month"></DatePicker>
@@ -37,12 +41,16 @@ export default {
       value2: '',
       value3: '',
       value4: '',
+      value5: '',
       param: {
         start: manba().add(-1, manba.DAY),
         end: manba().add(46, manba.DAY),
         disabled: (value) => {
           return value.date()%5 == 0;
         }
+      },
+      param2: {
+        shortcuts:['today','yesterday']
       }
     }
   },

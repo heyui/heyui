@@ -14,9 +14,32 @@
 .@{date-picker-prefix}{
   &-picker{
     border: @border;
-    padding: 10px;
 
     .@{date-picker-prefix}{
+    &-shortcut{
+    border-radius: @border-radius 0 0 @border-radius;
+        width: 80px;
+      font-size: @font-size-mini;
+      line-height: 28px;
+      background: @gray4-color;
+      border-right: @border;
+      padding: 10px 0;
+
+      >div{
+        padding: 3px 10px;
+        .li-hover();
+      }
+    }
+
+    &-container{
+    display:flex
+    
+    }
+
+    &-content{
+    padding: 10px;
+
+    }
       &-header{
         text-align: center;
         line-height: @input-height;
