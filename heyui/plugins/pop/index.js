@@ -6,6 +6,7 @@ const DEFAULT_OPTIONS = {
   delay: 0,
   html: false,
   placement: 'top',
+  triggerOnce: false,
   content: '',
   trigger: 'hover focus',
   offset: 0,
@@ -227,7 +228,7 @@ class Pop {
           oppositeEvents.push('blur');
         case 'click':
           directEvents.push('click');
-          oppositeEvents.push('click');
+          if(!this.options.triggerOnce)oppositeEvents.push('click');
         default:
           break;
       }
@@ -240,6 +241,7 @@ class Pop {
         this.scheduleShow(reference, options, evt);
       };
       this.events.push({ event, func });
+      log(event);
       reference.addEventListener(event, func);
     });
 

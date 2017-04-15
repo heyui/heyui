@@ -6,12 +6,15 @@
 @date-picker-cells-width: 196px;
 
 .@{input-prefix} {
-    
+    >i{
+      pointer-events: none;
+    }
 }
 
 .@{date-picker-prefix}{
   &-picker{
-    padding: 5px;
+    border: @border;
+    padding: 10px;
 
     .@{date-picker-prefix}{
       &-header{
@@ -40,6 +43,58 @@
           }
           &-month-right-picker, &-year-right-picker{
             float: right;
+          }
+        }
+      }
+
+      &-body{
+        margin-top: 8px;
+        font-size: @font-size-mini;
+        width: 224px;
+        >div>span{
+          width: 32px;
+          height: 32px;
+          line-height: 32px;
+          display:inline-block;
+          text-align: center;
+
+        }
+        &-weeks{
+          color: @gray-color;
+        }
+        &-pickers{
+          >span{
+            cursor: default;
+            &:hover{
+              background-color: @gray3-color;
+            }
+            &.@{date-picker-prefix}{
+              &-today{
+                color: @primary-color;
+              }
+              &-selected{
+                background-color: @primary-color;
+                color: @white-color;
+              }
+              &-not-now-day{
+                color: @gray1-color;
+              }
+              &-disabled{
+                background-color: @gray4-color;
+                color: @gray1-color;
+                pointer-events: none;
+              }
+            }
+          }
+          
+        }
+
+        &-month,&-year{
+          >div>span{
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            margin: 3px;
           }
         }
       }

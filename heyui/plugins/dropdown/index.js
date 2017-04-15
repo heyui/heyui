@@ -15,7 +15,7 @@ const Default = {
 
 class Dropdown extends Pop {
   constructor(el, param) {
-    param = utils.extend({}, param, Default);
+    param = utils.extend({}, Default, param);
     super(el, param);
   }
 }
