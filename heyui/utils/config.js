@@ -6,8 +6,17 @@ const config = {
   	date: 'YYYY-MM-DD',
   	month: 'YYYY-MM',
   	year: 'YYYY',
-  	time: 'HH-mm-ss',
-  	datetime: 'YYYY-MM-DD HH-mm-ss'
+  	time: 'HH:mm',
+  	datetime: 'YYYY-MM-DD HH:mm',
+    datetimesecond: 'YYYY-MM-DD HH:mm:ss'
+  },
+  timePickerDefaultOptions:{
+    hasSeconds: false,
+    range:{
+      start: '07:30',
+      end: '20:00',
+      step: '10'
+    }
   },
   datePickerOptions:{
     shortcuts:{

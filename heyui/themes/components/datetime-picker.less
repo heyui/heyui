@@ -18,8 +18,8 @@
     .@{date-picker-prefix}{
     &-shortcut{
     border-radius: @border-radius 0 0 @border-radius;
-        width: 80px;
-      font-size: @font-size-mini;
+        width: 100px;
+      font-size: 12px;
       line-height: 28px;
       background: @gray4-color;
       border-right: @border;
@@ -39,6 +39,12 @@
     &-content{
     padding: 10px;
 
+    }
+
+    &-footer{
+      padding: 5px 10px;
+      text-align: right;
+      border-top: @border;
     }
       &-header{
         text-align: center;
@@ -117,6 +123,15 @@
             height: 50px;
             width: 50px;
             line-height: 50px;
+            margin: 3px;
+          }
+        }
+
+        &-minute,&-hour{
+          >div>span{
+            height: 30px;
+            width: 50px;
+            line-height: 30px;
             margin: 3px;
           }
         }

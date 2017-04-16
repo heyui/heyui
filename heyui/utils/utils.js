@@ -104,6 +104,10 @@ export default Utils.extend({}, Utils, {
       list.push(value);
     }
   },
+  padLeft(str, size){
+    var s = "00000" + str;
+    return s.substr(s.length-size);
+  },
   toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return ;
     let index = -1;

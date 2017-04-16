@@ -256,7 +256,7 @@ class Pop {
 
     if (options.triggerOnBody) {
       this.documentHandler = (e) => {
-        if (!this.popNode) return;
+        if (!this.popNode || e.target.parentNode == null) return;
         if (reference.contains(e.target) || this.popNode.contains(e.target)) {
           return false;
         }

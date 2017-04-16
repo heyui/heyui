@@ -175,8 +175,6 @@ export default {
       return optionsMap;
     },
     options() {
-      // config.key_field
-      // config.title_field
       let options = [];
       if (utils.isObject(this.datas)) {
         options = utils.toArray(this.datas, config.key_field, config.title_field);
