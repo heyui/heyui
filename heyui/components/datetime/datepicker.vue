@@ -26,7 +26,9 @@ import dateBase from './date-base';
 const prefix = 'h-datetime';
 const dateprefix = 'h-date';
 
-const view_type = ['year', 'month', 'date', 'datetime', 'time'];
+const manbaType = {
+  'year': manba.YEAR, 'month': manba.MONTH, 'date': manba.DAY, 'datetime': manba.MINUTE, 'time': manba.MINUTE, 'datehour': manba.HOUR
+}
 const timePickerDefaultOptions = {
   range:{
     start: '00:00',
@@ -68,7 +70,7 @@ export default {
     }
     return {
       nowDate: '',
-      hasConfirm: this.type == 'datetime',
+      hasConfirm: this.type == 'datetime' || this.type == 'datehour',
       nowView: manba(),
       nowFormat: format
     };
@@ -99,8 +101,8 @@ export default {
       this.parse(value);
       this.setvalue(this.nowDate);
     },
-    updateView(nowView){
-      this.nowView = nowView;
+    updateView(value){
+      this.nowView = manba(value);
       this.dropdown.popperInstance.update();
     },
     changeView(){
@@ -108,8 +110,17 @@ export default {
     },
     changeEvent(event){
       let value = event.target.value;
-      // log(value);
       this.parse(value);
+      if(utils.isObject(this.option) && this.type != "time"){
+        let disabled = false;
+        let type = manbaType[this.type];
+        if(this.option.start && this.nowView.distance(this.option.start, type) < 0)disabled = this.option.start;
+        if(this.option.end && !disabled && this.nowView.distance(this.option.end, type) > 0)disabled = this.option.end;
+        if(this.option.disabled && this.option.disabled.call(null,disabled||this.nowView))disabled = '';
+        if(disabled !== false){
+          this.parse(disabled);
+        }
+      }
       this.setvalue(this.nowDate);
     },
     isSelected(d) {
@@ -117,6 +128,9 @@ export default {
     },
     parse(value) {
       try{
+        if(this.type == 'time' && value != ''){
+          value = `1980-01-01 ${value}`;
+        }
         this.nowView = manba(value);
         this.nowDate = this.nowView.format(this.nowFormat);
       }catch(err){
@@ -128,7 +142,7 @@ export default {
     hide() {
       this.dropdown.hide();
     },
-    setvalue(string) {
+    setvalue(string, hide = true) {
       let value = string || '';
       // if (string != ''){
       //   value = manba(string).format(this.nowFormat);
@@ -138,7 +152,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if(!this.hasConfirm){
+      if(!this.hasConfirm && hide){
         this.hide();
       }
       this.dropdown.popperInstance.update();

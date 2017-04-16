@@ -1,6 +1,6 @@
 <template>
   <div class="h-date-content">
-    <div class="h-date-header">
+    <div class="h-date-header" v-if="type != 'time'">
       <span class="h-date-year-left-picker" @click="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
       <span class="h-date-month-left-picker" @click="updateView('month', -1)" v-show="view=='date'"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show" @click="changeView('year')" v-if="view != 'year'">{{nowView.year()}}年</span>
@@ -9,6 +9,11 @@
       <span class="h-date-header-show" @click="changeView('date')" v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}日</span>
       <span class="h-date-year-right-picker" @click="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
       <span class="h-date-month-right-picker" @click="updateView('month', 1)" v-show="view=='date'"><i class="h-icon-right"></i></span>
+    </div>
+    <div class="h-date-header"  v-show="view=='minute'">
+      <span class="h-date-month-left-picker" @click="updateView('hour', -1)"><i class="h-icon-left"></i></span>
+      <span class="h-date-header-show" @click="changeView('hour')">{{nowView | hoursString}}</span>
+      <span class="h-date-month-right-picker" @click="updateView('hour', 1)"><i class="h-icon-right"></i></span>
     </div>
     <div :class="dateBodyCls">
       <div class="h-date-body-weeks" v-if="view=='date'"><span v-for="w of weeks">{{w}}</span></div>
@@ -23,6 +28,23 @@ import utils from '../../utils/utils';
 const dateprefix = 'h-date';
 
 const view_type = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+const start_view = {
+  year: 'year',
+  month: 'month',
+  date: 'date',
+  datetime: 'date',
+  datehour: 'date',
+  time: 'hour',
+};
+
+const end_view = {
+  year: 'year',
+  month: 'month',
+  date: 'date',
+  datetime: 'minute',
+  datehour: 'hour',
+  time: 'minute',
+};
 
 const genData = (param) => {
   let {date, type, show, vm, isNowDays} = param;
@@ -33,6 +55,7 @@ const genData = (param) => {
     if(vm.option.disabled && !disabled)disabled = vm.option.disabled.call(null,date);
   }
   return {
+      date,
       show: show,
       string: date.format(vm.format),
       disabled,
@@ -50,17 +73,19 @@ export default {
     option: Object,
     format: String,
     value: String,
-    nowView: Object,
-    minuteStep:{
-      type: Number,
-      default: 5
-    }
+    nowView: Object
   },
   data() {
     return {
+      options: utils.extend({}, config.datetimeOptions, this.option),
       today: manba(),
-      view: this.type =='year'||this.type =='month'?this.type : 'date', //month //year
+      view: start_view[this.type], //month //year
     };
+  },
+  filters: {
+    hoursString(d){
+      return utils.padLeft(d.hours(), 2) + ':00';
+    }
   },
   methods: {
     changeView(view){
@@ -79,30 +104,30 @@ export default {
       if(this.view == 'year'){
         num = num*12;
       }
-      let nowView = manba(this.nowView.add(num, type).time());
+      let nowView = this.nowView.add(num, type).time();
       this.$emit('updateView', nowView);
     },
     isSelected(d) {
       return this.value == d.string;
     },
     chooseDate(d) {
-      if (this.view == this.type || (this.view == 'minute' && this.type == 'datetime')) {
-        this.setvalue(d.string);
+      if (this.view == end_view[this.type]) {
+        this.setvalue(d.date);
       } else {
         let index = view_type.indexOf(this.view);
         if(index > 1){
-          this.setvalue(d.string);
+          this.setvalue(d.date , false);
         }
         this.view = view_type[index+1];
-        this.$emit('updateView', manba(d.string));
+        this.$emit('updateView', d.date);
       }
     },
-    setvalue(string) {
+    setvalue(date , hide = true) {
       let value = '';
-      if (string != ''){
-        value = manba(string).format(this.format);
+      if (!utils.isNull(date)){
+        value = manba(date).format(this.format);
       }
-      this.$emit('input', value);
+      this.$emit('input', value, hide);
     }
   },
   computed: {
@@ -183,9 +208,15 @@ export default {
         return dates;
       }else if(this.view == 'hour'){
         let dates = [];
-        for(let i = 0; i < 24; i++){
+        let list = [];
+        if(utils.isFunction(this.options.hours)){
+          list = this.options.hours.call(null);
+        }else{
+          list = utils.numList(0, 24, 1);
+        }
+        for(let i of list){
           dates.push(genData({
-            date: manba(nowDate.time()).hours(i),
+            date: manba(nowDate.time()).hours(i).minutes(0),
             type: manba.HOUR,
             show: utils.padLeft(i, 2) + ':00', 
             vm: this, 
@@ -195,11 +226,18 @@ export default {
         return dates;
       }else if(this.view == 'minute'){
         let dates = [];
-        for(let i = 0; i < 60; i = i + this.minuteStep){
+        let hour = nowDate.hours();
+        let list = [];
+        if(utils.isFunction(this.options.minutes)){
+          list = this.options.minutes.call(null, hour);
+        }else{
+          list = utils.numList(0, 60, this.options.minuteStep);
+        }
+        for(let i of list){
           dates.push(genData({
             date: manba(nowDate.time()).minutes(i),
             type: manba.MINUTE,
-            show: utils.padLeft(nowDate.hours(), 2) + ':' + utils.padLeft(i, 2), 
+            show: utils.padLeft(hour, 2) + ':' + utils.padLeft(i, 2), 
             vm: this, 
             isNowDays: true
           }));

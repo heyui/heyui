@@ -123,5 +123,12 @@ export default Utils.extend({}, Utils, {
     } else {
       list.push(value);
     }
+  },
+  numList(start, end, step){
+    let data = [];
+    for(let i = start; i < end; i = i + step){
+      data.push(i);
+    }
+    return data;
   }
 });

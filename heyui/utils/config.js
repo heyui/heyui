@@ -8,15 +8,8 @@ const config = {
   	year: 'YYYY',
   	time: 'HH:mm',
   	datetime: 'YYYY-MM-DD HH:mm',
+    datehour: 'YYYY-MM-DD HH:mm',
     datetimesecond: 'YYYY-MM-DD HH:mm:ss'
-  },
-  timePickerDefaultOptions:{
-    hasSeconds: false,
-    range:{
-      start: '07:30',
-      end: '20:00',
-      step: '10'
-    }
   },
   datePickerOptions:{
     shortcuts:{
@@ -33,6 +26,18 @@ const config = {
           date.setTime(date.getTime() - 3600 * 1000 * 24);
           return date;
         }
+      }
+    }
+  },
+  datetimeOptions:{
+    minuteStep: 5
+  },
+  configs:{
+    datetimeoptions:{
+      option1:{
+        start: '07:30',
+        end: '20:00',
+        minuteStep: 10
       }
     }
   },
