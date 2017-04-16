@@ -1,16 +1,18 @@
 <template>
   <div :class="dateCls">
-    <input type="text" v-model="nowDate" @change="changeEvent" :placeholder="placeholder" :disabled="disabled"/>
+    <input type="text" :value="show" @change="changeEvent" :placeholder="placeholder" :disabled="disabled"/>
     <i class="h-icon-calendar"></i>
     <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container">
         <div v-if="shortcuts.length>0" class="h-date-shortcut">
           <div v-for="s of shortcuts" @click="setShortcutValue(s)">{{s.title}}</div>
         </div>
-        <date-base :value="nowDate" :option="option" :type="type" :now-view="nowView" :format="nowFormat" @updateView="updateView" @input="setvalue" @changeView="changeView"></date-base>
+        <date-base :value="nowDate" range="start" :option="option" :type="type" :now-view="nowView.start" :format="nowFormat" @updateView="updateView" @input="setvalue" @changeView="changeView" :rangeEnd="rangeEnd" @updateRangeEnd="updateRangeEnd"></date-base>
+        <date-base :value="nowDate" range="end" :option="option" :type="type" :now-view="nowView.end" :format="nowFormat" @updateView="updateView" @input="setvalue" @changeView="changeView" :rangeEnd="rangeEnd" @updateRangeEnd="updateRangeEnd"></date-base>
       </div>
 
-      <div class="h-date-footer" v-if="hasConfirm">
+      <div class="h-date-footer">
+        <button class="h-btn h-btn-text h-btn-s" @click="clear">清除</button>
         <button class="h-btn h-btn-primary h-btn-s" @click="hide">确定</button>
       </div>
     </div>
@@ -29,6 +31,9 @@ const dateprefix = 'h-date';
 const manbaType = {
   'year': manba.YEAR, 'month': manba.MONTH, 'date': manba.DAY, 'datetime': manba.MINUTE, 'time': manba.MINUTE, 'datehour': manba.HOUR
 }
+
+const options = config.daterangeOptions;
+const paramName = options.paramName;
 
 export default {
   props: {
@@ -54,7 +59,7 @@ export default {
       type: String,
       default: "请选择"
     },
-    value: String
+    value: Object
   },
   data() {
     let format = this.format || config.format[this.type];
@@ -62,19 +67,21 @@ export default {
       format = config.format.datetimesecond;
     }
     return {
-      nowDate: '',
-      hasConfirm: this.type == 'datetime' || this.type == 'datehour',
-      nowView: manba(),
+      nowDate: {
+        start: '',
+        end: ''
+      },
+      nowView: {
+        start: manba(),
+        end: manba().add(1, manba.MONTH),
+      },
+      rangeEnd: '',
       nowFormat: format
     };
   },
-  watch: {
-    value() {
-      this.parse(this.value);
-    }
-  },
   beforeMount() {
     this.parse(this.value);
+    this.initNowView();
   },
   mounted() {
     this.$nextTick(() => {
@@ -89,13 +96,22 @@ export default {
     });
   },
   methods: {
+    updateRangeEnd(string){
+      this.rangeEnd = string;
+    },
     setShortcutValue(s){
       let value = s.value.call(null);
       this.parse(value);
-      this.setvalue(this.nowDate);
+      this.updateValue(this.nowDate);
+      this.hide();
     },
-    updateView(value){
-      this.nowView = manba(value);
+    updateView(value, rangeType){
+      this.nowView[rangeType] = manba(value);
+      if(rangeType == 'end'){
+        this.nowView.start = manba(value).add(-1, manba.MONTH);
+      }else{
+        this.nowView.end = manba(value).add(1, manba.MONTH);
+      }
       this.dropdown.popperInstance.update();
     },
     changeView(){
@@ -114,37 +130,77 @@ export default {
           this.parse(disabled);
         }
       }
-      this.setvalue(this.nowDate);
+    },
+    parseSingle(value, range){
+      if(utils.isObject(value)&&value[paramName[range]]){
+        try{
+          let nowValue = manba(value[paramName[range]]);
+          this.nowDate[range] = nowValue.format(this.nowFormat);
+          return;
+        }catch(evt){
+
+        }
+      }
+      this.nowDate[range] = '';
     },
     parse(value) {
-      try{
-        if(this.type == 'time' && value != ''){
-          value = `1980-01-01 ${value}`;
-        }
-        this.nowView = manba(value);
-        this.nowDate = this.nowView.format(this.nowFormat);
-      }catch(err){
-        // log.error(err);
-        this.nowView = manba();
-        this.nowDate = '';
+
+      this.parseSingle(value, 'start');
+      this.parseSingle(value, 'end');
+
+      this.rangeEnd = this.nowDate.end;
+    },
+    initNowView() {
+
+      let start = manba();
+      if(!!this.nowDate.start){
+        start = manba(this.nowDate.start);
       }
+      this.nowView = {
+        start: start,
+        end: manba(start).add(1, manba.MONTH),
+      };
+
     },
     hide() {
       this.dropdown.hide();
     },
+    clear() {
+      this.updateValue({});
+    },
     setvalue(string, hide = true) {
-      let value = string || '';
+      string = string || '';
+      let lastDate = utils.copy(this.nowDate);
+      if(!lastDate.start || lastDate.start > string || (lastDate.start&&lastDate.end)){
+        lastDate.start = string;
+        lastDate.end = '';
+      }else{
+        lastDate.end = string;
+      }
+
+      this.updateValue(lastDate);
+    },
+    updateValue(value){
+      // log(value)
+      value = {
+        [paramName.start]: value.start,
+        [paramName.end]: value.end,
+      }
+      this.parse(value);
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if(!this.hasConfirm && hide){
-        this.hide();
-      }
       this.dropdown.popperInstance.update();
     }
   },
   computed: {
+    show() {
+      if(!utils.isObject(this.value)){
+        return '';
+      }
+      return `${this.value.start || '不限'} - ${this.value.end || '不限'}`;
+    },
     shortcuts() {
       let shortcuts = [];
       let shortcutsConfig = null;
@@ -166,6 +222,7 @@ export default {
       return {
         'h-input': true,
         [`${prefix}`]: true,
+        [`${prefix}-range`]: true,
         [`${prefix}-input-border`]: !this.noBorder,
         [`${prefix}-disabled`]: this.disabled
       }

@@ -17,7 +17,7 @@
     </div>
     <div :class="dateBodyCls">
       <div class="h-date-body-weeks" v-if="view=='date'"><span v-for="w of weeks">{{w}}</span></div>
-      <div class="h-date-body-pickers"><span v-for="d of dates" :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-disabled': d.disabled}" @click="chooseDate(d)">{{d.show}}</span></div>
+      <div class="h-date-body-pickers"><span v-for="d of dates" :string="d.string" :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-range-selected': isRangeSelected(d), 'h-date-disabled': d.disabled}" @click="chooseDate(d)">{{d.show}}</span></div>
     </div>
   </div>
 </template>
@@ -72,8 +72,10 @@ export default {
     },
     option: Object,
     format: String,
-    value: String,
-    nowView: Object
+    value: [Object, String],
+    nowView: Object,
+    range: String,
+    rangeEnd: String,
   },
   data() {
     return {
@@ -86,6 +88,26 @@ export default {
     hoursString(d){
       return utils.padLeft(d.hours(), 2) + ':00';
     }
+  },
+  mounted() {
+    this.$nextTick(()=>{
+      if(this.range && this.type == 'date'){
+        this.$el.addEventListener("mouseenter", (event) => {
+          if(this.view == 'date' && !!this.value.start && !this.value.end){
+            let target = event.target;
+            if(target.tagName == 'SPAN'){
+              let string = target.getAttribute('string');
+              if(string) this.$emit('updateRangeEnd', string);
+            }
+          }
+        }, true);
+        this.$el.addEventListener("mouseout", (event) => {
+          if(this.view == 'date' && !!this.value.start && !this.value.end){
+            this.$emit('updateRangeEnd', '');
+          }
+        }, true);
+      }
+    });
   },
   methods: {
     changeView(view){
@@ -105,21 +127,34 @@ export default {
         num = num*12;
       }
       let nowView = this.nowView.add(num, type).time();
-      this.$emit('updateView', nowView);
+      this.$emit('updateView', nowView, this.range);
     },
     isSelected(d) {
-      return this.value == d.string;
+      if(utils.isObject(this.value)){
+        return this.value.start == d.string || this.value.end == d.string;
+      } else {
+        return this.value == d.string
+      }
+    },
+    isRangeSelected(d){
+      if(this.range && this.view == 'date' && utils.isObject(this.value)&&!!this.value.start&&!!this.rangeEnd){
+        return this.value.start < d.string && this.rangeEnd > d.string;
+      } else {
+        return false;
+      }
     },
     chooseDate(d) {
       if (this.view == end_view[this.type]) {
         this.setvalue(d.date);
       } else {
         let index = view_type.indexOf(this.view);
+
+        //除了month和year点击，其他都直接完成赋值
         if(index > 1){
           this.setvalue(d.date , false);
         }
         this.view = view_type[index+1];
-        this.$emit('updateView', d.date);
+        this.$emit('updateView', d.date.time(), this.range);
       }
     },
     setvalue(date , hide = true) {
@@ -142,6 +177,7 @@ export default {
     },
     dates() {
       let nowDate = this.nowView;
+      
       let today = manba();
       if(this.view == 'date'){
         let lastdayofmonth = nowDate.endOf(manba.MONTH);

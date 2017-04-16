@@ -28,8 +28,11 @@
 
     &-mutiple-tags {
       >span{
+        
+        color: @primary-color;
         .tag-span-func();
-        border: @border;
+        border: 1px solid @white-color;
+        background-color: lighten(@primary-color, 35%);
         font-size: 12px;
         padding: 2px 8px;
       }
@@ -59,7 +62,7 @@
   &-mutiple {
     .@{select-prefix} {
       &-input{
-        padding: 2px 30px 0px 5px;
+        padding: 2px 30px 0px 2px;
       }
       &-placeholder{
         padding: 2px 0 0 5px;
@@ -78,7 +81,6 @@
   max-height: 300px;
   overflow-y: auto;
   .@{select-item-prefix} {
-    color: @gray-color;
     .li-hover();
     padding: 8px 10px;
     position: relative;

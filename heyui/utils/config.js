@@ -29,6 +29,12 @@ const config = {
       }
     }
   },
+  daterangeOptions:{
+    paramName:{
+      start: 'start',
+      end: 'end'
+    }
+  },
   datetimeOptions:{
     minuteStep: 5
   },

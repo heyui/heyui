@@ -17,11 +17,11 @@
     <div>
       <DatePicker v-model="value2" placeholder="请选择日期" type="datetime" :has-seconds="true"></DatePicker>
     </div>
-    <h3>控件时间分钟列表控制</h3>
+    <h3>分钟列表Step自定义</h3>
     <div>
       <DatePicker v-model="value7" :option="param7" type="datetime"></DatePicker>
     </div>
-    <h3>控件时间范围列表控制</h3>
+    <h3>时间分钟列表展示自定义</h3>
     <div>
       <DatePicker v-model="value6" :option="param6" type="datetime"></DatePicker>
     </div>

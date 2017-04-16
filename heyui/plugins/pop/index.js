@@ -241,7 +241,6 @@ class Pop {
         this.scheduleShow(reference, options, evt);
       };
       this.events.push({ event, func });
-      log(event);
       reference.addEventListener(event, func);
     });
 

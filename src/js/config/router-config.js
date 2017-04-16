@@ -76,6 +76,10 @@ export default {
     name: 'pluginDatetime',
     component: (resolve) => require(['../../components/component/data/plugin/datetime'], resolve)
   }, {
+    path: 'data/plugin/daterange',
+    name: 'pluginDateRange',
+    component: (resolve) => require(['../../components/component/data/plugin/daterange'], resolve)
+  }, {
     path: 'data/plugin/city',
     name: 'pluginCity',
     component: (resolve) => require(['../../components/component/data/plugin/city'], resolve)
