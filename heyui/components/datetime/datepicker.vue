@@ -93,6 +93,7 @@ export default {
       let value = s.value.call(null);
       this.parse(value);
       this.setvalue(this.nowDate);
+      this.hide();
     },
     updateView(value){
       this.nowView = manba(value);

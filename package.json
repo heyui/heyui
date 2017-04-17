@@ -16,14 +16,14 @@
   "author": {
     "name": "vvpvvp"
   },
-  "license": "The MIT License",
+  "license": "MIT",
   "dependencies": {
     "hey-log": "0.0.4",
     "hey-utils": "0.0.11",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
     "jquery-smooth-scroll": "^2.1.2",
-    "manba": "0.0.15",
+    "manba": "0.0.16",
     "popper.js": "^1.0.8",
     "vue": "^2.2.4",
     "vue-highlightjs": "^1.2.2",
