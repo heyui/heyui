@@ -73,12 +73,9 @@ export default {
         'h-icon-star',
         'h-icon-star-on',
         'h-icon-setting',
+        'h-icon-calendar',
       ]
     }
-  },
-  methods: {
-  },
-  components:{
   }
 }
 </script>

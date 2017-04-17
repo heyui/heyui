@@ -45,6 +45,10 @@
     "no-param-reassign": [
       "off"
     ],
+    "max-len": [
+      "error",
+      {"code": 300}
+    ],
     "no-plusplus": [
       "error", {
         "allowForLoopAfterthoughts": true
@@ -62,6 +66,9 @@
       "off"
     ],
     "padding-blocks": [
+      "off"
+    ],
+    "operator-assignment":[
       "off"
     ],
     "quotes": [

@@ -1,6 +1,7 @@
 @form-prefix: ~"@{prefix}form";
 .form-content-width100 {
   input[type='text'],
+  input[type='password'],
   textarea,
   .@{prefix}input,
   .@{prefix}radio,
@@ -16,6 +17,7 @@
   .@{form-prefix} {
     &-item {
       padding-bottom: 24px;
+      position: relative;
       &-label {
         display: inline-block;
         text-align: right;
@@ -54,6 +56,20 @@
     }
   }
   &.@{form-prefix} {
+
+    &-label{
+      &-left{
+        .@{form-prefix}-item-label{
+          text-align: left;
+
+          &::before{
+            position: absolute;
+            left: 8px;
+            top: 13px;
+          }
+        }
+      }
+    }
     &-block .@{form-prefix}-item,
     .@{form-prefix}-item-block {
       .clearfix();

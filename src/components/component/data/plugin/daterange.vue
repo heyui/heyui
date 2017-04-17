@@ -4,12 +4,17 @@
     <h3>普通选择日期范围控件</h3>
     <div>
       <p>值：{{value1}}</p>
-      <DateRangePicker v-model="value1" placeholder="请选择日期"></DateRangePicker>
+      <DateRangePicker v-model="value1" placeholder="请选择日期" format="YYYY/MM/DD"></DateRangePicker>
+    </div>
+    <h3>日期控件单独选择开始结束</h3>
+    <div>
+      <p>值：{{value8}}</p>
+      <DateRangePicker v-model="value8" placeholder="请选择日期" type="date" :separate="true"></DateRangePicker>
     </div>
     <h3>选择日期时间范围控件</h3>
     <div>
       <p>值：{{value8}}</p>
-      <DateRangePicker v-model="value8" placeholder="请选择日期" type="datetime"></DateRangePicker>
+      <DateRangePicker v-model="value7" placeholder="请选择日期" type="datetime"></DateRangePicker>
     </div>
     <h3>日期时间范围禁用</h3>
     <div>

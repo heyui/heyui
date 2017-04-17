@@ -1,10 +1,11 @@
 @date-picker-prefix: ~"@{prefix}date";
 @time-picker-prefix: ~"@{prefix}time";
 @datetime-picker-prefix: ~"@{prefix}datetime";
-@input-prefix: ~"@{prefix}datetime-input";
 @date-picker-cells-width: 196px;
 .@{datetime-picker-prefix}-range {
-  min-width: 300px;
+  .@{datetime-picker-prefix}-show{
+    min-width: 280px;
+  }
 }
 
 .@{date-picker-prefix} {
@@ -26,6 +27,11 @@
       }
       &-container {
         display: flex
+      }
+      &-range-container{
+        >.@{date-picker-prefix}-content:last-child{
+          border-left: @border;
+        }
       }
       &-content {
         padding: 10px;
@@ -97,7 +103,6 @@
               &-selected {
                 background-color: @primary-color;
                 color: @white-color;
-                border-radius: @border-radius;
               }
               &-range-selected {
                 background-color: lighten(@primary-color, 32%);
@@ -133,6 +138,16 @@
           }
         }
       }
+    }
+  }
+}
+
+
+.@{datetime-picker-prefix}{
+  &-input-border {
+    .@{pop-ref-prefix} >input {
+      border-color: @primary-color;
+      box-shadow: 0 0 0 2px fade(@primary-color, 20%);
     }
   }
 }
