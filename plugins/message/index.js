@@ -10,7 +10,7 @@ let Default = {
 
 const iconNames = {
   info: 'info',
-  success: 'check',
+  success: 'success',
   warn: 'warn',
   error: 'error',
   loading: 'loading'

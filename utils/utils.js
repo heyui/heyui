@@ -87,5 +87,48 @@ export default Utils.extend({}, Utils, {
     }
 
     return false;
+  },
+  initParam(param, paramFrom, array) {
+    if (this.isArray(array) && this.isObject(param) && this.isObject(param)) {
+      for (let a of array) {
+        if (paramFrom[a]) param[a] = paramFrom[a];
+      }
+    }
+    return param;
+  },
+  toggleValue(list, value) {
+    if (!this.isArray(list)) return ;
+    if (list.includes(value)) {
+      list.splice(list.indexOf(value), 1);
+    } else {
+      list.push(value);
+    }
+  },
+  padLeft(str, size){
+    var s = "00000" + str;
+    return s.substr(s.length-size);
+  },
+  toggleValueByKey(list, key, value) {
+    if (!this.isArray(list)) return ;
+    let index = -1;
+    for (let l of list) {
+      if (this.isNull(l[key])) {
+        continue;
+      }
+      index = list.indexOf(l);
+      break;
+    }
+    if (index > -1) {
+      list.splice(index, 1);
+    } else {
+      list.push(value);
+    }
+  },
+  numList(start, end, step){
+    let data = [];
+    for(let i = start; i < end; i = i + step){
+      data.push(i);
+    }
+    return data;
   }
 });

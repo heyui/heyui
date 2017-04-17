@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A UI components Library.",
   "main": "index.js",
   "repository": {
@@ -9,17 +9,17 @@
   },
   "homepage": "http://www.heyui.top/",
   "keywords": [
+    "heyui",
     "vue",
     "ui",
     "framework"
   ],
-  "author": {
-    "name": "vvpvvp"
-  },
-  "license": "The MIT License",
+  "license": "MIT",
   "dependencies": {
-    "hey-utils": "^0.0.10",
-    "popper.js": "^1.0.8"
+    "popper.js": "^1.0.8",
+    "hey-log": "0.0.4",
+    "hey-utils": "0.0.11",
+    "manba": "0.0.16"
   },
   "devDependencies": {
     "eslint": "^3.8.1",

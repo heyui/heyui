@@ -1,5 +1,4 @@
 @input-prefix: ~"@{prefix}input";
-@input-border: 1px solid @gray2-color;
 input[type=text],
 input[type=password],
 input[type=search],
@@ -7,10 +6,10 @@ textarea {
   position: relative;
   background-color: @white-color;
   border-radius: @border-radius;
-  border: @input-border;
+  border: @border;
   padding: 4px 0px 4px 10px;
   line-height: inherit;
-  // width: 200px;
+  width: 200px;
   font-size: inherit;
   transition: all linear @transition-time;
   box-sizing: border-box;
@@ -48,20 +47,24 @@ textarea {
 
 input[type=text],
 input[type=password]{
-  height: 32px;
-  line-height: 32px;
+  height: @input-height;
+  line-height: @input-height;
 }
 
 .@{input-prefix} {
   position: relative;
   display: inline-block;
-  // width: 200px;
+  width: 200px;
+  >i{
+    pointer-events: none;
+  }
   >[class^="@{icon-prefix}"],
   >[class*=" @{icon-prefix}"] {
     position: absolute;
     right: 8px;
     .middle;
     z-index: 3;
+    color: @gray-color;
   }
   
   >input{
@@ -71,16 +74,13 @@ input[type=password]{
   }
   &-group {
     position: relative;
-    display: table;
-    border-collapse: separate;
+    display: flex;
     >input,>div {
-      width: 100% !important;
-      display: table-cell;
-      vertical-align: middle;
-      float: left;
+      display: inline-block;
       position: relative;
       z-index: 2;
-      margin:0; 
+      margin:0;
+      flex: 1;
     }
     >div{
       padding: 0 !important;
@@ -89,26 +89,31 @@ input[type=password]{
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
+    >span{
+        line-height: @input-height - 2px;
+    }
     >.@{input-prefix}-addon {
+      
+      flex: inherit;
       text-align: center;
       background-color: @gray3-color;
-      border-top: @input-border;
-      border-bottom: @input-border;
+      border-top: @border;
+      border-bottom: @border;
+      height: @input-height;
       vertical-align: middle;
       padding: 0px 5px;
       min-width: 24px;
       white-space: nowrap;
-      line-height: 1;
       color: @gray-color;
-      display: table-cell;
+      display: inline-block;
       &:first-child {
         border-radius: @border-radius 0 0 @border-radius;
-        border-left: @input-border;
+        border-left: @border;
       }
       &:last-child,
       &.last-child {
         border-radius: 0 @border-radius @border-radius 0;
-        border-right: @input-border;
+        border-right: @border;
       }
       +input,
       +div input {

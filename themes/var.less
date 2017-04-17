@@ -16,22 +16,32 @@
 @gray2-color: #eee;
 @gray3-color: #f3f3f3;
 @gray4-color: #f9f9f9;
-@border-color : @gray3-color;
-@border: 1px solid @gray3-color;
-@border-color-light : @gray4-color;
+
+//border
+@border-color : @gray1-color;
+@border: 1px solid @gray1-color;
+
+//hover
+@hover-background-color: @gray3-color;
 //Base
 @background : #fff;
 @font-size : 14px;
 @font-size-mini : 13px;
 @line-height : 1.5;
+
 @border-radius : 4px;
+@btn-border-radius: 4px;
+
 @line-height-computed : floor((@font-size * @line-height));
 @font-family : "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 @shadow-color : rgba(0, 0, 0, .2);
-@box-shadow: 0 1px 5px 0 @shadow-color;
+@box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 @disabled-cursor:not-allowed;
 
 @icon-prefix: h-icon-;
+
+//dropdown,tooltip触发的el添加相关class
+@pop-ref-prefix:h-pop-ref-show;
 // @cursor-disabled: 
 // // Button
 // @btn-font-weight : normal;
@@ -62,8 +72,8 @@
 // @grid-gutter-width : 0;
 // // Legend
 // @legend-color : #999;
-// // Input
-// @input-height-base : 32px;
+// Input
+@input-height : 30px;
 // @input-height-large : 36px;
 // @input-height-small : 24px;
 // @input-padding-horizontal : 7px;
@@ -77,8 +87,8 @@
 // @input-hover-border-color : @primary-color;
 // @input-focus-border-color : @primary-color;
 // @input-disabled-bg : #f3f3f3;
-// // Tag
-// @tag-font-size : 12px;
+// Tag
+@tag-font-size : 12px;
 // // Media queries breakpoints
 // // Extra small screen / phone
 // @screen-xs : 480px;
