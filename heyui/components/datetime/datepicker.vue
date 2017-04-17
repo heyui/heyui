@@ -21,7 +21,7 @@
                    :option="option"
                    :type="type"
                    :now-view="nowView"
-                   :format="k"
+                   format="k"
                    @updateView="updateView"
                    @input="setvalue"
                    @changeView="changeView"></date-base>
