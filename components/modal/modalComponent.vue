@@ -3,7 +3,7 @@
     <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
     <div :class="containerCls">
       <span class="h-notify-close h-icon-close" @click="setvalue(false)"></span>
-      <component :is="nowComponent" :class="contentCls" :param="propsData"></component>
+      <component :is="nowComponent" :class="contentCls" :param="propsData" @close="close"></component>
     </div>
   </div>
 </template>
@@ -62,12 +62,16 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      document.body.appendChild(this.$el);
       if (!this.value) {
         this.$el.style.display = 'none';
       }
     })
   },
   methods: {
+    close() {
+      this.$emit('input', false);
+    },
     setvalue(fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('input', !this.value);

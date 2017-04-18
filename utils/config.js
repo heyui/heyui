@@ -2,26 +2,37 @@ const config = {
   key_field: "key",
   title_field: "title",
   render_field: "render_html",
-  format:{
-  	date: 'YYYY-MM-DD',
-  	month: 'YYYY-MM',
-  	year: 'YYYY',
-  	time: 'HH:mm',
-  	datetime: 'YYYY-MM-DD HH:mm',
+  modal: {
+    hasDivider: false
+  },
+  page: {
+    small: false,
+    size: 10,
+    sizes: [10, 50, 100, 200],
+    layout: {
+      default: 'total,prev,pager,next,jumper,sizes'
+    }
+  },
+  format: {
+    date: 'YYYY-MM-DD',
+    month: 'YYYY-MM',
+    year: 'YYYY',
+    time: 'HH:mm',
+    datetime: 'YYYY-MM-DD HH:mm',
     datehour: 'YYYY-MM-DD HH:mm',
     datetimesecond: 'YYYY-MM-DD HH:mm:ss'
   },
-  datePickerOptions:{
-    shortcuts:{
+  datePickerOptions: {
+    shortcuts: {
       today: {
         title: "今天",
-        value(){
+        value() {
           return new Date();
         }
       },
       yesterday: {
         title: "昨天",
-        value(){
+        value() {
           const date = new Date();
           date.setTime(date.getTime() - 3600 * 1000 * 24);
           return date;
@@ -29,18 +40,18 @@ const config = {
       }
     }
   },
-  daterangeOptions:{
-    paramName:{
+  daterangeOptions: {
+    paramName: {
       start: 'start',
       end: 'end'
     }
   },
-  datetimeOptions:{
+  datetimeOptions: {
     minuteStep: 5
   },
-  configs:{
-    datetimeoptions:{
-      option1:{
+  configs: {
+    datetimeoptions: {
+      option1: {
         start: '07:30',
         end: '20:00',
         minuteStep: 10

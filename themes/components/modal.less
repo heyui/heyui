@@ -29,6 +29,15 @@
     }
 
     &.@{notify-prefix} {
+
+        &-has-divider{
+            header{
+                border-bottom: 1px solid @gray2-color;
+            }
+            footer{
+                border-top: 1px solid @gray2-color;
+            }
+        }
         &-show {
             .@{notify-prefix}-container-center {
                 top: 50%;
