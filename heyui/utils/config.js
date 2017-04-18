@@ -10,7 +10,7 @@ const config = {
     size: 10,
     sizes: [10, 50, 100, 200],
     layout: {
-      default: 'total,prev,pager,next,jumper,sizes'
+      default: 'total,pager,jumper,sizes'
     }
   },
   format: {

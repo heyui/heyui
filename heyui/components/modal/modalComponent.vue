@@ -75,6 +75,11 @@ export default {
   },
   methods: {
     close() {
+      this.isOpened = false;
+      setTimeout(() => {
+        this.$el.style.display = 'none';
+        this.nowComponent = "";
+      }, 200);
       this.$emit('input', false);
     },
     setvalue(fromMask) {

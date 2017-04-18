@@ -15,7 +15,7 @@ export default {
       current2: 1,
       current3: 1,
       current4: 1,
-      total: 50,
+      total: 250,
     }
   },
   methods: {
