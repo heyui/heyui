@@ -3,6 +3,7 @@
     <div class="h-input h-datetime-show">
       <input type="text"
              :value="show"
+             readonly
              @change="changeEvent"
              :placeholder="placeholder"
              :disabled="disabled" />

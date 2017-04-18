@@ -163,7 +163,8 @@ export default {
       this.dropdown.hide();
     },
     setvalue(string, isEnd = true) {
-      let value = string || '';
+      // log(string);
+      let value = manba(string).format(this.nowFormat);
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);

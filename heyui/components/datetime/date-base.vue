@@ -74,7 +74,7 @@ const DateFormatLength = {
   year: 4,
   month: 7,
   date: 10,
-  hour: 16,
+  hour: 13,
   minute: 16
 };
 
