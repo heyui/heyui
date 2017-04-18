@@ -16,7 +16,6 @@
       padding: 4px 30px 4px 10px;
       font-size: @font-size-mini;
       position: relative;
-      min-height: @input-height;
       font-size: inherit;
       line-height: inherit;
       box-sizing: border-box;
@@ -41,6 +40,9 @@
 
   &-no-autosize {
     width: 100%;
+    .@{select-prefix}-input{
+      min-height: @input-height;
+    }
   }
   &-input-border {
     .@{select-prefix} {

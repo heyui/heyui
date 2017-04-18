@@ -1,20 +1,40 @@
 <template>
   <div :class="pageCls">
-        <span :class="prefix+'-total'">总 <span :class="prefix+'-total-num'">{{total}}</span> 条</span>
-        <Select :no-border="small"
-                :autosize = "true"
-                :null-option = "false"
-                :datas="sizesShow"
-                @input="changesize"
-                v-model="sizeNow"></Select>
-        <span :class="prevCls"><i class="h-icon-left"></i></span>
-        <span :class="nextCls"><i class="h-icon-right"></i></span>
-        <span @click="change(1)" :class="genPagerCls(1)">1</span>
-        <span class="h-page-pager" v-if="curNow > 3">...</span>
-        <span v-for="pager of pagerSize" @click="change(pager)" :class="genPagerCls(pager)">{{pager}}</span>
-        <span class="h-page-pager" v-if="count - curNow > 3">...</span>
-        <span @click="change(count)" :class="genPagerCls(count)">{{count}}</span>
-        <input type="text" v-width="40" :value="curNow" @blur="jump"/>
+    <span :class="prefix+'-total'"
+          :style="{order:orders.total}"
+          v-if="orders.total!=-1">总 <span :class="prefix+'-total-num'">{{total}}</span> 条</span>
+    <Select :no-border="small"
+            :autosize="true"
+            :null-option="false"
+            :datas="sizesShow"
+            @input="changesize"
+            v-model="sizeNow"
+            :style="{order:orders.sizes}"
+            v-if="orders.sizes!=-1"></Select>
+    <span class="h-page-pager-container"
+          :style="{order:orders.pager}"
+          v-if="orders.pager!=-1">
+                    <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
+    <span @click="change(1)"
+          :class="genPagerCls(1)">1</span>
+    <span v-if="curNow > 4"
+          class="h-page-pager h-page-ellipsis">...</span>
+    <span v-for="pager of pagerSize"
+          @click="change(pager)"
+          :class="genPagerCls(pager)">{{pager}}</span>
+    <span class="h-page-pager h-page-ellipsis"
+          v-if="count - curNow > 3">...</span>
+    <span @click="change(count)"
+          :class="genPagerCls(count)">{{count}}</span>
+    <span :class="nextCls"
+          @click="next()"><i class="h-icon-right"></i></span>
+    </span>
+    <input type="text"
+           :style="{order:orders.jumper}"
+           v-if="orders.jumper!=-1"
+           v-width="40"
+           :value="curNow"
+           @blur="jump" />
   </div>
 </template>
 <script>
@@ -51,6 +71,11 @@ export default {
     }
   },
   data() {
+    let layoutList = this.layout.replace(' ', '').split(',');
+    let orders = { total: -1, pager: -1, jumper: -1, sizes: -1 }
+    for (let o in orders) {
+      orders[o] = layoutList.indexOf(o);
+    }
     return {
       sizesShow: this.sizes.map((item) => {
         return {
@@ -60,29 +85,43 @@ export default {
       }),
       sizeNow: this.size,
       curNow: this.cur,
-      layoutList: this.layout.replace(' ', '').split(',')
+      orders
     };
   },
   watch: {
     cur() {
-      this.curNow = this.cur;
+      // this.curNow = this.cur;
     }
   },
   methods: {
+    prev() {
+      this.change(this.curNow - 1);
+    },
+    next() {
+      this.change(this.curNow + 1);
+    },
     jump(event) {
-      if (event.target.value > this.total) {
+      let value = parseInt(event.target.value, 10);
+      log(value);
+      if (isNaN(value)) {
+        this.$Message.error("您输入的值格式不正确");
+        return;
+      }
+      if (value > this.count || value < 1) {
         this.$Message.error("您输入的值超过范围");
         return;
       }
-      this.curNow = event.target.value;
-      this.$emit("curChange", this.curNow);
+      this.curNow = parseInt(event.target.value, 10);
+      this.$emit("change", { cur: this.curNow, size: this.sizeNow });
     },
     change(cur) {
+      if (this.curNow == cur) return;
       this.curNow = cur;
-      this.$emit("curChange", cur);
+      this.$emit("change", { cur: this.curNow, size: this.sizeNow });
     },
     changesize() {
-      this.$emit("sizeChange", this.sizeNow);
+      this.curNow = 1;
+      this.$emit("change", { cur: 1, size: this.sizeNow });
     },
     genPagerCls(num) {
       return {
@@ -93,11 +132,16 @@ export default {
   },
   computed: {
     count() {
-      return Math.ceil(this.total / this.size);
+      return Math.ceil(this.total / this.sizeNow);
     },
     pagerSize() {
-      let pageStart = this.curNow < 2 ? 2 : (this.curNow - 2);
-      let size = this.count > 5 ? 4 : (this.count - 1);
+      let pageStart = this.curNow < 4 ? 2 : (this.curNow - 2)
+      let size = this.count > 6 ? 5 : (this.count - 2);
+      // log(size);
+      // if (this.curNow == 1 || this.curNow == this.count) size -= 1;
+      if (pageStart + size >= this.count) {
+        pageStart = this.count - size;
+      }
       let list = [];
       for (let i = 0; i < size; i++) {
         list.push(i + pageStart);
@@ -109,14 +153,14 @@ export default {
     },
     prevCls() {
       return {
-        [`${prefix}-prev`]: true,
-        [`${prefix}-prev-disabled`]: this.curNow == 1
+        [`${prefix}-pager-disabled`]: this.curNow == 1,
+        ['h-page-pager']: true
       }
     },
     nextCls() {
       return {
-        [`${prefix}-prev`]: true,
-        [`${prefix}-prev-disabled`]: this.curNow == this.count
+        [`${prefix}-pager-disabled`]: this.curNow == this.count,
+        ['h-page-pager']: true
       }
     },
     pagerCls() {
