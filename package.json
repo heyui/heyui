@@ -17,9 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "popper.js": "^1.0.8",
-    "hey-log": "^0.0.4",
-    "hey-utils": "^0.0.11",
-    "manba": "^0.0.16"
+    "hey-log": "0.0.4",
+    "hey-utils": "0.0.14",
+    "manba": "0.0.17"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
