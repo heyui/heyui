@@ -1,5 +1,6 @@
 <template>
-  <div :class="pageCls">
+  <div :class="pageCls"
+       :style="pageStyle">
     <span :class="prefix+'-total'"
           :style="{order:orders.total}"
           v-if="orders.total!=-1">总 <span :class="prefix+'-total-num'">{{total}}</span> 条</span>
@@ -13,8 +14,8 @@
             v-if="orders.sizes!=-1"></Select>
     <span class="h-page-pager-container"
           :style="{order:orders.pager}"
-          v-if="orders.pager!=-1">
-                    <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
+          v-if="orders.pager!=-1 && this.count>0">
+                      <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
     <span @click="change(1)"
           :class="genPagerCls(1)">1</span>
     <span v-if="curNow > 4"
@@ -25,7 +26,8 @@
     <span class="h-page-pager h-page-ellipsis"
           v-if="count - curNow > 3">...</span>
     <span @click="change(count)"
-          :class="genPagerCls(count)">{{count}}</span>
+          :class="genPagerCls(count)"
+          v-if="this.count>1">{{count}}</span>
     <span :class="nextCls"
           @click="next()"><i class="h-icon-right"></i></span>
     </span>
@@ -52,6 +54,10 @@ export default {
     sizes: {
       type: Array,
       default: () => utils.getKeyValue(config, "page.sizes")
+    },
+    align: {
+      type: String,
+      default: 'left'
     },
     cur: {
       type: Number,
@@ -131,10 +137,22 @@ export default {
     }
   },
   computed: {
+    pageStyle() {
+      return {
+        "justify-content": {
+          left: "flex-start",
+          center: "center",
+          right: "flex-end",
+        }[this.align]
+      }
+    },
     count() {
       return Math.ceil(this.total / this.sizeNow);
     },
     pagerSize() {
+      if (this.count < 3) {
+        return [];
+      }
       let pageStart = this.curNow < 4 ? 2 : (this.curNow - 2)
       let size = this.count > 6 ? 5 : (this.count - 2);
       // log(size);
