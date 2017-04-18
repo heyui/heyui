@@ -109,7 +109,7 @@
             <Checkbox v-model="data.checkbox"
                       :datas="dataParam"></Checkbox>
           </FormItem>
-          <FormItem><Button color="primary" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading">取消</Button></FormItem>
+          <FormItem :no-padding="true"><Button color="primary" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading">取消</Button></FormItem>
         </Form>
       </div>
     </div>

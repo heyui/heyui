@@ -6,6 +6,7 @@
   .@{prefix}input,
   .@{prefix}radio,
   .@{prefix}checkbox,
+  .@{prefix}select,
   .@{prefix}input-group {
     width: 100%;
   }
@@ -13,10 +14,12 @@
 
 .@{form-prefix} {
   .clearfix();
-  margin-bottom: -24px;
   .@{form-prefix} {
     &-item {
       padding-bottom: 24px;
+      &-no-padding{
+        padding-bottom: 0px;
+      }
       position: relative;
       &-label {
         display: inline-block;
@@ -29,7 +32,7 @@
         box-sizing: border-box;
       }
       &-required {
-        .@{form-prefix}-item-label::before{
+        .@{form-prefix}-item-label::before {
           content: "*";
           color: @red-color;
           font-size: 15px;
@@ -56,16 +59,26 @@
     }
   }
   &.@{form-prefix} {
-
-    &-label{
-      &-left{
-        .@{form-prefix}-item-label{
+    &-label {
+      &-left {
+        .@{form-prefix}-item-label {
           text-align: left;
+        }
 
-          &::before{
-            position: absolute;
-            left: 8px;
-            top: 13px;
+        .@{form-prefix}-item-required {
+          .@{form-prefix}-item-label {
+            &:before {
+              content: none;
+            }
+            &:after {
+              content: "*";
+              color: @red-color;
+              font-size: 15px;
+              display: inline-block;
+              margin-right: 4px;
+              line-height: 8px;
+              vertical-align: middle;
+            }
           }
         }
       }
@@ -77,7 +90,7 @@
         display: block;
         text-align: left;
         padding-left: 0;
-        &:empty{
+        &:empty {
           display: none;
         }
       }
@@ -107,7 +120,8 @@
         .form-content-width100();
       }
     }
-    &-single .@{form-prefix}-item, .@{form-prefix}-item-single {
+    &-single .@{form-prefix}-item,
+    .@{form-prefix}-item-single {
       width: 100%;
       .clearfix();
       .@{form-prefix}-item-label {

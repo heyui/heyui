@@ -9,7 +9,7 @@
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div :class="datePickerCls"
+    <div v-if="!disabled" :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container">
         <div v-if="shortcuts.length>0"
@@ -97,16 +97,18 @@ export default {
     this.parse(this.value);
   },
   mounted() {
-    this.$nextTick(() => {
-      let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
-      let content = this.$el.querySelector(`.h-date-picker`);
-      this.dropdown = new Dropdown(el, {
-        trigger: 'click',
-        triggerOnce: true,
-        content,
-        container: document.body
+    if (!this.disabled) {
+      this.$nextTick(() => {
+        let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+        let content = this.$el.querySelector(`.h-date-picker`);
+        this.dropdown = new Dropdown(el, {
+          trigger: 'click',
+          triggerOnce: true,
+          content,
+          container: document.body
+        });
       });
-    });
+    }
   },
   methods: {
     setShortcutValue(s) {

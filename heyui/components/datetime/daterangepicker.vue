@@ -8,7 +8,7 @@
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div :class="datePickerCls"
+    <div v-if="!disabled" :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container h-date-range-container">
         <div v-if="shortcuts.length>0"
@@ -135,21 +135,23 @@ export default {
   },
   mounted() {
     let that = this;
-    this.$nextTick(() => {
-      let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
-      let content = this.$el.querySelector(`.h-date-picker`);
-      this.dropdown = new Dropdown(el, {
-        trigger: 'click',
-        triggerOnce: true,
-        content,
-        container: document.body,
-        events: {
-          show() {
-            that.initNowView()
+    if (!this.disabled) {
+      this.$nextTick(() => {
+        let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+        let content = this.$el.querySelector(`.h-date-picker`);
+        this.dropdown = new Dropdown(el, {
+          trigger: 'click',
+          triggerOnce: true,
+          content,
+          container: document.body,
+          events: {
+            show() {
+              that.initNowView()
+            }
           }
-        }
+        });
       });
-    });
+    }
   },
   methods: {
     updateRangeEnd(string) {
@@ -210,9 +212,10 @@ export default {
       if (!!this.nowDate.start) {
         start = manba(this.nowDate.start);
       }
+      let endRange = this.isSeparate ? 0 : 1;
       this.nowView = {
         start,
-        end: manba(start).add(1, manba.MONTH),
+        end: manba(start).add(endRange, manba.MONTH),
       };
     },
     hide() {
@@ -220,6 +223,11 @@ export default {
     },
     clear() {
       this.updateValue({});
+      this.separateOption = {
+        start: utils.extend({}, this.option),
+        end: utils.extend({}, this.option)
+      };
+      this.initNowView();
     },
     setvalue(string, isEnd = false, range) {
       string = string || '';
@@ -228,7 +236,7 @@ export default {
         lastDate[range] = string;
         let other = range == 'start' ? "end" : "start";
         this.separateOption[other][range] = string;
-        if (isEnd) this.$refs[other].updateView("minute", 0);
+        this.$refs[other].updateView("minute", 0);
       } else {
         if (!lastDate.start) {
           lastDate.start = string;

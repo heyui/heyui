@@ -2,18 +2,29 @@
   <div :class="selectCls">
     <div :class="inputCls">
       <div class="h-select-value">
-        <div v-if="mutiple&&objects" class="h-select-mutiple-tags"><span v-for="obj of objects" :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)"></i></span></div>
+        <div v-if="mutiple&&objects"
+             class="h-select-mutiple-tags"><span v-for="obj of objects"
+                :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
+             @click.stop="setvalue(obj)"></i></span>
+        </div>
         <div v-if="!mutiple&&codes&&objects">{{objects[title]}}</div>
-        <div v-if="!codes||codes.length==0" class="h-select-placeholder">请选择</div>
+        <div v-if="!codes||codes.length==0"
+             class="h-select-placeholder">请选择</div>
       </div>
       <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
       <ul class="h-select-ul">
-        <li v-for="option of options" :key="option" class="h-select-item" @click="setvalue(option)" :class="getLiCls(option)">
-          <div v-if="!!render" v-html="option[html]"></div>
+        <li v-for="option of options"
+            :key="option"
+            class="h-select-item"
+            @click="setvalue(option)"
+            :class="getLiCls(option)">
+          <div v-if="!!render"
+               v-html="option[html]"></div>
           <template v-else>{{option[title]}}</template>
-          <i v-if="mutiple" class="h-icon-check"></i>
+          <i v-if="mutiple"
+             class="h-icon-check"></i>
         </li>
       </ul>
     </div>
@@ -46,6 +57,10 @@ export default {
     },
     limit: {
       type: Number
+    },
+    autosize: {
+      type: Boolean,
+      default: false
     },
     nullOption: {
       type: Boolean,
@@ -152,10 +167,15 @@ export default {
   },
   computed: {
     selectCls() {
+      let autosize = !!this.noBorder;
+      if (!autosize) {
+        autosize = this.autosize;
+      }
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-mutiple`]: this.mutiple
+        [`${prefix}-mutiple`]: this.mutiple,
+        [`${prefix}-no-autosize`]: !autosize,
       }
     },
     inputCls() {

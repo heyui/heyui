@@ -24,7 +24,7 @@ import Form from './components/form';
 // import Menu from './components/menu';
 import modal from './components/modal';
 // import Notice from './components/notice';
-// import Page from './components/page';
+import Pagination from './components/pagination';
 // import Poptip from './components/poptip';
 // import Progress from './components/progress';
 import Radio from './components/radio';
@@ -100,7 +100,7 @@ const components = {
   // Notice,
   // iOption: Option,
   // OptionGroup,
-  // Page,
+  Pagination,
   // Panel: Collapse.Panel,
   // Poptip,
   // Progress,

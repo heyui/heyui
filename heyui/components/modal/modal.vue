@@ -10,6 +10,7 @@
   </div>
 </template>
 <script>
+import config from '../../utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
@@ -23,6 +24,10 @@ export default {
     hasMask: {
       type: Boolean,
       default: true
+    },
+    hasDivider: {
+      type: Boolean,
+      default: config.modal.hasDivider
     },
     closeOnMask: {
       type: Boolean,
@@ -59,6 +64,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      document.body.appendChild(this.$el);
       if (!this.value) {
         this.$el.style.display = 'none';
       }
@@ -88,7 +94,8 @@ export default {
         [prefix]: true,
         [notifyprefix]: true,
         [`${notifyprefix}-show`]: this.isOpened,
-        [`${notifyprefix}-has-close`]: this.hasCloseIcon
+        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
+        [`${notifyprefix}-has-divider`]: this.hasDivider
       }
     }
   }

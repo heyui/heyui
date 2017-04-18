@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: true
     },
+    noPadding: {
+      type: Boolean,
+      default: false
+    },
     rule: Object
   },
   data() {
@@ -53,6 +57,17 @@ export default {
     getParent() {
       let parent = this.$parent;
       let filterTag = new Set(['Form', 'hForm']);
+      while (parent != null && !filterTag.has(parent.$options._componentTag)) {
+        parent = parent.$parent;
+      }
+      if (!parent) {
+        log.error('请将formItem组件置于Form组件内');
+      }
+      return parent;
+    },
+    getDirectParent() {
+      let parent = this.$parent;
+      let filterTag = new Set(['Form', 'hForm', 'FormItem']);
       while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
       }
@@ -95,7 +110,7 @@ export default {
   },
   computed: {
     initLabelWidth() {
-      let parent = this.$parent;
+      let parent = this.getDirectParent(true);
       // if (!parent) return 'auto';
       let mode = this.$parent.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
@@ -107,7 +122,8 @@ export default {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
         [`${prefixCls}-required`]: this.required,
-        [`${prefixCls}-valid-error`]: !!this.validResult
+        [`${prefixCls}-valid-error`]: !!this.validResult,
+        [`${prefixCls}-no-padding`]: !!this.noPadding
       }
     },
     labelCls() {

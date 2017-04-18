@@ -27,7 +27,7 @@ export default {
   methods: {
     validField(prop) {
       if (!this.model) return true;
-      let value = utils.valueForKeypath(this.model, prop);
+      let value = utils.getKeyValue(this.model, prop);
       // log(prop);
       let ruleKey = prop.replace(/\[\w+\]/, "[]");
       let rule = (this.rules || { required: [] }).required.includes(ruleKey);
