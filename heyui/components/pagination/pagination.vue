@@ -14,7 +14,7 @@
         <span v-for="pager of pagerSize" @click="change(pager)" :class="genPagerCls(pager)">{{pager}}</span>
         <span class="h-page-pager" v-if="count - curNow > 3">...</span>
         <span @click="change(count)" :class="genPagerCls(count)">{{count}}</span>
-        <input type="text" v-width="40" v-model="curNow" @blur="jump"/>
+        <input type="text" v-width="40" :value="curNow" @blur="jump"/>
   </div>
 </template>
 <script>
@@ -69,11 +69,12 @@ export default {
     }
   },
   methods: {
-    jump() {
-      if (this.curNow > this.total) {
+    jump(event) {
+      if (event.target.value > this.total) {
         this.$Message.error("您输入的值超过范围");
         return;
       }
+      this.curNow = event.target.value;
       this.$emit("curChange", this.curNow);
     },
     change(cur) {
