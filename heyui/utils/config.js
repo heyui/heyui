@@ -13,9 +13,7 @@ const config = {
     small: false,
     size: 10,
     sizes: [10, 20, 50, 100],
-    layout: {
-      default: 'total,pager,jumper,sizes'
-    }
+    layout: 'total,pager,jumper,sizes'
   },
   datepicker: {
     format: {

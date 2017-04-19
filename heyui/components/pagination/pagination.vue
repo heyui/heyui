@@ -76,7 +76,7 @@ export default {
     },
     layout: {
       type: String,
-      default: pageConfig.layout.default
+      default: pageConfig.layout
     }
   },
   data() {
