@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import HeyUI from '../heyui/index';
 import titleConfig from './js/config/title-config';
-import VueHighlightJS from 'vue-highlightjs';
+import VueHighlightJS from './js/vuehighlight';
 import 'highlight.js/styles/github-gist.css';
 
 import comHead from './components/common/header';

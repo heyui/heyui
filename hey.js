@@ -7,17 +7,14 @@ module.exports = {
     output: {
       "./*html": {
         entry: "./src/app",
-        commons: ['common']
+        commons: ['heyui', 'common']
       }
     },
     commonTrunk: {
-      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs', "hey-utils"]
+      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs', "hey-utils"],
+      heyui: ['./heyui/index']
     },
     global: {
-      Vue: "vue",
-      $: "jquery",
-      Utils: "hey-utils",
-      log: "hey-log"
     },
     globalVars: './static/css/var.less',
     devServer: {
