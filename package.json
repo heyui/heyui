@@ -1,8 +1,8 @@
 {
   "name": "heyui",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A UI components Library.",
-  "main": "index.js",
+  "main": "./build/heyui.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heyui/heyui.git"
@@ -19,7 +19,7 @@
     "popper.js": "^1.0.8",
     "hey-log": "0.0.4",
     "hey-utils": "0.0.14",
-    "manba": "0.0.17"
+    "manba": "0.0.18"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
