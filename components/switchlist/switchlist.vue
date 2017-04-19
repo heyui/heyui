@@ -4,6 +4,9 @@
   </div>
 </template>
 <script>
+import config from '../../utils/config';
+import utils from '../../utils/utils';
+
 export default {
   props: {
     small: {
@@ -15,6 +18,7 @@ export default {
       type: Boolean,
       default: false
     },
+    dict: String,
     value: [String, Boolean, Number]
   },
   data() {
@@ -31,9 +35,18 @@ export default {
   },
   computed: {
     arr() {
-      let arr = this.datas || {};
-      if (Utils.isArray(this.datas)) {
-        arr = Utils.toObject(this.datas);
+      if (!this.datas && !this.dict) {
+        log.error('Switchlist组件:datas或者dict参数最起码需要定义其中之一');
+        return [];
+      }
+      let datas = this.datas;
+      if (this.dict) {
+        datas = config.getDict(this.dict);
+      }
+
+      let arr = datas || {};
+      if (utils.isArray(datas)) {
+        arr = utils.toObject(datas);
       }
       return arr;
     }

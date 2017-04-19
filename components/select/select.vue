@@ -37,6 +37,9 @@ import Dropdown from '../../plugins/dropdown';
 
 const prefix = 'h-select';
 
+const keyField = config.getOption('dict', 'key_field');
+const titleField = config.getOption('dict', 'title_field');
+
 export default {
   props: {
     readonly: {
@@ -47,14 +50,12 @@ export default {
       type: Boolean,
       default: false
     },
-    datas: {
-      type: [Array, Object],
-      default: []
-    },
+    datas: [Array, Object],
     type: {
       type: [String],
       default: 'key'  //object
     },
+    dict: String,
     limit: {
       type: Number
     },
@@ -76,9 +77,9 @@ export default {
   },
   data() {
     return {
-      key: config.key_field,
-      title: config.title_field,
-      html: config.render_field,
+      key: keyField,
+      title: titleField,
+      html: "select_rander_html",
       codes: null,
       objects: null,
       // optionsMap: {}
@@ -195,32 +196,38 @@ export default {
       return optionsMap;
     },
     options() {
-      // config.key_field
-      // config.title_field
+      if (!this.datas && !this.dict) {
+        log.error('Select组件:datas或者dict参数最起码需要定义其中之一');
+        return [];
+      }
+      let datas = this.datas;
+      if (this.dict) {
+        datas = config.getDict(this.dict);
+      }
       let options = [];
-      if (utils.isObject(this.datas)) {
-        options = utils.toArray(this.datas, config.key_field, config.title_field);
-      } else if (utils.isArray(this.datas)) {
-        if (this.datas.length == 0) {
+      if (utils.isObject(datas)) {
+        options = utils.toArray(datas, keyField, titleField);
+      } else if (utils.isArray(datas)) {
+        if (datas.length == 0) {
           options = [];
         } else {
-          let data0 = this.datas[0];
+          let data0 = datas[0];
           if (utils.isObject(data0)) {
-            options = utils.copy(this.datas);
+            options = utils.copy(datas);
           } else {
-            options = this.datas.map((item) => {
-              return { [`${config.key_field}`]: item, [`${config.title_field}`]: item };
+            options = datas.map((item) => {
+              return { [`${keyField}`]: item, [`${titleField}`]: item };
             })
           }
         }
       }
       if (this.render) {
         options.forEach((item) => {
-          item[config.render_field] = this.render.call(null, item);
+          item[this.html] = this.render.call(null, item);
         })
       }
       if (!this.mutiple && this.nullOption) {
-        options.unshift({ [`${config.key_field}`]: null, [`${config.title_field}`]: '请选择', [`${config.render_field}`]: '请选择' });
+        options.unshift({ [`${keyField}`]: null, [`${titleField}`]: '请选择', [`${this.html}`]: '请选择' });
       }
       return options;
     }

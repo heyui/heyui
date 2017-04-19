@@ -52,6 +52,8 @@ const dateprefix = 'h-date';
 
 const viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 
+const options = config.getOption('datepicker');
+
 const startView = {
   year: 'year',
   month: 'month',
@@ -74,7 +76,7 @@ const DateFormatLength = {
   year: 4,
   month: 7,
   date: 10,
-  hour: 16,
+  hour: 13,
   minute: 16
 };
 
@@ -115,7 +117,7 @@ export default {
   },
   data() {
     return {
-      options: utils.extend({}, config.datetimeOptions, this.option),
+      options: utils.extend({}, options.datetimeOptions, this.option),
       today: manba(),
       view: startView[this.type], //month //year
     };
@@ -217,7 +219,7 @@ export default {
       }
     },
     weeks() {
-      return config.weeks;
+      return options.weeks;
     },
     dates() {
       let nowDate = this.nowView;
@@ -265,7 +267,7 @@ export default {
           dates.push(genData({
             date: manba([nowDate.year(), i, 1]),
             type: manba.MONTH,
-            show: config.months[i - 1],
+            show: options.months[i - 1],
             vm: this,
             isNowDays: true
           }));

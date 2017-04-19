@@ -9,7 +9,8 @@
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div v-if="!disabled" :class="datePickerCls"
+    <div v-if="!disabled"
+         :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container">
         <div v-if="shortcuts.length>0"
@@ -42,12 +43,19 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
 import dateBase from './date-base';
+
 const prefix = 'h-datetime';
-const dateprefix = 'h-date';
 
 const manbaType = {
-  'year': manba.YEAR, 'month': manba.MONTH, 'date': manba.DAY, 'datetime': manba.MINUTE, 'time': manba.MINUTE, 'datehour': manba.HOUR
+  year: manba.YEAR,
+  month: manba.MONTH,
+  date: manba.DAY,
+  datetime: manba.MINUTE,
+  time: manba.MINUTE,
+  datehour: manba.HOUR
 }
+
+const options = config.getOption('datepicker');
 
 export default {
   props: {
@@ -76,9 +84,9 @@ export default {
     value: String
   },
   data() {
-    let format = this.format || config.format[this.type];
+    let format = this.format || options.format[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
-      format = config.format.datetimesecond;
+      format = options.format.datetimesecond;
     }
     return {
       nowDate: '',
@@ -145,25 +153,30 @@ export default {
       this.setvalue(this.nowDate);
     },
     parse(value, initShow = true) {
-      try {
-        if (this.type == 'time' && value != '') {
-          value = `1980-01-01 ${value}`;
+      if (value != '' && !utils.isNull(value)) {
+        try {
+          if (this.type == 'time') {
+            value = `1980-01-01 ${value}`;
+          }
+          this.nowView = manba(value);
+          this.nowDate = this.nowView.format('k');
+          if (initShow) this.showDate = this.nowView.format(this.nowFormat);
+          return;
+        } catch (err) {
+          // log.error(err);
         }
-        this.nowView = manba(value);
-        this.nowDate = this.nowView.format('k');
-        if (initShow) this.showDate = this.nowView.format(this.nowFormat);
-      } catch (err) {
-        // log.error(err);
-        this.nowView = manba();
-        this.nowDate = '';
-        if (initShow) this.showDate = '';
       }
+
+      this.nowView = manba();
+      this.nowDate = '';
+      if (initShow) this.showDate = '';
     },
     hide() {
       this.dropdown.hide();
     },
     setvalue(string, isEnd = true) {
-      let value = string || '';
+      // log(string);
+      let value = manba(string).format(this.nowFormat);
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
@@ -184,7 +197,7 @@ export default {
       if (utils.isArray(shortcutsConfig)) {
         for (let s of shortcutsConfig) {
           if (utils.isString(s)) {
-            shortcuts.push(config.datePickerOptions.shortcuts[s]);
+            shortcuts.push(options.shortcuts[s]);
           } else if (utils.isObject(s)) {
             shortcuts.push(s);
           }
