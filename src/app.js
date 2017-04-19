@@ -17,6 +17,11 @@ require('../static/css/doc.less');
 
 Vue.use(VueHighlightJS)
 
+HeyUI.initDict({
+  select1: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+  simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
+});
+
 Vue.use(VueRouter);
 Vue.use(HeyUI);
 

@@ -58,6 +58,8 @@ import $Confirm from './plugins/confirm';
 import $Message from './plugins/message';
 import $Notice from './plugins/notice';
 
+import config from './utils/config';
+
 
 const components = {
   // Affix,
@@ -173,6 +175,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-export default Object.assign(components, {
+const HeyUI = Object.assign(components, {
   install
-});
+}, config);
+
+export default HeyUI;

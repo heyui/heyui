@@ -3,10 +3,11 @@ import utils from '../../utils/utils';
 import config from '../../utils/config';
 
 const prefixCls = 'h-modal';
+const hasDivider = config.getOption('modal', 'hasDivider');
 
 let Default = {
   middle: false,
-  hasDivider: config.modal.hasDivider
+  hasDivider
 }
 
 function Modal(originalParam) {

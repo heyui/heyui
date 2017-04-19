@@ -45,6 +45,9 @@ import utils from '../../utils/utils';
 
 const prefix = 'h-page';
 
+const keyField = config.getOption('dict', 'key_field');
+const titleField = config.getOption('dict', 'title_field');
+
 export default {
   props: {
     size: {
@@ -85,8 +88,8 @@ export default {
     return {
       sizesShow: this.sizes.map((item) => {
         return {
-          [config.key_field]: item,
-          [config.title_field]: `${item} 条/页`
+          [keyField]: item,
+          [titleField]: `${item} 条/页`
         }
       }),
       sizeNow: this.size,

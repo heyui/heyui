@@ -14,6 +14,7 @@ import config from '../../utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
+const hasDivider = config.getOption('modal', 'hasDivider');
 
 export default {
   props: {
@@ -27,7 +28,7 @@ export default {
     },
     hasDivider: {
       type: Boolean,
-      default: config.modal.hasDivider
+      default: hasDivider
     },
     closeOnMask: {
       type: Boolean,

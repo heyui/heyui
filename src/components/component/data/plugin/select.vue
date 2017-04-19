@@ -8,8 +8,8 @@
     </div>
     <h3>没有默认请选择选项</h3>
     <div>
-      <p>选中值：{{select4}}</p>
-      <div v-width="300"><Select v-model="select4" :datas="param4" :null-option="false"></Select></div>
+      <p>选中值：{{select1}}</p>
+      <div v-width="300"><Select v-model="select1" :datas="param1" :null-option="false"></Select></div>
     </div>
     <h3>多选</h3>
     <div>
@@ -19,8 +19,8 @@
 
     <h3>选择对象值</h3>
     <div>
-      <p>选中值：{{select1}}</p>
-      <div v-width="300"><Select v-model="select1" :datas="param1" type="object"></Select></div>
+      <p>选中值：{{select4}}</p>
+      <div v-width="300"><Select v-model="select4" :datas="param4" type="object"></Select></div>
     </div>
 
     <h3>多选对象值</h3>
@@ -42,6 +42,12 @@
       <div v-width="300"><Select v-model="select6" :datas="param6" :render="gen"></Select></div>
     </div>
 
+    <h3>使用全局Dict</h3>
+    <div>
+      <p>选中值：{{select8}}</p>
+      <div v-width="300"><Select v-model="select8" dict="select1" :mutiple="true" type="object"></Select></div>
+    </div>
+
     <h3>文本类型的下拉</h3>
     <p></p>
     <div>
@@ -58,19 +64,20 @@ export default {
   data() {
     return {
       select7: '',
+      select8: '',
       param7: ['选择1', '选择2', '选择3'],
-      select6: '',
-      param6: ['选择1', '选择2', '选择3'],
       select1: '',
       param1: ['选择1', '选择2', '选择3'],
       select2: [],
-      param2: [{ title: '选择1', key: 'a1' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+      param2: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       select3: [],
-      param3: [{ title: '选择1', key: 'a1' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+      param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       select4: null,
-      param4: [{ title: '选择1', key: 'a1' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+      param4: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       select5: [],
-      param5: [{ title: '选择1', key: 'a1' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }]
+      param5: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+      select6: '',
+      param6: ['选择1', '选择2', '选择3'],
     }
   },
   methods: {

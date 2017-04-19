@@ -81,9 +81,9 @@
           <FormItem label="日期"
                     :required="true"
                     prop="date">
-            <input type="text"
-                   placeholder="日期"
-                   v-model="data.date" />
+            <DatePicker
+                   placeholder="选择日期"
+                   v-model="data.date" ></DatePicker>
           </FormItem>
           <FormItem label="评分"
                     :required="true"

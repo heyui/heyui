@@ -3,6 +3,10 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-04-19</p><p>12:46</p></div>
+        <div slot="content">完成Dict字典机制</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-04-18</p><p>18:16</p></div>
         <div slot="content">分页控件开发完成</div>
       </TimelineItem>

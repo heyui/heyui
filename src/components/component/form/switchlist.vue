@@ -7,6 +7,9 @@
     <div><SwitchList v-model="value2" :datas="param2"></SwitchList></div>
     <p v-color:gray>{{value2}}</p>
     <div><SwitchList v-model="value2" :datas="param2" :disabled="true"></SwitchList></div>
+    <h3>Dict</h3>
+    <p v-color:gray>{{value3}}</p>
+    <div><SwitchList v-model="value3" dict="simple"></SwitchList></div>
   </div>
 </template>
 
@@ -16,6 +19,7 @@ export default {
   data() {
     return {
       value1: '选择1',
+      value3: 1,
       param1: ['选择1', '选择2', '选择3'],
       value2: '1',
       param2: { 1: '选择1', 2: '选择2', 3: '选择3' }

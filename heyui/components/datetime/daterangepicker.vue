@@ -74,8 +74,8 @@ const manbaType = {
   datehour: manba.HOUR
 }
 
-const options = config.daterangeOptions;
-const paramName = options.paramName;
+const options = config.getOption('datepicker');
+const paramName = options.daterangeOptions.paramName;
 
 export default {
   props: {
@@ -108,9 +108,9 @@ export default {
     value: Object
   },
   data() {
-    let format = this.format || config.format[this.type];
+    let format = this.format || options.format[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
-      format = config.format.datetimesecond;
+      format = options.format.datetimesecond;
     }
     return {
       nowDate: {
@@ -285,7 +285,7 @@ export default {
       if (utils.isArray(shortcutsConfig)) {
         for (let s of shortcutsConfig) {
           if (utils.isString(s)) {
-            shortcuts.push(config.datePickerOptions.shortcuts[s]);
+            shortcuts.push(options.shortcuts[s]);
           } else if (utils.isObject(s)) {
             shortcuts.push(s);
           }

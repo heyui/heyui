@@ -18,6 +18,10 @@
     <div><Checkbox v-model="value1" :datas="param1" @input="onchange" class="test1111"></Checkbox></div>
     <div><Checkbox v-model="value1" :datas="param1" :disabled="true"></Checkbox></div>
     <p v-color:gray>{{value1}}</p>
+
+    <h3>Dict</h3>
+    <p v-color:gray>{{value3}}</p>
+    <div><Checkbox v-model="value3" dict="simple"></Checkbox></div>
   </div>
 </template>
 <script>
@@ -26,6 +30,7 @@ export default {
   data() {
     return {
       checks: [],
+      value3: [],
       value1: ['选择1'],
       param1: ['选择1', '选择2', '选择3'],
     }

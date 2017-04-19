@@ -1,9 +1,15 @@
 <template>
   <div :class="noticeCls">
-    <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
+    <div class="h-notify-mask"
+         v-if="hasMask"
+         @click="setvalue(true)"></div>
     <div :class="containerCls">
-      <span class="h-notify-close h-icon-close" @click="setvalue(false)"></span>
-      <component :is="nowComponent" :class="contentCls" :param="propsData" @close="close"></component>
+      <span class="h-notify-close h-icon-close"
+            @click="setvalue(false)"></span>
+      <component :is="nowComponent"
+                 :class="contentCls"
+                 :param="propsData"
+                 @close="close"></component>
     </div>
   </div>
 </template>
@@ -12,6 +18,7 @@ import config from '../../utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
+const hasDivider = config.getOption('modal', 'hasDivider');
 
 export default {
   props: {
@@ -25,7 +32,7 @@ export default {
     },
     hasDivider: {
       type: Boolean,
-      default: config.modal.hasDivider
+      default: hasDivider
     },
     closeOnMask: {
       type: Boolean,
@@ -40,7 +47,7 @@ export default {
       default: false
     },
     component: Object,
-    propsData: Object
+    propsData: [Boolean, Object, String, Array]
   },
   watch: {
     value() {
