@@ -41,10 +41,10 @@
 </template>
 <script>
 import config from '../../utils/config';
-import utils from '../../utils/utils';
 
 const prefix = 'h-page';
 
+const pageConfig = config.getOption('page');
 const keyField = config.getOption('dict', 'key_field');
 const titleField = config.getOption('dict', 'title_field');
 
@@ -52,11 +52,11 @@ export default {
   props: {
     size: {
       type: Number,
-      default: utils.getKeyValue(config, "page.size")
+      default: pageConfig.size
     },
     sizes: {
       type: Array,
-      default: () => utils.getKeyValue(config, "page.sizes")
+      default: () => pageConfig.sizes
     },
     align: {
       type: String,
@@ -72,11 +72,11 @@ export default {
     },
     small: {
       type: Boolean,
-      default: utils.getKeyValue(config, "page.small")
+      default: pageConfig.small
     },
     layout: {
       type: String,
-      default: utils.getKeyValue(config, "page.layout.default") //small
+      default: pageConfig.layout.default
     }
   },
   data() {

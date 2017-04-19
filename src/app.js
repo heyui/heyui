@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+// import HeyUI from 'heyui';
 import App from './App.vue';
+
 import HeyUI from '../heyui/index';
 import titleConfig from './js/config/title-config';
 import VueHighlightJS from './js/vuehighlight';

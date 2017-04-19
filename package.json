@@ -1,5 +1,5 @@
 {
-  "name": "heyui",
+  "name": "heyui-doc",
   "version": "0.0.1",
   "description": "A UI components Library.",
   "main": "index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "hey-log": "0.0.4",
     "hey-utils": "0.0.14",
+    "heyui": "0.0.16",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
     "jquery-smooth-scroll": "^2.1.2",
