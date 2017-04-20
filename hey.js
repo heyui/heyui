@@ -11,7 +11,7 @@ module.exports = {
       }
     },
     commonTrunk: {
-      common: ['jquery', 'vue', 'vue-router', 'vue-highlightjs', "hey-utils", 'heyui']
+      common: ['jquery', 'vue', 'vue-router', "hey-utils", 'heyui']
     },
     global: {
       '$': "jquery"
