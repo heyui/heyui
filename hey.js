@@ -11,10 +11,11 @@ module.exports = {
       }
     },
     commonTrunk: {
-      common: ['jquery', 'vue', 'vue-router', "hey-utils", 'heyui']
+      common: ['jquery', 'vue', 'vue-router', "hey-utils", 'heyui', 'hey-log']
     },
     global: {
-      '$': "jquery"
+      '$': "jquery",
+      'log': "hey-log"
     },
     globalVars: './static/css/var.less',
     devServer: {
