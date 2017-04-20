@@ -21,7 +21,7 @@
     <p>我们采用了一套最基本的icon库。</p>
     <h3>简单的调用</h3>
     <p>利用基本的class<code>.h-icon-{name}</code>进行调用</p>
-    <example demo="icon"></example>
+    <example demo="basic/icon"></example>
 
     <h3>图标库</h3>
     <Row :space="15">

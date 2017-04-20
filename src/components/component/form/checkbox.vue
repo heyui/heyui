@@ -1,51 +1,51 @@
 <template>
   <div class="doc">
-    <div class="bottom-line"><label><input type="checkbox" value="3" :indeterminate="checks.length>0&&checks.length<3" :checked="checks.length==3"/>全选</label></div>
-    <div class="h-checkbox">
-      <label><input type="checkbox" value="1" v-model="checks"/>测试1</label>
-      <label><input type="checkbox" value="2" v-model="checks"/>测试2</label>
-      <label><input type="checkbox" value="3" v-model="checks"/>测试3</label>
-    </div>
-    <br>
-    <div class="h-checkbox" disabled>
-      <label><input type="checkbox" disabled value="1" v-model="checks"/>测试1</label>
-      <label><input type="checkbox" disabled value="2" v-model="checks"/>测试2</label>
-      <label><input type="checkbox" disabled value="3" v-model="checks"/>测试3</label>
-    </div>
-    <br>
-    {{checks}}
-    <br>
-    <div><Checkbox v-model="value1" :datas="param1" @input="onchange" class="test1111"></Checkbox></div>
-    <div><Checkbox v-model="value1" :datas="param1" :disabled="true"></Checkbox></div>
-    <p v-color:gray>{{value1}}</p>
+    <h2>Checkbox 多选框</h2>
+    <h3>基本</h3>
+    <p>Hey UI将统一所有的checkbox样式。</p>
+    <example demo="form/checkbox1"></example>
 
-    <h3>Dict</h3>
-    <p v-color:gray>{{value3}}</p>
-    <div><Checkbox v-model="value3" dict="simple"></Checkbox></div>
+    <h3>禁用</h3>
+    <example demo="form/checkbox2"></example>
+
+    <h3>组件式调用</h3>
+    <p>推荐使用数据模式的checkbox选择器，使用js实现整个交互，兼容性更高。使用 <code>v-model</code> 以及 <code>datas</code>参数完成整体的调用。</p>
+    <example demo="form/checkbox3"></example>
+
+    <h3>组件式数据字典调用</h3>
+    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/guide/config">全局配置</router-link>。</p>
+    <example demo="form/checkbox4"></example>
+
+    <h3>Checkbox 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>datas</td>
+        <td>数据字典</td>
+        <td>Array,Object</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>dict</td>
+        <td>调用配置好的字典库，详情请至<router-link to="/guide/config">全局配置</router-link></td>
+        <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>是否禁用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+    </table>
   </div>
 </template>
-<script>
-
-export default {
-  data() {
-    return {
-      checks: [],
-      value3: [],
-      value1: ['选择1'],
-      param1: ['选择1', '选择2', '选择3'],
-    }
-  },
-  methods: {
-    onchange(value) {
-      // console.log(value);
-    }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      $(".test1111", this.$el).on("setvalue", (event) => {
-        log(event.detail);
-      })
-    });
-  }
-}
-</script>

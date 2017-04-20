@@ -10,7 +10,9 @@ export default {
       value = value.split(connector);
     }
     if (!utils.isNull(value) && value !== '' && key) {
-      value = [value];
+      if(!utils.isArray(value)){
+        value = [value];
+      }
     }
     if (value.length <= 0) {
       return '';

@@ -217,6 +217,10 @@ export default {
     name: 'themes',
     component: (resolve) => require(['../../components/guide/themes'], resolve)
   }, {
+    path: 'config',
+    name: 'config',
+    component: (resolve) => require(['../../components/guide/config'], resolve)
+  }, {
     path: 'logs',
     name: 'logs',
     component: (resolve) => require(['../../components/guide/logs'], resolve)

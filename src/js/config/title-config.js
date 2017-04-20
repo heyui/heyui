@@ -54,6 +54,7 @@ const titles = {
   'guideguide': '入门',
   'quickstart': '快速上手',
   'themes': '样式替换',
+  'config': '全局配置',
   'logs': '日志',
   'home': '首页',
   'component': '组件',

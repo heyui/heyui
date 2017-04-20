@@ -19,7 +19,7 @@
             <li><router-link to="/component/form/checkbox">Checkbox 多选</router-link></li>
             <li><router-link to="/component/form/switch">Switch 开关</router-link></li>
             <li><router-link to="/component/form/switchlist">SwitchList 选项</router-link></li>
-            <li><router-link to="/component/form/slider">Slider 滑块</router-link></li>
+            <!-- <li><router-link to="/component/form/slider">Slider 滑块</router-link></li> -->
             <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
             <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul>
