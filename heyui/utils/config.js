@@ -76,7 +76,7 @@ const func = {
     }
     return value;
   },
-  setOption(name, value) {
+  config(name, value) {
     if (utils.isNull(name)) {
       return false;
     }

@@ -19,8 +19,12 @@ require('../static/css/doc.less');
 
 Vue.use(VueHighlightJS)
 
+
+HeyUI.config('dict.key_field', "code");
+HeyUI.config('dict.title_field', "title");
+
 HeyUI.initDict({
-  select1: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+  select1: [{ title: '选择1', code: 'a1', other: '其他值' }, { title: '选择2', code: 'a2' }, { title: '选择3', code: 'a3' }],
   simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
 });
 
@@ -40,7 +44,6 @@ let routerParam = {
     component: (resolve) => require(['./components/home'], resolve)
   }, {
     path: '/component',
-    name: 'component',
     component: (resolve) => require(['./components/component'], resolve),
     children: routerConfig.component
   }, {

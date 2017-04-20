@@ -6,7 +6,7 @@
           <li class="title">样式</li>
           <ul>
             <li class="title">Basic</li>
-            <li><router-link to="/component/basic/grid">Grid 布局</router-link></li>
+            <li><router-link to="/component/basic/grid" :class="{'router-link-active': $route.name =='basic'}">Grid 布局</router-link></li>
             <li><router-link to="/component/basic/color">Color 色彩</router-link></li>
             <li><router-link to="/component/basic/icon">Icon 图标</router-link></li>
             <li><router-link to="/component/basic/extend">Extend 扩展</router-link></li>
@@ -43,7 +43,7 @@
             <li><router-link to="/component/data/view/searchinput">SearchInput 搜索框</router-link></li>
             <li><router-link to="/component/data/view/table">Table 表格</router-link></li>
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
-            <li><router-link to="/component/data/view/spin">Spin 加载中</router-link></li>
+            <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
             <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
             <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li>

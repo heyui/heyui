@@ -6,7 +6,7 @@
     <div><Radio v-model="value2" :datas="param2"></Radio></div>
     <p v-color:gray>{{value2}}</p>
     <div><Radio v-model="value2" :datas="param2" :disabled="true"></Radio></div>
-    <p v-color:gray>{{value3}}</p>
+    <p v-color:gray>{{value3}}:{{value3 | dictMapping('simple')}}</p>
     <div><Radio v-model="value3" dict="simple"></Radio></div>
   </div>
 </template>

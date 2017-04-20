@@ -1,7 +1,7 @@
 export default {
   component: [{
     path: '',
-    name: 'basicGrid',
+    name: 'basic',
     component: (resolve) => require(['../../components/component/basic/grid'], resolve)
   }, {
     path: 'basic/grid',
@@ -116,9 +116,9 @@ export default {
     name: 'viewPage',
     component: (resolve) => require(['../../components/component/data/view/page'], resolve)
   }, {
-    path: 'data/view/spin',
-    name: 'viewSpin',
-    component: (resolve) => require(['../../components/component/data/view/spin'], resolve)
+    path: 'data/view/loading',
+    name: 'viewLoading',
+    component: (resolve) => require(['../../components/component/data/view/loading'], resolve)
   }, {
     path: 'data/view/tag',
     name: 'viewTag',
@@ -206,7 +206,7 @@ export default {
     component: (resolve) => require(['../../components/guide/guide'], resolve)
   }, {
     path: 'guide',
-    name: 'guide',
+    name: 'guideguide',
     component: (resolve) => require(['../../components/guide/guide'], resolve)
   }, {
     path: 'quickstart',

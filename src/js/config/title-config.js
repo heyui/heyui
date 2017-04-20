@@ -1,4 +1,5 @@
 const titles = {
+  'basic': '组件',
   'basicGrid': 'Grid 布局',
   'basicColor': 'Color 色彩',
   'basicIcon': 'Icon 图标',
@@ -27,7 +28,7 @@ const titles = {
   'viewSearchinput': 'SearchInput 搜索框',
   'viewTable': 'Table 表格',
   'viewPage': 'Pagination 分页',
-  'viewSpin': 'Spin 加载中',
+  'viewLoading': 'Loading 加载中',
   'viewTag': 'Tag 标签',
   'viewProgress': 'Progress 进度条',
   'viewCircle': 'Circle 进度环',
@@ -50,6 +51,7 @@ const titles = {
   'otherAffix': 'Affix 图钉',
   'otherBacktop': 'BackTop 返回顶部',
   'guide': '入门',
+  'guideguide': '入门',
   'quickstart': '快速上手',
   'themes': '样式替换',
   'logs': '日志',

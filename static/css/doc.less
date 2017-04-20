@@ -1,4 +1,11 @@
-@import (less) "../../heyui/themes/common/mixins.less";
+.clearfix() {
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 body {
   color: @dark-color;
 }

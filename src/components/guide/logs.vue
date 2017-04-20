@@ -3,6 +3,14 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-04-20</p><p>17:59</p></div>
+        <div slot="content">Loading</div>
+      </TimelineItem>
+      <TimelineItem>
+        <div slot="time"><p>2017-04-20</p><p>16:00</p></div>
+        <div slot="content">添加Dict对应的dictMapping的filter</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-04-19</p><p>12:46</p></div>
         <div slot="content">完成Dict字典机制</div>
       </TimelineItem>

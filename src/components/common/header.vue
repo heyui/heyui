@@ -18,13 +18,16 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
       pass: '',
       error: false
     }
   },
   methods: {
+    go(link) {
+      this.$router.go(link);
+    }
   }
 }
 </script>
