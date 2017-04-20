@@ -1,5 +1,9 @@
 export default {
   component: [{
+    path: '',
+    name: 'basicGrid',
+    component: (resolve) => require(['../../components/component/basic/grid'], resolve)
+  }, {
     path: 'basic/grid',
     name: 'basicGrid',
     component: (resolve) => require(['../../components/component/basic/grid'], resolve)
@@ -197,6 +201,10 @@ export default {
     component: (resolve) => require(['../../components/component/other/backtop'], resolve)
   }],
   guide: [{
+    path: '',
+    name: 'guide',
+    component: (resolve) => require(['../../components/guide/guide'], resolve)
+  }, {
     path: 'guide',
     name: 'guide',
     component: (resolve) => require(['../../components/guide/guide'], resolve)
