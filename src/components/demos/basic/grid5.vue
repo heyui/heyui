@@ -1,9 +1,9 @@
-<style type="text/css" scoped>
+<style lang="less" scoped>
 .h-row-flex>div {
   color: #FFF;
   border-radius: 3px;
   text-align: center;
-  background-color: #808080;
+  background-color: @gray-color;
 }
 </style>
 <template>

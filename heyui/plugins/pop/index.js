@@ -112,7 +112,7 @@ class Pop {
     if (content.nodeType === 1) {
       allowHtml && contentNode.appendChild(content);
       content.style.display = "block";
-    } else if (Popper.Utils.isFunction(content)) {
+    } else if (utils.isFunction(content)) {
       const contentText = content.call(reference);
       allowHtml ? (contentNode.innerHTML = contentText) : (contentNode.innerText = contentText);
     } else {

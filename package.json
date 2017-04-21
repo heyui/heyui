@@ -31,7 +31,7 @@
     "vue-router": "^2.3.0"
   },
   "devDependencies": {
-    "eslint": "^3.8.1",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",
     "eslint-plugin-import": "^2.0.1",
