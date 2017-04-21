@@ -37,9 +37,6 @@ import Dropdown from '../../plugins/dropdown';
 
 const prefix = 'h-select';
 
-const keyField = config.getOption('dict', 'key_field');
-const titleField = config.getOption('dict', 'title_field');
-
 export default {
   props: {
     readonly: {
@@ -77,8 +74,8 @@ export default {
   },
   data() {
     return {
-      key: keyField,
-      title: titleField,
+      key: config.getOption('dict', 'key_field'),
+      title: config.getOption('dict', 'title_field'),
       html: "select_rander_html",
       codes: null,
       objects: null,
@@ -206,7 +203,7 @@ export default {
       }
       let options = [];
       if (utils.isObject(datas)) {
-        options = utils.toArray(datas, keyField, titleField);
+        options = utils.toArray(datas, this.key, this.title);
       } else if (utils.isArray(datas)) {
         if (datas.length == 0) {
           options = [];
@@ -216,7 +213,7 @@ export default {
             options = utils.copy(datas);
           } else {
             options = datas.map((item) => {
-              return { [`${keyField}`]: item, [`${titleField}`]: item };
+              return { [`${this.key}`]: item, [`${this.title}`]: item };
             })
           }
         }
@@ -227,7 +224,7 @@ export default {
         })
       }
       if (!this.mutiple && this.nullOption) {
-        options.unshift({ [`${keyField}`]: null, [`${titleField}`]: '请选择', [`${this.html}`]: '请选择' });
+        options.unshift({ [`${this.key}`]: null, [`${this.title}`]: '请选择', [`${this.html}`]: '请选择' });
       }
       return options;
     }
