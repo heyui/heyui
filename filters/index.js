@@ -1,7 +1,6 @@
 import utils from '../utils/utils'
 import config from '../utils/config'
 
-
 export default {
   dictMapping(value, key, connector) {
     let dict = config.getDict(key);
@@ -10,7 +9,7 @@ export default {
       value = value.split(connector);
     }
     if (!utils.isNull(value) && value !== '' && key) {
-      if(!utils.isArray(value)){
+      if (!utils.isArray(value)) {
         value = [value];
       }
     }
