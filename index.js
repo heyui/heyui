@@ -30,7 +30,7 @@ import Pagination from './components/pagination';
 import Radio from './components/radio';
 import Rate from './components/rate';
 // import Slider from './components/slider';
-// import Spin from './components/spin';
+import Loading from './components/Loading';
 // import Steps from './components/steps';
 import Switch from './components/switch';
 // import Table from './components/table';
@@ -57,6 +57,9 @@ import $Modal from './plugins/modal';
 import $Confirm from './plugins/confirm';
 import $Message from './plugins/message';
 import $Notice from './plugins/notice';
+import $Loading from './plugins/loading';
+
+import filters from './filters';
 
 import config from './utils/config';
 
@@ -117,7 +120,7 @@ const components = {
   hSelect: Select,
   Select,
   // Slider,
-  // Spin,
+  Loading,
   // Step: Steps.Step,
   // Steps,
   hSwitch: Switch,
@@ -126,8 +129,6 @@ const components = {
   // Tabs: Tabs,
   // TabPane: Tabs.Pane,
   // Tag,
-  // Timeline,
-  // TimelineItem: Timeline.Item,
   // TimePicker,
   // Tooltip,
   // Transfer,
@@ -145,6 +146,14 @@ const directives = {
   tooltip
 }
 
+const prototypes = {
+  $Message,
+  $Modal,
+  $Confirm,
+  $Notice,
+  $Loading
+}
+
 
 const install = function (Vue, opts = {}) {
   // locale.use(opts.locale);
@@ -159,16 +168,17 @@ const install = function (Vue, opts = {}) {
     Vue.component(key, components[key]);
   });
 
+  Object.keys(filters).forEach((key) => {
+    Vue.filter(key, filters[key]);
+  });
 
   Object.keys(directives).forEach((key) => {
     Vue.directive(key, directives[key]);
   });
 
-  // Vue.prototype.$Loading = LoadingBar;
-  Vue.prototype.$Message = $Message;
-  Vue.prototype.$Modal = $Modal;
-  Vue.prototype.$Confirm = $Confirm;
-  Vue.prototype.$Notice = $Notice;
+  Object.keys(prototypes).forEach((key) => {
+    Vue.prototype[key] = prototypes[key];
+  });
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -177,6 +187,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, config);
+}, prototypes, config);
 
 export default HeyUI;

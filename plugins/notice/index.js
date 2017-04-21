@@ -46,9 +46,9 @@ function Notice(originalParam) {
 }
 
 function notice(param, type) {
-  if (Utils.isString(param)) {
+  if (utils.isString(param)) {
     return Notice({ content: param, type });
-  } else if (Utils.isObject(param)) {
+  } else if (utils.isObject(param)) {
     if (type) param.type = type;
     return Notice(param);
   }

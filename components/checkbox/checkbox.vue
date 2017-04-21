@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     setvalue(key) {
+      if(this.disabled)return;
       let index = this.check(key);
       if (index > -1) {
         this.value.splice(index, 1);

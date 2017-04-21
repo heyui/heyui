@@ -40,7 +40,8 @@ export default {
   },
   data() {
     return {
-      validResult: null
+      validResult: null,
+      config: false
     };
   },
   mounted() {
@@ -52,6 +53,10 @@ export default {
         this.trigger(event);
       });
     });
+    let parent = this.getParent();
+    if(this.prop){
+      this.config = parent.fRules.required.includes(this.prop);
+    }
   },
   methods: {
     getParent() {
@@ -121,7 +126,7 @@ export default {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
-        [`${prefixCls}-required`]: this.required,
+        [`${prefixCls}-required`]: this.required || this.config,
         [`${prefixCls}-valid-error`]: !!this.validResult,
         [`${prefixCls}-no-padding`]: !!this.noPadding
       }

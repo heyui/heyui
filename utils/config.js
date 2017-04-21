@@ -76,6 +76,13 @@ const func = {
     }
     return value;
   },
+  config(name, value) {
+    if (utils.isNull(name)) {
+      return false;
+    }
+    utils.setKeyValue(config, name, value);
+    return true;
+  },
   initDict(objects) {
     Object.assign(config.dict.dicts, objects);
   },

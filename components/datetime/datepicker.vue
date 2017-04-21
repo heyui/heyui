@@ -30,6 +30,8 @@
   
       <div class="h-date-footer"
            v-if="hasConfirm">
+        <button class="h-btn h-btn-text"
+                @click="setvalue('')">清除</button>
         <button class="h-btn h-btn-primary h-btn-s"
                 @click="hide">确定</button>
       </div>
@@ -140,12 +142,12 @@ export default {
     changeEvent(event) {
       let value = event.target.value;
       this.parse(value);
-      if (utils.isObject(this.option) && this.type != "time") {
+      if (this.nowDate && utils.isObject(this.option) && this.type != "time") {
         let disabled = false;
         let type = manbaType[this.type];
-        if (this.option.start && this.nowView.distance(this.option.start, type) < 0) disabled = this.option.start;
-        if (this.option.end && !disabled && this.nowView.distance(this.option.end, type) > 0) disabled = this.option.end;
-        if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowView)) disabled = '';
+        if (this.option.start && this.nowDate.distance(this.option.start, type) < 0) disabled = this.option.start;
+        if (this.option.end && !disabled && this.nowDate.distance(this.option.end, type) > 0) disabled = this.option.end;
+        if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowDate)) disabled = '';
         if (disabled !== false) {
           this.parse(disabled);
         }
@@ -176,7 +178,10 @@ export default {
     },
     setvalue(string, isEnd = true) {
       // log(string);
-      let value = manba(string).format(this.nowFormat);
+      let value = string;
+      if(string != ''){
+        value = manba(string).format(this.nowFormat);
+      }
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);

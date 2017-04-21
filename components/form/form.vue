@@ -15,14 +15,21 @@ export default {
       default: "single" //inline,single,twocolumn
     },
     model: [Object, Array],
-    labelWidth: Number,
+    labelWidth: {
+      type: Number,
+      default: 80
+    },
     rules: Object,
     labelPosition: String
   },
   data() {
     return {
       // errorMessages: {}
+
     };
+  },
+  beforeMount() {
+
   },
   methods: {
     validField(prop) {
@@ -30,7 +37,7 @@ export default {
       let value = utils.getKeyValue(this.model, prop);
       // log(prop);
       let ruleKey = prop.replace(/\[\w+\]/, "[]");
-      let rule = (this.rules || { required: [] }).required.includes(ruleKey);
+      let rule = this.fRules.required.includes(ruleKey);
       // log(rule);
       // this.clearValidField(prop);
       if (rule && (utils.isNull(value) || value == '')) {
@@ -42,6 +49,9 @@ export default {
     }
   },
   computed: {
+    fRules() {
+      return this.rules || { required: [] };
+    },
     formCls() {
       return {
         [`${prefixCls}`]: true,
