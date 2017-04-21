@@ -1,12 +1,8 @@
-// es6 polyfill
-// import 'core-js/fn/array/find-index';
-
 // import Affix from './components/affix';
 // import Alert from './components/alert';
 // import BackTop from './components/back-top';
 // import Badge from './components/badge';
 // import Breadcrumb from './components/breadcrumb';
-// import Button from './components/button';
 // import Card from './components/card';
 // import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
@@ -154,8 +150,7 @@ const prototypes = {
   $Loading
 }
 
-
-const install = function (Vue, opts = {}) {
+const install = function (Vue) {
   // locale.use(opts.locale);
   // locale.i18n(opts.i18n);
 
