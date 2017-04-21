@@ -1,3 +1,5 @@
+git add -A
+git commit -m '打包至gh-pages暂时commit'
 echo "开始打包代码"
 hey b
 echo "打包代码成功"
