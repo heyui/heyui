@@ -1,11 +1,12 @@
-@modal-prefix: ~"@{prefix}modal";
-@notify-prefix: ~"@{prefix}notify";
+@modal-cls: ~"@{prefix}modal";
+@notify-cls: ~"@{prefix}notify";
 @modal-padding: 15px;
-.@{modal-prefix} {
+.@{modal-cls} {
     z-index: @zindex-modal;
     position: absolute;
-    .@{notify-prefix} {
+    .@{notify-cls} {
         &-container {
+            margin-bottom: 20px;
             min-width: 350px;
             header {
                 min-height: 40px;
@@ -20,13 +21,23 @@
         }
         &-content {
             padding: 10px @modal-padding;
-            &.@{notify-prefix}-content-component{
+            &.@{notify-cls}-content-component{
                 padding: 0;
             }
         }
     }
 
-    &.@{notify-prefix} {
+    &.@{notify-cls} {
+
+        &-has-mask{
+            .absolute();
+            overflow: auto;
+            .@{notify-cls} {
+                &-container {
+                    position: absolute;
+                }
+            }
+        }
 
         &-has-divider{
             header{
@@ -37,7 +48,7 @@
             }
         }
         &-show {
-            .@{notify-prefix}-container-center {
+            .@{notify-cls}-container-center {
                 top: 50%;
                 transform: translate(-50%, -50%);
             }

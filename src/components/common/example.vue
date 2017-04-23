@@ -1,6 +1,6 @@
 <template>
   <div class="demo-box">
-    <div class="demo">
+    <div class="demo" v-if="noDemo!==true">
       <component :is="demo"></component>
     </div>
     <pre v-highlightjs="sourcecode" :class="{'expand':expand}"><code class="html"></code></pre>
@@ -11,7 +11,7 @@
 
 import components from '../demos/demos';
 export default {
-  props:['demo'],
+  props:['demo','noDemo'],
   data() {
       return {
         sourcecode:'',

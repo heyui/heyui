@@ -152,6 +152,9 @@ export default {
       this.view = view;
       this.$emit('changeView');
     },
+    resetView(){
+      this.view = startView[this.type];
+    },
     updateView(typeString, num) {
       let type = manba.DAY;
       if (typeString == 'month') {

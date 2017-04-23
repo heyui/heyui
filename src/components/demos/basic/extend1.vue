@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>颜色</h4>
+    <blockquote>颜色</blockquote>
     <div>
       <div>
         <span class="primary-color">主色系</span>
@@ -33,12 +33,13 @@
         <span class="bg-gray4-color">背景灰4</span>
       </div>
     </div>
-    <h4>对齐方式</h4>
+    <blockquote>对齐方式</blockquote>
     <div>
       <div class="text-left">左对齐</div>
       <div class="text-center">居中对齐</div>
       <div class="text-right">右对齐</div>
     </div>
-    <h4 class="bottom-line">边框底线</h4>
+    <blockquote>边框底线</blockquote>
+    <div class="bottom-line"></div>
   </div>
 </template>

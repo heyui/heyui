@@ -2,59 +2,34 @@
   <div class="doc">
     <h2>Select 下拉选择</h2>
     <h3>普通下拉选择</h3>
-    <div>
-      <p>选中值：{{select6}}</p>
-      <div v-width="300"><Select v-model="select6" :datas="param6"></Select></div>
-    </div>
-    <h3>没有默认请选择选项</h3>
-    <div>
-      <p>选中值：{{select1}}</p>
-      <div v-width="300"><Select v-model="select1" :datas="param1" :null-option="false"></Select></div>
-    </div>
+    <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/guide/config">全局配置</router-link></p>
+    <example demo="dataplugins/select1"></example>
+    
+    <h3>没有默认“请选择”选项</h3>
+    <example demo="dataplugins/select2"></example>
+
     <h3>多选</h3>
-    <div>
-      <p>选中值：{{select5}}</p>
-      <div v-width="300"><Select v-model="select5" :datas="param5" :mutiple="true"></Select></div>
-    </div>
+    <example demo="dataplugins/select3"></example>
 
     <h3>选择对象值</h3>
-    <div>
-      <p>选中值：{{select4}}</p>
-      <div v-width="300"><Select v-model="select4" :datas="param4" type="object"></Select></div>
-    </div>
+    <example demo="dataplugins/select4"></example>
 
     <h3>多选对象值</h3>
-    <div>
-      <p>选中值：{{select3}}</p>
-      <div v-width="300"><Select v-model="select3" :datas="param3" :mutiple="true" type="object"></Select></div>
-    </div>
+    <example demo="dataplugins/select5"></example>
 
     <h3>限制数量</h3>
     <p>最多选中2个</p>
-    <div>
-      <p>选中值：{{select2}}</p>
-      <div v-width="300"><Select v-model="select2" :datas="param2" :mutiple="true" :limit="2"></Select></div>
-    </div>
+    <example demo="dataplugins/select6"></example>
 
     <h3>自定义</h3>
-    <div>
-      <p>选中值：{{select6}}</p>
-      <div v-width="300"><Select v-model="select6" :datas="param6" :render="gen"></Select></div>
-    </div>
+    <example demo="dataplugins/select7"></example>
 
     <h3>使用全局Dict</h3>
-    <div>
-      <p>选中值：{{select8}}</p>
-      <div v-width="300"><Select v-model="select8" dict="select1" :mutiple="true" type="object"></Select></div>
-    </div>
+    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/guide/config">全局配置</router-link>。</p>
+    <example demo="dataplugins/select8"></example>
 
     <h3>文本类型的下拉</h3>
-    <p></p>
-    <div>
-      <p>选中值：{{select7}}</p>
-      <div>状态：<Select v-model="select7" :datas="param7" :no-border="true" :null-option="false"></Select>&nbsp;&nbsp;<span class='text-hover'>下载</span></div>
-    </div>
-    
+    <example demo="dataplugins/select9"></example>
   </div>
 </template>
 
@@ -63,27 +38,9 @@
 export default {
   data() {
     return {
-      select7: '',
-      select8: '',
-      param7: ['选择1', '选择2', '选择3'],
-      select1: '',
-      param1: ['选择1', '选择2', '选择3'],
-      select2: [],
-      param2: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-      select3: [],
-      param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-      select4: null,
-      param4: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-      select5: [],
-      param5: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-      select6: '',
-      param6: ['选择1', '选择2', '选择3'],
     }
   },
   methods: {
-    gen(data) {
-      return `<p>标题：${data.title}<span style="float:right" class='gray1-color'>补充</span></p><p class='gray1-color'>描述：${data.title}</p>`;
-    }
   },
   components: {}
 }

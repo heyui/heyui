@@ -5,15 +5,14 @@
         <ul>
           <li class="title">样式</li>
           <ul>
-            <li class="title">Basic</li>
             <li><router-link to="/component/basic/grid" :class="{'router-link-active': $route.name =='basic'}">Grid 布局</router-link></li>
             <li><router-link to="/component/basic/color">Color 色彩</router-link></li>
             <li><router-link to="/component/basic/icon">Icon 图标</router-link></li>
             <li><router-link to="/component/basic/extend">Extend 扩展</router-link></li>
             <li><router-link to="/component/basic/button">Button 按钮</router-link></li>
           </ul>
+          <li class="title">Form</li>
           <ul>
-            <li class="title">Form</li>
             <li><router-link to="/component/form/input">InputTextarea 输入框</router-link></li>
             <li><router-link to="/component/form/radio">Radio 单选</router-link></li>
             <li><router-link to="/component/form/checkbox">Checkbox 多选</router-link></li>
@@ -23,7 +22,7 @@
             <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
             <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul>
-          <!-- <li class="title">Data</li>
+           <li class="title">Data</li>
           <ul>
             <li class="title">Plugin</li>
             <li><router-link to="/component/data/plugin/select">Select 下拉选择</router-link></li>
@@ -32,12 +31,12 @@
             <li><router-link to="/component/data/plugin/time">TimePicker 时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
-            <li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
+            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
             <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>
             <li><router-link to="/component/data/plugin/taginput">TagInput 标签</router-link></li>
             <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
-            <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>
-          </ul> -->
+            <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
+          </ul> 
           <ul>
             <li class="title">View</li>
             <!-- <li><router-link to="/component/data/view/searchinput">SearchInput 搜索框</router-link></li>

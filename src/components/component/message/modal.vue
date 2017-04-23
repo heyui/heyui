@@ -1,100 +1,35 @@
 <template>
   <div class="doc">
     <h2>Modal 弹出框</h2>
-    <p><button class="h-btn" @click="open1 = true">打开弹出框</button></p>
-    <p><button class="h-btn" @click="open2 = true">打开无遮罩弹出框</button></p>
-    <p><button class="h-btn" @click="open3 = true">点击遮罩无法关闭</button></p>
-    <p><button class="h-btn" @click="open4 = true">打开居中的弹出框</button></p>
-    <p><button class="h-btn" @click="confirm2">使用方法调用Confirm</button></p>
-    <p><button class="h-btn" @click="modal">使用方法调用Modal</button></p>
-    <p><button class="h-btn" @click="modal2">使用方法调用Modal2</button></p>
-    <p><button class="h-btn" @click="modalComponent">调用组件式的Modal</button></p>
-    <Modal v-model="open1">
-      <div slot="header">标题</div>
-      <div >这是一个普通的弹出框</div>
-      <div slot="footer"><button class="h-btn h-btn-primary" @click="confirm">确定</button><button class="h-btn" @click="close">取消</button></div>
-    </Modal>
 
-    <ModalComponent :component="test" :props-data="{a:1}" v-model="open5"></ModalComponent>
+    <h4>使用方法调用Confirm</h4>
+    <example demo="message/modal5"></example>
 
+    <h4>使用方法调用Modal</h4>
+    <example demo="message/modal6"></example>
 
-    <Modal v-model="open2" :has-mask="false">
-      <div slot="header">标题</div>
-      <div >这是一个无遮罩的弹出框</div>
-      <div slot="footer"><button class="h-btn h-btn-primary" @click="confirm">确定</button><button class="h-btn" @click="close">取消</button></div>
-    </Modal>
+    <h4>使用方法定义复杂的Modal</h4>
+    <example demo="message/modal7"></example>
 
+    <h3>Vue 普通的调用</h3>
+    <example demo="message/modal1"></example>
 
-    <Modal v-model="open3" :close-on-mask="false">
-      <div slot="header">标题</div>
-      <div >这是一个点击遮罩无法关闭的弹出框</div>
-      <div slot="footer"><button class="h-btn h-btn-primary" @click="confirm">确定</button><button class="h-btn" @click="close">取消</button></div>
-    </Modal>
+    <h3>无遮罩弹出框</h3>
+    <example demo="message/modal2"></example>
 
-    <Modal v-model="open4" :middle="true">
-      <div slot="header">标题</div>
-      <div >这是一个居中的弹出框</div>
-      <div slot="footer"><button class="h-btn h-btn-primary" @click="confirm">确定</button><button class="h-btn" @click="close">取消</button></div>
-    </Modal>
+    <h3>点击遮罩无法关闭</h3>
+    <example demo="message/modal3"></example>
+
+    <h4>打开垂直居中的弹出框</h4>
+    <example demo="message/modal4"></example>
+
+    <h4>打开有分割线的弹出框</h4>
+    <example demo="message/modal9"></example>
+
+    <h4>调用组件式的Modal</h4>
+    <p>系统开发中，我们经常使用到新增，编辑等功能性以及复用性很强的模块，这里我们提供modal的组件式调用，帮助开发中更好的编写。</p>
+    <example demo="message/modal8"></example>
+    <blockquote>弹出框中使用的代码</blockquote>
+    <example demo="message/modalTest" :no-demo="true"></example>
   </div>
 </template>
-
-<script>
-import test from './modalTest';
-
-export default {
-  data() {
-    return {
-      open1: false,
-      open2: false,
-      open3: false,
-      open4: false,
-      open5: false,
-      test
-    }
-  },
-  methods: {
-    confirm() {
-      this.$Message("确定了。");
-      this.close();
-    },
-    close() {
-      this.open1 = false;
-      this.open2 = false;
-      this.open3 = false;
-      this.open4 = false;
-    },
-    confirm2() {
-      this.$Confirm("确定删除？").then(() => {
-        this.$Message.success('确定删除！');
-      })
-    },
-    modal() {
-      this.$Modal({
-        title: '自定义的弹出框',
-        content: '<p>自定义的弹出框测试</p><p>自定义的弹出框测试</p>',
-      });
-    },
-    modal2() {
-      this.$Modal({
-        title: '自定义的弹出框2',
-        content: '<p>自定义的弹出框测试2</p><p>自定义的弹出框测试2</p>',
-        buttons: ['cancel', {
-          type: 'delete',
-          name: '删除',
-          color: 'red'
-        }],
-        events: {
-          delete: (m) => {
-            m.close();
-            this.$Message.success('确定删除！');
-          }
-        }
-      });
-    },
-    modalComponent() {
-      this.open5 = true;
-    }
-  }
-}
-</script>

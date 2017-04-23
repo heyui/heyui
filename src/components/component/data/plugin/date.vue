@@ -1,64 +1,36 @@
 <template>
   <div class="doc">
     <h2>DatePicker 日期控件</h2>
+    <p>日期控件使用了基本日期工具<a href="http://manba.ch-un.com" target="_blank">manba</a>，支持option的参数<code>start</code>，<code>end</code>使用manba日期对象。</p>
     <h3>普通选择日期控件</h3>
     <div>
-      <DatePicker v-model="value1" format="YYYY/MM/DD" placeholder="请选择日期"></DatePicker>
+      <example demo="dataplugins/datepicker1"></example>
     </div>
     <h3>日期控件禁用</h3>
     <div>
-      <DatePicker v-model="value1" format="YYYY/MM/DD" placeholder="请选择日期" :disabled="true"></DatePicker>
+      <example demo="dataplugins/datepicker2"></example>
     </div>
-    <h3>控件范围控制</h3>
-    <p><button class="h-btn" @click="changeParam()">修改范围</button></p>
+    <h3>日期格式自定义</h3>
     <div>
-      <DatePicker v-model="value4" :option="param"></DatePicker>
-    </div>
-    <h3>快捷方式</h3>
-    <div>
-      <DatePicker v-model="value5" :option="param2"></DatePicker>
+      <example demo="dataplugins/datepicker3"></example>
     </div>
     <h3>选择年月控件</h3>
     <div>
-      <DatePicker v-model="value2" type="month"></DatePicker>
+      <example demo="dataplugins/datepicker4"></example>
     </div>
     <h3>选择年控件</h3>
     <div>
-      <DatePicker v-model="value3" type="year"></DatePicker>
+      <example demo="dataplugins/datepicker5"></example>
+    </div>
+    <h3>快捷方式</h3>
+    <p>可以通过全局定义配置好快捷方式，这里只做key的调用，或者自己定义函数返回。全局配置详情请参考<router-link to="/guide/config">全局配置</router-link></p>
+    <div>
+      <example demo="dataplugins/datepicker6"></example>
+    </div>
+    <h3>控件范围控制</h3>
+    <div>
+      <example demo="dataplugins/datepicker7"></example>
     </div>
     <div></div>
   </div>
 </template>
-
-<script>
-
-import manba from 'manba';
-
-export default {
-  data() {
-    return {
-      value1: '2014-03-12',
-      value2: '',
-      value3: '',
-      value4: '',
-      value5: '',
-      param: {
-        start: manba().add(-1, manba.DAY),
-        end: manba().add(46, manba.DAY),
-        disabled: (value) => {
-          return value.date()%5 == 0;
-        }
-      },
-      param2: {
-        shortcuts:['today','yesterday']
-      }
-    }
-  },
-  methods:{
-    changeParam(){
-      this.param.start = "2017-02-01"; 
-      this.param.end = "2017-06-03"; 
-    }
-  }
-}
-</script>

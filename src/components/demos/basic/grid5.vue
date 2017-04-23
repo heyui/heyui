@@ -1,9 +1,9 @@
-<style type="text/css" scoped>
+<style lang="less" scoped>
 .h-row-flex>div {
   color: #FFF;
   border-radius: 3px;
   text-align: center;
-  background-color: #808080;
+  background-color: @gray-color;
 }
 </style>
 <template>
@@ -31,7 +31,7 @@
       <Col :width='4' v-for='n in 4' :key='n'>{{n}}</Col>
     </Row>
     <blockquote>align对齐方式:top, middle, bottom</blockquote>
-    <p>align: middle</p>
+    <p>align: bottom</p>
     <Row type="flex" align="bottom" :space="10">
       <Col :width='4' v-for='n in 4' :key='n' v-height='n*15'>{{n}}</Col>
     </Row>

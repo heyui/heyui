@@ -18,7 +18,7 @@
           <div v-for="s of shortcuts"
                @click="setShortcutValue(s)">{{s.title}}</div>
         </div>
-        <date-base :value="nowDate"
+        <date-base ref="datebase" :value="nowDate"
                    :option="option"
                    :type="type"
                    :now-view="nowView"
@@ -108,6 +108,7 @@ export default {
   },
   mounted() {
     if (!this.disabled) {
+      let that = this;
       this.$nextTick(() => {
         let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
         let content = this.$el.querySelector(`.h-date-picker`);
@@ -115,7 +116,16 @@ export default {
           trigger: 'click',
           triggerOnce: true,
           content,
-          container: document.body
+          container: document.body,
+          events: {
+            show(){
+              that.parse(that.value);
+              that.$refs.datebase.resetView();
+              if(that.nowDate){
+                that.nowView = manba(that.nowDate);
+              }
+            }
+          }
         });
       });
     }
@@ -132,7 +142,7 @@ export default {
       this.dropdown.popperInstance.update();
     },
     changeView() {
-      this.dropdown.popperInstance.update();
+      if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
     },
     inputEvent(event) {
       let value = event.target.value;

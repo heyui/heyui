@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>颜色</h4>
+    <blockquote>颜色</blockquote>
     <div>
       <div>
         <span v-color:primary >主色系</span>
@@ -33,19 +33,19 @@
         <span v-bg-color:gray4 >背景灰4</span>
       </div>
     </div>
-    <h4>自定义颜色</h4>
+    <blockquote>自定义颜色</blockquote>
       <div>
         <span v-bg-color:#ff49e9 v-color:white>背景自定义</span>
         <span v-color="'#ff49e9'" >自定义颜色</span>
       </div>
-    <h4>字体大小</h4>
+    <blockquote>字体大小</blockquote>
     <div>
       <div v-font="18">18px</div>
       <div v-font="16">16px</div>
       <div v-font="14">14px</div>
       <div v-font="12">12px</div>
     </div>
-    <h4>高度，宽度</h4>
+    <blockquote>高度，宽度</blockquote>
     <div>
       <div v-height="30" v-bg-color:gray2>高度30px</div>
       <div v-width="100" v-bg-color:gray1>宽度100px</div>

@@ -2,38 +2,29 @@
   <div class="doc">
     <h2>Pagination 分页</h2>
     <h3>普通分页</h3>
-    <div><Pagination :cur="current1" :total="total" @change="currentChange"></Pagination></div>
+    <div>
+      <example demo="dataview/pagination1"></example>
+    </div>
     <h3>迷你分页</h3>
-    <div><Pagination :cur="current2" :total="total" @change="currentChange" :small="true"></Pagination></div>
+    <div>
+      <example demo="dataview/pagination2"></example>
+    </div>
     <h3>自定义分页</h3>
-    <div><Pagination :cur="current3" :total="total" @change="currentChange" layout="total,sizes,pager,jumper"></Pagination></div>
-    <h3>自定义分页2</h3>
-    <div><Pagination :cur="current4" :total="total" @change="currentChange" layout="pager" :small="true" :size="20"></Pagination></div>
-    <h3>排列</h3>
-    <div><Pagination :cur="current5" align="center" :total="total" @change="currentChange"></Pagination></div>
-    <div><Pagination :cur="current6" align="right" :total="total" @change="currentChange"></Pagination></div>
+    <p>分页控件由四个部分组成：<code>total</code>总数,<code>sizes</code>每页条数选择,<code>pager</code>翻页,<code>jumper</code>跳页，可以自定义<code>layout</code>属性定义组件，以及排列顺序。</p>
+    <div>
+      <example demo="dataview/pagination3"></example>
+    </div>
+    <h3>自定义示例</h3>
+    <div>
+      <example demo="dataview/pagination4"></example>
+    </div>
+    <h3>居中对齐</h3>
+    <div>
+      <example demo="dataview/pagination5"></example>
+    </div>
+    <h3>居右对齐</h3>
+    <div>
+      <example demo="dataview/pagination6"></example>
+    </div>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-      current1: 1,
-      current2: 1,
-      current3: 1,
-      current4: 1,
-      current5: 1,
-      current6: 1,
-      total: 200,
-    }
-  },
-  methods: {
-    currentChange(value) {
-      this.total = this.total + 1;
-      log(value)
-    }
-  }
-}
-</script>

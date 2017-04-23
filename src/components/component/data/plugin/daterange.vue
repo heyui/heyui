@@ -2,33 +2,33 @@
   <div class="doc">
     <h2>DateTimePicker 日期范围控件</h2>
     <h3>普通选择日期范围控件</h3>
+    <p>数据默认使用{start,end}的对象，同时也可以自定义参数。详情请参考<router-link to="/guide/config">全局配置</router-link></p>
     <div>
-      <p>值：{{value1}}</p>
-      <DateRangePicker v-model="value1" placeholder="请选择日期" format="YYYY/MM/DD"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker1"></example>
     </div>
     <h3>日期控件单独选择开始结束</h3>
+    <p>针对一些可选开始或者结束日期的需求，这里可以选择添加<code>separate</code>属性控制可以单独选择。</p>
     <div>
-      <p>值：{{value8}}</p>
-      <DateRangePicker v-model="value8" placeholder="请选择日期" type="date" :separate="true"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker2"></example>
     </div>
     <h3>选择日期时间范围控件</h3>
+    <p>由于日期时间控件的点击比较深，所以默认这里使用了<code>separate</code>属性。如果有更合适的方案，希望在github上为我们<a href="https://github.com/heyui/heyui/issues/new" target="_blank">提建议</a>。</p>
+    <p>此外，<code>datetime</code>选择器的配置同样适用于范围选择控件。</p>
     <div>
-      <p>值：{{value8}}</p>
-      <DateRangePicker v-model="value7" placeholder="请选择日期" type="datetime"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker3"></example>
     </div>
     <h3>日期时间范围禁用</h3>
     <div>
-      <DateRangePicker v-model="value1" placeholder="请选择日期" :disabled="true"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker4"></example>
     </div>
     <h3>控件开始结束范围控制</h3>
     <div>
-      <p>值：{{value3}}</p>
-      <DateRangePicker v-model="value3" :option="param3"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker5"></example>
     </div>
     <h3>快捷方式</h3>
+    <p>快捷方式定义与日期控件一致，同时也可以使用全局配置的方式使用。</p>
     <div>
-      <p>值：{{value5}}</p>
-      <DateRangePicker v-model="value5" :option="param2"></DateRangePicker>
+      <example demo="dataplugins/daterangepicker6"></example>
     </div>
   </div>
 </template>

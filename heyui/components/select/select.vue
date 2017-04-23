@@ -2,14 +2,14 @@
   <div :class="selectCls">
     <div :class="inputCls">
       <div class="h-select-value">
-        <div v-if="mutiple&&objects"
-             class="h-select-mutiple-tags"><span v-for="obj of objects"
+        <div v-if="multiple&&objects"
+             class="h-select-multiple-tags"><span v-for="obj of objects"
                 :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
              @click.stop="setvalue(obj)"></i></span>
         </div>
-        <div v-if="!mutiple&&codes&&objects">{{objects[title]}}</div>
+        <div v-if="!multiple&&codes&&objects">{{objects[title]}}</div>
         <div v-if="!codes||codes.length==0"
-             class="h-select-placeholder">请选择</div>
+             class="h-select-placeholder">{{placeholder}}</div>
       </div>
       <i class="h-icon-down"></i>
     </div>
@@ -23,7 +23,7 @@
           <div v-if="!!render"
                v-html="option[html]"></div>
           <template v-else>{{option[title]}}</template>
-          <i v-if="mutiple"
+          <i v-if="multiple"
              class="h-icon-check"></i>
         </li>
       </ul>
@@ -46,7 +46,7 @@ export default {
       type: Boolean,
       default: false
     },
-    mutiple: {
+    multiple: {
       type: Boolean,
       default: false
     },
@@ -71,7 +71,10 @@ export default {
       type: Boolean,
       default: false
     },
-    placeholder: String,
+    placeholder: {
+      type: String,
+      default: "请选择"
+    },
     render: Function,
     value: [Number, String, Array, Object]
   },
@@ -106,7 +109,7 @@ export default {
   },
   methods: {
     setObjects() {
-      if (this.mutiple) {
+      if (this.multiple) {
         let os = [];
         for (let code of this.codes) {
           os.push(this.optionsMap[code]);
@@ -117,7 +120,7 @@ export default {
       }
     },
     parse() {
-      if (this.mutiple) {
+      if (this.multiple) {
         let values = this.value || [];
         this.codes = values.map((item) => {
           return this.type == 'key' ? item : item[this.key];
@@ -134,7 +137,7 @@ export default {
     setvalue(option) {
       if (this.readonly) return;
       let code = option[this.key];
-      if (this.mutiple) {
+      if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.codes.includes(code) && this.codes.length >= this.limit) {
           this.$Message.error(`您最多可以选${this.limit}个选项`);
           return;
@@ -149,7 +152,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.mutiple) {
+      if (this.multiple) {
         this.dropdown.popperInstance.update();
       } else {
         this.dropdown.hide();
@@ -158,7 +161,7 @@ export default {
     getLiCls(option) {
       let code = option[this.key];
       if (utils.isNull(code)) return {};
-      return { [`${prefix}-item-selected`]: (this.mutiple ? this.codes.includes(code) : this.codes == code) };
+      return { [`${prefix}-item-selected`]: (this.multiple ? this.codes.includes(code) : this.codes == code) };
     }
   },
   filters: {
@@ -175,7 +178,7 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-mutiple`]: this.mutiple,
+        [`${prefix}-multiple`]: this.multiple,
         [`${prefix}-no-autosize`]: !autosize,
       }
     },
@@ -187,7 +190,7 @@ export default {
     groupCls() {
       return {
         [`${prefix}-group`]: true,
-        [`${prefix}-mutiple`]: this.mutiple
+        [`${prefix}-multiple`]: this.multiple
       }
     },
     optionsMap() {
@@ -226,7 +229,7 @@ export default {
           item[this.html] = this.render.call(null, item);
         })
       }
-      if (!this.mutiple && this.nullOption) {
+      if (!this.multiple && this.nullOption) {
         options.unshift({ [`${keyField}`]: null, [`${titleField}`]: '请选择', [`${this.html}`]: '请选择' });
       }
       return options;

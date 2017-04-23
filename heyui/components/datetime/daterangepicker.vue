@@ -74,9 +74,6 @@ const manbaType = {
   datehour: manba.HOUR
 }
 
-const options = config.getOption('datepicker');
-const paramName = options.daterangeOptions.paramName;
-
 export default {
   props: {
     disabled: {
@@ -108,11 +105,12 @@ export default {
     value: Object
   },
   data() {
-    let format = this.format || options.format[this.type];
+    let format = this.format || config.getOption('datepicker.format')[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
-      format = options.format.datetimesecond;
+      format = config.getOption('datepicker.format.datetimesecond');
     }
     return {
+      paramName: config.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
         start: '',
         end: ''
@@ -132,7 +130,6 @@ export default {
   },
   beforeMount() {
     this.parse(this.value);
-    this.initNowView();
   },
   mounted() {
     let that = this;
@@ -176,7 +173,7 @@ export default {
       this.dropdown.popperInstance.update();
     },
     changeView() {
-      this.dropdown.popperInstance.update();
+      if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
     },
     changeEvent(event) {
       // let value = event.target.value;
@@ -193,9 +190,9 @@ export default {
       // }
     },
     parseSingle(value, range) {
-      if (utils.isObject(value) && value[paramName[range]]) {
+      if (utils.isObject(value) && value[this.paramName[range]]) {
         try {
-          let nowValue = manba(value[paramName[range]]);
+          let nowValue = manba(value[this.paramName[range]]);
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
         } catch (evt) {
@@ -218,6 +215,8 @@ export default {
         start,
         end: manba(start).add(endRange, manba.MONTH),
       };
+      this.$refs.start.resetView();
+      this.$refs.end.resetView();
     },
     hide() {
       this.dropdown.hide();
@@ -258,8 +257,8 @@ export default {
     },
     updateValue(value) {
       value = {
-        [paramName.start]: value.start,
-        [paramName.end]: value.end,
+        [this.paramName.start]: value.start,
+        [this.paramName.end]: value.end,
       }
       this.parse(value);
       this.$emit('input', value);
@@ -285,7 +284,7 @@ export default {
       if (utils.isArray(shortcutsConfig)) {
         for (let s of shortcutsConfig) {
           if (utils.isString(s)) {
-            shortcuts.push(options.shortcuts[s]);
+            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
           } else if (utils.isObject(s)) {
             shortcuts.push(s);
           }
