@@ -56,12 +56,22 @@
 
     <h3>灰色</h3>
     <Row :space='20' class="color-spans">
-      <Col :width='12'>
+      <Col :width='8'>
       <div v-bg-color:dark  v-color:white>
         <p>@dark-color</p>
       </div>
       </Col>
-      <Col :width='12'>
+      <Col :width='8'>
+      <div v-bg-color:dark1  v-color:white>
+        <p>@dark1-color</p>
+      </div>
+      </Col>
+      <Col :width='8'>
+      <div v-bg-color:dark2  v-color:white>
+        <p>@dark2-color</p>
+      </div>
+      </Col>
+      <Col :width='24'>
       <div v-bg-color:gray  v-color:white>
         <p>@gray-color</p>
       </div>
