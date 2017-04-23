@@ -45,11 +45,10 @@ function Notice(originalParam) {
   return Notify(param);
 }
 
-function notice(param, type) {
+function notice(param, timeout) {
   if (utils.isString(param)) {
-    return Notice({ content: param, type });
+    return Notice({ content: param, timeout });
   } else if (utils.isObject(param)) {
-    if (type) param.type = type;
     return Notice(param);
   }
   log.error('Notice传递参数不正确:', param);
@@ -61,10 +60,20 @@ notice.config = (options) => {
   }
 };
 
-notice.error = param => notice(param, 'error');
-notice.warn = param => notice(param, 'warn');
-notice.success = param => notice(param, 'success');
-notice.info = param => notice(param, 'info');
+function noticeWithType(type, param, timeout) {
+  if (utils.isString(param)) {
+    return Notice({ content: param, timeout, type });
+  } else if (utils.isObject(param)) {
+    if (type) param.type = type;
+    return Notice(param);
+  }
+  log.error('Notice传递参数不正确:', param);
+}
+
+notice.error = (param, timeout) => noticeWithType('error', param, timeout);
+notice.warn = (param, timeout) => noticeWithType('warn', param, timeout);
+notice.success = (param, timeout) => noticeWithType('success', param, timeout);
+notice.info = (param, timeout) => noticeWithType('info', param, timeout);
 
 
 export default notice;

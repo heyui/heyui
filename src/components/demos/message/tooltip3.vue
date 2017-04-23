@@ -1,21 +1,6 @@
 <template>
   <div>
-    <p>选中值：{{select}}  {{select | dictMapping('simple')}}</p>
-    <div v-width="300"><Select v-model="select"  dict="simple"></Select></div>
+    <button class="h-btn h-btn-primary" v-tooltip trigger="click" content="这是一个详情">点我一下</button>
+    <button class="h-btn h-btn-text" v-tooltip trigger="click" theme="white" content="这是一个详情2">再点我一下</button>
   </div>
 </template>
-<!-- 
-  系统初始化的时候
-  HeyUI.initDict({
-    simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
-  }); 
--->
-<script>
-  export default {
-    data: function () {
-      return {
-        select: null
-      }
-    }
-  }
-</script>

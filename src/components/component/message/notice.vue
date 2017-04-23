@@ -1,63 +1,20 @@
 <template>
   <div class="doc">
     <h2>Notice 通知</h2>
-    <p><button class='h-btn' @click="info()">提示</button></p>
-    <p><button class='h-btn' @click="config()">设置全局的timeout时间为1秒</button></p>
-    <p>
-      <button class='h-btn' @click="message('info')">消息</button>
-      <button class='h-btn' @click="message('success')">成功</button>
-      <button class='h-btn' @click="message('warn')">警告</button>
-      <button class='h-btn' @click="message('error')">错误</button>
-    </p>
-    <p>
-      <button class='h-btn' @click="message2('info')">消息</button>
-      <button class='h-btn' @click="message2('success')">成功</button>
-      <button class='h-btn' @click="message2('warn')">警告</button>
-      <button class='h-btn' @click="message2('error')">错误</button>
-    </p>
-    <h3>不自动关闭</h3>
-    <p>
-      <button class='h-btn' @click="message3('info')">不自动关闭</button>
-    </p>
+    <h3>普通的通知</h3>
+    <blockquote>这里写了两种调用，实际是同一个方法对象，下面的用例都使用vue调用做示例，js调用模式与vue调用一样。</blockquote>
+    <example demo="message/notice1"></example>
+
+    <h3>不同类型的通知</h3>
+    <example demo="message/notice2"></example>
+
+    <h3>不同类型的有标题的通知</h3>
+    <example demo="message/notice3"></example>
+
+    <h3>不自动关闭的通知</h3>
+    <example demo="message/notice4"></example>
+
+    <h3>设置全局自动关闭时间</h3>
+    <example demo="message/notice5"></example>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-    }
-  },
-  methods: {
-    config() {
-      this.$Notice.config({
-        timeout: 1000,
-      });
-    },
-    info() {
-      this.$Notice('这是一个普通的提醒');
-    },
-    message(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
-      let param = {
-        type,
-        title: text,
-        content: `<p>这是一个${text}的消息</p><p>这是一个${text}的消息</p>`
-      };
-      this.$Notice(param);
-    },
-    message2(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误', loading: '加载中' }[type];
-      this.$Notice[type](`这是一个${text}的消息`);
-    },
-    message3() {
-      this.$Notice({
-        title: '不会关闭',
-        content: `这是一个不会自动关闭的消息`,
-        timeout: 0
-      });
-    }
-  }
-}
-</script>

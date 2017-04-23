@@ -14,7 +14,7 @@ export default {
       param.content = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
       param.html = true;
     }
-    // param.boundariesElement = document.body;
+    param.container = document.body;
     param = utils.initParam(param, attr.attrs, ['placement', 'theme', 'delay', 'trigger']);
     el.tooltip = new Tooltip(el, param);
   },

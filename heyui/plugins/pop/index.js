@@ -50,6 +50,7 @@ const DEFAULT_OPTIONS = {
 class Pop {
 
   constructor(reference, options) {
+
     options = utils.extend({}, DEFAULT_OPTIONS, options);
 
     // reference.jquery && (reference = reference[0]);
@@ -132,7 +133,6 @@ class Pop {
     const popNode = this.create(reference, options.template, content, options.html);
 
     popNode.setAttribute('aria-describedby', popNode.id);
-
     const container = this.findContainer(options.container, reference);
 
     this.append(popNode, container);

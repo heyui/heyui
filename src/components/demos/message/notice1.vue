@@ -1,19 +1,19 @@
 <template>
-  <div>
-      <p>value:{{value}}</p>
-      <DateRangePicker v-model="value" placeholder="请选择日期"></DateRangePicker>
-  </div>
+  <p>
+    <button class='h-btn' @click="vueinfo()">Vue 调用提示</button>
+    <button class='h-btn' @click="jsinfo()">Js 调用提示</button>
+  </p>
 </template>
-
 <script>
-// HeyUI.config("datepicker.daterangeOptions.paramName", {
-//   start: 'min',
-//   end: 'max'
-// });
+import heyui from '../../../../heyui'; //demo测试路径
+// import heyui from 'heyui'; 实际调用
 export default {
-  data() {
-    return {
-      value: {}
+  methods: {
+    vueinfo() {
+      this.$Notice('这是一个普通的通知');
+    },
+    jsinfo() {
+      heyui.$Notice('这是一个普通的通知');
     }
   }
 }

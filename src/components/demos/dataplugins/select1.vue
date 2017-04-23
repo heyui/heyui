@@ -11,6 +11,8 @@
   </div>
 </template>
 <script>
+// HeyUI.config('dict.key_field', "code");
+// HeyUI.config('dict.title_field', "title");
   export default {
     data: function () {
       return {
