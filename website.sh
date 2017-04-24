@@ -8,11 +8,11 @@ cp -R gen ../
 rm -rf gen
 echo "切换至gh-pages分支"
 git checkout gh-pages
+git pull
 cp -R ../gen/* ./
 cp index.html 404.html
 git add -A
 git commit -m '新版'
-git pull
 git push
 
 echo "切换至doc分支"
