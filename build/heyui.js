@@ -5610,8 +5610,6 @@ var _prefix = 'h-page'; //
 //
 
 var pageConfig = _config2.default.getOption('page');
-var keyField = _config2.default.getOption('dict', 'key_field');
-var titleField = _config2.default.getOption('dict', 'title_field');
 
 exports.default = {
   props: {
@@ -5652,6 +5650,8 @@ exports.default = {
     for (var o in orders) {
       orders[o] = layoutList.indexOf(o);
     }
+    var keyField = _config2.default.getOption('dict', 'key_field');
+    var titleField = _config2.default.getOption('dict', 'title_field');
     return {
       sizesShow: this.sizes.map(function (item) {
         var _ref;
