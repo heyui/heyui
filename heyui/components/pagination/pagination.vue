@@ -45,8 +45,6 @@ import config from '../../utils/config';
 const prefix = 'h-page';
 
 const pageConfig = config.getOption('page');
-const keyField = config.getOption('dict', 'key_field');
-const titleField = config.getOption('dict', 'title_field');
 
 export default {
   props: {
@@ -85,6 +83,8 @@ export default {
     for (let o in orders) {
       orders[o] = layoutList.indexOf(o);
     }
+    const keyField = config.getOption('dict', 'key_field');
+    const titleField = config.getOption('dict', 'title_field');
     return {
       sizesShow: this.sizes.map((item) => {
         return {
@@ -175,13 +175,13 @@ export default {
     prevCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == 1,
-        ['h-page-pager']: true
+        'h-page-pager': true
       }
     },
     nextCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == this.count,
-        ['h-page-pager']: true
+        'h-page-pager': true
       }
     },
     pagerCls() {
