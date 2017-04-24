@@ -2179,6 +2179,7 @@ var Pop = function () {
   function Pop(reference, options) {
     (0, _classCallCheck3.default)(this, Pop);
 
+
     options = _utils2.default.extend({}, DEFAULT_OPTIONS, options);
 
     // reference.jquery && (reference = reference[0]);
@@ -2268,7 +2269,6 @@ var Pop = function () {
       var popNode = this.create(reference, options.template, content, options.html);
 
       popNode.setAttribute('aria-describedby', popNode.id);
-
       var container = this.findContainer(options.container, reference);
 
       this.append(popNode, container);
@@ -3904,6 +3904,9 @@ exports.default = {
       this.view = view;
       this.$emit('changeView');
     },
+    resetView: function resetView() {
+      this.view = startView[this.type];
+    },
     updateView: function updateView(typeString, num) {
       var type = _manba2.default.DAY;
       if (typeString == 'month') {
@@ -4272,6 +4275,7 @@ exports.default = {
     var _this = this;
 
     if (!this.disabled) {
+      var that = this;
       this.$nextTick(function () {
         var el = _this.$el.querySelector('.' + prefix + '>.h-datetime-show');
         var content = _this.$el.querySelector('.h-date-picker');
@@ -4279,7 +4283,16 @@ exports.default = {
           trigger: 'click',
           triggerOnce: true,
           content: content,
-          container: document.body
+          container: document.body,
+          events: {
+            show: function show() {
+              that.parse(that.value);
+              that.$refs.datebase.resetView();
+              if (that.nowDate) {
+                that.nowView = (0, _manba2.default)(that.nowDate);
+              }
+            }
+          }
         });
       });
     }
@@ -4297,7 +4310,7 @@ exports.default = {
       this.dropdown.popperInstance.update();
     },
     changeView: function changeView() {
-      this.dropdown.popperInstance.update();
+      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     inputEvent: function inputEvent(event) {
       var value = event.target.value;
@@ -4525,9 +4538,6 @@ var manbaType = {
   datehour: _manba2.default.HOUR
 };
 
-var options = _config2.default.getOption('datepicker');
-var paramName = options.daterangeOptions.paramName;
-
 exports.default = {
   props: {
     disabled: {
@@ -4559,11 +4569,12 @@ exports.default = {
     value: Object
   },
   data: function data() {
-    var format = this.format || options.format[this.type];
+    var format = this.format || _config2.default.getOption('datepicker.format')[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
-      format = options.format.datetimesecond;
+      format = _config2.default.getOption('datepicker.format.datetimesecond');
     }
     return {
+      paramName: _config2.default.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
         start: '',
         end: ''
@@ -4583,7 +4594,6 @@ exports.default = {
   },
   beforeMount: function beforeMount() {
     this.parse(this.value);
-    this.initNowView();
   },
   mounted: function mounted() {
     var _this = this;
@@ -4630,7 +4640,7 @@ exports.default = {
       this.dropdown.popperInstance.update();
     },
     changeView: function changeView() {
-      this.dropdown.popperInstance.update();
+      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     changeEvent: function changeEvent(event) {
       // let value = event.target.value;
@@ -4647,9 +4657,9 @@ exports.default = {
       // }
     },
     parseSingle: function parseSingle(value, range) {
-      if (_utils2.default.isObject(value) && value[paramName[range]]) {
+      if (_utils2.default.isObject(value) && value[this.paramName[range]]) {
         try {
-          var nowValue = (0, _manba2.default)(value[paramName[range]]);
+          var nowValue = (0, _manba2.default)(value[this.paramName[range]]);
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
         } catch (evt) {}
@@ -4671,6 +4681,8 @@ exports.default = {
         start: start,
         end: (0, _manba2.default)(start).add(endRange, _manba2.default.MONTH)
       };
+      this.$refs.start.resetView();
+      this.$refs.end.resetView();
     },
     hide: function hide() {
       this.dropdown.hide();
@@ -4715,7 +4727,7 @@ exports.default = {
     updateValue: function updateValue(value) {
       var _value;
 
-      value = (_value = {}, (0, _defineProperty3.default)(_value, paramName.start, value.start), (0, _defineProperty3.default)(_value, paramName.end, value.end), _value);
+      value = (_value = {}, (0, _defineProperty3.default)(_value, this.paramName.start, value.start), (0, _defineProperty3.default)(_value, this.paramName.end, value.end), _value);
       this.parse(value);
       this.$emit('input', value);
       var event = document.createEvent("CustomEvent");
@@ -4747,7 +4759,7 @@ exports.default = {
             var s = _step.value;
 
             if (_utils2.default.isString(s)) {
-              shortcuts.push(options.shortcuts[s]);
+              shortcuts.push(_config2.default.getOption('datepicker.shortcuts')[s]);
             } else if (_utils2.default.isObject(s)) {
               shortcuts.push(s);
             }
@@ -5388,7 +5400,7 @@ exports.default = {
     noticeCls: function noticeCls() {
       var _ref3;
 
-      return _ref3 = {}, (0, _defineProperty3.default)(_ref3, prefix, true), (0, _defineProperty3.default)(_ref3, notifyprefix, true), (0, _defineProperty3.default)(_ref3, notifyprefix + '-show', this.isOpened), (0, _defineProperty3.default)(_ref3, notifyprefix + '-has-close', this.hasCloseIcon), (0, _defineProperty3.default)(_ref3, notifyprefix + '-has-divider', this.hasDivider), _ref3;
+      return _ref3 = {}, (0, _defineProperty3.default)(_ref3, prefix, true), (0, _defineProperty3.default)(_ref3, notifyprefix, true), (0, _defineProperty3.default)(_ref3, notifyprefix + '-show', this.isOpened), (0, _defineProperty3.default)(_ref3, notifyprefix + '-has-mask', this.hasMask), (0, _defineProperty3.default)(_ref3, notifyprefix + '-has-close', this.hasCloseIcon), (0, _defineProperty3.default)(_ref3, notifyprefix + '-has-divider', this.hasDivider), _ref3;
     }
   }
 };
@@ -5956,16 +5968,13 @@ var prefix = 'h-select'; //
 //
 //
 
-var keyField = _config2.default.getOption('dict', 'key_field');
-var titleField = _config2.default.getOption('dict', 'title_field');
-
 exports.default = {
   props: {
     readonly: {
       type: Boolean,
       default: false
     },
-    mutiple: {
+    multiple: {
       type: Boolean,
       default: false
     },
@@ -5990,14 +5999,17 @@ exports.default = {
       type: Boolean,
       default: false
     },
-    placeholder: String,
+    placeholder: {
+      type: String,
+      default: "请选择"
+    },
     render: Function,
     value: [Number, String, Array, Object]
   },
   data: function data() {
     return {
-      key: keyField,
-      title: titleField,
+      key: _config2.default.getOption('dict', 'key_field'),
+      title: _config2.default.getOption('dict', 'title_field'),
       html: "select_rander_html",
       codes: null,
       objects: null
@@ -6028,7 +6040,7 @@ exports.default = {
 
   methods: {
     setObjects: function setObjects() {
-      if (this.mutiple) {
+      if (this.multiple) {
         var os = [];
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -6063,7 +6075,7 @@ exports.default = {
     parse: function parse() {
       var _this2 = this;
 
-      if (this.mutiple) {
+      if (this.multiple) {
         var values = this.value || [];
         this.codes = values.map(function (item) {
           return _this2.type == 'key' ? item : item[_this2.key];
@@ -6080,7 +6092,7 @@ exports.default = {
     setvalue: function setvalue(option) {
       if (this.readonly) return;
       var code = option[this.key];
-      if (this.mutiple) {
+      if (this.multiple) {
         if (!_utils2.default.isNull(this.limit) && !this.codes.includes(code) && this.codes.length >= this.limit) {
           this.$Message.error('\u60A8\u6700\u591A\u53EF\u4EE5\u9009' + this.limit + '\u4E2A\u9009\u9879');
           return;
@@ -6095,7 +6107,7 @@ exports.default = {
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.mutiple) {
+      if (this.multiple) {
         this.dropdown.popperInstance.update();
       } else {
         this.dropdown.hide();
@@ -6104,7 +6116,7 @@ exports.default = {
     getLiCls: function getLiCls(option) {
       var code = option[this.key];
       if (_utils2.default.isNull(code)) return {};
-      return (0, _defineProperty3.default)({}, prefix + '-item-selected', this.mutiple ? this.codes.includes(code) : this.codes == code);
+      return (0, _defineProperty3.default)({}, prefix + '-item-selected', this.multiple ? this.codes.includes(code) : this.codes == code);
     }
   },
   filters: {
@@ -6120,7 +6132,7 @@ exports.default = {
       if (!autosize) {
         autosize = this.autosize;
       }
-      return _ref2 = {}, (0, _defineProperty3.default)(_ref2, '' + prefix, true), (0, _defineProperty3.default)(_ref2, prefix + '-input-border', !this.noBorder), (0, _defineProperty3.default)(_ref2, prefix + '-mutiple', this.mutiple), (0, _defineProperty3.default)(_ref2, prefix + '-no-autosize', !autosize), _ref2;
+      return _ref2 = {}, (0, _defineProperty3.default)(_ref2, '' + prefix, true), (0, _defineProperty3.default)(_ref2, prefix + '-input-border', !this.noBorder), (0, _defineProperty3.default)(_ref2, prefix + '-multiple', this.multiple), (0, _defineProperty3.default)(_ref2, prefix + '-no-autosize', !autosize), _ref2;
     },
     inputCls: function inputCls() {
       return (0, _defineProperty3.default)({}, prefix + '-input', true);
@@ -6128,7 +6140,7 @@ exports.default = {
     groupCls: function groupCls() {
       var _ref4;
 
-      return _ref4 = {}, (0, _defineProperty3.default)(_ref4, prefix + '-group', true), (0, _defineProperty3.default)(_ref4, prefix + '-mutiple', this.mutiple), _ref4;
+      return _ref4 = {}, (0, _defineProperty3.default)(_ref4, prefix + '-group', true), (0, _defineProperty3.default)(_ref4, prefix + '-multiple', this.multiple), _ref4;
     },
     optionsMap: function optionsMap() {
       var optionsMap = _utils2.default.toObject(this.options, this.key);
@@ -6148,7 +6160,7 @@ exports.default = {
       }
       var options = [];
       if (_utils2.default.isObject(datas)) {
-        options = _utils2.default.toArray(datas, keyField, titleField);
+        options = _utils2.default.toArray(datas, this.key, this.title);
       } else if (_utils2.default.isArray(datas)) {
         if (datas.length == 0) {
           options = [];
@@ -6160,7 +6172,7 @@ exports.default = {
             options = datas.map(function (item) {
               var _ref5;
 
-              return _ref5 = {}, (0, _defineProperty3.default)(_ref5, '' + keyField, item), (0, _defineProperty3.default)(_ref5, '' + titleField, item), _ref5;
+              return _ref5 = {}, (0, _defineProperty3.default)(_ref5, '' + _this3.key, item), (0, _defineProperty3.default)(_ref5, '' + _this3.title, item), _ref5;
             });
           }
         }
@@ -6173,7 +6185,7 @@ exports.default = {
       if (!this.mutiple && this.nullOption) {
         var _options$unshift;
 
-        options.unshift((_options$unshift = {}, (0, _defineProperty3.default)(_options$unshift, '' + keyField, null), (0, _defineProperty3.default)(_options$unshift, '' + titleField, '请选择'), (0, _defineProperty3.default)(_options$unshift, '' + this.html, '请选择'), _options$unshift));
+        options.unshift((_options$unshift = {}, (0, _defineProperty3.default)(_options$unshift, '' + this.key, null), (0, _defineProperty3.default)(_options$unshift, '' + this.title, '请选择'), (0, _defineProperty3.default)(_options$unshift, '' + this.html, '请选择'), _options$unshift));
       }
       return options;
     }
@@ -6834,7 +6846,7 @@ exports.default = {
       param.content = vnode.context.$el.querySelector('[tmpl=' + ref + ']');
       param.html = true;
     }
-    // param.boundariesElement = document.body;
+    param.container = document.body;
     param = _utils2.default.initParam(param, attr.attrs, ['placement', 'theme', 'delay', 'trigger']);
     el.tooltip = new _tooltip2.default(el, param);
   },
@@ -7504,11 +7516,10 @@ function Notice(originalParam) {
   return (0, _notify2.default)(param);
 }
 
-function notice(param, type) {
+function notice(param, timeout) {
   if (_utils2.default.isString(param)) {
-    return Notice({ content: param, type: type });
+    return Notice({ content: param, timeout: timeout });
   } else if (_utils2.default.isObject(param)) {
-    if (type) param.type = type;
     return Notice(param);
   }
   log.error('Notice传递参数不正确:', param);
@@ -7520,17 +7531,27 @@ notice.config = function (options) {
   }
 };
 
-notice.error = function (param) {
-  return notice(param, 'error');
+function noticeWithType(type, param, timeout) {
+  if (_utils2.default.isString(param)) {
+    return Notice({ content: param, timeout: timeout, type: type });
+  } else if (_utils2.default.isObject(param)) {
+    if (type) param.type = type;
+    return Notice(param);
+  }
+  log.error('Notice传递参数不正确:', param);
+}
+
+notice.error = function (param, timeout) {
+  return noticeWithType('error', param, timeout);
 };
-notice.warn = function (param) {
-  return notice(param, 'warn');
+notice.warn = function (param, timeout) {
+  return noticeWithType('warn', param, timeout);
 };
-notice.success = function (param) {
-  return notice(param, 'success');
+notice.success = function (param, timeout) {
+  return noticeWithType('success', param, timeout);
 };
-notice.info = function (param) {
-  return notice(param, 'info');
+notice.info = function (param, timeout) {
+  return noticeWithType('info', param, timeout);
 };
 
 exports.default = notice;
@@ -7577,6 +7598,8 @@ var Tooltip = function (_Pop) {
     param.template = '<div class="h-tooltip' + (param.theme ? ' h-tooltip-' + param.theme : '') + '" role="tooltip"><div class="h-tooltip-arrow"></div><div class="h-tooltip-inner"></div></div>';
     param.arrowSelector = '.h-tooltip-arrow, .h-tooltip__arrow';
     param.innerSelector = '.h-tooltip-inner, .h-tooltip__inner';
+    // param.containter = document.body;
+    // log(param);
     return (0, _possibleConstructorReturn3.default)(this, (Tooltip.__proto__ || (0, _getPrototypeOf2.default)(Tooltip)).call(this, el, param));
   }
 
@@ -10448,8 +10471,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.inputCls
   }, [_c('div', {
     staticClass: "h-select-value"
-  }, [(_vm.mutiple && _vm.objects) ? _c('div', {
-    staticClass: "h-select-mutiple-tags"
+  }, [(_vm.multiple && _vm.objects) ? _c('div', {
+    staticClass: "h-select-multiple-tags"
   }, _vm._l((_vm.objects), function(obj) {
     return _c('span', {
       key: obj
@@ -10462,9 +10485,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     })])
-  })) : _vm._e(), _vm._v(" "), (!_vm.mutiple && _vm.codes && _vm.objects) ? _c('div', [_vm._v(_vm._s(_vm.objects[_vm.title]))]) : _vm._e(), _vm._v(" "), (!_vm.codes || _vm.codes.length == 0) ? _c('div', {
+  })) : _vm._e(), _vm._v(" "), (!_vm.multiple && _vm.codes && _vm.objects) ? _c('div', [_vm._v(_vm._s(_vm.objects[_vm.title]))]) : _vm._e(), _vm._v(" "), (!_vm.codes || _vm.codes.length == 0) ? _c('div', {
     staticClass: "h-select-placeholder"
-  }, [_vm._v("请选择")]) : _vm._e()]), _vm._v(" "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.placeholder))]) : _vm._e()]), _vm._v(" "), _c('i', {
     staticClass: "h-icon-down"
   })]), _vm._v(" "), _c('div', {
     class: _vm.groupCls
@@ -10484,7 +10507,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       domProps: {
         "innerHTML": _vm._s(option[_vm.html])
       }
-    }) : [_vm._v(_vm._s(option[_vm.title]))], _vm._v(" "), (_vm.mutiple) ? _c('i', {
+    }) : [_vm._v(_vm._s(option[_vm.title]))], _vm._v(" "), (_vm.multiple) ? _c('i', {
       staticClass: "h-icon-check"
     }) : _vm._e()], 2)
   }))])])
@@ -10575,6 +10598,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(s.title))])
   })) : _vm._e(), _vm._v(" "), _c('date-base', {
+    ref: "datebase",
     attrs: {
       "value": _vm.nowDate,
       "option": _vm.option,
