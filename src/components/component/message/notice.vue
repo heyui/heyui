@@ -16,5 +16,44 @@
 
     <h3>设置全局自动关闭时间</h3>
     <example demo="message/notice5"></example>
+
+    <h3>Notice 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td>提示的文本</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>提示的标题</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>提示类型</td>
+        <td>String</td>
+        <td>loading, info, warn, success, error</td>
+        <td>info</td>
+      </tr>
+      <tr>
+        <td>timeout</td>
+        <td>显示多少毫秒后自动关闭</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>全局配置timeout</td>
+      </tr>
+    </table>
   </div>
 </template>

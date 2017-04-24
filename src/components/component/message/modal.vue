@@ -33,5 +33,51 @@
     <example demo="message/modal8"></example>
     <blockquote>弹出框中使用的代码</blockquote>
     <example demo="message/modalTest" :no-demo="true"></example>
+
+    <h3>Modal 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>hasCloseIcon</td>
+        <td>是否有关闭的Icon</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hasMask</td>
+        <td>是否有遮罩层</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>hasDivider</td>
+        <td>是否有线条分割头部以及尾部</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>全局配置hasDivider</td>
+      </tr>
+      <tr>
+        <td>closeOnMask</td>
+        <td>是否点击遮罩层关闭modal</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>middle</td>
+        <td>是否垂直居中展示</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+    </table>
   </div>
 </template>

@@ -20,7 +20,10 @@ export default {
       default: 80
     },
     rules: Object,
-    labelPosition: String
+    labelPosition: {
+      type: String,
+      default: "right" //left,right
+    },
   },
   data() {
     return {

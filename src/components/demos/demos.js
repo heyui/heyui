@@ -48,6 +48,7 @@ const demos = [
   'dataplugins/datepicker5',
   'dataplugins/datepicker6',
   'dataplugins/datepicker7',
+  'dataplugins/datepicker8',
   'dataplugins/daterangepicker1',
   'dataplugins/daterangepicker2',
   'dataplugins/daterangepicker3',

@@ -30,6 +30,87 @@
 
     <h3>文本类型的下拉</h3>
     <example demo="dataplugins/select9"></example>
+
+    <h3>Select 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>readonly</td>
+        <td>是否只读</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>multiple</td>
+        <td>是否多选</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>datas</td>
+        <td>选择的数据</td>
+        <td>Array, Object</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>dict</td>
+        <td>调用全局定义的字典</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>limit</td>
+        <td>限制只能选择多少个</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>autosize</td>
+        <td>100%宽度</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>nullOption</td>
+        <td>是否有“请选择”选项</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>noBorder</td>
+        <td>是否有边框，适用于文字的下拉选择</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>render</td>
+        <td>下拉菜单的展示自定义</td>
+        <td>Function</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>placeholder</td>
+        <td>展示默认提示语</td>
+        <td>String</td>
+        <td>-</td>
+        <td>请选择</td>
+      </tr>
+    </table>
   </div>
 </template>
 

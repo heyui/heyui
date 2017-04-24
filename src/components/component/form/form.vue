@@ -14,5 +14,97 @@
     <example demo="form/form5"></example>
     <h3>不同的组合样式2</h3>
     <example demo="form/form6"></example>
+
+    <h3>Form 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>mode</td>
+        <td>排版模式</td>
+        <td>String</td>
+        <td>inline,single,twocolumn</td>
+        <td>single</td>
+      </tr>
+      <tr>
+        <td>model</td>
+        <td>关联的model模型，用于数据validator。详情至<a href="https://github.com/heyui/hey-validator" target="_blank">hey-validator</a></td>
+        <td>Object</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>labelWidth</td>
+        <td>说明文字的宽度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>rules</td>
+        <td>数据validator规则。详情至<a href="https://github.com/heyui/hey-validator" target="_blank">hey-validator</a></td>
+        <td>Object</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>labelPosition</td>
+        <td>说明文字的位置</td>
+        <td>String</td>
+        <td>left,right</td>
+        <td>right</td>
+      </tr>
+    </table>
+
+    <h3>FormItem 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>label</td>
+        <td>文字</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>prop</td>
+        <td>关联的model中对应的字段，可以自动做required属性判断，用于数据validator。详情至<a href="https://github.com/heyui/hey-validator" target="_blank">hey-validator</a></td>
+        <td>Object</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>labelWidth</td>
+        <td>说明文字的宽度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>required</td>
+        <td>当一个label针对的输入比较复杂时，可以单独设置，只做必填样式的展示。</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>single</td>
+        <td>是否为独立一行，主要是在<code>twocolumn</code>模式下使用，适用于<code>textarea</code>这种不定高度的模块。</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+    </table>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
   <div :class="dateCls">
-    <div class="h-input h-datetime-show">
+    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
+    <div v-else class="h-input h-datetime-show">
       <input type="text"
              v-model="showDate"
              @change="changeEvent"

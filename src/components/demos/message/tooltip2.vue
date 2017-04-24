@@ -1,5 +1,5 @@
 <template>
-  <Row :space="10" v-width="400" style="margin-left:80px;">
+  <Row :space="10" v-width="300" style="margin-left:80px;">
     <Col :width="8"><button class="h-btn" v-tooltip placement="top-start" content="提示语">上左</button></Col>
     <Col :width="8"><button class="h-btn" v-tooltip placement="top" content="提示语">上中</button></Col>
     <Col :width="8"><button class="h-btn" v-tooltip placement="top-end" content="提示语">上右</button></Col>

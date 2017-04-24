@@ -24,7 +24,7 @@ export default {
       labelPosition: "left",
       labels: {
         left: 'Label左对齐',
-        block: 'Label右对齐',
+        right: 'Label右对齐',
       },
       model:{
         name: "",
