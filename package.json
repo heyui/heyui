@@ -40,6 +40,5 @@
   },
   "browserslist": [
     "ie >= 9"
-  ],
-  "private": true
+  ]
 }

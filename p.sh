@@ -11,5 +11,5 @@ standard-version
 git add -A
 git commit -m 'publish new version'
 git pull
-git push --follow-tags origin master
+git push origin master
 npm publish
