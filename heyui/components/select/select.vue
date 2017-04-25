@@ -82,6 +82,7 @@ export default {
       html: "select_rander_html",
       codes: null,
       objects: null,
+      hasNullOption: this.nullOption && !this.multiple
       // optionsMap: {}
     };
   },
@@ -150,7 +151,7 @@ export default {
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
       if (this.multiple) {
-        this.dropdown.popperInstance.update();
+        if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
       } else {
         this.dropdown.hide();
       }
@@ -226,7 +227,7 @@ export default {
           item[this.html] = this.render.call(null, item);
         })
       }
-      if (!this.mutiple && this.nullOption) {
+      if (!this.mutiple && this.hasNullOption) {
         options.unshift({ [`${this.key}`]: null, [`${this.title}`]: '请选择', [`${this.html}`]: '请选择' });
       }
       return options;

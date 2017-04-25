@@ -47,6 +47,12 @@
         <Select v-model="data.select2"
                 dict="simple"></Select>
       </FormItem>
+      <FormItem label="多选"
+                :required="true"
+                prop="select2">
+        <Select v-model="data.select3"
+                dict="simple" :multiple="true"></Select>
+      </FormItem>
       <FormItem label="日期"
                 :required="true"
                 prop="date">
@@ -119,6 +125,7 @@ export default {
         checkbox: [1],
         select1: '人民币',
         select2: '',
+        select3: [],
         money: {
           min: null,
           max: null
