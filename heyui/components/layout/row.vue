@@ -1,5 +1,6 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div :class="classes"
+       :style="styles">
     <slot></slot>
   </div>
 </template>
@@ -13,8 +14,8 @@ const Props = {
   direction: new Set(['row', 'row-reverse', 'column', 'column-reverse'])
 }
 
-const getHalf = (width, hasRemainder)=>{
-  return Math.floor(width / -2) + (hasRemainder?width % 2:0) + 'px';
+const getHalf = (width, hasRemainder) => {
+  return Math.floor(width / -2) + (hasRemainder ? width % 2 : 0) + 'px';
 }
 
 export default {

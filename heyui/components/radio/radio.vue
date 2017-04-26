@@ -1,6 +1,6 @@
 <template>
   <div class="h-radio" :disabled="disabled">
-    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="key==value" :disabled="disabled"></span>{{v}}</label>
+    <label v-for="option of arr" @click="setvalue(option)"><span :checked="option[key]==value" :disabled="disabled"></span>{{option[title]}}</label>
   </div>
 </template>
 <script>
@@ -18,14 +18,17 @@ export default {
     value: [String, Boolean, Number]
   },
   data() {
-    return {};
+    return {
+      key: config.getOption('dict', 'key_field'),
+      title: config.getOption('dict', 'title_field'),
+    };
   },
   methods: {
-    setvalue(key) {
+    setvalue(value) {
       if (this.disabled) return;
-      this.$emit('input', key);
+      this.$emit('input', value[this.key]);
       let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, this.value);
+      event.initCustomEvent("setvalue", true, true, value[this.key]);
       this.$el.dispatchEvent(event);
     }
   },
@@ -39,12 +42,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-
-      let arr = datas || {};
-      if (utils.isArray(datas)) {
-        arr = utils.toObject(datas);
-      }
-      return arr;
+      return utils.initOptions(datas, this);
     }
   }
 };

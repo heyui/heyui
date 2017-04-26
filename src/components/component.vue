@@ -32,9 +32,9 @@
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
             <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
-            <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>
-            <li><router-link to="/component/data/plugin/taginput">TagInput 标签</router-link></li>
-            <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
+            <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>-->
+            <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入</router-link></li>
+            <!--<li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
             <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
           </ul> 
           <ul>

@@ -52,6 +52,10 @@ export default {
       type: [String],
       default: 'key'  //object
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     dict: String,
     limit: {
       type: Number
@@ -89,6 +93,13 @@ export default {
   watch: {
     value() {
       this.parse();
+    },
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
     }
   },
   beforeMount() {
@@ -100,6 +111,7 @@ export default {
       let content = this.$el.querySelector('.h-select-group');
       this.dropdown = new Dropdown(el, {
         content,
+        disabled: this.disabled,
         equalWidth: true,
         container: document.body
       });
@@ -178,6 +190,7 @@ export default {
         [`${prefix}-input-border`]: !this.noBorder,
         [`${prefix}-multiple`]: this.multiple,
         [`${prefix}-no-autosize`]: !autosize,
+        [`${prefix}-disabled`]: this.disabled,
       }
     },
     inputCls() {
@@ -205,32 +218,33 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      let options = [];
-      if (utils.isObject(datas)) {
-        options = utils.toArray(datas, this.key, this.title);
-      } else if (utils.isArray(datas)) {
-        if (datas.length == 0) {
-          options = [];
-        } else {
-          let data0 = datas[0];
-          if (utils.isObject(data0)) {
-            options = utils.copy(datas);
-          } else {
-            options = datas.map((item) => {
-              return { [`${this.key}`]: item, [`${this.title}`]: item };
-            })
-          }
-        }
-      }
-      if (this.render) {
-        options.forEach((item) => {
-          item[this.html] = this.render.call(null, item);
-        })
-      }
-      if (!this.mutiple && this.hasNullOption) {
-        options.unshift({ [`${this.key}`]: null, [`${this.title}`]: '请选择', [`${this.html}`]: '请选择' });
-      }
-      return options;
+      return utils.initOptions(datas, this);
+      // let options = [];
+      // if (utils.isObject(datas)) {
+      //   options = utils.toArray(datas, this.key, this.title);
+      // } else if (utils.isArray(datas)) {
+      //   if (datas.length == 0) {
+      //     options = [];
+      //   } else {
+      //     let data0 = datas[0];
+      //     if (utils.isObject(data0)) {
+      //       options = utils.copy(datas);
+      //     } else {
+      //       options = datas.map((item) => {
+      //         return { [`${this.key}`]: item, [`${this.title}`]: item };
+      //       })
+      //     }
+      //   }
+      // }
+      // if (this.render) {
+      //   options.forEach((item) => {
+      //     item[this.html] = this.render.call(null, item);
+      //   })
+      // }
+      // if (!this.mutiple && this.hasNullOption) {
+      //   options.unshift({ [`${this.key}`]: null, [`${this.title}`]: '请选择', [`${this.html}`]: '请选择' });
+      // }
+      // return options;
     }
   }
 };

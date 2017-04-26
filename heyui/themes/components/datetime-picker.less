@@ -145,6 +145,11 @@
 
 .@{datetime-picker-prefix}{
   &-input-border {
+    width: 200px;
+    display: inline-block;
+    .@{prefix}input{
+      width: 100%;
+    }
     .@{pop-ref-prefix} >input {
       border-color: @primary-color;
       box-shadow: 0 0 0 2px fade(@primary-color, 20%);

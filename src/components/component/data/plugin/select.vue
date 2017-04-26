@@ -5,6 +5,9 @@
     <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/guide/config">全局配置</router-link></p>
     <example demo="dataplugins/select1"></example>
     
+    <h3>禁用</h3>
+    <example demo="dataplugins/select10"></example>
+    
     <h3>没有默认“请选择”选项</h3>
     <example demo="dataplugins/select2"></example>
 

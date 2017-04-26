@@ -9,7 +9,7 @@
 <template>
   <div>
     <p>默认横向排列</p>
-    <Row :space-x="10" type="flex" v-height="30">
+    <Row :space-x="10" type="flex" v-height="50">
       <Col v-width="50"> left </Col>
       <Col v-width="100"> center</Col>
       <Col :flex='1'> right </Col>

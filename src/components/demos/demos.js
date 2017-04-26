@@ -73,6 +73,7 @@ const demos = [
   'dataplugins/select7',
   'dataplugins/select8',
   'dataplugins/select9',
+  'dataplugins/select10',
   'dataplugins/timepicker1',
   'dataplugins/timepicker2',
   'dataplugins/timepicker3',

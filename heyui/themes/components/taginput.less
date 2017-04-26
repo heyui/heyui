@@ -1,0 +1,40 @@
+@taginput: ~"@{prefix}taginput";
+@taginput-input: h-icon-close;
+.@{taginput} {
+  width: 250px;
+  display: inline-block;
+  &-input-border{
+    .border-input();
+  }
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2px 2px 0px 2px;
+  input[type=text]&-input{
+    flex: 1;
+    min-width: 80px;
+    max-width: 100%;
+    border-color: transparent !important;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+    padding-left: 2px;
+    &:focus{
+      box-shadow: none !important;
+    }
+  }
+  >span{
+      color: @primary-color;
+      .tag-span-func();
+      border: 1px solid @white-color;
+      background-color: lighten(@primary-color, 35%);
+      font-size: 12px;
+      padding: 2px 8px;
+  }
+
+  .@{prefix}form-item-valid-error &{
+    border-color: @red-color;
+    &.focusing{
+      box-shadow: 0 0 0 2px fade(@red-color, 20%);
+    }
+  }
+}

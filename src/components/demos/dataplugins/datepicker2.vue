@@ -1,6 +1,7 @@
 <template>
   <div>
-      <DatePicker v-model="value" placeholder="请选择日期" disabled></DatePicker>
+    <p><h-switch v-model="disabled" :small="true">禁用</h-switch></p>
+    <p><DatePicker v-model="value" placeholder="请选择日期" :disabled="disabled"></DatePicker></p>
   </div>
 </template>
 
@@ -8,7 +9,8 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '',
+      disabled: true
     }
   }
 }

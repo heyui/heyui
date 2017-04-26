@@ -10,7 +10,7 @@
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div v-if="!disabled" :class="datePickerCls"
+    <div :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container h-date-range-container">
         <div v-if="shortcuts.length>0"
@@ -105,6 +105,18 @@ export default {
     },
     value: Object
   },
+  watch: {
+    value() {
+      this.parse(this.value);
+    },
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
+  },
   data() {
     let format = this.format || config.getOption('datepicker.format')[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
@@ -134,23 +146,22 @@ export default {
   },
   mounted() {
     let that = this;
-    if (!this.disabled) {
-      this.$nextTick(() => {
-        let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
-        let content = this.$el.querySelector(`.h-date-picker`);
-        this.dropdown = new Dropdown(el, {
-          trigger: 'click',
-          triggerOnce: true,
-          content,
-          container: document.body,
-          events: {
-            show() {
-              that.initNowView()
-            }
+    this.$nextTick(() => {
+      let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let content = this.$el.querySelector(`.h-date-picker`);
+      this.dropdown = new Dropdown(el, {
+        trigger: 'click',
+        triggerOnce: true,
+        content,
+        disabled: this.disabled,
+        container: document.body,
+        events: {
+          show() {
+            that.initNowView()
           }
-        });
+        }
       });
-    }
+    });
   },
   methods: {
     updateRangeEnd(string) {

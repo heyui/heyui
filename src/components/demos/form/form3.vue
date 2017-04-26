@@ -47,6 +47,11 @@
         <Select v-model="data.select2"
                 dict="simple"></Select>
       </FormItem>
+      <FormItem label="标签"
+                :required="true"
+                prop="taginputs">
+        <TagInput v-model="data.taginputs"></TagInput>
+      </FormItem>
       <FormItem label="多选"
                 :required="true"
                 prop="select2">
@@ -126,6 +131,7 @@ export default {
         select1: '人民币',
         select2: '',
         select3: [],
+        taginputs: [],
         money: {
           min: null,
           max: null
@@ -156,6 +162,7 @@ export default {
           'checkbox',
           'money',
           'date',
+          'taginputs',
           'money.min',
           'money.max'
         ]

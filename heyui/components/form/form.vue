@@ -43,7 +43,7 @@ export default {
       let rule = this.fRules.required.includes(ruleKey);
       // log(rule);
       // this.clearValidField(prop);
-      if (rule && (utils.isNull(value) || value == '')) {
+      if (rule && (utils.isNull(value) || value.length == 0)) {
         // utils.removeClass('validor-error');
         return { message: `值不能为空` };
       }
