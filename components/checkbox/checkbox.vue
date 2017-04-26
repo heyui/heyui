@@ -1,6 +1,9 @@
 <template>
   <div class="h-checkbox" :disabled="disabled">
-    <label v-for="(v, key) in arr" @click="setvalue(key)"><span :checked="isInclude(key)" :disabled="disabled"></span>{{v}}</label>
+    <template v-if="arr.length">
+    <label v-for="option of arr" @click="setvalue(option)"><span :checked="isInclude(option)" :disabled="disabled"></span>{{option[title]}}</label>
+    </template>
+    <label v-else @click="setvalue()"><span :checked="checked||value" :indeterminate="indeterminate" :disabled="disabled"></span><slot></slot></label>
   </div>
 </template>
 <script>
@@ -16,39 +19,58 @@ export default {
     },
     dict: String,
     value: {
-      type: Array,
-      default: []
+      type: [Array, Boolean],
+      default: false
+    },
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    indeterminate: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
-    return {};
+    return {
+      key: config.getOption('dict', 'key_field'),
+      title: config.getOption('dict', 'title_field'),
+    };
   },
   methods: {
-    setvalue(key) {
-      if(this.disabled)return;
-      let index = this.check(key);
-      if (index > -1) {
-        this.value.splice(index, 1);
+    setvalue(option) {
+      if (this.disabled) return;
+      let value = utils.copy(this.value);
+      if (this.arr.length == 0) {
+        value = !value;
       } else {
-        this.value.push(key);
+        let key = option[this.key];
+        let index = this.check(key);
+        if (index > -1) {
+          value.splice(index, 1);
+        } else {
+          value.push(key);
+        }
       }
-      this.$emit('input', this.value);
+      this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, this.value);
+      event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
     },
     check(key) {
       let value = this.value.map(item => String(item));
       return value.indexOf(String(key));
     },
-    isInclude(key) {
-      return this.check(key) > -1;
+    isInclude(option) {
+      let value = this.value.map(item => String(item));
+      let index = value.indexOf(String(option[this.key]));
+      return index > -1;
     }
   },
   computed: {
     arr() {
       if (!this.datas && !this.dict) {
-        log.error('checkbox组件:datas或者dict参数最起码需要定义其中之一');
+        // log.error('checkbox组件:datas或者dict参数最起码需要定义其中之一');
         return [];
       }
       let datas = this.datas;
@@ -56,11 +78,7 @@ export default {
         datas = config.getDict(this.dict);
       }
 
-      let arr = datas || {};
-      if (utils.isArray(datas)) {
-        arr = utils.toObject(datas);
-      }
-      return arr;
+      return utils.initOptions(datas, this);
     }
   }
 };

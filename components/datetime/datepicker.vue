@@ -1,7 +1,9 @@
 <template>
   <div :class="dateCls">
-    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
-    <div v-else class="h-input h-datetime-show">
+    <div v-if="noBorder"
+         class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
+    <div v-else
+         class="h-input h-datetime-show">
       <input type="text"
              v-model="showDate"
              @change="changeEvent"
@@ -10,8 +12,7 @@
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div v-if="!disabled"
-         :class="datePickerCls"
+    <div :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container">
         <div v-if="shortcuts.length>0"
@@ -19,7 +20,8 @@
           <div v-for="s of shortcuts"
                @click="setShortcutValue(s)">{{s.title}}</div>
         </div>
-        <date-base ref="datebase" :value="nowDate"
+        <date-base ref="datebase"
+                   :value="nowDate"
                    :option="option"
                    :type="type"
                    :now-view="nowView"
@@ -102,34 +104,43 @@ export default {
   watch: {
     value() {
       this.parse(this.value);
+    },
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
     }
   },
   beforeMount() {
     this.parse(this.value);
   },
   mounted() {
-    if (!this.disabled) {
-      let that = this;
-      this.$nextTick(() => {
-        let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
-        let content = this.$el.querySelector(`.h-date-picker`);
-        this.dropdown = new Dropdown(el, {
-          trigger: 'click',
-          triggerOnce: true,
-          content,
-          container: document.body,
-          events: {
-            show(){
-              that.parse(that.value);
-              that.$refs.datebase.resetView();
-              if(that.nowDate){
-                that.nowView = manba(that.nowDate);
-              }
+    let that = this;
+    this.$nextTick(() => {
+      let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let content = this.$el.querySelector(`.h-date-picker`);
+      this.dropdown = new Dropdown(el, {
+        trigger: 'click',
+        triggerOnce: true,
+        content,
+        disabled: this.disabled,
+        container: document.body,
+        events: {
+          show() {
+            that.parse(that.value);
+            that.$refs.datebase.resetView();
+            if (that.nowDate) {
+              that.nowView = manba(that.nowDate);
             }
           }
-        });
+        }
       });
-    }
+      if (this.disabled) {
+        this.dropdown.disabled();
+      }
+    });
   },
   methods: {
     setShortcutValue(s) {
@@ -143,7 +154,7 @@ export default {
       this.dropdown.popperInstance.update();
     },
     changeView() {
-      if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
+      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     inputEvent(event) {
       let value = event.target.value;
@@ -190,7 +201,7 @@ export default {
     setvalue(string, isEnd = true) {
       // log(string);
       let value = string;
-      if(string != ''){
+      if (string != '') {
         value = manba(string).format(this.nowFormat);
       }
       this.$emit('input', value);

@@ -1,4 +1,5 @@
-import Utils from 'hey-utils';
+import utils from 'hey-utils';
+import config from './config';
 
 const rclass = /[\t\r\n\f]/g;
 const rnotwhite = (/\S+/g);
@@ -6,7 +7,7 @@ const rnotwhite = (/\S+/g);
 function getClass(elem) {
   return elem.getAttribute && elem.getAttribute("class") || "";
 }
-export default Utils.extend({}, Utils, {
+export default utils.extend({}, utils, {
   addClass(elem, value) {
     let classes;
     let cur;
@@ -130,5 +131,35 @@ export default Utils.extend({}, Utils, {
       data.push(i);
     }
     return data;
+  },
+  initOptions(datas, param) {
+    let key = config.getOption('dict.key_field');
+    let title = config.getOption('dict.title_field');
+    let options = [];
+    if (this.isObject(datas)) {
+      options = this.toArray(datas, key, title);
+    } else if (this.isArray(datas)) {
+      if (datas.length == 0) {
+        options = [];
+      } else {
+        let data0 = datas[0];
+        if (this.isObject(data0)) {
+          options = this.copy(datas);
+        } else {
+          options = datas.map((item) => {
+            return { [`${key}`]: item, [`${title}`]: item };
+          })
+        }
+      }
+    }
+    if (param.render) {
+      options.forEach((item) => {
+        item[config.html] = param.render.call(null, item);
+      })
+    }
+    if (!param.mutiple && param.hasNullOption) {
+      options.unshift({ [`${key}`]: null, [`${title}`]: '请选择', [`${param.html}`]: '请选择' });
+    }
+    return options;
   }
 });

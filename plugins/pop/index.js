@@ -8,6 +8,7 @@ const DEFAULT_OPTIONS = {
   placement: 'top',
   triggerOnce: false,
   content: '',
+  disabled: false,
   trigger: 'hover focus',
   offset: 0,
   equalWidth: false
@@ -151,8 +152,16 @@ class Pop {
     this.popNode.setAttribute('aria-hidden', 'true');
   }
 
+  disabled() {
+    this.options.disabled = true;
+  }
+
+  enabled() {
+    this.options.disabled = false;
+  }
+
   show() {
-    if (this.isOpen) { return this; }
+    if (this.isOpen || this.options.disabled) { return this; }
     this.isOpen = true;
     if (this.options.events && utils.isFunction(this.options.events.show)) {
       this.options.events.show.call(null);

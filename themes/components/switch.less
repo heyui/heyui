@@ -19,7 +19,7 @@
   }
 }
 
-input[type=checkbox].@{switch-prefix},.@{switch-prefix} {
+input[type=checkbox].@{switch-prefix},.@{switch-prefix} .@{switch-prefix}-span {
   display: inline-block;
   margin: 0px;
   cursor: pointer;
@@ -80,5 +80,12 @@ input[type=checkbox].@{switch-prefix},.@{switch-prefix} {
     &:before {
       background-color: @gray2-color;
     }
+  }
+}
+
+.@{switch-prefix}{
+  display: inline-block;
+  >.h-switch-text{
+    display: inline-block;
   }
 }

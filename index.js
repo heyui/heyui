@@ -31,7 +31,7 @@ import Loading from './components/Loading';
 import Switch from './components/switch';
 // import Table from './components/table';
 // import Tabs from './components/tabs';
-// import Tag from './components/tag';
+import TagInput from './components/taginput';
 // import TimePicker from './components/time-picker';
 // import Tooltip from './components/tooltip';
 // import Transfer from './components/transfer';
@@ -121,6 +121,7 @@ const components = {
   // Steps,
   hSwitch: Switch,
   SwitchList,
+  TagInput,
   // iTable: Table,
   // Tabs: Tabs,
   // TabPane: Tabs.Pane,
@@ -184,4 +185,4 @@ const HeyUI = Object.assign(components, {
   install
 }, prototypes, config);
 
-export default HeyUI;
+module.exports = HeyUI;
