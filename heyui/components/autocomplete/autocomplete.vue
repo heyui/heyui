@@ -15,9 +15,7 @@
       <div v-if="!multiple">
         <input type="text" v-if="!readonly"
               class="h-autocomplete-input"
-              @focus="focusing=true"
               v-model="searchValue"
-              @blur="focusing=false"
               @keyup.enter="add" :placeholder="placeholder" /></div>
     </div>
     <div :class="groupCls">
@@ -44,15 +42,10 @@ const prefix = 'h-autocomplete';
 
 export default {
   props: {
-    readonly: {
-      type: Boolean,
-      default: false
-    },
     multiple: {
       type: Boolean,
       default: false
     },
-    datas: [Array, Object],
     type: {
       type: [String],
       default: 'key'  //object
@@ -61,18 +54,8 @@ export default {
       type: Boolean,
       default: false
     },
+    datas: [Array, Object],
     dict: String,
-    limit: {
-      type: Number
-    },
-    autosize: {
-      type: Boolean,
-      default: false
-    },
-    nullOption: {
-      type: Boolean,
-      default: true
-    },
     noBorder: {
       type: Boolean,
       default: false
@@ -81,8 +64,9 @@ export default {
       type: String,
       default: "请选择"
     },
-    render: Function,
-    value: [Number, String, Array, Object]
+    value: [Number, String, Array, Object],
+    options: Object,
+    title: String
   },
   data() {
     return {
@@ -93,7 +77,8 @@ export default {
       codes: [],
       objects: {},
       nowSelected: null,
-      searchValue: ''
+      searchValue: '',
+      param: utils.extend({}, config.getOption("autocomplete.default"), this.options)
     };
   },
   watch: {

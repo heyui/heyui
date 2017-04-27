@@ -6,6 +6,28 @@ const config = {
     title_field: "title",
     dicts: {}
   },
+  autocomplete: {
+    default: {
+      maxLength: 20,
+      delay: 100,
+      loadData: null,
+      title: 'title',
+      key: 'key',
+      render: null,
+      getValue: (item) => {
+        let title = '';
+        let key = null;
+        if (utils.isObject(item)) {
+          title = item[this.title];
+          key = item[this.key];
+        } else {
+          title = item;
+          key = item;
+        }
+        return { key, title, value: key };
+      }
+    }
+  },
   modal: {
     hasDivider: false
   },
