@@ -1,38 +1,39 @@
 <template>
-  <div :class="selectCls">
+  <div :class="autocompleteCls">
     <div :class="inputCls">
-      <div class="h-select-value">
-        <div v-if="multiple&&objects"
-             class="h-select-multiple-tags"><span v-for="obj of objects"
+      <div class="h-autocomplete-show">
+        <div v-if="multiple"
+             class="h-autocomplete-multiple-tags"><span v-for="obj of objects"
                 :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
              @click.stop="setvalue(obj)"></i></span>
+             <input v-if="!readonly" type="text"
+                class="h-autocomplete-input"
+                @focus="focusing=true"
+                v-model="inputvalue"
+                @blur="focusing=false"
+                @keyup.enter="add" :placeholder="placeholder" />
         </div>
-        <div v-if="!multiple&&codes&&objects">{{objects[title]}}</div>
-        <div v-if="!codes||codes.length==0"
-             class="h-select-placeholder">{{placeholder}}</div>
+        <div v-if="!multiple">
+          <input type="text" v-if="!readonly"
+                class="h-autocomplete-input"
+                @focus="focusing=true"
+                :value="objects[title]"
+                @blur="focusing=false"
+                @keyup.enter="add" :placeholder="placeholder" /></div>
       </div>
-      <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
-      <div class="h-select-group-container">
-        <input type="text"
-               v-if="filterable"
-               v-model="searchInput"
-               class="h-select-search-input" placeholder="请输入筛选文本"/>
-        <ul class="h-select-ul">
-          <li v-for="option of filterOptions"
-              :key="option"
-              class="h-select-item"
-              @click="setvalue(option)"
-              :class="getLiCls(option)">
-            <div v-if="!!render"
-                 v-html="option[html]"></div>
-            <template v-else>{{option[title]}}</template>
-            <i v-if="multiple"
-               class="h-icon-check"></i>
-          </li>
-        </ul>
-      </div>
+      <ul class="h-autocomplete-ul">
+        <li v-for="option of options"
+            :key="option"
+            class="h-autocomplete-item"
+            @click="setvalue(option)"
+            :class="{'h-autocomplete-item-selected': option[key]==nowSelected}">
+          <div v-if="!!render"
+               v-html="option[html]"></div>
+          <template v-else>{{option[title]}}</template>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -41,7 +42,7 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
 
-const prefix = 'h-select';
+const prefix = 'h-autocomplete';
 
 export default {
   props: {
@@ -82,10 +83,6 @@ export default {
       type: String,
       default: "请选择"
     },
-    filterable: {
-      type: Boolean,
-      default: false
-    },
     render: Function,
     value: [Number, String, Array, Object]
   },
@@ -93,12 +90,11 @@ export default {
     return {
       key: config.getOption('dict', 'key_field'),
       title: config.getOption('dict', 'title_field'),
-      html: "select_rander_html",
+      html: "autocomplete_rander_html",
+      focusing: false,
       codes: [],
       objects: {},
-      hasNullOption: this.nullOption && !this.multiple,
-      searchInput: ''
-      // optionsMap: {}
+      nowSelected: null
     };
   },
   watch: {
@@ -118,9 +114,11 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-select-input');
-      let content = this.$el.querySelector('.h-select-group');
+      let el = this.$el.querySelector('.h-autocomplete-show');
+      let content = this.$el.querySelector('.h-autocomplete-group');
       this.dropdown = new Dropdown(el, {
+        trigger: 'click',
+        triggerOnce: true,
         content,
         disabled: this.disabled,
         equalWidth: true,
@@ -137,7 +135,7 @@ export default {
         }
         this.objects = os;
       } else {
-        this.objects = this.optionsMap[this.codes];
+        this.objects = this.optionsMap[this.codes] || {};
       }
     },
     parse() {
@@ -159,10 +157,6 @@ export default {
       if (this.readonly) return;
       let code = option[this.key];
       if (this.multiple) {
-        if (!utils.isNull(this.limit) && !this.codes.includes(code) && this.codes.length >= this.limit) {
-          this.$Message.error(`您最多可以选${this.limit}个选项`);
-          return;
-        }
         utils.toggleValue(this.codes, code);
       } else {
         this.codes = code;
@@ -178,11 +172,6 @@ export default {
       } else {
         this.dropdown.hide();
       }
-    },
-    getLiCls(option) {
-      let code = option[this.key];
-      if (utils.isNull(code)) return {};
-      return { [`${prefix}-item-selected`]: (this.multiple ? this.codes.includes(code) : this.codes == code) };
     }
   },
   filters: {
@@ -191,7 +180,7 @@ export default {
     }
   },
   computed: {
-    selectCls() {
+    autocompleteCls() {
       let autosize = !!this.noBorder;
       if (!autosize) {
         autosize = this.autosize;
@@ -202,6 +191,7 @@ export default {
         [`${prefix}-multiple`]: this.multiple,
         [`${prefix}-no-autosize`]: !autosize,
         [`${prefix}-disabled`]: this.disabled,
+        focusing: this.focusing
       }
     },
     inputCls() {
@@ -220,15 +210,6 @@ export default {
       delete optionsMap.null;
       return optionsMap;
     },
-    filterOptions() {
-      if (this.searchInput) {
-        let searchValue = this.searchInput.toLocaleLowerCase();
-        return this.options.filter((item) => {
-          return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
-        });
-      }
-      return this.options;
-    },
     options() {
       if (!this.datas && !this.dict) {
         log.error('Select组件:datas或者dict参数最起码需要定义其中之一');
@@ -238,8 +219,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      datas = utils.initOptions(datas, this);
-      return datas;
+      return utils.initOptions(datas, this);
     }
   }
 };

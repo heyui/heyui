@@ -98,19 +98,19 @@ export default utils.extend({}, utils, {
     return param;
   },
   toggleValue(list, value) {
-    if (!this.isArray(list)) return ;
+    if (!this.isArray(list)) return;
     if (list.includes(value)) {
       list.splice(list.indexOf(value), 1);
     } else {
       list.push(value);
     }
   },
-  padLeft(str, size){
+  padLeft(str, size) {
     var s = "00000" + str;
-    return s.substr(s.length-size);
+    return s.substr(s.length - size);
   },
   toggleValueByKey(list, key, value) {
-    if (!this.isArray(list)) return ;
+    if (!this.isArray(list)) return;
     let index = -1;
     for (let l of list) {
       if (this.isNull(l[key])) {
@@ -125,9 +125,9 @@ export default utils.extend({}, utils, {
       list.push(value);
     }
   },
-  numList(start, end, step){
+  numList(start, end, step) {
     let data = [];
-    for(let i = start; i < end; i = i + step){
+    for (let i = start; i < end; i = i + step) {
       data.push(i);
     }
     return data;
@@ -147,18 +147,25 @@ export default utils.extend({}, utils, {
           options = this.copy(datas);
         } else {
           options = datas.map((item) => {
-            return { [`${key}`]: item, [`${title}`]: item };
+            return {
+              [`${key}`]: item,
+              [`${title}`]: item
+            };
           })
         }
       }
     }
     if (param.render) {
       options.forEach((item) => {
-        item[config.html] = param.render.call(null, item);
+        item[param.html] = param.render.call(null, item);
       })
     }
     if (!param.mutiple && param.hasNullOption) {
-      options.unshift({ [`${key}`]: null, [`${title}`]: '请选择', [`${param.html}`]: '请选择' });
+      options.unshift({
+        [`${key}`]: null,
+        [`${title}`]: '请选择',
+        [`${param.html}`]: '请选择'
+      });
     }
     return options;
   }

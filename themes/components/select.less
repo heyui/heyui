@@ -82,8 +82,16 @@
   font-size: @font-size-mini;
   background-color: @white-color;
   padding: 5px 0px;
-  max-height: 300px;
-  overflow-y: auto;
+  &-container{
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+
+    .@{select-prefix}-ul{
+      flex:1;
+      overflow-y: auto;
+    }
+  }
   .@{select-item-prefix} {
     .li-hover();
     padding: 8px 10px;
@@ -93,6 +101,12 @@
       background-color: @primary-color;
     }
   }
+
+  .@{select-prefix}-search-input{
+    width: 98%;
+    margin: 3px 1%;
+  }
+
   &.@{select-prefix} {
     &-multiple {
       .@{select-item-prefix} {

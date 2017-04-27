@@ -33,7 +33,7 @@
     </span>
     <input type="text"
            :style="{order:orders.jumper}"
-           v-if="orders.jumper!=-1"
+           v-if="orders.jumper!=-1 && count > 0"
            v-width="40"
            :value="curNow"
            @blur="jump" />

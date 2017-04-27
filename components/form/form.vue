@@ -40,10 +40,10 @@ export default {
       let value = utils.getKeyValue(this.model, prop);
       // log(prop);
       let ruleKey = prop.replace(/\[\w+\]/, "[]");
-      let rule = this.fRules.required.includes(ruleKey);
-      // log(rule);
+      let hasRule = this.fRules.required.includes(ruleKey);
+      log(hasRule, ruleKey, value);
       // this.clearValidField(prop);
-      if (rule && (utils.isNull(value) || value.length == 0)) {
+      if (hasRule && (utils.isNull(value) || value.length == 0)) {
         // utils.removeClass('validor-error');
         return { message: `值不能为空` };
       }
