@@ -1,28 +1,22 @@
 @autocompleteCls: ~"@{prefix}autocomplete";
-@autocompleteCls-item: ~"@{autocompleteCls}-item";
+@autocompleteClsItem: ~"@{autocompleteCls}-item";
+@autocompleteClsGroup: ~"@{autocompleteCls}-group";
 @autocompleteCls-close: h-icon-close;
 .@{autocompleteCls} {
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  line-height: normal;
+  width: 250px;
   .@{autocompleteCls} {
+    &-show{
+      display: flex;
+      flex-wrap: wrap;
+      .border-input();
+      display: inline-block;
+    }
     &-placeholder{
       color: @gray-color;
     }
     
-    input[type=text]&-input{
-      flex: 1;
-      min-width: 80px;
-      max-width: 100%;
-      border-color: @white-color !important;
-      line-height: 24px;
-      height: 24px;
-      margin-bottom: 2px;
-      padding-left: 2px;
-      &:focus{
-        box-shadow: none !important;
-      }
+    &-input{
+      .border-input-inside-input()
     }
 
     &-multiple-tags {
@@ -38,7 +32,7 @@
   }
 
   &-disabled{
-    .@{autocompleteCls}-input{
+    .@{autocompleteCls}-show{
       .border-input-disabled();
     }
   }
@@ -61,11 +55,11 @@
   padding: 5px 0px;
   max-height: 300px;
   overflow-y: auto;
-  .@{autocompleteCls-item} {
+  .@{autocompleteClsItem} {
     .li-hover();
     padding: 8px 10px;
     position: relative;
-    &.@{autocompleteCls-item}-selected {
+    &.@{autocompleteClsItem}-selected {
       color: @white-color;
       background-color: @primary-color;
     }

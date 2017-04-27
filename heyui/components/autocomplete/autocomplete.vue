@@ -1,26 +1,24 @@
 <template>
   <div :class="autocompleteCls">
-    <div :class="inputCls">
-      <div class="h-autocomplete-show">
-        <div v-if="multiple"
-             class="h-autocomplete-multiple-tags"><span v-for="obj of objects"
-                :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-             @click.stop="setvalue(obj)"></i></span>
-             <input v-if="!readonly" type="text"
-                class="h-autocomplete-input"
-                @focus="focusing=true"
-                v-model="inputvalue"
-                @blur="focusing=false"
-                @keyup.enter="add" :placeholder="placeholder" />
-        </div>
-        <div v-if="!multiple">
-          <input type="text" v-if="!readonly"
-                class="h-autocomplete-input"
-                @focus="focusing=true"
-                :value="objects[title]"
-                @blur="focusing=false"
-                @keyup.enter="add" :placeholder="placeholder" /></div>
+    <div class="h-autocomplete-show">
+      <div v-if="multiple"
+            class="h-autocomplete-multiple-tags"><span v-for="obj of objects"
+              :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
+            @click.stop="setvalue(obj)"></i></span>
+            <input v-if="!readonly" type="text"
+              class="h-autocomplete-input"
+              @focus="focusing=true"
+              v-model="inputvalue"
+              @blur="focusing=false"
+              @keyup.enter="add" :placeholder="placeholder" />
       </div>
+      <div v-if="!multiple">
+        <input type="text" v-if="!readonly"
+              class="h-autocomplete-input"
+              @focus="focusing=true"
+              v-model="searchValue"
+              @blur="focusing=false"
+              @keyup.enter="add" :placeholder="placeholder" /></div>
     </div>
     <div :class="groupCls">
       <ul class="h-autocomplete-ul">
@@ -94,7 +92,8 @@ export default {
       focusing: false,
       codes: [],
       objects: {},
-      nowSelected: null
+      nowSelected: null,
+      searchValue: ''
     };
   },
   watch: {
@@ -194,9 +193,9 @@ export default {
         focusing: this.focusing
       }
     },
-    inputCls() {
+    showCls() {
       return {
-        [`${prefix}-input`]: true
+        [`${prefix}-show`]: true
       }
     },
     groupCls() {

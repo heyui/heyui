@@ -75,17 +75,38 @@
 }
 
 .border-input() {
+  cursor: default;
   background-color: @white-color;
   border-radius: @border-radius;
   border: @border;
   vertical-align: top;
   transition: all linear @transition-time;
+  padding: 2px 2px 0px 2px;
+  font-size: @font-size-mini;
+  position: relative;
+  line-height: 1.5;
+  box-sizing: border-box;
   &:hover {
     border-color: lighten(@primary-color, 10%);
   }
   &.@{pop-ref-prefix}, &.focusing {
     border-color: @primary-color;
     box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+  }
+}
+
+
+.border-input-inside-input() {
+  flex: 1;
+  min-width: 80px;
+  max-width: 100%;
+  border-color: transparent !important;
+  line-height: 24px;
+  height: 24px;
+  margin-bottom: 2px;
+  padding-left: 2px;
+  &:focus{
+    box-shadow: none !important;
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div :class="selectCls">
-    <div :class="inputCls">
+    <div :class="showCls">
       <div class="h-select-value">
         <div v-if="multiple&&objects"
              class="h-select-multiple-tags"><span v-for="obj of objects"
@@ -118,7 +118,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-select-input');
+      let el = this.$el.querySelector('.h-select-show');
       let content = this.$el.querySelector('.h-select-group');
       this.dropdown = new Dropdown(el, {
         content,
@@ -204,9 +204,9 @@ export default {
         [`${prefix}-disabled`]: this.disabled,
       }
     },
-    inputCls() {
+    showCls() {
       return {
-        [`${prefix}-input`]: true
+        [`${prefix}-show`]: true
       }
     },
     groupCls() {
