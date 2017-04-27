@@ -9,6 +9,7 @@
       <component :is="nowComponent"
                  :class="contentCls"
                  :param="propsData"
+                 @event="trigger"
                  @close="close"></component>
     </div>
   </div>
@@ -81,6 +82,9 @@ export default {
     })
   },
   methods: {
+    trigger(name, data) {
+      this.$emit(name, data);
+    },
     close() {
       this.isOpened = false;
       setTimeout(() => {

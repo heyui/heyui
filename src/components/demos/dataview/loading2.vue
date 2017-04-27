@@ -13,7 +13,7 @@ import heyui from '../../../../heyui'; //demo测试路径
 export default {
   methods: {
     pageload() {
-      this.$Loading("加载中");
+      this.$Loading();
       setTimeout(() => {
         this.$Loading.close();
       }, 3000);

@@ -12,11 +12,13 @@
     font-size: 18px;
     margin-right: 3px;
     transition: all @transition-time;
-    i{
-      transition: all @transition-time;
-    }
+    color: @gray2-color;
     &:hover>i{
+      transition: transform @transition-time;
       transform: scale(1.1);
+    }
+    &.@{rate-prefix}-on{
+      color: @yellow-color;
     }
   }
 
@@ -29,5 +31,6 @@
   }
   >.@{rate-prefix}-value{
     font-size:15px;
+    color: @yellow-color;
   }
 }

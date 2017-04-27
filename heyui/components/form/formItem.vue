@@ -89,10 +89,10 @@ export default {
     //   if (parent) return this.getParent().errorMessages[this.prop];
     //   return '';
     // },
-    trigger(evt) {
+    trigger() {
       let parent = this.getParent();
       if (!parent) return false;
-      let target = evt.srcElement;
+      // let target = evt.srcElement;
       // target.getAttribute("prop")
       let prop = this.prop;
       if (!this.validable || utils.isNull(prop)) {

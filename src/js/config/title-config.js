@@ -15,7 +15,7 @@ const titles = {
   'formRate': 'Rate 评分',
   'formForm': 'Form 表单',
   'pluginSelect': 'Select 下拉选择',
-  'pluginAuto': 'AutoPicker 自动补全',
+  'pluginAuto': 'AutoComplete 模糊匹配',
   'pluginDate': 'DatePicker 日期选择',
   'pluginTime': 'TimePicker 时间选择',
   'pluginDatetime': 'DatetimePicker 日期时间选择',

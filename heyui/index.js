@@ -37,6 +37,7 @@ import TagInput from './components/taginput';
 // import Transfer from './components/transfer';
 // import Tree from './components/tree';
 // import Upload from './components/upload';
+import AutoComplete from './components/autocomplete';
 import {
   Row,
   Col
@@ -63,6 +64,7 @@ import config from './utils/config';
 const components = {
   // Affix,
   // Alert,
+  AutoComplete,
   // BackTop,
   // Badge,
   // Breadcrumb,

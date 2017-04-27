@@ -27,6 +27,12 @@
     <h3>自定义</h3>
     <example demo="dataplugins/select7"></example>
 
+    <h3>可筛选</h3>
+    <example demo="dataplugins/select11"></example>
+
+    <h3>可筛选多选</h3>
+    <example demo="dataplugins/select12"></example>
+
     <h3>使用全局Dict</h3>
     <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/guide/config">全局配置</router-link>。</p>
     <example demo="dataplugins/select8"></example>

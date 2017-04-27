@@ -1,7 +1,7 @@
 <template>
   <div>
       <button class="h-btn" @click="opened = true">打开弹出框</button>
-      <ModalComponent :component="test" :props-data="{a:1}" v-model="opened"></ModalComponent>
+      <ModalComponent :component="test" :props-data="{a:1}" v-model="opened" @toparent="toparent"></ModalComponent>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
     return {
       opened: false,
       test //在这里定义引用
+    }
+  },
+  methods: {
+    toparent(data) {
+      this.$Message.success(data);
     }
   }
 }

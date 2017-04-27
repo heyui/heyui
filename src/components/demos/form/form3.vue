@@ -54,7 +54,7 @@
       </FormItem>
       <FormItem label="多选"
                 :required="true"
-                prop="select2">
+                prop="select3">
         <Select v-model="data.select3"
                 dict="simple" :multiple="true"></Select>
       </FormItem>
@@ -154,6 +154,7 @@ export default {
       validationRules: {
         required: [
           'select2',
+          'select3',
           'inputs[].value',
           'input',
           'textarea',

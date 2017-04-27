@@ -4,7 +4,7 @@
       <svg viewBox="25 25 50 50">
         <circle cx="50" cy="50" r="20" fill="none" class="circle"></circle>
       </svg>
-      <p :class="textCls">{{text}}</p></div>
+      <p :class="textCls" v-if="text">{{text}}</p></div>
     </div>
   </div>
 </template>
@@ -30,13 +30,6 @@ export default {
     });
   },
   computed: {
-    hasText() {
-      let slot = this.$slots.default;
-      if (slot && slot.length > 0) {
-        return !!slot[0].text
-      }
-      return false;
-    },
     circularCls() {
       return {
         [`${prefix}-circular`]: true,

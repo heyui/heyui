@@ -2,10 +2,10 @@
   <div :class="noticeCls">
     <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
     <div :class="containerCls">
-      <span class="h-notify-close h-icon-close" @click="setvalue(false)"></span>
-      <header><slot name='header'></slot></header>
+      <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
+      <header v-if="hasHeader"><slot name='header'></slot></header>
       <div :class="contentCls"><slot></slot></div>
-      <footer><slot name='footer'></slot></footer>
+      <footer v-if="hasFooter"><slot name='footer'></slot></footer>
     </div>
   </div>
 </template>
@@ -98,6 +98,12 @@ export default {
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
         [`${notifyprefix}-has-divider`]: this.hasDivider
       }
+    },
+    hasHeader() {
+      return !!this.$slots.header;
+    },
+    hasFooter() {
+      return !!this.$slots.footer;
     }
   }
 };

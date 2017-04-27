@@ -16,6 +16,9 @@
     <h3>普通的调用</h3>
     <example demo="message/modal1"></example>
 
+    <h3>自定义的弹出框</h3>
+    <example demo="message/modal10"></example>
+
     <h3>无遮罩弹出框</h3>
     <example demo="message/modal2"></example>
 

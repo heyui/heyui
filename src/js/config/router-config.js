@@ -64,9 +64,9 @@ export default {
     name: 'pluginSelect',
     component: (resolve) => require(['../../components/component/data/plugin/select'], resolve)
   }, {
-    path: 'data/plugin/auto',
+    path: 'data/plugin/autocomplete',
     name: 'pluginAuto',
-    component: (resolve) => require(['../../components/component/data/plugin/auto'], resolve)
+    component: (resolve) => require(['../../components/component/data/plugin/autocomplete'], resolve)
   }, {
     path: 'data/plugin/date',
     name: 'pluginDate',
