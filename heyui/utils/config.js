@@ -7,14 +7,16 @@ const config = {
     dicts: {}
   },
   autocomplete: {
+    dict: {},
     default: {
-      maxLength: 20,
+      maxList: 20,
       delay: 100,
       loadData: null,
+      minWord: 0,
       title: 'title',
       key: 'key',
       render: null,
-      getValue: (item) => {
+      getValue(item) {
         let title = '';
         let key = null;
         if (utils.isObject(item)) {
@@ -24,7 +26,11 @@ const config = {
           title = item;
           key = item;
         }
-        return { key, title, value: key };
+        let result = { key, title, value: item };
+        if (this.render && result.key) {
+          result.html = this.render.call(null, result);
+        }
+        return result;
       }
     }
   },

@@ -9,17 +9,16 @@
       display: flex;
       flex-wrap: wrap;
       .border-input();
-      display: inline-block;
-    }
-    &-placeholder{
-      color: @gray-color;
-    }
-    
-    &-input{
-      .border-input-inside-input()
-    }
+      // display: inline-block;
 
-    &-multiple-tags {
+      .@{prefix}icon-loading{
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        z-index: 3;
+        color: @gray-color;
+      }
+
       >span{
         color: @primary-color;
         .tag-span-func();
@@ -28,6 +27,13 @@
         font-size: 12px;
         padding: 2px 8px;
       }
+    }
+    &-placeholder{
+      color: @gray-color;
+    }
+    
+    &-input{
+      .border-input-inside-input();
     }
   }
 
@@ -60,8 +66,7 @@
     padding: 8px 10px;
     position: relative;
     &.@{autocompleteClsItem}-selected {
-      color: @white-color;
-      background-color: @primary-color;
+      background-color: @gray2-color;
     }
   }
 }
