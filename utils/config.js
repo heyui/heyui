@@ -6,6 +6,34 @@ const config = {
     title_field: "title",
     dicts: {}
   },
+  autocomplete: {
+    dict: {},
+    default: {
+      maxList: 20,
+      delay: 100,
+      loadData: null,
+      minWord: 0,
+      title: 'title',
+      key: 'key',
+      render: null,
+      getValue(item) {
+        let title = '';
+        let key = null;
+        if (utils.isObject(item)) {
+          title = item[this.title];
+          key = item[this.key];
+        } else {
+          title = item;
+          key = item;
+        }
+        let result = { key, title, value: item };
+        if (this.render && result.key) {
+          result.html = this.render.call(null, result);
+        }
+        return result;
+      }
+    }
+  },
   modal: {
     hasDivider: false
   },

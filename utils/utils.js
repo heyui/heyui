@@ -125,6 +125,13 @@ export default utils.extend({}, utils, {
       list.push(value);
     }
   },
+  getArray(array, keyName = 'id') {
+    const list = [];
+    for (let a of array) {
+      list.push(a[keyName])
+    }
+    return list;
+  },
   numList(start, end, step) {
     let data = [];
     for (let i = start; i < end; i = i + step) {

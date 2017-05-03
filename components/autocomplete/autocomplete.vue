@@ -1,38 +1,49 @@
 <template>
   <div :class="autocompleteCls">
-    <div :class="inputCls">
-      <div class="h-autocomplete-show">
-        <div v-if="multiple"
-             class="h-autocomplete-multiple-tags"><span v-for="obj of objects"
-                :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-             @click.stop="setvalue(obj)"></i></span>
-             <input v-if="!readonly" type="text"
-                class="h-autocomplete-input"
-                @focus="focusing=true"
-                v-model="inputvalue"
-                @blur="focusing=false"
-                @keyup.enter="add" :placeholder="placeholder" />
-        </div>
-        <div v-if="!multiple">
-          <input type="text" v-if="!readonly"
-                class="h-autocomplete-input"
-                @focus="focusing=true"
-                :value="objects[title]"
-                @blur="focusing=false"
-                @keyup.enter="add" :placeholder="placeholder" /></div>
-      </div>
+    <div class="h-autocomplete-show" :class="{'focusing':focusing}">
+      <template v-if="multiple"><span v-for="obj of objects"
+              :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
+           @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <input v-if="!disabled"
+               type="text"
+               class="h-autocomplete-input"
+               @focus="focus"
+               :value="showValue"
+               @blur="blur"
+               @keyup="handle"
+               :placeholder="placeholder" />
+        <i class="h-icon-loading"
+           v-if="loading"></i>
+      </template>
+      <template v-if="!multiple">
+        <input type="text"
+               :disabled="disabled"
+               class="h-autocomplete-input"
+               @focus="focus"
+               :value="showValue"
+               @blur="blur"
+               @keyup="handle"
+               :placeholder="placeholder" />
+        <i class="h-icon-loading"
+           v-if="loading"></i>
+      </template>
     </div>
+  
+    <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
       <ul class="h-autocomplete-ul">
-        <li v-for="option of options"
-            :key="option"
+        <li v-for="(result, index) of results"
+            :key="result"
             class="h-autocomplete-item"
-            @click="setvalue(option)"
-            :class="{'h-autocomplete-item-selected': option[key]==nowSelected}">
-          <div v-if="!!render"
-               v-html="option[html]"></div>
-          <template v-else>{{option[title]}}</template>
+            :class="{'h-autocomplete-item-selected': index == nowSelected}"
+            @click="picker(result)">
+          <div v-if="!!result.html"
+               v-html="result.html"></div>
+          <template v-else>{{result.title}}</template>
         </li>
+        <li v-if="results.length==0"
+            v-color:gray
+            class="text-center">{{emptyContent}}</li>
       </ul>
     </div>
   </div>
@@ -46,15 +57,14 @@ const prefix = 'h-autocomplete';
 
 export default {
   props: {
-    readonly: {
-      type: Boolean,
-      default: false
-    },
     multiple: {
       type: Boolean,
       default: false
     },
-    datas: [Array, Object],
+    mustMatch: {
+      type: Boolean,
+      default: true
+    },
     type: {
       type: [String],
       default: 'key'  //object
@@ -63,28 +73,19 @@ export default {
       type: Boolean,
       default: false
     },
+    datas: [Array, Object],
     dict: String,
-    limit: {
-      type: Number
-    },
-    autosize: {
-      type: Boolean,
-      default: false
-    },
-    nullOption: {
-      type: Boolean,
-      default: true
-    },
-    noBorder: {
-      type: Boolean,
-      default: false
-    },
     placeholder: {
       type: String,
       default: "请选择"
     },
-    render: Function,
-    value: [Number, String, Array, Object]
+    value: [Number, String, Array, Object],
+    options: Object,
+    show: String,
+    emptyContent: {
+      type: [String, Object],
+      default: "未搜索到相关数据"
+    }
   },
   data() {
     return {
@@ -92,13 +93,23 @@ export default {
       title: config.getOption('dict', 'title_field'),
       html: "autocomplete_rander_html",
       focusing: false,
-      codes: [],
-      objects: {},
-      nowSelected: null
+      objects: [],
+      object: { key: null, title: this.show, value: null },
+      nowSelected: -1,
+      tempValue: null,
+      searchValue: null,
+      oldValue: this.value,
+      loading: false,
+      content: null,
+      param: utils.extend({}, config.getOption("autocomplete.default"), this.options),
+      loadDatas: []
     };
   },
   watch: {
     value() {
+      if (this.oldValue == this.value) {
+        return;
+      }
       this.parse();
     },
     disabled() {
@@ -107,6 +118,22 @@ export default {
       } else {
         this.dropdown.enabled();
       }
+    },
+    nowSelected() {
+      this.$nextTick(() => {
+        if (this.content && this.nowSelected > -1) {
+          let dom = this.content.querySelector('.h-autocomplete-item-selected');
+          let uldom = this.content.querySelector('.h-autocomplete-ul');
+          if (dom && uldom) {
+            // log(dom.offsetTop, dom.offsetHeight, this.content.offsetHeight);
+            if ((dom.offsetTop + dom.offsetHeight) - this.content.scrollTop > this.content.offsetHeight) {
+              this.content.scrollTop = (dom.offsetTop + dom.offsetHeight) - this.content.offsetHeight;
+            } else if (dom.offsetTop - this.content.scrollTop < 0) {
+              this.content.scrollTop = dom.offsetTop;
+            }
+          }
+        }
+      })
     }
   },
   beforeMount() {
@@ -115,11 +142,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-autocomplete-show');
-      let content = this.$el.querySelector('.h-autocomplete-group');
+      this.content = this.$el.querySelector('.h-autocomplete-group');
       this.dropdown = new Dropdown(el, {
-        trigger: 'click',
+        trigger: '',
         triggerOnce: true,
-        content,
+        content: this.content,
         disabled: this.disabled,
         equalWidth: true,
         container: document.body
@@ -127,59 +154,148 @@ export default {
     });
   },
   methods: {
-    setObjects() {
+    parse() {
       if (this.multiple) {
         let os = [];
-        for (let code of this.codes) {
-          os.push(this.optionsMap[code]);
+        if (utils.isArray(this.value) && this.value.length > 0) {
+          for (let v of this.value) {
+            os.push(this.getValue(v));
+          }
         }
         this.objects = os;
       } else {
-        this.objects = this.optionsMap[this.codes] || {};
+        let value = null;
+        if (this.type == 'key') {
+          value = {
+            [this.param.key]: this.value,
+            [this.param.title]: this.show,
+          }
+        } else {
+          value = this.value;
+        }
+        utils.extend(this.object, this.getValue(value));
       }
     },
-    parse() {
+    dispose() {
+      let value = null;
       if (this.multiple) {
-        let values = this.value || [];
-        this.codes = values.map((item) => {
-          return this.type == 'key' ? item : item[this.key];
-        })
+        value = [];
+        if (utils.isArray(this.objects) && this.objects.length > 0) {
+          for (let o of this.objects) {
+            value.push(this.type == 'key' ? o.key : o.value);
+          }
+        }
       } else {
-        if (this.type == 'key') {
-          this.codes = this.value;
-        } else if (utils.isObject(this.value)) {
-          this.codes = this.value[this.key];
+        value = this.type == 'key' ? this.object.key : this.object.value;
+        if (utils.isNull(this.object.value)) {
+          if (!this.mustMatch) {
+            if (utils.isNull(this.object.value) && utils.isFunction(this.param.getEmpty)) {
+              value = this.param.getEmpty.call(this.param, this.object.title);
+            }
+          } else {
+            this.object.title = null;
+          }
         }
       }
-      this.setObjects();
+      return value;
     },
-    setvalue(option) {
-      if (this.readonly) return;
-      let code = option[this.key];
-      if (this.multiple) {
-        utils.toggleValue(this.codes, code);
-      } else {
-        this.codes = code;
+    getValue(item) {
+      return this.param.getValue.call(this.param, item);
+    },
+    focus(event) {
+      this.focusing = true;
+      if (this.multiple) this.searchValue = null;
+      this.search(event.target);
+    },
+    blur(event) {
+      this.focusing = false;
+      let value = event.target.value;
+      if (value == '') {
+        this.object.key = null;
+        this.object.title = null;
+        this.object.value = null;
       }
-      this.setObjects();
-      let value = this.type == 'key' ? this.codes : this.objects;
+      setTimeout(() => {
+        value = event.target.value;
+        if (value != this.object.title) {
+          this.setvalue();
+        }
+      }, 100);
+    },
+    handle(event) {
+      if (event.code == 'ArrowUp') {
+        if (this.nowSelected > 0) {
+          this.nowSelected -= 1;
+        }
+      } else if (event.code == 'ArrowDown') {
+        if (this.nowSelected < this.results.length - 1) {
+          this.nowSelected += 1;
+        }
+      } else if (event.code == 'Enter') {
+        if (this.nowSelected >= 0) {
+          this.add(this.results[this.nowSelected]);
+          this.setvalue();
+        }
+      } else {
+        this.search(event.target);
+      }
+    },
+    search(target) {
+      let value = target.value;
+      this.tempValue = value;
+      if (value.length >= this.param.minWord) {
+        if (this.dropdown) {
+          this.dropdown.show();
+        }
+        if (utils.isFunction(this.param.loadData)) {
+          this.loading = true;
+          this.param.loadData.call(this.param, value, (datas) => {
+            if (target.value === value) {
+              this.loading = false;
+              this.loadDatas = datas;
+              if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+            }
+          });
+        }
+      }
+      this.searchValue = value;
+      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+    },
+    add(data) {
+      if (this.multiple) {
+        this.objects.push(utils.copy(data));
+      } else {
+        this.object = utils.copy(data);
+      }
+    },
+    remove(object) {
+      this.objects.splice(this.objects.indexOf(object), 1);
+      this.setvalue();
+    },
+    picker(data) {
+      // log('picker');
+      this.add(data);
+      this.setvalue();
+    },
+    setvalue() {
+      if (this.disabled) return;
+      this.nowSelected = -1;
+      this.tempValue = null;
+      let value = this.oldValue = this.dispose();
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.multiple) {
-        if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
-      } else {
-        this.dropdown.hide();
-      }
-    }
-  },
-  filters: {
-    showText(key, value) {
-      return value.includes(key);
-    }
+      if (this.dropdown.popperInstance) this.dropdown.hide();
+    },
+    // update() {
+    //   this.parse();
+    // }
   },
   computed: {
+    showValue() {
+      return this.tempValue == null ? this.object.title : this.tempValue;
+    },
     autocompleteCls() {
       let autosize = !!this.noBorder;
       if (!autosize) {
@@ -194,9 +310,9 @@ export default {
         focusing: this.focusing
       }
     },
-    inputCls() {
+    showCls() {
       return {
-        [`${prefix}-input`]: true
+        [`${prefix}-show`]: true
       }
     },
     groupCls() {
@@ -205,21 +321,36 @@ export default {
         [`${prefix}-multiple`]: this.multiple
       }
     },
-    optionsMap() {
-      let optionsMap = utils.toObject(this.options, this.key);
-      delete optionsMap.null;
-      return optionsMap;
-    },
-    options() {
-      if (!this.datas && !this.dict) {
-        log.error('Select组件:datas或者dict参数最起码需要定义其中之一');
-        return [];
-      }
+    results() {
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      return utils.initOptions(datas, this);
+      if (utils.isNull(datas)) {
+        datas = this.loadDatas;
+      } else {
+        datas = utils.initOptions(datas, this);
+        if (this.searchValue) {
+          let searchValue = this.searchValue.toLocaleLowerCase();
+          datas = datas.filter((item) => {
+            return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
+          });
+        }
+      }
+      if (this.objects.length > 0) {
+        let keyArray = utils.getArray(this.objects, 'key');
+        datas = datas.filter((item) => {
+          return keyArray.indexOf(item.key) == -1;
+        });
+      }
+      if (this.maxList) {
+        datas.splice(0, this.maxList);
+      }
+      let results = [];
+      for (let data of datas) {
+        results.push(this.getValue(data));
+      }
+      return results;
     }
   }
 };

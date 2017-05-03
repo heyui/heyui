@@ -8,19 +8,8 @@
   }
   display: flex;
   flex-wrap: wrap;
-  padding: 2px 2px 0px 2px;
   input[type=text]&-input{
-    flex: 1;
-    min-width: 80px;
-    max-width: 100%;
-    border-color: transparent !important;
-    line-height: 24px;
-    height: 24px;
-    margin-bottom: 2px;
-    padding-left: 2px;
-    &:focus{
-      box-shadow: none !important;
-    }
+    .border-input-inside-input()
   }
   >span{
       color: @primary-color;
