@@ -5,10 +5,10 @@
         <div v-if="multiple&&objects"
              class="h-select-multiple-tags"><span v-for="obj of objects"
                 :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-             @click.stop="setvalue(obj)"></i></span>
+             @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
         </div>
-        <div v-if="!multiple&&codes&&objects">{{objects[title]}}</div>
-        <div v-if="!codes||codes.length==0"
+        <div v-if="!multiple&&codes!=null&&objects">{{objects[title]}}</div>
+        <div v-if="codes==null||codes.length==0"
              class="h-select-placeholder">{{placeholder}}</div>
       </div>
       <i class="h-icon-down"></i>

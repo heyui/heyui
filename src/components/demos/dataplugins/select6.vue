@@ -6,7 +6,7 @@
 </template>
 <script>
   export default {
-    data: function () {
+    data() {
       return {
         select: [],
         param: ['选择1', '选择2', '选择3']

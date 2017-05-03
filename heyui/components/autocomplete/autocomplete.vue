@@ -1,9 +1,9 @@
 <template>
   <div :class="autocompleteCls">
-    <div class="h-autocomplete-show">
+    <div class="h-autocomplete-show" :class="{'focusing':focusing}">
       <template v-if="multiple"><span v-for="obj of objects"
               :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-           @click.stop="remove(obj)"></i></span>
+           @click.stop="remove(obj)" v-if="!disabled"></i></span>
         <input v-if="!disabled"
                type="text"
                class="h-autocomplete-input"
@@ -41,7 +41,7 @@
                v-html="result.html"></div>
           <template v-else>{{result.title}}</template>
         </li>
-        <li v-if="results.length==0&&startResult"
+        <li v-if="results.length==0"
             v-color:gray
             class="text-center">{{emptyContent}}</li>
       </ul>
@@ -98,14 +98,19 @@ export default {
       nowSelected: -1,
       tempValue: null,
       searchValue: null,
+      oldValue: this.value,
       loading: false,
+      content: null,
       param: utils.extend({}, config.getOption("autocomplete.default"), this.options),
       loadDatas: []
     };
   },
   watch: {
     value() {
-      // this.parse();
+      if (this.oldValue == this.value) {
+        return;
+      }
+      this.parse();
     },
     disabled() {
       if (this.disabled) {
@@ -113,6 +118,22 @@ export default {
       } else {
         this.dropdown.enabled();
       }
+    },
+    nowSelected() {
+      this.$nextTick(() => {
+        if (this.content && this.nowSelected > -1) {
+          let dom = this.content.querySelector('.h-autocomplete-item-selected');
+          let uldom = this.content.querySelector('.h-autocomplete-ul');
+          if (dom && uldom) {
+            // log(dom.offsetTop, dom.offsetHeight, this.content.offsetHeight);
+            if ((dom.offsetTop + dom.offsetHeight) - this.content.scrollTop > this.content.offsetHeight) {
+              this.content.scrollTop = (dom.offsetTop + dom.offsetHeight) - this.content.offsetHeight;
+            } else if (dom.offsetTop - this.content.scrollTop < 0) {
+              this.content.scrollTop = dom.offsetTop;
+            }
+          }
+        }
+      })
     }
   },
   beforeMount() {
@@ -121,11 +142,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-autocomplete-show');
-      let content = this.$el.querySelector('.h-autocomplete-group');
+      this.content = this.$el.querySelector('.h-autocomplete-group');
       this.dropdown = new Dropdown(el, {
-        trigger: 'click',
+        trigger: '',
         triggerOnce: true,
-        content,
+        content: this.content,
         disabled: this.disabled,
         equalWidth: true,
         container: document.body
@@ -181,9 +202,10 @@ export default {
     getValue(item) {
       return this.param.getValue.call(this.param, item);
     },
-    focus() {
+    focus(event) {
       this.focusing = true;
       if (this.multiple) this.searchValue = null;
+      this.search(event.target);
     },
     blur(event) {
       this.focusing = false;
@@ -201,9 +223,6 @@ export default {
       }, 100);
     },
     handle(event) {
-      if (this.dropdown) {
-        this.dropdown.show();
-      }
       if (event.code == 'ArrowUp') {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1;
@@ -218,23 +237,29 @@ export default {
           this.setvalue();
         }
       } else {
-        let value = event.target.value;
-        this.tempValue = value;
-        if (value.length >= this.param.minWord) {
-          if (utils.isFunction(this.param.loadData)) {
-            this.loading = true;
-            this.param.loadData.call(this.param, value, (datas) => {
-              if (event.target.value === value) {
-                this.loading = false;
-                this.loadDatas = datas;
-                if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
-              }
-            });
-          }
-        }
-        this.searchValue = value;
-        if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+        this.search(event.target);
       }
+    },
+    search(target) {
+      let value = target.value;
+      this.tempValue = value;
+      if (value.length >= this.param.minWord) {
+        if (this.dropdown) {
+          this.dropdown.show();
+        }
+        if (utils.isFunction(this.param.loadData)) {
+          this.loading = true;
+          this.param.loadData.call(this.param, value, (datas) => {
+            if (target.value === value) {
+              this.loading = false;
+              this.loadDatas = datas;
+              if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+            }
+          });
+        }
+      }
+      this.searchValue = value;
+      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     add(data) {
       if (this.multiple) {
@@ -256,16 +281,16 @@ export default {
       if (this.disabled) return;
       this.nowSelected = -1;
       this.tempValue = null;
-      let value = this.dispose();
+      let value = this.oldValue = this.dispose();
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
       if (this.dropdown.popperInstance) this.dropdown.hide();
     },
-    update() {
-      this.parse();
-    }
+    // update() {
+    //   this.parse();
+    // }
   },
   computed: {
     showValue() {
@@ -296,25 +321,7 @@ export default {
         [`${prefix}-multiple`]: this.multiple
       }
     },
-    startResult() {
-      return this.param.minWord == 0 ? true : (!utils.isNull(this.searchValue) && this.searchValue.length >= this.param.minWord);
-    },
     results() {
-      // if (!this.startResult) {
-        // if (this.dropdown) {
-        //   this.dropdown.disabled();
-        //   this.dropdown.hide();
-        // }
-        // return [];
-      // }
-      // if (this.dropdown) {
-      //   this.dropdown.enabled();
-      //   if (this.dropdown.popperInstance) {
-      //     this.dropdown.popperInstance.show();
-      //   } else {
-      //     this.dropdown.show();
-      //   }
-      // }
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);
