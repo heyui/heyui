@@ -7,7 +7,7 @@ const config = {
     dicts: {}
   },
   autocomplete: {
-    dict: {},
+    configs: {},
     default: {
       maxList: 20,
       delay: 100,
