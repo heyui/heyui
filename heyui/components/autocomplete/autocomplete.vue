@@ -1,9 +1,11 @@
 <template>
   <div :class="autocompleteCls">
-    <div class="h-autocomplete-show" :class="{'focusing':focusing}">
+    <div class="h-autocomplete-show"
+         :class="{'focusing':focusing}">
       <template v-if="multiple"><span v-for="obj of objects"
-              :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-           @click.stop="remove(obj)" v-if="!disabled"></i></span>
+              :key="obj"><span>{{obj.title}}</span><i class="h-icon-close"
+           @click.stop="remove(obj)"
+           v-if="!disabled"></i></span>
         <input v-if="!disabled"
                type="text"
                class="h-autocomplete-input"
@@ -85,12 +87,17 @@ export default {
     emptyContent: {
       type: [String, Object],
       default: "未搜索到相关数据"
-    }
+    },
+    config: String
   },
   data() {
+    let param = {};
+    if (this.config) {
+      param = utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.options);
+    } else {
+      param = utils.extend({}, config.getOption("autocomplete.default"), this.options);
+    }
     return {
-      key: config.getOption('dict', 'key_field'),
-      title: config.getOption('dict', 'title_field'),
       html: "autocomplete_rander_html",
       focusing: false,
       objects: [],
@@ -101,7 +108,7 @@ export default {
       oldValue: this.value,
       loading: false,
       content: null,
-      param: utils.extend({}, config.getOption("autocomplete.default"), this.options),
+      param,
       loadDatas: []
     };
   },
@@ -125,7 +132,6 @@ export default {
           let dom = this.content.querySelector('.h-autocomplete-item-selected');
           let uldom = this.content.querySelector('.h-autocomplete-ul');
           if (dom && uldom) {
-            // log(dom.offsetTop, dom.offsetHeight, this.content.offsetHeight);
             if ((dom.offsetTop + dom.offsetHeight) - this.content.scrollTop > this.content.offsetHeight) {
               this.content.scrollTop = (dom.offsetTop + dom.offsetHeight) - this.content.offsetHeight;
             } else if (dom.offsetTop - this.content.scrollTop < 0) {
@@ -178,8 +184,23 @@ export default {
     },
     dispose() {
       let value = null;
+      let inputValue = null;
+      if (!this.mustMatch) {
+        if (this.type == 'key') {
+          inputValue = this.showValue;
+        } else {
+          inputValue = { [this.param.title]: this.showValue };
+        }
+      }
       if (this.multiple) {
         value = [];
+        if (!utils.isNull(this.showValue)) {
+          if (this.type == 'key') {
+            this.objects.push(inputValue);
+          } else {
+            this.objects.push(this.getValue(inputValue));
+          }
+        }
         if (utils.isArray(this.objects) && this.objects.length > 0) {
           for (let o of this.objects) {
             value.push(this.type == 'key' ? o.key : o.value);
@@ -187,14 +208,8 @@ export default {
         }
       } else {
         value = this.type == 'key' ? this.object.key : this.object.value;
-        if (utils.isNull(this.object.value)) {
-          if (!this.mustMatch) {
-            if (utils.isNull(this.object.value) && utils.isFunction(this.param.getEmpty)) {
-              value = this.param.getEmpty.call(this.param, this.object.title);
-            }
-          } else {
-            this.object.title = null;
-          }
+        if (utils.isNull(value) && !utils.isNull(inputValue)) {
+          value = inputValue;
         }
       }
       return value;
@@ -210,13 +225,8 @@ export default {
     blur(event) {
       this.focusing = false;
       let value = event.target.value;
-      if (value == '') {
-        this.object.key = null;
-        this.object.title = null;
-        this.object.value = null;
-      }
       setTimeout(() => {
-        value = event.target.value;
+        value = event.target.value || null;
         if (value != this.object.title) {
           this.setvalue();
         }
@@ -235,6 +245,8 @@ export default {
         if (this.nowSelected >= 0) {
           this.add(this.results[this.nowSelected]);
           this.setvalue();
+        } else if (this.multiple) {
+          this.setvalue();
         }
       } else {
         this.search(event.target);
@@ -242,7 +254,12 @@ export default {
     },
     search(target) {
       let value = target.value;
-      this.tempValue = value;
+      this.tempValue = value || null;
+      if (value != this.object.title) {
+        this.object.key = null;
+        this.object.title = null;
+        this.object.value = null;
+      }
       if (value.length >= this.param.minWord) {
         if (this.dropdown) {
           this.dropdown.show();
@@ -267,6 +284,7 @@ export default {
       } else {
         this.object = utils.copy(data);
       }
+      this.tempValue = null;
     },
     remove(object) {
       this.objects.splice(this.objects.indexOf(object), 1);
@@ -280,17 +298,16 @@ export default {
     setvalue() {
       if (this.disabled) return;
       this.nowSelected = -1;
-      this.tempValue = null;
       let value = this.oldValue = this.dispose();
+      if (this.mustMatch || this.object.key || this.multiple) {
+        this.tempValue = null;
+      }
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
       if (this.dropdown.popperInstance) this.dropdown.hide();
     },
-    // update() {
-    //   this.parse();
-    // }
   },
   computed: {
     showValue() {
@@ -331,14 +348,14 @@ export default {
       } else {
         datas = utils.initOptions(datas, this);
         if (this.searchValue) {
-          let searchValue = this.searchValue.toLocaleLowerCase();
+          let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter((item) => {
-            return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
+            return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
           });
         }
       }
       if (this.objects.length > 0) {
-        let keyArray = utils.getArray(this.objects, 'key');
+        let keyArray = utils.getArray(this.objects, 'key').filter(item => !utils.isNull(item));
         datas = datas.filter((item) => {
           return keyArray.indexOf(item.key) == -1;
         });

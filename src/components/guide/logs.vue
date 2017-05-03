@@ -3,6 +3,10 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-05-03</p><p>19:30</p></div>
+        <div slot="content">完成Autocomplete。</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-04-26</p><p>10:25</p></div>
         <div slot="content">添加单选的多选框，针对 true,false 选择，Radio,Checkbox支持数组定义的datas。</div>
       </TimelineItem>

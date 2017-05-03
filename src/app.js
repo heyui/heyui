@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import jsonp from 'fetch-jsonp';
 // import HeyUI from 'heyui';
 import App from './App.vue';
 
@@ -17,6 +18,24 @@ import routerConfig from './js/config/router-config';
 require('../heyui/themes/common.less');
 require('../static/css/doc.less');
 
+
+
+const loadData = function (filter, callback) {
+  jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
+    .then(response => response.json())
+    .then((d) => {
+      const result = d.result;
+      const data = [];
+      result.forEach((r) => {
+        data.push({
+          name: r[0],
+          id: r[0],
+        });
+      });
+      callback(data);
+    });
+}
+
 Vue.use(VueHighlightJS)
 
 
@@ -26,6 +45,15 @@ Vue.use(VueHighlightJS)
 HeyUI.initDict({
   select: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
   simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
+});
+
+HeyUI.config("autocomplete.configs", {
+  simple: {
+    loadData,
+    key: 'id',
+    title: 'name',
+    minWord: 1
+  }
 });
 
 Vue.use(VueRouter);

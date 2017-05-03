@@ -38,14 +38,49 @@
                   :options="param6"></AutoComplete>
   
     <h3>选择对象</h3>
-    <p>value:{{value7}} <button class="h-btn h-btn-text" @click="update">修改值</button></p>
-    <AutoComplete :options="param7" type="object"
+    <p>value:{{value7}}
+      <button class="h-btn h-btn-text"
+              @click="update">修改值</button>
+    </p>
+    <AutoComplete :options="param7"
+                  type="object"
                   v-model="value7"></AutoComplete>
   
     <h3>选择对象多选</h3>
-    <p>value:{{value8}} <button class="h-btn h-btn-text" @click="update2">修改值</button></p>
-    <AutoComplete :options="param8" type="object" :multiple="true"
+    <p>value:{{value8}}
+      <button class="h-btn h-btn-text"
+              @click="update2">修改值</button>
+    </p>
+    <AutoComplete :options="param7"
+                  type="object"
+                  :multiple="true"
                   v-model="value8"></AutoComplete>
+  
+    <h3>可以任意输入</h3>
+    <p>value:{{value9}}</p>
+    <AutoComplete v-model="value9"
+                  :options="param7"
+                  :must-match="false"></AutoComplete>
+  
+    <h3>可以任意输入对象</h3>
+    <p>value:{{value10}}</p>
+    <AutoComplete v-model="value10"
+                  :options="param10"
+                  type="object"
+                  :must-match="false"></AutoComplete>
+
+
+    <h3>可以任意输入对象多选</h3>
+    <p>value:{{value11}}</p>
+    <AutoComplete v-model="value11"
+                  :options="param10"
+                  type="object"
+                  :multiple="true"
+                  :must-match="false"></AutoComplete>
+  
+    <h3>全局配置</h3>
+    <p>value:{{value12}}</p>
+    <AutoComplete v-model="value12" config="simple"></AutoComplete>
   </div>
 </template>
 
@@ -63,6 +98,21 @@ const loadData = function (filter, callback) {
         data.push({
           title: r[0],
           key: r[0],
+        });
+      });
+      callback(data);
+    });
+}
+const loadData2 = function (filter, callback) {
+  jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
+    .then(response => response.json())
+    .then((d) => {
+      const result = d.result;
+      const data = [];
+      result.forEach((r) => {
+        data.push({
+          name: r[0],
+          id: r[0],
         });
       });
       callback(data);
@@ -96,10 +146,16 @@ export default {
         minWord: 1
       },
       value8: [{ key: '测试', title: '测试' }, { key: '测试2', title: '测试2' }],
-      param8: {
-        loadData,
+      value9: null,
+      value10: null,
+      value12: null,
+      value11: [],
+      param10: {
+        loadData: loadData2,
+        key: 'id',
+        title: 'name',
         minWord: 1
-      }
+      },
     }
   },
   methods: {
