@@ -16,3 +16,4 @@ git pull
 git push --follow-tags origin master
 echo "发布至npm"
 npm publish
+git checkout doc
