@@ -162,6 +162,7 @@ export default {
       } else if (typeString == 'hour') {
         type = manba.HOUR;
       } else {
+        type = manba.YEAR;
         if (this.view == 'hour') {
           type = manba.DAY;
         } else if (this.view == 'minute') {
@@ -169,12 +170,10 @@ export default {
         } else if (this.view == 'year') {
           num = num * 12;
           type = manba.YEAR;
-        } else if (this.view == 'month') {
-          type = manba.YEAR;
         }
       }
-      let nowView = this.nowView.add(num, type).time();
-      this.$emit('updateView', nowView, this.range);
+      let nowView = manba(this.nowView).add(num, type);
+      this.$emit('updateView', nowView.time(), this.range);
     },
     isSelected(d) {
       let length = DateFormatLength[this.view];

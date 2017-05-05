@@ -1,13 +1,16 @@
 <template>
   <div :class="taginputCls">
-    <span v-for="(v, index) of values"><span>{{v}}</span><i v-if="!readonly" class="h-icon-close"
-             @click.stop="remove(index)"></i></span>
-    <input v-if="!readonly" type="text"
+    <span v-for="(v, index) of values"><span>{{v}}</span><i v-if="!readonly"
+       class="h-icon-close"
+       @click.stop="remove(index)"></i></span>
+    <input v-if="!readonly"
+           type="text"
            class="h-taginput-input"
            @focus="focusing=true"
            v-model="tagvalue"
-           @blur="focusing=false"
-           @keyup.enter="add" :placeholder="placeholder" />
+           @blur="blur"
+           @keyup.enter="add"
+           :placeholder="placeholder" />
   </div>
 </template>
 <script>
@@ -68,6 +71,10 @@ export default {
       this.$el.dispatchEvent(event);
       this.tagvalue = '';
     },
+    blur() {
+      this.focusing = false;
+      this.add();
+    }
   },
   computed: {
     taginputCls() {

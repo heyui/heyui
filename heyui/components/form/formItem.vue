@@ -1,9 +1,15 @@
 <template>
   <div :class="formItemCls">
-    <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">{{this.label}}</label>
-    <div class="h-form-item-content" :style="contentStyleCls">
-      <div class="h-form-item-wrap"><slot></slot></div>
-      <div class="h-form-item-error" v-if="validResult" >{{label}}{{validResult.message}}</div>
+    <label :style="labelStyleCls"
+           class="h-form-item-label"
+           v-if="showLabel">{{this.label}}</label>
+    <div class="h-form-item-content"
+         :style="contentStyleCls">
+      <div class="h-form-item-wrap">
+        <slot></slot>
+      </div>
+      <div class="h-form-item-error"
+           v-if="!errorMessage.valid">{{errorMessage.message}}</div>
     </div>
   </div>
 </template>
@@ -41,8 +47,18 @@ export default {
   data() {
     return {
       validResult: null,
-      config: false
+      configRequired: false,
+      errorMessage: { valid: true }
     };
+  },
+  watch: {
+    prop(prop, oldProp) {
+      let parent = this.getParent();
+      log(prop);
+      if (this.prop) {
+        this.errorMessage = parent.updateErrorMessage(prop, oldProp);
+      }
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -54,8 +70,10 @@ export default {
       });
     });
     let parent = this.getParent();
-    if(this.prop){
-      this.config = parent.fRules.required.includes(this.prop);
+
+    if (this.prop) {
+      this.configRequired = !!parent.getConfig(this.prop).required;
+      this.errorMessage = parent.getErrorMessage(this.prop);
     }
   },
   methods: {
@@ -81,36 +99,21 @@ export default {
       }
       return parent;
     },
-    // getErrorMessage() {
-    //   if (!this.validable || utils.isNull(this.prop)) {
-    //     return false;
-    //   }
-    //   let parent = this.getParent();
-    //   if (parent) return this.getParent().errorMessages[this.prop];
-    //   return '';
-    // },
     trigger() {
       let parent = this.getParent();
       if (!parent) return false;
-      // let target = evt.srcElement;
-      // target.getAttribute("prop")
       let prop = this.prop;
       if (!this.validable || utils.isNull(prop)) {
         return;
       }
-      // this.showMessage = true;
-      // let tagName = target.tagName;
-      // let selfProp = true;
-      // let label = target.getAttribute("label") || this.label;
-      // log(prop, label, tagName);
-      let result = this.getParent().validField(prop);
-      if (result === true) {
-        // this.errorMessage = null;
-        this.validResult = null;
-      } else {
-        this.validResult = result;
-        // this.errorMessage = result.message;
-      }
+      this.getParent().validField(prop);
+      // , (result) => {
+      //   if (result === true) {
+      //     this.validResult = null;
+      //   } else {
+      //     this.validResult = { message: result };
+      //   }
+      // }
     },
   },
   computed: {
@@ -126,8 +129,8 @@ export default {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
-        [`${prefixCls}-required`]: this.required || this.config,
-        [`${prefixCls}-valid-error`]: !!this.validResult,
+        [`${prefixCls}-required`]: this.required || this.configRequired,
+        [`${prefixCls}-valid-error`]: !this.errorMessage.valid,
         [`${prefixCls}-no-padding`]: !!this.noPadding
       }
     },
