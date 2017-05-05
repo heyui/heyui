@@ -4,7 +4,8 @@
   </div>
 </template>
 <script>
-import utils from "../../utils/utils";
+import Validator from 'hey-validator';
+import utils from '../../utils/utils';
 
 const prefixCls = 'h-form';
 
@@ -27,34 +28,37 @@ export default {
   },
   data() {
     return {
-      // errorMessages: {}
-
+      messages: {},
+      validator: null
     };
   },
   beforeMount() {
-
+    if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
   methods: {
     validField(prop) {
-      if (!this.model) return true;
-      let value = utils.getKeyValue(this.model, prop);
-      // log(prop);
-      let ruleKey = prop.replace(/\[\w+\]/, "[]");
-      let hasRule = this.fRules.required.includes(ruleKey);
-      log(hasRule, ruleKey, value);
-      // this.clearValidField(prop);
-      if (hasRule && (utils.isNull(value) || value.length == 0)) {
-        // utils.removeClass('validor-error');
-        return { message: `值不能为空` };
-      }
-      return true;
-      // this.errorMessages[prop] = ;
+      if (!this.model) return { valid: true };
+      let returnResult = this.validator.validField(prop, this.model, (result) => {
+        utils.extend(true, this.messages, result);
+      }, this.model);
+      utils.extend(true, this.messages, returnResult);
+    },
+    getConfig(prop) {
+      if (!this.validator) return false;
+      return this.validator.getConfig(prop);
+    },
+    getErrorMessage(prop) {
+      let message = { valid: true, message: null };
+      this.messages[prop] = message;
+      return message;
+    },
+    updateErrorMessage(prop, oldProp) {
+      let message = utils.copy(this.messages[oldProp]);
+      this.messages[prop] = message;
+      return message;
     }
   },
   computed: {
-    fRules() {
-      return this.rules || { required: [] };
-    },
     formCls() {
       return {
         [`${prefixCls}`]: true,
