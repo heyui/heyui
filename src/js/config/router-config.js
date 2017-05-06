@@ -140,9 +140,9 @@ export default {
     name: 'pluginDialog',
     component: (resolve) => require(['../../components/component/plugin/dialog'], resolve)
   }, {
-    path: 'plugin/dropdown',
-    name: 'pluginDropdown',
-    component: (resolve) => require(['../../components/component/plugin/dropdown'], resolve)
+    path: 'plugin/dropdowncustom',
+    name: 'pluginDropdowncustom',
+    component: (resolve) => require(['../../components/component/plugin/dropdowncustom'], resolve)
   }, {
     path: 'plugin/dropdownmenu',
     name: 'pluginDropdownmenu',

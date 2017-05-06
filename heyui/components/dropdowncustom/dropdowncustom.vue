@@ -1,13 +1,8 @@
 <template>
-  <div :class="dropdownmenuCls">
+  <div :class="dropdowncustomCls">
     <div :class="showCls"><slot></slot><i class="h-icon-down" v-if="this.toggleIcon"></i></div>
     <div :class="groupCls">
-        <ul>
-          <li class="h-dropdownmenu-item" :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}" v-for="option of options" @click="onclick(option)">
-            <i v-if="option.icon" :class="option.icon"></i>
-            <span>{{option[title]}}</span>
-          </li>
-        </ul>
+      <slot name='content'></slot>
     </div>
   </div>
 </template>
@@ -16,12 +11,10 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
 
-const prefix = 'h-dropdownmenu';
+const prefix = 'h-dropdowncustom';
 
 export default {
   props: {
-    dict: String,
-    datas: [Array, Object],
     trigger:{
       type: String,  //click,hover
       default: "click"
@@ -47,8 +40,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-dropdownmenu-show');
-      let content = this.$el.querySelector('.h-dropdownmenu-group');
+      let el = this.$el.querySelector('.h-dropdowncustom-show');
+      let content = this.$el.querySelector('.h-dropdowncustom-group');
       this.dropdown = new Dropdown(el, {
         content,
         trigger: this.trigger,
@@ -58,15 +51,8 @@ export default {
       });
     });
   },
-  methods: {
-    onclick(option) {
-      if(!!option.disabled)return;
-      this.$emit("onclick", option[this.key]);
-      if (this.dropdown.popperInstance) this.dropdown.hide();
-    }
-  },
   computed: {
-    dropdownmenuCls() {
+    dropdowncustomCls() {
       return {
         [`${prefix}`]: true
       }
@@ -81,18 +67,6 @@ export default {
       return {
         [`${prefix}-group`]: true,
       }
-    },
-    options() {
-      if (!this.datas && !this.dict) {
-        log.error('dropdownmenu组件:datas或者dict参数最起码需要定义其中之一');
-        return [];
-      }
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
-      }
-      datas = utils.initOptions(datas, this);
-      return datas;
     }
   }
 };

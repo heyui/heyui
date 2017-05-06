@@ -1,15 +1,24 @@
 <template>
   <div class="doc">
-    <h2>DropdownMenu</h2>
+    <h2>DropdownMenu 下拉菜单</h2>
     <h3>基本调用</h3>
     <DropdownMenu @onclick="trigger" :datas="param1"><span>菜单menu</span></DropdownMenu>
-    <DropdownMenu @onclick="trigger" :datas="param2" placement="bottom-end"><span>菜单menu2</span></DropdownMenu>
-    <DropdownMenu @onclick="trigger" :datas="param3" trigger="hover"><span>菜单menu3</span></DropdownMenu>
+
+    <h3>不同位置</h3>
+    <div>
+      <DropdownMenu @onclick="trigger" :datas="param2" placement="bottom-end"><span>菜单menu2</span></DropdownMenu>
+    </div>
+
+    <h3>不同触发</h3>
+    <div>
+      <DropdownMenu @onclick="trigger" :datas="param3" trigger="hover"><span>菜单menu3</span></DropdownMenu>
+    </div>
     
     <h3>和dom同样宽度</h3>
     <div>
       <DropdownMenu @onclick="trigger" :datas="param1" :equal-width="true"><p style="width:150px">菜单menu</p></DropdownMenu>
     </div>
+
   </div>
 </template>
 

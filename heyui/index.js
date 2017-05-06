@@ -10,6 +10,7 @@ import Checkbox from './components/checkbox';
 // import Circle from './components/circle';
 // import Collapse from './components/collapse';
 import Datetime from './components/datetime';
+import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
 import Form from './components/form';
 // import Icon from './components/icon';
@@ -80,7 +81,7 @@ const components = {
   // CheckboxGroup: Checkbox.Group,
   // Circle,
   // DatePicker,
-  // Dropdown,
+  DropdownCustom,
   // DropdownItem: Dropdown.Item,
   DropdownMenu,
   DatePicker: Datetime.DatePicker,
