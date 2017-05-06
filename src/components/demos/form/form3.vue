@@ -217,10 +217,8 @@ export default {
             parentRef: "money",
             refs: ['min', 'max'],
             valid: {
-              valid(value1, value2) {
-                return value1 > value2;
-              },
-              message: '结束金额不能大于起始金额'
+              valid: 'lessThan',
+              message: '起始金额不能大于结束金额'
             }
           }
         ]

@@ -15,9 +15,15 @@
 }
 
 .li-hover() {
-  cursor: pointer;
-  &:hover {
-    background-color: @hover-background-color;
+  &:not(.disabled){
+    cursor: pointer;
+    &:hover {
+      background-color: @hover-background-color;
+    }
+  }
+
+  &.disabled{
+    cursor: default;
   }
 }
 

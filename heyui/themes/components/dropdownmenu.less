@@ -1,0 +1,35 @@
+@dropdownmenu-prefix: ~"@{prefix}dropdownmenu";
+.@{dropdownmenu-prefix} {
+  display: inline-block;
+  &-show{
+    position: relative;
+    &-toggle{
+      padding-right: 30px;
+    }
+    .rotate-icon-down();
+    cursor: default;
+  }
+  
+  &-group{
+    padding: 10px 0;
+  }
+
+  &-item{
+    .li-hover();
+    font-size: 105%;
+    padding: 5px 10px;
+    >i{
+        margin-right: 5px;
+    }
+    &-divider{    
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      margin: 3px 0;
+      border-top: @border;
+    }
+    &.disabled{
+      color: gray;
+    }
+  }
+}

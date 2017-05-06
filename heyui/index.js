@@ -7,11 +7,10 @@
 // import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
 import Checkbox from './components/checkbox';
-import SwitchList from './components/switchlist';
 // import Circle from './components/circle';
 // import Collapse from './components/collapse';
 import Datetime from './components/datetime';
-// import Dropdown from './components/dropdown';
+import DropdownMenu from './components/dropdownmenu';
 import Form from './components/form';
 // import Icon from './components/icon';
 // import Input from './components/input';
@@ -29,6 +28,7 @@ import Rate from './components/rate';
 import Loading from './components/Loading';
 // import Steps from './components/steps';
 import Switch from './components/switch';
+import SwitchList from './components/switchlist';
 // import Table from './components/table';
 // import Tabs from './components/tabs';
 import TagInput from './components/taginput';
@@ -82,7 +82,7 @@ const components = {
   // DatePicker,
   // Dropdown,
   // DropdownItem: Dropdown.Item,
-  // DropdownMenu: Dropdown.Menu,
+  DropdownMenu,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
   hForm: Form,
