@@ -86,13 +86,13 @@ class Pop {
   // }
 
   toggle() {
-      if (this.isOpen) {
-        return this.hide();
-      } else {
-        return this.show();
-      }
+    if (this.isOpen) {
+      return this.hide();
+    } else {
+      return this.show();
     }
-    // show = () => this.show(this.reference, this.options);
+  }
+  // show = () => this.show(this.reference, this.options);
 
   // hide = () => this.hide();
   // dispose = () => this.dispose();
@@ -176,7 +176,8 @@ class Pop {
 
     this.popNode.style.display = '';
     utils.addClass(this.reference, 'h-pop-ref-show');
-    setTimeout(() => {
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
     }, 0);
     this.popperInstance.update();
@@ -190,7 +191,8 @@ class Pop {
     this.isOpen = false;
     this.popNode.setAttribute('aria-hidden', 'true');
     utils.removeClass(this.reference, 'h-pop-ref-show');
-    setTimeout(() => {
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
       this.popNode.style.display = 'none';
     }, this.options.delay);
     return this;
@@ -232,17 +234,20 @@ class Pop {
 
     triggerEvents.forEach((event) => {
       switch (event) {
-      case 'hover':
-        directtriggerEvents.push('mouseenter');
-        oppositetriggerEvents.push('mouseleave');
-      case 'focus':
-        directtriggerEvents.push('focus');
-        oppositetriggerEvents.push('blur');
-      case 'click':
-        directtriggerEvents.push('click');
-        if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
-      default:
-        break;
+        case 'hover':
+          directtriggerEvents.push('mouseenter');
+          oppositetriggerEvents.push('mouseleave');
+          break;
+        case 'focus':
+          directtriggerEvents.push('focus');
+          oppositetriggerEvents.push('blur');
+          break;
+        case 'click':
+          directtriggerEvents.push('click');
+          if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
+          break;
+        default:
+          break;
       }
     });
 

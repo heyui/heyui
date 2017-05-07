@@ -175,5 +175,19 @@ export default utils.extend({}, utils, {
       });
     }
     return options;
-  }
+  },
+  generateTree(data, isParent, parent = null) {
+    if (!this.isFunction(isParent)) {
+      log.error("generateTree：isParent必须为方法。");
+      return null;
+    }
+    let top = [];
+    for (let d of data) {
+      if (isParent(d, parent)) {
+        d.children = this.generateTree(data, isParent, d);
+        top.push(d);
+      }
+    }
+    return top;
+  },
 });

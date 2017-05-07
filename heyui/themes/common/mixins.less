@@ -15,15 +15,16 @@
 }
 
 .li-hover() {
-  &:not(.disabled){
-    cursor: pointer;
-    &:hover {
-      background-color: @hover-background-color;
-    }
+  cursor: pointer;
+  &:hover {
+    background-color: @hover-background-color;
   }
 
   &.disabled{
     cursor: default;
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
 
