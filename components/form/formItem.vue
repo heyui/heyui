@@ -2,7 +2,7 @@
   <div :class="formItemCls">
     <label :style="labelStyleCls"
            class="h-form-item-label"
-           v-if="showLabel">{{this.label}}</label>
+           v-if="showLabel">{{label}}</label>
     <div class="h-form-item-content"
          :style="contentStyleCls">
       <div class="h-form-item-wrap">
