@@ -215,7 +215,11 @@ export default {
       return value;
     },
     getValue(item) {
-      return this.param.getValue.call(this.param, item);
+      if (utils.isFunction(this.param.getValue)) {
+        return this.param.getValue.call(this.param, item);
+      } else {
+        return utils.getValue(item, this.param);
+      }
     },
     focus(event) {
       this.focusing = true;

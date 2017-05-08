@@ -86,13 +86,13 @@ class Pop {
   // }
 
   toggle() {
-    if (this.isOpen) {
-      return this.hide();
-    } else {
-      return this.show();
+      if (this.isOpen) {
+        return this.hide();
+      } else {
+        return this.show();
+      }
     }
-  }
-  // show = () => this.show(this.reference, this.options);
+    // show = () => this.show(this.reference, this.options);
 
   // hide = () => this.hide();
   // dispose = () => this.dispose();
@@ -104,21 +104,22 @@ class Pop {
   //   }
   // }
 
-  create(reference, template, content, allowHtml) {
+  create(reference, template, content) {
     const popGenerator = window.document.createElement('div');
     popGenerator.innerHTML = template;
     const popNode = popGenerator.childNodes[0];
+    const allowHtml = this.options.html;
 
     popNode.id = `pop_${Math.random().toString(36).substr(2, 10)}`;
     const contentNode = popGenerator.querySelector(this.innerSelector);
     if (content.nodeType === 1) {
-      allowHtml && contentNode.appendChild(content);
+      if (allowHtml) contentNode.appendChild(content);
       content.style.display = "block";
     } else if (utils.isFunction(content)) {
       const contentText = content.call(reference);
-      allowHtml ? (contentNode.innerHTML = contentText) : (contentNode.innerText = contentText);
+      if (allowHtml) { contentNode.innerHTML = contentText } else { contentNode.innerText = contentText }
     } else {
-      allowHtml ? (contentNode.innerHTML = content) : (contentNode.innerText = content);
+      if (allowHtml) { contentNode.innerHTML = content } else { contentNode.innerText = content }
     }
 
     return popNode;
@@ -127,7 +128,7 @@ class Pop {
   initPopNode() {
     let reference = this.reference;
     let options = this.options
-    const content = reference.getAttribute('content') || options.content;
+    const content = options.content || reference.getAttribute('content');
 
     if (!content) { return this; }
 
@@ -234,20 +235,20 @@ class Pop {
 
     triggerEvents.forEach((event) => {
       switch (event) {
-        case 'hover':
-          directtriggerEvents.push('mouseenter');
-          oppositetriggerEvents.push('mouseleave');
-          break;
-        case 'focus':
-          directtriggerEvents.push('focus');
-          oppositetriggerEvents.push('blur');
-          break;
-        case 'click':
-          directtriggerEvents.push('click');
-          if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
-          break;
-        default:
-          break;
+      case 'hover':
+        directtriggerEvents.push('mouseenter');
+        oppositetriggerEvents.push('mouseleave');
+        break;
+      case 'focus':
+        directtriggerEvents.push('focus');
+        oppositetriggerEvents.push('blur');
+        break;
+      case 'click':
+        directtriggerEvents.push('click');
+        if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
+        break;
+      default:
+        break;
       }
     });
 

@@ -1,11 +1,12 @@
 <template>
   <div>
     <span v-tooltip ref-el="demo" class="text-hover" theme="white">详情</span>
-    &nbsp;
-    <button class="h-btn h-btn-text" @click="change()">修改绑定的参数</button>
-    <div tmpl='demo' v-height="100" v-width="200">
-      <p>绑定的参数：{{a}}</p>
-      <p>这是一个自定义的气泡提示</p>
+
+    <div tmpl="demo" v-width="220">
+      <div v-padding="20">
+        <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
+        <div style="height:80px;margin-left:90px;line-height:80px;">用户名: <a>LAN</a></div>
+      </div>
     </div>
   </div>
 </template>

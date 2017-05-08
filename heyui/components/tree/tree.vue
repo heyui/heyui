@@ -65,29 +65,37 @@ export default {
   computed: {
     options() {
       if (!this.datas && !this.dict) {
-        log.error('tree组件:datas或者dict参数最起码需要定义其中之一');
+        // log.error('tree组件:datas或者dict参数最起码需要定义其中之一');
         return [];
       }
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-
-      let data = utils.initOptions(datas, this);
+      if (datas) {
+        datas = utils.initOptions(datas, this);
+      }
 
       if (this.mode == 'list') {
-        data = utils.generateTree(data, (child, parent) => {
-          let parentValue = child[this.param.parentName];
+        datas = utils.generateTree(datas, (list, parent) => {
+          let parentValue = list[this.param.parentName];
           if (utils.isNull(parent)) {
-            return utils.isNull(parentValue) || !parentDict[parentValue];
+            return utils.isNull(parentValue) || !this.param.isRoot[parentValue];
           } else if (utils.isObject(parent)) {
-            return parent[that.param.keyName] == parentValue;
+            return parent[this.param.key] == parentValue;
           } else if (!utils.isObject(parent)) {
             return parent == parentValue;
           }
-        }, that.param.topParent);
+        }, this.param.topParent);
       }
-      return data;
+
+      if (!utils.isNull(this.searchValue)) {
+        let searchValue = this.searchValue.toLowerCase();
+        datas = datas.filter((item) => {
+          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
+        });
+      }
+      return datas;
     }
   }
 };

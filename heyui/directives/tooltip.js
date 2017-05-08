@@ -10,8 +10,12 @@ export default {
       param.content = attr.attrs.content;
     }
     let ref = attr.attrs['ref-el'];
-    if (ref) {
-      param.content = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
+    let refNode = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
+    if (refNode) {
+      param.content = refNode;
+      param.html = true;
+    } else {
+      param.content = `<div class="h-tooltip-inner-content">${param.content}</div>`;
       param.html = true;
     }
     param.container = document.body;

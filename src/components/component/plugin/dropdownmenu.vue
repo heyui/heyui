@@ -4,6 +4,11 @@
     <h3>基本调用</h3>
     <DropdownMenu @onclick="trigger" :datas="param1"><span>菜单menu</span></DropdownMenu>
 
+    <h3>不同调用</h3>
+    <div>
+      <DropdownMenu @onclick="trigger" :datas="param2" placement="bottom-end"><Button>菜单menu2</Button></DropdownMenu>
+    </div>
+
     <h3>不同位置</h3>
     <div>
       <DropdownMenu @onclick="trigger" :datas="param2" placement="bottom-end"><span>菜单menu2</span></DropdownMenu>
