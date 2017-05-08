@@ -1,11 +1,17 @@
 <template>
-  <div class="h-checkbox" :disabled="disabled">
+  <div class="h-checkbox"
+       :disabled="disabled">
     <template v-if="arr.length">
-      <label v-for="option of arr" @click="setvalue(option)">
-        <span :checked="isInclude(option)" :disabled="disabled"></span>{{option[title]}}</label>
+      <label v-for="option of arr"
+             @click="setvalue(option)">
+        <span :checked="isInclude(option)"
+              :disabled="disabled"></span>{{option[title]}}</label>
     </template>
-    <label v-else @click="setvalue()">
-      <span :checked="checked||value" :indeterminate="indeterminate" :disabled="disabled"></span>
+    <label v-else
+           @click="setvalue()">
+      <span :checked="checked||value"
+            :indeterminate="indeterminate"
+            :disabled="disabled"></span>
       <slot></slot>
     </label>
   </div>
@@ -63,11 +69,21 @@ export default {
     }
   },
   computed: {
-    options() {
-      if (!this.datas && !this.dict) {
-        // log.error('tree组件:datas或者dict参数最起码需要定义其中之一');
-        return [];
+    treeDatas() {
+      if (!utils.isNull(this.searchValue)) {
+        let searchValue = this.searchValue.toLowerCase();
+        return this.options.filter((item) => {
+          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
+        });
+      } else {
+        return this.this.options;
       }
+    },
+    options() {
+      // if (!this.datas && !this.dict) {
+        // log.error('tree组件:datas或者dict参数最起码需要定义其中之一');
+        // return [];
+      // }
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);
@@ -87,13 +103,6 @@ export default {
             return parent == parentValue;
           }
         }, this.param.topParent);
-      }
-
-      if (!utils.isNull(this.searchValue)) {
-        let searchValue = this.searchValue.toLowerCase();
-        datas = datas.filter((item) => {
-          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
-        });
       }
       return datas;
     }
