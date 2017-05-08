@@ -20,7 +20,7 @@
     "hey-log": "^0.0.4",
     "hey-utils": "^0.0.14",
     "manba": "0.0.19",
-    "hey-validator": "0.0.2"
+    "hey-validator": "0.0.4"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
