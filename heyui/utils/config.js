@@ -6,6 +6,13 @@ const config = {
     title_field: "title",
     dicts: {}
   },
+  tree: {
+    configs: {},
+    default: {
+      title: 'title',
+      key: 'key'
+    }
+  },
   autocomplete: {
     configs: {},
     default: {
