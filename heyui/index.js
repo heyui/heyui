@@ -10,6 +10,8 @@ import Checkbox from './components/checkbox';
 // import Circle from './components/circle';
 // import Collapse from './components/collapse';
 import Datetime from './components/datetime';
+
+import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
 import Form from './components/form';
@@ -188,6 +190,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, prototypes, config);
+}, prototypes, config, { Dropdown });
 
 module.exports = HeyUI;
