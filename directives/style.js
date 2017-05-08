@@ -11,6 +11,16 @@ export default {
       el.style.width = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
     }
   },
+  padding(el, binding) {
+    if (binding.value) {
+      el.style.padding = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+    }
+  },
+  margin(el, binding) {
+    if (binding.value) {
+      el.style.margin = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+    }
+  },
   font(el, binding) {
     if (binding && binding.value) {
       el.style.fontSize = binding.value + "px";

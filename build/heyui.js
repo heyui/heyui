@@ -78,6 +78,63 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -375,65 +432,24 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
     }
 
     return top;
+  },
+  getValue: function getValue(item, param) {
+    var title = '';
+    var key = null;
+    if (_heyUtils2.default.isObject(item)) {
+      title = item[param.title];
+      key = item[param.key];
+    } else {
+      title = item;
+      key = item;
+    }
+    var result = { key: key, title: title, value: item };
+    if (param.render && result.key) {
+      result.html = param.render.call(null, result);
+    }
+    return result;
   }
 });
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  scopeId,
-  cssModules
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  // inject cssModules
-  if (cssModules) {
-    var computed = Object.create(options.computed || null)
-    Object.keys(cssModules).forEach(function (key) {
-      var module = cssModules[key]
-      computed[key] = function () { return module }
-    })
-    options.computed = computed
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
 
 /***/ }),
 /* 2 */
@@ -480,7 +496,7 @@ var _assign = __webpack_require__(57);
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -860,7 +876,7 @@ var _pop = __webpack_require__(56);
 
 var _pop2 = _interopRequireDefault(_pop);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -1016,7 +1032,7 @@ exports.default = function (param) {
   return new Notify(param);
 };
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -1796,7 +1812,7 @@ var _popper = __webpack_require__(248);
 
 var _popper2 = _interopRequireDefault(_popper);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -1911,21 +1927,30 @@ var Pop = function () {
 
   }, {
     key: 'create',
-    value: function create(reference, template, content, allowHtml) {
+    value: function create(reference, template, content) {
       var popGenerator = window.document.createElement('div');
       popGenerator.innerHTML = template;
       var popNode = popGenerator.childNodes[0];
+      var allowHtml = this.options.html;
 
       popNode.id = 'pop_' + Math.random().toString(36).substr(2, 10);
       var contentNode = popGenerator.querySelector(this.innerSelector);
       if (content.nodeType === 1) {
-        allowHtml && contentNode.appendChild(content);
+        if (allowHtml) contentNode.appendChild(content);
         content.style.display = "block";
       } else if (_utils2.default.isFunction(content)) {
         var contentText = content.call(reference);
-        allowHtml ? contentNode.innerHTML = contentText : contentNode.innerText = contentText;
+        if (allowHtml) {
+          contentNode.innerHTML = contentText;
+        } else {
+          contentNode.innerText = contentText;
+        }
       } else {
-        allowHtml ? contentNode.innerHTML = content : contentNode.innerText = content;
+        if (allowHtml) {
+          contentNode.innerHTML = content;
+        } else {
+          contentNode.innerText = content;
+        }
       }
 
       return popNode;
@@ -1935,7 +1960,7 @@ var Pop = function () {
     value: function initPopNode() {
       var reference = this.reference;
       var options = this.options;
-      var content = reference.getAttribute('content') || options.content;
+      var content = options.content || reference.getAttribute('content');
 
       if (!content) {
         return this;
@@ -2782,7 +2807,7 @@ module.exports = __webpack_require__(4).getIteratorMethod = function(it){
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(88),
   /* template */
@@ -3412,6 +3437,8 @@ var directives = {
   color: _style2.default.color,
   "bg-color": _style2.default.bgColor,
   height: _style2.default.height,
+  padding: _style2.default.padding,
+  margin: _style2.default.margin,
   font: _style2.default.font,
   autosize: _autosize2.default,
   tooltip: _tooltip2.default
@@ -3548,7 +3575,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -3816,7 +3843,11 @@ exports.default = {
       return value;
     },
     getValue: function getValue(item) {
-      return this.param.getValue.call(this.param, item);
+      if (_utils2.default.isFunction(this.param.getValue)) {
+        return this.param.getValue.call(this.param, item);
+      } else {
+        return _utils2.default.getValue(item, this.param);
+      }
     },
     focus: function focus(event) {
       this.focusing = true;
@@ -4147,7 +4178,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -4267,7 +4298,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -4681,7 +4712,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -4994,7 +5025,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -5368,17 +5399,12 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
-
-var _utils2 = _interopRequireDefault(_utils);
-
 var _dropdown = __webpack_require__(18);
 
 var _dropdown2 = _interopRequireDefault(_dropdown);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var prefix = 'h-dropdowncustom'; //
 //
 //
 //
@@ -5386,6 +5412,11 @@ var prefix = 'h-dropdowncustom'; //
 //
 //
 //
+//
+//
+//
+
+var prefix = 'h-dropdowncustom';
 
 exports.default = {
   props: {
@@ -5462,7 +5493,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -5582,7 +5613,7 @@ var _index = __webpack_require__(245);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -5677,7 +5708,7 @@ var _set = __webpack_require__(20);
 
 var _set2 = _interopRequireDefault(_set);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -5876,7 +5907,7 @@ var _defineProperty2 = __webpack_require__(2);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -6568,7 +6599,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -6715,7 +6746,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7047,7 +7078,7 @@ var _config = __webpack_require__(3);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7121,7 +7152,7 @@ var _defineProperty2 = __webpack_require__(2);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7755,7 +7786,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7770,6 +7801,16 @@ exports.default = {
   width: function width(el, binding) {
     if (binding.value) {
       el.style.width = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+    }
+  },
+  padding: function padding(el, binding) {
+    if (binding.value) {
+      el.style.padding = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+    }
+  },
+  margin: function margin(el, binding) {
+    if (binding.value) {
+      el.style.margin = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
     }
   },
   font: function font(el, binding) {
@@ -7810,7 +7851,7 @@ var _tooltip = __webpack_require__(137);
 
 var _tooltip2 = _interopRequireDefault(_tooltip);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7825,8 +7866,12 @@ exports.default = {
       param.content = attr.attrs.content;
     }
     var ref = attr.attrs['ref-el'];
-    if (ref) {
-      param.content = vnode.context.$el.querySelector('[tmpl=' + ref + ']');
+    var refNode = vnode.context.$el.querySelector('[tmpl=' + ref + ']');
+    if (refNode) {
+      param.content = refNode;
+      param.html = true;
+    } else {
+      param.content = '<div class="h-tooltip-inner-content">' + param.content + '</div>';
       param.html = true;
     }
     param.container = document.body;
@@ -7852,7 +7897,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8186,7 +8231,7 @@ var _notify = __webpack_require__(27);
 
 var _notify2 = _interopRequireDefault(_notify);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8243,7 +8288,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8298,7 +8343,7 @@ var _notify = __webpack_require__(27);
 
 var _notify2 = _interopRequireDefault(_notify);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8390,7 +8435,7 @@ var _notify = __webpack_require__(27);
 
 var _notify2 = _interopRequireDefault(_notify);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8452,7 +8497,7 @@ var _notify = __webpack_require__(27);
 
 var _notify2 = _interopRequireDefault(_notify);
 
-var _utils = __webpack_require__(0);
+var _utils = __webpack_require__(1);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -9958,7 +10003,7 @@ __webpack_require__(53)('observable');
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(83),
   /* template */
@@ -9992,7 +10037,7 @@ module.exports = Component.exports
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(84),
   /* template */
@@ -10026,7 +10071,7 @@ module.exports = Component.exports
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(85),
   /* template */
@@ -10060,7 +10105,7 @@ module.exports = Component.exports
 /* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(86),
   /* template */
@@ -10094,7 +10139,7 @@ module.exports = Component.exports
 /* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(87),
   /* template */
@@ -10128,7 +10173,7 @@ module.exports = Component.exports
 /* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(89),
   /* template */
@@ -10162,7 +10207,7 @@ module.exports = Component.exports
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(90),
   /* template */
@@ -10196,7 +10241,7 @@ module.exports = Component.exports
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(91),
   /* template */
@@ -10230,7 +10275,7 @@ module.exports = Component.exports
 /* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(92),
   /* template */
@@ -10264,7 +10309,7 @@ module.exports = Component.exports
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(93),
   /* template */
@@ -10298,7 +10343,7 @@ module.exports = Component.exports
 /* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(94),
   /* template */
@@ -10332,7 +10377,7 @@ module.exports = Component.exports
 /* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(95),
   /* template */
@@ -10366,7 +10411,7 @@ module.exports = Component.exports
 /* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(96),
   /* template */
@@ -10400,7 +10445,7 @@ module.exports = Component.exports
 /* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(97),
   /* template */
@@ -10434,7 +10479,7 @@ module.exports = Component.exports
 /* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(98),
   /* template */
@@ -10468,7 +10513,7 @@ module.exports = Component.exports
 /* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(99),
   /* template */
@@ -10502,7 +10547,7 @@ module.exports = Component.exports
 /* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(100),
   /* template */
@@ -10536,7 +10581,7 @@ module.exports = Component.exports
 /* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(101),
   /* template */
@@ -10570,7 +10615,7 @@ module.exports = Component.exports
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(102),
   /* template */
@@ -10604,7 +10649,7 @@ module.exports = Component.exports
 /* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(103),
   /* template */
@@ -10638,7 +10683,7 @@ module.exports = Component.exports
 /* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(104),
   /* template */
@@ -10672,7 +10717,7 @@ module.exports = Component.exports
 /* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(105),
   /* template */
@@ -10706,7 +10751,7 @@ module.exports = Component.exports
 /* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(106),
   /* template */
@@ -10740,7 +10785,7 @@ module.exports = Component.exports
 /* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(107),
   /* template */
@@ -10774,7 +10819,7 @@ module.exports = Component.exports
 /* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(108),
   /* template */

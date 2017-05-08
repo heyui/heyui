@@ -1,6 +1,8 @@
 <template>
   <div :class="dropdowncustomCls">
-    <div :class="showCls"><slot></slot><i class="h-icon-down" v-if="this.toggleIcon"></i></div>
+    <div :class="showCls">
+      <slot></slot><i class="h-icon-down"
+         v-if="this.toggleIcon"></i></div>
     <div :class="groupCls">
       <slot name='content'></slot>
     </div>
@@ -8,14 +10,13 @@
 </template>
 <script>
 import config from '../../utils/config';
-import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
 
 const prefix = 'h-dropdowncustom';
 
 export default {
   props: {
-    trigger:{
+    trigger: {
       type: String,  //click,hover
       default: "click"
     },

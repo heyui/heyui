@@ -22,7 +22,7 @@ export default {
   props: {
     dict: String,
     datas: [Array, Object],
-    trigger:{
+    trigger: {
       type: String,  //click,hover
       default: "click"
     },

@@ -141,6 +141,8 @@ const directives = {
   color: style.color,
   "bg-color": style.bgColor,
   height: style.height,
+  padding: style.padding,
+  margin: style.margin,
   font: style.font,
   autosize,
   tooltip

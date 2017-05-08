@@ -190,4 +190,20 @@ export default utils.extend({}, utils, {
     }
     return top;
   },
+  getValue(item, param) {
+    let title = '';
+    let key = null;
+    if (utils.isObject(item)) {
+      title = item[param.title];
+      key = item[param.key];
+    } else {
+      title = item;
+      key = item;
+    }
+    let result = { key, title, value: item };
+    if (param.render && result.key) {
+      result.html = param.render.call(null, result);
+    }
+    return result;
+  }
 });
