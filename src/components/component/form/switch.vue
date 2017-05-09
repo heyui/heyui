@@ -2,10 +2,6 @@
   <div class="doc">
     <h2>Switch 开关</h2>
     <h3>基本</h3>
-    <p>利用class样式来创建开关的样式。</p>
-    <example demo="form/switch1"></example>
-
-    <h3>组件Switch</h3>
     <example demo="form/switch2"></example>
 
     <h3>禁用</h3>

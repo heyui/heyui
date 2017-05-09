@@ -1,7 +1,15 @@
 <template>
-  <div class="h-tree">
-    <div class="h-tree-filter" v-if="filterable"><input type="text"></div>
-    <treeoption v-for="tree of treeDataShow" :data="tree" :param="param" :key="tree"></treeoption>
+  <div :class="treeCls">
+    <div class="h-tree-filter"
+         v-if="filterable">
+      <input type="text">
+    </div>
+    <ul class="h-tree-body">
+      <treeoption v-for="tree of treeDataShow"
+                  :data="tree"
+                  :param="param"
+                  :key="tree" :multiple="multiple" :status="status" @trigger="trigger"></treeoption>
+    </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
 </template>
@@ -11,10 +19,10 @@ import utils from '../../utils/utils';
 import treeoption from './treeoption';
 import Search from '../search';
 
+const prefix = 'h-tree';
+
 export default {
   props: {
-    datas: [Object, Array],
-    dict: String,
     options: Object,
     multiple: {
       type: Boolean,
@@ -37,6 +45,11 @@ export default {
       param,
       globalloading: false,
       loading: true,
+      status: {
+        selected: null,
+        selects: [],
+        opens: [],
+      },
       treeDatas: []
     };
   },
@@ -44,6 +57,12 @@ export default {
     this.initTreeDatas();
   },
   methods: {
+    trigger(data) {
+      if (data.type == 'toggleTreeEvent') {
+        log(1);
+        utils.toggleValue(this.status.opens, data.data[this.param.key]);
+      }
+    },
     setvalue(option) {
       if (this.disabled) return;
       let value = utils.copy(this.value);
@@ -64,27 +83,30 @@ export default {
       this.$el.dispatchEvent(event);
     },
     initTreeDatas() {
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
-      }
-      if (datas) {
-        datas = utils.initOptions(datas, this);
-      }
+      let datas = this.param.datas;
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];
         this.globalloading = true;
-        (this.param.getTotalDatas || this.param.getDatas).call(this.param, (result) => {
-          log(result);
+        let loadData = this.param.getTotalDatas || this.param.getDatas;
+        let param = [(result) => {
           this.treeDatas = this.initDatas(result);
           this.globalloading = false;
         }, () => {
           this.globalloading = false;
-        });
+        }];
+        if (this.param.getDatas) {
+          param.unshift(null);
+        }
+        loadData.apply(this.param, param);
       }
       this.treeDatas = this.initDatas(datas);
     },
     initDatas(datas) {
+      if (utils.isFunction(this.param.getDatas)) {
+        for (let data of datas) {
+          data.hasChildren = true;
+        }
+      }
       if (this.param.dataMode == 'list' && datas.length > 0) {
         return utils.generateTree(datas, (list, parent) => {
           let parentValue = list[this.param.parent];
@@ -109,6 +131,13 @@ export default {
         });
       } else {
         return this.treeDatas;
+      }
+    },
+    treeCls() {
+      return {
+        [prefix]: true,
+        [`${prefix}-multiple`]: !!this.multiple,
+        [`${prefix}-single`]: !this.multiple
       }
     }
   },

@@ -1,13 +1,22 @@
 <template>
   <div :class="dropdownmenuCls">
-    <div :class="showCls"><slot></slot><i class="h-icon-down" v-if="this.toggleIcon"></i></div>
+    <div :class="showCls">
+      <slot></slot><i class="h-icon-down"
+         v-if="this.toggleIcon"></i></div>
     <div :class="groupCls">
-        <ul>
-          <li class="h-dropdownmenu-item" :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}" v-for="option of options" @click="onclick(option)">
-            <i v-if="option.icon" :class="option.icon"></i>
-            <span>{{option[title]}}</span>
-          </li>
-        </ul>
+      <ul>
+        <li class="h-dropdownmenu-item"
+            :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
+            v-for="option of options"
+            @click="onclick(option)">
+          <div v-if="option[html]" v-html="option[html]"></div>
+          <template v-else>
+          <i v-if="option.icon"
+            :class="option.icon"></i>
+          <span>{{option[title]}}</span>
+          </template>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -42,7 +51,8 @@ export default {
   data() {
     return {
       key: config.getOption('dict', 'key_field'),
-      title: config.getOption('dict', 'title_field')
+      title: config.getOption('dict', 'title_field'),
+      html: 'dropdownmenuHtml'
     };
   },
   mounted() {
@@ -60,7 +70,7 @@ export default {
   },
   methods: {
     onclick(option) {
-      if(!!option.disabled)return;
+      if (!!option.disabled) return;
       this.$emit("onclick", option[this.key]);
       if (this.dropdown.popperInstance) this.dropdown.hide();
     }
@@ -74,7 +84,7 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
-        [`${prefix}-show-toggle`]: true
+        [`${prefix}-show-toggle`]: !!this.toggleIcon
       }
     },
     groupCls() {

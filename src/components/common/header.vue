@@ -9,7 +9,7 @@
         <router-link to="/component">组件</router-link>
         <router-link to="/resource">资源</router-link>
         <!-- <router-link to="/about">团队</router-link> -->
-        <a href="https://github.com/heyui/heyui">github</a>
+        <a href="https://github.com/heyui/heyui">Github</a>
       </div>
     </div>
   </header>

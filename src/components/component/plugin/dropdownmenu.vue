@@ -19,6 +19,12 @@
       <DropdownMenu @onclick="trigger" :datas="param3" trigger="hover"><span>菜单menu3</span></DropdownMenu>
     </div>
     
+
+    <h3>不添加下拉icon</h3>
+    <div>
+      <DropdownMenu @onclick="trigger" :datas="param3" trigger="hover" :toggleIcon="false"><span class="text-hover">菜单menu3</span></DropdownMenu>
+    </div>
+    
     <h3>和dom同样宽度</h3>
     <div>
       <DropdownMenu @onclick="trigger" :datas="param1" :equal-width="true"><p style="width:150px">菜单menu</p></DropdownMenu>

@@ -3,32 +3,15 @@
     <com-frame class="page-body">
       <div slot="left-frame">
         <ul>
-          <li class="title">hey-cli 脚手架</li>
           <ul>
-            <li><a to="/basic/grid">简介</a></li>
-          </ul>
-          <li class="title">hey-utils</li>
-          <ul>
-            <li><a to="/basic/grid">简介</a></li>
-          </ul>
-          <li class="title">model 数据转换</li>
-          <ul>
-            <li><a to="/basic/grid">简介</a></li>
-          </ul>
-          <li class="title">manba 日期格式化</li>
-          <ul>
-            <li><a to="/basic/grid">简介</a></li>
-          </ul>
-          <li class="title">ajax封装</li>
-          <ul>
-            <li><a to="/data/plugin/select">简介</a></li>
-          </ul>
-          <li class="title">umock 服务器</li>
-          <ul>
-            <li><a to="/basic/grid">入门</a></li>
-            <li><a to="/basic/color">文档输出</a></li>
-            <li><a to="/basic/icon">配合后端开发</a></li>
-            <li><a to="/basic/extend">数据模拟</a></li>
+            <li class="gray-color">相关资源</li>
+            <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='heycli'}">hey-cli 脚手架</router-link></li>
+            <li><router-link to="/resource/utils">hey-utils 通用方法</router-link></li>
+            <li><router-link to="/resource/validtor">hey-validtor 数据验证</router-link></li>
+            <li><router-link to="/resource/model">model 数据转换</router-link></li>
+            <li><router-link to="/resource/manba">manba 日期格式化</router-link></li>
+            <li><router-link to="/resource/ajax">ajax 异步数据封装</router-link></li>
+            <li><router-link to="/resource/umock">umock 服务器</router-link></li>
           </ul>
         </ul>
       </div>
