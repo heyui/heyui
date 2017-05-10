@@ -1,53 +1,88 @@
 <template>
-  <div class="h-checkbox"
-       :disabled="disabled">
-    <template v-if="arr.length">
-      <label v-for="option of arr"
-             @click="setvalue(option)">
-        <span :checked="isInclude(option)"
-              :disabled="disabled"></span>{{option[title]}}</label>
-    </template>
-    <label v-else
-           @click="setvalue()">
-      <span :checked="checked||value"
-            :indeterminate="indeterminate"
-            :disabled="disabled"></span>
-      <slot></slot>
-    </label>
+  <div :class="treeCls">
+    <div class="h-tree-filter"
+         v-if="filterable">
+      <input type="text">
+    </div>
+    <ul class="h-tree-body">
+      <treeoption v-for="tree of treeDataShow"
+                  :data="tree"
+                  :param="param"
+                  :key="tree"
+                  :multiple="multiple"
+                  :status="status"
+                  @trigger="trigger"></treeoption>
+    </ul>
+    <Loading :loading="globalloading"></Loading>
   </div>
 </template>
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
+import treeoption from './treeoption';
+import Search from '../search';
+
+const prefix = 'h-tree';
 
 export default {
   props: {
-    datas: [Object, Array],
-    dict: String,
-    value: {
-      type: [Array, Boolean],
-      default: false
-    },
-    disabled: {
+    options: Object,
+    multiple: {
       type: Boolean,
       default: false
     },
-    selected: {
-      type: [Array, String, Number],
+    value: [Array, Object, String, Number],
+    filterable: {
+      type: Boolean,
       default: false
-    },
-    dataMode: {
-      type: String, //parent
-      default: 'child'
     }
   },
   data() {
+    let param = {};
+    if (this.config) {
+      param = utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.options);
+    } else {
+      param = utils.extend({}, config.getOption("tree.default"), this.options);
+    }
     return {
-      key: config.getOption('dict', 'key_field'),
-      title: config.getOption('dict', 'title_field'),
+      param,
+      globalloading: false,
+      loading: true,
+      status: {
+        selected: null,
+        selects: [],
+        opens: [],
+        loadings: []
+      },
+      treeDatas: [],
+      treeObj: {}
     };
   },
+  mounted() {
+    this.initTreeDatas();
+  },
   methods: {
+    trigger(data) {
+      let type = data.type;
+      data = data.data;
+      if (type == 'toggleTreeEvent') {
+        data.status.opened = !data.status.opened;
+      } else if (type == 'loadDataEvent') {
+        if (utils.isFunction(this.param.getDatas)) {
+          data.status.loading = true;
+          this.param.getDatas.call(this.param, data.value, (result) => {
+            data.children = this.initTreeModeData(result, true);
+            data.status.isWait = false;
+            data.status.loading = false;
+            data.status.opened = true;
+          }, () => {
+            data.status.loading = false;
+          });
+        }
+      } else if (type == 'selectEvent') {
+        this.status.selected = data.key;
+      }
+    },
     setvalue(option) {
       if (this.disabled) return;
       let value = utils.copy(this.value);
@@ -66,46 +101,68 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-    }
-  },
-  computed: {
-    treeDatas() {
-      if (!utils.isNull(this.searchValue)) {
-        let searchValue = this.searchValue.toLowerCase();
-        return this.options.filter((item) => {
-          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
-        });
-      } else {
-        return this.this.options;
-      }
     },
-    options() {
-      // if (!this.datas && !this.dict) {
-        // log.error('tree组件:datas或者dict参数最起码需要定义其中之一');
-        // return [];
-      // }
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
+    initTreeDatas() {
+      let datas = utils.copy(this.param.datas);
+      if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
+        datas = [];
+        this.globalloading = true;
+        let loadData = this.param.getTotalDatas || this.param.getDatas;
+        let param = [(result) => {
+          this.treeDatas = this.initDatas(utils.copy(result));
+          this.globalloading = false;
+        }, () => {
+          this.globalloading = false;
+        }];
+        if (this.param.getDatas) {
+          param.unshift(null);
+        }
+        loadData.apply(this.param, param);
       }
-      if (datas) {
-        datas = utils.initOptions(datas, this);
+      this.treeDatas = this.initDatas(datas);
+    },
+    initDatas(datas) {
+      let list = datas;
+      if (this.param.dataMode == 'list' && datas.length > 0) {
+        list = utils.generateTree(datas, this.param);
       }
-
-      if (this.mode == 'list') {
-        datas = utils.generateTree(datas, (list, parent) => {
-          let parentValue = list[this.param.parentName];
-          if (utils.isNull(parent)) {
-            return utils.isNull(parentValue) || !this.param.isRoot[parentValue];
-          } else if (utils.isObject(parent)) {
-            return parent[this.param.key] == parentValue;
-          } else if (!utils.isObject(parent)) {
-            return parent == parentValue;
-          }
-        }, this.param.topParent);
+      let isWait = utils.isFunction(this.param.getDatas);
+      return this.initTreeModeData(list, isWait);
+    },
+    initTreeModeData(list, isWait) {
+      let datas = [];
+      for (let data of list) {
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, choose: false } };
+        let children = data[this.param.childrenName] || [];
+        obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
+        this.treeObj[obj.key] = obj;
+        datas.push(obj);
       }
       return datas;
     }
+  },
+  computed: {
+    treeDataShow() {
+      if (!utils.isNull(this.searchValue)) {
+        let searchValue = this.searchValue.toLowerCase();
+        return this.treeDatas.filter((item) => {
+          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
+        });
+      } else {
+        return this.treeDatas;
+      }
+    },
+    treeCls() {
+      return {
+        [prefix]: true,
+        [`${prefix}-multiple`]: !!this.multiple,
+        [`${prefix}-single`]: !this.multiple
+      }
+    }
+  },
+  components: {
+    treeoption,
+    Search
   }
 };
 </script>

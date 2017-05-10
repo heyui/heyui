@@ -47,11 +47,11 @@
         background: @white-color;
         // border-color: @gray1-color;
         color: @bg;
-        box-shadow: 0 0 0 1px @gray1-color;
+        box-shadow: 0 0 0 1px @gray2-color;
       }
     }
     &[x-placement^="top"] .@{tooltip-arrow} {
-      border-top-color: @gray1-color;
+      border-top-color: darken(@gray2-color, 5%);
         &:after{
           bottom: 1px;
           border-bottom-width: 0;
@@ -59,7 +59,7 @@
         }
     }
     &[x-placement^="right"] .@{tooltip-arrow} {
-      border-right-color: @gray1-color;
+      border-right-color: darken(@gray2-color, 5%);
       &:after{
         left: 7px;
         top: -6px;
@@ -68,7 +68,7 @@
       }
     }
     &[x-placement^="left"] .@{tooltip-arrow} {
-      border-left-color: @gray1-color;
+      border-left-color: darken(@gray2-color, 5%);
       &:after{
         right: 1px;
         top: -6px;
@@ -77,7 +77,7 @@
       }
     }
     &[x-placement^="bottom"] .@{tooltip-arrow} {
-      border-bottom-color: @gray1-color;
+      border-bottom-color: darken(@gray2-color, 5%);
       &:after{
         top: 1px;
         border-top-width: 0;

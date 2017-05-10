@@ -57,6 +57,7 @@ export default {
     },
     add() {
       if (this.readonly) return;
+      if (this.tagvalue === '') return;
       let value = utils.copy(this.values);
       value.push(this.tagvalue);
       this.setvalue(value);

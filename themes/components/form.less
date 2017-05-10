@@ -4,13 +4,19 @@
   input[type='password'],
   textarea,
   .@{prefix}input,
-  .@{prefix}radio,
-  .@{prefix}checkbox,
   .@{prefix}select,
   .@{prefix}taginput,
   .@{prefix}datetime-input-border,
   .@{prefix}input-group {
     width: 100%;
+  }
+
+  .@{prefix}radio,
+  .@{prefix}checkbox{
+    >label{
+      height: @input-height;
+      line-height: @input-height;
+    }
   }
 }
 
@@ -18,7 +24,7 @@
   .clearfix();
   .@{form-prefix} {
     &-item {
-      padding-bottom: 24px;
+      padding-bottom: @input-height - 6px;
       &-no-padding{
         padding-bottom: 0px;
       }
@@ -47,6 +53,7 @@
       &-content {
         // line-height: 32px;
         font-size: @font-size-mini;
+        .form-content-width100();
       }
       &-wrap {
         position: relative;
@@ -98,7 +105,7 @@
       }
       &-content {
         .clearfix();
-        .form-content-width100();
+        // .form-content-width100();
       }
     }
     &-inline .@{form-prefix}-item {
@@ -119,7 +126,7 @@
         float: left;
       }
       &-content {
-        .form-content-width100();
+        // .form-content-width100();
       }
     }
     &-single .@{form-prefix}-item,
@@ -132,7 +139,7 @@
       }
       .@{form-prefix}-item-content {
         margin-left: 80px;
-        .form-content-width100();
+        // .form-content-width100();
       }
     }
   }

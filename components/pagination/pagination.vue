@@ -99,7 +99,7 @@ export default {
   },
   watch: {
     cur() {
-      // this.curNow = this.cur;
+      this.curNow = this.cur;
     }
   },
   methods: {

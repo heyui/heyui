@@ -176,19 +176,43 @@ export default utils.extend({}, utils, {
     }
     return options;
   },
-  generateTree(data, isParent, parent = null) {
-    if (!this.isFunction(isParent)) {
-      log.error("generateTree：isParent必须为方法。");
-      return null;
-    }
-    let top = [];
-    for (let d of data) {
-      if (isParent(d, parent)) {
-        d.children = this.generateTree(data, isParent, d);
-        top.push(d);
+  toSimpleArray(data, key) {
+    let r = [];
+    if (this.isObject(data)) {
+      for (let d of Object.keys(data)) {
+        r.push(data[d][key]);
       }
     }
-    return top;
+    if (this.isArray(data)) {
+      for (let d of data) {
+        r.push(d[key]);
+      }
+    }
+    return r;
+  },
+  generateTree(data, param) {
+    if (!this.isArray(data)) {
+      log.error("generateTree：data必须为Array。");
+      return null;
+    }
+    let result = [];
+    let dataObj = this.toObject(data, param.keyName);
+    let parentObj = this.toObject(data, param.parentName);
+    for (let d of data) {
+      let parentCode = d[param.parentName];
+      if (!utils.isNull(d[param.parentName]) && dataObj[parentCode]) {
+        let parent = dataObj[parentCode];
+        if (!utils.isArray(parent[param.childrenName])) {
+          parent[param.childrenName] = [];
+        }
+        parent[param.childrenName].push(d);
+      }
+
+      if (utils.isNull(parentCode) || utils.isNull(parentObj[parentCode])) {
+        result.push(d);
+      }
+    }
+    return result;
   },
   getValue(item, param) {
     let title = '';

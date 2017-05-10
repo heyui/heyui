@@ -61,7 +61,7 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
-        [`${prefix}-show-toggle`]: true
+        [`${prefix}-show-toggle`]: !!this.toggleIcon
       }
     },
     groupCls() {
