@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Validator from 'hey-validator/src';
+import Validator from 'hey-validator';
 import utils from '../../utils/utils';
 
 const prefixCls = 'h-form';
