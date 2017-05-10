@@ -8,7 +8,10 @@
       <treeoption v-for="tree of treeDataShow"
                   :data="tree"
                   :param="param"
-                  :key="tree" :multiple="multiple" :status="status" @trigger="trigger"></treeoption>
+                  :key="tree"
+                  :multiple="multiple"
+                  :status="status"
+                  @trigger="trigger"></treeoption>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -49,8 +52,10 @@ export default {
         selected: null,
         selects: [],
         opens: [],
+        loadings: []
       },
-      treeDatas: []
+      treeDatas: [],
+      treeObj: {}
     };
   },
   mounted() {
@@ -58,9 +63,24 @@ export default {
   },
   methods: {
     trigger(data) {
-      if (data.type == 'toggleTreeEvent') {
-        log(1);
-        utils.toggleValue(this.status.opens, data.data[this.param.key]);
+      let type = data.type;
+      data = data.data;
+      if (type == 'toggleTreeEvent') {
+        data.status.opened = !data.status.opened;
+      } else if (type == 'loadDataEvent') {
+        if (utils.isFunction(this.param.getDatas)) {
+          data.status.loading = true;
+          this.param.getDatas.call(this.param, data.value, (result) => {
+            data.children = this.initTreeModeData(result, true);
+            data.status.isWait = false;
+            data.status.loading = false;
+            data.status.opened = true;
+          }, () => {
+            data.status.loading = false;
+          });
+        }
+      } else if (type == 'selectEvent') {
+        this.status.selected = data.key;
       }
     },
     setvalue(option) {
@@ -83,13 +103,13 @@ export default {
       this.$el.dispatchEvent(event);
     },
     initTreeDatas() {
-      let datas = this.param.datas;
+      let datas = utils.copy(this.param.datas);
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];
         this.globalloading = true;
         let loadData = this.param.getTotalDatas || this.param.getDatas;
         let param = [(result) => {
-          this.treeDatas = this.initDatas(result);
+          this.treeDatas = this.initDatas(utils.copy(result));
           this.globalloading = false;
         }, () => {
           this.globalloading = false;
@@ -102,22 +122,21 @@ export default {
       this.treeDatas = this.initDatas(datas);
     },
     initDatas(datas) {
-      if (utils.isFunction(this.param.getDatas)) {
-        for (let data of datas) {
-          data.hasChildren = true;
-        }
-      }
+      let list = datas;
       if (this.param.dataMode == 'list' && datas.length > 0) {
-        return utils.generateTree(datas, (list, parent) => {
-          let parentValue = list[this.param.parent];
-          if (utils.isNull(parent)) {
-            return utils.isNull(parentValue);
-          } else if (utils.isObject(parent)) {
-            return parent[this.param.key] == parentValue;
-          } else if (!utils.isObject(parent)) {
-            return parent == parentValue;
-          }
-        }, this.param.topParent);
+        list = utils.generateTree(datas, this.param);
+      }
+      let isWait = utils.isFunction(this.param.getDatas);
+      return this.initTreeModeData(list, isWait);
+    },
+    initTreeModeData(list, isWait) {
+      let datas = [];
+      for (let data of list) {
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, choose: false } };
+        let children = data[this.param.childrenName] || [];
+        obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
+        this.treeObj[obj.key] = obj;
+        datas.push(obj);
       }
       return datas;
     }

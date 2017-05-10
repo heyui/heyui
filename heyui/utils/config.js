@@ -9,8 +9,10 @@ const config = {
   tree: {
     configs: {},
     default: {
-      title: 'title',
-      key: 'key'
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children',
     }
   },
   autocomplete: {

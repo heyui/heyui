@@ -1,15 +1,15 @@
 <template>
   <li class="h-tree-li"
-      :class="{'h-tree-li-opened':status.opens.includes(data[param.key])}">
+      :class="{'h-tree-li-opened':data.status.opened}">
     <div class="h-tree-show">
-      <span class='h-tree-show-expand'
-            @click="loadData(data)"
-            v-if="data.hasChildren"><i class='h-icon-right'></i></span>
-      <span class='h-tree-show-expand'
-            @click="toggleTree(data)"
-            v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i><i class='h-icon-down'></i></span>
-      <input type="checkbox" v-if="multiple" v-model="status.selects" :value="data[param.key]"/>
-      <span class='h-tree-show-desc'>{{data.title}}</span>
+      <span class='h-tree-show-expand'>
+        <span @click="loadData(data)"
+              v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
+        <span @click="toggleTree(data)"
+              v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i><i class='h-icon-down'></i></span>
+      </span>
+      <input type="checkbox" v-if="multiple" v-model="data.status.choose"/>
+      <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title}}</span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
         class="h-tree-ul">
@@ -17,8 +17,8 @@
                   :key="child"
                   :data="child"
                   :param="param"
-                  :multiple="multiple"
                   :status="status"
+                  :multiple="multiple"
                   @trigger="trigger"></treeOption>
     </ul>
   </li>
@@ -40,6 +40,9 @@ export default {
     };
   },
   methods: {
+    select() {
+      this.$emit("trigger", { type: "selectEvent", data: this.data });
+    },
     trigger(data) {
       this.$emit("trigger", data);
     },

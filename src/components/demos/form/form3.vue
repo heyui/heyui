@@ -8,7 +8,8 @@
     <Form :label-width="100"
           :mode="mode"
           :model="data"
-          :rules="validationRules">
+          :rules="validationRules"
+          ref="form">
       <FormItem label="输入框"
                 prop="input">
         <input type="text"
@@ -138,8 +139,8 @@
       <FormItem :no-padding="true">
         <Button color="primary"
                 :loading="isLoading"
-                @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;
-        <Button @click="isLoading=!isLoading">取消</Button>
+                @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
+        <Button @click="isLoading=false">取消</Button>
       </FormItem>
     </Form>
   </div>
@@ -226,6 +227,18 @@ export default {
     }
   },
   methods: {
+    submit() {
+      let validResult = this.$refs.form.valid();
+      if (validResult.result) {
+        this.$Message("验证成功");
+        this.isLoading = true;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
+      } else {
+        this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
+      }
+    },
     add() {
       this.data.inputs.push({ value: '' });
     },

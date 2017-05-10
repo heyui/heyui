@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Validator from 'hey-validator';
+import Validator from 'hey-validator/src';
 import utils from '../../utils/utils';
 
 const prefixCls = 'h-form';
@@ -57,6 +57,21 @@ export default {
       let message = utils.copy(this.messages[oldProp]);
       this.messages[prop] = message;
       return message;
+    },
+    valid() {
+      if (!this.validator) {
+        return true;
+      }
+      let returnResult = this.validator.valid(this.model);
+      let isSuccess = true;
+      for (let r in returnResult) {
+        if (!returnResult[r].valid) {
+          isSuccess = false;
+          break;
+        }
+      }
+      utils.extend(true, this.messages, returnResult);
+      return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
     }
   },
   computed: {

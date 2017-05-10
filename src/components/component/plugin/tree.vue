@@ -42,16 +42,16 @@ export default {
     return {
       data1: [],
       param1: {
-        key: 'id',
-        parent: 'parent',
-        title: 'title',
+        keyName: 'id',
+        parentName: 'parent',
+        titleName: 'title',
         dataMode: 'list',
         datas: list1
       },
       param2: {
-        key: 'id',
-        parent: 'parent',
-        title: 'title',
+        keyName: 'id',
+        parentName: 'parent',
+        titleName: 'title',
         dataMode: 'list',
         getTotalDatas(resolve) {
           setTimeout(() => {
@@ -65,13 +65,13 @@ export default {
               ...genList('三级', 3, 5, 'id', 'parent', 'title')
             );
             resolve(list);
-          }, 2000);
+          }, 1000);
         }
       },
       param3: {
-        key: 'id',
-        parent: 'parent',
-        title: 'title',
+        keyName: 'id',
+        parentName: 'parent',
+        titleName: 'title',
         dataMode: 'list',
         getDatas(parent, resolve) {
           setTimeout(() => {
@@ -80,10 +80,12 @@ export default {
                 { id: 1, title: '一级' },
                 { id: 2, title: '二级' },
                 { id: 3, title: '三级' }])
+            } else if (parent.id == 3) {
+              resolve([]);
             } else {
               resolve(genList(parent.title, parent.id, 5, 'id', 'parent', 'title'));
             }
-          }, 2000);
+          }, 1000);
         }
       }
     }
