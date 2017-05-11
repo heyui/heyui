@@ -24,6 +24,15 @@ import Search from '../search';
 
 const prefix = 'h-tree';
 
+const updateChildStatus = (data, column, value) => {
+  if (data.children) {
+    for (let child of data.children) {
+      child.status[column] = value;
+      updateChildStatus(child, column, value);
+    }
+  }
+}
+
 export default {
   props: {
     options: Object,
@@ -81,6 +90,11 @@ export default {
         }
       } else if (type == 'selectEvent') {
         this.status.selected = data.key;
+        this.$emit('select', data);
+      } else if (type == 'chooseEvent') {
+        // log(1);
+        let choose = data.status.choose;
+        updateChildStatus(data, 'choose', choose);
       }
     },
     setvalue(option) {
@@ -132,7 +146,7 @@ export default {
     initTreeModeData(list, isWait) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, choose: false } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false } };
         let children = data[this.param.childrenName] || [];
         obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
         this.treeObj[obj.key] = obj;

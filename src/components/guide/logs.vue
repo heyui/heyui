@@ -3,6 +3,18 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-05-11</p><p>15:30</p></div>
+        <div slot="content">Badge微标数</div>
+      </TimelineItem>
+      <TimelineItem>
+        <div slot="time"><p>2017-05-08</p><p>15:30</p></div>
+        <div slot="content">Tree基本</div>
+      </TimelineItem>
+      <TimelineItem>
+        <div slot="time"><p>2017-05-06</p><p>15:30</p></div>
+        <div slot="content">Validation</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-05-03</p><p>19:30</p></div>
         <div slot="content">完成Autocomplete。</div>
       </TimelineItem>

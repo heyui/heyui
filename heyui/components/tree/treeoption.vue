@@ -8,7 +8,7 @@
         <span @click="toggleTree(data)"
               v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i><i class='h-icon-down'></i></span>
       </span>
-      <input type="checkbox" v-if="multiple" v-model="data.status.choose"/>
+      <Checkbox v-if="multiple" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
       <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title}}</span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
@@ -43,7 +43,27 @@ export default {
     select() {
       this.$emit("trigger", { type: "selectEvent", data: this.data });
     },
+    choose() {
+      this.data.status.indeterminate = false;
+      this.$emit("trigger", { type: "chooseEvent", data: this.data });
+    },
     trigger(data) {
+      if (data.type == "chooseEvent") {
+        if (this.data.children) {
+          let chooseStatus = true;
+          let indeterminateStatus = false;
+          for (let child of this.data.children) {
+            if (!child.status.choose && chooseStatus) {
+              chooseStatus = false
+            }
+            if (child.status.choose) {
+              indeterminateStatus = true;
+            }
+          }
+          this.data.status.choose = chooseStatus;
+          this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
+        }
+      }
       this.$emit("trigger", data);
     },
     toggleTree(data) {
