@@ -55,6 +55,7 @@ export default {
     prop(prop, oldProp) {
       let parent = this.getParent();
       if (this.prop) {
+        this.configRequired = !!parent.getConfig(this.prop).required;
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
     }

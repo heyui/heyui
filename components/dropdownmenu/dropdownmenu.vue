@@ -3,18 +3,23 @@
     <div :class="showCls">
       <slot></slot><i class="h-icon-down"
          v-if="this.toggleIcon"></i></div>
-    <div :class="groupCls">
+    <div :class="groupCls" :style="groupStyle">
       <ul>
         <li class="h-dropdownmenu-item"
             :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
             v-for="option of options"
             @click="onclick(option)">
-          <div v-if="option[html]" v-html="option[html]"></div>
+          <div v-if="option[html]"
+               v-html="option[html]"></div>
           <template v-else>
-          <i v-if="option.icon"
-            :class="option.icon"></i>
-          <span>{{option[title]}}</span>
+            <i v-if="option.icon"
+               :class="option.icon"></i>
+            <span>{{option[title]}}</span>
           </template>
+          <Badge v-if="showCount&&option.count"
+                 :count="option.count"
+                 :max-count="maxCount"
+                 position="right"></Badge>
         </li>
       </ul>
     </div>
@@ -24,6 +29,7 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
+import Badge from '../badge';
 
 const prefix = 'h-dropdownmenu';
 
@@ -39,6 +45,7 @@ export default {
       type: Boolean,
       default: false
     },
+    width: Number,
     toggleIcon: {
       type: Boolean,
       default: true
@@ -46,6 +53,14 @@ export default {
     placement: {
       type: String,
       default: 'bottom-start'
+    },
+    showCount: {
+      type: Boolean,
+      default: false
+    },
+    maxCount: {
+      type: Number,
+      default: 100
     }
   },
   data() {
@@ -81,6 +96,13 @@ export default {
         [`${prefix}`]: true
       }
     },
+    groupStyle() {
+      let styles = {};
+      if (this.width) {
+        styles.width = `${this.width}px`;
+      }
+      return styles;
+    },
     showCls() {
       return {
         [`${prefix}-show`]: true,
@@ -104,6 +126,9 @@ export default {
       datas = utils.initOptions(datas, this);
       return datas;
     }
+  },
+  components: {
+    Badge
   }
 };
 </script>
