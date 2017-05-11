@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "A UI components Library.",
   "main": "./build/heyui.js",
   "repository": {
