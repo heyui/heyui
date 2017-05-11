@@ -114,7 +114,9 @@ const demos = [
   'message/tooltip2',
   'message/tooltip3',
   'message/tooltip4',
-  'message/tooltip5'
+  'message/tooltip5',
+  'view/timeline1',
+  'view/timeline2',
 ]
 
 const components = {};

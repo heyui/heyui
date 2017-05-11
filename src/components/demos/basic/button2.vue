@@ -5,6 +5,7 @@
       <Button>默认</Button>
       <Button color="primary">主要按钮</Button>
       <Button :text="true">文字按钮</Button>
+      <Button :no-border="true">文字按钮2</Button>
     </div>
     <h4>颜色</h4>
     <div>
@@ -19,6 +20,13 @@
       <Button text-color="green">GREEN按钮</Button>
       <Button text-color="red">RED按钮</Button>
       <Button text-color="blue">BLUE按钮</Button>
+    </div>
+    <h4>文字颜色</h4>
+    <div>
+      <Button text-color="yellow" :no-border="true">YELLOW按钮</Button>
+      <Button text-color="green" :no-border="true">GREEN按钮</Button>
+      <Button text-color="red" :no-border="true">RED按钮</Button>
+      <Button text-color="blue" :no-border="true">BLUE按钮</Button>
     </div>
     <h4>block</h4>
     <div>

@@ -38,20 +38,18 @@
   box-sizing: border-box;
   cursor: pointer;
   transition: all @transition-time;
-  background-color: #FFF;
+  background-color: transparent;
   border: 1px solid @gray1-color;
   box-shadow: 0 1px 1px 0 @gray2-color;
   .btn-text-color(@primary-color);
-  >[class^="@{icon-prefix}"],
-  >[class*=" @{icon-prefix}"] {
+  >i{
     font-size: 90%;
     +span {
       margin-left: 5px;
     }
   }
   >span {
-    +[class^="@{icon-prefix}"],
-    +[class*=" @{icon-prefix}"] {
+    +i{
       margin-left: 5px;
     }
   }
@@ -86,6 +84,10 @@
       &-blue {
         .btn-text-color(@blue-color);
       }
+    }
+    &-no-border{
+      box-shadow: none;
+      border-color: transparent !important;
     }
     &-circle {
       border-radius: 20px;

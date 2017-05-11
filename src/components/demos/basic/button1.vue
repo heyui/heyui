@@ -5,6 +5,7 @@
       <button class="h-btn">默认</button>
       <button class="h-btn h-btn-primary">主要按钮</button>
       <button class="h-btn h-btn-text">文字按钮</button>
+      <button class="h-btn h-btn-no-border">文字按钮2</button>
     </div>
     <h4>颜色</h4>
     <div>
@@ -19,6 +20,13 @@
       <button class="h-btn h-btn-text-green">GREEN按钮</button>
       <button class="h-btn h-btn-text-red">RED按钮</button>
       <button class="h-btn h-btn-text-blue">BLUE按钮</button>
+    </div>
+    <h4>文字颜色</h4>
+    <div>
+      <button class="h-btn h-btn-no-border h-btn-text-yellow">YELLOW按钮</button>
+      <button class="h-btn h-btn-no-border h-btn-text-green">GREEN按钮</button>
+      <button class="h-btn h-btn-no-border h-btn-text-red">RED按钮</button>
+      <button class="h-btn h-btn-no-border h-btn-text-blue">BLUE按钮</button>
     </div>
     <h4>block</h4>
     <div>
