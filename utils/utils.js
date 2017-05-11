@@ -167,13 +167,6 @@ export default utils.extend({}, utils, {
         item[param.html] = param.render.call(null, item);
       })
     }
-    if (!param.mutiple && param.hasNullOption) {
-      options.unshift({
-        [`${key}`]: null,
-        [`${title}`]: '请选择',
-        [`${param.html}`]: '请选择'
-      });
-    }
     return options;
   },
   toSimpleArray(data, key) {
