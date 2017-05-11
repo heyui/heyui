@@ -45,7 +45,7 @@
         <input type="text"
                v-model="data.mobile" />
       </FormItem>
-      <FormItem label="金额">
+      <FormItem label="金额" :required="true">
         <div class="h-input-group">
           <div class="h-input-addon">
             <Select v-model="data.select1"

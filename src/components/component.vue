@@ -43,6 +43,7 @@
             <li><router-link to="/component/data/view/table">Table 表格</router-link></li> -->
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
             <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
+            <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
             <!-- <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
             <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li> -->
@@ -61,9 +62,8 @@
             <li><router-link to="/component/message/modal">Modal 弹出框</router-link></li>
             <li><router-link to="/component/message/tooltip">Tooltip 文字提示</router-link></li>
           </ul>
-          <!-- <li class="title">View</li>
+           <li class="title">View</li>
           <ul>
-            <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
             <li><router-link to="/component/view/card">Card 卡片</router-link></li>
             <li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>
             <li><router-link to="/component/view/tab">Tab 标签页</router-link></li>
@@ -74,7 +74,7 @@
           <ul>
             <li><router-link to="/component/other/affix">Affix 图钉</router-link></li>
             <li><router-link to="/component/other/backtop">BackTop 返回顶部</router-link></li>
-          </ul> -->
+          </ul> 
         </ul>
       </div>
       <div slot="right-frame" v-if="$route.matched.length>0">

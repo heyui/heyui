@@ -1,55 +1,62 @@
-@badge-prefix-cls: ~"@{css-prefix}badge";
+@badge-prefix: ~"@{prefix}badge";
+.@{badge-prefix} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  &-count {
+    position: absolute;
+    transform: translateX(50%) scale(0);
+    top: -10px;
+    right: 0;
+    border-radius: 100px;
+    background: @red-color;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 0 0 1px #fff;
+    transition: @transition-time cubic-bezier(0.24, 0.71, 0.73, 1.19);
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
 
-.@{badge-prefix-cls} {
-    position: relative;
-    display: inline-block;
-    line-height: 1;
-    vertical-align: middle;
-
-    &-count {
-        position: absolute;
-        transform: translateX(50%);
-        top: -10px;
-        right: 0;
-        height: 20px;
-        border-radius: 10px;
-        min-width: 20px;
-        background: @error-color;
-        border: 1px solid transparent;
-        color: #fff;
-        line-height: 18px;
-        text-align: center;
-        padding: 0 6px;
-        font-size: 12px;
-        white-space: nowrap;
-        transform-origin: -10% center;
-        z-index: 10;
-        box-shadow: 0 0 0 1px #fff;
-
-        a,
-        a:hover {
-            color: #fff;
-        }
-
-        &-alone {
-            top: auto;
-            display: block;
-            position: relative;
-            transform: translateX(0);
-        }
+    &-show {
+      transform: translateX(50%) scale(1);
     }
-
     &-dot {
-        position: absolute;
-        transform: translateX(-50%);
-        transform-origin: 0 center;
-        top: -4px;
-        right: -8px;
-        height: 8px;
-        width: 8px;
-        border-radius: 100%;
-        background: @error-color;
-        z-index: 10;
-        box-shadow: 0 0 0 1px #fff;
+      height: 6px;
+      width: 6px;
+      min-width: 0;
+      padding: 0;
+      top: -3px;
     }
+    a,
+    a:hover {
+      color: #fff;
+    }
+    &-alone {
+      top: auto;
+      display: block;
+      position: relative;
+      transform: translateX(0);
+    }
+  }
+
+  &-position-right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .@{badge-prefix}-count {
+      right: 10px;
+      transform: scale(0);
+      &-show {
+        transform: scale(1);
+      }
+    }
+  }
 }
