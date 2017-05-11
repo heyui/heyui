@@ -32,8 +32,17 @@ export default {
       validator: null
     };
   },
-  beforeMount() {
+  mounted() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
+  },
+  watch: {
+    rules() {
+      if (this.validator) {
+        this.validator.updateRule(this.rules);
+      } else if (this.model && this.rules) {
+        this.validator = new Validator(this.rules);
+      }
+    }
   },
   methods: {
     validField(prop) {
