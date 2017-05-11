@@ -66,6 +66,9 @@ export default {
     },
     updateErrorMessage(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
+      if (utils.isNull(message)) {
+        message = { valid: true, message: null };
+      }
       this.messages[prop] = message;
       return message;
     },
