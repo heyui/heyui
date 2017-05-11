@@ -74,6 +74,10 @@ export default {
       type: Boolean,
       default: true
     },
+    nullOptionText: {
+      type: String,
+      default: "请选择"
+    },
     noBorder: {
       type: Boolean,
       default: false
@@ -239,6 +243,13 @@ export default {
         datas = config.getDict(this.dict);
       }
       datas = utils.initOptions(datas, this);
+      if (!this.mutiple && this.hasNullOption) {
+        datas.unshift({
+          [`${this.key}`]: null,
+          [`${this.title}`]: this.nullOptionText,
+          [`${this.html}`]: this.nullOptionText
+        });
+      }
       return datas;
     }
   }

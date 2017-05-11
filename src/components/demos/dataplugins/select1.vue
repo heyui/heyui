@@ -4,7 +4,7 @@
       <button class="h-btn h-btn-text" @click="update">修改值</button>
     </p>
     <div v-width="300">
-      <Select v-model="select" :datas="param" placeholder="请选择您的内容"></Select>
+      <Select v-model="select" :datas="param" placeholder="请选择您的内容" null-option-text="自定义请选择项"></Select>
     </div>
     <br/>
     <p>选中值：{{select2}}
