@@ -13,7 +13,7 @@ cp -R ../gen/* ./
 cp index.html 404.html
 git add -A
 git commit -m '新版'
-git push
+git push origin gh-pages
 
 echo "切换至doc分支"
 git checkout doc

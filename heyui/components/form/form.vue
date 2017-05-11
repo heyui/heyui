@@ -35,6 +35,15 @@ export default {
   beforeMount() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
+  watch: {
+    rules() {
+      if (this.validator) {
+        this.validator.updateRule(this.rules);
+      } else if (this.model && this.rules) {
+        this.validator = new Validator(this.rules);
+      }
+    }
+  },
   methods: {
     validField(prop) {
       if (!prop || !this.validator || !this.model) {
@@ -57,6 +66,9 @@ export default {
     },
     updateErrorMessage(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
+      if (utils.isNull(message)) {
+        message = { valid: true, message: null };
+      }
       this.messages[prop] = message;
       return message;
     },

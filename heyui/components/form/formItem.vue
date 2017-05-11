@@ -54,8 +54,8 @@ export default {
   watch: {
     prop(prop, oldProp) {
       let parent = this.getParent();
-      log(prop);
       if (this.prop) {
+        this.configRequired = !!parent.getConfig(this.prop).required;
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
     }
