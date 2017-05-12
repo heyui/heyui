@@ -1,14 +1,15 @@
 <template>
   <li class="h-tree-li"
       :class="{'h-tree-li-opened':data.status.opened}">
-    <div class="h-tree-show">
+    <div class="h-tree-show"
+      :class="{'h-tree-show-disabled':data.status.disabled}">
       <span class='h-tree-show-expand'>
         <span @click="loadData(data)"
               v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
         <span @click="toggleTree(data)"
               v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i><i class='h-icon-down'></i></span>
       </span>
-      <Checkbox v-if="multiple" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
+      <Checkbox :disabled="data.status.disabled" v-if="multiple" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
       <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title}}</span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
@@ -19,6 +20,7 @@
                   :param="param"
                   :status="status"
                   :multiple="multiple"
+                  :data-mode="dataMode"
                   @trigger="trigger"></treeOption>
     </ul>
   </li>
@@ -33,7 +35,8 @@ export default {
     data: Object,
     param: Object,
     multiple: Boolean,
-    status: Object
+    status: Object,
+    dataMode: String
   },
   data() {
     return {
@@ -41,6 +44,7 @@ export default {
   },
   methods: {
     select() {
+      if (this.data.status.disabled) return;
       this.$emit("trigger", { type: "selectEvent", data: this.data });
     },
     choose() {
@@ -60,8 +64,13 @@ export default {
               indeterminateStatus = true;
             }
           }
-          this.data.status.choose = chooseStatus;
-          this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
+          if (this.dataMode == 'all') {
+            this.data.status.choose = chooseStatus;
+            this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
+          } else {
+            this.data.status.choose = indeterminateStatus;
+            this.data.status.indeterminate = false;
+          }
         }
       }
       this.$emit("trigger", data);

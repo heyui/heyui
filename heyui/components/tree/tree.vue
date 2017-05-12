@@ -11,7 +11,7 @@
                   :key="tree"
                   :multiple="multiple"
                   :status="status"
-                  @trigger="trigger"></treeoption>
+                  @trigger="trigger" :data-mode="dataMode"></treeoption>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -44,6 +44,10 @@ export default {
     filterable: {
       type: Boolean,
       default: false
+    },
+    dataMode: {
+      type: String,
+      default: "all"
     }
   },
   data() {
@@ -92,7 +96,6 @@ export default {
         this.status.selected = data.key;
         this.$emit('select', data);
       } else if (type == 'chooseEvent') {
-        // log(1);
         let choose = data.status.choose;
         updateChildStatus(data, 'choose', choose);
       }
@@ -146,7 +149,7 @@ export default {
     initTreeModeData(list, isWait) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
         let children = data[this.param.childrenName] || [];
         obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
         this.treeObj[obj.key] = obj;

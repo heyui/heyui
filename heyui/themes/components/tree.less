@@ -52,15 +52,19 @@
         color: @white-color;
       }
     }
+
+    &-disabled &-desc{
+      cursor: @disabled-cursor;
+      color: @gray-color;
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
   &-ul {
     transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
     max-height: 0;
     overflow: hidden;
     margin-left: 20px;
-  }
-  &.@{tree-prefix} {
-    &-single {}
-    &-multiple {}
   }
 }
