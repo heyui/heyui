@@ -32,6 +32,49 @@ const updateChildStatus = (data, column, value) => {
   }
 }
 
+const updateModeAllChildChooseStatus = (data) => {
+  if (data.children) {
+    let isIndeterminateStatus = false;
+    for (let child of data.children) {
+      if (data.status.choose) {
+        child.status.choose = true;
+      } else if (child.status.choose) {
+        isIndeterminateStatus = true;
+      }
+      updateChildStatus(child);
+    }
+    if (!data.status.choose && isIndeterminateStatus) {
+      data.status.indeterminate = true;
+    }
+  }
+}
+
+const getChooseNode = (data, options) => {
+  if (data.status.choose) {
+    options.push(data.value);
+  } else {
+    for (let child of data.children) {
+      getChooseNode(child, options);
+    }
+  }
+  return options;
+}
+
+const updateModeSomeChildChooseStatus = (data) => {
+  if (data.children) {
+    let isChoose = false;
+    for (let child of data.children) {
+      updateChildStatus(child);
+      if (child.status.choose) {
+        isChoose = true;
+      }
+    }
+    if (isChoose) {
+      data.status.choose = true;
+    }
+  }
+}
+
 export default {
   props: {
     options: Object,
@@ -67,7 +110,8 @@ export default {
         loadings: []
       },
       treeDatas: [],
-      treeObj: {}
+      treeObj: {},
+      treeDataShow: []
     };
   },
   mounted() {
@@ -76,6 +120,7 @@ export default {
   methods: {
     search(value) {
       this.searchValue = value === '' ? null : value;
+      this.treeDataShow = this.treeDatas;
     },
     trigger(data) {
       let type = data.type;
@@ -139,6 +184,7 @@ export default {
         loadData.apply(this.param, param);
       }
       this.treeDatas = this.initDatas(datas);
+      this.treeDataShow = this.treeDatas;
     },
     initDatas(datas) {
       let list = datas;
@@ -160,12 +206,12 @@ export default {
       return datas;
     },
     expandAll() {
-      for (let tree in this.treeObj) {
+      for (let tree of Object.keys(this.treeObj)) {
         this.treeObj[tree].status.opened = true;
       }
     },
     foldAll() {
-      for (let tree in this.treeObj) {
+      for (let tree of Object.keys(this.treeObj)) {
         this.treeObj[tree].status.opened = false;
       }
     },
@@ -181,6 +227,44 @@ export default {
       }
       let option = this.treeObj[this.status.selected];
       return option.value;
+    },
+    updateChoose(choose) {
+      if (!this.multiple) return;
+      for (let key of Object.keys(this.treeObj)) {
+        let tree = this.treeObj[key];
+        tree.status.choose = choose.indexOf(tree.key) != -1;
+      }
+
+      if (this.dataMode == 'all') {
+        for (let data of this.treeDatas) {
+          updateModeAllChildChooseStatus(data);
+        }
+      } else {
+        for (let data of this.treeDatas) {
+          updateModeSomeChildChooseStatus(data);
+        }
+      }
+    },
+    getFullChoose() {
+      let options = [];
+      for (let key of Object.keys(this.treeObj)) {
+        let tree = this.treeObj[key];
+        if (tree.status.choose) {
+          options.push(tree.value);
+        }
+      }
+      return options;
+    },
+    getChoose() {
+      if (this.dataMode == 'some') {
+        return this.getFullChoose();
+      } else {
+        let options = [];
+        for (let data of this.treeDatas) {
+          options = getChooseNode(data, options);
+        }
+        return options;
+      }
     }
   },
   computed: {

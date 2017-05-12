@@ -9,12 +9,13 @@
   
     <h3>多选，选择模式为ALL</h3>
     <p>只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
-    <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button></p>
-    <Tree :options="param1" :multiple="true" data-mode="all"></Tree>
+    <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
+    <Tree :options="param1" :multiple="true" data-mode="all" ref="demo2"></Tree>
   
     <h3>多选，选择模式为SOME</h3>
     <p>只要子集选中，父级即选中，返回数据为所有选中数据。</p>
-    <Tree :options="param1" :multiple="true" data-mode="some" ref="demo2"></Tree>
+    <p><Button @click="updateChoose2" size="xs">设置checkbox选中值</Button><Button @click="getChoose2" size="xs">获得checkbox选中值</Button></p>
+    <Tree :options="param1" :multiple="true" data-mode="some" ref="demo3"></Tree>
   
     <h3>搜索</h3>
     <Tree :options="param1" :filterable="true"></Tree>
@@ -34,7 +35,7 @@ const genList = (title, parent, size, keyName, parentName, titleName) => {
   let list = [];
   for (let i = 0; i < size; i++) {
     list.push({
-      [keyName]: `${parent}${i}`,
+      [keyName]: parseInt(`${parent}${i}`),
       [titleName]: `${title}-${i}`,
       [parentName]: `${parent}`,
     })
@@ -123,14 +124,35 @@ export default {
       }
     },
     updateChoose() {
-      let option = this.$refs.demo1.updateChoose();
+      this.$refs.demo2.updateChoose([1, 23, 31]);
     },
     getChoose() {
-      let options = this.$refs.demo1.getChoose();
+      let options = this.$refs.demo2.getChoose();
       if (options.length == 0) {
         this.$Message.info(`当前未选中`);
       } else {
-        // this.$Message.info(`当前选中: ${}`);
+        this.$Message.info(`当前选中: ${options.length}`, 0);
+      }
+    },
+    getFullChoose() {
+      let options = this.$refs.demo2.getFullChoose();
+      log(options);
+      if (options.length == 0) {
+        this.$Message.info(`当前未选中`);
+      } else {
+        this.$Message.info(`当前选中: ${options.length}`, 0);
+      }
+    },
+    updateChoose2() {
+      this.$refs.demo3.updateChoose([1, 23, 31]);
+    },
+    getChoose2() {
+      let options = this.$refs.demo3.getChoose();
+      log(options);
+      if (options.length == 0) {
+        this.$Message.info(`当前未选中`);
+      } else {
+        this.$Message.info(`当前选中: ${options.length}`, 0);
       }
     },
   }
