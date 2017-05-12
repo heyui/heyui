@@ -17,6 +17,7 @@ export default {
     loading: Boolean,
     circle: Boolean,
     block: Boolean,
+    noBorder: Boolean,
     disabled: {
       type: Boolean,
       default: false
@@ -57,6 +58,7 @@ export default {
         [`${prefix}-text-${this.textColor}`]: !!this.textColor,
         [`${prefix}-${this.color}`]: !!this.color,
         [`${prefix}-${this.size}`]: !!this.size,
+        [`${prefix}-no-border`]: this.noBorder === true,
       };
     },
     iconCode() {

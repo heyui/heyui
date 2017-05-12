@@ -3,14 +3,16 @@
     <div class="h-notify-mask"
          v-if="hasMask"
          @click="setvalue(true)"></div>
-    <div :class="containerCls">
-      <span class="h-notify-close h-icon-close"
-            @click="setvalue(false)"></span>
-      <component :is="nowComponent"
-                 :class="contentCls"
-                 :param="propsData"
-                 @event="trigger"
-                 @close="close"></component>
+    <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
+      <div :class="containerCls">
+        <span class="h-notify-close h-icon-close"
+              @click="setvalue(false)"></span>
+        <component :is="nowComponent"
+                  :class="contentCls"
+                  :param="propsData"
+                  @event="trigger"
+                  @close="close"></component>
+      </div>
     </div>
   </div>
 </template>

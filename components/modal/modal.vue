@@ -1,11 +1,13 @@
 <template>
   <div :class="noticeCls">
     <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
-    <div :class="containerCls">
-      <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-      <header v-if="hasHeader"><slot name='header'></slot></header>
-      <div :class="contentCls"><slot></slot></div>
-      <footer v-if="hasFooter"><slot name='footer'></slot></footer>
+    <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
+      <div :class="containerCls">
+        <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
+        <header v-if="hasHeader"><slot name='header'></slot></header>
+        <div :class="contentCls"><slot></slot></div>
+        <footer v-if="hasFooter"><slot name='footer'></slot></footer>
+      </div>
     </div>
   </div>
 </template>

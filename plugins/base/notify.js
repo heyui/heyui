@@ -19,6 +19,7 @@ const notifyCls = 'h-notify';
 const notifyHasCloseCls = 'h-notify-has-close';
 const notifyContentCls = 'h-notify-content';
 const notifyContainerCls = 'h-notify-container';
+const notifyBodyCls = 'h-notify-body';
 const notifyCloseCls = 'h-notify-close';
 const notifyMaskCls = 'h-notify-mask';
 const notifyShowCls = 'h-notify-show';
@@ -31,6 +32,9 @@ class Notify {
     let html = '';
     if (param.hasMask) {
       html += `<div class="${notifyMaskCls}"></div>`;
+    }
+    if (param.type === 'h-modal') {
+      html += `<div class="${notifyBodyCls}">`;
     }
     html += `<div class="${notifyContainerCls}">`;
     if (param.hasCloseIcon) html += `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
@@ -60,6 +64,9 @@ class Notify {
       }
       html += `<footer>${footeHtml}</footer>`;
     }
+    if (param.type === 'h-modal') {
+      html += `</div>`;
+    }
 
     html += '</div>';
     let $body = document.createElement(`div`);
@@ -68,7 +75,7 @@ class Notify {
     let $content = that.$content = $body.querySelector(`.${notifyContentCls}`);
     let $container = that.$container = $body.querySelector(`.${notifyContainerCls}`);
     that.$body = $body;
-    
+
     let content = param.content;
     if (content.nodeType === 1) {
       $content.appendChild(content);
@@ -140,6 +147,14 @@ class Notify {
     if (param.closeOnMask && param.hasMask) {
       $body.querySelector(`.${notifyMaskCls}`).onclick = () => {
         this.close();
+      }
+      let modalBody = $body.querySelector(`.${notifyBodyCls}`);
+      if (modalBody) {
+        modalBody.onclick = (event) => {
+          if (event.target == modalBody) {
+            this.close();
+          }
+        }
       }
     }
   }
