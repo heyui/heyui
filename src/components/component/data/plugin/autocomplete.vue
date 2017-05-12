@@ -5,7 +5,7 @@
     <h3>基本用法</h3>
     <p>value:{{value1}}</p>
     <AutoComplete dict="simple"
-                  v-model="value1"></AutoComplete>
+                  v-model="value1" @change="onChange"></AutoComplete>
   
     <h3>disabled</h3>
     <p>
@@ -13,34 +13,34 @@
                 :small="true">禁用</h-switch> value:{{value2}}</p>
     <AutoComplete dict="simple"
                   v-model="value2"
-                  :disabled="disabled"></AutoComplete>
+                  :disabled="disabled" @change="onChange"></AutoComplete>
   
     <h3>多选</h3>
     <p>value:{{value3}}</p>
     <AutoComplete dict="simple"
                   v-model="value3"
-                  :multiple="true"></AutoComplete>
+                  :multiple="true" @change="onChange"></AutoComplete>
   
     <h3>远程</h3>
     <p>value:{{value4}}</p>
     <AutoComplete v-model="value4"
-                  :options="param4"></AutoComplete>
+                  :options="param4" @change="onChange"></AutoComplete>
   
     <h3>远程多选</h3>
     <p>value:{{value5}}</p>
     <AutoComplete v-model="value5"
                   :options="param4"
-                  :multiple="true"></AutoComplete>
+                  :multiple="true" @change="onChange"></AutoComplete>
   
     <h3>自定义展示内容</h3>
     <p>value:{{value6}}</p>
     <AutoComplete v-model="value6"
-                  :options="param6"></AutoComplete>
+                  :options="param6" @change="onChange"></AutoComplete>
   
     <h3>选择对象</h3>
     <p>value:{{value7}}
       <button class="h-btn h-btn-text"
-              @click="update">修改值</button>
+              @click="update" @change="onChange">修改值</button>
     </p>
     <AutoComplete :options="param7"
                   type="object"
@@ -161,7 +161,9 @@ export default {
   methods: {
     update() {
       this.value7 = { key: '修改', title: '修改' };
-
+    },
+    onChange(data) {
+      log(data);
     },
     update2() {
       this.value8 = [{ key: '修改', title: '修改' }];

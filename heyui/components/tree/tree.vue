@@ -1,9 +1,7 @@
 <template>
   <div :class="treeCls">
-    <div class="h-tree-filter"
-         v-if="filterable">
-      <input type="text">
-    </div>
+    <Search v-if="filterable"
+            @search="search"></Search>
     <ul class="h-tree-body">
       <treeoption v-for="tree of treeDataShow"
                   :data="tree"
@@ -11,7 +9,8 @@
                   :key="tree"
                   :multiple="multiple"
                   :status="status"
-                  @trigger="trigger" :data-mode="dataMode"></treeoption>
+                  @trigger="trigger"
+                  :data-mode="dataMode"></treeoption>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -75,6 +74,9 @@ export default {
     this.initTreeDatas();
   },
   methods: {
+    search(value) {
+      this.searchValue = value === '' ? null : value;
+    },
     trigger(data) {
       let type = data.type;
       data = data.data;
@@ -94,7 +96,7 @@ export default {
         }
       } else if (type == 'selectEvent') {
         this.status.selected = data.key;
-        this.$emit('select', data);
+        this.$emit('select', data.value);
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
         updateChildStatus(data, 'choose', choose);
@@ -156,11 +158,35 @@ export default {
         datas.push(obj);
       }
       return datas;
+    },
+    expandAll() {
+      for (let tree in this.treeObj) {
+        this.treeObj[tree].status.opened = true;
+      }
+    },
+    foldAll() {
+      for (let tree in this.treeObj) {
+        this.treeObj[tree].status.opened = false;
+      }
+    },
+    updateSelect(key) {
+      let option = this.treeObj[key];
+      if (option) {
+        this.status.selected = key;
+      }
+    },
+    getSelect() {
+      if (utils.isNull(this.status.selected)) {
+        return null;
+      }
+      let option = this.treeObj[this.status.selected];
+      return option.value;
     }
   },
   computed: {
     treeDataShow() {
-      if (!utils.isNull(this.searchValue)) {
+      log(1);
+      if (this.searchValue != null) {
         let searchValue = this.searchValue.toLowerCase();
         return this.treeDatas.filter((item) => {
           return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;

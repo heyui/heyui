@@ -3,7 +3,9 @@
     <h2>Tree 树</h2>
   
     <h3>基本调用</h3>
-    <Tree :options="param1"></Tree>
+
+    <p><Button @click="expandAll" size="xs">全部展开</Button><Button @click="foldAll" size="xs">全部收起</Button><Button @click="updateSelect" size="xs">设置选中值</Button><Button @click="getSelect" size="xs">获得选中值</Button></p>
+    <Tree :options="param1" ref="demo1"></Tree>
   
     <h3>多选，选择模式为ALL</h3>
     <p>只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
@@ -11,17 +13,19 @@
   
     <h3>多选，选择模式为SOME</h3>
     <p>只要子集选中，父级即选中，返回数据为所有选中数据。</p>
-    <Tree :options="param1" :multiple="true" data-mode="some"></Tree>
+    <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button></p>
+    <Tree :options="param1" :multiple="true" data-mode="some" ref="demo2"></Tree>
   
-    <h3>全部数据加载</h3>
+    <h3>搜索</h3>
+    <Tree :options="param1" :filterable="true"></Tree>
+  
+    <h3>全部数据异步加载</h3>
     <Tree :options="param2"></Tree>
 
-    <h3>异步加载</h3>
+    <h3>分步异步加载</h3>
+    <p>分步异步加载不推荐有<code>multiple</code>模式，分步异步加载请尽量使用在单个选择模式下。</p>
     <Tree :options="param3"></Tree>
 
-    <h3>异步加载</h3>
-    <p>不推荐有<code>multiple</code>选择模式，异步加载尽量使用在单个选择模式下。</p>
-    <Tree :options="param3" :multiple="true"></Tree>
   </div>
 </template>
 
@@ -100,6 +104,35 @@ export default {
     }
   },
   methods: {
+    expandAll() {
+      this.$refs.demo1.expandAll();
+    },
+    foldAll() {
+      this.$refs.demo1.foldAll();
+    },
+    updateSelect() {
+      this.$refs.demo1.updateSelect(2);
+      this.$Message.info("选中二级");
+    },
+    getSelect() {
+      let option = this.$refs.demo1.getSelect();
+      if (option == null) {
+        this.$Message.info(`当前未选中`);
+      } else {
+        this.$Message.info(`当前选中: ${option.title}`);
+      }
+    },
+    updateChoose() {
+      let option = this.$refs.demo1.updateChoose();
+    },
+    getChoose() {
+      let options = this.$refs.demo1.getChoose();
+      if (options.length == 0) {
+        this.$Message.info(`当前未选中`);
+      } else {
+        // this.$Message.info(`当前选中: ${}`);
+      }
+    },
   }
 }
 </script>

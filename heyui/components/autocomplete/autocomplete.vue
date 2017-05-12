@@ -191,6 +191,8 @@ export default {
         } else {
           inputValue = { [this.param.title]: this.showValue };
         }
+      } else {
+        this.tempValue = null;
       }
       if (this.multiple) {
         value = [];
@@ -228,11 +230,15 @@ export default {
     },
     blur(event) {
       this.focusing = false;
-      let value = event.target.value;
       setTimeout(() => {
-        value = event.target.value || null;
-        if (value != this.object.title) {
-          this.setvalue();
+        let nowValue = event.target.value;
+        if (nowValue === '') nowValue = null;
+        if (this.object.title !== nowValue) {
+          if (this.multiple) {
+            this.tempValue = null;
+          } else {
+            this.setvalue();
+          }
         }
       }, 100);
     },
@@ -307,6 +313,7 @@ export default {
         this.tempValue = null;
       }
       this.$emit('input', value);
+      this.$emit('change', this.multiple ? utils.toSimpleArray(this.objects, 'value') : utils.copy(this.object.value));
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
