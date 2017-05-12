@@ -9,11 +9,11 @@
   
     <h3>多选，选择模式为ALL</h3>
     <p>只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
+    <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button></p>
     <Tree :options="param1" :multiple="true" data-mode="all"></Tree>
   
     <h3>多选，选择模式为SOME</h3>
     <p>只要子集选中，父级即选中，返回数据为所有选中数据。</p>
-    <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button></p>
     <Tree :options="param1" :multiple="true" data-mode="some" ref="demo2"></Tree>
   
     <h3>搜索</h3>

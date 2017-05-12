@@ -113,6 +113,10 @@
         <Checkbox v-model="data.checkbox"
                   :datas="dataParam"></Checkbox>
       </FormItem>
+      <FormItem label="模糊匹配"
+                prop="autocomplete">
+        <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
+      </FormItem>
       <FormItemList>
         <FormItem v-for="(item, index) of data.inputs"
                   :key="item"
@@ -166,6 +170,7 @@ export default {
         select2: '',
         select3: [],
         taginputs: [],
+        autocomplete: null,
         money: {
           min: null,
           max: null
@@ -187,6 +192,7 @@ export default {
       },
       validationRules: {
         required: [
+          'autocomplete',
           'select2',
           'select3',
           'inputs[].value',

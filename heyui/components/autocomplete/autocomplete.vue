@@ -106,6 +106,7 @@ export default {
       tempValue: null,
       searchValue: null,
       oldValue: this.value,
+      focusValue: null,
       loading: false,
       content: null,
       param,
@@ -225,6 +226,7 @@ export default {
     },
     focus(event) {
       this.focusing = true;
+      this.focusValue = event.target.value;
       if (this.multiple) this.searchValue = null;
       this.search(event.target);
     },
@@ -232,10 +234,14 @@ export default {
       this.focusing = false;
       setTimeout(() => {
         let nowValue = event.target.value;
-        if (nowValue === '') nowValue = null;
-        if (this.object.title !== nowValue) {
-          if (this.multiple) {
+        let focusValue = this.focusValue;
+        if (focusValue === null) focusValue = '';
+        if (focusValue !== nowValue) {
+          if (this.mustMatch) {
             this.tempValue = null;
+            if (this.focusValue != '' && this.object.key == null && !this.multiple) {
+              this.setvalue();
+            }
           } else {
             this.setvalue();
           }
@@ -312,6 +318,7 @@ export default {
       if (this.mustMatch || this.object.key || this.multiple) {
         this.tempValue = null;
       }
+      this.focusValue = this.showValue;
       this.$emit('input', value);
       this.$emit('change', this.multiple ? utils.toSimpleArray(this.objects, 'value') : utils.copy(this.object.value));
       let event = document.createEvent("CustomEvent");
