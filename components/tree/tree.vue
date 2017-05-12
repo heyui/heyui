@@ -185,7 +185,6 @@ export default {
   },
   computed: {
     treeDataShow() {
-      log(1);
       if (this.searchValue != null) {
         let searchValue = this.searchValue.toLowerCase();
         return this.treeDatas.filter((item) => {
