@@ -1,0 +1,26 @@
+@search-prefix: ~"@{prefix}search";
+
+.@{search-prefix}{
+  position: relative;
+  >input{
+    width:100%;
+  }
+
+  >.h-icon-search,>.h-icon-close{
+    .middle();
+    .text-hover();
+    right: 8px;
+  }
+  >.h-icon-close{
+    display: none;
+  }
+
+  &-searching {
+    >.h-icon-search{
+      display: none;
+    }
+    >.h-icon-close{
+      display: block;
+    }
+  }
+}
