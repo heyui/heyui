@@ -32,7 +32,7 @@ export default {
       validator: null
     };
   },
-  mounted() {
+  beforeMount() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
   watch: {
