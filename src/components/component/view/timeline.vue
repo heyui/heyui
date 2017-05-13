@@ -1,20 +1,3 @@
-<style lang="less" scoped>
-.h-row>div>div {
-  border-radius: 3px;
-  padding: 20px 5px;
-  text-align: center;
-  border: @border;
-  font-size: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  [class^="h-icon-"], [class*=" h-icon-"]{
-    font-size: 28px;
-  }
-  p{
-    margin: 10px 0px;
-  }
-}
-</style>
 <template>
   <div class="doc">
     <h2>Timeline 时间轴</h2>
@@ -50,7 +33,7 @@
         <td>false</td>
       </tr>
       <tr>
-        <td>time-width</td>
+        <td>timeWidth</td>
         <td>显示左侧的宽度</td>
         <td>number</td>
         <td>-</td>

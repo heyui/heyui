@@ -131,7 +131,7 @@ export default {
       if (options.length == 0) {
         this.$Message.info(`当前未选中`);
       } else {
-        this.$Message.info(`当前选中: ${options.length}`, 0);
+        this.$Message.info(`当前选中: ${options.length}个`);
       }
     },
     getFullChoose() {
@@ -140,7 +140,7 @@ export default {
       if (options.length == 0) {
         this.$Message.info(`当前未选中`);
       } else {
-        this.$Message.info(`当前选中: ${options.length}`, 0);
+        this.$Message.info(`当前选中: ${options.length}个`);
       }
     },
     updateChoose2() {
@@ -152,7 +152,7 @@ export default {
       if (options.length == 0) {
         this.$Message.info(`当前未选中`);
       } else {
-        this.$Message.info(`当前选中: ${options.length}`, 0);
+        this.$Message.info(`当前选中: ${options.length}个`);
       }
     },
   }

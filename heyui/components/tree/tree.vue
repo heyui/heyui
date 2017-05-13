@@ -1,9 +1,9 @@
 <template>
   <div :class="treeCls">
     <Search v-if="filterable"
-            @search="search"></Search>
+            @search="searchTree"></Search>
     <ul class="h-tree-body">
-      <treeoption v-for="tree of treeDataShow"
+      <treeoption v-for="tree of treeDatas"
                   :data="tree"
                   :param="param"
                   :key="tree"
@@ -111,16 +111,29 @@ export default {
       },
       treeDatas: [],
       treeObj: {},
-      treeDataShow: []
+      searchValue: null
     };
   },
   mounted() {
     this.initTreeDatas();
   },
   methods: {
-    search(value) {
-      this.searchValue = value === '' ? null : value;
-      this.treeDataShow = this.treeDatas;
+    searchTree(value) {
+      if(value === this.searchValue) return;
+      this.searchValue = value;
+      if (!utils.isNull(this.searchValue) && this.searchValue !== '') {
+        let searchValue = this.searchValue.toLowerCase();
+        for(let key of Object.keys(this.treeObj)){
+          let tree = this.treeObj[key];
+          tree.status.hide = (tree.html || tree.title).toLowerCase().indexOf(searchValue) == -1;
+        }
+        this.expandAll();
+      } else {
+        for(let key of Object.keys(this.treeObj)){
+          let tree = this.treeObj[key];
+          tree.status.hide = false;
+        }
+      }
     },
     trigger(data) {
       let type = data.type;
@@ -184,7 +197,7 @@ export default {
         loadData.apply(this.param, param);
       }
       this.treeDatas = this.initDatas(datas);
-      this.treeDataShow = this.treeDatas;
+      // this.treeDataShow = this.treeDatas;
     },
     initDatas(datas) {
       let list = datas;
@@ -197,7 +210,7 @@ export default {
     initTreeModeData(list, isWait) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: {hide: false, opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
         let children = data[this.param.childrenName] || [];
         obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
         this.treeObj[obj.key] = obj;
@@ -269,20 +282,10 @@ export default {
   },
   computed: {
     treeDataShow() {
-      if (this.searchValue != null) {
-        let searchValue = this.searchValue.toLowerCase();
-        return this.treeDatas.filter((item) => {
-          return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
-        });
-      } else {
-        return this.treeDatas;
-      }
     },
     treeCls() {
       return {
-        [prefix]: true,
-        [`${prefix}-multiple`]: !!this.multiple,
-        [`${prefix}-single`]: !this.multiple
+        [prefix]: true
       }
     }
   },

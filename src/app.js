@@ -20,7 +20,7 @@ require('../static/css/doc.less');
 
 
 
-const loadData = function (filter, callback) {
+const loadData = function(filter, callback) {
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
     .then((d) => {
@@ -29,7 +29,7 @@ const loadData = function (filter, callback) {
       result.forEach((r) => {
         data.push({
           name: r[0],
-          id: r[0],
+          id: r[1],
         });
       });
       callback(data);

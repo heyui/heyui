@@ -3,60 +3,57 @@
     <h2>Badge 徽标数</h2>
     <h3>基本应用</h3>
     <p>一般<code>count</code>为0的时候不展示</p>
-    <p>&nbsp;</p>
-    <div>
-      <ButtonGroup size="s">
-        <Button icon="plus" @click="count++"></Button>
-        <Button icon="minus" @click="count<=0||count--"></Button>
-      </ButtonGroup>
-      <Badge :count="count"><div v-width="40" class="text-center">消息</div></Badge>
-    </div>
-
-    <h3>数字为0的时候也展示</h3>
-    <p>&nbsp;</p>
-    <div>
-      <Badge :count="100" :max-count="99"><div v-width="50" class="text-center">消息</div></Badge>
-      &nbsp;&nbsp;&nbsp;
-      <Badge :count="1000" :max-count="999"><div v-width="50" class="text-center">消息</div></Badge>
-    </div>
+    <example demo="view/badge1"></example>
 
     <h3>最大显示数</h3>
-    <p>设置<code>count</code>为0的时候也展示</p>
-    <p>&nbsp;</p>
-    <div>
-      <Badge :count="0" :showZero="true"><div v-width="40" class="text-center">消息</div></Badge>
-    </div>
+    <example demo="view/badge2"></example>
+
+    <h3>数字为0的时候也展示</h3>
+    <example demo="view/badge3"></example>
 
     <h3>提示小红点</h3>
-    <p>&nbsp;</p>
-    <div>
-      <Badge :count="1" :dot="true">消息</Badge>
-      &nbsp;&nbsp;&nbsp;
-      <Badge :count="1" :dot="true"><Button size="s">消息</Button></Badge>
-    </div>
+    <example demo="view/badge4"></example>
 
     <h3>不同展示方式</h3>
-    <p>&nbsp;</p>
-    <div v-width="200">
-      <div style="position:relative;padding:5px;">
-        Menu 1
-        <Badge :count="20" position="right"></Badge>
-      </div>
-      <div style="position:relative;padding:5px;">
-        Menu2
-        <Badge :count="100" :max-count="99" position="right"></Badge>
-      </div>
-    </div>
+    <example demo="view/badge5"></example>
+
+    <h3>Badge 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>count</td>
+        <td>显示的值</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>maxCount</td>
+        <td>最大显示的值</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>99</td>
+      </tr>
+      <tr>
+        <td>showZero</td>
+        <td>当值为0的时候也显示</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>position</td>
+        <td>显示在parent的右侧</td>
+        <td>String</td>
+        <td>right</td>
+        <td>-</td>
+      </tr>
+    </table>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-      count: 2
-    }
-  }
-}
-</script>

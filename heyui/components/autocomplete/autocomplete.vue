@@ -82,7 +82,7 @@ export default {
       default: "请选择"
     },
     value: [Number, String, Array, Object],
-    options: Object,
+    option: Object,
     show: String,
     emptyContent: {
       type: [String, Object],
@@ -93,9 +93,9 @@ export default {
   data() {
     let param = {};
     if (this.config) {
-      param = utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.options);
+      param = utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.option);
     } else {
-      param = utils.extend({}, config.getOption("autocomplete.default"), this.options);
+      param = utils.extend({}, config.getOption("autocomplete.default"), this.option);
     }
     return {
       html: "autocomplete_rander_html",

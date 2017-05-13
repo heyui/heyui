@@ -1,9 +1,9 @@
 <template>
   <p>
-    <button class='h-btn b-color-blue' @click="notice('info')">消息</button>
-    <button class='h-btn b-color-green' @click="notice('success')">成功</button>
-    <button class='h-btn b-color-yellow' @click="notice('warn')">警告</button>
-    <button class='h-btn b-color-red' @click="notice('error')">错误</button>
+    <button class='h-btn h-btn-blue' @click="notice('info')">消息</button>
+    <button class='h-btn h-btn-green' @click="notice('success')">成功</button>
+    <button class='h-btn h-btn-yellow' @click="notice('warn')">警告</button>
+    <button class='h-btn h-btn-red' @click="notice('error')">错误</button>
   </p>
 </template>
 <script>
