@@ -6,14 +6,14 @@ hey b
 set -e
 echo "打包代码成功"
 echo "迁移打包后的代码"
-cp -R gen ../
-rm -rf gen
+cp -R dist ../
+rm -rf dist
 echo "切换至gh-pages分支"
 set -e
 git checkout gh-pages
 set -e
 git pull
-cp -R ../gen/* ./
+cp -R ../dist/* ./
 cp index.html 404.html
 git add -A
 git commit -m '新版'
@@ -22,4 +22,4 @@ set -e
 
 echo "切换至doc分支"
 git checkout doc
-rm -rf ../gen
+rm -rf ../dist
