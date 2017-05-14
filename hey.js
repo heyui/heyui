@@ -1,7 +1,7 @@
 module.exports = {
   port: 9008,
   timestamp: true,
-  dist: "gen",
+  dist: "dist",
   webpack: {
     publicPath: "/",
     output: {
