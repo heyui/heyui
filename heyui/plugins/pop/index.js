@@ -301,7 +301,7 @@ class Pop {
   }
 
   setPopNodeEvent(evt, reference, options) {
-    const relatedreference = evt.relatedreference || evt.toElement;
+    const relatedreference = evt.relatedreference || evt.relatedTarget || evt.toElement;
 
     const callback = (evt2) => {
       const relatedreference2 = evt2.relatedreference || evt2.toElement;
@@ -312,7 +312,7 @@ class Pop {
         this.scheduleHide(reference, options, evt2);
       }
     };
-
+    log(evt);
     if (this.popNode.contains(relatedreference)) {
       this.popNode.addEventListener(evt.type, callback);
       return true;

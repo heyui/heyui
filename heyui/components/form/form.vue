@@ -72,6 +72,9 @@ export default {
       this.messages[prop] = message;
       return message;
     },
+    removeProp(prop) {
+      delete this.messages[prop];
+    },
     valid() {
       if (!this.validator || !this.model) {
         return { result: true, messages: [] };
