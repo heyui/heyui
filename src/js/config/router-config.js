@@ -2,227 +2,283 @@ export default {
   component: [{
     path: '',
     name: 'basic',
-    component: (resolve) => require(['../../components/component/basic/grid'], resolve)
+    component: () =>
+      import ('../../components/component/basic/grid')
   }, {
     path: 'basic/grid',
     name: 'basicGrid',
-    component: (resolve) => require(['../../components/component/basic/grid'], resolve)
+    component: () =>
+      import ('../../components/component/basic/grid')
   }, {
     path: 'basic/color',
     name: 'basicColor',
-    component: (resolve) => require(['../../components/component/basic/color'], resolve)
+    component: () =>
+      import ('../../components/component/basic/color')
   }, {
     path: 'basic/icon',
     name: 'basicIcon',
-    component: (resolve) => require(['../../components/component/basic/icon'], resolve)
+    component: () =>
+      import ('../../components/component/basic/icon')
   }, {
     path: 'basic/extend',
     name: 'basicExtend',
-    component: (resolve) => require(['../../components/component/basic/extend'], resolve)
+    component: () =>
+      import ('../../components/component/basic/extend')
   }, {
     path: 'basic/button',
     name: 'basicButton',
-    component: (resolve) => require(['../../components/component/basic/button'], resolve)
+    component: () =>
+      import ('../../components/component/basic/button')
   }, {
     path: 'form/input',
     name: 'formInput',
-    component: (resolve) => require(['../../components/component/form/input'], resolve)
+    component: () =>
+      import ('../../components/component/form/input')
   }, {
     path: 'form/textarea',
     name: 'formTextarea',
-    component: (resolve) => require(['../../components/component/form/textarea'], resolve)
+    component: () =>
+      import ('../../components/component/form/textarea')
   }, {
     path: 'form/radio',
     name: 'formRadio',
-    component: (resolve) => require(['../../components/component/form/radio'], resolve)
+    component: () =>
+      import ('../../components/component/form/radio')
   }, {
     path: 'form/switchlist',
     name: 'formSwitchlist',
-    component: (resolve) => require(['../../components/component/form/switchlist'], resolve)
+    component: () =>
+      import ('../../components/component/form/switchlist')
   }, {
     path: 'form/switch',
     name: 'formSwitch',
-    component: (resolve) => require(['../../components/component/form/switch'], resolve)
+    component: () =>
+      import ('../../components/component/form/switch')
   }, {
     path: 'form/checkbox',
     name: 'formCheckbox',
-    component: (resolve) => require(['../../components/component/form/checkbox'], resolve)
+    component: () =>
+      import ('../../components/component/form/checkbox')
   }, {
     path: 'form/slider',
     name: 'formSlider',
-    component: (resolve) => require(['../../components/component/form/slider'], resolve)
+    component: () =>
+      import ('../../components/component/form/slider')
   }, {
     path: 'form/rate',
     name: 'formRate',
-    component: (resolve) => require(['../../components/component/form/rate'], resolve)
+    component: () =>
+      import ('../../components/component/form/rate')
   }, {
     path: 'form/form',
     name: 'formForm',
-    component: (resolve) => require(['../../components/component/form/form'], resolve)
+    component: () =>
+      import ('../../components/component/form/form')
   }, {
     path: 'data/plugin/select',
     name: 'pluginSelect',
-    component: (resolve) => require(['../../components/component/data/plugin/select'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/select')
   }, {
     path: 'data/plugin/autocomplete',
     name: 'pluginAuto',
-    component: (resolve) => require(['../../components/component/data/plugin/autocomplete'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/autocomplete')
   }, {
     path: 'data/plugin/date',
     name: 'pluginDate',
-    component: (resolve) => require(['../../components/component/data/plugin/date'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/date')
   }, {
     path: 'data/plugin/time',
     name: 'pluginTime',
-    component: (resolve) => require(['../../components/component/data/plugin/time'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/time')
   }, {
     path: 'data/plugin/datetime',
     name: 'pluginDatetime',
-    component: (resolve) => require(['../../components/component/data/plugin/datetime'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/datetime')
   }, {
     path: 'data/plugin/daterange',
     name: 'pluginDateRange',
-    component: (resolve) => require(['../../components/component/data/plugin/daterange'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/daterange')
   }, {
     path: 'data/plugin/city',
     name: 'pluginCity',
-    component: (resolve) => require(['../../components/component/data/plugin/city'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/city')
   }, {
     path: 'data/plugin/tree',
     name: 'dataPluginTree',
-    component: (resolve) => require(['../../components/component/data/plugin/tree'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/tree')
   }, {
     path: 'data/plugin/taginput',
     name: 'pluginTaginput',
-    component: (resolve) => require(['../../components/component/data/plugin/taginput'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/taginput')
   }, {
     path: 'data/plugin/upload',
     name: 'pluginUpload',
-    component: (resolve) => require(['../../components/component/data/plugin/upload'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/upload')
   }, {
     path: 'data/plugin/valid',
     name: 'pluginValid',
-    component: (resolve) => require(['../../components/component/data/plugin/valid'], resolve)
+    component: () =>
+      import ('../../components/component/data/plugin/valid')
   }, {
     path: 'data/view/searchinput',
     name: 'viewSearchinput',
-    component: (resolve) => require(['../../components/component/data/view/searchinput'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/searchinput')
   }, {
     path: 'data/view/table',
     name: 'viewTable',
-    component: (resolve) => require(['../../components/component/data/view/table'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/table')
   }, {
     path: 'data/view/page',
     name: 'viewPage',
-    component: (resolve) => require(['../../components/component/data/view/page'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/page')
   }, {
     path: 'data/view/loading',
     name: 'viewLoading',
-    component: (resolve) => require(['../../components/component/data/view/loading'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/loading')
   }, {
     path: 'data/view/tag',
     name: 'viewTag',
-    component: (resolve) => require(['../../components/component/data/view/tag'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/tag')
   }, {
     path: 'data/view/progress',
     name: 'viewProgress',
-    component: (resolve) => require(['../../components/component/data/view/progress'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/progress')
   }, {
     path: 'data/view/circle',
     name: 'viewCircle',
-    component: (resolve) => require(['../../components/component/data/view/circle'], resolve)
+    component: () =>
+      import ('../../components/component/data/view/circle')
   }, {
     path: 'plugin/tree',
     name: 'pluginTree',
-    component: (resolve) => require(['../../components/component/plugin/tree'], resolve)
-  }, {
-    path: 'plugin/dialog',
-    name: 'pluginDialog',
-    component: (resolve) => require(['../../components/component/plugin/dialog'], resolve)
+    component: () =>
+      import ('../../components/component/plugin/tree')
   }, {
     path: 'plugin/dropdowncustom',
     name: 'pluginDropdowncustom',
-    component: (resolve) => require(['../../components/component/plugin/dropdowncustom'], resolve)
+    component: () =>
+      import ('../../components/component/plugin/dropdowncustom')
+  }, {
+    path: 'plugin/search',
+    name: 'pluginSearch',
+    component: () =>
+      import ('../../components/component/plugin/search')
   }, {
     path: 'plugin/dropdownmenu',
     name: 'pluginDropdownmenu',
-    component: (resolve) => require(['../../components/component/plugin/dropdownmenu'], resolve)
+    component: () =>
+      import ('../../components/component/plugin/dropdownmenu')
   }, {
     path: 'plugin/loadingbar',
     name: 'pluginLoadingbar',
-    component: (resolve) => require(['../../components/component/plugin/loadingbar'], resolve)
+    component: () =>
+      import ('../../components/component/plugin/loadingbar')
   }, {
     path: 'message/message',
     name: 'messageTip',
-    component: (resolve) => require(['../../components/component/message/message'], resolve)
+    component: () =>
+      import ('../../components/component/message/message')
   }, {
     path: 'message/notice',
     name: 'messageNotice',
-    component: (resolve) => require(['../../components/component/message/notice'], resolve)
+    component: () =>
+      import ('../../components/component/message/notice')
   }, {
     path: 'message/modal',
     name: 'messageModal',
-    component: (resolve) => require(['../../components/component/message/modal'], resolve)
+    component: () =>
+      import ('../../components/component/message/modal')
   }, {
     path: 'message/tooltip',
     name: 'messageTooltip',
-    component: (resolve) => require(['../../components/component/message/tooltip'], resolve)
+    component: () =>
+      import ('../../components/component/message/tooltip')
   }, {
     path: 'view/badge',
     name: 'viewBadge',
-    component: (resolve) => require(['../../components/component/view/badge'], resolve)
+    component: () =>
+      import ('../../components/component/view/badge')
   }, {
     path: 'view/card',
     name: 'viewCard',
-    component: (resolve) => require(['../../components/component/view/card'], resolve)
+    component: () =>
+      import ('../../components/component/view/card')
   }, {
     path: 'view/collapse',
     name: 'viewCollapse',
-    component: (resolve) => require(['../../components/component/view/collapse'], resolve)
+    component: () =>
+      import ('../../components/component/view/collapse')
   }, {
     path: 'view/tab',
     name: 'viewTab',
-    component: (resolve) => require(['../../components/component/view/tab'], resolve)
+    component: () =>
+      import ('../../components/component/view/tab')
   }, {
     path: 'view/timeline',
     name: 'viewTimeline',
-    component: (resolve) => require(['../../components/component/view/timeline'], resolve)
+    component: () =>
+      import ('../../components/component/view/timeline')
   }, {
     path: 'view/breadcrumb',
     name: 'viewBreadcrumb',
-    component: (resolve) => require(['../../components/component/view/breadcrumb'], resolve)
+    component: () =>
+      import ('../../components/component/view/breadcrumb')
   }, {
     path: 'other/affix',
     name: 'otherAffix',
-    component: (resolve) => require(['../../components/component/other/affix'], resolve)
+    component: () =>
+      import ('../../components/component/other/affix')
   }, {
     path: 'other/backtop',
     name: 'otherBacktop',
-    component: (resolve) => require(['../../components/component/other/backtop'], resolve)
+    component: () =>
+      import ('../../components/component/other/backtop')
   }],
   guide: [{
     path: '',
     name: 'guide',
-    component: (resolve) => require(['../../components/guide/guide'], resolve)
+    component: () =>
+      import ('../../components/guide/guide')
   }, {
     path: 'guide',
     name: 'guideguide',
-    component: (resolve) => require(['../../components/guide/guide'], resolve)
+    component: () =>
+      import ('../../components/guide/guide')
   }, {
     path: 'quickstart',
     name: 'quickstart',
-    component: (resolve) => require(['../../components/guide/quickstart'], resolve)
+    component: () =>
+      import ('../../components/guide/quickstart')
   }, {
     path: 'themes',
     name: 'themes',
-    component: (resolve) => require(['../../components/guide/themes'], resolve)
+    component: () =>
+      import ('../../components/guide/themes')
   }, {
     path: 'config',
     name: 'config',
-    component: (resolve) => require(['../../components/guide/config'], resolve)
+    component: () =>
+      import ('../../components/guide/config')
   }, {
     path: 'logs',
     name: 'logs',
-    component: (resolve) => require(['../../components/guide/logs'], resolve)
+    component: () =>
+      import ('../../components/guide/logs')
   }]
 }

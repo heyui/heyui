@@ -47,7 +47,7 @@
     ],
     "max-len": [
       "error",
-      {"code": 300}
+      { "code": 300 }
     ],
     "no-plusplus": [
       "error", {
@@ -68,7 +68,7 @@
     "padding-blocks": [
       "off"
     ],
-    "operator-assignment":[
+    "operator-assignment": [
       "off"
     ],
     "quotes": [

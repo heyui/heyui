@@ -34,6 +34,7 @@ const titles = {
   'viewCircle': 'Circle 进度环',
   'pluginTree': 'Tree 树',
   'pluginDialog': 'Dialog 弹框',
+  'pluginSearch': 'Search 通用查询',
   'pluginDropdowncustom': 'DropdownCustom 自定义下拉控件',
   'pluginDropdownmenu': 'DropdownMenu 下拉菜单',
   'pluginLoadingbar': 'LoadingBar 加载进度条',
