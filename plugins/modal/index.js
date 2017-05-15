@@ -1,4 +1,4 @@
-import Notify from '../base/notify';
+import Notify from '../notify';
 import utils from '../../utils/utils';
 import config from '../../utils/config';
 

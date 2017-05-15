@@ -1,4 +1,4 @@
-import Notify from '../base/notify';
+import Notify from '../notify';
 import utils from '../../utils/utils';
 
 const prefixCls = 'h-modal';
@@ -14,7 +14,8 @@ function Confirm(content) {
       content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
       buttons: ['cancel', 'ok'],
       events: {
-        ok: (n) => { n.close(); resolve() }
+        ok: (n) => { n.close();
+          resolve() }
       },
       title: '提示',
       hasMask: true,

@@ -51,6 +51,12 @@ export default {
       errorMessage: { valid: true }
     };
   },
+  beforeDestroy() {
+    if (this.prop) {
+      let parent = this.getParent();
+      parent.removeProp(this.prop);
+    }
+  },
   watch: {
     prop(prop, oldProp) {
       let parent = this.getParent();

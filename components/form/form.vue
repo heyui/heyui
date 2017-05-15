@@ -32,7 +32,7 @@ export default {
       validator: null
     };
   },
-  mounted() {
+  beforeMount() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
   watch: {
@@ -71,6 +71,9 @@ export default {
       }
       this.messages[prop] = message;
       return message;
+    },
+    removeProp(prop) {
+      delete this.messages[prop];
     },
     valid() {
       if (!this.validator || !this.model) {
