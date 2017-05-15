@@ -3,6 +3,10 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-05-15</p><p>15:30</p></div>
+        <div slot="content">DropdownMenu, DropdownCustom, Search and demos</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-05-11</p><p>15:30</p></div>
         <div slot="content">Badge微标数</div>
       </TimelineItem>

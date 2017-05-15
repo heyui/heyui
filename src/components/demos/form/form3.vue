@@ -235,7 +235,7 @@ export default {
   methods: {
     submit() {
       let validResult = this.$refs.form.valid();
-      log(validResult.messages);
+      // log(validResult.messages);
       if (validResult.result) {
         this.$Message("验证成功");
         this.isLoading = true;

@@ -1,18 +1,51 @@
 <template>
   <div class="doc">
     <h2>DropdownCustom 自定义下拉控件</h2>
-    <p>
-      <DropdownCustom>
-        <span>个人信息</span>
-        <div slot="content" v-width="200">
-          <div v-padding="20">
-            <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
-            <div style="height:80px;margin-left:90px;line-height:80px;">LAN</div>
-          </div>
-          <Row style="line-height:40px;border-top:1px solid #EEE;"><Col width=12 class="text-center" style="border-right:1px solid #EEE;"><a>个人信息</a></Col><Col width=12 class="text-center"><a>注销</a></Col></Row>
-        </div>
-      </DropdownCustom>
-    </p>
+
+    <h3>基本调用</h3>
+    <example demo="plugins/dropdowncustom1"></example>
+
+    <h3>不同的触发方式</h3>
+    <example demo="plugins/dropdowncustom2"></example>
+
+    <h3>是否显示切换的icon</h3>
+    <example demo="plugins/dropdowncustom3"></example>
+
+    <h3>下拉显示的位置</h3>
+    <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
+    <example demo="plugins/dropdowncustom4"></example>
+
+    <h3>DropdownCustom 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>trigger</td>
+        <td>触发方式</td>
+        <td>String</td>
+        <td>click, hover</td>
+        <td>click</td>
+      </tr>
+      <tr>
+        <td>toggleIcon</td>
+        <td>是否显示展示状态的icon</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>placement</td>
+        <td>menu显示的位置</td>
+        <td>Stirng</td>
+        <td>top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</td>
+        <td>bottom-start</td>
+      </tr>
+    </table>
   </div>
 </template>
 

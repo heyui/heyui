@@ -20,7 +20,7 @@
                   :param="param"
                   :status="status"
                   :multiple="multiple"
-                  :data-mode="dataMode"
+                  :choose-mode="chooseMode"
                   @trigger="trigger"></treeOption>
     </ul>
   </li>
@@ -36,7 +36,7 @@ export default {
     param: Object,
     multiple: Boolean,
     status: Object,
-    dataMode: String
+    chooseMode: String
   },
   data() {
     return {
@@ -64,7 +64,7 @@ export default {
               indeterminateStatus = true;
             }
           }
-          if (this.dataMode == 'all') {
+          if (this.chooseMode == 'all') {
             this.data.status.choose = chooseStatus;
             this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
           } else {

@@ -8,19 +8,40 @@
 
   >.h-icon-search,>.h-icon-close{
     .middle();
-    .text-hover();
     right: 8px;
   }
+  
   >.h-icon-close{
     display: none;
+    .text-hover();
   }
 
   &-searching {
-    >.h-icon-search{
-      display: none;
+    &.@{search-prefix}-end {
+      >.h-icon-search{
+        display: none;
+      }
     }
     >.h-icon-close{
       display: block;
+    }
+  }
+  &.@{search-prefix}-front {
+    >.h-icon-search{
+      z-index: 1;
+      left: 8px;
+      right: auto;
+    }
+    >input{
+      padding-left: 30px;
+    }
+  }
+  &.@{search-prefix}-end {
+    >.h-icon-search{
+      .text-hover();
+    }
+    >input{
+      padding-right: 30px;
     }
   }
 }
