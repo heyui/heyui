@@ -3,7 +3,7 @@
     <p>value:{{value}}</p>
     <AutoComplete :option="param"
                   :multiple="true"
-                  v-model="value" @change="onChange"></AutoComplete>
+                  v-model="value" @change="onChange" type="title"></AutoComplete>
   </div>
 </template>
 <script>
@@ -26,7 +26,7 @@ const loadData = function (filter, callback) {
 export default {
   data() {
     return {
-      value: [],
+      value: ['测试'],
       param: {
         loadData,
         minWord: 1

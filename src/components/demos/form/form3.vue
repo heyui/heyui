@@ -161,7 +161,7 @@ export default {
         email: null,
         tel: null,
         mobile: null,
-        input: '',
+        input: '测试',
         textarea: '',
         radio: 1,
         rate: null,

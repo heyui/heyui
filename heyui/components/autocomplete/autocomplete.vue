@@ -69,7 +69,7 @@ export default {
     },
     type: {
       type: [String],
-      default: 'key'  //object
+      default: 'key'  //object, title
     },
     disabled: {
       type: Boolean,
@@ -177,6 +177,11 @@ export default {
             [this.param.keyName]: this.value,
             [this.param.titleName]: this.show,
           }
+        } else if (this.type == 'title') {
+          value = {
+            [this.param.keyName]: this.value,
+            [this.param.titleName]: this.value,
+          }
         } else {
           value = this.value;
         }
@@ -187,7 +192,7 @@ export default {
       let value = null;
       let inputValue = null;
       if (!this.mustMatch) {
-        if (this.type == 'key') {
+        if (this.type == 'key' || this.type == 'title') {
           inputValue = this.showValue;
         } else {
           inputValue = { [this.param.titleName]: this.showValue };
@@ -198,7 +203,7 @@ export default {
       if (this.multiple) {
         value = [];
         if (!utils.isNull(this.showValue)) {
-          if (this.type == 'key') {
+          if (this.type == 'key' || this.type == 'title') {
             this.objects.push(inputValue);
           } else {
             this.objects.push(this.getValue(inputValue));
@@ -206,16 +211,25 @@ export default {
         }
         if (utils.isArray(this.objects) && this.objects.length > 0) {
           for (let o of this.objects) {
-            value.push(this.type == 'key' ? o.key : o.value);
+            value.push(this.getV(o));
           }
         }
       } else {
-        value = this.type == 'key' ? this.object.key : this.object.value;
+        value = value.push(this.getV(this.object));
         if (utils.isNull(value) && !utils.isNull(inputValue)) {
           value = inputValue;
         }
       }
       return value;
+    },
+    getV(object) {
+      if (this.type == 'key') {
+        return object.key;
+      } else if (this.type == 'title') {
+        return object.title;
+      } else {
+        return object.value;
+      }
     },
     getValue(item) {
       if (utils.isFunction(this.param.getValue)) {
