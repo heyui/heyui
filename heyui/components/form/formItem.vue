@@ -61,7 +61,10 @@ export default {
     prop(prop, oldProp) {
       let parent = this.getParent();
       if (this.prop) {
-        this.configRequired = !!parent.getConfig(this.prop).required;
+        let message = parent.getConfig(this.prop);
+        if (message) {
+          this.configRequired = !!message.required;
+        }
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
     }
@@ -78,7 +81,10 @@ export default {
     let parent = this.getParent();
 
     if (this.prop) {
-      this.configRequired = !!parent.getConfig(this.prop).required;
+      let message = parent.getConfig(this.prop);
+      if (message) {
+        this.configRequired = !!message.required;
+      }
       this.errorMessage = parent.getErrorMessage(this.prop);
     }
   },
