@@ -26,8 +26,8 @@ export default {
     return {
       value: '',
       param: {
-        key:'id',
-        title:'name',
+        keyName: 'id',
+        titleName: 'name',
         loadData,
         minWord: 1
       }

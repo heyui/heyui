@@ -17,8 +17,8 @@ export default {
       return '';
     }
 
-    const keyField = config.getOption('dict', 'key_field');
-    const titleField = config.getOption('dict', 'title_field');
+    const keyField = config.getOption('dict', 'keyName');
+    const titleField = config.getOption('dict', 'titleName');
 
     if (utils.isArray(dict)) {
       dict = utils.toObject(dict, keyField);

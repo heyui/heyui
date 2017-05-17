@@ -92,8 +92,8 @@ export default {
   },
   data() {
     return {
-      key: config.getOption('dict', 'key_field'),
-      title: config.getOption('dict', 'title_field'),
+      key: config.getOption('dict', 'keyName'),
+      title: config.getOption('dict', 'titleName'),
       html: "select_rander_html",
       codes: [],
       objects: {},

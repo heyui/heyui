@@ -140,8 +140,8 @@ export default utils.extend({}, utils, {
     return data;
   },
   initOptions(datas, param) {
-    let key = config.getOption('dict.key_field');
-    let title = config.getOption('dict.title_field');
+    let key = config.getOption('dict.keyName');
+    let title = config.getOption('dict.titleName');
     let options = [];
     if (this.isObject(datas)) {
       options = this.toArray(datas, key, title);

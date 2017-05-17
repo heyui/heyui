@@ -39,8 +39,8 @@ const loadData = function (filter, callback) {
 Vue.use(VueHighlightJS)
 
 
-// HeyUI.config('dict.key_field', "code");
-// HeyUI.config('dict.title_field', "name");
+// HeyUI.config('dict.keyName', "code");
+// HeyUI.config('dict.titleName', "name");
 
 HeyUI.initDict({
   select: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
@@ -50,8 +50,8 @@ HeyUI.initDict({
 HeyUI.config("autocomplete.configs", {
   simple: {
     loadData,
-    key: 'id',
-    title: 'name',
+    keyName: 'id',
+    titleName: 'name',
     minWord: 1
   }
 });

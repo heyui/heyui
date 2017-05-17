@@ -23,8 +23,8 @@
   </div>
 </template>
 <script>
-// HeyUI.config('dict.key_field', "code");
-// HeyUI.config('dict.title_field', "title");
+// HeyUI.config('dict.keyName', "code");
+// HeyUI.config('dict.titleName', "title");
 export default {
   data() {
     return {
