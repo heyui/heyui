@@ -312,7 +312,7 @@ class Pop {
         this.scheduleHide(reference, options, evt2);
       }
     };
-    log(evt);
+    // log(evt);
     if (this.popNode.contains(relatedreference)) {
       this.popNode.addEventListener(evt.type, callback);
       return true;

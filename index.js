@@ -30,6 +30,8 @@ import Rate from './components/rate';
 // import Slider from './components/slider';
 import Loading from './components/Loading';
 // import Steps from './components/steps';
+import Search from './components/search';
+import Select from './components/select';
 import Switch from './components/switch';
 import SwitchList from './components/switchlist';
 // import Table from './components/table';
@@ -47,7 +49,6 @@ import {
 } from './components/layout';
 import Timeline from './components/timeline';
 import { Button, ButtonGroup } from './components/button';
-import Select from './components/select';
 // import locale from './locale';
 
 import style from './directives/style';
@@ -120,6 +121,7 @@ const components = {
   TimelineItem: Timeline.Item,
   hSelect: Select,
   Select,
+  Search,
   // Slider,
   Loading,
   // Step: Steps.Step,

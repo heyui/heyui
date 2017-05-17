@@ -10,7 +10,7 @@
                   :multiple="multiple"
                   :status="status"
                   @trigger="trigger"
-                  :data-mode="dataMode"></treeoption>
+                  :choose-mode="chooseMode"></treeoption>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -77,27 +77,27 @@ const updateModeSomeChildChooseStatus = (data) => {
 
 export default {
   props: {
-    options: Object,
+    option: Object,
     multiple: {
       type: Boolean,
       default: false
     },
-    value: [Array, Object, String, Number],
     filterable: {
       type: Boolean,
       default: false
     },
-    dataMode: {
+    chooseMode: {
       type: String,
       default: "all"
-    }
+    },
+    config: String
   },
   data() {
     let param = {};
     if (this.config) {
-      param = utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.options);
+      param = utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.option);
     } else {
-      param = utils.extend({}, config.getOption("tree.default"), this.options);
+      param = utils.extend({}, config.getOption("tree.default"), this.option);
     }
     return {
       param,
@@ -119,17 +119,17 @@ export default {
   },
   methods: {
     searchTree(value) {
-      if(value === this.searchValue) return;
+      if (value === this.searchValue) return;
       this.searchValue = value;
       if (!utils.isNull(this.searchValue) && this.searchValue !== '') {
         let searchValue = this.searchValue.toLowerCase();
-        for(let key of Object.keys(this.treeObj)){
+        for (let key of Object.keys(this.treeObj)) {
           let tree = this.treeObj[key];
           tree.status.hide = (tree.html || tree.title).toLowerCase().indexOf(searchValue) == -1;
         }
         this.expandAll();
       } else {
-        for(let key of Object.keys(this.treeObj)){
+        for (let key of Object.keys(this.treeObj)) {
           let tree = this.treeObj[key];
           tree.status.hide = false;
         }
@@ -140,6 +140,7 @@ export default {
       data = data.data;
       if (type == 'toggleTreeEvent') {
         data.status.opened = !data.status.opened;
+        this.$emit('open', data.value);
       } else if (type == 'loadDataEvent') {
         if (utils.isFunction(this.param.getDatas)) {
           data.status.loading = true;
@@ -158,6 +159,7 @@ export default {
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
         updateChildStatus(data, 'choose', choose);
+        this.$emit('choose', null);
       }
     },
     setvalue(option) {
@@ -210,7 +212,7 @@ export default {
     initTreeModeData(list, isWait) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: {hide: false, opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { hide: false, opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
         let children = data[this.param.childrenName] || [];
         obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
         this.treeObj[obj.key] = obj;
@@ -248,7 +250,7 @@ export default {
         tree.status.choose = choose.indexOf(tree.key) != -1;
       }
 
-      if (this.dataMode == 'all') {
+      if (this.chooseMode == 'all') {
         for (let data of this.treeDatas) {
           updateModeAllChildChooseStatus(data);
         }
@@ -269,7 +271,7 @@ export default {
       return options;
     },
     getChoose() {
-      if (this.dataMode == 'some') {
+      if (this.chooseMode == 'some') {
         return this.getFullChoose();
       } else {
         let options = [];
