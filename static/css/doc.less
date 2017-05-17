@@ -10,7 +10,9 @@ body {
   color: @dark-color;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-weight: 300;
   color: #000;
 }
@@ -49,7 +51,6 @@ h2 {
       display: inline-block;
       vertical-align: middle;
     }
-
     .header-logo {
       position: relative;
       display: inline-block;
@@ -198,7 +199,7 @@ h2 {
   }
   code {
     color: @primary-color;
-    background-color: lighten(@primary-color,36%);
+    background-color: lighten(@primary-color, 36%);
     margin: 0 4px;
     display: inline-block;
     padding: 1px 5px;
@@ -224,7 +225,8 @@ h2 {
   .table {
     border-spacing: 0;
     width: 100%;
-    td, th {
+    td,
+    th {
       text-align: left;
       padding: 8px 8px;
       border-bottom: @border;
@@ -288,12 +290,19 @@ h2 {
   }
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
 ::-webkit-scrollbar-thumb {
   background-color: rgba(113, 113, 113, 0.06);
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: @primary-color;
+  border-radius: 8px;
 }
 
 @media (max-width: 992px) {
