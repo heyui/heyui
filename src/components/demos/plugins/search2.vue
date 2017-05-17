@@ -1,5 +1,5 @@
 <template>
-  <Search @search="search" v-width="300" position="front"></Search>
+  <Search @search="search" v-width="300" position="front" trigger-type="input" placeholder="查询示例2"></Search>
 </template>
 <script>
 

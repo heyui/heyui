@@ -25,6 +25,20 @@
         <td>-</td>
         <td>end</td>
       </tr>
+      <tr>
+        <td>placeholder</td>
+        <td>placeholder</td>
+        <td>String</td>
+        <td>-</td>
+        <td>请输入关键词查询</td>
+      </tr>
+      <tr>
+        <td>triggerType</td>
+        <td>查询触发类型</td>
+        <td>String</td>
+        <td>enter, input</td>
+        <td>enter</td>
+      </tr>
     </table>
   </div>
 </template>

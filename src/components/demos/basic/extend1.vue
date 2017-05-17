@@ -33,6 +33,15 @@
         <span class="bg-gray4-color">背景灰4</span>
       </div>
     </div>
+    <blockquote>通用调用</blockquote>
+    <div>
+      <span class="text-hover">可点击文本</span>
+      <span class="link">链接式文本</span>
+      <span class="float-right">浮动到右侧</span>
+      <div class="clearfix relative bg-gray4-color pointer" v-height="50">
+        <i class="middle h-icon-right" style="right:5px;"></i>
+      </div>
+    </div>
     <blockquote>对齐方式</blockquote>
     <div>
       <div class="text-left">左对齐</div>
