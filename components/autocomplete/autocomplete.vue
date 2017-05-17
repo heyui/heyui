@@ -215,7 +215,7 @@ export default {
           }
         }
       } else {
-        value = value.push(this.getV(this.object));
+        value = this.getV(this.object);
         if (utils.isNull(value) && !utils.isNull(inputValue)) {
           value = inputValue;
         }
