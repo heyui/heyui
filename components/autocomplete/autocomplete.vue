@@ -174,8 +174,8 @@ export default {
         let value = null;
         if (this.type == 'key') {
           value = {
-            [this.param.key]: this.value,
-            [this.param.title]: this.show,
+            [this.param.keyName]: this.value,
+            [this.param.titleName]: this.show,
           }
         } else {
           value = this.value;
@@ -190,7 +190,7 @@ export default {
         if (this.type == 'key') {
           inputValue = this.showValue;
         } else {
-          inputValue = { [this.param.title]: this.showValue };
+          inputValue = { [this.param.titleName]: this.showValue };
         }
       } else {
         this.tempValue = null;
@@ -368,14 +368,14 @@ export default {
         if (this.searchValue) {
           let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter((item) => {
-            return (item.html || item.title).toLowerCase().indexOf(searchValue) != -1;
+            return (item.html || item[this.param.titleName]).toLowerCase().indexOf(searchValue) != -1;
           });
         }
       }
       if (this.objects.length > 0) {
         let keyArray = utils.getArray(this.objects, 'key').filter(item => !utils.isNull(item));
         datas = datas.filter((item) => {
-          return keyArray.indexOf(item.key) == -1;
+          return keyArray.indexOf(item[this.param.keyName]) == -1;
         });
       }
       if (this.maxList) {

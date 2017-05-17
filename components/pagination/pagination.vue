@@ -83,8 +83,8 @@ export default {
     for (let o in orders) {
       orders[o] = layoutList.indexOf(o);
     }
-    const keyField = config.getOption('dict', 'key_field');
-    const titleField = config.getOption('dict', 'title_field');
+    const keyField = config.getOption('dict', 'keyName');
+    const titleField = config.getOption('dict', 'titleName');
     return {
       sizesShow: this.sizes.map((item) => {
         return {

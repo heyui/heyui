@@ -2,8 +2,8 @@ import utils from './utils';
 
 const config = {
   dict: {
-    key_field: "key",
-    title_field: "title",
+    keyName: "key",
+    titleName: "title",
     dicts: {}
   },
   tree: {
@@ -22,15 +22,15 @@ const config = {
       delay: 100,
       loadData: null,
       minWord: 0,
-      title: 'title',
-      key: 'key',
+      titleName: 'title',
+      keyName: 'key',
       render: null,
       getValue(item) {
         let title = '';
         let key = null;
         if (utils.isObject(item)) {
-          title = item[this.title];
-          key = item[this.key];
+          title = item[this.titleName];
+          key = item[this.keyName];
         } else {
           title = item;
           key = item;
