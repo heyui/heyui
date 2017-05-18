@@ -1,6 +1,6 @@
 <template>
   <DropdownMenu @onclick="trigger" :datas="param">
-    <span class="text-hover">菜单menu</span>
+    <button class="h-btn">菜单menu</button>
   </DropdownMenu>
 </template>
 <script>

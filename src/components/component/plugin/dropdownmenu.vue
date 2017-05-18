@@ -68,6 +68,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>disabled</td>
+        <td>是否禁用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>toggleIcon</td>
         <td>是否显示展示状态的icon</td>
         <td>Boolean</td>

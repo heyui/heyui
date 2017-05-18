@@ -215,10 +215,10 @@ export default {
     component: () =>
       import ('../../components/component/view/badge')
   }, {
-    path: 'view/card',
-    name: 'viewCard',
+    path: 'view/panel',
+    name: 'viewPanel',
     component: () =>
-      import ('../../components/component/view/card')
+      import ('../../components/component/view/panel')
   }, {
     path: 'view/collapse',
     name: 'viewCollapse',

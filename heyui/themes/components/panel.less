@@ -1,0 +1,58 @@
+@card-prefix: ~"@{prefix}panel";
+
+.@{card-prefix}{
+    background: #fff;
+    border-radius: @border-radius;
+    position: relative;
+    transition: all @transition-time ease-in-out;
+    border: @border;
+
+    &-no-border {
+        border: none;
+    }
+
+    &:hover {
+        box-shadow: @shadow-base;
+        border-color: #eee;
+    }
+
+
+    &&-dis-hover:hover{
+        box-shadow: none;
+    }
+
+    &&-dis-hover&-bordered:hover{
+        border-color: @border-color;
+    }
+
+    &-extra {
+        position: absolute;
+        right: 16px;
+        top: 14px;
+    }
+
+    &-bar {
+        padding: 8px 16px;
+        border-bottom: @border;
+        position: relative;
+        >span{
+            vertical-align: middle;
+        }
+    }
+
+    &-bar &-title {
+        line-height: 26px;
+        font-size: 120%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-bar &-right {
+        .middle();
+        right: 16px;
+    }
+
+    &-body {
+        padding: 16px;
+    }
+}

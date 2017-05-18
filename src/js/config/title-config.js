@@ -44,7 +44,7 @@ const titles = {
   'messageTooltip': 'Tooltip 文字提示',
   'messagePoptip': 'Poptip 自定义提示',
   'viewBadge': 'Badge 微标数',
-  'viewCard': 'Card 卡片',
+  'viewPanel': 'Panel 面板',
   'viewCollapse': 'Collapse 折叠面板',
   'viewTab': 'Tab 标签页',
   'viewTimeline': 'Timeline 时间轴',

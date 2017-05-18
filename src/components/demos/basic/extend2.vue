@@ -45,10 +45,12 @@
       <div v-font="14">14px</div>
       <div v-font="12">12px</div>
     </div>
-    <blockquote>高度，宽度</blockquote>
+    <blockquote>高度，宽度, padding, margin</blockquote>
     <div>
       <div v-height="30" v-bg-color:gray2>高度30px</div>
       <div v-width="100" v-bg-color:gray1>宽度100px</div>
+      <div v-padding="30" v-bg-color:gray2>padding30px</div>
+      <div v-margin="30" v-bg-color:gray2>margin30px</div>
     </div>
   </div>
 </template>

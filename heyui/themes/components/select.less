@@ -32,37 +32,28 @@
       min-height: @input-height;
     }
   }
-  &-input-border {
-    .@{select-prefix} {
-      &-show{
-        .border-input();
-        padding: 4px 30px 4px 10px;
+  &-input-border &-show{
+    .border-input();
+    padding: 4px 30px 4px 10px;
 
-        .@{prefix}form-item-valid-error &{
-          border-color: @red-color;
-          &.@{pop-ref-prefix}{
-            box-shadow: 0 0 0 2px fade(@red-color, 20%);
-          }
-        }
+    .@{prefix}form-item-valid-error &{
+      border-color: @red-color;
+      &.@{pop-ref-prefix}{
+        box-shadow: 0 0 0 2px fade(@red-color, 20%);
       }
     }
   }
 
-  &-disabled{
-    .@{select-prefix}-show{
-      .border-input-disabled();
-    }
+  &-disabled &-show{
+    .border-input-disabled();
   }
 
-  &-multiple {
-    .@{select-prefix} {
-      &-show{
-        padding: 2px 30px 0px 2px;
-      }
-      &-placeholder{
-        padding: 2px 0 0 5px;
-      }
-    }
+  &-multiple &-show{
+    padding: 2px 30px 0px 2px;
+  }
+
+  &-multiple &-placeholder{
+    padding: 2px 0 0 5px;
   }
 }
 

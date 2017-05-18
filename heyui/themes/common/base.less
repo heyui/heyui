@@ -35,12 +35,12 @@ a, .link{
   &:active {
     color: darken(@link-color, 20%);
   }
-  &:active, &:hover {
+  &:active, &:hover{
     outline: 0;
     text-decoration: none;
   }
   &[disabled] {
-    color: #ccc;
+    color: @disabled-color;
     cursor: default;
   }
 }

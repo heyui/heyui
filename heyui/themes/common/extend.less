@@ -98,7 +98,25 @@
 }
 
 .rotate-icon-down{
-  .rotate-icon-down();
+  >.h-icon-down {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    height: 10px;
+    line-height: 10px;
+    transform: translate(0, -50%);
+    transition: all @transition-time;
+  }
+  // &:hover {
+  //   >.h-icon-down {
+  //     color: @primary-color;
+  //   }
+  // }
+  &.@{pop-ref-prefix}>.h-icon-down {
+    transform: rotate(-180deg) translate(0, 50%);
+    margin-top: -1px;
+    color: @primary-color;
+  }
 }
 
 .text-hover{
@@ -117,4 +135,10 @@
 
 .bottom-line {
   border-bottom: 1px solid @border-color;
+}
+
+.h-split{
+  display: inline-block;
+  width: 5px;
+  height: 2px;
 }

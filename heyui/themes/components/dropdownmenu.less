@@ -1,10 +1,11 @@
 @dropdownmenu-prefix: ~"@{prefix}dropdownmenu";
 .@{dropdownmenu-prefix} {
   display: inline-block;
+  vertical-align: middle;
   &-show{
     position: relative;
     &-toggle>:first-child{
-      padding-right: 30px;
+      padding-right: 26px;
     }
     .rotate-icon-down();
     cursor: default;
@@ -14,9 +15,15 @@
     padding: 10px 0;
   }
 
+  &-disabled{
+    color: @disabled-color !important;
+    >.h-icon-down{
+      color: @disabled-color !important;
+    }
+  }
+
   &-item{
     .li-hover();
-    font-size: 105%;
     padding: 5px 15px;
     position: relative;
     >i{
@@ -30,7 +37,7 @@
       border-top: @border;
     }
     &.disabled{
-      color: gray;
+      color: @disabled-color;
     }
   }
 }
