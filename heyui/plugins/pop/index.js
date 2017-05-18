@@ -176,7 +176,7 @@ class Pop {
     }
 
     this.popNode.style.display = '';
-    utils.addClass(this.reference, 'h-pop-ref-show');
+    utils.addClass(this.reference, 'h-pop-trigger');
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
@@ -191,7 +191,7 @@ class Pop {
 
     this.isOpen = false;
     this.popNode.setAttribute('aria-hidden', 'true');
-    utils.removeClass(this.reference, 'h-pop-ref-show');
+    utils.removeClass(this.reference, 'h-pop-trigger');
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.popNode.style.display = 'none';

@@ -31,26 +31,24 @@
             <li><router-link to="/component/data/plugin/time">TimePicker 时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
-            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>
-            <li><router-link to="/component/data/plugin/tree">TreePicker 树选择</router-link></li>-->
+            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
             <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入</router-link></li>
             <!--<li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
             <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
           </ul> 
           <ul>
             <li class="title">View</li>
-            <!-- <li><router-link to="/component/data/view/searchinput">SearchInput 搜索框</router-link></li>
-            <li><router-link to="/component/data/view/table">Table 表格</router-link></li> -->
+            <li><router-link to="/component/plugin/search">Search 搜索框</router-link></li>
+            <li><router-link to="/component/data/view/table">Table 表格</router-link></li> 
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
             <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
             <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
-            <!-- <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
+            <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
-            <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li> -->
+            <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li> 
           </ul>
            <li class="title">Plugin</li>
           <ul>
-            <li><router-link to="/component/plugin/search">Search 通用查询</router-link></li>
             <li><router-link to="/component/plugin/tree">Tree 树</router-link></li>
             <li><router-link to="/component/plugin/dropdowncustom">DropdownCustom 下拉控件</router-link></li>
             <li><router-link to="/component/plugin/dropdownmenu">DropdownMenu 下拉菜单</router-link></li>
@@ -66,7 +64,7 @@
            <li class="title">View</li>
           <ul>
             <li><router-link to="/component/view/card">Card 卡片</router-link></li>
-            <li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>
+            <!--<li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>-->
             <li><router-link to="/component/view/tab">Tab 标签页</router-link></li>
             <li><router-link to="/component/view/timeline">Timeline 时间轴</router-link></li>
             <li><router-link to="/component/view/breadcrumb">Breadcrumb 面包屑</router-link></li>

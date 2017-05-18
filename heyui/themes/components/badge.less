@@ -6,9 +6,10 @@
   line-height: 1;
   &-count {
     position: absolute;
-    transform: translateX(50%) scale(0);
-    top: -8px;
-    right: 0;
+    transform: scale(0);
+    top: -10px;
+    left: 100%;
+    margin-left: -5px;
     border-radius: 100px;
     background: @red-color;
     color: #fff;
@@ -23,7 +24,7 @@
     padding: 0 4px;
 
     &-show {
-      transform: translateX(50%) scale(1);
+      transform: scale(1);
     }
     &-dot {
       height: 6px;
@@ -31,6 +32,8 @@
       min-width: 0;
       padding: 0;
       top: -3px;
+      left: auto;
+      right: -3px;
     }
     a,
     a:hover {
@@ -52,10 +55,7 @@
 
     .@{badge-prefix}-count {
       right: 10px;
-      transform: scale(0);
-      &-show {
-        transform: scale(1);
-      }
+      left: auto;
     }
   }
 }

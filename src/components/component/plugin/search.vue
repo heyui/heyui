@@ -1,6 +1,6 @@
 <template>
   <div class="doc">
-    <h2>Search 通用查询</h2>
+    <h2>Search 搜索框</h2>
 
     <h3>基本调用</h3>
     <p>为很多地方提供简单的search组件封装</p>
