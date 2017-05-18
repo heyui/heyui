@@ -58,6 +58,10 @@ export default {
       type: Boolean,
       default: false
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     maxCount: {
       type: Number,
       default: 99
@@ -77,11 +81,21 @@ export default {
       this.dropdown = new Dropdown(el, {
         content,
         trigger: this.trigger,
+        disabled: this.disabled,
         equalWidth: this.equalWidth,
         container: document.body,
         placement: this.placement
       });
     });
+  },
+  watch: {
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
   },
   methods: {
     onclick(option) {
@@ -106,6 +120,7 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
+        [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon
       }
     },

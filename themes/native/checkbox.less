@@ -1,7 +1,7 @@
 @checkbox-prefix: ~"@{prefix}checkbox";
 @checkbox-border: 1px solid @gray1-color;
 
-input[type=checkbox],.@{checkbox-prefix}>label>span {
+input[type=checkbox],.@{checkbox-prefix}>label>.@{checkbox-prefix}-native {
   -webkit-appearance: none;
   display: inline-block;
   width: 16px;
@@ -10,9 +10,9 @@ input[type=checkbox],.@{checkbox-prefix}>label>span {
   border: @checkbox-border;
   cursor: pointer;
   border-radius: 2px;
-  vertical-align:-4px;
+  vertical-align: middle;
   margin-right: 5px;
-  transition: background linear @transition-time;
+  transition: background, border linear @transition-time;
   position: relative;
   font-family: inherit;
   outline: none;
@@ -79,7 +79,11 @@ input[type=checkbox],.@{checkbox-prefix}>label>span {
       margin-left: 15px;
     }
     display: inline-block;
-    &:hover>span{
+    span{
+      line-height: 16px;
+      vertical-align: middle;
+    }
+    &:hover>.@{checkbox-prefix}-native{
       border-color: @primary-color;
     }
   }
@@ -87,7 +91,7 @@ input[type=checkbox],.@{checkbox-prefix}>label>span {
     color: @gray1-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
-    &:hover>span {
+    &:hover>.@{checkbox-prefix}-native {
       border-color: @gray1-color;
     }
   }

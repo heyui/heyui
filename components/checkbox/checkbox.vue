@@ -1,9 +1,9 @@
 <template>
   <div class="h-checkbox" :disabled="disabled">
     <template v-if="arr.length">
-    <label v-for="option of arr" @click="setvalue(option)"><span :checked="isInclude(option)" :disabled="disabled"></span>{{option[title]}}</label>
+    <label v-for="option of arr" @click="setvalue(option)"><span :checked="isInclude(option)" :disabled="disabled" class="h-checkbox-native"></span><span>{{option[title]}}</span></label>
     </template>
-    <label v-else @click="setvalue()"><span :checked="checked||value" :indeterminate="indeterminate" :disabled="disabled"></span><slot></slot></label>
+    <label v-else @click="setvalue()"><span :checked="checked||valueBak" :indeterminate="indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span><slot></slot></span></label>
   </div>
 </template>
 <script>
@@ -12,12 +12,12 @@ import utils from '../../utils/utils';
 
 export default {
   props: {
+    dict: String,
     datas: [Object, Array],
     disabled: {
       type: Boolean,
       default: false
     },
-    dict: String,
     value: {
       type: [Array, Boolean],
       default: false
@@ -33,6 +33,7 @@ export default {
   },
   data() {
     return {
+      valueBak: this.value,
       key: config.getOption('dict', 'keyName'),
       title: config.getOption('dict', 'titleName'),
     };
@@ -42,7 +43,7 @@ export default {
       if (this.disabled) return;
       let value = utils.copy(this.value);
       if (this.arr.length == 0) {
-        value = !value;
+        this.valueBak = value = !this.valueBak;
       } else {
         let key = option[this.key];
         let index = this.check(key);
@@ -70,7 +71,7 @@ export default {
   computed: {
     arr() {
       if (!this.datas && !this.dict) {
-        // log.error('checkbox组件:datas或者dict参数最起码需要定义其中之一');
+        // log.error('Checkbox组件:datas或者dict参数最起码需要定义其中之一');
         return [];
       }
       let datas = this.datas;

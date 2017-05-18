@@ -35,7 +35,7 @@ import Select from './components/select';
 import Switch from './components/switch';
 import SwitchList from './components/switchlist';
 // import Table from './components/table';
-// import Tabs from './components/tabs';
+import Tabs from './components/tabs';
 import TagInput from './components/taginput';
 // import TimePicker from './components/time-picker';
 // import Tooltip from './components/tooltip';
@@ -130,7 +130,7 @@ const components = {
   SwitchList,
   TagInput,
   // iTable: Table,
-  // Tabs: Tabs,
+  Tabs,
   // TabPane: Tabs.Pane,
   // Tag,
   // TimePicker,
