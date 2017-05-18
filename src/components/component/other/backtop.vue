@@ -1,19 +1,58 @@
 <template>
   <div class="doc">
-  button
+    <h2>BackTop 返回顶部</h2>
+
+    <h3>基本调用</h3>
+    <BackTop :target="getTarget" :bottom="10" :right="50"></BackTop>
+
+    <div v-height="1000">
+      撑高页面
+    </div>
+    <h3>BackTop 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>target</td>
+        <td>针对的对象</td>
+        <td>Function</td>
+        <td>-</td>
+        <td>window.document</td>
+      </tr>
+      <tr>
+        <td>bottom</td>
+        <td>底部的位移</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>right</td>
+        <td>右侧的位移</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>50</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
 
 export default {
-  data () {
+  data() {
     return {
     }
   },
   methods: {
-  },
-  components:{
+    getTarget() {
+      return document.querySelector('.right-frame');
+    }
   }
 }
 </script>

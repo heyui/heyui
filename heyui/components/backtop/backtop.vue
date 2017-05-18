@@ -1,0 +1,92 @@
+<template>
+  <div :class="backtopCls" :style="backtopStyle">
+    <div class="h-backtop-inner"
+         @click="backtop"><i class="h-icon-top"></i></div>
+  </div>
+</template>
+<script>
+
+const prefix = 'h-backtop';
+
+
+export default {
+  props: {
+    target: {
+      type: Function,
+      default: () => window.document
+    },
+    bottom: {
+      type: Number,
+      default: 50
+    },
+    right: {
+      type: Number,
+      default: 50
+    }
+  },
+  data() {
+    return {
+      show: false,
+      timeout: null
+    };
+  },
+  watch: {
+    show() {
+      this.$el.style.display = "block";
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      let target = this.target();
+      if (target) {
+        target.onscroll = () => {
+          if (target.scrollTop > 300) {
+            this.show = true;
+          } else {
+            this.show = false;
+          }
+        }
+      }
+
+      this.$el.addEventListener("webkitAnimationEnd", () => {
+        this.$el.style.display = this.show ? "block" : "none";
+      })
+    });
+  },
+  methods: {
+    backtop() {
+      if (this.timeout) return;
+      let target = this.target();
+      if (target) {
+        this.scrollTop(target);
+      }
+      this.$emit("backtop");
+    },
+    scrollTop(target) {
+      this.timeout = setTimeout(() => {
+        if (target.scrollTop > 50) {
+          target.scrollTop -= 50;
+          this.scrollTop(target);
+        } else {
+          target.scrollTop = 0;
+          this.timeout = null;
+        }
+      }, 5);
+    }
+  },
+  computed: {
+    backtopCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-show`]: this.show,
+      }
+    },
+    backtopStyle() {
+      return {
+        bottom: `${this.bottom}px`,
+        right: `${this.right}px`
+      }
+    }
+  }
+};
+</script>

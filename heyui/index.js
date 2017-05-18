@@ -1,6 +1,6 @@
 // import Affix from './components/affix';
 // import Alert from './components/alert';
-// import BackTop from './components/back-top';
+import BackTop from './components/backtop';
 import Badge from './components/badge';
 // import Breadcrumb from './components/breadcrumb';
 // import Card from './components/card';
@@ -69,7 +69,7 @@ const components = {
   // Affix,
   // Alert,
   AutoComplete,
-  // BackTop,
+  BackTop,
   Badge,
   // Breadcrumb,
   // BreadcrumbItem: Breadcrumb.Item,

@@ -5,6 +5,8 @@
     </div>
     <div class="right-frame flex1 overflow-y">
       <router-view></router-view>
+
+      <BackTop :target="getTarget"></BackTop>
     </div>
   </div>
 </template>
@@ -17,7 +19,11 @@ export default {
       error: false
     }
   },
-  methods: {},
+  methods: {
+    getTarget() {
+      return document.querySelector('.right-frame');
+    }
+  },
   mounted() {
   }
 }
