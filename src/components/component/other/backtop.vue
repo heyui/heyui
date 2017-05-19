@@ -3,7 +3,10 @@
     <h2>BackTop 返回顶部</h2>
 
     <h3>基本调用</h3>
-    <BackTop :target="getTarget" :bottom="10" :right="50"></BackTop>
+    <BackTop :target="getTarget" :bottom="0" :right="50"></BackTop>
+    <BackTop :target="getTarget" :bottom="100" :right="50" class-name="h-backtop-self">
+      返回顶部
+    </BackTop>
 
     <div v-height="1000">
       撑高页面

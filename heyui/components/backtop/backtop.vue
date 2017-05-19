@@ -1,7 +1,10 @@
 <template>
   <div :class="backtopCls" :style="backtopStyle">
     <div class="h-backtop-inner"
-         @click="backtop"><i class="h-icon-top"></i></div>
+         @click="backtop">
+         <i class="h-icon-top" v-if="!$slots.default"></i>
+         <slot v-else></slot>
+    </div>
   </div>
 </template>
 <script>
@@ -22,6 +25,10 @@ export default {
     right: {
       type: Number,
       default: 50
+    },
+    className: {
+      type: String,
+      default: 'h-backtop-default'
     }
   },
   data() {
@@ -39,13 +46,13 @@ export default {
     this.$nextTick(() => {
       let target = this.target();
       if (target) {
-        target.onscroll = () => {
+        target.addEventListener("scroll", () => {
           if (target.scrollTop > 300) {
             this.show = true;
           } else {
             this.show = false;
           }
-        }
+        });
       }
 
       this.$el.addEventListener("webkitAnimationEnd", () => {
@@ -79,6 +86,7 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-show`]: this.show,
+        [this.className]: !!this.className
       }
     },
     backtopStyle() {

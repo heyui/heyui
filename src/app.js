@@ -15,7 +15,6 @@ import comFrame from './components/common/frame';
 import example from './components/common/example';
 import routerConfig from './js/config/router-config';
 
-require('../heyui/themes/common.less');
 require('../static/css/doc.less');
 
 

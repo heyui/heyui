@@ -11,7 +11,7 @@
 
 
     <h3>使用内置的样式</h3>
-    <div>
+    <div v-bg-color:gray4 style="padding-top:20px;">
       <Tabs :datas="param" class-name="h-tabs-card" default-select="module1" @change="change"></Tabs>
     </div>
 

@@ -1,3 +1,6 @@
+@import (less) "../../heyui/themes/common.less";
+
+
 .clearfix() {
   &::after {
     content: "";
@@ -163,18 +166,30 @@ h2 {
 .com-frame {
   .left-frame {
     width: 280px;
-    padding: 0px 20px 10px 30px;
+    padding: 0px 0px 10px 0px;
     line-height: 2.5;
     >div>ul {
       >li.title {
         font-size: 18px;
-        margin: 10px 0;
+        margin: 15px 0;
+        padding-left: 30px;
       }
       >ul {
-        margin-left: 10px;
+        padding-left: 25px;
         >.title {
-          margin-left: -5px;
           color: @gray-color;
+          padding-left: 10px;
+        }
+        >li{
+          >a {
+            padding-left: 20px;
+            color: @dark1-color;
+            &:hover{
+              color: @primary-color;
+            }
+            border-left: 5px solid transparent;
+            display: block;
+          }
         }
       }
     }
@@ -183,9 +198,8 @@ h2 {
     }
     .router-link-active {
       opacity: 1;
-      background-color: @primary-color;
-      color: @white-color;
-      border-radius: @border-radius;
+      color: @primary-color;
+      border-left-color: @primary-color;
     }
   }
   .right-frame {
@@ -346,6 +360,20 @@ h2 {
     }
     .comm-footer {
       position: absolute;
+    }
+  }
+}
+
+.h-backtop-self{
+  .h-backtop-inner {
+    background-color: @blue-color;
+    border-radius: 2px;
+    color: @white-color;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    transition: all @transition-time ease-in-out;
+    &:hover {
+      background-color: lighten(@blue-color, 10%);
     }
   }
 }
