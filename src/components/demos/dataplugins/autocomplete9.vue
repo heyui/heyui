@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>value:{{value}}</p>
-    <AutoComplete :option="param" v-model="value"
+    <AutoComplete :option="param" type="title" v-model="value"
                   :must-match="false" @change="onChange"></AutoComplete>
   </div>
 </template>
@@ -25,7 +25,7 @@ const loadData = function (filter, callback) {
 export default {
   data() {
     return {
-      value: '',
+      value: '23',
       param: {
         loadData,
         minWord: 1

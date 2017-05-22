@@ -70,7 +70,7 @@
         <td>type</td>
         <td>类型</td>
         <td>String</td>
-        <td>key, object</td>
+        <td>key, object, title</td>
         <td>key</td>
       </tr>
       <tr>
