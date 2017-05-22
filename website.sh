@@ -1,5 +1,5 @@
 git add -A
-git commit -m '打包至gh-pages暂时commit'
+git commit -m '打包至gh-pages，$1'
 echo "开始打包代码"
 set -e
 hey b

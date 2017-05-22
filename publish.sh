@@ -1,5 +1,5 @@
 git add -A
-git commit -m 'publish至npm暂时commit'
+git commit -m 'publish至npm，$1'
 echo "迁移代码"
 cp -R heyui ../zanshi
 echo "切换至master分支"
