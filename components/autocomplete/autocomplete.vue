@@ -334,7 +334,7 @@ export default {
       }
       this.focusValue = this.showValue;
       this.$emit('input', value);
-      this.$emit('change', this.multiple ? this.objects : this.object);
+      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);

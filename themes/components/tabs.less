@@ -30,15 +30,17 @@
       padding: 8px 16px;
       line-height:1;
       margin-bottom: -1px;
-      border: 1px solid @border-darken-color;
       border-radius: @border-radius @border-radius 0 0;
-      background: @gray4-color;
+      border: 1px solid transparent;
+      border-top:3px solid transparent;
       +div {
         margin-left: 5px;
       }
       &:hover, &.@{tabs-prefix}-selected {
         color: @primary-color;
         background: @white-color;
+        border-color: @border-darken-color;
+        border-top-color:@primary-color;
         border-bottom-color: @white-color;
       }
     }
