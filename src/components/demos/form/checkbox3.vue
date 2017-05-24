@@ -12,6 +12,17 @@
     <div><Checkbox v-model="value3" :datas="param3" ></Checkbox></div>
     <div>禁用</div>
     <div><Checkbox v-model="value4" :datas="param2" :disabled="true"></Checkbox></div>
+    <div>{{value6}}</div>
+    <div>
+      <Checkbox v-model="value6" :value="param3[0]">自定义1</Checkbox>
+      <Checkbox v-model="value6" :value="param3[1]">自定义2</Checkbox>
+    </div>
+    <div>{{value7}}</div>
+    <div>
+      <Checkbox v-model="value7" :value="1">自定义1</Checkbox>
+      <Checkbox v-model="value7" :value="2">自定义2</Checkbox>
+    </div>
+
   </div>
 </template>
 
@@ -24,6 +35,8 @@ export default {
       value3: ['a1'],
       value4: [1],
       value5: false,
+      value6: [],
+      value7: [],
       param1: ['选择1', '选择2', '选择3'],
       param2: { 1: '选择1', 2: '选择2', 3: '选择3' },
       param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }]

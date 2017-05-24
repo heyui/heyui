@@ -15,6 +15,22 @@
         </tr>
       </template>
     </Table>
+
+    <h3>checkbox</h3>
+    <Table :columns="columns"
+           :datas="datas1" checkbox @check="check">
+      <template scope="props"
+                slot="tr">
+          <td>{{props.data.name}}</td>
+          <td>{{props.data.age}}</td>
+          <td>{{props.data.address}}</td>
+          <td>
+            <button class="h-btn h-btn-s h-btn-red"><i class="h-icon-trash"></i></button>
+          </td>
+        </tr>
+      </template>
+    </Table>
+
     <h3>固定的table</h3>
     <p>固定的高度和宽度，内部内容超出时使用scroll。</p>
     <p>
@@ -46,7 +62,7 @@
     <Table :columns="columns2"
            :datas="datas1"
            :height="250"
-           border>
+           border checkbox>
       <template scope="props"
                 slot="fixed-left">
           <td>{{props.data.id}}</td>
@@ -137,6 +153,9 @@ export default {
     },
     add() {
       this.datas.push({ id: 7, name: '添加', age: 12, address: "然后添加的" });
+    },
+    check(data) {
+      log(data);
     }
   },
   components: {

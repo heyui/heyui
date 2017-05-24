@@ -4,10 +4,12 @@
          :style="{'padding-right': (scrollWidth+'px')}">
       <table :style="{'margin-left': (-scrollLeft+'px')}">
         <colgroup>
+          <col v-if="checkbox && fixedColumnLeft.length==0" width="60"/>
           <col v-for="c of columns"
                :width="getWidth(c)" />
         </colgroup>
         <tr>
+          <th v-if="checkbox && fixedColumnLeft.length==0" class="text-center"><Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox></th>
           <th v-for="c of columns">{{c.title}}</th>
         </tr>
       </table>
@@ -18,11 +20,15 @@
            :style="bodyStyle">
         <table>
           <colgroup>
+          <col v-if="checkbox && fixedColumnLeft.length==0" width="60"/>
             <col v-for="c of columns"
                  :width="getWidth(c)" />
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)"  @mouseout="mouseout(d)" :key="d" :class="isHovered(d)">
+              <td v-if="checkbox && fixedColumnLeft.length==0"  class="text-center">
+                <Checkbox v-model="checks" :value="d"></Checkbox>
+              </td>
               <slot name="fixed-left"
                     :data="d"></slot>
               <slot name="tr"
@@ -39,11 +45,13 @@
            :style="bodyStyle">
         <table :style="{'margin-top': (-scrollTop+'px')}">
           <colgroup>
+            <col v-if="checkbox && fixedColumnLeft.length>0" width="60"/>
             <col v-for="c of fixedColumnLeft"
                  :width="getWidth(c)" />
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)"  @mouseout="mouseout(d)" :class="isHovered(d)">
+              <td v-if="checkbox && fixedColumnLeft.length>0"  class="text-center"><Checkbox v-model="checks" :value="d"></Checkbox></td>
               <slot name="fixed-left"
                     :data="d"></slot>
             </tr>
@@ -71,10 +79,12 @@
          class="h-table-fixed-header-left">
       <table>
         <colgroup>
+          <col v-if="checkbox && fixedColumnLeft.length>0" width="60"/>
           <col v-for="c of fixedColumnLeft"
                :width="getWidth(c)" />
         </colgroup>
         <tr>
+          <th v-if="checkbox && fixedColumnLeft.length>0"  class="text-center"><Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox></th>
           <th v-for="c of fixedColumnLeft">{{c.title}}</th>
         </tr>
       </table>
@@ -113,21 +123,29 @@ export default {
       type: Boolean,
       default: false
     },
-    height: Number
+    height: Number,
+    checkbox: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
       scrollWidth: 0,
       scrollLeft: 0,
       scrollTop: 0,
+      checks: [],
       hoveredTr: null
     };
   },
   watch: {
     datas: {
-      handler() {
+      handler(value, oldValue) {
         if (this.height) {
           this.resize();
+        }
+        if (value != oldValue) {
+          this.checks.splice(0, this.checks.length);
         }
       },
       deep: true
@@ -146,6 +164,14 @@ export default {
     });
   },
   methods: {
+    checkAll() {
+      if (this.checks.length == this.datas.length) {
+        this.checks.splice(0, this.datas.length);
+      } else {
+        this.checks = utils.extend([], this.datas);
+      }
+      this.$emit("check", this.checks);
+    },
     getWidth(column) {
       if (utils.isObject(column) && column.width) {
         return column.width;
