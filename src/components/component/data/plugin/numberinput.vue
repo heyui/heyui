@@ -2,11 +2,7 @@
   <div class="doc">
     <h2>NumberInput 数字输入</h2>
     <h3>基本</h3>
-    <example demo="dataplugins/taginput1"></example>
-    
-  
-    <h3>只读</h3>
-    <example demo="dataplugins/taginput2"></example>
+    <NumberInput></NumberInput>
   
     <h3>TagInput 参数</h3>
     <table class="table">
@@ -27,3 +23,16 @@
     </table>
   </div>
 </template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      value1: 12
+    }
+  }
+}
+</script>
+
+
