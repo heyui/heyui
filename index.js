@@ -34,7 +34,7 @@ import Search from './components/search';
 import Select from './components/select';
 import Switch from './components/switch';
 import SwitchList from './components/switchlist';
-// import Table from './components/table';
+import Table from './components/table';
 import Tabs from './components/tabs';
 import TagInput from './components/taginput';
 // import TimePicker from './components/time-picker';
@@ -129,7 +129,8 @@ const components = {
   hSwitch: Switch,
   SwitchList,
   TagInput,
-  // iTable: Table,
+  Table,
+  hTable: Table,
   Tabs,
   // TabPane: Tabs.Pane,
   // Tag,

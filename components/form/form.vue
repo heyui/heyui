@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Validator from 'hey-validator';
+import Validator from '../../plugins/validator';
 import utils from '../../utils/utils';
 
 const prefixCls = 'h-form';
@@ -33,14 +33,14 @@ export default {
     };
   },
   beforeMount() {
-    // log('rule init', this.rules, this.validator);
+    log('rule init', this.rules, this.validator);
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
   watch: {
     rules() {
       log('rule change', this.rules, this.validator);
       if (this.validator) {
-        this.validator.updateRule(this.rules);
+        if (this.rules) this.validator.updateRule(this.rules);
       } else if (this.model && this.rules) {
         this.validator = new Validator(this.rules);
       }
