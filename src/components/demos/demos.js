@@ -260,6 +260,7 @@ export default {
   'message/modal8': resolve => require.ensure([], require => require('./message/modal8.vue'), 'message'),
   'message/modal9': resolve => require.ensure([], require => require('./message/modal9.vue'), 'message'),
   'message/modal10': resolve => require.ensure([], require => require('./message/modal10.vue'), 'message'),
+  'message/modal11': resolve => require.ensure([], require => require('./message/modal11.vue'), 'message'),
   'message/modalTest': resolve => require.ensure([], require => require('./message/modalTest.vue'), 'message'),
   'message/notice1': resolve => require.ensure([], require => require('./message/notice1.vue'), 'message'),
   'message/notice2': resolve => require.ensure([], require => require('./message/notice2.vue'), 'message'),

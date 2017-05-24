@@ -120,6 +120,11 @@ export default {
     component: () =>
       import ('../../components/component/data/plugin/taginput')
   }, {
+    path: 'data/plugin/numberinput',
+    name: 'pluginNumberinput',
+    component: () =>
+      import ('../../components/component/data/plugin/numberinput')
+  }, {
     path: 'data/plugin/upload',
     name: 'pluginUpload',
     component: () =>

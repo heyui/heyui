@@ -1,7 +1,7 @@
 <template>
   <div>
       <button class="h-btn" @click="opened = true">打开弹出框</button>
-      <ModalComponent :component="test" :props-data="{a:1}" v-model="opened" @toparent="toparent"></ModalComponent>
+      <ModalComponent :component="test" :props-data="{a:1}" v-model="opened" @fromchild="trigger"></ModalComponent>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    toparent(data) {
+    trigger(data) {
       this.$Message.success(data);
     }
   }

@@ -37,6 +37,8 @@ import SwitchList from './components/switchlist';
 import Table from './components/table';
 import Tabs from './components/tabs';
 import TagInput from './components/taginput';
+import NumberInput from './components/numberinput';
+
 // import TimePicker from './components/time-picker';
 // import Tooltip from './components/tooltip';
 // import Transfer from './components/transfer';
@@ -104,6 +106,7 @@ const components = {
   // Message,
   Modal: modal.Modal,
   ModalComponent: modal.ModalComponent,
+  NumberInput,
   // Notice,
   // iOption: Option,
   // OptionGroup,

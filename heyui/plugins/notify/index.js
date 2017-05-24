@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import utils from '../../utils/utils';
 
 const Default = {
@@ -40,7 +41,7 @@ class Notify {
     if (param.hasCloseIcon) html += `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
     if (param.title) html += `<header>${param.title}</header>`;
     html += `<div class="${notifyContentCls}"></div>`;
-    param.hasFooter = utils.isArray(param.buttons) && param.buttons.length > 0;
+    param.hasFooter = utils.isArray(param.buttons) && param.buttons.length > 0 && !param.component;
     if (param.hasFooter) {
       let footeHtml = '';
       for (const b of param.buttons) {
@@ -72,9 +73,9 @@ class Notify {
     let $body = document.createElement(`div`);
     utils.addClass($body, notifyCls);
     $body.innerHTML = html;
-    let $content = that.$content = $body.querySelector(`.${notifyContentCls}`);
-    let $container = that.$container = $body.querySelector(`.${notifyContainerCls}`);
-    that.$body = $body;
+    let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
+    let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);
+    this.$body = $body;
 
     let content = param.content;
     if (content.nodeType === 1) {
@@ -84,6 +85,43 @@ class Notify {
       $content.innerHTML = contentText;
     } else {
       $content.innerHTML = content;
+    }
+
+    if (param.component != undefined) {
+      this.vue = new Vue({
+        el: $content,
+        // template: `<div><plugin @event='trigger' :param="propsData" @close="close"></plugin></div>`,
+        render(createElement) {
+          return createElement(
+            'div', {}, [createElement('plugin', {
+              props: {
+                param: this.propsData
+              },
+              on: {
+                event: this.trigger,
+                close: this.close
+              }
+            })]
+          )
+        },
+        data() {
+          return {
+            propsData: param.component.data,
+            modal: that
+          }
+        },
+        methods: {
+          trigger(name, data) {
+            that.trigger(name, data);
+          },
+          close() {
+            that.close();
+          }
+        },
+        components: {
+          plugin: param.component.vue,
+        },
+      })
     }
 
     if (param.hasCloseIcon) {
@@ -159,10 +197,10 @@ class Notify {
     }
   }
 
-  trigger(event) {
+  trigger(event, data) {
     let param = this.param;
     if (param.events && utils.isFunction(param.events[event])) {
-      param.events[event].call(this, this);
+      param.events[event].call(null, this, data);
     }
   }
 

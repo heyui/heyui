@@ -21,7 +21,7 @@ export default {
   methods: {
     triggerEvent() {
       this.$emit("close");
-      this.$emit("event", "toparent", "测试");
+      this.$emit("event", "fromchild", "测试");
     },
     closeModal() {
       this.$emit("close");

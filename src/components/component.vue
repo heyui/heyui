@@ -19,8 +19,9 @@
             <li><router-link to="/component/form/switch">Switch 开关</router-link></li>
             <li><router-link to="/component/form/switchlist">SwitchList 选项</router-link></li>
             <!-- <li><router-link to="/component/form/slider">Slider 滑块</router-link></li> -->
+             <li><router-link to="/component/form/numberinput">NumberInput 数字输入框</router-link></li> 
+            <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link></li>
             <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
-            <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul>
            <li class="title">Data</li>
           <ul>
@@ -32,9 +33,9 @@
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
             <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
-            <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入</router-link></li>
             <!--<li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
             <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
+            <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul> 
           <ul>
             <li class="title">View</li>
