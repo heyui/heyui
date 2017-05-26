@@ -13,6 +13,7 @@
       <button class="h-btn h-btn-green">GREEN按钮</button>
       <button class="h-btn h-btn-red">RED按钮</button>
       <button class="h-btn h-btn-blue">BLUE按钮</button>
+      <button class="h-btn h-btn-gray">GRAY按钮</button>
     </div>
     <h4>hover颜色</h4>
     <div>
@@ -20,6 +21,7 @@
       <button class="h-btn h-btn-text-green">GREEN按钮</button>
       <button class="h-btn h-btn-text-red">RED按钮</button>
       <button class="h-btn h-btn-text-blue">BLUE按钮</button>
+      <button class="h-btn h-btn-text-gray">GRAY按钮</button>
     </div>
     <h4>文字颜色</h4>
     <div>

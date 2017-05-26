@@ -7,8 +7,7 @@ import Badge from './components/badge';
 // import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
 import Checkbox from './components/checkbox';
-// import Circle from './components/circle';
-// import Collapse from './components/collapse';
+import Circle from './components/circle';
 import Datetime from './components/datetime';
 
 import Dropdown from './plugins/dropdown';
@@ -18,13 +17,12 @@ import Form from './components/form';
 // import Icon from './components/icon';
 // import Input from './components/input';
 // import InputNumber from './components/input-number';
-// import LoadingBar from './components/loading-bar';
 // import Menu from './components/menu';
 import modal from './components/modal';
 // import Notice from './components/notice';
 import Pagination from './components/pagination';
 // import Poptip from './components/poptip';
-// import Progress from './components/progress';
+import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
 // import Slider from './components/slider';
@@ -36,6 +34,7 @@ import Switch from './components/switch';
 import SwitchList from './components/switchlist';
 import Table from './components/table';
 import Tabs from './components/tabs';
+import Tag from './components/tag';
 import TagInput from './components/taginput';
 import NumberInput from './components/numberinput';
 
@@ -61,6 +60,7 @@ import $Confirm from './plugins/confirm';
 import $Message from './plugins/message';
 import $Notice from './plugins/notice';
 import $Loading from './plugins/loading';
+import $LoadingBar from './plugins/loadingBar';
 
 import filters from './filters';
 
@@ -84,10 +84,9 @@ const components = {
   // Cascader,
   Checkbox,
   // CheckboxGroup: Checkbox.Group,
-  // Circle,
+  hCircle: Circle,
   // DatePicker,
   DropdownCustom,
-  // DropdownItem: Dropdown.Item,
   DropdownMenu,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
@@ -113,7 +112,7 @@ const components = {
   Pagination,
   // Panel: Collapse.Panel,
   // Poptip,
-  // Progress,
+  Progress,
   Radio,
   // RadioGroup: Radio.Group,
   Rate,
@@ -136,7 +135,7 @@ const components = {
   hTable: Table,
   Tabs,
   // TabPane: Tabs.Pane,
-  // Tag,
+  Tag,
   // TimePicker,
   // Tooltip,
   // Transfer,
@@ -161,7 +160,8 @@ const prototypes = {
   $Modal,
   $Confirm,
   $Notice,
-  $Loading
+  $Loading,
+  $LoadingBar
 }
 
 const install = function (Vue) {

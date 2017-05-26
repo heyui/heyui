@@ -1,10 +1,11 @@
-@circle-prefix-cls: ~"@{css-prefix}chart-circle";
+@circle-prefix: ~"@{prefix}circle";
 
-.@{circle-prefix-cls}{
+.@{circle-prefix}{
     display: inline-block;
     position: relative;
+    .clearfix();
 
-    &-inner {
+    &-content {
         width: 100%;
         text-align: center;
         position: absolute;

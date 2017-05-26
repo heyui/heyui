@@ -13,6 +13,7 @@
       <Button color="green">GREEN按钮</Button>
       <Button color="red">RED按钮</Button>
       <Button color="blue">BLUE按钮</Button>
+      <Button color="gray">GRAY按钮</Button>
     </div>
     <h4>hover颜色</h4>
     <div>
@@ -20,6 +21,7 @@
       <Button text-color="green">GREEN按钮</Button>
       <Button text-color="red">RED按钮</Button>
       <Button text-color="blue">BLUE按钮</Button>
+      <Button text-color="gray">GRAY按钮</Button>
     </div>
     <h4>文字颜色</h4>
     <div>

@@ -19,7 +19,7 @@
             <li><router-link to="/component/form/switch">Switch 开关</router-link></li>
             <li><router-link to="/component/form/switchlist">SwitchList 选项</router-link></li>
             <!-- <li><router-link to="/component/form/slider">Slider 滑块</router-link></li> -->
-             <li><router-link to="/component/form/numberinput">NumberInput 数字输入框</router-link></li> 
+             <li><router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link></li> 
             <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link></li>
             <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
           </ul>
@@ -44,7 +44,6 @@
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
             <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
             <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
-            <li><router-link to="/component/data/view/tag">Tag 标签</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
             <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li> 
           </ul>
@@ -64,6 +63,7 @@
           </ul>
            <li class="title">View</li>
           <ul>
+            <li><router-link to="/component/view/tag">Tag 标签</router-link></li>
             <li><router-link to="/component/view/panel">Panel 面板</router-link></li>
             <!--<li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>-->
             <li><router-link to="/component/view/tab">Tab 标签页</router-link></li>

@@ -2,9 +2,22 @@
   <div class="doc">
     <h2>NumberInput 数字输入</h2>
     <h3>基本</h3>
-    <NumberInput></NumberInput>
+    <p>{{value1}}</p>
+    <NumberInput v-model="value1"></NumberInput>
+
+    <h3>最大值最小值</h3>
+    <p>{{value2}}</p>
+    <NumberInput v-model="value2" :max="10" :min="1"></NumberInput>
+
+    <h3>step</h3>
+    <p>{{value3}}</p>
+    <NumberInput v-model="value3" :step="5"></NumberInput>
+
+    <h3>disabled</h3>
+    <p>{{value3}}</p>
+    <NumberInput v-model="value3" :disabled="true"></NumberInput>
   
-    <h3>TagInput 参数</h3>
+    <h3>NumberInput 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -29,7 +42,9 @@
 export default {
   data() {
     return {
-      value1: 12
+      value1: 12,
+      value2: 1,
+      value3: 1
     }
   }
 }

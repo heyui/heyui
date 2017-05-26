@@ -155,11 +155,6 @@ export default {
     component: () =>
       import ('../../components/component/data/view/loading')
   }, {
-    path: 'data/view/tag',
-    name: 'viewTag',
-    component: () =>
-      import ('../../components/component/data/view/tag')
-  }, {
     path: 'data/view/progress',
     name: 'viewProgress',
     component: () =>
@@ -230,6 +225,11 @@ export default {
     component: () =>
       import ('../../components/component/view/collapse')
   }, {
+    path: 'view/tag',
+    name: 'viewTag',
+    component: () =>
+      import ('../../components/component/view/tag')
+  },{
     path: 'view/tab',
     name: 'viewTab',
     component: () =>
