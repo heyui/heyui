@@ -1,45 +1,80 @@
 import utils from '../utils/utils';
 
 export default {
-  height(el, binding) {
-    if (binding.value) {
-      el.style.height = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+  height: {
+    inserted(el, binding) {
+      if (binding.value) {
+        el.style.height = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
-  width(el, binding) {
-    if (binding.value) {
-      el.style.width = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+  width: {
+    inserted(el, binding) {
+      if (binding.value) {
+        el.style.width = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
-  padding(el, binding) {
-    if (binding.value) {
-      el.style.padding = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+  padding: {
+    inserted(el, binding) {
+      if (binding.value) {
+        el.style.padding = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+      }
+    },
+    unbind(el) {
+      el.style.padding = null;
     }
   },
-  margin(el, binding) {
-    if (binding.value) {
-      el.style.margin = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+  margin: {
+    inserted(el, binding) {
+      if (binding.value) {
+        el.style.margin = binding.value + (String(binding.value).endsWith("%") ? '' : "px");
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
-  font(el, binding) {
-    if (binding && binding.value) {
-      el.style.fontSize = binding.value + "px";
+  font: {
+    inserted(el, binding) {
+      if (binding && binding.value) {
+        el.style.fontSize = binding.value + "px";
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
-  color(el, binding) {
-    let color = binding.value || binding.arg || binding.expression;
-    if (color.startsWith("#")) {
-      el.style.color = color;
-    } else {
-      utils.addClass(el, `${color}-color`);
+  color: {
+    inserted(el, binding) {
+      let color = binding.value || binding.arg || binding.expression;
+      if (color.startsWith("#")) {
+        el.style.color = color;
+      } else {
+        utils.addClass(el, `${color}-color`);
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
-  bgColor(el, binding) {
-    let color = binding.value || binding.arg;
-    if (color.startsWith("#")) {
-      el.style.backgroundColor = color;
-    } else {
-      utils.addClass(el, `bg-${color}-color`);
+  bgColor: {
+    inserted(el, binding) {
+      let color = binding.value || binding.arg;
+      if (color.startsWith("#")) {
+        el.style.backgroundColor = color;
+      } else {
+        utils.addClass(el, `bg-${color}-color`);
+      }
+    },
+    unbind(el) {
+      el.style.margin = null;
     }
   },
 }

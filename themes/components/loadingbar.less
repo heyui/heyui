@@ -1,0 +1,29 @@
+@loading-bar-prefix: ~"@{prefix}loadingbar";
+
+.@{loading-bar-prefix} {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: @zindex-loading-bar;
+
+    &-inner {
+        height: 2px;
+        width: 0;
+        display: none;
+        transition: width @transition-time linear;
+        background-color: @primary-color;
+
+        &-failed-color-error {
+            background-color: @red-color;
+        }
+        &.loading{
+            display: block;
+        }
+
+        &.error{
+            background-color: @red-color;
+        }
+    }
+}

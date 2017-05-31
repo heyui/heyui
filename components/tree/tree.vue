@@ -3,14 +3,14 @@
     <Search v-if="filterable"
             @search="searchTree"></Search>
     <ul class="h-tree-body">
-      <treeoption v-for="tree of treeDatas"
+      <treeItem v-for="tree of treeDatas"
                   :data="tree"
                   :param="param"
                   :key="tree"
                   :multiple="multiple"
                   :status="status"
                   @trigger="trigger"
-                  :choose-mode="chooseMode"></treeoption>
+                  :choose-mode="chooseMode"></treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -18,7 +18,7 @@
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
-import treeoption from './treeoption';
+import treeItem from './tree-item';
 import Search from '../search';
 
 const prefix = 'h-tree';
@@ -292,7 +292,7 @@ export default {
     }
   },
   components: {
-    treeoption,
+    treeItem,
     Search
   }
 };
