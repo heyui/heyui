@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "A UI components Library.",
   "main": "./build/heyui.js",
   "repository": {
@@ -15,8 +15,7 @@
     "framework"
   ],
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
