@@ -13,11 +13,8 @@
         }
         &-show {
           .@{tree-prefix}-show-expand {
-            .h-icon-down {
-              display: inline-block;
-            }
             .h-icon-right {
-              display: none;
+              transform: rotate(90deg);
             }
           }
         }
@@ -32,15 +29,12 @@
       width: 14px;
       display: inline-block;
       .text-hover();
-      .h-icon-down,
       .h-icon-right,
       .h-icon-loading {
         font-size: 12px;
         line-height: @font-size;
         vertical-align: middle;
-      }
-      .h-icon-down {
-        display: none;
+        transition: @transition-time;
       }
     }
     &-desc {

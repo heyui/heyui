@@ -41,13 +41,13 @@
 
   &-body{
     overflow: auto;
-    table{
-      width: 100%;
-    }
   }
   &-container{
     position: relative;
     margin-top: -1px;
+    table{
+      width: 100%;
+    }
   }
 
   &-fixed-right,&-fixed-left{
@@ -59,6 +59,10 @@
     table{
       background: @white-color;
     }
+  }
+
+  &-fixed-right table{
+    float: right;
   }
   &-fixed-header-right,&-fixed-header-left{
     z-index: 1;
@@ -83,18 +87,12 @@
 
   &-fixed-right,&-fixed-header-right{
     right: 0;
-    padding-left:5px;
-    table{
-      box-shadow: -2px 0px 6px -2px rgba(0,0,0,.2);
-    }
+    box-shadow: -2px 0px 6px -2px rgba(0,0,0,.2);
   }
 
   &-fixed-left,&-fixed-header-left{
     left: 0;
-    padding-right:5px;
-    table{
-      box-shadow: 2px 0 6px -2px rgba(0,0,0,.2);
-    }
+    box-shadow: 2px 0 6px -2px rgba(0,0,0,.2);
   }
 
   &-border{
@@ -111,5 +109,12 @@
 
   &-hover-tr{
     background-color: lighten(@primary-color, 38%);
+  }
+
+  &-content-empty{
+    color: @gray-color;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
   }
 }

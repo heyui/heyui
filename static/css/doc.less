@@ -377,3 +377,28 @@ h2 {
     }
   }
 }
+
+.code-box{
+  padding: 10px;
+  background: @gray4-color;
+}
+
+
+
+@menu-prefix: ~"@{prefix}menu";
+.@{menu-prefix}-custom {
+  .@{menu-prefix} {
+    &-show {
+      &:hover {
+        color: @red-color;
+      }
+    }
+    &-li {
+      &-selected {
+        border-right: 5px solid @red-color;
+        background-color: @gray4-color;
+        color: @red-color;
+      }
+    }
+  }
+}

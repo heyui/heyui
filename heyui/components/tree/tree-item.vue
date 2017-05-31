@@ -7,21 +7,21 @@
         <span @click="loadData(data)"
               v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
         <span @click="toggleTree(data)"
-              v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i><i class='h-icon-down'></i></span>
+              v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i></span>
       </span>
       <Checkbox :disabled="data.status.disabled" v-if="multiple" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
       <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title}}</span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
         class="h-tree-ul">
-      <treeOption v-for="child of data.children"
+      <treeItem v-for="child of data.children"
                   :key="child"
                   :data="child"
                   :param="param"
                   :status="status"
                   :multiple="multiple"
                   :choose-mode="chooseMode"
-                  @trigger="trigger"></treeOption>
+                  @trigger="trigger"></treeItem>
     </ul>
   </li>
 </template>
@@ -30,7 +30,7 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 
 export default {
-  name: 'treeOption',
+  name: 'treeItem',
   props: {
     data: Object,
     param: Object,

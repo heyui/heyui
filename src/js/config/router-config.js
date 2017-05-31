@@ -235,6 +235,11 @@ export default {
     component: () =>
       import ('../../components/component/view/tab')
   }, {
+    path: 'view/menu',
+    name: 'viewMenu',
+    component: () =>
+      import ('../../components/component/view/menu')
+  }, {
     path: 'view/timeline',
     name: 'viewTimeline',
     component: () =>

@@ -15,6 +15,11 @@ const config = {
       childrenName: 'children',
     }
   },
+  menu: {
+    titleName: 'title',
+    keyName: 'key',
+    childrenName: 'children',
+  },
   autocomplete: {
     configs: {},
     default: {

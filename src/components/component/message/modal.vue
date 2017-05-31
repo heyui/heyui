@@ -35,7 +35,7 @@
     <p>系统开发中，我们经常使用到新增，编辑等功能性以及复用性很强的模块，这里我们提供modal的组件式调用，帮助开发中更好的编写。</p>
     <example demo="message/modal8"></example>
     <blockquote>弹出框中使用的代码</blockquote>
-    <example demo="message/modalTest" :no-demo="true"></example>
+    <codes src="/message/modalTest.vue" type="html"></codes>
 
 
     <h3>Js调用组件式的Modal</h3>

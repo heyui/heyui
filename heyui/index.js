@@ -1,9 +1,7 @@
 // import Affix from './components/affix';
-// import Alert from './components/alert';
 import BackTop from './components/backtop';
 import Badge from './components/badge';
 // import Breadcrumb from './components/breadcrumb';
-// import Card from './components/card';
 // import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
 import Checkbox from './components/checkbox';
@@ -14,18 +12,14 @@ import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
 import Form from './components/form';
-// import Icon from './components/icon';
-// import Input from './components/input';
-// import InputNumber from './components/input-number';
-// import Menu from './components/menu';
+import Menu from './components/menu';
 import modal from './components/modal';
-// import Notice from './components/notice';
 import Pagination from './components/pagination';
 // import Poptip from './components/poptip';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
-// import Slider from './components/slider';
+import Slider from './components/slider';
 import Loading from './components/Loading';
 // import Steps from './components/steps';
 import Search from './components/search';
@@ -60,7 +54,7 @@ import $Confirm from './plugins/confirm';
 import $Message from './plugins/message';
 import $Notice from './plugins/notice';
 import $Loading from './plugins/loading';
-import $LoadingBar from './plugins/loadingBar';
+import $LoadingBar from './plugins/loadingbar';
 
 import filters from './filters';
 
@@ -98,7 +92,7 @@ const components = {
   // Icon,
   // InputNumber,
   // LoadingBar,
-  // Menu,
+  Menu,
   // MenuGroup: Menu.Group,
   // MenuItem: Menu.Item,
   // Submenu: Menu.Sub,
@@ -124,7 +118,7 @@ const components = {
   hSelect: Select,
   Select,
   Search,
-  // Slider,
+  Slider,
   Loading,
   // Step: Steps.Step,
   // Steps,

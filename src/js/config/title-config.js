@@ -45,6 +45,7 @@ const titles = {
   'messageTooltip': 'Tooltip 文字提示',
   'messagePoptip': 'Poptip 自定义提示',
   'viewBadge': 'Badge 微标数',
+  'viewMenu': 'Menu 菜单',
   'viewPanel': 'Panel 面板',
   'viewCollapse': 'Collapse 折叠面板',
   'viewTab': 'Tab 标签页',

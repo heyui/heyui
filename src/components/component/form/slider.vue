@@ -1,19 +1,17 @@
 <template>
   <div class="doc">
-  button
+    <h2>Slider 滑块</h2>
   </div>
 </template>
 
 <script>
 
 export default {
-  data () {
+  data() {
     return {
     }
   },
   methods: {
-  },
-  components:{
   }
 }
 </script>

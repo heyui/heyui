@@ -1,6 +1,6 @@
-@loading-bar-prefix-cls: ~"@{prefix}loading-bar";
+@loading-bar-prefix: ~"@{prefix}loadingbar";
 
-.@{loading-bar-prefix-cls} {
+.@{loading-bar-prefix} {
     width: 100%;
     position: fixed;
     top: 0;
@@ -9,13 +9,20 @@
     z-index: @zindex-loading-bar;
 
     &-inner {
+        height: 2px;
+        width: 0;
+        display: none;
         transition: width @transition-time linear;
-
-        &-color-primary {
-            background-color: @primary-color;
-        }
+        background-color: @primary-color;
 
         &-failed-color-error {
+            background-color: @red-color;
+        }
+        &.loading{
+            display: block;
+        }
+
+        &.error{
             background-color: @red-color;
         }
     }

@@ -13,6 +13,7 @@ import comHead from './components/common/header';
 import comFoot from './components/common/footer';
 import comFrame from './components/common/frame';
 import example from './components/common/example';
+import codes from './components/common/codes';
 import routerConfig from './js/config/router-config';
 
 require('../static/css/doc.less');
@@ -92,6 +93,7 @@ Vue.component('com-head', comHead);
 Vue.component('com-foot', comFoot);
 Vue.component('com-frame', comFrame);
 Vue.component('example', example);
+Vue.component('codes', codes);
 
 let routerParam = {
   mode: 'history',
@@ -120,6 +122,7 @@ let routerParam = {
 
 const router = new VueRouter(routerParam);
 router.beforeEach((to, from, next) => {
+  HeyUI.$LoadingBar.start();
   if (titleConfig[to.name]) {
     document.title = titleConfig[to.name] + ' - HEY UI';
   } else {
@@ -128,6 +131,7 @@ router.beforeEach((to, from, next) => {
   next();
 })
 router.afterEach(() => {
+  HeyUI.$LoadingBar.success();
   Vue.nextTick(() => {
     $('.right-frame').scrollTop(0);
   });

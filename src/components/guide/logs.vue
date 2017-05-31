@@ -3,8 +3,16 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-05-26</p></div>
+        <div slot="content">table 完善，修复checkbox问题，修复换行引起的高度变化问题</div>
+      </TimelineItem>
+      <TimelineItem>
+        <div slot="time"><p>2017-05-26</p></div>
+        <div slot="content">loadingbar</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-05-25</p></div>
-        <div slot="content">NumberInput</div>
+        <div slot="content">circle, progress</div>
       </TimelineItem>
       <TimelineItem>
         <div slot="time"><p>2017-05-23</p><p>20:32</p></div>
