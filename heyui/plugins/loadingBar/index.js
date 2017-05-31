@@ -22,7 +22,7 @@ class LoadingBar {
       this.initDom();
     }
     utils.addClass(this.inner, 'loading');
-    this.loading(10, 80);
+    this.loading(5, 90);
   }
 
   loading(step, end, callback) {
@@ -32,12 +32,18 @@ class LoadingBar {
       }
       return;
     }
+    let nowStep = step;
+    if (this.width / end > 0.7) {
+      nowStep = step / 10;
+    }
     if (this.timeout) clearTimeout(this.timeout);
+
+    this.width = this.width + nowStep;
+    this.width = Math.min(100, this.width);
+    this.width = Math.max(0, this.width);
+    this.inner.style.width = `${this.width}%`;
+
     this.timeout = setTimeout(() => {
-      this.width = this.width + step;
-      this.width = Math.min(100, this.width);
-      this.width = Math.max(0, this.width);
-      this.inner.style.width = `${this.width}%`;
       this.loading(step, end, callback);
     }, 200);
   }
@@ -59,7 +65,7 @@ class LoadingBar {
         utils.removeClass(this.inner, 'error');
         this.inner.style.width = '0';
         this.width = 0;
-      }, 1000);
+      }, 200);
     });
   }
 

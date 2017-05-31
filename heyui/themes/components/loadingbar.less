@@ -9,9 +9,8 @@
     z-index: @zindex-loading-bar;
 
     &-inner {
-        height: 2px;
+        height: 0px;
         width: 0;
-        display: none;
         transition: width @transition-time linear;
         background-color: @primary-color;
 
@@ -19,7 +18,7 @@
             background-color: @red-color;
         }
         &.loading{
-            display: block;
+            height: 2px;
         }
 
         &.error{
