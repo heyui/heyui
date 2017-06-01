@@ -1,15 +1,15 @@
 @btn-prefix: ~"@{prefix}btn";
-.btn-color(@color) {
+.btn-color(@color, @percent: 10%) {
   background-color: @color;
   border-color: darken(@color, 2%);
   color: @white-color;
   &:hover {
-    border-color: lighten(@color, 10%);
-    background-color: lighten(@color, 10%);
+    border-color: lighten(@color, @percent);
+    background-color: lighten(@color, @percent);
   }
   &:active {
-    border-color: darken(@color, 10%);
-    background-color: darken(@color, 10%);
+    border-color: darken(@color, 8%);
+    background-color: darken(@color, 8%);
   }
 }
 
@@ -67,7 +67,7 @@
       .btn-color(@yellow-color);
     }
     &-green {
-      .btn-color(@green-color);
+      .btn-color(@green-color, 5%);
     }
     &-blue {
       .btn-color(@blue-color);
