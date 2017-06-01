@@ -70,6 +70,7 @@ export default {
           return;
         }
         this.status.selected = data.data.key;
+        this.$emit('click', data.value);
       }
     }
   },
