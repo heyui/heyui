@@ -7,8 +7,9 @@ textarea {
   background-color: @white-color;
   border-radius: @border-radius;
   border: @border;
+  display: inline-block;
   padding: 4px 0px 4px 10px;
-  line-height: 1.5;
+  line-height: @font-size;
   // width: 200px;
   font-size: inherit;
   transition: all linear @transition-time;
@@ -48,7 +49,10 @@ textarea {
 input[type=text],
 input[type=password]{
   height: @input-height;
-  line-height: @input-height;
+}
+
+textarea{
+  line-height: 1.4;
 }
 
 .@{input-prefix} {
