@@ -15,7 +15,12 @@
     "framework"
   ],
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "hey-log": "0.0.4",
+    "hey-utils": "0.0.14",
+    "manba": "0.0.19",
+    "popper.js": "^1.0.8"
+  },
   "devDependencies": {
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
