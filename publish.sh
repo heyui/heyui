@@ -15,6 +15,7 @@ set -e
 standard-version
 set -e
 git add -A
+conventional-changelog -p angular -i CHANGELOG.md -w
 git commit -m 'publish new version'
 git pull
 git push --follow-tags origin master
