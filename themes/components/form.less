@@ -126,8 +126,13 @@
         width: 80px;
         float: left;
       }
-      &-content {
-        // .form-content-width100();
+    }
+    &-threecolumn .@{form-prefix}-item {
+      width: 33%;
+      float: left;
+      &-label {
+        width: 80px;
+        float: left;
       }
     }
     &-single .@{form-prefix}-item,
@@ -140,8 +145,11 @@
       }
       .@{form-prefix}-item-content {
         margin-left: 80px;
-        // .form-content-width100();
       }
     }
+  }
+
+  &-no-valid &-item{
+    padding-bottom: 3px;
   }
 }
