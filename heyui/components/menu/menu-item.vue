@@ -2,7 +2,7 @@
   <li class="h-menu-li" :class="{'h-menu-li-opened':(status.opened.indexOf(data.key) != -1)}">
     <div class="h-menu-show"
          @click="togglemenu(data)"
-         :class="{'h-menu-show-disabled':data.status.disabled, 'h-menu-li-selected': status.selected == data.key}">
+         :class="{'h-menu-show-disabled':data.status.disabled, 'h-menu-li-selected': data.key&&status.selected == data.key}">
       <span v-show='data.icon'><i :class="data.icon"></i></span>
       <span class='h-menu-show-desc'>{{data.title}}</span>
       <span class='h-menu-show-expand' v-if="data.children&&data.children.length>0">

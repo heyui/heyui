@@ -65,6 +65,10 @@ export default {
     maxCount: {
       type: Number,
       default: 99
+    },
+    className: {
+      type: String,
+      default: 'h-dropdownmenu-default'
     }
   },
   data() {
@@ -121,7 +125,8 @@ export default {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
-        [`${prefix}-show-toggle`]: !!this.toggleIcon
+        [`${prefix}-show-toggle`]: !!this.toggleIcon,
+        [this.className]: true
       }
     },
     groupCls() {

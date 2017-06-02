@@ -31,6 +31,10 @@ export default {
     placement: {
       type: String,
       default: 'bottom-start'
+    },
+    className: {
+      type: String,
+      default: 'h-dropdownmenu-default'
     }
   },
   data() {
@@ -61,7 +65,8 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
-        [`${prefix}-show-toggle`]: !!this.toggleIcon
+        [`${prefix}-show-toggle`]: !!this.toggleIcon,
+        [this.className]: true
       }
     },
     groupCls() {
