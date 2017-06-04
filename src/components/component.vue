@@ -67,7 +67,7 @@
             <li><router-link to="/component/view/panel">Panel 面板</router-link></li>
             <!--<li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>-->
             <li><router-link to="/component/view/menu">Menu 菜单</router-link></li>
-            <li><router-link to="/component/view/tab">Tab 标签页</router-link></li>
+            <li><router-link to="/component/view/tabs">Tabs 标签页</router-link></li>
             <li><router-link to="/component/view/timeline">Timeline 时间轴</router-link></li>
             <!--<li><router-link to="/component/view/breadcrumb">Breadcrumb 面包屑</router-link></li>-->
           </ul>

@@ -3,14 +3,17 @@
     <h2>BackTop 返回顶部</h2>
 
     <h3>基本调用</h3>
-    <BackTop :target="getTarget" :bottom="0" :right="50"></BackTop>
-    <BackTop :target="getTarget" :bottom="100" :right="50" class-name="h-backtop-self">
-      返回顶部
-    </BackTop>
-
-    <div v-height="1000">
+    <example demo="other/backtotop1"></example>
+    
+    <h3>自定义样式与内容</h3>
+    <example demo="other/backtotop2"></example>
+    <p>样式：</p>
+    <codes src="/codes/backtop1.txt" type="less"></codes>
+    <div v-height="10"></div>
+    <div v-height="1000" v-bg-color:gray4 v-padding="20" class="text-center">
       撑高页面
     </div>
+
     <h3>BackTop 参数</h3>
     <table class="table">
       <tr>

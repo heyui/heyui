@@ -24,5 +24,5 @@ module.exports = {
     },
     externals: {}
   },
-  copy: ["./static/images/**/*", "./src/components/demos/**/*.vue"]
+  copy: ["./static/images/**/*", "./src/components/demos/**/*.vue", "./src/components/demos/**/*.txt"]
 };

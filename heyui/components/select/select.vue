@@ -63,10 +63,6 @@ export default {
     limit: {
       type: Number
     },
-    autosize: {
-      type: Boolean,
-      default: false
-    },
     nullOption: {
       type: Boolean,
       default: true
@@ -197,9 +193,6 @@ export default {
   computed: {
     selectCls() {
       let autosize = !!this.noBorder;
-      if (!autosize) {
-        autosize = this.autosize;
-      }
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,

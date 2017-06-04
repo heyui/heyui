@@ -2,83 +2,82 @@
   <div class="doc">
     <h2>Menu 菜单</h2>
     <h3>基本黑色</h3>
-    <div v-width="250">
-      <Menu :datas="data1"></Menu>
-    </div>
+    <p>选中的方法主要是针对于<code>vue-router</code>等单页应用的选中逻辑。</p>
+    <example demo="view/menu1"></example>
+    <p>配合<code>vue-router</code>：</p>
+    <codes src="/codes/menu1.txt" type="javascript"></codes>
+
     <h3>白色</h3>
-    <div v-width="250">
-      <Menu :datas="data1" className="h-menu-white"></Menu>
-    </div>
+    <example demo="view/menu2"></example>
+
     <h3>自定义</h3>
-    <div v-width="250">
-      <Menu :datas="data1" className="h-menu-custom"></Menu>
-    </div>
+    <p>该样式是自己的设置的class，可以做任意调整。</p>
+    <example demo="view/menu3"></example>
+    <p>样式：</p>
+    <codes src="/codes/menu.txt" type="less"></codes>
+
+    <h3>Menu 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>datas</td>
+        <td>menu的数据</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>[]</td>
+      </tr>
+      <tr>
+        <td>option</td>
+        <td>针对datas提供数据的参数名</td>
+        <td>Object</td>
+        <td>-</td>
+        <td>全局配置<code>config.menu</code></td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义class</td>
+        <td>string</td>
+        <td>-</td>
+        <td>h-menu-dark</td>
+      </tr>
+    </table>
+
+    <h3>Option 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>titleName</td>
+        <td>menu的数据titleName</td>
+        <td>String</td>
+        <td>-</td>
+        <td>title</td>
+      </tr>
+      <tr>
+        <td>keyName</td>
+        <td>menu的数据keyName</td>
+        <td>String</td>
+        <td>-</td>
+        <td>key</td>
+      </tr>
+      <tr>
+        <td>childrenName</td>
+        <td>menu的数据childrenName</td>
+        <td>String</td>
+        <td>-</td>
+        <td>children</td>
+      </tr>
+    </table>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-      data1: [
-        {
-          title: '首页',
-          key: 'welcome',
-          icon: 'h-icon-home'
-        },
-        {
-          title: '查询',
-          key: 'search',
-          icon: 'h-icon-search'
-        },
-        {
-          title: '收藏',
-          key: 'favor',
-          icon: 'h-icon-star',
-          children: [
-            {
-              title: '类型-1',
-              key: '2-1'
-            },
-            {
-              title: '类型-2',
-              key: '3-2',
-              children: [
-                {
-                  title: '类型-2-3',
-                  key: '2-3'
-                },
-                {
-                  title: '类型-2-4',
-                  key: '3-4'
-                }
-              ]
-            }
-          ]
-
-        },
-        {
-          title: '任务',
-          icon: 'h-icon-task',
-          key: 'task',
-          children: [
-            {
-              title: '模块1-1',
-              icon: 'h-icon-bell',
-              key: '1-1'
-            },
-            {
-              title: '模块1-2',
-              icon: 'h-icon-home',
-              key: '1-2'
-            }
-          ]
-        }
-      ]
-    }
-  },
-  methods: {
-  }
-}
-</script>

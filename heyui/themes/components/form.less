@@ -7,6 +7,7 @@
   .@{prefix}select,
   .@{prefix}taginput,
   .@{prefix}autocomplete,
+  .@{prefix}numberinput,
   .@{prefix}datetime-input-border,
   .@{prefix}input-group {
     width: 100%;
@@ -33,11 +34,10 @@
       &-label {
         display: inline-block;
         text-align: right;
-        vertical-align: middle;
         font-size: @font-size-mini;
         color: @gray-color;
         line-height: 1;
-        padding: 9px 15px 10px 15px;
+        padding: (@input-height - @font-size-mini)/2 15px;
         box-sizing: border-box;
       }
       &-required {
@@ -59,6 +59,7 @@
       &-wrap {
         position: relative;
         .clearfix();
+        line-height: @input-height;
       }
       &-error {
         position: absolute;
@@ -149,7 +150,7 @@
     }
   }
 
-  &-no-valid &-item{
+  &-readonly &-item{
     padding-bottom: 3px;
   }
 }

@@ -85,13 +85,6 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>autosize</td>
-        <td>100%宽度</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
         <td>nullOption</td>
         <td>是否有“请选择”选项</td>
         <td>Boolean</td>

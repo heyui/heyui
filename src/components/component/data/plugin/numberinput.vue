@@ -2,20 +2,16 @@
   <div class="doc">
     <h2>NumberInput 数字输入</h2>
     <h3>基本</h3>
-    <p>{{value1}}</p>
-    <NumberInput v-model="value1"></NumberInput>
+    <example demo="form/numberinput1"></example>
 
     <h3>最大值最小值</h3>
-    <p>{{value2}}</p>
-    <NumberInput v-model="value2" :max="10" :min="1"></NumberInput>
+    <example demo="form/numberinput2"></example>
 
     <h3>step</h3>
-    <p>{{value3}}</p>
-    <NumberInput v-model="value3" :step="5"></NumberInput>
+    <example demo="form/numberinput3"></example>
 
     <h3>disabled</h3>
-    <p>{{value3}}</p>
-    <NumberInput v-model="value3" :disabled="true"></NumberInput>
+    <example demo="form/numberinput4"></example>
   
     <h3>NumberInput 参数</h3>
     <table class="table">
@@ -27,11 +23,32 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>readonly</td>
-        <td>是否只读</td>
+        <td>disabled</td>
+        <td>是否禁用</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>min</td>
+        <td>最大值</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>max</td>
+        <td>最小值</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>step</td>
+        <td>每次点击增加或减少的数值</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>1</td>
       </tr>
     </table>
   </div>
@@ -42,9 +59,6 @@
 export default {
   data() {
     return {
-      value1: 12,
-      value2: 1,
-      value3: 1
     }
   }
 }

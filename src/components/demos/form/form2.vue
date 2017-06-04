@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <p v-color:gray>{{value1}}</p>
-    <div><SwitchList v-model="value1" :datas="param1" :disabled="true"></SwitchList></div>
-  </div>
+  <Form :readonly="true">
+    <FormItem label="姓名">{{data.name}}</FormItem>
+    <FormItem label="年龄">{{data.age}}</FormItem>
+    <FormItem label="学校">{{data.school}}</FormItem>
+    <FormItem label="性别">{{data.sex}}</FormItem>
+  </Form>
 </template>
 <script>
 export default {
   data() {
     return {
-      value1: '选择1',
-      param1: ['选择1', '选择2', '选择3'],
+      data:{
+        name: "小王",
+        age: 18,
+        school: "中国某某大学",
+        sex: "女"
+      }
     }
   }
 };

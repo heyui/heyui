@@ -48,7 +48,7 @@ const titles = {
   'viewMenu': 'Menu 菜单',
   'viewPanel': 'Panel 面板',
   'viewCollapse': 'Collapse 折叠面板',
-  'viewTab': 'Tab 标签页',
+  'viewTabs': 'Tab 标签页',
   'viewTimeline': 'Timeline 时间轴',
   'viewBreadcrumb': 'Breadcrumb 面包屑',
   'otherAffix': 'Affix 图钉',

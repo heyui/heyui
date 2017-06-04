@@ -364,7 +364,7 @@ h2 {
   }
 }
 
-.h-backtop-self{
+.h-backtop-custom{
   .h-backtop-inner {
     background-color: @blue-color;
     border-radius: 2px;
@@ -387,6 +387,7 @@ h2 {
 
 @menu-prefix: ~"@{prefix}menu";
 .@{menu-prefix}-custom {
+  background: @white-color;
   .@{menu-prefix} {
     &-show {
       &:hover {
@@ -397,6 +398,20 @@ h2 {
       &-selected {
         color: @red-color;
       }
+    }
+  }
+}
+
+.h-tabs-custom {
+  >div {
+    display: block;
+    padding: 12px 16px;
+    line-height:1;
+    font-size: 15px;
+    .li-hover();
+    &.h-tabs-selected{
+      color: @white-color;
+      background-color: @primary-color;
     }
   }
 }

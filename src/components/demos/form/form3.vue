@@ -17,8 +17,8 @@
       </FormItem>
       <FormItem label="整数"
                 prop="int">
-        <input type="text"
-               v-model="data.int" />
+        <NumberInput
+               v-model="data.int" ></NumberInput>
       </FormItem>
       <FormItem label="数字"
                 prop="number">
@@ -189,6 +189,7 @@ export default {
         single: '一个区块一行',
         block: '标题独立一行',
         twocolumn: '两列一行',
+        threecolumn: '三列一行',
       },
       validationRules: {
         required: [

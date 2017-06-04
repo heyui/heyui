@@ -102,7 +102,7 @@ export default {
           return;
         }
         this.status.selected = data.data.key;
-        this.$emit('click', data.data.value);
+        this.$emit('onclick', data.data.value);
       }
     }
   },

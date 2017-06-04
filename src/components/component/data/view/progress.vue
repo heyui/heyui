@@ -2,29 +2,42 @@
   <div class="doc">
     <h2>Progress 进度条</h2>
     <h3>基本调用</h3>
-
-    <div v-width="600">
-      <p><Progress :percent="60"><span slot="title">项目1</span><span slot="text"><span class="primary-color">180</span> K</span></Progress></p>
-      <p><Progress :percent="99" color="green"><span slot="title">项目2</span><span slot="text">成功</span></Progress></p>
-      <p><Progress :percent="12" color="red"><span slot="title">项目2</span><span slot="text">失败</span></Progress></p>
-    </div>
-
+    <example demo="view/progress1"></example>
+    
     <h3>动态</h3>
-    <div v-width="600">
-      <p><NumberInput v-model="value" :step="10" :min="0" :max="100"></NumberInput></p>
-      <p><Progress :percent="value" :stroke-width="6"><span slot="title">项目1</span><span slot="text">{{value}}%</span></Progress></p>
-      <p><Progress :percent="value" :stroke-width="10" color="#ff5500"></Progress></p>
-    </div>
+    <example demo="view/progress2"></example>
+
+
+    <h3>Progress 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>percent</td>
+        <td>显示比例</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>color</td>
+        <td>显示颜色</td>
+        <td>String</td>
+        <td>green, red, yellow, blue, primary, RGB</td>
+        <td>primary</td>
+      </tr>
+      <tr>
+        <td>stroke-width</td>
+        <td>高度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>10</td>
+      </tr>
+    </table>
   </div>
 </template>
-
-<script>
-
-export default {
-  data() {
-    return {
-      value: 10
-    }
-  }
-}
-</script>

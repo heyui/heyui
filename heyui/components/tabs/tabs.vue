@@ -1,6 +1,6 @@
 <template>
   <div :class="tabsCls">
-    <div v-for="a of arr" @click="trigger(a)" :class="{'h-tabs-selected':a[key] == selected}">
+    <div v-for="a of arr" @click="trigger(a)" :class="{'h-tabs-selected':a[key] == value}">
       <span v-if="!$scopedSlots.item">{{a[title]}}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
@@ -16,7 +16,7 @@ export default {
   props: {
     dict: String,
     datas: [Object, Array],
-    defaultSelect: [String, Number],
+    value: [String, Number],
     className: {
       type: String,
       default: 'h-tabs-default'
@@ -25,20 +25,14 @@ export default {
   data() {
     return {
       key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName'),
-      selected: this.defaultSelect
+      title: config.getOption('dict', 'titleName')
     }
   },
   methods: {
     trigger(data) {
-      if (this.selected == data.key) return;
-      this.selected = data.key;
+      if (this.value == data.key) return;
+      this.$emit('input', data.key)
       this.$emit('change', data);
-    }
-  },
-  watchs: {
-    defaultSelect() {
-      this.selected = this.defaultSelect;
     }
   },
   computed: {

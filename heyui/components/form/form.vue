@@ -25,7 +25,7 @@ export default {
       type: String,
       default: "right" //left,right
     },
-    noValid: {
+    readonly: {
       type: Boolean,
       default: false
     }
@@ -109,7 +109,7 @@ export default {
         [`${prefixCls}`]: true,
         [`${prefixCls}-${this.mode}`]: true,
         [`${prefixCls}-label-${this.labelPosition}`]: !!this.labelPosition,
-        [`${prefixCls}-no-valid`]: this.noValid
+        [`${prefixCls}-readonly`]: this.readonly
       }
     }
   }

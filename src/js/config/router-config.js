@@ -229,11 +229,11 @@ export default {
     name: 'viewTag',
     component: () =>
       import ('../../components/component/view/tag')
-  },{
-    path: 'view/tab',
-    name: 'viewTab',
+  }, {
+    path: 'view/tabs',
+    name: 'viewTabs',
     component: () =>
-      import ('../../components/component/view/tab')
+      import ('../../components/component/view/tabs')
   }, {
     path: 'view/menu',
     name: 'viewMenu',
