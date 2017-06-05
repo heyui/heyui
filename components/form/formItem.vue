@@ -26,6 +26,10 @@ export default {
       type: Boolean,
       default: false
     },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     showLabel: {
       type: Boolean,
       default: true
@@ -141,6 +145,7 @@ export default {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
+        [`${prefixCls}-readonly`]: !!this.readonly,
         [`${prefixCls}-required`]: this.required || this.configRequired,
         [`${prefixCls}-valid-error`]: !this.errorMessage.valid,
         [`${prefixCls}-no-padding`]: !!this.noPadding
