@@ -33,8 +33,7 @@
               <td v-if="checkbox"  class="text-center">
                 <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
               </td>
-              <slot name="tr"
-                    :data="d"></slot>
+              <slot :data="d"></slot>
             </tr>
           </tbody>
         </table>
@@ -53,8 +52,7 @@
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)"  @mouseout="mouseout(d)" :class="isHovered(d)">
               <td v-if="checkbox"  class="text-center"><Checkbox v-model="checks" :value="d"></Checkbox></td>
-              <slot name="tr"
-                    :data="d"></slot>
+              <slot :data="d"></slot>
             </tr>
           </tbody>
         </table>
@@ -70,8 +68,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)"  @mouseout="mouseout(d)" :class="isHovered(d)">
-              <slot name="tr"
-                    :data="d"></slot>
+              <slot :data="d"></slot>
             </tr>
           </tbody>
         </table>
