@@ -21,7 +21,7 @@
         <div v-if="!$slots.empty">暂无数据</div>
       </div>
       <div class="h-table-body"
-           :style="bodyStyle" v-else>
+           :style="bodyStyle">
         <table>
           <colgroup>
           <col v-if="checkbox" width="60"/>
