@@ -157,8 +157,9 @@ class Notify {
       }
     }
     if (param.hasFooter) {
-      $body.querySelectorAll(`.${notifyContainerCls}>footer>button`).forEach((b) => {
-        b.onclick = function (event) {
+      let buttons = $body.querySelectorAll(`.${notifyContainerCls}>footer>button`)
+      for (let button of buttons) {
+        button.onclick = function (event) {
           let attr = event.target.getAttribute('attr');
           if (attr) {
             if (attr == 'cancel') {
@@ -167,7 +168,7 @@ class Notify {
             that.trigger(attr);
           }
         }
-      }, this);
+      }
     }
 
     window.setTimeout(function () {
