@@ -20,6 +20,7 @@
         <NumberInput
                v-model="data.int" ></NumberInput>
       </FormItem>
+      <FormItem label="只读" readonly>只读数据</FormItem>
       <FormItem label="数字"
                 prop="number">
         <input type="text"
