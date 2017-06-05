@@ -18,8 +18,7 @@
   "dependencies": {
     "hey-log": "0.0.7",
     "hey-utils": "0.0.14",
-    "manba": "0.0.19",
-    "popper.js": "^1.0.8"
+    "manba": "0.0.19"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
