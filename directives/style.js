@@ -8,7 +8,7 @@ export default {
       }
     },
     unbind(el) {
-      el.style.margin = null;
+      el.style.height = null;
     }
   },
   width: {
@@ -18,7 +18,7 @@ export default {
       }
     },
     unbind(el) {
-      el.style.margin = null;
+      el.style.width = null;
     }
   },
   padding: {
@@ -48,7 +48,7 @@ export default {
       }
     },
     unbind(el) {
-      el.style.margin = null;
+      el.style.fontSize = null;
     }
   },
   color: {
@@ -61,7 +61,7 @@ export default {
       }
     },
     unbind(el) {
-      el.style.margin = null;
+      el.style.color = null;
     }
   },
   bgColor: {
@@ -74,7 +74,7 @@ export default {
       }
     },
     unbind(el) {
-      el.style.margin = null;
+      el.style.backgroundColor = null;
     }
   },
 }
