@@ -23,10 +23,12 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      if (this.$el.parentNode.style.position == '') {
-        this.$el.parentNode.style.position = 'relative';
-        this.$el.parentNode.style.minHeight = '60px';
+      let parent = this.$el.parentNode;
+      let position = window.getComputedStyle(parent).position;
+      if (position === 'static') {
+        parent.style.position = 'relative';
       }
+      parent.style.minHeight = '60px';
     });
   },
   computed: {
