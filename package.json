@@ -19,15 +19,15 @@
   "license": "MIT",
   "dependencies": {
     "fetch-jsonp": "^1.0.6",
-    "hey-log": "0.0.4",
+    "hey-log": "0.0.7",
     "hey-utils": "0.0.14",
-    "manba": "0.0.19",
     "hey-validator": "0.0.5",
-    "popper.js": "^1.0.8",
     "heyui": "0.0.16",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",
     "jquery-smooth-scroll": "^2.1.2",
+    "manba": "0.0.19",
+    "popper.js": "^1.0.8",
     "vue": "^2.2.4",
     "vue-highlightjs": "^1.2.2",
     "vue-router": "^2.3.0"
