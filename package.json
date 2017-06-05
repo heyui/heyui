@@ -16,7 +16,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "hey-log": "0.0.4",
+    "hey-log": "0.0.7",
     "hey-utils": "0.0.14",
     "manba": "0.0.19",
     "popper.js": "^1.0.8"
