@@ -43,7 +43,8 @@
   "scripts": {
     "build": "hey b",
     "p": "sh ./publish.sh",
-    "w": "sh ./website.sh"
+    "w": "sh ./website.sh",
+    "c": "sh ./commit.sh"
   },
   "browserslist": [
     "ie >= 9"
