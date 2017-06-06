@@ -1,4 +1,4 @@
-// import Affix from './components/affix';
+import Affix from './components/affix';
 import BackTop from './components/backtop';
 import Badge from './components/badge';
 // import Breadcrumb from './components/breadcrumb';
@@ -62,7 +62,7 @@ import config from './utils/config';
 
 
 const components = {
-  // Affix,
+  Affix,
   // Alert,
   AutoComplete,
   BackTop,
