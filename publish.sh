@@ -1,6 +1,6 @@
 git add -A
-git commit -m "$1"
-conventional-changelog -p angular -i CHANGELOG.md -w
+git commit
+conventional-changelog -p angular -i CHANGELOG.md -w -r 0
 echo "迁移代码"
 cp -R heyui ../zanshi
 echo "切换至master分支"
