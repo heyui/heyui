@@ -1,4 +1,5 @@
-.ivu-affix {
-    position: fixed;
-    z-index: @zindex-affix;
+@affixCls: ~"@{prefix}affix";
+.@{affixCls} {
+  position: fixed;
+  z-index: @zindex-affix;
 }

@@ -16,19 +16,21 @@
     <div :class="groupCls">
       <div class="h-select-group-container">
         <Search v-if="filterable" class="h-select-search-input" placeholder="请输入筛选文本" trigger-type="input" @search="search" position="front"></Search>
-        <ul class="h-select-ul">
-          <li v-for="option of filterOptions"
-              :key="option"
-              class="h-select-item"
-              @click="setvalue(option)"
-              :class="getLiCls(option)">
-            <div v-if="!!render"
-                 v-html="option[html]"></div>
-            <template v-else>{{option[title]}}</template>
-            <i v-if="multiple"
-               class="h-icon-check"></i>
-          </li>
-        </ul>
+        <div class="h-select-list">
+          <ul class="h-select-ul">
+            <li v-for="option of filterOptions"
+                :key="option"
+                class="h-select-item"
+                @click="setvalue(option)"
+                :class="getLiCls(option)">
+              <div v-if="!!render"
+                  v-html="option[html]"></div>
+              <template v-else>{{option[title]}}</template>
+              <i v-if="multiple"
+                class="h-icon-check"></i>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
