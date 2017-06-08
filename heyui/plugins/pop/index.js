@@ -142,6 +142,9 @@ class Pop {
     const popperOptions = {
       placement: options.placement,
       arrowElement: this.arrowSelector,
+      modifiers: {
+        applyStyle: { gpuAcceleration: false }
+      }
     };
     if (options.boundariesElement) {
       popperOptions.boundariesElement = options.boundariesElement;
