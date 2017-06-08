@@ -1,0 +1,36 @@
+@progress-prefix: ~"@{prefix}progress";
+
+.@{progress-prefix} {
+    font-size: @font-size-mini;
+    position: relative;
+    display: flex;  
+    align-items: center;
+
+    &-title {
+        width: 100px;
+        padding-right: 30px;
+    }
+
+    &-inner {
+        flex: 1;
+        background-color: #f3f3f3;
+        border-radius: 100px;
+        vertical-align: middle;
+    }
+
+    &-bg {
+        border-radius: 100px;
+        background-color: @blue-color;
+        transition: all @transition-time linear;
+        position: relative;
+        height: 100%;
+    }
+
+    &-text {
+        color: @gray-color;
+        width: 100px;
+        padding-left: 30px;
+        text-align: left;
+        vertical-align: middle;
+    }
+}

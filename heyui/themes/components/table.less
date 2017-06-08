@@ -1,0 +1,120 @@
+@table-prefix: ~"@{prefix}table";
+@table-select-item-prefix: ~"@{table-prefix}-filter-select-item";
+.@{table-prefix} {
+  border: @border;
+  position: relative;
+  th {
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    height: 40px;
+  }
+  th,
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 3px 18px;
+    vertical-align: middle;
+  }
+  td {
+    font-size: @font-size-mini;
+    height: 40px;
+    border-top: @border;
+  }
+  table {
+    table-layout: fixed;
+    border-spacing: 0;
+  }
+  &-header{
+    background-color: @gray4-color;
+    position: relative;
+    overflow: hidden;
+    table{
+      width: 100%;
+    }
+    border-bottom: @border;
+  }
+
+  &-body{
+    overflow: auto;
+  }
+  &-container{
+    position: relative;
+    margin-top: -1px;
+    table{
+      width: 100%;
+    }
+  }
+
+  &-fixed-right,&-fixed-left{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    table{
+      background: @white-color;
+    }
+  }
+
+  &-fixed-right table{
+    float: right;
+  }
+  &-fixed-header-right,&-fixed-header-left{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    table{
+      background: @gray4-color;
+    }
+    border-bottom: @border;
+  }
+
+  &-fixed-cover{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 1px;
+    background: @gray4-color;
+    z-index: 2;
+  }
+  
+
+  &-fixed-right,&-fixed-header-right{
+    right: 0;
+    box-shadow: -2px 0px 6px -2px rgba(0,0,0,.2);
+  }
+
+  &-fixed-left,&-fixed-header-left{
+    left: 0;
+    box-shadow: 2px 0 6px -2px rgba(0,0,0,.2);
+  }
+
+  &-border{
+    td,th{
+      border-right: @border;
+    }
+  }
+
+  &-border &-fixed-right, &-border &-fixed-header-right{
+    td,th{
+      border-right: none;
+    }
+  }
+
+  &-hover-tr{
+    background-color: lighten(@primary-color, 38%);
+  }
+
+  &-content-empty{
+    color: @gray-color;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+}

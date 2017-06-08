@@ -1,0 +1,68 @@
+@notify-prefix: ~"@{prefix}notify";
+@notice-width: 335px;
+@notice-padding: 16px;
+@notice-margin-bottom: 10px;
+.@{notify-prefix} {
+    z-index: @zindex-notify;
+    position: relative;
+    .@{notify-prefix} {
+        &-body {
+            position: fixed;
+            overflow: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: @zindex-notify;
+        }
+        &-container {
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            background-color: @white-color;
+            border-radius: 3px;
+            top: 10px;
+            box-shadow: @box-shadow;
+            transition: @transition-time;
+            opacity: 0;
+        }
+        &-content {
+            position: relative;
+        }
+        &-close {
+            display: block;
+            position: absolute;
+            right: 8px;
+            top: 10px;
+            height: 22px;
+            width: 21px;
+            text-align: center;
+            font-size: 17px;
+            z-index: 1;
+            .link;
+        }
+
+        &-mask {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: @transition-time;
+            background: rgba(0, 0, 0, 0.16);
+            z-index: @zindex-modal;
+            opacity: 0;
+        }
+    }
+    &.@{notify-prefix} {
+        &-show {
+            .@{notify-prefix}-mask {
+                opacity: 1;
+            }
+            .@{notify-prefix}-container {
+                top: 100px;
+                opacity: 1;
+            }
+        }
+    }
+}

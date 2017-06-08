@@ -1,0 +1,94 @@
+
+.generate-color(@color){
+  @var-color: ~'@{color}-color';
+  .@{var-color}{
+    color: @@var-color !important;
+  }
+  .bg-@{var-color}{
+    background-color: @@var-color !important;
+  }
+}
+
+.generate-color(red);
+.generate-color(blue);
+.generate-color(green);
+.generate-color(yellow);
+.generate-color(white);
+.generate-color(gray);
+.generate-color(gray1);
+.generate-color(gray2);
+.generate-color(gray3);
+.generate-color(gray4);
+.generate-color(dark);
+.generate-color(dark1);
+.generate-color(dark2);
+.generate-color(light-primary);
+.generate-color(primary);
+.generate-color(dark-primary);
+
+.clearfix{
+  .clearfix();
+};
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.middle {
+  .middle();
+}
+
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.middle-center {
+  .middle-center();
+}
+
+.overflow-y {
+  overflow-y: auto;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-hover{
+  .text-hover();
+}
+
+.generate-text-align(@dir){
+  .text-@{dir} {
+    text-align: @dir !important;
+  }
+}
+
+.generate-text-align(left);
+.generate-text-align(center);
+.generate-text-align(right);
+
+.bottom-line {
+  border-bottom: 1px solid @border-color;
+}
+
+.h-split{
+  display: inline-block;
+  width: 5px;
+  height: 2px;
+}

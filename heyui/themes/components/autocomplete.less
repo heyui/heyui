@@ -1,0 +1,58 @@
+@autocompleteCls: ~"@{prefix}autocomplete";
+@autocompleteClsItem: ~"@{autocompleteCls}-item";
+@autocompleteClsGroup: ~"@{autocompleteCls}-group";
+@autocompleteCls-close: h-icon-close;
+.@{autocompleteCls} {
+  width: 250px;
+  display: inline-block;
+  .@{autocompleteCls} {
+    &-show{
+      display: flex;
+      flex-wrap: wrap;
+      .border-input();
+      // display: inline-block;
+
+      .@{prefix}icon-loading{
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+        z-index: 3;
+        color: @gray-color;
+      }
+
+      >span{
+        .tag-span-func();
+      }
+    }
+    
+    &-input{
+      .border-input-inside-input();
+    }
+  }
+
+  &-disabled{
+    .@{autocompleteCls}-show{
+      .border-input-disabled();
+    }
+  }
+
+}
+
+.@{autocompleteCls}-group {
+  outline: none;
+  user-select: none;
+  position: relative;
+  font-size: @font-size-mini;
+  background-color: @white-color;
+  padding: 5px 0px;
+  max-height: 300px;
+  overflow-y: auto;
+  .@{autocompleteClsItem} {
+    .li-hover();
+    padding: 8px 10px;
+    position: relative;
+    &.@{autocompleteClsItem}-selected {
+      background-color: @gray2-color;
+    }
+  }
+}

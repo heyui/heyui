@@ -1,0 +1,63 @@
+@tabs-prefix: ~"@{prefix}tabs";
+.@{tabs-prefix} {
+  >div {
+    cursor: pointer;
+    display: inline-block;
+    transition: @transition-time all;
+    position: relative;
+  }
+  &-default {
+    border-bottom: @border;
+    >div {
+      padding: 10px 15px;
+      line-height:1;
+      font-size: @font-size + 1px;
+      margin-bottom: -4px;
+      border-bottom: 3px solid @white-color;
+      +div {
+        margin-left: 20px;
+      }
+      &:hover, &.@{tabs-prefix}-selected {
+        color: @primary-color;
+        border-bottom: 3px solid @primary-color;
+      }
+    }
+  }
+
+  &-card {
+    border-bottom: 1px solid @border-darken-color;
+    >div {
+      padding: 8px 16px;
+      line-height:1;
+      margin-bottom: -1px;
+      border-radius: @border-radius @border-radius 0 0;
+      border: 1px solid transparent;
+      border-top:3px solid transparent;
+      +div {
+        margin-left: 5px;
+      }
+      &:hover, &.@{tabs-prefix}-selected {
+        color: @primary-color;
+        background: @white-color;
+        border-color: @border-darken-color;
+        border-top-color:@primary-color;
+        border-bottom-color: @white-color;
+      }
+    }
+  }
+
+  &-menu {
+    >div {
+      display: block;
+      padding: 12px 16px;
+      line-height:1;
+      font-size: 15px;
+      +div {
+        margin-top: 5px;
+      }
+      &:hover, &.@{tabs-prefix}-selected {
+        color: @primary-color;
+      }
+    }
+  }
+}

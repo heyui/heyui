@@ -1,0 +1,36 @@
+@rate-prefix: ~"@{prefix}rate";
+.@{rate-prefix} {
+  background: #FFF;
+  margin: 0px;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: @yellow-color;
+  display: block;
+  line-height: @input-height;
+  height: @input-height;
+  >span{
+    font-size: 18px;
+    margin-right: 3px;
+    transition: all @transition-time;
+    color: @gray2-color;
+    &:hover>i{
+      transition: transform @transition-time;
+      transform: scale(1.1);
+    }
+    &.@{rate-prefix}-on{
+      color: @yellow-color;
+    }
+  }
+
+  &[readonly]{
+    pointer-events: painted;
+    cursor: default;
+    &>span:hover>i{
+      transform: none;
+    }
+  }
+  >.@{rate-prefix}-value{
+    font-size:15px;
+    color: @yellow-color;
+  }
+}
