@@ -18,6 +18,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "fetch-jsonp": "^1.0.6",
     "hey-log": "0.0.7",
     "hey-utils": "0.0.14",
