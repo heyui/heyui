@@ -1,6 +1,6 @@
-git add -A
-git commit
 conventional-changelog -p angular -i CHANGELOG.md -s
+git add -A
+git commit -m '打包至npm'
 echo "迁移代码"
 cp -R heyui ../zanshi
 echo "切换至master分支"
