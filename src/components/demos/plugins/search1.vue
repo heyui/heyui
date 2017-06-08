@@ -1,11 +1,12 @@
 <template>
-  <Search @search="search" v-width="300" placeholder="查询示例1"></Search>
+  <Search @onsearch="search" v-model="searchText" v-width="300" placeholder="查询示例1"></Search>
 </template>
 <script>
 
 export default {
   data() {
     return {
+      searchText: ''
     }
   },
   methods: {

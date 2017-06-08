@@ -1,6 +1,6 @@
 <template>
   <div :class="cls">
-    <i v-if="position=='front'" class="h-icon-search"></i><input type="text" v-model="value" :placeholder="placeholder" @input="inputTrigger(value)" @keyup.enter="search(value)"/> <i v-if="position=='end'" class="h-icon-search" @click="search(value)"></i><i class="h-icon-close" @click="search('')"></i>
+    <i v-if="position=='front'" class="h-icon-search"></i><input type="text" v-model="inputValue" :placeholder="placeholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/> <i v-if="position=='end'" class="h-icon-search" @click="search(inputValue)"></i><i class="h-icon-close" @click="search('')"></i>
   </div>
 </template>
 <script>
@@ -19,23 +19,33 @@ export default {
     triggerType: {
       type: String,
       default: 'enter'
+    },
+    value: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
-      value: "",
+      inputValue: this.value,
       oldValue: null,
       searching: false
     };
+  },
+  watch: {
+    value() {
+      this.inputValue = this.value;
+    }
   },
   methods: {
     search(value) {
       if (value === this.oldValue) {
         return;
       }
-      this.oldValue = this.value = value;
-      this.searching = this.value !== '';
-      this.$emit('search', this.value);
+      this.oldValue = this.inputValue = value;
+      this.searching = value !== '';
+      this.$emit('onsearch', value);
+      this.$emit('input', value);
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {
