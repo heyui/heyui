@@ -1,6 +1,7 @@
 <template>
   <div>
-      <button class="h-btn" @click="open">打开弹出框</button>
+      <button class="h-btn" @click="open(false)">打开弹出框</button>
+      <button class="h-btn" @click="open(true)">打开有分割线的弹出框</button>
   </div>
 </template>
 
@@ -9,9 +10,11 @@ import modalTest from './modalTest';
 
 export default {
   methods: {
-    open() {
+    open(hasDivider = false) {
       let that = this;
       this.$Modal({
+        hasDivider,
+        // width: 200,
         component: {
           // 这里也可以定义异步调用
           // vue: (resolve) => {

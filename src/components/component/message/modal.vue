@@ -67,6 +67,13 @@
         <td>true</td>
       </tr>
       <tr>
+        <td>width</td>
+        <td>设定宽度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
         <td>hasDivider</td>
         <td>是否有线条分割头部以及尾部</td>
         <td>Boolean</td>

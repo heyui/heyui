@@ -6,6 +6,7 @@ const Default = {
   title: '',
   content: '',
   style: null,
+  class: null,
   buttons: [],
   hasMask: false,
   closeOnMask: true,
@@ -72,6 +73,9 @@ class Notify {
     html += '</div>';
     let $body = document.createElement(`div`);
     utils.addClass($body, notifyCls);
+    if (param.class) {
+      utils.addClass($body, param.class);
+    }
     $body.innerHTML = html;
     let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
     let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);
