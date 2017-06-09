@@ -9,7 +9,7 @@
         <slot></slot>
       </div>
       <div class="h-form-item-error"
-           v-if="!errorMessage.valid">{{errorMessage.message}}</div>
+           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'">{{label}}</span>{{errorMessage.message}}</div>
     </div>
   </div>
 </template>
@@ -21,7 +21,6 @@ export default {
   props: {
     label: String,
     prop: String,
-    labelWidth: Number,
     required: {
       type: Boolean,
       default: false
@@ -123,13 +122,6 @@ export default {
         return;
       }
       this.getParent().validField(prop);
-      // , (result) => {
-      //   if (result === true) {
-      //     this.validResult = null;
-      //   } else {
-      //     this.validResult = { message: result };
-      //   }
-      // }
     },
   },
   computed: {
@@ -138,7 +130,7 @@ export default {
       // if (!parent) return 'auto';
       let mode = this.$parent.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
-      let width = hasWidth ? (this.labelWidth || parent.labelWidth || false) : false;
+      let width = hasWidth ? (parent.labelWidth || false) : false;
       return width ? `${width}px` : 'auto';
     },
     formItemCls() {
@@ -157,14 +149,16 @@ export default {
       }
     },
     labelStyleCls() {
-      return {
+      let param = {
         width: this.initLabelWidth
-      }
+      };
+      return param;
     },
     contentStyleCls() {
-      return {
-        'margin-left': this.initLabelWidth
-      }
+      let param = {
+        'margin-left': this.showLabel ? this.initLabelWidth : '0px'
+      };
+      return param;
     }
   }
 };

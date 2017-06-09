@@ -193,6 +193,12 @@ export default {
         threecolumn: '三列一行',
       },
       validationRules: {
+        rules: {
+          textarea: {
+            maxLen: 50,
+            minLen: 10
+          }
+        },
         required: [
           'autocomplete',
           'select2',

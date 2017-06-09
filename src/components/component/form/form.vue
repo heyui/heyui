@@ -99,11 +99,11 @@
         <td></td>
       </tr>
       <tr>
-        <td>labelWidth</td>
-        <td>说明文字的宽度</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>80</td>
+        <td>showLabel</td>
+        <td>是否显示label</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
       </tr>
       <tr>
         <td>required</td>
