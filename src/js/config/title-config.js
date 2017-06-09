@@ -39,6 +39,7 @@ const titles = {
   'pluginDropdowncustom': 'DropdownCustom 自定义下拉控件',
   'pluginDropdownmenu': 'DropdownMenu 下拉菜单',
   'pluginLoadingbar': 'LoadingBar 加载进度条',
+  'pluginSteps': 'Steps 步骤条',
   'messageTip': 'Message 提示',
   'messageNotice': 'Notice 通知',
   'messageModal': 'Modal 弹框显示',

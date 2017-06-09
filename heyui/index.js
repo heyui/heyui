@@ -21,7 +21,7 @@ import Radio from './components/radio';
 import Rate from './components/rate';
 import Slider from './components/slider';
 import Loading from './components/Loading';
-// import Steps from './components/steps';
+import Steps from './components/steps';
 import Search from './components/search';
 import Select from './components/select';
 import Switch from './components/switch';
@@ -121,7 +121,7 @@ const components = {
   Slider,
   Loading,
   // Step: Steps.Step,
-  // Steps,
+  Steps,
   hSwitch: Switch,
   SwitchList,
   TagInput,

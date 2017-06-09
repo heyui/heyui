@@ -123,17 +123,19 @@
                   :key="item"
                   :label="'输入框'+(index+1)"
                   :prop="'inputs['+index+'].value'">
-          <Col width="18">
-          <input type="text"
-                 v-model="item.value" />
-          </Col>
-          <Col width="6"
-               class="text-right">
-          <Button text-color="red"
-                  v-width="'90%'"
-                  @click="remove(index)"
-                  icon="trash">删除</Button>
-          </Col>
+          <Row type="flex">
+            <Col class="flex1">
+            <input type="text"
+                  v-model="item.value" />
+            </Col>
+            <Col class="text-right" v-width="50">
+              <Poptip @confirm="remove(index)" content="确定删除？">
+                <Button text-color="red"
+                      :no-border="true"
+                      icon="trash"></Button>
+              </Poptip>
+            </Col>
+          </Row>
         </FormItem>
       </FormItemList>
       <FormItem :single="true">

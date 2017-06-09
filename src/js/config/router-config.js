@@ -190,6 +190,11 @@ export default {
     component: () =>
       import ('../../components/component/plugin/loadingbar')
   }, {
+    path: 'plugin/steps',
+    name: 'pluginSteps',
+    component: () =>
+      import ('../../components/component/plugin/steps')
+  }, {
     path: 'message/message',
     name: 'messageTip',
     component: () =>

@@ -3,6 +3,10 @@
     <h2>更新日志</h2>
     <Timeline :time="true">
       <TimelineItem>
+        <div slot="time"><p>2017-06-09</p></div>
+        <div slot="content">PopTip</div>
+      </TimelineItem>
+      <TimelineItem>
         <div slot="time"><p>2017-05-26</p></div>
         <div slot="content">table 完善，修复checkbox问题，修复换行引起的高度变化问题</div>
       </TimelineItem>

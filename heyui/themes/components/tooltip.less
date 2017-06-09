@@ -14,6 +14,9 @@
       position: absolute;
       border-color: transparent;
     }
+    opacity: 0.3;
+    transition: .35s cubic-bezier(.24, .22, .015, 1.56);
+    transition-property:transform,opacity;   
     &-inner {
       max-width: @tooltip-max-width;
       text-align: left;
@@ -23,10 +26,7 @@
       border-radius: @border-radius;
       box-shadow: 1px 1px 0px @shadow-color;
 
-      transition: .35s cubic-bezier(.24, .22, .015, 1.56);
-      transition-property:transform,opacity;   
       // transform: scale(.98);
-      opacity: 0.3;
       // white-space: nowrap;
       &-content{
         padding: 6px 12px;
@@ -46,6 +46,7 @@
           content: " ";
           border-width: 6px;
           margin-left: -6px;
+          z-index: 1;
         }
       }
       &-inner {
@@ -169,7 +170,7 @@
 }
 
 
-&[aria-hidden=false] .@{tooltip-prefix}-inner {
+&[aria-hidden=false]{
   transform: scale(1);
   opacity: 1;
 }

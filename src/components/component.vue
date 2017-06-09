@@ -44,7 +44,7 @@
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
             <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
-            <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li> 
+            <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li>
           </ul>
            <li class="title">Plugin</li>
           <ul>
@@ -53,6 +53,7 @@
             <li><router-link to="/component/plugin/dropdownmenu">DropdownMenu 下拉菜单</router-link></li>
             <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
             <li><router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link></li>
+            <li><router-link to="/component/plugin/steps">Steps 步骤条</router-link></li>
           </ul> 
           <li class="title">Message</li>
           <ul>
