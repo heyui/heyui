@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/heyui/heyui/compare/v0.2.5...v0.2.6) (2017-06-09)
+
+
+### Bug Fixes
+
+* search trigger onsearch event after input ([8baef49](https://github.com/heyui/heyui/commit/8baef49))
+
+
+
 <a name="0.2.5"></a>
 ## [0.2.5](https://github.com/heyui/heyui/compare/v0.2.4...v0.2.5) (2017-06-09)
 
