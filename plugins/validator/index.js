@@ -17,14 +17,14 @@ const ruleExecute = function (rule, argus) {
   }
 }
 
-const combineArgs = function (prop, message) {
+const combineArgs = function (prop, message, type) {
   if (message === true || message === undefined) {
     return {
       [prop]: { valid: true, message: null }
     };
   }
   return {
-    [prop]: { valid: false, message }
+    [prop]: { valid: false, message, type }
   };
 }
 
@@ -52,13 +52,6 @@ class Validator {
       let rule = genRules.rules[key];
       if (utils.isObject(rule)) {
         if (!utils.isArray(rule.valids)) {
-          // rule.valids = [];
-          // if (!utils.isNull(rule.valid)) {
-          //   rule.valids.push(rule.valid);
-          // }
-          // if (!utils.isNull(rule.type)) {
-          //   rule.valids.push(rule.type);
-          // }
         }
       } else {
         delete genRules.rules[key];
@@ -159,7 +152,7 @@ class Validator {
     let rule = this.rules[ruleKey];
     let result = this.validFieldBase(rule, value, parent);
     if (result !== true) {
-      return combineArgs(prop, result);
+      return combineArgs(prop, result, 'base');
     }
     result = this.combineRulesValid(ruleKey, value, parent, parentProp);
     let baseResult = combineArgs(prop);

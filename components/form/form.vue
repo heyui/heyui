@@ -37,12 +37,12 @@ export default {
     };
   },
   beforeMount() {
-    log('rule init', this.rules, this.validator);
+    // log('rule init', this.rules, this.validator);
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
   watch: {
     rules() {
-      log('rule change', this.rules, this.validator);
+      // log('rule change', this.rules, this.validator);
       if (this.validator) {
         if (this.rules) this.validator.updateRule(this.rules);
       } else if (this.model && this.rules) {
