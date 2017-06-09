@@ -44,8 +44,8 @@ export default {
       }
       this.oldValue = this.inputValue = value;
       this.searching = value !== '';
-      this.$emit('onsearch', value);
       this.$emit('input', value);
+      this.$emit('onsearch', value);
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {
