@@ -96,7 +96,6 @@ Vue.component('example', example);
 Vue.component('codes', codes);
 
 let routerParam = {
-  mode: 'hash',
   routes: [{
     path: '/',
     name: 'home',

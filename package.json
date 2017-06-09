@@ -29,7 +29,7 @@
     "jquery-smooth-scroll": "^2.1.2",
     "manba": "0.0.19",
     "popper.js": "^1.0.8",
-    "vue": "^2.2.4",
+    "vue": "^2.3.2",
     "vue-highlightjs": "^1.2.2",
     "vue-router": "^2.3.0"
   },
