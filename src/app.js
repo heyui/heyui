@@ -96,6 +96,7 @@ Vue.component('example', example);
 Vue.component('codes', codes);
 
 let routerParam = {
+  mode: 'history',
   routes: [{
     path: '/',
     name: 'home',

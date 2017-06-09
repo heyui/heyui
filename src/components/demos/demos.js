@@ -113,6 +113,7 @@ export default {
   'message/notice4': resolve => require.ensure([], require => require('./message/notice4.vue'), 'message'),
   'message/notice5': resolve => require.ensure([], require => require('./message/notice5.vue'), 'message'),
   'message/notice6': resolve => require.ensure([], require => require('./message/notice6.vue'), 'message'),
+  'message/poptip1': resolve => require.ensure([], require => require('./message/poptip1.vue'), 'message'),
   'message/tooltip1': resolve => require.ensure([], require => require('./message/tooltip1.vue'), 'message'),
   'message/tooltip2': resolve => require.ensure([], require => require('./message/tooltip2.vue'), 'message'),
   'message/tooltip3': resolve => require.ensure([], require => require('./message/tooltip3.vue'), 'message'),

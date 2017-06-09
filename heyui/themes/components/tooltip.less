@@ -22,6 +22,11 @@
       color: @white-color;
       border-radius: @border-radius;
       box-shadow: 1px 1px 0px @shadow-color;
+
+      transition: .35s cubic-bezier(.24, .22, .015, 1.56);
+      transition-property:transform,opacity;   
+      // transform: scale(.98);
+      opacity: 0.3;
       // white-space: nowrap;
       &-content{
         padding: 6px 12px;
@@ -157,4 +162,14 @@
   &[x-placement="bottom-end"] .@{tooltip-arrow} {
     right: 16px;
   }
+}
+
+.@{tooltip-prefix}-show{
+  display: inline-block;
+}
+
+
+&[aria-hidden=false] .@{tooltip-prefix}-inner {
+  transform: scale(1);
+  opacity: 1;
 }

@@ -59,7 +59,8 @@
             <li><router-link to="/component/message/message">Message 提示</router-link></li>
             <li><router-link to="/component/message/notice">Notice 通知</router-link></li>
             <li><router-link to="/component/message/modal">Modal 弹出框</router-link></li>
-            <li><router-link to="/component/message/tooltip">Tooltip 文字提示</router-link></li>
+            <li><router-link to="/component/message/tooltip">Tooltip 气泡提示</router-link></li>
+            <li><router-link to="/component/message/poptip">Poptip 确认提示</router-link></li>
           </ul>
            <li class="title">View</li>
           <ul>

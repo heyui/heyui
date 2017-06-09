@@ -138,6 +138,9 @@ class Pop {
     const container = this.findContainer(options.container, reference);
 
     this.append(popNode, container);
+    if (options.class) {
+      utils.addClass(popNode, options.class);
+    }
 
     const popperOptions = {
       placement: options.placement,

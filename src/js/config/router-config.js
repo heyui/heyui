@@ -209,6 +209,11 @@ export default {
     name: 'messageTooltip',
     component: () =>
       import ('../../components/component/message/tooltip')
+  }, , {
+    path: 'message/poptip',
+    name: 'messagePoptip',
+    component: () =>
+      import ('../../components/component/message/poptip')
   }, {
     path: 'view/badge',
     name: 'viewBadge',

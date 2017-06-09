@@ -5,17 +5,16 @@
     <div>
       <Affix :offset-top="70" @onchange="onchange"><button class="h-btn" :class="{'h-btn-green': fixed}">固定在距离顶部偏移量70px的位置</button></Affix>
     </div>
-
+    <div v-height="10"></div>
     <div>
-      <Affix :offset-top="120"><button class="h-btn">固定在距离顶部偏移量120px的位置</button></Affix>
+      <Affix :offset-top="120"><button class="h-btn" :class="{'h-btn-yellow': fixed}">固定在距离顶部偏移量120px的位置</button></Affix>
     </div>
-
+    <div v-height="10"></div>
     <div>
-      <Affix :offset-top="170"><button class="h-btn">固定在距离顶部偏移量190px的位置</button></Affix>
+      <Affix :offset-top="170"><button class="h-btn" :class="{'h-btn-blue': fixed}">固定在距离顶部偏移量190px的位置</button></Affix>
     </div>
 
     <div v-height="800">
-
     </div>
     <div>
       <Affix :offset-bottom="10"><button class="h-btn">固定在距离底部偏移量10px的位置</button></Affix>

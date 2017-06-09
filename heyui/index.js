@@ -15,7 +15,7 @@ import Form from './components/form';
 import Menu from './components/menu';
 import modal from './components/modal';
 import Pagination from './components/pagination';
-// import Poptip from './components/poptip';
+import Poptip from './components/poptip';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
@@ -33,7 +33,7 @@ import TagInput from './components/taginput';
 import NumberInput from './components/numberinput';
 
 // import TimePicker from './components/time-picker';
-// import Tooltip from './components/tooltip';
+import Tooltip from './components/tooltip';
 // import Transfer from './components/transfer';
 import Tree from './components/tree';
 // import Upload from './components/upload';
@@ -105,7 +105,7 @@ const components = {
   // OptionGroup,
   Pagination,
   // Panel: Collapse.Panel,
-  // Poptip,
+  Poptip,
   Progress,
   Radio,
   // RadioGroup: Radio.Group,
@@ -131,7 +131,7 @@ const components = {
   // TabPane: Tabs.Pane,
   Tag,
   // TimePicker,
-  // Tooltip,
+  Tooltip,
   // Transfer,
   Tree,
   // Upload
