@@ -12,10 +12,11 @@ let Default = {
 
 function Modal(originalParam) {
   let cls = prefixCls;
-  if (originalParam.hasDivider || Default.hasDivider) {
-    cls = `${cls} h-notify-has-divider`;
-  }
   let param = utils.extend({ type: cls, hasMask: true, closeOnMask: true, buttons: ['cancel'] }, Default, originalParam, true);
+
+  if (originalParam.hasDivider || Default.hasDivider) {
+    param.class = `h-notify-has-divider`;
+  }
   return Notify(param);
 }
 
