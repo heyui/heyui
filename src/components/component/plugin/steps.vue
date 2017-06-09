@@ -2,6 +2,22 @@
   <div class="doc">
     <h2>Steps 步骤条</h2>
 
+    <p>
+      <ButtonGroup size="s">
+        <Button icon="plus" @click="step>=2||step++"></Button>
+        <Button icon="minus" @click="step<=0||step--"></Button>
+      </ButtonGroup>
+    </p>
+    <Steps :datas="data" :step="step"></Steps>
+
+    <p>
+      <ButtonGroup size="s">
+        <Button icon="plus" @click="step1>=3||step1++"></Button>
+        <Button icon="minus" @click="step1<=0||step1--"></Button>
+      </ButtonGroup>
+    </p>
+    <Steps :datas="data1" :step="step1"></Steps>
+
     <h3>基本调用</h3>
 
     <h3>Steps 参数</h3>
@@ -43,11 +59,22 @@
 export default {
   data() {
     return {
+      data: {
+        a: '步骤1',
+        b: '步骤2',
+        c: '步骤3',
+      },
+      step: 0,
+      data1: [
+        { key: 'a', title: '步骤1', icon: 'h-icon-home', desc: '步骤1描述' },
+        { key: 'b', title: '步骤2', icon: 'h-icon-user', desc: '步骤2描述' },
+        { key: 'c', title: '步骤3', icon: 'h-icon-star-on', desc: '步骤3描述' },
+        { key: 'd', title: '步骤4', icon: 'h-icon-complete', desc: '步骤4描述' },
+      ],
+      step1: 0
     }
   },
   methods: {
   },
-  components:{
-  }
 }
 </script>
