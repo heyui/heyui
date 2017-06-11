@@ -1,3 +1,3 @@
-import Tootip from './tootip';
+import Tooltip from './tooltip';
 
-export default Tootip;
+export default Tooltip;

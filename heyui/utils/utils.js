@@ -222,8 +222,5 @@ export default utils.extend({}, utils, {
       result.html = param.render.call(null, result);
     }
     return result;
-  },
-  getAbsPosition(elem) {
-
   }
 });

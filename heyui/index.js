@@ -31,12 +31,9 @@ import Tabs from './components/tabs';
 import Tag from './components/tag';
 import TagInput from './components/taginput';
 import NumberInput from './components/numberinput';
-
-// import TimePicker from './components/time-picker';
 import Tooltip from './components/tooltip';
-// import Transfer from './components/transfer';
 import Tree from './components/tree';
-// import Upload from './components/upload';
+import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
 import {
   Row,
@@ -134,7 +131,7 @@ const components = {
   Tooltip,
   // Transfer,
   Tree,
-  // Upload
+  Uploader
 };
 
 const directives = {

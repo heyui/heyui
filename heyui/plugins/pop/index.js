@@ -38,7 +38,7 @@ const DEFAULT_OPTIONS = {
  *      `.pop-arrow` or `.pop__arrow` will become the pop's arrow.
  *      The outermost wrapper element should have the `.pop` class.
  * @param {String|HTMLElement|ContentFunction} options.content='' - Default content value if `content` attribute isn't present.
- * @param {String} options.trigger='hover focus'
+ * @param {String} options.trigger='hover focus manual'
  *      How pop is triggered - click | hover | focus | manual.
  *      You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.
  * @param {HTMLElement} options.boundariesElement
@@ -191,6 +191,11 @@ class Pop {
     return this;
   }
 
+  update() {
+    if (this.popperInstance) {
+      this.popperInstance.update();
+    }
+  }
 
   hide() {
     if (!this.isOpen) { return this; }
