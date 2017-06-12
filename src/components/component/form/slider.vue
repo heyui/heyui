@@ -16,6 +16,10 @@
     <h3>左右范围step</h3>
     <p>对应的值：{{value4}}</p>
     <Slider v-model="value4" :step="5"></Slider>
+
+    <h3>使用输入框</h3>
+    <p>对应的值：{{value5}}</p>
+    <Row><Col :width="18"><Slider v-model="value5"></Slider></Col><Col :width="6"><NumberInput v-model="value5"></NumberInput></Col></Row>
   </div>
 </template>
 
@@ -33,7 +37,8 @@ export default {
         start: 0,
         end: 20
       },
-      value3: 0
+      value3: 0,
+      value5: 10
     }
   },
   methods: {

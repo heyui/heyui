@@ -15,6 +15,9 @@
         <input type="text"
                v-model="data.input" />
       </FormItem>
+      <FormItem label="整数">
+        <Slider v-model="data.int"></Slider>
+      </FormItem>
       <FormItem label="整数"
                 prop="int">
         <NumberInput

@@ -86,8 +86,8 @@ export default {
       let nowPosition = parseInt((postition / this.$el.querySelector('.h-slider-line').clientWidth) * 100, 10);
       nowPosition = this.eventControl.init + nowPosition;
       let positionStep = nowPosition % this.step;
-      if (positionStep) {
-        nowPosition = nowPosition + (postition > 0 ? (this.step - positionStep) : (-this.step - positionStep));
+      if (positionStep != 0) {
+        nowPosition = nowPosition - positionStep;
       }
       nowPosition = Math.max(nowPosition, 0);
       nowPosition = Math.min(nowPosition, 100);
