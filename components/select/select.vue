@@ -7,7 +7,7 @@
                 :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
              @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
         </div>
-        <div v-if="!multiple&&codes!=null&&objects">{{objects[title]}}</div>
+        <div v-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
         <div v-if="codes==null||codes.length==0"
              class="h-select-placeholder">{{placeholder}}</div>
       </div>
@@ -198,6 +198,7 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-input-no-border`]: this.noBorder,
         [`${prefix}-multiple`]: this.multiple,
         [`${prefix}-no-autosize`]: !autosize,
         [`${prefix}-disabled`]: this.disabled,
