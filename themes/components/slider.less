@@ -1,6 +1,45 @@
 @slider-prefix: ~"@{prefix}slider";
-
 .@{slider-prefix} {
-    line-height: normal;
-    
+  padding: (@input-height - 10) / 2 5px;
+  &-container {
+    position: relative;
+    min-height: 10px;
+  }
+  &-line,
+  &-track {
+    height: 5px;
+    border-radius: 5px;
+    .middle();
+    position: absolute;
+    left: 0;
+  }
+  &-line {
+    background-color: @gray2-color;
+    right: 0;
+  }
+  &-track {
+    background-color: @primary-color;
+  }
+  &-node {
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    margin-left: -5px;
+    background: @primary-color;
+    border-radius: 16px;
+    margin-left: -8px;
+    top: -3px;
+    transform: scale(0.8);
+    transition: box-shadow,transform @transition-time ease-in-out;
+    user-select: none;
+    cursor: pointer;
+    cursor: -webkit-grab;
+    &:hover,&-dragging{
+      transform: scale(1.1);
+    }
+    &-dragging {
+      box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+      cursor: -webkit-grabbing;
+    }
+  }
 }

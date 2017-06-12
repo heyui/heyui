@@ -1,10 +1,102 @@
-@steps-prefix-cls: ~"@{css-prefix}steps";
-@steps-wait-icon-color: #ccc;
-@steps-wait-title-color: #999;
-@steps-wait-description-color: @steps-wait-title-color;
-@steps-wait-tail-color: @border-color-split;
-@steps-title-color: #666;
+@steps-prefix: ~"@{prefix}steps";
 
-.@{steps-prefix-cls} {
-    
+.@{steps-prefix} {
+  display: flex;
+  &-item{
+    flex: 1;
+    transition: @transition-time;
+    position: relative;
+  }
+  &-success {
+    opacity: 0;
+  }
+
+  &-actived{
+    color: @primary-color;
+    .@{steps-prefix}{
+      &-icon, &-desc{
+        color: @primary-color;
+      }
+      &-success{
+        opacity: 1;
+      }
+      &-index{
+        border-color: @primary-color;
+        background-color: @white-color;
+        &-num{
+          opacity: 0;
+        }
+      }
+    }
+
+  }
+
+  &-icon{
+    font-size: 16px;
+    color: @gray-color;
+  
+    &-custom{
+      font-size: 25px;
+      line-height: 1;
+      background-color: @white-color;
+    }
+  }
+
+  &-tail{
+    border-top: 1px solid @gray1-color;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    &-actived{
+      border-color: @primary-color;
+    }
+  }
+
+  &-item-first &-tail{
+    left:0;
+  }
+
+  &-item-last{
+    flex: inherit;
+  }
+
+  &-item-last &-tail{
+    display: none;
+  }
+
+  &-content{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-desc{
+    color: @gray-color;
+    font-size: @font-size-mini;
+  }
+
+  &-index{
+    background-color: @white-color;
+    border-radius: 50%;
+    border: 1px solid @gray1-color;
+    background-color: @gray2-color;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    position: relative;
+    >i{
+      font-size: 16px;
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      width: 30px;
+      text-align: center;
+      left: -1px;
+      font-style: normal;
+      line-height: 30px;
+      top: -1px;
+    }
+  }
 }

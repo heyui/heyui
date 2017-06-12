@@ -13,9 +13,11 @@
   }
 }
 
-.btn-text-color(@color) {
-  border-color: @color;
-  color: @color;
+.btn-text-color(@color, @default: true) {
+  & when(@default){
+    border-color: @color;
+    color: @color;
+  }
   &:hover {
     border-color: lighten(@color, 10%);
     color: lighten(@color, 10%);
@@ -41,7 +43,7 @@
   background-color: transparent;
   border: 1px solid @gray1-color;
   box-shadow: 0 1px 1px 0 @gray2-color;
-  .btn-text-color(@primary-color);
+  .btn-text-color(@primary-color, false);
   >i{
     font-size: 90%;
     +span {

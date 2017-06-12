@@ -73,9 +73,11 @@ input[type=checkbox],.@{checkbox-prefix}>label>.@{checkbox-prefix}-native {
   
 .@{checkbox-prefix} {
   display: inline-block;
-  margin-left: -15px;
   >label {
-    margin-left: 15px;
+    margin-right: 15px;
+    &:last-child{
+      margin-right: 0;
+    }
     display: inline-block;
     span{
       line-height: 16px;

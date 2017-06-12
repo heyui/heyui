@@ -158,14 +158,30 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.resize();
       let body = this.$el.querySelector(".h-table-body");
       if (body) {
+        let scrollEvent = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          body.scrollLeft = body.scrollLeft + (event.deltaX);
+          body.scrollTop = body.scrollTop + (event.deltaY);
+          this.scrollLeft = body.scrollLeft;
+          this.scrollTop = body.scrollTop;
+        };
         body.addEventListener("scroll", () => {
           this.scrollLeft = body.scrollLeft;
           this.scrollTop = body.scrollTop;
         });
+        let fixedright = this.$el.querySelector(".h-table-fixed-right");
+        let fixedleft = this.$el.querySelector(".h-table-fixed-left");
+        if (fixedright) {
+          fixedright.addEventListener("mousewheel", scrollEvent);
+        }
+        if (fixedleft) {
+          fixedleft.addEventListener("mousewheel", scrollEvent);
+        }
       }
+      this.resize();
     });
   },
   methods: {
@@ -188,7 +204,7 @@ export default {
       this.$nextTick(() => {
         let body = this.$el.querySelector(".h-table-body");
         if (body) {
-          log(body.offsetWidth, body.clientWidth);
+          // log(body.offsetWidth, body.clientWidth);
           this.scrollWidth = body.offsetWidth - body.clientWidth;
         }
       });

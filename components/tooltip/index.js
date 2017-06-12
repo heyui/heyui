@@ -1,3 +1,3 @@
-import DropdownCustom from './dropdowncustom';
+import Tooltip from './tooltip';
 
-export default DropdownCustom;
+export default Tooltip;

@@ -15,13 +15,13 @@ import Form from './components/form';
 import Menu from './components/menu';
 import modal from './components/modal';
 import Pagination from './components/pagination';
-// import Poptip from './components/poptip';
+import Poptip from './components/poptip';
 import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
 import Slider from './components/slider';
 import Loading from './components/Loading';
-// import Steps from './components/steps';
+import Steps from './components/steps';
 import Search from './components/search';
 import Select from './components/select';
 import Switch from './components/switch';
@@ -31,12 +31,9 @@ import Tabs from './components/tabs';
 import Tag from './components/tag';
 import TagInput from './components/taginput';
 import NumberInput from './components/numberinput';
-
-// import TimePicker from './components/time-picker';
-// import Tooltip from './components/tooltip';
-// import Transfer from './components/transfer';
+import Tooltip from './components/tooltip';
 import Tree from './components/tree';
-// import Upload from './components/upload';
+import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
 import {
   Row,
@@ -105,7 +102,7 @@ const components = {
   // OptionGroup,
   Pagination,
   // Panel: Collapse.Panel,
-  // Poptip,
+  Poptip,
   Progress,
   Radio,
   // RadioGroup: Radio.Group,
@@ -121,7 +118,7 @@ const components = {
   Slider,
   Loading,
   // Step: Steps.Step,
-  // Steps,
+  Steps,
   hSwitch: Switch,
   SwitchList,
   TagInput,
@@ -131,10 +128,10 @@ const components = {
   // TabPane: Tabs.Pane,
   Tag,
   // TimePicker,
-  // Tooltip,
+  Tooltip,
   // Transfer,
   Tree,
-  // Upload
+  Uploader
 };
 
 const directives = {
