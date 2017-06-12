@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/heyui/heyui/compare/v0.2.6...v0.3.0) (2017-06-12)
+
+
+### Bug Fixes
+
+* reset vue version to 2.3.2 ([bd2f8fd](https://github.com/heyui/heyui/commit/bd2f8fd))
+
+
+### Features
+
+* poptip component ([5ba5e1b](https://github.com/heyui/heyui/commit/5ba5e1b))
+* slider component ([5d0dc5d](https://github.com/heyui/heyui/commit/5d0dc5d))
+* steps component ([cb0ad33](https://github.com/heyui/heyui/commit/cb0ad33))
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/heyui/heyui/compare/v0.2.5...v0.2.6) (2017-06-09)
 
