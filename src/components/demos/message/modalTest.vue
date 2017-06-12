@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--header与footer自带modal的样式-->
     <header>测试</header>
     <div style="padding:15px">传递的参数：{{param.a}}</div>
     <footer>

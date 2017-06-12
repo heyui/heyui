@@ -10,13 +10,21 @@
     &-placeholder{
       color: @gray-color;
     }
+
+
+    &-value-single, &-placeholder{
+      line-height: @input-height - 6px;
+      height: @input-height - 6px;
+      padding-left: 5px;
+    }
+
     &-show{
       .rotate-icon-down();
       position: relative;
-      // .text-hover();
+      .text-hover();
       cursor: default;
       line-height: @line-height;
-      padding: 4px 30px 4px 10px;
+      padding-right: 30px;
     }
 
     &-multiple-tags {
@@ -34,7 +42,6 @@
   }
   &-input-border &-show{
     .border-input();
-    padding: 4px 30px 4px 10px;
 
     .@{prefix}form-item-valid-error &{
       border-color: @red-color;
@@ -43,6 +50,11 @@
       }
     }
   }
+  &-input-no-border &-show{
+    padding: 3px 30px 3px 2px;
+  }
+
+  
 
   &-disabled &-show{
     .border-input-disabled();
@@ -50,10 +62,6 @@
 
   &-multiple &-show{
     padding: 2px 30px 0px 2px;
-  }
-
-  &-multiple &-placeholder{
-    padding: 2px 0 0 5px;
   }
 }
 

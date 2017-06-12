@@ -71,7 +71,6 @@
   padding: 2px 2px 0px 2px;
   font-size: @font-size-mini;
   position: relative;
-  line-height: 1.5;
   box-sizing: border-box;
   &:hover {
     border-color: lighten(@primary-color, 10%);
@@ -89,7 +88,8 @@
   width: auto;
   max-width: 100%;
   border-color: transparent !important;
-  line-height: @input-height - 6px;
+  line-height: @font-size;
+  font-size: @font-size;
   height: @input-height - 6px;
   margin-bottom: 2px;
   padding-left: 5px;
