@@ -146,11 +146,9 @@ const directives = {
   tooltip
 }
 
-const prototypes = {
+let prototypes = {
   $Message,
-  $Modal,
   $Confirm,
-  $Notice,
   $Loading,
   $LoadingBar
 }
@@ -179,6 +177,9 @@ const install = function (Vue) {
   Object.keys(prototypes).forEach((key) => {
     Vue.prototype[key] = prototypes[key];
   });
+
+  this.$Modal = Vue.prototype.$Modal = $Modal(Vue);
+  this.$Notice = Vue.prototype.$Notice = $Notice(Vue);
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

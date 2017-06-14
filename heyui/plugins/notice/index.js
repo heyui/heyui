@@ -3,6 +3,7 @@ import utils from '../../utils/utils';
 
 const prefixCls = 'h-notice';
 const iconPrefixCls = 'h-icon';
+let Vue = null;
 
 
 let Default = {
@@ -42,6 +43,7 @@ function Notice(originalParam) {
     delete originalParam.type;
   }
   param = utils.extend({}, Default, param, originalParam, true);
+  param.Vue = Vue;
   return Notify(param);
 }
 
@@ -75,5 +77,7 @@ notice.warn = (param, timeout) => noticeWithType('warn', param, timeout);
 notice.success = (param, timeout) => noticeWithType('success', param, timeout);
 notice.info = (param, timeout) => noticeWithType('info', param, timeout);
 
-
-export default notice;
+export default (vue) => {
+  Vue = vue;
+  return notice;
+};
