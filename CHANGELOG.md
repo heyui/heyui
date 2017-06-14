@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/heyui/heyui/compare/v0.3.1...v0.3.2) (2017-06-14)
+
+
+### Bug Fixes
+
+* fix modal vue component mode ([d2c1e51](https://github.com/heyui/heyui/commit/d2c1e51))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/heyui/heyui/compare/v0.3.0...v0.3.1) (2017-06-12)
 
