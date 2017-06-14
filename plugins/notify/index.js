@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import utils from '../../utils/utils';
 
 const Default = {
@@ -91,8 +90,8 @@ class Notify {
       $content.innerHTML = content;
     }
 
-    if (param.component != undefined) {
-      this.vue = new Vue({
+    if (param.component != undefined && param.Vue) {
+      this.vue = new param.Vue({
         el: $content,
         // template: `<div><plugin @event='trigger' :param="propsData" @close="close"></plugin></div>`,
         render(createElement) {

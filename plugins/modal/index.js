@@ -5,6 +5,8 @@ import config from '../../utils/config';
 const prefixCls = 'h-modal';
 const hasDivider = config.getOption('modal', 'hasDivider');
 
+let Vue = null;
+
 let Default = {
   middle: false,
   hasDivider
@@ -17,6 +19,7 @@ function Modal(originalParam) {
   if (originalParam.hasDivider || Default.hasDivider) {
     param.class = `h-notify-has-divider`;
   }
+  param.Vue = Vue;
   return Notify(param);
 }
 
@@ -30,4 +33,7 @@ modal.config = (options) => {
   }
 };
 
-export default modal;
+export default (vue) => {
+  Vue = vue;
+  return modal;
+};
