@@ -15,7 +15,7 @@
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container">
-        <Search v-if="filterable" class="h-select-search-input" placeholder="请输入筛选文本" trigger-type="input" @search="search" position="front"></Search>
+        <Search v-if="filterable" class="h-select-search-input" placeholder="请输入筛选文本" trigger-type="input" @onsearch="search" position="front"></Search>
         <div class="h-select-list">
           <ul class="h-select-ul">
             <li v-for="option of filterOptions"
