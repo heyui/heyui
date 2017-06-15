@@ -146,3 +146,16 @@
     }
   }
 }
+
+
+.h-tag-color(@color){
+  color: darken(@color, 10%);
+  background: lighten(average(@color, #FFF), 10%);
+  border-color: lighten(average(@color, #FFF), 10%);
+}
+
+.h-tag-bg-color(@color){
+  color: @white-color;
+  background: lighten(@color, 3%);
+  border-color: lighten(@color, 3%);
+}
