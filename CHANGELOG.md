@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/heyui/heyui/compare/v0.3.4...v0.3.5) (2017-06-21)
+
+
+### Bug Fixes
+
+* tabs key set global setting ([e9820f6](https://github.com/heyui/heyui/commit/e9820f6))
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/heyui/heyui/compare/v0.3.3...v0.3.4) (2017-06-15)
 
