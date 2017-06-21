@@ -1,16 +1,42 @@
 <template>
   <div :class="uploaderCls">
-    <template v-if="type='image'">
-      <div v-if="file" :style="getBackgroundImage(file)">
-        <div class="h-uploader-progress" v-if="file.status == 2">
-          <Progress :percent="file.percent"></Progress>
+
+
+    <Modal v-model="preview">
+      <div class="text-center">
+        <img :src="previewFile.url" :alt="previewFile.name"/>
+      </div>
+    </Modal>
+    <template v-if="type=='image'">
+      <div class="h-uploader-image" v-if="file">
+        <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
+        <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
+          <Progress :percent="file.percent"  :stroke-width="5"></Progress>
         </div>
         <div class="h-uploader-image-operate h-uploader-browse-button" v-else>
-          <span>重新上传</span>
+          <div>重新上传</div>
         </div>
       </div>
       <div class="h-uploader-image-empty h-uploader-browse-button" v-else>
         <i class="h-icon-plus"></i>
+      </div>
+    </template>
+
+    <template v-if="type=='images'">
+      <div class="h-uploader-image-empty h-uploader-browse-button">
+        <i class="h-icon-plus"></i>
+      </div>
+      <div v-for="(file, index) in fileList" class="h-uploader-image">
+        <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
+        <div class="h-uploader-progress" v-if="file.status==2">
+          <Progress :percent="file.percent"  :stroke-width="5"></Progress>
+        </div>
+        <div class="h-uploader-image-operate" v-else>
+          <div>
+            <span class="h-uploader-operate" @click="previewImage(file)"><i class="h-icon-fullscreen"></i></span>
+            <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
+          </div>
+        </div>
       </div>
     </template>
   </div>
@@ -18,14 +44,16 @@
 <script>
 import utils from '../../utils/utils';
 import config from '../../utils/config';
+import Modal from '../modal/modal';
+
 
 const prefix = 'h-uploader';
 
 const parse = function (value, param) {
   if (utils.isString(value)) {
-    return { url: this.value, original: { [param.urlName]: this.value } };
+    return { url: value, original: { [param.urlName]: value } };
   } else if (utils.isObject(value)) {
-    return { url: value[param.urlName], name: value[param.fileName], original: value };
+    return { url: value[param.urlName], name: value[param.fileName], thumbUrl: value.thumbUrl || param.thumbUrl.call(value), original: value };
   }
 }
 const dispose = function (value, type, param) {
@@ -35,7 +63,7 @@ const dispose = function (value, type, param) {
     if (value.original) {
       return value.original;
     }
-    return { [param.urlName]: value.url, [param.fileName]: value.name, file: value };
+    return { [param.urlName]: value.url, [param.fileName]: value.name, thumbUrl: value.thumbUrl, file: value };
   }
 }
 
@@ -43,11 +71,11 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'list'
+      default: 'file'
     },
     dataType: {
       type: String,
-      default: 'url' //file
+      default: 'file' //url
     },
     uploadList: Array,
     files: {
@@ -63,15 +91,16 @@ export default {
       param = utils.extend({}, config.getOption("uploader"), this.option);
     }
     return {
-      param
+      param,
+      preview: false,
+      previewFile: {}
     }
   },
-  mounted() {
-
-  },
-  beforeMount() {
-  },
   methods: {
+    previewImage(file) {
+      this.preview = true;
+      this.previewFile = file;
+    },
     getBrowseButton() {
       return this.$el.querySelector(".h-uploader-browse-button");
     },
@@ -87,14 +116,17 @@ export default {
     },
     getFileList() {
       if (this.isSingle) {
-        return this.file ? dispose(this.file, this.datatype, this.param) : null;
+        return this.file ? dispose(this.file, this.dataType, this.param) : null;
       }
 
       let list = [];
       for (let f of this.fileList) {
-        list.push(dispose(f, this.datatype, this.param));
+        list.push(dispose(f, this.dataType, this.param));
       }
       return list;
+    },
+    deleteFile(index) {
+      this.$emit("deletefile", index);
     }
   },
   computed: {
@@ -104,7 +136,7 @@ export default {
     uploaderCls() {
       return {
         [prefix]: true,
-        [`${prefix}-${this.type}`]: true,
+        [`${prefix}-${this.type}-container`]: true,
       }
     },
     fileList() {
@@ -129,6 +161,9 @@ export default {
     file() {
       return this.fileList.length ? this.fileList[0] : null;
     }
+  },
+  components: {
+    Modal
   }
 };
 </script>
