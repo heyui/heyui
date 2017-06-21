@@ -53,6 +53,7 @@ export default {
         chunk_size: '4mb',
         unique_names: true,
         auto_start: true,
+        filters: {},
         init: {
           FilesAdded(up, files) {
             pluploadjs.plupload.each(files, (file) => {

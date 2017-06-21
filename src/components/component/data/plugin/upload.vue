@@ -4,7 +4,7 @@
     <p>HeyUI的上传，将提供一组样式，并提供七牛上传的demo。</p>
     <p>不同的系统可以根据自己的上传实现来开发。</p>
     <p>所有的示例将使用<a href="https://github.com/moxiecode/plupload" target="_blank">plupload</a>配套使用，因为组件已经将拖拽以及上传功能实现，这里也不做扩展了。</p>
-    <p>同时，我们将提供一个使用plupload七牛上传的demo，由于大家实现上传的封装都不太一致，所以这里只直接提供一个封装示例。</p>
+    <p>同时，我们将提供一个使用plupload七牛上传的demo，由于大家实现上传的封装都不太一致，所以这里会提供一个封装示例。</p>
 
 
     <h3>七牛的通用示例</h3>
@@ -44,9 +44,11 @@ export default {
       images2: ['http://oroc6hc3j.bkt.clouddn.com/o_1bj4n9g0grc6jr2hs1uni1qdmt.jpg'],
       file2: null,
       options: {
-        mime_types: [
-          { title: "Image files", extensions: "jpg,gif,png" }
-        ]
+        filters: {
+          mime_types: [
+            { title: "Image files", extensions: "jpg,gif,png" }
+          ]
+        }
       }
     }
   },
