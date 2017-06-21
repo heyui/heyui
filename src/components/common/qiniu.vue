@@ -1,29 +1,31 @@
 <template>
   <div>
-    <Uploader :type="type" :files="value" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" :limit="limit"></Uploader>
+    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile"></Uploader>
   </div>
 </template>
 <script>
 
 import qiniujs from 'qiniu-js-es6';
 import pluploadjs from 'plupload-es6';
+import utils from 'hey-utils';
 
 export default {
   props: {
     options: {
       type: Object,
-      default: () => {}
+      default: () => { }
     },
     type: {
       type: String,
       default: 'image'
     },
+    dataType: String,
     dragdrop: {
       type: Boolean,
       default: false
     },
     value: {
-      type: [Object, Array]
+      type: [Object, Array, String]
     },
     limit: Number,
     className: String
@@ -33,6 +35,12 @@ export default {
       uploadList: []
     }
   },
+  methods: {
+    deletefile(index) {
+      this.value.splice(index, 1);
+      this.$emit("input", this.value);
+    }
+  },
   mounted() {
     //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
     let that = this;
@@ -40,7 +48,6 @@ export default {
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
-        get_new_uptoken: true,
         uptoken_url: 'http://demo.heyui.top/api/uptoken',
         domain: 'http://oroc6hc3j.bkt.clouddn.com',
         chunk_size: '4mb',
@@ -49,6 +56,13 @@ export default {
         init: {
           FilesAdded(up, files) {
             pluploadjs.plupload.each(files, (file) => {
+              if (FileReader) {
+                let reader = new FileReader();
+                reader.onload = (event) => {
+                  file.thumbUrl = event.target.result;
+                };
+                reader.readAsDataURL(file.getNative());
+              }
               that.uploadList.push(file);
             });
           },
@@ -61,7 +75,7 @@ export default {
             that.$emit("startUpload");
           },
           UploadProgress(up, file) {
-            log(file.progress);
+            log(file.percent);
           },
           FileUploaded(up, file, info) {
             log('FileUploaded', file.status);
@@ -71,13 +85,14 @@ export default {
             file.url = sourceLink;
           },
           Error(up, err, errTip) {
-            log(errTip);
+            that.uploadList.splice(0, that.uploadList.length);
+            that.$Message.error(errTip);
           },
           UploadComplete() {
             that.$emit("completeUpload");
             let fileList = that.$refs.uploader.getFileList();
-            that.uploadList.splice(0, this.uploadList - 1);
             that.$emit("input", fileList);
+            that.uploadList.splice(0, that.uploadList.length);
           },
           // Key(up, file) {
           //     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
@@ -93,8 +108,12 @@ export default {
         param.drop_element = this.$refs.uploader.getDropElement();
       }
 
+
+      utils.extend(param, this.options);
+
       if (this.type == 'files' || this.type == 'images') {
         param.multi_selection = true;
+        param.multipart = true;
       }
       qiniujs.Qiniu.uploader(param);
     });
