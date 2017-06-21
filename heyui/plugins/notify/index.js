@@ -23,6 +23,7 @@ const notifyContainerCls = 'h-notify-container';
 const notifyBodyCls = 'h-notify-body';
 const notifyCloseCls = 'h-notify-close';
 const notifyMaskCls = 'h-notify-mask';
+const notifyHasMaskCls = 'h-notify-has-mask';
 const notifyShowCls = 'h-notify-show';
 const closeIcon = 'h-icon-close';
 
@@ -72,6 +73,9 @@ class Notify {
     html += '</div>';
     let $body = document.createElement(`div`);
     utils.addClass($body, notifyCls);
+    if (param.hasMask) {
+      utils.addClass($body, notifyHasMaskCls);
+    }
     if (param.class) {
       utils.addClass($body, param.class);
     }
