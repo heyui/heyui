@@ -50,10 +50,10 @@ export default {
         this.$el.style.display = 'block';
         this.isShow = true;
         setTimeout(() => {
-          this.isOpened = this.value
+          this.isOpened = true
         }, 100);
       } else {
-        this.isOpened = this.value;
+        this.isOpened = false;
         setTimeout(() => {
           this.$el.style.display = 'none';
           this.isShow = false;
@@ -78,7 +78,7 @@ export default {
   methods: {
     setvalue(fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
-        this.$emit('input', !this.value);
+        this.$emit('input', false);
       }
     },
   },
