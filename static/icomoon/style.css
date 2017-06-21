@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'heyui';
-  src:  url('fonts/heyui.eot?3ge0g8');
-  src:  url('fonts/heyui.eot?3ge0g8#iefix') format('embedded-opentype'),
-    url('fonts/heyui.ttf?3ge0g8') format('truetype'),
-    url('fonts/heyui.woff?3ge0g8') format('woff'),
-    url('fonts/heyui.svg?3ge0g8#heyui') format('svg');
+  src:  url('fonts/heyui.eot?q220b');
+  src:  url('fonts/heyui.eot?q220b#iefix') format('embedded-opentype'),
+    url('fonts/heyui.ttf?q220b') format('truetype'),
+    url('fonts/heyui.woff?q220b') format('woff'),
+    url('fonts/heyui.svg?q220b#heyui') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -123,4 +123,6 @@
 .h-icon-setting:before {
   content: "\e926";
 }
-
+.h-icon-upload:before {
+  content: "\e911";
+}

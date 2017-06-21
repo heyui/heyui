@@ -74,6 +74,7 @@ export default {
         'h-icon-star-on',
         'h-icon-setting',
         'h-icon-calendar',
+        'h-icon-upload',
       ]
     }
   }

@@ -1,84 +1,133 @@
 <template>
-  <div :class="affixCls" :style="affixStyle"><slot></slot></div>
+  <div :class="uploaderCls">
+    <template v-if="type='image'">
+      <div v-if="file" :style="getBackgroundImage(file)">
+        <div class="h-uploader-progress" v-if="file.status == 2">
+          <Progress :percent="file.percent"></Progress>
+        </div>
+        <div class="h-uploader-image-operate h-uploader-browse-button" v-else>
+          <span>重新上传</span>
+        </div>
+      </div>
+      <div class="h-uploader-image-empty h-uploader-browse-button" v-else>
+        <i class="h-icon-plus"></i>
+      </div>
+    </template>
+  </div>
 </template>
 <script>
+import utils from '../../utils/utils';
+import config from '../../utils/config';
 
-const prefix = 'h-affix';
+const prefix = 'h-uploader';
+
+const parse = function (value, param) {
+  if (utils.isString(value)) {
+    return { url: this.value, original: { [param.urlName]: this.value } };
+  } else if (utils.isObject(value)) {
+    return { url: value[param.urlName], name: value[param.fileName], original: value };
+  }
+}
+const dispose = function (value, type, param) {
+  if (type == "url") {
+    return value.url;
+  } else if (utils.isObject(value)) {
+    if (value.original) {
+      return value.original;
+    }
+    return { [param.urlName]: value.url, [param.fileName]: value.name, file: value };
+  }
+}
 
 export default {
   props: {
-    offsetTop: Number,
-    offsetBottom: Number
+    type: {
+      type: String,
+      default: 'list'
+    },
+    dataType: {
+      type: String,
+      default: 'url' //file
+    },
+    uploadList: Array,
+    files: {
+      type: [Array, Object, String],
+      default: () => []
+    }
   },
   data() {
+    let param = {};
+    if (this.config) {
+      param = utils.extend({}, config.getOption("uploader"), this.option);
+    } else {
+      param = utils.extend({}, config.getOption("uploader"), this.option);
+    }
     return {
-      event,
-      isFixed: false,
-      fixPosition: false
+      param
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      this.event = document.body.addEventListener("scroll", this.trigger, true);
-      this.event = window.addEventListener("resize", this.trigger, false);
-    })
+
   },
   beforeMount() {
-    if (this.event) {
-      document.body.removeEventListener('scroll', this.trigger);
-      window.removeEventListener('resize', this.trigger);
-    }
   },
   methods: {
-    trigger() {
-      let original = this.isFixed;
-      if (!this.isFixed) {
-        let position = this.$el.getBoundingClientRect();
-        if (this.offsetTop !== undefined) {
-          if (position.top < this.offsetTop) {
-            this.isFixed = true;
-            this.fixPosition = 'top';
-          }
-        } else if (this.offsetBottom != undefined) {
-          if (window.innerHeight < (position.top + this.$el.clientHeight + this.offsetBottom)) {
-            this.isFixed = true;
-            this.fixPosition = 'bottom';
-          }
-        }
-      } else if (this.$el.parentNode) {
-        let position = this.$el.parentNode.getBoundingClientRect();
-        if (this.offsetTop !== undefined) {
-          if (position.top > this.offsetTop) {
-            this.isFixed = false;
-          }
-        } else if (this.offsetBottom != undefined) {
-          if (window.innerHeight > (position.top + this.$el.clientHeight + this.offsetBottom)) {
-            this.isFixed = false;
-          }
-        }
-      }
-
-      if (original != this.isFixed) {
-        this.$emit('onchange', this.isFixed);
-      }
+    getBrowseButton() {
+      return this.$el.querySelector(".h-uploader-browse-button");
     },
-  },
-  computed: {
-    affixCls() {
-      return {
-        [prefix]: this.isFixed,
-      }
+    getDropElement() {
+      return this.$el.querySelector(".h-uploader-drop-element");
     },
-    affixStyle() {
+    getBackgroundImage(file) {
       let param = {};
-      if (this.isFixed) {
-        if (this.fixPosition == 'top') {
-          param.top = `${this.offsetTop}px`;
-        } else {
-          param.bottom = `${this.offsetBottom}px`;
-        }
+      if (file.thumbUrl || file.url) {
+        param['background-image'] = `url(${file.thumbUrl || file.url})`;
       }
       return param;
+    },
+    getFileList() {
+      if (this.isSingle) {
+        return this.file ? dispose(this.file, this.datatype, this.param) : null;
+      }
+
+      let list = [];
+      for (let f of this.fileList) {
+        list.push(dispose(f, this.datatype, this.param));
+      }
+      return list;
+    }
+  },
+  computed: {
+    isSingle() {
+      return this.type == 'image' || this.type == 'file';
+    },
+    uploaderCls() {
+      return {
+        [prefix]: true,
+        [`${prefix}-${this.type}`]: true,
+      }
+    },
+    fileList() {
+      let list = [];
+      if (utils.isArray(this.files)) {
+        for (let v of this.files) {
+          list.push(parse(v, this.param));
+        }
+      } else if (this.files) {
+        list.push(parse(this.files, this.param));
+      }
+
+      if (this.uploadList.length > 0) {
+        if (this.isSingle) {
+          list = [this.uploadList[0]];
+        } else {
+          list.push(...this.uploadList);
+        }
+      }
+      return list;
+    },
+    file() {
+      return this.fileList.length ? this.fileList[0] : null;
     }
   }
 };

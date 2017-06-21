@@ -2,7 +2,7 @@
   <div :class="noticeCls">
     <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
     <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
-      <div :class="containerCls">
+      <div :class="containerCls" v-if="isShow">
         <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
         <header v-if="hasHeader"><slot name='header'></slot></header>
         <div :class="contentCls"><slot></slot></div>
@@ -48,6 +48,7 @@ export default {
     value() {
       if (this.value) {
         this.$el.style.display = 'block';
+        this.isShow = true;
         setTimeout(() => {
           this.isOpened = this.value
         }, 100);
@@ -55,13 +56,15 @@ export default {
         this.isOpened = this.value;
         setTimeout(() => {
           this.$el.style.display = 'none';
+          this.isShow = false;
         }, 200);
       }
     }
   },
   data() {
     return {
-      isOpened: this.value
+      isOpened: this.value,
+      isShow: this.value
     };
   },
   mounted() {

@@ -20,7 +20,7 @@ const ruleExecute = function (rule, argus) {
 const combineArgs = function (prop, message, type) {
   if (message === true || message === undefined) {
     return {
-      [prop]: { valid: true, message: null }
+      [prop]: { valid: true, message: null, type }
     };
   }
   return {
@@ -150,6 +150,10 @@ class Validator {
       parent = utils.getKeyValue(data, parentProp);
     }
     let rule = this.rules[ruleKey];
+    if (rule == undefined) {
+      log.error(`Error: Not found validator property '${ruleKey}'.`)
+      return combineArgs(prop, true, 'base');
+    }
     let result = this.validFieldBase(rule, value, parent);
     if (result !== true) {
       return combineArgs(prop, result, 'base');

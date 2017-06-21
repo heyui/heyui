@@ -1,8 +1,57 @@
-@upload-prefix: ~"@{prefix}upload";
-
+@upload-prefix: ~"@{prefix}uploader";
 .@{upload-prefix} {
-    input[type="file"]{
-        display: none;
+  // display: inline-block;
+  // padding: 5px;
+  // border: @border;
+  // border-radius: @border-radius;
+  &-image {
+    display: inline-block;
+    >div{
+      position: relative;
+      float: left;
+      height: 100px;
+      width: 100px;
+      display: inline-block;
+      background-size: cover;
+      border-radius: @border-radius;
+      background-repeat: no-repeat;
+      background-position: center;
     }
-    
+    &-operate{
+      cursor: pointer;
+      transition: @transition-time;
+      .absolute();
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      opacity: 0;
+      text-align: center;
+      border-radius: @border-radius;
+      >span{
+        .middle();
+        width: 100%;
+        left: 0;
+        text-align: center;
+        color: @white-color;
+      }
+    }
+
+    &:hover &-operate{
+      opacity: 1;
+    }
+
+    &-empty{
+      border: 1px dashed @gray-color;
+      color: @gray-color;
+      transition: @transition-time;
+      cursor: pointer;
+      i{
+        font-size: 25px;
+        .middle-center();
+      }
+      &:hover{
+        border-color: @primary-color;
+        color: @primary-color;
+      }
+    }
+  }
 }

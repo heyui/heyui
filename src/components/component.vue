@@ -33,8 +33,8 @@
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
             <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
-            <!--<li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
-            <li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
+            <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
+            <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
             <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul> 
           <ul>

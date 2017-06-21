@@ -45,7 +45,7 @@
                v-model="data.tel" />
       </FormItem>
       <FormItem label="手机号码"
-                prop="mobile">
+                prop="mobile123">
         <input type="text"
                v-model="data.mobile" />
       </FormItem>

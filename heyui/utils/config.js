@@ -15,6 +15,13 @@ const config = {
       childrenName: 'children',
     }
   },
+  uploader: {
+    urlName: 'url',
+    fileName: 'name',
+    thumbUrl(url) {
+      return url;
+    }
+  },
   menu: {
     titleName: 'title',
     keyName: 'key',

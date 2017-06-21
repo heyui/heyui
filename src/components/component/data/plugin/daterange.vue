@@ -6,17 +6,6 @@
     <div>
       <example demo="dataplugins/daterangepicker1"></example>
     </div>
-    <h3>日期控件单独选择开始结束</h3>
-    <p>针对一些可选开始或者结束日期的需求，这里可以选择添加<code>separate</code>属性控制可以单独选择。</p>
-    <div>
-      <example demo="dataplugins/daterangepicker2"></example>
-    </div>
-    <h3>选择日期时间范围控件</h3>
-    <p>由于日期时间控件的点击比较深，所以默认这里使用了<code>separate</code>属性。如果有更合适的方案，希望在github上为我们<a href="https://github.com/heyui/heyui/issues/new" target="_blank">提建议</a>。</p>
-    <p>此外，<code>datetime</code>选择器的配置同样适用于范围选择控件。</p>
-    <div>
-      <example demo="dataplugins/daterangepicker3"></example>
-    </div>
     <h3>日期时间范围禁用</h3>
     <div>
       <example demo="dataplugins/daterangepicker4"></example>
@@ -29,6 +18,16 @@
     <p>快捷方式定义与日期控件一致，同时也可以使用全局配置的方式使用。</p>
     <div>
       <example demo="dataplugins/daterangepicker6"></example>
+    </div>
+    <h3>日期控件单独选择开始结束</h3>
+    <p>针对一些可选开始或者结束日期的需求，可以通过start，end参数控制。</p>
+    <div>
+      <example demo="dataplugins/daterangepicker2"></example>
+    </div>
+    <h3>选择日期时间范围控件</h3>
+    <p>这里，我们建议使用两个选择器。</p>
+    <div>
+      <example demo="dataplugins/daterangepicker3"></example>
     </div>
 
     <h3>DatePicker 参数</h3>
