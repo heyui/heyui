@@ -2,7 +2,7 @@
   <div :class="uploaderCls">
 
 
-    <Modal v-model="preview">
+    <Modal v-model="preview" :middle="true">
       <div class="text-center">
         <img :src="previewFile.url" :alt="previewFile.name"/>
       </div>
@@ -34,6 +34,7 @@
         <div class="h-uploader-image-operate" v-else>
           <div>
             <span class="h-uploader-operate" @click="previewImage(file)"><i class="h-icon-fullscreen"></i></span>
+            <i class="h-split" v-width="3"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
           </div>
         </div>
@@ -81,7 +82,8 @@ export default {
     files: {
       type: [Array, Object, String],
       default: () => []
-    }
+    },
+    className: String
   },
   data() {
     let param = {};
@@ -137,6 +139,7 @@ export default {
       return {
         [prefix]: true,
         [`${prefix}-${this.type}-container`]: true,
+        [this.className]: this.className
       }
     },
     fileList() {
