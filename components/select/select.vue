@@ -85,6 +85,10 @@ export default {
       type: Boolean,
       default: false
     },
+    autosize: {
+      type: Boolean,
+      default: false
+    },
     render: Function,
     value: [Number, String, Array, Object]
   },
@@ -194,7 +198,7 @@ export default {
   },
   computed: {
     selectCls() {
-      let autosize = !!this.noBorder;
+      let autosize = this.autosize || !!this.noBorder;
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder,

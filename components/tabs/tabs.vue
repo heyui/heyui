@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     trigger(data) {
-      if (this.value == data.key) return;
-      this.$emit('input', data.key)
+      if (this.value == data[this.key]) return;
+      this.$emit('input', data[this.key])
       this.$emit('change', data);
     }
   },

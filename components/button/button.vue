@@ -43,7 +43,7 @@ export default {
     hasText() {
       let slot = this.$slots.default;
       if (slot && slot.length > 0) {
-        return !!slot[0].text
+        return true;
       }
       return false;
     },
