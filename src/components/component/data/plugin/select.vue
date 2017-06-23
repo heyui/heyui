@@ -3,6 +3,7 @@
     <h2>Select 下拉选择</h2>
     <h3>普通下拉选择</h3>
     <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/guide/config">全局配置</router-link></p>
+    <blockquote>注意：如果datas传入的是<code>{ 1:'a', 2:'b' }</code>这种数字key，选中的key值将全部转换为String, 建议使用<code>[{ key: 1, title: 'a' }]</code>对象数据模式。</blockquote>
     <example demo="dataplugins/select1"></example>
     
     <h3>禁用</h3>
