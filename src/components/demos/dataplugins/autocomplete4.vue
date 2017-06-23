@@ -2,7 +2,7 @@
   <div>
     <p>value:{{value}}</p>
     <AutoComplete :option="param"
-                  v-model="value" @change="onChange" :show="value"></AutoComplete>
+                  v-model="value" @change="onChange" type="title"></AutoComplete>
   </div>
 </template>
 <script>

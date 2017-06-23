@@ -5,6 +5,7 @@
     <h3>基本用法</h3>
     <p>可以使用<code>dict</code>调用系统全局配置的字典，或者通过<code>datas</code>传递数据。</p>
     <p>可以通过全局配置<code>autocomplete.default</code>参数设置控件默认的参数值。</p>
+    <p><code>autocomplete</code>有三种数据类型：<code>key</code>,<code>title</code>,<code>object</code>，如果需求更复杂，请监听<code>change</code>事件手动处理。</p>
     <example demo="dataplugins/autocomplete1"></example>
 
     <h3>disabled</h3>
@@ -15,13 +16,14 @@
   
     <h3>远程</h3>
     <p>通过<code>options</code>的<code>loadData</code>方法执行远程数据查询，执行完毕后调用<code>callback</code>方法返回数据。</p>
-    <p>下面的用例<code>value</code>使用的是非对象的数据结构，这样的控件在初始化的时候请使用<code>show</code>属性来定义展示的内容。</p>
+    <p>下面的用例使用的只是单纯的title值，请使用<code>type="title"</code>。</p>
     <example demo="dataplugins/autocomplete4"></example>
   
     <h3>远程多选</h3>
     <example demo="dataplugins/autocomplete5"></example>
 
-    <h3>自定义数据结构</h3>
+    <h3>自定义返回数据的结构</h3>
+    <p></p>
     <example demo="dataplugins/autocomplete11"></example>
   
     <h3>自定义列表展示内容</h3>
