@@ -182,6 +182,11 @@ export default {
             [this.param.keyName]: this.value,
             [this.param.titleName]: this.value,
           }
+        } else if (this.type == 'title') {
+          value = {
+            [this.param.keyName]: this.value,
+            [this.param.titleName]: this.value,
+          }
         } else {
           value = this.value;
         }

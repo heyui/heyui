@@ -99,7 +99,7 @@ export default utils.extend({}, utils, {
   },
   toggleValue(list, value) {
     if (!this.isArray(list)) return;
-    if (list.includes(value)) {
+    if (list.some(item => item == value)) {
       list.splice(list.indexOf(value), 1);
     } else {
       list.push(value);

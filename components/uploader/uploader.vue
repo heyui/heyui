@@ -1,10 +1,8 @@
 <template>
   <div :class="uploaderCls">
-
-
-    <Modal v-model="preview" :middle="true">
+    <Modal v-model="preview">
       <div class="text-center">
-        <img :src="previewFile.url" :alt="previewFile.name"/>
+        <img :src="previewFile.url" :alt="previewFile.name"></img>
       </div>
     </Modal>
     <template v-if="type=='image'">
@@ -26,7 +24,7 @@
       <div class="h-uploader-image-empty h-uploader-browse-button">
         <i class="h-icon-plus"></i>
       </div>
-      <div v-for="(file, index) in fileList" class="h-uploader-image">
+      <div v-for="(file, index) in fileList" :key="file" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
         <div class="h-uploader-progress" v-if="file.status==2">
           <Progress :percent="file.percent"  :stroke-width="5"></Progress>
@@ -36,6 +34,20 @@
             <span class="h-uploader-operate" @click="previewImage(file)"><i class="h-icon-fullscreen"></i></span>
             <i class="h-split" v-width="3"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template v-if="type=='file'||type=='files'">
+      <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
+      <div v-else><Button icon="upload" class="h-uploader-browse-button">上传</Button></div>
+      <div class="h-uploader-files">
+        <div v-for="(file, index) in fileList" :key="file" class="h-uploader-file">
+          <div class="h-uploader-file-progress" v-if="file.status==2">
+            <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
+          </div>
+          <div class="h-uploader-file-info" v-else>
+            <span>{{file.name}}</span><i class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
@@ -95,7 +107,8 @@ export default {
     return {
       param,
       preview: false,
-      previewFile: {}
+      previewFile: {},
+      isdragging: false
     }
   },
   methods: {

@@ -151,7 +151,7 @@ class Validator {
     }
     let rule = this.rules[ruleKey];
     if (rule == undefined) {
-      log.error(`Error: Not found validator property '${ruleKey}'.`)
+      // log.error(`Error: Not found validator property '${ruleKey}'.`)
       return combineArgs(prop, true, 'base');
     }
     let result = this.validFieldBase(rule, value, parent);

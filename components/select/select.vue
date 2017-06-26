@@ -150,16 +150,19 @@ export default {
       if (this.multiple) {
         let values = this.value || [];
         this.codes = values.map((item) => {
-          return this.type == 'key' ? item : item[this.key];
+          return this.type == 'key' ? this.getValue(item) : item[this.key];
         })
       } else {
         if (this.type == 'key') {
-          this.codes = this.value;
+          this.codes = this.getValue(this.value);
         } else if (utils.isObject(this.value)) {
           this.codes = this.value[this.key];
         }
       }
       this.setObjects();
+    },
+    getValue(value) {
+      return utils.isNull(value) ? null : String(value);
     },
     setvalue(option) {
       if (this.readonly) return;
