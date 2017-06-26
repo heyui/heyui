@@ -99,4 +99,44 @@
 
     }
   }
+
+  &-files{
+    position: relative;
+    margin-top: 5px;
+    font-size: @font-size-mini;
+    color: @gray-color;
+  }
+  &-file{
+    position: relative;
+    line-height: @input-height;
+    &-info{
+      padding-right: 15px;
+      .text-ellipsis;
+      .li-hover();
+      padding-left: 5px;
+    }
+    .h-icon-trash{
+      display: none;
+      right: 5px;
+    }
+
+    &:hover .h-icon-trash{
+      display: block;
+    }
+  }
+
+  &-drop-element{
+    padding: 15px;
+    color: @dark-color;
+    border-radius: @border-radius;
+    border: 1px dashed @gray1-color;
+    cursor: pointer;
+    &:hover{
+      border-color: @primary-color;
+    }
+  }
+
+  &-drop-element&-dragging{
+    border-color: @primary-color;
+  }
 }

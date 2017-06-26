@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile"></Uploader>
+    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
+      <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
+    </Uploader>
   </div>
 </template>
 <script>
@@ -39,12 +41,10 @@ export default {
     deletefile(index) {
       this.value.splice(index, 1);
       this.$emit("input", this.value);
-    }
-  },
-  mounted() {
-    //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
-    let that = this;
-    this.$nextTick(() => {
+    },
+    init() {
+      let that = this;
+      //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
@@ -56,7 +56,12 @@ export default {
         filters: {},
         init: {
           FilesAdded(up, files) {
-            pluploadjs.plupload.each(files, (file) => {
+            files.forEach((file) => {
+              if (that.limit && (that.uploadList.length + that.value.length >= that.limit)) {
+                that.$Message.error("你上传的文件超过限制。")
+                return false;
+              }
+              file.isUpload = true;
               if (FileReader) {
                 let reader = new FileReader();
                 reader.onload = (event) => {
@@ -66,20 +71,18 @@ export default {
               }
               that.uploadList.push(file);
             });
+            // that.$emit("startUpload");
           },
           BeforeUpload(up, file) {
-            if (that.uploadList.length > this.limit) {
-              this.$Message.error("你上传的文件超过限制。")
+            if (!file.isUpload) {
               return false;
             }
-            log('BeforeUpload', file.status);
-            that.$emit("startUpload");
           },
           UploadProgress(up, file) {
-            log(file.percent);
+            // log(file.percent);
           },
           FileUploaded(up, file, info) {
-            log('FileUploaded', file.status);
+            // log('FileUploaded', file.status);
             let domain = up.getOption('domain');
             let res = JSON.parse(info.response);
             let sourceLink = `${domain}/${res.key}`; //获取上传成功后的文件的Url
@@ -109,14 +112,16 @@ export default {
         param.drop_element = this.$refs.uploader.getDropElement();
       }
 
-
       utils.extend(param, this.options);
-
-      if (this.type == 'files' || this.type == 'images') {
-        param.multi_selection = true;
-        param.multipart = true;
-      }
+      let muti = this.type == 'files' || this.type == 'images';
+      param.multi_selection = muti;
+      param.multipart = muti;
       qiniujs.Qiniu.uploader(param);
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.init();
     });
   }
 }
