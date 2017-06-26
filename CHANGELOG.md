@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/heyui/heyui/compare/v0.5.0...v0.5.1) (2017-06-26)
+
+
+### Bug Fixes
+
+* checkbox number key error ([04ea0fc](https://github.com/heyui/heyui/commit/04ea0fc))
+* remove unnecessary error when valid ([df2d0dd](https://github.com/heyui/heyui/commit/df2d0dd))
+* select components with number key ([2fe31e6](https://github.com/heyui/heyui/commit/2fe31e6))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/heyui/heyui/compare/v0.4.2...v0.5.0) (2017-06-22)
 
