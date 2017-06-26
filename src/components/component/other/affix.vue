@@ -2,23 +2,11 @@
   <div class="doc">
     <h2>affix 图钉</h2>
 
-    <div>
-      <Affix :offset-top="70" @onchange="onchange"><button class="h-btn" :class="{'h-btn-green': fixed}">固定在距离顶部偏移量70px的位置</button></Affix>
+    <example demo="other/affix1"></example>
+    <div v-height="1000" v-bg-color:gray4 v-padding="20" class="text-center">
+      撑高页面
     </div>
-    <div v-height="10"></div>
-    <div>
-      <Affix :offset-top="120"><button class="h-btn" :class="{'h-btn-yellow': fixed}">固定在距离顶部偏移量120px的位置</button></Affix>
-    </div>
-    <div v-height="10"></div>
-    <div>
-      <Affix :offset-top="170"><button class="h-btn" :class="{'h-btn-blue': fixed}">固定在距离顶部偏移量190px的位置</button></Affix>
-    </div>
-
-    <div v-height="800">
-    </div>
-    <div>
-      <Affix :offset-bottom="10"><button class="h-btn">固定在距离底部偏移量10px的位置</button></Affix>
-    </div>
+    <example demo="other/affix2"></example>
     
     <h3>affix 参数</h3>
     <table class="table">
@@ -69,9 +57,6 @@ export default {
     }
   },
   methods: {
-    onchange(status) {
-      this.fixed = status;
-    }
   }
 }
 </script>
