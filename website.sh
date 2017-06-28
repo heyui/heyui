@@ -1,12 +1,10 @@
-git add -A
-git commit
-echo "开始打包代码"
+cd doc
 set -e
 hey b
 set -e
 echo "打包代码成功"
 echo "迁移打包后的代码"
-cp -R dist ../
+cp -R dist ../../
 rm -rf dist
 echo "切换至gh-pages分支"
 set -e
@@ -21,5 +19,5 @@ git push origin gh-pages
 set -e
 
 echo "切换至doc分支"
-git checkout doc
-rm -rf ../dist
+git checkout master
+rm -rf ../../dist
