@@ -14,7 +14,7 @@
       <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
-      <div class="h-select-group-container">
+      <div class="h-select-group-container" v-if="isShow">
         <Search v-if="filterable" class="h-select-search-input" placeholder="请输入筛选文本" trigger-type="input" @onsearch="search" position="front"></Search>
         <div class="h-select-list">
           <ul class="h-select-ul">
@@ -100,8 +100,8 @@ export default {
       codes: [],
       objects: {},
       hasNullOption: this.nullOption && !this.multiple,
-      searchInput: ''
-      // optionsMap: {}
+      searchInput: '',
+      isShow: false
     };
   },
   watch: {
@@ -123,11 +123,17 @@ export default {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-select-show');
       let content = this.$el.querySelector('.h-select-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         content,
         disabled: this.disabled,
         equalWidth: true,
-        container: document.body
+        container: document.body,
+        events: {
+          show(){
+            that.isShow = true;
+          }
+        }
       });
     });
   },

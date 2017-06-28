@@ -4,7 +4,7 @@
       <slot></slot><i class="h-icon-down"
          v-if="this.toggleIcon"></i></div>
     <div :class="groupCls">
-      <slot name='content'></slot>
+      <slot name='content' v-if="isShow"></slot>
     </div>
   </div>
 </template>
@@ -40,19 +40,26 @@ export default {
   data() {
     return {
       key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName')
+      title: config.getOption('dict', 'titleName'),
+      isShow: false
     };
   },
   mounted() {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-dropdowncustom-show');
       let content = this.$el.querySelector('.h-dropdowncustom-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         content,
         trigger: this.trigger,
         equalWidth: this.equalWidth,
         container: document.body,
-        placement: this.placement
+        placement: this.placement,
+        events: {
+          show(){
+            that.isShow = true;
+          }
+        }
       });
     });
   },

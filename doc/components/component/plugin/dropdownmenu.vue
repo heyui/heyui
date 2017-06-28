@@ -109,6 +109,13 @@
         <td>-</td>
         <td>99</td>
       </tr>
+      <tr>
+        <td>className</td>
+        <td>未里面的dom添加class</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
   </div>
 </template>

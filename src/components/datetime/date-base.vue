@@ -35,8 +35,9 @@
     </div>
     <div :class="dateBodyCls">
       <div class="h-date-body-weeks"
-           v-if="view=='date'"><span v-for="w of weeks">{{w}}</span></div>
-      <div class="h-date-body-pickers"><span v-for="d of dates"
+           v-if="view=='date'"><span v-for="w of weeks" :key="w">{{w}}</span></div>
+      <div class="h-date-body-pickers">
+        <span v-for="d of dates" :key="d"
               :string="d.string"
               :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-range-selected': isRangeSelected(d), 'h-date-disabled': d.disabled}"
               @click="chooseDate(d)">{{d.show}}</span></div>
@@ -104,10 +105,6 @@ export default {
       type: [String],
       default: 'date'  //year, month, week
     },
-    separate: {
-      type: Boolean,
-      default: true
-    },
     option: Object,
     format: String,
     value: [Object, String],
@@ -129,7 +126,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      if (this.range && !this.separate) {
+      if (this.range) {
         this.$el.addEventListener("mouseenter", (event) => {
           if (this.view == 'date' && !!this.value.start && !this.value.end) {
             let target = event.target;
@@ -178,15 +175,12 @@ export default {
     isSelected(d) {
       let length = DateFormatLength[this.view];
       if (utils.isObject(this.value)) {
-        if (this.separate) {
-          return this.value[this.range] == d.string;
-        }
         return this.value.start == d.string || this.value.end == d.string;
       }
       return this.value.substring(0, length) == d.string.substring(0, length)
     },
     isRangeSelected(d) {
-      if (this.range && !this.separate && utils.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
+      if (this.range && utils.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
         return (this.value.start < d.string && this.rangeEnd > d.string) || (this.value.start > d.string && this.rangeEnd < d.string);
       }
       return false;

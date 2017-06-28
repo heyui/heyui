@@ -33,7 +33,7 @@
   
     <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
-      <ul class="h-autocomplete-ul">
+      <ul class="h-autocomplete-ul" v-if="isShow">
         <li v-for="(result, index) of results"
             :key="result"
             class="h-autocomplete-item"
@@ -110,7 +110,8 @@ export default {
       loading: false,
       content: null,
       param,
-      loadDatas: []
+      loadDatas: [],
+      isShow: false
     };
   },
   watch: {
@@ -150,13 +151,19 @@ export default {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-autocomplete-show');
       this.content = this.$el.querySelector('.h-autocomplete-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         trigger: '',
         triggerOnce: true,
         content: this.content,
         disabled: this.disabled,
         equalWidth: true,
-        container: document.body
+        container: document.body,
+        events: {
+          show(){
+            that.isShow = true;
+          }
+        }
       });
     });
   },

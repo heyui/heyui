@@ -20,7 +20,7 @@ export default {
     },
     methods: {},
     mounted() {
-      $.get(`/src/components/demos/${this.demo}.vue`,(resp)=>{
+      $.get(`/components/demos/${this.demo}.vue`,(resp)=>{
         this.sourcecode=resp;
       })
     },

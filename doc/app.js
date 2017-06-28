@@ -1,22 +1,22 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import jsonp from 'fetch-jsonp';
+import 'highlight.js/styles/github-gist.css';
 // import HeyUI from 'heyui';
-import App from '../App.vue';
+import App from './App.vue';
 
-import HeyUI from '../../src/index';
+import HeyUI from './../src/index';
 import titleConfig from './js/config/title-config';
 import VueHighlightJS from './js/vuehighlight';
-import 'highlight.js/styles/github-gist.css';
 
-import comHead from './components/common/header';
-import comFoot from './components/common/footer';
-import comFrame from './components/common/frame';
-import example from './components/common/example';
-import codes from './components/common/codes';
+import comHead from './components/common/header.vue';
+import comFoot from './components/common/footer.vue';
+import comFrame from './components/common/frame.vue';
+import example from './components/common/example.vue';
+import codes from './components/common/codes.vue';
 import routerConfig from './js/config/router-config';
 
-require('../static/css/doc.less');
+require('./css/doc.less');
 
 
 

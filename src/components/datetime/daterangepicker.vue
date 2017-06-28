@@ -12,11 +12,11 @@
     </div>
     <div :class="datePickerCls"
          class="h-date-picker">
-      <div class="h-date-container h-date-range-container">
+      <div class="h-date-container h-date-range-container" v-if="isShow">
         <div v-if="shortcuts.length>0"
              class="h-date-shortcut">
           <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)">{{s.title}}</div>
+               @click="setShortcutValue(s)" :key="s">{{s.title}}</div>
         </div>
         <date-base ref="start"
                    :value="nowDate"
@@ -29,7 +29,6 @@
                    @input="setvalue"
                    @changeView="changeView"
                    :rangeEnd="rangeEnd"
-                   :separate="isSeparate"
                    @updateRangeEnd="updateRangeEnd"></date-base>
         <date-base ref="end"
                    :value="nowDate"
@@ -42,7 +41,6 @@
                    @input="setvalue"
                    @changeView="changeView"
                    :rangeEnd="rangeEnd"
-                   :separate="isSeparate"
                    @updateRangeEnd="updateRangeEnd"></date-base>
       </div>
   
@@ -95,10 +93,6 @@ export default {
       type: Boolean,
       default: false
     },
-    separate: {
-      type: Boolean,
-      default: false
-    },
     placeholder: {
       type: String,
       default: "请选择"
@@ -128,17 +122,13 @@ export default {
         start: '',
         end: ''
       },
-      separateOption: {
-        start: utils.extend({}, this.option),
-        end: utils.extend({}, this.option)
-      },
-      isSeparate: this.type == "datetime" || this.separate,
       nowView: {
         start: manba(),
         end: manba().add(1, manba.MONTH),
       },
       rangeEnd: '',
-      nowFormat: format
+      nowFormat: format,
+      isShow: false
     };
   },
   beforeMount() {
@@ -157,7 +147,10 @@ export default {
         container: document.body,
         events: {
           show() {
-            that.initNowView()
+            that.isShow = true;
+            that.$nextTick(()=>{
+              that.initNowView()
+            })
           }
         }
       });
@@ -175,12 +168,10 @@ export default {
     },
     updateView(value, rangeType) {
       this.nowView[rangeType] = manba(value);
-      if (!this.isSeparate) {
-        if (rangeType == 'end') {
-          this.nowView.start = manba(value).add(-1, manba.MONTH);
-        } else {
-          this.nowView.end = manba(value).add(1, manba.MONTH);
-        }
+      if (rangeType == 'end') {
+        this.nowView.start = manba(value).add(-1, manba.MONTH);
+      } else {
+        this.nowView.end = manba(value).add(1, manba.MONTH);
       }
       this.dropdown.popperInstance.update();
     },
@@ -222,7 +213,7 @@ export default {
       if (!!this.nowDate.start) {
         start = manba(this.nowDate.start);
       }
-      let endRange = this.isSeparate ? 0 : 1;
+      let endRange = 1;
       this.nowView = {
         start,
         end: manba(start).add(endRange, manba.MONTH),
@@ -235,29 +226,18 @@ export default {
     },
     clear() {
       this.updateValue({});
-      this.separateOption = {
-        start: utils.extend({}, this.option),
-        end: utils.extend({}, this.option)
-      };
       this.initNowView();
     },
     setvalue(string, isEnd = false, range) {
       string = string || '';
       let lastDate = utils.copy(this.nowDate);
-      if (this.isSeparate) {
-        lastDate[range] = string;
-        let other = range == 'start' ? "end" : "start";
-        this.separateOption[other][range] = string;
-        this.$refs[other].updateView("minute", 0);
+      if (!lastDate.start) {
+        lastDate.start = string;
+      } else if (!lastDate.end) {
+        lastDate.end = string;
       } else {
-        if (!lastDate.start) {
-          lastDate.start = string;
-        } else if (!lastDate.end) {
-          lastDate.end = string;
-        } else {
-          lastDate.start = '';
-          lastDate.end = '';
-        }
+        lastDate.start = '';
+        lastDate.end = '';
       }
       if (isEnd && lastDate.start && lastDate.end && lastDate.start > lastDate.end) {
         let start = lastDate.start;
@@ -318,10 +298,10 @@ export default {
       }
     },
     startOption() {
-      return this.isSeparate ? this.separateOption.start : this.option;
+      return this.option;
     },
     endOption() {
-      return this.isSeparate ? this.separateOption.end : this.option;
+      return this.option;
     }
   },
   components: {

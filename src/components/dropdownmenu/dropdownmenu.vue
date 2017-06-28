@@ -4,11 +4,11 @@
       <slot></slot><i class="h-icon-down"
          v-if="this.toggleIcon"></i></div>
     <div :class="groupCls" :style="groupStyle">
-      <ul>
+      <ul v-if="isShow">
         <li class="h-dropdownmenu-item"
             :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
             v-for="option of options"
-            @click="onclick(option)">
+            @click="onclick(option)" :key="option">
           <div v-if="option[html]"
                v-html="option[html]"></div>
           <template v-else>
@@ -75,20 +75,27 @@ export default {
     return {
       key: config.getOption('dict', 'keyName'),
       title: config.getOption('dict', 'titleName'),
-      html: 'dropdownmenuHtml'
+      html: 'dropdownmenuHtml',
+      isShow: false
     };
   },
   mounted() {
     this.$nextTick(() => {
       let el = this.$el.querySelector('.h-dropdownmenu-show');
       let content = this.$el.querySelector('.h-dropdownmenu-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         content,
         trigger: this.trigger,
         disabled: this.disabled,
         equalWidth: this.equalWidth,
         container: document.body,
-        placement: this.placement
+        placement: this.placement,
+        events: {
+          show(){
+            that.isShow = true;
+          }
+        }
       });
     });
   },

@@ -32,6 +32,20 @@
         <td>click</td>
       </tr>
       <tr>
+        <td>equalWidth</td>
+        <td>是否和触发的dom等宽</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>是否禁用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>toggleIcon</td>
         <td>是否显示展示状态的icon</td>
         <td>Boolean</td>
@@ -39,11 +53,25 @@
         <td>true</td>
       </tr>
       <tr>
+        <td>width</td>
+        <td>自定义menu的宽度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>placement</td>
         <td>menu显示的位置</td>
         <td>Stirng</td>
         <td>top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</td>
         <td>bottom-start</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>未里面的dom添加class</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
       </tr>
     </table>
   </div>

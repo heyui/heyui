@@ -13,7 +13,7 @@ export default {
     }
   },
   mounted() {
-    $.get(`/src/components/demos${this.src}`, (resp) => {
+    $.get(`/components/demos${this.src}`, (resp) => {
       this.sourcecode = resp;
     })
   }

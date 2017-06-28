@@ -14,11 +14,11 @@
     </div>
     <div :class="datePickerCls"
          class="h-date-picker">
-      <div class="h-date-container">
+      <div class="h-date-container" v-if="isShow">
         <div v-if="shortcuts.length>0"
              class="h-date-shortcut">
           <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)">{{s.title}}</div>
+               @click="setShortcutValue(s)" :key="s">{{s.title}}</div>
         </div>
         <date-base ref="datebase"
                    :value="nowDate"
@@ -98,7 +98,8 @@ export default {
       showDate: '',
       hasConfirm: this.type == 'datetime' || this.type == 'datehour',
       nowView: manba(),
-      nowFormat: format
+      nowFormat: format,
+      isShow: false
     };
   },
   watch: {
@@ -121,6 +122,7 @@ export default {
     this.$nextTick(() => {
       let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
       let content = this.$el.querySelector(`.h-date-picker`);
+      
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         triggerOnce: true,
@@ -129,11 +131,14 @@ export default {
         container: document.body,
         events: {
           show() {
-            that.parse(that.value);
-            that.$refs.datebase.resetView();
-            if (that.nowDate) {
-              that.nowView = manba(that.nowDate);
-            }
+            that.isShow = true;
+            that.$nextTick(()=>{
+              that.parse(that.value);
+              that.$refs.datebase.resetView();
+              if (that.nowDate) {
+                that.nowView = manba(that.nowDate);
+              }
+            })
           }
         }
       });

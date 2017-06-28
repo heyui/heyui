@@ -7,7 +7,7 @@ module.exports = {
     publicPath: "/",
     output: {
       "./*html": {
-        entry: "./js/app",
+        entry: "./app",
         commons: ['common']
       }
     },
@@ -18,11 +18,11 @@ module.exports = {
       '$': "jquery",
       'log': "hey-log"
     },
-    globalVars: './static/css/var.less',
+    globalVars: './css/var.less',
     devServer: {
       historyApiFallback: true
     },
     externals: {}
   },
-  copy: ["./static/images/**/*", "./src/components/demos/**/*.vue", "./src/components/demos/**/*.txt"]
+  copy: ["./static/images/**/*", "./components/demos/**/*.vue", "./components/demos/**/*.txt"]
 };
