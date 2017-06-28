@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.89"></a>
+## [0.0.89](https://github.com/heyui/heyui/compare/v0.0.88...v0.0.89) (2017-06-28)
+
+
+
 <a name="0.0.88"></a>
 ## [0.0.88](https://github.com/heyui/heyui/compare/v0.0.87...v0.0.88) (2017-06-28)
 
