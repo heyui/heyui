@@ -46,10 +46,7 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
-    "build": "hey b",
-    "p": "sh ./publish.sh",
-    "w": "sh ./website.sh",
-    "c": "sh ./commit.sh"
+    "build": "hey b"
   },
   "browserslist": [
     "ie >= 9"

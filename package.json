@@ -35,7 +35,9 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
-    "build": "hey -b"
+    "build": "hey -b",
+    "p": "sh ./publish.sh",
+    "w": "sh ./website.sh"
   },
   "browserslist": [
     "ie >= 9"
