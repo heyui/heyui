@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/heyui/heyui/compare/v0.1.1...v0.2.0) (2017-06-28)
+
+
+### Features
+
+* dropdown都在点开的时候执行渲染，提高整体页面的性能 ([72a5e92](https://github.com/heyui/heyui/commit/72a5e92))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/heyui/heyui/compare/v0.1.0...v0.1.1) (2017-06-28)
 
