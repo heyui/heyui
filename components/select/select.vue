@@ -180,7 +180,7 @@ export default {
       let value = this.type == 'key' ? this.codes : this.objects;
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, value);
+      event.initCustomEvent("setvalue", true, true, this.objects);
       this.$el.dispatchEvent(event);
       if (this.multiple) {
         if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
