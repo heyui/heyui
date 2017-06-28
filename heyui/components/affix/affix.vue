@@ -30,7 +30,8 @@ export default {
     }
   },
   methods: {
-    trigger() {
+    trigger(event) {
+      if(event.target == this.$el) return false;
       let original = this.isFixed;
       if (!this.isFixed) {
         let position = this.$el.getBoundingClientRect();
