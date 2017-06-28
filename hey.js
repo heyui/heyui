@@ -1,28 +1,19 @@
 module.exports = {
-  port: 9008,
-  timestamp: true,
-  dist: "dist",
-  console: true,
+  root: "build",
   webpack: {
-    publicPath: "/",
-    output: {
-      "./*html": {
-        entry: "./src/app",
-        commons: ['common']
-      }
-    },
-    commonTrunk: {
-      common: ['babel-polyfill', 'jquery', 'vue', 'vue-router', "hey-utils", 'heyui', 'hey-log']
+    umd: {
+      entry: "./src/index.js",
+      library: "HeyUI",
+      filename: 'heyui.js'
     },
     global: {
-      '$': "jquery",
-      'log': "hey-log"
+      Vue: "vue"
     },
-    globalVars: './static/css/var.less',
-    devServer: {
-      historyApiFallback: true
-    },
-    externals: {}
-  },
-  copy: ["./static/images/**/*", "./src/components/demos/**/*.vue", "./src/components/demos/**/*.txt"]
+    externals: {
+      Vue: "window.Vue",
+      'hey-log': "hey-log",
+      'hey-utils': "hey-utils",
+      manba: "manba"
+    }
+  }
 };

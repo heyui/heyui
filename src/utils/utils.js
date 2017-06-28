@@ -97,18 +97,6 @@ export default utils.extend({}, utils, {
     }
     return param;
   },
-  toggleValue(list, value) {
-    if (!this.isArray(list)) return;
-    if (list.some(item => item == value)) {
-      list.splice(list.indexOf(value), 1);
-    } else {
-      list.push(value);
-    }
-  },
-  padLeft(str, size) {
-    var s = "00000" + str;
-    return s.substr(s.length - size);
-  },
   toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return;
     let index = -1;
@@ -168,20 +156,6 @@ export default utils.extend({}, utils, {
       })
     }
     return options;
-  },
-  toSimpleArray(data, key) {
-    let r = [];
-    if (this.isObject(data)) {
-      for (let d of Object.keys(data)) {
-        r.push(data[d][key]);
-      }
-    }
-    if (this.isArray(data)) {
-      for (let d of data) {
-        r.push(d[key]);
-      }
-    }
-    return r;
   },
   generateTree(data, param) {
     if (!this.isArray(data)) {

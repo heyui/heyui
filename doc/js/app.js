@@ -2,9 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import jsonp from 'fetch-jsonp';
 // import HeyUI from 'heyui';
-import App from './App.vue';
+import App from '../App.vue';
 
-import HeyUI from '../heyui/index';
+import HeyUI from '../../src/index';
 import titleConfig from './js/config/title-config';
 import VueHighlightJS from './js/vuehighlight';
 import 'highlight.js/styles/github-gist.css';

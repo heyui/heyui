@@ -1,55 +1,41 @@
 {
-  "name": "heyui-doc",
-  "version": "0.5.4",
+  "name": "heyui",
+  "version": "0.0.89",
   "description": "A UI components Library.",
-  "main": "index.js",
+  "main": "./build/heyui.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heyui/heyui.git"
   },
   "homepage": "http://www.heyui.top/",
   "keywords": [
+    "heyui",
     "vue",
     "ui",
     "framework"
   ],
-  "author": {
-    "name": "vvpvvp"
-  },
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.2",
-    "babel-polyfill": "^6.23.0",
-    "fetch": "^1.1.0",
-    "fetch-jsonp": "^1.0.6",
-    "hey-log": "0.0.7",
-    "hey-utils": "0.0.14",
-    "hey-validator": "0.0.5",
-    "heyui": "0.0.16",
-    "highlight.js": "^9.10.0",
-    "jquery": "^3.2.1",
-    "jquery-smooth-scroll": "^2.1.2",
-    "manba": "0.0.19",
-    "plupload-es6": "^2.1.11",
-    "popper.js": "^1.0.8",
-    "qiniu-js-es6": "^1.0.28",
-    "vue": "^2.3.2",
-    "vue-highlightjs": "^1.2.2",
-    "vue-router": "^2.3.0"
+    "hey-log": "0.0.8",
+    "hey-utils": "0.0.16",
+    "manba": "0.0.19"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-vue": "^0.1.1"
   },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
   "readmeFilename": "README.md",
   "scripts": {
-    "build": "hey b",
-    "p": "sh ./publish.sh",
-    "w": "sh ./website.sh",
-    "c": "sh ./commit.sh"
+    "build": "hey -b"
   },
   "browserslist": [
     "ie >= 9"
