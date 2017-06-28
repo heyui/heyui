@@ -25,7 +25,8 @@
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",
     "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-vue": "^0.1.1"
+    "eslint-plugin-vue": "^0.1.1",
+    "popper.js": "^1.10.6"
   },
   "babel": {
     "presets": [
