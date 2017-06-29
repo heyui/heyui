@@ -8,7 +8,7 @@ cp -R dist ../../
 rm -rf dist
 echo "切换至gh-pages分支"
 set -e
-git checkout gh-pages
+cd ../../heyui-website
 set -e
 git pull
 cp -R ../dist/* ./
@@ -19,5 +19,5 @@ git push origin gh-pages
 set -e
 
 echo "切换至doc分支"
-git checkout master
+cd ../heyui
 rm -rf ../../dist
