@@ -12,7 +12,7 @@ module.exports = {
       }
     },
     commonTrunk: {
-      common: ['babel-polyfill', 'jquery', 'vue', 'vue-router', "hey-utils", 'heyui', 'hey-log']
+      common: ['babel-polyfill', 'jquery', 'vue', 'vue-router', "hey-utils", 'hey-log']
     },
     global: {
       '$': "jquery",

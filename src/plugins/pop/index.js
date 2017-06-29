@@ -51,13 +51,9 @@ const DEFAULT_OPTIONS = {
 class Pop {
 
   constructor(reference, options) {
-
     options = utils.extend({}, DEFAULT_OPTIONS, options);
-
-    // reference.jquery && (reference = reference[0]);
     this.reference = reference;
 
-    // options.template = 
     this.options = options;
 
     const triggerEvents = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
@@ -73,36 +69,16 @@ class Pop {
     if (options.content.nodeType === 1) {
       options.content.style.display = "none";
     }
-
-    // this.popNode.style.display = 'none';
-    // this.popperInstance.update();
-    // this.hide();
-    // this.popNode.setAttribute('aria-hidden', 'true');
     this.setEventListeners(reference, triggerEvents, options);
   }
 
-  // show() {
-  //   this.show(this.reference, this.options);
-  // }
-
   toggle() {
-      if (this.isOpen) {
-        return this.hide();
-      } else {
-        return this.show();
-      }
+    if (this.isOpen) {
+      return this.hide();
+    } else {
+      return this.show();
     }
-    // show = () => this.show(this.reference, this.options);
-
-  // hide = () => this.hide();
-  // dispose = () => this.dispose();
-  // toggle = () => {
-  //   if (this.isOpen) {
-  //     return this.hide();
-  //   } else {
-  //     return this.show();
-  //   }
-  // }
+  }
 
   create(reference, template, content) {
     const popGenerator = window.document.createElement('div');
@@ -117,10 +93,20 @@ class Pop {
       content.style.display = "block";
     } else if (utils.isFunction(content)) {
       const contentText = content.call(reference);
-      if (allowHtml) { contentNode.innerHTML = contentText } else { contentNode.innerText = contentText }
+      if (allowHtml) {
+        contentNode.innerHTML = contentText;
+      } else {
+        contentNode.innerText = contentText;
+      }
+    } else if (allowHtml) {
+      contentNode.innerHTML = content;
     } else {
-      if (allowHtml) { contentNode.innerHTML = content } else { contentNode.innerText = content }
+      contentNode.innerText = content;
     }
+
+    contentNode.addEventListener('click', (event) => {
+      event.stopPropagation();
+    }, false);
 
     return popNode;
   }
@@ -146,7 +132,7 @@ class Pop {
       placement: options.placement,
       arrowElement: this.arrowSelector,
       modifiers: {
-        applyStyle: { gpuAcceleration: false }
+        computeStyle: { gpuAcceleration: false }
       }
     };
     if (options.boundariesElement) {
@@ -246,20 +232,20 @@ class Pop {
 
     triggerEvents.forEach((event) => {
       switch (event) {
-      case 'hover':
-        directtriggerEvents.push('mouseenter');
-        oppositetriggerEvents.push('mouseleave');
-        break;
-      case 'focus':
-        directtriggerEvents.push('focus');
-        oppositetriggerEvents.push('blur');
-        break;
-      case 'click':
-        directtriggerEvents.push('click');
-        if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
-        break;
-      default:
-        break;
+        case 'hover':
+          directtriggerEvents.push('mouseenter');
+          oppositetriggerEvents.push('mouseleave');
+          break;
+        case 'focus':
+          directtriggerEvents.push('focus');
+          oppositetriggerEvents.push('blur');
+          break;
+        case 'click':
+          directtriggerEvents.push('click');
+          if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
+          break;
+        default:
+          break;
       }
     });
 
@@ -285,7 +271,7 @@ class Pop {
     if (options.triggerOnBody) {
       this.documentHandler = (e) => {
         if (!this.popNode || e.target.parentNode == null) return;
-        if (reference.contains(e.target) || this.popNode.contains(e.target)) {
+        if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
           return false;
         }
         this.hide();
@@ -295,12 +281,10 @@ class Pop {
   }
 
   scheduleShow() {
-    // const computedDelay = (delay && delay.show) || delay || 0;
     this.show();
   }
 
   scheduleHide(reference, options, evt) {
-    // const computedDelay = (delay && delay.hide) || delay || 0;
     if (this.isOpen === false) { return; }
     if (!document.body.contains(this.popNode)) { return; }
     if (evt.type === 'mouseleave') {
@@ -323,7 +307,6 @@ class Pop {
         this.scheduleHide(reference, options, evt2);
       }
     };
-    // log(evt);
     if (this.popNode.contains(relatedreference)) {
       this.popNode.addEventListener(evt.type, callback);
       return true;
