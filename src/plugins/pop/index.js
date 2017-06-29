@@ -104,8 +104,8 @@ class Pop {
       contentNode.innerText = content;
     }
 
-    contentNode.addEventListener('click', (event) => {
-      event.stopPropagation();
+    popNode.addEventListener('click', (e) => {
+      e.reference = reference;
     }, false);
 
     return popNode;
@@ -185,7 +185,6 @@ class Pop {
 
   hide() {
     if (!this.isOpen) { return this; }
-
     this.isOpen = false;
     this.popNode.setAttribute('aria-hidden', 'true');
     utils.removeClass(this.reference, 'h-pop-trigger');
@@ -272,6 +271,11 @@ class Pop {
       this.documentHandler = (e) => {
         if (!this.popNode || e.target.parentNode == null) return;
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
+          return false;
+        }
+        
+        let targetReference = e.reference;
+        if (reference && this.popNode.contains(targetReference)) {
           return false;
         }
         this.hide();
