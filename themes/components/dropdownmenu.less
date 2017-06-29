@@ -1,14 +1,12 @@
 @dropdownmenu-prefix: ~"@{prefix}dropdownmenu";
 .@{dropdownmenu-prefix} {
   display: inline-block;
-  vertical-align: middle;
   &-show{
     position: relative;
     &-toggle>:first-child{
       padding-right: 26px;
     }
     .rotate-icon-down(false);
-    cursor: default;
   }
   
   &-group{
@@ -16,6 +14,7 @@
   }
 
   &-disabled{
+    cursor: default;
     color: @disabled-color !important;
     >.h-icon-down{
       color: @disabled-color !important;

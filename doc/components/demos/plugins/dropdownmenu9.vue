@@ -1,7 +1,27 @@
+<style scoped lang="less">
+.header-info{
+  background: @dark-color;
+  line-height: 40px;
+  height: 40px;
+  color: @white-color;
+}
+</style>
+<style lang="less">
+.header-info-dropdown{
+  cursor: pointer;
+  padding: 0 10px 0 15px;
+  transition: .2s;
+  &:hover, &.@{pop-ref-prefix}{
+    background: rgba(243, 243, 243, 0.19);
+  }
+}
+</style>
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param" :show-count="true" :width="150">
-    <span class="text-hover">菜单menu</span>
-  </DropdownMenu>
+  <div class="header-info">
+    <DropdownMenu @onclick="trigger" :datas="param" class-name="header-info-dropdown" :show-count="true" :width="150">
+      <span>个人信息</span>
+    </DropdownMenu>
+  </div>
 </template>
 <script>
 

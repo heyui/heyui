@@ -1,6 +1,11 @@
 <template>
   <div class="doc">
     <h2>DropdownMenu 下拉菜单</h2>
+    <p>DropdownCustom可以添加自定义的<code>className</code>定义各种不同的模式的下拉菜单，<code>className</code>将应用在<code>.h-dropdownmenu-show</code>上，该dom为触发下拉的元素，包含自定义的内容以及右侧展示状态的icon。</p>
+    <p>提示：系统自带一个<code>h-text-dropdown</code>的样式。</p>
+    <blockquote>由于该样式应用在组件中，所以在调用的<code>vue</code>文件中，<code>style</code>的<code>scope</code>属性将无效。</blockquote>
+
+
     <h3>基本调用</h3>
     <example demo="plugins/dropdownmenu1"></example>
   
@@ -111,7 +116,7 @@
       </tr>
       <tr>
         <td>className</td>
-        <td>未里面的dom添加class</td>
+        <td>为点击触发的dom添加class</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>

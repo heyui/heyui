@@ -1,8 +1,8 @@
 <template>
   <div>
     <p><h-switch v-model="disabled" :small="true">禁用</h-switch></p>
-    <DropdownMenu @onclick="trigger" :datas="param" :disabled="disabled">
-      <span class="text-hover" :disabled="disabled">菜单menu</span>
+    <DropdownMenu @onclick="trigger" :datas="param" :disabled="disabled" class-name="h-text-dropdown">
+      <span :disabled="disabled">菜单menu</span>
     </DropdownMenu>
   </div>
 </template>
@@ -11,7 +11,7 @@
 export default {
   data() {
     return {
-      disabled: false,
+      disabled: true,
       param: ["测试1", "测试2", "测试3"]
     }
   },

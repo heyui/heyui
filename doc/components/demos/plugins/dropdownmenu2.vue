@@ -1,5 +1,13 @@
+
+<style lang="less">
+.button-dropdown{
+  &:hover, &.@{pop-ref-prefix}{
+    color: @primary-color;
+  }
+}
+</style>
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param">
+  <DropdownMenu @onclick="trigger" :datas="param" class-name="button-dropdown">
     <button class="h-btn">菜单menu</button>
   </DropdownMenu>
 </template>

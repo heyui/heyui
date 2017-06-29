@@ -6,7 +6,16 @@
     &-toggle{
       padding-right: 26px;
     }
-    .rotate-icon-down();
-    cursor: default;
+    .rotate-icon-down(false);
+  }
+}
+
+.h-text-dropdown{
+  cursor: pointer;
+  &>span{
+    transition: @transition-time;
+  }
+  &:hover, &.@{pop-ref-prefix}{
+    color: @primary-color;
   }
 }

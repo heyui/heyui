@@ -9,7 +9,7 @@
         <Checkbox v-model="selectAll">全选</Checkbox><i class="h-split"></i>
         <span class="link" :disabled="!selectAll">下载</span><i class="h-split" v-width="10"></i><span class="link" :disabled="!selectAll">分享</span>
         <i class="h-split"></i>
-        <DropdownMenu :disabled="!selectAll" dict="simple"><span class="text-hover"  :disabled="!selectAll">更多</span></DropdownMenu>
+        <DropdownMenu :disabled="!selectAll" dict="simple" class-name="h-text-dropdown"><span :disabled="!selectAll">更多</span></DropdownMenu>
       </div>
       <div class="h-panel-body">
         <p>content</p>
