@@ -40,6 +40,10 @@ export default {
       type: String,
       default: ","
     },
+    limit: {
+      type: Number,
+      default: 10000
+    },
     value: [Array, String]
   },
   data() {
@@ -56,8 +60,12 @@ export default {
       this.setvalue(value);
     },
     add() {
-      if (this.readonly) return;
-      if (this.tagvalue === '') return;
+      if(this.limit <= this.values.length){
+        this.$Message.error('您输入的已经超过限制');
+        return false;
+      }
+      if (this.readonly) return false;
+      if (this.tagvalue === '') return false;
       let value = utils.copy(this.values);
       value.push(this.tagvalue);
       this.setvalue(value);
@@ -73,8 +81,8 @@ export default {
       this.tagvalue = '';
     },
     blur() {
-      this.focusing = false;
-      this.add();
+      let result = this.add();
+      if(result !== false)this.focusing = false;
     }
   },
   computed: {

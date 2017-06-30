@@ -1,6 +1,6 @@
 <template>
   <div>
-      <TagInput v-model="value"></TagInput>
+      <TagInput v-model="value" :limit="10"></TagInput>
   </div>
 </template>
 
