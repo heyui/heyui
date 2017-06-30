@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/heyui/heyui/compare/v0.2.3...v0.2.4) (2017-06-30)
+
+
+### Bug Fixes
+
+* checkbox can't execute with null model ([78d1b33](https://github.com/heyui/heyui/commit/78d1b33))
+* taginput add limit attribute ([28f41a7](https://github.com/heyui/heyui/commit/28f41a7))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/heyui/heyui/compare/v0.2.2...v0.2.3) (2017-06-30)
 
