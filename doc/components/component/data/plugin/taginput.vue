@@ -24,6 +24,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>limit</td>
+        <td>限制输入的长度</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
   </div>
 </template>
