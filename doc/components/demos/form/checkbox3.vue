@@ -31,12 +31,12 @@ export default {
   data() {
     return {
       value1: [],
-      value2: [],
+      value2: null,
       value3: ['a1'],
       value4: [1],
       value5: false,
-      value6: [],
-      value7: [],
+      value6: null,
+      value7: null,
       param1: ['选择1', '选择2', '选择3'],
       param2: { 1: '选择1', 2: '选择2', 3: '选择3' },
       param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }]

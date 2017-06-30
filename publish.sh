@@ -8,7 +8,7 @@ standard-version
 set -e
 git add -A
 git commit -m 'publish new version'
-git pull
+set -e
 git push --follow-tags origin master
 echo "发布至npm"
 npm publish

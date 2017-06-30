@@ -178,7 +178,7 @@ export default {
           this.$Message.error(`您最多可以选${this.limit}个选项`);
           return;
         }
-        utils.toggleValue(this.codes, code);
+        this.codes = utils.toggleValue(this.codes, code);
       } else {
         this.codes = code;
       }

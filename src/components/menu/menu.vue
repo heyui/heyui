@@ -97,7 +97,7 @@ export default {
     },
     trigger(data) {
       if (data.type == 'togglemenuEvent') {
-        utils.toggleValue(this.status.opened, data.data.key);
+        this.status.opened = utils.toggleValue(this.status.opened, data.data.key);
         if (data.data.children && data.data.children.length > 0) {
           return;
         }
