@@ -4,6 +4,7 @@
     <header>测试</header>
     <div style="padding:15px">
       <SwitchList v-model="value1" :datas="param1"></SwitchList>
+      <Select dict="simple"></Select>
       <p>传递的参数：{{param.a}}</p>
     </div>
     <footer>

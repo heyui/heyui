@@ -141,7 +141,6 @@ export default {
       let content = this.$el.querySelector(`.h-date-picker`);
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
-        triggerOnce: true,
         content,
         disabled: this.disabled,
         container: document.body,
