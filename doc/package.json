@@ -32,7 +32,6 @@
     "plupload-es6": "^2.1.11",
     "popper.js": "^1.0.8",
     "qiniu-js-es6": "^1.0.28",
-    "vue": "^2.3.2",
     "vue-highlightjs": "^1.2.2",
     "vue-router": "^2.3.0"
   },
