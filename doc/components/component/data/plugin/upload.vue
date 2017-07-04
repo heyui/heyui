@@ -8,7 +8,7 @@
 
 
     <h3>七牛的通用示例</h3>
-    <p>本示例写明了通用的处理方案，如果使用其他上传方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/doc/src/components/common/qiniu.vue" target="_blank">示例</a></p>
+    <p>本示例写明了通用的处理方案，如果使用其他上传方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/common/qiniu.vue" target="_blank">示例</a></p>
 
     <h3>单图片上传-file对象</h3>
     <example demo="dataplugins/uploader1"></example>
