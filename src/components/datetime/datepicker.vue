@@ -86,6 +86,10 @@ export default {
       type: String,
       default: "请选择"
     },
+    hasButtons: {
+      type: Boolean,
+      default: true
+    },
     value: String
   },
   data() {
@@ -96,7 +100,7 @@ export default {
     return {
       nowDate: '',
       showDate: '',
-      hasConfirm: this.type == 'datetime' || this.type == 'datehour',
+      hasConfirm: this.type == 'datetime' || this.type == 'datehour' || this.hasButtons,
       nowView: manba(),
       nowFormat: format,
       isShow: false
@@ -213,7 +217,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if (!this.hasConfirm && isEnd) {
+      if (isEnd) {
         this.hide();
       }
       this.dropdown.popperInstance.update();
