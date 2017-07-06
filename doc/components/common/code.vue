@@ -13,13 +13,9 @@ export default {
     }
   },
   mounted() {
-    if(this.src) {
-      $.get(`/components/demos${this.src}`, (resp) => {
-        this.sourcecode = resp;
-      })
-    } else if (this.$slots.default) {
-      this.sourcecode = this.$slots.default[0].text;
-    }
+    $.get(`/components/demos${this.src}`, (resp) => {
+      this.sourcecode = resp;
+    })
   }
 }
 </script>
