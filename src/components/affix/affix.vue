@@ -12,19 +12,22 @@ export default {
   },
   data() {
     return {
-      event,
+      scrollEvent: null,
       isFixed: false,
       fixPosition: false
     }
   },
   mounted() {
     this.$nextTick(() => {
-      this.event = document.body.addEventListener("scroll", this.trigger, true);
-      this.event = window.addEventListener("resize", this.trigger, false);
+      this.scrollEvent = document.body.addEventListener("scroll", this.trigger, true);
+      this.scrollEvent = window.addEventListener("resize", this.trigger, false);
+      var evObj = document.createEvent('HTMLEvents');
+      evObj.initEvent( 'scroll', true, true );
+      document.body.dispatchEvent(evObj);
     })
   },
   beforeMount() {
-    if (this.event) {
+    if (this.scrollEvent) {
       document.body.removeEventListener('scroll', this.trigger);
       window.removeEventListener('resize', this.trigger);
     }

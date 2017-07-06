@@ -65,15 +65,15 @@ export default {
       if (this.timeout) return;
       let target = this.target();
       if (target) {
-        this.scrollTop(target);
+        this.scrollTop(target, (target.scrollHeight - target.offsetHeight)/10);
       }
       this.$emit("backtop");
     },
-    scrollTop(target) {
+    scrollTop(target, step) {
       this.timeout = setTimeout(() => {
-        if (target.scrollTop > 50) {
-          target.scrollTop -= 50;
-          this.scrollTop(target);
+        if (target.scrollTop > step) {
+          target.scrollTop -= step;
+          this.scrollTop(target, step * 0.9);
         } else {
           target.scrollTop = 0;
           this.timeout = null;
