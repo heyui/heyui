@@ -54,7 +54,6 @@ export default {
           }
         });
       }
-
       this.$el.addEventListener("webkitAnimationEnd", () => {
         this.$el.style.display = this.show ? "block" : "none";
       })
