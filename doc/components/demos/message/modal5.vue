@@ -8,7 +8,8 @@
 export default {
   methods: {
     confirm() {
-      this.$Confirm("确定删除？").then(() => {
+      //title为空的时候无头部
+      this.$Confirm("确定删除？", "自定义title").then(() => {
         this.$Message.success('确定删除！');
       })
 

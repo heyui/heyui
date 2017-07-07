@@ -7,7 +7,7 @@ let Default = {
   middle: false
 }
 
-function Confirm(content) {
+function Confirm(content, title) {
   return new Promise((resolve) => {
     let param = {
       type: prefixCls,
@@ -17,7 +17,7 @@ function Confirm(content) {
         ok: (n) => { n.close();
           resolve() }
       },
-      title: '提示',
+      title,
       class: 'h-modal-comfirm',
       hasMask: true,
       closeOnMask: true,
@@ -29,8 +29,8 @@ function Confirm(content) {
   });
 }
 
-function confirm(content) {
-  return Confirm(content);
+function confirm(content, title = "提示") {
+  return Confirm(content, title);
 }
 
 confirm.config = (options) => {
