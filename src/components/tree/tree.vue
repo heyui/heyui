@@ -194,10 +194,9 @@ export default {
           param.unshift(null);
         }
         loadData.apply(this.param, param);
-      } else {
-        this.parse();
       }
       this.treeDatas = this.initDatas(datas);
+      this.parse();
       // this.treeDataShow = this.treeDatas;
     },
     initDatas(datas) {
