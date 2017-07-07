@@ -18,6 +18,7 @@ function Confirm(content) {
           resolve() }
       },
       title: '提示',
+      class: 'h-modal-comfirm',
       hasMask: true,
       closeOnMask: true,
       hasCloseIcon: false,
