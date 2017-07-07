@@ -46,7 +46,7 @@ new Vue({
 @import (less) "~heyui/themes/common.less";
 
 //使用这种方式引用，可以在自己的less文件中使用var.less定义的变量。
-@import (less) "~heyui/themes/app.less";
+@import (less) "自己的less文件";
 </codes>
     <p>注意：使用这种引用方式，在 Vue 文件中将无法使用 var.less 文件中的变量。</p>
   </div>

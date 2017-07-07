@@ -6,62 +6,50 @@
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
-  .@{select-prefix} {
-    &-placeholder{
-      color: @gray-color;
+  &-placeholder {
+    color: @gray-color;
+  }
+  &-value-single,
+  &-placeholder {
+    line-height: @input-height - 6px;
+    height: @input-height - 6px;
+    padding-left: 5px;
+  }
+  &-show {
+    padding-right: 30px;
+    .rotate-icon-down();
+    position: relative;
+    .text-hover();
+    cursor: default;
+    line-height: @line-height;
+  }
+  &-multiple-tags {
+    >span {
+      .tag-span-func();
     }
-
-
-    &-value-single, &-placeholder{
-      line-height: @input-height - 6px;
-      height: @input-height - 6px;
-      padding-left: 5px;
-    }
-
-    &-show{
-      .rotate-icon-down();
-      position: relative;
-      .text-hover();
-      cursor: default;
-      line-height: @line-height;
-    }
-
-    &-multiple-tags {
-      >span{
-        .tag-span-func();
+  }
+  &-input-border {
+    .@{select-prefix}{
+      &-show {
+        .border-input();
+        .@{prefix}form-item-valid-error & {
+          border-color: @red-color;
+          &.@{pop-ref-prefix} {
+            box-shadow: 0 0 0 2px fade(@red-color, 20%);
+          }
+        }
+      }
+      &-value-single,
+      &-placeholder {
+        margin-bottom: 2px;
       }
     }
   }
-
   &-no-autosize {
     display: block;
-    .@{select-prefix}-show{
-      min-height: @input-height;
-    }
   }
-  &-input-border &-show{
-    .border-input();
-    padding-right: 30px;
-
-    .@{prefix}form-item-valid-error &{
-      border-color: @red-color;
-      &.@{pop-ref-prefix}{
-        box-shadow: 0 0 0 2px fade(@red-color, 20%);
-      }
-    }
-  }
-  &-input-no-border &-show{
-    padding: 3px 30px 3px 2px;
-  }
-
-  
-
-  &-disabled &-show{
+  &-disabled &-show {
     .border-input-disabled();
-  }
-
-  &-multiple &-show{
-    padding: 2px 30px 0px 2px;
   }
 }
 
@@ -72,8 +60,8 @@
   font-size: @font-size-mini;
   background-color: @white-color;
   padding: 5px 0px;
-  &-container{
-    .@{select-prefix}-list{
+  &-container {
+    .@{select-prefix}-list {
       max-height: 300px;
       overflow-y: auto;
     }
@@ -87,12 +75,10 @@
       background-color: @primary-color;
     }
   }
-
-  .@{select-prefix}-search-input{
+  .@{select-prefix}-search-input {
     width: 98%;
     margin: 3px 1%;
   }
-
   &.@{select-prefix} {
     &-multiple {
       .@{select-item-prefix} {
