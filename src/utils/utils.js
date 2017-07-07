@@ -174,7 +174,6 @@ export default utils.extend({}, utils, {
     }
     let result = [];
     let dataObj = this.toObject(data, param.keyName);
-    let parentObj = this.toObject(data, param.parentName);
     for (let d of data) {
       let parentCode = d[param.parentName];
       if (!utils.isNull(d[param.parentName]) && dataObj[parentCode]) {
@@ -184,8 +183,7 @@ export default utils.extend({}, utils, {
         }
         parent[param.childrenName].push(d);
       }
-
-      if (utils.isNull(parentCode) || utils.isNull(parentObj[parentCode])) {
+      if (utils.isNull(parentCode) || utils.isNull(dataObj[parentCode])) {
         result.push(d);
       }
     }

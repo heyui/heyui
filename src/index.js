@@ -41,7 +41,6 @@ import {
 } from './components/layout';
 import Timeline from './components/timeline';
 import { Button, ButtonGroup } from './components/button';
-// import locale from './locale';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -51,11 +50,11 @@ import $Confirm from './plugins/confirm';
 import $Message from './plugins/message';
 import $Notice from './plugins/notice';
 import $Loading from './plugins/loading';
-import $LoadingBar from './plugins/loadingbar';
+import $LoadingBar from './plugins/loadingBar';
 
 import filters from './filters';
-
 import config from './utils/config';
+// import locale from './locale';
 
 
 const components = {

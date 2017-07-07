@@ -10,7 +10,7 @@
               v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i></span>
       </span>
       <Checkbox :disabled="data.status.disabled" v-if="multiple" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
-      <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title}}</span>
+      <span class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">{{data.title||'空'}}</span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
         class="h-tree-ul">
