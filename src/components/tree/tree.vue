@@ -90,6 +90,7 @@ export default {
       type: String,
       default: "all"
     },
+    value: [Number, String, Array, Object],
     config: String
   },
   data() {
@@ -114,10 +115,22 @@ export default {
       searchValue: null
     };
   },
+  watch:{
+    value(){
+      this.parse();
+    }
+  },
   mounted() {
     this.initTreeDatas();
   },
   methods: {
+    parse() {
+      if (this.multiple) {
+        this.updateChoose(this.value);
+      } else {
+        this.updateSelect(this.value);
+      }
+    },
     searchTree(value) {
       if (value === this.searchValue) return;
       this.searchValue = value;
@@ -156,30 +169,13 @@ export default {
       } else if (type == 'selectEvent') {
         this.status.selected = data.key;
         this.$emit('select', data.value);
+        if(!this.multiple) this.setvalue();
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
         updateChildStatus(data, 'choose', choose);
         this.$emit('choose', null);
+        if(this.multiple) this.setvalue();
       }
-    },
-    setvalue(option) {
-      if (this.disabled) return;
-      let value = utils.copy(this.value);
-      if (this.arr.length == 0) {
-        value = !value;
-      } else {
-        let key = option[this.key];
-        let index = this.check(key);
-        if (index > -1) {
-          value.splice(index, 1);
-        } else {
-          value.push(key);
-        }
-      }
-      this.$emit('input', value);
-      let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, value);
-      this.$el.dispatchEvent(event);
     },
     initTreeDatas() {
       let datas = utils.copy(this.param.datas);
@@ -189,6 +185,7 @@ export default {
         let loadData = this.param.getTotalDatas || this.param.getDatas;
         let param = [(result) => {
           this.treeDatas = this.initDatas(utils.copy(result));
+          this.parse();
           this.globalloading = false;
         }, () => {
           this.globalloading = false;
@@ -197,6 +194,8 @@ export default {
           param.unshift(null);
         }
         loadData.apply(this.param, param);
+      } else {
+        this.parse();
       }
       this.treeDatas = this.initDatas(datas);
       // this.treeDataShow = this.treeDatas;
@@ -259,6 +258,22 @@ export default {
           updateModeSomeChildChooseStatus(data);
         }
       }
+    },
+    setvalue() {
+      let value = null;
+      if(this.multiple){
+        let choose = this.getChoose();
+        let keys = choose.map(item=>item[this.param.keyName]);
+        value = keys;
+      }else{
+        let select = this.getSelect();
+        value = select ? select[this.param.keyName] : null;
+      }
+
+      this.$emit('input', value);
+      let event = document.createEvent("CustomEvent");
+      event.initCustomEvent("setvalue", true, true, value);
+      this.$el.dispatchEvent(event);
     },
     getFullChoose() {
       let options = [];

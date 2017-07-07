@@ -1,7 +1,8 @@
 <template>
 <div>
+  <p>值：{{value}}</p>
   <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
-  <Tree :option="param" ref="demo" :multiple="true" choose-mode="all"></Tree>
+  <Tree :option="param" ref="demo" v-model="value" :multiple="true" choose-mode="all"></Tree>
 </div>
 </template>
 <script>
@@ -32,6 +33,7 @@ export default {
       ]},
     ];
     return {
+      value: [],
       param: {
         keyName: 'id',
         titleName: 'title',
@@ -42,7 +44,9 @@ export default {
   },
   methods: {
     updateChoose() {
-      this.$refs.demo.updateChoose([1, 23, 31]);
+      // 两种方法都可以
+      // this.$refs.demo.updateChoose([1, 23, 31]);
+      this.value = [1, 23, 31];
     },
     getChoose() {
       let options = this.$refs.demo.getChoose();

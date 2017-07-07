@@ -1,12 +1,13 @@
 <template>
   <div>
+    <p>值：{{value}}</p>
     <p>
       <Button @click="expandAll" size="xs">全部展开</Button>
       <Button @click="foldAll" size="xs">全部收起</Button>
       <Button @click="updateSelect" size="xs">设置选中值</Button>
       <Button @click="getSelect" size="xs">获得选中值</Button>
     </p>
-    <Tree :option="param" ref="demo" @open="open"  @select="select"  @choose="choose"></Tree>
+    <Tree :option="param" ref="demo" v-model="value" @open="open"  @select="select"  @choose="choose"></Tree>
   </div>
 </template>
 <script>
@@ -33,6 +34,7 @@ export default {
       { id: 34, title: "三级-4", parent: 3 }
     ];
     return {
+      value: null,
       param: {
         keyName: 'id',
         parentName: 'parent',
@@ -50,7 +52,9 @@ export default {
       this.$refs.demo.foldAll();
     },
     updateSelect() {
-      this.$refs.demo.updateSelect(2);
+      // 两种方法都可以
+      // this.$refs.demo.updateSelect(2);
+      this.value = 2;
       this.$Message.info("选中二级");
     },
     getSelect() {

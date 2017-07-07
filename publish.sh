@@ -1,7 +1,7 @@
 echo "打包hey build"
 hey b
 git add -A
-git commit
+git commit -m "package"
 set -e
 echo "修正版本号"
 standard-version

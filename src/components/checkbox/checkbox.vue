@@ -3,7 +3,7 @@
     <template v-if="arr.length">
     <label v-for="option of arr" @click="setvalue(option)" :key="option"><span :checked="isInclude(option)" :disabled="disabled" class="h-checkbox-native"></span><span>{{option[title]}}</span></label>
     </template>
-    <label v-else @click="setvalue()"><span :checked="isChecked" :indeterminate="indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span v-if="$slots.default"><slot></slot></span></label>
+    <label v-else @click="setvalue()"><span :checked="isChecked" :indeterminate="!isChecked&&indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span v-if="$slots.default"><slot></slot></span></label>
   </div>
 </template>
 <script>
