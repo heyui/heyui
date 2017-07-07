@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.5"></a>
+## [0.2.5](https://github.com/heyui/heyui/compare/v0.2.4...v0.2.5) (2017-07-07)
+
+
+### Bug Fixes
+
+* affix初始化的时候init位置 ([1afa23d](https://github.com/heyui/heyui/commit/1afa23d))
+* datepicker 添加清除和确认按钮 ([1566070](https://github.com/heyui/heyui/commit/1566070))
+* 优化backtop的滚动效果 ([9d2957f](https://github.com/heyui/heyui/commit/9d2957f))
+* 更新文档 ([98acbfe](https://github.com/heyui/heyui/commit/98acbfe))
+
+
+
 <a name="0.2.4"></a>
 ## [0.2.4](https://github.com/heyui/heyui/compare/v0.2.3...v0.2.4) (2017-06-30)
 
