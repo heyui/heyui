@@ -4,7 +4,7 @@
     <p>HeyUI 是一套基于 Vue2.0 的开源 UI 组件库，主要服务于一些中后台产品。</p>
     <h3>特性</h3>
     <p>HeyUI提供的是一整套解决方案，所有的组件提供全局的可配置模式。</p>
-    <ul>
+    <ul class="text-ul">
       <li>真正的数据驱动</li>
       <li>全局的配置模式</li>
       <li>数据字典化</li>
@@ -24,7 +24,7 @@
     <p>HeyUI支持 Vue.js 2.x版本</p>
 
     <h3>相关链接</h3>
-    <ul>
+    <ul class="text-ul">
       <li><a href="https://vuejs.org/">Vue官方文档</a></li>
       <li><a href="https://github.com/heyui/hey-cli">Hey-Cli脚手架</a></li>
       <li><a href="http://demo.heyui.top">官方demo</a></li>

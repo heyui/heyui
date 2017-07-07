@@ -26,8 +26,8 @@
 // HeyUI.config("autocomplete.configs", {
 //   simple: {
 //     loadData,
-//     key: 'id',
-//     title: 'name',
+//     keyName: 'id',
+//     titleName: 'name',
 //     minWord: 1
 //   }
 // });
