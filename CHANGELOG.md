@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.8"></a>
+## [0.2.8](https://github.com/heyui/heyui/compare/v0.2.7...v0.2.8) (2017-07-07)
+
+
+### Bug Fixes
+
+* 修复tree层级顶级判断问题 ([6a35075](https://github.com/heyui/heyui/commit/6a35075))
+* 修改样式错误，修正文档错误 ([b27783a](https://github.com/heyui/heyui/commit/b27783a))
+* 删除无用的引用 ([c8208e7](https://github.com/heyui/heyui/commit/c8208e7))
+
+
+
 <a name="0.2.7"></a>
 ## [0.2.7](https://github.com/heyui/heyui/compare/v0.2.6...v0.2.7) (2017-07-07)
 
