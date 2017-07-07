@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/heyui/heyui/compare/v0.2.5...v0.2.6) (2017-07-07)
+
+
+### Bug Fixes
+
+* 为confirm添加class识别 ([0321a7f](https://github.com/heyui/heyui/commit/0321a7f))
+* 优化select.less ([7a9ea34](https://github.com/heyui/heyui/commit/7a9ea34))
+* 自定义confirm的title ([b440493](https://github.com/heyui/heyui/commit/b440493))
+
+
+
 <a name="0.2.5"></a>
 ## [0.2.5](https://github.com/heyui/heyui/compare/v0.2.4...v0.2.5) (2017-07-07)
 
