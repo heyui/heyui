@@ -6,20 +6,20 @@
 
 ## install
 ```js
-	npm install heyui
+npm install heyui
 ```
 ## Start
 
 ```js
-	import Vue from 'vue'
-	import HeyUI from 'heyui'
-	
-	Vue.use(HeyUI)
+import Vue from 'vue'
+import HeyUI from 'heyui'
+
+Vue.use(HeyUI)
 ```
 
 ## Demo
 
-我们提供了一个完成的企业级应用demo，[http://demo.heyui.top](http://demo.heyui.top)
+我们提供了一个完成的企业级应用demo，[http://demo.heyui.top](http://demo.heyui.top)。
 
 ## Browser Support
 Modern browsers and Internet Explorer 9+.

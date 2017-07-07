@@ -9,6 +9,8 @@ set -e
 git add -A
 git commit -m 'publish new version'
 set -e
+git push
+set -e
 git push --follow-tags origin master
 echo "发布至npm"
 npm publish
