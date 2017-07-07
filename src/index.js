@@ -1,13 +1,13 @@
+/*
+ Copyright (C) Lan 2017
+ Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
+ */
 import Affix from './components/affix';
 import BackTop from './components/backtop';
 import Badge from './components/badge';
-// import Breadcrumb from './components/breadcrumb';
-// import Carousel from './components/carousel';
-// import Cascader from './components/cascader';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Datetime from './components/datetime';
-
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
@@ -60,23 +60,14 @@ import config from './utils/config';
 
 const components = {
   Affix,
-  // Alert,
   AutoComplete,
   BackTop,
   Badge,
-  // Breadcrumb,
-  // BreadcrumbItem: Breadcrumb.Item,
   Button,
   hButton: Button,
   ButtonGroup,
-  // Card,
-  // Carousel,
-  // CarouselItem: Carousel.Item,
-  // Cascader,
   Checkbox,
-  // CheckboxGroup: Checkbox.Group,
   hCircle: Circle,
-  // DatePicker,
   DropdownCustom,
   DropdownMenu,
   DatePicker: Datetime.DatePicker,
@@ -85,27 +76,14 @@ const components = {
   Form,
   FormItem: Form.Item,
   FormItemList: Form.ItemList,
-  // Collapse,
-  // Icon,
-  // InputNumber,
-  // LoadingBar,
   Menu,
-  // MenuGroup: Menu.Group,
-  // MenuItem: Menu.Item,
-  // Submenu: Menu.Sub,
-  // Message,
   Modal: modal.Modal,
   ModalComponent: modal.ModalComponent,
   NumberInput,
-  // Notice,
-  // iOption: Option,
-  // OptionGroup,
   Pagination,
-  // Panel: Collapse.Panel,
   Poptip,
   Progress,
   Radio,
-  // RadioGroup: Radio.Group,
   Rate,
   Row,
   hCol: Col,
@@ -117,7 +95,6 @@ const components = {
   Search,
   Slider,
   Loading,
-  // Step: Steps.Step,
   Steps,
   hSwitch: Switch,
   SwitchList,
@@ -125,11 +102,8 @@ const components = {
   Table,
   hTable: Table,
   Tabs,
-  // TabPane: Tabs.Pane,
   Tag,
-  // TimePicker,
   Tooltip,
-  // Transfer,
   Tree,
   Uploader
 };
