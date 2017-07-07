@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.10"></a>
+## [0.2.10](https://github.com/heyui/heyui/compare/v0.2.9...v0.2.10) (2017-07-07)
+
+
+### Bug Fixes
+
+* 解决tree直接应用数据v-model无法渲染的bug ([dc0cc12](https://github.com/heyui/heyui/commit/dc0cc12))
+
+
+
 <a name="0.2.9"></a>
 ## [0.2.9](https://github.com/heyui/heyui/compare/v0.2.8...v0.2.9) (2017-07-07)
 
