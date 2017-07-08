@@ -1,5 +1,5 @@
 <template>
-  <label class="h-switch"><span :class="{'h-switch-span': true, 'h-switch-small':small}" :checked="value" :disabled="disabled" @click="setvalue(!value)"/></span><span class="h-switch-text"><slot></slot></span></label>
+  <label class="h-switch" :class="{'h-switch-small':small}"><span class="h-switch-span" :checked="value" :disabled="disabled" @click="setvalue(!value)"></span><span class="h-switch-text"><slot></slot></span></label>
 </template>
 <script>
 export default {

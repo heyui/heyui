@@ -1,25 +1,26 @@
 @switch-prefix: ~"@{prefix}switch";
-@switch-hight: 26px;
-@min-switch-height: 18px;
 .switchset(@height) {
-  width: @height*1.8+2px;
-  height: @height+2px;
-  &:after {
-    width: @height - 2px;
-    height: @height - 2px;
-  }
-  &:before {
-    width: @height*1.8;
-    height: @height;
-  }
-  &:checked,&[checked] {
+  >.@{switch-prefix}-span{
+    width: @height*1.8+2px;
+    height: @height+2px;
     &:after {
-      transform: translateX(@height*0.8);
+      width: @height - 2px;
+      height: @height - 2px;
+    }
+    &:before {
+      width: @height*1.8;
+      height: @height;
+    }
+    &:checked,&[checked] {
+      &:after {
+        transform: translateX(@height*0.8);
+      }
     }
   }
+  line-height: @height+2px;
 }
 
-input[type=checkbox].@{switch-prefix},.@{switch-prefix} .@{switch-prefix}-span {
+.@{switch-prefix} .@{switch-prefix}-span {
   display: inline-block;
   margin: 0px;
   cursor: pointer;
@@ -30,14 +31,9 @@ input[type=checkbox].@{switch-prefix},.@{switch-prefix} .@{switch-prefix}-span {
   border-radius: 16px;
   box-sizing: border-box;
   background: @gray1-color;
-  vertical-align: -38%;
+  float: left;
   margin-right: 5px;
   transition: all .3s; 
-  .switchset(@switch-hight);
-  &.@{switch-prefix}-small {
-    .switchset(@min-switch-height);
-    vertical-align: -25%;
-  }
   &:after {
     background-color: @white-color;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
@@ -87,5 +83,9 @@ input[type=checkbox].@{switch-prefix},.@{switch-prefix} .@{switch-prefix}-span {
   display: inline-block;
   >.h-switch-text{
     display: inline-block;
+  }
+  .switchset(@switch-hight);
+  &.@{switch-prefix}-small {
+    .switchset(@min-switch-height);
   }
 }
