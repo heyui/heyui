@@ -24,9 +24,9 @@ const loadData = function (filter, callback) {
 export default {
   data() {
     return {
-      orgId: 1, //自定义参数传递
       value: '测试',
       param: {
+        orgId: 1, //自定义参数传递
         loadData,
         minWord: 1
       }
