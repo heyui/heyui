@@ -9,37 +9,33 @@
 @white-color : #ffffff;
 
 //Gray 1-4 more shallow
+//暗黑的字体颜色
 @dark-color: #333333;
-@dark1-color: #555555;
-@dark2-color: #666666;
+
+//灰色的字体
 @gray-color: #808080;
+//浅灰色的字体，或者深色的线条
 @gray1-color: #d3d3d3;
+//一般线条的颜色
 @gray2-color: #eeeeee;
+//浅色的字体，或者深色的背景
 @gray3-color: #f3f3f3;
+//一般灰色的背景
 @gray4-color: #f9f9f9;
 
 //Base
-@background : #FFF;
 @font-size : 14px;
 @font-size-mini : 13px;
 @line-height : 1.5;
 @line-height-computed : floor((@font-size * @line-height));
 
-@font-family : "Helvetica Neue",
-Helvetica,
-"PingFang SC",
-"Hiragino Sans GB",
-"Microsoft YaHei",
-"微软雅黑",
-Arial,
-sans-serif;
+@font-family : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 
 //border
 @border-color: @gray2-color;
 @border: 1px solid @gray2-color;
 
 //disabled
-
 @disabled-cursor: not-allowed;
 @disabled-color: @gray-color;
 @disabled-border-color: @gray1-color;
@@ -53,7 +49,7 @@ sans-serif;
 @btn-border-radius: 4px;
 
 //box-shadow
-@box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+@box-shadow-button: 0 1px 1px 0 @gray2-color;
 @box-shadow-notify: 0 5px 10px rgba(0, 0, 0, 0.1);
 @box-shadow-dropdown : 0 5px 10px rgba(0, 0, 0, 0.1);
 @box-shadow-tooltip : 1px 1px 0px rgba(0, 0, 0, .2);
