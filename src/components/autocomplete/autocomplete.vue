@@ -206,8 +206,10 @@ export default {
       if (!this.mustMatch) {
         if (this.type == 'key' || this.type == 'title') {
           inputValue = this.showValue;
-        } else {
+        } else if (!utils.isBlank(this.showValue)) {
           inputValue = { [this.param.titleName]: this.showValue };
+        } else {
+          inputValue = null;
         }
       } else {
         this.tempValue = null;

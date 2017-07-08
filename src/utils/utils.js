@@ -189,6 +189,9 @@ export default utils.extend({}, utils, {
     }
     return result;
   },
+  isBlank(value) {
+    return this.isNull(value) || value === '';
+  },
   getValue(item, param) {
     let title = '';
     let key = null;
