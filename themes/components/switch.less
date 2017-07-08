@@ -65,20 +65,20 @@ input[type=checkbox].@{switch-prefix},.@{switch-prefix} .@{switch-prefix}-span {
       transform: scale(0);
     }
     &[disabled]{
-      background-color: @gray2-color;
+      background-color: @disabled-background-color;
     }
   }
 
   &[disabled]{
-    border-color: @gray2-color;
-    background-color: @gray2-color;
+    border-color: @disabled-border-color;
+    background-color: @disabled-background-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
     &:after{
       border-color: @white-color;
     }
     &:before {
-      background-color: @gray2-color;
+      background-color: @disabled-background-color;
     }
   }
 }

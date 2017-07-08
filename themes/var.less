@@ -1,14 +1,13 @@
 @prefix : h-;
 // Color
 @primary-color : #3399ff;
-@light-primary-color : lighten(@primary-color, 10%);
-@dark-primary-color : darken(@primary-color, 10%);
 @link-color : @primary-color;
 @blue-color : #3B91FF; //info
 @green-color : #13CE66; //success
 @yellow-color : #FFAE00; //warn
 @red-color : #E11617; //error
 @white-color : #ffffff;
+
 //Gray 1-4 more shallow
 @dark-color: #333333;
 @dark1-color: #555555;
@@ -18,22 +17,14 @@
 @gray2-color: #eeeeee;
 @gray3-color: #f3f3f3;
 @gray4-color: #f9f9f9;
-//border
-@border-color : @gray2-color;
-@border: 1px solid @gray2-color;
-@border-darken-color : @gray1-color;
-//disabled
-@disabled-color: @dark1-color;
-//hover
-@hover-background-color: lighten(@primary-color, 37%);
+
 //Base
 @background : #FFF;
 @font-size : 14px;
 @font-size-mini : 13px;
 @line-height : 1.5;
-@border-radius : 4px;
-@btn-border-radius: 4px;
 @line-height-computed : floor((@font-size * @line-height));
+
 @font-family : "Helvetica Neue",
 Helvetica,
 "PingFang SC",
@@ -42,78 +33,40 @@ Helvetica,
 "微软雅黑",
 Arial,
 sans-serif;
-@shadow-color : rgba(0, 0, 0, .2);
-@box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-@shadow-base: 0 1px 6px rgba(0,0,0,.2);
+
+//border
+@border-color: @gray2-color;
+@border: 1px solid @gray2-color;
+
+//disabled
+
 @disabled-cursor: not-allowed;
-@icon-prefix: h-icon-;
+@disabled-color: @gray-color;
+@disabled-border-color: @gray1-color;
+@disabled-background-color: @gray4-color;
+
+//hover
+@hover-background-color: lighten(@primary-color, 37%);
+
+//radiu
+@border-radius : 4px;
+@btn-border-radius: 4px;
+
+//box-shadow
+@box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+@box-shadow-notify: 0 5px 10px rgba(0, 0, 0, 0.1);
+@box-shadow-dropdown : 0 5px 10px rgba(0, 0, 0, 0.1);
+@box-shadow-tooltip : 1px 1px 0px rgba(0, 0, 0, .2);
+@box-shadow-select-dropdown: 0 1px 6px rgba(0, 0, 0, .2);
+
 //dropdown,tooltip触发的el添加相关class
 @pop-ref-prefix: h-pop-trigger;
-// @cursor-disabled: 
-// // Button
-// @btn-font-weight : normal;
-// @btn-padding-base : 6px 15px;
-// @btn-padding-large : 6px 15px 7px 15px;
-// @btn-padding-small : 2px 7px;
-// @btn-font-size : 12px;
-// @btn-font-size-large : 14px;
-// @btn-border-radius : 4px;
-// @btn-border-radius-small: 3px;
-// @btn-group-border : shade(@primary-color, 5%);
-// @btn-disable-color : #c3cbd6;
-// @btn-disable-bg : @background-color-base;
-// @btn-disable-border : @border-color-base;
-// @btn-default-color : @text-color;
-// @btn-default-bg : @background-color-base;
-// @btn-default-border : @border-color-base;
-// @btn-primary-color : #fff;
-// @btn-primary-bg : @primary-color;
-// @btn-ghost-color : @text-color;
-// @btn-ghost-bg : transparent;
-// @btn-ghost-border : @border-color-base;
-// @btn-circle-size : 32px;
-// @btn-circle-size-large : 36px;
-// @btn-circle-size-small : 24px;
-// // Layout and Grid
-// @grid-columns : 24;
-// @grid-gutter-width : 0;
-// // Legend
-// @legend-color : #999;
 // Input
 @input-height : 30px;
-// @input-height-large : 36px;
-// @input-height-small : 24px;
-// @input-padding-horizontal : 7px;
-// @input-padding-vertical-base : 4px;
-// @input-padding-vertical-small: 1px;
-// @input-padding-vertical-large: 6px;
-// @input-placeholder-color : @btn-disable-color;
-// @input-color : @text-color;
-// @input-border-color : @border-color-base;
-// @input-bg : #fff;
-// @input-hover-border-color : @primary-color;
-// @input-focus-border-color : @primary-color;
-// @input-disabled-bg : #f3f3f3;
 // Tag
 @tag-font-size : 12px;
-// // Media queries breakpoints
-// // Extra small screen / phone
-// @screen-xs : 480px;
-// @screen-xs-min : @screen-xs;
-// @screen-xs-max : (@screen-xs-min - 1);
-// // Small screen / tablet
-// @screen-sm : 768px;
-// @screen-sm-min : @screen-sm;
-// @screen-sm-max : (@screen-sm-min - 1);
-// // Medium screen / desktop
-// @screen-md : 992px;
-// @screen-md-min : @screen-md;
-// @screen-md-max : (@screen-md-min - 1);
-// // Large screen / wide desktop
-// @screen-lg : 1200px;
-// @screen-lg-min : @screen-lg;
-// @screen-lg-max : (@screen-lg-min - 1);
-// // Z-index
+@icon-prefix: h-icon-;
+// Z-index
 @zindex-loading : 8;
 @zindex-affix : 10;
 @zindex-backtop : 10;
@@ -128,10 +81,3 @@ sans-serif;
 // Animation
 @animation-time : .3s;
 @transition-time : .2s;
-// // Slider
-// @slider-color : tint(@primary-color, 20%);
-// @slider-height : 4px;
-// @slider-margin : 16px 0;
-// @slider-button-wrap-size : 18px;
-// @slider-button-wrap-offset : -4px;
-// @slider-disabled-color : #ccc;

@@ -1,6 +1,6 @@
 @radio-prefix: ~"@{prefix}radio";
 @radio-border: 1px solid @gray2-color;
-input[type=radio],.@{radio-prefix}>label>span {
+.@{radio-prefix}>label>span {
   -webkit-appearance: none;
   display: inline-block;
   width: 16px;
@@ -42,12 +42,12 @@ input[type=radio],.@{radio-prefix}>label>span {
   &[disabled]{
     pointer-events: painted;
     cursor: @disabled-cursor;
-    border-color: @gray1-color;
-    background-color: @gray1-color;
+    border-color: @disabled-border-color;
+    background-color: @disabled-background-color;
     &:checked,&[checked] {
-      background-color: @gray1-color;
+      background-color: @disabled-background-color;
        &:after {
-        background-color: @gray-color;
+        background-color: @disabled-border-color;
       }
     }
   }
@@ -69,11 +69,11 @@ input[type=radio],.@{radio-prefix}>label>span {
   }
 
   &[disabled]>label{
-    color: @gray1-color;
+    color: @disabled-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
     &:hover>span{
-      border-color: @gray1-color;
+      border-color: @disabled-border-color;
     }
   }
 }

@@ -1,10 +1,9 @@
-@card-prefix: ~"@{prefix}panel";
+@panel-prefix: ~"@{prefix}panel";
 
-.@{card-prefix}{
+.@{panel-prefix}{
     background: #fff;
     border-radius: @border-radius;
     position: relative;
-    // transition: all @transition-time ease-in-out;
     border: @border;
 
     &-no-border {
@@ -12,17 +11,7 @@
     }
 
     &:hover {
-        // box-shadow: @shadow-base;
         border-color: #eee;
-    }
-
-
-    &&-dis-hover:hover{
-        box-shadow: none;
-    }
-
-    &&-dis-hover&-bordered:hover{
-        border-color: @border-color;
     }
 
     &-extra {

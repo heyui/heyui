@@ -17,16 +17,6 @@
         <p>@primary-color</p>
       </div>
       </Col>
-      <Col :width='8'>
-      <div v-bg-color:dark-primary  v-color:white>
-        <p>@dark-primary-color</p>
-      </div>
-      </Col>
-      <Col :width='8'>
-      <div v-bg-color:light-primary  v-color:white>
-        <p>@light-primary-color</p>
-      </div>
-      </Col>
     </Row>
 
     <h3>主色</h3>
