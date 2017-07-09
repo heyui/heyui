@@ -159,8 +159,12 @@ export default {
       } else {
         if (this.type == 'key') {
           this.codes = this.getValue(this.value);
-        } else if (utils.isObject(this.value)) {
-          this.codes = this.value[this.key];
+        } else {
+          if (utils.isObject(this.value)) {
+            this.codes = this.value[this.key];
+          } else {
+            this.codes = null;
+          }
         }
       }
       this.setObjects();
