@@ -5,10 +5,10 @@ git commit -m "package"
 set -e
 echo "修正版本号"
 standard-version
-set -e
-echo "commit"
-git add -A
-git commit -m 'publish new version'
+# set -e
+# echo "commit"
+# git add -A
+# git commit -m 'publish new version'
 set -e
 echo "git push"
 git push origin master
