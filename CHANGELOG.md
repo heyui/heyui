@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.11"></a>
+## [0.2.11](https://github.com/heyui/heyui/compare/v0.2.10...v0.2.11) (2017-07-09)
+
+
+### Bug Fixes
+
+* dictMapping添加对象数据的解析 ([f0f0cb7](https://github.com/heyui/heyui/commit/f0f0cb7))
+* 修复autocomplete可以任意输入对象的bug ([d690f11](https://github.com/heyui/heyui/commit/d690f11))
+* 修正demo的参数传递错误 ([845886e](https://github.com/heyui/heyui/commit/845886e))
+* 完善less，更新变换主题文档 ([504963f](https://github.com/heyui/heyui/commit/504963f))
+* 完善less文件的定义，修复select样式的bug ([09623ae](https://github.com/heyui/heyui/commit/09623ae))
+* 当重新给Select赋值null时，无效 ([18a5d62](https://github.com/heyui/heyui/commit/18a5d62))
+* 样式优化第二波 ([90c33d1](https://github.com/heyui/heyui/commit/90c33d1))
+* 补充全局变量文档 ([9e53f65](https://github.com/heyui/heyui/commit/9e53f65))
+* 重新传递autocomplete 值null时无效 ([015d26a](https://github.com/heyui/heyui/commit/015d26a))
+
+
+
 <a name="0.2.10"></a>
 ## [0.2.10](https://github.com/heyui/heyui/compare/v0.2.9...v0.2.10) (2017-07-07)
 
