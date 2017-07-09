@@ -196,8 +196,8 @@ export default utils.extend({}, utils, {
     let title = '';
     let key = null;
     if (utils.isObject(item)) {
-      title = item[param.title];
-      key = item[param.key];
+      title = item[param.titleName];
+      key = item[param.keyName];
     } else {
       title = item;
       key = item;

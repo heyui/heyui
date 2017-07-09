@@ -36,23 +36,7 @@ const config = {
       minWord: 0,
       titleName: 'title',
       keyName: 'key',
-      render: null,
-      getValue(item) {
-        let title = '';
-        let key = null;
-        if (utils.isObject(item)) {
-          title = item[this.titleName];
-          key = item[this.keyName];
-        } else {
-          title = item;
-          key = item;
-        }
-        let result = { key, title, value: item };
-        if (this.render && result.key) {
-          result.html = this.render.call(null, result);
-        }
-        return result;
-      }
+      render: null
     }
   },
   modal: {

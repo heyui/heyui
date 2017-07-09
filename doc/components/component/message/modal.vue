@@ -78,7 +78,7 @@
         <td>是否有线条分割头部以及尾部</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>全局配置hasDivider</td>
+        <td>全局配置modal.hasDivider</td>
       </tr>
       <tr>
         <td>closeOnMask</td>

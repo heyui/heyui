@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <Tree config="simple"></Tree>
-  </div>
+  <Row v-height="300" type="flex">
+    <Col :width="12" class="overflow-y">
+      <p>value: {{value1}}</p>
+      <Tree config="simple" v-model="value1"></Tree>
+    </Col>
+    <Col :width="12" class="overflow-y">
+      <p>value: {{value2}}</p>
+      <Tree config="simple" multiple v-model="value2"></Tree>
+    </Col>
+  </Row>
 </template>
 <script>
 // let list = [
@@ -33,4 +40,13 @@
 //     datas: list
 //   }
 // });
+
+export default {
+  data(){
+    return {
+      value1: null,
+      value2: []
+    }
+  }
+}
 </script>

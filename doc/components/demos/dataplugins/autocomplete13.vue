@@ -2,6 +2,13 @@
   <div>
     <p>value:{{value}}</p>
     <AutoComplete config="simple" v-model="value" @change="onChange"></AutoComplete>
+    <p>value1:{{value1}}</p>
+    <AutoComplete config="simple" v-model="value1" @change="onChange" multiple></AutoComplete>
+    <p>value2:{{value2}}</p>
+    <AutoComplete config="simple" v-model="value2" @change="onChange" type="object"></AutoComplete>
+    <p>value3:{{value3}}</p>
+    <AutoComplete config="simple" v-model="value3" @change="onChange" type="object" multiple></AutoComplete>
+    <p>还有<code>mustMatch</code>等模式，具体请查看autocomplete文档。</p>
   </div>
 </template>
 <script>
@@ -35,7 +42,10 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '',
+      value1: [],
+      value2: null,
+      value3: []
     }
   },
   methods: {

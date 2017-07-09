@@ -11,6 +11,7 @@
     <ul class="text-ul">
       <li><code>HeyUI.initDict({key: value})</code>: 初始化字典对象</li>
       <li><code>HeyUI.addDict(key, value)</code> 添加字典</li>
+      <li><code>HeyUI.getDict(key)</code>: 获取字典值</li>
     </ul>
     
     <h4>字典应用-组件</h4>
@@ -28,15 +29,33 @@
     <ul class="text-ul">
       <li><code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
     </ul>
-    
-    <h4>字典应用-获取</h4>
-    <p>有时，我们在代码中需要获取一些字典，我们也提供了方法：</p>
-    <ul class="text-ul">
-      <li><code>HeyUI.getDict(key)</code>: 获取字典值</li>
-    </ul>
 
     <h4>示例</h4>
     <example demo="basic/demo2"></example>
+
+    <h3>全局配置</h3>
+    <p>通过<code>HeyUI</code>可以对一些参数进行全局配置，具体配置项参考：<a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></p>
+    <ul class="text-ul">
+      <li><code>HeyUI.config(key, value)</code>: 设置配置，<code>key</code>可以是路径方式，例：<code>tree.default</code></li>
+      <li><code>HeyUI.getOption(key)</code>: 获取配置。</li>
+    </ul>
+
+    <h4>dict</h4>
+    <p>设定全局字典的<code>key</code>,<code>value</code>的命名。</p>
+<codes type="javascript">HeyUI.config('dict.keyName', "key");
+HeyUI.config('dict.titleName', "title");</codes>
+    <h4>tree</h4>
+    <p>设定<code>tree</code>的默认参数，以及定义系统中存在的不同tree的调用。</p>
+    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-demo/blob/master/src/js/config/tree-config.js">tree-config.js</a>。</p>
+    <example demo="plugins/tree7"></example>
+
+    <h4>autocomplete</h4>
+    <p>设定<code>autocomplete</code>的默认参数，以及定义系统中存在的不同autocomplete的调用。</p>
+    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-demo/blob/master/src/js/config/autocomplete-config.js">autocomplete-config.js</a>。</p>
+    <example demo="dataplugins/autocomplete13"></example>
+
+    <h4>uploader, menu, modal, page, datepicker</h4>
+    <p>这些组件，我们都提供了一些参数可以进行配置，具体请查看<code><a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></code>文件</p>
 
   </div>
 </template>
