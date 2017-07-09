@@ -189,16 +189,16 @@ export default {
             [this.param.keyName]: this.value,
             [this.param.titleName]: this.value,
           }
-        } else if (this.type == 'title') {
-          value = {
-            [this.param.keyName]: this.value,
-            [this.param.titleName]: this.value,
-          }
         } else {
           value = this.value;
         }
-        utils.extend(this.object, this.getValue(value));
+        if (utils.isNull(value)) {
+          this.object = { key: null, title: null, value: null };
+        } else {
+          utils.extend(this.object, this.getValue(value));
+        }
       }
+      this.oldValue = this.value;
     },
     dispose() {
       let value = null;
