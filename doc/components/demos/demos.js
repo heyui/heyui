@@ -7,6 +7,7 @@ export default {
   'basic/grid6': function(resolve) { require.ensure([], function(require) { resolve(require('./basic/grid6.vue')) }, 'basic') },
   'basic/icon': function(resolve) { require.ensure([], function(require) { resolve(require('./basic/icon.vue')) }, 'basic') },
   'basic/demo': function(resolve) { require.ensure([], function(require) { resolve(require('./basic/demo.vue')) }, 'basic') },
+  'basic/demo2': function(resolve) { require.ensure([], function(require) { resolve(require('./basic/demo2.vue')) }, 'basic') },
   'basic/extend1': resolve => require.ensure([], require => require('./basic/extend1.vue'), 'basic'),
   'basic/extend2': resolve => require.ensure([], require => require('./basic/extend2.vue'), 'basic'),
   'basic/button1': resolve => require.ensure([], require => require('./basic/button1.vue'), 'basic'),

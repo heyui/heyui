@@ -24,6 +24,9 @@ export default {
       dict = utils.toObject(dict, keyField);
     }
     return value.map((ele) => {
+      if (utils.isObject(ele)) {
+        return ele[titleField];
+      }
       const d = dict[ele];
       if (utils.isObject(d)) {
         return d[titleField];

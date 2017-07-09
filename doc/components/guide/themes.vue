@@ -4,12 +4,12 @@
     <p>我们的样式使用的是less语言，我们定义了一些全局使用的变量</p>
     <p>您可以通过修改这些变量，达到变换样式的需求。</p>
     
-    <h3>定义方法</h3>
-    <p>重新定义的方法已经在快速上手的文档中有详细的说明，如果有任何疑问，请参考<a href="/guide/quickstart">快速上手</a>文档。</p>
+    <h3>更换方法</h3>
+    <p>更换主题的方法已经在快速上手的文档中有详细的说明，如果有任何疑问，请参考<a href="/guide/quickstart">快速上手</a>文档。</p>
 
     <h3>全局变量说明</h3>
     <p>我们的原始全局变量文件你可以在<a href="https://github.com/heyui/heyui/blob/master/themes/var.less" target="_blank">github</a>上查看。</p>
-    <p>下面代码中的参数，你可以按照自己的设计修改，完成修改系统主题的目的。</p>
+    <p>下面代码中的参数，你可以按照自己的设计修改，达成设定系统主题的目的。</p>
 <codes type="less">
 // Color
 @primary-color : #3399ff;
@@ -71,6 +71,9 @@
 @min-switch-height: 18px;
 </codes>
 
+    <h3>示例</h3>
+    <p>我们提供的<a href="http://demo.heyui.top/" target="_blank">heyui-demo</a>就是一个完整的示例，我们修改了主色，并调整了一些参数，<a href="https://github.com/heyui/heyui-demo/blob/master/src/css/var.less">代码示例</a>。</p>
+    <p>如果你还需要一些更细节化的调整，我们建议可以新建<code>overwrite.less</code>对已有的class进行覆盖修改。</p>
   </div>
 </template>
 

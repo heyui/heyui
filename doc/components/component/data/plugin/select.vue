@@ -65,6 +65,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>type</td>
+        <td>数据的格式</td>
+        <td>String</td>
+        <td>key, object</td>
+        <td>key</td>
+      </tr>
+      <tr>
         <td>datas</td>
         <td>选择的数据</td>
         <td>Array, Object</td>
@@ -93,8 +100,29 @@
         <td>true</td>
       </tr>
       <tr>
-        <td>noBorder</td>
-        <td>是否有边框，适用于文字的下拉选择</td>
+        <td>nullOptionText</td>
+        <td>“请选择”文本选项</td>
+        <td>String</td>
+        <td>-</td>
+        <td>请选择</td>
+      </tr>
+      <tr>
+        <td>nullOptionText</td>
+        <td>“请选择”文本选项</td>
+        <td>String</td>
+        <td>-</td>
+        <td>请选择</td>
+      </tr>
+      <tr>
+        <td>filterable</td>
+        <td>是否有搜索框</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>autosize</td>
+        <td>是否根据文字自适应宽度，默认为100%宽度</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
