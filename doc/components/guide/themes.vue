@@ -56,7 +56,7 @@
 @disabled-border-color: @gray1-color;
 @disabled-background-color: @gray4-color;
 
-//radiu
+//radius
 @border-radius : 4px;
 @btn-border-radius: 4px;
 

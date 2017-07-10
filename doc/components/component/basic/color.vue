@@ -52,6 +52,16 @@
       </div>
       </Col>
       <Col :width='12'>
+      <div v-bg-color:dark1  v-color:white>
+        <p>@dark1-color</p>
+      </div>
+      </Col>
+      <Col :width='12'>
+      <div v-bg-color:dark2  v-color:white>
+        <p>@dark2-color</p>
+      </div>
+      </Col>
+      <Col :width='12'>
       <div v-bg-color:gray  v-color:white>
         <p>@gray-color</p>
       </div>
