@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.14"></a>
+## [0.2.14](https://github.com/heyui/heyui/compare/v0.2.13...v0.2.14) (2017-07-10)
+
+
+### Bug Fixes
+
+* 修复form validator展示bug ([5f82ca9](https://github.com/heyui/heyui/commit/5f82ca9))
+* 修复qiniu上传失败的bug ([480f395](https://github.com/heyui/heyui/commit/480f395))
+
+
+
 <a name="0.2.13"></a>
 ## [0.2.13](https://github.com/heyui/heyui/compare/v0.2.12...v0.2.13) (2017-07-10)
 
