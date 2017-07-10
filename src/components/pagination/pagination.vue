@@ -44,17 +44,16 @@ import config from '../../utils/config';
 
 const prefix = 'h-page';
 
-const pageConfig = config.getOption('page');
 
 export default {
   props: {
     size: {
       type: Number,
-      default: pageConfig.size
+      default: () => config.getOption('page.size')
     },
     sizes: {
       type: Array,
-      default: () => pageConfig.sizes
+      default: () => config.getOption('page.sizes')
     },
     align: {
       type: String,
@@ -70,11 +69,11 @@ export default {
     },
     small: {
       type: Boolean,
-      default: pageConfig.small
+      default: () => config.getOption('page.small')
     },
     layout: {
       type: String,
-      default: pageConfig.layout
+      default: () => config.getOption('page.layout')
     }
   },
   data() {

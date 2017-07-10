@@ -26,7 +26,7 @@
       </div>
       <div v-for="(file, index) in fileList" :key="file" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div class="h-uploader-progress" v-if="file.status==2">
+        <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
           <Progress :percent="file.percent"  :stroke-width="5"></Progress>
         </div>
         <div class="h-uploader-image-operate" v-else>

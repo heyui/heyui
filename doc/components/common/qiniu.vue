@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     deletefile(index) {
-      let value = utils.copy(this.value).splice(index, 1);
+      log(index);
+      let value = utils.copy(this.value);
+      value.splice(index, 1);
       this.$emit("input", value);
     },
     init() {
@@ -56,20 +58,23 @@ export default {
         filters: {},
         init: {
           FilesAdded(up, files) {
+            if (that.limit && (files.length + that.value.length >= that.limit)) {
+              that.$Message.error(`你上传的文件超过${that.limit}个。`);
+            }
             files.forEach((file) => {
               if (that.limit && (that.uploadList.length + that.value.length >= that.limit)) {
-                that.$Message.error("你上传的文件超过限制。")
-                return false;
+                up.removeFile(file);
+              } else {
+                file.isUpload = true;
+                if (FileReader) {
+                  let reader = new FileReader();
+                  reader.onload = (event) => {
+                    file.thumbUrl = event.target.result;
+                  };
+                  reader.readAsDataURL(file.getNative());
+                }
+                that.uploadList.push(file);
               }
-              file.isUpload = true;
-              if (FileReader) {
-                let reader = new FileReader();
-                reader.onload = (event) => {
-                  file.thumbUrl = event.target.result;
-                };
-                reader.readAsDataURL(file.getNative());
-              }
-              that.uploadList.push(file);
             });
             // that.$emit("startUpload");
           },
