@@ -38,10 +38,14 @@
       <span class="text-hover">可点击文本</span>
       <span class="link">链接式文本</span>
       <span class="float-right">浮动到右侧</span>
-      <div class="clearfix relative bg-gray4-color pointer" v-height="50">
-        <i class="middle h-icon-right" style="right:5px;"></i>
-      </div>
     </div>
+    <blockquote>垂直居中对齐</blockquote>
+    <div v-height="100" class="relative">
+      <i class="middle-right" style="right:5px;"><i class="h-icon-right"></i></i>
+      <div class="middle-center">垂直居中对齐</div>
+    </div>
+    <blockquote>超出内容省略</blockquote>
+    <div class="text-ellipsis" v-width="100">超出内容省略超出内容省略</div>
     <blockquote>对齐方式</blockquote>
     <div>
       <div class="text-left">左对齐</div>

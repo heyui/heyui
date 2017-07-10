@@ -76,6 +76,8 @@ export default {
         'h-icon-calendar',
         'h-icon-upload',
         'h-icon-github',
+        'h-icon-edit',
+        'h-icon-location',
       ]
     }
   }

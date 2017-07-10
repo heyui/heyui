@@ -243,6 +243,7 @@ export default {
     },
     updateChoose(choose) {
       if (!this.multiple) return;
+      choose = choose||[];
       for (let key of Object.keys(this.treeObj)) {
         let tree = this.treeObj[key];
         tree.status.choose = choose.indexOf(tree.key) != -1;

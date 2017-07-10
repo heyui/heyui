@@ -17,7 +17,7 @@ const ruleExecute = function (rule, argus) {
   }
 }
 
-const combineArgs = function (prop, message, type) {
+const combineArgs = function (prop, message, type = 'other') {
   if (message === true || message === undefined) {
     return {
       [prop]: { valid: true, message: null, type }
