@@ -31,13 +31,21 @@ export default {
     indeterminate: {
       type: Boolean,
       default: false
+    },
+    keyName: {
+      type: String,
+      default: () => config.getOption('dict', 'keyName')
+    },
+    titleName: {
+      type: String,
+      default: () => config.getOption('dict', 'titleName')
     }
   },
   data() {
     return {
       isChecked: null,
-      key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName'),
+      key: this.keyName,
+      title: this.titleName,
     };
   },
   mounted() {

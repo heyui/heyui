@@ -87,13 +87,21 @@ export default {
       type: Boolean,
       default: false
     },
+    keyName: {
+      type: String,
+      default: () => config.getOption('dict', 'keyName')
+    },
+    titleName: {
+      type: String,
+      default: () => config.getOption('dict', 'titleName')
+    },
     render: Function,
     value: [Number, String, Array, Object]
   },
   data() {
     return {
-      key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName'),
+      key: this.keyName,
+      title: this.titleName,
       html: "select_rander_html",
       codes: [],
       objects: {},

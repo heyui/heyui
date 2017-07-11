@@ -20,6 +20,10 @@
     <div v-width="300">
       <Select v-model="select3" autosize :datas="param3" placeholder="请选择您的内容3"></Select>
     </div>
+    <p>自定义key, title字段名</p>
+    <div v-width="300">
+      <Select v-model="select4" :datas="param4" keyName="code" titleName="name"></Select>
+    </div>
   </div>
 </template>
 <script>
@@ -34,6 +38,8 @@ export default {
       param2: [{ title: '选择0', key: 0 }, { title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       select3: null,
       param3: { 0: '选择0', a1: '选择1', a2: '选择2', a3: '选择3' },
+      select4: null,
+      param4: [{ name: '选择0', code: 0 }, { name: '选择1', code: 'a1', other: '其他值' }, { name: '选择2', code: 'a2' }, { name: '选择3', code: 'a3' }],
     }
   },
   methods: {
