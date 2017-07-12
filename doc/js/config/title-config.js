@@ -59,6 +59,7 @@ const titles = {
   'quickstart': '快速上手',
   'themes': '更换主题',
   'config': '全局配置',
+  'pluginCategory': '分类选择',
   'logs': '日志',
   'home': '首页',
   'component': '组件',

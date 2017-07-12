@@ -35,12 +35,20 @@ export default {
     className: {
       type: String,
       default: 'h-tabs-default'
+    },
+    keyName: {
+      type: String,
+      default: () => config.getOption('dict', 'keyName')
+    },
+    titleName: {
+      type: String,
+      default: () => config.getOption('dict', 'titleName')
     }
   },
   data() {
     return {
-      key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName')
+      key: this.keyName,
+      title: this.titleName
     }
   },
   computed: {

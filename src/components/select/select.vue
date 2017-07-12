@@ -6,9 +6,8 @@
               :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
             @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
       </div>
-      <div v-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
-      <div v-if="codes==null||codes.length==0"
-            class="h-select-placeholder">{{placeholder}}</div>
+      <div v-else-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
+      <div v-else class="h-select-placeholder">{{placeholder}}</div>
       <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">

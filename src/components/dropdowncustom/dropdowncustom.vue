@@ -39,8 +39,6 @@ export default {
   },
   data() {
     return {
-      key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName'),
       isShow: false
     };
   },

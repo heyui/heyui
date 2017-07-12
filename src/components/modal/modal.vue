@@ -29,7 +29,7 @@ export default {
     },
     hasDivider: {
       type: Boolean,
-      default: config.getOption('modal', 'hasDivider')
+      default:() => config.getOption('modal', 'hasDivider')
     },
     closeOnMask: {
       type: Boolean,

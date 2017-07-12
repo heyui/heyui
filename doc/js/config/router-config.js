@@ -175,6 +175,11 @@ export default {
     component: () =>
       import ('../../components/component/plugin/dropdowncustom')
   }, {
+    path: 'plugin/category',
+    name: 'pluginCategory',
+    component: () =>
+      import ('../../components/component/plugin/category')
+  }, {
     path: 'plugin/search',
     name: 'pluginSearch',
     component: () =>

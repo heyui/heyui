@@ -1,15 +1,6 @@
 <template>
   <div class="h-category" :disabled="disabled">
-    <div class="h-category-show">
-      <div v-if="multiple&&value&&value.length"
-            class="h-category-multiple-tags"><span v-for="obj of objects"
-              :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
-            @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
-      </div>
-      <div v-else-if="!multiple&&value" class="h-category-value-single">{{objects[title]}}</div>
-      <div v-else class="h-category-placeholder">{{placeholder}}</div>
-      <i class="h-icon-down"></i>
-    </div>
+
   </div>
 </template>
 <script>
@@ -18,36 +9,14 @@ import utils from '../../utils/utils';
 
 export default {
   props: {
-    option: Object,
-    multiple: {
-      type: Boolean,
-      default: false
-    },
-    type: {
-      type: [String],
-      default: 'key'  //object
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    filterable: {
-      type: Boolean,
-      default: false
-    },
-    placeholder: {
-      type: String,
-      default: "请选择"
-    },
-    value: [Number, String, Array, Object],
-    config: String
+    params
   },
   data() {
     let param = {};
     if (this.config) {
-      param = utils.extend({}, config.getOption("category.default"), config.getOption(`tree.configs.${this.config}`), this.option);
+      param = utils.extend({}, config.getOption("category.default"), config.getOption(`tree.configs.${this.config}`), this.params.option);
     } else {
-      param = utils.extend({}, config.getOption("category.default"), this.option);
+      param = utils.extend({}, config.getOption("category.default"), this.params.option);
     }
     return {
       param,

@@ -9,7 +9,7 @@
       >.@{tree-prefix} {
         &-ul {
           max-height: 10000px;
-          transition: max-height 0.4s ease-in-out;
+          transition: max-height 0.2s ease-in-out;
         }
         &-show {
           .@{tree-prefix}-show-expand {
@@ -23,10 +23,14 @@
   }
   &-show {
     padding: 3px 0;
+    .h-checkbox{
+      margin-left: 3px;
+    }
     &-expand {
       color: @gray-color;
       padding: 0 2px 0 0;
       width: 14px;
+      float: left;
       display: inline-block;
       .text-hover();
       .h-icon-right,
@@ -34,9 +38,9 @@
         font-size: 12px;
         line-height: @font-size;
         vertical-align: middle;
-        transition: @transition-time;
       }
     }
+    
     &-desc {
       font-size: @font-size-mini;
       padding: 2px 5px;
@@ -63,6 +67,6 @@
     transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
     max-height: 0;
     overflow: hidden;
-    margin-left: 15px;
+    margin-left: 20px;
   }
 }

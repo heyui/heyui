@@ -16,44 +16,48 @@
             <li><router-link to="/component/form/input">InputTextarea 输入框</router-link></li>
             <li><router-link to="/component/form/radio">Radio 单选</router-link></li>
             <li><router-link to="/component/form/checkbox">Checkbox 多选</router-link></li>
+            <li><router-link to="/component/data/plugin/select">Select 下拉选择</router-link></li>
+            <li><router-link to="/component/data/plugin/autocomplete">AutoComplete 模糊匹配</router-link></li>
             <li><router-link to="/component/form/switch">Switch 开关</router-link></li>
             <li><router-link to="/component/form/switchlist">SwitchList 选项</router-link></li>
              <li><router-link to="/component/form/slider">Slider 滑块</router-link></li> 
              <li><router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link></li> 
             <li><router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link></li>
             <li><router-link to="/component/form/rate">Rate 评分</router-link></li>
+            <li><router-link to="/component/form/form">Form 表单</router-link></li>
           </ul>
-           <li class="title">Data</li>
+          <li class="title">Data</li>
           <ul>
             <li class="title">Plugin</li>
-            <li><router-link to="/component/data/plugin/select">Select 下拉选择</router-link></li>
-            <li><router-link to="/component/data/plugin/autocomplete">AutoComplete 模糊匹配</router-link></li>
+            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
+            <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
+            <li><router-link to="/component/plugin/tree">Tree 树</router-link></li>
+            <li><router-link to="/component/plugin/category">Category 分类选择</router-link></li>
+            <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
+          </ul> 
+          <ul>
+            <li class="title">Date</li>
             <li><router-link to="/component/data/plugin/date">DatePicker 日期选择</router-link></li>
             <li><router-link to="/component/data/plugin/time">TimePicker 时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/datetime">DatetimePicker 日期时间选择</router-link></li>
             <li><router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link></li>
-            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
-            <li><router-link to="/component/data/plugin/upload">Upload 上传</router-link></li>
-            <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
-            <li><router-link to="/component/form/form">Form 表单</router-link></li>
-          </ul> 
+          </ul>
           <ul>
             <li class="title">View</li>
-            <li><router-link to="/component/plugin/search">Search 搜索框</router-link></li>
             <li><router-link to="/component/data/view/table">Table 表格</router-link></li> 
             <li><router-link to="/component/data/view/page">Pagination 分页</router-link></li>
+            <li><router-link to="/component/plugin/search">Search 搜索框</router-link></li>
             <li><router-link to="/component/view/badge">Badge 微标数</router-link></li>
             <li><router-link to="/component/data/view/progress">Progress 进度条</router-link></li>
             <li><router-link to="/component/data/view/circle">Circle 进度环</router-link></li>
+            <li><router-link to="/component/plugin/steps">Steps 步骤条</router-link></li>
           </ul>
            <li class="title">Plugin</li>
           <ul>
-            <li><router-link to="/component/plugin/tree">Tree 树</router-link></li>
             <li><router-link to="/component/plugin/dropdowncustom">DropdownCustom 下拉控件</router-link></li>
             <li><router-link to="/component/plugin/dropdownmenu">DropdownMenu 下拉菜单</router-link></li>
             <li><router-link to="/component/data/view/loading">Loading 加载中</router-link></li>
             <li><router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link></li>
-            <li><router-link to="/component/plugin/steps">Steps 步骤条</router-link></li>
           </ul> 
           <li class="title">Message</li>
           <ul>
