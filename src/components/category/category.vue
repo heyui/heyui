@@ -1,6 +1,6 @@
 <template>
   <div class="h-category" :disabled="disabled">
-  
+
   </div>
 </template>
 <script>
@@ -8,37 +8,48 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 
 export default {
-  model: {
-    prop: 'checked',
-    event: 'input'
-  },
   props: {
+    option: Object,
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    filterable: {
+      type: Boolean,
+      default: false
+    },
     dict: String,
     datas: [Object, Array],
     disabled: {
       type: Boolean,
       default: false
     },
-    value: {
-      default: false
-    },
-    checked: {
-      default: false
-    },
-    indeterminate: {
-      type: Boolean,
-      default: false
-    }
+    value: [Number, String, Array, Object],
+    config: String
   },
   data() {
+    let param = {};
+    if (this.config) {
+      param = utils.extend({}, config.getOption("category.default"), config.getOption(`tree.configs.${this.config}`), this.option);
+    } else {
+      param = utils.extend({}, config.getOption("category.default"), this.option);
+    }
     return {
-      isChecked: null,
-      key: config.getOption('dict', 'keyName'),
-      title: config.getOption('dict', 'titleName'),
+      param,
+      globalloading: false,
+      loading: true,
+      status: {
+        selected: null,
+        selects: [],
+        opens: [],
+        loadings: []
+      },
+      treeDatas: [],
+      treeObj: {},
+      searchValue: null
     };
   },
   mounted() {
-    this.updateChecked();
   },
   watch: {
     checked() {

@@ -1,7 +1,8 @@
 <template>
 <div>
+  <p>{{value}}</p>
   <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
-  <Tree :option="param" ref="demo" :multiple="true" choose-mode="some"></Tree>
+  <Tree :option="param" ref="demo" :multiple="true" v-model="value" choose-mode="some"></Tree>
 </div>
 </template>
 <script>
@@ -28,6 +29,7 @@ export default {
       { id: 34, title: "三级-4", parent: "3" }
     ];
     return {
+      value: [],
       param: {
         keyName: 'id',
         parentName: 'parent',

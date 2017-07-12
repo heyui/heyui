@@ -33,7 +33,7 @@ export default {
       ]},
     ];
     return {
-      value: [1, 23, 32],
+      value: [23],
       param: {
         keyName: 'id',
         titleName: 'title',

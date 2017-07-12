@@ -2,58 +2,8 @@
 @select-item-prefix: ~"@{select-prefix}-item";
 @select-check-prefix: h-icon-check;
 @select-close-prefix: h-icon-close;
-.@{select-prefix} {
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  &-placeholder {
-    color: @gray-color;
-  }
-  &-value-single,
-  &-placeholder {
-    line-height: @input-height - 6px;
-    height: @input-height - 6px;
-    padding-left: 5px;
-  }
-  &-show {
-    padding-right: 30px !important;
-    .rotate-icon-down();
-    position: relative;
-    .text-hover();
-    cursor: default;
-    line-height: @line-height;
-  }
-  &-multiple-tags {
-    display: flex;
-    flex-wrap: wrap;
-    >span {
-      .tag-span-func();
-    }
-  }
-  &-input-border {
-    .@{select-prefix}{
-      &-show {
-        .border-input();
-        .@{prefix}form-item-valid-error & {
-          border-color: @red-color;
-          &.@{pop-ref-prefix} {
-            box-shadow: 0 0 0 2px fade(@red-color, 20%);
-          }
-        }
-      }
-      &-value-single,
-      &-placeholder {
-        margin-bottom: 2px;
-      }
-    }
-  }
-  &-no-autosize {
-    display: block;
-  }
-  &-disabled &-show {
-    .border-input-disabled();
-  }
-}
+
+.plugin-input(@select-prefix);
 
 .@{select-prefix}-group {
   outline: none;

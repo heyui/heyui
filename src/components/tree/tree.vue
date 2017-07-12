@@ -32,19 +32,29 @@ const updateChildStatus = (data, column, value) => {
   }
 }
 
+const updateParentStatus = (objs, data, column, value) => {
+  let parent = objs[data.parentKey];
+  if (!utils.isNull(data.parentKey) && parent) {
+    parent.status[column] = value;
+    updateParentStatus(objs, parent, column, value);
+  }
+}
+
 const updateModeAllChildChooseStatus = (data) => {
   if (data.children) {
     let isIndeterminateStatus = false;
     for (let child of data.children) {
       if (data.status.choose) {
         child.status.choose = true;
+        child.status.opened = true;
       } else if (child.status.choose) {
         isIndeterminateStatus = true;
       }
-      updateChildStatus(child);
+      // updateChildStatus(child);
     }
     if (!data.status.choose && isIndeterminateStatus) {
       data.status.indeterminate = true;
+      data.status.opened = true;
     }
   }
 }
@@ -64,13 +74,14 @@ const updateModeSomeChildChooseStatus = (data) => {
   if (data.children) {
     let isChoose = false;
     for (let child of data.children) {
-      updateChildStatus(child);
+      // updateChildStatus(child);
       if (child.status.choose) {
         isChoose = true;
       }
     }
     if (isChoose) {
       data.status.choose = true;
+      data.status.opened = true;
     }
   }
 }
@@ -101,6 +112,7 @@ export default {
       param = utils.extend({}, config.getOption("tree.default"), this.option);
     }
     return {
+      updateFromInput: false,
       param,
       globalloading: false,
       loading: true,
@@ -117,6 +129,10 @@ export default {
   },
   watch:{
     value(){
+      if(this.updateFromInput){
+        this.updateFromInput = false;
+        return;
+      }
       this.parse();
     }
   },
@@ -207,12 +223,12 @@ export default {
       let isWait = utils.isFunction(this.param.getDatas);
       return this.initTreeModeData(list, isWait);
     },
-    initTreeModeData(list, isWait) {
+    initTreeModeData(list, isWait, parentKey) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, status: { hide: false, opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey, status: { hide: false, opened: false, loading: false, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
         let children = data[this.param.childrenName] || [];
-        obj[this.param.childrenName] = this.initTreeModeData(children, isWait);
+        obj[this.param.childrenName] = this.initTreeModeData(children, isWait, obj.key);
         this.treeObj[obj.key] = obj;
         datas.push(obj);
       }
@@ -232,6 +248,7 @@ export default {
       let option = this.treeObj[key];
       if (option) {
         this.status.selected = key;
+        updateParentStatus(this.treeObj, option, 'opened', true);
       }
     },
     getSelect() {
@@ -247,6 +264,7 @@ export default {
       for (let key of Object.keys(this.treeObj)) {
         let tree = this.treeObj[key];
         tree.status.choose = choose.indexOf(tree.key) != -1;
+        if(tree.status.choose) tree.status.opened = true;
       }
 
       if (this.chooseMode == 'all') {
@@ -270,6 +288,7 @@ export default {
         value = select ? select[this.param.keyName] : null;
       }
 
+      this.updateFromInput = true;
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
