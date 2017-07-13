@@ -10,6 +10,7 @@
         <component :is="nowComponent"
                   :class="contentCls"
                   :param="propsData"
+                  :params="propsData"
                   @event="trigger"
                   @close="close"></component>
       </div>

@@ -5,7 +5,9 @@
     <h3>基本调用</h3>
     <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
-    <example demo="plugins/tree1"></example>
+    <p v-width="300">
+      <Category :option="param" type="key" v-model="value" multiple></Category>
+    </p>
   
     <h3>多选，选择模式为ALL</h3>
     <p><code>chooseMode</code>: all, 只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
@@ -137,3 +139,70 @@
     </table>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    let list = [
+      { id: 1, title: "一级" },
+      { id: 2, title: "二级" },
+      { id: 3, title: "三级", disabled: true },
+      { id: 10, title: "一级-0", parent: 1 },
+      { id: 11, title: "一级-1", parent: 1 },
+      { id: 12, title: "一级-2", parent: 1 },
+      { id: 13, title: "一级-3", parent: 1 },
+      { id: 14, title: "一级-4", parent: 1 },
+      { id: 20, title: "二级-0", parent: 2 },
+      { id: 21, title: "二级-1", parent: 2 },
+      { id: 22, title: "二级-2", parent: 2 },
+      { id: 23, title: "二级-3", parent: 2 },
+      { id: 24, title: "二级-4", parent: 2 },
+      { id: 30, title: "三级-0", parent: 3 },
+      { id: 31, title: "三级-1", parent: 3 },
+      { id: 32, title: "三级-2", parent: 3 },
+      { id: 33, title: "三级-3", parent: 3 },
+      { id: 34, title: "三级-4", parent: 3 }
+    ];
+    return {
+      value: [31],
+      param: {
+        keyName: 'id',
+        parentName: 'parent',
+        titleName: 'title',
+        dataMode: 'list',
+        datas: list
+      }
+    }
+  },
+  methods: {
+    expandAll() {
+      this.$refs.demo.expandAll();
+    },
+    foldAll() {
+      this.$refs.demo.foldAll();
+    },
+    updateSelect() {
+      // 两种方法都可以
+      // this.$refs.demo.updateSelect(2);
+      this.value = 21;
+      this.$Message.info("选中二级-1");
+    },
+    getSelect() {
+      let option = this.$refs.demo.getSelect();
+      if (option == null) {
+        this.$Message.info(`当前未选中`);
+      } else {
+        this.$Message.info(`当前选中: ${option.title}`);
+      }
+    },
+    choose() {
+      //这里仅仅是触发事件
+    },
+    select(data) {
+      log(data);
+    },
+    open(data) {
+      log(data);
+    }
+  }
+};
+</script>

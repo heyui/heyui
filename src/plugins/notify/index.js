@@ -102,7 +102,8 @@ class Notify {
           return createElement(
             'div', {}, [createElement('plugin', {
               props: {
-                param: this.propsData
+                param: this.propsData,
+                params: this.propsData
               },
               on: {
                 event: this.trigger,

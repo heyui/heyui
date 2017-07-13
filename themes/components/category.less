@@ -1,3 +1,12 @@
 @category-prefix: ~"@{prefix}category";
 
 .plugin-input(@category-prefix);
+
+.@{category-prefix}{
+  &-item{
+    padding: 3px 5px;
+    &:hover{
+      background: @hover-background-color;
+    }
+  }
+}

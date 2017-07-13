@@ -7,6 +7,7 @@ import BackTop from './components/backtop';
 import Badge from './components/badge';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
+import Category from './components/category';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
@@ -66,6 +67,7 @@ const components = {
   hButton: Button,
   ButtonGroup,
   Checkbox,
+  Category,
   hCircle: Circle,
   DropdownCustom,
   DropdownMenu,

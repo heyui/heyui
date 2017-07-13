@@ -1,6 +1,6 @@
 <template>
   <div :class="tabsCls">
-    <div v-for="a of arr" @click="trigger(a)" :class="{'h-tabs-selected':a[key] == value}">
+    <div v-for="(a, index) of arr" @click="trigger(a, index)" :key="a" :class="{'h-tabs-selected':a[key] == value}">
       <span v-if="!$scopedSlots.item">{{a[title]}}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
@@ -37,10 +37,10 @@ export default {
     }
   },
   methods: {
-    trigger(data) {
+    trigger(data, index) {
       if (this.value == data[this.key]) return;
-      this.$emit('input', data[this.key])
-      this.$emit('change', data);
+      this.$emit('input', data[this.key]);
+      this.$emit('change', data, index);
     }
   },
   computed: {

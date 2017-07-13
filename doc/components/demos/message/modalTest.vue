@@ -5,7 +5,7 @@
     <div style="padding:15px">
       <SwitchList v-model="value1" :datas="param1"></SwitchList>
       <Select dict="simple"></Select>
-      <p>传递的参数：{{param.a}}</p>
+      <p>传递的参数：{{params.a}}</p>
     </div>
     <footer>
       <button class="h-btn h-btn-primary" @click="triggerEvent">通知父级调用</button>
@@ -23,7 +23,7 @@ export default {
     }
   },
   props: {
-    param: Object
+    params: Object
   },
   methods: {
     triggerEvent() {
