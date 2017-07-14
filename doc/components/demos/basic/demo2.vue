@@ -7,7 +7,6 @@
     <p v-height="20"></p>
     <p>value2: {{value2}} | {{value2 | dictMapping('simple')}}</p>
     <p><Checkbox dict="simple" v-model="value2"></Checkbox></p>
-    <p v-width="400"><SwitchList dict="simple" v-model="value2"></SwitchList></p>
     <p v-width="400"><Select dict="simple" v-model="value2" multiple></Select></p>
 
     <p v-height="20"></p>

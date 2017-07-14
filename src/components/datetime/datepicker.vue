@@ -10,7 +10,8 @@
              @input="inputEvent"
              :placeholder="placeholder"
              :disabled="disabled" />
-      <i class="h-icon-calendar"></i>
+      <i class="h-icon-calendar" v-if="!showDate"></i>
+      <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
     </div>
     <div :class="datePickerCls"
          class="h-date-picker">
@@ -88,7 +89,7 @@ export default {
     },
     hasButtons: {
       type: Boolean,
-      default: true
+      default: false
     },
     value: String
   },

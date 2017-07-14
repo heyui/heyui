@@ -32,7 +32,7 @@
   cursor: pointer;
   transition: color @transition-time ease;
   &:hover, .@{pop-ref-prefix} &{
-    color: darken(@link-color, 10%);
+    color: darken(@link-color, 10%) !important;
   }
   &[disabled] {
     color: @disabled-color;
