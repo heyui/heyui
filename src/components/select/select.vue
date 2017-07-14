@@ -1,7 +1,7 @@
 <template>
   <div :class="selectCls">
     <div :class="showCls">
-      <div v-if="multiple&&objects"
+      <div v-if="multiple&&objects&&objects.length"
             class="h-select-multiple-tags"><span v-for="obj of objects"
               :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
             @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
