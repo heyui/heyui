@@ -9,13 +9,14 @@
       flex-wrap: wrap;
       .border-input();
       // display: inline-block;
-
       .@{prefix}icon-loading{
+        color: @gray-color;
+      }
+      .@{prefix}icon-loading, >.@{prefix}icon-close{
         position: absolute;
         right: 8px;
         bottom: 8px;
         z-index: 3;
-        color: @gray-color;
       }
 
       >span{

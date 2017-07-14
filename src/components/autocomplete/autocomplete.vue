@@ -28,6 +28,7 @@
                :placeholder="placeholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
+        <i class="h-icon-close text-hover" v-else-if="showValue" @click="clear"></i>
       </template>
     </div>
   
@@ -180,14 +181,18 @@ export default {
       } else {
         let value = null;
         if (this.type == 'key') {
-          value = {
-            [this.param.keyName]: this.value,
-            [this.param.titleName]: this.show,
+          if(!utils.isNull(this.value)){
+            value = {
+              [this.param.keyName]: this.value,
+              [this.param.titleName]: this.show,
+            }
           }
         } else if (this.type == 'title') {
-          value = {
-            [this.param.keyName]: this.value,
-            [this.param.titleName]: this.value,
+          if(!utils.isNull(this.value)){
+            value = {
+              [this.param.keyName]: this.value,
+              [this.param.titleName]: this.value,
+            }
           }
         } else {
           value = this.value;
@@ -347,6 +352,7 @@ export default {
         this.tempValue = null;
       }
       this.focusValue = this.showValue;
+      if(this.object.key === null) this.object.title = this.showValue;
       this.$emit('input', value);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       let event = document.createEvent("CustomEvent");
@@ -354,6 +360,12 @@ export default {
       this.$el.dispatchEvent(event);
       if (this.dropdown.popperInstance) this.dropdown.hide();
     },
+    clear() {
+      this.tempValue = '';
+      this.focusValue = '';
+      this.object = {key: null, title: null, value: null};
+      this.setvalue();
+    }
   },
   computed: {
     showValue() {
