@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.16"></a>
+## [0.2.16](https://github.com/heyui/heyui/compare/v0.2.15...v0.2.16) (2017-07-18)
+
+
+### Bug Fixes
+
+* autocomplete, datepicker添加close icon ([451c042](https://github.com/heyui/heyui/commit/451c042))
+* keyname,titlename 自定义获取 ([8310533](https://github.com/heyui/heyui/commit/8310533))
+* modal components param => params ([7d0ea6c](https://github.com/heyui/heyui/commit/7d0ea6c))
+* radio, checkbox, select 添加自定义keyName, titleName ([f700bd1](https://github.com/heyui/heyui/commit/f700bd1))
+* select include 判断错误 ([4ed8f71](https://github.com/heyui/heyui/commit/4ed8f71))
+* select multiple 判断bug，导致无placeholder ([35e1fea](https://github.com/heyui/heyui/commit/35e1fea))
+* tree选中的时候展开 ([fa2cf18](https://github.com/heyui/heyui/commit/fa2cf18))
+* 修复再次传递null值时 autocomplete 处理错误的问题 ([40e1406](https://github.com/heyui/heyui/commit/40e1406))
+
+
+
 <a name="0.2.15"></a>
 ## [0.2.15](https://github.com/heyui/heyui/compare/v0.2.14...v0.2.15) (2017-07-11)
 
