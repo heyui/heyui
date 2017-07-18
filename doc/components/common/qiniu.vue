@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     deletefile(index) {
-      log(index);
       let value = utils.copy(this.value);
       value.splice(index, 1);
       this.$emit("input", value);

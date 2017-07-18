@@ -177,13 +177,13 @@ export default {
       this.setObjects();
     },
     getValue(value) {
-      return utils.isNull(value) ? null : String(value);
+      return utils.isNull(value) ? null : value;
     },
     setvalue(option) {
       if (this.readonly) return;
       let code = option[this.key];
       if (this.multiple) {
-        if (!utils.isNull(this.limit) && !this.codes.includes(code) && this.codes.length >= this.limit) {
+        if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
           this.$Message.error(`您最多可以选${this.limit}个选项`);
           return;
         }
@@ -203,10 +203,13 @@ export default {
         this.dropdown.hide();
       }
     },
+    isIncludes(code){
+      return this.codes.some(item=>item == code);
+    },
     getLiCls(option) {
       let code = option[this.key];
       if (utils.isNull(code)) return {};
-      return { [`${prefix}-item-selected`]: (this.multiple ? this.codes.includes(code) : this.codes == code) };
+      return { [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code) };
     }
   },
   filters: {

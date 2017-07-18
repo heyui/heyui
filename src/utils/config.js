@@ -55,7 +55,13 @@ const config = {
     small: false,
     size: 10,
     sizes: [10, 20, 50, 100],
-    layout: 'total,pager,jumper,sizes'
+    layout: 'total,pager,jumper,sizes',
+    onChangeSize(size) {
+      // 可以处理全局保存分页页数的需求
+    },
+    init() {
+      // 可以处理全局保存分页页数的需求
+    }
   },
   datepicker: {
     format: {

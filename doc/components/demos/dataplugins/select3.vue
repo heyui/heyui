@@ -8,13 +8,17 @@
   export default {
     data() {
       return {
-        select: ['选择1'],
-        param: ['选择1', '选择2', '选择3']
+        select: [0],
+        param: {
+          0:'选择1' ,
+          2:'选择2',
+          3:'选择3'
+        }
       }
     },
     methods: {
       update() {
-        this.select = ['选择1', '选择2'];
+        this.select = [0, 2];
       }
     }
   }

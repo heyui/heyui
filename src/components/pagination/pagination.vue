@@ -41,6 +41,7 @@
 </template>
 <script>
 import config from '../../utils/config';
+import utils from '../../utils/utils';
 
 const prefix = 'h-page';
 
@@ -130,6 +131,11 @@ export default {
     changesize() {
       this.curNow = 1;
       this.$emit("change", { cur: 1, size: this.sizeNow });
+      this.$emit("changeSize", this.sizeNow);
+      let onChangeSize = config.getOption('page.onChangeSize');
+      if(utils.isFunction(onChangeSize)){
+        onChangeSize.call(null, this.sizeNow);
+      }
     },
     genPagerCls(num) {
       return {
