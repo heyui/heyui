@@ -19,7 +19,7 @@ Vue.use(HeyUI)
 
 ## Demo
 
-我们提供了一个完成的企业级应用demo，[http://demo.heyui.top](http://demo.heyui.top)。
+我们提供了一个完整的企业级应用demo，[http://demo.heyui.top](http://demo.heyui.top)。
 
 ## Browser Support
 Modern browsers and Internet Explorer 9+.
