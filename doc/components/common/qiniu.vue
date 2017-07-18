@@ -119,7 +119,6 @@ export default {
       utils.extend(param, this.options);
       let muti = this.type == 'files' || this.type == 'images';
       param.multi_selection = muti;
-      param.multipart = muti;
       qiniujs.Qiniu.uploader(param);
     }
   },
