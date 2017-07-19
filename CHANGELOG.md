@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.17"></a>
+## [0.2.17](https://github.com/heyui/heyui/compare/v0.2.16...v0.2.17) (2017-07-19)
+
+
+### Bug Fixes
+
+* qiniu uploader 参数传递错误修正 ([371d4f3](https://github.com/heyui/heyui/commit/371d4f3))
+* 去除checkbox原生的样式覆盖 ([02785b6](https://github.com/heyui/heyui/commit/02785b6))
+
+
+
 <a name="0.2.16"></a>
 ## [0.2.16](https://github.com/heyui/heyui/compare/v0.2.15...v0.2.16) (2017-07-18)
 
