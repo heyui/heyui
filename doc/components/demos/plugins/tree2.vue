@@ -2,7 +2,7 @@
 <div>
   <p>值：{{value}}</p>
   <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
-  <Tree :option="param" ref="demo" v-model="value" :multiple="true" choose-mode="all"></Tree>
+  <Tree :option="param" ref="demo" v-model="value" :multiple="true" choose-mode="some"></Tree>
 </div>
 </template>
 <script>

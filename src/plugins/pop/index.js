@@ -190,7 +190,9 @@ class Pop {
     utils.removeClass(this.reference, 'h-pop-trigger');
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      this.popNode.style.display = 'none';
+      if (this.popNode) {
+        this.popNode.style.display = 'none';
+      }
     }, this.options.delay);
     return this;
   }
