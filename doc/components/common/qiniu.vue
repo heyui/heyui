@@ -45,7 +45,8 @@ export default {
     },
     init() {
       let that = this;
-      //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+      //七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+      //uploader七牛文档请参考http://www.cnblogs.com/2050/p/3913184.html
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
@@ -99,6 +100,11 @@ export default {
           UploadComplete() {
             that.$emit("completeUpload");
             let fileList = that.$refs.uploader.getFileList();
+            fileList.map(item=>{
+              // 对返回的数据做最后的组装
+              // item.type = 5;
+              // item.fileType = ...
+            })
             that.$emit("input", fileList);
             that.uploadList.splice(0, that.uploadList.length);
           },

@@ -44,14 +44,7 @@ export default {
     config: String
   },
   data() {
-    let param = {};
-    if (this.config) {
-      param = utils.extend({}, config.getOption("category.default"), config.getOption(`tree.configs.${this.config}`), this.option);
-    } else {
-      param = utils.extend({}, config.getOption("category.default"), this.option);
-    }
     return {
-      param,
       globalloading: false,
       loading: true,
       objects: [],
@@ -173,6 +166,13 @@ export default {
     },
   },
   computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption("category.default"), config.getOption(`category.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption("category.default"), this.option);
+      }
+    },
     categoryCls() {
       return {
         [`${prefix}`]: true,

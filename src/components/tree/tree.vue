@@ -105,15 +105,8 @@ export default {
     config: String
   },
   data() {
-    let param = {};
-    if (this.config) {
-      param = utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.option);
-    } else {
-      param = utils.extend({}, config.getOption("tree.default"), this.option);
-    }
     return {
       updateFromInput: false,
-      param,
       globalloading: false,
       loading: true,
       status: {
@@ -317,6 +310,13 @@ export default {
     }
   },
   computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption("tree.default"), this.option);
+      }
+    },
     treeDataShow() {
     },
     treeCls() {

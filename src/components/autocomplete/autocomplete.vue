@@ -92,12 +92,6 @@ export default {
     config: String
   },
   data() {
-    let param = {};
-    if (this.config) {
-      param = utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.option);
-    } else {
-      param = utils.extend({}, config.getOption("autocomplete.default"), this.option);
-    }
     return {
       html: "autocomplete_rander_html",
       focusing: false,
@@ -110,7 +104,6 @@ export default {
       focusValue: null,
       loading: false,
       content: null,
-      param,
       loadDatas: [],
       isShow: false
     };
@@ -368,6 +361,13 @@ export default {
     }
   },
   computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption("autocomplete.default"), this.option);
+      }
+    },
     showValue() {
       return this.tempValue == null ? this.object.title : this.tempValue;
     },
