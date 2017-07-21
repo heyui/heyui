@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "hey-log": "0.0.8",
-    "hey-utils": "0.0.17",
+    "hey-utils": "0.0.20",
     "manba": "0.0.19"
   },
   "devDependencies": {
