@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.20"></a>
+## [0.2.20](https://github.com/heyui/heyui/compare/v0.2.19...v0.2.20) (2017-07-21)
+
+
+### Bug Fixes
+
+* select 下拉限定宽度，超出部分省略 ([b7917b1](https://github.com/heyui/heyui/commit/b7917b1))
+* tree参数datas可以传递function执行获取data ([e006bd9](https://github.com/heyui/heyui/commit/e006bd9))
+* 完善tree 的所有功能，包括updateChoose的bug ([3b9a509](https://github.com/heyui/heyui/commit/3b9a509))
+
+
+
 <a name="0.2.19"></a>
 ## [0.2.19](https://github.com/heyui/heyui/compare/v0.2.18...v0.2.19) (2017-07-21)
 
