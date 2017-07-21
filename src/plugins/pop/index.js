@@ -164,7 +164,7 @@ class Pop {
       this.initPopNode();
     }
     if (this.options.equalWidth) {
-      this.popNode.style.minWidth = `${this.reference.clientWidth}px`;
+      this.popNode.style.width = `${this.reference.clientWidth}px`;
     }
 
     this.popNode.style.display = '';
