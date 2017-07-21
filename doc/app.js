@@ -18,9 +18,8 @@ import routerConfig from './js/config/router-config';
 
 require('./css/doc.less');
 
-
-
 const loadData = function (filter, callback) {
+  log("传递的参数", this.orgId);
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
     .then((d) => {

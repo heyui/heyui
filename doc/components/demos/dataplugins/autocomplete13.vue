@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p>value:{{value}}</p>
-    <AutoComplete config="simple" v-model="value" @change="onChange"></AutoComplete>
+    <p>value:{{value}} <a @click="orgId+=1">重新设定参数</a></p>
+    <AutoComplete config="simple" v-model="value" @change="onChange" :option="{orgId: orgId}"></AutoComplete>
     <p>value1:{{value1}}</p>
     <AutoComplete config="simple" v-model="value1" @change="onChange" multiple></AutoComplete>
     <p>value2:{{value2}}</p>
@@ -42,6 +42,7 @@
 export default {
   data() {
     return {
+      orgId: 1,
       value: '',
       value1: [],
       value2: null,
