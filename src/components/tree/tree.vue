@@ -44,17 +44,14 @@ const updateModeAllChildChooseStatus = (data) => {
   if (data.children) {
     let isIndeterminateStatus = false;
     for (let child of data.children) {
-      if (data.status.choose) {
-        child.status.choose = true;
-        child.status.opened = true;
-      } else if (child.status.choose) {
+      updateModeAllChildChooseStatus(child);
+      if (child.status.choose || child.status.indeterminate) {
         isIndeterminateStatus = true;
       }
-      // updateChildStatus(child);
+      log(child.status);
     }
     if (!data.status.choose && isIndeterminateStatus) {
       data.status.indeterminate = true;
-      data.status.opened = true;
     }
   }
 }
@@ -78,6 +75,7 @@ const updateModeSomeChildChooseStatus = (data) => {
       if (child.status.choose) {
         isChoose = true;
       }
+      updateModeSomeChildChooseStatus(child);
     }
     if (isChoose) {
       data.status.choose = true;
@@ -262,17 +260,23 @@ export default {
       choose = choose||[];
       for (let key of Object.keys(this.treeObj)) {
         let tree = this.treeObj[key];
-        tree.status.choose = choose.indexOf(tree.key) != -1;
-        if(tree.status.choose) tree.status.opened = true;
+        tree.status.choose = false;
+        tree.status.opened = false;
       }
-
-      if (this.chooseMode == 'all') {
-        for (let data of this.treeDatas) {
-          updateModeAllChildChooseStatus(data);
+      for (let key of choose) {
+        let tree = this.treeObj[key];
+        tree.status.choose = choose.indexOf(tree.key) != -1;
+        if(tree.status.choose) {
+          tree.status.opened = true;
+          updateParentStatus(this.treeObj, tree, 'opened', true);
+          if (this.chooseMode == 'all') {
+            updateChildStatus(tree, 'choose', true);
+          }
         }
-      } else {
-        for (let data of this.treeDatas) {
-          updateModeSomeChildChooseStatus(data);
+      }
+      if(this.chooseMode == 'all'){
+        for(let tree of this.treeDatas){
+          updateModeAllChildChooseStatus(tree);
         }
       }
     },
@@ -286,7 +290,6 @@ export default {
         let select = this.getSelect();
         value = select ? select[this.param.keyName] : null;
       }
-
       this.updateFromInput = true;
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
