@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.18"></a>
+## [0.2.18](https://github.com/heyui/heyui/compare/v0.2.17...v0.2.18) (2017-07-21)
+
+
+### Bug Fixes
+
+* pop添加对象判断 ([4e1a855](https://github.com/heyui/heyui/commit/4e1a855))
+* switchlist点击当前选中的tag不触发 ([cc3cce7](https://github.com/heyui/heyui/commit/cc3cce7))
+* 升级hey-utils的引用 ([6955865](https://github.com/heyui/heyui/commit/6955865))
+
+
+
 <a name="0.2.17"></a>
 ## [0.2.17](https://github.com/heyui/heyui/compare/v0.2.16...v0.2.17) (2017-07-19)
 
