@@ -48,7 +48,6 @@ const updateModeAllChildChooseStatus = (data) => {
       if (child.status.choose || child.status.indeterminate) {
         isIndeterminateStatus = true;
       }
-      log(child.status);
     }
     if (!data.status.choose && isIndeterminateStatus) {
       data.status.indeterminate = true;
