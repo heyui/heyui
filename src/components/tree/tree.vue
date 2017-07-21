@@ -259,8 +259,10 @@ export default {
       choose = choose||[];
       for (let key of Object.keys(this.treeObj)) {
         let tree = this.treeObj[key];
-        tree.status.choose = false;
-        tree.status.opened = false;
+        if(tree){
+          tree.status.choose = false;
+          tree.status.opened = false;
+        }
       }
       for (let key of choose) {
         let tree = this.treeObj[key];
