@@ -263,7 +263,6 @@ export default {
       }
       for (let key of choose) {
         let tree = this.treeObj[key];
-        let tree = this.treeObj[key];
         if(tree){
           tree.status.choose = choose.indexOf(tree.key) != -1;
           if(tree.status.choose) {
