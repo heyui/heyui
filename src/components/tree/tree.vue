@@ -258,20 +258,20 @@ export default {
       if (!this.multiple) return;
       choose = choose||[];
       for (let key of Object.keys(this.treeObj)) {
-        let tree = this.treeObj[key];
-        if(tree){
-          tree.status.choose = false;
-          tree.status.opened = false;
-        }
+        tree.status.choose = false;
+        tree.status.opened = false;
       }
       for (let key of choose) {
         let tree = this.treeObj[key];
-        tree.status.choose = choose.indexOf(tree.key) != -1;
-        if(tree.status.choose) {
-          tree.status.opened = true;
-          updateParentStatus(this.treeObj, tree, 'opened', true);
-          if (this.chooseMode == 'all') {
-            updateChildStatus(tree, 'choose', true);
+        let tree = this.treeObj[key];
+        if(tree){
+          tree.status.choose = choose.indexOf(tree.key) != -1;
+          if(tree.status.choose) {
+            tree.status.opened = true;
+            updateParentStatus(this.treeObj, tree, 'opened', true);
+            if (this.chooseMode == 'all') {
+              updateChildStatus(tree, 'choose', true);
+            }
           }
         }
       }
