@@ -41,6 +41,9 @@ export default {
         titleName: 'title',
         dataMode: 'list',
         datas: list
+        // datas() { 可以使用方法
+        //   return list;
+        // }
       }
     }
   },

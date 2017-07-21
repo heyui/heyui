@@ -1,16 +1,17 @@
 <template>
   <Row v-height="300" type="flex">
-    <Col :width="12" class="overflow-y">
+    <Col :width="12" class="overflow-y" v-padding="10">
       <p>value: {{value1}}</p>
       <Tree config="simple" v-model="value1"></Tree>
     </Col>
-    <Col :width="12" class="overflow-y">
+    <Col :width="12" class="overflow-y" v-padding="10">
       <p>value: {{value2}}</p>
       <Tree config="simple" multiple v-model="value2"></Tree>
     </Col>
   </Row>
 </template>
 <script>
+
 // let list = [
 //   { id: 1, title: "一级" },
 //   { id: 2, title: "二级" },
@@ -20,6 +21,9 @@
 //   { id: 12, title: "一级-2", parent: "1" },
 //   { id: 13, title: "一级-3", parent: "1" },
 //   { id: 14, title: "一级-4", parent: "1" },
+//   { id: 101, title: "一级-0-1", parent: "10" },
+//   { id: 102, title: "一级-0-2", parent: "10" },
+//   { id: 103, title: "一级-0-3", parent: "10" },
 //   { id: 20, title: "二级-0", parent: "2" },
 //   { id: 21, title: "二级-1", parent: "2" },
 //   { id: 22, title: "二级-2", parent: "2" },
@@ -37,7 +41,9 @@
 //     parentName: 'parent',
 //     titleName: 'title',
 //     dataMode: 'list',
-//     datas: list
+//     datas() {
+//       return list;
+//     }
 //   }
 // });
 

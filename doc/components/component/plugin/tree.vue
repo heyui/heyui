@@ -116,7 +116,7 @@
       <tr>
         <td>datas</td>
         <td>用于tree展示的数据</td>
-        <td>Array</td>
+        <td>Array, Function</td>
         <td>-</td>
         <td>[]</td>
       </tr>

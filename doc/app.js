@@ -64,6 +64,9 @@ let list = [
   { id: 12, title: "一级-2", parent: "1" },
   { id: 13, title: "一级-3", parent: "1" },
   { id: 14, title: "一级-4", parent: "1" },
+  { id: 101, title: "一级-0-1", parent: "10" },
+  { id: 102, title: "一级-0-2", parent: "10" },
+  { id: 103, title: "一级-0-3", parent: "10" },
   { id: 20, title: "二级-0", parent: "2" },
   { id: 21, title: "二级-1", parent: "2" },
   { id: 22, title: "二级-2", parent: "2" },
@@ -81,7 +84,9 @@ HeyUI.config("tree.configs", {
     parentName: 'parent',
     titleName: 'title',
     dataMode: 'list',
-    datas: list
+    datas() {
+      return list;
+    }
   }
 });
 

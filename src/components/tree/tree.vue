@@ -187,7 +187,13 @@ export default {
       }
     },
     initTreeDatas() {
-      let datas = utils.copy(this.param.datas);
+      let datas = [];
+      if(utils.isArray(this.param.datas)) {
+        datas = this.param.datas;
+      }
+      if(utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.call(null);
+      }
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];
         this.globalloading = true;
