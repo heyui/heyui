@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.19"></a>
+## [0.2.19](https://github.com/heyui/heyui/compare/v0.2.18...v0.2.19) (2017-07-21)
+
+
+### Bug Fixes
+
+* autocomplete, tree, category option 变动后调用参数刷新 ([15e7812](https://github.com/heyui/heyui/commit/15e7812))
+* option参数组合改成computed方式 ([3294c83](https://github.com/heyui/heyui/commit/3294c83))
+
+
+
 <a name="0.2.18"></a>
 ## [0.2.18](https://github.com/heyui/heyui/compare/v0.2.17...v0.2.18) (2017-07-21)
 
