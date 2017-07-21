@@ -50,7 +50,7 @@ export default {
     updateChoose() {
       // 两种方法都可以
       // this.$refs.demo.updateChoose([1, 23, 31]);
-      this.value = [1, 23, 203];
+      this.value = [1, 23, 201, 202, 203];
     },
     getChoose() {
       let options = this.$refs.demo.getChoose();

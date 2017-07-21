@@ -43,14 +43,22 @@ const updateParentStatus = (objs, data, column, value) => {
 const updateModeAllChildChooseStatus = (data) => {
   if (data.children) {
     let isIndeterminateStatus = false;
+    let isChoose = data.children.length ? true : false;
     for (let child of data.children) {
       updateModeAllChildChooseStatus(child);
       if (child.status.choose || child.status.indeterminate) {
         isIndeterminateStatus = true;
       }
+      if (!child.status.choose) {
+        isChoose = false;
+      }
     }
-    if (!data.status.choose && isIndeterminateStatus) {
-      data.status.indeterminate = true;
+    if (!data.status.choose) {
+      if(isChoose){
+        data.status.choose = true;
+      }else if(isIndeterminateStatus){
+        data.status.indeterminate = true;
+      }
     }
   }
 }

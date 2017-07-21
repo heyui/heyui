@@ -48,7 +48,6 @@ export default {
       this.$emit("trigger", { type: "selectEvent", data: this.data });
     },
     choose() {
-      log('trigger choose');
       this.data.status.indeterminate = false;
       this.$emit("trigger", { type: "chooseEvent", data: this.data });
     },
