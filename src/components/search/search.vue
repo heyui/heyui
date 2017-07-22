@@ -46,6 +46,7 @@ export default {
       this.searching = value !== '';
       this.$emit('input', value);
       this.$emit('onsearch', value);
+      this.$emit('change', value);
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {

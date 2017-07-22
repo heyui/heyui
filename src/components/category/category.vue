@@ -40,6 +40,10 @@ export default {
       type: String,
       default: "请选择"
     },
+    filterable: {
+      type: Boolean,
+      default: true
+    },
     value: [Number, String, Array, Object],
     config: String
   },
@@ -64,6 +68,7 @@ export default {
   },
   methods: {
     openPicker() {
+      let that = this;
       this.$Modal({
         width: 600,
         hasDivider: true,
@@ -76,11 +81,16 @@ export default {
             categoryDatas: this.categoryDatas,
             categoryObj: this.categoryObj,
             multiple: this.multiple,
-            limit: this.limit
+            limit: this.limit,
+            filterable: this.filterable
           }
         },
         events: {
-
+          setvalue(modal, data) {
+            that.objects = data.objects;
+            that.object = data.object;
+            that.setvalue();
+          }
         }
       })
     },

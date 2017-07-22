@@ -11,14 +11,14 @@
           <span v-if="param.object">{{param.object.title}}</span>
         </div>
       </div>
-      <div class="h-panel-bar">
+      <div class="h-panel-bar" v-if="param.filterable">
         <Search v-model="search" trigger="input"></Search>
       </div>
       <Tabs v-font="13" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
         <Row :space="10">
          <Col :width="8" v-for="data of list" :key="data">
-            <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="param.multiple&&data.status.checkable" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
+            <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="data.status.checkable" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
          </Col>
         </Row>
       </div>
@@ -46,14 +46,17 @@ export default {
       tabs: [{title: "全部", key: topMenu}],
       tab: topMenu,
       tabIndex: 0,
+      filtering: false
     };
   },
   mounted() {
   },
   methods: {
     change(data,event) {
-      event.stopPropagation();
-      event.preventDefault();
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
       if(data.status.checkable === false) {
         return;
       }
@@ -72,6 +75,8 @@ export default {
         this.tabs.splice(this.tabIndex+1, 1, data);
         this.tab = data.key;
         this.list = data.children;
+      } else {
+        this.change(data);
       }
     },
     remove(obj) {
@@ -87,7 +92,8 @@ export default {
       }
     },
     confirm() {
-
+      this.$emit('event', 'setvalue', this.param);
+      this.close();
     },
     close() {
       this.$emit("close");
