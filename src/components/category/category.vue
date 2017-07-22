@@ -156,7 +156,7 @@ export default {
     initTreeModeData(list, parentKey) {
       let datas = [];
       for (let data of list) {
-        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey, status: { opened: false, selected: false, disabled: !!data.disabled } };
+        let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey, status: { opened: false, selected: false, checkable: data.checkable===false ? false : true} };
         let children = data[this.param.childrenName] || [];
         obj[this.param.childrenName] = this.initTreeModeData(children, obj.key);
         this.categoryObj[obj.key] = obj;

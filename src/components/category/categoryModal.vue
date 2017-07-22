@@ -18,7 +18,7 @@
       <div class="h-panel-body">
         <Row :space="10">
          <Col :width="8" v-for="data of list" :key="data">
-            <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="param.multiple&&!data.status.disabled" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}}</div>
+            <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="param.multiple&&data.status.checkable" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
          </Col>
         </Row>
       </div>
@@ -32,6 +32,7 @@
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
+const topMenu = "-------";
 
 export default {
   props: {
@@ -42,8 +43,9 @@ export default {
       params: this.param.param,
       list: this.param.categoryDatas,
       search: '',
-      tabs: [{title: "全部", key: '----'}],
-      tab: '----'
+      tabs: [{title: "全部", key: topMenu}],
+      tab: topMenu,
+      tabIndex: 0,
     };
   },
   mounted() {
@@ -52,15 +54,22 @@ export default {
     change(data,event) {
       event.stopPropagation();
       event.preventDefault();
+      if(data.status.checkable === false) {
+        return;
+      }
       if (this.param.multiple) {
+        if(this.param.objects.length >= this.param.limit && this.param.objects.indexOf(data) == -1) {
+          this.$Message.error(`您最多可以选择${this.param.limit}条数据。`);
+          return;
+        }
         this.param.objects = utils.toggleValue(this.param.objects, data);
       } else {
         this.param.object = data;
       }
     },
     openNew(data) {
-      if(data.children&&data.children.length){
-        this.tabs.push(data);
+      if (data.children&&data.children.length) {
+        this.tabs.splice(this.tabIndex+1, 1, data);
         this.tab = data.key;
         this.list = data.children;
       }
@@ -70,8 +79,8 @@ export default {
     },
     focusTab(tab, index){
       this.tab = tab.key;
-      this.tabs.splice(index+1, 1);
-      if(tab.key === '----'){
+      this.tabIndex = index;
+      if(tab.key === topMenu){
         this.list = this.param.categoryDatas;
       }else{
         this.list = tab.children;

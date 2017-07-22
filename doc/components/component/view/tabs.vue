@@ -21,5 +21,38 @@
     <p>样式：</p>
     <codes src="/codes/tabs.txt" type="less"></codes>
 
+
+    <h3>Tabs 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>切换Tab触发的事件</td>
+        <td>Function</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>datas</td>
+        <td>选择的数据</td>
+        <td>Array, Object</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>dict</td>
+        <td>调用全局定义的字典</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </table>
+
   </div>
 </template>

@@ -10,14 +10,14 @@
 export default {
   data() {
     let list = [
-      { id: 1, title: "一级", children: [
-        { id: 10, title: "一级-0", },
-        { id: 11, title: "一级-1", },
-        { id: 12, title: "一级-2", },
+      { id: 1, title: "一级", checkable: false, children: [
+        { id: 10, title: "一级-0" },
+        { id: 11, title: "一级-1" },
+        { id: 12, title: "一级-2" },
         { id: 13, title: "一级-3", },
         { id: 14, title: "一级-4", },
       ]},
-      { id: 2, title: "二级", children: [
+      { id: 2, title: "二级", checkable: false, children: [
         { id: 20, title: "二级-0", children: [
           { id: 201, title: "二级-0-1", },
           { id: 202, title: "二级-0-2", },
@@ -28,7 +28,7 @@ export default {
         { id: 23, title: "二级-3", },
         { id: 24, title: "二级-4", },
       ]},
-      { id: 3, title: "三级", disabled: true, children: [
+      { id: 3, title: "三级", checkable: false, children: [
         { id: 30, title: "三级-0", },
         { id: 31, title: "三级-1", },
         { id: 32, title: "三级-2", },
@@ -50,7 +50,7 @@ export default {
     updateChoose() {
       // 两种方法都可以
       // this.$refs.demo.updateChoose([1, 23, 31]);
-      this.value = [1, 23, 201, 202, 203];
+      this.value = [11, 23, 201, 202, 203];
     },
     getChoose() {
       let options = this.$refs.demo.getChoose();

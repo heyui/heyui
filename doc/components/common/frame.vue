@@ -25,6 +25,11 @@ export default {
     }
   },
   mounted() {
+    $.smoothScroll({
+      scrollElement: $('.left-frame', this.$el),
+      scrollTarget: $('.left-frame .router-link-active', this.$el),
+      offset: -60,
+    });
   }
 }
 </script>

@@ -6,16 +6,12 @@
     <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
     <p v-width="300">
-      <Category :option="param" type="key" v-model="value" multiple></Category>
+      <Category :option="param" type="key" v-model="value" multiple :limit="3"></Category>
     </p>
   
-    <h3>多选，选择模式为ALL</h3>
+    <h3>多选</h3>
     <p><code>chooseMode</code>: all, 只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
     <example demo="plugins/tree2"></example>
-  
-    <h3>多选，选择模式为SOME</h3>
-    <p><code>chooseMode</code>: some, 只要子集选中，父级即选中，返回数据为所有选中数据。</p>
-    <example demo="plugins/tree3"></example>
   
     <h3>搜索</h3>
     <example demo="plugins/tree4"></example>
@@ -23,11 +19,6 @@
     <h3>全部数据异步加载</h3>
     <p>在传递的param参数中，定义字段：<code>getTotalDatas</code>获取异步返回的数据，这里的数据属于一次性返回。</p>
     <example demo="plugins/tree5"></example>
-
-    <h3>分步异步加载</h3>
-    <p>在传递的param参数中，定义字段：<code>getDatas</code>获取异步返回的数据，这里的数据属于每个层级返回。</p>
-    <p>分步异步加载不推荐有<code>multiple</code>模式，分步异步加载请尽量使用在单个选择模式下。</p>
-    <example demo="plugins/tree6"></example>
 
     <h3>全局配置调用</h3>
     <example demo="plugins/tree7"></example>
@@ -165,6 +156,7 @@ export default {
     return {
       value: [31],
       param: {
+        title: '测维',
         keyName: 'id',
         parentName: 'parent',
         titleName: 'title',

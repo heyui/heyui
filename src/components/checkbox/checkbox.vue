@@ -12,7 +12,7 @@ import utils from '../../utils/utils';
 
 export default {
   model: {
-    prop: 'checked',
+    prop: 'checkStatus',
     event: 'input'
   },
   props: {
@@ -22,12 +22,12 @@ export default {
       type: Boolean,
       default: false
     },
-    value: {
-      default: false
-    },
+    value: [Object, Number, String],
     checked: {
+      type: Boolean,
       default: false
     },
+    checkStatus: [Array, Boolean],
     indeterminate: {
       type: Boolean,
       default: false
@@ -54,28 +54,38 @@ export default {
   watch: {
     checked() {
       this.updateChecked();
+    },
+    checkStatus() {
+      this.updateChecked();
     }
   },
   methods: {
     updateChecked() {
       if (!this.datas && !this.dict) {
-        if (utils.isBoolean(this.checked)) {
-          this.isChecked = this.checked;
-        } else {
+        if (!utils.isNull(this.value)) {
           this.isChecked = this.checkList.indexOf(this.value) != -1;
+        } else if (utils.isBoolean(this.checkStatus) || utils.isBoolean(this.checked)) {
+          this.isChecked = this.checkStatus || this.checked;
+        } else {
+          this.isChecked = false;
         }
       }
     },
     setvalue(option) {
       if (this.disabled) return;
-      let value = utils.copy(this.checked);
+      let value = null;
       if (!this.datas && !this.dict) {
-        if (utils.isBoolean(this.checked)) {
-          value = this.isChecked = !this.isChecked;
-        } else {
+        if (!utils.isNull(this.value)) {
           value = utils.toggleValue(this.checkList, this.value);
+        } else if (!utils.isNull(this.checkStatus)) {
+          value = !this.isChecked;
+        } else if (utils.isBoolean(this.checked)) {
+          value = this.checked;
+        } else {
+          value = this.isChecked = !this.isChecked;
         }
       } else {
+        value = utils.copy(this.checkStatus);
         let key = option[this.key];
         value = utils.toggleValue(value, key);
       }
@@ -96,7 +106,7 @@ export default {
   },
   computed: {
     checkList() {
-      return this.checked || []
+      return this.checkStatus || []
     },
     arr() {
       if (!this.datas && !this.dict) {
