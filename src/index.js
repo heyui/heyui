@@ -31,9 +31,10 @@ import Table from './components/table';
 import Tabs from './components/tabs';
 import Tag from './components/tag';
 import TagInput from './components/taginput';
+import Tree from './components/tree';
+import TreePicker from './components/treepicker';
 import NumberInput from './components/numberinput';
 import Tooltip from './components/tooltip';
-import Tree from './components/tree';
 import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
 import {
@@ -106,6 +107,7 @@ const components = {
   Tag,
   Tooltip,
   Tree,
+  TreePicker,
   Uploader
 };
 

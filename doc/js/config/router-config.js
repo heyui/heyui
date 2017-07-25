@@ -170,6 +170,11 @@ export default {
     component: () =>
       import ('../../components/component/plugin/tree')
   }, {
+    path: 'plugin/treepicker',
+    name: 'pluginTreePicker',
+    component: () =>
+      import ('../../components/component/plugin/treepicker')
+  }, {
     path: 'plugin/dropdowncustom',
     name: 'pluginDropdowncustom',
     component: () =>

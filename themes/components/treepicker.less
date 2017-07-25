@@ -1,0 +1,13 @@
+@treepicker-prefix: ~"@{prefix}treepicker";
+
+.plugin-input(@treepicker-prefix);
+
+.@{treepicker-prefix}{
+  &-item{
+    padding: 3px 5px;
+    cursor: pointer;
+    &:hover{
+      background: @hover-background-color;
+    }
+  }
+}

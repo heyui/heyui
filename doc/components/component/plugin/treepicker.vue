@@ -1,19 +1,17 @@
 <template>
   <div class="doc">
-    <h2>Category 分类选择</h2>
+    <h2>TreePicker 树下拉选择</h2>
   
     <h3>基本调用</h3>
-    <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
-    <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
     <p>{{value}}</p>
     <p v-width="300">
-      <Category :option="param" type="key" v-model="value"></Category>
+      <!-- <TreePicker :option="param" type="key" v-model="value"></TreePicker> -->
     </p>
   
     <h3>多选</h3>
     <p>{{value2}}</p>
     <p v-width="300">
-      <Category :option="param" type="object" v-model="value2" multiple :limit="10"></Category>
+      <!-- <TreePicker :option="param" type="object" v-model="value2" multiple :limit="10"></TreePicker> -->
     </p>
     <!-- <example demo="plugins/tree2"></example> -->
   

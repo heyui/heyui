@@ -29,6 +29,23 @@
   text-align: center;
   opacity: 0;
   transition: all 0.5s;
+  &-circular {
+    .middle-center();
+    >svg {
+      opacity: 0;
+      width: 42px;
+      height: 42px;
+      transform-origin: center center;
+      .circle {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: 0;
+        stroke-width: 2;
+        stroke: @primary-color;
+        stroke-linecap: round;
+      }
+    }
+  }
+
   &-loading{
     visibility: visible;
     z-index: @zindex-loading;
@@ -37,21 +54,11 @@
       z-index: @zindex-loading-fullscreen;
       position: fixed;
     }
-  }
-  &-circular {
-    .middle-center();
-    >svg {
-      width: 42px;
-      height: 42px;
+    svg{
+      opacity: 1;
       animation: loading-rotate 2s linear infinite;
-      transform-origin: center center;
-      .circle {
+      .circle{
         animation: loading-path-rotate 1.5s ease-in-out infinite;
-        stroke-dasharray: 90, 150;
-        stroke-dashoffset: 0;
-        stroke-width: 2;
-        stroke: @primary-color;
-        stroke-linecap: round;
       }
     }
   }
