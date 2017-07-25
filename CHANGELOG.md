@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/heyui/heyui/compare/v0.2.25...v0.4.0) (2017-07-25)
+
+
+### Bug Fixes
+
+* 优化checkbox机制，value > checked > v-model ([1ae557c](https://github.com/heyui/heyui/commit/1ae557c))
+* 当loading隐藏的时候，消除animation动画，优化页面性能 ([41a6ff1](https://github.com/heyui/heyui/commit/41a6ff1))
+
+
+### Features
+
+* category ([9a9b4cf](https://github.com/heyui/heyui/commit/9a9b4cf))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/heyui/heyui/compare/v0.2.25...v0.3.0) (2017-07-22)
 
