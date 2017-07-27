@@ -18,7 +18,7 @@
     
     <example demo="plugins/category3"></example> 
 
-    <h3>Tree 参数</h3>
+    <h3>Category 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -28,11 +28,11 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>chooseMode</td>
-        <td>checkbox选择模式</td>
+        <td>type</td>
+        <td>数据类型</td>
         <td>String</td>
-        <td>all,some</td>
-        <td>all</td>
+        <td>key,object</td>
+        <td>key</td>
       </tr>
       <tr>
         <td>option</td>
@@ -78,21 +78,21 @@
         <td>数据的key对应字段</td>
         <td>String</td>
         <td>-</td>
-        <td>全局配置<code>tree.default.keyName</code></td>
+        <td>全局配置<code>category.default.keyName</code></td>
       </tr>
       <tr>
         <td>titleName</td>
         <td>数据的title对应字段</td>
         <td>String</td>
         <td>-</td>
-        <td>全局配置<code>tree.default.titleName</code></td>
+        <td>全局配置<code>category.default.titleName</code></td>
       </tr>
       <tr>
         <td>parentName</td>
         <td>数据的parent对应字段</td>
         <td>String</td>
         <td>-</td>
-        <td>全局配置<code>tree.default.parentName</code></td>
+        <td>全局配置<code>category.default.parentName</code></td>
       </tr>
       <tr>
         <td>dataMode</td>
@@ -126,40 +126,3 @@
   </div>
 </template>
 <script>
-export default {
-  data() {
-    let list = [
-      { id: 1, title: "一级", checkable: false },
-      { id: 2, title: "二级", checkable: false },
-      { id: 3, title: "三级", checkable: false },
-      { id: 10, title: "一级-0", parent: 1 },
-      { id: 11, title: "一级-1", parent: 1 },
-      { id: 12, title: "一级-2", parent: 1 },
-      { id: 13, title: "一级-3", parent: 1 },
-      { id: 14, title: "一级-4", parent: 1 },
-      { id: 20, title: "二级-0", parent: 2 },
-      { id: 21, title: "二级-1", parent: 2 },
-      { id: 22, title: "二级-2", parent: 2 },
-      { id: 23, title: "二级-3", parent: 2 },
-      { id: 24, title: "二级-4", parent: 2 },
-      { id: 30, title: "三级-0", parent: 3 },
-      { id: 31, title: "三级-1", parent: 3 },
-      { id: 32, title: "三级-2", parent: 3 },
-      { id: 33, title: "三级-3", parent: 3 },
-      { id: 34, title: "三级-4", parent: 3 }
-    ];
-    return {
-      value: null,
-      value2: [{ id: 34, title: "三级-4", parent: 3 }],
-      param: {
-        title: '测试',
-        keyName: 'id',
-        parentName: 'parent',
-        titleName: 'title',
-        dataMode: 'list',
-        datas: list
-      }
-    }
-  }
-};
-</script>
