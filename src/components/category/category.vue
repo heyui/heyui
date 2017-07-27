@@ -140,19 +140,28 @@ export default {
       this.$el.dispatchEvent(event);
     },
     initCategoryDatas() {
-      let datas = this.param.datas;
+      let datas = [];
       let isInited = false;
       if(this.config){
-        let categoryObj = config.getOption(`tree.configs.${this.config}.categoryObj`);
+        let categoryObj = this.param.categoryObj;
         if (categoryObj) {
           isInited = true;
           this.categoryObj = categoryObj;
-          this.categoryDatas = datas;
+          this.categoryDatas = this.param.datas;
         } 
       }
       if (!isInited) {
+        if(utils.isArray(this.param.datas)) {
+          datas = this.param.datas;
+        }
+        if(utils.isFunction(this.param.datas)) {
+          datas = this.param.datas.call(null);
+        }
         this.categoryDatas = this.initDatas(datas);
-        config.config(`tree.configs.${this.config}.categoryObj`, this.categoryObj);
+        if(this.config) {
+          config.config(`category.configs.${this.config}.categoryObj`, this.categoryObj);
+          config.config(`category.configs.${this.config}.datas`, this.categoryDatas);
+        }
       }
       this.parse();
     },

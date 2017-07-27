@@ -5,27 +5,18 @@
     <h3>基本调用</h3>
     <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
-    <p>{{value}}</p>
-    <p v-width="300">
-      <Category :option="param" type="key" v-model="value"></Category>
-    </p>
-  
-    <h3>多选</h3>
-    <p>{{value2}}</p>
-    <p v-width="300">
-      <Category :option="param" type="object" v-model="value2" multiple :limit="10"></Category>
-    </p>
-    <!-- <example demo="plugins/tree2"></example> -->
-  
-    <h3>搜索</h3>
-    <!-- <example demo="plugins/tree4"></example> -->
-  
-    <h3>全部数据异步加载</h3>
-    <p>在传递的param参数中，定义字段：<code>getTotalDatas</code>获取异步返回的数据，这里的数据属于一次性返回。</p>
-    <!-- <example demo="plugins/tree5"></example> -->
+    
+    <example demo="plugins/category1"></example> 
 
-    <h3>全局配置调用</h3>
-    <!-- <example demo="plugins/tree7"></example> -->
+    <h3>对象调用</h3>
+    <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
+    <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
+    
+    <example demo="plugins/category2"></example> 
+  
+    <h3>字典配置</h3>
+    
+    <example demo="plugins/category3"></example> 
 
     <h3>Tree 参数</h3>
     <table class="table">

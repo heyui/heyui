@@ -89,6 +89,18 @@ HeyUI.config("tree.configs", {
     }
   }
 });
+HeyUI.config("category.configs", {
+  simple: {
+    title: '测试',
+    keyName: 'id',
+    parentName: 'parent',
+    titleName: 'title',
+    dataMode: 'list',
+    datas() {
+      return list;
+    }
+  }
+});
 
 Vue.use(VueRouter);
 Vue.use(HeyUI);

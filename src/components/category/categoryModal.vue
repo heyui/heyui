@@ -23,11 +23,11 @@
         <Row :space="10">
           <template  v-if="searchText==''">
             <Col :width="8" v-for="data of list" :key="data">
-                <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="data.status.checkable" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
+                <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
             </Col>
           </template>
          <Col v-else :width="8" v-for="data of searchlist" :key="data">
-            <div class="text-ellipsis h-category-item" @click.stop="change(data)"><Checkbox v-if="data.status.checkable" :checked="param.objects.indexOf(data)>-1||param.object===data" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}}</div>
+            <div class="text-ellipsis h-category-item" @click.stop="change(data)"><Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}}</div>
          </Col>
         </Row>
       </div>
@@ -60,6 +60,13 @@ export default {
   mounted() {
   },
   methods: {
+    isChecked(data) {
+      if (this.param.multiple) {
+        return this.param.objects.some(item=>item.key == data.key);
+      } else {
+        return this.param.object ? (this.param.object.key==data.key) : false;
+      }
+    },
     change(data,event) {
       if (event) {
         event.stopPropagation();

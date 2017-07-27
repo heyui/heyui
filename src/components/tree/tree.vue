@@ -220,7 +220,7 @@ export default {
       // this.treeDataShow = this.treeDatas;
     },
     initDatas(datas) {
-      let list = datas;
+      let list = datas = utils.copy(datas);
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(datas, this.param);
       }

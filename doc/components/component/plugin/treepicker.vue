@@ -5,7 +5,7 @@
     <h3>基本调用</h3>
     <p>{{value}}</p>
     <p v-width="300">
-      <!-- <TreePicker :option="param" type="key" v-model="value"></TreePicker> -->
+       <TreePicker :option="param" type="key" v-model="value"></TreePicker> 
     </p>
   
     <h3>多选</h3>
