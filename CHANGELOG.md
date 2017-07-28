@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.3"></a>
+## [0.4.3](https://github.com/heyui/heyui/compare/v0.4.2...v0.4.3) (2017-07-28)
+
+
+### Bug Fixes
+
+* modal position use fixed ([5fa779d](https://github.com/heyui/heyui/commit/5fa779d))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/heyui/heyui/compare/v0.4.1...v0.4.2) (2017-07-28)
 
