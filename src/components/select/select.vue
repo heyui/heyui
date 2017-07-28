@@ -247,6 +247,7 @@ export default {
     },
     filterOptions() {
       if (this.searchInput) {
+        if (this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
         return this.options.filter((item) => {
           return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
