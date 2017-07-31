@@ -49,17 +49,17 @@ class Notify {
         let name = '';
         let attr = '';
         let color = '';
-        if (b == 'cancel' || b.type == 'cancel') {
+        if (b == 'cancel') {
           name = b.name || '取消';
           attr = b;
-        } else if (b == 'ok' || b.type == 'ok') {
+        } else if (b == 'ok') {
           name = b.name || '确定';
           attr = 'ok';
           color = 'primary';
         } else if (utils.isObject(b)) {
           attr = b.type;
           name = b.name;
-          color = b.color || 'primary';
+          color = b.color;
         }
         if (color) color = `h-btn-${color}`;
         footeHtml += `<button class="h-btn ${color}" attr="${attr}" >${name}</button>`;

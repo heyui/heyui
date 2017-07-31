@@ -12,7 +12,10 @@ export default {
       this.$Modal({
         title: '自定义的弹出框2',
         content: '<p>自定义的弹出框测试2</p><p>自定义的弹出框测试2</p>',
-        buttons: ['ok', 'cancel', {
+        buttons: ['ok', {
+          type: 'cancel',
+          name: '关闭'
+        }, {
           type: 'delete',
           name: '删除',
           color: 'red'
