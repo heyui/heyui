@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.6"></a>
+## [0.4.6](https://github.com/heyui/heyui/compare/v0.4.5...v0.4.6) (2017-08-01)
+
+
+### Bug Fixes
+
+* menu add unread count icon ([fb6f63e](https://github.com/heyui/heyui/commit/fb6f63e))
+* menu count max-count set 99 ([66ed5e0](https://github.com/heyui/heyui/commit/66ed5e0))
+
+
+
 <a name="0.4.5"></a>
 ## [0.4.5](https://github.com/heyui/heyui/compare/v0.4.4...v0.4.5) (2017-08-01)
 
