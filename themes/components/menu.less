@@ -49,6 +49,11 @@
         transform: rotate(-90deg);
       }
     }
+
+    &-count{
+      .middle();
+      right: 55px;
+    }
   }
 }
 
@@ -83,10 +88,27 @@
       }
     }
     &-li {
-      &-selected {
-        border-right: 5px solid @primary-color;
-        background-color: @hover-background-color;
-        color: @primary-color;
+      position: relative;
+      .@{menu-prefix}{
+        &-show{
+          &:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 0px;
+            background: @primary-color;
+          }
+        }
+        &-li-selected{
+          background-color: @hover-background-color;
+          color: @primary-color;
+          &:after {
+            width: 5px;
+            transition: @transition-time;
+          }
+        }
       }
     }
   }

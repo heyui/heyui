@@ -23,9 +23,11 @@ export default {
           title: '收藏',
           key: 'favor',
           icon: 'h-icon-star',
+          count: 20,
           children: [
             {
               title: '类型-1',
+              count: 100,
               key: '2-1'
             },
             {

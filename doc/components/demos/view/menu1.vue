@@ -28,10 +28,12 @@ export default {
           title: '收藏',
           key: 'favor',
           icon: 'h-icon-star',
+          count: 20,
           children: [
             {
               title: '收藏-1',
-              key: 'favor2-1'
+              key: 'favor2-1',
+              count: 100,
             },
             {
               title: '收藏-2',

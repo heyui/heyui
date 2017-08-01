@@ -5,6 +5,7 @@
          :class="{'h-menu-show-disabled':data.status.disabled, 'h-menu-li-selected': data.key&&status.selected == data.key}">
       <span class='h-menu-show-icon' v-show='data.icon'><i :class="data.icon"></i></span>
       <span class='h-menu-show-desc'>{{data.title}}</span>
+      <span class='h-menu-show-count' v-if="data.count"><Badge :count="data.count" :max-count="100"></Badge></span>
       <span class='h-menu-show-expand' v-if="data.children&&data.children.length>0">
         <i class='h-icon-down'></i>
       </span>

@@ -19,7 +19,7 @@ const prefix = 'h-menu';
 const initStatus = (list = [], param, parent) => {
   let datas = [];
   for (let data of list) {
-    let obj = { key: data[param.keyName], title: data[param.titleName], icon: data.icon, value: data, status: { opened: false, disabled: !!data.disabled }, parent };
+    let obj = { key: data[param.keyName], title: data[param.titleName], icon: data.icon, count: data.count, value: data, status: { opened: false, disabled: !!data.disabled }, parent };
     let children = data[param.childrenName] || [];
     obj.children = initStatus(children, param, obj);
     datas.push(obj);
