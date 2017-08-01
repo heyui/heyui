@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-width="300">
     <p>{{value}}</p>
     <NumberInput v-model="value" :max="10" :min="0"></NumberInput>
   </div>

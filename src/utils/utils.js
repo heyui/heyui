@@ -207,5 +207,36 @@ export default utils.extend({}, utils, {
       result.html = param.render.call(null, result);
     }
     return result;
+  },
+  addFn(dataOne, dataTwo) {
+    let dataOneInt = dataOne.toString().split(".")[0];
+    let dataOneFloat = '';
+    let dataTwoInt = dataTwo.toString().split(".")[0];
+    let dataTwoFloat = '';
+    let lengthOne = 0;
+    let lengthTwo = 0;
+    let maxLength = 0;
+
+    if (dataOne.toString().split(".").length == 2) {
+      dataOneFloat = dataOne.toString().split(".")[1];
+      lengthOne = dataOneFloat.toString().length;
+    }
+    if (dataTwo.toString().split(".").length == 2) {
+      dataTwoFloat = dataTwo.toString().split(".")[1];
+      lengthTwo = dataTwoFloat.toString().length;
+    }
+
+    maxLength = Math.max(lengthOne, lengthTwo);
+    for (let i = 0; i < maxLength - lengthOne; i++) {
+      dataOneFloat += "0";
+    }
+    for (let i = 0; i < maxLength - lengthTwo; i++) {
+      dataTwoFloat += "0";
+    }
+
+    let one = dataOneInt + "" + dataOneFloat;
+    let two = dataTwoInt + "" + dataTwoFloat;
+
+    return (Number(one) + Number(two)) / Math.pow(10, maxLength);
   }
 });
