@@ -4,9 +4,9 @@
     <h-switch v-model="disabled"
                 :small="true">禁用</h-switch> value:{{value}}
     </p>
-    <AutoComplete dict="simple"
+    <div v-width="300"><AutoComplete dict="simple"
                   :disabled="disabled"
-                  v-model="value" @change="onChange"></AutoComplete>
+                  v-model="value" @change="onChange"></AutoComplete></div>
   </div>
 </template>
 <script>

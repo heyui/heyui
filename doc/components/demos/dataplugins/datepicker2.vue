@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      value: '',
+      value: '2017-01-01',
       disabled: true
     }
   }

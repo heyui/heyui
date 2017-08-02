@@ -2,8 +2,8 @@
   <div>
     <p>value:{{value}}
       <button class="h-btn h-btn-text" @click="update">修改值</button></p>
-    <AutoComplete dict="simple"
-                  v-model="value" @change="onChange" :show="show"></AutoComplete>
+    <div v-width="300"><AutoComplete dict="simple"
+                  v-model="value" @change="onChange" :show="show"></AutoComplete></div>
   </div>
 </template>
 <script>

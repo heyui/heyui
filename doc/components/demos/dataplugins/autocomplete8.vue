@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div >
     <p>value:{{value}}
       <button class="h-btn h-btn-text" @click="update">修改值</button>
     </p>
-    <AutoComplete :option="param" type="object"
-                  :multiple="true" v-model="value" @change="onChange"></AutoComplete>
+    <div v-width="300"><AutoComplete :option="param" type="object"
+                  :multiple="true" v-model="value" @change="onChange"></AutoComplete></div>
   </div>
 </template>
 <script>

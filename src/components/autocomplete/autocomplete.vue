@@ -28,7 +28,7 @@
                :placeholder="placeholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
-        <i class="h-icon-close text-hover" v-else-if="showValue" @click="clear"></i>
+        <i class="h-icon-close text-hover" v-else-if="showValue&&!disabled" @click="clear"></i>
       </template>
     </div>
   

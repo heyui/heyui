@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div >
     <p>value:{{value}}</p>
-    <AutoComplete :option="param" type="title" v-model="value"
-                  :must-match="false" @change="onChange"></AutoComplete>
+    <div v-width="300"><AutoComplete :option="param" type="title" v-model="value"
+                  :must-match="false" @change="onChange"></AutoComplete></div>
   </div>
 </template>
 <script>

@@ -10,7 +10,7 @@
              @input="inputEvent"
              :placeholder="placeholder"
              :disabled="disabled" />
-      <i class="h-icon-calendar" v-if="!showDate"></i>
+      <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
       <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
     </div>
     <div :class="datePickerCls"

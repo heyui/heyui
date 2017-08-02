@@ -25,7 +25,6 @@
       <example demo="dataplugins/daterangepicker2"></example>
     </div>
     <h3>选择日期时间范围控件</h3>
-    <p>这里，我们建议使用两个选择器。</p>
     <div>
       <example demo="dataplugins/daterangepicker3"></example>
     </div>
