@@ -109,6 +109,13 @@
         <td>-</td>
       </tr>
       <tr>
+        <td>no-border</td>
+        <td>是否有边框</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
         <td>text</td>
         <td>是否是单纯的文字按钮</td>
         <td>boolean</td>

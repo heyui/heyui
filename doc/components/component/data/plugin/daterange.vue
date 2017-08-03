@@ -14,6 +14,10 @@
     <div>
       <example demo="dataplugins/daterangepicker5"></example>
     </div>
+    <h3>选择周控件</h3>
+    <div>
+      <example demo="dataplugins/daterangepicker7"></example>
+    </div>
     <h3>快捷方式</h3>
     <p>快捷方式定义与日期控件一致，同时也可以使用全局配置的方式使用。</p>
     <div>

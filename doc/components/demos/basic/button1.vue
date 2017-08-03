@@ -3,12 +3,13 @@
     <h4>基本</h4>
     <div>
       <button class="h-btn">默认</button>
-      <button class="h-btn h-btn-primary">主要按钮</button>
+      <button class="h-btn h-btn-primary">主色系按钮</button>
       <button class="h-btn h-btn-text">文字按钮</button>
       <button class="h-btn h-btn-no-border">文字按钮2</button>
     </div>
     <h4>颜色</h4>
     <div>
+      <button class="h-btn h-btn-primary">主色系按钮</button>
       <button class="h-btn h-btn-yellow">YELLOW按钮</button>
       <button class="h-btn h-btn-green">GREEN按钮</button>
       <button class="h-btn h-btn-red">RED按钮</button>
@@ -17,6 +18,7 @@
     </div>
     <h4>hover颜色</h4>
     <div>
+      <button class="h-btn h-btn-text-primary">主色系按钮</button>
       <button class="h-btn h-btn-text-yellow">YELLOW按钮</button>
       <button class="h-btn h-btn-text-green">GREEN按钮</button>
       <button class="h-btn h-btn-text-red">RED按钮</button>
@@ -25,6 +27,7 @@
     </div>
     <h4>文字颜色</h4>
     <div>
+      <button class="h-btn h-btn-no-border h-btn-text-primary">主色系按钮</button>
       <button class="h-btn h-btn-no-border h-btn-text-yellow">YELLOW按钮</button>
       <button class="h-btn h-btn-no-border h-btn-text-green">GREEN按钮</button>
       <button class="h-btn h-btn-no-border h-btn-text-red">RED按钮</button>
@@ -37,7 +40,7 @@
     <h4>禁用</h4>
     <div>
       <button class="h-btn" disabled>默认</button>
-      <button class="h-btn h-btn-primary" disabled>主要按钮</button>
+      <button class="h-btn h-btn-primary" disabled>主色系按钮</button>
       <button class="h-btn h-btn-text" disabled>文字按钮</button>
       <button class="h-btn h-btn-blue" disabled><i class="h-icon-completed"></i><span>图标</span></button>
     </div>

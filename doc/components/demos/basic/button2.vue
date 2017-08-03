@@ -3,12 +3,13 @@
     <h4>基本</h4>
     <div>
       <Button>默认</Button>
-      <Button color="primary">主要按钮</Button>
+      <Button color="primary">主色系按钮</Button>
       <Button :text="true">文字按钮</Button>
       <Button :no-border="true">文字按钮2</Button>
     </div>
     <h4>颜色</h4>
     <div>
+      <Button color="primary">主色系按钮</Button>
       <Button color="yellow">YELLOW按钮</Button>
       <Button color="green">GREEN按钮</Button>
       <Button color="red">RED按钮</Button>
@@ -17,6 +18,7 @@
     </div>
     <h4>hover颜色</h4>
     <div>
+      <Button text-color="primary">主色系按钮</Button>
       <Button text-color="yellow">YELLOW按钮</Button>
       <Button text-color="green">GREEN按钮</Button>
       <Button text-color="red">RED按钮</Button>
@@ -25,6 +27,7 @@
     </div>
     <h4>文字颜色</h4>
     <div>
+      <Button text-color="primary" :no-border="true">主色系按钮</Button>
       <Button text-color="yellow" :no-border="true">YELLOW按钮</Button>
       <Button text-color="green" :no-border="true">GREEN按钮</Button>
       <Button text-color="red" :no-border="true">RED按钮</Button>
@@ -37,7 +40,7 @@
     <h4>禁用</h4>
     <div>
       <Button :disabled="true">默认</Button>
-      <Button color="primary" :disabled="true">主要按钮</Button>
+      <Button color="primary" :disabled="true">主色系按钮</Button>
       <Button :text="true" :disabled="true">文字按钮</Button>
       <Button color="blue" :disabled="true" icon="completed">图标</Button>
     </div>

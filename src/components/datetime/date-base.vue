@@ -59,6 +59,7 @@ const startView = {
   year: 'year',
   month: 'month',
   date: 'date',
+  week: 'week',
   datetime: 'date',
   datehour: 'date',
   time: 'hour',
@@ -68,6 +69,7 @@ const endView = {
   year: 'year',
   month: 'month',
   date: 'date',
+  week: 'week',
   datetime: 'minute',
   datehour: 'hour',
   time: 'minute',
@@ -77,6 +79,7 @@ const DateFormatLength = {
   year: 4,
   month: 7,
   date: 10,
+  week: 10,
   hour: 13,
   minute: 16
 };
@@ -221,6 +224,11 @@ export default {
           
           this.setvalue(date, false);
         }
+        // if(this.type == 'week' && this.view == 'year'){
+        //   this.view = 'week';
+        // } else {
+          
+        // }
         this.view = viewType[index + 1];
         this.$emit('updateView', date.time(), this.range);
       }
