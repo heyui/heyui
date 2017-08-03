@@ -12,11 +12,6 @@
           <td>{{props.data.id}}</td>
           <td>{{props.data.name}}</td>
           <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
           <td>{{props.data.age}}</td>
           <td>{{props.data.address}}</td>
           <td @click="remove(datas, props.data)">
@@ -35,11 +30,6 @@ export default {
         { title: 'id', fixed: 'left', width: 50 },
         { title: '姓名1', width: 150 },
         { title: '姓名2', width: 450 },
-        { title: '姓名3', width: 450 },
-        { title: '姓名4', width: 150 },
-        { title: '姓名5', width: 450 },
-        { title: '姓名6', width: 450 },
-        { title: '姓名7', width: 150 },
         { title: '年龄', width: 150 },
         { title: '地址', width: 150 },
         { title: '操作', width: 80, fixed: 'right' },
