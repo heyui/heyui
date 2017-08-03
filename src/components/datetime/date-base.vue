@@ -192,11 +192,39 @@ export default {
         let index = viewType.indexOf(this.view);
 
         //除了month和year点击，其他都直接完成赋值
-        if (index > 1) {
-          this.setvalue(d.date, false);
+        if (!(this.options.start || this.options.end || this.options.disabled)) {
+          let date = manba();
+          if(this.value){
+            date = manba(this.value);
+            switch(this.view){
+              case 'year': 
+                date.year(d.date.year());
+                break;
+              case 'month': 
+                date.month(d.date.month());
+                if(date.month() > d.date.month()){
+                  date.date(1);
+                  date = date.add(-1, manba.DAY);
+                }
+                break;
+              case 'date': 
+                date.date(d.date.date());
+                break;
+              case 'hour': 
+                date.hours(d.date.hours());
+                break;
+              case 'minutes': 
+                date.minutes(d.date.minutes());
+                break;
+            }
+          } else {
+            date = d.date;
+          }
+          
+          this.setvalue(date, false);
         }
         this.view = viewType[index + 1];
-        this.$emit('updateView', d.date.time(), this.range);
+        this.$emit('updateView', date.time(), this.range);
       }
     },
     setvalue(date, isEnd = false) {

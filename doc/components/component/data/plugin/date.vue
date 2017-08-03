@@ -35,6 +35,10 @@
     <div>
       <example demo="dataplugins/datepicker8"></example>
     </div>
+    <h3>Inline模式</h3>
+    <div>
+      <example demo="dataplugins/datepicker9"></example>
+    </div>
     
     <h3>DatePicker 参数</h3>
     <table class="table">

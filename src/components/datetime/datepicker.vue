@@ -1,5 +1,6 @@
 <template>
   <div :class="dateCls">
+    <template v-if="!inline">
     <div v-if="noBorder"
          class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
     <div v-else
@@ -13,6 +14,7 @@
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
       <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
     </div>
+    </template>
     <div :class="datePickerCls"
          class="h-date-picker">
       <div class="h-date-container" v-if="isShow">
@@ -33,7 +35,7 @@
       </div>
   
       <div class="h-date-footer"
-           v-if="hasConfirm">
+           v-if="hasConfirm & !inline">
         <button class="h-btn h-btn-text"
                 @click="setvalue('')">清除</button>
         <button class="h-btn h-btn-primary h-btn-s"
@@ -91,7 +93,11 @@ export default {
       type: Boolean,
       default: false
     },
-    value: String
+    value: String,
+    inline: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     let format = this.format || options.format[this.type];
@@ -104,7 +110,7 @@ export default {
       hasConfirm: this.type == 'datetime' || this.type == 'datehour' || this.hasButtons,
       nowView: manba(),
       nowFormat: format,
-      isShow: false
+      isShow: this.inline
     };
   },
   watch: {
@@ -125,6 +131,7 @@ export default {
   mounted() {
     let that = this;
     this.$nextTick(() => {
+      if(this.inline) return;
       let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
       let content = this.$el.querySelector(`.h-date-picker`);
       
@@ -161,10 +168,10 @@ export default {
     },
     updateView(value) {
       this.nowView = manba(value);
-      this.dropdown.popperInstance.update();
+      if(this.dropdown) this.dropdown.popperInstance.update();
     },
     changeView() {
-      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+      if(this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     inputEvent(event) {
       let value = event.target.value;
@@ -206,7 +213,7 @@ export default {
       if (initShow) this.showDate = '';
     },
     hide() {
-      this.dropdown.hide();
+      if(this.dropdown) this.dropdown.hide();
     },
     setvalue(string, isEnd = true) {
       // log(string);
@@ -221,7 +228,7 @@ export default {
       if (isEnd) {
         this.hide();
       }
-      this.dropdown.popperInstance.update();
+      if(this.dropdown) this.dropdown.popperInstance.update();
     }
   },
   computed: {
@@ -244,7 +251,8 @@ export default {
     },
     dateCls() {
       return {
-        [`${prefix}`]: true,
+        [`${prefix}`]: !this.inline,
+        [`${prefix}-inline`]: this.inline,
         [`${prefix}-input-border`]: !this.noBorder,
         [`${prefix}-disabled`]: this.disabled
       }
