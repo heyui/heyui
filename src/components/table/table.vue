@@ -141,6 +141,14 @@ export default {
       },
       deep: true
     },
+    columns: {
+      handler() {
+        if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
+          this.resize();
+        }
+      },
+      deep: true
+    },
     checks: {
       handler() {
         this.$emit('select', this.checks);
