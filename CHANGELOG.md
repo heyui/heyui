@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.9"></a>
+## [0.4.9](https://github.com/heyui/heyui/compare/v0.4.8...v0.4.9) (2017-08-03)
+
+
+### Bug Fixes
+
+* button 添加text-primary的样式 ([1b60a0f](https://github.com/heyui/heyui/commit/1b60a0f))
+* date updateView when choose date ([59b48b5](https://github.com/heyui/heyui/commit/59b48b5))
+
+
+
 <a name="0.4.8"></a>
 ## [0.4.8](https://github.com/heyui/heyui/compare/v0.4.7...v0.4.8) (2017-08-03)
 
