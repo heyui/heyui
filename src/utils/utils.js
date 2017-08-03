@@ -176,7 +176,7 @@ export default utils.extend({}, utils, {
     let dataObj = this.toObject(data, param.keyName);
     for (let d of data) {
       let parentCode = d[param.parentName];
-      if (!utils.isNull(d[param.parentName]) && dataObj[parentCode]) {
+      if (!utils.isNull(parentCode) && dataObj[parentCode]) {
         let parent = dataObj[parentCode];
         if (!utils.isArray(parent[param.childrenName])) {
           parent[param.childrenName] = [];

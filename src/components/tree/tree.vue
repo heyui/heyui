@@ -238,6 +238,9 @@ export default {
       }
       return datas;
     },
+    refresh() {
+      this.initTreeDatas();
+    },
     expandAll() {
       for (let tree of Object.keys(this.treeObj)) {
         this.treeObj[tree].status.opened = true;

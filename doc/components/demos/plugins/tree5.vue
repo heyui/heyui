@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p>
+      <Button @click="refresh" size="xs">刷新</Button>
+    </p>
     <Tree :option="param" ref="demo"></Tree>
   </div>
 </template>
@@ -43,6 +46,9 @@ export default {
     }
   },
   methods: {
+    refresh() {
+      this.$refs.demo.refresh();
+    }
   }
 };
 </script>

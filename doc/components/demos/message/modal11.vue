@@ -24,8 +24,8 @@ export default {
           data: { a: 1 }
         },
         events: {
-          fromchild(m, data) {
-            that.$Message(data);
+          fromchild:(modal, data)=>{
+            this.$Message(data);
           }
         }
       });
