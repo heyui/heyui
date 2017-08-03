@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.13"></a>
+## [0.4.13](https://github.com/heyui/heyui/compare/v0.4.12...v0.4.13) (2017-08-03)
+
+
+### Bug Fixes
+
+* table right fixed width error ([4f6cb88](https://github.com/heyui/heyui/commit/4f6cb88))
+* table right fixed width error ([bfa47f8](https://github.com/heyui/heyui/commit/bfa47f8))
+
+
+
 <a name="0.4.12"></a>
 ## [0.4.12](https://github.com/heyui/heyui/compare/v0.4.11...v0.4.12) (2017-08-03)
 
