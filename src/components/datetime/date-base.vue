@@ -191,9 +191,9 @@ export default {
       } else {
         let index = viewType.indexOf(this.view);
 
+        let date = d.date;
         //除了month和year点击，其他都直接完成赋值
         if (!(this.options.start || this.options.end || this.options.disabled)) {
-          let date = manba();
           if(this.value){
             date = manba(this.value);
             switch(this.view){
@@ -217,8 +217,6 @@ export default {
                 date.minutes(d.date.minutes());
                 break;
             }
-          } else {
-            date = d.date;
           }
           
           this.setvalue(date, false);
