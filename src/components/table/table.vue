@@ -132,7 +132,7 @@ export default {
   watch: {
     datas: {
       handler(value, oldValue) {
-        if (this.height) {
+        if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
         }
         if (value != oldValue) {
