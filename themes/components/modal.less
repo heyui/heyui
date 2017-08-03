@@ -3,7 +3,7 @@
 @modal-padding: 15px;
 .@{modal-cls} {
     z-index: @zindex-modal;
-    position: fixed;
+    position: absolute;
     .@{notify-cls} {
         &-container {
             margin-bottom: 100px;
@@ -30,7 +30,7 @@
     &.@{notify-cls} {
 
         &-has-mask{
-            .absolute();
+            position: fixed;
             overflow: auto;
             .@{notify-cls} {
                 &-container {
