@@ -176,7 +176,9 @@ export default {
           fixedleft.addEventListener("mousewheel", scrollEvent);
         }
       }
-      window.addEventListener('resize', this.resize);
+      if(this.fixedColumnLeft||this.fixedColumnRight){
+        window.addEventListener('resize', this.resize);
+      }
       this.resize();
     });
   },
@@ -226,10 +228,11 @@ export default {
 
       let fixedColumnRightLength = this.fixedColumnRight.length;
       let rightWidth = 0;
-      for (let i = ths.length - 1; i > ths.length - fixedColumnRightLength; i--) {
+      for (let i = ths.length - 1; i > ths.length - fixedColumnRightLength - 1; i--) {
         rightWidth += ths[i].clientWidth || 0;
       }
-      this.rightWidth = leftWidth;
+      log(rightWidth);
+      this.rightWidth = rightWidth;
     },
   },
   computed: {
