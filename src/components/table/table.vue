@@ -176,7 +176,7 @@ export default {
           fixedleft.addEventListener("mousewheel", scrollEvent);
         }
       }
-      if(this.fixedColumnLeft||this.fixedColumnRight){
+      if(this.fixedColumnLeft.length||this.fixedColumnRight.length){
         window.addEventListener('resize', this.resize);
       }
       this.resize();
@@ -203,9 +203,9 @@ export default {
         let body = this.$el.querySelector(".h-table-body");
         if (body) {
           this.scrollWidth = body.offsetWidth - body.clientWidth;
-          this.tableWidth = body.clientWidth;
-          this.initFixedWidth();
         }
+        this.tableWidth = this.$el.querySelector(".h-table-container").clientWidth;
+        this.initFixedWidth();
       });
     },
     mouseover(data) {
@@ -231,7 +231,6 @@ export default {
       for (let i = ths.length - 1; i > ths.length - fixedColumnRightLength - 1; i--) {
         rightWidth += ths[i].clientWidth || 0;
       }
-      log(rightWidth);
       this.rightWidth = rightWidth;
     },
   },
