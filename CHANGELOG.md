@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.11"></a>
+## [0.4.11](https://github.com/heyui/heyui/compare/v0.4.10...v0.4.11) (2017-08-03)
+
+
+### Bug Fixes
+
+* compute width when table has fixcolumn ([44a235f](https://github.com/heyui/heyui/commit/44a235f))
+
+
+
 <a name="0.4.10"></a>
 ## [0.4.10](https://github.com/heyui/heyui/compare/v0.4.9...v0.4.10) (2017-08-03)
 
