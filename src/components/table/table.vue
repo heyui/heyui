@@ -4,13 +4,13 @@
       <table :style="{'margin-left': (-scrollLeft+'px')}">
         <colgroup>
           <col v-if="checkbox" width="60" />
-          <col v-for="c of columns" :width="getWidth(c)" />
+          <col v-for="c of computeColumns" :width="getWidth(c)" />
         </colgroup>
         <tr>
           <th v-if="checkbox" class="text-center">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <th v-for="c of columns">{{c.title}}</th>
+          <th v-for="c of computeColumns">{{c.title}}</th>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -24,14 +24,15 @@
         <table>
           <colgroup>
             <col v-if="checkbox" width="60" />
-            <col v-for="c of columns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" />
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :key="d" :class="isHovered(d)">
               <td v-if="checkbox" class="text-center">
                 <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
               </td>
-              <slot :data="d"></slot>
+              <slot :data="d" v-if="$scopedSlots.default"></slot>
+              <slot v-else-if="$slots.default"></slot>
             </tr>
           </tbody>
         </table>
@@ -41,14 +42,14 @@
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
             <col v-if="checkbox" width="60" />
-            <col v-for="c of columns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" />
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :class="isHovered(d)">
               <td v-if="checkbox" class="text-center">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
               </td>
-              <slot :data="d"></slot>
+              <slot :data="d" v-if="$scopedSlots.default"></slot>
             </tr>
           </tbody>
         </table>
@@ -56,11 +57,11 @@
       <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="{'margin-right': (scrollWidth+'px'), 'height': (height+'px')}">
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
-            <col v-for="c of columns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" />
           </colgroup>
           <tbody class="h-table-tbody">
             <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :class="isHovered(d)">
-              <slot :data="d"></slot>
+              <slot :data="d" v-if="$scopedSlots.default"></slot>
             </tr>
           </tbody>
         </table>
@@ -243,9 +244,21 @@ export default {
     },
   },
   computed: {
+    computeColumns() {
+      if(this.columns.length) return this.columns;
+      let columns = [];
+      if(this.$slots.default){
+        for(let slot of this.$slots.default){
+          if(slot.componentOptions&&slot.componentOptions.tag == "TableItem"){
+            columns.push(slot.componentOptions.propsData);
+          }
+        }
+      }
+      return columns;
+    },
     fixedColumnLeft() {
       let columns = [];
-      for (let c of this.columns) {
+      for (let c of this.computeColumns) {
         if (c.fixed == 'left') {
           columns.push(c);
         }
@@ -254,7 +267,7 @@ export default {
     },
     fixedColumnRight() {
       let columns = [];
-      for (let c of this.columns) {
+      for (let c of this.computeColumns) {
         if (c.fixed == 'right') {
           columns.push(c);
         }

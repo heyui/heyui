@@ -1,3 +1,4 @@
 import Table from './table';
+import TableItem from './table-item';
 
-export default Table;
+export { Table, TableItem };

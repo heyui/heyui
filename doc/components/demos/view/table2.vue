@@ -4,7 +4,7 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :columns="columns"
+    <!-- <Table :columns="columns"
            :datas="datas" checkbox @select="onselect">
       <template scope="props">
           <td>{{props.data.name}}</td>
@@ -14,6 +14,13 @@
             <button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button>
           </td>
       </template>
+      <div slot="empty">自定义提醒：暂时无数据</div>
+    </Table> -->
+    <Table :datas="datas">
+      <TableItem title="姓名" prop="name"></TableItem>
+      <TableItem title="年龄" prop="age"></TableItem>
+      <TableItem title="地址" prop="address"></TableItem>
+      <TableItem title="操作" :width="100" prop="age"></TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
