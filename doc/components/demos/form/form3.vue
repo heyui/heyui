@@ -14,6 +14,7 @@
                 prop="input">
         <input type="text"
                v-model="data.input" />
+        <span slot="error" class="link" v-if="isInputAsyncError">+++++++错误的特殊提示+++++++</span>
       </FormItem>
       <FormItem label="整数">
         <Slider v-model="data.int"></Slider>
@@ -158,6 +159,7 @@
 <script>
 export default {
   data() {
+    let that = this;
     return {
       mode: 'single',
       data: {
@@ -197,6 +199,7 @@ export default {
         twocolumn: '两列一行',
         threecolumn: '三列一行',
       },
+      isInputAsyncError: false,
       validationRules: {
         rules: {
           textarea: {
@@ -205,11 +208,13 @@ export default {
           },
           input: {
             //这里的判断不会影响最终的valid结果，所以可以作为一些验证提示，也可以做异步处理判断(原则上所以的异步判断在提交后同样需要验证)
-            validAsync(value, next, parent, data){
+            validAsync(value, next, parent, data) {
               setTimeout(()=>{
                 if(value.length == 15 || value.length == 18 ) {
+                  that.isInputAsyncError = false;
                   next();
                 } else {
+                  that.isInputAsyncError = true;
                   next("字段长度非15/18位，可能不符合规定");
                 }
               }, 10);

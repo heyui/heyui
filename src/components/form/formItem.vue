@@ -9,7 +9,7 @@
         <slot></slot>
       </div>
       <div class="h-form-item-error"
-           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'">{{label}}</span>{{errorMessage.message}}</div>
+           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'">{{label}}</span>{{errorMessage.message}}<slot name="error"></slot></div>
     </div>
   </div>
 </template>
