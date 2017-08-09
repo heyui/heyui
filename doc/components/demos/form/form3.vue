@@ -14,7 +14,9 @@
                 prop="input">
         <input type="text"
                v-model="data.input" />
-        <span slot="error" class="link" v-if="isInputAsyncError">+++++++错误的特殊提示+++++++</span>
+        <template slot="error" scope="props">
+          <span class="link" v-if="props.type == 'async'">+++++++错误的特殊提示+++++++</span>
+        </template>
       </FormItem>
       <FormItem label="整数">
         <Slider v-model="data.int"></Slider>
@@ -211,10 +213,8 @@ export default {
             validAsync(value, next, parent, data) {
               setTimeout(()=>{
                 if(value.length == 15 || value.length == 18 ) {
-                  that.isInputAsyncError = false;
                   next();
                 } else {
-                  that.isInputAsyncError = true;
                   next("字段长度非15/18位，可能不符合规定");
                 }
               }, 10);

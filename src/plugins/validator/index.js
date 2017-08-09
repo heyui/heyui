@@ -159,10 +159,10 @@ class Validator {
       return combineArgs(prop, result, 'base');
     }
     result = this.combineRulesValid(ruleKey, value, parent, parentProp);
-    let baseResult = combineArgs(prop);
+    let baseResult = combineArgs(prop, undefined, 'combine');
     if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
-      rule.validAsync.call(null, value, (result) => {
-        let n = combineArgs(prop, result);
+      rule.validAsync.call(null, value, (result1) => {
+        let n = combineArgs(prop, result1, 'async');
         n[prop].loading = false;
         next(n);
       }, parent, data);
