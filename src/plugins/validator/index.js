@@ -127,10 +127,15 @@ class Validator {
 
   getConfig(prop) {
     let ruleKey = prop;
-    if (prop.indexOf("[") > -1) {
+    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, "[]");
     }
     return this.rules[ruleKey];
+  }
+
+  setConfig(prop, options) {
+    let ruleKey = prop;
+    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
   validField(prop, data, next) {
@@ -140,7 +145,7 @@ class Validator {
 
     let ruleKey = prop;
     let value = utils.getKeyValue(data, prop);
-    if (prop.indexOf("[") > -1) {
+    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, "[]");
     }
     let parent = data;

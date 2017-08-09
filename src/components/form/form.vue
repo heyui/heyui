@@ -61,6 +61,9 @@ export default {
       // log(returnResult);
       utils.extend(true, this.messages, returnResult);
     },
+    setConfig(prop, options) {
+      this.validator.setConfig(prop, options);
+    },
     getConfig(prop) {
       if (!this.validator) return false;
       return this.validator.getConfig(prop);
