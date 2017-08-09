@@ -202,6 +202,18 @@ export default {
           textarea: {
             maxLen: 50,
             minLen: 10
+          },
+          input: {
+            //这里的判断不会影响最终的valid结果，所以可以作为一些验证提示，也可以做异步处理判断(原则上所以的异步判断在提交后同样需要验证)
+            validAsync(value, next, parent, data){
+              setTimeout(()=>{
+                if(value.length == 15 || value.length == 18 ) {
+                  next();
+                } else {
+                  next("字段长度非15/18位，可能不符合规定");
+                }
+              }, 10);
+            }
           }
         },
         required: [
