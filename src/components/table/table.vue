@@ -32,7 +32,6 @@
                 <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
               </td>
               <slot :data="d" v-if="$scopedSlots.default"></slot>
-              <slot v-else-if="$slots.default"></slot>
             </tr>
           </tbody>
         </table>
