@@ -16,9 +16,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "hey-log": "0.0.8",
-    "hey-utils": "0.0.20",
-    "manba": "0.0.19"
+    "hey-log": "^0.0.8",
+    "hey-utils": "^0.0.23",
+    "manba": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^3.8.1",

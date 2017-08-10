@@ -374,8 +374,8 @@ export default {
           dates.push(
             genData({
               date: manba(date.time()),
-              type: manba.DAY,
-              show: `第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
+              type: manba.WEEK,
+              show: `${date.year()}年 第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
               vm: this,
               isNowDays: true
           }));

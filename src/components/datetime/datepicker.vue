@@ -9,6 +9,7 @@
              v-model="showDate"
              @change="changeEvent"
              @input="inputEvent"
+             :readonly = "type == 'week'"
              :placeholder="placeholder"
              :disabled="disabled" />
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
@@ -201,7 +202,13 @@ export default {
           }
           this.nowView = manba(value);
           this.nowDate = this.nowView.format('k');
-          if (initShow) this.showDate = this.nowView.format(this.nowFormat);
+          if (initShow) {
+            if (this.type == 'week') {
+              this.showDate = `${this.nowView.year()}年 第${this.nowView.getWeekOfYear(manba.MONDAY)}周`;
+            } else {
+              this.showDate = this.nowView.format(this.nowFormat);
+            }
+          }
           return;
         } catch (err) {
           // log.error(err);
