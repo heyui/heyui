@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.21"></a>
+## [0.4.21](https://github.com/heyui/heyui/compare/v0.4.20...v0.4.21) (2017-08-10)
+
+
+### Bug Fixes
+
+* tooltip 当无参数传递的时候使用内部innerText ([cefbca0](https://github.com/heyui/heyui/commit/cefbca0))
+* v-tooltip 默认展示dom内部文本 ([179bece](https://github.com/heyui/heyui/commit/179bece))
+
+
+
 <a name="0.4.20"></a>
 ## [0.4.20](https://github.com/heyui/heyui/compare/v0.4.19...v0.4.20) (2017-08-09)
 
