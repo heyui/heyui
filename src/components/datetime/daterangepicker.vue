@@ -167,10 +167,12 @@ export default {
     },
     updateView(value, rangeType) {
       this.nowView[rangeType] = manba(value);
-      if (rangeType == 'end') {
-        this.nowView.start = manba(value).add(-1, manba.MONTH);
-      } else {
-        this.nowView.end = manba(value).add(1, manba.MONTH);
+      if (this.nowView.start.time() >= this.nowView.end.time()) {
+        if (rangeType == 'end') {
+          this.nowView.start = manba(value).add(-1, manba.MONTH);
+        } else {
+          this.nowView.end = manba(value).add(1, manba.MONTH);
+        }
       }
       this.dropdown.popperInstance.update();
     },

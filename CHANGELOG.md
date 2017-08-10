@@ -9,8 +9,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * tooltip 当无参数传递的时候使用内部innerText ([cefbca0](https://github.com/heyui/heyui/commit/cefbca0))
-* v-tooltip 默认展示dom内部文本 ([179bece](https://github.com/heyui/heyui/commit/179bece))
-
 
 
 <a name="0.4.20"></a>
@@ -258,16 +256,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="0.2.24"></a>
-## [0.2.24](https://github.com/heyui/heyui/compare/v0.2.23...v0.2.24) (2017-07-21)
-
-
-
-<a name="0.2.23"></a>
-## [0.2.23](https://github.com/heyui/heyui/compare/v0.2.22...v0.2.23) (2017-07-21)
-
-
-
 <a name="0.2.22"></a>
 ## [0.2.22](https://github.com/heyui/heyui/compare/v0.2.21...v0.2.22) (2017-07-21)
 
@@ -275,12 +263,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * tree判断无用的key ([6396479](https://github.com/heyui/heyui/commit/6396479))
-
-
-
-<a name="0.2.21"></a>
-## [0.2.21](https://github.com/heyui/heyui/compare/v0.2.20...v0.2.21) (2017-07-21)
-
 
 
 <a name="0.2.20"></a>
@@ -364,17 +346,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * 修复form validator展示bug ([5f82ca9](https://github.com/heyui/heyui/commit/5f82ca9))
 * 修复qiniu上传失败的bug ([480f395](https://github.com/heyui/heyui/commit/480f395))
-
-
-
-<a name="0.2.13"></a>
-## [0.2.13](https://github.com/heyui/heyui/compare/v0.2.12...v0.2.13) (2017-07-10)
-
-
-
-<a name="0.2.12"></a>
-## [0.2.12](https://github.com/heyui/heyui/compare/v0.2.11...v0.2.12) (2017-07-09)
-
 
 
 <a name="0.2.11"></a>
