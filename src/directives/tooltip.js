@@ -14,8 +14,11 @@ export default {
     if (refNode) {
       param.content = refNode;
       param.html = true;
-    } else {
+    } else if (param.content) {
       param.content = `<div class="h-tooltip-inner-content">${param.content}</div>`;
+      param.html = true;
+    } else {
+      param.content = `<div class="h-tooltip-inner-content">${el.innerText}</div>`;
       param.html = true;
     }
     param.container = document.body;
