@@ -59,6 +59,7 @@ export default {
   'dataplugins/datepicker7': resolve => require.ensure([], require => require('./dataplugins/datepicker7.vue'), 'dataplugins'),
   'dataplugins/datepicker8': resolve => require.ensure([], require => require('./dataplugins/datepicker8.vue'), 'dataplugins'),
   'dataplugins/datepicker9': resolve => require.ensure([], require => require('./dataplugins/datepicker9.vue'), 'dataplugins'),
+  'dataplugins/datepicker10': resolve => require.ensure([], require => require('./dataplugins/datepicker10.vue'), 'dataplugins'),
   'dataplugins/daterangepicker1': resolve => require.ensure([], require => require('./dataplugins/daterangepicker1.vue'), 'dataplugins'),
   'dataplugins/daterangepicker2': resolve => require.ensure([], require => require('./dataplugins/daterangepicker2.vue'), 'dataplugins'),
   'dataplugins/daterangepicker3': resolve => require.ensure([], require => require('./dataplugins/daterangepicker3.vue'), 'dataplugins'),

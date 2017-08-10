@@ -74,6 +74,7 @@ const components = {
   DropdownMenu,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
+  DateFullRangePicker: Datetime.DateFullRangePicker,
   hForm: Form,
   Form,
   FormItem: Form.Item,

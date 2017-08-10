@@ -6,7 +6,7 @@
             @click="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
       <span class="h-date-month-left-picker"
             @click="updateView('month', -1)"
-            v-show="view=='date'"><i class="h-icon-left"></i></span>
+            v-show="view=='date'||view=='week'"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show"
             @click="changeView('year')"
             v-if="view != 'year'">{{nowView.year()}}年</span>
@@ -22,7 +22,7 @@
             @click="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
       <span class="h-date-month-right-picker"
             @click="updateView('month', 1)"
-            v-show="view=='date'"><i class="h-icon-right"></i></span>
+            v-show="view=='date'||view=='week'"><i class="h-icon-right"></i></span>
     </div>
     <div class="h-date-header"
          v-show="view=='minute'">
@@ -52,6 +52,7 @@ import utils from '../../utils/utils';
 const dateprefix = 'h-date';
 
 const viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+const weekViewType = ['year', 'month', 'week'];
 
 const options = config.getOption('datepicker');
 
@@ -192,7 +193,6 @@ export default {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
-        let index = viewType.indexOf(this.view);
 
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
@@ -222,6 +222,7 @@ export default {
             }
           }
           
+          
           this.setvalue(date, false);
         }
         // if(this.type == 'week' && this.view == 'year'){
@@ -229,7 +230,12 @@ export default {
         // } else {
           
         // }
-        this.view = viewType[index + 1];
+        let viewTypes = viewType;
+        if(this.type == 'week'){
+          viewTypes = weekViewType;
+        }
+        let index = viewTypes.indexOf(this.view);
+        this.view = viewTypes[index + 1];
         this.$emit('updateView', date.time(), this.range);
       }
     },
@@ -351,6 +357,30 @@ export default {
             vm: this,
             isNowDays: true
           }));
+        }
+        return dates;
+      } else if (this.view == 'week') {
+        let dates = [];
+        let hour = nowDate.hours();
+        let date = nowDate.startOf(manba.MONTH).endOf(manba.WEEK, manba.MONDAY);
+        if (date.date() == 7) {
+          date = date.startOf(manba.WEEK);
+        } else {
+          date = date.add(1);
+        }
+        let month = date.month();
+        let index = date.getWeekOfYear(manba.MONDAY);
+        while (date.month() == month) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.DAY,
+              show: `第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
+              vm: this,
+              isNowDays: true
+          }));
+          date = date.add(7);
+          index += 1;
         }
         return dates;
       }

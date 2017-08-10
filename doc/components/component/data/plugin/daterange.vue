@@ -33,6 +33,11 @@
       <example demo="dataplugins/daterangepicker3"></example>
     </div>
 
+    <h4>超级日期选择器</h4>
+    <div>
+      <DateFullRangePicker v-model="value1"></DateFullRangePicker>
+    </div>
+
     <h3>DatePicker 参数</h3>
     <table class="table">
       <tr>

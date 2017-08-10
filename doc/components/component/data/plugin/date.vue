@@ -22,6 +22,10 @@
     <div>
       <example demo="dataplugins/datepicker5"></example>
     </div>
+    <h3>选择周控件</h3>
+    <div>
+      <example demo="dataplugins/datepicker10"></example>
+    </div>
     <h3>快捷方式</h3>
     <p>可以通过全局定义配置好快捷方式，这里只做key的调用，或者自己定义函数返回。全局配置详情请参考<router-link to="/guide/config">全局配置</router-link></p>
     <div>
