@@ -3,13 +3,12 @@ import utils from '../utils/utils';
 
 export default {
   inserted(el, binding, vnode) {
-    let attr = vnode.data;
-    if (!attr.attrs.content && !attr.attrs['ref-el']) return;
     let param = {};
-    if (attr.attrs.content) {
-      param.content = attr.attrs.content;
+    let attrs = vnode.data.attrs || {};
+    if (attrs.content) {
+      param.content = attrs.content;
     }
-    let ref = attr.attrs['ref-el'];
+    let ref = attrs['ref-el'];
     let refNode = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
     if (refNode) {
       param.content = refNode;
@@ -22,7 +21,7 @@ export default {
       param.html = true;
     }
     param.container = document.body;
-    param = utils.initParam(param, attr.attrs, ['placement', 'theme', 'delay', 'trigger']);
+    param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);
     el.tooltip = new Tooltip(el, param);
   },
   unbind(el) {
