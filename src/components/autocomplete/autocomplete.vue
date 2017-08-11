@@ -6,7 +6,7 @@
               :key="obj"><span>{{obj.title}}</span><i class="h-icon-close"
            @click.stop="remove(obj)"
            v-if="!disabled"></i></span>
-        <input v-if="!disabled"
+        <input :disabled="disabled"
                type="text"
                class="h-autocomplete-input"
                @focus="focus"
