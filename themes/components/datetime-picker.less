@@ -8,6 +8,12 @@
   }
 }
 
+.@{datetime-picker-prefix}-full-range {
+  .@{datetime-picker-prefix}-show{
+    min-width: 220px;
+  }
+}
+
 .@{date-picker-prefix} {
   &-picker {
     border: @border;
@@ -28,6 +34,17 @@
       &-container {
         display: flex
       }
+      &-full-range-container{
+        display: block;
+        .h-tabs{
+          padding: 0;
+          >div{
+          }
+          > div + div{
+            margin-left: 5px;
+          }
+        }
+      }
       &-range-container{
         >.@{date-picker-prefix}-content:last-child{
           border-left: @border;
@@ -35,6 +52,9 @@
       }
       &-content {
         padding: 10px;
+      }
+      &-self-defined{
+        padding: 20px;
       }
       &-footer {
         padding: 5px 10px;
@@ -77,7 +97,7 @@
         }
       }
       &-body {
-        margin-top: 8px;
+        margin: 8px auto 0;
         font-size: @font-size-mini;
         width: 224px;
         >div>span {
@@ -128,7 +148,9 @@
             margin: 3px;
           }
         }
-        &-week{
+        &-week, &-season{
+          min-width: 200px;
+          width: auto;
           >div>span {
             width: 100%;
             display: block;

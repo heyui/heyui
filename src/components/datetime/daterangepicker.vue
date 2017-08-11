@@ -25,6 +25,7 @@
                    :type="type"
                    :now-view="nowView.start"
                    :format="nowFormat"
+                   :startWeek = "startWeek"
                    @updateView="updateView"
                    @input="setvalue"
                    @changeView="changeView"
@@ -37,6 +38,7 @@
                    :type="type"
                    :now-view="nowView.end"
                    :format="nowFormat"
+                   :startWeek = "startWeek"
                    @updateView="updateView"
                    @input="setvalue"
                    @changeView="changeView"
@@ -97,7 +99,11 @@ export default {
       type: String,
       default: "请选择"
     },
-    value: Object
+    value: Object,
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
+    }
   },
   watch: {
     value() {

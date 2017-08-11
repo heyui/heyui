@@ -28,6 +28,7 @@
                    :value="nowDate"
                    :option="option"
                    :type="type"
+                   :startWeek = "startWeek"
                    :now-view="nowView"
                    format="k"
                    @updateView="updateView"
@@ -98,6 +99,10 @@ export default {
     inline: {
       type: Boolean,
       default: false
+    },
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
     }
   },
   data() {

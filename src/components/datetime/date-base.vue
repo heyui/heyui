@@ -14,7 +14,7 @@
             v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
       <span class="h-date-header-show"
             @click="changeView('month')"
-            v-show="view != 'year' && view != 'month'">{{nowView.month()}}月</span>
+            v-show="view != 'year' && view != 'month' && view != 'season'">{{nowView.month()}}月</span>
       <span class="h-date-header-show"
             @click="changeView('date')"
             v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}日</span>
@@ -53,6 +53,7 @@ const dateprefix = 'h-date';
 
 const viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 const weekViewType = ['year', 'month', 'week'];
+const seasonViewType = ['year', 'season'];
 
 const options = config.getOption('datepicker');
 
@@ -61,6 +62,7 @@ const startView = {
   month: 'month',
   date: 'date',
   week: 'week',
+  season: 'season',
   datetime: 'date',
   datehour: 'date',
   time: 'hour',
@@ -71,6 +73,7 @@ const endView = {
   month: 'month',
   date: 'date',
   week: 'week',
+  season: 'season',
   datetime: 'minute',
   datehour: 'hour',
   time: 'minute',
@@ -81,6 +84,7 @@ const DateFormatLength = {
   month: 7,
   date: 10,
   week: 10,
+  season: 10,
   hour: 13,
   minute: 16
 };
@@ -115,6 +119,10 @@ export default {
     nowView: Object,
     range: String,
     rangeEnd: String,
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
+    }
   },
   data() {
     return {
@@ -126,6 +134,12 @@ export default {
   filters: {
     hoursString(d) {
       return `${utils.padLeft(d.hours(), 2)}:00`;
+    }
+  },
+  watch: {
+    type() {
+      this.options = utils.extend({}, options.datetimeOptions, this.option);
+      this.view = startView[this.type];
     }
   },
   mounted() {
@@ -196,7 +210,7 @@ export default {
 
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
-        if (!(this.options.start || this.options.end || this.options.disabled)) {
+        if (!(this.options.start || this.options.end || this.options.disabled || this.type == 'week' || this.type == 'season')) {
           if(this.value){
             date = manba(this.value);
             switch(this.view){
@@ -231,8 +245,10 @@ export default {
           
         // }
         let viewTypes = viewType;
-        if(this.type == 'week'){
+        if (this.type == 'week') {
           viewTypes = weekViewType;
+        } else if (this.type == 'season'){
+          viewTypes = seasonViewType;
         }
         let index = viewTypes.indexOf(this.view);
         this.view = viewTypes[index + 1];
@@ -362,14 +378,14 @@ export default {
       } else if (this.view == 'week') {
         let dates = [];
         let hour = nowDate.hours();
-        let date = nowDate.startOf(manba.MONTH).endOf(manba.WEEK, manba.MONDAY);
+        let date = nowDate.startOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
         if (date.date() == 7) {
           date = date.startOf(manba.WEEK);
         } else {
           date = date.add(1);
         }
         let month = date.month();
-        let index = date.getWeekOfYear(manba.MONDAY);
+        let index = date.getWeekOfYear(this.startWeek);
         while (date.month() == month) {
           dates.push(
             genData({
@@ -383,8 +399,22 @@ export default {
           index += 1;
         }
         return dates;
+      } else if (this.view == 'season') {
+        let dates = [];
+        let date = nowDate.startOf(manba.YEAR);
+        for (let index = 1; index < 5; index++) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.MONTH,
+              show: `${date.year()}年 第${index}季度`,
+              vm: this,
+              isNowDays: true
+          }));
+          date = date.add(3, manba.MONTH);
+        }
+        return dates;
       }
-
       return [];
     }
   }

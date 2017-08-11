@@ -1,47 +1,38 @@
 <template>
   <div :class="dateCls">
-    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
+    <div v-if="noBorder" class="h-datetime-show text-hover">{{showValue||placeholder}}</div>
     <div v-else class="h-input h-datetime-show">
       <input type="text"
-             :value="show"
+             :value="showValue"
              readonly
-             @change="changeEvent"
              :placeholder="placeholder"
-             :disabled="disabled" />
+             />
       <i class="h-icon-calendar"></i>
     </div>
     <div :class="datePickerCls"
          class="h-date-picker">
-      <div class="h-date-container h-date-range-container" v-if="isShow">
+      <div class="h-date-container h-date-full-range-container">
         <div v-if="shortcuts.length>0"
              class="h-date-shortcut">
           <div v-for="s of shortcuts"
                @click="setShortcutValue(s)" :key="s">{{s.title}}</div>
         </div>
-        <date-base ref="start"
-                   :value="nowDate"
-                   range="start"
-                   :option="startOption"
-                   :type="type"
+        <div><Tabs :datas="views" v-model="view" @change="changeView"></Tabs></div>
+        <div v-if="view == 'date'" class="h-date-self-defined">
+          <DatePicker type="text" v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'" placeholder="请选择开始时间"></DatePicker>
+          -
+          <DatePicker type="text" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}" :type="hasTime?'datetime':'date'" placeholder="请选择结束时间"></DatePicker>
+        </div>
+        <date-base v-else ref="datebase"
+                   :value="nowDate.start"
+                   :option="option"
+                   :type="view"
+                   :startWeek = "startWeek"
                    :now-view="nowView.start"
-                   :format="nowFormat"
+                   format="k"
                    @updateView="updateView"
                    @input="setvalue"
-                   @changeView="changeView"
-                   :rangeEnd="rangeEnd"
-                   @updateRangeEnd="updateRangeEnd"></date-base>
-        <date-base ref="end"
-                   :value="nowDate"
-                   range="end"
-                   :option="endOption"
-                   :type="type"
-                   :now-view="nowView.end"
-                   :format="nowFormat"
-                   @updateView="updateView"
-                   @input="setvalue"
-                   @changeView="changeView"
-                   :rangeEnd="rangeEnd"
-                   @updateRangeEnd="updateRangeEnd"></date-base>
+                   @changeView="updateDropdown"></date-base>
       </div>
   
       <div class="h-date-footer">
@@ -67,29 +58,23 @@ const manbaType = {
   year: manba.YEAR,
   month: manba.MONTH,
   date: manba.DAY,
-  datetime:
-  manba.MINUTE,
+  datetime: manba.MINUTE,
   time: manba.MINUTE,
   datehour: manba.HOUR
 }
 
 export default {
   props: {
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    type: {
+    defaultType: {
       type: [String],
-      default: 'date'  //year, month, week
+      default: 'week'  //year, month, week
     },
     option: Object,
-    format: String,
     noBorder: {
       type: Boolean,
       default: false
     },
-    hasSeconds: {
+    hasTime: {
       type: Boolean,
       default: false
     },
@@ -97,26 +82,21 @@ export default {
       type: String,
       default: "请选择"
     },
-    value: Object
+    value: Object,
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
+    }
   },
   watch: {
     value() {
       this.parse(this.value);
-    },
-    disabled() {
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
-      }
     }
   },
   data() {
-    let format = this.format || config.getOption('datepicker.format')[this.type];
-    if (this.type == 'datetime' && this.hasSeconds) {
-      format = config.getOption('datepicker.format.datetimesecond');
-    }
+    let format = config.getOption('datepicker.format');
     return {
+      nowFormat: this.hasTime? format.datetime : format.date,
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
         start: '',
@@ -126,8 +106,15 @@ export default {
         start: manba(),
         end: manba().add(1, manba.MONTH),
       },
+      views: {
+        year: '年',
+        month: '月',
+        season: '季度',
+        week: '周',
+        date: '自定义'
+      },
+      view: this.defaultType || 'year',
       rangeEnd: '',
-      nowFormat: format,
       isShow: false
     };
   },
@@ -142,7 +129,6 @@ export default {
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         content,
-        disabled: this.disabled,
         container: document.body,
         events: {
           show() {
@@ -156,42 +142,22 @@ export default {
     });
   },
   methods: {
-    updateRangeEnd(string) {
-      this.rangeEnd = string;
-    },
     setShortcutValue(s) {
       let value = s.value.call(null);
       this.parse(value);
       this.updateValue(this.nowDate);
       this.hide();
     },
-    updateView(value, rangeType) {
-      this.nowView[rangeType] = manba(value);
-      if (this.nowView.start.time() >= this.nowView.end.time()) {
-        if (rangeType == 'end') {
-          this.nowView.start = manba(value).add(-1, manba.MONTH);
-        } else {
-          this.nowView.end = manba(value).add(1, manba.MONTH);
-        }
-      }
+    changeView() {
+      this.initNowView();
+      this.updateView;
+    },
+    updateView(value) {
+      this.nowView.start = manba(value);
       this.dropdown.popperInstance.update();
     },
-    changeView() {
+    updateDropdown() {
       if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
-    },
-    changeEvent(event) {
-      // let value = event.target.value;
-      // this.parse(value);
-      // if (utils.isObject(this.option) && this.type != "time") {
-      //   let disabled = false;
-      //   let type = manbaType[this.type];
-      //   if (this.option.start && this.nowView.distance(this.option.start, type) < 0) disabled = this.option.start;
-      //   if (this.option.end && !disabled && this.nowView.distance(this.option.end, type) > 0) disabled = this.option.end;
-      //   if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowView)) disabled = '';
-      //   if (disabled !== false) {
-      //     this.parse(disabled);
-      //   }
-      // }
     },
     parseSingle(value, range) {
       if (utils.isObject(value) && value[this.paramName[range]]) {
@@ -207,20 +173,21 @@ export default {
     parse(value) {
       this.parseSingle(value, 'start');
       this.parseSingle(value, 'end');
-      this.rangeEnd = this.nowDate.end;
     },
     initNowView() {
       let start = manba();
       if (!!this.nowDate.start) {
         start = manba(this.nowDate.start);
       }
+      let end = manba();
+      if (!!this.nowDate.end) {
+        end = manba(this.nowDate.end);
+      }
       let endRange = 1;
       this.nowView = {
         start,
-        end: manba(start).add(endRange, manba.MONTH),
+        end,
       };
-      this.$refs.start.resetView();
-      this.$refs.end.resetView();
     },
     hide() {
       this.dropdown.hide();
@@ -229,29 +196,43 @@ export default {
       this.updateValue({});
       this.initNowView();
     },
-    setvalue(string, isEnd = false, range) {
+    setvalue(string) {
       string = string || '';
-      let lastDate = utils.copy(this.nowDate);
-      if (!lastDate.start) {
-        lastDate.start = string;
-      } else if (!lastDate.end) {
-        lastDate.end = string;
-      } else {
-        lastDate.start = '';
-        lastDate.end = '';
+      if( this.view == 'date' ){
+        value = utils.copy(this.nowDate);
+        this.updateValue(value);
+        return;
       }
-      if (isEnd && lastDate.start && lastDate.end && lastDate.start > lastDate.end) {
-        let start = lastDate.start;
-        lastDate.start = lastDate.end;
-        lastDate.end = start;
+      let value = {};
+      let start = manba(string);
+      if (this.view == 'week'){
+        value = {
+          start: start.format(),
+          end: start.add(7).format(),
+        }
+      } else if (this.view == 'year') {
+        value = {
+          start: start.format(),
+          end: start.add(1, manba.YEAR).format(),
+        }
+      } else if (this.view == 'month') {
+        value = {
+          start: start.format(),
+          end: start.add(1, manba.MONTH).format(),
+        }
+      } else if (this.view == 'season') {
+        value = {
+          start: start.format(),
+          end: start.add(3, manba.MONTH).format(),
+        }
       }
-
-      this.updateValue(lastDate);
+      this.updateValue(value);
     },
     updateValue(value) {
       value = {
         [this.paramName.start]: value.start,
         [this.paramName.end]: value.end,
+        type: this.view
       }
       this.parse(value);
       this.$emit('input', value);
@@ -262,9 +243,22 @@ export default {
     }
   },
   computed: {
-    show() {
+    showValue() {
       if (!utils.isObject(this.value)) {
         return '';
+      }
+      if (this.value.type && this.value.start) {
+        let date = manba(this.value.start);
+        switch(this.value.type) {
+          case 'year': 
+            return date.year();
+          case 'month': 
+            return date.format('YYYY-MM');
+          case 'season': 
+            return `${date.year()}年 第${parseInt(date.month()/3, 10)}季度`;
+          case 'week': 
+            return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周`;
+        }
       }
       return `${this.value.start || '不限'} - ${this.value.end || '不限'}`;
     },
@@ -289,8 +283,7 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-full-range`]: true,
-        [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-disabled`]: this.disabled
+        [`${prefix}-input-border`]: !this.noBorder
       }
     },
     datePickerCls() {
