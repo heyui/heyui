@@ -150,7 +150,7 @@ export default {
     },
     changeView() {
       this.initNowView();
-      this.updateView;
+      this.updateDropdown();
     },
     updateView(value) {
       this.nowView.start = manba(value);
@@ -163,6 +163,9 @@ export default {
       if (utils.isObject(value) && value[this.paramName[range]]) {
         try {
           let nowValue = manba(value[this.paramName[range]]);
+          if(range == 'end'){
+            nowValue = nowValue.add(-1);
+          }
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
         } catch (evt) {
@@ -200,6 +203,9 @@ export default {
       string = string || '';
       if( this.view == 'date' ){
         value = utils.copy(this.nowDate);
+        if(string == 'end' && value.end){
+          value.end = manba(value.end).add(1).format(this.nowFormat);
+        }
         this.updateValue(value);
         return;
       }
@@ -225,6 +231,12 @@ export default {
           start: start.format(),
           end: start.add(3, manba.MONTH).format(),
         }
+      }
+      if(!value.start){
+        value.start = null;
+      }
+      if(!value.end){
+        value.end = null;
       }
       this.updateValue(value);
     },
@@ -260,7 +272,7 @@ export default {
             return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周`;
         }
       }
-      return `${this.value.start || '不限'} - ${this.value.end || '不限'}`;
+      return `${this.value.start || '不限'} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):'不限'}`;
     },
     shortcuts() {
       let shortcuts = [];

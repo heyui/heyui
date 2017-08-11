@@ -33,7 +33,7 @@
                    format="k"
                    @updateView="updateView"
                    @input="setvalue"
-                   @changeView="changeView"></date-base>
+                   @changeView="updateDropdown"></date-base>
       </div>
   
       <div class="h-date-footer"
@@ -174,9 +174,9 @@ export default {
     },
     updateView(value) {
       this.nowView = manba(value);
-      if(this.dropdown) this.dropdown.popperInstance.update();
+      this.updateDropdown();
     },
-    changeView() {
+    updateDropdown() {
       if(this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     inputEvent(event) {
@@ -240,7 +240,7 @@ export default {
       if (isEnd) {
         this.hide();
       }
-      if(this.dropdown) this.dropdown.popperInstance.update();
+      this.updateDropdown();
     }
   },
   computed: {
