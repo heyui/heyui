@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/heyui/heyui/compare/v0.5.0...v0.5.1) (2017-08-11)
+
+
+### Bug Fixes
+
+* datefullrangepicker 自定义日期 对结束日期自动加1 ([7595044](https://github.com/heyui/heyui/commit/7595044))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/heyui/heyui/compare/v0.4.21...v0.5.0) (2017-08-11)
 
