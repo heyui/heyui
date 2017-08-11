@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/heyui/heyui/compare/v0.5.2...v0.5.3) (2017-08-11)
+
+
+### Bug Fixes
+
+* datafullrangepicker quater picker error ([9b15fb3](https://github.com/heyui/heyui/commit/9b15fb3))
+
+
+
 <a name="0.5.2"></a>
 ## [0.5.2](https://github.com/heyui/heyui/compare/v0.5.1...v0.5.2) (2017-08-11)
 
