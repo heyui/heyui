@@ -199,7 +199,7 @@ export default {
       this.updateValue({});
       this.initNowView();
     },
-    setvalue(string) {
+    setvalue(string, isEnd = false) {
       string = string || '';
       if( this.view == 'date' ){
         value = utils.copy(this.nowDate);
@@ -239,6 +239,9 @@ export default {
         value.end = null;
       }
       this.updateValue(value);
+      if (isEnd) {
+        this.hide();
+      }
     },
     updateValue(value) {
       value = {
