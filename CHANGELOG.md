@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/heyui/heyui/compare/v0.4.21...v0.5.0) (2017-08-11)
+
+
+### Bug Fixes
+
+* datepicker week fixed all bugs ([eb70c69](https://github.com/heyui/heyui/commit/eb70c69))
+* datepicker 添加周选择控件 ([32791ce](https://github.com/heyui/heyui/commit/32791ce))
+* daterangepicker 切换日期智能变换视图 ([31a43dd](https://github.com/heyui/heyui/commit/31a43dd))
+
+
+### Features
+
+* 超级日期选择器 ([0a228e8](https://github.com/heyui/heyui/commit/0a228e8))
+
+
+
 <a name="0.4.21"></a>
 ## [0.4.21](https://github.com/heyui/heyui/compare/v0.4.20...v0.4.21) (2017-08-10)
 
