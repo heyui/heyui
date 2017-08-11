@@ -109,7 +109,7 @@ export default {
       views: {
         year: '年',
         month: '月',
-        season: '季度',
+        quarter: '季度',
         week: '周',
         date: '自定义'
       },
@@ -226,7 +226,7 @@ export default {
           start: start.format(),
           end: start.add(1, manba.MONTH).format(),
         }
-      } else if (this.view == 'season') {
+      } else if (this.view == 'quarter') {
         value = {
           start: start.format(),
           end: start.add(3, manba.MONTH).format(),
@@ -266,10 +266,10 @@ export default {
             return date.year();
           case 'month': 
             return date.format('YYYY-MM');
-          case 'season': 
-            return `${date.year()}年 第${parseInt(date.month()/3, 10)}季度`;
+          case 'quarter': 
+            return `${date.year()}年 第${parseInt(date.month()/3, 10)+1}季度`;
           case 'week': 
-            return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周`;
+            return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`;
         }
       }
       return `${this.value.start || '不限'} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):'不限'}`;
