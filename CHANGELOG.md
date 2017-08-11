@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/heyui/heyui/compare/v0.5.1...v0.5.2) (2017-08-11)
+
+
+### Bug Fixes
+
+* daterange show computed error ([1264bdd](https://github.com/heyui/heyui/commit/1264bdd))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/heyui/heyui/compare/v0.5.0...v0.5.1) (2017-08-11)
 
