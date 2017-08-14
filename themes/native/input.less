@@ -29,12 +29,15 @@ textarea {
   &[disabled],
   &[readonly] {
     border-color: @disabled-border-color;
-    color: @disabled-color;
     &:focus {
       box-shadow: none;
     }
   }
+  &[readonly]{
+    color: @dark1-color;
+  }
   &[disabled] {
+    color: @disabled-color;
     background-color: @disabled-background-color;
     pointer-events: painted;
     cursor: @disabled-cursor;

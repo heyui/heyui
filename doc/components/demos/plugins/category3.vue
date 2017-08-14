@@ -16,7 +16,7 @@
 // let list = [
 //   { id: 1, title: "一级" },
 //   { id: 2, title: "二级" },
-//   { id: 3, title: "三级", disabled: true },
+//   { id: 3, title: "三级" },
 //   { id: 10, title: "一级-0", parent: "1" },
 //   { id: 11, title: "一级-1", parent: "1" },
 //   { id: 12, title: "一级-2", parent: "1" },

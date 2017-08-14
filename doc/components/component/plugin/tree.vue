@@ -75,6 +75,35 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>Tree 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>v-model值变化</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>choose</td>
+        <td>checkbox选择变化</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>tree的select变化</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>open</td>
+        <td>当tree打开变化</td>
+        <td></td>
+      </tr>
+    </table>
     
     <h3>option 配置</h3>
     <table class="table">

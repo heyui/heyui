@@ -9,7 +9,7 @@
         <slot></slot>
       </div>
       <div class="h-form-item-error"
-           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'">{{label}}</span>{{errorMessage.message}}</div>
+           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'">{{label}}</span>{{errorMessage.message}}<slot name="error" :type="errorMessage.type"></slot></div>
     </div>
   </div>
 </template>
@@ -45,6 +45,10 @@ export default {
       type: Boolean,
       default: false
     },
+    required: {
+      type: Boolean,
+      default: false
+    },
     rule: Object
   },
   data() {
@@ -70,6 +74,9 @@ export default {
         }
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
+    },
+    required(){
+      parent.setConfig(this.prop, {required: this.required});
     }
   },
   mounted() {
@@ -84,6 +91,9 @@ export default {
     let parent = this.getParent();
 
     if (this.prop) {
+      if(this.required){
+        parent.setConfig(this.prop, {required: true});
+      }
       let message = parent.getConfig(this.prop);
       if (message) {
         this.configRequired = !!message.required;

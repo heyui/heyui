@@ -2,6 +2,132 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.4"></a>
+## [0.5.4](https://github.com/heyui/heyui/compare/v0.5.3...v0.5.4) (2017-08-11)
+
+
+### Bug Fixes
+
+* autocomplete disabled input when disabled ([180c010](https://github.com/heyui/heyui/commit/180c010))
+
+
+
+<a name="0.5.3"></a>
+## [0.5.3](https://github.com/heyui/heyui/compare/v0.5.2...v0.5.3) (2017-08-11)
+
+
+### Bug Fixes
+
+* datafullrangepicker quater picker error ([9b15fb3](https://github.com/heyui/heyui/commit/9b15fb3))
+
+
+
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/heyui/heyui/compare/v0.5.1...v0.5.2) (2017-08-11)
+
+
+### Bug Fixes
+
+* daterange show computed error ([1264bdd](https://github.com/heyui/heyui/commit/1264bdd))
+
+
+
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/heyui/heyui/compare/v0.5.0...v0.5.1) (2017-08-11)
+
+
+### Bug Fixes
+
+* datefullrangepicker 自定义日期 对结束日期自动加1 ([7595044](https://github.com/heyui/heyui/commit/7595044))
+
+
+
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/heyui/heyui/compare/v0.4.21...v0.5.0) (2017-08-11)
+
+
+### Bug Fixes
+
+* datepicker week fixed all bugs ([eb70c69](https://github.com/heyui/heyui/commit/eb70c69))
+* datepicker 添加周选择控件 ([32791ce](https://github.com/heyui/heyui/commit/32791ce))
+* daterangepicker 切换日期智能变换视图 ([31a43dd](https://github.com/heyui/heyui/commit/31a43dd))
+
+
+### Features
+
+* 超级日期选择器 ([0a228e8](https://github.com/heyui/heyui/commit/0a228e8))
+
+
+
+<a name="0.4.21"></a>
+## [0.4.21](https://github.com/heyui/heyui/compare/v0.4.20...v0.4.21) (2017-08-10)
+
+
+### Bug Fixes
+
+* tooltip 当无参数传递的时候使用内部innerText ([cefbca0](https://github.com/heyui/heyui/commit/cefbca0))
+
+
+<a name="0.4.20"></a>
+## [0.4.20](https://github.com/heyui/heyui/compare/v0.4.19...v0.4.20) (2017-08-09)
+
+
+### Bug Fixes
+
+* formItem 支持 自定义 required ([10a4f39](https://github.com/heyui/heyui/commit/10a4f39))
+
+
+
+<a name="0.4.19"></a>
+## [0.4.19](https://github.com/heyui/heyui/compare/v0.4.18...v0.4.19) (2017-08-09)
+
+
+### Bug Fixes
+
+* validator result add type ([5b71892](https://github.com/heyui/heyui/commit/5b71892))
+
+
+
+<a name="0.4.18"></a>
+## [0.4.18](https://github.com/heyui/heyui/compare/v0.4.17...v0.4.18) (2017-08-09)
+
+
+### Bug Fixes
+
+* formItem 添加自定义的错误提示 ([5fcf6b4](https://github.com/heyui/heyui/commit/5fcf6b4))
+
+
+
+<a name="0.4.17"></a>
+## [0.4.17](https://github.com/heyui/heyui/compare/v0.4.16...v0.4.17) (2017-08-09)
+
+
+### Bug Fixes
+
+* form validator validAsync 结果未反馈 ([764083e](https://github.com/heyui/heyui/commit/764083e))
+
+
+
+<a name="0.4.16"></a>
+## [0.4.16](https://github.com/heyui/heyui/compare/v0.4.15...v0.4.16) (2017-08-07)
+
+
+### Bug Fixes
+
+* form error input show fix with autocomplete, numberinput ([b861b3c](https://github.com/heyui/heyui/commit/b861b3c))
+
+
+
+<a name="0.4.15"></a>
+## [0.4.15](https://github.com/heyui/heyui/compare/v0.4.14...v0.4.15) (2017-08-07)
+
+
+### Bug Fixes
+
+* modal fixed with top,bottom,left,right 0 ([e032f3a](https://github.com/heyui/heyui/commit/e032f3a))
+
+
+
 <a name="0.4.14"></a>
 ## [0.4.14](https://github.com/heyui/heyui/compare/v0.4.13...v0.4.14) (2017-08-04)
 
@@ -187,16 +313,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-<a name="0.2.24"></a>
-## [0.2.24](https://github.com/heyui/heyui/compare/v0.2.23...v0.2.24) (2017-07-21)
-
-
-
-<a name="0.2.23"></a>
-## [0.2.23](https://github.com/heyui/heyui/compare/v0.2.22...v0.2.23) (2017-07-21)
-
-
-
 <a name="0.2.22"></a>
 ## [0.2.22](https://github.com/heyui/heyui/compare/v0.2.21...v0.2.22) (2017-07-21)
 
@@ -204,12 +320,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * tree判断无用的key ([6396479](https://github.com/heyui/heyui/commit/6396479))
-
-
-
-<a name="0.2.21"></a>
-## [0.2.21](https://github.com/heyui/heyui/compare/v0.2.20...v0.2.21) (2017-07-21)
-
 
 
 <a name="0.2.20"></a>
@@ -293,17 +403,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * 修复form validator展示bug ([5f82ca9](https://github.com/heyui/heyui/commit/5f82ca9))
 * 修复qiniu上传失败的bug ([480f395](https://github.com/heyui/heyui/commit/480f395))
-
-
-
-<a name="0.2.13"></a>
-## [0.2.13](https://github.com/heyui/heyui/compare/v0.2.12...v0.2.13) (2017-07-10)
-
-
-
-<a name="0.2.12"></a>
-## [0.2.12](https://github.com/heyui/heyui/compare/v0.2.11...v0.2.12) (2017-07-09)
-
 
 
 <a name="0.2.11"></a>

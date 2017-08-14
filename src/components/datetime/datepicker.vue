@@ -9,6 +9,7 @@
              v-model="showDate"
              @change="changeEvent"
              @input="inputEvent"
+             :readonly = "type == 'week'"
              :placeholder="placeholder"
              :disabled="disabled" />
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
@@ -27,11 +28,12 @@
                    :value="nowDate"
                    :option="option"
                    :type="type"
+                   :startWeek = "startWeek"
                    :now-view="nowView"
                    format="k"
                    @updateView="updateView"
                    @input="setvalue"
-                   @changeView="changeView"></date-base>
+                   @changeView="updateDropdown"></date-base>
       </div>
   
       <div class="h-date-footer"
@@ -97,6 +99,10 @@ export default {
     inline: {
       type: Boolean,
       default: false
+    },
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
     }
   },
   data() {
@@ -168,9 +174,9 @@ export default {
     },
     updateView(value) {
       this.nowView = manba(value);
-      if(this.dropdown) this.dropdown.popperInstance.update();
+      this.updateDropdown();
     },
-    changeView() {
+    updateDropdown() {
       if(this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
     },
     inputEvent(event) {
@@ -201,7 +207,13 @@ export default {
           }
           this.nowView = manba(value);
           this.nowDate = this.nowView.format('k');
-          if (initShow) this.showDate = this.nowView.format(this.nowFormat);
+          if (initShow) {
+            if (this.type == 'week') {
+              this.showDate = `${this.nowView.year()}年 第${this.nowView.getWeekOfYear(manba.MONDAY)}周`;
+            } else {
+              this.showDate = this.nowView.format(this.nowFormat);
+            }
+          }
           return;
         } catch (err) {
           // log.error(err);
@@ -228,7 +240,7 @@ export default {
       if (isEnd) {
         this.hide();
       }
-      if(this.dropdown) this.dropdown.popperInstance.update();
+      this.updateDropdown();
     }
   },
   computed: {

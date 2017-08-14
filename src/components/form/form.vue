@@ -61,6 +61,9 @@ export default {
       // log(returnResult);
       utils.extend(true, this.messages, returnResult);
     },
+    setConfig(prop, options) {
+      this.validator.setConfig(prop, options);
+    },
     getConfig(prop) {
       if (!this.validator) return false;
       return this.validator.getConfig(prop);
@@ -85,7 +88,10 @@ export default {
       if (!this.validator || !this.model) {
         return { result: true, messages: [] };
       }
-      let returnResult = this.validator.valid(this.model);
+      let returnResult = this.validator.valid(this.model, (result) => {
+        // log(result);
+        utils.extend(true, this.messages, result);
+      });
       let isSuccess = true;
       for (let r in returnResult) {
         if (!returnResult[r].valid) {

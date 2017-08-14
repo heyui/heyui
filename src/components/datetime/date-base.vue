@@ -6,7 +6,7 @@
             @click="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
       <span class="h-date-month-left-picker"
             @click="updateView('month', -1)"
-            v-show="view=='date'"><i class="h-icon-left"></i></span>
+            v-show="view=='date'||view=='week'"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show"
             @click="changeView('year')"
             v-if="view != 'year'">{{nowView.year()}}年</span>
@@ -14,7 +14,7 @@
             v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
       <span class="h-date-header-show"
             @click="changeView('month')"
-            v-show="view != 'year' && view != 'month'">{{nowView.month()}}月</span>
+            v-show="view != 'year' && view != 'month' && view != 'quarter'">{{nowView.month()}}月</span>
       <span class="h-date-header-show"
             @click="changeView('date')"
             v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}日</span>
@@ -22,7 +22,7 @@
             @click="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
       <span class="h-date-month-right-picker"
             @click="updateView('month', 1)"
-            v-show="view=='date'"><i class="h-icon-right"></i></span>
+            v-show="view=='date'||view=='week'"><i class="h-icon-right"></i></span>
     </div>
     <div class="h-date-header"
          v-show="view=='minute'">
@@ -52,6 +52,8 @@ import utils from '../../utils/utils';
 const dateprefix = 'h-date';
 
 const viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+const weekViewType = ['year', 'month', 'week'];
+const quarterViewType = ['year', 'quarter'];
 
 const options = config.getOption('datepicker');
 
@@ -60,6 +62,7 @@ const startView = {
   month: 'month',
   date: 'date',
   week: 'week',
+  quarter: 'quarter',
   datetime: 'date',
   datehour: 'date',
   time: 'hour',
@@ -70,6 +73,7 @@ const endView = {
   month: 'month',
   date: 'date',
   week: 'week',
+  quarter: 'quarter',
   datetime: 'minute',
   datehour: 'hour',
   time: 'minute',
@@ -80,6 +84,7 @@ const DateFormatLength = {
   month: 7,
   date: 10,
   week: 10,
+  quarter: 10,
   hour: 13,
   minute: 16
 };
@@ -114,6 +119,10 @@ export default {
     nowView: Object,
     range: String,
     rangeEnd: String,
+    startWeek: {
+      type: Number,
+      default: manba.MONDAY
+    }
   },
   data() {
     return {
@@ -125,6 +134,12 @@ export default {
   filters: {
     hoursString(d) {
       return `${utils.padLeft(d.hours(), 2)}:00`;
+    }
+  },
+  watch: {
+    type() {
+      this.options = utils.extend({}, options.datetimeOptions, this.option);
+      this.view = startView[this.type];
     }
   },
   mounted() {
@@ -192,11 +207,10 @@ export default {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
-        let index = viewType.indexOf(this.view);
 
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
-        if (!(this.options.start || this.options.end || this.options.disabled)) {
+        if (!(this.options.start || this.options.end || this.options.disabled || this.type == 'week' || this.type == 'quarter')) {
           if(this.value){
             date = manba(this.value);
             switch(this.view){
@@ -222,6 +236,7 @@ export default {
             }
           }
           
+          
           this.setvalue(date, false);
         }
         // if(this.type == 'week' && this.view == 'year'){
@@ -229,7 +244,14 @@ export default {
         // } else {
           
         // }
-        this.view = viewType[index + 1];
+        let viewTypes = viewType;
+        if (this.type == 'week') {
+          viewTypes = weekViewType;
+        } else if (this.type == 'quarter'){
+          viewTypes = quarterViewType;
+        }
+        let index = viewTypes.indexOf(this.view);
+        this.view = viewTypes[index + 1];
         this.$emit('updateView', date.time(), this.range);
       }
     },
@@ -353,8 +375,46 @@ export default {
           }));
         }
         return dates;
+      } else if (this.view == 'week') {
+        let dates = [];
+        let hour = nowDate.hours();
+        let date = nowDate.startOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
+        if (date.date() == 7) {
+          date = date.startOf(manba.WEEK);
+        } else {
+          date = date.add(1);
+        }
+        let month = date.month();
+        let index = date.getWeekOfYear(this.startWeek);
+        while (date.month() == month) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.WEEK,
+              show: `${date.year()}年 第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
+              vm: this,
+              isNowDays: true
+          }));
+          date = date.add(7);
+          index += 1;
+        }
+        return dates;
+      } else if (this.view == 'quarter') {
+        let dates = [];
+        let date = nowDate.startOf(manba.YEAR);
+        for (let index = 1; index < 5; index++) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.MONTH,
+              show: `${date.year()}年 第${index}季度`,
+              vm: this,
+              isNowDays: true
+          }));
+          date = date.add(3, manba.MONTH);
+        }
+        return dates;
       }
-
       return [];
     }
   }

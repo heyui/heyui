@@ -5,7 +5,7 @@
                   v-model="mode"
                   :small="true"></SwitchList>
     </div>
-    <Form :label-width="100"
+    <Form :label-width="110"
           :mode="mode"
           :model="data"
           :rules="validationRules"
@@ -14,6 +14,10 @@
                 prop="input">
         <input type="text"
                v-model="data.input" />
+        <template slot="error" scope="props">
+          <!-- *type*: base, combine, async -->
+          <span class="link" v-if="props.type == 'async'">+++++++错误的特殊提示+++++++</span>
+        </template>
       </FormItem>
       <FormItem label="整数">
         <Slider v-model="data.int"></Slider>
@@ -45,7 +49,7 @@
                v-model="data.tel" />
       </FormItem>
       <FormItem label="手机号码"
-                prop="mobile123">
+                prop="mobile">
         <input type="text"
                v-model="data.mobile" />
       </FormItem>
@@ -121,6 +125,9 @@
                 prop="autocomplete">
         <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
       </FormItem>
+      <FormItem label="自定义规则" prop="things[0]" required>
+        <input type="text" v-model="data.things[0]" />
+      </FormItem>
       <FormItemList>
         <FormItem v-for="(item, index) of data.inputs"
                   :key="item"
@@ -158,6 +165,7 @@
 <script>
 export default {
   data() {
+    let that = this;
     return {
       mode: 'single',
       data: {
@@ -182,7 +190,8 @@ export default {
           max: null
         },
         date: null,
-        inputs: []
+        inputs: [],
+        things: ['']
       },
       dataParam: {
         1: '男',
@@ -197,11 +206,24 @@ export default {
         twocolumn: '两列一行',
         threecolumn: '三列一行',
       },
+      isInputAsyncError: false,
       validationRules: {
         rules: {
           textarea: {
             maxLen: 50,
             minLen: 10
+          },
+          input: {
+            //这里的判断不会影响最终的valid结果，所以可以作为一些验证提示，也可以做异步处理判断(原则上所以的异步判断在提交后同样需要验证)
+            validAsync(value, next, parent, data) {
+              setTimeout(()=>{
+                if(value.length == 15 || value.length == 18 ) {
+                  next();
+                } else {
+                  next("字段长度非15/18位，可能不符合规定");
+                }
+              }, 10);
+            }
           }
         },
         required: [

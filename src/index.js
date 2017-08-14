@@ -74,6 +74,7 @@ const components = {
   DropdownMenu,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
+  DateFullRangePicker: Datetime.DateFullRangePicker,
   hForm: Form,
   Form,
   FormItem: Form.Item,
@@ -166,6 +167,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, prototypes, config, { Dropdown });
+}, prototypes, config, { Dropdown }, filters);
 
 module.exports = HeyUI;

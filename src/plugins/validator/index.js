@@ -104,22 +104,22 @@ class Validator {
     this.combineRules = genRules;
   }
 
-  valid(data, prop = "", sourceData) {
+  valid(data, next, prop = "", sourceData) {
     let result = {};
     if (prop != '') {
       // log(prop);
-      utils.extend(result, this.validField(prop, sourceData));
+      utils.extend(result, this.validField(prop, sourceData, next));
     }
     if (sourceData == undefined) sourceData = data;
     if (utils.isArray(data)) {
       for (let i = 0; i < data.length; i++) {
         let nowProp = `${prop}[${i}]`;
-        utils.extend(result, this.valid(data[i], nowProp, sourceData));
+        utils.extend(result, this.valid(data[i], next, nowProp, sourceData));
       }
     } else if (utils.isObject(data)) {
       for (let d in data) {
         let nowProp = prop + (prop == "" ? "" : ".") + d;
-        utils.extend(result, this.valid(data[d], nowProp, sourceData));
+        utils.extend(result, this.valid(data[d], next, nowProp, sourceData));
       }
     }
     return result;
@@ -127,10 +127,15 @@ class Validator {
 
   getConfig(prop) {
     let ruleKey = prop;
-    if (prop.indexOf("[") > -1) {
+    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, "[]");
     }
     return this.rules[ruleKey];
+  }
+
+  setConfig(prop, options) {
+    let ruleKey = prop;
+    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
   validField(prop, data, next) {
@@ -140,7 +145,7 @@ class Validator {
 
     let ruleKey = prop;
     let value = utils.getKeyValue(data, prop);
-    if (prop.indexOf("[") > -1) {
+    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, "[]");
     }
     let parent = data;
@@ -159,10 +164,10 @@ class Validator {
       return combineArgs(prop, result, 'base');
     }
     result = this.combineRulesValid(ruleKey, value, parent, parentProp);
-    let baseResult = combineArgs(prop);
+    let baseResult = combineArgs(prop, undefined, 'combine');
     if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
-      rule.validAsync.call(null, value, (result) => {
-        let n = combineArgs(prop, result);
+      rule.validAsync.call(null, value, (result1) => {
+        let n = combineArgs(prop, result1, 'async');
         n[prop].loading = false;
         next(n);
       }, parent, data);

@@ -33,6 +33,9 @@
       <example demo="dataplugins/daterangepicker3"></example>
     </div>
 
+    <h4>超级日期选择器</h4>
+    <example demo="dataplugins/daterangepicker8"></example>
+
     <h3>DatePicker 参数</h3>
     <table class="table">
       <tr>
