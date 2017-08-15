@@ -2,8 +2,8 @@ module.exports = {
   port: 9008,
   timestamp: true,
   dist: "dist",
-  console: true,
   webpack: {
+    console: true,
     publicPath: "/",
     output: {
       "./*html": {
