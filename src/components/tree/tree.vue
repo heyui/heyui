@@ -187,7 +187,7 @@ export default {
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
         updateChildStatus(data, 'choose', choose);
-        this.$emit('choose', null);
+        this.$emit('choose', this.getChoose());
         if(this.multiple) this.setvalue();
       }
     },

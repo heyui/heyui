@@ -1,5 +1,5 @@
 <template>
-  <Search @onsearch="search" v-model="searchText" v-width="300" position="front" trigger-type="input" placeholder="查询示例2"></Search>
+  <Search @change="search" v-model="searchText" v-width="300" position="front" trigger-type="input" placeholder="查询示例2"></Search>
 </template>
 <script>
 

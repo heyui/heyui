@@ -3,29 +3,18 @@
     <h2>TreePicker 树下拉选择</h2>
   
     <h3>基本调用</h3>
-    <p>{{value}}</p>
-    <p v-width="300">
-       <TreePicker :option="param" type="key" v-model="value"></TreePicker> 
-    </p>
+    <example demo="plugins/treepicker1"></example>
   
     <h3>多选</h3>
-    <p>{{value2}}</p>
-    <p v-width="300">
-      <!-- <TreePicker :option="param" type="object" v-model="value2" multiple :limit="10"></TreePicker> -->
-    </p>
-    <!-- <example demo="plugins/tree2"></example> -->
-  
-    <h3>搜索</h3>
-    <!-- <example demo="plugins/tree4"></example> -->
-  
-    <h3>全部数据异步加载</h3>
-    <p>在传递的param参数中，定义字段：<code>getTotalDatas</code>获取异步返回的数据，这里的数据属于一次性返回。</p>
-    <!-- <example demo="plugins/tree5"></example> -->
+    <example demo="plugins/treepicker2"></example>
 
-    <h3>全局配置调用</h3>
-    <!-- <example demo="plugins/tree7"></example> -->
+    <h3>全局</h3>
+    <blockquote>使用的是treeconfig中的配置项</blockquote>
+    <example demo="plugins/treepicker3"></example>
 
-    <h3>Tree 参数</h3>
+
+    <h3>TreePicker 参数</h3>
+    <blockquote>multiple, option, config, filterable等配置参照Tree的配置</blockquote>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -33,112 +22,32 @@
         <th>类型</th>
         <th>可选值</th>
         <th>默认值</th>
-      </tr>
-      <tr>
-        <td>chooseMode</td>
-        <td>checkbox选择模式</td>
-        <td>String</td>
-        <td>all,some</td>
-        <td>all</td>
-      </tr>
-      <tr>
-        <td>option</td>
-        <td>配置项，详细参见下面的option说明</td>
-        <td>Object</td>
-        <td>-</td>
-        <td></td>
       </tr>
       <tr>
         <td>multiple</td>
-        <td>多选</td>
+        <td>是否多选</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
-        <td>filterable</td>
-        <td>是否可以搜索</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>config</td>
-        <td>使用全局配置的方法</td>
+        <td>placeholder</td>
+        <td>展示默认提示语</td>
         <td>String</td>
         <td>-</td>
-        <td>-</td>
+        <td>请选择</td>
       </tr>
     </table>
     
-    <h3>option 配置</h3>
-    <table class="table">
-      <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
-      </tr>
-      <tr>
-        <td>keyName</td>
-        <td>数据的key对应字段</td>
-        <td>String</td>
-        <td>-</td>
-        <td>全局配置<code>tree.default.keyName</code></td>
-      </tr>
-      <tr>
-        <td>titleName</td>
-        <td>数据的title对应字段</td>
-        <td>String</td>
-        <td>-</td>
-        <td>全局配置<code>tree.default.titleName</code></td>
-      </tr>
-      <tr>
-        <td>parentName</td>
-        <td>数据的parent对应字段</td>
-        <td>String</td>
-        <td>-</td>
-        <td>全局配置<code>tree.default.parentName</code></td>
-      </tr>
-      <tr>
-        <td>dataMode</td>
-        <td>提供的数据类型，是平铺需要解析的列表，还是已经生成好的tree数据</td>
-        <td>String</td>
-        <td>list, tree</td>
-        <td>list</td>
-      </tr>
-      <tr>
-        <td>datas</td>
-        <td>用于tree展示的数据</td>
-        <td>Array</td>
-        <td>-</td>
-        <td>[]</td>
-      </tr>
-      <tr>
-        <td>getTotalDatas</td>
-        <td>异步获取用于tree展示的数据，一次性全部加载</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>getDatas</td>
-        <td>异步获取用于tree展示的数据，每一次单击获取子集</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-    </table>
   </div>
 </template>
 <script>
 export default {
   data() {
     let list = [
-      { id: 1, title: "一级", checkable: false },
-      { id: 2, title: "二级", checkable: false },
-      { id: 3, title: "三级", checkable: false },
+      { id: 1, title: "一级", disabled: true },
+      { id: 2, title: "二级" },
+      { id: 3, title: "三级" },
       { id: 10, title: "一级-0", parent: 1 },
       { id: 11, title: "一级-1", parent: 1 },
       { id: 12, title: "一级-2", parent: 1 },
@@ -157,7 +66,7 @@ export default {
     ];
     return {
       value: null,
-      value2: [{ id: 34, title: "三级-4", parent: 3 }],
+      value2: [],
       param: {
         title: '测试',
         keyName: 'id',

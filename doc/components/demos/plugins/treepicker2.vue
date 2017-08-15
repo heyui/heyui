@@ -1,13 +1,10 @@
 <template>
   <div>
-    <p>值：{{value}}</p>
-    <p>
-      <Button @click="expandAll" size="xs">全部展开</Button>
-      <Button @click="foldAll" size="xs">全部收起</Button>
-      <Button @click="updateSelect" size="xs">设置选中值</Button>
-      <Button @click="getSelect" size="xs">获得选中值</Button>
+    <p>value: {{value}}, </p>
+    <p><h-switch v-model="showCount" small>展示为统计的方式（tree有可能会选择过多）</h-switch></p>
+    <p v-width="300">
+       <TreePicker :option="param" multiple :showCount="showCount" filterable v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
     </p>
-    <Tree :option="param" ref="demo" v-model="value" @open="open"  @select="select"  @choose="choose"></Tree>
   </div>
 </template>
 <script>
@@ -35,46 +32,24 @@ export default {
     ];
     return {
       value: null,
+      showCount: false,
       param: {
         keyName: 'id',
         parentName: 'parent',
         titleName: 'title',
         dataMode: 'list',
         datas: list
-        // datas() { 可以使用方法
-        //   return list;
-        // }
       }
     }
   },
   methods: {
-    expandAll() {
-      this.$refs.demo.expandAll();
-    },
-    foldAll() {
-      this.$refs.demo.foldAll();
-    },
-    updateSelect() {
-      // 两种方法都可以
-      // this.$refs.demo.updateSelect(2);
-      this.value = 21;
-      this.$Message.info("选中二级-1");
-    },
-    getSelect() {
-      let option = this.$refs.demo.getSelect();
-      if (option == null) {
-        this.$Message.info(`当前未选中`);
-      } else {
-        this.$Message.info(`当前选中: ${option.title}`);
-      }
+    change() {
+      //选择器关闭的时候触发
     },
     choose(data) {
       log(data);
     },
     select(data) {
-      log(data);
-    },
-    open(data) {
       log(data);
     }
   }

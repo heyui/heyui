@@ -1,12 +1,14 @@
 <template>
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show">
-      <div v-if="multiple&&objects.length"
-            class="h-treepicker-multiple-tags"><span v-for="obj of objects"
-              :key="obj"><span>{{obj.title}}</span><i class="h-icon-close"
-            @click.stop="remove(obj)" v-if="!disabled"></i></span>
-      </div>
-      <div v-else-if="!multiple&&object" class="h-treepicker-value-single">{{object.title}}</div>
+      <template v-if="multiple&&objects.length">
+        <div v-if="showCount" class="h-treepicker-value-single">您总共选择{{valuebak.length}}项</div>
+        <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
+                :key="obj"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
+              @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        </div>
+      </template>
+      <div v-else-if="!multiple&&object" class="h-treepicker-value-single">{{object[param.titleName]}}</div>
       <div v-else class="h-treepicker-placeholder">{{placeholder}}</div>
       <i class="h-icon-down"></i>
     </div>
@@ -56,7 +58,11 @@ export default {
     },
     filterable: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    showCount: {
+      type: Boolean,
+      default: false
     },
     value: [Number, String, Array, Object],
     config: String
@@ -96,23 +102,29 @@ export default {
   },
   methods: {
     select(data) {
-      log(data);
+      this.object = data;
+      this.$emit('select', data);
+      if(!this.multiple) this.setvalue();
     },
     choose(data) {
-      log(data);
+      this.objects = data;
+      this.$emit('choose', data);
+      if(this.multiple) this.setvalue();
     },
     remove(obj) {
-      this.objects.splice(this.objects.indexOf(obj), 1);
+      let index = this.objects.indexOf(obj);
+      this.objects.splice(index, 1);
+      this.valuebak.splice(index, 1);
       this.setvalue();
     },
     parse() {
       this.valuebak = utils.copy(this.value);
     },
     dispose() {
-      if (this.type == 'key') {
-        return this.valuebak;
-      } else {
-        return this.multiple ? this.objects : this.object;
+      if (this.multiple) {
+        return this.objects.map(item => this.type=='key'?item[this.param.keyName]:item);
+      } else if(this.object) {
+        return this.type=='key'?this.object[this.param.keyName]:this.object;
       }
       return null;
     },
@@ -123,6 +135,8 @@ export default {
     },
     confirm() {
       this.setvalue();
+      this.$emit('change');
+      this.dropdown.hide();
     },
     setvalue() {
       let value = this.dispose();
@@ -131,9 +145,17 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
+      this.dropdown.update();
     }
   },
   computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption("tree.default"), this.option);
+      }
+    },
     treepickerCls() {
       return {
         [`${prefix}`]: true,
