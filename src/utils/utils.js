@@ -37,7 +37,6 @@ export default utils.extend({}, utils, {
       }
     }
   },
-
   removeClass(elem, value) {
     let classes;
     let cur;
@@ -51,9 +50,7 @@ export default utils.extend({}, utils, {
 
       curValue = getClass(elem);
 
-      // This expression is here for better compressibility (see addClass)
-      cur = elem.nodeType === 1 &&
-        (` ${curValue} `).replace(rclass, " ");
+      cur = elem.nodeType === 1 && (` ${curValue} `).replace(rclass, " ");
 
       if (cur) {
         j = 0;

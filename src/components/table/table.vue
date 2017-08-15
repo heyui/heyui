@@ -4,13 +4,13 @@
       <table :style="{'margin-left': (-scrollLeft+'px')}">
         <colgroup>
           <col v-if="checkbox" width="60" />
-          <col v-for="c of computeColumns" :width="getWidth(c)" />
+          <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
         </colgroup>
         <tr>
           <th v-if="checkbox" class="text-center">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <th v-for="c of computeColumns">{{c.title}}</th>
+          <th v-for="c of computeColumns" :key="c" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -24,15 +24,17 @@
         <table>
           <colgroup>
             <col v-if="checkbox" width="60" />
-            <col v-for="c of computeColumns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
           </colgroup>
           <tbody class="h-table-tbody">
-            <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :key="d" :class="isHovered(d)">
-              <td v-if="checkbox" class="text-center">
-                <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
-              </td>
-              <slot :data="d" v-if="$scopedSlots.default"></slot>
-            </tr>
+            <template v-for="(d, index) of datas">
+              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+                <td v-if="checkbox" class="text-center">
+                  <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
+                </td>
+                <slot :data="d" v-if="$scopedSlots.default"></slot>
+              </TableTr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -41,27 +43,31 @@
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
             <col v-if="checkbox" width="60" />
-            <col v-for="c of computeColumns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
           </colgroup>
           <tbody class="h-table-tbody">
-            <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :class="isHovered(d)">
-              <td v-if="checkbox" class="text-center">
+            <template v-for="(d, index) of datas">
+              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+                <td v-if="checkbox" class="text-center">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
-              </td>
-              <slot :data="d" v-if="$scopedSlots.default"></slot>
-            </tr>
+                </td>
+                <slot :data="d" v-if="$scopedSlots.default"></slot>
+              </TableTr>
+            </template>
           </tbody>
         </table>
       </div>
       <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="{'margin-right': (scrollWidth+'px'), 'height': (height+'px')}">
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
-            <col v-for="c of computeColumns" :width="getWidth(c)" />
+            <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
           </colgroup>
           <tbody class="h-table-tbody">
-            <tr v-for="d of datas" @mouseover="mouseover(d)" @mouseout="mouseout(d)" :class="isHovered(d)">
-              <slot :data="d" v-if="$scopedSlots.default"></slot>
-            </tr>
+            <template v-for="(d, index) of datas">
+              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+                <slot :data="d" v-if="$scopedSlots.default"></slot>
+              </TableTr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -70,23 +76,23 @@
       <table v-width="leftWidth">
         <colgroup>
           <col v-if="checkbox" width="60" />
-          <col v-for="c of fixedColumnLeft" :width="getWidth(c)" />
+          <col v-for="c of fixedColumnLeft" :width="getWidth(c)" :key="c" />
         </colgroup>
         <tr>
           <th v-if="checkbox" class="text-center">
             <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <th v-for="c of fixedColumnLeft">{{c.title}}</th>
+          <th v-for="c of fixedColumnLeft" :key="c.title" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
         </tr>
       </table>
     </div>
     <div v-if="fixedColumnRight.length" :style="{'margin-right': (scrollWidth+'px')}" class="h-table-fixed-header-right">
       <table v-width="rightWidth">
         <colgroup>
-          <col v-for="c of fixedColumnRight" :width="getWidth(c)" />
+          <col v-for="c of fixedColumnRight" :width="getWidth(c)" :key="c.title" />
         </colgroup>
         <tr>
-          <th v-for="c of fixedColumnRight">{{c.title}}</th>
+          <th v-for="c of fixedColumnRight" :key="c.title" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
         </tr>
       </table>
     </div>
@@ -94,6 +100,7 @@
 </template>
 <script>
 import utils from '../../utils/utils';
+import TableTr from './table-tr';
 
 const prefix = 'h-table';
 
@@ -113,6 +120,10 @@ export default {
     },
     height: Number,
     checkbox: {
+      type: Boolean,
+      default: false
+    },
+    stripe: {
       type: Boolean,
       default: false
     }
@@ -188,6 +199,31 @@ export default {
         window.addEventListener('resize', this.resize);
       }
       this.resize();
+
+      let tbodys = this.$el.querySelectorAll(".h-table-tbody");
+      for(let tbody of tbodys){
+        tbody.addEventListener("mouseover", (event) => {
+          let tr = null;
+          for(let path of event.path){
+            if(path.tagName == 'TR'){
+              tr = path;
+              break;
+            }
+          }
+          if (tr) {
+            utils.addClass(tr, 'h-table-tr-hovered');
+            let index = tr.getAttribute('index');
+            for(let el of this.$el.querySelectorAll(`.h-table-tbody>tr[index='${index}']`)||[]){
+              utils.addClass(el, 'h-table-tr-hovered');
+            }
+          }
+        }, false);
+        tbody.addEventListener("mouseout", (event) => {
+          for(let el of this.$el.querySelectorAll('.h-table-tr-hovered')||[]){
+            utils.removeClass(el, 'h-table-tr-hovered');
+          }
+        }, false);
+      }
     });
   },
   methods: {
@@ -221,9 +257,6 @@ export default {
     },
     mouseout() {
       this.hoveredTr = null;
-    },
-    isHovered(d) {
-      return { [`${prefix}-hover-tr`]: this.hoveredTr === d };
     },
     initFixedWidth() {
       let ths = this.$el.querySelectorAll(".h-table-header table>tr>th");
@@ -276,7 +309,8 @@ export default {
     tableCls() {
       return {
         [prefix]: true,
-        [`${prefix}-border`]: !!this.border
+        [`${prefix}-border`]: !!this.border,
+        [`${prefix}-stripe`]: this.stripe
       }
     },
     fixedBodyStyle() {
@@ -294,6 +328,9 @@ export default {
       }
       return s;
     }
+  },
+  components: {
+    TableTr
   }
 };
 </script>

@@ -4,24 +4,18 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :columns="columns"
-           :datas="datas"
-           :height="400">
-      <template scope="props">
-          <td @click="remove(datas, props.data)">
-            <button class="h-btn h-btn-s h-btn-red"><i class="h-icon-trash"></i></button>
-          </td>
-          <td>{{props.data.id}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.age}}</td>
-          <td>{{props.data.address}}</td>
-      </template>
+    <Table :datas="datas" :height="400">
+      <TableItem title="姓名" prop="name" :width="150"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="姓名" prop="name" :width="150"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="姓名" prop="name" :width="150"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="操作" :width="100" fixed="right"><template scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
+      <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
 </template>
@@ -30,19 +24,6 @@
 export default {
   data() {
     return {
-      columns: [
-        { title: '操作', width: 100 },
-        { title: 'id', width: 50 },
-        { title: '姓名1', width: 150 },
-        { title: '姓名2', width: 450 },
-        { title: '姓名3', width: 450 },
-        { title: '姓名4', width: 150 },
-        { title: '姓名5', width: 450 },
-        { title: '姓名6', width: 450 },
-        { title: '姓名7', width: 150 },
-        { title: '年龄', width: 150 },
-        { title: '地址', width: 150 },
-      ],
       datas: [
         { id: 5, name: '测试5', age: 12, address: "上海" },
         { id: 6, name: '测试6', age: 12, address: "上海" },

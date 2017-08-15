@@ -4,20 +4,18 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :columns="columns"
-           :datas="datas"
-           :height="400"
-           checkbox  @select="onselect">
-      <template scope="props">
-          <td>{{props.data.id}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.age}}</td>
-          <td>{{props.data.address}}</td>
-          <td @click="remove(datas, props.data)">
-            <button class="h-btn h-btn-s h-btn-red"><i class="h-icon-trash"></i></button>
-          </td>
-      </template>
+    <Table :datas="datas" :height="400" @select="onselect" checkbox>
+      <TableItem title="ID" prop="id" :width="80" fixed="left"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="姓名" prop="name" :width="150"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="姓名" prop="name" :width="150"></TableItem>
+      <TableItem title="年龄" prop="age" :width="150"></TableItem>
+      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="操作" :width="100" fixed="right"><template scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
+      <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
 </template>
@@ -26,14 +24,6 @@
 export default {
   data() {
     return {
-      columns: [
-        { title: 'id', fixed: 'left', width: 50 },
-        { title: '姓名1', width: 150 },
-        { title: '姓名2', width: 450 },
-        { title: '年龄', width: 150 },
-        { title: '地址', width: 150 },
-        { title: '操作', width: 80, fixed: 'right' },
-      ],
       datas: [],
       remove(datas, data) {
         datas.splice(datas.indexOf(data), 1);

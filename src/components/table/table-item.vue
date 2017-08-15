@@ -1,5 +1,5 @@
 <template>
-  <td><template v-if="prop"></template><slot></slot></td>
+  <td></td>
 </template>
 <script>
 export default {
@@ -9,15 +9,12 @@ export default {
     width: Number,
     fixed: String,
     label: String,
-    prop: String
+    prop: String,
+    align: String,
+    datas: Object
   },
   data(){
     return {};
-  },
-  computed: {
-    datas() {
-      return this.$parent.datas;
-    }
   }
 }
 </script>

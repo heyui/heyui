@@ -4,16 +4,8 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :columns="columns"
-           :datas="datas">
-      <template scope="props">
-          <td>{{props.data.name}}</td>
-          <td>{{props.data.age}}</td>
-          <td>{{props.data.address}}</td>
-          <td>
-            <button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button>
-          </td>
-      </template>
+    <Table :datas="datas" :columns="columns">
+      <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
 </template>
@@ -23,10 +15,10 @@ export default {
   data() {
     return {
       columns: [
-        { title: '姓名' },
-        { title: '年龄' },
-        { title: '地址' },
-        { title: '操作', width: 100 },
+        { title: 'ID' , prop: 'id', width: 100 },
+        { title: '姓名' , prop: 'name'},
+        { title: '年龄' , prop: 'age' },
+        { title: '地址' , prop: 'address' },
       ],
       datas: [
         { id: 5, name: '测试5', age: 12, address: "上海" },

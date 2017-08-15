@@ -106,9 +106,19 @@
       border-right: none;
     }
   }
-
-  &-hover-tr{
-    background-color: @hover-background-color;
+  
+  &-stripe{
+    .h-table-tbody tr:nth-child(2n){
+      background-color: #fdfdfd;
+    }
+  }
+  
+  &-tr-selected{
+    background-color: @hover-background-color !important;
+  }
+  
+  &-tr-hovered{
+    background-color: @hover-background-color !important;
   }
 
   &-content-empty{
