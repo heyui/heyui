@@ -33,6 +33,13 @@
         <td>请输入关键词查询</td>
       </tr>
       <tr>
+        <td>block</td>
+        <td>是否整宽</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>triggerType</td>
         <td>查询触发类型</td>
         <td>String</td>

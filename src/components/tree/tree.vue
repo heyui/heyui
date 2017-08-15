@@ -1,7 +1,7 @@
 <template>
   <div :class="treeCls">
     <Search v-if="filterable"
-            @onsearch="searchTree"></Search>
+            @onsearch="searchTree" block></Search>
     <ul class="h-tree-body">
       <treeItem v-for="tree of treeDatas"
                   :data="tree"

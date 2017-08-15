@@ -16,6 +16,10 @@ export default {
       type: String,
       default: '请输入关键词查询'
     },
+    block: {
+      type: Boolean,
+      default: false
+    },
     triggerType: {
       type: String,
       default: 'enter'
@@ -58,6 +62,7 @@ export default {
     cls() {
       return {
         [`${prefix}`]: true,
+        [`${prefix}-block`]: this.block,
         [`${prefix}-searching`]: this.searching,
         [`${prefix}-${this.position}`]: true,
       }

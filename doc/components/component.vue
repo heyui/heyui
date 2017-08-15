@@ -70,9 +70,9 @@
             <li>
               <router-link to="/component/plugin/tree">Tree 树</router-link>
             </li>
-            <!-- <li>
+            <li>
               <router-link to="/component/plugin/treepicker">TreePicker 树选择</router-link>
-            </li> -->
+            </li>
             <li>
               <router-link to="/component/plugin/category">Category 分类选择</router-link>
             </li>
