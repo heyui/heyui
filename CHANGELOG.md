@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/heyui/heyui/compare/v0.5.4...v0.6.0) (2017-08-15)
+
+
+### Features
+
+* table use TableItem ([9ecf57e](https://github.com/heyui/heyui/commit/9ecf57e))
+
+
+
 <a name="0.5.4"></a>
 ## [0.5.4](https://github.com/heyui/heyui/compare/v0.5.3...v0.5.4) (2017-08-11)
 
