@@ -116,6 +116,7 @@ export default {
       this.objects.splice(index, 1);
       this.valuebak.splice(index, 1);
       this.setvalue();
+      this.triggerChange();
     },
     parse() {
       this.valuebak = utils.copy(this.value);
@@ -132,20 +133,23 @@ export default {
       this.object = null;
       this.objects = [];
       this.setvalue();
+      this.triggerChange();
     },
     confirm() {
       this.setvalue();
-      this.$emit('change');
+      this.triggerChange();
       this.dropdown.hide();
     },
     setvalue() {
       let value = this.dispose();
       this.$emit('input', value);
-      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
       this.dropdown.update();
+    },
+    triggerChange() {
+      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
     }
   },
   computed: {
