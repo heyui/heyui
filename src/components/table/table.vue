@@ -10,7 +10,10 @@
           <th v-if="checkbox" class="text-center">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <th v-for="c of computeColumns" :key="c" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
+          <slot v-if="!columns.length" ></slot>
+          <template v-else>
+            <th v-for="c of computeColumns" :key="c" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
+          </template>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -138,6 +141,7 @@ export default {
       leftWidth: 0,
       rightWidth: 0,
       tableWidth: 400,
+      computeColumns: []
     };
   },
   watch: {
@@ -171,6 +175,7 @@ export default {
     window.removeEventListener('resize', this.resize);
   },
   mounted() {
+    this.initColumns();
     this.$nextTick(() => {
       let body = this.$el.querySelector(".h-table-body");
       if (body) {
@@ -274,10 +279,17 @@ export default {
       }
       this.rightWidth = rightWidth;
     },
-  },
-  computed: {
-    computeColumns() {
-      if(this.columns.length) return this.columns;
+    refresh() {
+      this.initColumns();
+      this.$nextTick(() => {
+        this.resize();
+      })
+    },
+    initColumns() {
+      if (this.columns.length) {
+        this.computeColumns = this.columns;
+        return ;
+      }
       let columns = [];
       if(this.$slots.default){
         for(let slot of this.$slots.default){
@@ -286,8 +298,22 @@ export default {
           }
         }
       }
-      return columns;
-    },
+      this.computeColumns = columns;
+    }
+  },
+  computed: {
+    // computeColumns() {
+    //   if(this.columns.length) return this.columns;
+    //   let columns = [];
+    //   if(this.$slots.default){
+    //     for(let slot of this.$slots.default){
+    //       if(slot.componentOptions&&slot.componentOptions.tag == "TableItem"){
+    //         columns.push(slot.componentOptions.propsData);
+    //       }
+    //     }
+    //   }
+    //   return columns;
+    // },
     fixedColumnLeft() {
       let columns = [];
       for (let c of this.computeColumns) {
