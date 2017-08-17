@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/heyui/heyui/compare/v0.7.0...v0.7.1) (2017-08-17)
+
+
+### Bug Fixes
+
+* 修复treepicker的change事件触发时机 ([2de1b64](https://github.com/heyui/heyui/commit/2de1b64))
+* 修改压缩策略 ([313a74a](https://github.com/heyui/heyui/commit/313a74a))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/heyui/heyui/compare/v0.6.0...v0.7.0) (2017-08-15)
 
