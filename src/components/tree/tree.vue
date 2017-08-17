@@ -152,7 +152,7 @@ export default {
         let searchValue = this.searchValue.toLowerCase();
         for (let key of Object.keys(this.treeObj)) {
           let tree = this.treeObj[key];
-          tree.status.hide = (tree.html || tree.title).toLowerCase().indexOf(searchValue) == -1;
+          tree.status.hide = (tree.html || tree.title || '').toLowerCase().indexOf(searchValue) == -1;
         }
         this.expandAll();
       } else {

@@ -408,7 +408,7 @@ export default {
         if (this.searchValue) {
           let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter((item) => {
-            return (item.html || item[this.param.titleName]).toLowerCase().indexOf(searchValue) != -1;
+            return (item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1;
           });
         }
       }
