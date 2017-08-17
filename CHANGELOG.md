@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.3"></a>
+## [0.7.3](https://github.com/heyui/heyui/compare/v0.7.2...v0.7.3) (2017-08-17)
+
+
+### Bug Fixes
+
+* table组件:tableItem 变更产生视图变化 ([2b7987c](https://github.com/heyui/heyui/commit/2b7987c))
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/heyui/heyui/compare/v0.7.1...v0.7.2) (2017-08-17)
 
