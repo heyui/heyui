@@ -158,6 +158,7 @@ export default {
     },
     columns: {
       handler() {
+        this.initColumns();
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
         }
