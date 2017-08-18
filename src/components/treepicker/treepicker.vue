@@ -118,6 +118,15 @@ export default {
       this.setvalue();
       this.triggerChange();
     },
+    updateShow(data) {
+      if (utils.isObject(data) && !this.multiple) {
+        this.object = data;
+      }
+      if (utils.isArray(data) && this.multiple) {
+        this.objects = data;
+      }
+      this.setvalue();
+    },
     parse() {
       this.valuebak = utils.copy(this.value);
     },

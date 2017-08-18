@@ -2,8 +2,9 @@
   <div>
     <p>value: {{value}}, </p>
     <p><h-switch v-model="showCount" small>展示为统计的方式（tree有可能会选择过多）</h-switch></p>
+    <p>修改展示：<Button @click="update">更新值</Button></p>
     <p v-width="300">
-       <TreePicker :option="param" multiple :showCount="showCount" filterable v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
+       <TreePicker ref="treepicker" :option="param" multiple :showCount="showCount" filterable v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
     </p>
   </div>
 </template>
@@ -45,6 +46,9 @@ export default {
   methods: {
     change() {
       //选择器关闭的时候触发
+    },
+    update() {
+      this.$refs.treepicker.updateShow([{id: 1, title: '1级'}]);
     },
     choose(data) {
       log(data);

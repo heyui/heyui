@@ -1,8 +1,9 @@
 <template>
   <div>
     <p>value: {{value}}</p>
+    <p>修改展示：<Button @click="update">更新值</Button></p>
     <p v-width="300">
-       <TreePicker :option="param" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
+       <TreePicker :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
     </p>
   </div>
 </template>
@@ -46,6 +47,9 @@ export default {
     },
     choose(data) {
       log(data);
+    },
+    update() {
+      this.$refs.treepicker.updateShow({id: 1, title: '1级'});
     },
     select(data) {
       log(data);
