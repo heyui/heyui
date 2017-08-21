@@ -34,7 +34,7 @@
 //   { id: 31, title: "三级-1", parent: "3" },
 //   { id: 32, title: "三级-2", parent: "3" },
 //   { id: 33, title: "三级-3", parent: "3" },
-//   { id: 34, title: "三级-4", parent: "3" }
+//   { id: 34, title: "二级，三级-4", parent: [3, 2] }
 // ];
 // HeyUI.config("category.configs", {
 //   simple: {

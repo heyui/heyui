@@ -87,7 +87,9 @@ export default {
     },
     openNew(data) {
       if (data.children&&data.children.length) {
-        this.tabs.splice(this.tabIndex+1, 1, data);
+        this.tabIndex = this.tabIndex + 1;
+        this.tabs.splice(this.tabIndex);
+        this.tabs.push(data);
         this.tab = data.key;
         this.list = data.children;
       } else {
