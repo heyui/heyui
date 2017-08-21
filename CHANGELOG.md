@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.7"></a>
+## [0.7.7](https://github.com/heyui/heyui/compare/v0.7.6...v0.7.7) (2017-08-21)
+
+
+### Bug Fixes
+
+* 当content为空时做拦截,并添加update机制 ([9feccf0](https://github.com/heyui/heyui/commit/9feccf0))
+
+
+
 <a name="0.7.6"></a>
 ## [0.7.6](https://github.com/heyui/heyui/compare/v0.7.5...v0.7.6) (2017-08-21)
 
