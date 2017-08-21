@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.6"></a>
+## [0.7.6](https://github.com/heyui/heyui/compare/v0.7.5...v0.7.6) (2017-08-21)
+
+
+### Bug Fixes
+
+* 树模型计算可以使用parent list模式 ([871ba83](https://github.com/heyui/heyui/commit/871ba83))
+
+
+
 <a name="0.7.5"></a>
 ## [0.7.5](https://github.com/heyui/heyui/compare/v0.7.4...v0.7.5) (2017-08-18)
 
