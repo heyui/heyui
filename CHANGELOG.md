@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.10"></a>
+## [0.7.10](https://github.com/heyui/heyui/compare/v0.7.9...v0.7.10) (2017-08-22)
+
+
+### Bug Fixes
+
+* Button icon 属性不默认添加h-icon前缀 ([29dd876](https://github.com/heyui/heyui/commit/29dd876))
+
+
+
 <a name="0.7.9"></a>
 ## [0.7.9](https://github.com/heyui/heyui/compare/v0.7.8...v0.7.9) (2017-08-22)
 
