@@ -5,7 +5,6 @@
 </template>
 <script>
 const prefix = 'h-btn';
-const iconPrefix = 'h-icon';
 const Props = {
   size: new Set(['l', 's', 'xs'])
 }
@@ -62,12 +61,12 @@ export default {
       };
     },
     iconCode() {
-      return this.loading ? 'loading' : this.icon;
+      return this.loading ? 'h-icon-loading' : this.icon;
     },
     iconCls() {
-      const iconCode = this.loading ? 'loading' : this.icon;
+      const iconCode = this.loading ? 'h-icon-loading' : this.icon;
       return {
-        [`${iconPrefix}-${iconCode}`]: !!iconCode,
+        [`${iconCode}`]: !!iconCode,
       };
     }
   }

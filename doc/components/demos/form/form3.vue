@@ -142,7 +142,7 @@
               <Poptip @confirm="remove(index)" content="确定删除？">
                 <Button text-color="red"
                       :no-border="true"
-                      icon="trash"></Button>
+                      icon="h-icon-trash"></Button>
               </Poptip>
             </Col>
           </Row>

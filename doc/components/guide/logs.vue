@@ -170,7 +170,7 @@
         <div slot="time"><p>2017-03-22</p></div>
         <div slot="content">hey-cli</div>
       </TimelineItem>
-      <TimelineItem icon="star" color="green">
+      <TimelineItem icon="h-icon-star" color="green">
         <div slot="time"><p>2017-03-17</p><p>14:56:59</p></div>
         <div slot="content">Initial commit</div>
       </TimelineItem>
