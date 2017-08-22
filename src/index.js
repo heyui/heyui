@@ -168,6 +168,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, { $Modal, $Notice }, prototypes, config, { Dropdown }, filters);
+}, { $Modal: $Modal(), $Notice: $Notice() }, prototypes, config, { Dropdown }, filters);
 
 module.exports = HeyUI;
