@@ -97,7 +97,6 @@ export default {
         trigger: this.trigger,
         disabled: this.disabled,
         equalWidth: this.equalWidth,
-        container: document.body,
         placement: this.placement,
         events: {
           show(){

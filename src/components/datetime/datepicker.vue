@@ -146,7 +146,6 @@ export default {
         triggerOnce: true,
         content,
         disabled: this.disabled,
-        container: document.body,
         events: {
           show() {
             that.isShow = true;

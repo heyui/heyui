@@ -51,7 +51,6 @@ export default {
         content,
         trigger: this.trigger,
         equalWidth: this.equalWidth,
-        container: document.body,
         placement: this.placement,
         events: {
           show(){

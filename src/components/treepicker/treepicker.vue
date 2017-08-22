@@ -87,7 +87,6 @@ export default {
         triggerOnce: true,
         content,
         disabled: this.disabled,
-        container: document.body
       });
 
       if (this.disabled) {

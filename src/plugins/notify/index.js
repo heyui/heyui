@@ -35,7 +35,7 @@ class Notify {
     if (param.hasMask) {
       html += `<div class="${notifyMaskCls}"></div>`;
     }
-    if (param.type === 'h-modal') {
+    if (param.type === 'h-modal' && param.hasMask) {
       html += `<div class="${notifyBodyCls}">`;
     }
     html += `<div class="${notifyContainerCls}">`;
@@ -75,6 +75,9 @@ class Notify {
     utils.addClass($body, notifyCls);
     if (param.hasMask) {
       utils.addClass($body, notifyHasMaskCls);
+    }
+    if (param.type == 'h-modal') {
+      utils.addClass($body, 'h-dropdown-common-container');
     }
     if (param.class) {
       utils.addClass($body, param.class);

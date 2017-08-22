@@ -129,7 +129,6 @@ export default {
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         content,
-        container: document.body,
         events: {
           show() {
             that.isShow = true;

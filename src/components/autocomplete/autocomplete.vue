@@ -152,7 +152,6 @@ export default {
         content: this.content,
         disabled: this.disabled,
         equalWidth: true,
-        container: document.body,
         events: {
           show(){
             that.isShow = true;
