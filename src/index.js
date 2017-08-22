@@ -127,6 +127,7 @@ const directives = {
 
 let prototypes = {
   $Message,
+  // $Modal,
   $Confirm,
   $Loading,
   $LoadingBar
@@ -167,6 +168,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, prototypes, config, { Dropdown }, filters);
+}, { $Modal, $Notice }, prototypes, config, { Dropdown }, filters);
 
 module.exports = HeyUI;
