@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.8"></a>
+## [0.7.8](https://github.com/heyui/heyui/compare/v0.7.7...v0.7.8) (2017-08-22)
+
+
+### Bug Fixes
+
+* 将$Modal以及$Notice暴露在外面 ([6bffc73](https://github.com/heyui/heyui/commit/6bffc73))
+
+
+
 <a name="0.7.7"></a>
 ## [0.7.7](https://github.com/heyui/heyui/compare/v0.7.6...v0.7.7) (2017-08-21)
 
