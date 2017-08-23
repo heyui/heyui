@@ -138,7 +138,6 @@ class Pop {
     if (options.boundariesElement) {
       popperOptions.boundariesElement = options.boundariesElement;
     }
-    // log(1);
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
     // this.popperInstance.update();
@@ -159,7 +158,6 @@ class Pop {
     if (this.options.events && utils.isFunction(this.options.events.show)) {
       this.options.events.show.call(null);
     }
-    log(2);
     if (!this.popNode) {
       this.initPopNode();
     }

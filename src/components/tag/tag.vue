@@ -111,7 +111,7 @@ export default {
     },
     jump(event) {
       let value = parseInt(event.target.value, 10);
-      log(value);
+      // log(value);
       if (isNaN(value)) {
         this.$Message.error("您输入的值格式不正确");
         return;
