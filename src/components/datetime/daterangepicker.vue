@@ -179,10 +179,10 @@ export default {
           this.nowView.end = manba(value).add(1, manba.MONTH);
         }
       }
-      this.dropdown.popperInstance.update();
+      this.dropdown.update();
     },
     changeView() {
-      if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
+      this.dropdown.update();
     },
     changeEvent(event) {
       // let value = event.target.value;
@@ -263,7 +263,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      this.dropdown.popperInstance.update();
+      this.dropdown.update();
     }
   },
   computed: {

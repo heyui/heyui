@@ -176,7 +176,7 @@ export default {
       this.updateDropdown();
     },
     updateDropdown() {
-      if(this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+      if(this.dropdown) this.dropdown.update();
     },
     inputEvent(event) {
       let value = event.target.value;

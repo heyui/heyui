@@ -187,6 +187,7 @@ class Pop {
   }
 
   hide() {
+    if (!this.popperInstance) return this;
     if (!this.isOpen) { return this; }
     this.isOpen = false;
     this.popNode.setAttribute('aria-hidden', 'true');

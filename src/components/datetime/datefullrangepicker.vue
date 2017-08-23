@@ -153,10 +153,10 @@ export default {
     },
     updateView(value) {
       this.nowView.start = manba(value);
-      this.dropdown.popperInstance.update();
+      this.dropdown.update();
     },
     updateDropdown() {
-      if(this.dropdown.popperInstance)this.dropdown.popperInstance.update();
+      this.dropdown.update();
     },
     parseSingle(value, range) {
       if (utils.isObject(value) && value[this.paramName[range]]) {
@@ -253,7 +253,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      this.dropdown.popperInstance.update();
+      this.dropdown.update();
     }
   },
   computed: {

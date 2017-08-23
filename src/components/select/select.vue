@@ -197,7 +197,7 @@ export default {
       event.initCustomEvent("setvalue", true, true, this.objects);
       this.$el.dispatchEvent(event);
       if (this.multiple) {
-        if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+        this.dropdown.update();
       } else {
         this.dropdown.hide();
       }
@@ -246,7 +246,7 @@ export default {
     },
     filterOptions() {
       if (this.searchInput) {
-        if (this.dropdown && this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+        if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
         return this.options.filter((item) => {
           return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;

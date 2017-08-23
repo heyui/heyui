@@ -119,7 +119,7 @@ export default {
     onclick(option) {
       if (!!option.disabled) return;
       this.$emit("onclick", option[this.key]);
-      if (this.dropdown.popperInstance) this.dropdown.hide();
+      this.dropdown.hide();
     }
   },
   computed: {

@@ -311,13 +311,13 @@ export default {
             if (target.value === value) {
               this.loading = false;
               this.loadDatas = datas;
-              if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+              this.dropdown.update();
             }
           });
         }
       }
       this.searchValue = value;
-      if (this.dropdown.popperInstance) this.dropdown.popperInstance.update();
+      this.dropdown.update();
     },
     add(data) {
       if (this.multiple) {
@@ -350,7 +350,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.dropdown.popperInstance) this.dropdown.hide();
+      this.dropdown.hide();
     },
     clear() {
       this.tempValue = '';
