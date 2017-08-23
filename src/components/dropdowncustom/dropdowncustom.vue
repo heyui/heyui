@@ -39,7 +39,8 @@ export default {
   },
   data() {
     return {
-      isShow: false
+      isShow: false,
+      dropdown: null
     };
   },
   mounted() {
@@ -77,6 +78,17 @@ export default {
       return {
         [`${prefix}-group`]: true,
       }
+    }
+  },
+  methods: {
+    update() {
+      this.dropdown.update();
+    },
+    hide() {
+      this.dropdown.hide();
+    },
+    show() {
+      this.dropdown.show();
     }
   }
 };

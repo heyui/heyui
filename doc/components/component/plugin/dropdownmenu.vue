@@ -62,7 +62,7 @@
         <td>trigger</td>
         <td>触发方式</td>
         <td>String</td>
-        <td>click, hover</td>
+        <td>click, hover, focus</td>
         <td>click</td>
       </tr>
       <tr>

@@ -159,7 +159,7 @@ class Pop {
     if (this.options.events && utils.isFunction(this.options.events.show)) {
       this.options.events.show.call(null);
     }
-
+    log(2);
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -261,7 +261,7 @@ class Pop {
         this.scheduleShow(reference, options, evt);
       };
       this.triggerEvents.push({ event, func });
-      reference.addEventListener(event, func);
+      reference.addEventListener(event, func, event == 'focus');
     });
 
     oppositetriggerEvents.forEach((event) => {
@@ -270,7 +270,7 @@ class Pop {
         this.scheduleHide(reference, options, evt);
       };
       this.triggerEvents.push({ event, func });
-      reference.addEventListener(event, func);
+      reference.addEventListener(event, func, event == 'blur');
     });
 
     if (options.triggerOnBody) {

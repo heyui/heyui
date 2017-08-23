@@ -19,6 +19,9 @@
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <example demo="plugins/dropdowncustom4"></example>
 
+    <h3>自定义下拉的控制</h3>
+    <example demo="plugins/dropdowncustom5"></example>
+
     <h3>DropdownCustom 参数</h3>
     <table class="table">
       <tr>
@@ -32,7 +35,7 @@
         <td>trigger</td>
         <td>触发方式</td>
         <td>String</td>
-        <td>click, hover</td>
+        <td>click, hover, focus</td>
         <td>click</td>
       </tr>
       <tr>
@@ -76,6 +79,23 @@
         <td>String</td>
         <td>-</td>
         <td>-</td>
+      </tr>
+    </table>
+
+
+    <h3>DropdownCustom 方法</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>udpate</td>
+        <td>更新dropdown的位置</td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>关闭dropdown</td>
       </tr>
     </table>
   </div>
