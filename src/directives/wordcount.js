@@ -28,7 +28,7 @@ export default {
         }
       }
       wordcount();
-      el.addEventListener("keyup", () => {
+      el.addEventListener("input", () => {
         wordcount();
       });
     }
