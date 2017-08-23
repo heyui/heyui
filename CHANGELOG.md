@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/heyui/heyui/compare/v0.7.12...v0.8.0) (2017-08-23)
+
+
+### Bug Fixes
+
+* wordcount 事件处理优化 ([bb47820](https://github.com/heyui/heyui/commit/bb47820))
+* 删除无用的log ([4ae40c7](https://github.com/heyui/heyui/commit/4ae40c7))
+
+
+### Features
+
+* wordcount: textarea输入添加字数展示 ([d19f2e4](https://github.com/heyui/heyui/commit/d19f2e4))
+
+
+
 <a name="0.7.12"></a>
 ## [0.7.12](https://github.com/heyui/heyui/compare/v0.7.11...v0.7.12) (2017-08-23)
 
