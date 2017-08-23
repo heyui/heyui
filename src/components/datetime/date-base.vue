@@ -89,6 +89,16 @@ const DateFormatLength = {
   minute: 16
 };
 
+const DateJudgeLength = {
+  year: 10,
+  month: 10,
+  date: 10,
+  week: 10,
+  quarter: 10,
+  hour: 13,
+  minute: 16
+};
+
 const genData = (param) => {
   let { date, type, show, vm, isNowDays } = param;
   let disabled = false;
@@ -191,7 +201,7 @@ export default {
       this.$emit('updateView', nowView.time(), this.range);
     },
     isSelected(d) {
-      let length = DateFormatLength[this.view];
+      let length = DateJudgeLength[this.view];
       if (utils.isObject(this.value)) {
         return this.value.start == d.string || this.value.end == d.string;
       }
@@ -318,7 +328,7 @@ export default {
         for (let i = 1; i <= 12; i++) {
           dates.push(genData({
             date: manba([nowDate.year(), i, 1]),
-            type: manba.MONTH,
+            type: manba.DAY,
             show: options.months[i - 1],
             vm: this,
             isNowDays: true
@@ -331,7 +341,7 @@ export default {
         for (let i = nowYear - 6; i <= nowYear + 5; i++) {
           dates.push(genData({
             date: manba([i, 1, 1]),
-            type: manba.YEAR,
+            type: manba.DAY,
             show: i,
             vm: this,
             isNowDays: true
@@ -390,7 +400,7 @@ export default {
           dates.push(
             genData({
               date: manba(date.time()),
-              type: manba.WEEK,
+              type: manba.DAY,
               show: `${date.year()}年 第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
               vm: this,
               isNowDays: true
@@ -406,7 +416,7 @@ export default {
           dates.push(
             genData({
               date: manba(date.time()),
-              type: manba.MONTH,
+              type: manba.DAY,
               show: `${date.year()}年 第${index}季度`,
               vm: this,
               isNowDays: true
