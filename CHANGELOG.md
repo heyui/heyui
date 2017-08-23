@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.7.12"></a>
+## [0.7.12](https://github.com/heyui/heyui/compare/v0.7.11...v0.7.12) (2017-08-23)
+
+
+### Bug Fixes
+
+* datepicker显示选中的判断优化 ([68931be](https://github.com/heyui/heyui/commit/68931be))
+* dropdown 本身添加popperInstance的判断 ([da2d4bb](https://github.com/heyui/heyui/commit/da2d4bb))
+* dropdowncustom 添加hide, update方法 ([41f7713](https://github.com/heyui/heyui/commit/41f7713))
+
+
+
 <a name="0.7.11"></a>
 ## [0.7.11](https://github.com/heyui/heyui/compare/v0.7.10...v0.7.11) (2017-08-22)
 
