@@ -46,6 +46,7 @@ import { Button, ButtonGroup } from './components/button';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
+import wordcount from './directives/wordcount';
 import autosize from './directives/autosize';
 import $Modal from './plugins/modal';
 import $Confirm from './plugins/confirm';
@@ -122,7 +123,8 @@ const directives = {
   margin: style.margin,
   font: style.font,
   autosize,
-  tooltip
+  tooltip,
+  wordcount
 }
 
 let prototypes = {

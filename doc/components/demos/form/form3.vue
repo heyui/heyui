@@ -108,7 +108,7 @@
                 :single="true"
                 prop="textarea">
         <textarea rows="3"
-                  v-autosize
+                  v-autosize v-wordcount="50"
                   v-model="data.textarea"></textarea>
       </FormItem>
       <FormItem label="单选"
