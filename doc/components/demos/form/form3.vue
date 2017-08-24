@@ -25,7 +25,7 @@
       <FormItem label="整数"
                 prop="int">
         <NumberInput
-               v-model="data.int" min="0" max="100" ></NumberInput>
+               v-model="data.int" :min="0" :max="100" ></NumberInput>
       </FormItem>
       <FormItem label="只读" readonly>只读数据</FormItem>
       <FormItem label="数字"
