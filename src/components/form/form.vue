@@ -69,6 +69,7 @@ export default {
       return this.validator.getConfig(prop);
     },
     getErrorMessage(prop) {
+      if(this.messages[prop]) return this.messages[prop];
       let message = { valid: true, message: null };
       this.messages[prop] = message;
       return message;

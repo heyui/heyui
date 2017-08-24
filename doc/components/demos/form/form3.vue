@@ -19,13 +19,13 @@
           <span class="link" v-if="props.type == 'async'">+++++++错误的特殊提示+++++++</span>
         </template>
       </FormItem>
-      <FormItem label="整数">
+      <FormItem label="整数" prop="int">
         <Slider v-model="data.int"></Slider>
       </FormItem>
       <FormItem label="整数"
                 prop="int">
         <NumberInput
-               v-model="data.int" ></NumberInput>
+               v-model="data.int" min="0" max="100" ></NumberInput>
       </FormItem>
       <FormItem label="只读" readonly>只读数据</FormItem>
       <FormItem label="数字"
