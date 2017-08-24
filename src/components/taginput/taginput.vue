@@ -1,16 +1,10 @@
 <template>
   <div :class="taginputCls">
-    <span v-for="(v, index) of values"><span>{{v}}</span><i v-if="!readonly"
-       class="h-icon-close"
-       @click.stop="remove(index)"></i></span>
-    <input v-if="!readonly"
-           type="text"
-           class="h-taginput-input"
-           @focus="focusing=true"
-           v-model="tagvalue"
-           @blur="blur"
-           @keyup.enter="add"
-           :placeholder="placeholder" />
+    <span v-for="(v, index) of values" :key="v">
+      <span>{{v}}</span>
+      <i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
+    </span>
+    <input v-if="!readonly" type="text" class="h-taginput-input" @focus="focusing=true" v-model="tagvalue" @blur="blur" @keyup.enter="add" v-wordlimit="wordlimit" :placeholder="placeholder" />
   </div>
 </template>
 <script>
@@ -40,6 +34,10 @@ export default {
       type: String,
       default: ","
     },
+    wordlimit: {
+      type: Number,
+      default: 50
+    },
     limit: {
       type: Number,
       default: 10000
@@ -60,7 +58,7 @@ export default {
       this.setvalue(value);
     },
     add() {
-      if(this.limit <= this.values.length){
+      if (this.limit <= this.values.length) {
         this.$Message.error('您输入的已经超过限制');
         return false;
       }
@@ -82,7 +80,7 @@ export default {
     },
     blur() {
       let result = this.add();
-      if(result !== false)this.focusing = false;
+      if (result !== false) this.focusing = false;
     }
   },
   computed: {

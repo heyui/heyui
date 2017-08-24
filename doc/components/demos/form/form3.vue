@@ -13,7 +13,7 @@
       <FormItem label="输入框"
                 prop="input">
         <input type="text"
-               v-model="data.input" />
+               v-model="data.input" placeholder="限制输入30个字" v-wordlimit='30'/>
         <template slot="error" scope="props">
           <!-- *type*: base, combine, async -->
           <span class="link" v-if="props.type == 'async'">+++++++错误的特殊提示+++++++</span>
@@ -175,7 +175,7 @@ export default {
         email: null,
         tel: null,
         mobile: null,
-        input: '测试',
+        input: '',
         textarea: '',
         radio: 1,
         rate: null,
