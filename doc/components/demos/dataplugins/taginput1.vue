@@ -1,6 +1,6 @@
 <template>
   <div>
-      <TagInput v-model="value" :limit="10"></TagInput>
+      <TagInput v-model="value" :limit="10" :wordlimit="20"></TagInput>
   </div>
 </template>
 

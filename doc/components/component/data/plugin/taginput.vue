@@ -31,6 +31,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>wordlimit</td>
+        <td>限制每个tag的文字输入长度</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>50</td>
+      </tr>
     </table>
   </div>
 </template>

@@ -125,6 +125,10 @@
                 prop="autocomplete">
         <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
       </FormItem>
+      <!-- 
+        这里定义的required属性同样适用与验证规则中，
+        验证的字段即可以是things[0]（代表独立的数据验证），也可以是things[]（代表整个数组的数据验证）
+       -->
       <FormItem label="自定义规则" prop="things[0]" required>
         <input type="text" v-model="data.things[0]" />
       </FormItem>
@@ -214,7 +218,8 @@ export default {
             minLen: 10
           },
           input: {
-            //这里的判断不会影响最终的valid结果，所以可以作为一些验证提示，也可以做异步处理判断(原则上所以的异步判断在提交后同样需要验证)
+            //做异步处理判断(原则上所有的异步判断在提交后同样需要验证)
+            //这里的判断不会影响最终的valid结果，所以也可以作为一些验证提示
             validAsync(value, next, parent, data) {
               setTimeout(()=>{
                 if(value.length == 15 || value.length == 18 ) {
