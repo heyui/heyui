@@ -110,6 +110,9 @@ export default {
     };
   },
   watch: {
+    datas() {
+      this.parse();
+    },
     value() {
       this.parse();
     },
