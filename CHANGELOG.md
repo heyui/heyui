@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/heyui/heyui/compare/v0.8.0...v0.8.1) (2017-08-24)
+
+
+### Bug Fixes
+
+* 优化报错的提醒文字 ([6ee51b0](https://github.com/heyui/heyui/commit/6ee51b0))
+* 字段超出长度文字修改 ([0f9a5e5](https://github.com/heyui/heyui/commit/0f9a5e5))
+* 当select的datas变动时，重新parse ([e373dbf](https://github.com/heyui/heyui/commit/e373dbf))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/heyui/heyui/compare/v0.7.12...v0.8.0) (2017-08-23)
 
