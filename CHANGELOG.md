@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.6"></a>
+## [0.8.6](https://github.com/heyui/heyui/compare/v0.8.5...v0.8.6) (2017-08-24)
+
+
+### Bug Fixes
+
+* modal 展示的时候针对html做overflow处理 ([7154531](https://github.com/heyui/heyui/commit/7154531))
+
+
+
 <a name="0.8.5"></a>
 ## [0.8.5](https://github.com/heyui/heyui/compare/v0.8.4...v0.8.5) (2017-08-24)
 
