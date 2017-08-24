@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/heyui/heyui/compare/v0.8.2...v0.8.3) (2017-08-24)
+
+
+### Bug Fixes
+
+* form支持同个字段多个编辑验证 ([a524aed](https://github.com/heyui/heyui/commit/a524aed))
+* 修复form3 demo错误 ([55bdef2](https://github.com/heyui/heyui/commit/55bdef2))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/heyui/heyui/compare/v0.8.1...v0.8.2) (2017-08-24)
 
