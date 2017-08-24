@@ -154,7 +154,7 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      this.dropdown.update();
+      if(this.dropdown) this.dropdown.update();
     },
     triggerChange() {
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
