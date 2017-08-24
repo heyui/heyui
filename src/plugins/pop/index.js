@@ -203,9 +203,11 @@ class Pop {
     if (this.documentHandler) {
       document.removeEventListener('click', this.documentHandler);
     }
+    if (this.popperInstance) {
+      this.popperInstance.destroy();
+    }
     if (this.popNode) {
       this.hide();
-      this.popperInstance.destroy();
       this.triggerEvents.forEach(({ func, event }) => {
         this.popNode.removeEventListener(event, func);
       });
