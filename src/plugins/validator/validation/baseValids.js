@@ -7,11 +7,11 @@ let valids = {
   },
   maxLen(value, configValue) {
     let result = value !== null && value !== undefined && new String(value).length <= configValue;
-    return result === true ? true : `文字长度不能大于${configValue}个字符串`;
+    return result === true ? true : `文字长度不能大于${configValue}个字`;
   },
   minLen(value, configValue) {
     let result = value !== null && value !== undefined && new String(value).length >= configValue;
-    return result === true ? true : `文字长度不能小于${configValue}个字符串`;
+    return result === true ? true : `文字长度不能小于${configValue}个字`;
   },
   max(value, configValue) {
     let result = value !== null && value !== undefined && new Number(value) <= configValue;

@@ -232,7 +232,6 @@ export default {
           'select3',
           'inputs[].value',
           'input',
-          'textarea',
           'radio',
           'rate',
           'checkbox',
