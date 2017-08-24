@@ -50,6 +50,12 @@ export default {
         document.body.appendChild(this.$el);
         this.$el.style.display = 'block';
         this.isShow = true;
+        if(this.hasMask){
+          let body = document.body;
+          let scrollWidth = window.innerWidth - body.clientWidth;
+          body.style.overflow = 'hidden';
+          body.style.paddingRight = `${scrollWidth}px`;
+        }
         setTimeout(() => {
           this.isOpened = true
         }, 100);
@@ -59,6 +65,9 @@ export default {
           this.$el.style.display = 'none';
           this.isShow = false;
         }, 200);
+        let body = document.body;
+        body.style.overflow = '';
+        body.style.paddingRight = '';
       }
     }
   },

@@ -58,11 +58,21 @@ export default {
       if (this.value) {
         this.$el.style.display = 'block';
         this.nowComponent = this.$options.propsData.component;
+
+        if(this.hasMask){
+          let body = document.body;
+          let scrollWidth = window.innerWidth - body.clientWidth;
+          body.style.overflow = 'hidden';
+          body.style.paddingRight = `${scrollWidth}px`;
+        }
         setTimeout(() => {
           this.isOpened = this.value
         }, 100);
       } else {
         this.isOpened = this.value;
+        let body = document.body;
+        body.style.overflow = '';
+        body.style.paddingRight = '';
         setTimeout(() => {
           this.$el.style.display = 'none';
           this.nowComponent = "";

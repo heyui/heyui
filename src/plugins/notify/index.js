@@ -182,8 +182,14 @@ class Notify {
       }
     }
 
-    window.setTimeout(function () {
+    window.setTimeout(() => {
       utils.addClass($body, notifyShowCls);
+      if (param.hasMask) {
+        let body = document.body;
+        let scrollWidth = window.innerWidth - body.clientWidth;
+        body.style.overflow = 'hidden';
+        body.style.paddingRight = `${scrollWidth}px`;
+      }
     }, 20);
 
     if (param.events && utils.isFunction(param.events.init)) {
@@ -222,6 +228,10 @@ class Notify {
     if (this.vm) {
       that.vm.$destroy();
     }
+
+    let body = document.body;
+    body.style.overflow = '';
+    body.style.paddingRight = '';
 
     this.trigger('close');
 

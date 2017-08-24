@@ -15,7 +15,6 @@ export default {
       this.$Modal({
         hasDivider,
         // width: 200,
-        hasMask: false,
         component: {
           // 这里也可以定义异步调用
           // vue: (resolve) => {
