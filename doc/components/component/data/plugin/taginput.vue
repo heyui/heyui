@@ -38,6 +38,27 @@
         <td>-</td>
         <td>50</td>
       </tr>
+      <tr>
+        <td>placeholder</td>
+        <td>输入提示</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>数据类型</td>
+        <td>String</td>
+        <td>Array, String</td>
+        <td>Array</td>
+      </tr>
+      <tr>
+        <td>split</td>
+        <td>如果数据类型为String,设定的分隔符</td>
+        <td>String</td>
+        <td>-</td>
+        <td>,</td>
+      </tr>
     </table>
   </div>
 </template>

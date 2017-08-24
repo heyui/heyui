@@ -28,7 +28,7 @@ export default {
     },
     type: {
       type: String,
-      default: "array" //string
+      default: "Array" //String
     },
     split: {
       type: String,
@@ -80,7 +80,7 @@ export default {
     },
     blur() {
       let result = this.add();
-      if (result !== false) this.focusing = false;
+      this.focusing = false;
     }
   },
   computed: {
@@ -93,7 +93,7 @@ export default {
       }
     },
     values() {
-      if (this.type == 'array') {
+      if (this.type == 'Array') {
         return this.value || [];
       }
       return (this.value || '').split(this.split);
