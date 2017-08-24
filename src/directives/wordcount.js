@@ -20,7 +20,7 @@ export default {
         let v = el.value.length;
         let remain = total - v;
         if (remain >= 0) {
-          remainDom.innerText = remain;
+          remainDom.innerText = v;
           utils.removeClass(remainDom, 'red-color')
         } else {
           remainDom.innerText = `您已超出${Math.abs(remain)}个字`;
