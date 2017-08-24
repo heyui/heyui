@@ -60,7 +60,7 @@ export default {
         this.nowComponent = this.$options.propsData.component;
 
         if(this.hasMask){
-          let body = document.body;
+          let body = document.documentElement;
           let scrollWidth = window.innerWidth - body.clientWidth;
           body.style.overflow = 'hidden';
           body.style.paddingRight = `${scrollWidth}px`;
@@ -70,7 +70,7 @@ export default {
         }, 100);
       } else {
         this.isOpened = this.value;
-        let body = document.body;
+        let body = document.documentElement;
         body.style.overflow = '';
         body.style.paddingRight = '';
         setTimeout(() => {

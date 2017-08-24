@@ -185,7 +185,7 @@ class Notify {
     window.setTimeout(() => {
       utils.addClass($body, notifyShowCls);
       if (param.hasMask) {
-        let body = document.body;
+        let body = document.documentElement;
         let scrollWidth = window.innerWidth - body.clientWidth;
         body.style.overflow = 'hidden';
         body.style.paddingRight = `${scrollWidth}px`;
@@ -229,7 +229,7 @@ class Notify {
       that.vm.$destroy();
     }
 
-    let body = document.body;
+    let body = document.documentElement;
     body.style.overflow = '';
     body.style.paddingRight = '';
 

@@ -51,7 +51,7 @@ export default {
         this.$el.style.display = 'block';
         this.isShow = true;
         if(this.hasMask){
-          let body = document.body;
+          let body = document.documentElement;
           let scrollWidth = window.innerWidth - body.clientWidth;
           body.style.overflow = 'hidden';
           body.style.paddingRight = `${scrollWidth}px`;
@@ -65,7 +65,7 @@ export default {
           this.$el.style.display = 'none';
           this.isShow = false;
         }, 200);
-        let body = document.body;
+        let body = document.documentElement;
         body.style.overflow = '';
         body.style.paddingRight = '';
       }
