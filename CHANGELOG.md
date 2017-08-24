@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.5"></a>
+## [0.8.5](https://github.com/heyui/heyui/compare/v0.8.4...v0.8.5) (2017-08-24)
+
+
+### Bug Fixes
+
+* modal 有弹出层的时候设置body overflow属性 ([768ec49](https://github.com/heyui/heyui/commit/768ec49))
+* treepicker setvalue 判断dropdown ([a227fb7](https://github.com/heyui/heyui/commit/a227fb7))
+* 优化tagInput, 以及tagInput文档 ([feba81e](https://github.com/heyui/heyui/commit/feba81e))
+* 优化文档 ([a06d141](https://github.com/heyui/heyui/commit/a06d141))
+* 添加wordlimit方法 ([b51ea8c](https://github.com/heyui/heyui/commit/b51ea8c))
+
+
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/heyui/heyui/compare/v0.8.3...v0.8.4) (2017-08-24)
 
