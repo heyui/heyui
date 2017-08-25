@@ -118,7 +118,10 @@ class Pop {
     }
     const contentNode = this.popNode.querySelector(this.innerSelector);
     const allowHtml = this.options.html;
-    if (allowHtml) {
+    if (content.nodeType === 1) {
+      if (allowHtml) contentNode.replaceChild(content, contentNode.firstChild);
+      content.style.display = "block";
+    } else if (allowHtml) {
       contentNode.innerHTML = content;
     } else {
       contentNode.innerText = content;
