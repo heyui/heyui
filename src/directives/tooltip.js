@@ -25,6 +25,7 @@ const getContent = function (el, vnode) {
 
 const init = function (el, binding, vnode) {
   let param = getContent(el, vnode);
+  if (param == false) return;
   let attrs = vnode.data.attrs || {};
   // if (utils.isNull(param.content) || param.content === '') return false;
   param.container = document.body;
@@ -39,17 +40,19 @@ export default {
     if (el.tooltip) {
       vnode.context.$nextTick(() => {
         let param = getContent(el, vnode);
-        el.tooltip.updateContent(param.content);
-        log(1);
+        if (param == false) {
+          el.tooltip.dispose();
+        } else {
+          el.tooltip.updateContent(param.content);
+        }
       })
     } else {
       init(el, binding, vnode);
     }
   },
   unbind(el) {
-    let attr = el;
-    if (attr.tooltip) {
-      attr.tooltip.dispose();
+    if (el.tooltip) {
+      el.tooltip.dispose();
       delete el.tooltip;
     }
   }
