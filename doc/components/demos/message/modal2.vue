@@ -4,6 +4,7 @@
       <Modal v-model="opened" :has-mask="false">
         <div slot="header">标题</div>
         <div >这是一个普通的弹出框</div>
+        <Select dict="simple"></Select>
         <div slot="footer"><button class="h-btn" @click="close">取消</button><button class="h-btn h-btn-primary" @click="confirm">确定</button></div>
       </Modal>
   </div>

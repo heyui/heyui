@@ -2,8 +2,9 @@
 @notify-cls: ~"@{prefix}notify";
 @modal-padding: 15px;
 .@{modal-cls} {
-    z-index: @zindex-modal;
-    position: absolute;
+    // z-index: @zindex-modal;
+    // position: absolute;
+    position: static;
     .@{notify-cls} {
         &-container {
             margin-bottom: 100px;
@@ -30,12 +31,12 @@
     &.@{notify-cls} {
 
         &-has-mask{
-            position: fixed;
-            overflow: auto;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            // position: fixed;
+            // overflow: auto;
+            // top: 0;
+            // left: 0;
+            // bottom: 0;
+            // right: 0;
             .@{notify-cls} {
                 &-container {
                     position: absolute;
@@ -55,7 +56,6 @@
             .@{notify-cls}-container-center {
                 top: 50%;
                 transform: translate(-50%, -50%);
-                margin-top: 100px;
             }
         }
     }

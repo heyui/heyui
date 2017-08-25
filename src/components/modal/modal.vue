@@ -112,6 +112,7 @@ export default {
         [`${notifyprefix}-has-mask`]: this.hasMask,
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
         [`${notifyprefix}-has-divider`]: this.hasDivider,
+        'h-dropdown-common-container': true
       }
     },
     hasHeader() {

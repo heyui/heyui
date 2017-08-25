@@ -132,7 +132,7 @@ class Pop {
       placement: options.placement,
       arrowElement: this.arrowSelector,
       modifiers: {
-        computeStyle: { gpuAcceleration: false }
+        computeStyle: { gpuAcceleration: false },
       }
     };
     if (options.boundariesElement) {

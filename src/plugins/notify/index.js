@@ -76,9 +76,9 @@ class Notify {
     if (param.hasMask) {
       utils.addClass($body, notifyHasMaskCls);
     }
-    // if (param.type == 'h-modal') {
-    //   utils.addClass($body, 'h-dropdown-common-container');
-    // }
+    if (param.type == 'h-modal') {
+      utils.addClass($body, 'h-dropdown-common-container');
+    }
     if (param.class) {
       utils.addClass($body, param.class);
     }

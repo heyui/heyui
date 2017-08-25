@@ -10,8 +10,11 @@ const Default = {
   template: `<div role="select" class="h-dropdown"><div class="h-dropdown-arrow"></div><div class="h-dropdown-inner"></div></div>`,
   arrowSelector: '.h-dropdown-arrow, .h-dropdown__arrow',
   innerSelector: '.h-dropdown-inner, .h-dropdown__inner',
-  // preventOverflow: {
-  //   enabled: false
+  // Modifiers: {
+  //   preventOverflow: {
+  //     enabled: false,
+  //     // boundariesElement: 'viewport'
+  //   },
   // },
   delay: 300,
 }
@@ -19,13 +22,14 @@ const Default = {
 class Dropdown extends Pop {
   constructor(el, param) {
     let container = document.body;
-    // if (!param.container) {
-    //   container = el;
-    //   while (container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
-    //     container = container.parentNode;
-    //   }
-    // }
+    if (!param.container) {
+      container = el;
+      while (container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
+        container = container.parentNode;
+      }
+    }
     param = utils.extend({}, Default, {
+      boundariesElement: 'viewport',
       container
     }, param);
     super(el, param);
