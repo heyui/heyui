@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.9"></a>
+## [0.8.9](https://github.com/heyui/heyui/compare/v0.8.8...v0.8.9) (2017-08-25)
+
+
+### Bug Fixes
+
+* tooltip优化update机制 ([dd11557](https://github.com/heyui/heyui/commit/dd11557))
+* 优化loading的机制 ([9e5b12e](https://github.com/heyui/heyui/commit/9e5b12e))
+
+
+
 <a name="0.8.8"></a>
 ## [0.8.8](https://github.com/heyui/heyui/compare/v0.8.7...v0.8.8) (2017-08-25)
 
