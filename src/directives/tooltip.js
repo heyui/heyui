@@ -1,7 +1,7 @@
 import Tooltip from '../plugins/tooltip';
 import utils from '../utils/utils';
 
-const init = function (el, binding, vnode) {
+const getContent = function (el, vnode) {
   let param = {};
   let attrs = vnode.data.attrs || {};
   if (attrs.content === '') return false;
@@ -20,6 +20,12 @@ const init = function (el, binding, vnode) {
     param.content = `<div class="h-tooltip-inner-content">${el.innerText}</div>`;
     param.html = true;
   }
+  return param
+}
+
+const init = function (el, binding, vnode) {
+  let param = getContent(el, vnode);
+  let attrs = vnode.data.attrs || {};
   // if (utils.isNull(param.content) || param.content === '') return false;
   param.container = document.body;
   param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);
@@ -31,14 +37,20 @@ export default {
   },
   update(el, binding, vnode) {
     if (el.tooltip) {
-      el.tooltip.dispose();
+      vnode.context.$nextTick(() => {
+        let param = getContent(el, vnode);
+        el.tooltip.updateContent(param.content);
+        log(1);
+      })
+    } else {
+      init(el, binding, vnode);
     }
-    init(el, binding, vnode);
   },
   unbind(el) {
     let attr = el;
     if (attr.tooltip) {
       attr.tooltip.dispose();
+      delete el.tooltip;
     }
   }
 }

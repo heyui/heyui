@@ -104,11 +104,25 @@ class Pop {
       contentNode.innerText = content;
     }
 
-    popNode.addEventListener('click', (e) => {
-      e.reference = reference;
-    }, false);
+    // popNode.addEventListener('click', (e) => {
+    //   e.reference = reference;
+    // }, false);
 
     return popNode;
+  }
+
+  updateContent(content) {
+    this.options.content = content;
+    if (!this.popNode) {
+      return;
+    }
+    const contentNode = this.popNode.querySelector(this.innerSelector);
+    const allowHtml = this.options.html;
+    if (allowHtml) {
+      contentNode.innerHTML = content;
+    } else {
+      contentNode.innerText = content;
+    }
   }
 
   initPopNode() {
