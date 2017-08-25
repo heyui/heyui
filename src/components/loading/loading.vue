@@ -4,7 +4,7 @@
       <svg viewBox="25 25 50 50">
         <circle cx="50" cy="50" r="20" fill="none" class="circle"></circle>
       </svg>
-      <p :class="textCls" v-if="text">{{text}}</p></div>
+      <p :class="textCls" v-if="text">{{text}}</p>
     </div>
   </div>
 </template>
@@ -18,18 +18,42 @@ export default {
     },
     text: String
   },
+  data() {
+    return {
+      isSetStyle: false
+    }
+  },
   unbind() {
 
   },
   mounted() {
-    this.$nextTick(() => {
-      let parent = this.$el.parentNode;
-      let position = window.getComputedStyle(parent).position;
-      if (position === 'static') {
-        parent.style.position = 'relative';
+    this.show();
+  },
+  methods: {
+    show() {
+      if (this.loading) {
+        this.$nextTick(() => {
+          let parent = this.$el.parentNode;
+          let position = window.getComputedStyle(parent).position;
+          if (position === 'static') {
+            parent.style.position = 'relative';
+            this.isSetStyle = true;
+          }
+          parent.style.minHeight = '50px';
+        });
+      } else if (this.isSetStyle) {
+        this.$nextTick(() => {
+          let parent = this.$el.parentNode;
+          parent.style.minHeight = '';
+          parent.style.position = '';
+        });
       }
-      parent.style.minHeight = '60px';
-    });
+    }
+  },
+  watch: {
+    loading() {
+      this.show();
+    }
   },
   computed: {
     circularCls() {
