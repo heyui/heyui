@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.12"></a>
+## [0.8.12](https://github.com/heyui/heyui/compare/v0.8.11...v0.8.12) (2017-08-29)
+
+
+### Bug Fixes
+
+* dropdown计算父级添加多重判断 ([debe9d7](https://github.com/heyui/heyui/commit/debe9d7))
+* modal添加全屏参数 ([a18673b](https://github.com/heyui/heyui/commit/a18673b))
+* modal添加全屏参数 ([5661e74](https://github.com/heyui/heyui/commit/5661e74))
+* table 表头添加tooltip参数，当设置高度的时候，设定maxLength ([782b5cd](https://github.com/heyui/heyui/commit/782b5cd))
+
+
+
 <a name="0.8.11"></a>
 ## [0.8.11](https://github.com/heyui/heyui/compare/v0.8.10...v0.8.11) (2017-08-25)
 
