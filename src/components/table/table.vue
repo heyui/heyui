@@ -8,7 +8,7 @@
         </colgroup>
         <tr>
           <th v-if="checkbox" class="text-center">
-            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
+            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
           <slot v-if="!columns.length" ></slot>
           <template v-else>
@@ -35,7 +35,7 @@
                 <td v-if="checkbox" class="text-center">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
-                <slot :data="d" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
           </tbody>
@@ -54,7 +54,7 @@
                 <td v-if="checkbox" class="text-center">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
-                <slot :data="d" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
           </tbody>
@@ -68,7 +68,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
-                <slot :data="d" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
           </tbody>

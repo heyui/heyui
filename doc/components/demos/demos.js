@@ -177,6 +177,7 @@ export default {
   'view/table2': resolve => require.ensure([], require => require('./view/table2.vue'), 'view'),
   'view/table3': resolve => require.ensure([], require => require('./view/table3.vue'), 'view'),
   'view/table4': resolve => require.ensure([], require => require('./view/table4.vue'), 'view'),
+  'view/table5': resolve => require.ensure([], require => require('./view/table5.vue'), 'view'),
   'view/tabs1': resolve => require.ensure([], require => require('./view/tabs1.vue'), 'view'),
   'view/tabs2': resolve => require.ensure([], require => require('./view/tabs2.vue'), 'view'),
   'view/tabs3': resolve => require.ensure([], require => require('./view/tabs3.vue'), 'view'),

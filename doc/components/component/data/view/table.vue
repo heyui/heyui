@@ -1,12 +1,15 @@
 <template>
   <div class="doc">
     <h2>Table 表格</h2>
-    <h3>基本调用</h3>
-    
+
+    <h3>Columns定义模式</h3>
     <example demo="view/table1"></example>
 
-    <h3>checkbox</h3>
+    <h3>TableItem定义模式</h3>
     <example demo="view/table2"></example>
+
+    <h3>自定义模式</h3>
+    <example demo="view/table5"></example>
 
     <h3>固定的table</h3>
     <p>固定的高度和宽度，内部内容超出时使用scroll。</p>

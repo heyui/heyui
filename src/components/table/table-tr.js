@@ -3,7 +3,8 @@ import utils from '../../utils/utils';
 
 export default {
   props: {
-    datas: Object
+    datas: Object,
+    index: Number
   },
   render(h) {
     let tds = [];
@@ -18,6 +19,7 @@ export default {
             Object.assign(props, td.componentOptions.propsData);
           }
           props.data = this.datas;
+          props.index = this.index;
           let param = { props };
           if (td.data.scopedSlots) {
             param.scopedSlots = td.data.scopedSlots;
@@ -27,10 +29,9 @@ export default {
       }
     } else if (!this.$parent.$scopedSlots.default && this.$parent.columns) {
       for (let td of this.$parent.columns || []) {
-        let index = this.$parent.columns.indexOf(td);
         let param = utils.copy({ props: td });
         param.props.data = this.datas;
-        param.props.index = index;
+        param.props.index = this.index;
         tds.push(h(TableTd, param));
       }
     }

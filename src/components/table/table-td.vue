@@ -1,10 +1,11 @@
 <template>
-  <td :class="cls"><template v-if="prop">{{data[prop]}}</template><slot :data="data"></slot></td>
+  <td :class="cls"><template v-if="prop">{{prop=='$index' ? index : data[prop]}}</template><slot :data="data" :index="index"></slot></td>
 </template>
 <script>
 export default {
   name: 'tableTd',
   props: {
+    index: Number,
     prop: String,
     data: Object,
     align: String

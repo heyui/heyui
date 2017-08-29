@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       columns: [
+        { title: '序号' , prop: '$index', width: 100},
         { title: 'ID' , prop: 'id', width: 100, tooltip: true },
         { title: '姓名' , prop: 'name', tooltip: true, content: '测试'},
         { title: '年龄' , prop: 'age' },
