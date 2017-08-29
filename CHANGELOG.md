@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.16"></a>
+## [0.8.16](https://github.com/heyui/heyui/compare/v0.8.15...v0.8.16) (2017-08-29)
+
+
+### Bug Fixes
+
+* 解决Table底层的下拉被遮挡的问题 ([538e87a](https://github.com/heyui/heyui/commit/538e87a))
+
+
+
 <a name="0.8.15"></a>
 ## [0.8.15](https://github.com/heyui/heyui/compare/v0.8.14...v0.8.15) (2017-08-29)
 
