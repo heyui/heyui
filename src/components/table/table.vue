@@ -142,6 +142,7 @@ export default {
       leftWidth: 0,
       rightWidth: 0,
       tableWidth: 400,
+      dataLength: this.datas.length,
       computeColumns: []
     };
   },
@@ -151,8 +152,9 @@ export default {
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
         }
-        if (value != oldValue) {
+        if (value.length != this.dataLength) {
           this.checks.splice(0, this.checks.length);
+          this.dataLength = value.length;
         }
       },
       deep: true
