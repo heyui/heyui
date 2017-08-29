@@ -12,7 +12,7 @@
           </th>
           <slot v-if="!columns.length" ></slot>
           <template v-else>
-            <TableTh v-for="c of computeColumns" :key="c" :title="c.title" :width="c.width" :fixed="c.fixed" :label="c.label" :prop="c.prop" :align="c.align" :tooltip="c.tooltip" :placement="c.placement" :content="c.content" ></TableTh>
+            <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh>
           </template>
         </tr>
       </table>
@@ -31,7 +31,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr :datas="d" :key="d" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="text-center">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -50,7 +50,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr :datas="d" :key="d" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="text-center">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -67,7 +67,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="d" :index="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr :datas="d" :key="d" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
@@ -221,8 +221,8 @@ export default {
           }
           if (tr) {
             utils.addClass(tr, 'h-table-tr-hovered');
-            let index = tr.getAttribute('index');
-            for(let el of this.$el.querySelectorAll(`.h-table-tbody>tr[index='${index}']`)||[]){
+            let index = tr.getAttribute('trIndex');
+            for(let el of this.$el.querySelectorAll(`.h-table-tbody>tr[trIndex='${index}']`)||[]){
               utils.addClass(el, 'h-table-tr-hovered');
             }
           }
