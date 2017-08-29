@@ -3,7 +3,7 @@ import utils from '../../utils/utils';
 
 export default {
   props: {
-    datas: Object,
+    datas: [Object, Array],
     index: Number
   },
   render(h) {

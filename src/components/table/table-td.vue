@@ -7,7 +7,7 @@ export default {
   props: {
     index: Number,
     prop: String,
-    data: Object,
+    data: [Object, Array],
     align: String
   },
   data(){
