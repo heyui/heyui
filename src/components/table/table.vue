@@ -42,7 +42,7 @@
         </table>
       </div>
   
-      <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" v-width="leftWidth" :style="bodyStyle">
+      <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" v-width="leftWidth" :style="fixedBodyStyle">
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
             <col v-if="checkbox" width="60" />
@@ -60,7 +60,7 @@
           </tbody>
         </table>
       </div>
-      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="{'margin-right': (scrollWidth+'px')}">
+      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="fixedRightBodyStyle">
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
             <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
@@ -135,6 +135,7 @@ export default {
   data() {
     return {
       scrollWidth: 0,
+      scrollHeight: 0,
       scrollLeft: 0,
       scrollTop: 0,
       checks: [],
@@ -256,6 +257,7 @@ export default {
         let body = this.$el.querySelector(".h-table-body");
         if (body) {
           this.scrollWidth = body.offsetWidth - body.clientWidth;
+          this.scrollHeight = body.offsetHeight - body.clientHeight;
         }
         this.tableWidth = this.$el.querySelector(".h-table-container").clientWidth;
         this.initFixedWidth();
@@ -345,10 +347,19 @@ export default {
     },
     fixedBodyStyle() {
       let s = {};
-      // if (!!this.height) {
-      //   s.height = `${this.height}px`;
-      // }
+      s['bottom'] = `${this.scrollHeight}px`;
+      if (!!this.height) {
+        s.maxHeight = `${this.height}px`;
+      }
+      return s;
+    },
+    fixedRightBodyStyle() {
+      let s = {};
       s['margin-right'] = `${this.scrollWidth}px`;
+      s['bottom'] = `${this.scrollHeight}px`;
+      if (!!this.height) {
+        s.maxHeight = `${this.height}px`;
+      }
       return s;
     },
     bodyStyle() {
