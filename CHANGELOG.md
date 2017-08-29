@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.13"></a>
+## [0.8.13](https://github.com/heyui/heyui/compare/v0.8.12...v0.8.13) (2017-08-29)
+
+
+### Bug Fixes
+
+* table添加index参数返回 ([cc632f8](https://github.com/heyui/heyui/commit/cc632f8))
+
+
+
 <a name="0.8.12"></a>
 ## [0.8.12](https://github.com/heyui/heyui/compare/v0.8.11...v0.8.12) (2017-08-29)
 
