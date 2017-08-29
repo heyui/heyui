@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.15"></a>
+## [0.8.15](https://github.com/heyui/heyui/compare/v0.8.14...v0.8.15) (2017-08-29)
+
+
+### Bug Fixes
+
+* 修复Table 鼠标移动样式不同步的问题 ([e416c18](https://github.com/heyui/heyui/commit/e416c18))
+
+
+
 <a name="0.8.14"></a>
 ## [0.8.14](https://github.com/heyui/heyui/compare/v0.8.13...v0.8.14) (2017-08-29)
 
