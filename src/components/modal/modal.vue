@@ -42,7 +42,11 @@ export default {
     value: {
       type: Boolean,
       default: false
-    }
+    },
+    fullScreen: {
+      type: Boolean,
+      default: false
+    },
   },
   watch: {
     value() {
@@ -112,7 +116,8 @@ export default {
         [`${notifyprefix}-has-mask`]: this.hasMask,
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
         [`${notifyprefix}-has-divider`]: this.hasDivider,
-        'h-dropdown-common-container': true
+        'h-dropdown-common-container': true,
+        [`${prefix}-full-screen`]: this.fullScreen
       }
     },
     hasHeader() {

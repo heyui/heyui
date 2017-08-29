@@ -28,6 +28,24 @@
         }
     }
 
+    
+    &-full-screen{
+      .h-notify-container{
+        margin-bottom: 0;
+        transform: none;
+        top: 30px !important;
+        bottom: 30px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        .h-notify-content{
+          flex: 1;
+          overflow: auto;
+        }
+      }
+    }
+
     &.@{notify-cls} {
 
         &-has-mask{
@@ -56,6 +74,14 @@
             .@{notify-cls}-container-center {
                 top: 50%;
                 transform: translate(-50%, -50%);
+            }
+            &.@{modal-cls}-full-screen{
+              .h-notify-container{
+                top: 0 !important;
+                bottom: 0;
+                left: 0;
+                right: 0;
+              }
             }
         }
     }

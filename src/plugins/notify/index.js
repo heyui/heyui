@@ -79,6 +79,9 @@ class Notify {
     if (param.type == 'h-modal') {
       utils.addClass($body, 'h-dropdown-common-container');
     }
+    if (param.fullScreen) {
+      utils.addClass($body, 'h-modal-full-screen');
+    }
     if (param.class) {
       utils.addClass($body, param.class);
     }
@@ -238,7 +241,7 @@ class Notify {
     utils.removeClass($body, notifyShowCls);
 
     $body.addEventListener("transitionend", (event) => {
-      if ((event.propertyName == 'top' || event.propertyName == 'right') && $body) {
+      if ((event.propertyName == 'opacity' || event.propertyName == 'top' || event.propertyName == 'right') && $body) {
         utils.removeDom($body);
       }
     });

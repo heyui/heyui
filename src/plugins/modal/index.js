@@ -9,7 +9,8 @@ let Vue = null;
 
 let Default = {
   middle: false,
-  hasDivider
+  hasDivider,
+  fullScreen: false
 }
 
 function Modal(originalParam) {
