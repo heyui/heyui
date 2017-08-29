@@ -1,7 +1,5 @@
-<template>
-  <th :class="{[`text-${align}`]: !!align}">{{title}}</th>
-</template>
 <script>
+import utils from '../../utils/utils';
 export default {
   name: 'tableItem',
   props: {
@@ -10,7 +8,13 @@ export default {
     fixed: String,
     label: String,
     prop: String,
-    align: String
+    align: String,
+    tooltip: {
+      type: Boolean,
+      default: false
+    },
+    placement: String,
+    content: String
   },
   data(){
     return {};
@@ -20,6 +24,29 @@ export default {
   },
   beforeDestroy(){
     this.init();
+  },
+  render(h) {
+    let directives = [];
+    let attrs = {};
+    if( this.tooltip ){
+      directives.push({
+        name: 'tooltip',
+      });
+      if(!utils.isNull(this.content)){
+        attrs.content = this.content;
+      }
+      if(this.placement){
+        attrs.placement = this.placement;
+      }
+    }
+    return h(
+      'th', {
+        'class': {
+          [`text-${this.align}`]: !!this.align
+        },
+        directives, attrs
+      }, [this.title]
+    )
   },
   methods: {
     init() {

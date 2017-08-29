@@ -27,8 +27,10 @@ export default {
       }
     } else if (!this.$parent.$scopedSlots.default && this.$parent.columns) {
       for (let td of this.$parent.columns || []) {
+        let index = this.$parent.columns.indexOf(td);
         let param = utils.copy({ props: td });
         param.props.data = this.datas;
+        param.props.index = index;
         tds.push(h(TableTd, param));
       }
     }

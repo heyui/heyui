@@ -5,8 +5,8 @@
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
     <Table :datas="datas" stripe checkbox>
-      <TableItem title="姓名1" prop="name"></TableItem>
-      <TableItem title="年龄2" prop="age"></TableItem>
+      <TableItem title="姓名1" prop="name" :tooltip="true"></TableItem>
+      <TableItem title="年龄2" prop="age" :tooltip="true" content="测试" placement="right"></TableItem>
       <TableItem title="地址" prop="address" align="center"></TableItem>
       <TableItem title="操作" :width="100" fixed="right"><template scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>

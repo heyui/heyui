@@ -12,14 +12,14 @@
           </th>
           <slot v-if="!columns.length" ></slot>
           <template v-else>
-            <th v-for="c of computeColumns" :key="c" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
+            <TableTh v-for="c of computeColumns" :key="c" :title="c.title" :width="c.width" :fixed="c.fixed" :label="c.label" :prop="c.prop" :align="c.align" :tooltip="c.tooltip" :placement="c.placement" :content="c.content" ></TableTh>
           </template>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
     </div>
     <div class="h-table-container">
-      <div class="h-table-content-empty" v-height="height" v-if="datas.length == 0">
+      <div class="h-table-content-empty" v-if="datas.length == 0">
         <slot name='empty'></slot>
         <div v-if="!$slots.empty">暂无数据</div>
       </div>
@@ -60,7 +60,7 @@
           </tbody>
         </table>
       </div>
-      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="{'margin-right': (scrollWidth+'px'), 'height': (height+'px')}">
+      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="{'margin-right': (scrollWidth+'px')}">
         <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
           <colgroup>
             <col v-for="c of computeColumns" :width="getWidth(c)" :key="c" />
@@ -83,7 +83,7 @@
         </colgroup>
         <tr>
           <th v-if="checkbox" class="text-center">
-            <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length == datas.length" @click.native="checkAll"></Checkbox>
+            <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
           <th v-for="c of fixedColumnLeft" :key="c.title" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
         </tr>
@@ -104,6 +104,7 @@
 <script>
 import utils from '../../utils/utils';
 import TableTr from './table-tr';
+import TableTh from './table-item';
 
 const prefix = 'h-table';
 
@@ -342,22 +343,23 @@ export default {
     },
     fixedBodyStyle() {
       let s = {};
-      if (!!this.height) {
-        s.height = `${this.height}px`;
-      }
+      // if (!!this.height) {
+      //   s.height = `${this.height}px`;
+      // }
       s['margin-right'] = `${this.scrollWidth}px`;
       return s;
     },
     bodyStyle() {
       let s = {};
       if (!!this.height) {
-        s.height = `${this.height}px`;
+        s.maxHeight = `${this.height}px`;
       }
       return s;
     }
   },
   components: {
-    TableTr
+    TableTr,
+    TableTh
   }
 };
 </script>
