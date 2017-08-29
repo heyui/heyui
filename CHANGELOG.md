@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.14"></a>
+## [0.8.14](https://github.com/heyui/heyui/compare/v0.8.13...v0.8.14) (2017-08-29)
+
+
+### Bug Fixes
+
+* Table支持Array格式的Array ([f52d3b8](https://github.com/heyui/heyui/commit/f52d3b8))
+
+
+
 <a name="0.8.13"></a>
 ## [0.8.13](https://github.com/heyui/heyui/compare/v0.8.12...v0.8.13) (2017-08-29)
 
