@@ -185,10 +185,14 @@ export default {
       let body = this.$el.querySelector(".h-table-body");
       if (body) {
         let scrollEvent = (event) => {
-          event.preventDefault();
-          event.stopPropagation();
+          // event.preventDefault();
+          // event.stopPropagation();
           body.scrollLeft = body.scrollLeft + (event.deltaX);
           body.scrollTop = body.scrollTop + (event.deltaY);
+          if (this.scrollTop != body.scrollTop) {
+            event.stopPropagation();
+            event.preventDefault();
+          }
           this.scrollLeft = body.scrollLeft;
           this.scrollTop = body.scrollTop;
         };
