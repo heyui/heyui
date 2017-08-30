@@ -113,7 +113,7 @@
       </FormItem>
       <FormItem label="单选"
                 prop="radio">
-        <Radio v-model="data.radio"
+        <Radio v-model="data.radio" @input="data.textarea += '12'"
                :datas="dataParam"></Radio>
       </FormItem>
       <FormItem label="多选"
@@ -180,7 +180,7 @@ export default {
         tel: null,
         mobile: null,
         input: '',
-        textarea: '',
+        textarea: '测试',
         radio: 1,
         rate: null,
         checkbox: [1],
