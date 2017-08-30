@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.18"></a>
+## [0.8.18](https://github.com/heyui/heyui/compare/v0.8.17...v0.8.18) (2017-08-30)
+
+
+### Bug Fixes
+
+* uploader添加文件列表的点击触发 ([8f8d650](https://github.com/heyui/heyui/commit/8f8d650))
+* 优化uploader样式 ([7cf085e](https://github.com/heyui/heyui/commit/7cf085e))
+
+
+
 <a name="0.8.17"></a>
 ## [0.8.17](https://github.com/heyui/heyui/compare/v0.8.16...v0.8.17) (2017-08-30)
 
