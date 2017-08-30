@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.19"></a>
+## [0.8.19](https://github.com/heyui/heyui/compare/v0.8.18...v0.8.19) (2017-08-30)
+
+
+### Bug Fixes
+
+* wordcount 添加update监听 ([db4d3bf](https://github.com/heyui/heyui/commit/db4d3bf))
+
+
+
 <a name="0.8.18"></a>
 ## [0.8.18](https://github.com/heyui/heyui/compare/v0.8.17...v0.8.18) (2017-08-30)
 
