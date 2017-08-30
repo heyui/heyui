@@ -2,7 +2,7 @@
   <div :class="uploaderCls">
     <Modal v-model="preview">
       <div class="text-center">
-        <img :src="previewFile.url" :alt="previewFile.name"></img>
+        <img :src="previewFile.url" class="h-uploader-preview-image" :alt="previewFile.name"></img>
       </div>
     </Modal>
     <template v-if="type=='image'">
@@ -47,7 +47,7 @@
             <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
           </div>
           <div class="h-uploader-file-info" v-else>
-            <span class="link">{{file.name}}</span><i class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
+            <span class="link" @click="clickfile(file)">{{file.name}}</span><i class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
@@ -86,6 +86,7 @@ export default {
       type: String,
       default: 'file'
     },
+    showType: String,
     dataType: {
       type: String,
       default: 'file' //url
@@ -112,6 +113,9 @@ export default {
     }
   },
   methods: {
+    clickfile(file) {
+      this.$emit('fileclick', file);
+    },
     previewImage(file) {
       this.preview = true;
       this.previewFile = file;

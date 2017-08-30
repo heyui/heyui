@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
+    <Uploader @fileclick="fileclick" :type="showType" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
       <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
     </Uploader>
   </div>
@@ -17,7 +17,7 @@ export default {
       type: Object,
       default: () => { }
     },
-    type: {
+    showType: {
       type: String,
       default: 'image'
     },
@@ -58,7 +58,7 @@ export default {
         filters: {},
         init: {
           FilesAdded(up, files) {
-            if (that.limit && (files.length + that.value.length >= that.limit)) {
+            if (that.limit && (files.length + that.value.length > that.limit)) {
               that.$Message.error(`你上传的文件超过${that.limit}个。`);
             }
             files.forEach((file) => {
@@ -100,13 +100,11 @@ export default {
           UploadComplete() {
             that.$emit("completeUpload");
             let fileList = that.$refs.uploader.getFileList();
-            if(fileList){
-              fileList.map(item=>{
-                // 对返回的数据做最后的组装
-                // item.type = 5;
-                // item.fileType = ...
-              })
-            }
+            //   fileList.map(item=>{
+            //     // 对返回的数据做最后的组装
+            //     // item.type = 5;
+            //     // item.fileType = ...
+            //   })
             that.$emit("input", fileList);
             that.uploadList.splice(0, that.uploadList.length);
           },
@@ -125,9 +123,15 @@ export default {
       }
 
       utils.extend(param, this.options);
-      let muti = this.type == 'files' || this.type == 'images';
+      let muti = this.showType == 'files' || this.showType == 'images';
       param.multi_selection = muti;
       qiniujs.Qiniu.uploader(param);
+    },
+    fileclick(file) {
+      this.$Modal({
+        title: '预览或者下载',
+        content: `自定义处理文件预览或者下载`
+      })
     }
   },
   mounted() {

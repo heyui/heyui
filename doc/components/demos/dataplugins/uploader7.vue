@@ -1,6 +1,6 @@
 <template>
     <div v-width="400">
-      <Qiniu :options="options" type="files" v-model="file" dragdrop>
+      <Qiniu :options="options" show-type="files" v-model="file" dragdrop>
         <div slot="dragdrop">
           <p class="text-center"><i class="h-icon-upload blue-color" v-font="30" ></i></p>
           <p class="text-center">点击或将文件拖拽到这里上传</p>
