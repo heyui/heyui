@@ -100,11 +100,13 @@ export default {
           UploadComplete() {
             that.$emit("completeUpload");
             let fileList = that.$refs.uploader.getFileList();
-            fileList.map(item=>{
-              // 对返回的数据做最后的组装
-              // item.type = 5;
-              // item.fileType = ...
-            })
+            if(fileList){
+              fileList.map(item=>{
+                // 对返回的数据做最后的组装
+                // item.type = 5;
+                // item.fileType = ...
+              })
+            }
             that.$emit("input", fileList);
             that.uploadList.splice(0, that.uploadList.length);
           },

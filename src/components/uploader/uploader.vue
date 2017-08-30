@@ -47,7 +47,7 @@
             <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
           </div>
           <div class="h-uploader-file-info" v-else>
-            <span>{{file.name}}</span><i class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
+            <span class="link">{{file.name}}</span><i class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
