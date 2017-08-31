@@ -3,35 +3,35 @@
     <div class="h-date-header"
          v-if="type != 'time'">
       <span class="h-date-year-left-picker"
-            @click="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
+            @click.stop="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
       <span class="h-date-month-left-picker"
-            @click="updateView('month', -1)"
+            @click.stop="updateView('month', -1)"
             v-show="view=='date'||view=='week'"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show"
-            @click="changeView('year')"
+            @click.stop="changeView('year')"
             v-if="view != 'year'">{{nowView.year()}}年</span>
       <span class="h-date-header-show"
             v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
       <span class="h-date-header-show"
-            @click="changeView('month')"
+            @click.stop="changeView('month')"
             v-show="view != 'year' && view != 'month' && view != 'quarter'">{{nowView.month()}}月</span>
       <span class="h-date-header-show"
-            @click="changeView('date')"
+            @click.stop="changeView('date')"
             v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}日</span>
       <span class="h-date-year-right-picker"
-            @click="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
+            @click.stop="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
       <span class="h-date-month-right-picker"
-            @click="updateView('month', 1)"
+            @click.stop="updateView('month', 1)"
             v-show="view=='date'||view=='week'"><i class="h-icon-right"></i></span>
     </div>
     <div class="h-date-header"
          v-show="view=='minute'">
       <span class="h-date-month-left-picker"
-            @click="updateView('hour', -1)"><i class="h-icon-left"></i></span>
+            @click.stop="updateView('hour', -1)"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show"
-            @click="changeView('hour')">{{nowView | hoursString}}</span>
+            @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
       <span class="h-date-month-right-picker"
-            @click="updateView('hour', 1)"><i class="h-icon-right"></i></span>
+            @click.stop="updateView('hour', 1)"><i class="h-icon-right"></i></span>
     </div>
     <div :class="dateBodyCls">
       <div class="h-date-body-weeks"
@@ -100,19 +100,24 @@ const DateJudgeLength = {
 };
 
 const genData = (param) => {
-  let { date, type, show, vm, isNowDays } = param;
+  let { date, type, show, vm, isNowDays, view } = param;
   let disabled = false;
   if (utils.isObject(vm.option)) {
     if (vm.option.start) disabled = date.distance(vm.option.start, type) < 0;
     if (vm.option.end && !disabled) disabled = date.distance(vm.option.end, type) > 0;
     if (vm.option.disabled && !disabled) disabled = vm.option.disabled.call(null, date);
   }
+  let dis = date.distance(vm.today, type);
+  let isToday = dis == 0;
+  if( view=='quarter' ){
+    isToday = dis >= -2 && dis <= 0;
+  }
   return {
     date,
     show,
     string: date.format(vm.format),
     disabled,
-    isToday: date.distance(vm.today, type) == 0,
+    isToday,
     isNowDays
   }
 }
@@ -328,7 +333,7 @@ export default {
         for (let i = 1; i <= 12; i++) {
           dates.push(genData({
             date: manba([nowDate.year(), i, 1]),
-            type: manba.DAY,
+            type: manba.MONTH,
             show: options.months[i - 1],
             vm: this,
             isNowDays: true
@@ -341,7 +346,7 @@ export default {
         for (let i = nowYear - 6; i <= nowYear + 5; i++) {
           dates.push(genData({
             date: manba([i, 1, 1]),
-            type: manba.DAY,
+            type: manba.YEAR,
             show: i,
             vm: this,
             isNowDays: true
@@ -400,7 +405,7 @@ export default {
           dates.push(
             genData({
               date: manba(date.time()),
-              type: manba.DAY,
+              type: manba.WEEK,
               show: `${date.year()}年 第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
               vm: this,
               isNowDays: true
@@ -416,10 +421,11 @@ export default {
           dates.push(
             genData({
               date: manba(date.time()),
-              type: manba.DAY,
+              type: manba.MONTH,
               show: `${date.year()}年 第${index}季度`,
               vm: this,
-              isNowDays: true
+              isNowDays: true,
+              view: this.view
           }));
           date = date.add(3, manba.MONTH);
         }
