@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.21"></a>
+## [0.8.21](https://github.com/heyui/heyui/compare/v0.8.20...v0.8.21) (2017-09-02)
+
+
+### Bug Fixes
+
+* TimeLine icon 使用完整的icon class ([7eea53f](https://github.com/heyui/heyui/commit/7eea53f))
+
+
+
 <a name="0.8.20"></a>
 ## [0.8.20](https://github.com/heyui/heyui/compare/v0.8.19...v0.8.20) (2017-08-31)
 
