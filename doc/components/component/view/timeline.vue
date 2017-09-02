@@ -61,7 +61,7 @@
         <td>icon</td>
         <td>图标</td>
         <td>string</td>
-        <td>内置的图像库</td>
+        <td>icon图标</td>
         <td>-</td>
       </tr>
     </table>

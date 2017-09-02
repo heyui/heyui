@@ -4,7 +4,7 @@
       <slot name="time"></slot>
     </div>
     <div :class="prefix + '-item-content'">
-      <div :class="circleSC.classes" :style="circleSC.styles"><i :class="'h-icon-'+icon"></i></div>
+      <div :class="circleSC.classes" :style="circleSC.styles"><i :class="icon"></i></div>
       <slot name="content"></slot>
       <slot></slot>
     </div>

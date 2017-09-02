@@ -10,14 +10,14 @@
       <div slot="time">2012-12-23</div>
       <div slot="content">到达呼伦贝尔</div>
     </TimelineItem>
-    <TimelineItem icon="task">
+    <TimelineItem icon="h-icon-task">
       <div slot="time">
         <p>2012-12-23</p>
         <p>天气晴</p>
       </div>
       <div slot="content">蒙古的草原</div>
     </TimelineItem>
-    <TimelineItem icon="complete" color="green">
+    <TimelineItem icon="h-icon-complete" color="green">
       <div slot="time">
         <p>2012-12-23</p>
         <p>小雨</p>

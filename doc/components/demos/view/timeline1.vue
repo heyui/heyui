@@ -9,10 +9,10 @@
     <TimelineItem>
       到达呼伦贝尔
     </TimelineItem>
-    <TimelineItem icon="task">
+    <TimelineItem icon="h-icon-task">
       蒙古的草原
     </TimelineItem>
-    <TimelineItem icon="complete" color="green">
+    <TimelineItem icon="h-icon-complete" color="green">
       满洲里，外面的俄罗斯是什么样子的世界？
     </TimelineItem>
     <TimelineItem>
