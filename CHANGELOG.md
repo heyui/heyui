@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.24"></a>
+## [0.8.24](https://github.com/heyui/heyui/compare/v0.8.23...v0.8.24) (2017-09-06)
+
+
+### Bug Fixes
+
+* treepicker 支持type为object的数据类型 ([369deb0](https://github.com/heyui/heyui/commit/369deb0))
+* 优化treepicker文档 ([057d7c1](https://github.com/heyui/heyui/commit/057d7c1))
+
+
+
 <a name="0.8.23"></a>
 ## [0.8.23](https://github.com/heyui/heyui/compare/v0.8.22...v0.8.23) (2017-09-06)
 
