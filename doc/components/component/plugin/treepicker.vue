@@ -32,7 +32,7 @@
       </tr>
       <tr>
         <td>type</td>
-        <td>model的类型</td>
+        <td>model的类型，注意：key模式不支持初始化传入数据，因为对应的title展示不出来</td>
         <td>key, object</td>
         <td>-</td>
         <td>key</td>
