@@ -393,15 +393,19 @@ export default {
       } else if (this.view == 'week') {
         let dates = [];
         let hour = nowDate.hours();
-        let date = nowDate.startOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
-        if (date.date() == 7) {
-          date = date.startOf(manba.WEEK);
+        let date = manba(nowDate).add(-1, manba.MONTH).endOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
+        let monthSpace = 0;
+        if (date.month() == nowDate.month()) {
+          date = date.startOf(manba.WEEK, this.startWeek);
+          monthSpace = 1;
         } else {
-          date = date.add(1);
+          date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startWeek);
         }
         let month = date.month();
         let index = date.getWeekOfYear(this.startWeek);
-        while (date.month() == month) {
+        let nextMonth = monthSpace + month;
+        nextMonth = nextMonth > 12 ? 1: nextMonth;
+        while (date.month() == month || date.month() == nextMonth) {
           dates.push(
             genData({
               date: manba(date.time()),
