@@ -72,11 +72,12 @@ export default {
       objects: [],
       object: null,
       dropdown: null,
-      valuebak: utils.copy(this.value)
+      valuebak: null
     };
   },
   mounted() {
     let that = this;
+    this.parse();
     this.$nextTick(() => {
       if(this.inline) return;
       let el = this.$el.querySelector(`.${prefix}>.h-treepicker-show`);
@@ -127,7 +128,17 @@ export default {
       this.setvalue();
     },
     parse() {
-      this.valuebak = utils.copy(this.value);
+      if (this.type == 'key') {
+        this.valuebak = utils.copy(this.value);
+      } else {
+        if (this.multiple) {
+          this.valuebak = (this.value||[]).map(item=>item[this.param.keyName]);
+          this.objects = utils.copy(this.value);
+        } else {
+          this.valuebak = this.value ? this.value[this.param.keyName] : null;
+          this.object = utils.copy(this.value);
+        }
+      }
     },
     dispose() {
       if (this.multiple) {
