@@ -75,6 +75,26 @@
       </tr>
     </table>
 
+    <h3>Form 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法名</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>valid</td>
+        <td>valid( ): 整体验证表单</td>
+      </tr>
+      <tr>
+        <td>validField</td>
+        <td>validField( prop ): 整体个体字段</td>
+      </tr>
+      <tr>
+        <td>reset</td>
+        <td>reset( ): 重置验证</td>
+      </tr>
+    </table>
+
     <h3>FormItem 参数</h3>
     <table class="table">
       <tr>

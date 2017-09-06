@@ -39,6 +39,18 @@
       </tr>
     </table>
     
+
+    <h3>TreePicker 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法名</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>updateShow</td>
+        <td>由于tree大多数是异步加载数据，所以可以用于更新展示的文本</td>
+      </tr>
+    </table>
   </div>
 </template>
 <script>

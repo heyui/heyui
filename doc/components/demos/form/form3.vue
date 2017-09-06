@@ -161,7 +161,7 @@
         <Button color="primary"
                 :loading="isLoading"
                 @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
-        <Button @click="isLoading=false">取消</Button>
+        <Button @click="reset">重置验证</Button>
       </FormItem>
     </Form>
   </div>
@@ -284,6 +284,10 @@ export default {
       } else {
         this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
       }
+    },
+    reset() {
+      this.isLoading=false;
+      this.$refs.form.reset();
     },
     add() {
       this.data.inputs.push({ value: '' });

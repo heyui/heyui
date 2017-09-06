@@ -51,6 +51,11 @@ export default {
     }
   },
   methods: {
+    reset() {
+      for(let m in this.messages){
+        this.messages[m].valid = true;
+      }
+    },
     validField(prop) {
       if (!prop || !this.validator || !this.model) {
         return { valid: true };
