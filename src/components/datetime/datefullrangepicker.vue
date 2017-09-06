@@ -108,8 +108,8 @@ export default {
       },
       views: {
         year: '年',
-        month: '月',
         quarter: '季度',
+        month: '月',
         week: '周',
         date: '自定义'
       },
