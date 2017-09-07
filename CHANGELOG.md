@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.25"></a>
+## [0.8.25](https://github.com/heyui/heyui/compare/v0.8.24...v0.8.25) (2017-09-07)
+
+
+### Bug Fixes
+
+* table th use TableTh component ([e49192b](https://github.com/heyui/heyui/commit/e49192b))
+
+
+
 <a name="0.8.24"></a>
 ## [0.8.24](https://github.com/heyui/heyui/compare/v0.8.23...v0.8.24) (2017-09-06)
 
