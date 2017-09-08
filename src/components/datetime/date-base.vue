@@ -414,8 +414,13 @@ export default {
               vm: this,
               isNowDays: true
           }));
+          let oldYear = date.year();
           date = date.add(7);
-          index += 1;
+          if(oldYear != date.year()){
+            index = 1;            
+          } else {
+            index += 1;
+          }
         }
         return dates;
       } else if (this.view == 'quarter') {
