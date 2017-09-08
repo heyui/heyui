@@ -5,11 +5,11 @@
          class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
     <div v-else
          class="h-input h-datetime-show">
+             <!-- @change="changeEvent"
+             @input="inputEvent" -->
       <input type="text"
              v-model="showDate"
-             @change="changeEvent"
-             @input="inputEvent"
-             :readonly = "type == 'week'"
+             readonly
              :placeholder="placeholder"
              :disabled="disabled" />
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
@@ -106,16 +106,10 @@ export default {
     }
   },
   data() {
-    let format = this.format || options.format[this.type];
-    if (this.type == 'datetime' && this.hasSeconds) {
-      format = options.format.datetimesecond;
-    }
     return {
       nowDate: '',
       showDate: '',
-      hasConfirm: this.type == 'datetime' || this.type == 'datehour' || this.hasButtons,
       nowView: manba(),
-      nowFormat: format,
       isShow: this.inline
     };
   },
@@ -129,6 +123,9 @@ export default {
       } else {
         this.dropdown.enabled();
       }
+    },
+    type() {
+      this.parse(this.value);
     }
   },
   beforeMount() {
@@ -209,6 +206,8 @@ export default {
           if (initShow) {
             if (this.type == 'week') {
               this.showDate = `${this.nowView.year()}年 第${this.nowView.getWeekOfYear(manba.MONDAY)}周`;
+            } else if (this.type == 'quarter') {
+              this.showDate = `${this.nowView.year()}年 第${Math.ceil(this.nowView.month() / 3)}季度`;
             } else {
               this.showDate = this.nowView.format(this.nowFormat);
             }
@@ -243,6 +242,16 @@ export default {
     }
   },
   computed: {
+    nowFormat() {
+      let format = this.format || options.format[this.type];
+      if (this.type == 'datetime' && this.hasSeconds) {
+        format = options.format.datetimesecond;
+      }
+      return format;
+    },
+    hasConfirm() {
+      return this.type == 'datetime' || this.type == 'datehour' || this.hasButtons;
+    },
     shortcuts() {
       let shortcuts = [];
       let shortcutsConfig = null;

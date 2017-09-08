@@ -14,11 +14,7 @@
     <div>
       <example demo="dataplugins/datepicker3"></example>
     </div>
-    <h3>选择年月控件</h3>
-    <div>
-      <example demo="dataplugins/datepicker4"></example>
-    </div>
-    <h3>选择年控件</h3>
+    <h3>不同类型的选择控件</h3>
     <div>
       <example demo="dataplugins/datepicker5"></example>
     </div>
