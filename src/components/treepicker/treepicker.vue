@@ -14,7 +14,7 @@
     </div>
     <div class="h-treepicker-group">
       <div class="h-treepicker-body">
-        <Tree :option="option" :multiple="multiple" v-model="valuebak" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
+        <Tree ref="tree" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
       </div>
       <div class="h-treepicker-footer">
         <button class="h-btn h-btn-text h-btn-s"
@@ -60,6 +60,10 @@ export default {
       type: Boolean,
       default: false
     },
+    chooseMode: {
+      type: String,
+      default: "all"
+    },
     showCount: {
       type: Boolean,
       default: false
@@ -101,6 +105,18 @@ export default {
     },
   },
   methods: {
+    getChoose() {
+      if (this.$ref.tree) {
+        return this.$ref.tree.getChoose();
+      }
+      return [];
+    },
+    getFullChoose() {
+      if (this.$ref.tree) {
+        return this.$ref.tree.getFullChoose();
+      }
+      return [];
+    },
     select(data) {
       this.object = data;
       this.$emit('select', data);
