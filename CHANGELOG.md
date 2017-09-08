@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.26"></a>
+## [0.8.26](https://github.com/heyui/heyui/compare/v0.8.25...v0.8.26) (2017-09-08)
+
+
+### Bug Fixes
+
+* datepicker添加不同的视图类型 ([9245b9e](https://github.com/heyui/heyui/commit/9245b9e))
+* table添加solt监听slot变更 ([e298508](https://github.com/heyui/heyui/commit/e298508))
+* 修复combineRules在绑定元素无验证的时候不触发 ([c525325](https://github.com/heyui/heyui/commit/c525325))
+
+
+
 <a name="0.8.25"></a>
 ## [0.8.25](https://github.com/heyui/heyui/compare/v0.8.24...v0.8.25) (2017-09-07)
 
