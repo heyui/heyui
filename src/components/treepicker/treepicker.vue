@@ -106,14 +106,14 @@ export default {
   },
   methods: {
     getChoose() {
-      if (this.$ref.tree) {
-        return this.$ref.tree.getChoose();
+      if (this.$refs.tree) {
+        return this.$refs.tree.getChoose();
       }
       return [];
     },
     getFullChoose() {
-      if (this.$ref.tree) {
-        return this.$ref.tree.getFullChoose();
+      if (this.$refs.tree) {
+        return this.$refs.tree.getFullChoose();
       }
       return [];
     },
