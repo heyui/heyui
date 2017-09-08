@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.27"></a>
+## [0.8.27](https://github.com/heyui/heyui/compare/v0.8.26...v0.8.27) (2017-09-08)
+
+
+### Bug Fixes
+
+* 修复日历周列表视图计算错误 ([00ac645](https://github.com/heyui/heyui/commit/00ac645))
+
+
+
 <a name="0.8.26"></a>
 ## [0.8.26](https://github.com/heyui/heyui/compare/v0.8.25...v0.8.26) (2017-09-08)
 
