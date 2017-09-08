@@ -157,7 +157,12 @@ class Validator {
     let rule = this.rules[ruleKey];
     if (rule == undefined) {
       // log.error(`Error: Not found validator property '${ruleKey}'.`)
-      return combineArgs(prop, true, 'base');
+      let genRules = this.combineRules;
+      let rules = genRules[ruleKey];
+      if (!rules) {
+        return combineArgs(prop, true, 'base');
+      }
+      return this.combineRulesValid(ruleKey, value, parent, parentProp);
     }
     let result = this.validFieldBase(rule, value, parent);
     if (result !== true) {
@@ -173,10 +178,8 @@ class Validator {
       }, parent, data);
       baseResult[prop].loading = true;
     }
-
     return utils.extend(baseResult, result);
   }
-
   validFieldBase(rule, value, parent) {
     // console.log(rule, value, parent);
     if (rule) {
@@ -224,7 +227,7 @@ class Validator {
         let v = utils.getKeyValue(parent, ref);
         let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + ref;
         //当有基本参数验证不通过时，暂时不验证
-        if (this.validFieldBase(this.rules[prop], v, parent) != true || !baseValids.required.valid(v)) {
+        if (this.validFieldBase(this.rules[prop], v, parent) != true) {
           break;
         }
         values.push(v);
