@@ -10,7 +10,11 @@
           <th v-if="checkbox" class="text-center">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh>
+          <slot v-if="!columns.length&&!$scopedSlots.default" ></slot>
+          <template v-else>
+            <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh>
+          </template>
+          <!-- <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh> -->
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
