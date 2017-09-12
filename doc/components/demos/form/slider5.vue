@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>对应的值：{{value}}</p>
-    <Row><Col :width="18"><Slider v-model="value"></Slider></Col><Col :width="6"><NumberInput v-model="value"></NumberInput></Col></Row>
+    <Slider v-model="value" :showtip="false"></Slider>
   </div>
 </template>
 <script>

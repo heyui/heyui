@@ -5,8 +5,8 @@
       <div class="h-slider-track" :style="trackStyle"></div>
       <div class="h-slider-node h-slider-start-node" @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': values.start + '%'}"></div>
       <div class="h-slider-node h-slider-end-node" @mousedown="mousedown('end', $event)" :style="{'left': values.end + '%'}"></div>
-      <span class="h-slider-end-node-value h-tooltip-inner-content">{{values.end}}</span>
-      <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="hasStart">{{values.start}}</span>
+      <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
+      <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip&&hasStart">{{showContent(values.start)}}</span>
     </div>
   </div>
 </template>
@@ -29,6 +29,15 @@ export default {
     value: {
       type: [Number, Object],
       default: 0
+    },
+    show: Function,
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    showtip: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -43,8 +52,6 @@ export default {
         end: null
       }
     };
-  },
-  watch: {
   },
   mounted() {
     this.$nextTick(() => {
@@ -71,7 +78,15 @@ export default {
     });
   },
   methods: {
+    showContent(value) {
+      if (this.show) {
+        return this.show.call(null, value);
+      } else {
+        return value;
+      }
+    },
     mousedown(type, event) {
+      if(this.readonly) return;
       utils.addClass(event.target, 'h-slider-node-dragging');
       this.eventControl.type = type;
       this.eventControl.x = event.clientX;
@@ -81,6 +96,7 @@ export default {
       this.tooltip[type].show();
     },
     mousemove(event) {
+      if(this.readonly) return;
       let postition = event.clientX - this.eventControl.x;
       if (postition == 0) return;
       let nowPosition = parseInt((postition / this.$el.querySelector('.h-slider-line').clientWidth) * 100, 10);
@@ -125,6 +141,7 @@ export default {
       this.tooltip[type].update();
     },
     mouseup() {
+      if(this.readonly) return;
       document.body.removeEventListener('mousemove', this.mousemove);
       document.body.removeEventListener('mouseup', this.mouseup);
       utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
@@ -134,7 +151,7 @@ export default {
   },
   computed: {
     hasStart() {
-      return utils.isObject(this.value);
+      return this.multiple;
     },
     trackStyle() {
       return {
@@ -143,7 +160,7 @@ export default {
       }
     },
     values() {
-      if (utils.isNumber(this.value)) {
+      if (!this.multiple) {
         return {
           start: 0,
           end: this.value

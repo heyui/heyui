@@ -4,16 +4,16 @@
     <h3>基本调用</h3>
     <example demo="form/slider1"></example>
 
-    <h3>左右范围</h3>
+    <h3>readonly</h3>
     <example demo="form/slider2"></example>
 
     <h3>step</h3>
     <example demo="form/slider3"></example>
 
-    <h3>左右范围step</h3>
+    <h3>自定义展示</h3>
     <example demo="form/slider4"></example>
 
-    <h3>使用输入框</h3>
+    <h3>隐藏提示项</h3>
     <example demo="form/slider5"></example>
     
     <h3>Silder 参数</h3>
@@ -38,6 +38,20 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>自定义tip展示的内容</td>
+        <td>Function</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>showtip</td>
+        <td>是否展示tip</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
       </tr>
     </table>
   </div>
