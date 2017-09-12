@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.30"></a>
+## [0.8.30](https://github.com/heyui/heyui/compare/v0.8.29...v0.8.30) (2017-09-12)
+
+
+### Bug Fixes
+
+* slider 优化 ([01c2ce4](https://github.com/heyui/heyui/commit/01c2ce4))
+* table rule watch deep ([7a2e2e7](https://github.com/heyui/heyui/commit/7a2e2e7))
+
+
+
 <a name="0.8.29"></a>
 ## [0.8.29](https://github.com/heyui/heyui/compare/v0.8.28...v0.8.29) (2017-09-08)
 
