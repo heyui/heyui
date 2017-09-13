@@ -55,6 +55,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      if (!this.showtip) return;
       if (this.hasStart) {
         let startNode = this.$el.querySelector('.h-slider-start-node');
         this.tooltip.start = new Tooltip(startNode, {
@@ -66,17 +67,15 @@ export default {
           placement: this.placement
         });
       }
-      if (this.showtip) {
-        let endNode = this.$el.querySelector('.h-slider-end-node');
-        this.tooltip.end = new Tooltip(endNode, {
-          content: this.$el.querySelector('.h-slider-end-node-value'),
-          theme: this.theme,
-          html: true,
-          trigger: "manual hover",
-          container: document.body,
-          placement: this.placement
-        });
-      }
+      let endNode = this.$el.querySelector('.h-slider-end-node');
+      this.tooltip.end = new Tooltip(endNode, {
+        content: this.$el.querySelector('.h-slider-end-node-value'),
+        theme: this.theme,
+        html: true,
+        trigger: "manual hover",
+        container: document.body,
+        placement: this.placement
+      });
     });
   },
   methods: {
@@ -95,7 +94,7 @@ export default {
       this.eventControl.init = this.values[type];
       document.body.addEventListener('mousemove', this.mousemove);
       document.body.addEventListener('mouseup', this.mouseup);
-      this.tooltip[type].show();
+      if(this.tooltip[type]) this.tooltip[type].show();
     },
     mousemove(event) {
       if(this.readonly) return;
@@ -131,7 +130,9 @@ export default {
       if (this.eventControl.type != type) {
         utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
         utils.addClass(this.$el.querySelector(`.h-slider-${type}-node`), 'h-slider-node-dragging');
-        this.tooltip[this.eventControl.type].hide();
+        if (this.tooltip[this.eventControl.type]) {
+          this.tooltip[this.eventControl.type].hide();
+        }
         this.eventControl.type = type;
       }
 
@@ -139,8 +140,10 @@ export default {
       let evt = document.createEvent("CustomEvent");
       evt.initCustomEvent("setvalue", true, true, nowValue);
       this.$el.dispatchEvent(evt);
-      this.tooltip[type].show();
-      this.tooltip[type].update();
+      if (this.tooltip[type]) {
+        this.tooltip[type].show();
+        this.tooltip[type].update();
+      }
     },
     mouseup() {
       if(this.readonly) return;
@@ -148,7 +151,9 @@ export default {
       document.body.removeEventListener('mouseup', this.mouseup);
       utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
       let type = this.eventControl.type;
-      this.tooltip[type].hide();
+      if (this.tooltip[type]) {
+        this.tooltip[type].hide();
+      }
     },
   },
   computed: {
