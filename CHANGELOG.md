@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.33"></a>
+## [0.8.33](https://github.com/heyui/heyui/compare/v0.8.32...v0.8.33) (2017-09-13)
+
+
+### Bug Fixes
+
+* treepicker triggerChange 添加nextTick处理 ([4bf3785](https://github.com/heyui/heyui/commit/4bf3785))
+
+
+
 <a name="0.8.32"></a>
 ## [0.8.32](https://github.com/heyui/heyui/compare/v0.8.31...v0.8.32) (2017-09-13)
 
