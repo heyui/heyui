@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.32"></a>
+## [0.8.32](https://github.com/heyui/heyui/compare/v0.8.31...v0.8.32) (2017-09-13)
+
+
+### Bug Fixes
+
+* slider无tip的时候报错 ([56bb75f](https://github.com/heyui/heyui/commit/56bb75f))
+
+
+
 <a name="0.8.31"></a>
 ## [0.8.31](https://github.com/heyui/heyui/compare/v0.8.30...v0.8.31) (2017-09-13)
 
