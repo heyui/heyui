@@ -184,7 +184,9 @@ export default {
       if(this.dropdown) this.dropdown.update();
     },
     triggerChange() {
-      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
+      this.$nextTick(()=>{
+        this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
+      })
     }
   },
   computed: {
