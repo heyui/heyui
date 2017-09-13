@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.31"></a>
+## [0.8.31](https://github.com/heyui/heyui/compare/v0.8.30...v0.8.31) (2017-09-13)
+
+
+### Bug Fixes
+
+* config方法对于object的设置做extend处理 ([050137d](https://github.com/heyui/heyui/commit/050137d))
+* 处理slider的bug，放showtip:false不init tooltip ([173cd48](https://github.com/heyui/heyui/commit/173cd48))
+
+
+
 <a name="0.8.30"></a>
 ## [0.8.30](https://github.com/heyui/heyui/compare/v0.8.29...v0.8.30) (2017-09-12)
 
