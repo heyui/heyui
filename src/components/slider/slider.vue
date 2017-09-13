@@ -66,15 +66,17 @@ export default {
           placement: this.placement
         });
       }
-      let endNode = this.$el.querySelector('.h-slider-end-node');
-      this.tooltip.end = new Tooltip(endNode, {
-        content: this.$el.querySelector('.h-slider-end-node-value'),
-        theme: this.theme,
-        html: true,
-        trigger: "manual hover",
-        container: document.body,
-        placement: this.placement
-      });
+      if (this.showtip) {
+        let endNode = this.$el.querySelector('.h-slider-end-node');
+        this.tooltip.end = new Tooltip(endNode, {
+          content: this.$el.querySelector('.h-slider-end-node-value'),
+          theme: this.theme,
+          html: true,
+          trigger: "manual hover",
+          container: document.body,
+          placement: this.placement
+        });
+      }
     });
   },
   methods: {
