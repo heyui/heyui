@@ -46,6 +46,10 @@ HeyUI.initDict({
   simple: { 1: '苹果', 2: '梨子', 3: '香蕉', 4: '橙子', 5: '樱桃', 6: '超长超长超长超长超长超长超长超长超长超长超长超长超长' }
 });
 
+HeyUI.config("autocomplete.default", {
+  keyName: 'key',
+});
+
 HeyUI.config("autocomplete.configs", {
   simple: {
     loadData,

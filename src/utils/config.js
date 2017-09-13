@@ -128,7 +128,12 @@ const func = {
     if (utils.isNull(name)) {
       return false;
     }
-    utils.setKeyValue(config, name, value);
+    let keyValue = utils.getKeyValue(config, name);
+    if (utils.isObject(keyValue) && utils.isObject(value)) {
+      utils.extend(keyValue, value);
+    } else {
+      utils.setKeyValue(config, name, value);
+    }
     return true;
   },
   initDict(objects) {
