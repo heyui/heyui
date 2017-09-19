@@ -74,6 +74,10 @@ export default utils.extend({}, utils, {
       elem.parentNode.removeChild(elem);
     }
   },
+  padLeft(str, size) {
+    let s = `00000${str}`;
+    return s.substr(s.length - size);
+  },
   hasClass(elem, selector) {
     let className;
     className = ` ${selector} `;
