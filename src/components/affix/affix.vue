@@ -19,14 +19,14 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.scrollEvent = document.body.addEventListener("scroll", this.trigger, true);
+      this.scrollEvent = window.addEventListener("scroll", this.trigger, true);
       this.scrollEvent = window.addEventListener("resize", this.trigger, false);
       var evObj = document.createEvent('HTMLEvents');
       evObj.initEvent( 'scroll', true, true );
       document.body.dispatchEvent(evObj);
     })
   },
-  beforeMount() {
+  beforeDestroy() {
     if (this.scrollEvent) {
       document.body.removeEventListener('scroll', this.trigger);
       window.removeEventListener('resize', this.trigger);
