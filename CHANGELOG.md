@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.36"></a>
+## [0.8.36](https://github.com/heyui/heyui/compare/v0.8.35...v0.8.36) (2017-09-22)
+
+
+### Bug Fixes
+
+* affix事件监听在window上面 ([c00e414](https://github.com/heyui/heyui/commit/c00e414))
+
+
+
 <a name="0.8.35"></a>
 ## [0.8.35](https://github.com/heyui/heyui/compare/v0.8.34...v0.8.35) (2017-09-20)
 
