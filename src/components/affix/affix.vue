@@ -1,5 +1,7 @@
 <template>
-  <div :class="affixCls" :style="affixStyle"><slot></slot></div>
+  <div>
+    <div :class="affixCls" :style="affixStyle"><slot></slot></div>
+  </div>
 </template>
 <script>
 
