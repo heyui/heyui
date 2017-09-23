@@ -196,7 +196,7 @@ class Notify {
     }, 20);
 
     if (param.events && utils.isFunction(param.events.init)) {
-      param.events.init.call(that, $content);
+      param.events.init.call(null, that, $content);
     }
     if (param.timeout) {
       window.setTimeout(function () {
