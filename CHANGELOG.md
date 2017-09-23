@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.37"></a>
+## [0.8.37](https://github.com/heyui/heyui/compare/v0.8.36...v0.8.37) (2017-09-23)
+
+
+### Bug Fixes
+
+* 修复affix 闪屏的问题 ([952b0b8](https://github.com/heyui/heyui/commit/952b0b8))
+
+
+
 <a name="0.8.36"></a>
 ## [0.8.36](https://github.com/heyui/heyui/compare/v0.8.35...v0.8.36) (2017-09-22)
 
