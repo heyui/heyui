@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.38"></a>
+## [0.8.38](https://github.com/heyui/heyui/compare/v0.8.37...v0.8.38) (2017-09-23)
+
+
+### Bug Fixes
+
+* notice传参统一 ([fd42cfd](https://github.com/heyui/heyui/commit/fd42cfd))
+
+
+
 <a name="0.8.37"></a>
 ## [0.8.37](https://github.com/heyui/heyui/compare/v0.8.36...v0.8.37) (2017-09-23)
 
