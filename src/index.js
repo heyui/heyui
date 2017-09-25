@@ -1,6 +1,11 @@
-/*
- Copyright (C) Lan 2017
- Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
+
+ /*!
+ * HeyUI JavaScript Library
+ * https://heyui.top/
+ *
+ * Copyright (C) Lan 2017
+ * Released under the MIT license
+ *
  */
 import Affix from './components/affix';
 import BackTop from './components/backtop';
