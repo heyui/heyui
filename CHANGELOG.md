@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.39"></a>
+## [0.8.39](https://github.com/heyui/heyui/compare/v0.8.38...v0.8.39) (2017-09-27)
+
+
+### Bug Fixes
+
+* configValue未设置的时候valid无效 ([c3c2351](https://github.com/heyui/heyui/commit/c3c2351))
+* Confirm 添加 取消的调用 ([8b838f3](https://github.com/heyui/heyui/commit/8b838f3))
+
+
+
 <a name="0.8.38"></a>
 ## [0.8.38](https://github.com/heyui/heyui/compare/v0.8.37...v0.8.38) (2017-09-23)
 
