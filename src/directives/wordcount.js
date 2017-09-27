@@ -17,14 +17,10 @@ export default {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       let wordElement = document.createElement("p");
-      wordElement.innerHTML = `<span class='float-right'><span class='h-wordcount-remain-size'></span> / <span class='h-wordcount-total-size'>${total}</span></span>`
+      wordElement.innerHTML = `<span><span class='h-wordcount-remain-size'></span> / <span class='h-wordcount-total-size'>${total}</span></span>`
       utils.addClass(wordElement, 'h-wordcount');
       let parent = el.parentNode;
-      if (parent.lastChild == el) {
-        parent.append(wordElement);
-      } else {
-        parent.insertBefore(el.nextElementSibling, wordElement);
-      }
+      parent.insertBefore(wordElement, el);
       let remainDom = parent.querySelector('.h-wordcount-remain-size');
       el.remainDom = remainDom;
       wordcount(total, el, remainDom);
@@ -40,9 +36,9 @@ export default {
     }
   },
   unbind(el) {
-    let nextnode = el.nextElementSibling;
-    if (nextnode && utils.hasClass(nextnode, 'h-word-count')) {
-      nextnode.parentNode.removeChild(nextnode);
+    let previousnode = el.previousSibling;
+    if (previousnode && utils.hasClass(previousnode, 'h-wordcount')) {
+      previousnode.parentNode.removeChild(previousnode);
     }
   }
 }
