@@ -1,5 +1,10 @@
 <template>
-  <p><button class='h-btn' @click="notice()">不自动关闭</button><button class='h-btn' @click="notice2()">不自动关闭带标题</button></p>
+  <p>
+    <button class='h-btn' @click="notice()">不自动关闭</button>
+    <button class='h-btn' @click="notice2(1000)">1s</button>
+    <button class='h-btn' @click="notice2(5000)">5s</button>
+    <button class='h-btn' @click="notice2(15000)">15s</button>
+  </p>
 </template>
 <script>
 export default {
@@ -7,11 +12,15 @@ export default {
     notice() {
       this.$Notice(`这是一个不会自动关闭的通知`, 0);
     },
-    notice2() {
+    notice2(timeout) {
       this.$Notice({
         title: '不会关闭',
         content: `这是一个不会自动关闭的消息`,
-        timeout: 0
+        timeout: timeout,
+        buttons: [{
+          name: '关闭',
+          type: 'cancel'
+        }]
       });
     }
   }

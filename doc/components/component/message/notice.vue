@@ -8,11 +8,11 @@
     <h3>不同类型的通知</h3>
     <example demo="message/notice2"></example>
 
-    <h3>不同类型的有标题的通知</h3>
-    <example demo="message/notice3"></example>
-
-    <h3>不自动关闭的通知</h3>
+    <h3>设置timeout时间</h3>
     <example demo="message/notice4"></example>
+
+    <h3>自定义通知</h3>
+    <example demo="message/notice3"></example>
 
     <h3>设置全局自动关闭时间</h3>
     <example demo="message/notice5"></example>

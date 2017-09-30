@@ -1,22 +1,42 @@
 <template>
   <p>
-    <button class='h-btn h-btn-blue' @click="notice('info')">消息</button>
-    <button class='h-btn h-btn-green' @click="notice('success')">成功</button>
-    <button class='h-btn h-btn-yellow' @click="notice('warn')">警告</button>
-    <button class='h-btn h-btn-red' @click="notice('error')">错误</button>
+    <button class='h-btn' @click="noticeButton()">自定义按钮</button>
+    <button class='h-btn' @click="noticeButton(true)">自定义按钮2</button>
   </p>
 </template>
 <script>
 export default {
   methods: {
-    notice(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
-      this.$Notice({
-        type,
-        title: text,
-        content: `这是一个${text}的通知`
-      });
+    noticeButton(hasTitle = false) {
+      let info = {
+        type: 'info',
+        content: `这是一个可以自己关闭的通知`,
+        timeout: 0,
+        buttons: [ {
+          name: '忽略',
+          type: 'cancel'
+        },{
+          name: '去看看',
+          color: 'primary',
+          type: 'confirm'
+        }],
+        events: {
+          confirm: (e) => {
+            this.$Message('去处理看看');
+            e.close();
+          },
+          cancel: (e) => {
+            this.$Message('我已经去忽略了');
+            e.close();
+          }
+        }
+      }
+      if (hasTitle) {
+        info.title = "自定义通知";
+      }
+      this.$Notice(info);
     },
+
   }
 }
 </script>
