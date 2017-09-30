@@ -8,6 +8,7 @@
     overflow: hidden;
     text-align: left;
     height: 40px;
+    position: relative;
   }
   th,
   td {
@@ -127,4 +128,27 @@
     box-sizing: border-box;
     padding: 20px;
   }
+
+  &-sort-handler{
+    position: absolute;
+    .middle-right;
+    right: 5px;
+    font-size: 14px;
+    line-height: 1;
+    color: @gray1-color;
+    transition: color @transition-time;
+    th:hover &{
+      color: @gray-color;
+    }
+    >div{
+      cursor: pointer;
+      &:hover {
+        color: @dark-color;
+      }
+      &.sort-selected{
+        color: @primary-color;
+      }
+    }
+  }
+  
 }

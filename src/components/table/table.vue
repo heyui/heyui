@@ -12,9 +12,9 @@
           </th>
           <slot v-if="!columns.length&&!$scopedSlots.default" ></slot>
           <template v-else>
-            <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh>
+            <TableTh v-for="c of computeColumns" :key="c" v-bind="c" :sortStatus="sortStatus" ></TableTh>
           </template>
-          <!-- <TableTh v-for="c of computeColumns" :key="c" v-bind="c" ></TableTh> -->
+          <!-- <TableTh v-for="c of computeColumns" :key="c" v-bind="c" :sortStatus="sortStatus"  ></TableTh> -->
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -145,7 +145,11 @@ export default {
       rightWidth: 0,
       tableWidth: 400,
       dataLength: this.datas.length,
-      computeColumns: []
+      computeColumns: [],
+      sortStatus: {
+        type: null,
+        prop: null
+      }
     };
   },
   watch: {
@@ -242,6 +246,12 @@ export default {
     });
   },
   methods: {
+    triggerSort(data){
+      this.sortStatus.prop = data.prop;
+      this.sortStatus.type = data.type;
+      this.$emit('sort', utils.copy(data));
+      return this.sortStatus;
+    },
     checkAll() {
       if (this.checks.length == this.datas.length) {
         this.checks.splice(0, this.datas.length);
