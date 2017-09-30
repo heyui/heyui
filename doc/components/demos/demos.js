@@ -216,6 +216,7 @@ export default {
   'plugins/tree5': resolve => require.ensure([], require => require('./plugins/tree5'), 'plugins'),
   'plugins/tree6': resolve => require.ensure([], require => require('./plugins/tree6'), 'plugins'),
   'plugins/tree7': resolve => require.ensure([], require => require('./plugins/tree7'), 'plugins'),
+  'plugins/tree8': resolve => require.ensure([], require => require('./plugins/tree8'), 'plugins'),
   'plugins/category1': resolve => require.ensure([], require => require('./plugins/category1'), 'plugins'),
   'plugins/category2': resolve => require.ensure([], require => require('./plugins/category2'), 'plugins'),
   'plugins/category3': resolve => require.ensure([], require => require('./plugins/category3'), 'plugins'),

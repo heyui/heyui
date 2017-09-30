@@ -53,23 +53,25 @@ export default {
     },
     trigger(data) {
       if (data.type == "chooseEvent") {
-        if (this.data.children) {
-          let chooseStatus = true;
-          let indeterminateStatus = false;
-          for (let child of this.data.children) {
-            if (!child.status.choose && chooseStatus) {
-              chooseStatus = false
+        if (this.chooseMode != 'independent') {
+          if (this.data.children) {
+            let chooseStatus = true;
+            let indeterminateStatus = false;
+            for (let child of this.data.children) {
+              if (!child.status.choose && chooseStatus) {
+                chooseStatus = false
+              }
+              if (child.status.choose) {
+                indeterminateStatus = true;
+              }
             }
-            if (child.status.choose) {
-              indeterminateStatus = true;
+            if (this.chooseMode == 'all') {
+              this.data.status.choose = chooseStatus;
+              this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
+            } else if (this.chooseMode == 'some') {
+              this.data.status.choose = indeterminateStatus;
+              this.data.status.indeterminate = false;
             }
-          }
-          if (this.chooseMode == 'all') {
-            this.data.status.choose = chooseStatus;
-            this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
-          } else {
-            this.data.status.choose = indeterminateStatus;
-            this.data.status.indeterminate = false;
           }
         }
       }

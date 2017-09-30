@@ -104,7 +104,7 @@ export default {
     },
     chooseMode: {
       type: String,
-      default: "all"
+      default: "all" //independent, some, all
     },
     value: [Number, String, Array, Object],
     config: String
@@ -186,7 +186,9 @@ export default {
         if(!this.multiple) this.setvalue();
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
-        updateChildStatus(data, 'choose', choose);
+        if (this.chooseMode != 'independent') {
+          updateChildStatus(data, 'choose', choose);
+        }
         this.$emit('choose', this.getChoose());
         if(this.multiple) this.setvalue();
       }
@@ -320,6 +322,8 @@ export default {
     },
     getChoose() {
       if (this.chooseMode == 'some') {
+        return this.getFullChoose();
+      } else if (this.chooseMode == 'independent') {
         return this.getFullChoose();
       } else {
         let options = [];

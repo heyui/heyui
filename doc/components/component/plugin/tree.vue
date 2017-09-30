@@ -14,6 +14,11 @@
     <h3>多选，选择模式为SOME</h3>
     <p><code>chooseMode</code>: some, 只要子集选中，父级即选中，返回数据为所有选中数据。</p>
     <example demo="plugins/tree3"></example>
+
+    <h3>多选，选择模式为INDEPENDENT</h3>
+    <p><code>chooseMode</code>: independent, 父级子级的选择不相关，最终中返回已选择的数据。</p>
+    <example demo="plugins/tree8"></example>
+
   
     <h3>搜索</h3>
     <example demo="plugins/tree4"></example>
@@ -43,7 +48,7 @@
         <td>chooseMode</td>
         <td>checkbox选择模式</td>
         <td>String</td>
-        <td>all,some</td>
+        <td>all, some, independent</td>
         <td>all</td>
       </tr>
       <tr>
