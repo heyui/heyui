@@ -10,14 +10,14 @@
 export default {
   data() {
     let list = [
-      { id: 1, title: "一级", checkable: false, children: [
+      { id: 1, title: "一级", children: [
         { id: 10, title: "一级-0" },
         { id: 11, title: "一级-1" },
         { id: 12, title: "一级-2" },
         { id: 13, title: "一级-3", },
         { id: 14, title: "一级-4", },
       ]},
-      { id: 2, title: "二级", checkable: false, children: [
+      { id: 2, title: "二级", children: [
         { id: 20, title: "二级-0", children: [
           { id: 201, title: "二级-0-1", },
           { id: 202, title: "二级-0-2", },
