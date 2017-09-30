@@ -160,11 +160,11 @@ class Notify {
     }
 
     let parentDom = param.parent || document.body;
-    parentDom.appendChild($body);
-    // $("").append($body);
-    // let openedComponent = $('.systab_component.selected');
-    // if (openedComponent.size() == 0 || param.global) openedComponent = $('body');
-    // openedComponent.append($body);
+    if (param.type == 'h-notice' && parentDom.hasChildNodes()) {
+      parentDom.insertBefore($body, parentDom.firstChild);
+    } else {
+      parentDom.appendChild($body);
+    }
     if (param.hasCloseIcon) {
       $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
         that.close();
@@ -247,91 +247,6 @@ class Notify {
     });
   }
 }
-
-// const Tip = function() {
-//   Tips(TYPE.TIP, ...arguments);
-// }
-// const Alert = function(content, time = 1500) {
-//   content = `<i class='icon-alert'></i>` + content;
-//   Tips(TYPE.ALERT, content, time);
-// }
-
-// const Color = {};
-// Color.RED = 'red';
-// Color.WHITE = 'white';
-// Color.BLACK = 'black';
-// Color.YELLOW = 'yellow';
-
-// const Message = function(content, timeout, style) {
-//   Tips(TYPE.MESSAGE, content, timeout, style, {
-//     top: 0,
-//   });
-// }
-
-// let Tips = function() {
-//   if (arguments.length == 1) {
-//     console.error('Tip方法参数错误', arguments);
-//     return false;
-//   }
-
-//   let [type, content, timeout, style, otherParam] = arguments;
-
-//   if (utils.isString(timeout)) {
-//     const _s = style;
-//     style = timeout;
-//     timeout = _s;
-//   }
-//   style = style || '';
-//   if (timeout === undefined) {
-//     timeout = DEFAULT_timeout;
-//   }
-
-//   const param = {
-//     type,
-//     style,
-//     timeout,
-//     content,
-//     width: null,
-//     global: true,
-//     hasFooter: false,
-//     mask: false,
-//     top: 10,
-//     hasCloseIcon: true
-//   };
-//   if (otherParam != undefined) {
-//     $.extend(param, otherParam);
-//   }
-
-//   return new _Dialog(param);
-// }
-
-// const Confirm = function(content, func, calcelFunc) {
-//   content = content || '';
-//   func = func || emptyFunc;
-//   content = `<i class='icon-alert'></i>` + content;
-//   return new _Dialog({
-//     type: TYPE.CONFIRM,
-//     content,
-//     hasCloseIcon: false,
-//     closeButtonName: '取消',
-//     global: true,
-//     width: 360,
-//     buttons: [{
-//       name: '确定',
-//       func() {
-//         func.call(this, ...arguments);
-//         this.close();
-//       },
-//     }],
-//     events: {
-//       close() {
-//         if (typeof calcelFunc == 'function') {
-//           calcelFunc();
-//         }
-//       },
-//     },
-//   });
-// }
 
 export default function (param) {
   return new Notify(param);
