@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.40"></a>
+## [0.8.40](https://github.com/heyui/heyui/compare/v0.8.39...v0.8.40) (2017-09-30)
+
+
+### Bug Fixes
+
+* notice 添加buttons设定 ([75fea27](https://github.com/heyui/heyui/commit/75fea27))
+* table排序功能 ([536f721](https://github.com/heyui/heyui/commit/536f721))
+* tree 添加 independent 模式 ([ae1c81b](https://github.com/heyui/heyui/commit/ae1c81b))
+* 修改tree demo ([b9399bb](https://github.com/heyui/heyui/commit/b9399bb))
+* 新的消息插在旧的消息上面 ([90456fa](https://github.com/heyui/heyui/commit/90456fa))
+
+
+
 <a name="0.8.39"></a>
 ## [0.8.39](https://github.com/heyui/heyui/compare/v0.8.38...v0.8.39) (2017-09-27)
 
