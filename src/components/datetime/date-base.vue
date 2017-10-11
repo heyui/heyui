@@ -294,7 +294,7 @@ export default {
         let lastdayofmonth = nowDate.endOf(manba.MONTH);
         let firstdayofmonth = nowDate.startOf(manba.MONTH);
         let startDay = firstdayofmonth.day();
-        startDay == 0 ? 6 : startDay--;
+        (startDay == 0) ? (startDay = 6) : (startDay -= 1);
         let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
         let dates = [];
         let lastMonthDays = lastdayoflastmonth.date() - startDay;
