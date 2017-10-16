@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.42"></a>
+## [0.8.42](https://github.com/heyui/heyui/compare/v0.8.41...v0.8.42) (2017-10-16)
+
+
+### Bug Fixes
+
+* checkbox 添加 h-checkbox-checked 样式控制 ([c1c2028](https://github.com/heyui/heyui/commit/c1c2028))
+* 错误信息字段label添加class, 可以控制是否展示 ([151425d](https://github.com/heyui/heyui/commit/151425d))
+
+
+
 <a name="0.8.41"></a>
 ## [0.8.41](https://github.com/heyui/heyui/compare/v0.8.40...v0.8.41) (2017-10-11)
 
