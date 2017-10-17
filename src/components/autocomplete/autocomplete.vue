@@ -288,7 +288,8 @@ export default {
         if (this.nowSelected >= 0) {
           this.add(this.results[this.nowSelected]);
           this.setvalue();
-        } else if (this.multiple) {
+          //  if (this.multiple) 
+        } else {
           this.setvalue();
         }
       } else {
