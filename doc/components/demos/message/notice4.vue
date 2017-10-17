@@ -14,8 +14,8 @@ export default {
     },
     notice2(timeout) {
       this.$Notice({
-        title: '不会关闭',
-        content: `这是一个不会自动关闭的消息`,
+        title: `${timeout/1000}s关闭`,
+        content: `这是一个${timeout/1000}s就关闭的消息`,
         timeout: timeout,
         buttons: [{
           name: '关闭',

@@ -6,6 +6,7 @@
       <button class='h-btn h-btn-text-green' @click="notice('success')">成功</button>
       <button class='h-btn h-btn-text-yellow' @click="notice('warn')">警告</button>
       <button class='h-btn h-btn-text-red' @click="notice('error')">错误</button>
+      <button class='h-btn h-btn-text-primary' @click="noticeIcon(false)"><i class="h-icon-bell"></i><span>自定义Icon</span></button>
     </p>
     <blockquote>标题通知</blockquote>
   <p>
@@ -13,6 +14,7 @@
     <button class='h-btn h-btn-green' @click="noticeTitle('success')">成功</button>
     <button class='h-btn h-btn-yellow' @click="noticeTitle('warn')">警告</button>
     <button class='h-btn h-btn-red' @click="noticeTitle('error')">错误</button>
+      <button class='h-btn h-btn-primary' @click="noticeIcon(true)"><i class="h-icon-bell"></i><span>自定义Icon</span></button>
   </p>
   </div>
 </template>
@@ -20,11 +22,18 @@
 export default {
   methods: {
     notice(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
+      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
       this.$Notice[type](`这是一个${text}的通知`);
     },
+    noticeIcon(hasTitle) {
+      this.$Notice({
+        icon: 'h-icon-bell',
+        title: hasTitle ? '自定义Icon' : null,
+        content: `这是一个自定义Icon的通知`
+      });
+    },
     noticeTitle(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
+      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
       this.$Notice({
         type,
         title: text,

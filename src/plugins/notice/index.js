@@ -41,6 +41,9 @@ function Notice(originalParam) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
     originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`
     delete originalParam.type;
+  } else if (originalParam.icon) {
+    if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
+    originalParam.content = `<i class="${originalParam.icon}"></i>${originalParam.content}`;
   }
   param = utils.extend({}, Default, param, originalParam, true);
   param.Vue = Vue;
