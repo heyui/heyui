@@ -3,7 +3,7 @@
     <div class="h-numberinput-show"
          :class="{'focusing':focusing}">
       <input type="text" :disabled="disabled" class="h-numberinput-input" :value="value" @focus="focusing=true" @blur="blur"/>
-      <div class="h-numberinput-operate">
+      <div class="h-numberinput-operate" v-if="useOperate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
       </div>
@@ -27,6 +27,10 @@ export default {
     step: {
       type: Number,
       default: 1
+    },
+    useOperate: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -39,17 +43,17 @@ export default {
   methods: {
     plus() {
       if (this.disabled) return false;
-      let value = Number(this.value) || 0;
+      let value = parseFloat(this.value) || 0;
       this.setvalue(utils.addFn(value, this.step));
     },
     minus() {
       if (this.disabled) return false;
-      let value = Number(this.value) || 0;
+      let value = parseFloat(this.value) || 0;
       this.setvalue(utils.addFn(value, -this.step));
     },
     blur(event) {
       this.focusing = false;
-      let value = event.target.value === '' ? null : Number(event.target.value);
+      let value = event.target.value === '' ? null : parseFloat(event.target.value) || 0;
       this.setvalue(value);
     },
     setvalue(value) {

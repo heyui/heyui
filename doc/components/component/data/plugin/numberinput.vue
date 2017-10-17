@@ -50,6 +50,13 @@
         <td>-</td>
         <td>1</td>
       </tr>
+      <tr>
+        <td>useOperate</td>
+        <td>是否使用加减按钮</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
   </div>
 </template>
