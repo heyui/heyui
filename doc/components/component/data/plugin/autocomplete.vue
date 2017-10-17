@@ -139,6 +139,41 @@
         <td>-</td>
       </tr>
     </table>
+
+    
+
+    <h3>AutoComplete 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件名</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>model值产生变化的触发</td>
+        <td>model对应的值</td>
+      </tr>
+      <tr>
+        <td>enter</td>
+        <td>通过输入框中的enter事件触发的值变化</td>
+        <td>model对应的值</td>
+      </tr>
+    </table>
+
+    <h3>AutoComplete 方法</h3>
+    <table class="table">
+      <tr>
+        <th>事件名</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>隐藏下拉框</td>
+        <td>无</td>
+      </tr>
+    </table>
     
     <h3>option 配置</h3>
     <table class="table">

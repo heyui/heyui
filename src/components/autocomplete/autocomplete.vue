@@ -35,7 +35,7 @@
     <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
       <ul class="h-autocomplete-ul" v-if="isShow">
-        <slot name="top"></slot>
+        <slot name="top" :results="results"></slot>
         <li v-for="(result, index) of results"
             :key="result"
             class="h-autocomplete-item"
@@ -48,7 +48,7 @@
         <li v-if="results.length==0"
             v-color:gray
             class="text-center">{{emptyContent}}</li>
-        <slot name="bottom"></slot>
+        <slot name="bottom" :results="results"></slot>
       </ul>
     </div>
   </div>
@@ -287,10 +287,10 @@ export default {
       } else if (event.code == 'Enter') {
         if (this.nowSelected >= 0) {
           this.add(this.results[this.nowSelected]);
-          this.setvalue();
+          this.setvalue('enter');
           //  if (this.multiple) 
         } else {
-          this.setvalue();
+          this.setvalue('enter');
         }
       } else {
         this.search(event.target);
@@ -339,7 +339,7 @@ export default {
       this.add(data);
       this.setvalue();
     },
-    setvalue() {
+    setvalue(trigger) {
       if (this.disabled) return;
       this.nowSelected = -1;
       let value = this.oldValue = this.dispose();
@@ -353,6 +353,12 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
+      if(trigger){
+        this.$emit(trigger, value);
+      }
+      this.dropdown.hide();
+    },
+    hide() {
       this.dropdown.hide();
     },
     clear() {
