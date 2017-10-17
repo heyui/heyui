@@ -35,6 +35,7 @@
     <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
       <ul class="h-autocomplete-ul" v-if="isShow">
+        <slot name="top"></slot>
         <li v-for="(result, index) of results"
             :key="result"
             class="h-autocomplete-item"
@@ -47,6 +48,7 @@
         <li v-if="results.length==0"
             v-color:gray
             class="text-center">{{emptyContent}}</li>
+        <slot name="bottom"></slot>
       </ul>
     </div>
   </div>
