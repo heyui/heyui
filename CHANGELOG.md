@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.44"></a>
+## [0.8.44](https://github.com/heyui/heyui/compare/v0.8.43...v0.8.44) (2017-10-17)
+
+
+### Bug Fixes
+
+* notice 自定义 Icon ([0f1a2eb](https://github.com/heyui/heyui/commit/0f1a2eb))
+
+
+
 <a name="0.8.43"></a>
 ## [0.8.43](https://github.com/heyui/heyui/compare/v0.8.42...v0.8.43) (2017-10-17)
 
