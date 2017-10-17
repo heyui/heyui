@@ -49,15 +49,15 @@ export default {
     },
     blur(event) {
       this.focusing = false;
-      let value = Number(event.target.value);
-      this.setvalue(value || null);
+      let value = event.target.value === '' ? null : Number(event.target.value);
+      this.setvalue(value);
     },
     setvalue(value) {
       if (this.disabled) return false;
-      if (this.max !== undefined) {
+      if (this.max !== undefined && value !== null) {
         value = Math.min(this.max, value);
       }
-      if (this.min !== undefined) {
+      if (this.min !== undefined && value !== null) {
         value = Math.max(this.min, value);
       }
       this.$emit('input', value);
