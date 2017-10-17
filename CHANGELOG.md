@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.46"></a>
+## [0.8.46](https://github.com/heyui/heyui/compare/v0.8.45...v0.8.46) (2017-10-17)
+
+
+### Bug Fixes
+
+* autocomplete 添加hide方法，slot添加scoped ([f109eef](https://github.com/heyui/heyui/commit/f109eef))
+
+
+
 <a name="0.8.45"></a>
 ## [0.8.45](https://github.com/heyui/heyui/compare/v0.8.44...v0.8.45) (2017-10-17)
 
