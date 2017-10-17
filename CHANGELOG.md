@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.45"></a>
+## [0.8.45](https://github.com/heyui/heyui/compare/v0.8.44...v0.8.45) (2017-10-17)
+
+
+### Bug Fixes
+
+* autocomplete enter 触发去除限制 ([8a35859](https://github.com/heyui/heyui/commit/8a35859))
+* numbeInput 0与空识别错误的bug ([404a724](https://github.com/heyui/heyui/commit/404a724))
+* numberInput 添加useOperate控制 ([a778057](https://github.com/heyui/heyui/commit/a778057))
+
+
+
 <a name="0.8.44"></a>
 ## [0.8.44](https://github.com/heyui/heyui/compare/v0.8.43...v0.8.44) (2017-10-17)
 
