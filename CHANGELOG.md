@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.47"></a>
+## [0.8.47](https://github.com/heyui/heyui/compare/v0.8.46...v0.8.47) (2017-10-19)
+
+
+### Bug Fixes
+
+* autocomplete change事件添加trigger参数 ([9f72b53](https://github.com/heyui/heyui/commit/9f72b53))
+
+
+
 <a name="0.8.46"></a>
 ## [0.8.46](https://github.com/heyui/heyui/compare/v0.8.45...v0.8.46) (2017-10-17)
 
