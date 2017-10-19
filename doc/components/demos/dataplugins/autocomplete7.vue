@@ -35,8 +35,8 @@ export default {
     }
   },
   methods: {
-    onChange(data) {
-      log(data);
+    onChange(data, trigger) {
+      log(data, trigger);
     },
     update() {
       this.value = { key: 123, title: '修改' };

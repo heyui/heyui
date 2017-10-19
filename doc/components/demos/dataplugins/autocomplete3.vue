@@ -14,8 +14,8 @@ export default {
     }
   },
   methods: {
-    onChange(data) {
-      log(data);
+    onChange(data, trigger) {
+      log(data, trigger);
     },
   }
 };

@@ -69,8 +69,8 @@ export default {
     }
   },
   methods: {
-    onChange(data) {
-      log(data);
+    onChange(data, trigger) {
+      log(data, trigger);
     },
     onChange1(data) {
       this.show = data.title;

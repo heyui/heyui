@@ -147,7 +147,7 @@
       <tr>
         <th>事件名</th>
         <th>说明</th>
-        <th>参数</th>
+        <th>返回数值</th>
       </tr>
       <tr>
         <td>input</td>
@@ -155,9 +155,9 @@
         <td>model对应的值</td>
       </tr>
       <tr>
-        <td>enter</td>
-        <td>通过输入框中的enter事件触发的值变化</td>
-        <td>model对应的值</td>
+        <td>change</td>
+        <td>model值产生变化的触发</td>
+        <td>现在的数据对象，以及触发来源事件：enter, blur, picker, remove, clear</td>
       </tr>
     </table>
 

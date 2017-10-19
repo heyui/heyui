@@ -267,10 +267,10 @@ export default {
           if (this.mustMatch) {
             this.tempValue = null;
             if (this.focusValue != '' && this.object.key == null && !this.multiple) {
-              this.setvalue();
+              this.setvalue('blur');
             }
           } else {
-            this.setvalue();
+            this.setvalue('blur');
           }
         }
       }, 100);
@@ -332,12 +332,12 @@ export default {
     },
     remove(object) {
       this.objects.splice(this.objects.indexOf(object), 1);
-      this.setvalue();
+      this.setvalue('remove');
     },
     picker(data) {
       // log('picker');
       this.add(data);
-      this.setvalue();
+      this.setvalue('picker');
     },
     setvalue(trigger) {
       if (this.disabled) return;
@@ -349,7 +349,7 @@ export default {
       this.focusValue = this.showValue;
       if(this.object.key === null) this.object.title = this.showValue;
       this.$emit('input', value);
-      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
+      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object), trigger);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -365,7 +365,7 @@ export default {
       this.tempValue = '';
       this.focusValue = '';
       this.object = {key: null, title: null, value: null};
-      this.setvalue();
+      this.setvalue('clear');
     }
   },
   computed: {
