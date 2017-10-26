@@ -233,6 +233,7 @@ export default {
     clear() {
       this.updateValue({});
       this.initNowView();
+      this.hide();
     },
     setvalue(string, isEnd = false, range) {
       string = string || '';

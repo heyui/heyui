@@ -169,6 +169,7 @@ export default {
       this.objects = [];
       this.setvalue();
       this.triggerChange();
+      this.dropdown.hide();
     },
     confirm() {
       this.setvalue();

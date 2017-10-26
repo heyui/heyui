@@ -80,7 +80,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请选择"
+      default: "请选择日期"
     },
     value: Object,
     startWeek: {
@@ -197,6 +197,7 @@ export default {
     clear() {
       this.updateValue({});
       this.initNowView();
+      this.hide();
     },
     setvalue(string, isEnd = false) {
       string = string || '';
@@ -274,6 +275,7 @@ export default {
             return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`;
         }
       }
+      if(!this.value.start && !this.value.end) return '';
       return `${this.value.start || '不限'} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):'不限'}`;
     },
     shortcuts() {
