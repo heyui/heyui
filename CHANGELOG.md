@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.48"></a>
+## [0.8.48](https://github.com/heyui/heyui/compare/v0.8.47...v0.8.48) (2017-10-26)
+
+
+### Bug Fixes
+
+* clear 的时间隐藏弹出框，date控件placeholder处理 ([e69169d](https://github.com/heyui/heyui/commit/e69169d))
+
+
+
 <a name="0.8.47"></a>
 ## [0.8.47](https://github.com/heyui/heyui/compare/v0.8.46...v0.8.47) (2017-10-19)
 
