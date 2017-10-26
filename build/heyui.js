@@ -6264,7 +6264,7 @@ exports.default = {
     },
     placeholder: {
       type: String,
-      default: "请选择"
+      default: "请选择日期"
     },
     value: Object,
     startWeek: {
@@ -6383,6 +6383,7 @@ exports.default = {
     clear: function clear() {
       this.updateValue({});
       this.initNowView();
+      this.hide();
     },
     setvalue: function setvalue(string) {
       var isEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -6460,6 +6461,7 @@ exports.default = {
             return date.year() + '\u5E74 \u7B2C' + date.getWeekOfYear(_manba2.default.MONDAY) + '\u5468 ' + date.format('MM-DD') + ' \u81F3 ' + (0, _manba2.default)(date).add(6).format('MM-DD');
         }
       }
+      if (!this.value.start && !this.value.end) return '';
       return (this.value.start || '不限') + ' - ' + (this.value.end ? (0, _manba2.default)(this.value.end).add(-1).format(this.nowFormat) : '不限');
     },
     shortcuts: function shortcuts() {
@@ -7138,6 +7140,7 @@ exports.default = {
     clear: function clear() {
       this.updateValue({});
       this.initNowView();
+      this.hide();
     },
     setvalue: function setvalue(string) {
       var isEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -12629,6 +12632,7 @@ exports.default = {
       this.objects = [];
       this.setvalue();
       this.triggerChange();
+      this.dropdown.hide();
     },
     confirm: function confirm() {
       this.setvalue();
