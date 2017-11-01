@@ -204,6 +204,9 @@ class Pop {
   hide() {
     if (!this.popperInstance) return this;
     if (!this.isOpen) { return this; }
+    if (this.options.events && utils.isFunction(this.options.events.hide)) {
+      this.options.events.hide.call(null);
+    }
     this.isOpen = false;
     this.popNode.setAttribute('aria-hidden', 'true');
     utils.removeClass(this.reference, 'h-pop-trigger');
