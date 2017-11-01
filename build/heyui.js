@@ -11017,12 +11017,11 @@ exports.default = {
 
   methods: {
     trigger: function trigger(data, index) {
-      this.$emit('click', data, index);
-      if (this.value == data[this.key]) {
-        return;
+      if (this.value != data[this.key]) {
+        this.$emit('input', data[this.key]);
+        this.$emit('change', data, index);
       }
-      this.$emit('input', data[this.key]);
-      this.$emit('change', data, index);
+      this.$emit('click', data, index);
     }
   },
   computed: {
