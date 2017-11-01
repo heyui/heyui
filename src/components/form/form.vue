@@ -111,7 +111,7 @@ export default {
       if (!isSuccess) {
         this.$nextTick(() => {
           let firstError = this.$el.querySelector('.h-form-item-valid-error');
-          if (firstError) firstError.scrollIntoView();
+          if (firstError) firstError.scrollIntoView(false);
         })
       }
       return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
