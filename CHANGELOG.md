@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.51"></a>
+## [0.8.51](https://github.com/heyui/heyui/compare/v0.8.50...v0.8.51) (2017-11-01)
+
+
+### Bug Fixes
+
+* tabs click trigger time ([de9dba9](https://github.com/heyui/heyui/commit/de9dba9))
+
+
+
 <a name="0.8.50"></a>
 ## [0.8.50](https://github.com/heyui/heyui/compare/v0.8.49...v0.8.50) (2017-11-01)
 
