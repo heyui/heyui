@@ -4019,6 +4019,9 @@ exports.default = {
   },
 
   methods: {
+    refresh: function refresh() {
+      this.trigger({});
+    },
     trigger: function trigger(event) {
       if (event.target == this.$el) return false;
       var original = this.isFixed;
@@ -4050,6 +4053,7 @@ exports.default = {
 
       if (original != this.isFixed) {
         this.$emit('onchange', this.isFixed);
+        this.$emit('change', this.isFixed);
       }
     }
   },
@@ -7653,9 +7657,9 @@ exports.default = {
       if (!this.validator) return false;
       return this.validator.getConfig(prop);
     },
-    getErrorMessage: function getErrorMessage(prop) {
+    getErrorMessage: function getErrorMessage(prop, label) {
       if (this.messages[prop]) return this.messages[prop];
-      var message = { valid: true, message: null };
+      var message = { valid: true, message: null, label: label };
       this.messages[prop] = message;
       return message;
     },
@@ -7691,7 +7695,7 @@ exports.default = {
       if (!isSuccess) {
         this.$nextTick(function () {
           var firstError = _this2.$el.querySelector('.h-form-item-valid-error');
-          if (firstError) firstError.scrollIntoView();
+          if (firstError) firstError.scrollIntoView(false);
         });
       }
       return { result: isSuccess, messages: _utils2.default.toArray(this.messages).filter(function (item) {
@@ -7832,7 +7836,7 @@ exports.default = {
       if (message) {
         this.configRequired = !!message.required;
       }
-      this.errorMessage = parent.getErrorMessage(this.prop);
+      this.errorMessage = parent.getErrorMessage(this.prop, this.label);
     }
   },
 
@@ -11013,7 +11017,10 @@ exports.default = {
 
   methods: {
     trigger: function trigger(data, index) {
-      if (this.value == data[this.key]) return;
+      if (this.value == data[this.key]) {
+        this.$emit('click', data, index);
+        return;
+      }
       this.$emit('input', data[this.key]);
       this.$emit('change', data, index);
     }
