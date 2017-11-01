@@ -98,7 +98,7 @@ export default {
       if (message) {
         this.configRequired = !!message.required;
       }
-      this.errorMessage = parent.getErrorMessage(this.prop);
+      this.errorMessage = parent.getErrorMessage(this.prop, this.label);
     }
   },
   methods: {
