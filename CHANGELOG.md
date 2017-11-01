@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.49"></a>
+## [0.8.49](https://github.com/heyui/heyui/compare/v0.8.48...v0.8.49) (2017-11-01)
+
+
+### Bug Fixes
+
+* affix 添加 refresh 方法 ([b645083](https://github.com/heyui/heyui/commit/b645083))
+* form scrollIntoView use false ([8fffce0](https://github.com/heyui/heyui/commit/8fffce0))
+* form valid message add label info ([fd51e8e](https://github.com/heyui/heyui/commit/fd51e8e))
+* tab 添加 click 事件 ([e09ae0a](https://github.com/heyui/heyui/commit/e09ae0a))
+
+
+
 <a name="0.8.48"></a>
 ## [0.8.48](https://github.com/heyui/heyui/compare/v0.8.47...v0.8.48) (2017-10-26)
 
