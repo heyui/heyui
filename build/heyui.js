@@ -11017,8 +11017,8 @@ exports.default = {
 
   methods: {
     trigger: function trigger(data, index) {
+      this.$emit('click', data, index);
       if (this.value == data[this.key]) {
-        this.$emit('click', data, index);
         return;
       }
       this.$emit('input', data[this.key]);
