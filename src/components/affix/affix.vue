@@ -33,6 +33,9 @@ export default {
     }
   },
   methods: {
+    refresh() {
+      this.trigger({});
+    },
     trigger(event) {
       if(event.target == this.$el) return false;
       let original = this.isFixed;
@@ -64,6 +67,7 @@ export default {
 
       if (original != this.isFixed) {
         this.$emit('onchange', this.isFixed);
+        this.$emit('change', this.isFixed);
       }
     },
   },
