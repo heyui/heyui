@@ -32,13 +32,6 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>change</td>
-        <td>切换Tab触发的事件</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>datas</td>
         <td>选择的数据</td>
         <td>Array, Object</td>
@@ -51,6 +44,22 @@
         <td>String</td>
         <td>-</td>
         <td>-</td>
+      </tr>
+    </table>
+
+    <h3>Tabs 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>数据</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>切换Tab触发的事件</td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>点击Tab触发的事件</td>
       </tr>
     </table>
 
