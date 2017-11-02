@@ -73,6 +73,20 @@
         <td>left,right</td>
         <td>right</td>
       </tr>
+      <tr>
+        <td>top</td>
+        <td>错误的时候滑动到错误input的位置</td>
+        <td>Number</td>
+        <td>0-1，百分比</td>
+        <td>0.5</td>
+      </tr>
+      <tr>
+        <td>topOffset</td>
+        <td>错误的时候滑动到错误input的位置的高度位移</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>0</td>
+      </tr>
     </table>
 
     <h3>Form 方法</h3>

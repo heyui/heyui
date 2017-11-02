@@ -3,7 +3,7 @@
     <div v-height="50">
       <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
     </div>
-    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form">
+    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2">
       <FormItem label="输入框" prop="input">
         <input type="text" v-model="data.input" placeholder="限制输入30个字" v-wordlimit='30' />
         <template slot="error" scope="props">
