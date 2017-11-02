@@ -10,7 +10,7 @@ module.exports = {
       Vue: "vue"
     },
     externals: {
-      Vue: "window.Vue",
+      Vue: "vue",
       'hey-log': "hey-log",
       'hey-utils': "hey-utils",
       manba: "manba"

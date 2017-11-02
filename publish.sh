@@ -1,5 +1,6 @@
 echo "打包hey build"
 hey b
+babel build/heyui.js --minified --no-babelrc -o build/heyui.min.js
 git add -A
 git commit -m "package"
 set -e

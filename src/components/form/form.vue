@@ -6,11 +6,19 @@
 <script>
 import Validator from '../../plugins/validator';
 import utils from '../../utils/utils';
+import scrollIntoView from '../../plugins/scrollIntoView'
 
 const prefixCls = 'h-form';
 
 export default {
   props: {
+    top: {
+      type: Number
+    },
+    topOffset: {
+      type: Number,
+      default: 0,
+    },
     mode: {
       type: String,
       default: "single" //inline,single,twocolumn
@@ -111,7 +119,15 @@ export default {
       if (!isSuccess) {
         this.$nextTick(() => {
           let firstError = this.$el.querySelector('.h-form-item-valid-error');
-          if (firstError) firstError.scrollIntoView(true);
+          if (firstError){
+            scrollIntoView(firstError, {
+              time: 500,
+              align:{
+                top: this.top,
+                topOffset: this.topOffset
+              }
+            });
+          }
         })
       }
       return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
