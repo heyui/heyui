@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.8.52"></a>
+## [0.8.52](https://github.com/heyui/heyui/compare/v0.8.51...v0.8.52) (2017-11-02)
+
+
+### Bug Fixes
+
+* pop添加hide事件监听 ([21aa98a](https://github.com/heyui/heyui/commit/21aa98a))
+
+
+
 <a name="0.8.51"></a>
 ## [0.8.51](https://github.com/heyui/heyui/compare/v0.8.50...v0.8.51) (2017-11-01)
 
