@@ -48,6 +48,22 @@
       </tr>
     </table>
 
+    <h3>Menu 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>每个menu的点击事件</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>menu的选中事件</td>
+      </tr>
+    </table>
+
     <h3>Option 参数</h3>
     <table class="table">
       <tr>

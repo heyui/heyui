@@ -5,7 +5,7 @@
       <button class="h-btn h-btn-s" @click="select('task1-1')">选中"任务-1"</button>
       <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
     </p>
-    <Menu :datas="data" ref="menu" v-width="250" @onclick="click"></Menu>
+    <Menu :datas="data" ref="menu" v-width="250" @select="triggerSelect" @click="triggerClick"></Menu>
   </div>
 </template>
 
@@ -76,7 +76,10 @@ export default {
     select(key) {
       this.$refs.menu.select(key);
     },
-    click(menu) {
+    triggerClick(data) {
+      console.log(data);
+    },
+    triggerSelect(menu) {
       this.$Message.info(`选中${menu.title}`);
     }
   }

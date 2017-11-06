@@ -98,10 +98,12 @@ export default {
     trigger(data) {
       if (data.type == 'togglemenuEvent') {
         this.status.opened = utils.toggleValue(this.status.opened, data.data.key);
+        this.$emit('click', data.data);
         if (data.data.children && data.data.children.length > 0) {
           return;
         }
         this.status.selected = data.data.key;
+        this.$emit('select', data.data.value);
         this.$emit('onclick', data.data.value);
       }
     }
