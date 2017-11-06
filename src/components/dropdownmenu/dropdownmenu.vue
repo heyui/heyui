@@ -84,7 +84,7 @@ export default {
       key: this.keyName,
       title: this.titleName,
       html: 'dropdownmenuHtml',
-      isShow: false
+      isShow: true
     };
   },
   mounted() {
