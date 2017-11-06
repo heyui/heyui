@@ -7480,7 +7480,7 @@ exports.default = {
       key: this.keyName,
       title: this.titleName,
       html: 'dropdownmenuHtml',
-      isShow: false
+      isShow: true
     };
   },
   mounted: function mounted() {
@@ -8405,10 +8405,12 @@ exports.default = {
     trigger: function trigger(data) {
       if (data.type == 'togglemenuEvent') {
         this.status.opened = _utils2.default.toggleValue(this.status.opened, data.data.key);
+        this.$emit('click', data.data);
         if (data.data.children && data.data.children.length > 0) {
           return;
         }
         this.status.selected = data.data.key;
+        this.$emit('select', data.data.value);
         this.$emit('onclick', data.data.value);
       }
     }
