@@ -51,6 +51,13 @@
         <td>-</td>
         <td>请选择</td>
       </tr>
+      <tr>
+        <td>toggleOnSelect</td>
+        <td>是否在选中文本的时候折叠内容</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
     
 

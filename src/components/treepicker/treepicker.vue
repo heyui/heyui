@@ -14,7 +14,7 @@
     </div>
     <div class="h-treepicker-group">
       <div class="h-treepicker-body">
-        <Tree ref="tree" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
+        <Tree ref="tree" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
       </div>
       <div class="h-treepicker-footer">
         <button class="h-btn h-btn-text h-btn-s"
@@ -65,6 +65,10 @@ export default {
       default: "all"
     },
     showCount: {
+      type: Boolean,
+      default: false
+    },
+    toggleOnSelect: {
       type: Boolean,
       default: false
     },
