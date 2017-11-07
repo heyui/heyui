@@ -107,7 +107,11 @@ export default {
       default: "all" //independent, some, all
     },
     value: [Number, String, Array, Object],
-    config: String
+    config: String,
+    toggleOnSelect: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
@@ -184,6 +188,10 @@ export default {
         this.status.selected = data.key;
         this.$emit('select', data.value);
         if(!this.multiple) this.setvalue();
+        if(this.toggleOnSelect){
+          data.status.opened = !data.status.opened;
+          this.$emit('open', data.value);
+        }
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
         if (this.chooseMode != 'independent') {
