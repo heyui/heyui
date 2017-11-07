@@ -11979,7 +11979,11 @@ exports.default = {
       default: "all" //independent, some, all
     },
     value: [Number, String, Array, Object],
-    config: String
+    config: String,
+    toggleOnSelect: {
+      type: Boolean,
+      default: false
+    }
   },
   data: function data() {
     return {
@@ -12103,6 +12107,10 @@ exports.default = {
         this.status.selected = data.key;
         this.$emit('select', data.value);
         if (!this.multiple) this.setvalue();
+        if (this.toggleOnSelect) {
+          data.status.opened = !data.status.opened;
+          this.$emit('open', data.value);
+        }
       } else if (type == 'chooseEvent') {
         var choose = data.status.choose;
         if (this.chooseMode != 'independent') {
@@ -12545,6 +12553,10 @@ exports.default = {
       default: "all"
     },
     showCount: {
+      type: Boolean,
+      default: false
+    },
+    toggleOnSelect: {
       type: Boolean,
       default: false
     },
@@ -20525,6 +20537,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('Tree', {
     ref: "tree",
     attrs: {
+      "toggleOnSelect": _vm.toggleOnSelect,
       "option": _vm.option,
       "multiple": _vm.multiple,
       "chooseMode": _vm.chooseMode,
