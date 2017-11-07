@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/heyui/heyui/compare/v0.8.53...v0.9.0) (2017-11-07)
+
+
+### Bug Fixes
+
+* treepicker 添加 toggleOnSelect 参数 ([bee88a6](https://github.com/heyui/heyui/commit/bee88a6))
+
+
+### Features
+
+* tree 添加toggleOnSelect参数 ([564fd0e](https://github.com/heyui/heyui/commit/564fd0e))
+
+
+
 <a name="0.8.53"></a>
 ## [0.8.53](https://github.com/heyui/heyui/compare/v0.8.52...v0.8.53) (2017-11-06)
 
