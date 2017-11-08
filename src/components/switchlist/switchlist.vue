@@ -1,6 +1,6 @@
 <template>
   <div class="h-switchlist" :class="{'h-switchlist-small':small}" :disabled="disabled">
-    <span :checked="key==value" :disabled="disabled" v-for="(v, key) in arr" @click="setvalue(key)">{{v}}</span>
+    <span :checked="option[key]==value" :disabled="disabled" v-for="option of arr" :key="option[key]" @click="setvalue(option[key])">{{option[title]}}</span>
   </div>
 </template>
 <script>
@@ -19,10 +19,21 @@ export default {
       default: false
     },
     dict: String,
-    value: [String, Boolean, Number]
+    value: [String, Boolean, Number],
+    keyName: {
+      type: String,
+      default: () => config.getOption('dict', 'keyName')
+    },
+    titleName: {
+      type: String,
+      default: () => config.getOption('dict', 'titleName')
+    }
   },
   data() {
-    return {};
+    return {
+      key: this.keyName,
+      title: this.titleName,
+    };
   },
   methods: {
     setvalue(key) {
@@ -45,11 +56,7 @@ export default {
         datas = config.getDict(this.dict);
       }
 
-      let arr = datas || {};
-      if (utils.isArray(datas)) {
-        arr = utils.toObject(datas);
-      }
-      return arr;
+      return utils.initOptions(datas, this);
     }
   }
 };
