@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/heyui/heyui/compare/v0.9.0...v0.9.1) (2017-11-08)
+
+
+### Bug Fixes
+
+* select invalid code support ([048d241](https://github.com/heyui/heyui/commit/048d241))
+* switch datas use object array ([87ebe5c](https://github.com/heyui/heyui/commit/87ebe5c))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/heyui/heyui/compare/v0.8.53...v0.9.0) (2017-11-07)
 
