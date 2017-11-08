@@ -9605,6 +9605,9 @@ exports.default = {
           for (var _iterator = (0, _getIterator3.default)(this.codes), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var code = _step.value;
 
+            if (this.optionsMap[code] == null) {
+              continue;
+            }
             os.push(this.optionsMap[code]);
           }
         } catch (err) {
@@ -9634,6 +9637,8 @@ exports.default = {
         var values = this.value || [];
         this.codes = values.map(function (item) {
           return _this2.type == 'key' ? _this2.getValue(item) : item[_this2.key];
+        }).filter(function (item) {
+          return item !== null;
         });
       } else {
         if (this.type == 'key') {
@@ -10172,10 +10177,25 @@ exports.default = {
       default: false
     },
     dict: String,
-    value: [String, Boolean, Number]
+    value: [String, Boolean, Number],
+    keyName: {
+      type: String,
+      default: function _default() {
+        return _config2.default.getOption('dict', 'keyName');
+      }
+    },
+    titleName: {
+      type: String,
+      default: function _default() {
+        return _config2.default.getOption('dict', 'titleName');
+      }
+    }
   },
   data: function data() {
-    return {};
+    return {
+      key: this.keyName,
+      title: this.titleName
+    };
   },
 
   methods: {
@@ -10199,11 +10219,7 @@ exports.default = {
         datas = _config2.default.getDict(this.dict);
       }
 
-      var arr = datas || {};
-      if (_utils2.default.isArray(datas)) {
-        arr = _utils2.default.toObject(datas);
-      }
-      return arr;
+      return _utils2.default.initOptions(datas, this);
     }
   }
 };
@@ -22015,18 +22031,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "disabled": _vm.disabled
     }
-  }, _vm._l((_vm.arr), function(v, key) {
+  }, _vm._l((_vm.arr), function(option) {
     return _c('span', {
+      key: option[_vm.key],
       attrs: {
-        "checked": key == _vm.value,
+        "checked": option[_vm.key] == _vm.value,
         "disabled": _vm.disabled
       },
       on: {
         "click": function($event) {
-          _vm.setvalue(key)
+          _vm.setvalue(option[_vm.key])
         }
       }
-    }, [_vm._v(_vm._s(v))])
+    }, [_vm._v(_vm._s(option[_vm.title]))])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
