@@ -152,6 +152,9 @@ export default {
       if (this.multiple) {
         let os = [];
         for (let code of this.codes) {
+          if(this.optionsMap[code] == null) {
+            continue;
+          }
           os.push(this.optionsMap[code]);
         }
         this.objects = os;
@@ -164,7 +167,7 @@ export default {
         let values = this.value || [];
         this.codes = values.map((item) => {
           return this.type == 'key' ? this.getValue(item) : item[this.key];
-        })
+        }).filter(item=>item!==null)
       } else {
         if (this.type == 'key') {
           this.codes = this.getValue(this.value);

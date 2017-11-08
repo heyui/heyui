@@ -18,7 +18,7 @@
     },
     methods: {
       update() {
-        this.select = [0, 2];
+        this.select = [0, 4];
       }
     }
   }
