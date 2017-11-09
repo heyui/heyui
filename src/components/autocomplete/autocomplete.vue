@@ -276,15 +276,16 @@ export default {
       }, 100);
     },
     handle(event) {
-      if (event.code == 'ArrowUp') {
+      let code = event.keyCode||event.which||event.charCode;
+      if (code == 38) {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1;
         }
-      } else if (event.code == 'ArrowDown') {
+      } else if (code == 40) {
         if (this.nowSelected < this.results.length - 1) {
           this.nowSelected += 1;
         }
-      } else if (event.code == 'Enter') {
+      } else if (code == 13) {
         if (this.nowSelected >= 0) {
           this.add(this.results[this.nowSelected]);
           this.setvalue('enter');
@@ -348,7 +349,7 @@ export default {
       }
       this.focusValue = this.showValue;
       if(this.object.key === null) this.object.title = this.showValue;
-      this.$emit('input', value);
+      this.$emit('input', value, trigger);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object), trigger);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
