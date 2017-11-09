@@ -222,36 +222,39 @@ export default {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
-
+        log(1)
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
-        if (!(this.options.start || this.options.end || this.options.disabled || this.type == 'week' || this.type == 'quarter')) {
+        if (!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date') {
           if(this.value){
             date = manba(this.value);
             switch(this.view){
-              case 'year': 
-                date.year(d.date.year());
-                break;
+              case 'minutes': 
+                date.minutes(d.date.minutes());
+              case 'hour': 
+                date.hours(d.date.hours());
+              case 'date': 
+                date.date(d.date.date());
               case 'month': 
                 date.month(d.date.month());
                 if(date.month() > d.date.month()){
                   date.date(1);
                   date = date.add(-1, manba.DAY);
                 }
-                break;
-              case 'date': 
-                date.date(d.date.date());
-                break;
-              case 'hour': 
-                date.hours(d.date.hours());
-                break;
-              case 'minutes': 
-                date.minutes(d.date.minutes());
+              case 'year': 
+                date.year(d.date.year());
                 break;
             }
           }
           
+          if(this.options.start && manba(date).time() < manba(this.options.start).time()) {
+            date = this.options.start;
+          }
           
+          if(this.options.end && manba(date).time() > manba(this.options.end).time()) {
+            date = this.options.end;
+          }
+
           this.setvalue(date, false);
         }
         // if(this.type == 'week' && this.view == 'year'){

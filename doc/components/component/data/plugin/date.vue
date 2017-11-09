@@ -109,6 +109,13 @@
         <td>1, 2, 3, 4, 5, 6, 7</td>
         <td>1</td>
       </tr>
+      <tr>
+        <td>readonly</td>
+        <td>输入框是否只读</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
     
     <h3>option 配置</h3>

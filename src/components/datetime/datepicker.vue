@@ -9,9 +9,9 @@
              @input="inputEvent" -->
       <input type="text"
              v-model="showDate"
-             readonly
-             :placeholder="placeholder"
-             :disabled="disabled" />
+             :disabled="disabled"
+             :readonly="readonly"
+             :placeholder="placeholder"/>
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
       <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
     </div>
@@ -70,6 +70,10 @@ const options = config.getOption('datepicker');
 export default {
   props: {
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
       type: Boolean,
       default: false
     },

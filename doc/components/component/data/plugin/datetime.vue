@@ -98,6 +98,13 @@
         <td>-</td>
         <td>请选择</td>
       </tr>
+      <tr>
+        <td>readonly</td>
+        <td>输入框是否只读</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
     
     <h3>option 配置</h3>
