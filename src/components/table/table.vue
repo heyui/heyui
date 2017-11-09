@@ -223,11 +223,13 @@ export default {
       for(let tbody of tbodys){
         tbody.addEventListener("mouseover", (event) => {
           let tr = null;
-          for(let path of event.path){
-            if(path.tagName == 'TR'){
-              tr = path;
+          let target = event.target;
+          while(target.parentNode != window.document.body){
+            if(target.tagName == 'TR'){
+              tr = target;
               break;
             }
+            target = target.parentNode;
           }
           if (tr) {
             utils.addClass(tr, 'h-table-tr-hovered');
