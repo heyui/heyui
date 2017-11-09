@@ -5892,33 +5892,37 @@ exports.default = {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
-
+        log(1);
         var date = d.date;
         //除了month和year点击，其他都直接完成赋值
-        if (!(this.options.start || this.options.end || this.options.disabled || this.type == 'week' || this.type == 'quarter')) {
+        if (!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date') {
           if (this.value) {
             date = (0, _manba2.default)(this.value);
             switch (this.view) {
-              case 'year':
-                date.year(d.date.year());
-                break;
+              case 'minutes':
+                date.minutes(d.date.minutes());
+              case 'hour':
+                date.hours(d.date.hours());
+              case 'date':
+                date.date(d.date.date());
               case 'month':
                 date.month(d.date.month());
                 if (date.month() > d.date.month()) {
                   date.date(1);
                   date = date.add(-1, _manba2.default.DAY);
                 }
-                break;
-              case 'date':
-                date.date(d.date.date());
-                break;
-              case 'hour':
-                date.hours(d.date.hours());
-                break;
-              case 'minutes':
-                date.minutes(d.date.minutes());
+              case 'year':
+                date.year(d.date.year());
                 break;
             }
+          }
+
+          if (this.options.start && (0, _manba2.default)(date).time() < (0, _manba2.default)(this.options.start).time()) {
+            date = this.options.start;
+          }
+
+          if (this.options.end && (0, _manba2.default)(date).time() > (0, _manba2.default)(this.options.end).time()) {
+            date = this.options.end;
           }
 
           this.setvalue(date, false);
@@ -6633,6 +6637,10 @@ var options = _config2.default.getOption('datepicker');
 exports.default = {
   props: {
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
       type: Boolean,
       default: false
     },
@@ -20151,9 +20159,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     attrs: {
       "type": "text",
-      "readonly": "",
-      "placeholder": _vm.placeholder,
-      "disabled": _vm.disabled
+      "disabled": _vm.disabled,
+      "readonly": _vm.readonly,
+      "placeholder": _vm.placeholder
     },
     domProps: {
       "value": (_vm.showDate)
