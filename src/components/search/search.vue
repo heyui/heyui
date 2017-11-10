@@ -1,6 +1,14 @@
 <template>
   <div :class="cls">
-    <i v-if="position=='front'" class="h-icon-search"></i><input type="text" v-model="inputValue" :placeholder="placeholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/> <i v-if="position=='end'" class="h-icon-search" @click="search(inputValue)"></i><i class="h-icon-close" @click="search('')"></i>
+    <i v-if="position=='front'" class="h-icon-search"></i>
+    <div class="h-search-container">
+      <div class="h-search-input">
+        <input type="text" v-model="inputValue" :placeholder="placeholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
+        <i class="h-icon-close" @click="search('')"></i>
+      </div>
+      <Button color="primary" v-if="showSearchButton" @click="search(inputValue)">{{searchText}}</Button>
+    </div>
+    <i v-if="position=='end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
   </div>
 </template>
 <script>
@@ -27,13 +35,20 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    showSearchButton: {
+      type: Boolean,
+      default: false
+    },
+    searchText: {
+      type: String,
+      default: '搜索'
     }
   },
   data() {
     return {
       inputValue: this.value,
       oldValue: null,
-      searching: false
     };
   },
   watch: {
@@ -47,7 +62,6 @@ export default {
         return;
       }
       this.oldValue = this.inputValue = value;
-      this.searching = value !== '';
       this.$emit('input', value);
       this.$emit('onsearch', value);
       this.$emit('change', value);
@@ -63,7 +77,8 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-block`]: this.block,
-        [`${prefix}-searching`]: this.searching,
+        [`${prefix}-searching`]: this.value !== '',
+        [`${prefix}-has-button`]: this.showSearchButton,
         [`${prefix}-${this.position}`]: true,
       }
     }

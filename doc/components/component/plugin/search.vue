@@ -6,7 +6,7 @@
     <p>为很多地方提供简单的search组件封装</p>
     <example demo="plugins/search1"></example>
 
-    <h3>前置Search Icon</h3>
+    <h3>拥有搜索按钮的查询组件</h3>
     <example demo="plugins/search2"></example>
 
     <h3>Search 参数</h3>
@@ -34,10 +34,24 @@
       </tr>
       <tr>
         <td>block</td>
-        <td>是否整宽</td>
+        <td>是否display: block</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>showSearchButton</td>
+        <td>是否查询按钮</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>searchText</td>
+        <td>搜索按钮的文本</td>
+        <td>String</td>
+        <td>-</td>
+        <td>搜索</td>
       </tr>
       <tr>
         <td>triggerType</td>
