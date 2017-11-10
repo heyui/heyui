@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.9.3"></a>
+## [0.9.3](https://github.com/heyui/heyui/compare/v0.9.2...v0.9.3) (2017-11-10)
+
+
+### Bug Fixes
+
+* autocomplete ([843e6b3](https://github.com/heyui/heyui/commit/843e6b3))
+* search 添加搜索按钮 ([206baa9](https://github.com/heyui/heyui/commit/206baa9))
+* 修改table兼容性问题 ([89f3755](https://github.com/heyui/heyui/commit/89f3755))
+
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/heyui/heyui/compare/v0.9.1...v0.9.2) (2017-11-09)
 
