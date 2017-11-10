@@ -4431,15 +4431,16 @@ exports.default = {
       }, 100);
     },
     handle: function handle(event) {
-      if (event.code == 'ArrowUp') {
+      var code = event.keyCode || event.which || event.charCode;
+      if (code == 38) {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1;
         }
-      } else if (event.code == 'ArrowDown') {
+      } else if (code == 40) {
         if (this.nowSelected < this.results.length - 1) {
           this.nowSelected += 1;
         }
-      } else if (event.code == 'Enter') {
+      } else if (code == 13) {
         if (this.nowSelected >= 0) {
           this.add(this.results[this.nowSelected]);
           this.setvalue('enter');
@@ -4505,7 +4506,7 @@ exports.default = {
       }
       this.focusValue = this.showValue;
       if (this.object.key === null) this.object.title = this.showValue;
-      this.$emit('input', value);
+      this.$emit('input', value, trigger);
       this.$emit('change', _utils2.default.copy(this.multiple ? this.objects : this.object), trigger);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
@@ -9352,6 +9353,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 var prefix = 'h-search';
 
@@ -9376,13 +9385,20 @@ exports.default = {
     value: {
       type: String,
       default: ''
+    },
+    showSearchButton: {
+      type: Boolean,
+      default: false
+    },
+    searchText: {
+      type: String,
+      default: '搜索'
     }
   },
   data: function data() {
     return {
       inputValue: this.value,
-      oldValue: null,
-      searching: false
+      oldValue: null
     };
   },
 
@@ -9397,7 +9413,6 @@ exports.default = {
         return;
       }
       this.oldValue = this.inputValue = value;
-      this.searching = value !== '';
       this.$emit('input', value);
       this.$emit('onsearch', value);
       this.$emit('change', value);
@@ -9412,7 +9427,7 @@ exports.default = {
     cls: function cls() {
       var _ref;
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, prefix + '-block', this.block), (0, _defineProperty3.default)(_ref, prefix + '-searching', this.searching), (0, _defineProperty3.default)(_ref, prefix + '-' + this.position, true), _ref;
+      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, prefix + '-block', this.block), (0, _defineProperty3.default)(_ref, prefix + '-searching', this.value !== ''), (0, _defineProperty3.default)(_ref, prefix + '-has-button', this.showSearchButton), (0, _defineProperty3.default)(_ref, prefix + '-' + this.position, true), _ref;
     }
   }
 };
@@ -10678,85 +10693,65 @@ exports.default = {
 
           tbody.addEventListener("mouseover", function (event) {
             var tr = null;
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-              for (var _iterator2 = (0, _getIterator3.default)(event.path), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                var path = _step2.value;
-
-                if (path.tagName == 'TR') {
-                  tr = path;
-                  break;
-                }
+            var target = event.target;
+            while (target.parentNode != window.document.body) {
+              if (target.tagName == 'TR') {
+                tr = target;
+                break;
               }
-            } catch (err) {
-              _didIteratorError2 = true;
-              _iteratorError2 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                  _iterator2.return();
-                }
-              } finally {
-                if (_didIteratorError2) {
-                  throw _iteratorError2;
-                }
-              }
+              target = target.parentNode;
             }
-
             if (tr) {
               _utils2.default.addClass(tr, 'h-table-tr-hovered');
               var index = tr.getAttribute('trIndex');
-              var _iteratorNormalCompletion3 = true;
-              var _didIteratorError3 = false;
-              var _iteratorError3 = undefined;
+              var _iteratorNormalCompletion2 = true;
+              var _didIteratorError2 = false;
+              var _iteratorError2 = undefined;
 
               try {
-                for (var _iterator3 = (0, _getIterator3.default)(_this.$el.querySelectorAll('.h-table-tbody>tr[trIndex=\'' + index + '\']') || []), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                  var el = _step3.value;
+                for (var _iterator2 = (0, _getIterator3.default)(_this.$el.querySelectorAll('.h-table-tbody>tr[trIndex=\'' + index + '\']') || []), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                  var el = _step2.value;
 
                   _utils2.default.addClass(el, 'h-table-tr-hovered');
                 }
               } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
               } finally {
                 try {
-                  if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                    _iterator3.return();
+                  if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
                   }
                 } finally {
-                  if (_didIteratorError3) {
-                    throw _iteratorError3;
+                  if (_didIteratorError2) {
+                    throw _iteratorError2;
                   }
                 }
               }
             }
           }, false);
           tbody.addEventListener("mouseout", function (event) {
-            var _iteratorNormalCompletion4 = true;
-            var _didIteratorError4 = false;
-            var _iteratorError4 = undefined;
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
 
             try {
-              for (var _iterator4 = (0, _getIterator3.default)(_this.$el.querySelectorAll('.h-table-tr-hovered') || []), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                var el = _step4.value;
+              for (var _iterator3 = (0, _getIterator3.default)(_this.$el.querySelectorAll('.h-table-tr-hovered') || []), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                var el = _step3.value;
 
                 _utils2.default.removeClass(el, 'h-table-tr-hovered');
               }
             } catch (err) {
-              _didIteratorError4 = true;
-              _iteratorError4 = err;
+              _didIteratorError3 = true;
+              _iteratorError3 = err;
             } finally {
               try {
-                if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                  _iterator4.return();
+                if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                  _iterator3.return();
                 }
               } finally {
-                if (_didIteratorError4) {
-                  throw _iteratorError4;
+                if (_didIteratorError3) {
+                  throw _iteratorError3;
                 }
               }
             }
@@ -10851,29 +10846,29 @@ exports.default = {
       }
       var columns = [];
       if (this.$slots.default) {
-        var _iteratorNormalCompletion5 = true;
-        var _didIteratorError5 = false;
-        var _iteratorError5 = undefined;
+        var _iteratorNormalCompletion4 = true;
+        var _didIteratorError4 = false;
+        var _iteratorError4 = undefined;
 
         try {
-          for (var _iterator5 = (0, _getIterator3.default)(this.$slots.default), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-            var slot = _step5.value;
+          for (var _iterator4 = (0, _getIterator3.default)(this.$slots.default), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+            var slot = _step4.value;
 
             if (slot.componentOptions && slot.componentOptions.tag == "TableItem") {
               columns.push(slot.componentOptions.propsData);
             }
           }
         } catch (err) {
-          _didIteratorError5 = true;
-          _iteratorError5 = err;
+          _didIteratorError4 = true;
+          _iteratorError4 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion5 && _iterator5.return) {
-              _iterator5.return();
+            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+              _iterator4.return();
             }
           } finally {
-            if (_didIteratorError5) {
-              throw _iteratorError5;
+            if (_didIteratorError4) {
+              throw _iteratorError4;
             }
           }
         }
@@ -10896,6 +10891,37 @@ exports.default = {
     // },
     fixedColumnLeft: function fixedColumnLeft() {
       var columns = [];
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
+
+      try {
+        for (var _iterator5 = (0, _getIterator3.default)(this.computeColumns), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var c = _step5.value;
+
+          if (c.fixed == 'left') {
+            columns.push(c);
+          }
+        }
+      } catch (err) {
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion5 && _iterator5.return) {
+            _iterator5.return();
+          }
+        } finally {
+          if (_didIteratorError5) {
+            throw _iteratorError5;
+          }
+        }
+      }
+
+      return columns;
+    },
+    fixedColumnRight: function fixedColumnRight() {
+      var columns = [];
       var _iteratorNormalCompletion6 = true;
       var _didIteratorError6 = false;
       var _iteratorError6 = undefined;
@@ -10904,7 +10930,7 @@ exports.default = {
         for (var _iterator6 = (0, _getIterator3.default)(this.computeColumns), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
           var c = _step6.value;
 
-          if (c.fixed == 'left') {
+          if (c.fixed == 'right') {
             columns.push(c);
           }
         }
@@ -10919,37 +10945,6 @@ exports.default = {
         } finally {
           if (_didIteratorError6) {
             throw _iteratorError6;
-          }
-        }
-      }
-
-      return columns;
-    },
-    fixedColumnRight: function fixedColumnRight() {
-      var columns = [];
-      var _iteratorNormalCompletion7 = true;
-      var _didIteratorError7 = false;
-      var _iteratorError7 = undefined;
-
-      try {
-        for (var _iterator7 = (0, _getIterator3.default)(this.computeColumns), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-          var c = _step7.value;
-
-          if (c.fixed == 'right') {
-            columns.push(c);
-          }
-        }
-      } catch (err) {
-        _didIteratorError7 = true;
-        _iteratorError7 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion7 && _iterator7.return) {
-            _iterator7.return();
-          }
-        } finally {
-          if (_didIteratorError7) {
-            throw _iteratorError7;
           }
         }
       }
@@ -20263,7 +20258,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.cls
   }, [(_vm.position == 'front') ? _c('i', {
     staticClass: "h-icon-search"
-  }) : _vm._e(), _c('input', {
+  }) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "h-search-container"
+  }, [_c('div', {
+    staticClass: "h-search-input"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -20289,21 +20288,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.search(_vm.inputValue)
       }
     }
-  }), _vm._v(" "), (_vm.position == 'end') ? _c('i', {
-    staticClass: "h-icon-search",
-    on: {
-      "click": function($event) {
-        _vm.search(_vm.inputValue)
-      }
-    }
-  }) : _vm._e(), _c('i', {
+  }), _vm._v(" "), _c('i', {
     staticClass: "h-icon-close",
     on: {
       "click": function($event) {
         _vm.search('')
       }
     }
-  })])
+  })]), _vm._v(" "), (_vm.showSearchButton) ? _c('Button', {
+    attrs: {
+      "color": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.search(_vm.inputValue)
+      }
+    }
+  }, [_vm._v(_vm._s(_vm.searchText))]) : _vm._e()], 1), _vm._v(" "), (_vm.position == 'end') ? _c('i', {
+    staticClass: "h-icon-search h-icon-search-end",
+    on: {
+      "click": function($event) {
+        _vm.search(_vm.inputValue)
+      }
+    }
+  }) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
