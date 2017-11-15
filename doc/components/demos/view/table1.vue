@@ -1,11 +1,5 @@
 <template>
   <div>
-    <p>
-      <button class="h-btn h-btn-s h-btn-blue" @click="add(datas)">
-        <i class="h-icon-plus"></i>
-        <span>添加一行</span>
-      </button>
-    </p>
     <Table :datas="datas" :columns="columns" @sort="triggerSort">
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>

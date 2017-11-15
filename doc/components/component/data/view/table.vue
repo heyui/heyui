@@ -55,6 +55,53 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>stripe</td>
+        <td>table使用栅格背景</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Table 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>sort</td>
+        <td>当排序的时候触发的事件</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>当checkbox有变动的时候触发的事件</td>
+      </tr>
+      <tr>
+        <td>selectAll</td>
+        <td>当checkbox全选的时候</td>
+      </tr>
+    </table>
+
+    <h3>Table 方法</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>clearSort</td>
+        <td>清空排序</td>
+      </tr>
+      <tr>
+        <td>clearSelection</td>
+        <td>清空选中</td>
+      </tr>
+      <tr>
+        <td>setSelection</td>
+        <td>设置选中的值</td>
+      </tr>
     </table>
   </div>
 </template>
