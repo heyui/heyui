@@ -4166,6 +4166,8 @@ var prefix = 'h-autocomplete'; //
 //
 //
 //
+//
+//
 
 exports.default = {
   props: {
@@ -4440,16 +4442,17 @@ exports.default = {
         if (this.nowSelected < this.results.length - 1) {
           this.nowSelected += 1;
         }
-      } else if (code == 13) {
-        if (this.nowSelected >= 0) {
-          this.add(this.results[this.nowSelected]);
-          this.setvalue('enter');
-          //  if (this.multiple) 
-        } else {
-          this.setvalue('enter');
-        }
-      } else {
+      } else if (code == 13) {} else {
         this.search(event.target);
+      }
+    },
+    enterHandle: function enterHandle(event) {
+      event.preventDefault();
+      if (this.nowSelected >= 0) {
+        this.add(this.results[this.nowSelected]);
+        this.setvalue('enter');
+      } else {
+        this.setvalue('enter');
       }
     },
     search: function search(target) {
@@ -4506,6 +4509,7 @@ exports.default = {
       }
       this.focusValue = this.showValue;
       if (this.object.key === null) this.object.title = this.showValue;
+      // console.log(trigger)
       this.$emit('input', value, trigger);
       this.$emit('change', _utils2.default.copy(this.multiple ? this.objects : this.object), trigger);
       var event = document.createEvent("CustomEvent");
@@ -19760,7 +19764,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "focus": _vm.focus,
       "blur": _vm.blur,
-      "keyup": _vm.handle
+      "keyup": _vm.handle,
+      "keypress": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.enterHandle($event)
+      }
     }
   }), _vm._v(" "), (_vm.loading) ? _c('i', {
     staticClass: "h-icon-loading"
@@ -19777,7 +19785,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "focus": _vm.focus,
       "blur": _vm.blur,
-      "keyup": _vm.handle
+      "keyup": _vm.handle,
+      "keypress": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.enterHandle($event)
+      }
     }
   }), _vm._v(" "), (_vm.loading) ? _c('i', {
     staticClass: "h-icon-loading"
