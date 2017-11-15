@@ -13,6 +13,7 @@
                :value="showValue"
                @blur="blur"
                @keyup="handle"
+               @keypress.enter="enterHandle"
                :placeholder="placeholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
@@ -25,6 +26,7 @@
                :value="showValue"
                @blur="blur"
                @keyup="handle"
+               @keypress.enter="enterHandle"
                :placeholder="placeholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
@@ -286,15 +288,17 @@ export default {
           this.nowSelected += 1;
         }
       } else if (code == 13) {
-        if (this.nowSelected >= 0) {
-          this.add(this.results[this.nowSelected]);
-          this.setvalue('enter');
-          //  if (this.multiple) 
-        } else {
-          this.setvalue('enter');
-        }
       } else {
         this.search(event.target);
+      }
+    },
+    enterHandle(event) {
+      event.preventDefault();
+      if (this.nowSelected >= 0) {
+        this.add(this.results[this.nowSelected]);
+        this.setvalue('enter');
+      } else {
+        this.setvalue('enter');
       }
     },
     search(target) {
@@ -349,6 +353,7 @@ export default {
       }
       this.focusValue = this.showValue;
       if(this.object.key === null) this.object.title = this.showValue;
+      // console.log(trigger)
       this.$emit('input', value, trigger);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object), trigger);
       let event = document.createEvent("CustomEvent");
