@@ -10601,7 +10601,6 @@ exports.default = {
       leftWidth: 0,
       rightWidth: 0,
       tableWidth: 400,
-      dataLength: this.datas.length,
       computeColumns: [],
       sortStatus: {
         type: null,
@@ -10615,10 +10614,6 @@ exports.default = {
       handler: function handler(value, oldValue) {
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
-        }
-        if (value.length != this.dataLength) {
-          this.checks.splice(0, this.checks.length);
-          this.dataLength = value.length;
         }
       },
 
@@ -10648,6 +10643,9 @@ exports.default = {
   mounted: function mounted() {
     var _this = this;
 
+    this.$watch('datas', function (value, oldValue) {
+      _this.checks.splice(0, _this.checks.length);
+    });
     this.initColumns();
     this.$nextTick(function () {
       var body = _this.$el.querySelector(".h-table-body");
@@ -10775,11 +10773,21 @@ exports.default = {
   },
 
   methods: {
+    clearSelection: function clearSelection() {
+      this.checks = [];
+    },
+    clearSort: function clearSort() {
+      this.sortStatus.prop = null;
+      this.sortStatus.type = null;
+    },
     triggerSort: function triggerSort(data) {
       this.sortStatus.prop = data.prop;
       this.sortStatus.type = data.type;
       this.$emit('sort', _utils2.default.copy(data));
       return this.sortStatus;
+    },
+    setSelection: function setSelection(data) {
+      this.checks = data;
     },
     checkAll: function checkAll() {
       if (this.checks.length == this.datas.length) {
