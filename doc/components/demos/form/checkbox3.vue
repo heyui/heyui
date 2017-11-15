@@ -1,10 +1,9 @@
 <template>
   <div>
-    <p class="bottom-line"><Checkbox v-model="value5">{{value5}}</Checkbox></p>
-    <p class="bottom-line">
+    <p>值：{{value1}}</p>
+    <p>
       <Checkbox :indeterminate="value1.length>0&&value1.length<3" :checked="value1.length == 3" @click.native="checkAll">全选</Checkbox>
     </p>
-    <p>值：{{value1}}</p>
     <p><Checkbox v-model="value1" :datas="param1" ></Checkbox></p>
     <p>值：{{value2}}</p>
     <p><Checkbox v-model="value2" :datas="param2" ></Checkbox></p>

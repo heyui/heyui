@@ -7,8 +7,11 @@
     <h3>最大值最小值</h3>
     <example demo="form/numberinput2"></example>
 
-    <h3>step</h3>
+    <h3>不使用button</h3>
     <example demo="form/numberinput3"></example>
+
+    <h3>step</h3>
+    <example demo="form/numberinput5"></example>
 
     <h3>disabled</h3>
     <example demo="form/numberinput4"></example>

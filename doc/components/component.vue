@@ -24,8 +24,13 @@
           <li class="title">Form</li>
           <ul>
             <li>
-              <router-link to="/component/form/input">InputTextarea 输入框</router-link>
+              <router-link to="/component/form/input">Input / Textarea 输入框</router-link>
             </li>
+            <li>
+              <router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link>
+            </li>
+            <li>
+              <router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link>
             <li>
               <router-link to="/component/form/radio">Radio 单选</router-link>
             </li>
@@ -47,11 +52,6 @@
             <li>
               <router-link to="/component/form/slider">Slider 滑块</router-link>
             </li>
-            <li>
-              <router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link>
-            </li>
-            <li>
-              <router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link>
             </li>
             <li>
               <router-link to="/component/form/rate">Rate 评分</router-link>
