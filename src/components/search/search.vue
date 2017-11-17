@@ -48,7 +48,6 @@ export default {
   data() {
     return {
       inputValue: this.value,
-      oldValue: null,
     };
   },
   watch: {
@@ -58,17 +57,17 @@ export default {
   },
   methods: {
     search(value) {
-      if (value === this.oldValue) {
-        return;
-      }
-      this.oldValue = this.inputValue = value;
+      this.inputValue = value;
       this.$emit('input', value);
       this.$emit('onsearch', value);
+      this.$emit('search', value);
       this.$emit('change', value);
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {
         this.search(value);
+      } else {
+        this.$emit('input', value);
       }
     }
   },
