@@ -141,6 +141,13 @@
         <td>-</td>
         <td>请选择</td>
       </tr>
+      <tr>
+        <td>equalWidth</td>
+        <td>下拉的宽度是否和输入框一致</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
   </div>
 </template>

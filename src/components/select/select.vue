@@ -86,6 +86,10 @@ export default {
       type: Boolean,
       default: false
     },
+    equalWidth: {
+      type: Boolean,
+      default: true
+    },
     keyName: {
       type: String,
       default: () => config.getOption('dict', 'keyName')
@@ -135,7 +139,7 @@ export default {
       this.dropdown = new Dropdown(el, {
         content,
         disabled: this.disabled,
-        equalWidth: true,
+        equalWidth: this.equalWidth,
         events: {
           show(){
             that.isShow = true;
