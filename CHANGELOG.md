@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/heyui/heyui/compare/v0.9.5...v0.10.0) (2017-11-17)
+
+
+### Bug Fixes
+
+*  修改Search之前右边样式漏洞 ([c756657](https://github.com/heyui/heyui/commit/c756657))
+* Search 组件修改事件触发时机 ([b539b48](https://github.com/heyui/heyui/commit/b539b48))
+* 依赖包版本更新 ([e396ee7](https://github.com/heyui/heyui/commit/e396ee7))
+
+
+### Features
+
+* select 添加 equalWidth 参数 ([298a611](https://github.com/heyui/heyui/commit/298a611))
+
+
+
 <a name="0.9.5"></a>
 ## [0.9.5](https://github.com/heyui/heyui/compare/v0.9.4...v0.9.5) (2017-11-15)
 
