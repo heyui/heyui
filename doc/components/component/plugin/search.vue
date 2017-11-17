@@ -61,5 +61,22 @@
         <td>enter</td>
       </tr>
     </table>
+
+
+    <h3>Search 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <th>search</th>
+        <th>触发查询的事件</th>
+      </tr>
+      <tr>
+        <th>input</th>
+        <th>触发input值修改的事件</th>
+      </tr>
+    </table>
   </div>
 </template>
