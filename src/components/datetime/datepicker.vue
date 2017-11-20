@@ -8,6 +8,8 @@
              <!-- @change="changeEvent"
              @input="inputEvent" -->
       <input type="text"
+            @change="changeEvent"
+            @keydown.enter="changeEvent"
              v-model="showDate"
              :disabled="disabled"
              :readonly="readonly"
@@ -182,7 +184,8 @@ export default {
     inputEvent(event) {
       let value = event.target.value;
       try { manba(value) } catch (evt) { return; }
-      this.parse(value, false);
+      // this.parse(value, false);
+      this.setvalue(value);
     },
     changeEvent(event) {
       let value = event.target.value;
