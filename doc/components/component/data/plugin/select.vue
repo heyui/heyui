@@ -107,13 +107,6 @@
         <td>请选择</td>
       </tr>
       <tr>
-        <td>nullOptionText</td>
-        <td>“请选择”文本选项</td>
-        <td>String</td>
-        <td>-</td>
-        <td>请选择</td>
-      </tr>
-      <tr>
         <td>filterable</td>
         <td>是否有搜索框</td>
         <td>Boolean</td>
