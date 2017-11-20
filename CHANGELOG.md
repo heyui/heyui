@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/heyui/heyui/compare/v0.10.0...v0.10.1) (2017-11-20)
+
+
+### Bug Fixes
+
+* datepicker 优化input机制 ([d9f111c](https://github.com/heyui/heyui/commit/d9f111c))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/heyui/heyui/compare/v0.9.5...v0.10.0) (2017-11-17)
 
