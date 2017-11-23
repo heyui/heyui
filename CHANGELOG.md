@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.10.3"></a>
+## [0.10.3](https://github.com/heyui/heyui/compare/v0.10.2...v0.10.3) (2017-11-23)
+
+
+### Bug Fixes
+
+* 还原居中样式 ([13a90d1](https://github.com/heyui/heyui/commit/13a90d1))
+
+
+
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/heyui/heyui/compare/v0.10.1...v0.10.2) (2017-11-23)
 
