@@ -222,7 +222,6 @@ export default {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
-        log(1)
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
         if (!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date') {
