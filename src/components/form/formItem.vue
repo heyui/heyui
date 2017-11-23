@@ -76,6 +76,7 @@ export default {
       }
     },
     required(){
+      let parent = this.getParent();
       parent.setConfig(this.prop, {required: this.required});
     }
   },
