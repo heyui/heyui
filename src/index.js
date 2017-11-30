@@ -26,7 +26,7 @@ import Progress from './components/progress';
 import Radio from './components/radio';
 import Rate from './components/rate';
 import Slider from './components/slider';
-import Loading from './components/Loading';
+import Loading from './components/loading';
 import Steps from './components/steps';
 import Search from './components/search';
 import Select from './components/select';
