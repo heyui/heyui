@@ -32,8 +32,7 @@
   "scripts": {
     "build": "hey -b",
     "p": "sh ./publish.sh",
-    "min": "babel build/heyui.js --minified --no-babelrc -o build/heyui.min.js",
-    "w": "sh ./website.sh"
+    "min": "babel build/heyui.js --minified --no-babelrc -o build/heyui.min.js"
   },
   "browserslist": [
     "ie >= 9"
