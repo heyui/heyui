@@ -1,0 +1,11 @@
+stages:
+- deploy
+deploy:
+  stage: deploy
+  script:
+    - bash .gitlab-deploy.sh
+  only:
+    - master
+  tags:
+    - heyui
+  when: on_success
