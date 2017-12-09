@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/heyui/heyui/compare/v0.10.5...v0.11.0) (2017-12-09)
+
+
+### Features
+
+* form validator add async valid method ([fe3267a](https://github.com/heyui/heyui/commit/fe3267a))
+
+
+
 <a name="0.10.5"></a>
 ## [0.10.5](https://github.com/heyui/heyui/compare/v0.10.4...v0.10.5) (2017-12-06)
 
