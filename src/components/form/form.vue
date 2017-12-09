@@ -100,14 +100,7 @@ export default {
     removeProp(prop) {
       delete this.messages[prop];
     },
-    valid() {
-      if (!this.validator || !this.model) {
-        return { result: true, messages: [] };
-      }
-      let returnResult = this.validator.valid(this.model, (result) => {
-        // log(result);
-        utils.extend(true, this.messages, result);
-      });
+    renderMessage(returnResult) {
       let isSuccess = true;
       for (let r in returnResult) {
         if (!returnResult[r].valid) {
@@ -115,7 +108,6 @@ export default {
           break;
         }
       }
-      utils.extend(true, this.messages, returnResult);
       if (!isSuccess) {
         this.$nextTick(() => {
           let firstError = this.$el.querySelector('.h-form-item-valid-error');
@@ -130,7 +122,28 @@ export default {
           }
         })
       }
+      utils.extend(true, this.messages, returnResult);
       return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
+    },
+    validAsync() {
+      return new Promise((resolve, reject )=>{
+        let result = this.valid((result)=>{
+          resolve(this.renderMessage(result));
+        })
+      })
+    },
+    valid(next) {
+      if (!this.validator || !this.model) {
+        return { result: true, messages: [] };
+      }
+      let returnResult = this.validator.valid(this.model, (result) => {
+        utils.extend(true, this.messages, result);
+      }, (result) => {
+        if(next) {
+          next.call(null, result);
+        }
+      });
+      return this.renderMessage(returnResult);
     }
   },
   computed: {

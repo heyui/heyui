@@ -51,8 +51,7 @@ class Validator {
     for (let key in genRules.rules) {
       let rule = genRules.rules[key];
       if (utils.isObject(rule)) {
-        if (!utils.isArray(rule.valids)) {
-        }
+        if (!utils.isArray(rule.valids)) {}
       } else {
         delete genRules.rules[key];
       }
@@ -85,7 +84,7 @@ class Validator {
   updateRule(rules) {
     this.initRules(rules || {});
   }
-  
+
   initCombineRules(rules) {
     let genRules = {};
     for (let rule of rules) {
@@ -104,7 +103,34 @@ class Validator {
     this.combineRules = genRules;
   }
 
-  valid(data, next, prop = "", sourceData) {
+  valid(data, next, allNext) {
+    let loadings = [];
+    let result = this.validData(data, function (r) {
+      for (let key in r) {
+        if (loadings.indexOf(key) > -1) {
+          loadings.splice(loadings.indexOf(key), 1);
+        }
+      }
+      utils.extend(result, r);
+      if (next) {
+        next.call(this, r);
+      }
+      if (allNext && loadings.length == 0) {
+        allNext.call(this, result);
+      }
+    });
+    for (let prop in result) {
+      if (result[prop].loading) {
+        loadings.push(prop);
+      }
+    }
+    if (allNext && loadings.length == 0) {
+      allNext.call(this, result);
+    }
+    return result;
+  }
+
+  validData(data, next, prop = "", sourceData) {
     let result = {};
     if (prop != '') {
       // log(prop);
@@ -114,12 +140,12 @@ class Validator {
     if (utils.isArray(data)) {
       for (let i = 0; i < data.length; i++) {
         let nowProp = `${prop}[${i}]`;
-        utils.extend(result, this.valid(data[i], next, nowProp, sourceData));
+        utils.extend(result, this.validData(data[i], next, nowProp, sourceData));
       }
     } else if (utils.isObject(data)) {
       for (let d in data) {
         let nowProp = prop + (prop == "" ? "" : ".") + d;
-        utils.extend(result, this.valid(data[d], next, nowProp, sourceData));
+        utils.extend(result, this.validData(data[d], next, nowProp, sourceData));
       }
     }
     return result;
@@ -169,7 +195,7 @@ class Validator {
       return combineArgs(prop, result, 'base');
     }
     result = this.combineRulesValid(ruleKey, value, parent, parentProp);
-    let baseResult = combineArgs(prop, undefined, 'combine');
+    let baseResult = combineArgs(prop, undefined, 'base');
     if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
       rule.validAsync.call(null, value, (result1) => {
         let n = combineArgs(prop, result1, 'async');
@@ -228,6 +254,7 @@ class Validator {
         let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + ref;
         //当有基本参数验证不通过时，暂时不验证
         if (this.validFieldBase(this.rules[prop], v, parent) != true) {
+          console.log('combine基本参数验证不通过', prop, this.rules[prop], v);
           break;
         }
         values.push(v);
@@ -246,7 +273,10 @@ class Validator {
       // if (result !== true) {
       count++;
       let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + (rule.refs[rule.refs.length - 1]);
-      utils.extend(refValids, combineArgs(prop, result));
+      let combineResult = combineArgs(prop, result, 'combine');
+      if (!refValids[prop] || refValids[prop].valid) {
+        utils.extend(refValids, combineResult);
+      }
       // }
     }
     if (count == 0) {

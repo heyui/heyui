@@ -8,7 +8,7 @@
         <input type="text" v-model="data.input" placeholder="限制输入30个字" v-wordlimit='30' />
         <template slot="error" scope="props">
           <!-- *type*: base, combine, async -->
-          <span class="link" v-if="props.type == 'async'">+++++++错误的特殊提示+++++++</span>
+          <span class="link" v-if="props.type == 'async'">+++++++自定义的错误提示+++++++</span>
         </template>
       </FormItem>
       <FormItem label="整数" prop="int">
@@ -19,7 +19,7 @@
       </FormItem>
       <FormItem label="只读" readonly>只读数据</FormItem>
       <FormItem label="数字" prop="number">
-        <input type="text" v-model="data.number" />
+        <NumberInput type="text" v-model="data.number" />
       </FormItem>
       <FormItem label="邮箱" prop="email">
         <input type="text" v-model="data.email" />
@@ -100,7 +100,10 @@
         <Button size="s" text-color="blue" @click="add">添加输入框</Button>
       </FormItem>
       <FormItem :no-padding="true">
-        <Button color="primary" :loading="isLoading" @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
+        <Button color="primary" :loading="isLoading" @click="submit" v-tooltip content="执行异步验证但是不等待结果">提交</Button>
+        <i class="h-split"></i>
+        <Button color="green" :loading="isLoading" @click="submitAsync" v-tooltip content="等待所有异步验证都执行完后提交">异步提交</Button>
+        <i class="h-split"></i>
         <Button @click="reset">重置验证</Button>
       </FormItem>
     </Form>
@@ -158,14 +161,13 @@ export default {
             minLen: 10
           },
           input: {
-            //做异步处理判断(原则上所有的异步判断在提交后同样需要验证)
             //这里的判断不会影响最终的valid结果，所以也可以作为一些验证提示
             validAsync(value, next, parent, data) {
               setTimeout(() => {
-                if (value.length == 15 || value.length == 18) {
+                if (value == 15) {
                   next();
                 } else {
-                  next("字段长度非15/18位，可能不符合规定");
+                  next("ID不符合要求");
                 }
               }, 10);
             }
@@ -213,17 +215,32 @@ export default {
   },
   methods: {
     submit() {
+      this.isLoading = true;
       let validResult = this.$refs.form.valid();
       // log(validResult.messages);
       if (validResult.result) {
         this.$Message("验证成功");
-        this.isLoading = true;
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);
       } else {
         this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
+        this.isLoading = false;
       }
+    },
+    submitAsync() {
+      this.isLoading = true;
+      this.$refs.form.validAsync().then(result=>{
+        if (result.result) {
+          this.$Message("验证成功");
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1000);
+        } else {
+          this.$Message.error(`还有${result.messages.length}个错误未通过验证。`);
+          this.isLoading = false;
+        }
+      });
     },
     reset() {
       this.isLoading = false;
