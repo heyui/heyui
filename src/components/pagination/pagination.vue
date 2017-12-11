@@ -126,6 +126,10 @@ export default {
     change(cur) {
       if (this.curNow == cur) return;
       this.curNow = cur;
+      let onChange = config.getOption('page.onChange');
+      if(utils.isFunction(onChange)){
+        onChange.call(null, { cur: this.curNow, size: this.sizeNow });
+      }
       this.$emit("change", { cur: this.curNow, size: this.sizeNow });
     },
     changesize() {
