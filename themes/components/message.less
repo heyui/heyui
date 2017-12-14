@@ -3,8 +3,11 @@
 @icon-prefix: ~"@{prefix}icon";
 
 .@{message-prefix}{
-    z-index: @zindex-message;
+    z-index: auto;
     .@{notify-prefix}{
+        &-container {
+            z-index: @zindex-message;
+        }
         &-content{
             padding: 8px 18px;
             [class^="h-icon"], [class*=" h-icon"]{
