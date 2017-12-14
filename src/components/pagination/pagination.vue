@@ -1,6 +1,5 @@
 <template>
-  <div :class="pageCls"
-       :style="pageStyle">
+  <div :class="pageCls">
     <span :class="prefix+'-total'"
           :style="{order:orders.total}"
           v-if="orders.total!=-1">总 <span :class="prefix+'-total-num'">{{total}}</span> 条</span>
@@ -149,15 +148,6 @@ export default {
     }
   },
   computed: {
-    pageStyle() {
-      return {
-        "justify-content": {
-          left: "flex-start",
-          center: "center",
-          right: "flex-end",
-        }[this.align]
-      }
-    },
     count() {
       return Math.ceil(this.total / this.sizeNow);
     },
@@ -201,7 +191,8 @@ export default {
     pageCls() {
       return {
         [`${prefix}`]: true,
-        [`${prefix}-small`]: this.small
+        [`${prefix}-small`]: this.small,
+        [`${prefix}-align-${this.align}`]: !!this.align
       }
     },
     containerCls() {
