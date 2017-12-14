@@ -8,6 +8,11 @@
     <p><code>autocomplete</code>有三种数据类型：<code>key</code>,<code>title</code>,<code>object</code>，如果需求更复杂，请监听<code>change</code>事件手动处理。</p>
     <example demo="dataplugins/autocomplete1"></example>
 
+    <h3>ClassName, Slot</h3>
+    <p>通过自定义<code>className</code>参数，自己定义特殊的样式。</p>
+    <p>通过<code>top</code>以及<code>bottom</code>的<code>slot</code>，自定义其他的内容。</p>
+    <example demo="dataplugins/autocomplete14"></example>
+
     <h3>disabled</h3>
     <example demo="dataplugins/autocomplete2"></example>
   
@@ -137,6 +142,13 @@
         <td>String</td>
         <td>-</td>
         <td>-</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义className</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
       </tr>
     </table>
 

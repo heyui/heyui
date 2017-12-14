@@ -1,7 +1,6 @@
 <template>
   <div :class="autocompleteCls">
-    <div class="h-autocomplete-show"
-         :class="{'focusing':focusing}">
+    <div :class="showCls">
       <template v-if="multiple"><span v-for="obj of objects"
               :key="obj"><span>{{obj.title}}</span><i class="h-icon-close"
            @click.stop="remove(obj)"
@@ -93,7 +92,8 @@ export default {
       type: [String, Object],
       default: "未搜索到相关数据"
     },
-    config: String
+    config: String,
+    className: String
   },
   data() {
     return {
@@ -401,13 +401,16 @@ export default {
     },
     showCls() {
       return {
-        [`${prefix}-show`]: true
+        [`${prefix}-show`]: true,
+        [`${this.className}-show`]: !!this.className,
+        focusing: this.focusing
       }
     },
     groupCls() {
       return {
         [`${prefix}-group`]: true,
-        [`${prefix}-multiple`]: this.multiple
+        [`${prefix}-multiple`]: this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
       }
     },
     results() {

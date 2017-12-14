@@ -1,6 +1,6 @@
 <template>
   <div :class="treepickerCls" :disabled="disabled">
-    <div class="h-treepicker-show" :class="treepickerShowCls">
+    <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple&&objects.length">
         <div v-if="showCount" class="h-treepicker-value-single">您总共选择{{valuebak.length}}项</div>
         <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
@@ -12,7 +12,7 @@
       <div v-else class="h-treepicker-placeholder">{{placeholder}}</div>
       <i class="h-icon-down"></i>
     </div>
-    <div class="h-treepicker-group" :class="treepickerDropdownCls">
+    <div class="h-treepicker-group" :class="groupCls">
       <div class="h-treepicker-body">
         <Tree ref="tree" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
       </div>
@@ -203,12 +203,12 @@ export default {
         return utils.extend({}, config.getOption("tree.default"), this.option);
       }
     },
-    treepickerShowCls() {
+    showCls() {
       return {
         [`${this.className}-show`]: !!this.className
       }
     },
-    treepickerDropdownCls() {
+    groupCls() {
       return {
         [`${this.className}-dropdown`]: !!this.className
       }

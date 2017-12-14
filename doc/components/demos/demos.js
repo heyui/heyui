@@ -154,6 +154,7 @@ export default {
   'dataplugins/autocomplete11': resolve => require.ensure([], require => require('./dataplugins/autocomplete11'), 'plugins'),
   'dataplugins/autocomplete12': resolve => require.ensure([], require => require('./dataplugins/autocomplete12'), 'plugins'),
   'dataplugins/autocomplete13': resolve => require.ensure([], require => require('./dataplugins/autocomplete13'), 'plugins'),
+  'dataplugins/autocomplete14': resolve => require.ensure([], require => require('./dataplugins/autocomplete14'), 'plugins'),
   'dataplugins/taginput1': resolve => require.ensure([], require => require('./dataplugins/taginput1'), 'plugins'),
   'dataplugins/taginput2': resolve => require.ensure([], require => require('./dataplugins/taginput2'), 'plugins'),
   'view/badge1': resolve => require.ensure([], require => require('./view/badge1'), 'view'),
