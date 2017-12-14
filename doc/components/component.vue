@@ -92,6 +92,9 @@
             <li>
               <router-link to="/component/data/plugin/daterange">DateRangePicker 日期范围选择</router-link>
             </li>
+            <li>
+              <router-link to="/component/data/plugin/datefullrange">DateFullRangePicker 超级日期</router-link>
+            </li>
           </ul>
           <ul>
             <li class="title">View</li>

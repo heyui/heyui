@@ -105,6 +105,11 @@ export default {
     component: () =>
       import ('../../components/component/data/plugin/daterange')
   }, {
+    path: 'data/plugin/datefullrange',
+    name: 'pluginFullDateRange',
+    component: () =>
+      import ('../../components/component/data/plugin/datefullrange')
+  }, {
     path: 'data/plugin/city',
     name: 'pluginCity',
     component: () =>

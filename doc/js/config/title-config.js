@@ -20,6 +20,7 @@ const titles = {
   'pluginTime': 'TimePicker 时间选择',
   'pluginDatetime': 'DatetimePicker 日期时间选择',
   'pluginDateRange': 'DateRangePicker 日期范围选择',
+  'pluginDateFullRange': 'DateFullRangePicker 超级日期范围选择',
   'pluginCity': 'CityPicker 城市选择',
   'dataPluginTree': 'TreePicker 树选择',
   'pluginTaginput': 'TagInput 标签输入框',

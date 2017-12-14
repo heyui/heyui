@@ -1,39 +1,11 @@
 <template>
   <div class="doc">
-    <h2>DateRangePicker 日期范围控件</h2>
-    <h3>普通选择日期范围控件</h3>
-    <p>数据默认使用{start,end}的对象，同时也可以自定义参数。详情请参考<router-link to="/guide/config">全局配置</router-link></p>
-    <div>
-      <example demo="dataplugins/daterangepicker1"></example>
-    </div>
-    <h3>日期时间范围禁用</h3>
-    <div>
-      <example demo="dataplugins/daterangepicker4"></example>
-    </div>
-    <h3>控件开始结束范围控制</h3>
-    <div>
-      <example demo="dataplugins/daterangepicker5"></example>
-    </div>
-    <!-- <h3>选择周控件</h3>
-    <div>
-      <example demo="dataplugins/daterangepicker7"></example>
-    </div> -->
-    <h3>快捷方式</h3>
-    <p>快捷方式定义与日期控件一致，同时也可以使用全局配置的方式使用。</p>
-    <div>
-      <example demo="dataplugins/daterangepicker6"></example>
-    </div>
-    <h3>日期控件单独选择开始结束</h3>
-    <p>针对一些可选开始或者结束日期的需求，可以通过start，end参数控制。</p>
-    <div>
-      <example demo="dataplugins/daterangepicker2"></example>
-    </div>
-    <h3>选择日期时间范围控件</h3>
-    <div>
-      <example demo="dataplugins/daterangepicker3"></example>
-    </div>
+    <h2>DateFullRangePicker 超级日期范围控件</h2>
+    
+    <h4>超级日期选择器</h4>
+    <example demo="dataplugins/daterangepicker8"></example>
 
-    <h3>DateRangePicker 参数</h3>
+    <h3>DateFullRangePicker 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -50,12 +22,19 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>defaultType</td>
+        <td>默认视图</td>
+        <td>String</td>
+        <td>year, month, week, date</td>
+        <td>week</td>
+      </tr>
+      <!-- <tr>
         <td>option</td>
         <td>配置项，详细参见下面的option说明</td>
         <td>Object</td>
         <td>-</td>
         <td></td>
-      </tr>
+      </tr> -->
       <tr>
         <td>noBorder</td>
         <td>是否有边框，适用于文字的下拉选择</td>
@@ -70,9 +49,16 @@
         <td>-</td>
         <td>请选择</td>
       </tr>
+      <tr>
+        <td>startWeek</td>
+        <td>默认的星期数</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>manba.MONDAY</td>
+      </tr>
     </table>
     
-    <h3>option 配置</h3>
+    <!-- <h3>option 配置</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -82,34 +68,13 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>start</td>
-        <td>开始时间</td>
-        <td>Function, Object, String</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>end</td>
-        <td>结束时间</td>
-        <td>Function, Object, String</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>disabled</td>
-        <td>不可选日期配置</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>shortcuts</td>
         <td>自定义快捷方式</td>
         <td>[String, Object]</td>
         <td>-</td>
         <td>-</td>
       </tr>
-    </table>
+    </table> -->
   </div>
 </template>
 
