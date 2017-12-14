@@ -58,6 +58,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义className</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
     
 

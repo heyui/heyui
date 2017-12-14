@@ -1,9 +1,25 @@
+<style lang="less">
+// 将placeholder文字变成红色
+.tree-picker-demo-show{
+  .h-treepicker-placeholder{
+    color: @red-color;
+  }
+}
+// 将tree选中的背景色变成红色
+.tree-picker-demo-dropdown{
+  .h-tree-show-desc.selected {
+    background-color: @red-color;
+  }
+}
+</style>
+
 <template>
   <div>
     <p>value: {{value}}</p>
+    <p>自定义<code>className</code>参数可以自定义特殊的样式</p>
     <p>修改展示：<Button @click="update">更新值</Button></p>
     <p v-width="300">
-       <TreePicker :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
+       <TreePicker className="tree-picker-demo" :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker> 
     </p>
   </div>
 </template>
