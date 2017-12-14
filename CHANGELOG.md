@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/heyui/heyui/compare/v0.11.0...v0.11.1) (2017-12-14)
+
+
+### Bug Fixes
+
+* page IE align compatibility ([7c45307](https://github.com/heyui/heyui/commit/7c45307))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/heyui/heyui/compare/v0.10.5...v0.11.0) (2017-12-09)
 
