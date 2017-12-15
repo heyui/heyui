@@ -142,10 +142,10 @@ let routerParam = {
 const router = new VueRouter(routerParam);
 router.beforeEach((to, from, next) => {
   HeyUI.$LoadingBar.start();
-  if (titleConfig[to.name]) {
-    document.title = titleConfig[to.name] + ' - HEY UI';
+  if (titleConfig[to.name] && to.name != 'home') {
+    document.title = titleConfig[to.name] + ' - HeyUI: UI Toolkit for Web, Vue2.0';
   } else {
-    document.title = 'HEY UI';
+    document.title = 'HeyUI: UI Toolkit for Web, Vue2.0';
   }
   next();
 })
