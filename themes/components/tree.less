@@ -47,17 +47,24 @@
       padding: 2px 5px;
       cursor: pointer;
       border-radius: @border-radius;
-      &:hover {
-        background-color: @hover-background-color;
+      .@{tree-prefix}-single &{
+        &:hover {
+          background-color: @hover-background-color;
+        }
+        &.selected {
+          background-color: @primary-color;
+          color: @white-color;
+        }
       }
-      &.selected {
-        background-color: @primary-color;
-        color: @white-color;
+      .@{tree-prefix}-multiple &{
+        &:hover, &.selected {
+          color: @primary-color;
+        }
       }
     }
 
     &-disabled &-desc{
-      cursor: @disabled-cursor;
+      // cursor: default;
       color: @disabled-color;
       &:hover {
         background-color: transparent;

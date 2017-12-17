@@ -10,7 +10,8 @@
                   :multiple="multiple"
                   :status="status"
                   @trigger="trigger"
-                  :choose-mode="chooseMode"></treeItem>
+                  :choose-mode="chooseMode"
+                  :toggleOnSelect="toggleOnSelect"></treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -110,7 +111,7 @@ export default {
     config: String,
     toggleOnSelect: {
       type: Boolean,
-      default: false
+      default: true
     },
   },
   data() {
@@ -185,12 +186,10 @@ export default {
           });
         }
       } else if (type == 'selectEvent') {
-        this.status.selected = data.key;
-        this.$emit('select', data.value);
-        if(!this.multiple) this.setvalue();
-        if(this.toggleOnSelect){
-          data.status.opened = !data.status.opened;
-          this.$emit('open', data.value);
+        if(!this.multiple) {
+          this.status.selected = data.key;
+          this.$emit('select', data.value);
+          this.setvalue();
         }
       } else if (type == 'chooseEvent') {
         let choose = data.status.choose;
@@ -354,7 +353,9 @@ export default {
     },
     treeCls() {
       return {
-        [prefix]: true
+        [prefix]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-single`]: !this.multiple,
       }
     }
   },

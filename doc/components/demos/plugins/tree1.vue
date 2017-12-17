@@ -3,8 +3,6 @@
     <p>值：{{value}}</p>
     <p><h-switch v-model="toggleOnSelect" small>点击内容折叠内容</h-switch></p>
     <p>
-      选中文本的时候折叠内容
-
       <Button @click="expandAll" size="xs">全部展开</Button>
       <Button @click="foldAll" size="xs">全部收起</Button>
       <Button @click="updateSelect" size="xs">设置选中值</Button>
@@ -37,7 +35,7 @@ export default {
       { id: 34, title: "三级-4", parent: 3 }
     ];
     return {
-      toggleOnSelect: false,
+      toggleOnSelect: true,
       value: null,
       param: {
         keyName: 'id',

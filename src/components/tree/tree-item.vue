@@ -4,9 +4,9 @@
     <div class="h-tree-show"
       :class="{'h-tree-show-disabled':data.status.disabled}" v-show="!data.status.hide">
       <span class='h-tree-show-expand'>
-        <span @click="loadData(data)"
+        <span @click="toggleTree()"
               v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
-        <span @click="toggleTree(data)"
+        <span @click="toggleTree()"
               v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i></span>
       </span>
       <Checkbox :disabled="data.status.disabled" v-if="multiple&&data.status.checkable" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
@@ -21,7 +21,8 @@
                   :status="status"
                   :multiple="multiple"
                   :choose-mode="chooseMode"
-                  @trigger="trigger"></treeItem>
+                  @trigger="trigger"
+                  :toggleOnSelect="toggleOnSelect"></treeItem>
     </ul>
   </li>
 </template>
@@ -36,7 +37,8 @@ export default {
     param: Object,
     multiple: Boolean,
     status: Object,
-    chooseMode: String
+    chooseMode: String,
+    toggleOnSelect: Boolean
   },
   data() {
     return {
@@ -44,8 +46,15 @@ export default {
   },
   methods: {
     select() {
+      if (this.toggleOnSelect || this.multiple) {
+        this.toggleTree();
+      }
       if (this.data.status.disabled) return;
       this.$emit("trigger", { type: "selectEvent", data: this.data });
+      if (this.multiple && this.data.children.length == 0) {
+        this.data.status.choose = !this.data.status.choose;
+        this.choose();
+      }
     },
     choose() {
       this.data.status.indeterminate = false;
@@ -77,18 +86,15 @@ export default {
       }
       this.$emit("trigger", data);
     },
-    toggleTree(data) {
-      this.$emit("trigger", { type: "toggleTreeEvent", data });
-    },
-    clickOnShow(data) {
-      if (this.multiple) {
-        // return;
+    toggleTree() {
+      if (this.data.status.isWait) {
+        this.loadData();
       } else {
-        this.toggleTree(data);
+        this.$emit("trigger", { type: "toggleTreeEvent", data: this.data });
       }
     },
-    loadData(data) {
-      this.$emit("trigger", { type: "loadDataEvent", data });
+    loadData() {
+      this.$emit("trigger", { type: "loadDataEvent", data: this.data });
     }
   }
 };
