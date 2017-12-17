@@ -7,12 +7,12 @@
             @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
-      <div v-else class="h-select-placeholder">{{placeholder}}</div>
+      <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
       <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container" v-if="isShow">
-        <Search v-if="filterable" class="h-select-search-input" placeholder="请输入筛选文本" trigger-type="input" @onsearch="search" position="front"></Search>
+        <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search>
         <div class="h-select-list">
           <ul class="h-select-ul">
             <li v-for="option of filterOptions"
@@ -36,10 +36,13 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
+import Locale from '../../mixins/locale';
 
 const prefix = 'h-select';
 
 export default {
+  name: 'hSelect',
+  mixins: [ Locale ],
   props: {
     readonly: {
       type: Boolean,
@@ -68,7 +71,7 @@ export default {
     },
     nullOptionText: {
       type: String,
-      default: "请选择"
+      // default: "请选择"
     },
     noBorder: {
       type: Boolean,
@@ -76,7 +79,11 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请选择"
+      // default: "请选择"
+    },
+    searchPlaceHolder: {
+      type: String,
+      // default: "请输入筛选文本"
     },
     filterable: {
       type: Boolean,
@@ -227,6 +234,15 @@ export default {
     }
   },
   computed: {
+    showNullOptionText() {
+      return this.nullOptionText || this.t('h.select.nullOptionText');
+    },
+    showPlaceholder() {
+      return this.placeholder || this.t('h.select.placeholder');
+    },
+    showSearchPlaceHolder() {
+      return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
+    },
     selectCls() {
       let autosize = this.autosize || !!this.noBorder;
       return {
@@ -277,8 +293,8 @@ export default {
       if (!this.mutiple && this.hasNullOption) {
         datas.unshift({
           [`${this.key}`]: null,
-          [`${this.title}`]: this.nullOptionText,
-          [`${this.html}`]: this.nullOptionText
+          [`${this.title}`]: this.showNullOptionText,
+          [`${this.html}`]: this.showNullOptionText
         });
       }
       return datas;

@@ -5,15 +5,18 @@ let combineValids = require('./validation/combineValids');
 
 const ruleExecute = function (rule, argus) {
   if (utils.isFunction(rule)) {
-    return rule.apply(null, argus);
+    return rule.call(null, ...argus);
   } else if (utils.isObject(rule)) {
     let result = null;
     if (rule.pattern) {
-      result = rule.pattern.test(new String(argus[0]));
+      result = rule.pattern.test(String(argus[0]));
     } else if (utils.isFunction(rule.valid)) {
       result = rule.valid.apply(null, argus);
     }
-    return result === true ? true : rule.message;
+    if (result === true) {
+      return true;
+    }
+    return utils.isFunction(rule.message) ? rule.message() : rule.message;
   }
 }
 

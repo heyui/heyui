@@ -13,7 +13,7 @@
                @blur="blur"
                @keyup="handle"
                @keypress.enter="enterHandle"
-               :placeholder="placeholder" />
+               :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
       </template>
@@ -26,7 +26,7 @@
                @blur="blur"
                @keyup="handle"
                @keypress.enter="enterHandle"
-               :placeholder="placeholder" />
+               :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
         <i class="h-icon-close text-hover" v-else-if="showValue&&!disabled" @click="clear"></i>
@@ -48,7 +48,7 @@
         </li>
         <li v-if="results.length==0"
             v-color:gray
-            class="text-center">{{emptyContent}}</li>
+            class="text-center">{{showEmptyContent}}</li>
         <slot name="bottom" :results="results"></slot>
       </ul>
     </div>
@@ -58,10 +58,13 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
+import Locale from '../../mixins/locale';
 
 const prefix = 'h-autocomplete';
 
 export default {
+  name: 'hAutoComplete',
+  mixins: [ Locale ],
   props: {
     multiple: {
       type: Boolean,
@@ -83,14 +86,14 @@ export default {
     dict: String,
     placeholder: {
       type: String,
-      default: "请选择"
+      // default: "请输入"
     },
     value: [Number, String, Array, Object],
     option: Object,
     show: String,
     emptyContent: {
       type: [String, Object],
-      default: "未搜索到相关数据"
+      // default: "未搜索到相关数据"
     },
     config: String,
     className: String
@@ -375,6 +378,12 @@ export default {
     }
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.autoComplate.placeholder');
+    },
+    showEmptyContent() {
+      return this.emptyContent || this.t('h.autoComplate.emptyContent');
+    },
     param() {
       if (this.config) {
         return utils.extend({}, config.getOption("autocomplete.default"), config.getOption(`autocomplete.configs.${this.config}`), this.option);

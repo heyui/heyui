@@ -12,7 +12,7 @@
           <Progress :percent="file.percent"  :stroke-width="5"></Progress>
         </div>
         <div class="h-uploader-image-operate h-uploader-browse-button" v-else>
-          <div>重新上传</div>
+          <div>{{showReUploadWord}}</div>
         </div>
       </div>
       <div class="h-uploader-image-empty h-uploader-browse-button" v-else>
@@ -40,7 +40,7 @@
     </template>
     <template v-if="type=='file'||type=='files'">
       <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
-      <div v-else><Button icon="h-icon-upload" class="h-uploader-browse-button">上传</Button></div>
+      <div v-else><Button icon="h-icon-upload" class="h-uploader-browse-button">{{showUploadWord}}</Button></div>
       <div class="h-uploader-files">
         <div v-for="(file, index) in fileList" :key="file" class="h-uploader-file">
           <div class="h-uploader-file-progress" v-if="file.status==2">
@@ -58,6 +58,7 @@
 import utils from '../../utils/utils';
 import config from '../../utils/config';
 import Modal from '../modal/modal';
+import Locale from '../../mixins/locale';
 
 
 const prefix = 'h-uploader';
@@ -81,6 +82,8 @@ const dispose = function (value, type, param) {
 }
 
 export default {
+  name: 'hUploader',
+  mixins: [ Locale ],
   props: {
     type: {
       type: String,
@@ -149,6 +152,12 @@ export default {
     }
   },
   computed: {
+    showReUploadWord() {
+      return this.t('h.uploader.reUpload');
+    },
+    showUploadWord() {
+      return this.t('h.uploader.upload');
+    },
     isSingle() {
       return this.type == 'image' || this.type == 'file';
     },

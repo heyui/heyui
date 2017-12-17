@@ -106,7 +106,10 @@ export default {
             //     // item.fileType = ...
             //   })
             that.$emit("input", fileList);
-            that.uploadList.splice(0, that.uploadList.length);
+            if(that.showType == 'files' || that.showType == 'images'){
+              // that.uploadList = [that.uploadList];
+              that.uploadList.splice(0, that.uploadList.length);
+            }
           },
           // Key(up, file) {
           //     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数

@@ -63,7 +63,7 @@ import $LoadingBar from './plugins/loadingBar';
 
 import filters from './filters';
 import config from './utils/config';
-// import locale from './locale';
+import locale from './locale';
 
 
 const components = {
@@ -142,14 +142,16 @@ let prototypes = {
   $LoadingBar
 }
 
-const install = function (Vue) {
-  // locale.use(opts.locale);
-  // locale.i18n(opts.i18n);
-
+const install = function (Vue, opts) {
   if (install.installed) return;
-  // if (opts) {
-
-  // }
+  if (opts) {
+    if (opts.locale) {
+      locale.use(opts.locale);
+    }
+    if (opts.i18n) {
+      locale.i18n(opts.i18n);
+    }
+  }
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);
@@ -178,6 +180,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 const HeyUI = Object.assign(components, {
   install
-}, { $Modal: $Modal(), $Notice: $Notice() }, prototypes, config, { Dropdown }, filters);
+}, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use }, prototypes, config, { Dropdown }, filters);
 
 module.exports = HeyUI;

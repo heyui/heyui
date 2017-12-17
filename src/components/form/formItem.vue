@@ -110,7 +110,7 @@ export default {
         parent = parent.$parent;
       }
       if (!parent) {
-        log.error('请将formItem组件置于Form组件内');
+        log.error('Please put FormItem Component in the Form Component');
       }
       return parent;
     },
@@ -121,7 +121,7 @@ export default {
         parent = parent.$parent;
       }
       if (!parent) {
-        log.error('请将formItem组件置于Form组件内');
+        log.error('Please put FormItem Component in the Form Component');
       }
       return parent;
     },

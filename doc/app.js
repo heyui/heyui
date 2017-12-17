@@ -15,6 +15,7 @@ import comFrame from './components/common/frame.vue';
 import example from './components/common/example.vue';
 import codes from './components/common/codes.vue';
 import routerConfig from './js/config/router-config';
+// import en from '../src/locale/lang/en-US';
 
 require('./css/doc.less');
 
@@ -105,6 +106,7 @@ HeyUI.config("category.configs", {
   }
 });
 
+// HeyUI.locale(en);
 Vue.use(VueRouter);
 Vue.use(HeyUI);
 

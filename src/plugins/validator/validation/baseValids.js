@@ -1,16 +1,16 @@
+import locale from '../../../locale';
+
 let valids = {
-  required: {
-    valid(value) {
-      return value !== null && value !== undefined && String(value).length > 0;
-    },
-    message: '不能为空'
+  required(value) {
+    let result = value !== null && value !== undefined && String(value).length > 0;
+    return result === true ? true : locale.t('h.validation.base.required');
   },
   maxLen(value, configValue) {
     if (configValue === null || configValue === undefined) {
       return true;
     }
     let result = value !== null && value !== undefined && String(value).length <= configValue;
-    return result === true ? true : `文字长度不能超过${configValue}个字`;
+    return result === true ? true : locale.t('h.validation.base.maxLen', { value: configValue });
   },
   minLen(value, configValue) {
     if (configValue === null || configValue === undefined) {
