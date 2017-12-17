@@ -12,7 +12,7 @@
             @keydown.enter="changeEvent"
              v-model="showDate"
              :disabled="disabled"
-             :readonly="readonly"
+             :readonly="readonly || type != 'date'"
              :placeholder="placeholder"/>
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
       <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
