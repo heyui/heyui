@@ -34,6 +34,7 @@
     "qiniu-js-es6": "^1.0.28",
     "vue": "^2.3.4",
     "vue-highlightjs": "^1.2.2",
+    "vue-i18n": "^7.3.2",
     "vue-router": "^2.3.0"
   },
   "devDependencies": {

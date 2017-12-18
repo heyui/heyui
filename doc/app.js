@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import jsonp from 'fetch-jsonp';
 import 'highlight.js/styles/github-gist.css';
@@ -16,6 +17,8 @@ import example from './components/common/example.vue';
 import codes from './components/common/codes.vue';
 import routerConfig from './js/config/router-config';
 import en from '../src/locale/lang/en-US';
+import zh from '../src/locale/lang/zh-CN';
+
 
 require('./css/doc.less');
 
@@ -106,9 +109,24 @@ HeyUI.config("category.configs", {
   }
 });
 
-HeyUI.locale(en);
+// HeyUI.locale(en);
+Vue.use(VueI18n);
+
+const messages = {
+  en: Object.assign({ message: 'hello' }, en),
+  zh: Object.assign({ message: '你好' }, zh)
+};
+
+const i18n = new VueI18n({
+  locale: 'zh',  // set locale
+  fallbackLocale: 'en',
+  messages  // set locale messages
+});
+
+
 Vue.use(VueRouter);
 Vue.use(HeyUI);
+Vue.locale = () => {};
 
 Vue.component('com-head', comHead);
 Vue.component('com-foot', comFoot);
@@ -158,6 +176,7 @@ router.afterEach(() => {
   });
 })
 const app = new Vue({
+  i18n,
   router,
   el: '#app',
   render: h => h(App)
