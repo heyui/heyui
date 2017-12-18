@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/heyui/heyui/compare/v0.11.3...v0.12.0) (2017-12-18)
+
+
+### Bug Fixes
+
+* delete unusefull configs ([fe7aa96](https://github.com/heyui/heyui/commit/fe7aa96))
+* 优化输入框的readonly样式 ([fbb3251](https://github.com/heyui/heyui/commit/fbb3251))
+* 除了默认日期格式外，输入框只读 ([1b4c52f](https://github.com/heyui/heyui/commit/1b4c52f))
+
+
+### Features
+
+* Internationalization ([5e522d0](https://github.com/heyui/heyui/commit/5e522d0))
+
+
+
 <a name="0.11.3"></a>
 ## [0.11.3](https://github.com/heyui/heyui/compare/v0.11.2...v0.11.3) (2017-12-14)
 
