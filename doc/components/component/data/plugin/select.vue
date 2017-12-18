@@ -135,6 +135,13 @@
         <td>请选择</td>
       </tr>
       <tr>
+        <td>searchPlaceHolder</td>
+        <td>搜索默认提示语</td>
+        <td>String</td>
+        <td>-</td>
+        <td>请输入筛选文本</td>
+      </tr>
+      <tr>
         <td>equalWidth</td>
         <td>下拉的宽度是否和输入框一致</td>
         <td>Boolean</td>

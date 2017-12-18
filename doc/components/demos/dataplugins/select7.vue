@@ -14,7 +14,7 @@
     },
     methods: {
       gen(data) {
-        return `<p>标题：${data.title}<span style="float:right" class='gray1-color'>补充</span></p><p class='gray1-color'>描述：${data.title}</p>`;
+        return `<div>标题：${data.title}<span style="float:right" class='gray1-color'>补充</span></div><div class='gray1-color'>描述：${data.title}</div>`;
       }
     },
   }
