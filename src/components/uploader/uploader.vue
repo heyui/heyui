@@ -24,7 +24,7 @@
       <div class="h-uploader-image-empty h-uploader-browse-button">
         <i class="h-icon-plus"></i>
       </div>
-      <div v-for="(file, index) in fileList" :key="file" class="h-uploader-image">
+      <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
         <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
           <Progress :percent="file.percent"  :stroke-width="5"></Progress>
@@ -42,7 +42,7 @@
       <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
       <div v-else><Button icon="h-icon-upload" class="h-uploader-browse-button">{{showUploadWord}}</Button></div>
       <div class="h-uploader-files">
-        <div v-for="(file, index) in fileList" :key="file" class="h-uploader-file">
+        <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
           <div class="h-uploader-file-progress" v-if="file.status==2">
             <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
           </div>
