@@ -20,6 +20,7 @@
     <span v-if="curNow > 4"
           class="h-page-pager h-page-ellipsis">...</span>
     <span v-for="pager of pagerSize"
+          :key="pager"
           @click="change(pager)"
           :class="genPagerCls(pager)">{{pager}}</span>
     <span class="h-page-pager h-page-ellipsis"
@@ -39,25 +40,24 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
+import config from "../../utils/config";
+import utils from "../../utils/utils";
 
-const prefix = 'h-page';
-
+const prefix = "h-page";
 
 export default {
   props: {
     size: {
       type: Number,
-      default: () => config.getOption('page.size')
+      default: () => config.getOption("page.size")
     },
     sizes: {
       type: Array,
-      default: () => config.getOption('page.sizes')
+      default: () => config.getOption("page.sizes")
     },
     align: {
       type: String,
-      default: 'left'
+      default: "left"
     },
     cur: {
       type: Number,
@@ -69,27 +69,27 @@ export default {
     },
     small: {
       type: Boolean,
-      default: () => config.getOption('page.small')
+      default: () => config.getOption("page.small")
     },
     layout: {
       type: String,
-      default: () => config.getOption('page.layout')
+      default: () => config.getOption("page.layout")
     }
   },
   data() {
-    let layoutList = this.layout.replace(' ', '').split(',');
-    let orders = { total: -1, pager: -1, jumper: -1, sizes: -1 }
+    let layoutList = this.layout.replace(" ", "").split(",");
+    let orders = { total: -1, pager: -1, jumper: -1, sizes: -1 };
     for (let o in orders) {
       orders[o] = layoutList.indexOf(o);
     }
-    const keyField = config.getOption('dict', 'keyName');
-    const titleField = config.getOption('dict', 'titleName');
+    const keyField = config.getOption("dict", "keyName");
+    const titleField = config.getOption("dict", "titleName");
     return {
-      sizesShow: this.sizes.map((item) => {
+      sizesShow: this.sizes.map(item => {
         return {
           [keyField]: item,
           [titleField]: `${item} 条/页`
-        }
+        };
       }),
       sizeNow: this.size,
       curNow: this.cur,
@@ -125,8 +125,8 @@ export default {
     change(cur) {
       if (this.curNow == cur) return;
       this.curNow = cur;
-      let onChange = config.getOption('page.onChange');
-      if(utils.isFunction(onChange)){
+      let onChange = config.getOption("page.onChange");
+      if (utils.isFunction(onChange)) {
         onChange.call(null, { cur: this.curNow, size: this.sizeNow });
       }
       this.$emit("change", { cur: this.curNow, size: this.sizeNow });
@@ -135,8 +135,8 @@ export default {
       this.curNow = 1;
       this.$emit("change", { cur: 1, size: this.sizeNow });
       this.$emit("changeSize", this.sizeNow);
-      let onChangeSize = config.getOption('page.onChangeSize');
-      if(utils.isFunction(onChangeSize)){
+      let onChangeSize = config.getOption("page.onChangeSize");
+      if (utils.isFunction(onChangeSize)) {
         onChangeSize.call(null, this.sizeNow);
       }
     },
@@ -144,7 +144,7 @@ export default {
       return {
         [`${prefix}-pager`]: true,
         [`${prefix}-pager-selected`]: this.curNow == num
-      }
+      };
     }
   },
   computed: {
@@ -155,8 +155,8 @@ export default {
       if (this.count < 3) {
         return [];
       }
-      let pageStart = this.curNow < 4 ? 2 : (this.curNow - 2)
-      let size = this.count > 6 ? 5 : (this.count - 2);
+      let pageStart = this.curNow < 4 ? 2 : this.curNow - 2;
+      let size = this.count > 6 ? 5 : this.count - 2;
       // log(size);
       // if (this.curNow == 1 || this.curNow == this.count) size -= 1;
       if (pageStart + size >= this.count) {
@@ -174,34 +174,32 @@ export default {
     prevCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == 1,
-        'h-page-pager': true
-      }
+        "h-page-pager": true
+      };
     },
     nextCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == this.count,
-        'h-page-pager': true
-      }
+        "h-page-pager": true
+      };
     },
     pagerCls() {
       return {
         [`${prefix}-pager`]: true
-      }
+      };
     },
     pageCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-small`]: this.small,
         [`${prefix}-align-${this.align}`]: !!this.align
-      }
+      };
     },
     containerCls() {
-      return {
-      }
+      return {};
     },
     noticeCls() {
-      return {
-      }
+      return {};
     }
   }
 };
