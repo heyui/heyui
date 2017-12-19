@@ -18,7 +18,7 @@ export default {
     com =
       com.substr(0, index) +
       com.charAt(index).toUpperCase() +
-      com.substr(index + 1, index);
+      com.substr(index + 1);
     return {
       com,
       path: this.demo,
