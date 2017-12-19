@@ -8,7 +8,7 @@
         <li class="h-dropdownmenu-item"
             :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
             v-for="option of options"
-            @click="onclick(option)" :key="option">
+            @click="onclick(option)" :key="option[key]">
           <div v-if="option[html]"
                v-html="option[html]"></div>
           <template v-else>
