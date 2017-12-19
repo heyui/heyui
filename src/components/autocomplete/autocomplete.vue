@@ -2,7 +2,7 @@
   <div :class="autocompleteCls">
     <div :class="showCls">
       <template v-if="multiple"><span v-for="obj of objects"
-              :key="obj"><span>{{obj.title}}</span><i class="h-icon-close"
+              :key="obj.key"><span>{{obj.title}}</span><i class="h-icon-close"
            @click.stop="remove(obj)"
            v-if="!disabled"></i></span>
         <input :disabled="disabled"
@@ -38,7 +38,7 @@
       <ul class="h-autocomplete-ul" v-if="isShow">
         <slot name="top" :results="results"></slot>
         <li v-for="(result, index) of results"
-            :key="result"
+            :key="result.key"
             class="h-autocomplete-item"
             :class="{'h-autocomplete-item-selected': index == nowSelected}"
             @click="picker(result)">
