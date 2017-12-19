@@ -3,7 +3,7 @@
     <div :class="showCls">
       <div v-if="multiple&&objects&&objects.length"
             class="h-select-multiple-tags"><span v-for="obj of objects"
-              :key="obj"><span>{{obj[title]}}</span><i class="h-icon-close"
+              :key="obj[key]"><span>{{obj[title]}}</span><i class="h-icon-close"
             @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
@@ -16,7 +16,7 @@
         <div class="h-select-list">
           <ul class="h-select-ul">
             <li v-for="option of filterOptions"
-                :key="option"
+                :key="option[key]"
                 class="h-select-item"
                 @click="setvalue(option)"
                 :class="getLiCls(option)">
