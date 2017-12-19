@@ -17,14 +17,14 @@
                       <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
     <span @click="change(1)"
           :class="genPagerCls(1)">1</span>
-    <span v-if="curNow > 4"
+    <span v-if="curNow > 4 && count > 5"
           class="h-page-pager h-page-ellipsis">...</span>
     <span v-for="pager of pagerSize"
           :key="pager"
           @click="change(pager)"
           :class="genPagerCls(pager)">{{pager}}</span>
     <span class="h-page-pager h-page-ellipsis"
-          v-if="count - curNow > 3">...</span>
+          v-if="count - curNow > 3 && count > 5">...</span>
     <span @click="change(count)"
           :class="genPagerCls(count)"
           v-if="this.count>1">{{count}}</span>
