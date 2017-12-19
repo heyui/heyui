@@ -1,7 +1,7 @@
 <template>
   <div v-width="150">
     <Tabs :datas="param" class-name="h-tabs-menu" v-model="selected" @change="change">
-      <template scope="props" slot="item"><span>{{props.tab.title}}</span><Badge :count="props.tab.count" :max-count="99" position="right"></Badge></template>
+      <template slot-scope="props"><span>{{props.tab.title}}</span><Badge :count="props.tab.count" :max-count="99" position="right"></Badge></template>
     </Tabs>
   </div>
 </template>

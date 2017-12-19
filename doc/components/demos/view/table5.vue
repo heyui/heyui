@@ -5,7 +5,7 @@
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
     <Table :datas="datas" :columns="columns" checkbox>
-      <template scope="props">
+      <template slot-scope="props">
         <td>{{props.index}}</td>
         <td>{{props.data.id}}</td>
         <td>{{props.data.name}}</td>

@@ -14,7 +14,7 @@
       <TableItem title="姓名" prop="name" :width="150"></TableItem>
       <TableItem title="年龄" prop="age" :width="150"></TableItem>
       <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
-      <TableItem title="操作" :width="100" fixed="right"><template scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
+      <TableItem title="操作" :width="100" fixed="right"><template slot-scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>

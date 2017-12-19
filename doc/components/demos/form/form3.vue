@@ -6,7 +6,7 @@
     <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2">
       <FormItem label="输入框" prop="input">
         <input type="text" v-model="data.input" placeholder="限制输入30个字" v-wordlimit='30' />
-        <template slot="error" scope="props">
+        <template slot="error" slot-scope="props">
           <!-- *type*: base, combine, async -->
           <span class="link" v-if="props.type == 'async'">+++++++自定义的错误提示+++++++</span>
         </template>
