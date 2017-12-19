@@ -5,7 +5,7 @@
     <div>
       <div class="h-panel-bar">
         <div class="h-category-multiple-tags" v-if="param.multiple" style="padding-right: 180px">
-          <span v-for="tag of param.objects" :key="tag"><span>{{tag.title}}</span><i class="h-icon-close"
+          <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close"
             @click.stop="remove(tag)"></i></span>
             <i class="gray-color" v-if="param.objects.length==0">暂时无数据</i>
         </div>
@@ -22,7 +22,7 @@
       <div class="h-panel-body">
         <Row :space="10">
           <template  v-if="searchText==''">
-            <Col :width="8" v-for="data of list" :key="data">
+            <Col :width="8" v-for="data of list" :key="data.key">
                 <div class="text-ellipsis h-category-item" @click="openNew(data)"><Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span></div>
             </Col>
           </template>
