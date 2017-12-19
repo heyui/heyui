@@ -6,7 +6,7 @@
       <treeItem v-for="tree of treeDatas"
                   :data="tree"
                   :param="param"
-                  :key="tree"
+                  :key="tree.key"
                   :multiple="multiple"
                   :status="status"
                   @trigger="trigger"

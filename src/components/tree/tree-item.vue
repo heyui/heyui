@@ -15,7 +15,7 @@
     <ul v-if="data.children&&data.children.length>0"
         class="h-tree-ul">
       <treeItem v-for="child of data.children"
-                  :key="child"
+                  :key="child.key"
                   :data="child"
                   :param="param"
                   :status="status"
