@@ -53,7 +53,6 @@ export default {
         'h-icon-plus',
         'h-icon-minus',
         'h-icon-check',
-        'h-icon-calendar',
         'h-icon-loading',
         'h-icon-spinner',
         'h-icon-completed',
