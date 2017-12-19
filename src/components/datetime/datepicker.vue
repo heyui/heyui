@@ -24,7 +24,7 @@
         <div v-if="shortcuts.length>0"
              class="h-date-shortcut">
           <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)" :key="s">{{s.title}}</div>
+               @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
         </div>
         <date-base ref="datebase"
                    :value="nowDate"

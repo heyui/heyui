@@ -37,7 +37,7 @@
       <div class="h-date-body-weeks"
            v-if="view=='date'"><span v-for="w of weeks" :key="w">{{w}}</span></div>
       <div class="h-date-body-pickers">
-        <span v-for="d of dates" :key="d"
+        <span v-for="d of dates" :key="d.string"
               :string="d.string"
               :class="{'h-date-not-now-day': !d.isNowDays, 'h-date-today':d.isToday, 'h-date-selected': isSelected(d), 'h-date-range-selected': isRangeSelected(d), 'h-date-disabled': d.disabled}"
               @click="chooseDate(d)">{{d.show}}</span></div>

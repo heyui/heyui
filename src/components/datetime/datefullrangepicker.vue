@@ -15,7 +15,7 @@
         <div v-if="shortcuts.length>0"
              class="h-date-shortcut">
           <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)" :key="s">{{s.title}}</div>
+               @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
         </div>
         <div><Tabs :datas="views" v-model="view" @change="changeView"></Tabs></div>
         <div v-if="view == 'date'" class="h-date-self-defined">
