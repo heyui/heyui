@@ -1,7 +1,7 @@
 <template>
   <ul :class="classes">
     <h-menuItem v-for="menu of menuDatas"
-        :key="menu"
+        :key="menu.key"
         :data="menu"
         :param="param"
         :status="status"
