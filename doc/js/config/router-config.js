@@ -2,8 +2,7 @@ export default {
   component: [{
     path: '',
     name: 'basic',
-    component: () =>
-      import ('../../components/component/basic/grid')
+    component: () => import('../../components/component/basic/grid')
   }, {
     path: 'basic/grid',
     name: 'basicGrid',
