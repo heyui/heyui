@@ -1,6 +1,6 @@
 <template>
   <div :class="tabsCls">
-    <div v-for="(a, index) of arr" @click="trigger(a, index)" :key="a" :class="{'h-tabs-selected':a[key] == value}">
+    <div v-for="(a, index) of arr" @click="trigger(a, index)" :key="a[key]" :class="{'h-tabs-selected':a[key] == value}">
       <span v-if="!$scopedSlots.item">{{a[title]}}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
