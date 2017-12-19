@@ -178,7 +178,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const HeyUI = Object.assign(components, {
+const HeyUI = Object.assign({}, components, {
   install
 }, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use }, prototypes, config, { Dropdown }, filters);
 
