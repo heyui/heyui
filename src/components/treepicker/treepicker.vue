@@ -4,7 +4,7 @@
       <template v-if="multiple&&objects.length">
         <div v-if="showCount" class="h-treepicker-value-single">您总共选择{{valuebak.length}}项</div>
         <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
-                :key="obj"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
+                :key="obj[param.keyName]"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
               @click.stop="remove(obj)" v-if="!disabled"></i></span>
         </div>
       </template>
