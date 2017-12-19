@@ -7,7 +7,7 @@
 }
 // 将鼠标移动以及选中的背景色变成红色
 .autocomplete-demo-dropdown{
-  .h-autocomplete-item:hover, .h-autocomplete-item.h-autocomplete-item-selected {
+  &.h-autocomplete-group .h-autocomplete-item:hover, &.h-autocomplete-group .h-autocomplete-item.h-autocomplete-item-selected {
     background-color: @red-color;
     color: #FFF;
   }
