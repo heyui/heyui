@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.1"></a>
+## [0.12.1](https://github.com/heyui/heyui/compare/v0.12.0...v0.12.1) (2017-12-19)
+
+
+### Bug Fixes
+
+* change autocomplete v-for key ([54fb385](https://github.com/heyui/heyui/commit/54fb385))
+* change category v-for key ([a65880d](https://github.com/heyui/heyui/commit/a65880d))
+* change checkbox v-for key ([580bcfc](https://github.com/heyui/heyui/commit/580bcfc))
+* change date v-for key ([8f7902d](https://github.com/heyui/heyui/commit/8f7902d))
+* change dropdownmenu v-for key ([3160701](https://github.com/heyui/heyui/commit/3160701))
+* change menu v-for key ([8509c79](https://github.com/heyui/heyui/commit/8509c79))
+* change radio v-for key ([ee25fb3](https://github.com/heyui/heyui/commit/ee25fb3))
+* change select v-for key ([67d63d8](https://github.com/heyui/heyui/commit/67d63d8))
+* change table v-for key ([0fe5c57](https://github.com/heyui/heyui/commit/0fe5c57))
+* change tree v-for key ([3e29032](https://github.com/heyui/heyui/commit/3e29032))
+* change treepicker v-for key ([906e5e9](https://github.com/heyui/heyui/commit/906e5e9))
+* change uploader v-for key ([3b8f132](https://github.com/heyui/heyui/commit/3b8f132))
+* example com name init error ([4611c51](https://github.com/heyui/heyui/commit/4611c51))
+* icon key define duplicate ([397ba85](https://github.com/heyui/heyui/commit/397ba85))
+* numberInput prop value valid error ([400c77a](https://github.com/heyui/heyui/commit/400c77a))
+* optimize heyui index.js ([110621d](https://github.com/heyui/heyui/commit/110621d))
+* optimize pagination component ([641f055](https://github.com/heyui/heyui/commit/641f055))
+* pagination add key in v-for ([603e459](https://github.com/heyui/heyui/commit/603e459))
+* scope -> slot-scope 升级vue版本准备step1 ([adf984c](https://github.com/heyui/heyui/commit/adf984c))
+* tabs use string key in v-for ([79301e8](https://github.com/heyui/heyui/commit/79301e8))
+* update doc vue version to 2.5 ([707a91f](https://github.com/heyui/heyui/commit/707a91f))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/heyui/heyui/compare/v0.11.3...v0.12.0) (2017-12-18)
 
