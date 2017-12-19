@@ -17,7 +17,7 @@ const prefix = 'h-numberinput';
 
 export default {
   props: {
-    value: { Number, String },
+    value: [ Number, String ],
     min: Number,
     max: Number,
     disabled: {
