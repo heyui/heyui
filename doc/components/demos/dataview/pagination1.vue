@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       current: 1,
-      total: 50
+      total: 80
     }
   },
   methods: {
