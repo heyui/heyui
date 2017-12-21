@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.2"></a>
+## [0.12.2](https://github.com/heyui/heyui/compare/v0.12.1...v0.12.2) (2017-12-21)
+
+
+### Bug Fixes
+
+* optimize pagination show ([49c5e8c](https://github.com/heyui/heyui/commit/49c5e8c))
+* 修复datepicker拥有日期范围时触发的error ([0621249](https://github.com/heyui/heyui/commit/0621249))
+
+
+
 <a name="0.12.1"></a>
 ## [0.12.1](https://github.com/heyui/heyui/compare/v0.12.0...v0.12.1) (2017-12-19)
 
