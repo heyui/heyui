@@ -192,10 +192,11 @@ export default {
       this.parse(value);
       if (this.nowDate && utils.isObject(this.option) && this.type != "time") {
         let disabled = false;
+        let nowDate = manba(this.nowDate);
         let type = manbaType[this.type];
-        if (this.option.start && this.nowDate.distance(this.option.start, type) < 0) disabled = this.option.start;
-        if (this.option.end && !disabled && this.nowDate.distance(this.option.end, type) > 0) disabled = this.option.end;
-        if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowDate)) disabled = '';
+        if (this.option.start && nowDate.distance(this.option.start, type) < 0) disabled = this.option.start;
+        if (this.option.end && !disabled && nowDate.distance(this.option.end, type) > 0) disabled = this.option.end;
+        if (this.option.disabled && this.option.disabled.call(null, disabled || nowDate)) disabled = '';
         if (disabled !== false) {
           this.parse(disabled);
         }
