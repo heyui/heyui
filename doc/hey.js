@@ -15,8 +15,12 @@ module.exports = {
       common: ['babel-polyfill', 'jquery', 'vue', 'vue-router', "hey-utils", 'hey-log', 'jquery-smooth-scroll']
     },
     global: {
-      '$': "jquery",
-      'log': "hey-log"
+      $: "jquery",
+      log: "hey-log"
+    },
+    alias: {
+      js: './js/',
+      components: './components/',
     },
     globalVars: './css/var.less',
     devServer: {
@@ -25,4 +29,4 @@ module.exports = {
     externals: {}
   },
   copy: ["./static/images/**/*", "./components/demos/**/*.vue", "./components/demos/**/*.txt"]
-};
+}

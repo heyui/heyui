@@ -7,7 +7,7 @@ import 'highlight.js/styles/github-gist.css';
 import App from './App.vue';
 
 import HeyUI from './../src/index';
-import titleConfig from './js/config/title-config';
+// import titleConfig from './js/config/title-config';
 import VueHighlightJS from './js/vuehighlight';
 
 import comHead from './components/common/header.vue';
@@ -15,7 +15,7 @@ import comFoot from './components/common/footer.vue';
 import comFrame from './components/common/frame.vue';
 import example from './components/common/example.vue';
 import codes from './components/common/codes.vue';
-import routerConfig from './js/config/router-config';
+import routerParam from './js/config/router-config';
 import en from '../src/locale/lang/en-US';
 import zh from '../src/locale/lang/zh-CN';
 
@@ -134,36 +134,11 @@ Vue.component('com-frame', comFrame);
 Vue.component('example', example);
 Vue.component('codes', codes);
 
-let routerParam = {
-  mode: 'history',
-  routes: [{
-    path: '/',
-    name: 'home',
-    component: (resolve) => require(['./components/home'], resolve)
-  }, {
-    path: '/component',
-    component: (resolve) => require(['./components/component'], resolve),
-    children: routerConfig.component
-  }, {
-    path: '/resource',
-    name: 'resource',
-    component: (resolve) => require(['./components/resource'], resolve)
-  }, {
-    path: '/about',
-    name: 'about',
-    component: (resolve) => require(['./components/about'], resolve)
-  }, {
-    path: '/guide',
-    component: (resolve) => require(['./components/guide'], resolve),
-    children: routerConfig.guide
-  }]
-};
-
 const router = new VueRouter(routerParam);
 router.beforeEach((to, from, next) => {
   HeyUI.$LoadingBar.start();
-  if (titleConfig[to.name] && to.name != 'home') {
-    document.title = titleConfig[to.name] + ' - HeyUI: UI Toolkit for Web, Vue2.0';
+  if (to.meta.title && to.name != 'home') {
+    document.title = `${to.meta.title} - HeyUI: UI Toolkit for Web, Vue2.0`;
   } else {
     document.title = 'HeyUI: UI Toolkit for Web, Vue2.0';
   }

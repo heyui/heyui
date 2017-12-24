@@ -31,6 +31,7 @@
     "manba": "^1.0.2",
     "plupload-es6": "^2.1.11",
     "popper.js": "^1.0.8",
+    "prismjs": "^1.9.0",
     "qiniu-js-es6": "^1.0.28",
     "vue": "^2.5.11",
     "vue-highlightjs": "^1.2.2",
