@@ -146,7 +146,7 @@ export default {
     groupCls() {
       return {
         [`${prefix}-group`]: true,
-        [`${this.className}-group`]: true
+        [`${this.className}-dropdown`]: true
       }
     },
     options() {
