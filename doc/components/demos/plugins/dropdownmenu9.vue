@@ -14,6 +14,12 @@
   &:hover, &.@{pop-ref-prefix}{
     background: rgba(243, 243, 243, 0.19);
   }
+  &-group {
+    .h-dropdownmenu-item:not(.disabled):hover{
+      background: @dark-color;
+      color: #FFF;
+    }
+  }
 }
 </style>
 <template>
