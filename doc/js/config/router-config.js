@@ -1,5 +1,5 @@
 const router = {
-  // mode: 'history',
+  mode: 'history',
   routes: [{
     path: '/',
     name: 'home',
