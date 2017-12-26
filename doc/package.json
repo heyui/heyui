@@ -33,7 +33,7 @@
     "popper.js": "^1.0.8",
     "prismjs": "^1.9.0",
     "qiniu-js-es6": "^1.0.28",
-    "vue": "^2.5.11",
+    "vue": "^2.3.4",
     "vue-highlightjs": "^1.2.2",
     "vue-i18n": "^7.3.2",
     "vue-router": "^2.3.0"
@@ -44,7 +44,7 @@
     "eslint-plugin-html": "^1.5.5",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-vue": "^0.1.1",
-    "vue-template-compiler": "^2.5.11"
+    "vue-template-compiler": "^2.3.4"
   },
   "readmeFilename": "README.md",
   "scripts": {
