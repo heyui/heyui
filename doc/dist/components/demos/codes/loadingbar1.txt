@@ -1,0 +1,12 @@
+import VueRouter from 'vue-router';
+import HeyUI from 'heyui';
+
+const routerParam = {};
+const router = new VueRouter(routerParam);
+router.beforeEach((to, from, next) => {
+  HeyUI.$LoadingBar.start();
+  next();
+});
+router.afterEach(() => {
+  HeyUI.$LoadingBar.success();
+});
