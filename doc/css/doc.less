@@ -68,7 +68,7 @@ h2 {
         display: inline-block;
         width: 5px;
         height: 30px;
-        background-color: #3399ff;
+        background-color: @primary-color;
       }
       &::before {
         content: "";
@@ -175,11 +175,12 @@ h2 {
         font-size: 18px;
         margin: 15px 0;
         padding-left: 30px;
+        color: @primary-color;
       }
       >ul {
         padding-left: 25px;
         >.title {
-          color: @gray-color;
+          color: @primary-color;
           padding-left: 10px;
         }
         >li{
@@ -197,11 +198,15 @@ h2 {
     }
     a {
       padding: 2px 4px;
-    }
-    .router-link-active {
-      opacity: 1;
-      border-left-color: @primary-color;
-      background: @gray4-color;
+      color: #9d9d9d;
+      &:hover{
+        color: @primary-color;
+      }
+      &.router-link-active {
+        opacity: 1;
+        border-left-color: @primary-color;
+        color: @primary-color;
+      }
     }
   }
   .right-frame {
@@ -377,14 +382,14 @@ h2 {
 
 .h-backtop-custom{
   .h-backtop-inner {
-    background-color: @blue-color;
+    background-color: @primary-color;
     border-radius: 2px;
     color: @white-color;
     padding: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
     transition: all @transition-time ease-in-out;
     &:hover {
-      background-color: lighten(@blue-color, 10%);
+      background-color: lighten(@primary-color, 10%);
     }
   }
 }
