@@ -83,7 +83,7 @@ export default {
       if (this.show) {
         return this.show.call(null, value);
       } else {
-        return value;
+        return value || 0;
       }
     },
     mousedown(type, event) {
@@ -170,7 +170,7 @@ export default {
       if (!this.multiple) {
         return {
           start: 0,
-          end: this.value
+          end: this.value || 0
         }
       }
       return utils.extend({
