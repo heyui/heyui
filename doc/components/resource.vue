@@ -4,7 +4,7 @@
       <div slot="left-frame">
         <ul>
           <ul>
-            <li class="gray-color">资源</li>
+            <li class="gray-color">&nbsp;</li>
             <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='resourceheycli'}">hey-cli 脚手架</router-link></li>
             <li><router-link to="/resource/umock">umock mock服务器</router-link></li>
             <li><router-link to="/resource/heyutils">hey-utils 通用方法</router-link></li>

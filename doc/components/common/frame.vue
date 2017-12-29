@@ -12,6 +12,7 @@
 </template>
 <script>
 
+import scrollIntoView from '../../../src/plugins/scrollIntoView'
 export default {
   data() {
     return {
@@ -25,11 +26,15 @@ export default {
     }
   },
   mounted() {
-    $.smoothScroll({
-      scrollElement: $('.left-frame', this.$el),
-      scrollTarget: $('.left-frame .router-link-active', this.$el),
-      offset: -60,
-    });
+    this.$nextTick(()=>{
+      scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
+        time: 500,
+        align:{
+          // top: 10,
+          topOffset: 0
+        }
+      });
+    })
   }
 }
 </script>

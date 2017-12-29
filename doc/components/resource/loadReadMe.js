@@ -1,5 +1,5 @@
-import Prism from 'prismjs';
 import marked from './marked';
+const hljs = require('highlight.js');
 
 export default (el, url) => {
   $.get(url, function (data) {
@@ -11,7 +11,9 @@ export default (el, url) => {
     // $("#left").append(lis);
     // 完成代码高亮
     $('code', container).map(function () {
-      Prism.highlightElement(this);
+      $(this).addClass('javascript');
+      // Prism.highlightElement(this);
+      hljs.highlightBlock(this);
     });
 
     // let titles = $("h1,h2,h3,h4", container);

@@ -44,6 +44,8 @@ h2 {
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 3;
+  background: #ffffffd4;
   .logo {
     line-height: 60px;
     font-weight: 100;
@@ -162,13 +164,13 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0px;
-  top: 60px;
+  top: 0px;
 }
 
 .com-frame {
   .left-frame {
     width: 280px;
-    padding: 0px 0px 10px 0px;
+    padding: 60px 0px 10px 0px;
     line-height: 2.5;
     >div>ul {
       >li.title {
@@ -210,7 +212,7 @@ h2 {
     }
   }
   .right-frame {
-    padding: 0 30px 100px;
+    padding: 60px 30px 100px;
   }
 }
 
@@ -456,13 +458,12 @@ h2 {
     font-size: 19px;
   }
 
-  pre[class*="language-"] {
-    padding:  10px;
+  code.javascript.hljs {
+    margin: 5px 0;
+    padding: 15px 20px;
+    background: #f8f8f8;
     border-radius: 5px;
-  }
-  :not(pre) > code.language-undefined {
-    padding: 1px 5px;
-    font-size: 12px;
+    display: block;
   }
   ul{
     list-style: inherit;
