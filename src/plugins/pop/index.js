@@ -11,7 +11,8 @@ const DEFAULT_OPTIONS = {
   disabled: false,
   trigger: 'hover focus',
   offset: 0,
-  equalWidth: false
+  equalWidth: false,
+  type: 'dropdown',
 };
 
 /**
@@ -65,11 +66,10 @@ class Pop {
     this.arrowSelector = options.arrowSelector;
     this.innerSelector = options.innerSelector;
     this.triggerEvents = [];
-
     if (options.content.nodeType === 1) {
       options.content.style.display = "none";
     }
-    this.setEventListeners(reference, triggerEvents, options);
+    this.setEventListeners(triggerEvents, options);
   }
 
   toggle() {
@@ -126,6 +126,7 @@ class Pop {
     } else {
       contentNode.innerText = content;
     }
+    this.update();
   }
 
   initPopNode() {
@@ -157,7 +158,6 @@ class Pop {
     }
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
-    // this.popperInstance.update();
     this.popNode.setAttribute('aria-hidden', 'true');
   }
 
@@ -171,6 +171,7 @@ class Pop {
 
   show() {
     if (this.isOpen || this.options.disabled) { return this; }
+    // if (this.type == 'tooltip' && )
     this.isOpen = true;
     if (this.options.events && utils.isFunction(this.options.events.show)) {
       this.options.events.show.call(null);
@@ -226,12 +227,14 @@ class Pop {
     if (this.popperInstance) {
       this.popperInstance.destroy();
     }
+
+    this.triggerEvents.forEach(({ event, func }) => {
+      this.reference.removeEventListener(event, func, event == 'focus' || event == 'blur');
+    });
+    this.triggerEvents = [];
+
     if (this.popNode) {
       this.hide();
-      this.triggerEvents.forEach(({ func, event }) => {
-        this.popNode.removeEventListener(event, func);
-      });
-      this.triggerEvents = [];
       this.popNode.parentNode.removeChild(this.popNode);
       this.popNode = null;
     }
@@ -251,7 +254,8 @@ class Pop {
     container.appendChild(popNode);
   }
 
-  setEventListeners(reference, triggerEvents, options) {
+  setEventListeners(triggerEvents, options) {
+    let reference = this.reference;
     const directtriggerEvents = [];
     const oppositetriggerEvents = [];
 

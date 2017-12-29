@@ -20,6 +20,10 @@ export default {
       type: String,
       default: 'top'
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     className: {
       type: String,
       default: 'h-tooltip-default'
@@ -27,24 +31,47 @@ export default {
     theme: String
   },
   mounted() {
-    this.$nextTick(() => {
-      let el = this.$el;
-      let content = this.$el.querySelector('.h-tooltip-inner-content');
-      this.tooltip = new Tooltip(el, {
-        content,
-        theme: this.theme,
-        html: true,
-        trigger: this.trigger,
-        container: document.body,
-        placement: this.placement
-      });
-    });
+    this.init();
   },
   methods: {
-    close() {
+    hide() {
       if (this.tooltip) {
         this.tooltip.hide();
       }
+    },
+    update() {
+      if (this.tooltip) {
+        this.tooltip.update();
+      }
+    },
+    init() {
+      this.$nextTick(() => {
+        let el = this.$el;
+        let content = this.$el.querySelector('.h-tooltip-inner-content');
+        this.tooltip = new Tooltip(el, {
+          content,
+          theme: this.theme,
+          html: true,
+          trigger: this.trigger,
+          container: document.body,
+          placement: this.placement,
+          disabled: this.disabled
+        });
+      });
+    }
+  },
+  watch: {
+    disabled() {
+      if(!this.tooltip) return;
+      if (!this.disabled) {
+        this.tooltip.enabled()
+      } else {
+        this.tooltip.disabled()
+      }
+    },
+    content() {
+      if(!this.tooltip) return;
+      this.tooltip.update();
     }
   },
   computed: {

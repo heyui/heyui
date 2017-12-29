@@ -9,8 +9,8 @@ class Tooltip extends Pop {
       param.class = `h-tooltip-${param.theme}`;
     }
     param.closeOnClickBody = true;
-    // param.containter = document.body;
-    // log(param);
+    param.type = "tooltip";
+    param.trigger = param.trigger || 'hover focus';
     super(el, param);
   }
 }

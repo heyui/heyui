@@ -16,6 +16,7 @@ const Default = {
   //     // boundariesElement: 'viewport'
   //   },
   // },
+  type: 'dropdown',
   delay: 300,
 }
 

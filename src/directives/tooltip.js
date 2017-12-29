@@ -24,10 +24,12 @@ const getContent = function (el, vnode) {
 }
 
 const init = function (el, binding, vnode) {
+  if (binding.value === false) {
+    return;
+  }
   let param = getContent(el, vnode);
   if (param == false) return;
   let attrs = vnode.data.attrs || {};
-  // if (utils.isNull(param.content) || param.content === '') return false;
   param.container = document.body;
   param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);
   el.tooltip = new Tooltip(el, param);
@@ -39,6 +41,11 @@ export default {
   update(el, binding, vnode) {
     if (el.tooltip) {
       vnode.context.$nextTick(() => {
+        if (binding.value === false) {
+          el.tooltip.dispose();
+          el.tooltip = null;
+          return;
+        }
         let param = getContent(el, vnode);
         if (param == false) {
           el.tooltip.dispose();

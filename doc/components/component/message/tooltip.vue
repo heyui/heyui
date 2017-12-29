@@ -47,8 +47,31 @@
         <td>trigger</td>
         <td>触发事件</td>
         <td>String</td>
-        <td>loading, info, warn, success, error</td>
+        <td>hover, click, focus</td>
         <td>info</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>是否禁用</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Tooltip 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>关闭显示</td>
+      </tr>
+      <tr>
+        <td>update</td>
+        <td>更新提示框的位置</td>
       </tr>
     </table>
   </div>

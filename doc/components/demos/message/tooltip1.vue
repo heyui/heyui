@@ -1,8 +1,22 @@
 <template>
   <div>
-    <button class="h-btn h-btn-text" v-tooltip>Directive执行</button>
-    <button class="h-btn h-btn-text" v-tooltip  theme="white" content="Directive执行|白色风格">Directive执行|白色风格</button>
-    <Tooltip content="Component调用"><button class="h-btn h-btn-text">Component调用</button></Tooltip>
-    <Tooltip content="Component调用|白色风格"  theme="white"><button class="h-btn h-btn-text">Component调用|白色风格</button></Tooltip>
+    <p><h-switch small v-model="enable">开启</h-switch></p>
+    <p>
+      <Button class="text-hover" v-tooltip="enable" :content="content" @click="content+='1'">Directive调用，点我</Button>
+    </p>
+    <p>
+      <Tooltip :content="content" :disabled="!enable"><Button class="text-hover" @click="content+='1'">Component调用，点我</Button></Tooltip>
+    </p>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        enable: true,
+        content: '1'
+      }
+    }
+  }
+</script>

@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     close() {
-      this.$refs.tooltip.close();
+      this.$refs.tooltip.hide();
     },
     trigger() {
       this.$emit('confirm');
