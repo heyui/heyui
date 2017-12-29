@@ -8,7 +8,7 @@ class Tooltip extends Pop {
     if (param.theme) {
       param.class = `h-tooltip-${param.theme}`;
     }
-    param.triggerOnBody = true;
+    param.closeOnClickBody = true;
     // param.containter = document.body;
     // log(param);
     super(el, param);

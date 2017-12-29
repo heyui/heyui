@@ -293,7 +293,7 @@ class Pop {
       reference.addEventListener(event, func, event == 'blur');
     });
 
-    if (options.triggerOnBody) {
+    if (options.closeOnClickBody) {
       this.documentHandler = (e) => {
         if (!this.popNode || e.target.parentNode == null) return;
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {

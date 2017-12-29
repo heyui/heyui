@@ -4,7 +4,7 @@ import utils from '../../utils/utils';
 
 const Default = {
   trigger: 'click',
-  triggerOnBody: true,
+  closeOnClickBody: true,
   html: true,
   placement: 'bottom-start',
   template: `<div role="select" class="h-dropdown"><div class="h-dropdown-arrow"></div><div class="h-dropdown-inner"></div></div>`,
