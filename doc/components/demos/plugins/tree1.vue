@@ -15,9 +15,9 @@
 export default {
   data() {
     let list = [
-      { id: 1, title: "一级" },
-      { id: 2, title: "二级" },
-      { id: 3, title: "三级", disabled: true },
+      { id: 1, title: "一级", treeIcon: 'h-icon-user'},
+      { id: 2, title: "二级", treeIcon: 'h-icon-user'},
+      { id: 3, title: "三级", disabled: true, treeIcon: 'h-icon-user' },
       { id: 10, title: "一级-0", parent: 1 },
       { id: 11, title: "一级-1", parent: 1 },
       { id: 12, title: "一级-2", parent: 1 },
