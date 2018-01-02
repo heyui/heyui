@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.3"></a>
+## [0.12.3](https://github.com/heyui/heyui/compare/v0.12.2...v0.12.3) (2018-01-02)
+
+
+### Bug Fixes
+
+* className group->dropdown ([ab5740a](https://github.com/heyui/heyui/commit/ab5740a))
+* component add key ([e41ac42](https://github.com/heyui/heyui/commit/e41ac42))
+* modal component hasDivider use global ([999cbf2](https://github.com/heyui/heyui/commit/999cbf2))
+* router use history mode ([28cbdf2](https://github.com/heyui/heyui/commit/28cbdf2))
+* slider显示优化 ([66b1f0d](https://github.com/heyui/heyui/commit/66b1f0d))
+* tooltip 整体优化 ([515160d](https://github.com/heyui/heyui/commit/515160d))
+* tree add treeIcon attribute ([372e176](https://github.com/heyui/heyui/commit/372e176))
+* treepicker toggleOnSelect default true ([c1b4441](https://github.com/heyui/heyui/commit/c1b4441))
+* 使用本地打包的文件测试 ([f4f5f47](https://github.com/heyui/heyui/commit/f4f5f47))
+* 尝试降低vue版本 ([4b016b7](https://github.com/heyui/heyui/commit/4b016b7))
+* 重新打包 ([b76a875](https://github.com/heyui/heyui/commit/b76a875))
+
+
+
 <a name="0.12.2"></a>
 ## [0.12.2](https://github.com/heyui/heyui/compare/v0.12.1...v0.12.2) (2017-12-21)
 
