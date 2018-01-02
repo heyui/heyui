@@ -70,7 +70,7 @@ export default {
     },
     toggleOnSelect: {
       type: Boolean,
-      default: false
+      default: true
     },
     value: [Number, String, Array, Object],
     config: String,
