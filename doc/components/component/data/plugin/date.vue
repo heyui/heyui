@@ -65,7 +65,7 @@
         <td>类型</td>
         <td>String</td>
         <td>date</td>
-        <td>year, month, week, datetime, datehour, week</td>
+        <td>year, month, week, datetime, datehour</td>
       </tr>
       <tr>
         <td>option</td>
