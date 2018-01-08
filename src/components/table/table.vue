@@ -14,7 +14,6 @@
           <template v-else>
             <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus" ></TableTh>
           </template>
-          <!-- <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"  ></TableTh> -->
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -38,6 +37,11 @@
                 </td>
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
+              <tr :key="index+update.datas+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
+                <td class="h-table-expand-cell" :colspan="totalCol">
+                  <slot :data="d" :index="index" name="expand"></slot>
+                </td>
+              </tr>
             </template>
           </tbody>
         </table>
@@ -149,6 +153,7 @@ export default {
       rightWidth: 0,
       tableWidth: 400,
       computeColumns: [],
+      datasBak: [...this.datas],
       sortStatus: {
         type: null,
         prop: null
@@ -161,7 +166,16 @@ export default {
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
         }
-        this.update.datas += 1;
+        let changed = this.datasBak.length != this.datas.length;
+        let n = 0;
+        while(!changed && this.datas.length > n){
+          changed = this.datas[n] !== this.datasBak[n];
+          n++;
+        }
+        if (changed) {
+          this.update.datas += 1;
+        }
+        this.datasBak = [...this.datas];
       },
       deep: true
     },
@@ -339,6 +353,9 @@ export default {
     }
   },
   computed: {
+    totalCol() {
+      return (this.checkbox ? 1 : 0) + this.computeColumns.length;
+    },
     fixedColumnLeft() {
       let columns = [];
       for (let c of this.computeColumns) {
