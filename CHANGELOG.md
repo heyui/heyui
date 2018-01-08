@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.4"></a>
+## [0.12.4](https://github.com/heyui/heyui/compare/v0.12.3...v0.12.4) (2018-01-08)
+
+
+### Bug Fixes
+
+* Table add expand function ([f862e88](https://github.com/heyui/heyui/commit/f862e88))
+* 去除dropdown使用body作为父级元素 ([0bbeb1f](https://github.com/heyui/heyui/commit/0bbeb1f))
+* 开放其他date类型的readonly属性 ([0561957](https://github.com/heyui/heyui/commit/0561957))
+
+
+
 <a name="0.12.3"></a>
 ## [0.12.3](https://github.com/heyui/heyui/compare/v0.12.2...v0.12.3) (2018-01-02)
 
