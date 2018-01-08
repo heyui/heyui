@@ -25,16 +25,16 @@ class Dropdown extends Pop {
     param = utils.extend({}, Default, {
       boundariesElement: 'viewport'
     }, param);
-    // let container = document.body;
-    // if (!param.container) {
-    //   container = el || document.body;
-    //   while (container && container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
-    //     container = container.parentNode;
-    //   }
-    //   if (container != document.body) {
-    //     param.container = container;
-    //   }
-    // }
+    let container = document.body;
+    if (!param.container) {
+      container = el || document.body;
+      while (container && container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
+        container = container.parentNode;
+      }
+      // if (container != document.body) {
+      param.container = container;
+      // }
+    }
     super(el, param);
   }
 }
