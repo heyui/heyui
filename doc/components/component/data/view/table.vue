@@ -8,8 +8,12 @@
     <h3>TableItem定义模式</h3>
     <example demo="view/table2"></example>
 
+    <h3>展开行</h3>
+    <p>给行数据 data 的某项设置 <code>_expand</code> 为 true，可以默认展开当前行</p>
+    <example demo="view/table6"></example>
+<!--     
     <h3>自定义模式</h3>
-    <example demo="view/table5"></example>
+    <example demo="view/table5"></example> -->
 
     <h3>固定的table</h3>
     <p>固定的高度和宽度，内部内容超出时使用scroll。</p>
