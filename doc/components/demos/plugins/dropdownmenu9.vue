@@ -1,23 +1,26 @@
 <style scoped lang="less">
 .header-info{
   background: @dark-color;
-  line-height: 40px;
   height: 40px;
-  color: @white-color;
 }
 </style>
 <style lang="less">
 .header-info-dropdown{
+  color: @white-color;
   cursor: pointer;
+  line-height: 40px;
   padding: 0 10px 0 15px;
   transition: .2s;
   &:hover, &.@{pop-ref-prefix}{
     background: rgba(243, 243, 243, 0.19);
   }
   &-dropdown {
-    .h-dropdownmenu-item:not(.disabled):hover{
-      background: @dark-color;
-      color: #FFF;
+    .h-dropdownmenu-item{
+      line-height: 30px;
+      &:not(.disabled):hover{
+        background: @dark-color;
+        color: #FFF;
+      }
     }
   }
 }
