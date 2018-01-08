@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.12.5"></a>
+## [0.12.5](https://github.com/heyui/heyui/compare/v0.12.4...v0.12.5) (2018-01-08)
+
+
+### Bug Fixes
+
+* dropdown use class container ([68612a8](https://github.com/heyui/heyui/commit/68612a8))
+* 开放 h-dropdown-common-container ([2a0980e](https://github.com/heyui/heyui/commit/2a0980e))
+
+
+
 <a name="0.12.4"></a>
 ## [0.12.4](https://github.com/heyui/heyui/compare/v0.12.3...v0.12.4) (2018-01-08)
 
