@@ -23,7 +23,7 @@ const Default = {
 class Dropdown extends Pop {
   constructor(el, param) {
     param = utils.extend({}, Default, {
-      boundariesElement: 'viewport'
+      // boundariesElement: 'viewport'
     }, param);
     let container = document.body;
     if (!param.container) {

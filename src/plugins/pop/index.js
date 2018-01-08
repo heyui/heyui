@@ -153,9 +153,9 @@ class Pop {
         computeStyle: { gpuAcceleration: false },
       }
     };
-    if (options.boundariesElement) {
-      popperOptions.boundariesElement = options.boundariesElement;
-    }
+    // if (options.boundariesElement) {
+    //   popperOptions.boundariesElement = options.boundariesElement;
+    // }
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
