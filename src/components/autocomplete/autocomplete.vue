@@ -291,8 +291,12 @@ export default {
           this.nowSelected += 1;
         }
       } else if (code == 13) {
+        //兼容处理ie，使用enterHandle处理了。
       } else {
         this.search(event.target);
+        if(!this.mustMatch && !this.multiple) {
+          this.setvalue('keyup');
+        }
       }
     },
     enterHandle(event) {
@@ -365,7 +369,9 @@ export default {
       if(trigger){
         this.$emit(trigger, value);
       }
-      this.dropdown.hide();
+      if(trigger != 'keyup'){
+        this.dropdown.hide();
+      }
     },
     hide() {
       this.dropdown.hide();
