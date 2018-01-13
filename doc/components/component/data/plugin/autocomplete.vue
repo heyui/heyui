@@ -169,7 +169,7 @@
       <tr>
         <td>change</td>
         <td>model值产生变化的触发</td>
-        <td>现在的数据对象，以及触发来源事件：enter, blur, picker, remove, clear</td>
+        <td>现在的数据对象，以及触发来源事件：enter, blur, picker, remove, clear, keyup(只有!mustMatch&&!multiple的时候触发)</td>
       </tr>
     </table>
 
