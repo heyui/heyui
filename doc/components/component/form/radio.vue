@@ -1,7 +1,11 @@
 <template>
   <div class="doc">
     <h2>Radio 单选框</h2>
+
     <h3>基本调用</h3>
+    <example demo="form/radio2"></example>
+
+    <h3>组件式调用</h3>
     <p>推荐使用数据模式的radio选择器，使用js实现整个交互，兼容性更高。使用 <code>v-model</code> 以及 <code>datas</code>参数完成整体的调用。</p>
     <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/guide/config">全局配置</router-link></p>
     <example demo="form/radio1"></example>
@@ -42,6 +46,13 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>单个选择模式</td>
+        <td></td>
+        <td>-</td>
+        <td></td>
       </tr>
     </table>
   </div>

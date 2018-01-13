@@ -1,6 +1,6 @@
 <template>
   <div class="h-checkbox" :disabled="disabled">
-    <template v-if="arr.length">
+    <template v-if="!isSingle">
     <label v-for="option of arr" @click="setvalue(option)" :key="option[key]" :class="{'h-checkbox-checked': isInclude(option)}"><span :checked="isInclude(option)" :disabled="disabled" class="h-checkbox-native"></span><span>{{option[title]}}</span></label>
     </template>
     <label v-else @click="setvalue()" :class="{'h-checkbox-checked': isChecked}"><span :checked="isChecked" :indeterminate="!isChecked&&indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span v-if="$slots.default"><slot></slot></span></label>
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     updateChecked() {
-      if (!this.datas && !this.dict) {
+      if (this.isSingle) {
         if (!utils.isNull(this.value)) {
           this.isChecked = this.checkList.indexOf(this.value) != -1;
         } else if (utils.isBoolean(this.checkStatus) || utils.isBoolean(this.checked)) {
@@ -74,7 +74,7 @@ export default {
     setvalue(option) {
       if (this.disabled) return;
       let value = null;
-      if (!this.datas && !this.dict) {
+      if (this.isSingle) {
         if (!utils.isNull(this.value)) {
           value = utils.toggleValue(this.checkList, this.value);
         } else if (!utils.isNull(this.checkStatus)) {
@@ -107,6 +107,9 @@ export default {
   computed: {
     checkList() {
       return this.checkStatus || []
+    },
+    isSingle() {
+      return this.arr.length == 0;
     },
     arr() {
       if (!this.datas && !this.dict) {

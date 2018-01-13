@@ -1,5 +1,5 @@
 @radio-prefix: ~"@{prefix}radio";
-.@{radio-prefix}>label>span {
+.@{radio-prefix}>label>.radio-icon {
   -webkit-appearance: none;
   display: inline-block;
   width: 16px;
@@ -62,7 +62,7 @@
     height: @input-height;
     line-height: @input-height;
     display: inline-block;
-    &:hover>span{
+    &:hover>.radio-icon{
       border-color: @primary-color;
     }
   }
@@ -71,7 +71,7 @@
     color: @disabled-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
-    &:hover>span{
+    &:hover>.radio-icon{
       border-color: @disabled-border-color;
     }
   }
