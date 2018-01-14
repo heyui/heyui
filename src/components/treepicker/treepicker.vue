@@ -14,7 +14,7 @@
     </div>
     <div class="h-treepicker-group" :class="groupCls">
       <div class="h-treepicker-body">
-        <Tree ref="tree" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
+        <Tree ref="tree" @loadDataSuccess="loadDataSuccess" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
       </div>
       <div class="h-treepicker-footer">
         <button class="h-btn h-btn-text h-btn-s"
@@ -110,6 +110,9 @@ export default {
     },
   },
   methods: {
+    loadDataSuccess() {
+      this.$emit('loadDataSuccess');
+    },
     getChoose() {
       if (this.$refs.tree) {
         return this.$refs.tree.getChoose();
@@ -131,6 +134,11 @@ export default {
       this.objects = data;
       this.$emit('choose', data);
       if(this.multiple) this.setvalue();
+    },
+    chooseAll() {
+      if (this.$refs.tree) {
+        this.$refs.tree.chooseAll();
+      }
     },
     remove(obj) {
       let index = this.objects.indexOf(obj);

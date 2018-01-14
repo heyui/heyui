@@ -1,7 +1,12 @@
 <template>
 <div>
   <p>值：{{value}}</p>
-  <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
+  <p>
+    <Button @click="updateChoose" size="xs">设置checkbox选中值</Button>
+    <Button @click="getChoose" size="xs">获得checkbox选中值</Button>
+    <Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button>
+    <Button @click="chooseAll" size="xs">选中所有值</Button>
+  </p>
   <Tree :option="param" ref="demo" v-model="value" :multiple="true" choose-mode="all" @choose="choose"></Tree>
 </div>
 </template>
@@ -49,6 +54,9 @@ export default {
   methods: {
     choose(data) {
       log(data);
+    },
+    chooseAll() {
+      this.$refs.demo.chooseAll();
     },
     updateChoose() {
       // 两种方法都可以

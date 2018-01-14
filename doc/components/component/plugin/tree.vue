@@ -88,6 +88,49 @@
       </tr>
     </table>
 
+    <h3>Tree 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>updateChoose</td>
+        <td>更新选中值(多选)</td>
+      </tr>
+      <tr>
+        <td>getChoose</td>
+        <td>获取选中值(多选)</td>
+      </tr>
+      <tr>
+        <td>updateSelect</td>
+        <td>更新选中值(单选)</td>
+      </tr>
+      <tr>
+        <td>getSelect</td>
+        <td>获取选中值(单选)</td>
+      </tr>
+      <tr>
+        <td>getFullChoose</td>
+        <td>获取所有选中的值(多选)</td>
+      </tr>
+      <tr>
+        <td>chooseAll</td>
+        <td>选中所有值(多选)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>expandAll</td>
+        <td>打开所有的折叠</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>foldAll</td>
+        <td>收起所有的折叠</td>
+        <td></td>
+      </tr>
+    </table>
+
     <h3>Tree 事件</h3>
     <table class="table">
       <tr>
@@ -113,6 +156,11 @@
       <tr>
         <td>open</td>
         <td>当tree打开变化</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>loadDataSuccess</td>
+        <td>当异步数据加载成功的时候触发，应用与有一些数据按照tree加载的数据执行的场景</td>
         <td></td>
       </tr>
     </table>

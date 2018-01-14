@@ -1,7 +1,12 @@
 <template>
 <div>
   <p>{{value}}</p>
-  <p><Button @click="updateChoose" size="xs">设置checkbox选中值</Button><Button @click="getChoose" size="xs">获得checkbox选中值</Button><Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button></p>
+  <p>
+    <Button @click="updateChoose" size="xs">设置checkbox选中值</Button>
+    <Button @click="getChoose" size="xs">获得checkbox选中值</Button>
+    <Button @click="getFullChoose" size="xs">获得所有checkbox选中值</Button>
+    <Button @click="chooseAll" size="xs">选中所有值</Button>
+  </p>
   <Tree :option="param" ref="demo" :multiple="true" v-model="value" choose-mode="independent"></Tree>
 </div>
 </template>
@@ -40,6 +45,9 @@ export default {
     }
   },
   methods: {
+    chooseAll() {
+      this.$refs.demo.chooseAll();
+    },
     updateChoose() {
       this.$refs.demo.updateChoose([1, 23, 31]);
     },

@@ -216,6 +216,7 @@ export default {
           this.treeDatas = this.initDatas(utils.copy(result));
           this.parse();
           this.globalloading = false;
+          this.$emit('loadDataSuccess');
         }, () => {
           this.globalloading = false;
         }];
@@ -260,6 +261,12 @@ export default {
         this.treeObj[tree].status.opened = false;
       }
     },
+    chooseAll() {
+      for(let key in this.treeObj) {
+        this.treeObj[key].status.choose = true;
+      }
+      this.setvalue();
+    },
     updateSelect(key) {
       let option = this.treeObj[key];
       if (option) {
@@ -300,6 +307,8 @@ export default {
           updateModeAllChildChooseStatus(tree);
         }
       }
+
+      this.setvalue();
     },
     setvalue() {
       let value = null;

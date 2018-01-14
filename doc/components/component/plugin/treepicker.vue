@@ -80,11 +80,20 @@
       </tr>
       <tr>
         <td>getChoose</td>
-        <td>按照当前模式选中的数据</td>
+        <td>获取选中值(多选)</td>
+      </tr>
+      <tr>
+        <td>getSelect</td>
+        <td>获取选中值(单选)</td>
       </tr>
       <tr>
         <td>getFullChoose</td>
-        <td>获取所有checkbox选中的数据</td>
+        <td>获取所有选中的值(多选)</td>
+      </tr>
+      <tr>
+        <td>chooseAll</td>
+        <td>选中所有值(多选)</td>
+        <td></td>
       </tr>
     </table>
   </div>
