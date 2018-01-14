@@ -4,6 +4,7 @@
       <router-link class="logo" to="/">
         <div class="header-logo"><span></span></div>HEY UI
       </router-link>
+      <AutoComplete dict="menus" v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class='header-nav-list'>
         <router-link to="/guide">入门</router-link>
         <router-link to="/component">组件</router-link>
@@ -22,12 +23,19 @@ export default {
   data() {
     return {
       pass: '',
-      error: false
+      error: false,
+      search: null
     }
   },
   methods: {
     go(link) {
       this.$router.go(link);
+    },
+    goSearch(data) {
+      this.$router.push({name: data.key});
+      this.$nextTick(() => {
+        this.search = null;
+      })
     }
   }
 }

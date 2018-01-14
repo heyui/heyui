@@ -19,21 +19,29 @@ export default {
       error: false
     }
   },
+  watch: {
+    '$route'() {
+      this.initLeftMenu();
+    }
+  },
   methods: {
     getTarget() {
       return document.querySelector('.right-frame');
+    },
+    initLeftMenu() {
+      this.$nextTick(()=>{
+        scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
+          time: 500,
+          align:{
+            // top: 10,
+            topOffset: 0
+          }
+        });
+      })
     }
   },
   mounted() {
-    this.$nextTick(()=>{
-      scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
-        time: 500,
-        align:{
-          // top: 10,
-          topOffset: 0
-        }
-      });
-    })
+    this.initLeftMenu()
   }
 }
 </script>
