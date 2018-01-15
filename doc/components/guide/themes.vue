@@ -3,10 +3,39 @@
     <h2>更换主题</h2>
     <p>我们的样式使用的是less语言，我们定义了一些全局使用的变量</p>
     <p>您可以通过修改这些变量，达到变换样式的需求。</p>
-    
-    <h3>更换方法</h3>
-    <p>更换主题的方法已经在快速上手的文档中有详细的说明，如果有任何疑问，请参考<a href="/guide/quickstart">快速上手</a>文档。</p>
 
+    <h4>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> 脚手架(推荐)</h4>
+    <p>在自己定义的 var.less 文件中引用 heyui 的 var.less 文件，并按照自己的需求重新定义更换主题，然后在hey.js脚手架配置文件中设定全局引用文件。</p>
+    <p>var.less，<a href="https://github.com/heyui/heyui-demo/blob/master/src/css/var.less" target="_blank">示例</a></p>
+    <codes type="less">@import (less) "~/heyui/themes/var.less";
+//重新定义主题
+@primary-color: #FDA729;
+@red-color: #D64244;
+@green-color: #3cb357;
+@yellow-color: #EAC12C;
+@blue-color: #77A2DC;</codes>
+    <p v-height="10"></p>
+    <p>hey-cli 配置文件 hey.js ，<a href="https://github.com/heyui/heyui-demo/blob/master/hey.js" target="_blank">示例</a></p>
+    <codes type="javascript">globalVars: './src/css/var.less',</codes>
+    <p>注意：使用这种引用方式，在vue单文件中也可以使用这些变量。</p>
+
+    <h3>使用 vue-cli / 自己搭建webpack</h3>
+    <p>这里的引用有一些差别，主要在于样式的引用上。</p>
+    <p>对于 less 变量的定义，我们并没有写入common.less文件，所以需要自己定义一个less文件做引用。</p>
+<codes type="less">@import (less) "~heyui/themes/var.less";
+//重新定义主题
+@primary-color: #FDA729;
+@red-color: #D64244;
+@green-color: #3cb357;
+@yellow-color: #EAC12C;
+@blue-color: #77A2DC;
+@import (less) "~heyui/themes/common.less";
+
+//使用这种方式引用，可以在自己的less文件中使用var.less定义的变量。
+@import (less) "自己的less文件";
+</codes>
+    <p>注意：使用这种引用方式，在 Vue 文件中将无法使用 var.less 文件中的变量。</p>
+    
     <h3>全局变量说明</h3>
     <p>我们的原始全局变量文件你可以在<a href="https://github.com/heyui/heyui/blob/master/themes/var.less" target="_blank">github</a>上查看。</p>
     <p>下面代码中的参数，你可以按照自己的设计修改，达成设定系统主题的目的。</p>

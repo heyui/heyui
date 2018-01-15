@@ -2,9 +2,9 @@
   <div class="doc">
     <h2>快速上手</h2>
     <p>我们建议使用webpack进行系统构建。</p>
-    <h3>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">Hey-Cli</a> 脚手架(推荐)</h3>
-    <p>Hey-Cli 是我们开源的脚手架，支持单纯的ES6项目开发，也支持Vue, React项目开发。集成了开发与打包等一系列功能。</p>
-    <p>使用 Hey-Cli 可以设定全局的 <code>var.less</code> 文件，文件中定义的变量可以使用在任意<code>less</code>文件中，以及<code>vue</code>文件的less样式中。</p>
+    <h3>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> 脚手架(推荐)</h3>
+    <p>hey-cli 是我们开源的脚手架，支持单纯的ES6项目开发，也支持Vue, React项目开发。集成了开发与打包等一系列功能。</p>
+    <p>使用 hey-cli 可以设定全局的 <code>var.less</code> 文件，文件中定义的变量可以使用在任意<code>less</code>文件中，以及<code>vue</code>文件的less样式中。</p>
     <h4>全局less变量定义引用</h4>
     <p>在自己定义的 var.less 文件中引用 heyui 的 var.less 文件，并按照自己的需求重新定义更换主题，然后在hey.js脚手架配置文件中设定全局引用文件。</p>
     <p>var.less，<a href="https://github.com/heyui/heyui-demo/blob/master/src/css/var.less" target="_blank">示例</a></p>
@@ -17,7 +17,7 @@
 @blue-color: #77A2DC;</codes>
 
     <p v-height="10"></p>
-    <p>Hey-Cli 配置文件 hey.js ，<a href="https://github.com/heyui/heyui-demo/blob/master/hey.js" target="_blank">示例</a></p>
+    <p>hey-cli 配置文件 hey.js ，<a href="https://github.com/heyui/heyui-demo/blob/master/hey.js" target="_blank">示例</a></p>
     <codes type="javascript">globalVars: './src/css/var.less',</codes>
     <p v-height="10"></p>
     <h4>样式引用</h4>
@@ -34,7 +34,7 @@ new Vue({
   render: h => h(App)
 });</codes>
 
-    <h3>使用 Vue-Cli / 自己搭建webpack</h3>
+    <h3>使用 vue-cli / 自己搭建webpack</h3>
     <p>这里的引用有一些差别，主要在于样式的引用上。</p>
     <p>对于 less 变量的定义，我们并没有写入common.less文件，所以需要自己定义一个less文件做引用。</p>
 <codes type="less">@import (less) "~heyui/themes/var.less";

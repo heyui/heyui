@@ -30,7 +30,7 @@ export default {
         loadData,
         minWord: 1,
         render(item) {
-          return `<p>${item.title}<span class="float-right gray-color">${item.title.length}个字</span></p>`
+          return `<div>${item.title}<span class="float-right gray-color">${item.title.length}个字</span></div>`
         }
       }
     }
