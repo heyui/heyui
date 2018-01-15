@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/heyui/heyui/compare/v0.12.5...v0.13.0) (2018-01-15)
+
+
+### Bug Fixes
+
+* autocomplete 非mustmatch 非multiple 时 keyup更新数据 ([fdf6bd9](https://github.com/heyui/heyui/commit/fdf6bd9))
+
+
+### Features
+
+* radio 添加single模式 ([4445597](https://github.com/heyui/heyui/commit/4445597))
+* tree 添加 chooseAll 方法 ([8e2f00c](https://github.com/heyui/heyui/commit/8e2f00c))
+
+
+
 <a name="0.12.5"></a>
 ## [0.12.5](https://github.com/heyui/heyui/compare/v0.12.4...v0.12.5) (2018-01-08)
 
