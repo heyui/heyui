@@ -1,5 +1,5 @@
 <template>
-  <div :class="affixCls" :style="affixStyle"><slot></slot></div>
+  <div><div :class="affixCls" :style="affixStyle"><slot></slot></div></div>
 </template>
 <script>
 
@@ -37,29 +37,30 @@ export default {
       this.trigger({});
     },
     trigger(event) {
-      if(event.target == this.$el) return false;
+      let el = this.$el.firstChild;
+      if(event.target == el) return false;
       let original = this.isFixed;
       if (!this.isFixed) {
-        let position = this.$el.getBoundingClientRect();
+        let position = el.getBoundingClientRect();
         if (this.offsetTop !== undefined) {
           if (position.top < this.offsetTop) {
             this.isFixed = true;
             this.fixPosition = 'top';
           }
         } else if (this.offsetBottom != undefined) {
-          if (window.innerHeight < (position.top + this.$el.clientHeight + this.offsetBottom)) {
+          if (window.innerHeight < (position.top + el.clientHeight + this.offsetBottom)) {
             this.isFixed = true;
             this.fixPosition = 'bottom';
           }
         }
-      } else if (this.$el.parentNode) {
-        let position = this.$el.parentNode.getBoundingClientRect();
+      } else if (el.parentNode) {
+        let position = el.parentNode.getBoundingClientRect();
         if (this.offsetTop !== undefined) {
           if (position.top > this.offsetTop) {
             this.isFixed = false;
           }
         } else if (this.offsetBottom != undefined) {
-          if (window.innerHeight > (position.top + this.$el.clientHeight + this.offsetBottom)) {
+          if (window.innerHeight > (position.top + el.clientHeight + this.offsetBottom)) {
             this.isFixed = false;
           }
         }
