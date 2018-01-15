@@ -1,18 +1,20 @@
 <template>
-  <div :class="noticeCls">
-    <div class="h-notify-mask"
-         v-if="hasMask"
-         @click="setvalue(true)"></div>
-    <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
-      <div :class="containerCls">
-        <span class="h-notify-close h-icon-close"
-              @click="setvalue(false)"></span>
-        <component :is="nowComponent"
-                  :class="contentCls"
-                  :param="propsData"
-                  :params="propsData"
-                  @event="trigger"
-                  @close="close"></component>
+  <div>
+    <div :class="noticeCls">
+      <div class="h-notify-mask"
+          v-if="hasMask"
+          @click="setvalue(true)"></div>
+      <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
+        <div :class="containerCls">
+          <span class="h-notify-close h-icon-close"
+                @click="setvalue(false)"></span>
+          <component :is="nowComponent"
+                    :class="contentCls"
+                    :param="propsData"
+                    :params="propsData"
+                    @event="trigger"
+                    @close="close"></component>
+        </div>
       </div>
     </div>
   </div>
@@ -55,7 +57,7 @@ export default {
   watch: {
     value() {
       if (this.value) {
-        this.$el.style.display = 'block';
+        this.el.style.display = 'block';
         this.nowComponent = this.$options.propsData.component;
 
         if(this.hasMask){
@@ -73,7 +75,7 @@ export default {
         body.style.overflow = '';
         body.style.paddingRight = '';
         setTimeout(() => {
-          this.$el.style.display = 'none';
+          this.el.style.display = 'none';
           this.nowComponent = "";
         }, 200);
       }
@@ -85,11 +87,17 @@ export default {
       isOpened: this.value
     };
   },
+  beforeDestroy() {
+    let el = this.el;
+    el.style.display = 'none';
+    this.$el.appendChild(el);
+  },
   mounted() {
     this.$nextTick(() => {
-      document.body.appendChild(this.$el);
+      let el = this.el = this.$el.firstChild;
+      document.body.appendChild(this.el);
       if (!this.value) {
-        this.$el.style.display = 'none';
+        this.el.style.display = 'none';
       }
     })
   },
@@ -100,7 +108,7 @@ export default {
     close() {
       this.isOpened = false;
       setTimeout(() => {
-        this.$el.style.display = 'none';
+        this.el.style.display = 'none';
         this.nowComponent = "";
       }, 200);
       this.$emit('input', false);

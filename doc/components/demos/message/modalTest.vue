@@ -7,7 +7,8 @@
       <p>传递的参数：{{params.a}}</p>
     </div>
     <footer>
-      <button class="h-btn h-btn-primary" @click="triggerEvent">通知父级调用</button>
+      <button class="h-btn h-btn-primary" @click="triggerEvent">确定</button>
+      <button class="h-btn h-btn-blue" @click="go">跳转</button>
       <button class="h-btn" @click="close">关闭</button>
     </footer>
   </div>
@@ -27,6 +28,9 @@ export default {
     triggerEvent() {
       this.close();
       this.$emit("event", "fromchild", "测试");
+    },
+    go() {
+      this.$router.push({name: 'home'});
     },
     close() {
       this.$emit("close");

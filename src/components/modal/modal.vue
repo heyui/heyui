@@ -1,12 +1,14 @@
 <template>
-  <div :class="noticeCls">
-    <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
-    <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
-      <div :class="containerCls" v-if="isShow">
-        <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-        <header v-if="hasHeader"><slot name='header'></slot></header>
-        <div :class="contentCls"><slot></slot></div>
-        <footer v-if="hasFooter"><slot name='footer'></slot></footer>
+  <div>
+    <div :class="noticeCls">
+      <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
+      <div class="h-notify-body" @click.self="setvalue(true)">
+        <div :class="containerCls" v-if="isShow">
+          <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
+          <header v-if="hasHeader"><slot name='header'></slot></header>
+          <div :class="contentCls"><slot></slot></div>
+          <footer v-if="hasFooter"><slot name='footer'></slot></footer>
+        </div>
       </div>
     </div>
   </div>
@@ -51,45 +53,60 @@ export default {
   watch: {
     value() {
       if (this.value) {
-        document.body.appendChild(this.$el);
-        this.$el.style.display = 'block';
-        this.isShow = true;
-        if(this.hasMask){
-          let body = document.documentElement;
-          let scrollWidth = window.innerWidth - body.clientWidth;
-          body.style.overflow = 'hidden';
-          body.style.paddingRight = `${scrollWidth}px`;
-        }
-        setTimeout(() => {
-          this.isOpened = true
-        }, 100);
+        this.show();
       } else {
-        this.isOpened = false;
-        setTimeout(() => {
-          this.$el.style.display = 'none';
-          this.isShow = false;
-        }, 200);
-        let body = document.documentElement;
-        body.style.overflow = '';
-        body.style.paddingRight = '';
+        this.hide();
       }
     }
   },
   data() {
     return {
       isOpened: this.value,
-      isShow: this.value
+      isShow: this.value,
+      el: null
     };
   },
   mounted() {
     this.$nextTick(() => {
-      document.body.appendChild(this.$el);
+      let el = this.el = this.$el.firstChild;
+      document.body.appendChild(el);
       if (!this.value) {
-        this.$el.style.display = 'none';
+        el.style.display = 'none';
       }
-    })
+    });
+  },
+  beforeDestroy() {
+    let el = this.el;
+    el.style.display = 'none';
+    this.$el.appendChild(el);
   },
   methods: {
+    show() {
+      let el = this.el;
+      document.body.appendChild(el);
+      el.style.display = 'block';
+      this.isShow = true;
+      if(this.hasMask){
+        let body = document.documentElement;
+        let scrollWidth = window.innerWidth - body.clientWidth;
+        body.style.overflow = 'hidden';
+        body.style.paddingRight = `${scrollWidth}px`;
+      }
+      setTimeout(() => {
+        this.isOpened = true
+      }, 100);
+    },
+    hide() {
+      let el = this.el;
+      this.isOpened = false;
+      setTimeout(() => {
+        el.style.display = 'none';
+        this.isShow = false;
+      }, 200);
+      let body = document.documentElement;
+      body.style.overflow = '';
+      body.style.paddingRight = '';
+    },
     setvalue(fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('input', false);
