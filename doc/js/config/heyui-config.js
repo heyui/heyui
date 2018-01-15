@@ -46,7 +46,7 @@ const menus = utils.toArray({
   pluginNumberinput: 'NumberInput 数字输入框',
   pluginUpload: 'Upload 上传',
   // pluginValid: 'Valid 数据验证',
-  viewSearchinput: 'SearchInput 搜索框',
+  // viewSearchinput: 'SearchInput 搜索框',
   viewTable: 'Table 表格',
   viewPage: 'Pagination 分页',
   viewLoading: 'Loading 加载中',
