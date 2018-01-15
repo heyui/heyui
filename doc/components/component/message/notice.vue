@@ -14,6 +14,11 @@
     <h3>自定义通知</h3>
     <example demo="message/notice3"></example>
 
+    <h3>调用组件式的Notice</h3>
+    <example demo="message/notice6"></example>
+    <blockquote>弹出框中使用的代码</blockquote>
+    <codes src="/message/noticeTest.vue" type="html"></codes>
+
     <h3>设置全局自动关闭时间</h3>
     <example demo="message/notice5"></example>
 
@@ -53,6 +58,13 @@
         <td>Number</td>
         <td>-</td>
         <td>全局配置timeout</td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>引用icon</td>
+        <td>string</td>
+        <td>其实是定义一个icon的class，也可以自己写class样式</td>
+        <td>-</td>
       </tr>
     </table>
   </div>

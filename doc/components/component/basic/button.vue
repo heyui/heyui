@@ -126,7 +126,7 @@
         <td>icon</td>
         <td>引用icon</td>
         <td>string</td>
-        <td>现有的icon库</td>
+        <td>其实是定义一个icon的class，也可以自己写class样式</td>
         <td>-</td>
       </tr>
     </table>

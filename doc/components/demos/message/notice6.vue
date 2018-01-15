@@ -1,29 +1,29 @@
 <template>
-  <div>
-      <p>value:{{value}}</p>
-      <DateRangePicker v-model="value" placeholder="请选择日期" :option="param"></DateRangePicker>
-  </div>
+  <p>
+    <button class='h-btn' @click="noticeButton()">打开Notice</button>
+  </p>
 </template>
-
 <script>
-import manba from 'manba';
-
+import noticeTest from './noticeTest';
 export default {
-  data() {
-    return {
-      value: {},
-      param: {
-        shortcuts:[{
-          title: '近三天',
-          value(){
-            return {
-              start: manba().add(-3, manba.DAY),
-              end: manba(),
-            };
+  methods: {
+    noticeButton() {
+      let info = {
+        component: {
+          vue: noticeTest,
+          data: {
+            a: 1
           }
-        }]
+        },
+        events: {
+          fromchild:(modal, data)=>{
+            this.$Message(data);
+          }
+        }
       }
-    }
+      this.$Notice(info);
+    },
+
   }
 }
 </script>

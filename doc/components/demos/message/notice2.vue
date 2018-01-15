@@ -2,19 +2,19 @@
   <div>
     <blockquote>普通通知</blockquote>
     <p>
-      <button class='h-btn h-btn-text-blue' @click="notice('info')">消息</button>
-      <button class='h-btn h-btn-text-green' @click="notice('success')">成功</button>
-      <button class='h-btn h-btn-text-yellow' @click="notice('warn')">警告</button>
-      <button class='h-btn h-btn-text-red' @click="notice('error')">错误</button>
-      <button class='h-btn h-btn-text-primary' @click="noticeIcon(false)"><i class="h-icon-bell"></i><span>自定义Icon</span></button>
+      <Button color='blue' @click="notice('info')">消息</Button>
+      <Button color='green' @click="notice('success')">成功</Button>
+      <Button color='yellow' @click="notice('warn')">警告</Button>
+      <Button color='red' @click="notice('error')">错误</Button>
+      <Button color='primary' icon="h-icon-bell" @click="noticeIcon(false)">自定义Icon</Button>
     </p>
     <blockquote>标题通知</blockquote>
   <p>
-    <button class='h-btn h-btn-blue' @click="noticeTitle('info')">消息</button>
-    <button class='h-btn h-btn-green' @click="noticeTitle('success')">成功</button>
-    <button class='h-btn h-btn-yellow' @click="noticeTitle('warn')">警告</button>
-    <button class='h-btn h-btn-red' @click="noticeTitle('error')">错误</button>
-      <button class='h-btn h-btn-primary' @click="noticeIcon(true)"><i class="h-icon-bell"></i><span>自定义Icon</span></button>
+    <Button color='blue' @click="noticeTitle('info')">消息</Button>
+    <Button color='green' @click="noticeTitle('success')">成功</Button>
+    <Button color='yellow' @click="noticeTitle('warn')">警告</Button>
+    <Button color='red' @click="noticeTitle('error')">错误</Button>
+    <Button color='primary' icon="h-icon-bell" @click="noticeIcon(true)">自定义Icon</Button>
   </p>
   </div>
 </template>
