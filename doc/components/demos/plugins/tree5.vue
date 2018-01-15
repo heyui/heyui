@@ -3,7 +3,7 @@
     <p>
       <Button @click="refresh" size="xs">刷新</Button>
     </p>
-    <Tree :option="param" ref="demo" @getDataSuccess="getDataSuccess"></Tree>
+    <Tree :option="param" ref="demo" @loadDataSuccess="loadDataSuccess"></Tree>
   </div>
 </template>
 <script>
@@ -46,7 +46,7 @@ export default {
     }
   },
   methods: {
-    getDataSuccess() {
+    loadDataSuccess() {
       this.$Message.success('数据加载成功')
     },
     refresh() {

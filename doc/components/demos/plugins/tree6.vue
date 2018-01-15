@@ -35,7 +35,7 @@ export default {
             } else {
               resolve(genList(parent.title, parent.id, 5, 'id', 'title'));
             }
-          }, 1000);
+          }, 100);
         }
       }
     }
