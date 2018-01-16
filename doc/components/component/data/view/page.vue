@@ -85,6 +85,13 @@
         <td>total,pager,jumper,sizes</td>
         <td>全局配置layout</td>
       </tr>
+      <tr>
+        <td>pagerSize</td>
+        <td>总共出现多少个pager</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>5</td>
+      </tr>
     </table>
   </div>
 </template>

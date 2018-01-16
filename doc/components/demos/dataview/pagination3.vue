@@ -1,5 +1,5 @@
 <template>
-  <Pagination :cur="current" :total="total" @change="currentChange" :small="true" layout="total,sizes,pager,jumper"></Pagination>
+  <Pagination :cur="current" :total="total" :pagerSize="3" @change="currentChange" :small="true" layout="total,sizes,pager,jumper"></Pagination>
 </template>
 
 <script>

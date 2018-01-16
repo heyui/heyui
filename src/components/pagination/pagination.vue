@@ -17,14 +17,14 @@
                       <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
     <span @click="change(1)"
           :class="genPagerCls(1)">1</span>
-    <span v-if="pagerSize.length > 0 && 1 < pagerSize[0] - 1"
+    <span v-if="pagers.length > 0 && 1 < pagers[0] - 1"
           class="h-page-pager h-page-ellipsis">...</span>
-    <span v-for="pager of pagerSize"
+    <span v-for="pager of pagers"
           :key="pager"
           @click="change(pager)"
           :class="genPagerCls(pager)">{{pager}}</span>
     <span class="h-page-pager h-page-ellipsis"
-          v-if="pagerSize.length > 0 && count > pagerSize[pagerSize.length-1] + 1">...</span>
+          v-if="pagers.length > 0 && count > pagers[pagers.length-1] + 1">...</span>
     <span @click="change(count)"
           :class="genPagerCls(count)"
           v-if="this.count>1">{{count}}</span>
@@ -66,6 +66,10 @@ export default {
     total: {
       type: Number,
       default: 0
+    },
+    pagerSize: {
+      type: Number,
+      default: 5
     },
     small: {
       type: Boolean,
@@ -151,13 +155,12 @@ export default {
     count() {
       return Math.ceil(this.total / this.sizeNow);
     },
-    pagerSize() {
+    pagers() {
       if (this.count < 3) {
         return [];
       }
-      let pageStart = this.curNow < 4 ? 2 : this.curNow - 2;
-      let size = this.count > 6 ? 5 : this.count - 2;
-      
+      let pageStart = this.curNow <= this.pagerSize ? 2 : this.curNow - Math.floor(this.pagerSize / 2);
+      let size = this.count >= this.pagerSize ? this.pagerSize : this.count - Math.floor(this.pagerSize / 2);
       if (pageStart + size >= this.count) {
         pageStart = this.count - size;
       }
