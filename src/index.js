@@ -1,9 +1,9 @@
 
- /*!
+ /*
  * HeyUI JavaScript Library
  * https://heyui.top/
  *
- * Copyright (C) Lan 2017
+ * Copyright (C) Lan 2018
  * Released under the MIT license
  *
  */
