@@ -30,7 +30,9 @@ export default {
       this.$emit("event", "fromchild", "测试");
     },
     go() {
+      //注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。
       this.$router.push({name: 'home'});
+      this.$emit('close');
     },
     close() {
       this.$emit("close");

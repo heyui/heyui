@@ -65,7 +65,7 @@ router.afterEach(() => {
   Vue.nextTick(() => {
     $('.right-frame').scrollTop(0);
   });
-})
+});
 const app = new Vue({
   i18n,
   router,
