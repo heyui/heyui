@@ -111,6 +111,7 @@ export default {
   },
   methods: {
     loadDataSuccess() {
+      this.parse();
       this.$emit('loadDataSuccess');
     },
     getChoose() {

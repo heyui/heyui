@@ -132,7 +132,7 @@ export default {
   },
   watch:{
     value(){
-      if(this.updateFromInput){
+      if (this.updateFromInput) {
         this.updateFromInput = false;
         return;
       }
@@ -141,13 +141,14 @@ export default {
   },
   mounted() {
     this.initTreeDatas();
+    this.parse();
   },
   methods: {
     parse() {
       if (this.multiple) {
-        this.updateChoose(this.value);
+        this.updateChoose(this.value, false);
       } else {
-        this.updateSelect(this.value);
+        this.updateSelect(this.value, false);
       }
     },
     searchTree(value) {
@@ -267,11 +268,14 @@ export default {
       }
       this.setvalue();
     },
-    updateSelect(key) {
+    updateSelect(key, updateValue = true) {
       let option = this.treeObj[key];
       if (option) {
         this.status.selected = key;
         updateParentStatus(this.treeObj, option, 'opened', true);
+      }
+      if (updateValue) {
+        this.setvalue();
       }
     },
     getSelect() {
@@ -281,7 +285,7 @@ export default {
       let option = this.treeObj[this.status.selected];
       return option.value;
     },
-    updateChoose(choose) {
+    updateChoose(choose, updateValue = true) {
       if (!this.multiple) return;
       choose = choose||[];
       for (let key of Object.keys(this.treeObj)) {
@@ -307,8 +311,9 @@ export default {
           updateModeAllChildChooseStatus(tree);
         }
       }
-
-      this.setvalue();
+      if (updateValue) {
+        this.setvalue();
+      }
     },
     setvalue() {
       let value = null;
