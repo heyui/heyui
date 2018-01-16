@@ -13,14 +13,13 @@
     <h3>使用内置的样式</h3>
     <example demo="view/tabs3"></example>
 
-    <h3>自定义Tabs</h3>
-    <example demo="view/tabs5"></example>
-
     <h3>自定义样式</h3>
     <example demo="view/tabs4"></example>
     <p>样式：</p>
     <codes src="/codes/tabs.txt" type="less"></codes>
 
+    <h3>自定义Tabs</h3>
+    <example demo="view/tabs5"></example>
 
     <h3>Tabs 参数</h3>
     <table class="table">
