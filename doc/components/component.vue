@@ -27,11 +27,6 @@
               <router-link to="/component/form/input">Input / Textarea 输入框</router-link>
             </li>
             <li>
-              <router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link>
-            </li>
-            <li>
-              <router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link>
-            <li>
               <router-link to="/component/form/radio">Radio 单选</router-link>
             </li>
             <li>
@@ -44,14 +39,16 @@
               <router-link to="/component/data/plugin/autocomplete">AutoComplete 模糊匹配</router-link>
             </li>
             <li>
+              <router-link to="/component/data/plugin/numberinput">NumberInput 数字输入框</router-link>
+            </li>
+            <li>
+              <router-link to="/component/data/plugin/taginput">TagInput 标签输入框</router-link>
+            </li>
+            <li>
               <router-link to="/component/form/switch">Switch 开关</router-link>
             </li>
             <li>
-              <router-link to="/component/form/switchlist">SwitchList 选项</router-link>
-            </li>
-            <li>
               <router-link to="/component/form/slider">Slider 滑块</router-link>
-            </li>
             </li>
             <li>
               <router-link to="/component/form/rate">Rate 评分</router-link>
@@ -59,24 +56,6 @@
             <li>
               <router-link to="/component/form/form">Form 表单</router-link>
             </li>
-          </ul>
-          <li class="title">Data</li>
-          <ul>
-            <li class="title">Plugin</li>
-            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
-            <li>
-              <router-link to="/component/data/plugin/upload">Upload 上传</router-link>
-            </li>
-            <li>
-              <router-link to="/component/plugin/tree">Tree 树</router-link>
-            </li>
-            <li>
-              <router-link to="/component/plugin/treepicker">TreePicker 树选择</router-link>
-            </li>
-            <li>
-              <router-link to="/component/plugin/category">Category 分类选择</router-link>
-            </li>
-            <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
           </ul>
           <ul>
             <li class="title">Date</li>
@@ -97,9 +76,33 @@
             </li>
           </ul>
           <ul>
+            <li class="title">advance</li>
+            <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
+            <li>
+              <router-link to="/component/data/plugin/upload">Upload 上传</router-link>
+            </li>
+            <li>
+              <router-link to="/component/plugin/tree">Tree 树</router-link>
+            </li>
+            <li>
+              <router-link to="/component/plugin/treepicker">TreePicker 树选择</router-link>
+            </li>
+            <li>
+              <router-link to="/component/plugin/category">Category 分类选择</router-link>
+            </li>
+            <li>
+              <router-link to="/component/form/switchlist">SwitchList 选项</router-link>
+            </li>
+            <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
+          </ul>
+          <li class="title">Plugin</li>
+          <ul>
             <li class="title">View</li>
             <li>
               <router-link to="/component/data/view/table">Table 表格</router-link>
+            </li>
+            <li>
+              <router-link to="/component/view/menu">Menu 菜单</router-link>
             </li>
             <li>
               <router-link to="/component/data/view/page">Pagination 分页</router-link>
@@ -119,9 +122,15 @@
             <li>
               <router-link to="/component/plugin/steps">Steps 步骤条</router-link>
             </li>
+            <li>
+              <router-link to="/component/view/tabs">Tabs 标签页</router-link>
+            </li>
+            <li>
+              <router-link to="/component/view/timeline">Timeline 时间轴</router-link>
+            </li>
           </ul>
-          <li class="title">Plugin</li>
           <ul>
+            <li class="title">other</li>
             <li>
               <router-link to="/component/plugin/dropdowncustom">DropdownCustom 下拉控件</router-link>
             </li>
@@ -161,17 +170,6 @@
             <li>
               <router-link to="/component/view/panel">Panel 面板</router-link>
             </li>
-            <!--<li><router-link to="/component/view/collapse">Collapse 折叠面板</router-link></li>-->
-            <li>
-              <router-link to="/component/view/menu">Menu 菜单</router-link>
-            </li>
-            <li>
-              <router-link to="/component/view/tabs">Tabs 标签页</router-link>
-            </li>
-            <li>
-              <router-link to="/component/view/timeline">Timeline 时间轴</router-link>
-            </li>
-            <!--<li><router-link to="/component/view/breadcrumb">Breadcrumb 面包屑</router-link></li>-->
           </ul>
           <li class="title">Other</li>
           <ul>
@@ -194,11 +192,11 @@
 export default {
   data() {
     return {
-      pass: '',
+      pass: "",
       error: false
-    }
+    };
   },
   methods: {},
   components: {}
-}
+};
 </script>
