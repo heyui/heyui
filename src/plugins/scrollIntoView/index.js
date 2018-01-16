@@ -26,7 +26,7 @@ scrollIntoView(someElement, {
 const COMPLETE = 'COMPLETE';
 const CANCELED = 'CANCELED';
 
-function raf(task) {
+function requestAnimation(task) {
   if ('requestAnimationFrame' in window) {
     return window.requestAnimationFrame(task);
   }
@@ -93,7 +93,7 @@ function getTargetScrollLocation(target, parent, align) {
 }
 
 function animate(parent) {
-  raf(function () {
+  requestAnimation(function () {
     let scrollSettings = parent.scrollOption;
     if (!scrollSettings) {
       return;
@@ -218,4 +218,5 @@ export default function (target, settings, callback) {
       parent = window;
     }
   }
-};
+}
+

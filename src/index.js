@@ -60,6 +60,7 @@ import $Message from './plugins/message';
 import $Notice from './plugins/notice';
 import $Loading from './plugins/loading';
 import $LoadingBar from './plugins/loadingBar';
+import $ScrollIntoView from './plugins/scrollIntoView';
 
 import filters from './filters';
 import config from './utils/config';
@@ -172,6 +173,7 @@ const install = function (Vue, opts) {
 
   this.$Modal = Vue.prototype.$Modal = $Modal(Vue);
   this.$Notice = Vue.prototype.$Notice = $Notice(Vue);
+  this.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
