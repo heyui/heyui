@@ -2,7 +2,7 @@
   <div :class="numberinputCls">
     <div class="h-numberinput-show"
          :class="{'focusing':focusing}">
-      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input" :value="value" @focus="focusing=true" @blur="blur"/>
+      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input" :value="value" @input="input" @focus="focusing=true" @blur="blur"/>
       <div class="h-numberinput-operate" v-if="useOperate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
@@ -32,9 +32,13 @@ export default {
       type: String,
       // default: "请选择"
     },
+    useInt: { //是否验证整数
+      type: Boolean,
+      default: false
+    },
     useOperate: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data() {
@@ -47,20 +51,32 @@ export default {
   methods: {
     plus() {
       if (this.disabled) return false;
-      let value = parseFloat(this.value) || 0;
-      this.setvalue(utils.addFn(value, this.step));
+      let value = this.getValue(this.value);
+      this.setvalue(utils.addFn(value, this.step), 'handler');
     },
     minus() {
       if (this.disabled) return false;
-      let value = parseFloat(this.value) || 0;
-      this.setvalue(utils.addFn(value, -this.step));
+      let value = this.getValue(this.value);
+      this.setvalue(utils.addFn(value, -this.step), 'handler');
+    },
+    input(event) {
+      let value = this.getValue(event.target.value);
+      this.setvalue(value, 'input');
     },
     blur(event) {
       this.focusing = false;
-      let value = event.target.value === '' ? null : parseFloat(event.target.value) || 0;
-      this.setvalue(value);
+      let value = this.getValue(event.target.value);
+      this.setvalue(value, 'blur');
     },
-    setvalue(value) {
+    getValue(value) {
+      if (value === '') return null;
+      if (this.useInt) {
+        return parseInt(value) || 0;
+      } else {
+        return parseFloat(value) || 0;
+      }
+    },
+    setvalue(value, trigger) {
       if (this.disabled) return false;
       if (this.max !== undefined && value !== null) {
         value = Math.min(this.max, value);
@@ -69,6 +85,9 @@ export default {
         value = Math.max(this.min, value);
       }
       this.$emit('input', value);
+      if(trigger == 'blur') {
+        this.$emit('change', value);
+      }
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);

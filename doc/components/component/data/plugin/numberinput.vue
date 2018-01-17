@@ -7,7 +7,7 @@
     <h3>最大值最小值</h3>
     <example demo="form/numberinput2"></example>
 
-    <h3>不使用button</h3>
+    <h3>使用加减控制</h3>
     <example demo="form/numberinput3"></example>
 
     <h3>step</h3>
@@ -54,11 +54,35 @@
         <td>1</td>
       </tr>
       <tr>
+        <td>useInt</td>
+        <td>控制只能输入整数</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>useOperate</td>
         <td>是否使用加减按钮</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>true</td>
+        <td>false</td>
+      </tr>
+    </table>
+
+
+    <h3>NumberInput 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>数据产生改变的时候</td>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>数据产生改变blur的时候</td>
       </tr>
     </table>
   </div>
