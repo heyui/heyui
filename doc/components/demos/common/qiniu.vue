@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Uploader @fileclick="fileclick" :type="showType" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
+    <Uploader @fileclick="fileclick" :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
       <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
     </Uploader>
   </div>
@@ -18,7 +18,7 @@ export default {
       type: Object,
       default: () => { }
     },
-    showType: {
+    type: {
       type: String,
       default: 'image'
     },
@@ -107,7 +107,7 @@ export default {
             //     // item.fileType = ...
             //   })
             that.$emit("input", fileList);
-            if(that.showType == 'files' || that.showType == 'images'){
+            if(that.type == 'files' || that.type == 'images'){
               that.uploadList.splice(0, that.uploadList.length);
             }
           },
@@ -126,7 +126,7 @@ export default {
       }
 
       utils.extend(param, this.options);
-      let muti = this.showType == 'files' || this.showType == 'images';
+      let muti = this.type == 'files' || this.type == 'images';
       param.multi_selection = muti;
       qiniujs.Qiniu.uploader(param);
     },

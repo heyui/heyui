@@ -87,9 +87,8 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'file'
+      default: 'file' //files, image, images
     },
-    showType: String,
     dataType: {
       type: String,
       default: 'file' //url

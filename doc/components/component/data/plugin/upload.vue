@@ -30,6 +30,53 @@
     <h3>拖拽上传</h3>
     <example demo="dataplugins/uploader7"></example>
 
+
+    <h3>Uploader 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>文件或者图片的展示模式</td>
+        <td>String</td>
+        <td>file, image, files, images</td>
+        <td>file</td>
+      </tr>
+      <tr>
+        <td>dataType</td>
+        <td>file对象或者url的数据模式</td>
+        <td>String</td>
+        <td>file, url</td>
+        <td>file</td>
+      </tr>
+      <tr>
+        <td>uploadList</td>
+        <td>正在上传的列表</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>files</td>
+        <td>已经上传成功的文件列表</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义class name</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </table>
+
     <h3 class="democodes">七牛的通用示例</h3>
     <p>本示例写明了通用的处理方案，如果使用其他上传方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
     <codes src="/common/qiniu.vue" type="html"></codes>

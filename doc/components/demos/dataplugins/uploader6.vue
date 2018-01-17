@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Qiniu :options="options" show-type="files" data-type="file" v-model="file"></Qiniu>
+      <Qiniu :options="options" type="files" data-type="file" v-model="file"></Qiniu>
   </div>
 </template>
 
