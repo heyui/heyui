@@ -187,8 +187,10 @@ export default {
     },
     updateView(typeString, num) {
       let type = manba.DAY;
+      let nowView = manba(this.nowView);
       if (typeString == 'month') {
         type = manba.MONTH;
+        nowView = nowView.startOf(manba.MONTH);
       } else if (typeString == 'hour') {
         type = manba.HOUR;
       } else {
@@ -202,7 +204,7 @@ export default {
           type = manba.YEAR;
         }
       }
-      let nowView = manba(this.nowView).add(num, type);
+      nowView.add(num, type);
       this.$emit('updateView', nowView.time(), this.range);
     },
     isSelected(d) {
