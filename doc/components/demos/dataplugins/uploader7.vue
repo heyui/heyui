@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import qiniu from '../../common/qiniu';
+import qiniu from '../../demos/common/qiniu';
 
 export default {
   data() {

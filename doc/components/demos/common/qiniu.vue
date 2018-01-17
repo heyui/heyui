@@ -7,6 +7,7 @@
 </template>
 <script>
 
+//由于七牛和plupload的封装不是es6模式的，所以我们自己封装了两个对应的es6包
 import qiniujs from 'qiniu-js-es6';
 import pluploadjs from 'plupload-es6';
 import utils from 'hey-utils';
@@ -107,7 +108,6 @@ export default {
             //   })
             that.$emit("input", fileList);
             if(that.showType == 'files' || that.showType == 'images'){
-              // that.uploadList = [that.uploadList];
               that.uploadList.splice(0, that.uploadList.length);
             }
           },
