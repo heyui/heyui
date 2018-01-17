@@ -57,6 +57,7 @@
               <router-link to="/component/form/form">Form 表单</router-link>
             </li>
           </ul>
+          <li class="title">Plugin</li>
           <ul>
             <li class="title">Date</li>
             <li>
@@ -76,7 +77,7 @@
             </li>
           </ul>
           <ul>
-            <li class="title">advance</li>
+            <li class="title">Advance</li>
             <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
             <li>
               <router-link to="/component/data/plugin/upload">Upload 上传</router-link>
@@ -90,12 +91,8 @@
             <li>
               <router-link to="/component/plugin/category">Category 分类选择</router-link>
             </li>
-            <li>
-              <router-link to="/component/form/switchlist">SwitchList 选项</router-link>
-            </li>
             <!--<li><router-link to="/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
           </ul>
-          <li class="title">Plugin</li>
           <ul>
             <li class="title">View</li>
             <li>
@@ -126,11 +123,14 @@
               <router-link to="/component/view/tabs">Tabs 标签页</router-link>
             </li>
             <li>
+              <router-link to="/component/form/switchlist">SwitchList 选项</router-link>
+            </li>
+            <li>
               <router-link to="/component/view/timeline">Timeline 时间轴</router-link>
             </li>
           </ul>
           <ul>
-            <li class="title">other</li>
+            <li class="title">Other</li>
             <li>
               <router-link to="/component/plugin/dropdowncustom">DropdownCustom 下拉控件</router-link>
             </li>
@@ -142,6 +142,12 @@
             </li>
             <li>
               <router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link>
+            </li>
+            <li>
+              <router-link to="/component/other/affix">Affix 图钉</router-link>
+            </li>
+            <li>
+              <router-link to="/component/other/backtop">BackTop 返回顶部</router-link>
             </li>
           </ul>
           <li class="title">Message</li>
@@ -169,15 +175,6 @@
             </li>
             <li>
               <router-link to="/component/view/panel">Panel 面板</router-link>
-            </li>
-          </ul>
-          <li class="title">Other</li>
-          <ul>
-            <li>
-              <router-link to="/component/other/affix">Affix 图钉</router-link>
-            </li>
-            <li>
-              <router-link to="/component/other/backtop">BackTop 返回顶部</router-link>
             </li>
           </ul>
         </ul>
