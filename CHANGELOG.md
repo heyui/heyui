@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/heyui/heyui/compare/v0.13.0...v0.14.0) (2018-01-18)
+
+
+### Bug Fixes
+
+*  modal, notice 添加router i18n的引用 ([fc75350](https://github.com/heyui/heyui/commit/fc75350))
+* demo -> admin ([c10990b](https://github.com/heyui/heyui/commit/c10990b))
+* demo->admin ([331310e](https://github.com/heyui/heyui/commit/331310e))
+* locale优化 ([102e872](https://github.com/heyui/heyui/commit/102e872))
+* modal vue 整体优化 ([b5e987f](https://github.com/heyui/heyui/commit/b5e987f))
+* notice css 优化 ([770d193](https://github.com/heyui/heyui/commit/770d193))
+* pagination 添加pagerSize的参数 ([5473ecb](https://github.com/heyui/heyui/commit/5473ecb))
+* 优化affix机制 ([a18cad6](https://github.com/heyui/heyui/commit/a18cad6))
+* 修改文案 ([681110d](https://github.com/heyui/heyui/commit/681110d))
+* 视图在切换月份的时候计算错误 ([7316c0b](https://github.com/heyui/heyui/commit/7316c0b))
+* 组件排列顺序修改 ([c2f4ee5](https://github.com/heyui/heyui/commit/c2f4ee5))
+
+
+### Features
+
+* notice js 调用 ([0c9a133](https://github.com/heyui/heyui/commit/0c9a133))
+* numberInput 整体优化 ([be07a6a](https://github.com/heyui/heyui/commit/be07a6a))
+* 添加$ScrollIntoView方法 ([1b81ac9](https://github.com/heyui/heyui/commit/1b81ac9))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/heyui/heyui/compare/v0.12.5...v0.13.0) (2018-01-15)
 
