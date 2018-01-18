@@ -44,7 +44,8 @@
             @click="picker(result)">
           <div v-if="!!result.html"
                v-html="result.html"></div>
-          <template v-else>{{result.title}}</template>
+          <template v-else-if="!$scopedSlots.item">{{result.title}}</template>
+          <slot v-else :item="result" name="item"></slot>
         </li>
         <li v-if="results.length==0"
             v-color:gray

@@ -1,8 +1,11 @@
 <template>
   <div >
     <p>value:{{value}}</p>
-    <div v-width="300"><AutoComplete :option="param"
-                  v-model="value" @change="onChange"></AutoComplete></div>
+    <div v-width="300">
+      <AutoComplete :option="param" v-model="value" @change="onChange">
+        <template slot="item" slot-scope="props"><div>{{props.item.title}}<span class="float-right gray-color">{{props.item.title.length}}个字</span></div></template>
+      </AutoComplete>
+    </div>
   </div>
 </template>
 <script>
@@ -28,10 +31,7 @@ export default {
       value: '',
       param: {
         loadData,
-        minWord: 1,
-        render(item) {
-          return `<div>${item.title}<span class="float-right gray-color">${item.title.length}个字</span></div>`
-        }
+        minWord: 1
       }
     }
   },
