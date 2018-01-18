@@ -231,6 +231,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>delay</td>
+        <td>数据获取的delay时间，提升性能，单位为毫秒</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>100</td>
+      </tr>
     </table>
   </div>
 </template>

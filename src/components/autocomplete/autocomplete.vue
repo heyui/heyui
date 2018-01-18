@@ -97,7 +97,11 @@ export default {
       // default: "未搜索到相关数据"
     },
     config: String,
-    className: String
+    className: String,
+    delay: {
+      type: Number,
+      default: 100
+    }
   },
   data() {
     return {
@@ -113,7 +117,8 @@ export default {
       loading: false,
       content: null,
       loadDatas: [],
-      isShow: false
+      isShow: false,
+      searchTimeout: null
     };
   },
   watch: {
@@ -294,7 +299,12 @@ export default {
       } else if (code == 13) {
         //兼容处理ie，使用enterHandle处理了。
       } else {
-        this.search(event.target);
+        if (this.searchTimeout) {
+          clearTimeout(this.searchTimeout);
+        }
+        this.searchTimeout = setTimeout(() => {
+          this.search(event.target);
+        }, this.delay );
         if(!this.mustMatch && !this.multiple) {
           this.setvalue('keyup');
         }
