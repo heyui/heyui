@@ -247,6 +247,9 @@ class Notify {
         utils.removeDom($body);
       }
     });
+    setTimeout(() => {
+      utils.removeDom($body);
+    }, 4000);
   }
 }
 

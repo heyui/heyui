@@ -70,7 +70,7 @@ export default utils.extend({}, utils, {
     return this;
   },
   removeDom(elem) {
-    if (elem.parentNode) {
+    if (elem && elem.parentNode) {
       elem.parentNode.removeChild(elem);
     }
   },
