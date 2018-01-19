@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.1"></a>
+## [0.14.1](https://github.com/heyui/heyui/compare/v0.14.0...v0.14.1) (2018-01-19)
+
+
+### Bug Fixes
+
+* autocomplete使用slot做自定义 ([b7aeee7](https://github.com/heyui/heyui/commit/b7aeee7))
+* autocomplete添加delay ([89c5405](https://github.com/heyui/heyui/commit/89c5405))
+* transitionend listener invalid ([886da62](https://github.com/heyui/heyui/commit/886da62))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/heyui/heyui/compare/v0.13.0...v0.14.0) (2018-01-18)
 
