@@ -9,6 +9,9 @@ const getContent = function (el, vnode) {
     param.content = attrs.content;
   }
   let ref = attrs['ref-el'];
+  if (!vnode.context.$el.querySelector) {
+    return false;
+  }
   let refNode = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
   if (refNode) {
     param.content = refNode;
