@@ -305,9 +305,9 @@ export default {
         this.searchTimeout = setTimeout(() => {
           this.search(event.target);
         }, this.delay );
-        if(!this.mustMatch && !this.multiple) {
-          this.setvalue('keyup');
-        }
+        // if(!this.mustMatch && !this.multiple) {
+        //   this.setvalue('keyup');
+        // }
       }
     },
     enterHandle(event) {
