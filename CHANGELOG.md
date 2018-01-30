@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.3"></a>
+## [0.14.3](https://github.com/heyui/heyui/compare/v0.14.2...v0.14.3) (2018-01-30)
+
+
+### Bug Fixes
+
+* autocomplete删除keyup触发 ([8c2f257](https://github.com/heyui/heyui/commit/8c2f257))
+
+
+
 <a name="0.14.2"></a>
 ## [0.14.2](https://github.com/heyui/heyui/compare/v0.14.1...v0.14.2) (2018-01-30)
 
