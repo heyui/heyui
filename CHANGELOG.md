@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.2"></a>
+## [0.14.2](https://github.com/heyui/heyui/compare/v0.14.1...v0.14.2) (2018-01-30)
+
+
+### Bug Fixes
+
+* tree component use tree data mode error ([3051a1f](https://github.com/heyui/heyui/commit/3051a1f))
+* 当tooltip销毁的时候 ([17016a8](https://github.com/heyui/heyui/commit/17016a8))
+
+
+
 <a name="0.14.1"></a>
 ## [0.14.1](https://github.com/heyui/heyui/compare/v0.14.0...v0.14.1) (2018-01-19)
 
