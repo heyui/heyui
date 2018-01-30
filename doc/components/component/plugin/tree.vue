@@ -190,10 +190,17 @@
       </tr>
       <tr>
         <td>parentName</td>
-        <td>数据的parent对应字段</td>
+        <td>数据的parent对应字段，配合数据类型为list的数据</td>
         <td>String</td>
         <td>-</td>
         <td>全局配置<code>tree.default.parentName</code></td>
+      </tr>
+      <tr>
+        <td>childrenName</td>
+        <td>数据的children对应字段，配合数据类型为tree的数据</td>
+        <td>String</td>
+        <td>-</td>
+        <td>全局配置<code>tree.default.childrenName</code></td>
       </tr>
       <tr>
         <td>dataMode</td>

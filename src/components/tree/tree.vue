@@ -243,7 +243,7 @@ export default {
       for (let data of list) {
         let obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey, icon: data.treeIcon,  status: { hide: false, opened: false, loading: false, checkable: data.checkable===false ? false : true, isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
         let children = data[this.param.childrenName] || [];
-        obj[this.param.childrenName] = this.initTreeModeData(children, isWait, obj.key);
+        obj.children = this.initTreeModeData(children, isWait, obj.key);
         this.treeObj[obj.key] = obj;
         datas.push(obj);
       }
