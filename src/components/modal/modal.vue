@@ -49,6 +49,7 @@ export default {
       type: Boolean,
       default: false
     },
+    className: String
   },
   watch: {
     value() {

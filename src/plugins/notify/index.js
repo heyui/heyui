@@ -85,6 +85,9 @@ class Notify {
     if (param.class) {
       utils.addClass($body, param.class);
     }
+    if (param.className) {
+      utils.addClass($body, param.className);
+    }
     $body.innerHTML = html;
     let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
     let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);

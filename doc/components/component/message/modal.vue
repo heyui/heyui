@@ -183,6 +183,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>className</td>
+        <td>样式补充</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
   </div>
 </template>
