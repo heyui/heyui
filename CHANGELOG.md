@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.4"></a>
+## [0.14.4](https://github.com/heyui/heyui/compare/v0.14.3...v0.14.4) (2018-01-31)
+
+
+### Bug Fixes
+
+* modal component add className attr ([0c60413](https://github.com/heyui/heyui/commit/0c60413))
+* modal.js  add className attr ([14ff5cc](https://github.com/heyui/heyui/commit/14ff5cc))
+* pagination 分页问题 ([09f0b76](https://github.com/heyui/heyui/commit/09f0b76))
+
+
+
 <a name="0.14.3"></a>
 ## [0.14.3](https://github.com/heyui/heyui/compare/v0.14.2...v0.14.3) (2018-01-30)
 
