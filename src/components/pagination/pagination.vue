@@ -159,12 +159,14 @@ export default {
       if (this.count < 3) {
         return [];
       }
-      let pageStart = this.curNow <= this.pagerSize ? 2 : this.curNow - Math.floor(this.pagerSize / 2);
+      let pageStart = this.curNow - Math.floor(this.pagerSize / 2);
       let size = this.count >= this.pagerSize ? this.pagerSize : this.count - Math.floor(this.pagerSize / 2);
       if (pageStart + size >= this.count) {
-        pageStart = this.count - size;
+        pageStart = this.count - size + 1;
       }
       let list = [];
+      pageStart = Math.max(2, pageStart);
+      size = Math.min(this.count - pageStart, size);
       for (let i = 0; i < size; i++) {
         list.push(i + pageStart);
       }
