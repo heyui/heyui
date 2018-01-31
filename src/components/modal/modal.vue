@@ -134,7 +134,8 @@ export default {
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
         [`${notifyprefix}-has-divider`]: this.hasDivider,
         'h-dropdown-common-container': true,
-        [`${prefix}-full-screen`]: this.fullScreen
+        [`${prefix}-full-screen`]: this.fullScreen,
+        [this.className]: !!this.className
       }
     },
     hasHeader() {
