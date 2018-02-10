@@ -7,7 +7,7 @@
 
 <template>
     <div v-height="1000" class="bg-gray2-color relative text-right">
-      <Affix :offset-top="90" :offset-bottom="20" class="affix-demo-3" :container="getContainer" @change="onchange">
+      <Affix :parent-offset-top="20" :parent-offset-bottom="20" :offset-top="90" :offset-bottom="20" class="affix-demo-3" :container="getContainer" @change="onchange">
         <button class="h-btn h-btn-blue">固定容器内</button>
       </Affix>
     </div>

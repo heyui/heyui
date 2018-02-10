@@ -10,6 +10,8 @@ export default {
     offsetTop: Number,
     offsetBottom: Number,
     container: Function,
+    parentOffsetTop: Number,
+    parentOffsetBottom: Number,
   },
   data() {
     return {
@@ -49,18 +51,20 @@ export default {
       if(this.containerDom) {
         let offsetTop = this.offsetTop || 0;
         let offsetBottom = this.offsetBottom || 0;
+        let parentOffsetTop = this.parentOffsetTop || offsetTop || 0;
+        let parentOffsetBottom = this.parentOffsetBottom || offsetBottom || 0;
         let position = el.getBoundingClientRect();
         let containerPosition = this.containerDom.getBoundingClientRect();
         // log('===========new===========')
-        // log('top isAbsolute', position.top > 0 && position.top - containerPosition.top < offsetTop)
-        // log('bottom isAbsolute', containerPosition.bottom - position.bottom < offsetBottom)
+        // log('top isAbsolute', position.top > 0 && position.top - containerPosition.top < parentOffsetTop)
+        // log('bottom isAbsolute', containerPosition.bottom - position.bottom < parentOffsetBottom)
         // log('top isFixed', this.isAbsolute && position.top - containerPosition.top > offsetTop && position.top < offsetTop)
         // log('bottom isFixed', containerPosition.bottom - position.bottom > offsetBottom && window.innerHeight - position.bottom < offsetBottom)
-        if ( position.top > 0 && position.top - containerPosition.top < offsetTop) {
+        if ( position.top > 0 && position.top - containerPosition.top < parentOffsetTop) {
           this.isFixed = false;
           this.isAbsolute = true;
           this.fixPosition = 'top';
-        } else if ( containerPosition.bottom - position.bottom < offsetBottom) {
+        } else if ( containerPosition.bottom - position.bottom < parentOffsetBottom) {
           this.isFixed = false;
           this.isAbsolute = true;
           this.fixPosition = 'bottom';
@@ -122,11 +126,19 @@ export default {
     },
     affixStyle() {
       let param = {};
-      if (this.isFixed || this.isAbsolute) {
+      if (this.isFixed) {
         if (this.fixPosition == 'top') {
           param.top = `${this.offsetTop}px`;
         } else {
           param.bottom = `${this.offsetBottom}px`;
+        }
+      }
+
+      if(this.isAbsolute) {
+        if (this.fixPosition == 'top') {
+          param.top = `${this.parentOffsetTop}px`;
+        } else {
+          param.bottom = `${this.parentOffsetBottom}px`;
         }
       }
       return param;
