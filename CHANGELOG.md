@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/heyui/heyui/compare/v0.14.4...v0.15.0) (2018-02-10)
+
+
+### Bug Fixes
+
+* pagination 分页计算重写 ([a8bfb3f](https://github.com/heyui/heyui/commit/a8bfb3f))
+* 添加parentOffsetTop,parentOffsetBottom ([7a23640](https://github.com/heyui/heyui/commit/7a23640))
+
+
+### Features
+
+* affix container ([190e8ab](https://github.com/heyui/heyui/commit/190e8ab))
+
+
+
 <a name="0.14.4"></a>
 ## [0.14.4](https://github.com/heyui/heyui/compare/v0.14.3...v0.14.4) (2018-01-31)
 
