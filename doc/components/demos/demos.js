@@ -228,4 +228,5 @@ export default {
   'otherBacktotop2': resolve => require.ensure([], require => require('./other/backtotop2'), 'other'),
   'otherAffix1': resolve => require.ensure([], require => require('./other/affix1'), 'other'),
   'otherAffix2': resolve => require.ensure([], require => require('./other/affix2'), 'other'),
+  'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),
 }

@@ -8,6 +8,9 @@
     </div>
     <example demo="other/affix2"></example>
     
+    <h3>affix 固定在容器内</h3>
+    <example demo="other/affix3"></example>
+    
     <h3>affix 参数</h3>
     <table class="table">
       <tr>

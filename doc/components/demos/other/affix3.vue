@@ -1,15 +1,32 @@
+<style lang="less">
+.affix-demo-3{
+  float: right;
+  width: 120px;
+}
+</style>
+
 <template>
-    <BackTop :target="getTarget" :bottom="100" :right="50" class-name="h-backtop-custom">
-      返回顶部
-    </BackTop>
+    <div v-height="1000" class="bg-gray2-color relative text-right">
+      <Affix :offset-top="90" :offset-bottom="20" class="affix-demo-3" :container="getContainer" @change="onchange">
+        <button class="h-btn h-btn-blue">固定容器内</button>
+      </Affix>
+    </div>
 </template>
 
 <script>
 
 export default {
+  data() {
+    return {
+      fixed: false
+    }
+  },
   methods: {
-    getTarget() {
-      return document.querySelector('.right-frame');
+    onchange(fixed) {
+      this.fixed = fixed;
+    },
+    getContainer() {
+      return this.$el;
     }
   }
 }
