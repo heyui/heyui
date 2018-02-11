@@ -250,7 +250,7 @@ export default {
         } else if (!lastDate.end) {
           lastDate.end = string;
         } else {
-          lastDate.start = '';
+          lastDate.start = string;
           lastDate.end = '';
         }
       }
