@@ -228,7 +228,15 @@ export default {
         //除了month和year点击，其他都直接完成赋值
         if (!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date') {
           if(this.value){
-            date = manba(this.value);
+            if (this.range) {
+              try {
+                date = manba(this.value[this.range]);
+              } catch(e) {
+                date = manba(d.date);
+              }
+            } else {
+              date = manba(this.value);
+            }
             switch(this.view){
               case 'minutes': 
                 date.minutes(d.date.minutes());

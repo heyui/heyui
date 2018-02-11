@@ -238,13 +238,21 @@ export default {
     setvalue(string, isEnd = false, range) {
       string = string || '';
       let lastDate = utils.copy(this.nowDate);
-      if (!lastDate.start) {
-        lastDate.start = string;
-      } else if (!lastDate.end) {
-        lastDate.end = string;
+      if(!isEnd) {
+        if (range == 'start') {
+          lastDate.start = string;
+        } else if (range == 'end') {
+          lastDate.end = string;
+        }
       } else {
-        lastDate.start = '';
-        lastDate.end = '';
+        if (!lastDate.start) {
+          lastDate.start = string;
+        } else if (!lastDate.end) {
+          lastDate.end = string;
+        } else {
+          lastDate.start = '';
+          lastDate.end = '';
+        }
       }
       if (isEnd && lastDate.start && lastDate.end && lastDate.start > lastDate.end) {
         let start = lastDate.start;
