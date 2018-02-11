@@ -41,20 +41,6 @@
         <td>-</td>
         <td>-</td>
       </tr>
-      <tr>
-        <td>parentOffsetTop</td>
-        <td>定位在距离容器顶部达到指定偏移量后</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>parentOffsetBottom</td>
-        <td>定位在距离容器底部达到指定偏移量后</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
     </table>
 
 

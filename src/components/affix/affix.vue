@@ -10,16 +10,19 @@ export default {
     offsetTop: Number,
     offsetBottom: Number,
     container: Function,
-    parentOffsetTop: Number,
-    parentOffsetBottom: Number,
+    // parentOffsetTop: Number,
+    // parentOffsetBottom: Number,
   },
   data() {
     return {
+      fixedOffsetTop: this.offsetTop,
+      fixedOffsetBottom: this.offsetBottom,
       scrollEvent: null,
       isFixed: false,
-      fixPosition: false,
+      fixPosition: 'top',
       containerDom: null,
-      isAbsolute: false,
+      isAbsolute: this.container ? true : false,
+      y: 0,
     }
   },
   mounted() {
@@ -49,34 +52,39 @@ export default {
       if(event.target == el) return false;
       let original = this.isFixed;
       if(this.containerDom) {
-        let offsetTop = this.offsetTop || 0;
-        let offsetBottom = this.offsetBottom || 0;
-        let parentOffsetTop = this.parentOffsetTop || offsetTop || 0;
-        let parentOffsetBottom = this.parentOffsetBottom || offsetBottom || 0;
+        // let offsetTop = this.offsetTop || 0;
+        // let offsetBottom = this.offsetBottom || 0;
+        let fixedOffsetTop = this.fixedOffsetTop = (window.innerHeight - el.clientHeight) / 2;
+        let fixedOffsetBottom = this.fixedOffsetBottom = (window.innerHeight - el.clientHeight) / 2;
+        let parentOffsetTop = this.offsetTop || 0;
+        let parentOffsetBottom = this.offsetBottom || 0;
         let position = el.getBoundingClientRect();
         let containerPosition = this.containerDom.getBoundingClientRect();
+        let dis = containerPosition.top - this.y;
+        this.y = containerPosition.top;
         // log('===========new===========')
-        // log('top isAbsolute', position.top > 0 && position.top - containerPosition.top < parentOffsetTop)
-        // log('bottom isAbsolute', containerPosition.bottom - position.bottom < parentOffsetBottom)
-        // log('top isFixed', this.isAbsolute && position.top - containerPosition.top > offsetTop && position.top < offsetTop)
-        // log('bottom isFixed', containerPosition.bottom - position.bottom > offsetBottom && window.innerHeight - position.bottom < offsetBottom)
-        if ( position.top > 0 && position.top - containerPosition.top < parentOffsetTop) {
+        // log('dis', dis);
+        // log('top isAbsolute', dis > 0 && position.top - containerPosition.top < parentOffsetTop)
+        // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
+        // log('top isFixed', ( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + parentOffsetBottom)));
+        // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < fixedOffsetBottom && containerPosition.top < (fixedOffsetTop - parentOffsetTop)))
+        
+        if ( dis >= 0 && position.top - containerPosition.top < parentOffsetTop) {
           this.isFixed = false;
           this.isAbsolute = true;
           this.fixPosition = 'top';
-        } else if ( containerPosition.bottom - position.bottom < parentOffsetBottom) {
+        } else if ( dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom) {
           this.isFixed = false;
           this.isAbsolute = true;
           this.fixPosition = 'bottom';
-        } else if (this.isAbsolute && this.fixPosition != 'bottom' && position.top < offsetTop) {
+        } else if (this.isAbsolute && 
+            (( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + parentOffsetBottom))
+            || (dis > 0 && window.innerHeight - position.bottom < fixedOffsetBottom && containerPosition.top < (fixedOffsetTop - parentOffsetTop)))) {
           this.isFixed = true;
           this.isAbsolute = false;
           this.fixPosition = 'top';
-        } else if (this.isAbsolute && this.fixPosition != 'top' && window.innerHeight - position.bottom < offsetBottom) {
-          this.isFixed = true;
-          this.isAbsolute = false;
-          this.fixPosition = 'bottom';
         }
+        
         if (original != this.isFixed) {
           this.$emit('onchange', this.isFixed);
           this.$emit('change', this.isFixed);
@@ -128,17 +136,17 @@ export default {
       let param = {};
       if (this.isFixed) {
         if (this.fixPosition == 'top') {
-          param.top = `${this.offsetTop}px`;
+          param.top = `${this.fixedOffsetTop}px`;
         } else {
-          param.bottom = `${this.offsetBottom}px`;
+          param.bottom = `${this.fixedOffsetBottom}px`;
         }
       }
 
       if(this.isAbsolute) {
         if (this.fixPosition == 'top') {
-          param.top = `${this.parentOffsetTop}px`;
+          param.top = `${this.offsetTop}px`;
         } else {
-          param.bottom = `${this.parentOffsetBottom}px`;
+          param.bottom = `${this.offsetBottom}px`;
         }
       }
       return param;
