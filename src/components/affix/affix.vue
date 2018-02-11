@@ -66,7 +66,7 @@ export default {
         // log('dis', dis);
         // log('top isAbsolute', dis > 0 && position.top - containerPosition.top < parentOffsetTop)
         // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
-        // log('top isFixed', ( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + parentOffsetBottom)));
+        // log('top isFixed', ( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + el.clientHeight + parentOffsetBottom)));
         // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < fixedOffsetBottom && containerPosition.top < (fixedOffsetTop - parentOffsetTop)))
         
         if ( dis >= 0 && position.top - containerPosition.top < parentOffsetTop) {
@@ -78,7 +78,7 @@ export default {
           this.isAbsolute = true;
           this.fixPosition = 'bottom';
         } else if (this.isAbsolute && 
-            (( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + parentOffsetBottom))
+            (( dis < 0 && position.top < fixedOffsetTop && containerPosition.bottom > (fixedOffsetTop + el.clientHeight + parentOffsetBottom))
             || (dis > 0 && window.innerHeight - position.bottom < fixedOffsetBottom && containerPosition.top < (fixedOffsetTop - parentOffsetTop)))) {
           this.isFixed = true;
           this.isAbsolute = false;
