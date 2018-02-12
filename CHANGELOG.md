@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.3"></a>
+## [0.16.3](https://github.com/heyui/heyui/compare/v0.16.2...v0.16.3) (2018-02-12)
+
+
+### Bug Fixes
+
+* index.less use qiniu link in url ([25139ca](https://github.com/heyui/heyui/commit/25139ca))
+
+
+
 <a name="0.16.2"></a>
 ## [0.16.2](https://github.com/heyui/heyui/compare/v0.16.1...v0.16.2) (2018-02-12)
 
