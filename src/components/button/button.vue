@@ -9,6 +9,7 @@ const Props = {
   size: new Set(['l', 's', 'xs'])
 }
 export default {
+  name: 'Button',
   props: {
     color: String,
     textColor: String,

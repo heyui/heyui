@@ -15,6 +15,7 @@ import Dropdown from '../../plugins/dropdown';
 const prefix = 'h-dropdowncustom';
 
 export default {
+  name: 'DropdownCustom',
   props: {
     trigger: {
       type: String,  //click,hover

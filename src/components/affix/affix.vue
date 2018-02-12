@@ -6,6 +6,7 @@
 const prefix = 'h-affix';
 
 export default {
+  name: 'Affix',
   props: {
     offsetTop: Number,
     offsetBottom: Number,

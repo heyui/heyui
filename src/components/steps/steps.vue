@@ -25,6 +25,7 @@ import utils from '../../utils/utils';
 const prefix = 'h-steps';
 
 export default {
+  name: 'Steps',
   props: {
     dict: String,
     datas: [Object, Array],

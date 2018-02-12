@@ -3,6 +3,7 @@
 </template>
 <script>
 export default {
+  name: 'hSwitch',
   props: {
     disabled: {
       type: Boolean,

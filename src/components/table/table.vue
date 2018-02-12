@@ -114,6 +114,7 @@ import TableTh from './table-item';
 const prefix = 'h-table';
 
 export default {
+  name: 'Table',
   props: {
     columns: {
       type: Array,

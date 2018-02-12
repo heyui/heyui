@@ -16,6 +16,7 @@ const prefix = 'h-circle';
 const colors = ['red', 'blue', 'primary', 'gray', 'yellow', 'green'];
 
 export default {
+  name: 'hCircle',
   props: {
     color: {
       type: String,

@@ -13,6 +13,7 @@ const getHalf = (width, hasRemainder) => {
 }
 
 export default {
+  name: 'Col',
   props: {
     width: [Number, String],
     flex: [Number, String],

@@ -46,6 +46,7 @@ import utils from "../../utils/utils";
 const prefix = "h-page";
 
 export default {
+  name: 'Pagination',
   props: {
     size: {
       type: Number,

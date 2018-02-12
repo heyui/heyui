@@ -64,6 +64,7 @@ const manbaType = {
 }
 
 export default {
+  name: 'DateFullRangePicker',
   props: {
     defaultType: {
       type: [String],

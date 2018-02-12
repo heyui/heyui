@@ -10,6 +10,7 @@ import Tooltip from '../../plugins/tooltip';
 const prefix = 'h-tooltip';
 
 export default {
+  name: 'Tooltip',
   props: {
     trigger: {
       type: String,  //click,hover

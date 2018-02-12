@@ -21,6 +21,7 @@ import categoryModal from './categoryModal';
 const prefix = 'h-category';
 
 export default {
+  name: 'Category',
   props: {
     option: Object,
     multiple: {

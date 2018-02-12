@@ -26,6 +26,7 @@ const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
 
 export default {
+  name: 'ModalComponent',
   props: {
     hasCloseIcon: {
       type: Boolean,

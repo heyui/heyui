@@ -15,6 +15,7 @@
 const prefix = 'h-search';
 
 export default {
+  name: 'Search',
   props: {
     position: {
       type: String,

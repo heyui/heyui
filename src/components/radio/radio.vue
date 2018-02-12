@@ -11,6 +11,7 @@ import utils from '../../utils/utils';
 import config from '../../utils/config';
 
 export default {
+  name: 'Radio',
   model: {
     prop: 'selectStatus',
     event: 'input'

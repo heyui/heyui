@@ -2,6 +2,7 @@ import TableTd from './table-td';
 import utils from '../../utils/utils';
 
 export default {
+  name: 'TableTr',
   props: {
     datas: [Object, Array],
     index: Number

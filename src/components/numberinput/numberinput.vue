@@ -16,6 +16,7 @@ import utils from '../../utils/utils'
 const prefix = 'h-numberinput';
 
 export default {
+  name: 'NumberInput',
   props: {
     value: [ Number, String ],
     min: Number,

@@ -8,6 +8,7 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 
 export default {
+  name: 'SwitchList',
   props: {
     small: {
       type: Boolean,

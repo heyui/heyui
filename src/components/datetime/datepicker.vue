@@ -70,6 +70,7 @@ const manbaType = {
 const options = config.getOption('datepicker');
 
 export default {
+  name: 'DatePicker',
   props: {
     disabled: {
       type: Boolean,

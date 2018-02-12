@@ -19,6 +19,7 @@ const prefix = 'h-progress';
 const colors = ['red', 'blue', 'primary', 'gray', 'yellow', 'green'];
 
 export default {
+  name: 'Progress',
   props: {
     color: {
       type: String,

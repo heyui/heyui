@@ -11,6 +11,7 @@ import scrollIntoView from '../../plugins/scrollIntoView'
 const prefixCls = 'h-form';
 
 export default {
+  name: 'Form',
   props: {
     top: {
       type: Number
