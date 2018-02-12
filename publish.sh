@@ -1,6 +1,6 @@
 echo "打包hey build"
 hey b
-lessc themes/index.less>build/index.css -x -rp=http://7xpm14.com1.z0.glb.clouddn.com/
+lessc themes/index.less>build/index.css -x -rp=https://unpkg.com/heyui@0.16.3/themes/font/
 git add -A
 git commit -m "package"
 set -e
