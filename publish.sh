@@ -1,6 +1,7 @@
 echo "打包hey build"
 hey b
 lessc themes/index.less>build/index.css -x
+cp -r themes/font/fonts build/fonts
 git add -A
 git commit -m "package"
 set -e
