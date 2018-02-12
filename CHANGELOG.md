@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/heyui/heyui/compare/v0.15.4...v0.16.0) (2018-02-12)
+
+
+### Features
+
+* Component 添加 name 属性 ([760ed71](https://github.com/heyui/heyui/commit/760ed71))
+
+
+
 <a name="0.15.4"></a>
 ## [0.15.4](https://github.com/heyui/heyui/compare/v0.15.3...v0.15.4) (2018-02-12)
 
