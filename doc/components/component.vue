@@ -3,10 +3,18 @@
     <com-frame class="page-body">
       <div slot="left-frame">
         <ul>
+          <ul>
+            <li class="gray-color">&nbsp;</li>
+            <li><router-link to="/component/guide" :class="{'router-link-active': $route.name =='basic'}">入门</router-link></li>
+            <li><router-link to="/component/quickstart">快速上手</router-link></li>
+            <li><router-link to="/component/themes">更换主题</router-link></li>
+            <li><router-link to="/component/config">全局配置</router-link></li>
+            <!-- <li><router-link to="/guide/logs">更新日志</router-link></li> -->
+          </ul>
           <li class="title">样式</li>
           <ul>
             <li>
-              <router-link to="/component/basic/grid" :class="{'router-link-active': $route.name =='basic'}">Grid 布局</router-link>
+              <router-link to="/component/basic/grid">Grid 布局</router-link>
             </li>
             <li>
               <router-link to="/component/basic/color">Color 色彩</router-link>

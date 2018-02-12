@@ -6,7 +6,7 @@
 
     <h4>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> 脚手架(推荐)</h4>
     <p>在自己定义的 var.less 文件中引用 heyui 的 var.less 文件，并按照自己的需求重新定义更换主题，然后在hey.js脚手架配置文件中设定全局引用文件。</p>
-    <p>var.less，<a href="https://github.com/heyui/heyui-demo/blob/master/src/css/var.less" target="_blank">示例</a></p>
+    <p>var.less，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less" target="_blank">示例</a></p>
     <codes type="less">@import (less) "~/heyui/themes/var.less";
 //重新定义主题
 @primary-color: #FDA729;
@@ -15,7 +15,7 @@
 @yellow-color: #EAC12C;
 @blue-color: #77A2DC;</codes>
     <p v-height="10"></p>
-    <p>hey-cli 配置文件 hey.js ，<a href="https://github.com/heyui/heyui-demo/blob/master/hey.js" target="_blank">示例</a></p>
+    <p>hey-cli 配置文件 hey.js ，<a href="https://github.com/heyui/heyui-admin/blob/master/hey.js" target="_blank">示例</a></p>
     <codes type="javascript">globalVars: './src/css/var.less',</codes>
     <p>注意：使用这种引用方式，在vue单文件中也可以使用这些变量。</p>
 
@@ -105,7 +105,7 @@
 </codes>
 
     <h3>示例</h3>
-    <p>我们提供的<a href="http://demo.heyui.top/" target="_blank">heyui-demo</a>就是一个完整的示例，我们修改了主色，并调整了一些参数，<a href="https://github.com/heyui/heyui-demo/blob/master/src/css/var.less">代码示例</a>。</p>
+    <p>我们提供的<a href="http://demo.heyui.top/" target="_blank">heyui-demo</a>就是一个完整的示例，我们修改了主色，并调整了一些参数，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less">代码示例</a>。</p>
     <p>如果你还需要一些更细节化的调整，我们建议可以新建<code>overwrite.less</code>对已有的class进行覆盖修改。</p>
   </div>
 </template>

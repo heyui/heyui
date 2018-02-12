@@ -50,17 +50,17 @@
 HeyUI.config('dict.titleName', "title");</codes>
     <h4>tree</h4>
     <p>设定<code>tree</code>的默认参数，以及定义系统中存在的不同tree的调用。</p>
-    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-demo/blob/master/src/js/config/tree-config.js">tree-config.js</a>。</p>
+    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-admin/blob/master/src/js/config/tree-config.js">tree-config.js</a>。</p>
     <example demo="plugins/tree7"></example>
 
     <h4>autocomplete</h4>
     <p>设定<code>autocomplete</code>的默认参数，以及定义系统中存在的不同autocomplete的调用。</p>
-    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-demo/blob/master/src/js/config/autocomplete-config.js">autocomplete-config.js</a>。</p>
+    <p>系统化的配置请参考demo的<a target="_blank" href="https://github.com/heyui/heyui-admin/blob/master/src/js/config/autocomplete-config.js">autocomplete-config.js</a>。</p>
     <example demo="dataplugins/autocomplete13"></example>
 
     <h4>uploader, menu, modal, page, datepicker</h4>
     <p>这些组件，我们都提供了一些参数可以进行配置，具体请查看<code><a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></code>文件</p>
-    <p>实际应用中，请参照我们的demo系统配置. 具体请查看<a href="https://github.com/heyui/heyui-demo/tree/master/src/js/config">demo配置</a>。</p>
+    <p>实际应用中，请参照我们的demo系统配置. 具体请查看<a href="https://github.com/heyui/heyui-admin/tree/master/src/js/config">demo配置</a>。</p>
 
   </div>
 </template>

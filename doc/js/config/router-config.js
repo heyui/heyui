@@ -8,17 +8,24 @@ const router = {
     },
     component: (resolve) => require(['components/home'], resolve)
   }, {
+    path: '/home',
+    name: 'homebak',
+    meta: {
+      title: 'Home',
+    },
+    component: (resolve) => require(['components/home'], resolve)
+  }, {
     path: '/component',
     title: 'Component',
     component: (resolve) => require(['components/component'], resolve),
     children: [{
       path: '',
-      name: 'basic',
+      name: 'componentguide',
       meta: {
-        title: 'Grid',
+        title: 'Guide',
       },
       component: () =>
-        import ('components/component/basic/grid')
+        import ('components/guide/guide')
     }, {
       path: 'basic/grid',
       name: 'basicGrid',
@@ -464,6 +471,46 @@ const router = {
       },
       component: () =>
         import ('components/component/other/backtop')
+    }, {
+      path: '',
+      name: 'guide',
+      meta: {
+        title: 'Guide',
+      },
+      component: () =>
+        import ('components/guide/guide')
+    }, {
+      path: 'guide',
+      name: 'guideguide',
+      meta: {
+        title: 'Guide',
+      },
+      component: () =>
+        import ('components/guide/guide')
+    }, {
+      path: 'quickstart',
+      name: 'quickstart',
+      meta: {
+        title: 'QuickStart',
+      },
+      component: () =>
+        import ('components/guide/quickstart')
+    }, {
+      path: 'themes',
+      name: 'themes',
+      meta: {
+        title: 'Themes',
+      },
+      component: () =>
+        import ('components/guide/themes')
+    }, {
+      path: 'config',
+      name: 'config',
+      meta: {
+        title: 'Config',
+      },
+      component: () =>
+        import ('components/guide/config')
     }]
   }, {
     path: '/resource',
@@ -530,59 +577,61 @@ const router = {
     path: '/about',
     name: 'about',
     component: (resolve) => require(['components/about'], resolve)
-  }, {
-    path: '/guide',
-    component: (resolve) => require(['components/guide'], resolve),
-    children: [{
-      path: '',
-      name: 'guide',
-      meta: {
-        title: 'Guide',
-      },
-      component: () =>
-        import ('components/guide/guide')
-    }, {
-      path: 'guide',
-      name: 'guideguide',
-      meta: {
-        title: 'Guide',
-      },
-      component: () =>
-        import ('components/guide/guide')
-    }, {
-      path: 'quickstart',
-      name: 'quickstart',
-      meta: {
-        title: 'QuickStart',
-      },
-      component: () =>
-        import ('components/guide/quickstart')
-    }, {
-      path: 'themes',
-      name: 'themes',
-      meta: {
-        title: 'Themes',
-      },
-      component: () =>
-        import ('components/guide/themes')
-    }, {
-      path: 'config',
-      name: 'config',
-      meta: {
-        title: 'Config',
-      },
-      component: () =>
-        import ('components/guide/config')
-    }, {
-      path: 'logs',
-      name: 'logs',
-      meta: {
-        title: 'Logs',
-      },
-      component: () =>
-        import ('components/guide/logs')
-    }]
-  }]
+  }
+  // , {
+  //   path: '/guide',
+  //   component: (resolve) => require(['components/guide'], resolve),
+  //   children: [{
+  //     path: '',
+  //     name: 'guide',
+  //     meta: {
+  //       title: 'Guide',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/guide')
+  //   }, {
+  //     path: 'guide',
+  //     name: 'guideguide',
+  //     meta: {
+  //       title: 'Guide',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/guide')
+  //   }, {
+  //     path: 'quickstart',
+  //     name: 'quickstart',
+  //     meta: {
+  //       title: 'QuickStart',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/quickstart')
+  //   }, {
+  //     path: 'themes',
+  //     name: 'themes',
+  //     meta: {
+  //       title: 'Themes',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/themes')
+  //   }, {
+  //     path: 'config',
+  //     name: 'config',
+  //     meta: {
+  //       title: 'Config',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/config')
+  //   }, {
+  //     path: 'logs',
+  //     name: 'logs',
+  //     meta: {
+  //       title: 'Logs',
+  //     },
+  //     component: () =>
+  //       import ('components/guide/logs')
+  //   }]
+  // }
+  ]
 }
 
 
