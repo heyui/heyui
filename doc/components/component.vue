@@ -157,6 +157,9 @@
             <li>
               <router-link to="/component/other/backtop">BackTop 返回顶部</router-link>
             </li>
+            <li>
+              <router-link to="/component/other/scrollintoview">ScrollIntoView 滚动至视图内</router-link>
+            </li>
           </ul>
           <li class="title">Message</li>
           <ul>

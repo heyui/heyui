@@ -41,6 +41,8 @@ const menus = utils.toArray({
   pluginDateRange: 'DateRangePicker 日期范围选择',
   pluginFullDateRange: 'DateFullRangePicker 超级日期范围选择',
   // pluginCity: 'CityPicker 城市选择',
+  pluginCategory: 'Category 分类选择',
+  otherScrollintoview: 'ScrollIntoView 滚动至视图内',
   dataPluginTree: 'TreePicker 树选择',
   pluginTaginput: 'TagInput 标签输入框',
   pluginNumberinput: 'NumberInput 数字输入框',

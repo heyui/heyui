@@ -229,4 +229,5 @@ export default {
   'otherAffix1': resolve => require.ensure([], require => require('./other/affix1'), 'other'),
   'otherAffix2': resolve => require.ensure([], require => require('./other/affix2'), 'other'),
   'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),
+  'otherScrollintoview1': resolve => require.ensure([], require => require('./other/scrollintoview1'), 'other'),
 }

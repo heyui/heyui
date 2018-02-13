@@ -472,6 +472,14 @@ const router = {
       component: () =>
         import ('components/component/other/backtop')
     }, {
+      path: 'other/scrollintoview',
+      name: 'otherScrollintoview',
+      meta: {
+        title: 'ScrollIntoView',
+      },
+      component: () =>
+        import ('components/component/other/scrollintoview')
+    }, {
       path: '',
       name: 'guide',
       meta: {
