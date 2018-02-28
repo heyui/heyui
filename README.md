@@ -1,5 +1,5 @@
 
-<p align="center">
+<p align="left">
   <img height="100"  width="100" src="http://www.heyui.top/static/images/logo.png"/>
 </p>
 
@@ -11,12 +11,13 @@
 
 >A UI components Library.
 
-## Reference
-- [hey-cli](https://www.npmjs.com/package/hey-cli)
+## Links
+- Homepage: [http://www.heyui.top](http://www.heyui.top)
+- 官方脚手架: [hey-cli](https://www.npmjs.com/package/hey-cli)
 
 ## install
 ```js
-npm install heyui
+npm install heyui -S
 ```
 ## Start
 
