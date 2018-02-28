@@ -109,6 +109,7 @@ export default {
           break;
         }
       }
+      utils.extend(true, this.messages, returnResult);
       if (!isSuccess) {
         this.$nextTick(() => {
           let firstError = this.$el.querySelector('.h-form-item-valid-error');
@@ -123,7 +124,6 @@ export default {
           }
         })
       }
-      utils.extend(true, this.messages, returnResult);
       return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
     },
     validAsync() {
