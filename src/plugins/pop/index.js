@@ -150,12 +150,12 @@ class Pop {
       placement: options.placement,
       arrowElement: this.arrowSelector,
       modifiers: {
+        preventOverflow: {
+          enabled: false,
+        },
         computeStyle: { gpuAcceleration: false },
       }
     };
-    // if (options.boundariesElement) {
-    //   popperOptions.boundariesElement = options.boundariesElement;
-    // }
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
