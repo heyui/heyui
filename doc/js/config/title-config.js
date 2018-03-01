@@ -22,7 +22,7 @@ const titles = {
   'pluginDateRange': 'DateRangePicker 日期范围选择',
   'pluginDateFullRange': 'DateFullRangePicker 超级日期范围选择',
   'pluginCity': 'CityPicker 城市选择',
-  'dataPluginTree': 'TreePicker 树选择',
+  'pluginTreePicker': 'TreePicker 树选择',
   'pluginTaginput': 'TagInput 标签输入框',
   'pluginNumberinput': 'NumberInput 数字输入框',
   'pluginUpload': 'Upload 上传',
