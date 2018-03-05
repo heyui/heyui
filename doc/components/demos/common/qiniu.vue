@@ -40,8 +40,14 @@ export default {
   },
   methods: {
     deletefile(index) {
-      let value = utils.copy(this.value);
-      value.splice(index, 1);
+      let value = null;
+      if(this.type == 'images' || this.type == 'files') {
+        value = utils.copy(this.value);
+        value.splice(index, 1);
+      } else {
+        value = null;
+        this.uploadList = [];
+      }
       this.$emit("input", value);
     },
     init() {
