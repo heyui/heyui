@@ -13,6 +13,7 @@ const DEFAULT_OPTIONS = {
   offset: 0,
   equalWidth: false,
   type: 'dropdown',
+  preventOverflow: false
 };
 
 /**
@@ -104,10 +105,6 @@ class Pop {
       contentNode.innerText = content;
     }
 
-    // popNode.addEventListener('click', (e) => {
-    //   e.reference = reference;
-    // }, false);
-
     return popNode;
   }
 
@@ -146,16 +143,28 @@ class Pop {
       utils.addClass(popNode, options.class);
     }
 
-    const popperOptions = {
+    let popperOptions = {
       placement: options.placement,
       arrowElement: this.arrowSelector,
       modifiers: {
+        computeStyle: { gpuAcceleration: false },
+      }
+    };
+
+    if (this.options.preventOverflow && container.tagName != 'BODY') {
+      popperOptions.modifiers = {
+        hide: {
+          enabled: false,
+        },
+        flip: {
+          boundariesElement: container
+        },
         preventOverflow: {
           enabled: false,
         },
         computeStyle: { gpuAcceleration: false },
       }
-    };
+    }
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
