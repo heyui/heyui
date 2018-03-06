@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/heyui/heyui/compare/v0.16.8...v0.17.0) (2018-03-06)
+
+
+### Bug Fixes
+
+* change tree component expand transition ([c9d39a4](https://github.com/heyui/heyui/commit/c9d39a4)), closes [#3](https://github.com/heyui/heyui/issues/3)
+* hide uploadButton when upload single file complete ([0ec43dc](https://github.com/heyui/heyui/commit/0ec43dc))
+* treepicker 搜索跳转路径错误 ([bae13b4](https://github.com/heyui/heyui/commit/bae13b4))
+
+
+### Features
+
+* popper disabled preventOverflow ([3b42531](https://github.com/heyui/heyui/commit/3b42531))
+
+
+
 <a name="0.16.8"></a>
 ## [0.16.8](https://github.com/heyui/heyui/compare/v0.16.7...v0.16.8) (2018-02-28)
 
