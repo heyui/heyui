@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.3"></a>
+## [0.17.3](https://github.com/heyui/heyui/compare/v0.17.2...v0.17.3) (2018-03-07)
+
+
+### Bug Fixes
+
+* tooltip update mode optimize ([bcde2b4](https://github.com/heyui/heyui/commit/bcde2b4))
+
+
+
 <a name="0.17.2"></a>
 ## [0.17.2](https://github.com/heyui/heyui/compare/v0.17.1...v0.17.2) (2018-03-07)
 
