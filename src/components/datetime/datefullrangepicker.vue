@@ -39,7 +39,7 @@
         <button class="h-btn h-btn-text h-btn-s"
                 @click="clear">清除</button>
         <button class="h-btn h-btn-primary h-btn-s"
-                @click="hide">确定</button>
+                @click="confirm">确定</button>
       </div>
     </div>
   </div>
@@ -195,7 +195,12 @@ export default {
     hide() {
       this.dropdown.hide();
     },
+    confirm() {
+      this.$emit('confirm');
+      this.hide();
+    },
     clear() {
+      this.$emit('clear');
       this.updateValue({});
       this.initNowView();
       this.hide();

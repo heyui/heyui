@@ -117,6 +117,27 @@
         <td>false</td>
       </tr>
     </table>
+
+
+    <h3>DatePicker 事件</h3>
+    <table class="table">
+      <tr>
+        <th>方法名</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>数据产生变化</td>
+      </tr>
+      <tr>
+        <td>confirm</td>
+        <td>点击确定按钮</td>
+      </tr>
+      <tr>
+        <td>clear</td>
+        <td>点击清除按钮</td>
+      </tr>
+    </table>
     
     <h3>option 配置</h3>
     <table class="table">

@@ -15,7 +15,7 @@
              :readonly="readonly || type == 'week' || type == 'quarter'"
              :placeholder="placeholder"/>
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
-      <i class="h-icon-close text-hover" v-else @click.stop="setvalue('')"></i>
+      <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
     </div>
     </template>
     <div :class="datePickerCls"
@@ -41,7 +41,7 @@
       <div class="h-date-footer"
            v-if="hasConfirm & !inline">
         <button class="h-btn h-btn-text"
-                @click="setvalue('')">清除</button>
+                @click="clear">清除</button>
         <button class="h-btn h-btn-primary h-btn-s"
                 @click="hide">确定</button>
       </div>
@@ -173,6 +173,15 @@ export default {
       let value = s.value.call(null);
       this.parse(value);
       this.setvalue(this.nowDate);
+      this.hide();
+    },
+    clear() {
+      this.$emit('clear');
+      this.setvalue('');
+      this.hide();
+    },
+    confirm() {
+      this.$emit('confirm');
       this.hide();
     },
     updateView(value) {
