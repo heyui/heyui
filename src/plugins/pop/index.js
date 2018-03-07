@@ -110,7 +110,7 @@ class Pop {
 
   updateContent(content) {
     this.options.content = content;
-    if (!this.popNode) {
+    if (!this.popNode || content == undefined) {
       return;
     }
     const contentNode = this.popNode.querySelector(this.innerSelector);
@@ -143,28 +143,46 @@ class Pop {
       utils.addClass(popNode, options.class);
     }
 
-    let popperOptions = {
-      placement: options.placement,
-      arrowElement: this.arrowSelector,
-      modifiers: {
-        computeStyle: { gpuAcceleration: false },
-      }
-    };
-
-    if (this.options.preventOverflow && container.tagName != 'BODY') {
-      popperOptions.modifiers = {
-        hide: {
-          enabled: false,
-        },
-        flip: {
-          boundariesElement: container
-        },
-        preventOverflow: {
-          enabled: false,
-        },
-        computeStyle: { gpuAcceleration: false },
+    let modifiers = {
+      computeStyle: { gpuAcceleration: false },
+      arrow: {
+        enabled: false
+      },
+      inner: {
+        enabled: false
       }
     }
+
+    // if (this.options.arrowSelector) {
+    //   modifiers.arrow = {
+    //     enabled: true,
+    //     element: this.options.arrowSelector
+    //   }
+    // }
+
+    // if (this.options.innerSelector) {
+    //   modifiers.inner = {
+    //     enabled: true,
+    //     element: this.options.innerSelector
+    //   }
+    // }
+
+    if (this.options.preventOverflow && container.tagName != 'BODY') {
+      modifiers.hide = {
+        enabled: false,
+      };
+      modifiers.flip = {
+        boundariesElement: container
+      }
+      modifiers.preventOverflow = {
+        enabled: false,
+      }
+    }
+
+    let popperOptions = {
+      placement: options.placement,
+      modifiers
+    };
     this.popperInstance = new Popper(reference, popNode, popperOptions);
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');

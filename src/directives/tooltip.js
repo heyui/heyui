@@ -53,7 +53,7 @@ export default {
         if (param == false) {
           el.tooltip.dispose();
         } else {
-          el.tooltip.updateContent(param.content);
+          el.tooltip.updateTemplate(param.content, param.html);
         }
       })
     } else {
