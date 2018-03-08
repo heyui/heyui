@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-width="300">
       <Qiniu :options="options" type="file" data-type="file" v-model="file"></Qiniu>
   </div>
 </template>

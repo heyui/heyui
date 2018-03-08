@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Uploader @fileclick="fileclick" :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
+    <Uploader @fileclick="fileclick" :type="type" :files="value" :data-type="dataType" :limit="limit" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile">
       <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
     </Uploader>
   </div>

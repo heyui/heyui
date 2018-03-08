@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <Qiniu :options="options" type="files" data-type="file" v-model="file"></Qiniu>
+  <div v-width="300">
+      <Qiniu :options="options" type="files" :limit="2" data-type="file" v-model="file"></Qiniu>
   </div>
 </template>
 
