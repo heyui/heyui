@@ -30,7 +30,7 @@
     "jquery-smooth-scroll": "^2.1.2",
     "manba": "^1.1.2",
     "plupload-es6": "^2.1.11",
-    "popper.js": "^1.13.0",
+    "popper.js": "^1.10.8",
     "qiniu-js-es6": "^1.0.28",
     "regenerator-runtime": "^0.11.1",
     "vue": "^2.5.13",

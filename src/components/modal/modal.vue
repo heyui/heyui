@@ -135,7 +135,7 @@ export default {
         [`${notifyprefix}-has-mask`]: this.hasMask,
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
         [`${notifyprefix}-has-divider`]: this.hasDivider,
-        'h-dropdown-common-container': true,
+        // 'h-dropdown-common-container': true,
         [`${prefix}-full-screen`]: this.fullScreen,
         [this.className]: !!this.className
       }
