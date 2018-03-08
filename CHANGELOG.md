@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.5"></a>
+## [0.17.5](https://github.com/heyui/heyui/compare/v0.17.4...v0.17.5) (2018-03-08)
+
+
+### Bug Fixes
+
+* use  popper.js 1.10 ([c02a32a](https://github.com/heyui/heyui/commit/c02a32a))
+
+
+
 <a name="0.17.4"></a>
 ## [0.17.4](https://github.com/heyui/heyui/compare/v0.17.3...v0.17.4) (2018-03-07)
 
