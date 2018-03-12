@@ -7,11 +7,14 @@
     <p>可以通过全局配置<code>autocomplete.default</code>参数设置控件默认的参数值。</p>
     <p><code>autocomplete</code>有三种数据类型：<code>key</code>,<code>title</code>,<code>object</code>，如果需求更复杂，请监听<code>change</code>事件手动处理。</p>
     <example demo="dataplugins/autocomplete1"></example>
-
-    <h3>ClassName, Slot</h3>
+    
+    <h3>自定义样式</h3>
     <p>通过自定义<code>className</code>参数，自己定义特殊的样式。</p>
-    <p>通过<code>top</code>以及<code>bottom</code>的<code>slot</code>，自定义其他的内容。</p>
     <example demo="dataplugins/autocomplete14"></example>
+
+    <h3>自定义内容</h3>
+    <p>通过<code>top</code>以及<code>bottom</code>的<code>slot</code>，自定义其他的内容。</p>
+    <example demo="dataplugins/autocomplete6"></example>
 
     <h3>disabled</h3>
     <example demo="dataplugins/autocomplete2"></example>
@@ -27,12 +30,10 @@
     <h3>远程多选</h3>
     <example demo="dataplugins/autocomplete5"></example>
 
-    <h3>自定义返回数据的结构</h3>
+    <!-- <h3>自定义返回数据的结构</h3>
     <p></p>
-    <example demo="dataplugins/autocomplete11"></example>
+    <example demo="dataplugins/autocomplete11"></example> -->
   
-    <h3>自定义列表展示内容</h3>
-    <example demo="dataplugins/autocomplete6"></example>
   
     <h3>选择对象</h3>
     <p>在实际开发中，autocomplete常常用于选择有<code>id</code>的对象，我们可以使用<code>v-model</code>定义绑定的key，利用属性<code>show</code>来定义展示的内容，这是一种方式，但是我们更建议使用对象模式的<code>autocomplete</code></p>
