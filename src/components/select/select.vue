@@ -107,7 +107,8 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     },
     render: Function,
-    value: [Number, String, Array, Object]
+    value: [Number, String, Array, Object],
+    className: String,
   },
   data() {
     return {
@@ -257,13 +258,15 @@ export default {
     },
     showCls() {
       return {
-        [`${prefix}-show`]: true
+        [`${prefix}-show`]: true,
+        [`${this.className}-show`]: !!this.className,
       }
     },
     groupCls() {
       return {
         [`${prefix}-group`]: true,
-        [`${prefix}-multiple`]: this.multiple
+        [`${prefix}-multiple`]: this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
       }
     },
     optionsMap() {
