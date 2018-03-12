@@ -22,7 +22,8 @@
                 :class="getLiCls(option)">
               <div v-if="!!render"
                   v-html="option[html]"></div>
-              <template v-else>{{option[title]}}</template>
+              <template v-else-if="!$scopedSlots.item">{{option[title]}}</template>
+              <slot v-else :item="option" name="item"></slot>
               <i v-if="multiple"
                 class="h-icon-check"></i>
             </li>
