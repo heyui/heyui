@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "0.17.5",
+  "version": "0.17.6",
   "description": "UI Toolkit for Web, Vue2.0.",
   "main": "./build/heyui.js",
   "repository": {

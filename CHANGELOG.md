@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.6"></a>
+## [0.17.6](https://github.com/heyui/heyui/compare/v0.17.5...v0.17.6) (2018-03-12)
+
+
+### Bug Fixes
+
+* select support slot item ([03ff388](https://github.com/heyui/heyui/commit/03ff388))
+* select 添加className属性 ([8ca5571](https://github.com/heyui/heyui/commit/8ca5571))
+
+
+
 <a name="0.17.5"></a>
 ## [0.17.5](https://github.com/heyui/heyui/compare/v0.17.4...v0.17.5) (2018-03-08)
 
