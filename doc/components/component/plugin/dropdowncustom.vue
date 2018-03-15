@@ -75,7 +75,12 @@
         <td>placement</td>
         <td>menu显示的位置</td>
         <td>Stirng</td>
-        <td>top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</td>
+        <td>
+          top, top-start, top-end, <br/>
+          bottom, bottom-start, bottom-end, <br/>
+          left, left-start, left-end, <br/>
+          right, right-start, right-end
+        </td>
         <td>bottom-start</td>
       </tr>
       <tr>
@@ -91,6 +96,7 @@
         <td>String, Number</td>
         <td>-</td>
         <td>
+          <div>left, top</div>
           <div>10</div>
           <div>'10%'</div>
           <div>'10, 10'</div>
