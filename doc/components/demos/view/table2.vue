@@ -9,7 +9,19 @@
       <TableItem title="姓名1" prop="name" :tooltip="true" :sort="true"></TableItem>
       <TableItem title="年龄2" prop="age" :tooltip="true" content="测试" placement="right"></TableItem>
       <TableItem title="地址" prop="address" align="center"></TableItem>
-      <TableItem title="操作" :width="100" fixed="right"><template slot-scope="props"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, props.data)"><i class="h-icon-trash"></i></button></template></TableItem>
+      <TableItem title="操作" :width="100">
+        <template slot-scope="props">
+          <DropdownCustom :datas="menus" placement="bottom-end">
+            <span>更多</span>
+            <div slot="content" v-width="200">
+              <div v-padding="20">
+                <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
+                <div style="height:80px;margin-left:90px;line-height:80px;">LAN</div>
+              </div>
+            </div>
+          </DropdownCustom>
+        </template>
+      </TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
@@ -19,6 +31,12 @@
 export default {
   data() {
     return {
+      menus: {
+        demo1: '测试1',
+        demo2: '测试3',
+        demo3: '测试4',
+        demo4: '测试5',
+      },
       datas: [
         { id: 5, name: '测试5', age: 12, address: "上海" },
         { id: 6, name: '测试6', age: 12, address: "上海" },
