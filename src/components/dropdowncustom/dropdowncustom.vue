@@ -31,7 +31,6 @@ export default {
     },
     placement: {
       type: String,
-      default: 'bottom-start'
     },
     className: {
       type: String,
@@ -42,12 +41,13 @@ export default {
   data() {
     return {
       isShow: false,
-      dropdown: null
+      dropdown: null,
+      el: null,
     };
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-dropdowncustom-show');
+      let el = this.el = this.$el.querySelector('.h-dropdowncustom-show');
       let content = this.$el.querySelector('.h-dropdowncustom-group');
       let that = this;
       this.dropdown = new Dropdown(el, {
@@ -57,12 +57,25 @@ export default {
         equalWidth: this.equalWidth,
         placement: this.placement,
         events: {
-          show(){
+          show(next){
             that.isShow = true;
+            // that.$nextTick(()=>{
+            //   next();
+            // })
           }
         }
       });
     });
+  },
+  beforeDestroy() {
+    let el = this.el;
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
+    if(this.dropdown) {
+      this.dropdown.destory();
+    }
   },
   computed: {
     dropdowncustomCls() {

@@ -172,8 +172,10 @@ class Pop {
         enabled: false,
       };
       modifiers.flip = {
-        boundariesElement: container
+        boundariesElement: container,
+        enabled: true
       }
+
       modifiers.preventOverflow = {
         enabled: false,
       }
@@ -196,13 +198,7 @@ class Pop {
     this.options.disabled = false;
   }
 
-  show() {
-    if (this.isOpen || this.options.disabled) { return this; }
-    // if (this.type == 'tooltip' && )
-    this.isOpen = true;
-    if (this.options.events && utils.isFunction(this.options.events.show)) {
-      this.options.events.show.call(null);
-    }
+  _doshow() {
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -220,6 +216,20 @@ class Pop {
       this.popNode.setAttribute('aria-hidden', 'false');
     }, 0);
     this.popperInstance.update();
+  }
+
+  show() {
+    if (this.isOpen || this.options.disabled) { return this; }
+    // if (this.type == 'tooltip' && )
+    this.isOpen = true;
+    if (this.options.events && utils.isFunction(this.options.events.show)) {
+      // this.options.events.show(() => {
+      //   this._doshow();
+      // });
+      this.options.events.show();
+      // return;
+    }
+    this._doshow();
     return this;
   }
 
@@ -247,7 +257,7 @@ class Pop {
     return this;
   }
 
-  dispose() {
+  destory() {
     if (this.documentHandler) {
       document.removeEventListener('click', this.documentHandler);
     }

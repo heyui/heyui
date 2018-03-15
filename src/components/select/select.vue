@@ -140,9 +140,19 @@ export default {
   beforeMount() {
     this.parse();
   },
+  beforeDestroy() {
+    let el = this.el;
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
+    if(this.dropdown) {
+      this.dropdown.destory();
+    }
+  },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-select-show');
+      let el = this.el = this.$el.querySelector('.h-select-show');
       let content = this.$el.querySelector('.h-select-group');
       let that = this;
       this.dropdown = new Dropdown(el, {

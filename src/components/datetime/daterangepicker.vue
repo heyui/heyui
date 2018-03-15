@@ -141,10 +141,20 @@ export default {
   beforeMount() {
     this.parse(this.value);
   },
+  beforeDestroy() {
+    let el = this.el;
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
+    if(this.dropdown) {
+      this.dropdown.destory();
+    }
+  },
   mounted() {
     let that = this;
     this.$nextTick(() => {
-      let el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
       let content = this.$el.querySelector(`.h-date-picker`);
       this.dropdown = new Dropdown(el, {
         trigger: 'click',

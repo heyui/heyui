@@ -118,7 +118,8 @@ export default {
       content: null,
       loadDatas: [],
       isShow: false,
-      searchTimeout: null
+      searchTimeout: null,
+      el: null,
     };
   },
   watch: {
@@ -154,9 +155,19 @@ export default {
   beforeMount() {
     this.parse();
   },
+  beforeDestroy() {
+    let el = this.el;
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
+    if(this.dropdown) {
+      this.dropdown.destory();
+    }
+  },
   mounted() {
     this.$nextTick(() => {
-      let el = this.$el.querySelector('.h-autocomplete-show');
+      let el = this.el = this.$el.querySelector('.h-autocomplete-show');
       this.content = this.$el.querySelector('.h-autocomplete-group');
       let that = this;
       this.dropdown = new Dropdown(el, {

@@ -45,13 +45,13 @@ export default {
     if (el.tooltip) {
       vnode.context.$nextTick(() => {
         if (binding.value === false) {
-          el.tooltip.dispose();
+          el.tooltip.destory();
           el.tooltip = null;
           return;
         }
         let param = getContent(el, vnode);
         if (param == false) {
-          el.tooltip.dispose();
+          el.tooltip.destory();
         } else {
           el.tooltip.updateTemplate(param.content, param.html);
         }
@@ -62,7 +62,7 @@ export default {
   },
   unbind(el) {
     if (el.tooltip) {
-      el.tooltip.dispose();
+      el.tooltip.destory();
       delete el.tooltip;
     }
   }

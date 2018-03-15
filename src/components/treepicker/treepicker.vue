@@ -85,12 +85,22 @@ export default {
       valuebak: null
     };
   },
+  beforeDestroy() {
+    let el = this.el;
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
+    if(this.dropdown) {
+      this.dropdown.destory();
+    }
+  },
   mounted() {
     let that = this;
     this.parse();
     this.$nextTick(() => {
       if(this.inline) return;
-      let el = this.$el.querySelector(`.${prefix}>.h-treepicker-show`);
+      let el = this.el = this.$el.querySelector(`.${prefix}>.h-treepicker-show`);
       let content = this.$el.querySelector(`.h-treepicker-group`);
       
       this.dropdown = new Dropdown(el, {
