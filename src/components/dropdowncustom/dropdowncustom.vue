@@ -36,7 +36,8 @@ export default {
     className: {
       type: String,
       default: 'h-dropdownmenu-default'
-    }
+    },
+    offset: [String, Number]
   },
   data() {
     return {
@@ -51,6 +52,7 @@ export default {
       let that = this;
       this.dropdown = new Dropdown(el, {
         content,
+        offset: this.offset,
         trigger: this.trigger,
         equalWidth: this.equalWidth,
         placement: this.placement,

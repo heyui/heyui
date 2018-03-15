@@ -160,12 +160,12 @@ class Pop {
     //   }
     // }
 
-    // if (this.options.innerSelector) {
-    //   modifiers.inner = {
-    //     enabled: true,
-    //     element: this.options.innerSelector
-    //   }
-    // }
+    if (this.options.offset) {
+      modifiers.offset = {
+        enabled: true,
+        offset: this.options.offset
+      }
+    }
 
     if (this.options.preventOverflow && container.tagName != 'BODY') {
       modifiers.hide = {

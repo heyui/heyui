@@ -78,7 +78,8 @@ export default {
     titleName: {
       type: String,
       default: () => config.getOption('dict', 'titleName')
-    }
+    },
+    offset: [String, Number]
   },
   data() {
     return {
@@ -95,6 +96,7 @@ export default {
       let that = this;
       this.dropdown = new Dropdown(el, {
         content,
+        offset: this.offset,
         trigger: this.trigger,
         disabled: this.disabled,
         equalWidth: this.equalWidth,

@@ -19,6 +19,11 @@
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <example demo="plugins/dropdowncustom4"></example>
 
+    <h3>自定义下拉的位置</h3>
+    <p>分别控制left, top的位移</p>
+    <example demo="plugins/dropdowncustom6"></example>
+
+
     <h3>自定义下拉的控制</h3>
     <example demo="plugins/dropdowncustom5"></example>
 
@@ -79,6 +84,21 @@
         <td>String</td>
         <td>-</td>
         <td>-</td>
+      </tr>
+      <tr>
+        <td>offset</td>
+        <td>位移</td>
+        <td>String, Number</td>
+        <td>-</td>
+        <td>
+          <div>10</div>
+          <div>'10%'</div>
+          <div>'10, 10'</div>
+          <div>'10%, 10'</div>
+          <div>'10 + 10%'</div>
+          <div>'10 - 5vh + 3%'</div>
+          <div>'-10px + 5vh, 5px - 6%'</div>
+        </td>
       </tr>
     </table>
 
