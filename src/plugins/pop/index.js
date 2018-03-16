@@ -1,4 +1,4 @@
-import Popper from 'popper.js';
+import Popper from '../popper';
 import utils from '../../utils/utils';
 
 const DEFAULT_OPTIONS = {
@@ -159,6 +159,13 @@ class Pop {
     //     element: this.options.arrowSelector
     //   }
     // }
+    // if (this.options.innerSelector) {
+    //   modifiers.inner = {
+    //     enabled: true,
+    //     element: this.options.innerSelector
+    //   }
+    // }
+
 
     if (this.options.offset) {
       modifiers.offset = {
