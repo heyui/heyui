@@ -143,6 +143,16 @@ class Pop {
       utils.addClass(popNode, options.class);
     }
 
+    this.popNode = popNode;
+    this.popNode.setAttribute('aria-hidden', 'true');
+  }
+
+  initPopper() {
+    let reference = this.reference;
+    let options = this.options;
+    let popNode = this.popNode;
+    const container = this.findContainer(options.container, reference);
+
     let modifiers = {
       computeStyle: { gpuAcceleration: false },
       arrow: {
@@ -193,8 +203,6 @@ class Pop {
       modifiers
     };
     this.popperInstance = new Popper(reference, popNode, popperOptions);
-    this.popNode = popNode;
-    this.popNode.setAttribute('aria-hidden', 'true');
   }
 
   disabled() {
@@ -209,6 +217,10 @@ class Pop {
     if (!this.popNode) {
       this.initPopNode();
     }
+    if (!this.popperInstance) {
+      this.initPopper();
+    }
+    this.popperInstance.enableEventListeners();
     if (!this.popNode) {
       return;
     }
@@ -259,6 +271,10 @@ class Pop {
     this.timeout = setTimeout(() => {
       if (this.popNode) {
         this.popNode.style.display = 'none';
+
+        if (this.popperInstance) {
+          this.popperInstance.disableEventListeners();
+        }
       }
     }, this.options.delay);
     return this;
