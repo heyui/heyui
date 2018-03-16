@@ -403,6 +403,7 @@ export default {
       let s = {};
       if (!!this.height) {
         s.maxHeight = `${this.height}px`;
+        s.overflow = 'auto';
       }
       return s;
     }
