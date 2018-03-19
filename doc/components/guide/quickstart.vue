@@ -2,6 +2,11 @@
   <div class="doc">
     <h2>快速上手</h2>
     <p>我们建议使用webpack进行系统构建。</p>
+
+    <h3>搭建示例</h3>
+    <p>示例同时支持hey-cli，以及vue-cli。</p>
+    <p><a target="_blank" href="https://codesandbox.io/s/zxl0yzv6np">https://codesandbox.io/s/zxl0yzv6np</a></p>
+    
     <h3>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> 脚手架(推荐)</h3>
     <p>hey-cli 是我们开源的脚手架，支持单纯的ES6项目开发，也支持Vue, React项目开发。集成了开发与打包等一系列功能。</p>
     <p>使用 hey-cli 可以设定全局的 <code>var.less</code> 文件，文件中定义的变量可以使用在任意<code>less</code>文件中，以及<code>vue</code>文件的less样式中。</p>
