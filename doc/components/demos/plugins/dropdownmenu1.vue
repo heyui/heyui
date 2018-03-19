@@ -1,7 +1,7 @@
 <template>
   <div>
     <p><h-switch v-model="disabled" :small="true">禁用</h-switch></p>
-    <DropdownMenu @onclick="trigger" :datas="param" :disabled="disabled" class-name="h-text-dropdown">
+    <DropdownMenu @click="trigger" :datas="param" :disabled="disabled" class-name="h-text-dropdown">
       <span :disabled="disabled">菜单menu</span>
     </DropdownMenu>
   </div>

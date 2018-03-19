@@ -1,5 +1,5 @@
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param" trigger="hover" class-name="h-text-dropdown">
+  <DropdownMenu @click="trigger" :datas="param" trigger="hover" class-name="h-text-dropdown">
     <span>菜单menu</span>
   </DropdownMenu>
 </template>

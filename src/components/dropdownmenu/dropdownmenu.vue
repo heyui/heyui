@@ -133,6 +133,7 @@ export default {
     onclick(option) {
       if (!!option.disabled) return;
       this.$emit("onclick", option[this.key]);
+      this.$emit("click", option[this.key]);
       this.dropdown.hide();
     }
   },

@@ -27,7 +27,7 @@
 </style>
 <template>
   <div class="header-info">
-    <DropdownMenu @onclick="trigger" :datas="param" class-name="header-info-dropdown" :show-count="true" :width="150">
+    <DropdownMenu @click="trigger" :datas="param" class-name="header-info-dropdown" :show-count="true" :width="150">
       <span>个人信息</span>
     </DropdownMenu>
   </div>

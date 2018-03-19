@@ -1,5 +1,5 @@
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param" :equal-width="true" class-name="h-text-dropdown">
+  <DropdownMenu @click="trigger" :datas="param" :equal-width="true" class-name="h-text-dropdown">
     <div v-width="150">菜单menu</div>
   </DropdownMenu>
 </template>

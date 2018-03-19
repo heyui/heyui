@@ -143,5 +143,20 @@
         </td>
       </tr>
     </table>
+
+
+    <h3>DropdownMenu 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>点击触发的事件</td>
+        <td>key</td>
+      </tr>
+    </table>
   </div>
 </template>

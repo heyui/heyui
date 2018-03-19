@@ -1,5 +1,5 @@
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param" :show-count="true" :max-count="100" :width="200" class-name="h-text-dropdown">
+  <DropdownMenu @click="trigger" :datas="param" :show-count="true" :max-count="100" :width="200" class-name="h-text-dropdown">
     <span>菜单menu</span>
   </DropdownMenu>
 </template>

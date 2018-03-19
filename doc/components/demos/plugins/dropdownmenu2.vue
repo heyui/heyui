@@ -7,7 +7,7 @@
 }
 </style>
 <template>
-  <DropdownMenu @onclick="trigger" :datas="param" class-name="button-dropdown">
+  <DropdownMenu @click="trigger" :datas="param" class-name="button-dropdown">
     <button class="h-btn">菜单menu</button>
   </DropdownMenu>
 </template>
