@@ -151,6 +151,13 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>autoSelectFirst</td>
+        <td>是否自动选中第一个选项</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     

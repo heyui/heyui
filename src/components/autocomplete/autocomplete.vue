@@ -75,6 +75,10 @@ export default {
       type: Boolean,
       default: true
     },
+    autoSelectFirst: {
+      type: Boolean,
+      default: false
+    },
     type: {
       type: [String],
       default: 'key'  //object, title
@@ -349,8 +353,11 @@ export default {
               this.loading = false;
               this.loadDatas = datas;
               this.dropdown.update();
+              this.nowSelected = this.autoSelectFirst ? 0 : -1;
             }
           });
+        } else {
+          this.nowSelected = this.autoSelectFirst ? 0 : -1;
         }
       }
       this.searchValue = value;
