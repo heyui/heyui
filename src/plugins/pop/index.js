@@ -233,8 +233,8 @@ class Pop {
     if (this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
+      this.popperInstance.update();
     }, 0);
-    this.popperInstance.update();
   }
 
   show() {
