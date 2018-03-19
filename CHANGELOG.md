@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/heyui/heyui/compare/v0.17.6...v0.18.0) (2018-03-19)
+
+
+### Bug Fixes
+
+* fix flippedVariation computed ([3f453b3](https://github.com/heyui/heyui/commit/3f453b3))
+* popper disableEventListeners when hide ([af4fc60](https://github.com/heyui/heyui/commit/af4fc60))
+* popper postion error ([e498dd5](https://github.com/heyui/heyui/commit/e498dd5))
+* table use overflow auto when config height property ([1e202ee](https://github.com/heyui/heyui/commit/1e202ee))
+* 添加dropdown销毁机制 ([f48e41e](https://github.com/heyui/heyui/commit/f48e41e))
+
+
+### Features
+
+* add dropdown offset property ([e4acd55](https://github.com/heyui/heyui/commit/e4acd55))
+
+
+
 <a name="0.17.6"></a>
 ## [0.17.6](https://github.com/heyui/heyui/compare/v0.17.5...v0.17.6) (2018-03-12)
 
