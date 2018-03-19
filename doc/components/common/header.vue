@@ -4,7 +4,7 @@
       <router-link class="logo" to="/">
         <div class="header-logo"><span></span></div>HEY UI
       </router-link>
-      <AutoComplete dict="menus" v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
+      <AutoComplete dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class='header-nav-list'>
         <router-link to="/home">首页</router-link>
         <!-- <router-link to="/guide">入门</router-link> -->
