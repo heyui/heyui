@@ -4,11 +4,15 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :datas="datas" stripe checkbox @sort="triggerSort">
+    <Table :height="200" :datas="datas" stripe checkbox @sort="triggerSort">
       <TableItem title="序号" :tooltip="true"><template slot-scope="props">{{props.index}}</template></TableItem>
       <TableItem title="姓名1" prop="name" :tooltip="true" :sort="true"></TableItem>
       <TableItem title="年龄2" prop="age" :tooltip="true" content="测试" placement="right"></TableItem>
-      <TableItem title="地址" prop="address" align="center"></TableItem>
+      <TableItem title="地址" align="center">
+        <template slot-scope="props">
+          <div v-tooltip>{{props.data.address}}</div>
+        </template>
+      </TableItem>
       <TableItem title="操作" :width="100">
         <template slot-scope="props">
           <DropdownCustom :datas="menus" placement="bottom-end">
