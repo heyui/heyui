@@ -86,7 +86,7 @@ export default {
       key: this.keyName,
       title: this.titleName,
       html: 'dropdownmenuHtml',
-      isShow: true,
+      isShow: false,
       el: null,
     };
   },
