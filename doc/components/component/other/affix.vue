@@ -35,6 +35,13 @@
         <td>-</td>
       </tr>
       <tr>
+        <td>fixedOffsetTop</td>
+        <td>定位在距离页面顶部达到指定偏移量后</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>container</td>
         <td>使用容器内的定位</td>
         <td>Function</td>
