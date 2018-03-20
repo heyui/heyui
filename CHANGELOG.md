@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/heyui/heyui/compare/v0.18.0...v0.18.1) (2018-03-20)
+
+
+### Bug Fixes
+
+* affix 修改固定模式。 ([3a5234d](https://github.com/heyui/heyui/commit/3a5234d))
+* autocomplete autoSelectFirst prop ([91c9ef0](https://github.com/heyui/heyui/commit/91c9ef0))
+* datefullrangepicker 修改样式 ([648ab5f](https://github.com/heyui/heyui/commit/648ab5f))
+* dropdownmenu onclick -> click ([c0c4e8b](https://github.com/heyui/heyui/commit/c0c4e8b))
+* popperInstance.update optimize ([fb79e23](https://github.com/heyui/heyui/commit/fb79e23))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/heyui/heyui/compare/v0.17.6...v0.18.0) (2018-03-19)
 
