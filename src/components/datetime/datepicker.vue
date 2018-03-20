@@ -107,6 +107,10 @@ export default {
       type: Boolean,
       default: false
     },
+    placement: {
+      type: String,
+      default: 'bottom-start'
+    },
     startWeek: {
       type: Number,
       default: manba.MONDAY
@@ -160,6 +164,7 @@ export default {
         triggerOnce: true,
         content,
         disabled: this.disabled,
+        placement: this.placement,
         events: {
           show() {
             that.isShow = true;

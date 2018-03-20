@@ -105,6 +105,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>placement</td>
+        <td>日期选择器位置</td>
+        <td>-</td>
+        <td>-</td>
+        <td>bottom-start</td>
+      </tr>
     </table>
     
     <h3>option 配置</h3>

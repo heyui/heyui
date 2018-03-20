@@ -19,9 +19,9 @@
         </div>
         <div><Tabs :datas="views" v-model="view" @change="changeView"></Tabs></div>
         <div v-if="view == 'date'" class="h-date-self-defined">
-          <DatePicker type="text" v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'" placeholder="请选择开始时间"></DatePicker>
+          <DatePicker type="text" v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'" placeholder="开始时间"></DatePicker>
           -
-          <DatePicker type="text" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}" :type="hasTime?'datetime':'date'" placeholder="请选择结束时间"></DatePicker>
+          <DatePicker placement="bottom-end" type="text" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}" :type="hasTime?'datetime':'date'" placeholder="结束时间"></DatePicker>
         </div>
         <date-base v-else ref="datebase"
                    :value="nowDate.start"
