@@ -164,6 +164,9 @@ class Validator {
 
   setConfig(prop, options) {
     let ruleKey = prop;
+    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
+      ruleKey = prop.replace(/\[\w+\]/, "[]");
+    }
     this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
