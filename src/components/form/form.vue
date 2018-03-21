@@ -10,6 +10,17 @@ import scrollIntoView from '../../plugins/scrollIntoView'
 
 const prefixCls = 'h-form';
 
+const findDomUtil = function(target, utilDom) {
+  let now = target;
+  while(now != utilDom) {
+    if(utils.hasClass(now, 'h-form-item') && now.getAttribute('prop')) {
+      return now;
+    }
+    now = now.parentElement;
+  }
+  return null;
+}
+
 export default {
   name: 'Form',
   props: {
@@ -49,6 +60,23 @@ export default {
     // log('rule init', this.rules, this.validator);
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
+  mounted() {
+
+    this.$nextTick(() => {
+      this.$el.addEventListener("blur", (event) => {
+        // this.trigger(event);
+        if(event.target.tagName == 'INPUT' || event.target.tagName == 'AREATEXT') {
+          // log('blur', event.target)
+          this.trigger(event.target);
+        }
+      }, true);
+      this.$el.addEventListener("setvalue", (event) => {
+        // this.trigger(event);
+        // log('blur', event.target)
+          this.trigger(event.target);
+      });
+    });
+  },
   watch: {
     rules: {
       handler: function() {
@@ -65,6 +93,12 @@ export default {
     reset() {
       for(let m in this.messages){
         this.messages[m].valid = true;
+      }
+    },
+    trigger(target) {
+      let formItem = findDomUtil(target, this.$el);
+      if (formItem && formItem.getAttribute('validable') == 'true') {
+        this.validField(formItem.getAttribute('prop'));
       }
     },
     validField(prop) {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="formItemCls">
+  <div :class="formItemCls" :prop="prop" :validable="validable">
     <label :style="labelStyleCls"
            class="h-form-item-label"
            v-if="showLabel">{{label}}</label>
@@ -83,12 +83,12 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$el.addEventListener("blur", (event) => {
-        this.trigger(event);
-      }, true);
-      this.$el.addEventListener("setvalue", (event) => {
-        this.trigger(event);
-      });
+      // this.$el.addEventListener("blur", (event) => {
+      //   this.trigger(event);
+      // }, true);
+      // this.$el.addEventListener("setvalue", (event) => {
+      //   this.trigger(event);
+      // });
     });
     let parent = this.getParent();
 
