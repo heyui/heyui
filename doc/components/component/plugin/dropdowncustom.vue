@@ -116,6 +116,10 @@
         <th>说明</th>
       </tr>
       <tr>
+        <td>show</td>
+        <td>显示dropdown</td>
+      </tr>
+      <tr>
         <td>udpate</td>
         <td>更新dropdown的位置</td>
       </tr>

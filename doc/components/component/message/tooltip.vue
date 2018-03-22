@@ -66,7 +66,7 @@
         <th>说明</th>
       </tr>
       <tr>
-        <td>hide</td>
+        <td>show</td>
         <td>显示</td>
       </tr>
       <tr>
