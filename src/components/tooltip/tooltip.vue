@@ -35,6 +35,11 @@ export default {
     this.init();
   },
   methods: {
+    show() {
+      if (this.tooltip) {
+        this.tooltip.show();
+      }
+    },
     hide() {
       if (this.tooltip) {
         this.tooltip.hide();

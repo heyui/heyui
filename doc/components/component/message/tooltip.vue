@@ -67,6 +67,10 @@
       </tr>
       <tr>
         <td>hide</td>
+        <td>显示</td>
+      </tr>
+      <tr>
+        <td>hide</td>
         <td>关闭显示</td>
       </tr>
       <tr>
