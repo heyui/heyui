@@ -83,7 +83,7 @@ export default {
           this.isAbsolute = true;
           this.fixPosition = 'bottom';
           // (this.isAbsolute && this.fixPosition == 'bottom' && position.top > parentOffsetTop)
-        } else if (this.isAbsolute && 
+        } else if ( this.containerDom.clientHeight > el.clientHeight && this.isAbsolute && 
             (( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom))
             || (dis > 0 && position.top > parentOffsetTop && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))) {
           this.isFixed = true;
