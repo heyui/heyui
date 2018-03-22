@@ -9,7 +9,7 @@
 </style>
 
 <template>
-    <div v-height="100" class="affix-demo-3-vue bg-gray2-color relative text-right">
+    <div v-height="1000" class="affix-demo-3-vue bg-gray2-color relative text-right">
       <Affix :fixedOffsetTop="80" :offset-top="20" :offset-bottom="20" class="affix-demo-3" :container="getContainer" @change="onchange">
         <button class="h-btn h-btn-blue" v-height="300">固定容器内</button>
       </Affix>
