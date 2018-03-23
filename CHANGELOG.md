@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.0"></a>
+# [0.19.0](https://github.com/heyui/heyui/compare/v0.18.1...v0.19.0) (2018-03-23)
+
+
+### Bug Fixes
+
+* dictMapping 添加connector参数 ([829fb19](https://github.com/heyui/heyui/commit/829fb19))
+* fix error when affix container less height then fixed dom ([fd36fd5](https://github.com/heyui/heyui/commit/fd36fd5))
+* tooltip 添加控制的方法 ([19943af](https://github.com/heyui/heyui/commit/19943af))
+* validator setConfig fix array prop ([e07f289](https://github.com/heyui/heyui/commit/e07f289))
+* 恢复示例的组件 ([91c4184](https://github.com/heyui/heyui/commit/91c4184))
+
+
+### Features
+
+* 优化表单性能 ([7240630](https://github.com/heyui/heyui/commit/7240630))
+
+
+
 <a name="0.18.1"></a>
 ## [0.18.1](https://github.com/heyui/heyui/compare/v0.18.0...v0.18.1) (2018-03-20)
 
