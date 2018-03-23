@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.2"></a>
+## [0.19.2](https://github.com/heyui/heyui/compare/v0.19.1...v0.19.2) (2018-03-23)
+
+
+### Bug Fixes
+
+* 修改dictMapping split处理 ([3b4218e](https://github.com/heyui/heyui/commit/3b4218e))
+
+
+
 <a name="0.19.1"></a>
 ## [0.19.1](https://github.com/heyui/heyui/compare/v0.19.0...v0.19.1) (2018-03-23)
 
