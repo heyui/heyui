@@ -5,7 +5,7 @@ export default {
   dictMapping(value, key, connector) {
     let dict = config.getDict(key);
     if (!dict || utils.isNull(value)) return '';
-    if (connector) {
+    if (utils.String(value) && connector) {
       value = value.split(connector);
     }
     if (!utils.isNull(value) && value !== '' && key) {
