@@ -76,10 +76,9 @@
         <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
       </FormItem>
       <!-- 
-          这里定义的required属性同样适用与验证规则中，
-          验证的字段即可以是things[0]（代表独立的数据验证），也可以是things[]（代表整个数组的数据验证）
+          这里定义的required属性同样适用与验证规则中。
          -->
-      <FormItem label="自定义规则" prop="things[0]" required>
+      <FormItem label="自定义规则" prop="things[]" required>
         <input type="text" v-model="data.things[0]" />
       </FormItem>
       <FormItemList>
