@@ -15,5 +15,6 @@ module.exports = {
       'hey-utils': "hey-utils",
       manba: "manba"
     }
-  }
+  },
+  copy: ['./google3b61913cfeecb059.html']
 };
