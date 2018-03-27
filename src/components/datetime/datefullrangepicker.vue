@@ -219,7 +219,7 @@ export default {
       string = string || '';
       if( this.view == 'date' ){
         value = utils.copy(this.nowDate);
-        if(string == 'end' && value.end){
+        if(value.end){
           value.end = manba(value.end).add(1).format(this.nowFormat);
         }
         this.updateValue(value);
