@@ -59,6 +59,25 @@
       </tr>
     </table>
 
+    <h3>Tooltip 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>tooltip 打开的时候触发</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>tooltip 关闭的时候触发</td>
+        <td></td>
+      </tr>
+    </table>
+
     <h3>Tooltip 方法</h3>
     <table class="table">
       <tr>

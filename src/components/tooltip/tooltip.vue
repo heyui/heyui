@@ -61,7 +61,15 @@ export default {
           trigger: this.trigger,
           container: document.body,
           placement: this.placement,
-          disabled: this.disabled
+          disabled: this.disabled,
+          events: {
+            show: ()=>{
+              this.$emit('show');
+            },
+            hide: ()=>{
+              this.$emit('hide');
+            }
+          }
         });
       });
     }

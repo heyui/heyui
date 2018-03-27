@@ -2,7 +2,7 @@
   <div>
     <span v-tooltip ref-el="demo" class="text-hover" theme="white">模板调用</span>
     <i class="h-split" v-width="30"></i>
-    <Tooltip theme="white">
+    <Tooltip theme="white" @show="show" @hide="hide">
       <span class="text-hover">Component调用</span>
       <div slot="content">
         <div v-padding="10">
@@ -30,6 +30,12 @@
     methods: {
       change(){
         this.a = this.a+1;
+      },
+      show() {
+        this.$Message('show');
+      },
+      hide() {
+        this.$Message('hide');
       }
     }
   }
