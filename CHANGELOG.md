@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.4"></a>
+## [0.19.4](https://github.com/heyui/heyui/compare/v0.19.3...v0.19.4) (2018-03-27)
+
+
+### Bug Fixes
+
+* error in datefullrangepicker picker use self defined ([dc0d32b](https://github.com/heyui/heyui/commit/dc0d32b))
+* tooltip add show hide events ([7444982](https://github.com/heyui/heyui/commit/7444982))
+
+
+
 <a name="0.19.3"></a>
 ## [0.19.3](https://github.com/heyui/heyui/compare/v0.19.2...v0.19.3) (2018-03-23)
 
