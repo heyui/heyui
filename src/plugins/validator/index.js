@@ -164,9 +164,9 @@ class Validator {
 
   setConfig(prop, options) {
     let ruleKey = prop;
-    if (prop.indexOf("[") > -1 && !this.rules[prop]) {
-      ruleKey = prop.replace(/\[\w+\]/, "[]");
-    }
+    // if (prop.indexOf("[") > -1 && !this.rules[prop]) {
+    //   ruleKey = prop.replace(/\[\w+\]/, "[]");
+    // }
     this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
@@ -177,6 +177,7 @@ class Validator {
 
     let ruleKey = prop;
     let value = utils.getKeyValue(data, prop);
+    let originalRule = this.rules[prop];
     if (prop.indexOf("[") > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, "[]");
     }
@@ -186,7 +187,7 @@ class Validator {
       parentProp = prop.substr(0, prop.lastIndexOf("."));
       parent = utils.getKeyValue(data, parentProp);
     }
-    let rule = this.rules[ruleKey];
+    let rule = utils.extend({}, originalRule || {}, this.rules[ruleKey]);
     if (rule == undefined) {
       // log.error(`Error: Not found validator property '${ruleKey}'.`)
       let genRules = this.combineRules;
@@ -212,6 +213,7 @@ class Validator {
     }
     return utils.extend(baseResult, result);
   }
+  
   validFieldBase(rule, value, parent) {
     // console.log(rule, value, parent);
     if (rule) {
