@@ -17,12 +17,20 @@ export default {
       el.addEventListener("input", () => {
         wordlimit(el, total, vnode);
       });
+      for (let d of vnode.data.directives) {
+        if (d.name == 'model') {
+          vnode.context.$watch(d.expression, function () {
+            wordlimit(el, total, vnode);
+          });
+          break;
+        }
+      }
     }
   },
-  update(el, binding, vnode, voldnode) {
-    let total = binding.value;
-    if (vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
-      wordlimit(el, total, vnode);
-    }
-  },
+  // update(el, binding, vnode, voldnode) {
+  //   let total = binding.value;
+  //   if (vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
+  //     wordlimit(el, total, vnode);
+  //   }
+  // },
 }

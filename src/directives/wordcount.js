@@ -13,7 +13,7 @@ const wordcount = function(total, el, remainDom) {
 }
 
 export default {
-  inserted(el, binding) {
+  inserted(el, binding, vnode) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       let wordElement = document.createElement("p");
@@ -27,14 +27,22 @@ export default {
       el.addEventListener("input", () => {
         wordcount(total, el, remainDom);
       });
+      for (let d of vnode.data.directives) {
+        if (d.name == 'model') {
+          vnode.context.$watch(d.expression, function () {
+            wordcount(el, total, vnode);
+          });
+          break;
+        }
+      }
     }
   },
-  update(el, binding, vnode, voldnode) {
-    let total = binding.value;
-    if (el.remainDom && vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
-      wordcount(total, el, el.remainDom);
-    }
-  },
+  // update(el, binding, vnode, voldnode) {
+  //   let total = binding.value;
+  //   if (el.remainDom && vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
+  //     wordcount(total, el, el.remainDom);
+  //   }
+  // },
   unbind(el) {
     let previousnode = el.previousSibling;
     if (previousnode && utils.hasClass(previousnode, 'h-wordcount')) {
