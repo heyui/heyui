@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.7"></a>
+## [0.19.7](https://github.com/heyui/heyui/compare/v0.19.6...v0.19.7) (2018-03-29)
+
+
+### Bug Fixes
+
+* autocomplte class fix place ([58f8901](https://github.com/heyui/heyui/commit/58f8901))
+
+
+
 <a name="0.19.6"></a>
 ## [0.19.6](https://github.com/heyui/heyui/compare/v0.19.5...v0.19.6) (2018-03-29)
 
