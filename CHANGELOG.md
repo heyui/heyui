@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.8"></a>
+## [0.19.8](https://github.com/heyui/heyui/compare/v0.19.7...v0.19.8) (2018-03-29)
+
+
+### Bug Fixes
+
+* wordcount fix error ([879f89a](https://github.com/heyui/heyui/commit/879f89a))
+
+
+
 <a name="0.19.7"></a>
 ## [0.19.7](https://github.com/heyui/heyui/compare/v0.19.6...v0.19.7) (2018-03-29)
 
