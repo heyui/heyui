@@ -47,9 +47,7 @@
           <template v-else-if="!$scopedSlots.item">{{result.title}}</template>
           <slot v-else :item="result" name="item"></slot>
         </li>
-        <li v-if="results.length==0"
-            v-color:gray
-            class="text-center">{{showEmptyContent}}</li>
+        <li v-if="results.length==0" class="h-autocomplete-empty-content">{{showEmptyContent}}</li>
         <slot name="bottom" :results="results"></slot>
       </ul>
     </div>
