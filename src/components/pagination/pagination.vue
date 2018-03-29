@@ -108,9 +108,11 @@ export default {
   },
   methods: {
     prev() {
+      if(this.curNow == 1) return;
       this.change(this.curNow - 1);
     },
     next() {
+      if(this.curNow == this.count) return;
       this.change(this.curNow + 1);
     },
     jump(event) {
