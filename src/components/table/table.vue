@@ -7,7 +7,7 @@
           <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <th v-if="checkbox" class="text-center">
+          <th v-if="checkbox" class="h-table-th-checkbox">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
           <slot v-if="!columns.length&&!$scopedSlots.default" ></slot>
@@ -32,7 +32,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
-                <td v-if="checkbox" class="text-center">
+                <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
@@ -56,7 +56,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
-                <td v-if="checkbox" class="text-center">
+                <td v-if="checkbox" class="h-table-td-checkbox">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
@@ -87,7 +87,7 @@
           <col v-for="(c, index) of fixedColumnLeft" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <th v-if="checkbox" class="text-center">
+          <th v-if="checkbox" class="h-table-td-checkbox">
             <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
           <th v-for="(c, index) of fixedColumnLeft" :key="index+update.columns" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
