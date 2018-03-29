@@ -30,7 +30,7 @@ export default {
       for (let d of vnode.data.directives) {
         if (d.name == 'model') {
           vnode.context.$watch(d.expression, function () {
-            wordcount(total, el, vnode);
+            wordcount(total, el, remainDom);
           });
           break;
         }
