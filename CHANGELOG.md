@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.6"></a>
+## [0.19.6](https://github.com/heyui/heyui/compare/v0.19.5...v0.19.6) (2018-03-29)
+
+
+### Bug Fixes
+
+* autocomplete empty content use class ([1b288d4](https://github.com/heyui/heyui/commit/1b288d4))
+* table checkbox use class ([2c960e0](https://github.com/heyui/heyui/commit/2c960e0))
+* wordcount js error ([fb7557b](https://github.com/heyui/heyui/commit/fb7557b))
+
+
+
 <a name="0.19.5"></a>
 ## [0.19.5](https://github.com/heyui/heyui/compare/v0.19.4...v0.19.5) (2018-03-28)
 
