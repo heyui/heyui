@@ -29,10 +29,6 @@
     &-input{
       .border-input-inside-input();
     }
-    &-empty-content {
-      color: @gray-color;
-      text-align: center;
-    }
   }
 
   &-disabled{
@@ -59,5 +55,9 @@
     &.@{autocompleteClsItem}-selected {
       background-color: @hover-background-color;
     }
+  }
+  .@{autocompleteCls}-empty-content {
+    color: @gray-color;
+    text-align: center;
   }
 }
