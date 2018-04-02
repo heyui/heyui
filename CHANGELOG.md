@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.9"></a>
+## [0.19.9](https://github.com/heyui/heyui/compare/v0.19.8...v0.19.9) (2018-04-02)
+
+
+### Bug Fixes
+
+* pagination 使用js判断点击禁用 ([21b039b](https://github.com/heyui/heyui/commit/21b039b))
+* popper  兼容性更优化 ([9c06dba](https://github.com/heyui/heyui/commit/9c06dba))
+* search trigger remove blank words ([4528f13](https://github.com/heyui/heyui/commit/4528f13))
+* 修复IE下的兼容性 ([afa5996](https://github.com/heyui/heyui/commit/afa5996))
+
+
+
 <a name="0.19.8"></a>
 ## [0.19.8](https://github.com/heyui/heyui/compare/v0.19.7...v0.19.8) (2018-03-29)
 
