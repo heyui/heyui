@@ -60,9 +60,9 @@ export default {
     search(value) {
       this.inputValue = value;
       this.$emit('input', value);
-      this.$emit('onsearch', value);
-      this.$emit('search', value);
-      this.$emit('change', value);
+      this.$emit('onsearch', value.trim());
+      this.$emit('search', value.trim());
+      this.$emit('change', value.trim());
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {
