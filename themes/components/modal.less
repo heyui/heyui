@@ -8,6 +8,7 @@
     .@{notify-cls} {
         &-body{
             position: relative;
+            overflow: initial;
         }
         &-container {
             margin-bottom: 100px;
@@ -50,17 +51,11 @@
     }
 
     &.@{notify-cls} {
-
         &-has-mask{
-            // position: fixed;
-            // overflow: auto;
-            // top: 0;
-            // left: 0;
-            // bottom: 0;
-            // right: 0;
             .@{notify-cls} {
                 &-body{
                     position: fixed;
+                    overflow: auto;
                 }
                 &-container {
                     position: absolute;
