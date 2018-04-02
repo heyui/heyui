@@ -35,7 +35,7 @@ export default {
       select: null,
       param: ['选择1', '选择2', '选择3'],
       select2: null,
-      param2: [{ title: '选择0', key: 0 }, { title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
+      param2: [{ title: '选择0', key: 0 }, { title: '禁用选择', key: 1, disabled: true }, { title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       select3: null,
       param3: { 0: '选择0', a1: '选择1', a2: '选择2', a3: '选择3' },
       select4: null,

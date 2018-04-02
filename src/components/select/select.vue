@@ -17,7 +17,6 @@
           <ul class="h-select-ul">
             <li v-for="option of filterOptions"
                 :key="option[key]"
-                class="h-select-item"
                 @click="setvalue(option)"
                 :class="getLiCls(option)">
               <div v-if="!!render"
@@ -209,6 +208,7 @@ export default {
     },
     setvalue(option) {
       if (this.readonly) return;
+      if (option.disabled || option.isLabel) return;
       let code = option[this.key];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
@@ -236,8 +236,17 @@ export default {
     },
     getLiCls(option) {
       let code = option[this.key];
-      if (utils.isNull(code)) return {};
-      return { [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code) };
+      if (option.isLabel){
+        return {
+          [`${prefix}-item-label`]: option.isLabel,
+        };
+      } else {
+        return {
+          [`${prefix}-item-disabled`]: option.disabled,
+          [`${prefix}-item`]: true,
+          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code),
+        };
+      }
     }
   },
   filters: {
@@ -246,6 +255,9 @@ export default {
     }
   },
   computed: {
+    hasLabel() {
+      return this.options.some(item => item.isLabel);
+    },
     showNullOptionText() {
       return this.nullOptionText || this.t('h.select.nullOptionText');
     },
@@ -275,6 +287,7 @@ export default {
     groupCls() {
       return {
         [`${prefix}-group`]: true,
+        [`${prefix}-group-has-label`]: this.hasLabel,
         [`${prefix}-multiple`]: this.multiple,
         [`${this.className}-dropdown`]: !!this.className
       }

@@ -10,6 +10,9 @@
     <p>通过自定义<code>className</code>参数，自己定义特殊的样式。</p>
     <example demo="dataplugins/select13"></example>
 
+    <h3>分组</h3>
+    <example demo="dataplugins/select14"></example>
+
     <h3>自定义内容</h3>
     <example demo="dataplugins/select7"></example>
     

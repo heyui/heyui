@@ -18,6 +18,11 @@
       overflow-y: auto;
     }
   }
+  &&-has-label {
+    .@{select-item-prefix} {
+      padding: 8px 20px;
+    }
+  }
   .@{select-item-prefix} {
     .li-hover();
     .text-ellipsis;
@@ -26,6 +31,19 @@
     &.@{select-item-prefix}-selected {
       color: @white-color;
       background-color: @primary-color;
+    }
+
+    &-disabled {
+      color: @gray-color;
+      cursor: not-allowed;
+      &:hover{
+        background: none;
+      }
+    }
+    &-label {
+      color: @gray-color;
+      font-size: 12px;
+      padding: 8px 10px;
     }
   }
   .@{select-prefix}-search-input {
