@@ -15,7 +15,8 @@
         <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search>
         <div class="h-select-list">
           <ul class="h-select-ul">
-            <li v-for="option of filterOptions"
+            <template v-for="option of filterOptions">
+            <li v-if="!option.hidden"
                 :key="option[key]"
                 @click="setvalue(option)"
                 :class="getLiCls(option)">
@@ -26,6 +27,7 @@
               <i v-if="multiple"
                 class="h-icon-check"></i>
             </li>
+            </template>
           </ul>
         </div>
       </div>
