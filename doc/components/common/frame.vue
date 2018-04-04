@@ -7,6 +7,9 @@
       <router-view></router-view>
       <BackTop :target="getTarget"></BackTop>
     </div>
+    <ul class="right-frame-menu" v-if="menus.length>0">
+      <li v-for="(m, index) of menus" :key="m" @click="goMenu(index)">{{m}}</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -16,7 +19,8 @@ export default {
   data() {
     return {
       pass: '',
-      error: false
+      error: false,
+      menus: []
     }
   },
   watch: {
@@ -28,6 +32,15 @@ export default {
     getTarget() {
       return document.querySelector('.right-frame');
     },
+    goMenu(index) {
+      scrollIntoView($(`.doc h3:eq(${index})`, this.$el)[0], {
+        time: 500,
+        align:{
+          top: .1,
+          topOffset: 0
+        }
+      });
+    },
     initLeftMenu() {
       this.$nextTick(()=>{
         scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
@@ -37,6 +50,8 @@ export default {
             topOffset: 0
           }
         });
+        this.menus = [...$(".doc h3")].map(item => item.innerText)
+        // console.log($(".doc h3"))
       })
     }
   },

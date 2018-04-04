@@ -5,7 +5,7 @@
     <p v-color:gray>{{value2}}</p>
     <div><Radio v-model="value2" :datas="param2"></Radio></div>
     <p v-color:gray>{{value3}}</p>
-    <div><Radio v-model="value3" :datas="param3" type="object"></Radio></div>
+    <div><Radio v-model="value3" :datas="param3"></Radio></div>
     <div>禁用</div>
     <div><Radio v-model="value3" :datas="param3" :disabled="true"></Radio></div>
   </div>
