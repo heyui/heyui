@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/heyui/heyui/compare/v0.20.0...v0.21.0) (2018-04-04)
+
+
+### Features
+
+* select add hidden option ([0c6ebfd](https://github.com/heyui/heyui/commit/0c6ebfd))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/heyui/heyui/compare/v0.19.10...v0.20.0) (2018-04-02)
 
