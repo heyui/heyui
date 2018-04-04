@@ -100,6 +100,7 @@ export default {
   'datapluginsSelect12': resolve => require.ensure([], require => require('./dataplugins/select12.vue'), 'dataplugins'),
   'datapluginsSelect13': resolve => require.ensure([], require => require('./dataplugins/select13.vue'), 'dataplugins'),
   'datapluginsSelect14': resolve => require.ensure([], require => require('./dataplugins/select14.vue'), 'dataplugins'),
+  'datapluginsSelect15': resolve => require.ensure([], require => require('./dataplugins/select15.vue'), 'dataplugins'),
   'datapluginsTimepicker1': resolve => require.ensure([], require => require('./dataplugins/timepicker1.vue'), 'dataplugins'),
   'datapluginsTimepicker2': resolve => require.ensure([], require => require('./dataplugins/timepicker2.vue'), 'dataplugins'),
   'datapluginsTimepicker3': resolve => require.ensure([], require => require('./dataplugins/timepicker3.vue'), 'dataplugins'),
