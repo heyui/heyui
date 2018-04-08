@@ -160,6 +160,10 @@ class Pop {
       },
       inner: {
         enabled: false
+      },
+      preventOverflow: {
+        boundariesElement: 'window',
+        enabled: true
       }
     }
 
