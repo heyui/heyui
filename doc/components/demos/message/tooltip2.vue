@@ -1,9 +1,4 @@
-<style lang="less">
-.tooltip2-demo {
-  height: 100px;
-  overflow-y: auto;
-}
-</style>
+
 <template>
   <div class="tooltip2-demo">
     <Row :space="10" v-width="300" style="margin-left:80px;">
