@@ -43,8 +43,11 @@
     }
     &-container &-disabled {
       pointer-events: none;
-      cursor: not-allowed;
+      cursor: @disabled-cursor;
       color: @disabled-color;
+      &:hover {
+        color: @disabled-color;
+      }
     }
   }
 
