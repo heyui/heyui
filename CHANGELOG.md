@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.2"></a>
+## [0.21.2](https://github.com/heyui/heyui/compare/v0.21.1...v0.21.2) (2018-04-08)
+
+
+### Bug Fixes
+
+* pop default preventOverflow window ([885c1f4](https://github.com/heyui/heyui/commit/885c1f4))
+
+
+
 <a name="0.21.1"></a>
 ## [0.21.1](https://github.com/heyui/heyui/compare/v0.21.0...v0.21.1) (2018-04-08)
 
