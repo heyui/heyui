@@ -1,25 +1,43 @@
 <template>
   <div :class="selectCls">
     <div :class="showCls">
-      <div v-if="multiple&&objects&&objects.length"
-            class="h-select-multiple-tags"><span v-for="obj of objects"
-              :key="obj[key]"><span>{{obj[title]}}</span><i class="h-icon-close"
-            @click.stop="setvalue(obj)" v-if="!disabled"></i></span>
-      </div>
-      <div v-else-if="!multiple&&codes!=null&&objects" class="h-select-value-single">{{objects[title]}}</div>
-      <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
+      <template v-if="multiple">
+        <div class="h-select-multiple-tags">
+          <span v-for="obj of objects" :key="obj[key]">
+            <span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+          </span>
+          <input v-if="filterable"
+                type="text"
+                class="h-select-search-input" v-model="searchInput"
+               @keyup="handle"
+               @keypress.enter="enterHandle"
+                :placeholder="showSearchPlaceHolder" />
+        </div>
+        <div v-if="codes.length==0&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+      </template>
+      <template v-else-if="!multiple">
+        <input v-if="filterable"
+               type="text"
+               @keyup="handle"
+               @blur="blurHandle"
+               @keypress.enter="enterHandle"
+               class="h-select-search-input h-select-single-search-input" v-model="searchInput"
+               :placeholder="codes&&objects?'':showSearchPlaceHolder" />
+        <div class="h-select-value-single" v-if="codes&&objects" v-show="!searchInput">{{objects[title]}}</div>
+        <div v-else-if="!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+      </template>
       <i class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container" v-if="isShow">
-        <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search>
+        <!-- <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search> -->
         <div class="h-select-list">
           <ul class="h-select-ul">
-            <template v-for="option of filterOptions">
+            <template v-for="(option, index) of filterOptions">
             <li v-if="!option.hidden"
                 :key="option[key]"
                 @click="setvalue(option)"
-                :class="getLiCls(option)">
+                :class="getLiCls(option, index)">
               <div v-if="!!render"
                   v-html="option[html]"></div>
               <template v-else-if="!$scopedSlots.item">{{option[title]}}</template>
@@ -28,6 +46,7 @@
                 class="h-icon-check"></i>
             </li>
             </template>
+            <li v-if="filterOptions.length==0" class="h-select-ul-empty">Not Found</li>
           </ul>
         </div>
       </div>
@@ -120,7 +139,9 @@ export default {
       objects: {},
       hasNullOption: this.nullOption && !this.multiple,
       searchInput: '',
-      isShow: false
+      nowSelected: -1,
+      isShow: false,
+      content: null
     };
   },
   watch: {
@@ -136,6 +157,28 @@ export default {
       } else {
         this.dropdown.enabled();
       }
+    },
+    searchInput() {
+      this.nowSelected = -1;
+    },
+    nowSelected() {
+      this.$nextTick(() => {
+        if (this.content && this.nowSelected > -1) {
+          let dom = this.content.querySelector('.h-select-item-picked')
+          let uldom = this.content.querySelector('.h-select-list')
+          if (dom && uldom) {
+            if (
+              dom.offsetTop + dom.offsetHeight - uldom.scrollTop >
+              uldom.offsetHeight
+            ) {
+              uldom.scrollTop =
+                dom.offsetTop + dom.offsetHeight - uldom.offsetHeight
+            } else if (dom.offsetTop - uldom.scrollTop < 0) {
+              uldom.scrollTop = dom.offsetTop
+            }
+          }
+        }
+      })
     }
   },
   beforeMount() {
@@ -154,12 +197,14 @@ export default {
   mounted() {
     this.$nextTick(() => {
       let el = this.el = this.$el.querySelector('.h-select-show');
-      let content = this.$el.querySelector('.h-select-group');
+      let content = this.content = this.$el.querySelector('.h-select-group');
       let that = this;
       this.dropdown = new Dropdown(el, {
         content,
         disabled: this.disabled,
         equalWidth: this.equalWidth,
+        trigger: 'click foucs',
+        triggerOnce: true,
         events: {
           show(){
             that.isShow = true;
@@ -169,6 +214,30 @@ export default {
     });
   },
   methods: {
+    handle(event) {
+      let code = event.keyCode || event.which || event.charCode
+      if (code == 38) {
+        if (this.nowSelected > 0) {
+          this.nowSelected -= 1
+        }
+      } else if (code == 40) {
+        if (this.nowSelected < this.filterOptions.length - 1) {
+          this.nowSelected += 1
+        }
+      }
+    },
+    enterHandle(event) {
+      event.preventDefault()
+      if (this.nowSelected >= 0) {
+        this.setvalue(this.filterOptions[this.nowSelected], 'enter');
+        if (!this.multiple) {
+          event.target.blur();
+        }
+      }
+    },
+    blurHandle(event) {
+      this.nowSelected = -1;
+    },
     search(value) {
       this.searchInput = value;
     },
@@ -208,7 +277,7 @@ export default {
     getValue(value) {
       return utils.isNull(value) ? null : value;
     },
-    setvalue(option) {
+    setvalue(option, trigger) {
       if (this.readonly) return;
       if (option.disabled || option.isLabel) return;
       let code = option[this.key];
@@ -227,16 +296,23 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.objects);
       this.$el.dispatchEvent(event);
+      this.nowSelected = -1;
       if (this.multiple) {
-        this.dropdown.update();
+        this.searchInput = '';
+        this.$nextTick(()=>{
+          this.dropdown.update();
+        })
       } else {
         this.dropdown.hide();
+        setTimeout(() => {
+          this.searchInput = '';
+        }, 100);
       }
     },
     isIncludes(code){
       return this.codes.some(item=>item == code);
     },
-    getLiCls(option) {
+    getLiCls(option, index) {
       let code = option[this.key];
       if (option.isLabel){
         return {
@@ -247,6 +323,7 @@ export default {
           [`${prefix}-item-disabled`]: option.disabled,
           [`${prefix}-item`]: true,
           [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code),
+          [`${prefix}-item-picked`]: (this.nowSelected == index),
         };
       }
     }
@@ -291,6 +368,7 @@ export default {
         [`${prefix}-group`]: true,
         [`${prefix}-group-has-label`]: this.hasLabel,
         [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-single`]: !this.multiple,
         [`${this.className}-dropdown`]: !!this.className
       }
     },
@@ -319,7 +397,7 @@ export default {
         datas = config.getDict(this.dict);
       }
       datas = utils.initOptions(datas, this);
-      if (!this.mutiple && this.hasNullOption) {
+      if (!this.multiple && this.hasNullOption) {
         datas.unshift({
           [`${this.key}`]: null,
           [`${this.title}`]: this.showNullOptionText,

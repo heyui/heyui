@@ -5,6 +5,23 @@
 
 .plugin-input(@select-prefix);
 
+.@{select-prefix}{
+  .@{select-prefix}-show{
+    position: relative;
+  }
+  .@{select-prefix}-search-input {
+    .border-input-inside-input();
+  }
+  .@{select-prefix}-single-search-input {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    right: 0;
+    background: none;
+  }
+}
+
 .@{select-prefix}-group {
   outline: none;
   user-select: none;
@@ -28,10 +45,6 @@
     .text-ellipsis;
     padding: 8px 10px;
     position: relative;
-    &.@{select-item-prefix}-selected {
-      color: @white-color;
-      background-color: @primary-color;
-    }
 
     &-disabled {
       color: @gray-color;
@@ -50,25 +63,44 @@
     width: 98%;
     margin: 3px 1%;
   }
-  &.@{select-prefix} {
-    &-multiple {
-      .@{select-item-prefix} {
-        padding-right: 40px;
-        .@{select-check-prefix} {
-          display: none;
-          position: absolute;
-          right: 10px;
-          font-weight: bold;
-        }
-        &-selected {
-          color: @primary-color;
-          background-color: transparent;
-          .li-hover();
-          .@{select-check-prefix} {
-            display: inline-block;
-          }
-        }
+  &.@{select-prefix}-single {
+    .@{select-item-prefix} {
+      
+      &.@{select-item-prefix}-picked {
+        color: inherit;
+        background-color: @hover-background-color;
+      }
+      &.@{select-item-prefix}-selected {
+        color: @white-color;
+        background-color: @primary-color;
       }
     }
+  }
+  &.@{select-prefix}-multiple {
+    .@{select-item-prefix} {
+      padding-right: 40px;
+      .@{select-check-prefix} {
+        display: none;
+        position: absolute;
+        right: 10px;
+        font-weight: bold;
+      }
+      &-selected {
+        color: @primary-color;
+        background-color: transparent;
+        .li-hover();
+        .@{select-check-prefix} {
+          display: inline-block;
+        }
+      }
+      &.@{select-item-prefix}-picked {
+        background-color: @hover-background-color;
+      }
+    }
+  }
+  .h-select-ul-empty {
+    color: @gray-color;
+    line-height: 24px;
+    padding: 0 10px;
   }
 }
