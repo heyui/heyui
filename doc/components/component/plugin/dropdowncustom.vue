@@ -65,13 +65,6 @@
         <td>true</td>
       </tr>
       <tr>
-        <td>width</td>
-        <td>自定义menu的宽度</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>placement</td>
         <td>menu显示的位置</td>
         <td>Stirng</td>
