@@ -7,7 +7,7 @@
 </style>
 
 <template>
-  <DropdownCustom ref="dropdown" trigger="rightclick" :toggleIcon="false">
+  <DropdownCustom ref="dropdown" trigger="contextMenu" :toggleIcon="false">
     <div class="dropdowncustom7-demo">右键点击区域内</div>
     <div slot="content" v-width="200" v-height="100">
       内容

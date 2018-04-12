@@ -59,7 +59,7 @@ class Pop {
     this.options = options;
 
     const triggerEvents = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
-      return ['click', 'hover', 'focus', 'rightclick'].indexOf(trigger) !== -1;
+      return ['click', 'hover', 'focus', 'contextMenu'].indexOf(trigger) !== -1;
     }) : [];
 
     this.isOpen = false;
@@ -201,7 +201,7 @@ class Pop {
         enabled: false,
       }
     }
-    if (this.options.trigger == 'rightclick') {
+    if (this.options.trigger == 'contextMenu') {
       modifiers.flip = {
         enabled: false
       }
@@ -343,7 +343,7 @@ class Pop {
           directtriggerEvents.push('click');
           if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
           break;
-        case 'rightclick':
+        case 'contextMenu':
           directtriggerEvents.push('contextmenu');
           oppositetriggerEvents.push('click');
           break;
