@@ -1,8 +1,9 @@
 <template>
   <div :class="dropdowncustomCls">
     <div :class="showCls">
-      <slot></slot><i class="h-icon-down"
-         v-if="this.toggleIcon"></i></div>
+      <div class="h-dropdowncustom-show-content"><slot></slot></div>
+      <i class="h-icon-down" v-if="toggleIcon"></i>
+    </div>
     <div :class="groupCls">
       <slot name='content' v-if="isShow"></slot>
     </div>
@@ -29,6 +30,10 @@ export default {
       type: Boolean,
       default: true
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     placement: {
       type: String,
     },
@@ -36,7 +41,8 @@ export default {
       type: String,
       default: 'h-dropdownmenu-default'
     },
-    offset: [String, Number]
+    offset: [String, Number],
+    showClass: String
   },
   data() {
     return {
@@ -56,6 +62,7 @@ export default {
         trigger: this.trigger,
         equalWidth: this.equalWidth,
         placement: this.placement,
+        disabled: this.disabled,
         events: {
           show(next){
             that.isShow = true;
@@ -66,6 +73,15 @@ export default {
         }
       });
     });
+  },
+  watch: {
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
   },
   beforeDestroy() {
     let el = this.el;
@@ -86,8 +102,10 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
+        [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon,
-        [this.className]: true
+        [this.className]: !!this.className,
+        [this.showClass] : !!this.showClass
       }
     },
     groupCls() {

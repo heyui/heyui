@@ -1,20 +1,6 @@
-
-<style lang="less">
-.button-dropdown{
-  &:hover, &.@{pop-ref-prefix}{
-    color: @primary-color;
-  }
-  .h-dropdowncustom-show-content{
-    padding: 0;
-  }
-  .h-btn {
-    padding-right: 26px;
-  }
-}
-</style>
 <template>
-  <DropdownMenu @click="trigger" :datas="param" class-name="button-dropdown">
-    <Button>菜单menu</Button>
+  <DropdownMenu @click="trigger" :datas="param" trigger="rightclick" :toggleIcon="false" class-name="h-text-dropdown">
+    <span>内容内容内容</span>
   </DropdownMenu>
 </template>
 <script>

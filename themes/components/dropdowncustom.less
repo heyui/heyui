@@ -4,9 +4,22 @@
   &-show{
     position: relative;
     &-toggle{
-      padding-right: 26px;
+      // padding-right: 26px;
     }
     .rotate-icon-down(false);
+    &-content {
+      display: inline-block;
+      padding-right: 26px;
+      transition: all 0.2s;
+    }
+  }
+
+  &-show&-disabled{
+    cursor: default;
+    color: @disabled-color !important;
+    >.h-icon-down{
+      color: @disabled-color !important;
+    }
   }
 }
 

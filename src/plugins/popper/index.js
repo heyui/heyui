@@ -898,6 +898,46 @@ function runModifiers(modifiers, data, ends) {
   return data;
 }
 
+
+/**
+ * Updates the options of Popper
+ * @method
+ * @memberof Popper
+ */
+function updateModifiers() {
+  if (this.state.isDestroyed) {
+    return;
+  }
+  // Deep merge modifiers options
+  let options = this.defaultOptions;
+  this.options.modifiers = {};
+  const _this = this;
+  Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+    _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+  });
+
+  // Refactoring modifiers' list (Object => Array)
+  this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
+    return _extends({
+      name: name
+    }, _this.options.modifiers[name]);
+  })
+  // sort the modifiers by order
+  .sort(function (a, b) {
+    return a.order - b.order;
+  });
+
+  // modifiers have the ability to execute arbitrary code when Popper.js get inited
+  // such code is executed in the same order of its modifier
+  // they could add new properties to their options configuration
+  // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
+  this.modifiers.forEach(function (modifierOptions) {
+    if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
+      modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
+    }
+  });
+}
+
 /**
  * Updates the position of the popper, computing the new offsets and applying
  * the new style.<br />
@@ -2377,6 +2417,7 @@ var Popper = function () {
     this.update = debounce(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
+    this.defaultOptions = options;
     this.options = _extends({}, Popper.Defaults, options);
 
     // init state
@@ -2390,32 +2431,7 @@ var Popper = function () {
     this.reference = reference && reference.jquery ? reference[0] : reference;
     this.popper = popper && popper.jquery ? popper[0] : popper;
 
-    // Deep merge modifiers options
-    this.options.modifiers = {};
-    Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
-    });
-
-    // Refactoring modifiers' list (Object => Array)
-    this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends({
-        name: name
-      }, _this.options.modifiers[name]);
-    })
-    // sort the modifiers by order
-    .sort(function (a, b) {
-      return a.order - b.order;
-    });
-
-    // modifiers have the ability to execute arbitrary code when Popper.js get inited
-    // such code is executed in the same order of its modifier
-    // they could add new properties to their options configuration
-    // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
-    this.modifiers.forEach(function (modifierOptions) {
-      if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
-        modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
-      }
-    });
+    this.updateModifiers();
 
     // fire the first update to position the popper in the right place
     this.update();
@@ -2434,6 +2450,11 @@ var Popper = function () {
 
 
   createClass(Popper, [{
+    key: 'updateModifiers',
+    value: function updateModifiers$$1() {
+      return updateModifiers.call(this);
+    }
+  },{
     key: 'update',
     value: function update$$1() {
       return update.call(this);

@@ -1,5 +1,27 @@
 <template>
-  <div :class="dropdownmenuCls">
+  <DropdownCustom ref="dropdown" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
+  :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
+    <slot></slot>
+    <ul slot="content" :class="groupCls" :style="groupStyle">
+      <li class="h-dropdownmenu-item"
+          :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
+          v-for="option of options"
+          @click="onclick(option)" :key="option[key]">
+        <div v-if="option[html]"
+              v-html="option[html]"></div>
+        <template v-else>
+          <i v-if="option.icon"
+              :class="option.icon"></i>
+          <span>{{option[title]}}</span>
+        </template>
+        <Badge v-if="showCount&&option.count"
+                :count="option.count"
+                :max-count="maxCount"
+                position="right"></Badge>
+      </li>
+    </ul>
+  </DropdownCustom>
+  <!-- <div :class="dropdownmenuCls">
     <div :class="showCls">
       <slot></slot><i class="h-icon-down"
          v-if="this.toggleIcon"></i></div>
@@ -23,12 +45,13 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
+import DropdownCustom from '../dropdowncustom';
 import Badge from '../badge';
 
 const prefix = 'h-dropdownmenu';
@@ -91,50 +114,41 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      let el = this.el = this.$el.querySelector('.h-dropdownmenu-show');
-      let content = this.$el.querySelector('.h-dropdownmenu-group');
-      let that = this;
-      this.dropdown = new Dropdown(el, {
-        content,
-        offset: this.offset,
-        trigger: this.trigger,
-        disabled: this.disabled,
-        equalWidth: this.equalWidth,
-        placement: this.placement,
-        events: {
-          show(){
-            that.isShow = true;
-          }
-        }
-      });
-    });
+    // this.$nextTick(() => {
+    //   let el = this.el = this.$el.querySelector('.h-dropdownmenu-show');
+    //   let content = this.$el.querySelector('.h-dropdownmenu-group');
+    //   let that = this;
+    //   this.dropdown = new Dropdown(el, {
+    //     content,
+    //     offset: this.offset,
+    //     trigger: this.trigger,
+    //     disabled: this.disabled,
+    //     equalWidth: this.equalWidth,
+    //     placement: this.placement,
+    //     events: {
+    //       show(){
+    //         that.isShow = true;
+    //       }
+    //     }
+    //   });
+    // });
   },
   beforeDestroy() {
-    let el = this.el;
-    if(el) {
-      el.style.display = 'none';
-      this.$el.appendChild(el);
-    }
-    if(this.dropdown) {
-      this.dropdown.destory();
-    }
-  },
-  watch: {
-    disabled() {
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
-      }
-    }
+    // let el = this.el;
+    // if(el) {
+    //   el.style.display = 'none';
+    //   this.$el.appendChild(el);
+    // }
+    // if(this.dropdown) {
+    //   this.dropdown.destory();
+    // }
   },
   methods: {
     onclick(option) {
       if (!!option.disabled) return;
       this.$emit("onclick", option[this.key]);
       this.$emit("click", option[this.key]);
-      this.dropdown.hide();
+      this.$refs.dropdown.hide();
     }
   },
   computed: {
@@ -154,14 +168,13 @@ export default {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
-        [`${prefix}-show-toggle`]: !!this.toggleIcon,
+        // [`${prefix}-show-toggle`]: !!this.toggleIcon,
         [this.className]: true
       }
     },
     groupCls() {
       return {
-        [`${prefix}-group`]: true,
-        [`${this.className}-dropdown`]: true
+        [`${this.className}-dropdown`]: !!this.className
       }
     },
     options() {
@@ -178,7 +191,8 @@ export default {
     }
   },
   components: {
-    Badge
+    Badge,
+    DropdownCustom
   }
 };
 </script>

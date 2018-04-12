@@ -59,7 +59,7 @@ class Pop {
     this.options = options;
 
     const triggerEvents = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
-      return ['click', 'hover', 'focus'].indexOf(trigger) !== -1;
+      return ['click', 'hover', 'focus', 'rightclick'].indexOf(trigger) !== -1;
     }) : [];
 
     this.isOpen = false;
@@ -201,11 +201,17 @@ class Pop {
         enabled: false,
       }
     }
+    if (this.options.trigger == 'rightclick') {
+      modifiers.flip = {
+        enabled: false
+      }
+    }
 
     let popperOptions = {
       placement: options.placement,
       modifiers
     };
+    this.popperOptions = popperOptions;
     this.popperInstance = new Popper(reference, popNode, popperOptions);
   }
 
@@ -337,6 +343,10 @@ class Pop {
           directtriggerEvents.push('click');
           if (!this.options.triggerOnce) oppositetriggerEvents.push('click');
           break;
+        case 'rightclick':
+          directtriggerEvents.push('contextmenu');
+          oppositetriggerEvents.push('click');
+          break;
         default:
           break;
       }
@@ -344,6 +354,25 @@ class Pop {
 
     directtriggerEvents.forEach((event) => {
       const func = (evt) => {
+        if (evt.type == 'contextmenu') {
+          evt.preventDefault();
+          evt.stopPropagation();
+          if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+          } else {
+            document.selection.empty();
+          }
+          let rect = reference.getBoundingClientRect();
+          this.options.offset = `${evt.clientX - rect.x}, -${rect.bottom - evt.clientY - 10}`;
+          if (this.popperInstance) {
+            this.popperInstance.defaultOptions.modifiers.offset = {
+              enabled: true,
+              offset: this.options.offset
+            }
+            this.popperInstance.updateModifiers();
+            this.popperInstance.update();
+          }
+        }
         if (this.isOpen === true) { return; }
         evt.usedByPop = true;
         this.scheduleShow(reference, options, evt);

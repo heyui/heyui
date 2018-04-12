@@ -1,5 +1,5 @@
 <template>
-  <DropdownCustom class-name="h-text-dropdown">
+  <DropdownCustom class-name="h-text-dropdown" trigger="rightclick">
     <span>个人信息</span>
     <div slot="content" v-width="200">
       <div v-padding="20">

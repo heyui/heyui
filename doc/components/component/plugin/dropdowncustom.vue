@@ -23,6 +23,8 @@
     <p>分别控制left, top的位移</p>
     <example demo="plugins/dropdowncustom6"></example>
 
+    <h3>右键触发弹框</h3>
+    <example demo="plugins/dropdowncustom7"></example>
 
     <h3>自定义下拉的控制</h3>
     <example demo="plugins/dropdowncustom5"></example>

@@ -22,6 +22,10 @@
     <h3>不同的触发方式</h3>
     <p><code>trigger</code>: hover, click</p>
     <example demo="plugins/dropdownmenu4"></example>
+
+    <h3>右键触发</h3>
+    <p><code>trigger</code>: rightclick</p>
+    <example demo="plugins/dropdownmenu10"></example>
   
     <h3>不默认添加右侧的icon</h3>
     <example demo="plugins/dropdownmenu5"></example>
