@@ -20,7 +20,7 @@ export default {
   methods: {
   },
   mounted() {
-    loadReadMe(this.$el, 'https://raw.githubusercontent.com/heyui/hey-utils/master/README.md');
+    loadReadMe(this.$el, 'https://raw.githubusercontent.com/heyui/hey-utils/master/README.md', this);
   },
   components:{
   }

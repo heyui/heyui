@@ -1,7 +1,7 @@
 import marked from './marked';
 const hljs = require('highlight.js');
 
-export default (el, url) => {
+export default (el, url, vm) => {
   $.get(url, function (data) {
     let content = $(marked(data));
     let container = $(".readme", el);
@@ -31,6 +31,6 @@ export default (el, url) => {
     //   });
     //   lis.append(li);
     // })
-
+    vm.$parent.initLeftMenu();
   });
 }

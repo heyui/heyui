@@ -33,7 +33,7 @@ export default {
       return document.querySelector('.right-frame');
     },
     goMenu(index) {
-      scrollIntoView($(`.doc h3:eq(${index})`, this.$el)[0], {
+      scrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
         time: 500,
         align:{
           top: .1,
@@ -50,7 +50,7 @@ export default {
             topOffset: 0
           }
         });
-        this.menus = [...$(".doc h3")].map(item => item.innerText)
+        this.menus = [...$(".doc h2,.doc h3")].map(item => item.innerText)
         // console.log($(".doc h3"))
       })
     }

@@ -21,7 +21,7 @@ export default {
   methods: {
   },
   mounted() {
-    loadReadMe(this.$el, 'https://raw.githubusercontent.com/vvpvvp/manba/master/README.md');
+    loadReadMe(this.$el, 'https://raw.githubusercontent.com/vvpvvp/manba/master/README.md', this);
   },
   components:{
   }

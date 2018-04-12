@@ -20,7 +20,7 @@ export default {
   methods: {
   },
   mounted() {
-    loadReadMe(this.$el, 'https://raw.githubusercontent.com/vvpvvp/umock/v2.0/README.md');
+    loadReadMe(this.$el, 'https://raw.githubusercontent.com/vvpvvp/umock/v2.0/README.md', this);
   },
   components:{
   }
