@@ -366,16 +366,28 @@ h2 {
     position: static;
     .left-frame {
       width: auto;
+      padding-top: 30px;
       >div>ul {
         >ul {
           .clearfix();
           >li {
-            &.title {}
+            &.title {
+              float: none;
+            }
             float: left;
             margin-right: 10px;
+            a{
+              padding-left: 0;
+              &.router-link-active {
+                border: none;
+              }
+            }
           }
         }
       }
+    }
+    .right-frame-menu {
+      display: none;
     }
   }
   .page-component {
@@ -384,9 +396,16 @@ h2 {
   .comm-header {
     position: static;
     height: auto;
+    padding: 0 20px;
     .header-nav-list {
       .clearfix();
       float: none;
+      >a {
+        padding: 0 13px;
+        &.router-link-active {
+          border-radius: 4px;
+        }
+      }
     }
   }
   .comm-footer {
@@ -495,19 +514,15 @@ h2 {
 }
 
 ul.right-frame-menu {
-  position: absolute;
-  right: 10px;
-  top: 70px;
-  z-index: 3;
-  overflow: hidden;
-  max-height: 80vh;
+  overflow: auto;
   background: rgba(255, 255, 255, 0.5);
-  padding: 30px 0;
+  padding: 70px 0;
+  width: 200px;
   &:hover{
     background: #FFF;
   }
   li{
-    padding: 0 30px;
+    padding: 0 20px;
     line-height: 30px;
     cursor: pointer;
     &:hover{

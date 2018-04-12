@@ -4,7 +4,6 @@
       <div slot="left-frame">
         <ul>
           <ul>
-            <li class="gray-color">&nbsp;</li>
             <li><router-link to="/component/guide" :class="{'router-link-active': $route.name =='basic'}">入门</router-link></li>
             <li><router-link to="/component/quickstart">快速上手</router-link></li>
             <li><router-link to="/component/themes">更换主题</router-link></li>
