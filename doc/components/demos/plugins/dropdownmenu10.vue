@@ -1,6 +1,14 @@
+<style lang="less" scoped>
+  .dropdownmenu10-demo{
+    height: 100px;
+    width: 400px;
+    border: 1px solid @gray2-color;
+  }
+</style>
+
 <template>
-  <DropdownMenu @click="trigger" :datas="param" trigger="contextMenu" :toggleIcon="false" class-name="h-text-dropdown">
-    <span>内容内容内容</span>
+  <DropdownMenu @click="trigger" :datas="param" trigger="contextMenu" :toggleIcon="false">
+    <div class="dropdownmenu10-demo">右键点击区域内</div>
   </DropdownMenu>
 </template>
 <script>
@@ -8,7 +16,7 @@
 export default {
   data() {
     return {
-      param: [{ title: "测试1", key: 'test1' }, { title: "测试2", key: 'test2' }, { title: "测试3", key: 'test3' }]
+      param: [{ title: "新建", key: 'add', icon: 'h-icon-plus' }, { title: "编辑", key: 'edit', icon: 'h-icon-edit'  }, { title: "删除", key: 'delete', icon: 'h-icon-trash'  }]
     }
   },
   methods: {
