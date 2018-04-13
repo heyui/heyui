@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/heyui/heyui/compare/v0.21.2...v0.22.0) (2018-04-13)
+
+
+### Bug Fixes
+
+* autocomplete enter update tempvalue ([7959a98](https://github.com/heyui/heyui/commit/7959a98))
+* if autocomplete use dict or datas, use key/value computed value ([c7e3e9e](https://github.com/heyui/heyui/commit/c7e3e9e))
+* qiniu optimize mechanism ([4165a8e](https://github.com/heyui/heyui/commit/4165a8e))
+* rightclick -> contextMenu ([3f51df3](https://github.com/heyui/heyui/commit/3f51df3))
+* tree dom structure optimize ([d4d830b](https://github.com/heyui/heyui/commit/d4d830b))
+
+
+### Features
+
+* dropdown optimize ([a576c33](https://github.com/heyui/heyui/commit/a576c33))
+* select search optimize ([7a4e348](https://github.com/heyui/heyui/commit/7a4e348))
+
+
+
 <a name="0.21.2"></a>
 ## [0.21.2](https://github.com/heyui/heyui/compare/v0.21.1...v0.21.2) (2018-04-08)
 
