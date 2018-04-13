@@ -61,34 +61,29 @@ export default {
         domain: 'http://oroc6hc3j.bkt.clouddn.com',
         chunk_size: '4mb',
         unique_names: true,
-        auto_start: true,
+        auto_start: false,
         filters: {},
         init: {
           FilesAdded(up, files) {
             if (that.limit && (files.length + that.value.length > that.limit)) {
               that.$Message.error(`你上传的文件超过${that.limit}个。`);
+              return;
             }
             files.forEach((file) => {
-              if (that.limit && (that.uploadList.length + that.value.length >= that.limit)) {
-                up.removeFile(file);
-              } else {
-                file.isUpload = true;
-                if (FileReader) {
-                  let reader = new FileReader();
-                  reader.onload = (event) => {
-                    file.thumbUrl = event.target.result;
-                  };
-                  reader.readAsDataURL(file.getNative());
-                }
-                that.uploadList.push(file);
+              if (FileReader) {
+                let reader = new FileReader();
+                reader.onload = (event) => {
+                  file.thumbUrl = event.target.result;
+                };
+                reader.readAsDataURL(file.getNative());
               }
+              that.uploadList.push(file);
             });
             // that.$emit("startUpload");
+            up.start();
           },
           BeforeUpload(up, file) {
-            if (!file.isUpload) {
-              return false;
-            }
+            
           },
           UploadProgress(up, file) {
             // log(file.percent);
