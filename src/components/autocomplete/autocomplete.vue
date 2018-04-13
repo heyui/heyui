@@ -342,10 +342,12 @@ export default {
       }
     },
     enterHandle(event) {
-      event.preventDefault()
+      // log('enterhandle', event.target.value, this.showValue);
+      this.tempValue = event.target.value;
+      event.preventDefault();
       if (this.nowSelected >= 0) {
         this.add(this.results[this.nowSelected])
-        this.setvalue('enter')
+        this.setvalue('enter');
       } else {
         this.setvalue('enter')
       }
@@ -371,6 +373,8 @@ export default {
               this.dropdown.update()
               this.nowSelected = this.autoSelectFirst ? 0 : -1
             }
+          }, _ => {
+            this.loading = false;
           })
         } else {
           this.nowSelected = this.autoSelectFirst ? 0 : -1
@@ -403,7 +407,7 @@ export default {
       if (this.mustMatch || this.object.key || this.multiple) {
         this.tempValue = null
       }
-      this.focusValue = this.showValue
+      this.focusValue = this.showValue;
       if (this.object.key === null) this.object.title = this.showValue
       // console.log(trigger)
       this.$emit('input', value, trigger)
