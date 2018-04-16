@@ -6,10 +6,12 @@
     <div class="right-frame flex1 overflow-y h-dropdown-common-container">
       <router-view></router-view>
       <BackTop :target="getTarget"></BackTop>
+      <div class="right-frame-menu-container">
+        <ul class="right-frame-menu" v-if="menus.length>0">
+          <li v-for="(m, index) of menus" :key="m" @click="goMenu(index)">{{m}}</li>
+        </ul>
+      </div>
     </div>
-    <ul class="right-frame-menu" v-if="menus.length>0">
-      <li v-for="(m, index) of menus" :key="m" @click="goMenu(index)">{{m}}</li>
-    </ul>
   </div>
 </template>
 <script>

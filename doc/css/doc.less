@@ -235,6 +235,7 @@ h2 {
     position: relative;
     padding: 60px 30px 100px;
     z-index: 1;
+    padding-right: 200px;
   }
 }
 
@@ -386,6 +387,10 @@ h2 {
         }
       }
     }
+
+    .right-frame {
+      padding-right: 30px;
+    }
     .right-frame-menu {
       display: none;
     }
@@ -517,6 +522,7 @@ ul.right-frame-menu {
   overflow: auto;
   padding: 70px 0;
   width: 180px;
+  background-color: #FFF;
   li{
     font-size: 13px;
     padding: 5px 15px;
@@ -528,4 +534,10 @@ ul.right-frame-menu {
       background-color: @hover-background-color;
     }
   }
+}
+.right-frame-menu-container{
+  top: 20px;
+  position: fixed;
+  right: 10px;
+  width: 180px;
 }
