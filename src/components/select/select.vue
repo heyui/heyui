@@ -204,7 +204,7 @@ export default {
         disabled: this.disabled,
         equalWidth: this.equalWidth,
         trigger: 'click foucs',
-        triggerOnce: true,
+        triggerOnce: this.filterable,
         events: {
           show(){
             that.isShow = true;
