@@ -121,7 +121,6 @@
     }
     &-show {
       padding-right: 30px !important;
-      min-height: @input-height;
       .rotate-icon-down();
       position: relative;
       .text-hover();
@@ -138,6 +137,7 @@
     &-input-border {
       .@{css-prefix}{
         &-show {
+          min-height: @input-height;
           .border-input();
           .@{prefix}form-item-valid-error & {
             border-color: @red-color;
