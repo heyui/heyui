@@ -6,7 +6,10 @@
         <input type="text" v-model="inputValue" :placeholder="placeholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <Button color="primary" v-if="showSearchButton" @click="search(inputValue)">{{searchText}}</Button>
+      <Button color="primary" v-if="showSearchButton" @click="search(inputValue)">
+        <template v-if="$slots.default"><slot></slot></template>
+        <template v-else>{{searchText}}</template>
+      </Button>
     </div>
     <i v-if="position=='end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
   </div>
@@ -33,10 +36,7 @@ export default {
       type: String,
       default: 'enter'
     },
-    value: {
-      type: String,
-      default: ''
-    },
+    value: String,
     showSearchButton: {
       type: Boolean,
       default: false
@@ -77,7 +77,7 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-block`]: this.block,
-        [`${prefix}-searching`]: this.value !== '',
+        [`${prefix}-searching`]: this.value !== '' && this.value !== null && this.value !== undefined,
         [`${prefix}-has-button`]: this.showSearchButton,
         [`${prefix}-${this.position}`]: true,
       }

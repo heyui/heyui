@@ -212,6 +212,7 @@ export default {
   'pluginsDropdowncustom7': resolve => require.ensure([], require => require('./plugins/dropdowncustom7'), 'plugins'),
   'pluginsSearch1': resolve => require.ensure([], require => require('./plugins/search1'), 'plugins'),
   'pluginsSearch2': resolve => require.ensure([], require => require('./plugins/search2'), 'plugins'),
+  'pluginsSearch3': resolve => require.ensure([], require => require('./plugins/search3'), 'plugins'),
   'pluginsStep1': resolve => require.ensure([], require => require('./plugins/step1'), 'plugins'),
   'pluginsStep2': resolve => require.ensure([], require => require('./plugins/step2'), 'plugins'),
   'pluginsStep3': resolve => require.ensure([], require => require('./plugins/step3'), 'plugins'),
