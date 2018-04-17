@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.1"></a>
+## [0.22.1](https://github.com/heyui/heyui/compare/v0.22.0...v0.22.1) (2018-04-17)
+
+
+### Bug Fixes
+
+* search add icon define ([4d142ae](https://github.com/heyui/heyui/commit/4d142ae))
+* select style optimize ([4b9e3bc](https://github.com/heyui/heyui/commit/4b9e3bc))
+* set triggerOnce when filterable with select ([9cb8b73](https://github.com/heyui/heyui/commit/9cb8b73))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/heyui/heyui/compare/v0.21.2...v0.22.0) (2018-04-13)
 
