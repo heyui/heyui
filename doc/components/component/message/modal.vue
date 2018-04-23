@@ -64,7 +64,7 @@
         <td>是否有关闭的Icon</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>true</td>
+        <td>false</td>
       </tr>
       <tr>
         <td>hasMask</td>
