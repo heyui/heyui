@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/heyui/heyui/compare/v0.22.1...v0.23.0) (2018-04-23)
+
+
+### Bug Fixes
+
+* button add font-family inherit ([9aa5f00](https://github.com/heyui/heyui/commit/9aa5f00))
+* dropdown class style ([02230a9](https://github.com/heyui/heyui/commit/02230a9))
+
+
+### Features
+
+*  添加验证文件 ([f4caea0](https://github.com/heyui/heyui/commit/f4caea0))
+
+
+
 <a name="0.22.1"></a>
 ## [0.22.1](https://github.com/heyui/heyui/compare/v0.22.0...v0.22.1) (2018-04-17)
 
