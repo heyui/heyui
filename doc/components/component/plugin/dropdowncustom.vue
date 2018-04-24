@@ -15,11 +15,11 @@
     <h3>是否显示切换的icon</h3>
     <example demo="plugins/dropdowncustom3"></example>
 
-    <h3>下拉显示的位置</h3>
+    <h3>内容显示的位置</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <example demo="plugins/dropdowncustom4"></example>
 
-    <h3>自定义下拉的位置</h3>
+    <h3>自定义内容的位置</h3>
     <p>分别控制left, top的位移</p>
     <example demo="plugins/dropdowncustom6"></example>
 
@@ -121,6 +121,25 @@
       <tr>
         <td>hide</td>
         <td>关闭dropdown</td>
+      </tr>
+    </table>
+
+    <h3>DropdownMenu 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>打开的时候触发</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>关闭的时候触发</td>
+        <td></td>
       </tr>
     </table>
   </div>

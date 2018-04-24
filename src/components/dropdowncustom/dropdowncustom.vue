@@ -66,9 +66,10 @@ export default {
         events: {
           show(next){
             that.isShow = true;
-            // that.$nextTick(()=>{
-            //   next();
-            // })
+            that.$emit('show');
+          },
+          hide: ()=>{
+            that.$emit('hide');
           }
         }
       });

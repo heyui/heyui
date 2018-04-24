@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DropdownCustom ref="dropdown" trigger="click">
+    <DropdownCustom ref="dropdown" trigger="click" @show="$Message('show')" @hide="$Message('hide')">
       <textarea v-model="text" v-autosize rows="1"></textarea>
       <div slot="content" v-width="200">
         <div v-padding="20">

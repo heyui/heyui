@@ -1,5 +1,5 @@
 <template>
-  <DropdownMenu @click="trigger" :datas="param" placement="bottom-end" class-name="h-text-dropdown">
+  <DropdownMenu @click="trigger" :datas="param" @show="show" @hide="hide" placement="bottom-end" class-name="h-text-dropdown">
     <span>菜单menu</span>
   </DropdownMenu>
 </template>
@@ -14,6 +14,12 @@ export default {
   methods: {
     trigger(code) {
       this.$Message.info(`您点击了${code}`);
+    },
+    show() {
+      this.$Message.info('展开');
+    },
+    hide() {
+      this.$Message.info('关闭');
     }
   },
 };

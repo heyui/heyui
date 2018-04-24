@@ -161,6 +161,17 @@
         <td>点击触发的事件</td>
         <td>key</td>
       </tr>
+      <tr>
+        <td>show</td>
+        <td>打开的时候触发</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>关闭的时候触发</td>
+        <td></td>
+      </tr>
     </table>
+
   </div>
 </template>

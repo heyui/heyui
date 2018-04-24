@@ -1,5 +1,5 @@
 <template>
-  <DropdownCustom ref="dropdown" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
+  <DropdownCustom ref="dropdown" @show="$emit('show')" @hide="$emit('hide')" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
   :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
     <slot></slot>
     <ul slot="content" :class="groupCls" :style="groupStyle">
@@ -21,31 +21,6 @@
       </li>
     </ul>
   </DropdownCustom>
-  <!-- <div :class="dropdownmenuCls">
-    <div :class="showCls">
-      <slot></slot><i class="h-icon-down"
-         v-if="this.toggleIcon"></i></div>
-    <div :class="groupCls" :style="groupStyle">
-      <ul v-if="isShow">
-        <li class="h-dropdownmenu-item"
-            :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
-            v-for="option of options"
-            @click="onclick(option)" :key="option[key]">
-          <div v-if="option[html]"
-               v-html="option[html]"></div>
-          <template v-else>
-            <i v-if="option.icon"
-               :class="option.icon"></i>
-            <span>{{option[title]}}</span>
-          </template>
-          <Badge v-if="showCount&&option.count"
-                 :count="option.count"
-                 :max-count="maxCount"
-                 position="right"></Badge>
-        </li>
-      </ul>
-    </div>
-  </div> -->
 </template>
 <script>
 import config from '../../utils/config';
@@ -62,7 +37,7 @@ export default {
     dict: String,
     datas: [Array, Object],
     trigger: {
-      type: String,  //click,hover
+      type: String,  //click,hover,contextMenu`
       default: "click"
     },
     equalWidth: {
