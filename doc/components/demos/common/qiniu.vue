@@ -57,8 +57,8 @@ export default {
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
-        uptoken_url: 'http://admin.heyui.top/api/uptoken',
-        domain: 'http://oroc6hc3j.bkt.clouddn.com',
+        uptoken_url: 'https://www.heyui.top/api/uptoken',
+        domain: '//oroc6hc3j.bkt.clouddn.com',
         chunk_size: '4mb',
         unique_names: true,
         auto_start: false,
