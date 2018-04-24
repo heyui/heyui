@@ -1,6 +1,6 @@
 
 <style lang="less">
-.button-dropdown{
+.button-dropdown.h-dropdowncustom-show-toggle{
   &:hover, &.@{pop-ref-prefix}{
     color: @primary-color;
   }
