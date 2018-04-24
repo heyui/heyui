@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.2"></a>
+## [0.23.2](https://github.com/heyui/heyui/compare/v0.23.1...v0.23.2) (2018-04-24)
+
+
+### Bug Fixes
+
+* dropdown add show hide event ([c12471d](https://github.com/heyui/heyui/commit/c12471d))
+
+
+
 <a name="0.23.1"></a>
 ## [0.23.1](https://github.com/heyui/heyui/compare/v0.23.0...v0.23.1) (2018-04-23)
 
