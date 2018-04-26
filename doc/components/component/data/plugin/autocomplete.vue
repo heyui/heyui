@@ -125,14 +125,14 @@
       </tr>
       <tr>
         <td>show</td>
-        <td>默认展示的文字</td>
+        <td>默认展示的文字，针对与存储key值，但是拥有show值的情景</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>emptyContent</td>
-        <td>默认没有搜索到值的时候的提示语</td>
+        <td>没有搜索到值的提示语</td>
         <td>String</td>
         <td>-</td>
         <td>未搜索到相关数据</td>

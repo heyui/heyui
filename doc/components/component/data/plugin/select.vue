@@ -165,6 +165,13 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>emptyContent</td>
+        <td>没有搜索到值的提示语</td>
+        <td>String</td>
+        <td>-</td>
+        <td>未搜索到相关数据</td>
+      </tr>
     </table>
   </div>
 </template>

@@ -10,6 +10,7 @@
                 type="text"
                 class="h-select-search-input" v-model="searchInput"
                @keyup="handle"
+               @blur="blurHandle"
                @keypress.enter="enterHandle"
                 :placeholder="showSearchPlaceHolder" />
         </div>
@@ -46,7 +47,7 @@
                 class="h-icon-check"></i>
             </li>
             </template>
-            <li v-if="filterOptions.length==0" class="h-select-ul-empty">Not Found</li>
+            <li v-if="filterOptions.length==0" class="h-select-ul-empty">{{emptyContent}}</li>
           </ul>
         </div>
       </div>
@@ -105,6 +106,10 @@ export default {
     searchPlaceHolder: {
       type: String,
       // default: "请输入筛选文本"
+    },
+    emptyContent: {
+      type: String,
+      default: "未搜索到相关数据"
     },
     filterable: {
       type: Boolean,
@@ -237,6 +242,9 @@ export default {
     },
     blurHandle(event) {
       this.nowSelected = -1;
+      setTimeout(() => {
+        this.searchInput = '';
+      }, 300);
     },
     search(value) {
       this.searchInput = value;
