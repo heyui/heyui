@@ -2,7 +2,7 @@
   <div :class="numberinputCls">
     <div class="h-numberinput-show"
          :class="{'focusing':focusing}">
-      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input" :value="value" @input="input" @focus="focusing=true" @blur="blur"/>
+      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input" v-model="editValue" @input="input" @focus="focusing=true" @blur="blur"/>
       <div class="h-numberinput-operate" v-if="useOperate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
@@ -40,12 +40,25 @@ export default {
     useOperate: {
       type: Boolean,
       default: false
+    },
+    precision: {
+      type: Number,
     }
   },
   data() {
     return {
       focusing: false,
+      editValue: this.value,
+      valueBak: this.value
     };
+  },
+  watch: {
+    value() {
+      // this.editValue = this.value;
+      if(this.valueBak != this.value) {
+        this.editValue = this.value;
+      }
+    }
   },
   mounted() {
   },
@@ -61,7 +74,11 @@ export default {
       this.setvalue(utils.addFn(value, -this.step), 'handler');
     },
     input(event) {
+      if(isNaN(new Number(event.target.value))) return false;
       let value = this.getValue(event.target.value);
+      if(utils.isNumber(this.value) && Math.abs(value - this.value) <= 1 && this.precision) {
+        return;
+      }
       this.setvalue(value, 'input');
     },
     blur(event) {
@@ -85,7 +102,15 @@ export default {
       if (this.min !== undefined && value !== null) {
         value = Math.max(this.min, value);
       }
+      if(this.precision && utils.isNumber(value)) {
+        value = Math.floor(value*Math.pow(10,this.precision))/Math.pow(10,this.precision);
+        value = value.toFixed(this.precision);
+      }
+      this.valueBak = value;
       this.$emit('input', value);
+      if (trigger != 'input') {
+        this.editValue = value;
+      }
       if(trigger == 'blur') {
         this.$emit('change', value);
       }

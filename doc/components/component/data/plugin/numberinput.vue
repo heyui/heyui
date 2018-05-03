@@ -67,6 +67,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>precision</td>
+        <td>保留几位小数</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
 
 
