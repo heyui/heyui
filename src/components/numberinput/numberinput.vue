@@ -66,12 +66,12 @@ export default {
     plus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
-      this.setvalue(utils.addFn(value, this.step), 'handler');
+      this.setvalue(utils.add(value, this.step), 'handler');
     },
     minus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
-      this.setvalue(utils.addFn(value, -this.step), 'handler');
+      this.setvalue(utils.add(value, -this.step), 'handler');
     },
     input(event) {
       if(isNaN(new Number(event.target.value))) return false;
@@ -103,7 +103,7 @@ export default {
         value = Math.max(this.min, value);
       }
       if(this.precision && utils.isNumber(value)) {
-        value = Math.floor(value*Math.pow(10,this.precision))/Math.pow(10,this.precision);
+        value = Math.floor(utils.mul(value,Math.pow(10,this.precision)))/Math.pow(10,this.precision);
         value = value.toFixed(this.precision);
       }
       this.valueBak = value;
