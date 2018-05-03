@@ -5,6 +5,7 @@
     <div style="padding:15px">
       <Select dict="simple"></Select>
       <p>传递的参数：{{params.a}}</p>
+      <p>vuex传递的值：{{test}}</p>
     </div>
     <footer>
       <button class="h-btn h-btn-primary" @click="triggerEvent">确定</button>
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+import store from 'js/store'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -23,6 +26,12 @@ export default {
   },
   props: {
     params: Object
+  },
+  store,
+  computed: {
+    ...mapGetters({
+      test: 'getTest'
+    })
   },
   methods: {
     triggerEvent() {
