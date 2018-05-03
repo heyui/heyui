@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.4"></a>
+## [0.23.4](https://github.com/heyui/heyui/compare/v0.23.3...v0.23.4) (2018-05-03)
+
+
+### Bug Fixes
+
+* number add prop precision ([055c5f2](https://github.com/heyui/heyui/commit/055c5f2))
+
+
+
 <a name="0.23.3"></a>
 ## [0.23.3](https://github.com/heyui/heyui/compare/v0.23.2...v0.23.3) (2018-04-26)
 
