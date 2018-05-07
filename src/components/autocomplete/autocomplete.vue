@@ -435,7 +435,8 @@ export default {
       }
     },
     hide() {
-      this.dropdown.hide()
+      this.loading = false;
+      this.dropdown.hide();
     },
     clear() {
       this.tempValue = ''
