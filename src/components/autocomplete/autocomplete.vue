@@ -11,6 +11,7 @@
                @focus="focus"
                :value="showValue"
                @blur="blur"
+               @paste="paste"
                @keyup="handle"
                @keypress.enter="enterHandle"
                :placeholder="showPlaceholder" />
@@ -23,6 +24,7 @@
                class="h-autocomplete-input"
                @focus="focus"
                :value="showValue"
+               @paste="paste"
                @blur="blur"
                @keyup="handle"
                @keypress.enter="enterHandle"
@@ -290,13 +292,19 @@ export default {
       }
     },
     focus(event) {
-      this.focusing = true
+      this.focusing = true;
       this.focusValue = event.target.value
       if (this.multiple) this.searchValue = null
       this.search(event.target)
     },
+    paste(event) {
+      setTimeout(() => {
+        this.tempValue = event.target.value;
+        this.search(event.target)
+      },0)
+    },
     blur(event) {
-      this.focusing = false
+      this.focusing = false;
       setTimeout(() => {
         let nowValue = event.target.value
         let focusValue = this.focusValue
