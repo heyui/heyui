@@ -281,7 +281,9 @@ export default {
       return this.sortStatus;
     },
     setSelection(data) {
-      this.checks = data;
+      if(utils.isArray(data)) {
+        this.checks = [...data];
+      }
     },
     checkAll() {
       if (this.checks.length == this.datas.length) {
