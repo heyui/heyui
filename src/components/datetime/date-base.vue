@@ -226,7 +226,8 @@ export default {
       } else {
         let date = d.date;
         //除了month和year点击，其他都直接完成赋值
-        if (!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date') {
+        if(!(this.view == 'month' && this.type != 'month') && !(this.view == 'year' && this.type != 'year')){
+        // if ((!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date')) {
           if(this.value){
             if (this.range) {
               try {
@@ -280,7 +281,7 @@ export default {
         }
         let index = viewTypes.indexOf(this.view);
         this.view = viewTypes[index + 1];
-        this.$emit('updateView', date.time(), this.range);
+        this.$emit('updateView', manba(date).time(), this.range);
       }
     },
     setvalue(date, isEnd = false) {
