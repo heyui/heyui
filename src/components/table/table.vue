@@ -87,7 +87,7 @@
           <col v-for="(c, index) of fixedColumnLeft" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <th v-if="checkbox" class="h-table-td-checkbox">
+          <th v-if="checkbox" class="h-table-th-checkbox">
             <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
           <th v-for="(c, index) of fixedColumnLeft" :key="index+update.columns" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
