@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.7"></a>
+## [0.23.7](https://github.com/heyui/heyui/compare/v0.23.6...v0.23.7) (2018-05-08)
+
+
+### Bug Fixes
+
+* class 'h-table-td-checkbox' define error ([5f20e20](https://github.com/heyui/heyui/commit/5f20e20))
+* table setSelection use copy ([b7ed220](https://github.com/heyui/heyui/commit/b7ed220))
+
+
+
 <a name="0.23.6"></a>
 ## [0.23.6](https://github.com/heyui/heyui/compare/v0.23.5...v0.23.6) (2018-05-07)
 
