@@ -430,9 +430,10 @@ export default {
       if (trigger) {
         this.$emit(trigger, value)
       }
-      if (trigger != 'keyup') {
-        this.dropdown.hide()
-      }
+      this.dropdown.hide();
+      setTimeout(() => {
+        this.searchValue = null;
+      }, 100);
     },
     hide() {
       this.loading = false;
