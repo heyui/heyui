@@ -7,6 +7,7 @@ const Default = {
   style: null,
   class: null,
   buttons: [],
+  middle: false,
   hasMask: false,
   closeOnMask: true,
   hasCloseIcon: false,
@@ -91,6 +92,9 @@ class Notify {
     $body.innerHTML = html;
     let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
     let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);
+    if (param.middle) {
+      utils.addClass($container, `${notifyCls}-container-center`);
+    }
     this.$body = $body;
 
     let content = param.content;
