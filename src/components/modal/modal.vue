@@ -24,7 +24,7 @@ export default {
   props: {
     hasCloseIcon: {
       type: Boolean,
-      default: true
+      default: false
     },
     hasMask: {
       type: Boolean,
