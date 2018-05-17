@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.9"></a>
+## [0.23.9](https://github.com/heyui/heyui/compare/v0.23.8...v0.23.9) (2018-05-17)
+
+
+### Bug Fixes
+
+* change index.css gen ([b5b44c5](https://github.com/heyui/heyui/commit/b5b44c5))
+* modal js 添加 middle属性 ([3117378](https://github.com/heyui/heyui/commit/3117378))
+* optimize autocomplete ([d0d7cf4](https://github.com/heyui/heyui/commit/d0d7cf4))
+* requestAnimation Compatibility ([f5803f0](https://github.com/heyui/heyui/commit/f5803f0)), closes [#5](https://github.com/heyui/heyui/issues/5)
+* 修改整体排版 ([9f6f0fb](https://github.com/heyui/heyui/commit/9f6f0fb))
+
+
+
 <a name="0.23.8"></a>
 ## [0.23.8](https://github.com/heyui/heyui/compare/v0.23.7...v0.23.8) (2018-05-08)
 
