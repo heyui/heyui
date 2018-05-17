@@ -4,7 +4,7 @@
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * Permission is hereby granted, free of chargrequestAnimationFramee, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -2392,6 +2392,15 @@ var Defaults = {
  * @param {dataObject} data
  */
 
+
+function requestAnimation(task) {
+  if ('requestAnimationFrame' in window) {
+    return window.requestAnimationFrame(task);
+  }
+
+  setTimeout(task, 16);
+}
+
 // Utils
 // Methods
 var Popper = function () {
@@ -2410,7 +2419,7 @@ var Popper = function () {
     classCallCheck(this, Popper);
 
     this.scheduleUpdate = function () {
-      return requestAnimationFrame(_this.update);
+      return requestAnimation(_this.update);
     };
 
     // make update() debounced, so that it only runs at most once-per-tick
