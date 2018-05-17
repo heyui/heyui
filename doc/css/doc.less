@@ -38,10 +38,10 @@ h2 {
 }
 
 .comm-header {
+  position: fixed;
   // color: @white-color;
   height: 60px;
   padding: 0 40px 0 25px;
-  position: absolute;
   left: 0;
   right: 0;
   z-index: 3;
@@ -189,6 +189,11 @@ h2 {
 
 .com-frame {
   .left-frame {
+    position: fixed;
+    z-index: 2;
+    overflow: auto;
+    bottom: 0;
+    top: 0;
     width: 280px;
     padding: 60px 0px 10px 0px;
     line-height: 2.5;
@@ -232,10 +237,14 @@ h2 {
     }
   }
   .right-frame {
-    position: relative;
-    padding: 60px 30px 100px;
+    position: absolute;
+    left: 310px;
+    right: 0;
+    bottom: 0;
+    top: 0px;
+    padding: 60px 200px 100px 0px;
+    overflow: auto;
     z-index: 1;
-    padding-right: 200px;
   }
 }
 
@@ -366,6 +375,7 @@ h2 {
     display: block;
     position: static;
     .left-frame {
+      position: static;
       width: auto;
       padding-top: 30px;
       >div>ul {
@@ -390,6 +400,8 @@ h2 {
 
     .right-frame {
       padding-right: 30px;
+      position: static;
+      padding-left: 30px;
     }
     .right-frame-menu {
       display: none;
