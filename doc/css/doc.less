@@ -11,14 +11,16 @@
 }
 
 body {
-  color: #3f3f3f;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  color: #34495e;
+  font-size: 15px;
 }
 
 h2,
 h3,
 h4 {
-  font-weight: 500;
-  color: #1f1f1f;
+  font-weight: 600;
+  color: #2c3e50;
   letter-spacing: 1px;
 }
 
@@ -128,7 +130,7 @@ h2 {
   .header-nav-list {
     float: right;
     >a {
-      opacity: 0.7;
+      // opacity: 0.7;
       display: inline-block;
       float: left;
       padding: 0 15px;
@@ -137,14 +139,15 @@ h2 {
       line-height: 60px;
       text-align: center;
       cursor: pointer;
+      // color: inherit;
+      &:hover {
+        color: @primary-color;
+      }
       &.router-link-active {
         opacity: 1;
         background-color: @primary-color;
         color: @white-color;
         border-radius: 0 0 @border-radius @border-radius;
-      }
-      &:hover {
-        opacity: 1;
       }
     }
   }
@@ -195,7 +198,7 @@ h2 {
     bottom: 0;
     top: 0;
     width: 280px;
-    padding: 60px 0px 10px 0px;
+    padding: 80px 0px 10px 0px;
     line-height: 2.5;
     >div>ul {
       >li.title {
@@ -242,7 +245,7 @@ h2 {
     right: 0;
     bottom: 0;
     top: 0px;
-    padding: 60px 200px 100px 0px;
+    padding: 80px 300px 100px 100px;
     overflow: auto;
     z-index: 1;
   }
@@ -254,11 +257,10 @@ h2 {
   }
   code {
     color: @primary-color;
-    background-color: lighten(@primary-color, 36%);
+    background-color: #f9f9f9;
     margin: 0 4px;
     display: inline-block;
     padding: 1px 5px;
-    font-size: 12px;
     border-radius: 3px;
     white-space: pre-wrap;
   }
@@ -300,6 +302,35 @@ h2 {
       margin: 10px 0;
     }
   }
+  a {
+    font-weight: 600;
+  }
+  .tip{
+    padding: 12px 24px 12px 20px;
+    margin: 2em 0;
+    border-left-width: 4px;
+    border-left-style: solid;
+    background-color: #f8f8f8;
+    position: relative;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    border-left-color: #f66;
+    &:before{
+      content: "!";
+      background-color: #f66;
+      position: absolute;
+      top: 14px;
+      left: -12px;
+      color: #fff;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      text-align: center;
+      line-height: 20px;
+      font-weight: bold;
+    }
+  }
+
 }
 
 .demo-box {
@@ -498,8 +529,8 @@ h2 {
   font-size: 16px;
   h1, h2, h3 {
     margin: 40px 0 20px;
-    font-weight: 500;
-    color: #000;
+    font-weight: 600;
+    color: #2c3e50;
     letter-spacing: 1px;
   }
   h1{
@@ -536,7 +567,7 @@ ul.right-frame-menu {
   width: 180px;
   background-color: #FFF;
   li{
-    font-size: 13px;
+    font-size: 14px;
     padding: 5px 15px;
     line-height: 20px;
     word-break: break-all;

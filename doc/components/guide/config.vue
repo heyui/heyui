@@ -37,7 +37,7 @@
     <h4>示例</h4>
     <example demo="basic/demo2"></example>
 
-    <h3>全局配置</h3>
+    <h3>全局配置参数</h3>
     <p>通过<code>HeyUI</code>可以对一些参数进行全局配置，具体配置项参考：<a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></p>
     <ul class="text-ul">
       <li><code>HeyUI.config(key, value)</code>: 设置配置，<code>key</code>可以是路径方式，例：<code>tree.default</code></li>

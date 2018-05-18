@@ -7,7 +7,7 @@ module.exports = {
     console: true,
     publicPath: "/",
     output: {
-      "./*html": {
+      "./index.html": {
         entry: "./app",
         commons: ['common']
       }
@@ -29,5 +29,5 @@ module.exports = {
     },
     externals: {}
   },
-  copy: ["./static/images/**/*", "./components/demos/**/*.vue", "./components/common/qiniu.vue", "./components/demos/**/*.txt", "./.well-known/pki-validation/fileauth.txt"]
+  copy: ["./static/images/**/*", "./simple.html", "./components/demos/**/*.vue", "./components/common/qiniu.vue", "./components/demos/**/*.txt", "./.well-known/pki-validation/fileauth.txt"]
 }

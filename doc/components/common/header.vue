@@ -13,6 +13,7 @@
         <a target="_blank" href="http://admin.heyui.top">Admin</a>
         <!-- <router-link to="/about">团队</router-link> -->
         <a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github" v-font='20'></i></a>
+        <a target="_blank" href="https://discordapp.com/invite/VUZbFmd"><i class="h-icon-message" v-font='20'></i></a>
       </div>
     </div>
   </header>

@@ -143,6 +143,8 @@ let prototypes = {
   $LoadingBar
 }
 
+const HeyUI = Object.assign({}, components, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use }, prototypes, config, { Dropdown }, filters);
+
 const install = function (Vue, opts) {
   if (install.installed) return;
   if (opts) {
@@ -164,24 +166,22 @@ const install = function (Vue, opts) {
 
   Object.keys(directives).forEach((key) => {
     Vue.directive(key, directives[key]);
-    this[key] = directives[key];
+    // that[key] = directives[key];
   });
 
   Object.keys(prototypes).forEach((key) => {
     Vue.prototype[key] = prototypes[key];
   });
 
-  this.$Modal = Vue.prototype.$Modal = $Modal(Vue);
-  this.$Notice = Vue.prototype.$Notice = $Notice(Vue);
-  this.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
+  HeyUI.$Modal = Vue.prototype.$Modal = $Modal(Vue);
+  HeyUI.$Notice = Vue.prototype.$Notice = $Notice(Vue);
+  HeyUI.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const HeyUI = Object.assign({}, components, {
-  install
-}, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use }, prototypes, config, { Dropdown }, filters);
+HeyUI.install = install;
 
 module.exports = HeyUI;
