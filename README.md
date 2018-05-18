@@ -20,6 +20,18 @@ npm install heyui --save
 ```
 ## Start
 
+### Basic
+``` html
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/heyui"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css"></link>
+
+```
+你可以通过 [在线示例 CODEPEN ](https://codepen.io/vvpvvp/pen/WJYKyq)查看具体用例，也可以通过直接查看 [HTML示例](https://www.heyui.top/simple.html) 的源码学习应用方式。
+
+### Advanced
+
 ```js
 import Vue from 'vue'
 import HeyUI from 'heyui'
@@ -27,13 +39,15 @@ require("heyui/themes/index.less");
 
 Vue.use(HeyUI)
 ```
-### Code Sandbox Demo
-[Code Sandbox Demo](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
+### Online Demo
+[Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/) 在线示例，是一个使用<code>vue-cli</code>脚手架启动的项目。
+你可以通过这个示例，掌握一些基本的调用方式。
 
 
 ## Admin
 
-[http://admin.heyui.top](http://admin.heyui.top)。
+[http://admin.heyui.top](http://admin.heyui.top) 是一个基本的企业级应用框架，集成了一系列的配置文件，以及应用处理，是一套完整的架构体系。  
+如果，你想快速的搭建一个中大型系统，推荐你直接使用 <code>git clone</code> 的方式，开始你的开发。
 
 ## Ecosystem
 <table>
