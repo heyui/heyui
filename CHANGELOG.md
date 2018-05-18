@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/heyui/heyui/compare/v0.23.9...v1.1.0) (2018-05-18)
+
+
+### Bug Fixes
+
+* 修正modal 组件 hasCloseIcon 默认值 ([974e116](https://github.com/heyui/heyui/commit/974e116))
+
+
+### Features
+
+* 整体调整heyui的调用方式 ([64aeee7](https://github.com/heyui/heyui/commit/64aeee7))
+
+
+
 <a name="0.23.9"></a>
 ## [0.23.9](https://github.com/heyui/heyui/compare/v0.23.8...v0.23.9) (2018-05-17)
 
