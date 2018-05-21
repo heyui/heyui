@@ -5,8 +5,8 @@
 
 # HeyUI
 [![npm package](https://img.shields.io/npm/v/heyui.svg)](https://www.npmjs.org/package/heyui)
-![JS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/build/heyui.js?compression=gzip&label=gzip%20size:%20JS)
-![CSS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/build/index.css?compression=gzip&label=gzip%20size:%20CSS)
+![JS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/dist/heyui.esm.js?compression=gzip&label=gzip%20size:%20JS)
+![CSS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/themes/index.css?compression=gzip&label=gzip%20size:%20CSS)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 >A UI components Library.

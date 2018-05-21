@@ -110,6 +110,7 @@ export default {
       }, this.model);
       // log(returnResult);
       utils.extend(true, this.messages, returnResult);
+      return returnResult;
     },
     setConfig(prop, options) {
       this.validator.setConfig(prop, options);
