@@ -123,6 +123,7 @@ export default {
       return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
+      if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
     getConfig(prop) {
