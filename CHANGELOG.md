@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/heyui/heyui/compare/v1.1.2...v1.1.3) (2018-05-23)
+
+
+### Bug Fixes
+
+* autocomplete update value error ([df32c85](https://github.com/heyui/heyui/commit/df32c85))
+* formItem add reset function ([a2b42fd](https://github.com/heyui/heyui/commit/a2b42fd))
+* 修改README.md ([4af0018](https://github.com/heyui/heyui/commit/4af0018))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/heyui/heyui/compare/v1.1.0...v1.1.2) (2018-05-18)
 
