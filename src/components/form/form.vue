@@ -110,7 +110,17 @@ export default {
       }, this.model);
       // log(returnResult);
       utils.extend(true, this.messages, returnResult);
-      return returnResult;
+      return utils.extend({}, this.messages[prop]);
+    },
+    validFieldJs(prop, next) {
+      if (!prop || !this.validator || !this.model) {
+        return { valid: true };
+      }
+      let defaultM = this.messages[prop];
+      let returnResult = this.validator.validField(prop, this.model, (result) => {
+        next(utils.extend({}, defaultM, returnResult[prop]));
+      }, this.model);
+      return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
       this.validator.setConfig(prop, options);

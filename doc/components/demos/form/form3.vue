@@ -57,7 +57,7 @@
       <FormItem label="多选" prop="select3">
         <Select v-model="data.select3" dict="simple" :multiple="true"></Select>
       </FormItem>
-      <FormItem label="日期" prop="date">
+      <FormItem label="日期" ref="datapicker" prop="date">
         <DatePicker placeholder="选择日期" v-model="data.date"></DatePicker>
       </FormItem>
       <FormItem label="评分" prop="rate">
@@ -78,11 +78,11 @@
       <!-- 
           这里定义的required属性同样适用与验证规则中。
          -->
-      <FormItem label="自定义规则" prop="things[]" required>
+      <FormItem label="自定义规则" prop="things[0]" required>
         <input type="text" v-model="data.things[0]" />
       </FormItem>
       <FormItemList>
-        <FormItem v-for="(item, index) of data.inputs" :key="item" :label="'输入框'+(index+1)" :prop="'inputs['+index+'].value'">
+        <FormItem v-for="(item, index) of data.inputs" :key="index" :label="'输入框'+(index+1)" :prop="'inputs['+index+'].value'">
           <Row type="flex">
             <Col class="flex1">
             <input type="text" v-model="item.value" />
@@ -103,7 +103,8 @@
         <i class="h-split"></i>
         <Button color="green" :loading="isLoading" @click="submitAsync" v-tooltip content="等待所有异步验证都执行完后提交">异步提交</Button>
         <i class="h-split"></i>
-        <Button @click="reset">重置验证</Button>
+        <Button @click="reset">清除验证</Button>
+        <Button @click="resetDatepicker">清除日期的验证</Button>
       </FormItem>
     </Form>
   </div>
@@ -244,6 +245,9 @@ export default {
     reset() {
       this.isLoading = false;
       this.$refs.form.reset();
+    },
+    resetDatepicker() {
+      this.$refs.datapicker.reset();
     },
     add() {
       this.data.inputs.push({ value: '' });

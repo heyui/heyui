@@ -1,20 +1,19 @@
 <template>
   <div>
-    <Form mode="inline">
-      <FormItem>
-        <div class="h-input-group"><span class="h-input-addon"><i class="h-icon-user"></i></span>
-          <input type="text"/>
-        </div>
+    <Form :label-width="110" :model="data" ref="form" :rules="rules">
+      <FormItem label="数字" prop="number">
+        <input type="text" v-model="data.number" />
       </FormItem>
-      <FormItem>
-        <div class="h-input-group"><span class="h-input-addon"><i class="h-icon-setting"></i></span>
-          <input type="password"/>
-        </div>
+      <FormItem label="电话" prop="mobile">
+        <input type="text" v-model="data.mobile" />
       </FormItem>
-      <FormItem>
-        <Button color="primary"
-                :loading="isLoading"
-                @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;<Button @click="isLoading=!isLoading">取消</Button>
+      <FormItem :no-padding="true">
+        <Button @click="valid('number')">验证number</Button>
+        <Button @click="valid('mobile')">验证mobile</Button>
+        <Button @click="validJs('number')">js验证number</Button>
+        <Button @click="validJs('mobile')">js验证mobile</Button>
+        <Button color="primary" @click="submit">提交</Button>
+        <Button @click="reset">清除验证</Button>
       </FormItem>
     </Form>
   </div>
@@ -23,8 +22,53 @@
 export default {
   data() {
     return {
-      isLoading: false,
+      required: true,
+      data: {
+        number: [null],
+        mobile: null
+      },
+      rules: {
+        number: ['number'],
+        mobile: ['mobile'],
+        required: ['number', 'mobile']
+      }
     }
+  },
+  watch: {
+    required() {
+      this.$refs.form.reset();
+    }
+  },
+  methods: {
+    valid(field) {
+      let validResult = this.$refs.form.validField(field);
+      log(validResult)
+      if (validResult.valid) {
+        this.$Message("验证成功");
+      } else {
+        this.$Message.error(`${validResult.label}${validResult.message}`);
+      }
+    },
+    validJs(field) {
+      let validResult = this.$refs.form.validFieldJs(field);
+      log(validResult)
+      if (validResult.valid) {
+        this.$Message("验证成功");
+      } else {
+        this.$Message.error(`${validResult.label}${validResult.message}`);
+      }
+    },
+    submit() {
+      let validResult = this.$refs.form.valid();
+      if (validResult.result) {
+        this.$Message("验证成功");
+      } else {
+        this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
+      }
+    },
+    reset() {
+      this.$refs.form.reset();
+    },
   }
 };
 </script>

@@ -82,23 +82,26 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
+    // this.$nextTick(() => {
       // this.$el.addEventListener("blur", (event) => {
       //   this.trigger(event);
       // }, true);
       // this.$el.addEventListener("setvalue", (event) => {
       //   this.trigger(event);
       // });
-    });
+    // });
     let parent = this.getParent();
 
     if (this.prop) {
-      if(this.required){
-        parent.setConfig(this.prop, {required: true});
-      }
       let message = parent.getConfig(this.prop);
       if (message) {
         this.configRequired = !!message.required;
+      }
+      if(this.required){
+        parent.setConfig(this.prop, {required: true});
+      }
+      if(this.label){
+        parent.setConfig(this.prop, {label: this.label});
       }
       this.errorMessage = parent.getErrorMessage(this.prop, this.label);
     }
@@ -125,6 +128,9 @@ export default {
         log.error('Please put FormItem Component in the Form Component');
       }
       return parent;
+    },
+    reset() {
+      this.errorMessage.valid = true;
     },
     trigger() {
       let parent = this.getParent();
