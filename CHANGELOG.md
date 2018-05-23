@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/heyui/heyui/compare/v1.1.3...v1.1.4) (2018-05-23)
+
+
+### Bug Fixes
+
+* setConfig add validator judge ([834576c](https://github.com/heyui/heyui/commit/834576c))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/heyui/heyui/compare/v1.1.2...v1.1.3) (2018-05-23)
 
