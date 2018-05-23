@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>value:{{value}}</p>
-    <div v-width="300"><AutoComplete :option="param" v-model="value" type="object"
+    <p>外部参数：<input type="text" v-model="input"/></p>
+    <div v-width="300"><AutoComplete :option="{loadData, input: input}" v-model="value" type="object"
                   :must-match="false" @change="onChange"></AutoComplete></div>
   </div>
 </template>
@@ -10,26 +11,23 @@
 import jsonp from 'fetch-jsonp';
 
 const loadData = function (filter, callback) {
-  jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
-    .then(response => response.json())
-    .then((d) => {
-      callback(d.result.map((r) => {
-        return {
-          title: r[0],
-          key: r[1],
-        };
-      }));
-    });
+  let input = this.input;
+  let list = [];
+  for(let i = 0; i < 10; i++) {
+    list.push({
+      key: `${i}`,
+      title: `${input}-结果${filter}${i}`
+    })
+  }
+  callback(list)
 }
 
 export default {
   data() {
     return {
+      input: '参数',
       value: '',
-      param: {
-        loadData,
-        minWord: 1
-      }
+      loadData
     }
   },
   methods: {

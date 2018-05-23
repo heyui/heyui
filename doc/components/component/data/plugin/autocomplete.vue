@@ -15,6 +15,9 @@
     <h3>自定义内容</h3>
     <p>通过<code>top</code>以及<code>bottom</code>的<code>slot</code>，自定义其他的内容。</p>
     <example demo="dataplugins/autocomplete6"></example>
+  
+    <h3>传递外部参数</h3>
+    <example demo="dataplugins/autocomplete10"></example>
 
     <h3>disabled</h3>
     <example demo="dataplugins/autocomplete2"></example>
@@ -45,9 +48,6 @@
   
     <h3>可以任意输入</h3>
     <example demo="dataplugins/autocomplete9"></example>
-  
-    <h3>可以任意输入对象</h3>
-    <example demo="dataplugins/autocomplete10"></example>
 
 
     <h3>可以任意输入对象多选</h3>
