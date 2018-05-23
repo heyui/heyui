@@ -237,6 +237,7 @@ export default {
           utils.extend(this.object, this.getValue(value))
         }
       }
+      this.tempValue = null;
       this.oldValue = this.value
     },
     dispose() {

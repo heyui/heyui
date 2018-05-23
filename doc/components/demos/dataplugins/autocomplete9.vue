@@ -1,6 +1,7 @@
 <template>
   <div >
-    <p>value:{{value}}</p>
+    <p>value:{{value}}
+      <button class="h-btn h-btn-text" @click="update">修改值</button></p>
     <div v-width="300"><AutoComplete :option="param" type="title" v-model="value"
                   :must-match="false" @change="onChange"></AutoComplete></div>
   </div>
@@ -37,7 +38,7 @@ export default {
       log(data, trigger);
     },
     update() {
-      this.value = [{ key: 123, title: '修改' }];
+      this.value = 'new value';
     }
   }
 };
