@@ -21,7 +21,7 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>placthemeement</td>
+        <td>placement</td>
         <td>提示的方向</td>
         <td>String</td>
         <td>-</td>
