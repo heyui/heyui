@@ -66,7 +66,9 @@ router.afterEach(() => {
   Vue.nextTick(() => {
     $('.right-frame').scrollTop(0);
   });
-  window._hmt.push(['_trackPageview', window.location.pathname]);
+  if(window._hmt) {
+    window._hmt.push(['_trackPageview', window.location.pathname]);
+  }
 });
 const app = new Vue({
   i18n,

@@ -1,5 +1,6 @@
 <template>
   <div class="page-resource">
+    <com-head></com-head>
     <com-frame class="page-body">
       <div slot="left-frame">
         <ul>

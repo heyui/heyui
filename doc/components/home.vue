@@ -1,11 +1,56 @@
-<style scoped>
-  .page-body {
-    bottom: 26px;
+<style lang="less">
+.page-home {
+  .comm-header{
+    background: none;
   }
+  .page-body {
+    /* bottom: 26px; */
+    padding-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      #1d1d49,
+      #163c62,
+      #124e51,
+      #1f2d4f,
+      #33225e,
+      #432149,
+      #1a1739,
+      #19264f
+    );
+    background-size: 1600% 1600%;
+    // animation: skygradient 180s ease infinite;
+    .part{
+      text-align: center;
+      position: absolute;
+      width: 800px;
+      left: 50%;
+      margin-left: -400px;
+      top: 50%;
+      margin-top: -150px;
+    }
+  }
+}
+@keyframes skygradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
 </style>
 <template>
   <div class="page-home">
-    <div class="page-body">
+    <com-head></com-head>
+    <div class="page-body" id="universe">
       <div class="part">
         <h1>HEYUI，快速构建前端工具。</h1>
         <h4 class="gray-color">
@@ -22,17 +67,24 @@
 </template>
 
 <script>
+import animate from 'js/ani.js'
 
 export default {
-  data () {
+  data() {
     return {
       pass: '',
       error: false
     }
   },
-  methods: {
+  methods: {},
+  created() {
+    this.$nextTick(()=>{
+      animate.initWorld()
+    })
   },
-  components:{
-  }
+  beforeDestroy() {
+    animate.cleanWorld()
+  },
+  components: {}
 }
 </script>

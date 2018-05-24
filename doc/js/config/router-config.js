@@ -8,13 +8,6 @@ const router = {
     },
     component: (resolve) => require(['components/home'], resolve)
   }, {
-    path: '/home',
-    name: 'homebak',
-    meta: {
-      title: 'Home',
-    },
-    component: (resolve) => require(['components/home'], resolve)
-  }, {
     path: '/component',
     title: 'Component',
     component: (resolve) => require(['components/component'], resolve),
