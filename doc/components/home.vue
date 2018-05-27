@@ -32,7 +32,12 @@
       // margin-left: -400px;
       width: 100%;
       top: 50%;
-      margin-top: -100px;
+      margin-top: -150px;
+    }
+    .github-icon{
+      margin: 30px auto 0;
+      width: 100px;
+      height: 30px;
     }
   }
 }
@@ -61,6 +66,7 @@
         <h4 class="gray-color">
           简单的调用，快速的开发，可扩展的接口
         </h4>
+        <iframe class="github-icon" src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true" frameborder="0"></iframe>
       </div>
     </div>
     <com-foot></com-foot>
