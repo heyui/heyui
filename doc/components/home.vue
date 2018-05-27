@@ -27,11 +27,12 @@
     .part{
       text-align: center;
       position: absolute;
-      width: 800px;
-      left: 50%;
-      margin-left: -400px;
+      // width: 800px;
+      // left: 50%;
+      // margin-left: -400px;
+      width: 100%;
       top: 50%;
-      margin-top: -150px;
+      margin-top: -100px;
     }
   }
 }
@@ -67,7 +68,8 @@
 </template>
 
 <script>
-import animate from 'js/ani.js'
+// import animate from 'js/ani.js'
+// let animate
 
 export default {
   data() {
@@ -79,11 +81,16 @@ export default {
   methods: {},
   created() {
     this.$nextTick(()=>{
-      animate.initWorld()
+      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        return;
+      }
+      import('js/ani.js').then((animate) => {
+        animate.default.initWorld()
+      })
     })
   },
   beforeDestroy() {
-    animate.cleanWorld()
+    // animate.cleanWorld()
   },
   components: {}
 }

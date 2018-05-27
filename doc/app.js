@@ -66,7 +66,7 @@ router.afterEach(() => {
   Vue.nextTick(() => {
     $('.right-frame').scrollTop(0);
   });
-  if(window._hmt) {
+  if (window.location.hostname != 'localhost' && window._hmt) {
     window._hmt.push(['_trackPageview', window.location.pathname]);
   }
 });
