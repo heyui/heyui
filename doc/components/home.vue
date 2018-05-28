@@ -11,17 +11,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      180deg,
-      #1d1d49,
-      #163c62,
-      #124e51,
-      #1f2d4f,
-      #33225e,
-      #432149,
-      #1a1739,
-      #19264f
-    );
+    background: #000;
     background-size: 1600% 1600%;
     // animation: skygradient 180s ease infinite;
     .part{
