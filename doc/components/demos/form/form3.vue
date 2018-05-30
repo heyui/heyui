@@ -5,10 +5,10 @@
     </div>
     <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2">
       <FormItem label="输入框" prop="input">
-        <input type="text" v-model="data.input" placeholder="限制输入30个字" v-wordlimit='30' />
+        <input type="text" v-model="data.input" placeholder="只能输入15，限制输入30个字" v-wordlimit='30' />
         <template slot="error" slot-scope="props">
           <!-- *type*: base, combine, async -->
-          <span class="link" v-if="props.type == 'async'">+++++++自定义的错误提示+++++++</span>
+          <span class="link" v-if="props.type == 'async'" @click="open">+++++++自定义的错误提示+++++++</span>
         </template>
       </FormItem>
       <FormItem label="整数" prop="int">
@@ -163,11 +163,12 @@ export default {
           input: {
             //这里的判断不会影响最终的valid结果，所以也可以作为一些验证提示
             validAsync(value, next, parent, data) {
+              log(value)
               setTimeout(() => {
                 if (value == 15) {
                   next();
                 } else {
-                  next("ID不符合要求");
+                  next("ID不等于15");
                 }
               }, 10);
             }
@@ -241,6 +242,12 @@ export default {
           this.isLoading = false;
         }
       });
+    },
+    open() {
+      this.$Modal({
+        title: "处理",
+        content: '我要去做特殊的处理'
+      })
     },
     reset() {
       this.isLoading = false;

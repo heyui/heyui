@@ -2,6 +2,9 @@
 .page-home {
   .comm-header{
     background: none;
+    .h-autocomplete-input{
+      color: #FFF;
+    }
   }
   .page-body {
     /* bottom: 26px; */
