@@ -15,7 +15,7 @@
     right: 0;
     bottom: 0;
     background: #000;
-    background-size: 1600% 1600%;
+    overflow: hidden;
     // animation: skygradient 180s ease infinite;
     .part{
       text-align: center;
@@ -26,6 +26,12 @@
       width: 100%;
       top: 50%;
       margin-top: -150px;
+      h1 {
+        font-weight: 200;
+        font-size: 40px;
+        color: @primary-color;
+        margin: 1%;
+      }
     }
     .github-icon{
       margin: 30px auto 0;
