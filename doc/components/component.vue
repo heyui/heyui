@@ -5,7 +5,7 @@
       <div slot="left-frame">
         <ul>
           <ul>
-            <li><router-link to="/component/guide" :class="{'router-link-active': $route.name =='basic'}">入门</router-link></li>
+            <li><router-link to="/component/guide" :class="{'router-link-active': $route.name =='componentguide'}">入门</router-link></li>
             <li><router-link to="/component/quickstart">快速上手</router-link></li>
             <li><router-link to="/component/themes">更换主题</router-link></li>
             <li><router-link to="/component/config">全局配置</router-link></li>

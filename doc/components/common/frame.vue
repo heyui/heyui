@@ -1,3 +1,32 @@
+<style lang="less">
+  ul.right-frame-menu {
+    overflow: auto;
+    padding: 70px 0;
+    width: 180px;
+    background-color: #FFF;
+    li{
+      font-size: 14px;
+      padding: 5px 15px;
+      line-height: 20px;
+      word-break: break-all;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      &:hover{
+        color: @primary-color;
+        background-color: @hover-background-color;
+      }
+    }
+  }
+  .right-frame-menu-container{
+    top: 20px;
+    position: fixed;
+    right: 10px;
+    width: 180px;
+  }
+</style>
+
 <template>
   <div class="com-frame">
     <div class="left-frame">
