@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/heyui/heyui/compare/v1.1.4...v1.1.5) (2018-05-31)
+
+
+### Bug Fixes
+
+* fix error links ([2622d00](https://github.com/heyui/heyui/commit/2622d00))
+* form listener judge error ([2c14508](https://github.com/heyui/heyui/commit/2c14508))
+* table resize add timeout ([b437ff3](https://github.com/heyui/heyui/commit/b437ff3))
+
+
+
 <a name="1.1.4"></a>
 ## [1.1.4](https://github.com/heyui/heyui/compare/v1.1.3...v1.1.4) (2018-05-23)
 
