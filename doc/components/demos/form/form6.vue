@@ -7,11 +7,16 @@
       <FormItem label="电话" prop="mobile">
         <input type="text" v-model="data.mobile" />
       </FormItem>
-      <FormItem :no-padding="true">
-        <Button @click="valid('number')">验证number</Button>
-        <Button @click="valid('mobile')">验证mobile</Button>
+      <FormItem>
         <Button @click="validJs('number')">js验证number</Button>
         <Button @click="validJs('mobile')">js验证mobile</Button>
+          【不触发dom报错】
+      </FormItem>
+      <FormItem>
+        <Button @click="valid('number')">验证number</Button>
+        <Button @click="valid('mobile')">验证mobile</Button>
+      </FormItem>
+      <FormItem>
         <Button color="primary" @click="submit">提交</Button>
         <Button @click="reset">清除验证</Button>
       </FormItem>
