@@ -194,6 +194,7 @@ export default {
           'email',
           'tel',
           'mobile',
+          'textarea'
         ],
         int: ['int'],
         number: ['number', 'money.min', 'money.max'],
