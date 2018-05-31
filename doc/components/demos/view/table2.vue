@@ -16,7 +16,7 @@
       <TableItem title="操作" :width="100">
         <template slot-scope="props">
           <DropdownCustom :datas="menus" placement="bottom-end">
-            <span>更多</span>
+            <span class="text-hover">更多</span>
             <div slot="content" v-width="200">
               <div v-padding="20">
                 <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
