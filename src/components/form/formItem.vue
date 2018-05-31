@@ -100,9 +100,9 @@ export default {
       if(this.required){
         parent.setConfig(this.prop, {required: true});
       }
-      if(this.label){
-        parent.setConfig(this.prop, {label: this.label});
-      }
+      // if(this.label){
+      //   parent.setConfig(this.prop, {label: this.label});
+      // }
       this.errorMessage = parent.getErrorMessage(this.prop, this.label);
     }
   },
