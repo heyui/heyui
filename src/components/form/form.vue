@@ -65,7 +65,7 @@ export default {
     this.$nextTick(() => {
       this.$el.addEventListener("blur", (event) => {
         // this.trigger(event);
-        if(event.target.tagName == 'INPUT' || event.target.tagName == 'AREATEXT') {
+        if(event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
           // log('blur', event.target)
           this.trigger(event.target);
         }
