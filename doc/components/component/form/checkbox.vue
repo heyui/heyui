@@ -11,11 +11,11 @@
     
     <h3>数据模式调用</h3>
     <p>推荐使用数据模式的checkbox选择器，使用js实现整个交互，兼容性更高。使用 <code>v-model</code> 以及 <code>datas</code>参数完成整体的调用。</p>
-    <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/guide/config">全局配置</router-link></p>
+    <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/component/config">全局配置</router-link></p>
     <example demo="form/checkbox3"></example>
 
     <h3>组件式数据字典调用</h3>
-    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/guide/config">全局配置</router-link>。</p>
+    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/component/config">全局配置</router-link>。</p>
     <example demo="form/checkbox4"></example>
 
     <h3>Checkbox 参数</h3>
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td>dict</td>
-        <td>调用配置好的字典库，详情请至<router-link to="/guide/config">全局配置</router-link></td>
+        <td>调用配置好的字典库，详情请至<router-link to="/component/config">全局配置</router-link></td>
         <td>String</td>
         <td></td>
         <td></td>

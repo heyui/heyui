@@ -13,7 +13,7 @@
     <example demo="form/switchlist3"></example>
 
     <h3>数据字典调用</h3>
-    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/guide/config">全局配置</router-link>。</p>
+    <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/component/config">全局配置</router-link>。</p>
     <example demo="form/switchlist4"></example>
 
     <h3>SwitchList 参数</h3>
@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td>dict</td>
-        <td>调用配置好的字典库，详情请至<router-link to="/guide/config">全局配置</router-link></td>
+        <td>调用配置好的字典库，详情请至<router-link to="/component/config">全局配置</router-link></td>
         <td>String</td>
         <td></td>
         <td></td>

@@ -2,7 +2,7 @@
   <div class="doc">
     <h2>DateRangePicker 日期范围控件</h2>
     <h3>普通选择日期范围控件</h3>
-    <p>数据默认使用{start,end}的对象，同时也可以自定义参数。详情请参考<router-link to="/guide/config">全局配置</router-link></p>
+    <p>数据默认使用{start,end}的对象，同时也可以自定义参数。详情请参考<router-link to="/component/config">全局配置</router-link></p>
     <div>
       <example demo="dataplugins/daterangepicker1"></example>
     </div>
