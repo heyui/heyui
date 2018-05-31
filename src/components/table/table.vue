@@ -237,6 +237,9 @@ export default {
         window.addEventListener('resize', this.resize);
       }
       this.resize();
+      setTimeout(() => {
+        this.resize();
+      }, 100);
 
       let tbodys = this.$el.querySelectorAll(".h-table-tbody");
       for(let tbody of tbodys){
