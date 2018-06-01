@@ -2,6 +2,10 @@ echo "打包hey build"
 hey b
 hey b -f hey.esm.js
 lessc themes/index.less>themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/
+
+headr dist/heyui.js -o=dist/heyui.js --version --homepage --copyright --license
+headr dist/heyui.esm.js -o=dist/heyui.esm.js --version --homepage --copyright --license
+
 git add -A
 git commit -m "package"
 set -e
