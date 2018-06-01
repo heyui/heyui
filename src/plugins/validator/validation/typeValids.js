@@ -22,7 +22,7 @@ let valids = {
     }
   },
   url: {
-    pattern: /^((\w+):\/\/)?([A-z0-9]+[_\-]?[A-z0-9]+\.)*[A-z0-9]+\-?[A-z0-9]+\.[A-z]{2,}(\/.*)*\/?$/,
+    pattern: /^[^\s]+@[^\s]+\.[^\s]+$/,
     message() {
       return locale.t('h.validation.type.url')
     }
