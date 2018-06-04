@@ -29,7 +29,11 @@ export default {
       type: String,
       default: 'h-tooltip-default'
     },
-    theme: String
+    theme: String,
+    delay: {
+      type: Number,
+      default: 0
+    },
   },
   mounted() {
     this.init();
@@ -62,6 +66,7 @@ export default {
           container: document.body,
           placement: this.placement,
           disabled: this.disabled,
+          delay: this.delay,
           events: {
             show: ()=>{
               this.$emit('show');
