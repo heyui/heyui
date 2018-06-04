@@ -79,16 +79,9 @@
         .@{form-prefix}-item-required {
           .@{form-prefix}-item-label {
             &:before {
-              content: none;
-            }
-            &:after {
-              content: "*";
-              color: @red-color;
-              font-size: 15px;
-              display: inline-block;
-              margin-right: 4px;
-              line-height: 8px;
-              vertical-align: middle;
+              position: absolute;
+              top: (@input-height)/2 - 2px;
+              left: 6px;
             }
           }
         }
