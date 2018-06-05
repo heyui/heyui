@@ -9,7 +9,7 @@
                type="text"
                class="h-autocomplete-input"
                @focus="focus"
-               :value="showValue"
+               v-model="tempValue"
                @blur="blur"
                @paste="paste"
                @keyup="handle"
@@ -23,7 +23,7 @@
                :disabled="disabled"
                class="h-autocomplete-input"
                @focus="focus"
-               :value="showValue"
+               v-model="tempValue"
                @paste="paste"
                @blur="blur"
                @keyup="handle"
@@ -31,7 +31,7 @@
                :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
-        <i class="h-icon-close text-hover" v-else-if="showValue&&!disabled" @mousedown="clear"></i>
+        <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
       </template>
     </div>
   
@@ -195,6 +195,8 @@ export default {
   },
   methods: {
     parse() {
+      // log('触发parse')
+      this.tempValue = null;
       if (this.multiple) {
         let os = []
         if (utils.isArray(this.value) && this.value.length > 0) {
@@ -237,8 +239,10 @@ export default {
         } else {
           utils.extend(this.object, this.getValue(value))
         }
+        if(value) {
+          this.tempValue = value.title;
+        }
       }
-      this.tempValue = null;
       this.oldValue = this.value
     },
     getDisposeValue() {
@@ -282,7 +286,7 @@ export default {
             } else if (this.type == 'title') {
               value = this.object.title;
             } else {
-              value = this.object;
+              value = utils.copy(this.object.value);
             }
           } else if (!utils.isNull(inputValue)) {
             value = inputValue
@@ -321,7 +325,7 @@ export default {
     },
     paste(event) {
       setTimeout(() => {
-        this.tempValue = event.target.value;
+        // this.tempValue = event.target.value;
         this.search(event.target)
       },0)
     },
@@ -329,6 +333,7 @@ export default {
       this.focusing = false;
       if(this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
       let nowValue = event.target.value
+      // log('blur事件', nowValue, this.tempValue);
       let focusValue = this.focusValue
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
@@ -342,8 +347,6 @@ export default {
           this.tempValue = nowValue;
           this.setvalue('blur')
         }
-      } else {
-        this.tempValue = null;
       }
       this.loading = false;
       if (this.searchTimeout) {
@@ -383,7 +386,7 @@ export default {
     search(target) {
       let value = target.value
       this.tempValue = value || null
-      if (value != this.object.title) {
+      if (value != this.object.title && this.object.title) {
         this.object.key = null
         this.object.title = null
         this.object.value = null
@@ -413,9 +416,11 @@ export default {
             this.nowSelected = this.autoSelectFirst ? 0 : -1
           }
         }, this.delay)
+        this.searchValue = value
+        this.dropdown.update()
+      } else {
+        this.dropdown.hide()
       }
-      this.searchValue = value
-      this.dropdown.update()
     },
     add(data) {
       if (this.multiple) {
@@ -435,12 +440,17 @@ export default {
     },
     setvalue(trigger) {
       if (this.disabled) return;
+      // log('setvalue触发', trigger)
       this.lastTrigger = trigger;
       this.nowSelected = -1
       let value = this.oldValue = this.dispose();
       this.focusValue = null;
-      this.tempValue = null;
       this.focusData();
+      if (this.multiple) {
+        this.tempValue = null;
+      } else {
+        this.tempValue = this.object.title;
+      }
       // if (this.mustMatch || this.object.key || this.multiple) {
       // }
       // this.focusValue = this.showValue;
@@ -492,9 +502,10 @@ export default {
         )
       }
     },
-    showValue() {
-      return this.tempValue == null ? this.object.title : this.tempValue
-    },
+    // showValue() {
+    //   log('showvalue变动', this.tempValue, this.object.title);
+    //   return this.tempValue == null ? this.object.title : this.tempValue
+    // },
     autocompleteCls() {
       let autosize = !!this.noBorder
       if (!autosize) {
