@@ -34,6 +34,8 @@
   "readmeFilename": "README.md",
   "scripts": {
     "build": "hey -b",
+    "pa": "sh ./publish.sh -alpha",
+    "pb": "sh ./publish.sh -beta",
     "p": "sh ./publish.sh",
     "min": "babel build/heyui.js --minified --no-babelrc -o build/heyui.min.js"
   },
