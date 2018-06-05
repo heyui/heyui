@@ -1,8 +1,8 @@
 <template>
   <div :class="autocompleteCls">
     <div :class="showCls">
-      <template v-if="multiple"><span v-for="obj of objects"
-              :key="obj.key"><span>{{obj.title}}</span><i class="h-icon-close"
+      <template v-if="multiple"><span v-for="(obj, index) of objects"
+              :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close"
            @click.stop="remove(obj)"
            v-if="!disabled"></i></span>
         <input :disabled="disabled"
@@ -194,6 +194,9 @@ export default {
     })
   },
   methods: {
+    getKey(key) {
+      return key + Math.random();
+    },
     parse() {
       // log('触发parse')
       this.tempValue = null;
@@ -247,14 +250,12 @@ export default {
     },
     getDisposeValue() {
       let inputValue = null;
-      if (!this.mustMatch) {
-        if (this.type == 'key' || this.type == 'title') {
-          inputValue = this.tempValue
-        } else if (!utils.isBlank(this.tempValue)) {
-          inputValue = { [this.param.titleName]: this.tempValue }
-        } else {
-          inputValue = null
-        }
+      if (this.type == 'key' || this.type == 'title') {
+        inputValue = this.tempValue
+      } else if (!utils.isBlank(this.tempValue)) {
+        inputValue = { [this.param.titleName]: this.tempValue }
+      } else {
+        inputValue = null
       }
       return inputValue;
     },
@@ -263,13 +264,6 @@ export default {
       let inputValue = this.getDisposeValue();
       if (this.multiple) {
         value = []
-        if (!this.mustMatch && !utils.isNull(this.tempValue)) {
-          if (this.type == 'key' || this.type == 'title') {
-            this.objects.push(inputValue)
-          } else {
-            this.objects.push(this.getValue(inputValue))
-          }
-        }
         if (utils.isArray(this.objects) && this.objects.length > 0) {
           for (let o of this.objects) {
             value.push(this.getV(o))
@@ -309,7 +303,11 @@ export default {
       if (utils.isFunction(this.param.getValue)) {
         return this.param.getValue.call(this.param, item)
       } else {
-        return utils.getValue(item, this.param)
+        if(!utils.isObject(item) && this.type == 'object') {
+          return utils.getValue({[this.param.titleName]: item}, this.param)
+        } else {
+          return utils.getValue(item, this.param)
+        }
       }
     },
     focus(event) {
@@ -344,7 +342,10 @@ export default {
             this.tempValue = null
           }
         } else {
-          this.tempValue = nowValue;
+          // this.tempValue = nowValue;
+          if (nowValue) {
+            this.objects.push(this.getValue(nowValue))
+          }
           this.setvalue('blur')
         }
       }
