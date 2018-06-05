@@ -1,18 +1,18 @@
 <template>
   <div >
-    <p> value:{{value1}} <button class="h-btn h-btn-text" @click="update1">修改值</button></p>
+    <p> value:{{value1}} <span class="link" @click="update1">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" type="title" v-model="value1" :must-match="false" @change="onChange"></AutoComplete>
     </div>
-    <p> 多选：value:{{value2}} <button class="h-btn h-btn-text" @click="update2">修改值</button></p>
+    <p> 多选：value:{{value2}} <span class="link" @click="update2">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" type="title" v-model="value2" :must-match="false" multiple @change="onChange"></AutoComplete>
     </div>
-    <p>保存对象：value:{{value3}} <button class="h-btn h-btn-text" @click="update3">修改值</button></p>
+    <p>保存对象：value:{{value3}} <span class="link" @click="update3">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" v-model="value3" type="object" :must-match="false" @change="onChange"></AutoComplete>
     </div>
-    <p>保存对象多选：value:{{value4}} <button class="h-btn h-btn-text" @click="update4">修改值</button></p>
+    <p>保存对象多选：value:{{value4}} <span class="link" @click="update4">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" v-model="value4" type="object" :must-match="false" multiple @change="onChange"></AutoComplete>
     </div>
@@ -28,8 +28,8 @@ const loadData = function(filter, callback) {
       callback(
         d.result.map(r => {
           return {
-            title: r[0],
-            key: r[1] + Math.random()
+            name: r[0],
+            code: r[1] + Math.random()
           }
         })
       )
@@ -40,10 +40,12 @@ export default {
   data() {
     return {
       value1: '23',
-      value4: ['23','45'],
-      value2: null,
-      value3: [],
+      value2: ['23','45'],
+      value3: {code: '1', name: '初始化'},
+      value4: [{code: '1', name: '初始化'}],
       param: {
+        keyName: 'code',
+        titleName: 'name',
         loadData,
         minWord: 1
       }
@@ -60,10 +62,10 @@ export default {
       this.value2 = ['value1','value2']
     },
     update3() {
-      this.value3 = { key: 123, title: '修改' }
+      this.value3 = { code: 123, name: '修改' }
     },
     update4() {
-      this.value4 = [{ key: 123, title: '修改' }]
+      this.value4 = [{ code: 123, name: '修改' }]
     }
   }
 }
