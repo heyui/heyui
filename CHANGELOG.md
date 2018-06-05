@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.7-alpha.2"></a>
+## [1.1.7-alpha.2](https://github.com/heyui/heyui/compare/v1.1.7-alpha.1...v1.1.7-alpha.2) (2018-06-05)
+
+
+### Bug Fixes
+
+* autocomplete refactor bugs ([fce1bf8](https://github.com/heyui/heyui/commit/fce1bf8))
+
+
+
 <a name="1.1.7-alpha.1"></a>
 ## [1.1.7-alpha.1](https://github.com/heyui/heyui/compare/v1.1.7-alpha.0...v1.1.7-alpha.1) (2018-06-05)
 
