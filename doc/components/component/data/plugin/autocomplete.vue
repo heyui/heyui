@@ -8,6 +8,14 @@
     <p><code>autocomplete</code>有三种数据类型：<code>key</code>,<code>title</code>,<code>object</code>，如果需求更复杂，请监听<code>change</code>事件手动处理。</p>
     <example demo="dataplugins/autocomplete1"></example>
     
+    <h3>选择模式</h3>
+    <example demo="dataplugins/autocomplete8"></example>
+  
+    <h3>可以任意输入模式</h3>
+    <p class="tip">使用<code>mustMatch</code>参数即可。</p>
+    <p>此种方式只能选择使用<code>title</code>与<code>object</code>类型的数据。</p>
+    <example demo="dataplugins/autocomplete9"></example>
+
     <h3>自定义样式</h3>
     <p>通过自定义<code>className</code>参数，自己定义特殊的样式。</p>
     <example demo="dataplugins/autocomplete14"></example>
@@ -21,41 +29,27 @@
 
     <h3>disabled</h3>
     <example demo="dataplugins/autocomplete2"></example>
-  
+<!--   
     <h3>多选</h3>
-    <example demo="dataplugins/autocomplete3"></example>
+    <example demo="dataplugins/autocomplete3"></example> -->
   
-    <h3>远程</h3>
+    <!-- <h3>远程</h3>
     <p>通过<code>options</code>的<code>loadData</code>方法执行远程数据查询，执行完毕后调用<code>callback</code>方法返回数据。</p>
     <p>下面的用例使用的只是单纯的title值，请使用<code>type="title"</code>。</p>
     <example demo="dataplugins/autocomplete4"></example>
   
-    <h3>远程多选</h3>
-    <example demo="dataplugins/autocomplete5"></example>
+    <h3>选择模式</h3>
+    <example demo="dataplugins/autocomplete5"></example> -->
 
     <!-- <h3>自定义返回数据的结构</h3>
     <p></p>
     <example demo="dataplugins/autocomplete11"></example> -->
-  
-  
-    <h3>选择对象</h3>
-    <p>在实际开发中，autocomplete常常用于选择有<code>id</code>的对象，我们可以使用<code>v-model</code>定义绑定的key，利用属性<code>show</code>来定义展示的内容，这是一种方式，但是我们更建议使用对象模式的<code>autocomplete</code></p>
-    <p>下面的用例是<code>value</code>使用的是对象的数据结构，这样的控件可以通过初始化的数据直接获得展示的内容。</p>
-    <example demo="dataplugins/autocomplete7"></example>
-  
-    <h3>选择对象多选</h3>
-    <example demo="dataplugins/autocomplete8"></example>
-  
-    <h3>可以任意输入</h3>
-    <example demo="dataplugins/autocomplete9"></example>
 
     <!-- <h3>可以任意输入对象多选</h3> -->
     <!-- <example demo="dataplugins/autocomplete12"></example> -->
   
     <h3>全局配置</h3>
     <example demo="dataplugins/autocomplete13"></example>
-
-
     
     <h3>AutoComplete 参数</h3>
     <table class="table">
