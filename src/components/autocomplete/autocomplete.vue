@@ -242,9 +242,7 @@ export default {
         } else {
           utils.extend(this.object, this.getValue(value))
         }
-        if(value) {
-          this.tempValue = value.title;
-        }
+        this.tempValue = this.object.title;
       }
       this.oldValue = this.value
     },
