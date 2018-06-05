@@ -49,9 +49,8 @@
     <h3>可以任意输入</h3>
     <example demo="dataplugins/autocomplete9"></example>
 
-
-    <h3>可以任意输入对象多选</h3>
-    <example demo="dataplugins/autocomplete12"></example>
+    <!-- <h3>可以任意输入对象多选</h3> -->
+    <!-- <example demo="dataplugins/autocomplete12"></example> -->
   
     <h3>全局配置</h3>
     <example demo="dataplugins/autocomplete13"></example>

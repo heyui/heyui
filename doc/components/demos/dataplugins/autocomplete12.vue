@@ -16,7 +16,7 @@ const loadData = function (filter, callback) {
       callback(d.result.map((r) => {
         return {
           title: r[0],
-          key: r[1],
+          key: r[1] + Math.random(),
         };
       }));
     });
