@@ -31,7 +31,7 @@
                :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
-        <i class="h-icon-close text-hover" v-else-if="showValue&&!disabled" @click="clear"></i>
+        <i class="h-icon-close text-hover" v-else-if="showValue&&!disabled" @mousedown="clear"></i>
       </template>
     </div>
   
@@ -43,7 +43,7 @@
             :key="result.key"
             class="h-autocomplete-item"
             :class="{'h-autocomplete-item-selected': index == nowSelected}"
-            @click="picker(result)">
+            @mousedown="picker(result)">
           <div v-if="!!result.html"
                v-html="result.html"></div>
           <template v-else-if="!$scopedSlots.item">{{result.title}}</template>
@@ -123,7 +123,8 @@ export default {
       loadDatas: [],
       isShow: false,
       searchTimeout: null,
-      el: null
+      el: null,
+      lastTrigger: null
     }
   },
   watch: {
@@ -240,23 +241,25 @@ export default {
       this.tempValue = null;
       this.oldValue = this.value
     },
-    dispose() {
-      let value = null
-      let inputValue = null
+    getDisposeValue() {
+      let inputValue = null;
       if (!this.mustMatch) {
         if (this.type == 'key' || this.type == 'title') {
-          inputValue = this.showValue
-        } else if (!utils.isBlank(this.showValue)) {
-          inputValue = { [this.param.titleName]: this.showValue }
+          inputValue = this.tempValue
+        } else if (!utils.isBlank(this.tempValue)) {
+          inputValue = { [this.param.titleName]: this.tempValue }
         } else {
           inputValue = null
         }
-      } else {
-        this.tempValue = null
       }
+      return inputValue;
+    },
+    dispose() {
+      let value = null
+      let inputValue = this.getDisposeValue();
       if (this.multiple) {
         value = []
-        if (!utils.isNull(this.showValue)) {
+        if (!this.mustMatch && !utils.isNull(this.tempValue)) {
           if (this.type == 'key' || this.type == 'title') {
             this.objects.push(inputValue)
           } else {
@@ -268,13 +271,26 @@ export default {
             value.push(this.getV(o))
           }
         }
+        return value;
       } else {
-        value = this.getV(this.object)
-        if (utils.isNull(value) && !utils.isNull(inputValue)) {
-          value = inputValue
+        if (this.mustMatch) {
+          value = this.getV(this.object)
+        } else {
+          if(this.object.key) {
+            if (this.type == 'key') {
+              value = this.object.key;
+            } else if (this.type == 'title') {
+              value = this.object.title;
+            } else {
+              value = this.object;
+            }
+          } else if (!utils.isNull(inputValue)) {
+            value = inputValue
+            this.object.title = this.tempValue
+          }
         }
+        return value
       }
-      return value
     },
     getV(object) {
       if (this.type == 'key') {
@@ -293,10 +309,15 @@ export default {
       }
     },
     focus(event) {
+      this.lastTrigger = null;
       this.focusing = true;
       this.focusValue = event.target.value
       if (this.multiple) this.searchValue = null
       this.search(event.target)
+    },
+    focusData(value) {
+      this.focusValue = this.object.title;
+      if (this.multiple) this.searchValue = null
     },
     paste(event) {
       setTimeout(() => {
@@ -306,25 +327,28 @@ export default {
     },
     blur(event) {
       this.focusing = false;
-      setTimeout(() => {
-        let nowValue = event.target.value
-        let focusValue = this.focusValue
-        if (focusValue === null) focusValue = ''
-        if (focusValue !== nowValue) {
-          if (this.mustMatch) {
-            this.tempValue = null
-            if (
-              this.focusValue != '' &&
-              this.object.key == null &&
-              !this.multiple
-            ) {
-              this.setvalue('blur')
-            }
-          } else {
+      if(this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
+      let nowValue = event.target.value
+      let focusValue = this.focusValue
+      if (focusValue !== nowValue) {
+        if (this.mustMatch) {
+          if ( this.focusValue != '' && !this.multiple ) {
+            this.object = { key: null, title: null, value: null };
             this.setvalue('blur')
+          } else {
+            this.tempValue = null
           }
+        } else {
+          this.tempValue = nowValue;
+          this.setvalue('blur')
         }
-      }, 100)
+      } else {
+        this.tempValue = null;
+      }
+      this.loading = false;
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout)
+      }
     },
     handle(event) {
       let code = event.keyCode || event.which || event.charCode
@@ -339,12 +363,7 @@ export default {
       } else if (code == 13) {
         //兼容处理ie，使用enterHandle处理了。
       } else {
-        if (this.searchTimeout) {
-          clearTimeout(this.searchTimeout)
-        }
-        this.searchTimeout = setTimeout(() => {
-          this.search(event.target)
-        }, this.delay)
+        this.search(event.target)
         // if(!this.mustMatch && !this.multiple) {
         //   this.setvalue('keyup');
         // }
@@ -369,25 +388,31 @@ export default {
         this.object.title = null
         this.object.value = null
       }
+      this.loading = false;
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout)
+      }
       if (value.length >= this.param.minWord) {
-        if (this.dropdown) {
-          this.dropdown.show()
-        }
-        if (utils.isFunction(this.param.loadData)) {
-          this.loading = true
-          this.param.loadData.call(this.param, value, datas => {
-            if (target.value === value) {
-              this.loading = false
-              this.loadDatas = datas
-              this.dropdown.update()
-              this.nowSelected = this.autoSelectFirst ? 0 : -1
-            }
-          }, _ => {
-            this.loading = false;
-          })
-        } else {
-          this.nowSelected = this.autoSelectFirst ? 0 : -1
-        }
+        this.searchTimeout = setTimeout(() => {
+          if (this.dropdown) {
+            this.dropdown.show()
+          }
+          if (utils.isFunction(this.param.loadData)) {
+            this.loading = true
+            this.param.loadData.call(this.param, value, datas => {
+              if (target.value === value) {
+                this.loading = false
+                this.loadDatas = datas
+                this.dropdown.update()
+                this.nowSelected = this.autoSelectFirst ? 0 : -1
+              }
+            }, _ => {
+              this.loading = false;
+            })
+          } else {
+            this.nowSelected = this.autoSelectFirst ? 0 : -1
+          }
+        }, this.delay)
       }
       this.searchValue = value
       this.dropdown.update()
@@ -405,26 +430,23 @@ export default {
       this.setvalue('remove')
     },
     picker(data) {
-      // log('picker');
       this.add(data)
       this.setvalue('picker')
     },
     setvalue(trigger) {
-      if (this.disabled) return
+      if (this.disabled) return;
+      this.lastTrigger = trigger;
       this.nowSelected = -1
-      let value = (this.oldValue = this.dispose())
-      if (this.mustMatch || this.object.key || this.multiple) {
-        this.tempValue = null
-      }
-      this.focusValue = this.showValue;
-      if (this.object.key === null) this.object.title = this.showValue
-      // console.log(trigger)
+      let value = this.oldValue = this.dispose();
+      this.focusValue = null;
+      this.tempValue = null;
+      this.focusData();
+      // if (this.mustMatch || this.object.key || this.multiple) {
+      // }
+      // this.focusValue = this.showValue;
+      // if (this.object.key === null) this.object.title = this.showValue
       this.$emit('input', value, trigger)
-      this.$emit(
-        'change',
-        utils.copy(this.multiple ? this.objects : this.object),
-        trigger
-      )
+      this.$emit( 'change', utils.copy(this.multiple ? this.objects : this.object), trigger )
       let event = document.createEvent('CustomEvent')
       event.initCustomEvent('setvalue', true, true, value)
       this.$el.dispatchEvent(event)
@@ -441,8 +463,8 @@ export default {
       this.dropdown.hide();
     },
     clear() {
-      this.tempValue = ''
-      this.focusValue = ''
+      this.tempValue = null;
+      this.focusValue = null;
       this.object = { key: null, title: null, value: null }
       this.setvalue('clear')
     }
