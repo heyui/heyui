@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.7-alpha.0"></a>
+## [1.1.7-alpha.0](https://github.com/heyui/heyui/compare/v1.1.6...v1.1.7-alpha.0) (2018-06-05)
+
+
+### Bug Fixes
+
+* autocomplate 机制优化 ([81910af](https://github.com/heyui/heyui/commit/81910af))
+* color value optimize ([272fc71](https://github.com/heyui/heyui/commit/272fc71))
+* form required use other position ([19f99b9](https://github.com/heyui/heyui/commit/19f99b9))
+* optimize url and email valid ([10ae2ce](https://github.com/heyui/heyui/commit/10ae2ce))
+* tooltip add prop delay ([76e0517](https://github.com/heyui/heyui/commit/76e0517))
+
+
+
 <a name="1.1.6"></a>
 ## [1.1.6](https://github.com/heyui/heyui/compare/v1.1.5...v1.1.6) (2018-05-31)
 
