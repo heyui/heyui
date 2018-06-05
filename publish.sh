@@ -32,4 +32,13 @@ set -e
 echo "git push tags"
 git push --follow-tags origin master
 echo "发布至npm"
+
+if [ "$1" = '' ] ; then
 npm publish
+fi
+if [ "$1" = '-alpha' ] ; then
+npm publish --tag=next
+fi
+if [ "$1" = '-beta' ] ; then
+npm publish --tag=next
+fi
