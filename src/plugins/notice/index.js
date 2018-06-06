@@ -62,7 +62,7 @@ function notice(param, timeout) {
     }
     return Notice(param);
   }
-  log.error('Notice传递参数不正确:', param);
+  console.error('Notice传递参数不正确:', param);
 }
 
 notice.config = (options) => {
@@ -78,7 +78,7 @@ function noticeWithType(type, param, timeout) {
     if (type) param.type = type;
     return Notice(param);
   }
-  log.error('Notice传递参数不正确:', param);
+  console.error('Notice传递参数不正确:', param);
 }
 
 notice.error = (param, timeout) => noticeWithType('error', param, timeout);

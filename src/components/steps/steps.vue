@@ -72,7 +72,7 @@ export default {
     },
     arr() {
       if (!this.datas && !this.dict) {
-        log.error('Tab组件: datas或者dict参数最起码需要定义其中之一');
+        console.error('Steps Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

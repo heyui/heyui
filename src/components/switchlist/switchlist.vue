@@ -49,7 +49,7 @@ export default {
   computed: {
     arr() {
       if (!this.datas && !this.dict) {
-        log.error('Switchlist组件:datas或者dict参数最起码需要定义其中之一');
+        console.error('Switchlist Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

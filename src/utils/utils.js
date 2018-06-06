@@ -170,7 +170,7 @@ export default utils.extend({}, utils, {
   },
   generateTree(data, param) {
     if (!this.isArray(data)) {
-      log.error("generateTree：data必须为Array。");
+      console.error("generateTree：data must be Array。");
       return null;
     }
     let result = [];

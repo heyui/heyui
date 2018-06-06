@@ -154,7 +154,7 @@ export default {
     },
     options() {
       if (!this.datas && !this.dict) {
-        log.error('dropdownmenu组件:datas或者dict参数最起码需要定义其中之一');
+        console.error('Dropdownmenu Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

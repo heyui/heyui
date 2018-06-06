@@ -38,7 +38,7 @@ const DEFAULT = {
 class Validator {
   constructor(rules) {
     if (!utils.isObject(rules)) {
-      console.error("validator:请传递正确的验证参数");
+      console.error("validator: please pass the correct validation parameters");
     }
     this.rules = {};
     this.combineRules = {};
@@ -189,7 +189,7 @@ class Validator {
     }
     let rule = utils.extend({}, originalRule || {}, this.rules[ruleKey]);
     if (rule == undefined) {
-      // log.error(`Error: Not found validator property '${ruleKey}'.`)
+      // console.error(`Error: Not found validator property '${ruleKey}'.`)
       let genRules = this.combineRules;
       let rules = genRules[ruleKey];
       if (!rules) {
@@ -260,9 +260,9 @@ class Validator {
       for (let ref of rule.refs) {
         let v = utils.getKeyValue(parent, ref);
         let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + ref;
-        //当有基本参数验证不通过时，暂时不验证
+        //When the basic parameters are not validated, it will stop validate.
         if (this.validFieldBase(this.rules[prop], v, parent) != true) {
-          console.log('combine基本参数验证不通过', prop, this.rules[prop], v);
+          console.log('basic combine validation does not pass', prop, this.rules[prop], v);
           break;
         }
         values.push(v);
@@ -272,7 +272,7 @@ class Validator {
       if (utils.isObject(valid) && utils.isString(valid.valid)) {
         valid.valid = combineValids[valid.valid];
         if (utils.isNull(valid.valid)) {
-          throw Error(`不存在命名为${valid}的验证规则`);
+          throw Error(`There is no validation rule named ${valid}`);
         }
       }
       // console.log(valid);

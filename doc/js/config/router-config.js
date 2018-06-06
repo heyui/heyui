@@ -515,7 +515,6 @@ const router = {
     }]
   }, {
     path: '/resource',
-    name: 'resource',
     component: (resolve) => require(['components/resource'], resolve),
     children: [{
       path: '',

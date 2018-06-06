@@ -91,14 +91,12 @@ export default {
     dict: String,
     placeholder: {
       type: String
-      // default: "请输入"
     },
     value: [Number, String, Array, Object],
     option: Object,
     show: String,
     emptyContent: {
       type: [String, Object]
-      // default: "未搜索到相关数据"
     },
     config: String,
     className: String,
@@ -198,7 +196,6 @@ export default {
       return key + Math.random();
     },
     parse() {
-      // log('触发parse')
       this.tempValue = null;
       if (this.multiple) {
         let os = []
@@ -329,7 +326,7 @@ export default {
       this.focusing = false;
       if(this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
       let nowValue = event.target.value
-      // log('blur事件', nowValue, this.tempValue);
+      // log('blur', nowValue, this.tempValue);
       let focusValue = this.focusValue
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
@@ -363,7 +360,7 @@ export default {
           this.nowSelected += 1
         }
       } else if (code == 13) {
-        //兼容处理ie，使用enterHandle处理了。
+        //compatible ie，use enterHandle handle。
       } else {
         this.search(event.target)
         // if(!this.mustMatch && !this.multiple) {
@@ -439,7 +436,7 @@ export default {
     },
     setvalue(trigger) {
       if (this.disabled) return;
-      // log('setvalue触发', trigger)
+      // log('setvalue', trigger)
       this.lastTrigger = trigger;
       this.nowSelected = -1
       let value = this.oldValue = this.dispose();
@@ -502,7 +499,7 @@ export default {
       }
     },
     // showValue() {
-    //   log('showvalue变动', this.tempValue, this.object.title);
+    //   log('showvalue', this.tempValue, this.object.title);
     //   return this.tempValue == null ? this.object.title : this.tempValue
     // },
     autocompleteCls() {

@@ -58,9 +58,11 @@ const config = {
     layout: 'total,pager,jumper,sizes',
     onChangeSize() {
       // 可以处理全局保存分页页数的需求
+      // The need to deal with the global paging page number
     },
     init() {
       // 可以处理全局保存分页页数的需求
+      // The need to deal with the global paging page number
     },
     onChange() {}
   },
@@ -108,7 +110,7 @@ const func = {
   getDict(name) {
     const dict = config.dict.dicts[name];
     if (!dict) {
-      log.error(`Config:不存在命名为${name}的字典`);
+      console.error(`Config: There is no dictionary named ${name}`);
       return [];
     }
     return dict;
@@ -120,7 +122,7 @@ const func = {
     }
     const value = utils.getKeyValue(config, `${key}`);
     if (utils.isNull(value)) {
-      log.error(`Config:不存在${key}的配置项`);
+      console.error(`Config: There is no dictionary named ${key}`);
       return null;
     }
     return value;

@@ -93,7 +93,6 @@ export default {
     },
     nullOptionText: {
       type: String,
-      // default: "请选择"
     },
     noBorder: {
       type: Boolean,
@@ -101,11 +100,9 @@ export default {
     },
     placeholder: {
       type: String,
-      // default: "请选择"
     },
     searchPlaceHolder: {
       type: String,
-      // default: "请输入筛选文本"
     },
     emptyContent: {
       type: String,
@@ -397,7 +394,7 @@ export default {
     },
     options() {
       if (!this.datas && !this.dict) {
-        log.error('Select组件:datas或者dict参数最起码需要定义其中之一');
+        console.error('Select Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

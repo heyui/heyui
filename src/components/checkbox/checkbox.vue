@@ -114,7 +114,6 @@ export default {
     },
     arr() {
       if (!this.datas && !this.dict) {
-        // log.error('Checkbox组件:datas或者dict参数最起码需要定义其中之一');
         return [];
       }
       let datas = this.datas;

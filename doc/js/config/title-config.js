@@ -64,7 +64,7 @@ const titles = {
   'logs': '日志',
   'home': '首页',
   'component': '组件',
-  'resource': '资源',
+  'resourceheycli': '资源',
   'about': '关于',
   'pluginTreePicker': '下拉树选择'
 }

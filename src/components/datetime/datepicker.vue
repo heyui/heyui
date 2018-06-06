@@ -249,7 +249,7 @@ export default {
           }
           return;
         } catch (err) {
-          // log.error(err);
+          // console.error(err);
         }
       }
 

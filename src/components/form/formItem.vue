@@ -114,7 +114,7 @@ export default {
         parent = parent.$parent;
       }
       if (!parent) {
-        log.error('Please put FormItem Component in the Form Component');
+        console.error('Please put FormItem Component in the Form Component');
       }
       return parent;
     },
@@ -125,7 +125,7 @@ export default {
         parent = parent.$parent;
       }
       if (!parent) {
-        log.error('Please put FormItem Component in the Form Component');
+        console.error('Please put FormItem Component in the Form Component');
       }
       return parent;
     },
