@@ -76,7 +76,7 @@ const manbaType = {
 }
 
 export default {
-  name: 'DateRangePicker',
+  name: 'hDateRangePicker',
   props: {
     disabled: {
       type: Boolean,

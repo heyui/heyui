@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'tableTd',
+  name: 'hTableTd',
   props: {
     index: Number,
     prop: String,

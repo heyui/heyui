@@ -13,7 +13,7 @@
 <script>
 const prefix = 'h-timeline';
 export default {
-  name: 'TimeLineItem',
+  name: 'hTimeLineItem',
   props: {
     color: {
       type: String,

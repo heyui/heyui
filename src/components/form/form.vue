@@ -22,7 +22,7 @@ const findDomUtil = function(target, utilDom) {
 }
 
 export default {
-  name: 'Form',
+  name: 'hForm',
   props: {
     top: {
       type: Number

@@ -17,7 +17,7 @@ import Tooltip from '../../plugins/tooltip';
 const prefix = 'h-slider';
 
 export default {
-  name: 'Slider',
+  name: 'hSlider',
   props: {
     readonly: {
       type: Boolean,

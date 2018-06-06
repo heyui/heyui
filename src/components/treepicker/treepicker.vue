@@ -36,7 +36,7 @@ import Tree from '../tree';
 const prefix = 'h-treepicker';
 
 export default {
-  name: 'TreePicker',
+  name: 'hTreePicker',
   component: { Tree },
   props: {
     option: Object,

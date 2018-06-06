@@ -93,7 +93,7 @@ const updateModeSomeChildChooseStatus = (data) => {
 }
 
 export default {
-  name: 'Tree',
+  name: 'hTree',
   props: {
     option: Object,
     multiple: {

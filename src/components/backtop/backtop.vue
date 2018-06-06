@@ -13,7 +13,7 @@ const prefix = 'h-backtop';
 
 
 export default {
-  name: 'BackTop',
+  name: 'hBackTop',
   props: {
     target: {
       type: Function,

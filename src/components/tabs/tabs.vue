@@ -13,6 +13,7 @@ import utils from '../../utils/utils';
 const prefix = 'h-tabs';
 
 export default {
+  name: 'hTabs',
   props: {
     dict: String,
     datas: [Object, Array],

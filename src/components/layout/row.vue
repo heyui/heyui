@@ -19,7 +19,7 @@ const getHalf = (width, hasRemainder) => {
 }
 
 export default {
-  name: 'Row',
+  name: 'hRow',
   props: {
     type: {
       validator(value) {

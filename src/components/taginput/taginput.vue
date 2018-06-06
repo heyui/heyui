@@ -13,7 +13,7 @@ import utils from '../../utils/utils';
 const prefix = 'h-taginput';
 
 export default {
-  name: 'TagInput',
+  name: 'hTagInput',
   props: {
     readonly: {
       type: Boolean,

@@ -12,7 +12,7 @@ const Props = {
 }
 
 export default {
-  name: 'Badge',
+  name: 'hBadge',
   props: {
     count: {
       type: Number,

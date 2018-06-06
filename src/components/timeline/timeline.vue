@@ -6,7 +6,7 @@
 <script>
 const prefixCls = 'h-timeline';
 export default {
-  name: 'TimeLine',
+  name: 'hTimeLine',
   props: {
     pending: {
       default: false

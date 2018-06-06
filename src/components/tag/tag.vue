@@ -47,7 +47,7 @@ const prefix = 'h-page';
 const pageConfig = config.getOption('page');
 
 export default {
-  name: 'Tag',
+  name: 'hTag',
   props: {
     size: {
       type: Number,

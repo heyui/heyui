@@ -44,6 +44,7 @@ import utils from '../../utils/utils';
 const topMenu = "-------";
 
 export default {
+  name: 'hCategoryModal',
   props: {
     param: Object
   },

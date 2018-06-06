@@ -11,7 +11,7 @@
 <script>
 const prefix = 'h-loading';
 export default {
-  name: 'Loading',
+  name: 'hLoading',
   props: {
     loading: {
       type: Boolean,

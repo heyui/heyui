@@ -18,7 +18,7 @@ import utils from "../../utils/utils";
 
 const prefixCls = 'h-form-item';
 export default {
-  name: 'FormItem',
+  name: 'hFormItem',
   props: {
     label: String,
     prop: String,
@@ -120,7 +120,7 @@ export default {
     },
     getDirectParent() {
       let parent = this.$parent;
-      let filterTag = new Set(['Form', 'hForm', 'FormItem']);
+      let filterTag = new Set(['Form', 'hForm', 'hFormItem']);
       while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
       }

@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: 'Poptip',
+  name: 'hPoptip',
   props: {
     content: String,
     placement: {

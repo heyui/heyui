@@ -11,7 +11,7 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 
 export default {
-  name: 'Checkbox',
+  name: 'hCheckbox',
   model: {
     prop: 'checkStatus',
     event: 'input'

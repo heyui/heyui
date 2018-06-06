@@ -11,7 +11,7 @@ import utils from '../../utils/utils';
 import config from '../../utils/config';
 
 export default {
-  name: 'Radio',
+  name: 'hRadio',
   model: {
     prop: 'selectStatus',
     event: 'input'

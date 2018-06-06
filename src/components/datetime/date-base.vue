@@ -123,6 +123,7 @@ const genData = (param) => {
 }
 
 export default {
+  name: 'hDateBase',
   props: {
     type: {
       type: [String],

@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'Rate',
+  name: 'hRate',
   props: {
     readonly: {
       type: Boolean,

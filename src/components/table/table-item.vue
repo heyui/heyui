@@ -12,7 +12,7 @@
 <script>
 import utils from '../../utils/utils';
 export default {
-  name: 'tableItem',
+  name: 'hTableItem',
   props: {
     title: String,
     width: Number,
@@ -76,13 +76,13 @@ export default {
         sort.prop = this.prop
       }
       let parent = this.$parent;
-      if (parent.$options._componentTag == 'Table') {
+      if (parent.$options._componentTag == 'hTable') {
         this.sortStatus = parent.triggerSort(sort);
       }
     },
     init() {
       let parent = this.$parent;
-      if (parent.$options._componentTag == 'Table') {
+      if (parent.$options._componentTag == 'hTable') {
         parent.refresh();
       }
     }

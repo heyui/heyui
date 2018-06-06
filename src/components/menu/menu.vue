@@ -51,7 +51,7 @@ const updateOpened = (obj) => {
 }
 
 export default {
-  name: 'Menu',
+  name: 'hMenu',
   props: {
     option: Object,
     datas: {

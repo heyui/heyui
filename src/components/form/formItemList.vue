@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'FormItemList',
+  name: 'hFormItemList',
   data() {
     return {
     };

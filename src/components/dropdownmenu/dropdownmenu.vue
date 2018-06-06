@@ -32,7 +32,7 @@ import Badge from '../badge';
 const prefix = 'h-dropdownmenu';
 
 export default {
-  name: 'DropdownMenu',
+  name: 'hDropdownMenu',
   props: {
     dict: String,
     datas: [Array, Object],
