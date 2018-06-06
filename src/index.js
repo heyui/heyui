@@ -73,7 +73,6 @@ const components = {
   BackTop,
   Badge,
   Button,
-  hButton: Button,
   ButtonGroup,
   Category,
   Checkbox,
@@ -83,7 +82,6 @@ const components = {
   DateFullRangePicker: Datetime.DateFullRangePicker,
   DropdownCustom,
   DropdownMenu,
-  hForm: Form,
   Form,
   FormItem: Form.Item,
   FormItemList: Form.ItemList,
@@ -98,13 +96,11 @@ const components = {
   Rate,
   Row,
   Search,
-  hSelect: Select,
   Select,
   Slider,
   Steps,
   hSwitch: Switch,
   SwitchList,
-  hCol: Col,
   Col,
   Timeline,
   TimelineItem: Timeline.Item,
@@ -112,7 +108,6 @@ const components = {
   TagInput,
   Table,
   TableItem,
-  hTable: Table,
   Tabs,
   Tag,
   Tooltip,
@@ -158,6 +153,9 @@ const install = function (Vue, opts) {
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);
+    if (key.indexOf('h') !== 0) {
+      Vue.component(`h${key}`, components[key]);
+    }
   });
 
   Object.keys(filters).forEach((key) => {
