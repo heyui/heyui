@@ -201,7 +201,9 @@ export default {
     },
     updateView(value) {
       this.nowView = manba(value);
-      this.updateDropdown();
+      this.$nextTick(()=>{
+        this.updateDropdown();
+      })
     },
     updateDropdown() {
       if(this.dropdown) this.dropdown.update();
