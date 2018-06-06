@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "hey-log": "^0.0.8",
-    "hey-utils": "^0.1.0",
+    "hey-utils": "^0.3.1",
     "manba": "^1.2.0",
     "vue": "^2.5.13"
   },
