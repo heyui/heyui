@@ -34,10 +34,15 @@
   "readmeFilename": "README.md",
   "scripts": {
     "build": "hey -b",
-    "pa": "sh ./publish.sh -alpha",
-    "pb": "sh ./publish.sh -beta",
-    "p": "sh ./publish.sh",
-    "min": "babel build/heyui.js --minified --no-babelrc -o build/heyui.min.js"
+    "pa": "sh ./scripts/publish.sh -alpha",
+    "pb": "sh ./scripts/publish.sh -beta",
+    "p": "sh ./scripts/publish.sh",
+    "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
+  },
+  "standard-version": {
+    "scripts": {
+      "precommit": "sh ./scripts/headr.sh"
+    }
   },
   "browserslist": [
     "ie >= 9"
