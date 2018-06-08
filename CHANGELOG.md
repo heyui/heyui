@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/heyui/heyui/compare/v1.1.7-alpha.5...v1.1.7) (2018-06-08)
+
+
+### Bug Fixes
+
+* amend chinese words to english ([74ba457](https://github.com/heyui/heyui/commit/74ba457))
+* component defined h-names ([a911c25](https://github.com/heyui/heyui/commit/a911c25))
+* datepicker trigger updatedropdown when updateView ([e5eb5b0](https://github.com/heyui/heyui/commit/e5eb5b0))
+* unified all component ([122153d](https://github.com/heyui/heyui/commit/122153d))
+* update hey-utils optimize add sub mul div function ([3a6f333](https://github.com/heyui/heyui/commit/3a6f333))
+
+
+
 <a name="1.1.7-alpha.5"></a>
 ## [1.1.7-alpha.5](https://github.com/heyui/heyui/compare/v1.1.7-alpha.4...v1.1.7-alpha.5) (2018-06-05)
 
