@@ -17,7 +17,7 @@
     </div>
     <ul v-if="data.children&&data.children.length>0"
         class="h-tree-ul">
-      <treeItem v-for="child of data.children"
+      <hTreeItem v-for="child of data.children"
                   :key="child.key"
                   :data="child"
                   :param="param"
@@ -25,7 +25,7 @@
                   :multiple="multiple"
                   :choose-mode="chooseMode"
                   @trigger="trigger"
-                  :toggleOnSelect="toggleOnSelect"></treeItem>
+                  :toggleOnSelect="toggleOnSelect"></hTreeItem>
     </ul>
   </li>
 </template>
