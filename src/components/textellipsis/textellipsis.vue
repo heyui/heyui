@@ -1,7 +1,7 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span class="text-ellipsis-limit-text">{{text}}</span>
+    <span class="text-ellipsis-limit-text" :key="keyIndex">{{text}}</span>
     <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      showText: this.text,
+      keyIndex: 0,
       oversize: false
     };
   },
@@ -42,7 +42,9 @@ export default {
   methods: {
     init() {
       this.oversize = false;
-      this.showText = this.text;
+      this.keyIndex += 1;
+      let more = this.$el.querySelector('.h-text-ellipsis-more');
+      more.style.display = 'none';
       if(this.isLimitHeight) {
         this.limitShow();
       }
@@ -52,7 +54,6 @@ export default {
         let text = this.$el.querySelector('.text-ellipsis-limit-text');
         let title = this.$el;
         let more = this.$el.querySelector('.h-text-ellipsis-more');
-        more.style.display = 'none';
         let n = 1000;
         if(text) {
           if(title.offsetHeight > this.height) {
