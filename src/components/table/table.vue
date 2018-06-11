@@ -350,7 +350,7 @@ export default {
       let columns = [];
       if(this.$slots.default){
         for(let slot of this.$slots.default){
-          if(slot.componentOptions&&slot.componentOptions.tag == "TableItem"){
+          if(slot.componentOptions&&slot.componentOptions.tag == "hTableItem"){
             columns.push(slot.componentOptions.propsData);
           }
         }
