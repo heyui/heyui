@@ -120,7 +120,7 @@ export default {
     },
     getDirectParent() {
       let parent = this.$parent;
-      let filterTag = new Set(['Form', 'hForm', 'hFormItem']);
+      let filterTag = new Set(['Form', 'h-form', 'h-form-item', 'FormItem']);
       while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
       }

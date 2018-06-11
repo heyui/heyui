@@ -1,11 +1,11 @@
 <template>
   <ul :class="classes">
-    <h-menuItem v-for="menu of menuDatas"
+    <hMenuItem v-for="menu of menuDatas"
         :key="menu.key"
         :data="menu"
         :param="param"
         :status="status"
-        @trigger="trigger"></h-menuItem>
+        @trigger="trigger"></hMenuItem>
 
   </ul>
 </template>

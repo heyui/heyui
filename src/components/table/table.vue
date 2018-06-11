@@ -278,6 +278,7 @@ export default {
       this.sortStatus.type = null;
     },
     triggerSort(data){
+      log(1)
       this.sortStatus.prop = data.prop;
       this.sortStatus.type = data.type;
       this.$emit('sort', utils.copy(data));
@@ -350,7 +351,8 @@ export default {
       let columns = [];
       if(this.$slots.default){
         for(let slot of this.$slots.default){
-          if(slot.componentOptions&&slot.componentOptions.tag == "hTableItem"){
+          let option = slot.componentOptions;
+          if(option&&(option.tag == "TableItem" || option.tag == 'h-table-item')){
             columns.push(slot.componentOptions.propsData);
           }
         }

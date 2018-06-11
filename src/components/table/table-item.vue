@@ -76,13 +76,13 @@ export default {
         sort.prop = this.prop
       }
       let parent = this.$parent;
-      if (parent.$options._componentTag == 'hTable') {
+      if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
         this.sortStatus = parent.triggerSort(sort);
       }
     },
     init() {
       let parent = this.$parent;
-      if (parent.$options._componentTag == 'hTable') {
+      if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
         parent.refresh();
       }
     }

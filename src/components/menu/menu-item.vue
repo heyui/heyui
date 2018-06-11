@@ -12,12 +12,12 @@
     </div>
     <ul v-if="data.children&&data.children.length>0"
         class="h-menu-ul">
-      <h-menuItem v-for="child of data.children"
+      <hMenuItem v-for="child of data.children"
                   :key="child.key"
                   :data="child"
                   :param="param"
                   :status="status"
-                  @trigger="trigger"></h-menuItem>
+                  @trigger="trigger"></hMenuItem>
     </ul>
   </li>
 </template>
