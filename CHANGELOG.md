@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0-alpha.0"></a>
+# [1.2.0-alpha.0](https://github.com/heyui/heyui/compare/v1.1.11...v1.2.0-alpha.0) (2018-06-11)
+
+
+### Bug Fixes
+
+* change headr.sh ([d8fe05f](https://github.com/heyui/heyui/commit/d8fe05f))
+
+
+### Features
+
+* text-ellipsis ([2b40772](https://github.com/heyui/heyui/commit/2b40772))
+
+
+
 <a name="1.1.11"></a>
 ## [1.1.11](https://github.com/heyui/heyui/compare/v1.1.9...v1.1.11) (2018-06-11)
 
