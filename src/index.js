@@ -48,6 +48,7 @@ import {
 } from './components/layout';
 import Timeline from './components/timeline';
 import { Button, ButtonGroup } from './components/button';
+import TextEllipsis from './components/textellipsis';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -113,7 +114,8 @@ const components = {
   Tooltip,
   Tree,
   TreePicker,
-  Uploader
+  Uploader,
+  TextEllipsis
 };
 
 const directives = {

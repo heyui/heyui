@@ -1,29 +1,70 @@
 <template>
-  <div>
-    <span name="before"></span>
-    <span>{{text}}</span>
-    <span name="more" v-if="oversize"></span>
-    <span name="after"></span>
+  <div class="h-text-ellipsis">
+    <slot name="before" class="h-text-ellipsis-before"></slot>
+    <span class="text-ellipsis-limit-text">{{text}}</span>
+    <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
+    <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
 </template>
 <script>
 import utils from '../../utils/utils';
 
 export default {
-  name: 'hTextellipsis',
+  name: 'hTextEllipsis',
   props: {
     text: String,
-    height: Number
+    height: Number,
+    isLimitHeight: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
+      showText: this.text,
       oversize: false
     };
   },
-  methods: {
-    
+  watch: {
+    isLimitHeight() {
+      this.init();
+    },
+    text() {
+      this.init();
+    },
+    height() {
+      this.init();
+    }
   },
-  computed: {
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.oversize = false;
+      this.showText = this.text;
+      if(this.isLimitHeight) {
+        this.limitShow();
+      }
+    },
+    limitShow() {
+      this.$nextTick(() => {
+        let text = this.$el.querySelector('.text-ellipsis-limit-text');
+        let title = this.$el;
+        let more = this.$el.querySelector('.h-text-ellipsis-more');
+        more.style.display = 'none';
+        let n = 1000;
+        if(text) {
+          if(title.offsetHeight > this.height) {
+            more.style.display = 'inline-block';
+          }
+          while(title.offsetHeight > this.height && n > 0) {
+            text.innerText = text.innerText.substring(0, text.innerText.length-1)
+            n--;
+          }
+        }
+      })
+    }
   }
 };
 </script>

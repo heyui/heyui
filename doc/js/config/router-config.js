@@ -472,7 +472,17 @@ const router = {
       },
       component: () =>
         import ('components/component/other/scrollintoview')
-    }, {
+    }, 
+    {
+      path: 'other/textellipsis',
+      name: 'otherTextellipsis',
+      meta: {
+        title: 'TextEllipsis',
+      },
+      component: () =>
+        import ('components/component/other/textellipsis')
+    }, 
+    {
       path: '',
       name: 'guide',
       meta: {
