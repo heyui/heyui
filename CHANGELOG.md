@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.10"></a>
+## [1.1.10](https://github.com/heyui/heyui/compare/v1.1.9...v1.1.10) (2018-06-11)
+
+
+### Bug Fixes
+
+* table name define error ([d26f632](https://github.com/heyui/heyui/commit/d26f632))
+
+
+
 <a name="1.1.9"></a>
 ## [1.1.9](https://github.com/heyui/heyui/compare/v1.1.8...v1.1.9) (2018-06-11)
 
