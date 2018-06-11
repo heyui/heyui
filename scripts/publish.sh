@@ -1,7 +1,7 @@
 echo "打包hey build"
 hey b
 hey b -f hey.esm.js
-lessc ../themes/index.less>../themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/
+lessc ./themes/index.less>./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/
 
 set -e
 echo "修正版本号"
