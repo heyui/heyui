@@ -1,7 +1,8 @@
 <template>
   <TextEllipsis :text="text" :height="100" v-width="200">
-    <span slot="more" class="link" v-tooltip :content="text"><a target="_blank" href="http://www.baidu.com">查看更多</a></span>
-    <span  slot="before" class="h-tag h-tag-red">new</span>
+    <span slot="more">...</span>
+    <span slot="before" class="h-tag h-tag-red">new</span>
+    <span slot="after" class="link" v-tooltip :content="text"><a target="_blank" href="http://www.baidu.com">查看更多</a></span>
   </TextEllipsis>
 </template>
 
