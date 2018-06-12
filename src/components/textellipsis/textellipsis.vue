@@ -58,10 +58,13 @@ export default {
         if(text) {
           if(title.offsetHeight > this.height) {
             more.style.display = 'inline-block';
-          }
-          while(title.offsetHeight > this.height && n > 0) {
-            text.innerText = text.innerText.substring(0, text.innerText.length-1)
-            n--;
+            while(title.offsetHeight > this.height && n > 0) {
+              text.innerText = text.innerText.substring(0, text.innerText.length-1)
+              n--;
+            }
+            this.$emit('hide');
+          } else {
+            this.$emit('show');
           }
         }
       })

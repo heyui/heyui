@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TextEllipsis 超出文本省略</h2>
+    <blockquote>1.2.0+ 新增</blockquote>
 
     <h3>基本调用</h3>
     <example demo="other/textellipsis1"></example>
@@ -41,6 +42,22 @@
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>
+      </tr>
+    </table>
+
+    <h3>TextEllipsis 事件</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>当isLimitHeight为true，文本全部展示的时候</td>
+      </tr>
+      <tr>
+        <td>hide</td>
+        <td>当isLimitHeight为true，文本省略的时候</td>
       </tr>
     </table>
   </div>

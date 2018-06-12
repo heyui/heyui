@@ -1,7 +1,8 @@
 <template>
-  <TextEllipsis :text="text" :height="100" v-width="200" :isLimitHeight="isLimitHeight">
+  <TextEllipsis :text="text" :height="100" v-width="200" :isLimitHeight="isLimitHeight" @show="show" @hide="hide">
     <span slot="before" class="h-tag h-tag-red">new</span>
-    <span slot="more" class="link" @click="isLimitHeight=false">查看更多</span>
+    <span slot="more">...</span>
+    <span slot="after" class="link" @click="isLimitHeight=!isLimitHeight">{{isLimitHeight?'查看更多':'收起'}}</span>
   </TextEllipsis>
 </template>
 
@@ -15,7 +16,12 @@ export default {
     }
   },
   methods: {
-    
+    show() {
+      this.$Message('show')
+    },
+    hide() {
+      this.$Message('hide')
+    }
   }
 }
 </script>
