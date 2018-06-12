@@ -2,7 +2,7 @@
   <li class="h-tree-li"
       :class="{'h-tree-li-opened':data.status.opened}">
     <div class="h-tree-show"
-      :class="{'h-tree-show-disabled':data.status.disabled}" v-show="!data.status.hide">
+      :class="{'h-tree-show-disabled':data.status.disabled, 'h-tree-show-choose': data.status.choose, 'h-tree-show-indeterminate': data.status.indeterminate}" v-show="!data.status.hide">
       <span class='h-tree-show-expand'>
         <span @click="toggleTree()"
               v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
