@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0-alpha.2"></a>
+# [1.2.0-alpha.2](https://github.com/heyui/heyui/compare/v1.2.0-alpha.1...v1.2.0-alpha.2) (2018-06-12)
+
+
+### Features
+
+* textellipsis add show hide event ([64e5a71](https://github.com/heyui/heyui/commit/64e5a71))
+
+
+
 <a name="1.2.0-alpha.1"></a>
 # [1.2.0-alpha.1](https://github.com/heyui/heyui/compare/v1.2.0-alpha.0...v1.2.0-alpha.1) (2018-06-11)
 
