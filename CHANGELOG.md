@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/heyui/heyui/compare/v1.2.0...v1.2.1) (2018-06-13)
+
+
+### Bug Fixes
+
+* **textellipsis:** IE browser innerText can not get newline characters. ([d3a1924](https://github.com/heyui/heyui/commit/d3a1924))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/heyui/heyui/compare/v1.2.0-alpha.2...v1.2.0) (2018-06-12)
 
