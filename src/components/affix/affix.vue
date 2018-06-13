@@ -38,6 +38,7 @@ export default {
       var evObj = document.createEvent('HTMLEvents');
       evObj.initEvent( 'scroll', true, true );
       document.body.dispatchEvent(evObj);
+      this.refresh();
     })
   },
   beforeDestroy() {
@@ -68,7 +69,10 @@ export default {
         let dis = containerPosition.top - this.y;
         this.y = containerPosition.top;
         // log('===========new===========')
-        // log('dis', dis);
+        log('dis', dis);
+        // if(dis >= 0 && this.fixPosition == 'bottom') {
+        //   console.log(dis >= 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop)
+        // }
         // log('top isAbsolute', position.top - containerPosition.top < parentOffsetTop)
         // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
         // log('top isFixed', ( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom)));
@@ -84,6 +88,7 @@ export default {
           this.fixPosition = 'bottom';
           // (this.isAbsolute && this.fixPosition == 'bottom' && position.top > parentOffsetTop)
         } else if ( this.containerDom.clientHeight > el.clientHeight && this.isAbsolute && 
+            !(dis >= 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop) &&
             (( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom))
             || (dis > 0 && position.top > parentOffsetTop && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))) {
           this.isFixed = true;
