@@ -63,6 +63,18 @@
         <td>固定状态发生变化时触发该方法。</td>
       </tr>
     </table>
+
+    <h3>affix 方法</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>refresh</td>
+        <td>未监测到的页面变化，需要刷新affix组件的位置</td>
+      </tr>
+    </table>
   </div>
 </template>
 

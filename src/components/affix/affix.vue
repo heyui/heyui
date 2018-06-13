@@ -49,6 +49,9 @@ export default {
   },
   methods: {
     refresh() {
+      this.isFixed = false;
+      this.fixPosition = 'top';
+      this.isAbsolute = this.container ? true : false;
       this.trigger({});
     },
     trigger(event) {
@@ -69,7 +72,7 @@ export default {
         let dis = containerPosition.top - this.y;
         this.y = containerPosition.top;
         // log('===========new===========')
-        log('dis', dis);
+        // log('dis', dis);
         // if(dis >= 0 && this.fixPosition == 'bottom') {
         //   console.log(dis >= 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop)
         // }
