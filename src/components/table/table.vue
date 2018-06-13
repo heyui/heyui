@@ -278,7 +278,7 @@ export default {
       this.sortStatus.type = null;
     },
     triggerSort(data){
-      log(1)
+      // log(1)
       this.sortStatus.prop = data.prop;
       this.sortStatus.type = data.type;
       this.$emit('sort', utils.copy(data));
