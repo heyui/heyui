@@ -20,7 +20,6 @@ export default {
     return {
       cFixedOffsetTop: this.fixedOffsetTop || this.offsetTop,
       cFixedOffsetBottom: this.fixedOffsetBottom || this.offsetBottom,
-      scrollEvent: null,
       isFixed: false,
       fixPosition: 'top',
       containerDom: null,
@@ -30,34 +29,30 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      // log('init')
       if(this.container) {
         this.containerDom = this.container.call();
       }
-      this.scrollEvent = window.addEventListener("scroll", this.trigger, true);
-      this.scrollEvent = window.addEventListener("resize", this.trigger, false);
-      var evObj = document.createEvent('HTMLEvents');
-      evObj.initEvent( 'scroll', true, true );
-      document.body.dispatchEvent(evObj);
+      window.addEventListener("scroll", this.trigger, true);
+      window.addEventListener("resize", this.trigger);
       this.refresh();
     })
   },
   beforeDestroy() {
-    if (this.scrollEvent) {
-      document.body.removeEventListener('scroll', this.trigger);
-      window.removeEventListener('resize', this.trigger);
-    }
+    window.removeEventListener('scroll', this.trigger, true);
+    window.removeEventListener('resize', this.trigger);
   },
   methods: {
     refresh() {
-      this.isFixed = false;
-      this.fixPosition = 'top';
-      this.isAbsolute = this.container ? true : false;
-      this.trigger({});
+      var evObj = document.createEvent('HTMLEvents');
+      evObj.initEvent( 'scroll', true, true );
+      document.body.dispatchEvent(evObj);
     },
     trigger(event) {
       let el = this.$el.firstChild;
       if(event.target == el) return false;
       let original = this.isFixed;
+      // log(1)
       if(this.containerDom) {
         // let offsetTop = this.offsetTop || 0;
         // let offsetBottom = this.offsetBottom || 0;
@@ -73,31 +68,44 @@ export default {
         this.y = containerPosition.top;
         // log('===========new===========')
         // log('dis', dis);
-        // if(dis >= 0 && this.fixPosition == 'bottom') {
-        //   console.log(dis >= 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop)
-        // }
         // log('top isAbsolute', position.top - containerPosition.top < parentOffsetTop)
         // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
         // log('top isFixed', ( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom)));
         // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < cFixedOffsetBottom && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))
         
-        if ( dis >= 0 && position.top - containerPosition.top < parentOffsetTop) {
-          this.isFixed = false;
-          this.isAbsolute = true;
-          this.fixPosition = 'top';
-        } else if ( dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom) {
-          this.isFixed = false;
-          this.isAbsolute = true;
-          this.fixPosition = 'bottom';
-          // (this.isAbsolute && this.fixPosition == 'bottom' && position.top > parentOffsetTop)
-        } else if ( this.containerDom.clientHeight > el.clientHeight && this.isAbsolute && 
-            !(dis > 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop) &&
-            (( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom))
-            || (dis > 0 && position.top > parentOffsetTop && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))) {
-          this.isFixed = true;
-          this.isAbsolute = false;
-          this.fixPosition = 'top';
+        if (containerPosition.top <= this.cFixedOffsetTop && containerPosition.bottom  >= position.height + this.cFixedOffsetTop) {
+            this.isFixed = true;
+            this.isAbsolute = false;
+            this.fixPosition = 'top';
+        } else {
+          if (containerPosition.top > this.cFixedOffsetTop || containerPosition.height < position.height) {
+            this.isFixed = false;
+            this.isAbsolute = true;
+            this.fixPosition = 'top';
+          } else if (containerPosition.bottom  < position.height + this.cFixedOffsetTop) {
+            this.isFixed = false;
+            this.isAbsolute = true;
+            this.fixPosition = 'bottom';
+          }
         }
+
+        // if ( dis >= 0 && position.top - containerPosition.top < parentOffsetTop) {
+        //   this.isFixed = false;
+        //   this.isAbsolute = true;
+        //   this.fixPosition = 'top';
+        // } else if ( dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom) {
+        //   this.isFixed = false;
+        //   this.isAbsolute = true;
+        //   this.fixPosition = 'bottom';
+        //   // (this.isAbsolute && this.fixPosition == 'bottom' && position.top > parentOffsetTop)
+        // } else if ( this.containerDom.clientHeight > el.clientHeight && this.isAbsolute && 
+        //     !(dis > 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop) &&
+        //     (( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom))
+        //     || (dis > 0 && position.top > parentOffsetTop && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))) {
+        //   this.isFixed = true;
+        //   this.isAbsolute = false;
+        //   this.fixPosition = 'top';
+        // }
         
         if (original != this.isFixed) {
           this.$emit('onchange', this.isFixed);
