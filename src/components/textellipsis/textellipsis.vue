@@ -51,15 +51,16 @@ export default {
     },
     limitShow() {
       this.$nextTick(() => {
-        let text = this.$el.querySelector('.text-ellipsis-limit-text');
+        let textDom = this.$el.querySelector('.text-ellipsis-limit-text');
         let title = this.$el;
         let more = this.$el.querySelector('.h-text-ellipsis-more');
         let n = 1000;
-        if(text) {
+        if(textDom) {
           if(title.offsetHeight > this.height) {
             more.style.display = 'inline-block';
-            while(title.offsetHeight > this.height && n > 0) {
-              text.innerText = text.innerText.substring(0, text.innerText.length-1)
+            let text = this.text;
+            while (title.offsetHeight > this.height && n > 0) {
+              textDom.innerText = text = text.substring(0, text.length-1);
               n--;
             }
             this.$emit('hide');

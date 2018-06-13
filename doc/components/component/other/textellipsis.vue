@@ -11,6 +11,9 @@
     
     <h3>自定义更多</h3>
     <example demo="other/textellipsis3"></example>
+
+    <h3>适应换行</h3>
+    <example demo="other/textellipsis4"></example>
     
 
     <h3>TextEllipsis 参数</h3>
