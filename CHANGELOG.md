@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0-alpha.0"></a>
+# [1.3.0-alpha.0](https://github.com/heyui/heyui/compare/v1.2.2-alpha.2...v1.3.0-alpha.0) (2018-06-13)
+
+
+### Features
+
+* **affix:** 机制重构， 解决之前问题 ([e7865e6](https://github.com/heyui/heyui/commit/e7865e6))
+
+
+
 <a name="1.2.2-alpha.2"></a>
 ## [1.2.2-alpha.2](https://github.com/heyui/heyui/compare/v1.2.2-alpha.1...v1.2.2-alpha.2) (2018-06-13)
 
