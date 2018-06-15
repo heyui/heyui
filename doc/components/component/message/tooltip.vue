@@ -40,7 +40,7 @@
         <td>theme</td>
         <td>主题</td>
         <td>String</td>
-        <td>white</td>
+        <td>white，或者自定义参数</td>
         <td>-</td>
       </tr>
       <tr>
