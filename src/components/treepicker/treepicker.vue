@@ -2,14 +2,14 @@
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple&&objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">您总共选择{{valuebak.length}}项</div>
+        <div v-if="showCount" class="h-treepicker-value-single">{{'h.treepicker.selectDesc' | hlang(valuebak.length)}}</div>
         <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
                 :key="obj[param.keyName]"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
               @click.stop="remove(obj)" v-if="!disabled"></i></span>
         </div>
       </template>
       <div v-else-if="!multiple&&object" class="h-treepicker-value-single">{{object[param.titleName]}}</div>
-      <div v-else class="h-treepicker-placeholder">{{placeholder}}</div>
+      <div v-else class="h-treepicker-placeholder">{{'h.treepicker.placeholder' | hlang(null, placeholder)}}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">
@@ -18,9 +18,9 @@
       </div>
       <div class="h-treepicker-footer">
         <button class="h-btn h-btn-text h-btn-s"
-                @click="clear">清除</button>
+                @click="clear">{{'h.common.clear' | hlang}}</button>
         <button class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">确定</button>
+                @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -55,7 +55,6 @@ export default {
     limit: Number,
     placeholder: {
       type: String,
-      default: "请选择"
     },
     filterable: {
       type: Boolean,

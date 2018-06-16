@@ -12,7 +12,8 @@
       <Checkbox :disabled="data.status.disabled" v-if="multiple&&data.status.checkable" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
       <div class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">
           <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
-          <span>{{data.title||'空'}}</span>
+          <span v-if="data.title != null">{{data.title}}</span>
+          <span v-else>{{'h.common.empty' | hlang}}</span>
       </div>
     </div>
     <ul v-if="data.children&&data.children.length>0"

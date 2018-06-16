@@ -1,5 +1,6 @@
 import Notify from '../notify';
 import utils from '../../utils/utils';
+import locale from '../../locale';
 
 const prefixCls = 'h-modal';
 
@@ -35,7 +36,10 @@ function Confirm(content, title) {
   });
 }
 
-function confirm(content, title = "提示") {
+function confirm(content, title) {
+  if (!title) {
+    title = locale.t('h.confirm.title');
+  }
   return Confirm(content, title);
 }
 

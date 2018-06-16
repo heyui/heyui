@@ -44,7 +44,7 @@ let valids = {
     message() {
       return locale.t('h.validation.type.globalmobile')
     }
-  } //国际号码
+  } //international mobile
 };
 
 module.exports = valids;

@@ -31,9 +31,8 @@ export default {
     },
     placeholder: {
       type: String,
-      // default: "请选择"
     },
-    useInt: { //是否验证整数
+    useInt: {
       type: Boolean,
       default: false
     },

@@ -1,11 +1,12 @@
 import utils from '../utils/utils';
+import locale from '../locale';
 
-const wordlimit = function(el, total, vnode) {
+const wordlimit = function (el, total, vnode) {
   let v = el.value.length;
   if (v > total) {
     el.value = el.value.substring(0, total);
     if (vnode.context && vnode.context.$Message) {
-      vnode.context.$Message.error(`您最多可以输入${total}个字`);
+      vnode.context.$Message.error(locale.t('h.wordlimit.warn', total));
     }
   }
 }

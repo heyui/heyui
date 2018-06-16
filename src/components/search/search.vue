@@ -3,12 +3,12 @@
     <i v-if="position=='front'" class="h-icon-search"></i>
     <div class="h-search-container">
       <div class="h-search-input">
-        <input type="text" v-model="inputValue" :placeholder="placeholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
+        <input type="text" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
       <Button color="primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
-        <template v-else>{{searchText}}</template>
+        <template v-else>{{'h.search.searchText' | hlang(null, searchText)}}</template>
       </Button>
     </div>
     <i v-if="position=='end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
@@ -25,8 +25,7 @@ export default {
       default: 'end'
     },
     placeholder: {
-      type: String,
-      default: '请输入关键词查询'
+      type: String
     },
     block: {
       type: Boolean,
@@ -43,7 +42,6 @@ export default {
     },
     searchText: {
       type: String,
-      default: '搜索'
     }
   },
   data() {
@@ -73,6 +71,9 @@ export default {
     }
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.search.placeholder');
+    },
     cls() {
       return {
         [`${prefix}`]: true,

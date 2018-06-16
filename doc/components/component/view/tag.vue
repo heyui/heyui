@@ -13,13 +13,13 @@
     <h3>基本展示</h3>
     <example demo="view/tag1"></example>
 
-    <h3>类型标签</h3>
+    <h3>类型标签-浅色</h3>
     <example demo="view/tag2"></example>
 
     <h3>背景色</h3>
     <example demo="view/tag3"></example>
 
-    <h3>类型标签</h3>
+    <h3>类型标签-深色</h3>
     <example demo="view/tag4"></example>
   </div>
 </template>

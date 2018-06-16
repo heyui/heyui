@@ -2,7 +2,7 @@
   <div :class="dateCls">
     <template v-if="!inline">
     <div v-if="noBorder"
-         class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
+         class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
     <div v-else
          class="h-input h-datetime-show">
              <!-- @change="changeEvent"
@@ -13,7 +13,7 @@
              v-model="showDate"
              :disabled="disabled"
              :readonly="readonly || type == 'week' || type == 'quarter'"
-             :placeholder="placeholder"/>
+             :placeholder="showPlaceholder"/>
       <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
       <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
     </div>
@@ -41,9 +41,9 @@
       <div class="h-date-footer"
            v-if="hasConfirm & !inline">
         <button class="h-btn h-btn-text"
-                @click="clear">清除</button>
+                @click="clear">{{'h.common.clear' | hlang}}</button>
         <button class="h-btn h-btn-primary h-btn-s"
-                @click="hide">确定</button>
+                @click="hide">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -96,7 +96,6 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请选择"
     },
     hasButtons: {
       type: Boolean,
@@ -240,9 +239,9 @@ export default {
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = `${this.nowView.year()}年 第${this.nowView.getWeekOfYear(manba.MONDAY)}周`;
+              this.showDate = this.t('h.date.show.weekInput', {year:this.nowView.year(), week: this.nowView.getWeekOfYear(manba.MONDAY)});
             } else if (this.type == 'quarter') {
-              this.showDate = `${this.nowView.year()}年 第${Math.ceil(this.nowView.month() / 3)}季度`;
+              this.showDate = this.t('h.date.show.quarter', {year:this.nowView.year(), quarter:Math.ceil(this.nowView.month() / 3)});
             } else {
               this.showDate = this.nowView.format(this.nowFormat);
             }
@@ -277,6 +276,9 @@ export default {
     }
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
     nowFormat() {
       let format = this.format || options.format[this.type];
       if (this.type == 'datetime' && this.hasSeconds) {

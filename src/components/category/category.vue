@@ -7,7 +7,7 @@
             @click.stop="remove(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object" class="h-category-value-single">{{object.title}}</div>
-      <div v-else class="h-category-placeholder">{{placeholder}}</div>
+      <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
       <i class="h-icon-down"></i>
     </div>
   </div>
@@ -39,7 +39,6 @@ export default {
     limit: Number,
     placeholder: {
       type: String,
-      default: "请选择"
     },
     filterable: {
       type: Boolean,
@@ -186,6 +185,9 @@ export default {
     },
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.category.placeholder');
+    },
     param() {
       if (this.config) {
         return utils.extend({}, config.getOption("category.default"), config.getOption(`category.configs.${this.config}`), this.option);

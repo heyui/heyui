@@ -5,7 +5,7 @@
       <input type="text"
              :value="showValue"
              readonly
-             :placeholder="placeholder"
+             :placeholder="showPlaceholder"
              />
       <i class="h-icon-calendar"></i>
     </div>
@@ -19,9 +19,9 @@
         </div>
         <div><Tabs :datas="views" v-model="view" @change="changeView"></Tabs></div>
         <div v-if="view == 'date'" class="h-date-self-defined">
-          <DatePicker type="text" v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'" placeholder="开始时间"></DatePicker>
+          <DatePicker v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'" :placeholder="t('h.datepicker.startTime')"></DatePicker>
           -
-          <DatePicker placement="bottom-end" type="text" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}" :type="hasTime?'datetime':'date'" placeholder="结束时间"></DatePicker>
+          <DatePicker placement="bottom-end" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}" :type="hasTime?'datetime':'date'" :placeholder="t('h.datepicker.endTime')"></DatePicker>
         </div>
         <date-base v-else ref="datebase"
                    :value="nowDate.start"
@@ -37,9 +37,9 @@
   
       <div class="h-date-footer">
         <button class="h-btn h-btn-text h-btn-s"
-                @click="clear">清除</button>
+                @click="clear">{{'h.common.clear' | hlang}}</button>
         <button class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">确定</button>
+                @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -81,7 +81,6 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请选择日期"
     },
     value: Object,
     startWeek: {
@@ -108,11 +107,11 @@ export default {
         end: manba().add(1, manba.MONTH),
       },
       views: {
-        year: '年',
-        quarter: '季度',
-        month: '月',
-        week: '周',
-        date: '自定义'
+        year: this.t('h.date.year'),
+        quarter: this.t('h.date.quarter'),
+        month: this.t('h.date.month'),
+        week: this.t('h.date.week'),
+        date: this.t('h.datepicker.customize')
       },
       view: this.defaultType || 'year',
       rangeEnd: '',
@@ -274,6 +273,9 @@ export default {
     }
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
     showValue() {
       if (!utils.isObject(this.value)) {
         return '';
@@ -286,13 +288,13 @@ export default {
           case 'month': 
             return date.format('YYYY-MM');
           case 'quarter': 
-            return `${date.year()}年 第${parseInt(date.month()/3, 10)+1}季度`;
+            return this.t('h.date.show.quarter', {year:date.year(), quarter:parseInt(date.month()/3, 10)+1});
           case 'week': 
-            return `${date.year()}年 第${date.getWeekOfYear(manba.MONDAY)}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`;
+            return this.t('h.date.show.week', {year:date.year(),  weeknum:date.getWeekOfYear(manba.MONDAY), daystart:date.format('MM-DD'), dayend: manba(date).add(6).format('MM-DD')});
         }
       }
       if(!this.value.start && !this.value.end) return '';
-      return `${this.value.start || '不限'} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):'不限'}`;
+      return `${this.value.start || this.t('h.common.any')} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):this.t('h.common.any')}`;
     },
     shortcuts() {
       let shortcuts = [];

@@ -7,10 +7,10 @@
     <p>tab选中时添加class<code>h-tabs-selected</code></p>
     <example demo="view/tabs1"></example>
 
-    <h3>使用内置的样式</h3>
+    <h3>使用内置的样式2</h3>
     <example demo="view/tabs2"></example>
 
-    <h3>使用内置的样式</h3>
+    <h3>使用内置的样式3</h3>
     <example demo="view/tabs3"></example>
 
     <h3>自定义样式</h3>

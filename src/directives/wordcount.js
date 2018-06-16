@@ -1,13 +1,14 @@
 import utils from '../utils/utils';
+import locale from '../locale';
 
-const wordcount = function(total, el, remainDom) {
+const wordcount = function (total, el, remainDom) {
   let v = el.value.length;
   let remain = total - v;
   if (remain >= 0) {
     remainDom.innerText = v;
     utils.removeClass(remainDom, 'red-color')
   } else {
-    remainDom.innerText = `您已超出${Math.abs(remain)}个字`;
+    remainDom.innerText = locale.t('h.wordcount.warn', Math.abs(remain));
     utils.addClass(remainDom, 'red-color')
   }
 }

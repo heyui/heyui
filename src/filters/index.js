@@ -1,5 +1,6 @@
 import utils from '../utils/utils'
 import config from '../utils/config'
+import locale from '../locale'
 
 export default {
   dictMapping(value, key, connector) {
@@ -33,5 +34,8 @@ export default {
       }
       return d;
     }).filter(ele => (ele && ele !== '')).join(connector || ', ');
+  },
+  hlang(key, value, defaultValue) {
+    return defaultValue || locale.t(key, value);
   }
 }

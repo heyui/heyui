@@ -21,7 +21,7 @@
     <div class="h-table-container">
       <div class="h-table-content-empty" v-if="datas.length == 0">
         <slot name='empty'></slot>
-        <div v-if="!$slots.empty">暂无数据</div>
+        <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
       </div>
       <div class="h-table-body" v-show="datas.length" :style="bodyStyle">
         <table>

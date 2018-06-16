@@ -47,7 +47,7 @@
                 class="h-icon-check"></i>
             </li>
             </template>
-            <li v-if="filterOptions.length==0" class="h-select-ul-empty">{{emptyContent}}</li>
+            <li v-if="filterOptions.length==0" class="h-select-ul-empty">{{showEmptyContent}}</li>
           </ul>
         </div>
       </div>
@@ -58,13 +58,11 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
-import Locale from '../../mixins/locale';
 
 const prefix = 'h-select';
 
 export default {
   name: 'hSelect',
-  mixins: [ Locale ],
   props: {
     readonly: {
       type: Boolean,
@@ -106,7 +104,6 @@ export default {
     },
     emptyContent: {
       type: String,
-      default: "未搜索到相关数据"
     },
     filterable: {
       type: Boolean,
@@ -288,7 +285,7 @@ export default {
       let code = option[this.key];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          this.$Message.error(`您最多可以选${this.limit}个选项`);
+          this.$Message.error(this.t('h.select.limitSize', this.limit));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
@@ -336,9 +333,12 @@ export default {
   filters: {
     showText(key, value) {
       return value.includes(key);
-    }
+    },
   },
   computed: {
+    showEmptyContent() {
+      return this.emptyContent || this.t('h.select.emptyContent')
+    },
     hasLabel() {
       return this.options.some(item => item.isLabel);
     },

@@ -1,3 +1,4 @@
+import locale from '../locale';
 import utils from './utils';
 
 const config = {
@@ -57,11 +58,9 @@ const config = {
     sizes: [10, 20, 50, 100],
     layout: 'total,pager,jumper,sizes',
     onChangeSize() {
-      // 可以处理全局保存分页页数的需求
       // The need to deal with the global paging page number
     },
     init() {
-      // 可以处理全局保存分页页数的需求
       // The need to deal with the global paging page number
     },
     onChange() {}
@@ -78,13 +77,13 @@ const config = {
     },
     shortcuts: {
       today: {
-        title: "今天",
+        title: locale.t('h.date.today'),
         value() {
           return new Date();
         }
       },
       yesterday: {
-        title: "昨天",
+        title: locale.t('h.date.yesterday'),
         value() {
           const date = new Date();
           date.setTime(date.getTime() - (3600 * 1000 * 24));
@@ -92,8 +91,29 @@ const config = {
         }
       }
     },
-    weeks: ['日', '一', '二', '三', '四', '五', '六'],
-    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一', '十二'],
+    weeks: [
+      locale.t('h.date.weeks.monday'),
+      locale.t('h.date.weeks.tuesday'),
+      locale.t('h.date.weeks.wednesday'),
+      locale.t('h.date.weeks.thursday'),
+      locale.t('h.date.weeks.friday'),
+      locale.t('h.date.weeks.saturday'),
+      locale.t('h.date.weeks.sunday'),
+    ],
+    months: [
+      locale.t('h.date.months.january'),
+      locale.t('h.date.months.february'),
+      locale.t('h.date.months.march'),
+      locale.t('h.date.months.april'),
+      locale.t('h.date.months.may'),
+      locale.t('h.date.months.june'),
+      locale.t('h.date.months.july'),
+      locale.t('h.date.months.august'),
+      locale.t('h.date.months.september'),
+      locale.t('h.date.months.october'),
+      locale.t('h.date.months.november'),
+      locale.t('h.date.months.december'),
+    ],
     datetimeOptions: {
       minuteStep: 5
     },

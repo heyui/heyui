@@ -25,7 +25,6 @@ export default {
     },
     placeholder: {
       type: String,
-      // default: "请输入"
     },
     type: {
       type: String,
@@ -60,7 +59,7 @@ export default {
     },
     add() {
       if (this.limit <= this.values.length) {
-        this.$Message.error('您输入的已经超过限制');
+        this.$Message.error(this.locale('h.taginput.limitWords'));
         return false;
       }
       if (this.readonly) return false;

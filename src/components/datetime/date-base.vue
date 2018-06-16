@@ -9,15 +9,15 @@
             v-show="view=='date'||view=='week'"><i class="h-icon-left"></i></span>
       <span class="h-date-header-show"
             @click.stop="changeView('year')"
-            v-if="view != 'year'">{{nowView.year()}}年</span>
+            v-if="view != 'year'">{{nowView.year()}}{{'h.date.header.year' | hlang}}</span>
       <span class="h-date-header-show"
-            v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}年</span>
+            v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year' | hlang}}</span>
       <span class="h-date-header-show"
             @click.stop="changeView('month')"
-            v-show="view != 'year' && view != 'month' && view != 'quarter'">{{nowView.month()}}月</span>
+            v-show="view != 'year' && view != 'month' && view != 'quarter'">{{nowView.month()}}{{'h.date.header.month' | hlang}}</span>
       <span class="h-date-header-show"
             @click.stop="changeView('date')"
-            v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}日</span>
+            v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}{{'h.date.header.day' | hlang}}</span>
       <span class="h-date-year-right-picker"
             @click.stop="updateView('default', 1)"><i class="h-icon-right"></i><i class="h-icon-right"></i></span>
       <span class="h-date-month-right-picker"
@@ -48,6 +48,7 @@
 import manba from 'manba';
 import config from '../../utils/config';
 import utils from '../../utils/utils';
+import locale from '../../locale';
 
 const dateprefix = 'h-date';
 
@@ -226,7 +227,7 @@ export default {
         this.setvalue(d.date, true);
       } else {
         let date = d.date;
-        //除了month和year点击，其他都直接完成赋值
+        //In addition to the month and year clicks, the other directly complete the assignment
         if(!(this.view == 'month' && this.type != 'month') && !(this.view == 'year' && this.type != 'year')){
         // if ((!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date')) {
           if(this.value){
@@ -425,7 +426,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.WEEK,
-              show: `${date.year()}年 第${index}周 ${date.format('MM-DD')} 至 ${manba(date).add(6).format('MM-DD')}`,
+              show: this.t('h.date.show.week', {year:date.year(),  weeknum:index, daystart:date.format('MM-DD'), dayend: manba(date).add(6).format('MM-DD')}),
               vm: this,
               isNowDays: true
           }));
@@ -446,7 +447,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.MONTH,
-              show: `${date.year()}年 第${index}季度`,
+              show: this.t('h.date.show.quarter', {year:date.year(), quarter:index}),
               vm: this,
               isNowDays: true,
               view: this.view

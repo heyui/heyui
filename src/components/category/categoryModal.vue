@@ -7,11 +7,10 @@
         <div class="h-category-multiple-tags" v-if="param.multiple" style="padding-right: 180px">
           <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close"
             @click.stop="remove(tag)"></i></span>
-            <i class="gray-color" v-if="param.objects.length==0">暂时无数据</i>
         </div>
         <div v-else>
           <span v-if="param.object">{{param.object.title}}</span>
-          <i v-else class="gray-color">暂时无数据</i>
+          <!-- <i v-else class="gray-color">{{showEmptyContent}}</i> -->
         </div>
         <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
@@ -33,8 +32,8 @@
       </div>
     </div>
     <footer>
-      <Button color="primary" @click="confirm">确认</Button>
-      <Button @click="close">取消</Button>
+      <Button color="primary" @click="confirm">{{'h.common.confirm' | hlang}}</Button>
+      <Button @click="close">{{'h.common.cancel' | hlang}}</Button>
     </footer>
   </div>
 </template>
@@ -53,7 +52,7 @@ export default {
       params: this.param.param,
       list: this.param.categoryDatas,
       searchText: '',
-      tabs: [{title: "全部", key: topMenu}],
+      tabs: [{title: this.t('h.categoryModal.total'), key: topMenu}],
       tab: topMenu,
       tabIndex: 0
     };
@@ -78,7 +77,7 @@ export default {
       }
       if (this.param.multiple) {
         if(this.param.objects.length >= this.param.limit && this.param.objects.indexOf(data) == -1) {
-          this.$Message.error(`您最多可以选择${this.param.limit}条数据。`);
+          this.$Message.error(this.t('h.categoryModal.limitWords', {size: this.param.limit}));
           return;
         }
         this.param.objects = utils.toggleValue(this.param.objects, data);
@@ -118,6 +117,15 @@ export default {
     }
   },
   computed: {
+    cancelWord() {
+      return this.t('h.common.cancel');
+    },
+    confirmWord() {
+      return this.t('h.common.confirm');
+    },
+    showEmptyContent() {
+      return this.t('h.categoryModal.emptyContent');
+    },
     searchlist() {
       let list = [];
       for(let key in this.param.categoryObj){

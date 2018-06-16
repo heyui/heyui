@@ -58,7 +58,6 @@
 import utils from '../../utils/utils';
 import config from '../../utils/config';
 import Modal from '../modal/modal';
-import Locale from '../../mixins/locale';
 
 
 const prefix = 'h-uploader';
@@ -83,7 +82,6 @@ const dispose = function (value, type, param) {
 
 export default {
   name: 'hUploader',
-  mixins: [ Locale ],
   props: {
     type: {
       type: String,

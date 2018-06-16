@@ -2,7 +2,7 @@
   <div :class="pageCls">
     <span :class="prefix+'-total'"
           :style="{order:orders.total}"
-          v-if="orders.total!=-1">总 <span :class="prefix+'-total-num'">{{total}}</span> 条</span>
+          v-if="orders.total!=-1">{{ 'h.pagination.totalBefore' | hlang}} <span :class="prefix+'-total-num'">{{total}}</span> {{ 'h.pagination.totalAfter' | hlang}}</span>
     <Select :no-border="small"
             :autosize="true"
             :null-option="false"
@@ -119,11 +119,11 @@ export default {
       let value = parseInt(event.target.value, 10);
       // log(value);
       if (isNaN(value)) {
-        this.$Message.error("您输入的值格式不正确");
+        this.$Message.error(this.t('h.pagination.incorrectFormat'));
         return;
       }
       if (value > this.count || value < 1) {
-        this.$Message.error("您输入的值超过范围");
+        this.$Message.error(this.t('h.pagination.overSize'));
         return;
       }
       this.curNow = parseInt(event.target.value, 10);
@@ -168,12 +168,6 @@ export default {
       pageEnd = Math.min(this.count - 1, pageEnd);
       pageStart = Math.min(pageStart, pageEnd - this.pagerSize + 1);
       pageStart = Math.max(2, pageStart);
-
-      // let size = this.count >= this.pagerSize ? this.pagerSize : this.count - Math.floor(this.pagerSize / 2);
-      // if (pageStart + size >= this.count) {
-      //   pageStart = this.count - size + 1;
-      // }
-      // size = Math.min(this.count - pageStart, size);
       let list = [];
       for (let i = pageStart; i <= pageEnd; i++) {
         list.push(i);

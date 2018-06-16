@@ -1,12 +1,12 @@
 <template>
   <div :class="dateCls">
-    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||placeholder}}</div>
+    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
     <div v-else class="h-input h-datetime-show">
       <input type="text"
              :value="show"
              readonly
              @change="changeEvent"
-             :placeholder="placeholder"
+             :placeholder="showPlaceholder"
              :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
@@ -48,9 +48,9 @@
   
       <div class="h-date-footer">
         <button class="h-btn h-btn-text h-btn-s"
-                @click="clear">清除</button>
+                @click="clear">{{'h.common.clear' | hlang}}</button>
         <button class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">确定</button>
+                @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -98,7 +98,6 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请选择"
     },
     value: Object,
     startWeek: {
@@ -292,11 +291,14 @@ export default {
     }
   },
   computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
     show() {
       if (!utils.isObject(this.value)) {
         return '';
       }
-      return `${this.value.start || '不限'} - ${this.value.end || '不限'}`;
+      return `${this.value.start || this.t('h.common.any')} - ${this.value.end || this.t('h.common.any')}`;
     },
     shortcuts() {
       let shortcuts = [];

@@ -34,7 +34,6 @@ import Switch from './components/switch';
 import SwitchList from './components/switchlist';
 import { Table, TableItem } from './components/table';
 import Tabs from './components/tabs';
-import Tag from './components/tag';
 import TagInput from './components/taginput';
 import Tree from './components/tree';
 import TreePicker from './components/treepicker';
@@ -66,6 +65,7 @@ import $ScrollIntoView from './plugins/scrollIntoView';
 import filters from './filters';
 import config from './utils/config';
 import locale from './locale';
+import LocaleMinxin from './mixins/locale';
 
 
 const components = {
@@ -110,7 +110,6 @@ const components = {
   Table,
   TableItem,
   Tabs,
-  Tag,
   Tooltip,
   Tree,
   TreePicker,
@@ -152,6 +151,8 @@ const install = function (Vue, opts) {
       locale.i18n(opts.i18n);
     }
   }
+
+  Vue.mixin(LocaleMinxin);
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);

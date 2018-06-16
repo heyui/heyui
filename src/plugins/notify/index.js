@@ -1,4 +1,5 @@
 import utils from '../../utils/utils';
+import locale from '../../locale';
 
 const Default = {
   type: 'dialog',
@@ -51,10 +52,10 @@ class Notify {
         let attr = '';
         let color = '';
         if (b == 'cancel') {
-          name = b.name || '取消';
+          name = b.name || locale.t('h.common.cancel');
           attr = b;
         } else if (b == 'ok') {
-          name = b.name || '确定';
+          name = b.name || locale.t('h.common.confirm');
           attr = 'ok';
           color = 'primary';
         } else if (utils.isObject(b)) {
