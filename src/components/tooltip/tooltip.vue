@@ -1,7 +1,7 @@
 <template>
   <div :class="showCls">
     <slot></slot>
-    <div class="h-tooltip-inner-content">{{content}}<slot name='content'></slot></div>
+    <div class="h-tooltip-inner-content" :class="className">{{content}}<slot name='content'></slot></div>
   </div>
 </template>
 <script>
@@ -27,7 +27,6 @@ export default {
     },
     className: {
       type: String,
-      default: 'h-tooltip-default'
     },
     theme: String,
     delay: {
@@ -101,8 +100,7 @@ export default {
     },
     showCls() {
       return {
-        [`${prefix}-show`]: true,
-        [this.className]: true
+        [`${prefix}-show`]: true
       }
     },
     groupCls() {

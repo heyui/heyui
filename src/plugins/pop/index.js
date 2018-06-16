@@ -142,6 +142,9 @@ class Pop {
     if (options.class) {
       utils.addClass(popNode, options.class);
     }
+    if (options.className) {
+      utils.addClass(popNode, options.className);
+    }
 
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');

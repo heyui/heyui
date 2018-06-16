@@ -44,6 +44,13 @@
         <td>-</td>
       </tr>
       <tr>
+        <td>className</td>
+        <td>tooltip框添加样式</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>trigger</td>
         <td>触发事件</td>
         <td>String</td>

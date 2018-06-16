@@ -8,6 +8,9 @@ const getContent = function (el, vnode) {
   if (attrs.content) {
     param.content = attrs.content;
   }
+  if (attrs.className) {
+    param.className = attrs.className;
+  }
   let ref = attrs['ref-el'];
   if (!vnode.context.$el.querySelector) {
     return false;
