@@ -105,7 +105,7 @@
 </codes>
 
     <h3>示例</h3>
-    <p>我们提供的<a href="http://demo.heyui.top/" target="_blank">heyui-demo</a>就是一个完整的示例，我们修改了主色，并调整了一些参数，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less">代码示例</a>。</p>
+    <p>我们提供的<a href="http://admin.heyui.top/" target="_blank">heyui-admin</a>就是一个完整的示例，我们修改了主色，并调整了一些参数，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less">代码示例</a>。</p>
     <p>如果你还需要一些更细节化的调整，我们建议可以新建<code>overwrite.less</code>对已有的class进行覆盖修改。</p>
   </div>
 </template>
