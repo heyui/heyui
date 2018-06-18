@@ -1,0 +1,14 @@
+//节选片段
+watch: {
+  $route() {
+    if (this.$route.name) {
+      //router的name与menu的key对应
+      this.$refs.menu.select(this.$route.name);
+    }
+  }
+},
+methods: {
+  onclick(data) {
+    this.$router.push({ name: data.key });
+  }
+}

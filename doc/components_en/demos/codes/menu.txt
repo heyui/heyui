@@ -1,0 +1,16 @@
+@menu-prefix: ~"@{prefix}menu";
+.@{menu-prefix}-custom {
+  background: @white-color;
+  .@{menu-prefix} {
+    &-show {
+      &:hover {
+        color: @red-color;
+      }
+    }
+    &-li {
+      &-selected {
+        color: @red-color;
+      }
+    }
+  }
+}

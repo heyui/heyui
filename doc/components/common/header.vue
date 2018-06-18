@@ -6,7 +6,7 @@
       </router-link>
       <AutoComplete v-width="180" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class='header-nav-list'>
-        <a @click="goLink({name: 'home'})" :class="{'router-link-active': $route.name == 'home'}">首页</a>
+        <!-- <a @click="goLink({name: 'home'})" :class="{'router-link-active': $route.name == 'home'}">首页</a> -->
         <!-- <router-link to="/guide">入门</router-link> -->
         <router-link to="/component">组件</router-link>
         <router-link to="/resource">资源</router-link>
@@ -14,6 +14,7 @@
         <!-- <router-link to="/about">团队</router-link> -->
         <a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github" v-font='20'></i></a>
         <a target="_blank" href="https://discordapp.com/invite/VUZbFmd"><i class="h-icon-message" v-font='20'></i></a>
+        <Button class="change-lang" @click="changeLang" size="s">English</Button>
       </div>
     </div>
   </header>
@@ -30,6 +31,10 @@ export default {
     }
   },
   methods: {
+    changeLang() {
+      this.$i18n.locale = 'en';
+      this.$router.push({name: `en_${this.$route.name}`});
+    },
     goLink(params) {
       this.$router.push(params);
     },

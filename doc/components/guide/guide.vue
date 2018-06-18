@@ -27,7 +27,7 @@
     <ul class="text-ul">
       <li><a href="https://vuejs.org/">Vue官方文档</a></li>
       <li><a href="https://github.com/heyui/hey-cli">Hey-Cli脚手架</a></li>
-      <li><a href="http://demo.heyui.top">官方demo</a></li>
+      <li><a href="http://admin.heyui.top">官方demo</a></li>
     </ul>
   </div>
 </template>

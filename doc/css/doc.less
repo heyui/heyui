@@ -11,9 +11,9 @@
 }
 
 body {
-  font-family: Verdana, Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: Verdana,Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
   color: #34495e;
-  font-size: 14px;
+  font-size: 13px;
   margin: 0px;
   overflow: hidden;
 }
@@ -50,6 +50,17 @@ h2 {
   right: 0;
   z-index: 3;
   background: rgba(255, 255, 255, 0.8);
+  .change-lang {
+    box-shadow: none;
+    color: @primary-color;
+    border-color: @primary-color;
+    margin-top: 15px;
+    margin-right: -10px;
+    &:hover{
+      background: @primary-color;
+      color: #FFF;
+    }
+  }
   .logo {
     line-height: 60px;
     font-weight: 100;

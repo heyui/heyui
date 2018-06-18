@@ -11,9 +11,6 @@ import HeyUI from './../src/index';
 import heyuiConfig from './js/config/heyui-config';
 import VueHighlightJS from './js/vuehighlight';
 
-import comHead from './components/common/header.vue';
-import comFoot from './components/common/footer.vue';
-import comFrame from './components/common/frame.vue';
 import example from './components/common/example.vue';
 import codes from './components/common/codes.vue';
 import routerParam from './js/config/router-config';
@@ -26,7 +23,7 @@ require('./css/doc.less');
 Vue.use(VueHighlightJS)
 
 
-// HeyUI.locale(en);
+HeyUI.locale(en);
 Vue.use(VueI18n);
 
 const messages = {
@@ -43,11 +40,7 @@ const i18n = new VueI18n({
 heyuiConfig();
 Vue.use(VueRouter);
 Vue.use(HeyUI);
-Vue.locale = () => {};
 
-Vue.component('com-head', comHead);
-Vue.component('com-foot', comFoot);
-Vue.component('com-frame', comFrame);
 Vue.component('example', example);
 Vue.component('codes', codes);
 

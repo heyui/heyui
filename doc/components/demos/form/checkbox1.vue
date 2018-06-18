@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Checkbox v-model="value">选中的状态：{{value}}</Checkbox>
+    <Checkbox v-model="value">{{value}}</Checkbox>
   </div>
 </template>
 <script>

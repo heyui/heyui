@@ -1,3 +1,5 @@
+import enRouters from './router-config-en';
+
 const router = {
   mode: 'history',
   routes: [{
@@ -587,61 +589,7 @@ const router = {
     path: '/about',
     name: 'about',
     component: (resolve) => require(['components/about'], resolve)
-  }
-  // , {
-  //   path: '/guide',
-  //   component: (resolve) => require(['components/guide'], resolve),
-  //   children: [{
-  //     path: '',
-  //     name: 'guide',
-  //     meta: {
-  //       title: 'Guide',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/guide')
-  //   }, {
-  //     path: 'guide',
-  //     name: 'guideguide',
-  //     meta: {
-  //       title: 'Guide',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/guide')
-  //   }, {
-  //     path: 'quickstart',
-  //     name: 'quickstart',
-  //     meta: {
-  //       title: 'QuickStart',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/quickstart')
-  //   }, {
-  //     path: 'themes',
-  //     name: 'themes',
-  //     meta: {
-  //       title: 'Themes',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/themes')
-  //   }, {
-  //     path: 'config',
-  //     name: 'config',
-  //     meta: {
-  //       title: 'Config',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/config')
-  //   }, {
-  //     path: 'logs',
-  //     name: 'logs',
-  //     meta: {
-  //       title: 'Logs',
-  //     },
-  //     component: () =>
-  //       import ('components/guide/logs')
-  //   }]
-  // }
-  ]
+  }, ...enRouters]
 }
 
 

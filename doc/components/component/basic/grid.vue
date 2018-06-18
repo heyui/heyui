@@ -7,7 +7,7 @@
     <example demo="basic/grid1"></example>
     <h3>组件排版</h3>
     <p>利用组件<code>Row</code>,<code>Col</code>进行排版布局，通过<code>width</code>设定宽度。</p>
-    <blockquote>注意：当使用非字符串模式的时候，请使用<code>h-row</code>,<code>h-col</code>，详情请参考<a href="https://cn.vuejs.org/v2/guide/components.html#组件命名约定" target="_blank">vue组件命名约定</a></blockquote>
+    <blockquote>注意：当使用非字符串模式的时候，请使用<code>h-row</code>,<code>h-col</code>，详情请参考<a href="https://cn.vuejs.org/v2/guide/components-registration.html#%E7%BB%84%E4%BB%B6%E5%90%8D%E5%A4%A7%E5%B0%8F%E5%86%99" target="_blank">vue组件命名约定</a></blockquote>
     <example demo="basic/grid2"></example>
     <h3>区块间隔</h3>
     <p>通过给<code>Row</code>添加<code>space</code>属性，让<code>Col</code>产生间距。间距可以设置为任意整数数值。</p>

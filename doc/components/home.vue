@@ -73,8 +73,9 @@
 </template>
 
 <script>
-// import animate from 'js/ani.js'
-// let animate
+import comHead from './common/header.vue';
+import comFoot from './common/footer.vue';
+import comFrame from './common/frame.vue';
 
 export default {
   data() {
@@ -97,6 +98,10 @@ export default {
   beforeDestroy() {
     // animate.cleanWorld()
   },
-  components: {}
+  components: {
+    comHead,
+    comFoot,
+    comFrame
+  }
 }
 </script>

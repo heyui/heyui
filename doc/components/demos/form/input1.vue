@@ -1,11 +1,13 @@
 <template>
   <div>
+    <p>input value：{{value}}</p>
     <div>
-      <input type="text" placeholder="请输入" v-model="value"/>
-      <textarea placeholder="请输入" v-model="value2"></textarea>
+      <input type="text" v-model="value"/>
     </div>
-    <p>input对应的值：{{value}}</p>
-    <p>textarea对应的值：{{value2}}</p>
+    <p>textarea value：{{value2}}</p>
+    <div>
+      <textarea v-model="value2"></textarea>
+    </div>
   </div>
 </template>
 <script>

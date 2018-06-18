@@ -200,6 +200,9 @@
   </div>
 </template>
 <script>
+import comHead from './common/header.vue';
+import comFoot from './common/footer.vue';
+import comFrame from './common/frame.vue';
 export default {
   data() {
     return {
@@ -208,6 +211,10 @@ export default {
     };
   },
   methods: {},
-  components: {}
+  components: {
+    comHead,
+    comFoot,
+    comFrame
+  }
 };
 </script>
