@@ -1,61 +1,7 @@
-<style lang="less">
-.page-home {
-  .comm-header{
-    background: none;
-    .h-autocomplete-input{
-      color: #FFF;
-    }
-  }
-  .page-body {
-    /* bottom: 26px; */
-    padding-bottom: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #000;
-    overflow: hidden;
-    // animation: skygradient 180s ease infinite;
-    .part{
-      text-align: center;
-      position: absolute;
-      // width: 800px;
-      // left: 50%;
-      // margin-left: -400px;
-      width: 100%;
-      top: 50%;
-      margin-top: -150px;
-      h1 {
-        font-weight: 200;
-        font-size: 40px;
-        color: @primary-color;
-        margin: 1%;
-      }
-    }
-    .github-icon{
-      margin: 30px auto 0;
-      width: 100px;
-      height: 30px;
-    }
-  }
-}
-@keyframes skygradient {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
-}
-</style>
 <template>
   <div class="page-home">
     <com-head></com-head>
-    <div class="page-body" id="universe">
+    <div class="page-body universe">
       <div class="part">
         <h1>HEYUI，快速构建前端工具。</h1>
         <h4 class="gray-color">
@@ -90,13 +36,10 @@ export default {
       if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
         return;
       }
-      import('js/ani.js').then((animate) => {
-        animate.default.initWorld()
-      })
+      // import('js/ani.js').then((animate) => {
+      //   animate.default.initWorld(this.$el.querySelector('.universe'))
+      // })
     })
-  },
-  beforeDestroy() {
-    // animate.cleanWorld()
   },
   components: {
     comHead,

@@ -76,7 +76,7 @@ let WIDTH = window.innerWidth,
 
 
 // initialise the world
-function initWorld() {
+function initWorld(container) {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, .1, 2000);
   camera.position.z = 100;
@@ -91,7 +91,6 @@ function initWorld() {
   renderer.setSize(WIDTH, HEIGHT);
   renderer.shadowMap.enabled = true;
 
-  let container = document.getElementById('universe');
   container.appendChild(renderer.domElement);
 
 

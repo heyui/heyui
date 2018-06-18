@@ -51,14 +51,10 @@ h2 {
   z-index: 3;
   background: rgba(255, 255, 255, 0.8);
   .change-lang {
-    box-shadow: none;
-    color: @primary-color;
-    border-color: @primary-color;
-    margin-top: 15px;
+    margin-top: 19px;
     margin-right: -10px;
-    &:hover{
-      background: @primary-color;
-      color: #FFF;
+    >.h-btn{
+      box-shadow: none;
     }
   }
   .logo {
@@ -243,6 +239,58 @@ h2 {
     padding: 80px 300px 100px 100px;
     overflow: auto;
     z-index: 1;
+  }
+}
+.page-home {
+  .comm-header{
+    background: none;
+    .h-autocomplete-input{
+      color: #FFF;
+    }
+  }
+  .page-body {
+    /* bottom: 26px; */
+    padding-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: #000;
+    overflow: hidden;
+    // animation: skygradient 180s ease infinite;
+    .part{
+      text-align: center;
+      position: absolute;
+      // width: 800px;
+      // left: 50%;
+      // margin-left: -400px;
+      width: 100%;
+      top: 50%;
+      margin-top: -150px;
+      h1 {
+        font-weight: 200;
+        font-size: 40px;
+        color: @primary-color;
+        margin: 1%;
+      }
+    }
+    .github-icon{
+      margin: 30px auto 0;
+      width: 100px;
+      height: 30px;
+    }
+  }
+}
+@keyframes skygradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
   }
 }
 
