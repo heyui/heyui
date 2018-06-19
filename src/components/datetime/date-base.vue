@@ -14,7 +14,7 @@
             v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year' | hlang}}</span>
       <span class="h-date-header-show"
             @click.stop="changeView('month')"
-            v-show="view != 'year' && view != 'month' && view != 'quarter'">{{nowView.month()}}{{'h.date.header.month' | hlang}}</span>
+            v-show="view != 'year' && view != 'month' && view != 'quarter'">{{months[nowView.month() - 1]}}</span>
       <span class="h-date-header-show"
             @click.stop="changeView('date')"
             v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}{{'h.date.header.day' | hlang}}</span>
