@@ -14,7 +14,7 @@
                @keypress.enter="enterHandle"
                 :placeholder="showSearchPlaceHolder" />
         </div>
-        <div v-if="codes.length==0&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+        <div v-if="hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
       <template v-else-if="!multiple">
         <input v-if="filterable"
@@ -23,8 +23,8 @@
                @blur="blurHandle"
                @keypress.enter="enterHandle"
                class="h-select-search-input h-select-single-search-input" v-model="searchInput"
-               :placeholder="codes&&objects?'':showSearchPlaceHolder" />
-        <div class="h-select-value-single" v-if="codes&&objects" v-show="!searchInput">{{objects[title]}}</div>
+               :placeholder="hasValue?'':showSearchPlaceHolder" />
+        <div class="h-select-value-single" v-if="hasValue" v-show="!searchInput">{{objects[title]}}</div>
         <div v-else-if="!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
       <i class="h-icon-down"></i>
@@ -336,6 +336,13 @@ export default {
     },
   },
   computed: {
+    hasValue() {
+      if(this.multiple) {
+        return this.codes.length > 0;
+      } else {
+        return !utils.isNull(this.codes)&&this.objects;
+      }
+    },
     showEmptyContent() {
       return this.emptyContent || this.t('h.select.emptyContent')
     },
