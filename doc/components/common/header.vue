@@ -13,8 +13,8 @@
         <a target="_blank" href="http://admin.heyui.top">Admin</a>
         <!-- <router-link to="/about">团队</router-link> -->
         <ButtonGroup class="change-lang">
-          <Button @click="changeLang" size="s"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
-          <Button @click="changeLang" size="s"><a target="_blank" href="https://discordapp.com/invite/VUZbFmd"><i class="h-icon-message"></i></a></Button>
+          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
+          <Button size="s"><a target="_blank" href="https://discordapp.com/invite/VUZbFmd"><i class="h-icon-message"></i></a></Button>
           <Button @click="changeLang" size="s"><span class="link">English</span></Button>
         </ButtonGroup>
       </div>
