@@ -3,7 +3,7 @@
     <p>
       value: {{value}}
     </p>
-    <DatePicker v-model="value" placeholder="请选择日期" :inline="true"></DatePicker>
+    <DatePicker v-model="value" :inline="true"></DatePicker>
   </div>
 </template>
 

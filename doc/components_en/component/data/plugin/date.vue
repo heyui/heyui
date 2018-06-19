@@ -1,24 +1,24 @@
 <template>
   <div class="doc">
-    <h2>DatePicker 日期控件</h2>
-    <p>日期控件使用了基本日期工具<a href="http://manba.ch-un.com" target="_blank">manba</a>，支持option的参数<code>start</code>，<code>end</code>使用manba日期对象。</p>
-    <h3>普通选择日期控件</h3>
+    <h2>DatePicker</h2>
+    <p>The date control uses the basic date tool <a href="http://manba.ch-un.com" target="_blank">manba</a> , supports option parameters <code>start</code> and <code>end</code> uses manba date objects.</p>
+    <h3>Basic</h3>
     <div>
       <example demo="dataplugins/datepicker1"></example>
     </div>
-    <h3>日期控件禁用</h3>
+    <h3>Disabled</h3>
     <div>
       <example demo="dataplugins/datepicker2"></example>
     </div>
-    <h3>日期格式自定义</h3>
+    <h3>Date format customization</h3>
     <div>
       <example demo="dataplugins/datepicker3"></example>
     </div>
-    <h3>不同类型的选择控件</h3>
+    <h3>Different types of selection controls</h3>
     <div>
       <example demo="dataplugins/datepicker5"></example>
     </div>
-    <h3>选择周控件</h3>
+    <h3>Select Weekly</h3>
     <div>
       <example demo="dataplugins/datepicker10"></example>
     </div>
@@ -26,92 +26,91 @@
     <div>
       <example demo="dataplugins/datepicker11"></example>
     </div> -->
-    <h3>快捷方式</h3>
-    <p>可以通过全局定义配置好快捷方式，这里只做key的调用，或者自己定义函数返回。全局配置详情请参考<router-link to="/en/component/config">全局配置</router-link></p>
+    <h3>Shortcuts</h3>
     <div>
       <example demo="dataplugins/datepicker6"></example>
     </div>
-    <h3>控件范围控制</h3>
+    <h3>Date range control</h3>
     <div>
       <example demo="dataplugins/datepicker7"></example>
     </div>
-    <h3>文本选择</h3>
+    <h3>Text selection</h3>
     <div>
       <example demo="dataplugins/datepicker8"></example>
     </div>
-    <h3>Inline模式</h3>
+    <h3>Inline mode</h3>
     <div>
       <example demo="dataplugins/datepicker9"></example>
     </div>
     
-    <h3>DatePicker 参数</h3>
+    <h3>DatePicker Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>disabled</td>
-        <td>是否禁用</td>
+        <td></td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>type</td>
-        <td>类型</td>
+        <td>Types of component</td>
         <td>String</td>
         <td>date</td>
         <td>year, month, week, datetime, datehour</td>
       </tr>
       <tr>
         <td>option</td>
-        <td>配置项，详细参见下面的option说明</td>
+        <td>Configuration items, see the options below for details</td>
         <td>Object</td>
         <td>-</td>
         <td></td>
       </tr>
       <tr>
         <td>format</td>
-        <td>自定义数据的格式</td>
+        <td>Custom data format</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>hasSeconds</td>
-        <td>当选择日期时间时，是否自动格式化到秒</td>
+        <td>Whether to automatically format to second when selecting date and time</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>noBorder</td>
-        <td>是否有边框，适用于文字的下拉选择</td>
+        <td>Whether there is a border, suitable for the drop-down selection of text</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>placeholder</td>
-        <td>展示默认提示语</td>
+        <td>Show the default prompt</td>
         <td>String</td>
         <td>-</td>
-        <td>请选择</td>
+        <td>please select</td>
       </tr>
       <tr>
         <td>startWeek</td>
-        <td>选择周的时候，设定星期的开始日</td>
+        <td>When choosing a week, set the starting day of the week</td>
         <td>Number</td>
         <td>1, 2, 3, 4, 5, 6, 7</td>
-        <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/en/component/config">全局配置</router-link></td>
+        <td>Global Configuration <code>datepicker.startWeek</code>, For details, please go to <router-link to="/en/component/config">Global Configuration</router-link></td>
       </tr>
       <tr>
         <td>readonly</td>
-        <td>输入框是否只读</td>
+        <td></td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
@@ -119,60 +118,60 @@
     </table>
 
 
-    <h3>DatePicker 事件</h3>
+    <h3>DatePicker Event</h3>
     <table class="table">
       <tr>
-        <th>方法名</th>
-        <th>说明</th>
+        <th>Event</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>input</td>
-        <td>数据产生变化</td>
+        <td>Data changes</td>
       </tr>
       <tr>
         <td>confirm</td>
-        <td>点击确定按钮</td>
+        <td>Click OK button</td>
       </tr>
       <tr>
         <td>clear</td>
-        <td>点击清除按钮</td>
+        <td>Click on the clear button</td>
       </tr>
     </table>
     
-    <h3>option 配置</h3>
+    <h3>Option Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>start</td>
-        <td>开始时间</td>
+        <td>Starting time</td>
         <td>Function, Object, String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>end</td>
-        <td>结束时间</td>
+        <td>End Time</td>
         <td>Function, Object, String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>disabled</td>
-        <td>不可选日期配置</td>
+        <td>No date selectable</td>
         <td>Function</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>shortcuts</td>
-        <td>自定义快捷方式</td>
-        <td>[String, Object]</td>
+        <td>Custom shortcuts</td>
+        <td>[Object]</td>
         <td>-</td>
         <td>-</td>
       </tr>

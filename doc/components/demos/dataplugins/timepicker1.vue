@@ -1,7 +1,7 @@
 <template>
   <div>
       <p>value:{{value}}</p>
-      <DatePicker v-model="value" type="time" placeholder="请选择日期"></DatePicker>
+      <DatePicker v-model="value" type="time"></DatePicker>
   </div>
 </template>
 

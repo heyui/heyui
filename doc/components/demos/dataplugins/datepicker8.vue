@@ -1,6 +1,6 @@
 <template>
   <div>
-      <DatePicker v-model="value" placeholder="请选择日期" :no-border="true"></DatePicker>
+      <DatePicker v-model="value" :no-border="true"></DatePicker>
   </div>
 </template>
 

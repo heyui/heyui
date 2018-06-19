@@ -1,99 +1,84 @@
 <template>
   <div class="doc">
-    <h2>DateFullRangePicker 超级日期范围控件</h2>
+    <h2>DateFullRangePicker</h2>
     
-    <h4>超级日期选择器</h4>
+    <h4>Super date picker</h4>
     <example demo="dataplugins/daterangepicker8"></example>
 
-    <h3>DateFullRangePicker 参数</h3>
+    
+    <h3>DateFullRangePicker Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
+      </tr>
+      <tr>
+        <td>defaultType</td>
+        <td>Default view</td>
+        <td>String</td>
+        <td>year, month, week, date</td>
+        <td>week</td>
       </tr>
       <tr>
         <td>disabled</td>
-        <td>是否禁用</td>
+        <td></td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
-        <td>defaultType</td>
-        <td>默认视图</td>
-        <td>String</td>
-        <td>year, month, week, date</td>
-        <td>week</td>
-      </tr>
-      <!-- <tr>
         <td>option</td>
-        <td>配置项，详细参见下面的option说明</td>
+        <td>Configuration items, see the options below for details</td>
         <td>Object</td>
         <td>-</td>
         <td></td>
-      </tr> -->
+      </tr>
       <tr>
         <td>noBorder</td>
-        <td>是否有边框，适用于文字的下拉选择</td>
+        <td>Whether there is a border, suitable for the drop-down selection of text</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>placeholder</td>
-        <td>展示默认提示语</td>
+        <td>Show the default prompt</td>
         <td>String</td>
         <td>-</td>
-        <td>请选择</td>
+        <td>please select</td>
       </tr>
       <tr>
         <td>startWeek</td>
-        <td>默认的星期数</td>
+        <td>When choosing a week, set the starting day of the week</td>
         <td>Number</td>
-        <td>-</td>
-        <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/en/component/config">全局配置</router-link></td>
+        <td>1, 2, 3, 4, 5, 6, 7</td>
+        <td>Global Configuration <code>datepicker.startWeek</code>, For details, please go to <router-link to="/en/component/config">Global Configuration</router-link></td>
       </tr>
     </table>
-    
-    <h3>DateFullRangePicker 事件</h3>
+
+
+    <h3>DateRangePicker Event</h3>
     <table class="table">
       <tr>
-        <th>方法名</th>
-        <th>说明</th>
+        <th>Event</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>input</td>
-        <td>数据产生变化</td>
+        <td>Data changes</td>
       </tr>
       <tr>
         <td>confirm</td>
-        <td>点击确定按钮</td>
+        <td>Click OK button</td>
       </tr>
       <tr>
         <td>clear</td>
-        <td>点击清除按钮</td>
+        <td>Click on the clear button</td>
       </tr>
     </table>
-    <!-- <h3>option 配置</h3>
-    <table class="table">
-      <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
-      </tr>
-      <tr>
-        <td>shortcuts</td>
-        <td>自定义快捷方式</td>
-        <td>[String, Object]</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-    </table> -->
   </div>
 </template>
 

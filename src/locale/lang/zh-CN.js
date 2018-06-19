@@ -92,7 +92,7 @@ const lang = {
       }
     },
     datepicker: {
-      placeholder: '请选择',
+      placeholder: '请选择日期',
       startTime: '开始时间',
       endTime: '结束时间',
       customize: '自定义'

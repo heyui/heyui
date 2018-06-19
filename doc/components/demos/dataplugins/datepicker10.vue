@@ -1,10 +1,11 @@
 <template>
   <div>
       <p>value:{{value}}</p>
-      <DatePicker v-model="value" placeholder="请选择日期" type="week"></DatePicker>
+      <DatePicker v-model="value" type="week"></DatePicker>
 
-      <p>以周日为星期的开始，默认周一。{{value2}}</p>
-      <DatePicker v-model="value2" placeholder="请选择日期" type="week" :start-week="7"></DatePicker>
+      <p>Sunday is the beginning of the week and the default is Monday.</p>
+      <p>value:{{value2}}</p>
+      <DatePicker v-model="value2" type="week" :start-week="7"></DatePicker>
       
   </div>
 </template>

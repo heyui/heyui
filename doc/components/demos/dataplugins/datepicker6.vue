@@ -1,7 +1,7 @@
 <template>
   <div>
       <p>value:{{value}}</p>
-      <DatePicker v-model="value" placeholder="请选择日期" :option="param"></DatePicker>
+      <DatePicker v-model="value" :option="param"></DatePicker>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
       value: '',
       param: {
         //具体配置在"config.datepicker.shortcuts"中
-        shortcuts:['today','yesterday',{
+        shortcuts:[{
           title: '下一轮面试',
           value(){
             return manba().add(3, manba.DAY);
