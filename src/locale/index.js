@@ -20,6 +20,7 @@ let i18nHandler = function () {
       let localMessage = vuei18n.getLocaleMessage(vuei18n.locale) || {};
       let newLocalMessage = {};
       utils.extend(true, newLocalMessage, langs[vuei18n.locale], localMessage);
+      lang = newLocalMessage;
       vuei18n.setLocaleMessage(vuei18n.locale, newLocalMessage);
     }
     return vuei18n.t(...arguments);
