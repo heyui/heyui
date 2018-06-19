@@ -1,54 +1,54 @@
 <template>
   <div class="doc">
-    <h2>Slider 滑块</h2>
-    <h3>基本调用</h3>
+    <h2>Slider</h2>
+    <h3>Basic</h3>
     <example demo="form/slider1"></example>
 
-    <h3>readonly</h3>
+    <h3>Readonly</h3>
     <example demo="form/slider2"></example>
 
-    <h3>step</h3>
+    <h3>Step</h3>
     <example demo="form/slider3"></example>
 
-    <h3>自定义展示</h3>
+    <h3>Custom display</h3>
     <example demo="form/slider4"></example>
 
-    <h3>隐藏提示项</h3>
+    <h3>Hide prompts</h3>
     <example demo="form/slider5"></example>
     
-    <h3>Silder 参数</h3>
+    <h3>Silder Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>step</td>
-        <td>每个节点大小</td>
+        <td>Each node size</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>readonly</td>
-        <td>只读，只用于展示</td>
+        <td></td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>show</td>
-        <td>自定义tip展示的内容</td>
+        <td>Custom tip display content</td>
         <td>Function</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>showtip</td>
-        <td>是否展示tip</td>
+        <td>Whether to show tip</td>
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>

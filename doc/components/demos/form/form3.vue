@@ -4,36 +4,36 @@
       <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
     </div>
     <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2">
-      <FormItem label="输入框" prop="input">
+      <FormItem label="Input" prop="input">
         <input type="text" v-model="data.input" placeholder="只能输入15，限制输入30个字" v-wordlimit='30' />
         <template slot="error" slot-scope="props">
           <!-- *type*: base, combine, async -->
           <span class="link" v-if="props.type == 'async'" @click="open">+++++++自定义的错误提示+++++++</span>
         </template>
       </FormItem>
-      <FormItem label="整数" prop="int">
+      <FormItem label="Integer" prop="int">
         <Slider v-model="data.int"></Slider>
       </FormItem>
-      <FormItem label="整数" prop="int">
+      <FormItem label="Integer" prop="int">
         <NumberInput v-model="data.int" :min="0" :max="100"></NumberInput>
       </FormItem>
-      <FormItem label="只读" readonly>只读数据</FormItem>
-      <FormItem label="数字" prop="number">
+      <FormItem label="Readonly" readonly>只读数据</FormItem>
+      <FormItem label="Digital" prop="number">
         <NumberInput type="text" v-model="data.number" />
       </FormItem>
-      <FormItem label="邮箱" prop="email">
+      <FormItem label="Mail" prop="email">
         <input type="text" v-model="data.email" />
       </FormItem>
-      <FormItem label="网址" prop="url">
+      <FormItem label="URL" prop="url">
         <input type="text" v-model="data.url" />
       </FormItem>
-      <FormItem label="电话" prop="tel">
+      <FormItem label="Cellphone " prop="tel">
         <input type="text" v-model="data.tel" />
       </FormItem>
-      <FormItem label="手机号码" prop="mobile">
+      <FormItem label="Phone" prop="mobile">
         <input type="text" v-model="data.mobile" />
       </FormItem>
-      <FormItem label="金额" :required="true">
+      <FormItem label="Amount" :required="true">
         <div class="h-input-group">
           <div class="h-input-addon">
             <Select v-model="data.select1" :datas="param1" :no-border="true" :null-option="false"></Select>
@@ -48,37 +48,37 @@
           <span class="h-input-addon">K</span>
         </div>
       </FormItem>
-      <FormItem label="选择" prop="select2">
+      <FormItem label="Select" prop="select2">
         <Select v-model="data.select2" dict="simple"></Select>
       </FormItem>
-      <FormItem label="标签" prop="taginputs">
+      <FormItem label="Tags" prop="taginputs">
         <TagInput v-model="data.taginputs"></TagInput>
       </FormItem>
-      <FormItem label="多选" prop="select3">
+      <FormItem label="Multiple Choice" prop="select3">
         <Select v-model="data.select3" dict="simple" :multiple="true"></Select>
       </FormItem>
-      <FormItem label="日期" ref="datapicker" prop="date">
+      <FormItem label="Date" ref="datapicker" prop="date">
         <DatePicker placeholder="选择日期" v-model="data.date"></DatePicker>
       </FormItem>
-      <FormItem label="评分" prop="rate">
+      <FormItem label="Score" prop="rate">
         <Rate v-model="data.rate" :show-text="true"></Rate>
       </FormItem>
-      <FormItem label="多文本" :single="true" prop="textarea">
+      <FormItem label="Multiple Text" :single="true" prop="textarea">
         <textarea rows="3" v-autosize v-wordcount="50" v-model="data.textarea"></textarea>
       </FormItem>
-      <FormItem label="单选" prop="radio">
+      <FormItem label="Single choice" prop="radio">
         <Radio v-model="data.radio" @input="data.textarea += '12'" :datas="dataParam"></Radio>
       </FormItem>
-      <FormItem label="多选" prop="checkbox">
+      <FormItem label="Multiple choice" prop="checkbox">
         <Checkbox v-model="data.checkbox" :datas="dataParam"></Checkbox>
       </FormItem>
-      <FormItem label="模糊匹配" prop="autocomplete">
+      <FormItem label="Fuzzy" prop="autocomplete">
         <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
       </FormItem>
       <!-- 
           这里定义的required属性同样适用与验证规则中。
          -->
-      <FormItem label="自定义规则" prop="things[0]" required>
+      <FormItem label="Custom" prop="things[0]" required>
         <input type="text" v-model="data.things[0]" />
       </FormItem>
       <FormItemList>

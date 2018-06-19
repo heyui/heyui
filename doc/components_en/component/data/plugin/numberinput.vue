@@ -1,75 +1,75 @@
 <template>
   <div class="doc">
-    <h2>NumberInput 数字输入</h2>
-    <h3>基本</h3>
+    <h2>NumberInput</h2>
+    <h3>Basic</h3>
     <example demo="form/numberinput1"></example>
 
-    <h3>最大值最小值</h3>
+    <h3>Maximum and minimum value</h3>
     <example demo="form/numberinput2"></example>
 
-    <h3>使用加减控制</h3>
+    <h3>Use control</h3>
     <example demo="form/numberinput3"></example>
 
-    <h3>step</h3>
+    <h3>Step</h3>
     <example demo="form/numberinput5"></example>
 
-    <h3>disabled</h3>
+    <h3>Disabled</h3>
     <example demo="form/numberinput4"></example>
   
-    <h3>NumberInput 参数</h3>
+    <h3>NumberInput Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>disabled</td>
-        <td>是否禁用</td>
+        <td>disabled</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>min</td>
-        <td>最大值</td>
+        <td>min value</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>max</td>
-        <td>最小值</td>
+        <td>max value</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>step</td>
-        <td>每次点击增加或减少的数值</td>
+        <td>Increase or decrease the value of each click</td>
         <td>Number</td>
         <td>-</td>
         <td>1</td>
       </tr>
       <tr>
         <td>useInt</td>
-        <td>控制只能输入整数</td>
+        <td>only enter an integer</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>useOperate</td>
-        <td>是否使用加减按钮</td>
+        <td>Whether to use plus or minus buttons</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>precision</td>
-        <td>保留几位小数</td>
+        <td>Keep a few decimal places</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
@@ -77,7 +77,7 @@
     </table>
 
 
-    <h3>NumberInput 事件</h3>
+    <h3>NumberInput Event</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -85,11 +85,11 @@
       </tr>
       <tr>
         <td>input</td>
-        <td>数据产生改变的时候</td>
+        <td>When data changes</td>
       </tr>
       <tr>
         <td>change</td>
-        <td>数据产生改变blur的时候</td>
+        <td>When data changes blur</td>
       </tr>
     </table>
   </div>

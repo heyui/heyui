@@ -18,7 +18,7 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>show-text</td>
+        <td>showText</td>
         <td>是否显示星级</td>
         <td>Array,Object</td>
         <td>-</td>

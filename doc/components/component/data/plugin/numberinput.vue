@@ -34,14 +34,14 @@
       </tr>
       <tr>
         <td>min</td>
-        <td>最大值</td>
+        <td>最小值</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>max</td>
-        <td>最小值</td>
+        <td>最大值</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
