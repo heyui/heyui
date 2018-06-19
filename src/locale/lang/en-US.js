@@ -83,9 +83,9 @@ const lang = {
       },
       weeks: {
         monday: 'Mon',
-        tuesday: 'Tues',
+        tuesday: 'Tue',
         wednesday: 'Wed',
-        thursday: 'Thur',
+        thursday: 'Thu',
         friday: 'Fri',
         saturday: 'Sat',
         sunday: 'Sun',

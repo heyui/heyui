@@ -147,9 +147,6 @@ const install = function (Vue, opts) {
     if (opts.locale) {
       locale.use(opts.locale);
     }
-    if (opts.i18n) {
-      locale.i18n(opts.i18n);
-    }
   }
 
   Vue.mixin(LocaleMinxin);

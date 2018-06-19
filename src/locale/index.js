@@ -1,23 +1,28 @@
 import Vue from 'vue';
 
-import defaultLang from './lang/zh-CN';
+import zhLang from './lang/zh-CN';
+import enLang from './lang/en-US';
 import utils from '../utils/utils';
 import Format from '../utils/format';
 
 const format = Format(Vue);
-let lang = defaultLang;
-let merged = false;
+let lang = zhLang;
+const langs = {
+  zh: zhLang,
+  en: enLang
+}
+let merged = {};
 let i18nHandler = function () {
-  const vuei18n = Object.getPrototypeOf(this || Vue).$i18n;
-  if (typeof vuei18n === 'function' && !!Vue.locale) {
-    if (!merged) {
-      merged = true;
-      Vue.locale(
-        Vue.config.lang,
-        utils.copy(true, {}, lang, Vue.locale(Vue.config.lang) || {})
-      );
+  const vuei18n = this.$i18n;
+  if (vuei18n && vuei18n.locale) {
+    if (!merged[vuei18n.locale]) {
+      merged[vuei18n.locale] = true;
+      let localMessage = vuei18n.getLocaleMessage(vuei18n.locale) || {};
+      let newLocalMessage = {};
+      utils.extend(true, newLocalMessage, langs[vuei18n.locale], localMessage);
+      vuei18n.setLocaleMessage(vuei18n.locale, newLocalMessage);
     }
-    return vuei18n.apply(this, arguments);
+    return vuei18n.t(...arguments);
   }
 };
 
