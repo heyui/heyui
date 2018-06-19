@@ -302,7 +302,31 @@ export default {
       }
     },
     weeks() {
-      return options.weeks;
+      return [
+        this.t('h.date.weeks.monday'),
+        this.t('h.date.weeks.tuesday'),
+        this.t('h.date.weeks.wednesday'),
+        this.t('h.date.weeks.thursday'),
+        this.t('h.date.weeks.friday'),
+        this.t('h.date.weeks.saturday'),
+        this.t('h.date.weeks.sunday'),
+      ];
+    },
+    months() {
+      return [
+        this.t('h.date.months.january'),
+        this.t('h.date.months.february'),
+        this.t('h.date.months.march'),
+        this.t('h.date.months.april'),
+        this.t('h.date.months.may'),
+        this.t('h.date.months.june'),
+        this.t('h.date.months.july'),
+        this.t('h.date.months.august'),
+        this.t('h.date.months.september'),
+        this.t('h.date.months.october'),
+        this.t('h.date.months.november'),
+        this.t('h.date.months.december'),
+      ];
     },
     dates() {
       let nowDate = this.nowView;
@@ -350,7 +374,7 @@ export default {
           dates.push(genData({
             date: manba([nowDate.year(), i, 1]),
             type: manba.MONTH,
-            show: options.months[i - 1],
+            show: this.months[i - 1],
             vm: this,
             isNowDays: true
           }));

@@ -77,13 +77,13 @@ const config = {
     },
     shortcuts: {
       today: {
-        title: locale.t('h.date.today'),
+        title: '今天',
         value() {
           return new Date();
         }
       },
       yesterday: {
-        title: locale.t('h.date.yesterday'),
+        title: '昨天',
         value() {
           const date = new Date();
           date.setTime(date.getTime() - (3600 * 1000 * 24));
@@ -91,29 +91,6 @@ const config = {
         }
       }
     },
-    weeks: [
-      locale.t('h.date.weeks.monday'),
-      locale.t('h.date.weeks.tuesday'),
-      locale.t('h.date.weeks.wednesday'),
-      locale.t('h.date.weeks.thursday'),
-      locale.t('h.date.weeks.friday'),
-      locale.t('h.date.weeks.saturday'),
-      locale.t('h.date.weeks.sunday'),
-    ],
-    months: [
-      locale.t('h.date.months.january'),
-      locale.t('h.date.months.february'),
-      locale.t('h.date.months.march'),
-      locale.t('h.date.months.april'),
-      locale.t('h.date.months.may'),
-      locale.t('h.date.months.june'),
-      locale.t('h.date.months.july'),
-      locale.t('h.date.months.august'),
-      locale.t('h.date.months.september'),
-      locale.t('h.date.months.october'),
-      locale.t('h.date.months.november'),
-      locale.t('h.date.months.december'),
-    ],
     datetimeOptions: {
       minuteStep: 5
     },
