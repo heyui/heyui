@@ -112,6 +112,13 @@
         <td>-</td>
         <td>bottom-start</td>
       </tr>
+      <tr>
+        <td>startWeek</td>
+        <td>选择周的时候，设定星期的开始日</td>
+        <td>Number</td>
+        <td>1, 2, 3, 4, 5, 6, 7</td>
+        <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/component/config">全局配置</router-link></td>
+      </tr>
     </table>
     
     <h3>option 配置</h3>

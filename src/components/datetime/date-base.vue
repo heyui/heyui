@@ -138,7 +138,7 @@ export default {
     rangeEnd: String,
     startWeek: {
       type: Number,
-      default: manba.MONDAY
+      default: () => config.getOption('datepicker.startWeek')
     }
   },
   data() {
@@ -302,7 +302,7 @@ export default {
       }
     },
     weeks() {
-      return [
+      let weeks = [
         this.t('h.date.weeks.monday'),
         this.t('h.date.weeks.tuesday'),
         this.t('h.date.weeks.wednesday'),
@@ -311,6 +311,9 @@ export default {
         this.t('h.date.weeks.saturday'),
         this.t('h.date.weeks.sunday'),
       ];
+      let days = weeks.splice(0, this.startWeek - 1);
+      weeks.push(...days);
+      return weeks;
     },
     months() {
       return [
@@ -334,7 +337,13 @@ export default {
         let lastdayofmonth = nowDate.endOf(manba.MONTH);
         let firstdayofmonth = nowDate.startOf(manba.MONTH);
         let startDay = firstdayofmonth.day();
-        (startDay == 0) ? (startDay = 6) : (startDay -= 1);
+        if ( startDay == this.startWeek ){
+          startDay = -1;
+        } else if (this.startWeek > startDay) {
+          startDay = 7 - ( this.startWeek - startDay ) - 1;
+        } else {
+          startDay = ( startDay - this.startWeek ) - 1;
+        }
         let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
         let dates = [];
         let lastMonthDays = lastdayoflastmonth.date() - startDay;

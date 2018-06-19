@@ -54,7 +54,7 @@
         <td>默认的星期数</td>
         <td>Number</td>
         <td>-</td>
-        <td>manba.MONDAY</td>
+        <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/en/component/config">全局配置</router-link></td>
       </tr>
     </table>
     

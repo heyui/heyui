@@ -66,6 +66,7 @@ const config = {
     onChange() {}
   },
   datepicker: {
+    startWeek: 1,
     format: {
       date: 'YYYY-MM-DD',
       month: 'YYYY-MM',

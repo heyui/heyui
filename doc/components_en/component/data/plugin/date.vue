@@ -107,7 +107,7 @@
         <td>选择周的时候，设定星期的开始日</td>
         <td>Number</td>
         <td>1, 2, 3, 4, 5, 6, 7</td>
-        <td>1</td>
+        <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/en/component/config">全局配置</router-link></td>
       </tr>
       <tr>
         <td>readonly</td>

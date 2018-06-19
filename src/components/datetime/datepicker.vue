@@ -111,8 +111,7 @@ export default {
       default: 'bottom-start'
     },
     startWeek: {
-      type: Number,
-      default: manba.MONDAY
+      type: Number
     }
   },
   data() {

@@ -101,8 +101,7 @@ export default {
     },
     value: Object,
     startWeek: {
-      type: Number,
-      default: manba.MONDAY
+      type: Number
     }
   },
   watch: {
