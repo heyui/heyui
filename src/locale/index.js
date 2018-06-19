@@ -11,17 +11,19 @@ const langs = {
   zh: zhLang,
   en: enLang
 }
+let nowLang = null;
 let merged = {};
 let i18nHandler = function () {
   const vuei18n = this.$i18n;
   if (vuei18n && vuei18n.locale) {
-    if (!merged[vuei18n.locale]) {
+    if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
       merged[vuei18n.locale] = true;
       let localMessage = vuei18n.getLocaleMessage(vuei18n.locale) || {};
       let newLocalMessage = {};
       utils.extend(true, newLocalMessage, langs[vuei18n.locale], localMessage);
       lang = newLocalMessage;
       vuei18n.setLocaleMessage(vuei18n.locale, newLocalMessage);
+      nowLang = vuei18n.locale;
     }
     return vuei18n.t(...arguments);
   }
