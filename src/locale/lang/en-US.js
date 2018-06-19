@@ -63,9 +63,9 @@ const lang = {
         day: '',
       },
       show: {
-        week: '{year} week {weeknum}th {daystart} - {dayend}',
-        weekInput: '{year} week {week}th',
-        quarter: '{year} quarter {quarter}th',
+        week: '{year} {weeknum}th week {daystart} - {dayend}',
+        weekInput: '{year} {week}th week',
+        quarter: '{year} {quarter}th quarter',
       },
       months: {
         january: 'Jan',
