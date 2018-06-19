@@ -4,7 +4,7 @@
       <router-link class="logo" to="/en">
         <div class="header-logo"><span></span></div>HEY UI
       </router-link>
-      <AutoComplete v-width="180" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
+      <AutoComplete v-width="180" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
         <a @click="goLink({name: 'en_home'})" :class="{'router-link-active': $route.name == 'en_home'}">Home</a>
         <!-- <router-link to="/guide">入门</router-link> -->
@@ -44,7 +44,7 @@ export default {
       this.$router.go(link);
     },
     goSearch(data) {
-      this.$router.push({name: data.key});
+      this.$router.push({name: `en_${data.key}`});
       this.$nextTick(() => {
         this.search = null;
       })
