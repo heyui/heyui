@@ -92,10 +92,12 @@ const lang = {
       }
     },
     datepicker: {
-      placeholder: 'please select',
+      placeholder: 'select date',
       startTime: 'start',
       endTime: 'end',
       customize: 'customize',
+      start: 'start',
+      end: 'end'
     },
     wordlimit: {
       warn: 'You are limited to enter {0} words'

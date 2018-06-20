@@ -293,7 +293,7 @@ export default {
         }
       }
       if(!this.value.start && !this.value.end) return '';
-      return `${this.value.start || this.t('h.common.any')} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):this.t('h.common.any')}`;
+      return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end?manba(this.value.end).add(-1).format(this.nowFormat):this.t('h.datepicker.end')}`;
     },
     shortcuts() {
       let shortcuts = [];

@@ -95,7 +95,9 @@ const lang = {
       placeholder: '请选择日期',
       startTime: '开始时间',
       endTime: '结束时间',
-      customize: '自定义'
+      customize: '自定义',
+      start: '开始',
+      end: '结束'
     },
     wordlimit: {
       warn: '您最多可以输入{0}个字'
