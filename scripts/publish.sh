@@ -24,8 +24,12 @@ set -e
 echo "git push"
 git push origin master
 set -e
+
+if [ "$1" = '' ] ; then
 echo "git push tags"
 git push --follow-tags origin master
+fi
+
 echo "发布至npm"
 
 if [ "$1" = '' ] ; then
