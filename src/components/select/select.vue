@@ -14,7 +14,7 @@
                @keypress.enter="enterHandle"
                 :placeholder="showSearchPlaceHolder" />
         </div>
-        <div v-if="hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+        <div v-if="!hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
       <template v-else-if="!multiple">
         <input v-if="filterable"
