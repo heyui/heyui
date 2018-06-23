@@ -115,7 +115,7 @@
         <td>显示dropdown</td>
       </tr>
       <tr>
-        <td>udpate</td>
+        <td>update</td>
         <td>更新dropdown的位置</td>
       </tr>
       <tr>
@@ -124,7 +124,7 @@
       </tr>
     </table>
 
-    <h3>DropdownMenu 事件</h3>
+    <h3>DropdownCustom 事件</h3>
     <table class="table">
       <tr>
         <th>参数</th>

@@ -12,15 +12,15 @@ export default {
     return {
       param: [{
         key: "module1",
-        title: "模块1",
+        title: "module1",
         count: 12
       }, {
         key: "module2",
-        title: "模块2",
+        title: "module2",
         count: 14
       }, {
         key: "module3",
-        title: "模块3",
+        title: "module3",
         count: 2
       }],
       selected: 'module1'
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     change(data) {
-      this.$Message.info(`切换至${data.title}`, 1000);
+      this.$Message.info(`change to ${data.title}`, 1000);
     }
   }
 }

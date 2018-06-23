@@ -1,55 +1,55 @@
 <template>
   <div class="doc">
-    <h2>Badge 徽标数</h2>
-    <h3>基本应用</h3>
-    <p>一般<code>count</code>为0的时候不展示</p>
+    <h2>Badge</h2>
+    <h3>Basic</h3>
+    <p>Normally <code>count</code> 0 does not show</p>
     <example demo="view/badge1"></example>
 
-    <h3>最大显示数</h3>
+    <h3>Maximum number</h3>
     <example demo="view/badge2"></example>
 
-    <h3>数字为0的时候也展示</h3>
+    <h3>When the number is 0, it also shows</h3>
     <example demo="view/badge3"></example>
 
-    <h3>提示小红点</h3>
+    <h3>Tip red dot</h3>
     <example demo="view/badge4"></example>
 
-    <h3>不同展示方式</h3>
+    <h3>Different display methods</h3>
     <example demo="view/badge5"></example>
 
-    <h3>Badge 参数</h3>
+    <h3>Badge Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>count</td>
-        <td>显示的值</td>
+        <td>Displayed value</td>
         <td>Number</td>
         <td>-</td>
         <td>0</td>
       </tr>
       <tr>
         <td>maxCount</td>
-        <td>最大显示的值</td>
+        <td>Maximum displayed value</td>
         <td>Number</td>
         <td>-</td>
         <td>99</td>
       </tr>
       <tr>
         <td>showZero</td>
-        <td>当值为0的时候也显示</td>
+        <td>When the value is 0 is also displayed</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>position</td>
-        <td>显示在parent的右侧</td>
+        <td>Displayed on the right side of the parent</td>
         <td>String</td>
         <td>right</td>
         <td>-</td>

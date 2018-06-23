@@ -1,19 +1,19 @@
 <template>
   <div class="doc">
-    <h2>ScrollIntoView 滚动至视图内</h2>
+    <h2>ScrollIntoView</h2>
 
-    <h3>基本调用</h3>
+    <h3>Basic</h3>
     <example demo="other/scrollintoview1"></example>
     
 
     <h3>ScrollIntoView 参数</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>time</td>

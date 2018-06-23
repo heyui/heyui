@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Circle 进度环</h2>
+    <blockquote>由于<code>circle</code>是关键词，所以请使用<code>h-circle</code>。</blockquote>
     <h3>基本调用</h3>
     <example demo="view/circle1"></example>
 

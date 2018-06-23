@@ -1,55 +1,55 @@
 <template>
   <div class="doc">
-    <h2>Message 提示</h2>
-    <h3>普通的Message提示</h3>
-    <blockquote>这里写了两种调用，实际是同一个方法对象，下面的用例都使用vue调用做示例，js调用模式与vue调用一样。</blockquote>
+    <h2>Message</h2>
+    <h3>Basic</h3>
+    <blockquote>There are two kinds of calls written here, which are actually the same method object. The following use cases use the vue call to make an example. The js call mode is the same as the vue call.</blockquote>
     <example demo="message/message1"></example>
 
-    <h3>不同类型的Message提示</h3>
+    <h3>Different types of message prompts</h3>
     <example demo="message/message2"></example>
 
-    <h3>不同类型的Message提示第二种写法</h3>
+    <h3>Different types of Message hints</h3>
     <example demo="message/message3"></example>
 
-    <h3>不自动关闭的提示</h3>
+    <h3>Do not close automatically</h3>
     <example demo="message/message4"></example>
 
     <h3>Loading</h3>
     <example demo="message/message5"></example>
 
-    <h3>设置全局自动关闭时间</h3>
+    <h3>Set global auto-off time</h3>
     <example demo="message/message6"></example>
 
 
-    <h3>Message 参数</h3>
+    <h3>Message Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>text</td>
-        <td>提示的文本</td>
+        <td>Prompt text</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>type</td>
-        <td>提示类型</td>
+        <td>Prompt type</td>
         <td>String</td>
         <td>loading, info, warn, success, error</td>
         <td>info</td>
       </tr>
       <tr>
         <td>timeout</td>
-        <td>显示多少毫秒后自动关闭</td>
+        <td>How many milliseconds to display automatically close</td>
         <td>Number</td>
         <td>-</td>
-        <td>全局配置timeout</td>
+        <td>3000ms</td>
       </tr>
     </table>
   </div>

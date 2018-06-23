@@ -73,12 +73,12 @@
         <th>说明</th>
       </tr>
       <tr>
-        <th>search</th>
-        <th>触发查询的事件</th>
+        <td>search</td>
+        <td>触发查询的事件</td>
       </tr>
       <tr>
-        <th>input</th>
-        <th>触发input值修改的事件</th>
+        <td>input</td>
+        <td>触发input值修改的事件</td>
       </tr>
     </table>
   </div>

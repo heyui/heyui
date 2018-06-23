@@ -1,50 +1,50 @@
 <template>
   <div class="doc">
-    <h2>Poptip 确认提示</h2>
-    <h3>普通的提示</h3>
+    <h2>Poptip</h2>
+    <h3>Basic</h3>
     <example demo="message/poptip1"></example>
 
-    <h3>Poptip 参数</h3>
+    <h3>Poptip Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>content</td>
-        <td>显示的内容</td>
+        <td>show content</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>placement</td>
-        <td>提示的方向</td>
+        <td></td>
         <td>String</td>
         <td>-</td>
         <td>top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</td>
       </tr>
       <tr>
         <td>theme</td>
-        <td>主题</td>
+        <td></td>
         <td>String</td>
         <td>white</td>
         <td>-</td>
       </tr>
     </table>
 
-    <h3>Poptip 事件</h3>
+    <h3>Poptip Event</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
+        <th>Event</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>confirm</td>
-        <td>点击“确认”触发事件</td>
+        <td>click confirm button</td>
       </tr>
     </table>
   </div>

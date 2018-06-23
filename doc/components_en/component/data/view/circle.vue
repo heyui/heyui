@@ -1,45 +1,46 @@
 <template>
   <div class="doc">
-    <h2>Circle 进度环</h2>
-    <h3>基本调用</h3>
+    <h2>Circle Progress</h2>
+    <blockquote>Because of <code>circle</code> is keyword, please use <code>h-circle</code> template.</blockquote>
+    <h3>Basic</h3>
     <example demo="view/circle1"></example>
 
-    <h3>组合形式</h3>
+    <h3>Combination</h3>
     <example demo="view/circle2"></example>
     
-    <h3>Circle 参数</h3>
+    <h3>Circle Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>percent</td>
-        <td>显示比例</td>
+        <td>percent value</td>
         <td>Number</td>
         <td>-</td>
         <td>0</td>
       </tr>
       <tr>
         <td>color</td>
-        <td>显示颜色</td>
+        <td>show color</td>
         <td>String</td>
         <td>RGB</td>
         <td>primary</td>
       </tr>
       <tr>
-        <td>stroke-width</td>
-        <td>宽度</td>
+        <td>strokeWidth</td>
+        <td>width</td>
         <td>Number</td>
         <td>-</td>
         <td>10</td>
       </tr>
       <tr>
         <td>size</td>
-        <td>大小</td>
+        <td>size</td>
         <td>Number</td>
         <td>-</td>
         <td>120</td>

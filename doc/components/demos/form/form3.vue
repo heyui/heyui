@@ -54,7 +54,7 @@
       <FormItem label="Tags" prop="taginputs">
         <TagInput v-model="data.taginputs"></TagInput>
       </FormItem>
-      <FormItem label="Multiple Choice" prop="select3">
+      <FormItem label="Multiple" prop="select3">
         <Select v-model="data.select3" dict="simple" :multiple="true"></Select>
       </FormItem>
       <FormItem label="Date" ref="datapicker" prop="date">
@@ -63,13 +63,13 @@
       <FormItem label="Score" prop="rate">
         <Rate v-model="data.rate" :show-text="true"></Rate>
       </FormItem>
-      <FormItem label="Multiple Text" :single="true" prop="textarea">
+      <FormItem label="Textarea" :single="true" prop="textarea">
         <textarea rows="3" v-autosize v-wordcount="50" v-model="data.textarea"></textarea>
       </FormItem>
-      <FormItem label="Single choice" prop="radio">
-        <Radio v-model="data.radio" @input="data.textarea += '12'" :datas="dataParam"></Radio>
+      <FormItem label="Single" prop="radio">
+        <Radio v-model="data.radio" :datas="dataParam"></Radio>
       </FormItem>
-      <FormItem label="Multiple choice" prop="checkbox">
+      <FormItem label="Multiple" prop="checkbox">
         <Checkbox v-model="data.checkbox" :datas="dataParam"></Checkbox>
       </FormItem>
       <FormItem label="Fuzzy" prop="autocomplete">
@@ -82,7 +82,7 @@
         <input type="text" v-model="data.things[0]" />
       </FormItem>
       <FormItemList>
-        <FormItem v-for="(item, index) of data.inputs" :key="index" :label="'输入框'+(index+1)" :prop="'inputs['+index+'].value'">
+        <FormItem v-for="(item, index) of data.inputs" :key="index" :label="'Custom'+(index+1)" :prop="'inputs['+index+'].value'">
           <Row type="flex">
             <Col class="flex1">
             <input type="text" v-model="item.value" />

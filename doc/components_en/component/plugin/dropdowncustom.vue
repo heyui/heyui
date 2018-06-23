@@ -1,74 +1,73 @@
 <template>
   <div class="doc">
-    <h2>DropdownCustom 自定义下拉控件</h2>
-    <p>DropdownCustom可以添加自定义的<code>className</code>定义各种不同的模式的下拉控件，<code>className</code>将应用在<code>.h-dropdowncustom-show</code>上，该dom为触发下拉的元素，包含自定义的内容以及右侧展示状态的icon。</p>
-    <p>提示：系统自带一个<code>h-text-dropdown</code>的样式。</p>
-    <blockquote>由于该样式应用在组件中，所以在调用的<code>vue</code>文件中，<code>style</code>的<code>scope</code>属性将无效。</blockquote>
+    <h2>DropdownCustom</h2>
+    <p>DropdownCustom can add custom <code>className</code>drop-down controls that define various modes that <code>className</code> will be applied <code>.h-dropdowncustom-show</code>. The dom is the element that triggers the drop-down, contains the custom content, and the icon for the right-hand display state.</p>
+    <p>Tip: The system comes with a <code>h-text-dropdown</code> class.</p>
+    <blockquote>Because the style is applied to the component <code>vue</code>, <code>style</code> with <code>scope</code> properties in the calling file will be invalid.</blockquote>
 
-
-    <h3>基本调用</h3>
+    <h3>Basic</h3>
     <example demo="plugins/dropdowncustom1"></example>
 
-    <h3>不同的触发方式</h3>
+    <h3>Different trigger methods</h3>
     <example demo="plugins/dropdowncustom2"></example>
 
-    <h3>是否显示切换的icon</h3>
+    <h3>Whether to show the switch icon</h3>
     <example demo="plugins/dropdowncustom3"></example>
 
-    <h3>内容显示的位置</h3>
+    <h3>Content display location</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <example demo="plugins/dropdowncustom4"></example>
 
-    <h3>自定义内容的位置</h3>
-    <p>分别控制left, top的位移</p>
+    <h3>Custom content location</h3>
+    <p>Separately control the displacement of left, top.</p>
     <example demo="plugins/dropdowncustom6"></example>
 
-    <h3>右键触发弹框</h3>
+    <h3>Right click trigger frame</h3>
     <example demo="plugins/dropdowncustom7"></example>
 
-    <h3>自定义下拉的控制</h3>
+    <h3>Custom drop control</h3>
     <example demo="plugins/dropdowncustom5"></example>
 
-    <h3>DropdownCustom 参数</h3>
+    <h3>DropdownCustom Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>trigger</td>
-        <td>触发方式</td>
+        <td>Trigger method</td>
         <td>String</td>
         <td>click, hover, focus, contextMenu</td>
         <td>click</td>
       </tr>
       <tr>
         <td>equalWidth</td>
-        <td>是否和触发的dom等宽</td>
+        <td>Whether the width of the dom is equal to the trigger</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>disabled</td>
-        <td>是否禁用</td>
+        <td></td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>toggleIcon</td>
-        <td>是否显示展示状态的icon</td>
+        <td>Whether to show the display status icon</td>
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>
       </tr>
       <tr>
         <td>placement</td>
-        <td>menu显示的位置</td>
+        <td>Menu display position</td>
         <td>Stirng</td>
         <td>
           top, top-start, top-end, <br/>
@@ -80,14 +79,14 @@
       </tr>
       <tr>
         <td>className</td>
-        <td>为点击触发的dom添加class</td>
+        <td>Add a class for the click-triggered dom</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>offset</td>
-        <td>位移</td>
+        <td>Displacement</td>
         <td>String, Number</td>
         <td>-</td>
         <td>
@@ -104,42 +103,39 @@
     </table>
 
 
-    <h3>DropdownCustom 方法</h3>
+    <h3>DropdownCustom Method</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
+        <th>Method</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>show</td>
-        <td>显示dropdown</td>
+        <td>Show dropdown</td>
       </tr>
       <tr>
-        <td>udpate</td>
-        <td>更新dropdown的位置</td>
+      <td>update</td>
+        <td>Update the location of the dropdown</td>
       </tr>
       <tr>
         <td>hide</td>
-        <td>关闭dropdown</td>
+        <td>Turn off dropdown</td>
       </tr>
     </table>
 
-    <h3>DropdownMenu 事件</h3>
+    <h3>DropdownCustom Event</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>参数</th>
+        <th>Event</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>show</td>
-        <td>打开的时候触发</td>
-        <td></td>
+        <td>Triggered when opened</td>
       </tr>
       <tr>
         <td>hide</td>
-        <td>关闭的时候触发</td>
-        <td></td>
+        <td>Triggered when closed</td>
       </tr>
     </table>
   </div>

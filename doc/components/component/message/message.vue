@@ -49,7 +49,7 @@
         <td>显示多少毫秒后自动关闭</td>
         <td>Number</td>
         <td>-</td>
-        <td>全局配置timeout</td>
+        <td>3000ms</td>
       </tr>
     </table>
   </div>

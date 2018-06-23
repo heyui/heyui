@@ -1,9 +1,9 @@
 <template>
 <div>
   <p>Enter触发</p>
-  <p><Search @search="search" v-model="searchText1" placeholder="查询示例1"></Search></p>
+  <p><Search @search="search" v-model="searchText1"></Search></p>
   <p>Keyup触发</p>
-  <p><Search @search="search" v-model="searchText2" position="front" trigger-type="input" placeholder="查询示例2"></Search></p>
+  <p><Search @search="search" v-model="searchText2" position="front" trigger-type="input"></Search></p>
 </div>
 
 </template>

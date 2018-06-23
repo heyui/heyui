@@ -9,9 +9,9 @@ export default {
   data() {
     return {
       param: {
-        module1: "模块1",
-        module2: "模块2",
-        module3: "模块3",
+        module1: "module1",
+        module2: "module2",
+        module3: "module3",
       },
       selected: 'module1'
     }

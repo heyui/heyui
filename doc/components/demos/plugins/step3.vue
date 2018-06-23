@@ -2,10 +2,10 @@
   <div>
     <p>
       <ButtonGroup size="s">
-        <Button @click="step='a'">步骤1</Button>
-        <Button @click="step='b'">步骤2</Button>
-        <Button @click="step='c'">步骤3</Button>
-        <Button @click="step='d'">步骤4</Button>
+        <Button @click="step='a'">step1</Button>
+        <Button @click="step='b'">step2</Button>
+        <Button @click="step='c'">step3</Button>
+        <Button @click="step='d'">step4</Button>
       </ButtonGroup>
     </p>
     <Steps :datas="data" :step="step"></Steps>
@@ -16,10 +16,10 @@ export default {
   data() {
     return {
       data: [
-        { key: 'a', title: '步骤1', icon: 'h-icon-home', desc: '步骤1描述' },
-        { key: 'b', title: '步骤2', icon: 'h-icon-user', desc: '步骤2描述' },
-        { key: 'c', title: '步骤3', icon: 'h-icon-star-on', desc: '步骤3描述' },
-        { key: 'd', title: '步骤4', icon: 'h-icon-complete', desc: '步骤4描述' },
+        { key: 'a', title: 'step1', icon: 'h-icon-home', desc: 'step1 Description' },
+        { key: 'b', title: 'step2', icon: 'h-icon-user', desc: 'step2 Description' },
+        { key: 'c', title: 'step3', icon: 'h-icon-star-on', desc: 'step3 Description' },
+        { key: 'd', title: 'step4', icon: 'h-icon-complete', desc: 'step4 Description' },
       ],
       step: 0,
     }
