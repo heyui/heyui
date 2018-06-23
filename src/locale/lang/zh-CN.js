@@ -23,7 +23,7 @@ const lang = {
       placeholder: '请选择',
     },
     categoryModal: {
-      limitWords: '您最多可以选择{0}条数据。',
+      limitWords: '您最多可以选择{size}条数据。',
       emptyContent: '未搜索到相关数据',
       total: '全部',
     },
@@ -127,7 +127,8 @@ const lang = {
       incorrectFormat: '您输入的值格式不正确',
       overSize: '您输入的值超过范围',
       totalBefore: '总',
-      totalAfter: '页'
+      totalAfter: '页',
+      sizeOfPage: '{size}条/页'
     }
   }
 };

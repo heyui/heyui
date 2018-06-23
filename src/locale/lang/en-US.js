@@ -20,10 +20,11 @@ const lang = {
       limitSize: 'You can select up to {0} data.',
     },
     category: {
+      placeholder: 'please choose',
       nullOptionText: 'please choose',
     },
     categoryModal: {
-      limitWords: 'You can select up to {0} data.',
+      limitWords: 'You can select up to {size} data.',
       emptyContent: 'No results found',
       total: 'total',
     },
@@ -127,7 +128,8 @@ const lang = {
       incorrectFormat: 'The format of the value you entered is incorrect',
       overSize: 'The value you entered exceeds the range',
       totalBefore: 'Total',
-      totalAfter: ''
+      totalAfter: 'pages',
+      sizeOfPage: '{size} items/page'
     }
   }
 };

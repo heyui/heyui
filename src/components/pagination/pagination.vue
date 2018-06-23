@@ -93,7 +93,7 @@ export default {
       sizesShow: this.sizes.map(item => {
         return {
           [keyField]: item,
-          [titleField]: `${item} 条/页`
+          [titleField]: this.t('h.pagination.sizeOfPage', {size: item})
         };
       }),
       sizeNow: this.size,
