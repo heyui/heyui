@@ -151,7 +151,7 @@
     <h3>Table 事件</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
+        <th>事件</th>
         <th>说明</th>
       </tr>
       <tr>
@@ -171,7 +171,7 @@
     <h3>Table 方法</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
+        <th>方法</th>
         <th>说明</th>
       </tr>
       <tr>

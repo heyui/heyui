@@ -9,9 +9,6 @@
     <example demo="plugins/category1"></example> 
 
     <h3>对象调用</h3>
-    <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
-    <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
-    
     <example demo="plugins/category2"></example> 
   
     <h3>字典配置</h3>

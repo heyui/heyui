@@ -1,71 +1,71 @@
 <template>
   <div class="doc">
-    <h2>Table 表格</h2>
-    <p>主要用于展示大量结构化数据。</p>
+    <h2>Table</h2>
+    <p>It is mainly used to display a large amount of structured data.</p>
 
-    <h3>Columns定义模式</h3>
+    <h3>Columns definition mode</h3>
     <example demo="view/table1"></example>
 
-    <h3>TableItem定义模式</h3>
+    <h3>TableItem definition mode</h3>
     <example demo="view/table2"></example>
 
     <h3>Table open/hide row</h3>
-    <p>给行数据 data 的某项设置 <code>_expand</code> 为 true，可以默认展开当前行</p>
+    <p>To a setting rows of data <code>_expand</code> is true, the current row can be expanded by default</p>
     <example demo="view/table6"></example>
 <!--     
     <h3>自定义模式</h3>
     <example demo="view/table5"></example> -->
 
     <h3>Table fixed column</h3>
-    <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
+    <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
     <example demo="view/table3"></example>
   
-    <h3>Table 选择行</h3>
+    <h3>Table select line</h3>
     <example demo="view/table4"></example>
 
-    <h3>Table 气泡提示</h3>
+    <h3>Table bubble tips</h3>
     <example demo="view/table7"></example>
 
     <h3>Table 参数</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>columns</td>
-        <td>定义table的column</td>
+        <td>Define the column of the table</td>
         <td>Array</td>
         <td>-</td>
         <td>[Column]</td>
       </tr>
       <tr>
         <td>datas</td>
-        <td>列表展示需要的数据</td>
+        <td>The list shows the required data</td>
         <td>Array</td>
         <td>-</td>
         <td>[]</td>
       </tr>
       <tr>
         <td>height</td>
-        <td>Table固定的高度</td>
+        <td>Table fixed height</td>
         <td>Number</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>checkbox</td>
-        <td>是否使用checkbox选择器</td>
+        <td>Whether to use the checkbox selector</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>stripe</td>
-        <td>table使用栅格背景</td>
+        <td>Table using a grid background</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
@@ -73,39 +73,39 @@
     </table>
 
 
-    <h3>Column 参数</h3>
+    <h3>Column Property</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
-        <th>类型</th>
-        <th>可选值</th>
-        <th>默认值</th>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
       </tr>
       <tr>
         <td>title</td>
-        <td>定义table的header标题</td>
+        <td>Define the header header of the table</td>
         <td>String</td>
         <td>-</td>
         <td></td>
       </tr>
       <tr>
         <td>width</td>
-        <td>定义table每一项宽度</td>
+        <td>Define the width of each item in the table</td>
         <td>Number</td>
         <td>-</td>
         <td>[]</td>
       </tr>
       <tr>
         <td>fixed</td>
-        <td>是否为固定栏</td>
+        <td>Is it fixed column</td>
         <td>String</td>
         <td>-</td>
         <td>left, right</td>
       </tr>
       <tr>
         <td>prop</td>
-        <td>按照数据的某个字段渲染数据</td>
+        <td>Render data according to a field of data</td>
         <td>String</td>
         <td>-</td>
         <td></td>
@@ -113,78 +113,78 @@
 
       <tr>
         <td>align</td>
-        <td>table中的标题对齐方式</td>
+        <td>Header alignment in table</td>
         <td>String</td>
         <td>left,right,center</td>
         <td>left</td>
       </tr>
       <tr>
         <td>tooltip</td>
-        <td>table中的标题是否使用提示框</td>
+        <td>Whether the title in the table uses a prompt box</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>placement</td>
-        <td>table中的标题使用提示框的提醒位置</td>
+        <td>Header in table uses reminder position of alert box</td>
         <td>String</td>
         <td>-</td>
         <td></td>
       </tr>
       <tr>
         <td>content</td>
-        <td>table中的标题使用提示框的内容</td>
+        <td>Header in table uses the contents of the prompt box</td>
         <td>String</td>
         <td>-</td>
-        <td>默认使用title</td>
+        <td>Use title by default</td>
       </tr>
       <tr>
         <td>sort</td>
-        <td>是否添加排序触发</td>
+        <td>Whether to add sort trigger</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
     </table>
 
-    <h3>Table 事件</h3>
+    <h3>Table Event</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
+        <th>Event</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>sort</td>
-        <td>当排序的时候触发的事件</td>
+        <td>Events fired when sorted</td>
       </tr>
       <tr>
         <td>select</td>
-        <td>当checkbox有变动的时候触发的事件</td>
+        <td>Events that fire when the checkbox is changed</td>
       </tr>
       <tr>
         <td>selectAll</td>
-        <td>当checkbox全选的时候</td>
+        <td>When the checkbox is selected</td>
       </tr>
     </table>
 
-    <h3>Table 方法</h3>
+    <h3>Table Method</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
+        <th>Method</th>
+        <th>Description</th>
       </tr>
       <tr>
         <td>clearSort</td>
-        <td>清空排序</td>
+        <td>Clear sort</td>
       </tr>
       <tr>
         <td>clearSelection</td>
-        <td>清空选中</td>
+        <td>Clear selected</td>
       </tr>
       <tr>
         <td>setSelection</td>
-        <td>设置选中的值</td>
+        <td>Set the selected value</td>
       </tr>
     </table>
   </div>

@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td>option</td>
-        <td>针对datas提供数据的参数名</td>
+        <td>配置项，详细参见下面的option说明</td>
         <td>Object</td>
         <td>-</td>
         <td>全局配置<code>config.menu</code></td>

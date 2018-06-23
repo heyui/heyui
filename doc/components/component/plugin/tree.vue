@@ -136,32 +136,26 @@
       <tr>
         <th>参数</th>
         <th>说明</th>
-        <th>类型</th>
       </tr>
       <tr>
         <td>input</td>
         <td>v-model值变化</td>
-        <td></td>
       </tr>
       <tr>
         <td>choose</td>
         <td>checkbox选择变化</td>
-        <td></td>
       </tr>
       <tr>
         <td>select</td>
         <td>tree的select变化</td>
-        <td></td>
       </tr>
       <tr>
         <td>open</td>
         <td>当tree打开变化</td>
-        <td></td>
       </tr>
       <tr>
         <td>loadDataSuccess</td>
         <td>当异步数据加载成功的时候触发，应用与有一些数据按照tree加载的数据执行的场景</td>
-        <td></td>
       </tr>
     </table>
     
