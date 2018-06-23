@@ -66,7 +66,7 @@ router.afterEach(() => {
   }
 });
 const app = new Vue({
-  // i18n,
+  i18n,
   router,
   el: '#app',
   render: h => h(App)
