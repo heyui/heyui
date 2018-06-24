@@ -58,7 +58,7 @@
         <Select v-model="data.select3" dict="simple" :multiple="true"></Select>
       </FormItem>
       <FormItem label="Date" ref="datapicker" prop="date">
-        <DatePicker placeholder="选择日期" v-model="data.date"></DatePicker>
+        <DatePicker v-model="data.date"></DatePicker>
       </FormItem>
       <FormItem label="Score" prop="rate">
         <Rate v-model="data.rate" :show-text="true"></Rate>

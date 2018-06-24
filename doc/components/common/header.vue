@@ -44,6 +44,7 @@ export default {
       this.$router.go(link);
     },
     goSearch(data) {
+      if(!data.key) return;
       this.$router.push({name: data.key});
       this.$nextTick(() => {
         this.search = null;
