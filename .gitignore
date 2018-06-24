@@ -1,3 +1,4 @@
 node_modules
 gen
 package-lock.json
+.DS_Store
