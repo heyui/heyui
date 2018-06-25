@@ -147,7 +147,7 @@ export default {
         if (categoryObj) {
           isInited = true;
           this.categoryObj = categoryObj;
-          this.categoryDatas = this.param.datas;
+          this.categoryDatas = utils.copy(this.param.datas);
         } 
       }
       if (!isInited) {
@@ -166,7 +166,7 @@ export default {
       this.parse();
     },
     initDatas(datas) {
-      let list = datas;
+      let list = utils.copy(datas);
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(datas, this.param);
       }
