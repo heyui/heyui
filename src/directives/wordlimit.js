@@ -6,7 +6,7 @@ const wordlimit = function (el, total, vnode) {
   if (v > total) {
     el.value = el.value.substring(0, total);
     if (vnode.context && vnode.context.$Message) {
-      vnode.context.$Message.error(locale.t('h.wordlimit.warn', total));
+      vnode.context.$Message.error(locale.t('h.wordlimit.warn', [total]));
     }
   }
 }

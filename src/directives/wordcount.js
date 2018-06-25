@@ -8,7 +8,7 @@ const wordcount = function (total, el, remainDom) {
     remainDom.innerText = v;
     utils.removeClass(remainDom, 'red-color')
   } else {
-    remainDom.innerText = locale.t('h.wordcount.warn', Math.abs(remain));
+    remainDom.innerText = locale.t('h.wordcount.warn', [Math.abs(remain)]);
     utils.addClass(remainDom, 'red-color')
   }
 }

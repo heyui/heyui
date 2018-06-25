@@ -2,7 +2,7 @@
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple&&objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">{{'h.treepicker.selectDesc' | hlang(valuebak.length)}}</div>
+        <div v-if="showCount" class="h-treepicker-value-single">{{'h.treepicker.selectDesc' | hlang([valuebak.length])}}</div>
         <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
                 :key="obj[param.keyName]"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
               @click.stop="remove(obj)" v-if="!disabled"></i></span>

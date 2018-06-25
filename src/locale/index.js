@@ -13,8 +13,9 @@ const langs = {
 }
 let nowLang = null;
 let merged = {};
+let vuei18n = null;
 let i18nHandler = function () {
-  const vuei18n = this.$i18n;
+  vuei18n = this.$i18n || vuei18n;
   if (vuei18n && vuei18n.locale) {
     if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
       merged[vuei18n.locale] = true;
@@ -50,8 +51,8 @@ const use = function (l) {
   lang = l || lang;
 };
 
-const i18n = function (fn) {
-  i18nHandler = fn || i18nHandler;
+const i18n = function (initI18n) {
+  vuei18n = initI18n;
 };
 
 export default {

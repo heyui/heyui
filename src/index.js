@@ -139,7 +139,7 @@ let prototypes = {
   $LoadingBar
 }
 
-const HeyUI = Object.assign({}, components, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use }, prototypes, config, { Dropdown }, filters);
+const HeyUI = Object.assign({}, components, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
 
 const install = function (Vue, opts) {
   if (install.installed) return;

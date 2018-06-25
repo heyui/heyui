@@ -22,22 +22,23 @@ require('./css/doc.less');
 
 Vue.use(VueHighlightJS)
 
+let lang = window.location.pathname.indexOf('/en') == -1 ? 'zh' : 'en';
 
 // HeyUI.locale(zh);
-Vue.use(VueI18n);
 
+
+Vue.use(VueI18n);
 const messages = {
   en: Object.assign({ message: 'hello' }, en),
   zh: Object.assign({ message: '你好' }, zh)
 };
-
-let lang = window.location.pathname.indexOf('/en') == -1 ? 'zh' : 'en';
-
 const i18n = new VueI18n({
   locale: lang,  // set locale
   fallbackLocale: 'en',
   messages  // set locale messages
 });
+HeyUI.i18n(i18n);
+
 
 heyuiConfig();
 Vue.use(VueRouter);

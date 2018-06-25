@@ -285,7 +285,7 @@ export default {
       let code = option[this.key];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          this.$Message.error(this.t('h.select.limitSize', this.limit));
+          this.$Message.error(this.t('h.select.limitSize', [this.limit]));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
