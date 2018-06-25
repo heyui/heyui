@@ -7,11 +7,8 @@ module.exports = {
       library: "HeyUI",
       filename: 'heyui.esm.js'
     },
-    global: {
-      Vue: "vue"
-    },
     externals: {
-      Vue: "vue",
+      vue: "vue",
       'hey-log': "hey-log",
       'hey-utils': "hey-utils",
       manba: "manba"

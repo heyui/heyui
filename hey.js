@@ -5,12 +5,6 @@ module.exports = {
       entry: "./src/index.js",
       library: "HeyUI",
       filename: 'heyui.js'
-    },
-    global: {
-      Vue: "vue"
-    },
-    externals: {
-      Vue: "vue"
     }
   }
 };

@@ -1,11 +1,9 @@
-import Vue from 'vue';
-
 import zhLang from './lang/zh-CN';
 import enLang from './lang/en-US';
 import utils from '../utils/utils';
 import Format from '../utils/format';
 
-const format = Format(Vue);
+const format = Format();
 let lang = zhLang;
 const langs = {
   zh: zhLang,
