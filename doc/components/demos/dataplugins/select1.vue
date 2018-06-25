@@ -4,21 +4,21 @@
       <button class="h-btn h-btn-s" @click="update">修改值</button>
     </p>
     <div v-width="300">
-      <Select v-model="select" :datas="param" placeholder="请选择您的内容" null-option-text="自定义请选择项"></Select>
+      <Select v-model="select" :datas="param" placeholder="自定义placeholder" null-option-text="自定义请选择项"></Select>
     </div>
     <br/>
     <p>选中值：{{select2}}<i class="h-split"></i>
       <button class="h-btn h-btn-s" @click="update2">修改值</button>
     </p>
     <div v-width="300">
-      <Select v-model="select2" :datas="param2" placeholder="请选择您的内容2"></Select>
+      <Select v-model="select2" :datas="param2"></Select>
     </div>
     <br/>
     <p>根据内容自适应长度，选中值：{{select3}} <i class="h-split"></i>
       <button class="h-btn h-btn-s" @click="update3">修改值</button>
     </p>
     <div v-width="300">
-      <Select v-model="select3" autosize :datas="param3" placeholder="请选择您的内容3"></Select>
+      <Select v-model="select3" autosize :datas="param3"></Select>
     </div>
     <p>自定义key, title字段名</p>
     <div v-width="300">
