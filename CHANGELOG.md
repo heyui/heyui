@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0-alpha.1"></a>
+# [1.3.0-alpha.1](https://github.com/heyui/heyui/compare/v1.2.1...v1.3.0-alpha.1) (2018-06-25)
+
+
+### Bug Fixes
+
+* **affix:** optimize affix judge ([baa020a](https://github.com/heyui/heyui/commit/baa020a))
+* style optimize ([932aa24](https://github.com/heyui/heyui/commit/932aa24))
+* **affix:** optimize scroll judge function ([5f54fcf](https://github.com/heyui/heyui/commit/5f54fcf))
+* add judge of vue i18n change ([91d2798](https://github.com/heyui/heyui/commit/91d2798))
+* category optimize style and js ([ccc5458](https://github.com/heyui/heyui/commit/ccc5458))
+* date use i18n ([211afdb](https://github.com/heyui/heyui/commit/211afdb))
+* datepicker use global startWeek setting ([2d5e958](https://github.com/heyui/heyui/commit/2d5e958))
+* i18n 机制修复 ([7524843](https://github.com/heyui/heyui/commit/7524843))
+* input Non numeric turn into null ([fe58b26](https://github.com/heyui/heyui/commit/fe58b26))
+* optimize datepicker month show ([6533744](https://github.com/heyui/heyui/commit/6533744))
+* optimize words ([a97471b](https://github.com/heyui/heyui/commit/a97471b))
+* pagination sizeOfPage lang set ([fd7ebe3](https://github.com/heyui/heyui/commit/fd7ebe3))
+* **select:** value of key=0 cannot be selected ([984b538](https://github.com/heyui/heyui/commit/984b538))
+* select placeholder judge ([fa13577](https://github.com/heyui/heyui/commit/fa13577))
+* **affix:** refresh function ([88f7192](https://github.com/heyui/heyui/commit/88f7192))
+* tooltip add className param ([f0ab0fd](https://github.com/heyui/heyui/commit/f0ab0fd))
+* update lang when use i18n ([80c5250](https://github.com/heyui/heyui/commit/80c5250))
+* use vue-i18n format ([a94c8c8](https://github.com/heyui/heyui/commit/a94c8c8))
+* 优化tooltip样式 ([02f01e9](https://github.com/heyui/heyui/commit/02f01e9))
+
+
+### Features
+
+* **affix:** 机制重构， 解决之前问题 ([e7865e6](https://github.com/heyui/heyui/commit/e7865e6))
+* 完成语言化 ([a36518a](https://github.com/heyui/heyui/commit/a36518a))
+
+
+
 <a name="1.3.0-alpha.0"></a>
 # [1.3.0-alpha.0](https://github.com/heyui/heyui/compare/v1.2.2-alpha.2...v1.3.0-alpha.0) (2018-06-13)
 
