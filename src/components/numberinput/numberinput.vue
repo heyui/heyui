@@ -88,9 +88,9 @@ export default {
     getValue(value) {
       if (value === '') return null;
       if (this.useInt) {
-        return parseInt(value) || 0;
+        return parseInt(value) || null;
       } else {
-        return parseFloat(value) || 0;
+        return parseFloat(value) || null;
       }
     },
     setvalue(value, trigger) {
