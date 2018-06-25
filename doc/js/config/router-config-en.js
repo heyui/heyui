@@ -513,6 +513,14 @@ const router = [{
     component: () =>
       import ('components_en/guide/themes')
   }, {
+    path: 'i18n',
+    name: 'en_i18n',
+    meta: {
+      title: 'I18n',
+    },
+    component: () =>
+      import ('components_en/guide/i18n')
+  }, {
     path: 'config',
     name: 'en_config',
     meta: {

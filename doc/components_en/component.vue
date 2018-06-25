@@ -8,6 +8,7 @@
             <li><router-link to="/en/component/guide" :class="{'router-link-active': $route.name =='en_componentguide'}">Getting Start</router-link></li>
             <li><router-link to="/en/component/quickstart">Quick Start</router-link></li>
             <li><router-link to="/en/component/themes">Themes</router-link></li>
+            <li><router-link to="/en/component/i18n">Internationalization</router-link></li>
             <li><router-link to="/en/component/config">Configuration</router-link></li>
           </ul>
           <li class="title">Style</li>
