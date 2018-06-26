@@ -38,6 +38,12 @@ const i18n = new VueI18n({
 
 // init i18n with heyui
 HeyUI.i18n(i18n);
+
+// change language
+// vue file
+this.$i18n.locale = 'en';
+// or
+i18n.locale = 'en';
     </codes>
 
     <h3>Supported language</h3>
