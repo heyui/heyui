@@ -16,7 +16,7 @@ HeyUI.locale(en);
     </codes>
 
 
-    <h3>使用vue-i18n@6.x+</h3>
+    <h3>使用vue-i18n</h3>
     <codes type="javascript">
 import Vue from 'vue';
 import HeyUI from 'heyui';
