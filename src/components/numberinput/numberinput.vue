@@ -65,12 +65,12 @@ export default {
     plus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
-      this.setvalue(utils.add(value, this.step), 'handler');
+      this.setvalue(utils.add(value || 0, this.step), 'handler');
     },
     minus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
-      this.setvalue(utils.add(value, -this.step), 'handler');
+      this.setvalue(utils.add(value || 0, -this.step), 'handler');
     },
     input(event) {
       if(isNaN(new Number(event.target.value))) return false;
@@ -88,9 +88,11 @@ export default {
     getValue(value) {
       if (value === '') return null;
       if (this.useInt) {
-        return parseInt(value) || null;
+        let v = parseInt(value);
+        return isNaN(v) ? null : v;
       } else {
-        return parseFloat(value) || null;
+        let v = parseFloat(value);
+        return isNaN(v) ? null : v;
       }
     },
     setvalue(value, trigger) {
@@ -102,7 +104,7 @@ export default {
         value = Math.max(this.min, value);
       }
       if(this.precision && utils.isNumber(value)) {
-        value = Math.floor(utils.mul(value,Math.pow(10,this.precision)))/Math.pow(10,this.precision);
+        value = Math.floor(utils.mul(value || 0, Math.pow(10,this.precision)))/Math.pow(10,this.precision);
         value = value.toFixed(this.precision);
       }
       this.valueBak = value;
