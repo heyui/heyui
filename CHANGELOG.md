@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0-alpha.4"></a>
+# [1.3.0-alpha.4](https://github.com/heyui/heyui/compare/v1.3.0-alpha.3...v1.3.0-alpha.4) (2018-06-27)
+
+
+### Bug Fixes
+
+* **circle:** circle use path svg for show ([a6db775](https://github.com/heyui/heyui/commit/a6db775))
+* **font:** font icon vertical-align  use baseline ([5fcfbf7](https://github.com/heyui/heyui/commit/5fcfbf7))
+* **numberinput:** fix numberinput judge unNumber input ([45d1434](https://github.com/heyui/heyui/commit/45d1434))
+* **radio:** optimize less defined ([59251f2](https://github.com/heyui/heyui/commit/59251f2))
+
+
+
 <a name="1.3.0-alpha.3"></a>
 # [1.3.0-alpha.3](https://github.com/heyui/heyui/compare/v1.3.0-alpha.2...v1.3.0-alpha.3) (2018-06-27)
 
