@@ -1,5 +1,5 @@
 @radio-prefix: ~"@{prefix}radio";
-.@{radio-prefix}>label>.radio-icon {
+.@{radio-prefix}>label>.h-radio-icon {
   -webkit-appearance: none;
   display: inline-block;
   width: 16px;
@@ -67,11 +67,11 @@
     }
   }
 
-  &[disabled]>label{
+  &&-disabled>label{
     color: @disabled-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
-    &:hover>.radio-icon{
+    &:hover>.h-radio-icon{
       border-color: @disabled-border-color;
     }
   }
