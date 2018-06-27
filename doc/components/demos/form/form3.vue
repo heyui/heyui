@@ -33,7 +33,7 @@
       <FormItem label="Phone" prop="mobile">
         <input type="text" v-model="data.mobile" />
       </FormItem>
-      <FormItem label="Amount" :required="true">
+      <FormItem label="Amount" :required="true" single>
         <div class="h-input-group">
           <div class="h-input-addon">
             <Select v-model="data.select1" :datas="param1" :no-border="true" :null-option="false"></Select>
@@ -95,10 +95,10 @@
           </Row>
         </FormItem>
       </FormItemList>
-      <FormItem :single="true">
+      <FormItem :single="true" single>
         <Button size="s" text-color="blue" @click="add">添加输入框</Button>
       </FormItem>
-      <FormItem :no-padding="true">
+      <FormItem :no-padding="true" single>
         <Button color="primary" :loading="isLoading" @click="submit" v-tooltip content="执行异步验证但是不等待结果">提交</Button>
         <i class="h-split"></i>
         <Button color="green" :loading="isLoading" @click="submitAsync" v-tooltip content="等待所有异步验证都执行完后提交">异步提交</Button>
