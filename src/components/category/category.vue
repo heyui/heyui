@@ -168,7 +168,7 @@ export default {
     initDatas(datas) {
       let list = utils.copy(datas);
       if (this.param.dataMode == 'list' && datas.length > 0) {
-        list = utils.generateTree(datas, this.param);
+        list = utils.generateTree(list, this.param);
       }
       return this.initTreeModeData(list);
     },
