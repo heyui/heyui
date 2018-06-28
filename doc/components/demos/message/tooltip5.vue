@@ -1,16 +1,31 @@
-<template>
-  <div>
-    <p>选中值：{{select}}</p>
-    <div v-width="300"><Select v-model="select" :datas="param"  :multiple="true" :limit="2"></Select></div>
-  </div>
-</template>
-<script>
-  export default {
-    data: function () {
-      return {
-        select: [],
-        param: ['选择1', '选择2', '选择3']
-      }
+<style lang="less">
+.tooltip5-demo{
+
+  &.h-tooltip.h-tooltip-white[x-placement^="top"] {
+    .h-tooltip-arrow:after {
+      border-top-color: red;
+    }
+    .h-tooltip-inner{
+      border-bottom: 3px solid red;
     }
   }
-</script>
+  &.h-tooltip.h-tooltip-white[x-placement^="bottom"]{
+    .h-tooltip-arrow:after {
+      border-bottom-color: red;
+    }
+    .h-tooltip-inner{
+      border-top: 3px solid red;
+    }
+  }
+  .h-tooltip-inner-content{
+    width: 200px;
+    height: 150px;
+  }
+}
+</style>
+
+<template>
+  <div>
+    <span v-tooltip className="tooltip5-demo" placement="bottom-start" theme="white">自定义样式</span>
+  </div>
+</template>

@@ -13,6 +13,10 @@
     <h3>自定义内容</h3>
     <example demo="message/tooltip4"></example>
 
+    <h3>自定义样式</h3>
+    <blockquote>注意：如果tooltip在页面最右边，并且换行异常，请使用样式给内容设定固定宽度。</blockquote>
+    <example demo="message/tooltip5"></example>
+
     <h3>Tooltip 参数</h3>
     <table class="table">
       <tr>
