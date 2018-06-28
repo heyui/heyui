@@ -205,12 +205,8 @@ h2 {
           padding-left: 10px;
         }
         >li{
-          >a {
+          a {
             padding-left: 20px;
-            // color: @dark1-color;
-            // &:hover{
-              // color: @primary-color;
-            // }
             border-left: 5px solid transparent;
             display: block;
           }
@@ -513,6 +509,23 @@ h2 {
   ul{
     list-style: inherit;
     padding-left: 20px;
+  }
+
+  table{
+    border: 1px solid #EEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    word-break: keep-all;
+    th, td{
+      padding: 5px 10px;
+      border: 1px solid #EEE;
+    }
+    th {
+      background: #EEE;
+    }
+    tr:nth-child(2n){
+      background-color: #f8f8f8;
+    }
   }
 }
 

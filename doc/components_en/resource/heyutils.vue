@@ -1,9 +1,9 @@
 <template>
   <div class="doc">
     <div class="readme"></div>
-    <h3>相关链接</h3>
+    <h3>Links</h3>
     <ul class="text-ul">
-      <li><a href="https://github.com/heyui/hey-utils">GITHUB</a></li>
+      <li><a href="https://github.com/heyui/hey-utils">github</a></li>
       <li><a href="https://www.npmjs.com/package/hey-utils">NPM</a></li>
     </ul>
   </div>

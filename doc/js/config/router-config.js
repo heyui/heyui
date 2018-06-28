@@ -532,6 +532,14 @@ const router = {
       },
       component: () =>
         import ('components/guide/config')
+    },{
+      path: 'guideheysnippets',
+      name: 'guideheysnippets',
+      meta: {
+        title: 'hey-snippets',
+      },
+      component: () =>
+        import ('components/resource/heysnippets')
     }]
   }, {
     path: '/resource',
@@ -592,6 +600,14 @@ const router = {
       },
       component: () =>
         import ('components/resource/umock')
+    },{
+      path: 'heysnippets',
+      name: 'heysnippets',
+      meta: {
+        title: 'hey-snippets',
+      },
+      component: () =>
+        import ('components/resource/heysnippets')
     }]
   }, {
     path: '/about',

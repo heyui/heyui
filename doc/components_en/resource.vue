@@ -6,12 +6,13 @@
         <ul>
           <ul>
             <li class="gray-color">&nbsp;</li>
-            <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='resourceheycli'}">hey-cli 脚手架</router-link></li>
-            <li><router-link to="/resource/umock">umock mock服务器</router-link></li>
-            <li><router-link to="/resource/heyutils">hey-utils 通用方法</router-link></li>
-            <li><router-link to="/resource/heyvalidator">hey-validator 数据验证</router-link></li>
-            <li><router-link to="/resource/model">model 数据转换</router-link></li>
-            <li><router-link to="/resource/manba">manba 日期工具</router-link></li>
+            <li><router-link to="/en/resource/heycli" :class="{'router-link-active': $route.name =='en_resourceheycli' || $route.name =='en_resource'}">hey-cli scaffolding</router-link></li>
+            <li><router-link to="/en/resource/heysnippets">Snippets for vscode</router-link></li>
+            <li><router-link to="/en/resource/umock">umock server</router-link></li>
+            <li><router-link to="/en/resource/heyutils">hey-utils</router-link></li>
+            <li><router-link to="/en/resource/heyvalidator">hey-validator</router-link></li>
+            <li><router-link to="/en/resource/model">js-model</router-link></li>
+            <li><router-link to="/en/resource/manba">manba dateformat</router-link></li>
           </ul>
         </ul>
       </div>

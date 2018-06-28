@@ -6,8 +6,9 @@
         <ul>
           <ul>
             <li class="gray-color">&nbsp;</li>
-            <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='resourceheycli'}">hey-cli 脚手架</router-link></li>
-            <li><router-link to="/resource/umock">umock mock服务器</router-link></li>
+            <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='resourceheycli' || $route.name =='resource'}">hey-cli 脚手架</router-link></li>
+            <li><router-link to="/resource/heysnippets">插件 for vscode</router-link></li>
+            <li><router-link to="/resource/umock">umock 服务器</router-link></li>
             <li><router-link to="/resource/heyutils">hey-utils 通用方法</router-link></li>
             <li><router-link to="/resource/heyvalidator">hey-validator 数据验证</router-link></li>
             <li><router-link to="/resource/model">model 数据转换</router-link></li>

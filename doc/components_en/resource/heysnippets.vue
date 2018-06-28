@@ -3,8 +3,8 @@
     <div class="readme"></div>
     <h3>Links</h3>
     <ul class="text-ul">
-      <li><a href="https://github.com/heyui/hey-validator">github</a></li>
-      <li><a href="https://www.npmjs.com/package/hey-validator">NPM</a></li>
+      <li><a href="https://github.com/heyui/heyui-snippets">github</a></li>
+      <li><a href="https://marketplace.visualstudio.com/items?itemName=vvpvvp.heyui-snippets">VS Code Market</a></li>
     </ul>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   methods: {
   },
   mounted() {
-    loadReadMe(this.$el, 'https://raw.githubusercontent.com/heyui/hey-validator/master/README.md', this);
+    loadReadMe(this.$el, 'https://raw.githubusercontent.com/heyui/heyui-snippets/master/README.md', this);
   },
   components:{
   }
