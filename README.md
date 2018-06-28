@@ -82,6 +82,13 @@ Vue.use(HeyUI)
         </a></td>
       <td>Javascript Utils</td>
     </tr>
+    <tr>
+      <td><a href="https://marketplace.visualstudio.com/items?itemName=vvpvvp.heyui-snippets" rel="nofollow">heyui-snippets</a></td>
+      <td><a href="https://marketplace.visualstudio.com/items?itemName=vvpvvp.heyui-snippets" target="_blank">
+          <img src="https://vsmarketplacebadge.apphb.com/version-short/vvpvvp.heyui-snippets.svg?style=flat-square">
+        </a></td>
+      <td>Snippet for VSCode</td>
+    </tr>
   </tbody>
 </table>
 
