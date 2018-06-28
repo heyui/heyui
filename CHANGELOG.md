@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/heyui/heyui/compare/v1.3.0-beta.0...v1.3.0) (2018-06-28)
+
+
+### Bug Fixes
+
+* **category:** fix data init function ([44d1e0a](https://github.com/heyui/heyui/commit/44d1e0a))
+* **treepicker:** fix when clear value tree exsits indeterminate status ([dee2d3d](https://github.com/heyui/heyui/commit/dee2d3d))
+
+
+
 <a name="1.3.0-beta.0"></a>
 # [1.3.0-beta.0](https://github.com/heyui/heyui/compare/v1.3.0-alpha.5...v1.3.0-beta.0) (2018-06-28)
 
