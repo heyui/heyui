@@ -201,11 +201,15 @@ h2 {
       >ul {
         padding-left: 25px;
         >.title {
+          padding: 18px 0;
           color: @primary-color;
           padding-left: 10px;
         }
         >li{
+          line-height: 1;
           a {
+            font-size: 14px;
+            padding: 12px 0;
             padding-left: 20px;
             border-left: 5px solid transparent;
             display: block;
@@ -214,6 +218,7 @@ h2 {
       }
     }
     a {
+      line-height: 1;
       padding: 2px 4px;
       color: #495060;
       &:hover{
@@ -221,9 +226,20 @@ h2 {
       }
       &.router-link-active {
         opacity: 1;
-        border-left-color: @primary-color;
+        position: relative;
+        &::before{
+          content: '';
+          position: absolute;
+          height: 14px;
+          left: -5px;
+          border-left: 5px solid @primary-color;
+          top: 12px;
+        }
         color: @primary-color;
       }
+    }
+    .h-badge-count-dot {
+      top: 6px;
     }
   }
   .right-frame {
@@ -576,7 +592,9 @@ h2 {
             a{
               padding-left: 0;
               &.router-link-active {
-                border: none;
+                &:before{
+                  content: none;
+                }
               }
             }
           }

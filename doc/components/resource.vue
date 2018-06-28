@@ -5,7 +5,6 @@
       <div slot="left-frame">
         <ul>
           <ul>
-            <li class="gray-color">&nbsp;</li>
             <li><router-link to="/resource/heycli" :class="{'router-link-active': $route.name =='resourceheycli' || $route.name =='resource'}">hey-cli 脚手架</router-link></li>
             <li><router-link to="/resource/heysnippets">插件 for vscode</router-link></li>
             <li><router-link to="/resource/umock">umock 服务器</router-link></li>
