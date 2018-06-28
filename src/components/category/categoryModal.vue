@@ -4,11 +4,11 @@
     </header>
     <div>
       <div class="h-panel-bar">
-        <div class="h-category-multiple-tags" v-if="param.multiple">
+        <div class="h-category-modal-multiple-tags" v-if="param.multiple">
           <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close"
             @click.stop="remove(tag)"></i></span>
         </div>
-        <div v-else class="h-category-single-tag">
+        <div v-else class="h-category-modal-single-tag">
           <span v-if="param.object">{{param.object.title}}</span>
           <!-- <i v-else class="gray-color">{{showEmptyContent}}</i> -->
         </div>

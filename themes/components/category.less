@@ -11,11 +11,14 @@
     }
   }
 
-  &-multiple-tags{
-    min-height: 25px;
-    padding-right: 180px
+  &-modal-multiple-tags{
+    min-height: @input-height;
+    padding-right: 180px;
+    >span {
+      .tag-span-func();
+    }
   }
-  &-single-tag{
-    min-height: 25px;
+  &-modal-single-tag{
+    min-height: @input-height;
   }
 }
