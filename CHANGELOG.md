@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0-alpha.5"></a>
+# [1.3.0-alpha.5](https://github.com/heyui/heyui/compare/v1.3.0-alpha.4...v1.3.0-alpha.5) (2018-06-28)
+
+
+### Bug Fixes
+
+* fix hlang default value judge ([09f7c35](https://github.com/heyui/heyui/commit/09f7c35))
+* remove hey-utils hey-log dependencies ([f0bbfc3](https://github.com/heyui/heyui/commit/f0bbfc3))
+
+
+
 <a name="1.3.0-alpha.4"></a>
 # [1.3.0-alpha.4](https://github.com/heyui/heyui/compare/v1.3.0-alpha.3...v1.3.0-alpha.4) (2018-06-27)
 
