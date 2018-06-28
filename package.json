@@ -17,11 +17,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "hey-log": "^0.0.8",
-    "hey-utils": "^0.3.1",
     "manba": "^1.2.0"
   },
   "devDependencies": {
+    "hey-log": "^0.0.8",
+    "hey-utils": "^0.3.1",
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",

@@ -9,8 +9,6 @@ module.exports = {
     },
     externals: {
       vue: "vue",
-      'hey-log': "hey-log",
-      'hey-utils': "hey-utils",
       manba: "manba"
     }
   }
