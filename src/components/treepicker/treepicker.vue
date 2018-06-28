@@ -206,7 +206,9 @@ export default {
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      if(this.dropdown) this.dropdown.update();
+      this.$nextTick(()=>{
+        if(this.dropdown) this.dropdown.update();
+      })
     },
     triggerChange() {
       this.$nextTick(()=>{
