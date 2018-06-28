@@ -36,6 +36,9 @@ export default {
     }).filter(ele => (ele && ele !== '')).join(connector || ', ');
   },
   hlang(key, value, defaultValue) {
-    return defaultValue || locale.t(key, value);
+    if (defaultValue == null) {
+      return locale.t(key, value);
+    }
+    return defaultValue;
   }
 }
