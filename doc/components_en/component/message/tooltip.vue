@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Tooltip</h2>
+    <blockquote>Note: if tooltip is on the right side of the page and the display is abnormal, please use the style to set the fixed width for the content.</blockquote>
     <h3>Basic</h3>
     <example demo="message/tooltip1"></example>
 
@@ -14,7 +15,6 @@
     <example demo="message/tooltip4"></example>
 
     <h3>Custom style</h3>
-    <blockquote>Note: if tooltip is on the right side of the page and the line is abnormal, use the style to set the fixed width for the content.</blockquote>
     <example demo="message/tooltip5"></example>
 
     <h3>Tooltip Property</h3>

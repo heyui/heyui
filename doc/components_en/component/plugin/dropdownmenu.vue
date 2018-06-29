@@ -3,6 +3,8 @@
     <h2>DropdownMenu 下拉菜单</h2>
     <p>DropdownMenu can add custom <code>className</code>drop-down controls that define various modes that <code>className</code> will be applied <code>.h-dropdownmenu-show</code>. The dom is the element that triggers the drop-down, contains the custom content, and the icon for the right-hand display state.</p>
     <p>Tip: The system comes with a <code>h-text-dropdown</code> class.</p>
+    <blockquote>Note: if DropdownMenu is on the right side of the page and the display is abnormal, please set the width for the content.</blockquote>
+
     <blockquote>Because the style is applied to the component <code>vue</code>, <code>style</code> with <code>scope</code> properties in the calling file will be invalid.</blockquote>
 
 

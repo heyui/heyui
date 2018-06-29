@@ -1,7 +1,7 @@
 <template>
   <div :class="showCls">
     <slot></slot>
-    <div class="h-tooltip-inner-content" :class="className">{{content}}<slot name='content'></slot></div>
+    <div class="h-tooltip-inner-content">{{content}}<slot name='content'></slot></div>
   </div>
 </template>
 <script>
@@ -62,6 +62,7 @@ export default {
           theme: this.theme,
           html: true,
           trigger: this.trigger,
+          className: this.className,
           container: document.body,
           placement: this.placement,
           disabled: this.disabled,
