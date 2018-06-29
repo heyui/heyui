@@ -172,6 +172,20 @@
         <td>-</td>
         <td>no results found</td>
       </tr>
+      <tr>
+        <td>keyName</td>
+        <td>Key field name for data</td>
+        <td>String</td>
+        <td>-</td>
+        <td>config <code>dict.keyName</code></td>
+      </tr>
+      <tr>
+        <td>titleName</td>
+        <td>title field name for data</td>
+        <td>String</td>
+        <td>-</td>
+        <td>config <code>dict.titleName</code></td>
+      </tr>
     </table>
   </div>
 </template>

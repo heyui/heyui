@@ -148,6 +148,20 @@
           <div>'-10px + 5vh, 5px - 6%'</div>
         </td>
       </tr>
+      <tr>
+        <td>keyName</td>
+        <td>Key field name for data</td>
+        <td>String</td>
+        <td>-</td>
+        <td>config <code>dict.keyName</code></td>
+      </tr>
+      <tr>
+        <td>titleName</td>
+        <td>title field name for data</td>
+        <td>String</td>
+        <td>-</td>
+        <td>config <code>dict.titleName</code></td>
+      </tr>
     </table>
 
     <h3>DropdownMenu Method</h3>

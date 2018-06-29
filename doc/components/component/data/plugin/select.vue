@@ -172,6 +172,20 @@
         <td>-</td>
         <td>未搜索到相关数据</td>
       </tr>
+      <tr>
+        <td>keyName</td>
+        <td>自定义数据的key字段名</td>
+        <td>String</td>
+        <td>-</td>
+        <td>全局config <code>dict.keyName</code></td>
+      </tr>
+      <tr>
+        <td>titleName</td>
+        <td>自定义数据的title字段名</td>
+        <td>String</td>
+        <td>-</td>
+        <td>全局config <code>dict.titleName</code></td>
+      </tr>
     </table>
   </div>
 </template>
