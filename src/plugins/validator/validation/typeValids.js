@@ -16,13 +16,13 @@ let valids = {
     }
   },
   email: {
-    pattern: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+    pattern: /^[^\s]+@[^\s]+\.[^\s]+$/,
     message() {
       return locale.t('h.validation.type.email')
     }
   },
   url: {
-    pattern: /^[^\s]+@[^\s]+\.[^\s]+$/,
+    pattern: /^((\w+):\/\/)?([^\s]?[^\s]+\.)*[^\s]+\-?[^\s]+\.[^\s]{2,}(\/.*)*\/?$/,
     message() {
       return locale.t('h.validation.type.url')
     }
