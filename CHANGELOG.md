@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.2"></a>
+## [1.3.2](https://github.com/heyui/heyui/compare/v1.3.1...v1.3.2) (2018-07-02)
+
+
+### Bug Fixes
+
+* **tooltip:** fix tooltip component className place ([22c1bbd](https://github.com/heyui/heyui/commit/22c1bbd))
+* typeValid url error ([ff70d2e](https://github.com/heyui/heyui/commit/ff70d2e))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/heyui/heyui/compare/v1.3.0...v1.3.1) (2018-06-28)
 
