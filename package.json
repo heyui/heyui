@@ -20,8 +20,6 @@
     "manba": "^1.2.0"
   },
   "devDependencies": {
-    "hey-log": "^0.0.8",
-    "hey-utils": "^0.3.1",
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",
@@ -29,6 +27,8 @@
     "eslint-plugin-vue": "^0.1.1",
     "fs": "0.0.1-security",
     "headr": "0.0.4",
+    "hey-log": "^0.0.8",
+    "hey-utils": "^0.4.0",
     "less": "^3.0.0"
   },
   "readmeFilename": "README.md",
