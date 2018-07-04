@@ -12,7 +12,7 @@
                @keyup="handle"
                @blur="blurHandle"
                @keypress.enter="enterHandle"
-                :placeholder="showSearchPlaceHolder" />
+                :placeholder="showPlaceholder" />
         </div>
         <div v-if="!hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
@@ -23,7 +23,7 @@
                @blur="blurHandle"
                @keypress.enter="enterHandle"
                class="h-select-search-input h-select-single-search-input" v-model="searchInput"
-               :placeholder="hasValue?'':showSearchPlaceHolder" />
+               :placeholder="hasValue?'':showPlaceholder" />
         <div class="h-select-value-single" v-if="hasValue" v-show="!searchInput">{{objects[title]}}</div>
         <div v-else-if="!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
@@ -99,9 +99,9 @@ export default {
     placeholder: {
       type: String,
     },
-    searchPlaceHolder: {
-      type: String,
-    },
+    // searchPlaceHolder: {
+    //   type: String,
+    // },
     emptyContent: {
       type: String,
     },
@@ -355,9 +355,9 @@ export default {
     showPlaceholder() {
       return this.placeholder || this.t('h.select.placeholder');
     },
-    showSearchPlaceHolder() {
-      return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
-    },
+    // showSearchPlaceHolder() {
+    //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
+    // },
     selectCls() {
       let autosize = this.autosize || !!this.noBorder;
       return {
