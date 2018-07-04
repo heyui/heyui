@@ -72,17 +72,16 @@ export default {
         // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
         // log('top isFixed', ( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom)));
         // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < cFixedOffsetBottom && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))
-        
-        if (containerPosition.top <= this.cFixedOffsetTop && containerPosition.bottom  >= position.height + this.cFixedOffsetTop) {
-            this.isFixed = true;
-            this.isAbsolute = false;
-            this.fixPosition = 'top';
+        if (containerPosition.top <= this.cFixedOffsetTop - this.offsetTop && containerPosition.bottom  >= position.height + this.cFixedOffsetTop + this.cFixedOffsetBottom) {
+          this.isFixed = true;
+          this.isAbsolute = false;
+          this.fixPosition = 'top';
         } else {
-          if (containerPosition.top > this.cFixedOffsetTop || containerPosition.height < position.height) {
+          if (containerPosition.top > this.cFixedOffsetTop - this.offsetTop || containerPosition.height < position.height) {
             this.isFixed = false;
             this.isAbsolute = true;
             this.fixPosition = 'top';
-          } else if (containerPosition.bottom  < position.height + this.cFixedOffsetTop) {
+          } else if (containerPosition.bottom < position.height + this.cFixedOffsetTop + this.cFixedOffsetBottom) {
             this.isFixed = false;
             this.isAbsolute = true;
             this.fixPosition = 'bottom';
