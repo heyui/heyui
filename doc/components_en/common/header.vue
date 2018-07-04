@@ -14,7 +14,8 @@
         <!-- <router-link to="/about">团队</router-link> -->
         <ButtonGroup class="change-lang">
           <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
-          <Button size="s"><a target="_blank" href="https://discordapp.com/invite/VUZbFmd"><i class="h-icon-message"></i></a></Button>
+          <!-- https://discordapp.com/invite/VUZbFmd -->
+          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui/issues"><i class="h-icon-message"></i></a></Button>
           <Button @click="changeLang" size="s"><span class="link">中</span></Button>
         </ButtonGroup>
       </div>
