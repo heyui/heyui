@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/heyui/heyui/compare/v1.3.3...v1.3.4) (2018-07-04)
+
+
+### Bug Fixes
+
+* **select:** fix disabled logic ([efdfb4c](https://github.com/heyui/heyui/commit/efdfb4c))
+
+
+
 <a name="1.3.3"></a>
 ## [1.3.3](https://github.com/heyui/heyui/compare/v1.3.2...v1.3.3) (2018-07-04)
 
