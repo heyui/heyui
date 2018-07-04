@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/heyui/heyui/compare/v1.3.2...v1.3.3) (2018-07-04)
+
+
+### Bug Fixes
+
+* **affix:** Optimization of judgment mechanism ([12dce1c](https://github.com/heyui/heyui/commit/12dce1c))
+* **select:** remove showSearchPlaceHolder params ([643f72a](https://github.com/heyui/heyui/commit/643f72a))
+* **tree:** style optimize error ([27346ce](https://github.com/heyui/heyui/commit/27346ce))
+
+
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/heyui/heyui/compare/v1.3.1...v1.3.2) (2018-07-02)
 
