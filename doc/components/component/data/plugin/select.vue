@@ -61,13 +61,6 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>readonly</td>
-        <td>是否只读</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
         <td>multiple</td>
         <td>是否多选</td>
         <td>Boolean</td>

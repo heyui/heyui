@@ -61,13 +61,6 @@
         <th>Default</th>
       </tr>
       <tr>
-        <td>readonly</td>
-        <td>readonly</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
         <td>multiple</td>
         <td>multiple</td>
         <td>Boolean</td>

@@ -9,6 +9,7 @@
           <input v-if="filterable"
                 type="text"
                 class="h-select-search-input" v-model="searchInput"
+                :disabled="disabled"
                @keyup="handle"
                @blur="blurHandle"
                @keypress.enter="enterHandle"
@@ -16,16 +17,22 @@
         </div>
         <div v-if="!hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
       </template>
-      <template v-else-if="!multiple">
-        <input v-if="filterable"
-               type="text"
-               @keyup="handle"
-               @blur="blurHandle"
-               @keypress.enter="enterHandle"
-               class="h-select-search-input h-select-single-search-input" v-model="searchInput"
-               :placeholder="hasValue?'':showPlaceholder" />
-        <div class="h-select-value-single" v-if="hasValue" v-show="!searchInput">{{objects[title]}}</div>
-        <div v-else-if="!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+      <template v-else>
+        <template v-if="filterable">
+          <input
+                type="text"
+                @keyup="handle"
+                @blur="blurHandle"
+                :disabled="disabled"
+                @keypress.enter="enterHandle"
+                :class="{'h-select-search-input-value': hasValue}"
+                class="h-select-search-input h-select-single-search-input" v-model="searchInput"
+                :placeholder="hasValue?singleValue:showPlaceholder" />
+        </template>
+        <template v-else>
+          <div class="h-select-value-single" v-if="hasValue">{{singleValue}}</div>
+          <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
+        </template>
       </template>
       <i class="h-icon-down"></i>
     </div>
@@ -64,10 +71,6 @@ const prefix = 'h-select';
 export default {
   name: 'hSelect',
   props: {
-    readonly: {
-      type: Boolean,
-      default: false
-    },
     multiple: {
       type: Boolean,
       default: false
@@ -151,10 +154,12 @@ export default {
       this.parse();
     },
     disabled() {
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
+      if(this.dropdown) {
+        if (this.disabled) {
+          this.dropdown.disabled();
+        } else {
+          this.dropdown.enabled();
+        }
       }
     },
     searchInput() {
@@ -280,7 +285,7 @@ export default {
       return utils.isNull(value) ? null : value;
     },
     setvalue(option, trigger) {
-      if (this.readonly) return;
+      if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
       let code = option[this.key];
       if (this.multiple) {
@@ -341,6 +346,13 @@ export default {
         return this.codes.length > 0;
       } else {
         return !utils.isNull(this.codes)&&this.objects;
+      }
+    },
+    singleValue() {
+      if (this.hasValue) {
+        return this.objects[this.title];
+      } else {
+        return null;
       }
     },
     showEmptyContent() {

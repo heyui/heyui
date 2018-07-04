@@ -6,21 +6,26 @@
 .plugin-input(@select-prefix);
 
 .@{select-prefix}{
-  .@{select-prefix}-show{
+  &-show{
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
   }
-  .@{select-prefix}-search-input {
+  & &-search-input {
     .border-input-inside-input();
   }
-  .@{select-prefix}-single-search-input {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 100%;
-    right: 0;
-    background: none;
-    &:focus+.@{select-prefix}-value-single{
+  &-single-search-input {
+    &.@{select-prefix}-search-input-value::placeholder{
+      color: inherit;
+    }
+    &:focus::placeholder{
       color: @gray-color;
+    }
+  }
+  &-disabled &-single-search-input {
+    color: @disabled-color !important;
+    &::placeholder{
+      color: @disabled-color;
     }
   }
 }

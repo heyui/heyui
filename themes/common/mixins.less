@@ -163,10 +163,14 @@
 
 .border-input-disabled() {
   background-color: @disabled-background-color;
-  color: @disabled-color;
+  color: @disabled-color !important;
   border-color: @disabled-border-color;
   &:hover {
     border-color: @disabled-border-color;
+    color: @disabled-color !important;
+  }
+  .h-icon-down {
+    color: @disabled-color !important;
   }
 }
 
