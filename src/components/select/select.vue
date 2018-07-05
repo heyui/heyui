@@ -28,7 +28,7 @@
                 :class="{'h-select-search-input-value': hasValue}"
                 class="h-select-search-input h-select-single-search-input" v-model="searchInput"
                 :placeholder="hasValue?'':showPlaceholder" />
-          <div class="h-select-filterable-value" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
+          <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
         </template>
         <template v-else>
           <div class="h-select-value-single" v-if="hasValue">{{singleValue}}</div>
@@ -219,6 +219,9 @@ export default {
     });
   },
   methods: {
+    focusSearchInput() {
+      this.$el.querySelector('.h-select-search-input').focus();
+    },
     handle(event) {
       let code = event.keyCode || event.which || event.charCode
       if (code == 38) {

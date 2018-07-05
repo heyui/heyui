@@ -1140,7 +1140,7 @@ function removeEventListeners(reference, state) {
  */
 function disableEventListeners() {
   if (this.state.eventsEnabled) {
-    if(cancelAnimationFrame) {
+    if(window.cancelAnimationFrame) {
       cancelAnimationFrame(this.scheduleUpdate);
     }
     this.state = removeEventListeners(this.reference, this.state);
