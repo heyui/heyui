@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/heyui/heyui/compare/v1.3.5...v1.3.6) (2018-07-05)
+
+
+### Bug Fixes
+
+* **select:** ie9 placeholder Compatibility ([327644f](https://github.com/heyui/heyui/commit/327644f))
+
+
+
 <a name="1.3.5"></a>
 ## [1.3.5](https://github.com/heyui/heyui/compare/v1.3.4...v1.3.5) (2018-07-05)
 
