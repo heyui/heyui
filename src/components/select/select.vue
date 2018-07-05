@@ -27,7 +27,8 @@
                 @keypress.enter="enterHandle"
                 :class="{'h-select-search-input-value': hasValue}"
                 class="h-select-search-input h-select-single-search-input" v-model="searchInput"
-                :placeholder="hasValue?singleValue:showPlaceholder" />
+                :placeholder="hasValue?'':showPlaceholder" />
+          <div class="h-select-filterable-value" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
         </template>
         <template v-else>
           <div class="h-select-value-single" v-if="hasValue">{{singleValue}}</div>

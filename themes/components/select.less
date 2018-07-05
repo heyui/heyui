@@ -14,19 +14,22 @@
   & &-search-input {
     .border-input-inside-input();
   }
+  &-filterable-value{
+    position: absolute;
+    line-height: @input-height - 6px;
+    left: 8px;
+    z-index: 1;
+  }
   &-single-search-input {
-    &.@{select-prefix}-search-input-value::placeholder{
-      color: inherit;
-    }
-    &:focus::placeholder{
+    position: relative;
+    z-index: 2;
+    background-color: transparent !important;
+    &:focus+.@{select-prefix}-filterable-value{
       color: @gray-color;
     }
   }
   &-disabled &-single-search-input {
     color: @disabled-color !important;
-    &::placeholder{
-      color: @disabled-color;
-    }
   }
 }
 
