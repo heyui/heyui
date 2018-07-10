@@ -132,6 +132,9 @@
               <router-link to="/en/component/view/tabs">Tabs</router-link>
             </li>
             <li>
+              <router-link to="/en/component/view/breadcrumb">Breadcrumb</router-link>
+            </li>
+            <li>
               <router-link to="/en/component/form/switchlist">SwitchList</router-link>
             </li>
             <li>

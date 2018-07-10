@@ -10,6 +10,7 @@
 import Affix from './components/affix';
 import BackTop from './components/backtop';
 import Badge from './components/badge';
+import Breadcrumb from './components/breadcrumb';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
@@ -75,6 +76,7 @@ const components = {
   Badge,
   Button,
   ButtonGroup,
+  Breadcrumb,
   Category,
   Checkbox,
   hCircle: Circle,

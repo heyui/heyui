@@ -4,7 +4,7 @@ const router = {
   mode: 'history',
   routes: [{
     path: '/',
-    name: 'home',
+    name: 'Home',
     meta: {
       title: 'Home',
     },
@@ -15,7 +15,7 @@ const router = {
     component: (resolve) => require(['components/component'], resolve),
     children: [{
       path: '',
-      name: 'componentguide',
+      name: 'Component',
       meta: {
         title: 'Guide',
       },
