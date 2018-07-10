@@ -10,7 +10,7 @@
                class="h-autocomplete-input"
                @focus="focus"
                v-model="tempValue"
-               @blur="blur"
+               @blur.stop="blur"
                @paste="paste"
                @keyup="handle"
                @keypress.enter="enterHandle"
@@ -25,7 +25,7 @@
                @focus="focus"
                v-model="tempValue"
                @paste="paste"
-               @blur="blur"
+               @blur.stop="blur"
                @keyup="handle"
                @keypress.enter="enterHandle"
                :placeholder="showPlaceholder" />
