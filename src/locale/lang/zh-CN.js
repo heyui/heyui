@@ -127,7 +127,7 @@ const lang = {
       incorrectFormat: '您输入的值格式不正确',
       overSize: '您输入的值超过范围',
       totalBefore: '总',
-      totalAfter: '页',
+      totalAfter: '条',
       sizeOfPage: '{size}条/页'
     }
   }

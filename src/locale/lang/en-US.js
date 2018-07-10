@@ -128,7 +128,7 @@ const lang = {
       incorrectFormat: 'The format of the value you entered is incorrect',
       overSize: 'The value you entered exceeds the range',
       totalBefore: 'Total',
-      totalAfter: 'pages',
+      totalAfter: 'items',
       sizeOfPage: '{size} items/page'
     }
   }
