@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/heyui/heyui/compare/v1.3.6...v1.4.0) (2018-07-10)
+
+
+### Bug Fixes
+
+* autocomplete blur use stop ([9aa2be6](https://github.com/heyui/heyui/commit/9aa2be6))
+* pagination word fixed ([2598c64](https://github.com/heyui/heyui/commit/2598c64))
+
+
+### Features
+
+* breadcrumb component ([ed87b40](https://github.com/heyui/heyui/commit/ed87b40)), closes [#11](https://github.com/heyui/heyui/issues/11)
+
+
+
 <a name="1.3.6"></a>
 ## [1.3.6](https://github.com/heyui/heyui/compare/v1.3.5...v1.3.6) (2018-07-05)
 
