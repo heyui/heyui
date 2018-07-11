@@ -1,6 +1,6 @@
 const router = [{
   path: '/en',
-  name: 'en_home',
+  name: 'en_Home',
   meta: {
     title: 'Home',
   },
@@ -11,7 +11,7 @@ const router = [{
   component: (resolve) => require(['components_en/component'], resolve),
   children: [{
     path: '',
-    name: 'en_componentguide',
+    name: 'en_Component',
     meta: {
       title: 'Guide',
     },
