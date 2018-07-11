@@ -6,7 +6,7 @@
       </router-link>
       <AutoComplete v-width="180" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
-        <a @click="goLink({name: 'en_home'})" :class="{'router-link-active': $route.name == 'en_home'}">Home</a>
+        <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a>
         <!-- <router-link to="/guide">入门</router-link> -->
         <router-link to="/en/component">Component</router-link>
         <router-link to="/en/resource">Resource</router-link>
