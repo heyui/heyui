@@ -62,7 +62,7 @@ const titles = {
   'config': '全局配置',
   'pluginCategory': '分类选择',
   'logs': '日志',
-  'home': '首页',
+  'Home': '首页',
   'component': '组件',
   'resourceheycli': '资源',
   'about': '关于',

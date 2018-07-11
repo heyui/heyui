@@ -37,7 +37,7 @@
 export default {
   data() {
     return {
-      param: [{ title: "首页", key: 'home', icon: 'h-icon-home' }, { title: "消息", key: 'message', icon: 'h-icon-bell', count: 8 }, { divider: true }, { title: "任务", key: 'task', icon: 'h-icon-complete', disabled: true }]
+      param: [{ title: "首页", key: 'Home', icon: 'h-icon-home' }, { title: "消息", key: 'message', icon: 'h-icon-bell', count: 8 }, { divider: true }, { title: "任务", key: 'task', icon: 'h-icon-complete', disabled: true }]
     }
   },
   methods: {

@@ -40,7 +40,7 @@ export default {
     },
     go() {
       //注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。
-      this.$router.push({name: 'home'});
+      this.$router.push({name: 'Home'});
       this.$emit('close');
     },
     close() {
