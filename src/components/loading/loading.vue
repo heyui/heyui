@@ -9,6 +9,8 @@
   </div>
 </template>
 <script>
+import utils from '../../utils/utils';
+
 const prefix = 'h-loading';
 export default {
   name: 'hLoading',
@@ -29,32 +31,41 @@ export default {
 
   },
   mounted() {
-    this.show();
+    this.initStyle();
   },
   methods: {
-    show() {
+    initStyle() {
       if (this.loading) {
         this.$nextTick(() => {
+          utils.addClass(this.$el, 'h-loading-loading');
+          utils.addClass(this.$el, 'h-loading-visible');
           let parent = this.$el.parentNode;
-          let position = window.getComputedStyle(parent).position;
+          let style = window.getComputedStyle(parent);
+          let position = style.position;
           if (position === 'static') {
             parent.style.position = 'relative';
             this.isSetStyle = true;
           }
-          parent.style.minHeight = this.minHeight ? `${this.minHeight}px` : '50px';
+          if(!style.height && !style.minHeight) {
+            parent.style.minHeight = this.minHeight ? `${this.minHeight}px` : '50px';
+          }
         });
-      } else if (this.isSetStyle) {
-        this.$nextTick(() => {
-          let parent = this.$el.parentNode;
-          parent.style.minHeight = '';
-          parent.style.position = '';
-        });
+      } else {
+        utils.removeClass(this.$el, 'h-loading-loading');
+        setTimeout(() => {
+          utils.removeClass(this.$el, 'h-loading-visible');
+          if (this.isSetStyle) {
+            let parent = this.$el.parentNode;
+            parent.style.minHeight = '';
+            parent.style.position = '';
+          }
+        }, 500);
       }
     }
   },
   watch: {
     loading() {
-      this.show();
+      this.initStyle();
     }
   },
   computed: {
@@ -70,8 +81,7 @@ export default {
     },
     loadingCls() {
       return {
-        [`${prefix}`]: true,
-        [`${prefix}-loading`]: this.loading
+        [`${prefix}`]: true
       };
     }
   }

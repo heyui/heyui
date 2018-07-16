@@ -28,13 +28,16 @@
   visibility: hidden;
   text-align: center;
   opacity: 0;
-  transition: all 0.5s;
-  &-circular {
+  transition: opacity 0.5s;
+  & &-circular {
     .middle-center();
+    width: 42px;
+    height: 42px;
     >svg {
       opacity: 0;
       width: 42px;
       height: 42px;
+      transition: opacity 0.5s;
       transform-origin: center center;
       .circle {
         stroke-dasharray: 90, 150;
@@ -46,14 +49,17 @@
     }
   }
 
-  &-loading{
-    visibility: visible;
-    z-index: @zindex-loading;
+  &&-loading{
     opacity: 1;
     &.@{loading-cls}-full-screen{
       z-index: @zindex-loading-fullscreen;
       position: fixed;
     }
+  }
+
+  &&-visible {
+    visibility: visible;
+    z-index: @zindex-loading;
     svg{
       opacity: 1;
       animation: loading-rotate 2s linear infinite;
