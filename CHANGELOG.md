@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/heyui/heyui/compare/v1.4.0...v1.5.0) (2018-07-16)
+
+
+### Bug Fixes
+
+* **autocomplete:** add endInput prop to autocomplete ([c6eebee](https://github.com/heyui/heyui/commit/c6eebee))
+* **Autocomplete:** fix autocomplete multiple when mustmatch is false ([fe26321](https://github.com/heyui/heyui/commit/fe26321))
+* **input:** Input icon it does not work ([92f407d](https://github.com/heyui/heyui/commit/92f407d)), closes [#13](https://github.com/heyui/heyui/issues/13)
+* **Loading:** add prop minHeight ([7228d0e](https://github.com/heyui/heyui/commit/7228d0e))
+* **Loading:** optimize loading animation ([efff35a](https://github.com/heyui/heyui/commit/efff35a))
+
+
+### Features
+
+* **table:** table sort auto and loading ([a718570](https://github.com/heyui/heyui/commit/a718570)), closes [#12](https://github.com/heyui/heyui/issues/12)
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/heyui/heyui/compare/v1.3.6...v1.4.0) (2018-07-10)
 
