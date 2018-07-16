@@ -14,6 +14,7 @@
     <h3>可以任意输入模式</h3>
     <p class="tip">使用<code>mustMatch</code>参数即可。</p>
     <p>此种方式只能选择使用<code>title</code>与<code>object</code>类型的数据。</p>
+    <p>设置<code>endInput</code>可以设定特殊字符确定输入，类似enter键。</p>
     <example demo="dataplugins/autocomplete9"></example>
 
     <h3>自定义样式</h3>
@@ -150,6 +151,13 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>endInput</td>
+        <td>设定特殊字符触发enter</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
       </tr>
     </table>
 

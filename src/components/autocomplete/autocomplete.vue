@@ -13,6 +13,7 @@
                @blur.stop="blur"
                @paste="paste"
                @keyup="handle"
+               @keydown="keydownHandle"
                @keypress.enter="enterHandle"
                :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
@@ -103,7 +104,8 @@ export default {
     delay: {
       type: Number,
       default: 100
-    }
+    },
+    endInput: String
   },
   data() {
     return {
@@ -349,8 +351,14 @@ export default {
         clearTimeout(this.searchTimeout)
       }
     },
+    keydownHandle(event) {
+      if (this.endInput && event.key == this.endInput) {
+        event.preventDefault();
+        this.enterHandle(event);
+      } 
+    },
     handle(event) {
-      let code = event.keyCode || event.which || event.charCode
+      let code = event.keyCode || event.which || event.charCode;
       if (code == 38) {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1
@@ -363,13 +371,9 @@ export default {
         //compatible ie，use enterHandle handle。
       } else {
         this.search(event.target)
-        // if(!this.mustMatch && !this.multiple) {
-        //   this.setvalue('keyup');
-        // }
       }
     },
     enterHandle(event) {
-      // log('enterhandle', event.target.value, this.showValue);
       let nowValue = this.tempValue = event.target.value;
       event.preventDefault();
       if (this.nowSelected >= 0) {

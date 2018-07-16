@@ -1,14 +1,14 @@
 <template>
-  <div >
+  <div>
     <p> value:{{value1}} <span class="link" @click="update1">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" type="title" v-model="value1" :must-match="false" @change="onChange"></AutoComplete>
     </div>
 
     <p v-height="10"></p>
-    <p> 多选：value:{{value2}} <span class="link" @click="update2">修改值</span></p>
+    <p>多选：value:{{value2}} <span class="link" @click="update2">修改值</span></p>
     <div v-width="300">
-      <AutoComplete :option="param" type="title" v-model="value2" :must-match="false" multiple @change="onChange"></AutoComplete>
+      <AutoComplete :option="param" type="title" v-model="value2" endInput=";" :must-match="false" multiple @change="onChange"></AutoComplete>
     </div>
 
     <p v-height="10"></p>

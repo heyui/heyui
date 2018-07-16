@@ -151,6 +151,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>endInput</td>
+        <td>Setting special character trigger enter</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
 
     
