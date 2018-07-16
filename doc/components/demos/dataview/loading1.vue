@@ -1,11 +1,11 @@
 <template>
   <div>
-    <p v-height="40"><h-switch v-model="loading">切换状态</h-switch></p>
+    <p v-height="40"><h-switch v-model="loading">change loading</h-switch></p>
     <div>
       <div style="padding:100px 0;" v-bg-color:gray4  class="text-center">
-        内容
+        content
       </div>
-      <Loading text="测试" :loading="loading"></Loading>
+      <Loading text="Loading" :loading="loading"></Loading>
     </div>
   </div>
 </template>

@@ -17,7 +17,8 @@ export default {
       type: Boolean,
       default: false
     },
-    text: String
+    text: String,
+    minHeight: Number
   },
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
             parent.style.position = 'relative';
             this.isSetStyle = true;
           }
-          parent.style.minHeight = '50px';
+          parent.style.minHeight = this.minHeight ? `${this.minHeight}px` : '50px';
         });
       } else if (this.isSetStyle) {
         this.$nextTick(() => {
