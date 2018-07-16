@@ -4,14 +4,20 @@
     <div v-width="300">
       <AutoComplete :option="param" type="title" v-model="value1" :must-match="false" @change="onChange"></AutoComplete>
     </div>
+
+    <p v-height="10"></p>
     <p> 多选：value:{{value2}} <span class="link" @click="update2">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" type="title" v-model="value2" :must-match="false" multiple @change="onChange"></AutoComplete>
     </div>
+
+    <p v-height="10"></p>
     <p>保存对象：value:{{value3}} <span class="link" @click="update3">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" v-model="value3" type="object" :must-match="false" @change="onChange"></AutoComplete>
     </div>
+    
+    <p v-height="10"></p>
     <p>保存对象多选：value:{{value4}} <span class="link" @click="update4">修改值</span></p>
     <div v-width="300">
       <AutoComplete :option="param" v-model="value4" type="object" :must-match="false" multiple @change="onChange"></AutoComplete>

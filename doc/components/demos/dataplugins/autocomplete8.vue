@@ -1,23 +1,28 @@
 <template>
   <div >
     <blockquote>type="key"，使用show参数控制展示</blockquote>
-    <p>value:{{value1}}, show: {{show1}} <span class="link" @click="update1">修改值</span></p>
+    <p>value:{{value1}}, show: {{show1}}  <span class="link" @click="update1">修改值</span></p>
     <div v-width="300"><AutoComplete :option="param" :show="show1" type="key" v-model="value1" @change="onChange1"></AutoComplete></div>
-    
+
+    <p v-height="10"></p>
     <p>value:{{value2}}</p>
     <div v-width="300"><AutoComplete :option="param" type="key" multiple v-model="value2" @change="onChange"></AutoComplete></div>
-    
+
+    <p v-height="10"></p>
     <blockquote>type="title"</blockquote>
-    <p>value:{{value3}}<span class="link" @click="update3">修改值</span></p>
+    <p>value:{{value3}} <span class="link" @click="update3">修改值</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" v-model="value3" @change="onChange"></AutoComplete></div>
     
-    <p>value:{{value4}}<span class="link" @click="update4">修改值</span></p>
+    <p v-height="10"></p>
+    <p>value:{{value4}} <span class="link" @click="update4">修改值</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" multiple v-model="value4" @change="onChange"></AutoComplete></div>
     
+    <p v-height="10"></p>
     <blockquote>type="object"</blockquote>
     <p>value:{{value5}} <span class="link" @click="update5">修改值</span> </p>
     <div v-width="300"><AutoComplete :option="param" type="object" v-model="value5" @change="onChange"></AutoComplete></div>
-    
+
+    <p v-height="10"></p>
     <p>value:{{value6}} <span class="link" @click="update6">修改值</span> </p>
     <div v-width="300"><AutoComplete :option="param" type="object" :multiple="true" v-model="value6" @change="onChange"></AutoComplete></div>
   </div>

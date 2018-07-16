@@ -370,12 +370,15 @@ export default {
     },
     enterHandle(event) {
       // log('enterhandle', event.target.value, this.showValue);
-      this.tempValue = event.target.value;
+      let nowValue = this.tempValue = event.target.value;
       event.preventDefault();
       if (this.nowSelected >= 0) {
         this.add(this.results[this.nowSelected])
         this.setvalue('enter');
       } else {
+        if (!this.mustMatch && this.multiple && nowValue) {
+          this.objects.push(this.getValue(nowValue))
+        }
         this.setvalue('enter')
       }
     },
