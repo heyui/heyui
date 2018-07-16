@@ -1,11 +1,20 @@
 <template>
   <th :class="cls" @click="triggerSort()">
-    <div v-if="tooltip" v-tooltip :placement="placement" :content="content || title">{{title}}</div>
-    <div v-else>{{title}}</div>
-    <div class="h-table-sort-handler" v-if="sort">
-      <div class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == prop" :class="{'sort-selected': sortStatus.type == 'asc' && sortStatus.prop == prop}"><i class="h-icon-top"></i></div>
-      <div class="h-table-sort-desc" v-else :class="{'sort-selected': sortStatus.type == 'desc' && sortStatus.prop == prop}"><i class="h-icon-down"></i></div>
+    <div v-if="tooltip" v-tooltip :placement="placement" :content="content || title">
+      <span>{{title}}</span>
+      <span class="h-table-sort-handler" v-if="sort">
+        <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == prop" :class="{'sort-selected': sortStatus.type == 'asc' && sortStatus.prop == prop}"><i class="h-icon-top"></i></span>
+        <span class="h-table-sort-desc" v-else :class="{'sort-selected': sortStatus.type == 'desc' && sortStatus.prop == prop}"><i class="h-icon-down"></i></span>
+      </span>
     </div>
+    <div v-else>
+      <span>{{title}}</span>
+      <span class="h-table-sort-handler" v-if="sort">
+        <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == prop" :class="{'sort-selected': sortStatus.type == 'asc' && sortStatus.prop == prop}"><i class="h-icon-top"></i></span>
+        <span class="h-table-sort-desc" v-else :class="{'sort-selected': sortStatus.type == 'desc' && sortStatus.prop == prop}"><i class="h-icon-down"></i></span>
+      </span>
+    </div>
+    
   </th>
 </template>
 
@@ -25,7 +34,7 @@ export default {
       default: false
     },
     sort: {
-      type: Boolean,
+      type: [Boolean, String],
       default: false
     },
     placement: String,
@@ -68,16 +77,16 @@ export default {
   methods: {
     triggerSort() {
       if(!this.sort) return false;
-      let sort = utils.copy(this.sortStatus);
+      let sortStatus = utils.copy(this.sortStatus);
       if(this.sortStatus.type && this.sortStatus.prop == this.prop) {
-        sort.type = this.sortStatus.type == 'asc' ? 'desc' : 'asc';
+        sortStatus.type = this.sortStatus.type == 'asc' ? 'desc' : 'asc';
       } else {
-        sort.type = 'desc';
-        sort.prop = this.prop
+        sortStatus.type = 'desc';
+        sortStatus.prop = this.prop
       }
       let parent = this.$parent;
       if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
-        this.sortStatus = parent.triggerSort(sort);
+        this.sortStatus = parent.triggerSort(sortStatus, this.sort);
       }
     },
     init() {

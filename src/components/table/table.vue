@@ -12,7 +12,7 @@
           </th>
           <slot v-if="!columns.length&&!$scopedSlots.default" ></slot>
           <template v-else>
-            <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus" ></TableTh>
+            <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" ></TableTh>
           </template>
         </tr>
       </table>
@@ -104,6 +104,7 @@
         </tr>
       </table>
     </div>
+    <Loading :loading="loading"></Loading>
   </div>
 </template>
 <script>
@@ -134,6 +135,10 @@ export default {
       default: false
     },
     stripe: {
+      type: Boolean,
+      default: false
+    },
+    loading: {
       type: Boolean,
       default: false
     }
@@ -277,11 +282,18 @@ export default {
       this.sortStatus.prop = null;
       this.sortStatus.type = null;
     },
-    triggerSort(data){
-      // log(1)
-      this.sortStatus.prop = data.prop;
-      this.sortStatus.type = data.type;
-      this.$emit('sort', utils.copy(data));
+    triggerSort(sortStatus, triggerType){
+      this.sortStatus.prop = sortStatus.prop;
+      this.sortStatus.type = sortStatus.type;
+      if (triggerType === true) {
+        this.$emit('sort', utils.copy(sortStatus));
+      } else if (triggerType == 'auto'){
+        this.datas.sort((a, b)=>{
+          let ad = a[sortStatus.prop], bd = b[sortStatus.prop];
+          let index = ad == bd ? 0 : (ad > bd) ? 1 : -1;
+          return sortStatus.type == 'asc' ? index: -index;
+        })
+      }
       return this.sortStatus;
     },
     setSelection(data) {

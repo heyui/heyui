@@ -1,29 +1,14 @@
 <template>
   <div>
-    <p>
-      <button class="h-btn h-btn-s h-btn-blue"
-              @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
-    </p>
-    <Table :datas="datas" stripe checkbox @sort="triggerSort">
-      <TableItem title="序号" :tooltip="true"><template slot-scope="props">{{props.index}}</template></TableItem>
-      <TableItem title="姓名1" prop="name" :tooltip="true" :sort="true"></TableItem>
-      <TableItem title="年龄2" prop="age" :tooltip="true" content="测试" placement="right"></TableItem>
-      <TableItem title="地址" align="center">
+    <p> <Button color="blue" icon="h-icon-plus" @click="add(datas)">添加一行</Button></p>
+    <Table :datas="datas" stripe checkbox>
+      <TableItem title="Index" :tooltip="true"><template slot-scope="props">{{props.index}}</template></TableItem>
+      <TableItem title="Name" prop="name" sort="auto"></TableItem>
+      <TableItem title="Age" prop="age"></TableItem>
+      <TableItem title="Address" align="center" prop="address"></TableItem>
+      <TableItem title="Operate" :width="100">
         <template slot-scope="props">
-          <div v-tooltip>{{props.data.address}}</div>
-        </template>
-      </TableItem>
-      <TableItem title="操作" :width="100">
-        <template slot-scope="props">
-          <DropdownCustom :datas="menus" placement="bottom-end">
-            <span class="text-hover">更多</span>
-            <div slot="content" v-width="200">
-              <div v-padding="20">
-                <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
-                <div style="height:80px;margin-left:90px;line-height:80px;">LAN</div>
-              </div>
-            </div>
-          </DropdownCustom>
+          <DropdownMenu :datas="menus" placement="bottom-end" className="h-text-dropdown">操作</DropdownMenu>
         </template>
       </TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>
@@ -60,13 +45,6 @@ export default {
     },
     onselect(data) {
       log(data);
-    },
-    triggerSort(data) {
-      this.datas.sort((a, b)=>{
-        let ad = a[data.prop], bd = b[data.prop];
-        let index = ad == bd ? 0 : (ad > bd) ? 1 : -1;
-        return data.type == 'asc' ? index: -index;
-      })
     }
   }
 }

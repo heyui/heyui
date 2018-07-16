@@ -9,6 +9,12 @@
     <h3>TableItem定义模式</h3>
     <example demo="view/table2"></example>
 
+    <h3>排序与加载</h3>
+    <p>给<code>Column</code>设置<code>sort</code>为true，则使用自定义排序，根据sort事件对数据做出调整。</p>
+    <p>给<code>Column</code>设置<code>sort</code>为<code>auto</code>，则可以默认使用数据排序</p>
+    <p>使用<code>loading</code>可以设置数据的加载效果</p>
+    <example demo="view/table5"></example>
+
     <h3>Table open/hide row</h3>
     <p>给行数据 data 的某项设置 <code>_expand</code> 为 true，可以默认展开当前行</p>
     <example demo="view/table6"></example>
@@ -142,8 +148,8 @@
       <tr>
         <td>sort</td>
         <td>是否添加排序触发</td>
-        <td>Boolean</td>
-        <td>-</td>
+        <td>Boolean, String</td>
+        <td>true/auto</td>
         <td>false</td>
       </tr>
     </table>

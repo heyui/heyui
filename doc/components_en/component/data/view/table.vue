@@ -9,6 +9,12 @@
     <h3>TableItem definition mode</h3>
     <example demo="view/table2"></example>
 
+    <h3>Sort and loading</h3>
+    <p>Set <code>sort</code> to <code>true</code> for Column, then use custom sort to adjust data according to sort event.</p>
+    <p>Set <code>sort</code> to <code>auto</code> for Column, you can use data sorting by default.</p>
+    <p>use <code>loading</code> to set up the load effect of the data.</p>
+    <example demo="view/table5"></example>
+
     <h3>Table open/hide row</h3>
     <p>To a setting rows of data <code>_expand</code> is true, the current row can be expanded by default</p>
     <example demo="view/table6"></example>
@@ -142,8 +148,8 @@
       <tr>
         <td>sort</td>
         <td>Whether to add sort trigger</td>
-        <td>Boolean</td>
-        <td>-</td>
+        <td>Boolean, String</td>
+        <td>true/auto</td>
         <td>false</td>
       </tr>
     </table>

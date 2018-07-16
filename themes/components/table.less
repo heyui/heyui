@@ -131,23 +131,21 @@
     box-sizing: border-box;
     padding: 20px;
   }
-
   &-sort-handler{
-    position: absolute;
-    .middle-right;
-    right: 5px;
-    font-size: 14px;
+    display: inline-block;
     line-height: 1;
+    vertical-align: middle;
+    font-size: 12px;
     color: @gray1-color;
     transition: color @transition-time;
     th:hover &{
       color: @gray-color;
     }
-    >div{
+    >span{
       cursor: pointer;
-      &:hover {
-        color: @dark-color;
-      }
+      // &:hover {
+      //   color: @dark-color;
+      // }
       &.sort-selected{
         color: @primary-color;
       }
