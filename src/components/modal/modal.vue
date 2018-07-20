@@ -79,8 +79,10 @@ export default {
   },
   beforeDestroy() {
     let el = this.el;
-    el.style.display = 'none';
-    this.$el.appendChild(el);
+    if(el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+    }
   },
   methods: {
     show() {
