@@ -22,7 +22,7 @@
     <h4>全局less变量定义引用</h4>
     <p>在自己定义的 var.less 文件中引用 heyui 的 var.less 文件，并按照自己的需求重新定义更换主题，然后在hey.js脚手架配置文件中设定全局引用文件。</p>
     <p>var.less，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less" target="_blank">示例</a></p>
-    <codes type="less">@import (less) "~/heyui/themes/var.less";
+    <codes type="less">@import (less) "~heyui/themes/var.less";
 //重新定义主题
 @primary-color: #FDA729;
 @red-color: #D64244;
@@ -63,7 +63,17 @@ new Vue({
 //使用这种方式引用，可以在自己的less文件中使用var.less定义的变量。
 @import (less) "自己的less文件";
 </codes>
+
     <p>注意：使用这种引用方式，在 Vue 文件中将无法使用 var.less 文件中的变量。</p>
+    <h4>引入 HeyUI</h4>
+    <p>与使用hey-cli脚手架引入HeyUI的方式相同。</p>
+    <codes type="less">import Vue from 'vue';
+import HeyUI from 'heyui';
+Vue.use(HeyUI);
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});</codes>
 
     <h3>快速搭建</h3>
     <p>如果你需要搭建一个新的项目，我们建议你直接使用我们的heyui-admin进行基础搭建。</p>
