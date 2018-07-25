@@ -76,7 +76,9 @@ class Notify {
     let $body = document.createElement(`div`);
     utils.addClass($body, notifyCls);
     if (param.hasMask) {
-      utils.addClass($body, notifyHasMaskCls);
+      utils.addClass($body, 'h-notify-has-mask');
+    } else {
+      utils.addClass($body, 'h-notify-no-mask');
     }
     // if (param.type == 'h-modal') {
     //   utils.addClass($body, 'h-dropdown-common-container');
