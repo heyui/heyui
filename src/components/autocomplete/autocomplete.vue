@@ -352,7 +352,10 @@ export default {
       }
     },
     keydownHandle(event) {
-      if (this.endInput && event.key == this.endInput) {
+      let code = event.keyCode || event.which || event.charCode;
+      if (code == 8 && event.target.value === '' && this.objects.length > 0) {
+        this.remove(this.objects[this.objects.length-1]);
+      } else if (this.endInput && event.key == this.endInput) {
         event.preventDefault();
         this.enterHandle(event);
       } 
