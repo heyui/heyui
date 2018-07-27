@@ -4,7 +4,7 @@
       <span>{{v}}</span>
       <i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
     </span>
-    <input v-if="!readonly" type="text" class="h-taginput-input" @focus="focusing=true" v-model="tagvalue" @blur="blur" @keyup.enter="add" v-wordlimit="wordlimit" :placeholder="placeholder" />
+    <input v-if="!readonly" type="text" class="h-taginput-input" @focus="focusing=true" v-model="tagvalue" @blur="blur" @keyup.enter="add"  @keydown.delete="removeLast" v-wordlimit="wordlimit" :placeholder="placeholder" />
   </div>
 </template>
 <script>
@@ -51,6 +51,11 @@ export default {
     };
   },
   methods: {
+    removeLast(event) {
+      if (event.target.value === '' && this.values.length){
+        this.remove(this.values.length - 1);
+      }
+    },
     remove(index) {
       if (this.readonly) return;
       let value = utils.copy(this.values);
