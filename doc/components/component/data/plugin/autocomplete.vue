@@ -247,6 +247,13 @@
         <td>-</td>
         <td>100</td>
       </tr>
+      <tr>
+        <td>showDropdownWhenNoResult</td>
+        <td>当无数据的时候，是否展示下拉列表</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
   </div>
 </template>

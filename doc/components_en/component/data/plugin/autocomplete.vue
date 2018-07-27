@@ -246,6 +246,13 @@
         <td>-</td>
         <td>100</td>
       </tr>
+      <tr>
+        <td>showDropdownWhenNoResult</td>
+        <td>Whether the dropdown list is displayed when there is no data</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
   </div>
 </template>

@@ -105,7 +105,11 @@ export default {
       type: Number,
       default: 100
     },
-    endInput: String
+    endInput: String,
+    showDropdownWhenNoResult: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
@@ -403,7 +407,7 @@ export default {
       }
       if (value.length >= this.param.minWord) {
         this.searchTimeout = setTimeout(() => {
-          if (this.dropdown) {
+          if (this.dropdown && this.results.length) {
             this.dropdown.show()
           }
           if (utils.isFunction(this.param.loadData)) {
@@ -574,6 +578,14 @@ export default {
       let results = []
       for (let data of datas) {
         results.push(this.getValue(data))
+      }
+
+      if (results.length == 0 && !this.showDropdownWhenNoResult) {
+        this.$nextTick(()=>{
+          if (this.dropdown) {
+            this.dropdown.hide();
+          }
+        })
       }
       return results
     }
