@@ -58,6 +58,7 @@ export default {
       let that = this;
       this.dropdown = new Dropdown(el, {
         content,
+        className: `${this.className}-dropdown-container`,
         offset: this.offset,
         trigger: this.trigger,
         equalWidth: this.equalWidth,
