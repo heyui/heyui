@@ -7,6 +7,7 @@
     
     <h3>Component</h3>
     <p>Use basic Button components to implement various button styles.</p>
+    <p class="tip">If you need to use special event modifiers such as <code>@click.stop</code>, please use button in the native way.</p>
     <example demo="basic/button2"></example>
 
     <h3>class list</h3>

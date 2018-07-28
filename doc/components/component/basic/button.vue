@@ -7,6 +7,7 @@
     
     <h3>组件调用</h3>
     <p>使用基本的Button组件实现各种button的样式。</p>
+    <p class="tip">如果需要使用<code>@click.stop</code>等特殊事件修饰符，请使用上面原生的方式调用button。</p>
     <example demo="basic/button2"></example>
 
     <h3>class 集合</h3>
