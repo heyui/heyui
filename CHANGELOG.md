@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/heyui/heyui/compare/v1.5.0...v1.6.0) (2018-07-28)
+
+
+### Bug Fixes
+
+* modal add no mask class ([c23ecfc](https://github.com/heyui/heyui/commit/c23ecfc))
+* optimize style ([79bd2d3](https://github.com/heyui/heyui/commit/79bd2d3))
+* **$Loading:** fix global loading lose efficacy ([59c531f](https://github.com/heyui/heyui/commit/59c531f))
+* **DropdownCustom:** add className on dropdown container dom ([49209d6](https://github.com/heyui/heyui/commit/49209d6))
+* **loading:** fix loading use parent class control styles ([fe50a9d](https://github.com/heyui/heyui/commit/fe50a9d))
+* **modal:** add exsit judge when beforeDestroy ([381b628](https://github.com/heyui/heyui/commit/381b628))
+
+
+### Features
+
+* autocomplete add delete keydown handle ([a3f3887](https://github.com/heyui/heyui/commit/a3f3887))
+* taginput add delete handler ([df98724](https://github.com/heyui/heyui/commit/df98724))
+* **AutoComplete:** new property ([f33795d](https://github.com/heyui/heyui/commit/f33795d))
+* **notice:** when mouse over notice will stop close handler ([aa133a8](https://github.com/heyui/heyui/commit/aa133a8))
+* **table:** add table trclick event, and property selectWhenClickTr ([fdf7c09](https://github.com/heyui/heyui/commit/fdf7c09))
+* **TextEllipsis:** use Tooltip when hide ([7e21c9e](https://github.com/heyui/heyui/commit/7e21c9e))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/heyui/heyui/compare/v1.4.0...v1.5.0) (2018-07-16)
 
