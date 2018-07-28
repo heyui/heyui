@@ -21,6 +21,7 @@ function Loading(content = "") {
     LoadingDom.querySelector(`.${loadingCls}-text`).innerText = content;
   }
   utils.addClass(LoadingDom, `${loadingCls}-loading`);
+  utils.addClass(LoadingDom, `${loadingCls}-visible`);
 }
 
 function loading(content) {
@@ -30,6 +31,9 @@ function loading(content) {
 loading.close = () => {
   if (LoadingDom) {
     utils.removeClass(LoadingDom, `${loadingCls}-loading`);
+    setTimeout(() => {
+      utils.removeClass(LoadingDom, `${loadingCls}-visible`);
+    }, 500);
   }
 };
 
