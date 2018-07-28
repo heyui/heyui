@@ -25,13 +25,14 @@ const notifyContainerCls = 'h-notify-container';
 const notifyBodyCls = 'h-notify-body';
 const notifyCloseCls = 'h-notify-close';
 const notifyMaskCls = 'h-notify-mask';
-const notifyHasMaskCls = 'h-notify-has-mask';
 const notifyShowCls = 'h-notify-show';
 const closeIcon = 'h-icon-close';
 
 class Notify {
   constructor(orignalparam) {
     const that = this;
+    this.mouseOver = false;
+    this.closeTimeout = false;
     let param = this.param = utils.extend({}, Default, orignalparam, true);
     let html = '';
     if (param.hasMask) {
@@ -211,8 +212,21 @@ class Notify {
       param.events.init.call(null, that, $content);
     }
     if (param.timeout) {
-      window.setTimeout(function () {
-        that.close();
+      $body.addEventListener('mouseover', () => {
+        this.mouseOver = true;
+      });
+      $body.addEventListener('mouseleave', () => {
+        this.mouseOver = false;
+        if (this.closeTimeout) {
+          that.close();
+        }
+      });
+
+      window.setTimeout(() => {
+        this.closeTimeout = true;
+        if (!this.mouseOver) {
+          that.close();
+        }
       }, param.timeout);
     }
     if (param.closeOnMask && param.hasMask) {
