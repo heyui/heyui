@@ -152,6 +152,13 @@
         <td>true/auto</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectWhenClickTr</td>
+        <td>When clicking on tr, trigger the checkbox switch</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Table Event</h3>
@@ -166,11 +173,15 @@
       </tr>
       <tr>
         <td>select</td>
-        <td>Events that fire when the checkbox is changed</td>
+        <td>Events that fire when checkbox is changed</td>
       </tr>
       <tr>
         <td>selectAll</td>
-        <td>When the checkbox is selected</td>
+        <td>When checkbox is selected</td>
+      </tr>
+      <tr>
+        <td>trclick</td>
+        <td>When tr is clicked</td>
       </tr>
     </table>
 

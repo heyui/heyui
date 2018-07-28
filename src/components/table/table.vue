@@ -31,7 +31,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -55,7 +55,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -72,7 +72,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
@@ -139,6 +139,10 @@ export default {
       default: false
     },
     loading: {
+      type: Boolean,
+      default: false
+    },
+    selectWhenClickTr: {
       type: Boolean,
       default: false
     }
@@ -370,6 +374,17 @@ export default {
         }
       }
       this.computeColumns = columns;
+    },
+    triggerTrClicked(data, event) {
+      if(this.selectWhenClickTr && !utils.hasClass(event.target, 'h-checkbox-native')) {
+        let list = this.checks;
+        if (list.some(item => item == data)) {
+          list.splice(list.indexOf(data), 1);
+        } else {
+          list.push(data);
+        }
+      }
+      this.$emit('trclick', data);
     }
   },
   computed: {

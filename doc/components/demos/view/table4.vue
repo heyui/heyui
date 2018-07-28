@@ -4,7 +4,7 @@
       <button class="h-btn h-btn-s h-btn-blue"
               @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
     </p>
-    <Table :datas="datas" :height="400" @select="onselect" checkbox>
+    <Table :datas="datas" :height="400" @select="onselect" checkbox @trclick="trClick" selectWhenClickTr>
       <TableItem title="ID" prop="id" align="center" :width="80" fixed="left"></TableItem>
       <TableItem title="年龄" prop="age" :width="150"></TableItem>
       <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
@@ -56,7 +56,10 @@ export default {
       datas.push({ id: 7, name: '添加', age: 12, address: "然后添加的" });
     },
     onselect(data) {
-      log(data);
+      log('onselect', data);
+    },
+    trClick(data) {
+      log('trClick', data);
     }
   }
 }

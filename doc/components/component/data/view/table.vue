@@ -152,6 +152,13 @@
         <td>true/auto</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectWhenClickTr</td>
+        <td>当点击tr的时候，触发checkbox选中切换</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Table 事件</h3>
@@ -171,6 +178,10 @@
       <tr>
         <td>selectAll</td>
         <td>当checkbox全选的时候</td>
+      </tr>
+      <tr>
+        <td>trclick</td>
+        <td>当tr被点击的时候</td>
       </tr>
     </table>
 

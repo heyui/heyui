@@ -37,7 +37,16 @@ export default {
       }
     }
     return h(
-      'tr', {}, tds
+      'tr', {
+        on: {
+          click: this.clickHandler
+        },
+      }, tds
     )
+  },
+  methods: {
+    clickHandler(event) {
+      this.$emit('click', this.datas, event)
+    }
   }
 }
