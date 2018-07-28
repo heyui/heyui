@@ -1,7 +1,7 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span class="text-ellipsis-limit-text" :key="keyIndex">{{text}}</span>
+    <span class="text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :content="text">{{text}}</span>
     <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
@@ -17,12 +17,18 @@ export default {
     isLimitHeight: {
       type: Boolean,
       default: true
-    }
+    },
+    useTooltip: {
+      type: Boolean,
+      default: false
+    },
+    tooltipTheme: String
   },
   data() {
     return {
       keyIndex: 0,
-      oversize: false
+      oversize: false,
+      isHide: false
     };
   },
   watch: {
@@ -64,8 +70,10 @@ export default {
               n--;
             }
             this.$emit('hide');
+            this.isHide = true;
           } else {
             this.$emit('show');
+            this.isHide = false;
           }
         }
       })

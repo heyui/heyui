@@ -14,6 +14,9 @@
 
     <h3>Adapt to line breaks</h3>
     <example demo="other/textellipsis4"></example>
+
+    <h3>use tooltip when hide</h3>
+    <example demo="other/textellipsis5"></example>
     
 
     <h3>TextEllipsis Property</h3>
@@ -45,6 +48,20 @@
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>
+      </tr>
+      <tr>
+        <td>useTooltip</td>
+        <td>use tooltip when text hide</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>tooltipTheme</td>
+        <td>tooltip theme</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
       </tr>
     </table>
 

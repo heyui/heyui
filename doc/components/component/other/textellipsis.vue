@@ -14,6 +14,9 @@
 
     <h3>适应换行</h3>
     <example demo="other/textellipsis4"></example>
+
+    <h3>当被隐藏文字的时候，使用tooltip提示</h3>
+    <example demo="other/textellipsis5"></example>
     
 
     <h3>TextEllipsis 参数</h3>
@@ -45,6 +48,20 @@
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>
+      </tr>
+      <tr>
+        <td>useTooltip</td>
+        <td>是否使用tooltip</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>tooltipTheme</td>
+        <td>tooltip的风格</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
       </tr>
     </table>
 

@@ -241,6 +241,7 @@ export default {
   'otherTextellipsis2': resolve => require.ensure([], require => require('./other/textellipsis2'), 'other'),
   'otherTextellipsis3': resolve => require.ensure([], require => require('./other/textellipsis3'), 'other'),
   'otherTextellipsis4': resolve => require.ensure([], require => require('./other/textellipsis4'), 'other'),
+  'otherTextellipsis5': resolve => require.ensure([], require => require('./other/textellipsis5'), 'other'),
   'otherAffix1': resolve => require.ensure([], require => require('./other/affix1'), 'other'),
   'otherAffix2': resolve => require.ensure([], require => require('./other/affix2'), 'other'),
   'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),
