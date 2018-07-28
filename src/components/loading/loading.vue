@@ -40,24 +40,17 @@ export default {
           utils.addClass(this.$el, 'h-loading-loading');
           utils.addClass(this.$el, 'h-loading-visible');
           let parent = this.$el.parentNode;
-          let style = window.getComputedStyle(parent);
-          let position = style.position;
-          if (position === 'static') {
-            parent.style.position = 'relative';
-            this.isSetStyle = true;
-          }
-          if(!style.height && !style.minHeight) {
-            parent.style.minHeight = this.minHeight ? `${this.minHeight}px` : '50px';
+          if(parent) {
+            utils.addClass(parent, 'h-loading-parent');
           }
         });
       } else {
         utils.removeClass(this.$el, 'h-loading-loading');
         setTimeout(() => {
           utils.removeClass(this.$el, 'h-loading-visible');
-          if (this.isSetStyle) {
-            let parent = this.$el.parentNode;
-            parent.style.minHeight = '';
-            parent.style.position = '';
+          let parent = this.$el.parentNode;
+          if(parent) {
+            utils.removeClass(parent, 'h-loading-parent');
           }
         }, 500);
       }
