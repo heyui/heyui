@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>value: {{value}}</p>
-    <TagInput v-model="value" type="string" split="," :limit="10" :wordlimit="20"></TagInput>
+    <TagInput v-model="value" type="string" split="," placeholder="please input"></TagInput>
   </div>
 </template>
 
