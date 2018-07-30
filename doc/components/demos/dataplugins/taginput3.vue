@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>value: {{value}}</p>
-    <TagInput v-model="value" :limit="10" :wordlimit="20"></TagInput>
+    <TagInput v-model="value" type="string" split="," :limit="10" :wordlimit="20"></TagInput>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      value: ['test']
+      value: "test,hi"
     }
   }
 }

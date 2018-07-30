@@ -4,6 +4,8 @@
     <h3>基本</h3>
     <example demo="dataplugins/taginput1"></example>
     
+    <h3>字符串分割</h3>
+    <example demo="dataplugins/taginput3"></example>
   
     <h3>只读</h3>
     <example demo="dataplugins/taginput2"></example>

@@ -1,6 +1,6 @@
 <template>
   <div :class="taginputCls">
-    <span v-for="(v, index) of values" :key="v">
+    <span v-for="(v, index) of values" :key="v+index">
       <span>{{v}}</span>
       <i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
     </span>
@@ -42,7 +42,7 @@ export default {
       type: Number,
       default: 10000
     },
-    value: [Array, String]
+    value: [Array, String, Number]
   },
   data() {
     return {
@@ -75,7 +75,11 @@ export default {
     },
     setvalue(value) {
       if (this.type == 'string') {
-        value = value.join(this.split);
+        if (value.length == 0){
+          value = null;
+        } else {
+          value = value.join(this.split);
+        }
       }
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
@@ -100,8 +104,12 @@ export default {
     values() {
       if (this.type == 'Array') {
         return this.value || [];
+      } else {
+        if (utils.isNull(this.value) || this.value === ''){
+          return [];
+        }
+        return new String(this.value).split(this.split);
       }
-      return (this.value || '').split(this.split);
     }
   }
 };

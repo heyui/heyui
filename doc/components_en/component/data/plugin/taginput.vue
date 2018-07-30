@@ -3,6 +3,9 @@
     <h2>TagInput</h2>
     <h3>Basic</h3>
     <example demo="dataplugins/taginput1"></example>
+
+    <h3>String split</h3>
+    <example demo="dataplugins/taginput3"></example>
   
     <h3>Readonly</h3>
     <example demo="dataplugins/taginput2"></example>
