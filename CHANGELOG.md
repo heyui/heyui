@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/heyui/heyui/compare/v1.6.0...v1.6.1) (2018-07-30)
+
+
+### Bug Fixes
+
+* **taginput:** fix empty string split to array with one length ([7780d84](https://github.com/heyui/heyui/commit/7780d84))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/heyui/heyui/compare/v1.5.0...v1.6.0) (2018-07-28)
 
