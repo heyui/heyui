@@ -12,7 +12,7 @@ export default {
     }
   },
   methods: {
-    trigger(code) {
+    trigger(code, data) {
       this.$Message.info(`您点击了${code}`);
     }
   },
