@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.3"></a>
+## [1.6.3](https://github.com/heyui/heyui/compare/v1.6.2...v1.6.3) (2018-07-31)
+
+
+### Bug Fixes
+
+* **AutoComplete:** update dropdown position ([f56b524](https://github.com/heyui/heyui/commit/f56b524))
+* **dropdown:** add transform-origin with diff placement ([ddb26c8](https://github.com/heyui/heyui/commit/ddb26c8))
+* **dropdownmenu:** click event add data param ([584e55f](https://github.com/heyui/heyui/commit/584e55f))
+* **Loading:** remove fixed width ([78ee973](https://github.com/heyui/heyui/commit/78ee973))
+
+
+
 <a name="1.6.2"></a>
 ## [1.6.2](https://github.com/heyui/heyui/compare/v1.6.1...v1.6.2) (2018-07-30)
 
