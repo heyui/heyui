@@ -4,7 +4,7 @@
       <button class="h-btn h-btn-text" @click="update">修改值</button>
     </p>
     <div v-width="300">
-      <AutoComplete dict="simple" v-model="value" @change="onChange"></AutoComplete>
+      <AutoComplete dict="simple" v-model="value" @change="onChange" :showDropdownWhenNoResult="false"></AutoComplete>
     </div>
   </div>
 </template>
