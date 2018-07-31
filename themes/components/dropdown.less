@@ -23,13 +23,19 @@
   &[x-placement=top-start] .@{dropdown-prefix}-inner {
     transform-origin: bottom left;
   }
+  &[x-placement=top] .@{dropdown-prefix}-inner {
+    transform-origin: bottom;
+  }
+  &[x-placement=top-end] .@{dropdown-prefix}-inner {
+    transform-origin: bottom right;
+  }
   &[x-placement=bottom-start] .@{dropdown-prefix}-inner {
     transform-origin: top left;
   }
   &[x-placement=bottom-end] .@{dropdown-prefix}-inner {
     transform-origin: top right;
   }
-  &[x-placement=bottom-center] .@{dropdown-prefix}-inner {
-    transform-origin: top center;
+  &[x-placement=bottom] .@{dropdown-prefix}-inner {
+    transform-origin: top;
   }
 }
