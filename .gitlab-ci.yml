@@ -8,4 +8,4 @@ deploy:
     - master
   tags:
     - heyui
-  when: on_success
+  when: manual
