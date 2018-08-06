@@ -13,12 +13,21 @@
         <a target="_blank" href="http://admin.heyui.top">Admin</a>
         <!-- <router-link to="/about">团队</router-link> -->
         <ButtonGroup class="change-lang">
-          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
-          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui/issues"><i class="h-icon-message"></i></a></Button>
+          <Button size="s" @click="goGithub"><i class="h-icon-github link"></i></Button>
+          <Button size="s" @click="openWeixin"><i class="h-icon-message link"></i></Button>
           <Button @click="changeLang" size="s"><span class="link">English</span></Button>
         </ButtonGroup>
       </div>
     </div>
+    <Modal v-model="showModel">
+      <div slot="header">加入HeyUI微信交流群</div>
+      <div>
+        <p>微信群</p>
+        <div>
+
+        </div>
+      </div>
+    </Modal>
   </header>
 </template>
 
@@ -29,7 +38,8 @@ export default {
     return {
       pass: '',
       error: false,
-      search: null
+      search: null,
+      showModel: false
     }
   },
   methods: {
@@ -42,6 +52,12 @@ export default {
     },
     go(link) {
       this.$router.go(link);
+    },
+    goGithub() {
+      window.open('https://github.com/heyui/heyui')
+    },
+    openWeixin() {
+      this.showModel = true;
     },
     goSearch(data) {
       if(!data.key) return;
