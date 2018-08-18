@@ -19,12 +19,13 @@
         </ButtonGroup>
       </div>
     </div>
-    <Modal v-model="showModel">
-      <div slot="header">加入HeyUI微信交流群</div>
+    <Modal v-model="showModel" class-name="weixin-modal">
+      <div slot="header">加入 HeyUI 微信交流群</div>
       <div>
-        <p>微信群</p>
-        <div>
-
+        <!-- <p>微信群</p> -->
+        <div class="weixin-image">
+          <img src="../../static/images/qrcode.png"/>
+          <p>该二维码8月25日前有效，失效后，记得提醒我。</p>
         </div>
       </div>
     </Modal>
