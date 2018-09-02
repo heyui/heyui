@@ -279,6 +279,9 @@ export default {
     });
   },
   methods: {
+    invereSelection() {
+      this.checks = this.datas.filter(item => this.checks.indexOf(item) == -1);
+    },
     clearSelection() {
       this.checks = [];
     },
