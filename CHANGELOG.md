@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/heyui/heyui/compare/v1.6.3...v1.7.0) (2018-09-02)
+
+
+### Features
+
+* weixin stash ([9f3e2c6](https://github.com/heyui/heyui/commit/9f3e2c6))
+* **Table:** add invereSelection function ([db965bd](https://github.com/heyui/heyui/commit/db965bd)), closes [#19](https://github.com/heyui/heyui/issues/19)
+* **Table:** add trdblclick on TableTr ([5f8fcf7](https://github.com/heyui/heyui/commit/5f8fcf7)), closes [#17](https://github.com/heyui/heyui/issues/17)
+
+
+
 <a name="1.6.3"></a>
 ## [1.6.3](https://github.com/heyui/heyui/compare/v1.6.2...v1.6.3) (2018-07-31)
 
