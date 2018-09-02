@@ -31,7 +31,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -55,7 +55,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                 <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -72,7 +72,7 @@
           </colgroup>
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
+              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas" :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1}">
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
@@ -384,7 +384,10 @@ export default {
           list.push(data);
         }
       }
-      this.$emit('trclick', data);
+      this.$emit('trclick', data, event);
+    },
+    triggerTrDblclicked(data, event) {
+      this.$emit('trdblclick', data, event);
     }
   },
   computed: {

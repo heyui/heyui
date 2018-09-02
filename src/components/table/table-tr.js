@@ -39,7 +39,8 @@ export default {
     return h(
       'tr', {
         on: {
-          click: this.clickHandler
+          click: this.clickHandler,
+          dblclick: this.dblclickHandler,
         },
       }, tds
     )
@@ -47,6 +48,9 @@ export default {
   methods: {
     clickHandler(event) {
       this.$emit('click', this.datas, event)
+    },
+    dblclickHandler(event) {
+      this.$emit('dblclick', this.datas, event)
     }
   }
 }
