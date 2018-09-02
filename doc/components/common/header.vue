@@ -24,8 +24,8 @@
       <div>
         <!-- <p>微信群</p> -->
         <div class="weixin-image">
-          <img src="../../static/images/qrcode.png"/>
-          <p>该二维码8月25日前有效，失效后，记得提醒我。</p>
+          <img src="../../static/images/qrcode.jpg"/>
+          <p>该二维码9月9日前有效。</p>
         </div>
       </div>
     </Modal>
