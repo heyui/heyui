@@ -183,6 +183,10 @@
         <td>trclick</td>
         <td>当tr被点击的时候</td>
       </tr>
+      <tr>
+        <td>trdblclick</td>
+        <td>当tr被双击的时候</td>
+      </tr>
     </table>
 
     <h3>Table 方法</h3>
@@ -202,6 +206,10 @@
       <tr>
         <td>setSelection</td>
         <td>设置选中的值</td>
+      </tr>
+      <tr>
+        <td>inverseSelection</td>
+        <td>设置选中的值反选</td>
       </tr>
     </table>
   </div>

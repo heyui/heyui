@@ -183,6 +183,10 @@
         <td>trclick</td>
         <td>When tr is clicked</td>
       </tr>
+      <tr>
+        <td>trdblclick</td>
+        <td>When tr is double clicked</td>
+      </tr>
     </table>
 
     <h3>Table Method</h3>
@@ -202,6 +206,10 @@
       <tr>
         <td>setSelection</td>
         <td>Set the selected value</td>
+      </tr>
+      <tr>
+        <td>inverseSelection</td>
+        <td>inverse selection</td>
       </tr>
     </table>
   </div>
