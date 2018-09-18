@@ -53,6 +53,13 @@
         <td>-</td>
         <td>true</td>
       </tr>
+      <tr>
+        <td>range</td>
+        <td>define the range of slider</td>
+        <td>{start: Number, end: Number}</td>
+        <td>-</td>
+        <td>{start: 0, end: 100}</td>
+      </tr>
     </table>
   </div>
 </template>

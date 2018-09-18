@@ -53,6 +53,13 @@
         <td>-</td>
         <td>true</td>
       </tr>
+      <tr>
+        <td>range</td>
+        <td>设置slider的数值范围</td>
+        <td>{start: Number, end: Number}</td>
+        <td>-</td>
+        <td>{start: 0, end: 100}</td>
+      </tr>
     </table>
   </div>
 </template>

@@ -3,8 +3,8 @@
     <div class="h-slider-container">
       <div class="h-slider-line"></div>
       <div class="h-slider-track" :style="trackStyle"></div>
-      <div class="h-slider-node h-slider-start-node" @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': values.start + '%'}"></div>
-      <div class="h-slider-node h-slider-end-node" @mousedown="mousedown('end', $event)" :style="{'left': values.end + '%'}"></div>
+      <div class="h-slider-node h-slider-start-node" @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
+      <div class="h-slider-node h-slider-end-node" @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
       <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
       <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip&&hasStart">{{showContent(values.start)}}</span>
     </div>
@@ -39,6 +39,12 @@ export default {
     showtip: {
       type: Boolean,
       default: true
+    },
+    range: {
+      default: ()=>({
+        start: 0,
+        end: 100
+      })
     }
   },
   data() {
@@ -84,7 +90,7 @@ export default {
       if (this.show) {
         return this.show.call(null, value);
       } else {
-        return value || 0;
+        return value || this.range.start;
       }
     },
     mousedown(type, event) {
@@ -101,14 +107,15 @@ export default {
       if(this.readonly) return;
       let postition = event.clientX - this.eventControl.x;
       if (postition == 0) return;
-      let nowPosition = parseInt((postition / this.$el.querySelector('.h-slider-line').clientWidth) * 100, 10);
+      let nowPosition = postition / this.$el.querySelector('.h-slider-line').clientWidth;
+      nowPosition = parseInt(nowPosition * (this.range.end - this.range.start), 10);
       nowPosition = this.eventControl.init + nowPosition;
       let positionStep = nowPosition % this.step;
       if (positionStep != 0) {
         nowPosition = nowPosition - positionStep;
       }
-      nowPosition = Math.max(nowPosition, 0);
-      nowPosition = Math.min(nowPosition, 100);
+      nowPosition = Math.max(nowPosition, this.range.start);
+      nowPosition = Math.min(nowPosition, this.range.end);
       let nowValue = null;
       let type = this.eventControl.type;
       if (!this.hasStart) {
@@ -162,21 +169,29 @@ export default {
       return this.multiple;
     },
     trackStyle() {
+      let dis = this.range.end - this.range.start;
       return {
-        left: `${this.values.start}%`,
-        right: `${100 - this.values.end}%`,
+        left: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
+        right: `${parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`,
+      }
+    },
+    nodePosition() {
+      let dis = this.range.end - this.range.start;
+      return {
+        start: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
+        end: `${100 - parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`,
       }
     },
     values() {
       if (!this.multiple) {
         return {
-          start: 0,
-          end: this.value || 0
+          start: this.range.start,
+          end: this.value || this.range.start
         }
       }
       return utils.extend({
-        start: 0,
-        end: 0
+        start: this.range.start,
+        end: this.range.start
       }, this.value);
     },
     sliderCls() {
