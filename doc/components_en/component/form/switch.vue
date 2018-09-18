@@ -1,8 +1,11 @@
 <template>
   <div class="doc">
-    <h2>Switch 开关</h2>
+    <h2>Switch</h2>
     <h3>Basic</h3>
     <example demo="form/switch2"></example>
+
+    <h3>self defined true and false value</h3>
+    <example demo="form/switch1"></example>
 
     <h3>Disabled</h3>
     <example demo="form/switch3"></example>
@@ -27,6 +30,20 @@
         <td>disabled</td>
         <td></td>
         <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>trueValue</td>
+        <td></td>
+        <td>-</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>falseValue</td>
+        <td></td>
+        <td>-</td>
         <td>-</td>
         <td>false</td>
       </tr>

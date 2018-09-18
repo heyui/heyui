@@ -1,7 +1,8 @@
 <template>
   <div>
+    <div>{{check1}}</div>
     <div><h-switch v-model="check1">测试</h-switch></div>
-    <br>
+    <div>{{check2}}</div>
     <div><h-switch v-model="check2" :small="true">测试</h-switch></div>
   </div>
 </template>

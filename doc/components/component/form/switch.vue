@@ -4,6 +4,9 @@
     <h3>基本</h3>
     <example demo="form/switch2"></example>
 
+    <h3>自定义true与false的值</h3>
+    <example demo="form/switch1"></example>
+
     <h3>禁用</h3>
     <example demo="form/switch3"></example>
 
@@ -27,6 +30,20 @@
         <td>disabled</td>
         <td>是否禁用</td>
         <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>trueValue</td>
+        <td>选中的值</td>
+        <td>-</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>falseValue</td>
+        <td>未选中的值</td>
+        <td>-</td>
         <td>-</td>
         <td>false</td>
       </tr>

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <label><span class="h-switch" :checked="check" @click="check=!check"/></span>{{check}}</label>
+    <div>{{check1}}</div>
+    <div><h-switch v-model="check1" :trueValue="1" :falseValue="2">1/2</h-switch></div>
+    <div>{{check2}}</div>
+    <div><h-switch v-model="check2" trueValue="yes" falseValue="no" :small="true">yes/no</h-switch></div>
   </div>
 </template>
 
@@ -9,7 +12,8 @@
 export default {
   data() {
     return {
-      check: false,
+      check1: 2,
+      check2: 'no',
     }
   }
 }

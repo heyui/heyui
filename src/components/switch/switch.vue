@@ -1,5 +1,5 @@
 <template>
-  <label class="h-switch" :class="{'h-switch-small':small}"><span class="h-switch-span" :checked="value" :disabled="disabled" @click="setvalue(!value)"></span><span class="h-switch-text"><slot></slot></span></label>
+  <label class="h-switch" :class="{'h-switch-small':small}"><span class="h-switch-span" :checked="isChecked" :disabled="disabled" @click="setvalue"></span><span class="h-switch-text"><slot></slot></span></label>
 </template>
 <script>
 export default {
@@ -14,16 +14,28 @@ export default {
       default: false
     },
     value: {
-      type: Boolean,
+      type: [Boolean, String, Number],
+      default: false
+    },
+    trueValue: {
+      default: true
+    },
+    falseValue: {
       default: false
     }
   },
   data() {
     return {};
   },
+  computed: {
+    isChecked() {
+      return this.value == this.trueValue;
+    }
+  },
   methods: {
-    setvalue(value) {
+    setvalue() {
       if (this.disabled) return;
+      let value = this.isChecked ? this.falseValue : this.trueValue;
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.value);
