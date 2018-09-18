@@ -14,7 +14,7 @@
         <!-- <router-link to="/about">团队</router-link> -->
         <ButtonGroup class="change-lang">
           <Button size="s" @click="goGithub"><i class="h-icon-github link"></i></Button>
-          <Button size="s" @click="openWeixin"><i class="h-icon-message link"></i></Button>
+          <Button size="s" @click="openWeixin"><span class="link">微信</span></Button>
           <Button @click="changeLang" size="s"><span class="link">English</span></Button>
         </ButtonGroup>
       </div>
@@ -24,8 +24,8 @@
       <div>
         <!-- <p>微信群</p> -->
         <div class="weixin-image">
-          <img src="../../static/images/qrcode.jpg"/>
-          <p>该二维码9月9日前有效。</p>
+          <img src="../../static/images/qrcode1.jpg"/>
+          <p>该二维码9月25日前有效。</p>
         </div>
       </div>
     </Modal>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import utils from 'hey-utils';
 
 export default {
   data() {
@@ -42,6 +43,28 @@ export default {
       search: null,
       showModel: false
     }
+  },
+  created() {
+    this.$nextTick(()=>{
+      if(utils.getLocal('wenxinNotice')) return;
+      utils.saveLocal('wenxinNotice', 1);
+      this.$Notice({
+        timeout: 0,
+        title: '加入 HeyUI 微信交流群',
+        content: '拥有更快速更详细的交流，加入我们的微信交流群。',
+        buttons: [{
+          type: 'confirm',
+          color: 'primary',
+          name: '查看'
+        }],
+        events: {
+          confirm: (notice)=> {
+            this.openWeixin();
+            notice.close();
+          }
+        }
+      })
+    })
   },
   methods: {
     changeLang() {
