@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.8.1"></a>
+## [1.8.1](https://github.com/heyui/heyui/compare/v1.8.0...v1.8.1) (2018-09-22)
+
+
+### Bug Fixes
+
+* **NumberInput:** change value not work ([3d68df8](https://github.com/heyui/heyui/commit/3d68df8)), closes [#30](https://github.com/heyui/heyui/issues/30)
+* **tagInput:** this.locale -> this.t ([ff12ae3](https://github.com/heyui/heyui/commit/ff12ae3)), closes [#22](https://github.com/heyui/heyui/issues/22)
+* **timeline:** mark icon location correct ([b4aefdd](https://github.com/heyui/heyui/commit/b4aefdd)), closes [#27](https://github.com/heyui/heyui/issues/27)
+
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/heyui/heyui/compare/v1.7.0...v1.8.0) (2018-09-18)
 
