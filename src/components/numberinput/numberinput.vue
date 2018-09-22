@@ -56,6 +56,7 @@ export default {
       // this.editValue = this.value;
       if(this.valueBak != this.value) {
         this.editValue = this.value;
+        this.valueBak = this.value;
       }
     }
   },
