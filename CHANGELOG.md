@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.8.2"></a>
+## [1.8.2](https://github.com/heyui/heyui/compare/v1.8.1...v1.8.2) (2018-09-22)
+
+
+### Bug Fixes
+
+* **Switch:** change Switch click range ([4396738](https://github.com/heyui/heyui/commit/4396738)), closes [#28](https://github.com/heyui/heyui/issues/28)
+
+
+
 <a name="1.8.1"></a>
 ## [1.8.1](https://github.com/heyui/heyui/compare/v1.8.0...v1.8.1) (2018-09-22)
 
