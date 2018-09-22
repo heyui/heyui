@@ -64,7 +64,7 @@ export default {
     },
     add() {
       if (this.limit <= this.values.length) {
-        this.$Message.error(this.locale('h.taginput.limitWords'));
+        this.$Message.error(this.t('h.taginput.limitWords'));
         return false;
       }
       if (this.readonly) return false;
