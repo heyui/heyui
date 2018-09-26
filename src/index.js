@@ -47,6 +47,7 @@ import {
   Col
 } from './components/layout';
 import Timeline from './components/timeline';
+import Transfer from './components/transfer';
 import { Button, ButtonGroup } from './components/button';
 import TextEllipsis from './components/textellipsis';
 import Carousel from './components/carousel';
@@ -107,6 +108,7 @@ const components = {
   Col,
   Timeline,
   TimelineItem: Timeline.Item,
+  Transfer,
   Loading,
   TagInput,
   Table,

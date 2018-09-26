@@ -144,6 +144,9 @@
             <li>
               <router-link to="/component/view/carousel">Carousel 跑马灯</router-link>
             </li>
+            <li>
+              <router-link to="/component/view/transfer">Transfer 穿梭框</router-link>
+            </li>
           </ul>
           <ul>
             <li class="title">Other</li>
