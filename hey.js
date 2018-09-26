@@ -1,5 +1,5 @@
 module.exports = {
-  root: "dist",
+  root: 'dist',
   webpack: {
     umd: {
       entry: "./src/index.js",
