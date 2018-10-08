@@ -1,6 +1,6 @@
 <template>
   <div :class="treeCls">
-    <Search v-if="filterable"
+    <Search v-if="filterable" v-model="searchValue"
             @onsearch="searchTree" block></Search>
     <ul class="h-tree-body">
       <treeItem v-for="tree of treeDatas"
@@ -153,7 +153,6 @@ export default {
       }
     },
     searchTree(value) {
-      if (value === this.searchValue) return;
       this.searchValue = value;
       if (!utils.isNull(this.searchValue) && this.searchValue !== '') {
         let searchValue = this.searchValue.toLowerCase();
