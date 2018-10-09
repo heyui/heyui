@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Select</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-select</code>. </p>
     <h3>Normal</h3>
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>
     <blockquote>Note: If datas is passed with <code>{ 1:'a', 2:'b' }</code>this number key, the selected key value will be converted to String. It is recommended to use the <code>[{ key: 1, title: 'a' }]</code>object data mode.</blockquote>

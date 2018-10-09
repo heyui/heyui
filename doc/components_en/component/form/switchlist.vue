@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>SwitchList</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-switchlist</code>. </p>
     <h3>Basic</h3>
     <p>Use <code>v-model</code> and <code>datas</code> parameters to complete the whole call.</p>
     <example demo="form/switchlist1"></example>

@@ -2,6 +2,8 @@
   <div class="doc">
     <h2>DatePicker</h2>
     <p>The date control uses the basic date tool <a href="http://manba.ch-un.com" target="_blank">manba</a> , supports option parameters <code>start</code> and <code>end</code> uses manba date objects.</p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datepicker</code>. </p>
+
     <h3>Basic</h3>
     <div>
       <example demo="dataplugins/datepicker1"></example>

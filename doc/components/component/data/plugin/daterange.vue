@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>DateRangePicker 日期范围控件</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-datepicker</code>。</p>
     <h3>普通选择日期范围控件</h3>
     <p>数据默认使用{start,end}的对象，同时也可以自定义参数。详情请参考<router-link to="/component/config">全局配置</router-link></p>
     <div>

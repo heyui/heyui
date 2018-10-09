@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>DateFullRangePicker</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datefullpicker</code>. </p>
     
     <h4>Super date picker</h4>
     <example demo="dataplugins/daterangepicker8"></example>

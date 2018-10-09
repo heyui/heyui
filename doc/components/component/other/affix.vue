@@ -2,6 +2,8 @@
   <div class="doc">
     <h2>affix 图钉</h2>
 
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-affix</code>。</p>
+
     <example demo="other/affix1"></example>
     <div v-height="1000" v-bg-color:gray4 v-padding="20" class="text-center">
       撑高页面

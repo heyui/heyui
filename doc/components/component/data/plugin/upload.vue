@@ -5,6 +5,7 @@
     <p>不同的系统可以根据自己的上传实现来开发。</p>
     <p>所有的示例将使用<a href="https://github.com/moxiecode/plupload" target="_blank">plupload</a>配套使用，因为组件已经将拖拽以及上传功能实现，这里也不做扩展了。</p>
     <p>我们将提供一个使用plupload七牛上传的demo，由于大家实现上传的封装都不太一致，所以这里会提供一个<span class="link" @click="goDown">封装示例</span>。</p>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-uploader</code>。</p>
 
     <h3>单图片上传-file对象</h3>
     <example demo="dataplugins/uploader1"></example>

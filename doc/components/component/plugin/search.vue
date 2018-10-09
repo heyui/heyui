@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Search 搜索框</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-search</code>。</p>
 
     <h3>基本调用</h3>
     <p>为很多地方提供简单的search组件封装</p>

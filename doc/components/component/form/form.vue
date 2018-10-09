@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Form 表单</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-form</code>, <code>h-formitem</code>。</p>
     <h3>基本</h3>
     <example demo="form/form1"></example>
 

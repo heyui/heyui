@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Menu 菜单</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-menu</code>。</p>
     <h3>基本黑色</h3>
     <p>选中的方法主要是针对于<code>vue-router</code>等单页应用的选中逻辑。</p>
     <example demo="view/menu1"></example>

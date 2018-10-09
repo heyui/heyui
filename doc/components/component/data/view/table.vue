@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Table 表格</h2>
     <p>主要用于展示大量结构化数据。</p>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-table</code>。</p>
 
     <h3>Columns定义模式</h3>
     <example demo="view/table1"></example>

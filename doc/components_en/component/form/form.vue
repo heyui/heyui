@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Form</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-form</code>. </p>
     <h3>Basic</h3>
     <example demo="form/form1"></example>
 

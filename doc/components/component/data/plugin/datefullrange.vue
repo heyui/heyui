@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>DateFullRangePicker 超级日期范围控件</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-datefullrangepicker</code>。</p>
     
     <h4>超级日期选择器</h4>
     <example demo="dataplugins/daterangepicker8"></example>

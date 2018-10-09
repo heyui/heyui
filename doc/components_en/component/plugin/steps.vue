@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Steps</h2>
 
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-steps</code>. </p>
     <h3>Basic</h3>
     <example demo="plugins/step1"></example>
 

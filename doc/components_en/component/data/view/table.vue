@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Table</h2>
     <p>It is mainly used to display a large amount of structured data.</p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-table</code>. </p>
 
     <h3>Columns definition mode</h3>
     <example demo="view/table1"></example>

@@ -358,7 +358,7 @@ h2 {
   a {
     font-weight: 600;
   }
-  .tip{
+  .tip, .component-name-tip{
     padding: 12px 24px 12px 20px;
     margin: 2em 0;
     border-left-width: 4px;
@@ -381,6 +381,16 @@ h2 {
       text-align: center;
       line-height: 20px;
       font-weight: bold;
+    }
+  }
+  .component-name-tip{
+    border-left: none;
+    border-radius: 5px;  
+    padding: 8px 24px 8px 40px;
+    margin: 1.5em 0;
+    &:before{
+      top: 8px;
+      left: 11px;
     }
   }
 

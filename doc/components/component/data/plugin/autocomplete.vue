@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>AutoComplete 模糊匹配</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-autocomplete</code>。</p>
   
     <h3>基本用法</h3>
     <p>可以使用<code>dict</code>调用系统全局配置的字典，或者通过<code>datas</code>传递数据。</p>

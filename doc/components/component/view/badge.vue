@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Badge 徽标数</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-badge</code>。</p>
     <h3>基本应用</h3>
     <p>一般<code>count</code>为0的时候不展示</p>
     <example demo="view/badge1"></example>

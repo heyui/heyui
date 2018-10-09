@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Category</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-category</code>. </p>
   
     <h3>Basic</h3>
     <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>

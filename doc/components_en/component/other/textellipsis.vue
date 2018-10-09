@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TextEllipsis</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-textellipsis</code>. </p>
     <blockquote>1.2.0+ added</blockquote>
 
     <h3>Basic</h3>

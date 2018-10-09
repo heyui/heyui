@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>DatePicker 日期控件</h2>
     <p>日期控件使用了基本日期工具<a href="http://manba.ch-un.com" target="_blank">manba</a>，支持option的参数<code>start</code>，<code>end</code>使用manba日期对象。</p>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-datepicker</code>。</p>
     <h3>普通选择日期控件</h3>
     <div>
       <example demo="dataplugins/datepicker1"></example>

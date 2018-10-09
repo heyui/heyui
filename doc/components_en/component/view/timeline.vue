@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Timeline</h2>
     <p>The timeline shows information.</p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-timeline</code>, <code>h-timelineitem</code>. </p>
     <h3>Example</h3>
     <p>Show the timeline, you can use <code>color</code>customize the logo color, <code>icon</code> custom icon, the parent <code>pending</code> set the last loading style.</p>
     <example demo="view/timeline1"></example>

@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Loading</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-loading</code>. </p>
     
     <h3>Module loading effect</h3>
     <example demo="dataview/loading1"></example>

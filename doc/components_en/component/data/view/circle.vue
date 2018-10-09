@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
     <h2>Circle Progress</h2>
-    <blockquote>Because of <code>circle</code> is keyword, please use <code>h-circle</code> template.</blockquote>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-circle</code>, generally use <code>hCircle</code>. </p>
     <h3>Basic</h3>
     <example demo="view/circle1"></example>
 

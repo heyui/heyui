@@ -1,6 +1,8 @@
 <template>
   <div class="doc">
     <h2>Timeline 时间轴</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-timeline</code>, <code>h-timelineitem</code>。</p>
+
     <p>时间线的方式展示信息。</p>
     <h3>示例</h3>
     <p>展示时间轴，可以通过<code>color</code>自定义标志颜色，<code>icon</code>自定义icon，父级<code>pending</code>设定最后一个加载样式。</p>

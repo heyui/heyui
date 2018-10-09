@@ -2,6 +2,8 @@
   <div class="doc">
     <h2>BackTop 返回顶部</h2>
 
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-backtop</code>。</p>
+
     <h3>基本调用</h3>
     <example demo="other/backtotop1"></example>
     

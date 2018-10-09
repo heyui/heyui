@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>AutoComplete</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-autocomplete</code>. </p>
   
     <h3>Basic</h3>
     <p>You can use <code>dict</code> call the system's global configuration, or by <code>datas</code>passing data.</p>

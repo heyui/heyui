@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Pagination 分页</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-pagination</code>。</p>
     <h3>普通分页</h3>
     <div>
       <example demo="dataview/pagination1"></example>

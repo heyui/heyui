@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Switch 开关</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-switch</code>，一般使用  <code>hSwitch</code>。</p>
     <h3>基本</h3>
     <example demo="form/switch2"></example>
 

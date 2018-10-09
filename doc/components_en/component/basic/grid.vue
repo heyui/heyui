@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Grid</h2>
     <p>We use standard 24 grid layout containers and use containers to complete a simple network layout.</p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-row</code>, <code>h-col</code>. </p>
     <h3>Basic</h3>
     <p>Use the basic class <code>.h-col-{n}</code>for layout.</p>
     <example demo="basic/grid1"></example>
