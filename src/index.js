@@ -155,6 +155,7 @@ const install = function (Vue, opts) {
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);
+    Vue.component(`h-${key.toLocaleLowerCase()}`, components[key]);
     if (key.indexOf('h') !== 0) {
       Vue.component(`h${key}`, components[key]);
     }
