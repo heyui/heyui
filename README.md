@@ -46,6 +46,26 @@ Vue.use(HeyUI)
 #### Advanced Online Demo
 * [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
 
+## Development
+You need install [hey-cli](https://www.npmjs.org/package/hey-cli).
+``` sh
+#build
+npm install
+# build complete heyui
+hey b
+# build esm version
+hey b -f hey.esm.js
+# build lang js
+hey b -f hey.lang.js
+
+# develop
+cd doc
+npm install
+hey dev
+
+```
+
+
 ## Admin Template
 
 [HeyUI Admin Template](http://admin.heyui.top)
