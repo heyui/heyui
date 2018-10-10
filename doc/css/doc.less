@@ -394,6 +394,18 @@ h2 {
     }
   }
 
+  h2,h3 {
+    .hash-link {
+      color: @primary-color;
+      display: none;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    &:hover .hash-link{
+      display: inline;
+    }
+  }
+
 }
 
 .demo-box {

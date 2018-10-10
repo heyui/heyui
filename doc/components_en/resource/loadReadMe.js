@@ -31,6 +31,6 @@ export default (el, url, vm) => {
     //   });
     //   lis.append(li);
     // })
-    vm.$parent.initLeftMenu();
+    vm.$parent.initLeftMenu(true);
   });
 }
