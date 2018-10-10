@@ -6,7 +6,15 @@
           <col v-if="checkbox" width="60" />
           <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
-        <tr>
+        <template v-if="ths">
+          <tr v-for="(thdata, thindex) of ths" :key="thindex+update.columns">
+            <th v-if="checkbox&&thindex==0" class="h-table-th-checkbox" :rowspan="ths.length">
+              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
+            </th>
+            <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" ></TableTh>
+          </tr>
+        </template>
+        <tr v-else>
           <th v-if="checkbox" class="h-table-th-checkbox">
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length" :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
@@ -145,7 +153,8 @@ export default {
     selectWhenClickTr: {
       type: Boolean,
       default: false
-    }
+    },
+    ths: Array
   },
   data() {
     return {

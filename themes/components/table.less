@@ -103,6 +103,12 @@
     td,th{
       border-right: @border;
     }
+    th {
+      border-bottom: @border;
+    }
+    .h-table-header table{
+      margin-bottom: -1px;
+    }
   }
 
   &-border &-fixed-right, &-border &-fixed-header-right{
@@ -113,7 +119,7 @@
   
   &-stripe{
     .h-table-tbody tr:nth-child(2n){
-      background-color: #fdfdfd;
+      background-color: #fcfcfc;
     }
   }
   
