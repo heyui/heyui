@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/heyui/heyui/compare/v1.8.3...v1.9.0) (2018-10-10)
+
+
+### Bug Fixes
+
+* fix non-string templates name define ([1d9b230](https://github.com/heyui/heyui/commit/1d9b230))
+* **Table:** fix table border style ([26c1cf3](https://github.com/heyui/heyui/commit/26c1cf3))
+
+
+### Features
+
+* **Table:** add multiple table header ([a2e3167](https://github.com/heyui/heyui/commit/a2e3167)), closes [#26](https://github.com/heyui/heyui/issues/26)
+
+
+
 <a name="1.8.3"></a>
 ## [1.8.3](https://github.com/heyui/heyui/compare/v1.8.2...v1.8.3) (2018-10-08)
 
