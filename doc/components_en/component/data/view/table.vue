@@ -30,8 +30,12 @@
     <h3>Table select line</h3>
     <example demo="view/table4"></example>
 
-    <h3>Table bubble tips</h3>
+    <h3>Table bubble tips and border, stripe style</h3>
     <example demo="view/table7"></example>
+
+
+    <h3>Custom table header</h3>
+    <example demo="view/table8"></example>
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -66,6 +70,13 @@
       <tr>
         <td>checkbox</td>
         <td>Whether to use the checkbox selector</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>border</td>
+        <td>table has border</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>

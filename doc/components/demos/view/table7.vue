@@ -7,7 +7,7 @@
 
 <template>
   <div>
-    <Table :datas="datas" :columns="columns">
+    <Table border stripe :datas="datas" :columns="columns">
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>

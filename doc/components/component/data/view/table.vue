@@ -30,8 +30,11 @@
     <h3>Table 选择行</h3>
     <example demo="view/table4"></example>
 
-    <h3>Table 气泡提示</h3>
+    <h3>Table 气泡提示与定义border, stripe样式</h3>
     <example demo="view/table7"></example>
+
+    <h3>自定义表头</h3>
+    <example demo="view/table8"></example>
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -66,6 +69,13 @@
       <tr>
         <td>checkbox</td>
         <td>是否使用checkbox选择器</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>border</td>
+        <td>table是否有竖线分割</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
