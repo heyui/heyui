@@ -15,13 +15,11 @@ export default {
           {title: '序号', rowspan: 2},
           {title: '编码', tooltip: true},
           {title: '信息', colspan: 2},
-          {title: '地址', colspan: 2},
+          {title: 'address', rowspan: 2},
         ],[
           {title: 'ID', prop: 'id', sort: 'auto'},
           {title: '姓名'},
           {title: '年龄'},
-          {title: 'address1'},
-          {title: 'address2'},
         ]
       ],
       columns: [
@@ -30,7 +28,6 @@ export default {
         { prop: 'name', width: 100},
         { prop: 'age', width: 100},
         { prop: 'address', width: 150},
-        { prop: 'address2', width: 150},
       ],
       datas: [
         { index: 1, id: 'abc1', name: '测试1', age: 1, address: "上海1", address2: "上海21" },
