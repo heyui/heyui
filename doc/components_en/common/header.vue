@@ -6,14 +6,16 @@
       </router-link>
       <AutoComplete v-width="180" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
-        <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a>
-        <!-- <router-link to="/guide">入门</router-link> -->
-        <router-link to="/en/component">Component</router-link>
-        <router-link to="/en/resource">Resource</router-link>
-        <a target="_blank" href="http://admin.heyui.top">Admin</a>
-        <!-- <router-link to="/about">团队</router-link> -->
+        <template v-if="$route.name != 'en_Home'">
+          <!-- <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a> -->
+          <!-- <router-link to="/guide">入门</router-link> -->
+          <router-link to="/en/component">Component</router-link>
+          <router-link to="/en/resource">Resource</router-link>
+          <a target="_blank" href="http://admin.heyui.top">Admin</a>
+          <!-- <router-link to="/about">团队</router-link> -->
+        </template>
         <ButtonGroup class="change-lang">
-          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
+          <Button size="s" v-if="$route.name != 'en_Home'"><a target="_blank" href="https://github.com/heyui/heyui"><i class="h-icon-github"></i></a></Button>
           <!-- https://discordapp.com/invite/VUZbFmd -->
           <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui/issues"><i class="h-icon-message"></i></a></Button>
           <Button @click="changeLang" size="s"><span class="link">中</span></Button>

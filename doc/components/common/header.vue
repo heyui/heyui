@@ -6,17 +6,19 @@
       </router-link>
       <AutoComplete v-width="180" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class='header-nav-list'>
-        <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a>
-        <!-- <router-link to="/guide">入门</router-link> -->
-        <router-link to="/component">组件</router-link>
-        <router-link to="/resource">资源</router-link>
-        <a target="_blank" href="http://admin.heyui.top">Admin</a>
-        <!-- <router-link to="/about">团队</router-link> -->
-        <ButtonGroup class="change-lang">
-          <Button size="s" @click="goGithub"><i class="h-icon-github link"></i></Button>
-          <Button size="s" @click="openWeixin"><span class="link">微信</span></Button>
-          <Button @click="changeLang" size="s"><span class="link">English</span></Button>
-        </ButtonGroup>
+        <template v-if="$route.name != 'Home'">
+          <!-- <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a> -->
+          <!-- <router-link to="/guide">入门</router-link> -->
+          <router-link to="/component">组件</router-link>
+          <router-link to="/resource">资源</router-link>
+          <a target="_blank" href="http://admin.heyui.top">Admin</a>
+          <!-- <router-link to="/about">团队</router-link> -->
+        </template>
+          <ButtonGroup class="change-lang">
+            <Button size="s" @click="goGithub" v-if="$route.name != 'Home'"><i class="h-icon-github link"></i></Button>
+            <Button size="s" @click="openWeixin"><span class="link">微信</span></Button>
+            <Button @click="changeLang" size="s"><span class="link">English</span></Button>
+          </ButtonGroup>
       </div>
     </div>
     <Modal v-model="showModel" class-name="weixin-modal">

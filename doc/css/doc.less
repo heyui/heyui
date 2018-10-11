@@ -164,13 +164,16 @@ h2 {
 
 .comm-footer {
   // background-color: @white-color;
-  color: @gray-color;
+  color: @white-color;
   text-align: center;
   padding: 0 0 5px 0px;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+  a{
+    color: @white-color;
+  }
 }
 
 .page-body {
@@ -275,7 +278,7 @@ h2 {
       // left: 50%;
       // margin-left: -400px;
       width: 100%;
-      top: 50%;
+      top: 45%;
       margin-top: -150px;
       h1 {
         letter-spacing: 2px;
@@ -283,18 +286,65 @@ h2 {
         font-size: 130px;
         line-height: 1.2;
         color: @primary-color;
-        margin: 1%;
+        // margin: 1%;
         font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
       }
       p {
         font-size: 23px;
       }
+      .h-btn{
+        font-size: 15px;
+        margin-right: 10px;
+      }
     }
     .github-icon{
-      margin: 30px auto 0;
-      width: 100px;
-      height: 30px;
+      // margin: 30px auto 0;
+      width: 130px;
+      height: 37px;
+      vertical-align: -16px;
+      margin-left: 3px;
     }
+  }
+  .bg1{
+    height: 24vw;
+    width: 25vw;
+    background: #ca3f9a;
+    position: fixed;
+    bottom: -12vw;
+    transform: rotate(40deg);
+    z-index: -1;
+  }
+  .bg2{
+    height: 26vw;
+    width: 26vw;
+    background: #5a3fca;
+    position: fixed;
+    left: 21vw;
+    bottom: -12vw;
+    transform: rotate(45deg);
+    z-index: -1;
+    border-radius: 20vw;
+  }
+  .bg3{
+    height: 35vw;
+    width: 34vw;
+    background: #a2ca3f;
+    position: fixed;
+    left: 47vw;
+    bottom: -25vw;
+    transform: rotate(75deg);
+    z-index: -1;
+  }
+  .bg4{
+    height: 30vw;
+    width: 30vw;
+    background: #ca513f;
+    position: fixed;
+    left: 76vw;
+    bottom: -16vw;
+    transform: rotate(75deg);
+    z-index: -1;
+    border-radius: 20vw;
   }
 }
 @keyframes skygradient {
@@ -672,7 +722,7 @@ h2 {
   }
   .page-home {
     .page-body {
-      top: 120px;
+      // top: 120px;
     }
     .comm-footer {
       position: absolute;
