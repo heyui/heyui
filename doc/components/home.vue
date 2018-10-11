@@ -3,14 +3,8 @@
     <com-head></com-head>
     <div class="page-body universe">
       <div class="part">
-        <h1>HEYUI，快速构建前端工具。</h1>
-        <h4 class="gray-color">
-          帮助您快速搭建网站。
-        </h4>
-        <h1>简单，快速，可扩展。</h1>
-        <h4 class="gray-color">
-          简单的调用，快速的开发，可扩展的接口
-        </h4>
+        <h1>HEYUI</h1>
+        <p>一个基于Vue.js的高质量组件库</p>
         <iframe class="github-icon" src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true" frameborder="0"></iframe>
       </div>
     </div>

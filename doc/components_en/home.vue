@@ -3,14 +3,8 @@
     <com-head></com-head>
     <div class="page-body universe">
       <div class="part">
-        <h1>HEYUI, quickly build front-end tools.</h1>
-        <h4 class="gray-color">
-          Help you quickly build your website.
-        </h4>
-        <h1>Simple, fast and scalable.</h1>
-        <h4 class="gray-color">
-          Simple call, rapid development, extensible interface
-        </h4>
+        <h1>HEYUI</h1>
+        <p> A high quality UI Toolkit based on Vue.js </p>
         <iframe class="github-icon" src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true" frameborder="0"></iframe>
       </div>
     </div>
