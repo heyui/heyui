@@ -40,6 +40,7 @@ class Validator {
     if (!utils.isObject(rules)) {
       console.error("validator: please pass the correct validation parameters");
     }
+    this.combineRuleResults = {};
     this.rules = {};
     this.combineRules = {};
     this.initRules(rules);
@@ -91,6 +92,7 @@ class Validator {
   initCombineRules(rules) {
     let genRules = {};
     for (let rule of rules) {
+      rule.id = utils.uuid();
       let parentRef = '';
       if (rule.parentRef) parentRef = `${rule.parentRef}.`;
       for (let ref of rule.refs) {
@@ -108,20 +110,25 @@ class Validator {
 
   valid(data, next, allNext) {
     let loadings = [];
-    let result = this.validData(data, function (r) {
-      for (let key in r) {
-        if (loadings.indexOf(key) > -1) {
-          loadings.splice(loadings.indexOf(key), 1);
+    let uuid = utils.uuid();
+    let result = this.validData(
+      data, {
+        uuid,
+        next(r) {
+          for (let key in r) {
+            if (loadings.indexOf(key) > -1) {
+              loadings.splice(loadings.indexOf(key), 1);
+            }
+          }
+          utils.extend(result, r);
+          if (next) {
+            next.call(this, r);
+          }
+          if (allNext && loadings.length == 0) {
+            allNext.call(this, result);
+          }
         }
-      }
-      utils.extend(result, r);
-      if (next) {
-        next.call(this, r);
-      }
-      if (allNext && loadings.length == 0) {
-        allNext.call(this, result);
-      }
-    });
+      });
     for (let prop in result) {
       if (result[prop].loading) {
         loadings.push(prop);
@@ -133,22 +140,22 @@ class Validator {
     return result;
   }
 
-  validData(data, next, prop = "", sourceData) {
+  validData(data, { next, prop = "", sourceData, uuid } = {}) {
     let result = {};
     if (prop != '') {
       // log(prop);
-      utils.extend(result, this.validField(prop, sourceData, next));
+      utils.extend(result, this.validField(prop, sourceData, { next, uuid }));
     }
     if (sourceData == undefined) sourceData = data;
     if (utils.isArray(data)) {
       for (let i = 0; i < data.length; i++) {
         let nowProp = `${prop}[${i}]`;
-        utils.extend(result, this.validData(data[i], next, nowProp, sourceData));
+        utils.extend(result, this.validData(data[i], { next, prop: nowProp, sourceData, uuid }));
       }
     } else if (utils.isObject(data)) {
       for (let d in data) {
         let nowProp = prop + (prop == "" ? "" : ".") + d;
-        utils.extend(result, this.validData(data[d], next, nowProp, sourceData));
+        utils.extend(result, this.validData(data[d], { next, prop: nowProp, sourceData, uuid }));
       }
     }
     return result;
@@ -170,7 +177,7 @@ class Validator {
     this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
-  validField(prop, data, next) {
+  validField(prop, data, { next, uuid } = {}) {
     if (utils.isNull(prop)) {
       return combineArgs(prop);
     }
@@ -195,13 +202,13 @@ class Validator {
       if (!rules) {
         return combineArgs(prop, true, 'base');
       }
-      return this.combineRulesValid(ruleKey, value, parent, parentProp);
+      return this.combineRulesValid(ruleKey, value, parent, parentProp, uuid);
     }
-    let result = this.validFieldBase(rule, value, parent);
+    let result = this.validFieldBase({ rule, value, parent });
     if (result !== true) {
       return combineArgs(prop, result, 'base');
     }
-    result = this.combineRulesValid(ruleKey, value, parent, parentProp);
+    result = this.combineRulesValid(ruleKey, value, parent, parentProp, uuid);
     let baseResult = combineArgs(prop, undefined, 'base');
     if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
       rule.validAsync.call(null, value, (result1) => {
@@ -213,75 +220,90 @@ class Validator {
     }
     return utils.extend(baseResult, result);
   }
-  
-  validFieldBase(rule, value, parent) {
-    // console.log(rule, value, parent);
+
+  validFieldBase({ rule, value, parent }) {
     if (rule) {
       let result = ruleExecute(baseValids.required, [value]);
 
-      if (rule.required) {
-        if (result !== true) {
-          return result;
-        }
-      } else if (result !== true) {
-        return true;
+      if (rule.required && result !== true) {
+        return result;
       }
-
-      if (rule.type) {
-        result = ruleExecute(typeValids[rule.type], [value]);
-        if (result !== true) return result;
-      }
-
-      let baseValidKeys = Object.keys(baseValids)
-      baseValidKeys.shift();
-      for (let key of baseValidKeys) {
-        if (!utils.isNull(rule[key])) {
-          let result = ruleExecute(baseValids[key], [value, rule[key]]);
+      if (result === true) {
+        if (rule.type) {
+          result = ruleExecute(typeValids[rule.type], [value]);
           if (result !== true) return result;
         }
-      }
 
-      if (!utils.isNull(rule.valid)) {
-        result = ruleExecute(rule.valid, [value, parent]);
-        if (result !== true) return result;
+        let baseValidKeys = Object.keys(baseValids);
+        baseValidKeys.shift();
+        for (let key of baseValidKeys) {
+          if (!utils.isNull(rule[key])) {
+            let result = ruleExecute(baseValids[key], [value, rule[key]]);
+            if (result !== true) return result;
+          }
+        }
+
+        if (!utils.isNull(rule.valid)) {
+          result = ruleExecute(rule.valid, [value, parent]);
+          if (result !== true) return result;
+        }
+      } else {
+        if (!utils.isNull(rule.validAnyway)) {
+          result = ruleExecute(rule.validAnyway, [value, parent]);
+          if (result !== true) return result;
+        }
       }
     }
     return true;
   }
 
-  combineRulesValid(ruleKey, value, parent, parentProp) {
+  combineRulesValid(ruleKey, value, parent, parentProp, uuid) {
     let genRules = this.combineRules;
+    if (ruleKey.indexOf("[") > -1 && !genRules[ruleKey]) {
+      ruleKey = ruleKey.replace(/\[\w+\]/, "[]");
+    }
     let rules = genRules[ruleKey];
     if (!rules) return true;
     let refValids = {};
     let count = 0;
     for (let rule of rules) {
-      let values = [];
-      for (let ref of rule.refs) {
-        let v = utils.getKeyValue(parent, ref);
-        let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + ref;
-        //When the basic parameters are not validated, it will stop validate.
-        if (this.validFieldBase(this.rules[prop], v, parent) != true) {
-          console.log('basic combine validation does not pass', prop, this.rules[prop], v);
-          break;
-        }
-        values.push(v);
-      }
-      if (values.length < rule.refs.length) continue;
-      let valid = rule.valid;
-      if (utils.isObject(valid) && utils.isString(valid.valid)) {
-        valid.valid = combineValids[valid.valid];
-        if (utils.isNull(valid.valid)) {
-          throw Error(`There is no validation rule named ${valid}`);
-        }
-      }
-      // console.log(valid);
-      // console.log(parentProp);
-      let result = ruleExecute(valid, values);
-      // if (result !== true) {
-      count++;
+      let result = null;
       let prop = (rule.parentRef && parentProp ? (parentProp + ".") : "") + (rule.refs[rule.refs.length - 1]);
+      let combineRuleResult = this.combineRuleResults[rule.id] || {};
+      if (uuid && combineRuleResult.uuid == (uuid + '' + parentProp)) {
+        result = combineRuleResult.result;
+      } else {
+        let values = [];
+        for (let ref of rule.refs) {
+          let v = utils.getKeyValue(parent, ref);
+          let refProp = (rule.parentRef && parentProp ? (parentProp + ".") : "") + ref;
+          //When the basic parameters are not validated, it will stop validate.
+          if (this.validFieldBase({ rule: this.rules[refProp], value: v, parent }) != true) {
+            console.log('basic combine validation does not pass', refProp, this.rules[refProp], v);
+            break;
+          }
+          values.push(v);
+        }
+        if (values.length < rule.refs.length) continue;
+        let valid = rule.valid;
+        if (utils.isObject(valid) && utils.isString(valid.valid)) {
+          valid.valid = combineValids[valid.valid];
+          if (utils.isNull(valid.valid)) {
+            throw Error(`There is no validation rule named ${valid}`);
+          }
+        }
+        // console.log(valid);
+        // console.log(parentProp);
+        result = ruleExecute(valid, values);
+        // if (result !== true) {
+      }
+      count++;
       let combineResult = combineArgs(prop, result, 'combine');
+
+      if (uuid) {
+        this.combineRuleResults[rule.id] = {uuid: uuid + '' + parentProp, result};
+      }
+      
       if (!refValids[prop] || refValids[prop].valid) {
         utils.extend(refValids, combineResult);
       }
@@ -292,6 +314,12 @@ class Validator {
     } else {
       return refValids;
     }
+  }
+
+  destroy() {
+    this.rules = null;
+    this.combineRules = null;
+    this.combineRuleResults = null;
   }
 }
 

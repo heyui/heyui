@@ -60,6 +60,11 @@ export default {
     // log('rule init', this.rules, this.validator);
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
+  destroyed() {
+    if(this.validator) {
+      this.validator.destroy();
+    }
+  },
   mounted() {
 
     this.$nextTick(() => {
@@ -105,9 +110,9 @@ export default {
       if (!prop || !this.validator || !this.model) {
         return { valid: true };
       }
-      let returnResult = this.validator.validField(prop, this.model, (result) => {
+      let returnResult = this.validator.validField(prop, this.model, { next: (result) => {
         utils.extend(true, this.messages, result);
-      }, this.model);
+      }});
       // log(returnResult);
       utils.extend(true, this.messages, returnResult);
       return utils.extend({}, this.messages[prop]);
@@ -117,9 +122,9 @@ export default {
         return { valid: true };
       }
       let defaultM = this.messages[prop];
-      let returnResult = this.validator.validField(prop, this.model, (result) => {
+      let returnResult = this.validator.validField(prop, this.model, { next: (result) => {
         next(utils.extend({}, defaultM, returnResult[prop]));
-      }, this.model);
+      }});
       return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
