@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.1-alpha.0"></a>
+## [1.9.1-alpha.0](https://github.com/heyui/heyui/compare/v1.9.0...v1.9.1-alpha.0) (2018-10-15)
+
+
+### Bug Fixes
+
+* **Confirm:** remove reject apply for js error ([6ea4a45](https://github.com/heyui/heyui/commit/6ea4a45))
+* **Modal:** when button focus，enter or space ([d16c820](https://github.com/heyui/heyui/commit/d16c820))
+* **Validator:** fix combine function when have array parent ([ec39cc1](https://github.com/heyui/heyui/commit/ec39cc1))
+
+
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/heyui/heyui/compare/v1.8.3...v1.9.0) (2018-10-10)
 
