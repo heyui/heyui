@@ -178,6 +178,8 @@ class Notify {
     } else {
       parentDom.appendChild($body);
     }
+    //fix: button在focus状态，enter或者空格键都会再次触发
+    document.querySelector(':focus').blur();
     if (param.hasCloseIcon) {
       $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
         that.close();
