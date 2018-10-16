@@ -15,7 +15,7 @@
 @yellow-color: #EAC12C;
 @blue-color: #77A2DC;</codes>
     <p v-height="10"></p>
-    <p>hey-cli configuration file hey.js, <a href="https://github.com/heyui/heyui-admin/blob/master/hey.js" target="_blank">example link</a></p>
+    <p>hey-cli configuration file hey.js, <a href="https://github.com/heyui/heyui-admin/blob/master/hey.conf.js" target="_blank">example link</a></p>
     <codes type="javascript">globalVars: './src/css/var.less',</codes>
     <p>Note: With this reference, these variables can also be used in the vue file.</p>
 
