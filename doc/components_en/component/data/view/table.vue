@@ -220,6 +220,10 @@
         <td>Set the selected value</td>
       </tr>
       <tr>
+        <td>getSelection</td>
+        <td>get selected values</td>
+      </tr>
+      <tr>
         <td>inverseSelection</td>
         <td>inverse selection</td>
       </tr>
