@@ -6,7 +6,7 @@
         <h1>HEYUI</h1>
         <p> A high quality UI Toolkit based on Vue.js </p>
         <p>
-          <Button color="primary" size="l" circle @click="goLink({name: 'en_Component'})">Getting Started</Button>
+          <Button color="primary" size="l" circle @click="goLink({name: 'en_Component'})">Get Started</Button>
           <Button text-color="primary" size="l" circle @click="goGithub" icon="h-icon-github">Github</Button>
           <iframe class="github-icon"  src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true&size=large" frameborder="0"></iframe>
         </p>
