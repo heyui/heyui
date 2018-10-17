@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.1-alpha.3"></a>
+## [1.9.1-alpha.3](https://github.com/heyui/heyui/compare/v1.9.1-alpha.2...v1.9.1-alpha.3) (2018-10-17)
+
+
+### Bug Fixes
+
+* **Category:** fix categoryDatas init error handling ([0aad20a](https://github.com/heyui/heyui/commit/0aad20a))
+* **DatePicker:** change daterange selected color ([7ceb9f0](https://github.com/heyui/heyui/commit/7ceb9f0))
+* **Radio:** optimize radio style ([764bd77](https://github.com/heyui/heyui/commit/764bd77))
+* **Table:** add function getSelection ([6f3f17f](https://github.com/heyui/heyui/commit/6f3f17f))
+
+
+
 <a name="1.9.1-alpha.2"></a>
 ## [1.9.1-alpha.2](https://github.com/heyui/heyui/compare/v1.9.1-alpha.1...v1.9.1-alpha.2) (2018-10-15)
 
