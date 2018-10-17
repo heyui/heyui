@@ -147,7 +147,7 @@ export default {
         if (categoryObj) {
           isInited = true;
           this.categoryObj = categoryObj;
-          this.categoryDatas = utils.copy(this.param.datas);
+          this.categoryDatas = [...this.param.datas];
         } 
       }
       if (!isInited) {
