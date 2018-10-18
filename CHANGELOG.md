@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.1-alpha.4"></a>
+## [1.9.1-alpha.4](https://github.com/heyui/heyui/compare/v1.9.1-alpha.3...v1.9.1-alpha.4) (2018-10-18)
+
+
+### Bug Fixes
+
+* **Button:** add stopPropagation and preventDefault ([93d2b5f](https://github.com/heyui/heyui/commit/93d2b5f))
+* **Button:** default button background white ([db033e2](https://github.com/heyui/heyui/commit/db033e2))
+* **Notify:** remove focus handle ([9ef368d](https://github.com/heyui/heyui/commit/9ef368d))
+
+
+
 <a name="1.9.1-alpha.3"></a>
 ## [1.9.1-alpha.3](https://github.com/heyui/heyui/compare/v1.9.1-alpha.2...v1.9.1-alpha.3) (2018-10-17)
 
