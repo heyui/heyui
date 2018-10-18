@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Tree 树</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-tree</code>。</p>
   
     <h3>基本调用</h3>
     <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>

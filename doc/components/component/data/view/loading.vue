@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Loading 加载中</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-loading</code>。</p>
     
     <h3>模块加载效果</h3>
     <example demo="dataview/loading1"></example>

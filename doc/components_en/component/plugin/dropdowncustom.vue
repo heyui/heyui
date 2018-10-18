@@ -3,8 +3,10 @@
     <h2>DropdownCustom</h2>
     <p>DropdownCustom can add custom <code>className</code>drop-down controls that define various modes that <code>className</code> will be applied <code>.h-dropdowncustom-show</code>. The dom is the element that triggers the drop-down, contains the custom content, and the icon for the right-hand display state.</p>
     <p>Tip: The system comes with a <code>h-text-dropdown</code> class.</p>
-    <blockquote>Note: if DropdownCustom is on the right side of the page and the display is abnormal, please set the width for the content.</blockquote>
-    <blockquote>Because the style is applied to the component <code>vue</code>, <code>style</code> with <code>scope</code> properties in the calling file will be invalid.</blockquote>
+    <p>Note: if DropdownCustom is on the right side of the page and the display is abnormal, please set the width for the content.</p>
+    <p>Note: Because the style is applied to the component <code>vue</code>, <code>style</code> with <code>scope</code> properties in the calling file will be invalid.</p>
+
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-dropdowncustom</code>. </p>
 
     <h3>Basic</h3>
     <example demo="plugins/dropdowncustom1"></example>

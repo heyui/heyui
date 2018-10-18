@@ -51,7 +51,8 @@ export default {
     return {
       pass: '',
       error: false,
-      menus: []
+      menus: [],
+      routeName: null
     }
   },
   watch: {
@@ -64,6 +65,7 @@ export default {
       return document.querySelector('.right-frame');
     },
     goMenu(index) {
+      window.location.hash = this.menus[index];
       scrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
         time: 500,
         align:{
@@ -72,7 +74,10 @@ export default {
         }
       });
     },
-    initLeftMenu() {
+    initLeftMenu(force = false) {
+      if(this.routeName == this.$route.name && !force) {
+        return;
+      }
       this.$nextTick(()=>{
         scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
           time: 500,
@@ -81,9 +86,29 @@ export default {
             topOffset: 0
           }
         });
-        this.menus = [...$(".doc h2,.doc h3")].map(item => item.innerText)
+        let menus = $(".doc h2,.doc h3");
+        this.menus = [...menus].map(item => item.innerText);
+        menus.each((index, item) => {
+          let link = $(`<span class="hash-link">#</span>`);
+          link.on('click', (event)=>{
+            event.preventDefault();
+            this.goMenu(index);
+          });
+          $(item).append(link);
+        });
+        setTimeout(() => {
+          let hash = decodeURI(window.location.hash);
+          if(hash) {
+            let keyword = hash.substring(1);
+            let index = this.menus.indexOf(keyword);
+            if(index > -1) {
+              this.goMenu(index);
+            }
+          }
+        }, 500);
         // console.log($(".doc h3"))
-      })
+      });
+      this.routeName = this.$route.name;
     }
   },
   mounted() {

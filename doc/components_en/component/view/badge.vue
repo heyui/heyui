@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Badge</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-badge</code>. </p>
     <h3>Basic</h3>
     <p>Normally <code>count</code> 0 does not show</p>
     <example demo="view/badge1"></example>

@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Table 表格</h2>
     <p>主要用于展示大量结构化数据。</p>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-table</code>。</p>
 
     <h3>Columns定义模式</h3>
     <example demo="view/table1"></example>
@@ -29,8 +30,11 @@
     <h3>Table 选择行</h3>
     <example demo="view/table4"></example>
 
-    <h3>Table 气泡提示</h3>
+    <h3>Table 气泡提示与定义border, stripe样式</h3>
     <example demo="view/table7"></example>
+
+    <h3>自定义表头</h3>
+    <example demo="view/table8"></example>
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -65,6 +69,13 @@
       <tr>
         <td>checkbox</td>
         <td>是否使用checkbox选择器</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>border</td>
+        <td>table是否有竖线分割</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
@@ -206,6 +217,10 @@
       <tr>
         <td>setSelection</td>
         <td>设置选中的值</td>
+      </tr>
+      <tr>
+        <td>getSelection</td>
+        <td>获取选中的值</td>
       </tr>
       <tr>
         <td>inverseSelection</td>

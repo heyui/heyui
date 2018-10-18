@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Breadcrumb 面包屑</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-breadcrumb</code>。</p>
 
     <h3>基本调用</h3>
     <example demo="view/breadcrumb1"></example>

@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Pagination</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-pagination</code>. </p>
     <h3>Basic</h3>
     <div>
       <example demo="dataview/pagination1"></example>

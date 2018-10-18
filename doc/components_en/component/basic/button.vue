@@ -1,14 +1,16 @@
 <template>
   <div class="doc">
     <h2>Button</h2>
-    <h3>Native class</h3>
-    <p>Using the basic class to achieve a variety of button styles</p>
-    <example demo="basic/button1"></example>
-    
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-button</code>. </p>
+
     <h3>Component</h3>
     <p>Use basic Button components to implement various button styles.</p>
     <p class="tip">If you need to use special event modifiers such as <code>@click.stop</code>, please use button in the native way.</p>
     <example demo="basic/button2"></example>
+
+    <h3>Native class</h3>
+    <p>Using the basic class to achieve a variety of button styles</p>
+    <example demo="basic/button1"></example>
 
     <h3>class list</h3>
     <table class="table">
@@ -154,6 +156,20 @@
         <td>string</td>
         <td>l, s, xs</td>
         <td>-</td>
+      </tr>
+      <tr>
+        <td>stop</td>
+        <td>click event use stopPropagation</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>preventDefault</td>
+        <td>click event use preventDefault</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
     </table>
   </div>

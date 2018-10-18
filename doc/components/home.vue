@@ -3,17 +3,20 @@
     <com-head></com-head>
     <div class="page-body universe">
       <div class="part">
-        <h1>HEYUI，快速构建前端工具。</h1>
-        <h4 class="gray-color">
-          帮助您快速搭建网站。
-        </h4>
-        <h1>简单，快速，可扩展。</h1>
-        <h4 class="gray-color">
-          简单的调用，快速的开发，可扩展的接口
-        </h4>
-        <iframe class="github-icon" src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true" frameborder="0"></iframe>
+        <h1>HEYUI</h1>
+        <p>一个基于Vue.js的高质量UI组件库</p>
+        <p>
+          <Button color="primary" size="l" circle @click="goLink({name: 'Component'})">开始使用</Button>
+          <Button text-color="primary" size="l" circle @click="goGithub" icon="h-icon-github">Github</Button>
+          <iframe class="github-icon"  src="https://ghbtns.com/github-btn.html?user=heyui&repo=heyui&type=star&count=true&size=large" frameborder="0"></iframe>
+        </p>
       </div>
     </div>
+
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+    <div class="bg4"></div>
     <com-foot></com-foot>
   </div>
 </template>
@@ -30,7 +33,14 @@ export default {
       error: false
     }
   },
-  methods: {},
+  methods: {
+    goLink(params) {
+      this.$router.push(params);
+    },
+    goGithub() {
+      window.open('https://github.com/heyui/heyui');
+    }
+  },
   created() {
     this.$nextTick(()=>{
       if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {

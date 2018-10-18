@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TimePicker 时间控件</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-datepicker</code>。</p>
     <h3>普通选择时间控件</h3>
     <example demo="dataplugins/timepicker1"></example>
 

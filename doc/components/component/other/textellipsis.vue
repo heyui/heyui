@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TextEllipsis 超出文本省略</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-textellipsis</code>。</p>
     <blockquote>1.2.0+ 新增</blockquote>
 
     <h3>基本调用</h3>

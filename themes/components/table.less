@@ -100,8 +100,15 @@
   }
 
   &-border{
+    border-left: 0;
     td,th{
-      border-right: @border;
+      border-left: @border;
+    }
+    th {
+      border-bottom: @border;
+    }
+    .h-table-header table{
+      margin-bottom: -1px;
     }
   }
 
@@ -113,7 +120,7 @@
   
   &-stripe{
     .h-table-tbody tr:nth-child(2n){
-      background-color: #fdfdfd;
+      background-color: #fcfcfc;
     }
   }
   

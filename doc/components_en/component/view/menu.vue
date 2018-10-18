@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Menu</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-menu</code>. </p>
     <h3>Basic</h3>
     <p>The selected method is mainly focused on <code>vue-router</code> the selection logic of a single page application. </p>
     <example demo="view/menu1"></example>

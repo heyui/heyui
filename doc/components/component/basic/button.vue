@@ -1,14 +1,16 @@
 <template>
   <div class="doc">
     <h2>Button 按钮</h2>
-    <h3>原生class</h3>
-    <p>利用基本的class实现各种button的样式</p>
-    <example demo="basic/button1"></example>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-button</code>。</p>
     
     <h3>组件调用</h3>
     <p>使用基本的Button组件实现各种button的样式。</p>
-    <p class="tip">如果需要使用<code>@click.stop</code>等特殊事件修饰符，请使用上面原生的方式调用button。</p>
+    <p class="tip">如果需要使用<code>@click.stop</code>等特殊事件修饰符，请使用下面原生的方式调用button。</p>
     <example demo="basic/button2"></example>
+
+    <h3>原生class</h3>
+    <p>利用基本的class实现各种button的样式</p>
+    <example demo="basic/button1"></example>
 
     <h3>class 集合</h3>
     <table class="table">
@@ -154,6 +156,20 @@
         <td>string</td>
         <td>l, s, xs</td>
         <td>-</td>
+      </tr>
+      <tr>
+        <td>stop</td>
+        <td>click事件是否stopPropagation</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>preventDefault</td>
+        <td>click事件是否preventDefault</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
     </table>
   </div>

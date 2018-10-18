@@ -2,6 +2,90 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.1-alpha.4"></a>
+## [1.9.1-alpha.4](https://github.com/heyui/heyui/compare/v1.9.1-alpha.3...v1.9.1-alpha.4) (2018-10-18)
+
+
+### Bug Fixes
+
+* **Button:** add stopPropagation and preventDefault ([93d2b5f](https://github.com/heyui/heyui/commit/93d2b5f))
+* **Button:** default button background white ([db033e2](https://github.com/heyui/heyui/commit/db033e2))
+* **Notify:** remove focus handle ([9ef368d](https://github.com/heyui/heyui/commit/9ef368d))
+
+
+
+<a name="1.9.1-alpha.3"></a>
+## [1.9.1-alpha.3](https://github.com/heyui/heyui/compare/v1.9.1-alpha.2...v1.9.1-alpha.3) (2018-10-17)
+
+
+### Bug Fixes
+
+* **Category:** fix categoryDatas init error handling ([0aad20a](https://github.com/heyui/heyui/commit/0aad20a))
+* **DatePicker:** change daterange selected color ([7ceb9f0](https://github.com/heyui/heyui/commit/7ceb9f0))
+* **Radio:** optimize radio style ([764bd77](https://github.com/heyui/heyui/commit/764bd77))
+* **Table:** add function getSelection ([6f3f17f](https://github.com/heyui/heyui/commit/6f3f17f))
+
+
+
+<a name="1.9.1-alpha.2"></a>
+## [1.9.1-alpha.2](https://github.com/heyui/heyui/compare/v1.9.1-alpha.1...v1.9.1-alpha.2) (2018-10-15)
+
+
+### Bug Fixes
+
+* **Notify:** set modal first input or button focus ([6a675c4](https://github.com/heyui/heyui/commit/6a675c4))
+* **Validator:** optimize validator ([5afd3bf](https://github.com/heyui/heyui/commit/5afd3bf))
+
+
+
+<a name="1.9.1-alpha.1"></a>
+## [1.9.1-alpha.1](https://github.com/heyui/heyui/compare/v1.9.1-alpha.0...v1.9.1-alpha.1) (2018-10-15)
+
+
+### Bug Fixes
+
+* **Notity:** check if there is a focus dom ([db40867](https://github.com/heyui/heyui/commit/db40867))
+
+
+
+<a name="1.9.1-alpha.0"></a>
+## [1.9.1-alpha.0](https://github.com/heyui/heyui/compare/v1.9.0...v1.9.1-alpha.0) (2018-10-15)
+
+
+### Bug Fixes
+
+* **Confirm:** remove reject apply for js error ([6ea4a45](https://github.com/heyui/heyui/commit/6ea4a45))
+* **Modal:** when button focus，enter or space ([d16c820](https://github.com/heyui/heyui/commit/d16c820))
+* **Validator:** fix combine function when have array parent ([ec39cc1](https://github.com/heyui/heyui/commit/ec39cc1))
+
+
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/heyui/heyui/compare/v1.8.3...v1.9.0) (2018-10-10)
+
+
+### Bug Fixes
+
+* fix non-string templates name define ([1d9b230](https://github.com/heyui/heyui/commit/1d9b230))
+* **Table:** fix table border style ([26c1cf3](https://github.com/heyui/heyui/commit/26c1cf3))
+
+
+### Features
+
+* **Table:** add multiple table header ([a2e3167](https://github.com/heyui/heyui/commit/a2e3167)), closes [#26](https://github.com/heyui/heyui/issues/26)
+
+
+
+<a name="1.8.3"></a>
+## [1.8.3](https://github.com/heyui/heyui/compare/v1.8.2...v1.8.3) (2018-10-08)
+
+
+### Bug Fixes
+
+* **tree:** display none when clear data if has search ([db01256](https://github.com/heyui/heyui/commit/db01256))
+
+
+
 <a name="1.8.2"></a>
 ## [1.8.2](https://github.com/heyui/heyui/compare/v1.8.1...v1.8.2) (2018-09-22)
 

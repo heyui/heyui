@@ -49,6 +49,7 @@ Vue.component('codes', codes);
 
 const router = new VueRouter(routerParam);
 router.beforeEach((to, from, next) => {
+  if (from.name == to.name) return;
   HeyUI.$LoadingBar.start();
   if (to.meta.title && to.name != 'Home') {
     document.title = `${to.meta.title} - HeyUI: A high quality UI Toolkit based on Vue.js`;

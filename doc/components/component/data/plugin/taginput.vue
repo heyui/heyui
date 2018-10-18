@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TagInput 标签输入</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-taginput</code>。</p>
     <h3>基本</h3>
     <example demo="dataplugins/taginput1"></example>
     

@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Progress</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-progress</code>. </p>
     <h3>Basic</h3>
     <example demo="view/progress1"></example>
     

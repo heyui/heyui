@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Tabs</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-tabs</code>. </p>
 
     <h3>Basic</h3>
     <p>The Tabs control only supports simple tab generation and click toggle. Default use <code>h-tabs-default</code> class, you can do custom Tabs.</p>

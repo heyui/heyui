@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Search Input</h2>
 
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-search</code>. </p>
     <h3>Basic</h3>
     <p>Provides a simple search component package for many places.</p>
     <example demo="plugins/search1"></example>

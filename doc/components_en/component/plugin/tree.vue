@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Tree</h2>
   
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-tree</code>. </p>
     <h3>Basic</h3>
     <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>Set the data mode: <code>dataMode</code>, When the data passed is a list with key and parent fields, then the <code>list</code>component will automatically calculate the tree model according to the key and parent fields (parent can be an array correspondence). If the data passed is a tree model, Then pass it <code>tree</code>。</p>

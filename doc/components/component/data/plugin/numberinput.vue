@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>NumberInput 数字输入</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-numberinput</code>。</p>
     <h3>基本</h3>
     <example demo="form/numberinput1"></example>
 

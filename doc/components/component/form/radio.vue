@@ -2,6 +2,8 @@
   <div class="doc">
     <h2>Radio 单选框</h2>
 
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-radio</code>。</p>
+
     <h3>基本调用</h3>
     <example demo="form/radio2"></example>
 

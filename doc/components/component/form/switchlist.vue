@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>SwitchList 选项</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-switchlist</code>。</p>
     <h3>基本</h3>
     <p>使用 <code>v-model</code> 以及 <code>datas</code>参数完成整体的调用。</p>
     <example demo="form/switchlist1"></example>

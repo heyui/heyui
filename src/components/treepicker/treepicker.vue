@@ -193,6 +193,7 @@ export default {
       this.objects = [];
       this.setvalue();
       this.triggerChange();
+      this.$refs.tree.searchTree(null);
       this.dropdown.hide();
     },
     confirm() {

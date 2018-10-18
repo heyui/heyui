@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
-    <h2>affix</h2>
+    <h2>Affix</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-affix</code>. </p>
 
     <example demo="other/affix1"></example>
     <div v-height="1000" v-bg-color:gray4 v-padding="20" class="text-center">

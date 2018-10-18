@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Steps 步骤条</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-steps</code>。</p>
 
     <h3>基本调用</h3>
     <example demo="plugins/step1"></example>

@@ -25,7 +25,11 @@
 .generate-color(primary);
 
 .clearfix{
-  .clearfix();
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 };
 
 .flex {
@@ -41,7 +45,9 @@
 }
 
 .middle {
-  .middle();
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
 }
 
 .absolute {
@@ -56,11 +62,18 @@
 }
 
 .middle-center {
-  .middle-center();
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .middle-right {
-  .middle-right();
+  position: absolute;
+  top: 50%;
+  right: 0;
+  top: 50%;
+  transform: translate(0%, -50%);
 }
 
 

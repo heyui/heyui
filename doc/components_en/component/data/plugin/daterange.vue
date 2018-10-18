@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>DateRangePicker</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datepicker</code>. </p>
     <h3>Basic</h3>
     <p>By default, the data uses {start,end} objects and can also customize parameters. For details, refer to <router-link to="/en/component/config">Global Configuration</router-link></p>
     <div>

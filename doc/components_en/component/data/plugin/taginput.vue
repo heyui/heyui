@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>TagInput</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-taginput</code>. </p>
     <h3>Basic</h3>
     <example demo="dataplugins/taginput1"></example>
 
