@@ -157,6 +157,20 @@
         <td>l, s, xs</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>stop</td>
+        <td>click事件是否stopPropagation</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>preventDefault</td>
+        <td>click事件是否preventDefault</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
   </div>
 </template>
