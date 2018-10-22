@@ -129,6 +129,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>className</td>
+        <td>class name</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
   </div>
 </template>

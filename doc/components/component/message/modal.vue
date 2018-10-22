@@ -50,7 +50,7 @@
     <codes src="/message/modalTest.vue" type="html"></codes>
 
 
-    <h3>Modal方法 参数</h3>
+    <h3>Modal 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -126,6 +126,13 @@
         <td>events</td>
         <td>事件监听</td>
         <td>Object</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义class</td>
+        <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
