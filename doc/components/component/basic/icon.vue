@@ -59,13 +59,14 @@ export default {
         'h-icon-refresh',
         'h-icon-home',
         'h-icon-user',
+        'h-icon-users',
         'h-icon-task',
         'h-icon-message',
         'h-icon-fullscreen',
         'h-icon-menu',
         'h-icon-link',
+        'h-icon-edit',
         'h-icon-trash',
-        'h-icon-users',
         'h-icon-complete',
         'h-icon-bell',
         'h-icon-search',
@@ -75,8 +76,8 @@ export default {
         'h-icon-calendar',
         'h-icon-upload',
         'h-icon-github',
-        'h-icon-edit',
         'h-icon-location',
+        'h-icon-help',
       ]
     }
   }
