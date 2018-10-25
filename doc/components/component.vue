@@ -141,6 +141,9 @@
             <li>
               <router-link to="/component/view/timeline">Timeline 时间轴</router-link>
             </li>
+            <li>
+              <router-link to="/component/view/carousel">Carousel 跑马灯</router-link>
+            </li>
           </ul>
           <ul>
             <li class="title">Other</li>
