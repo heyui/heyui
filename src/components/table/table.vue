@@ -317,6 +317,9 @@ export default {
         this.checks = [...data];
       }
     },
+    getSelection() {
+      return [...(this.checks || [])];
+    },
     checkAll() {
       if (this.checks.length == this.datas.length) {
         this.checks.splice(0, this.datas.length);

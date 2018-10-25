@@ -219,6 +219,10 @@
         <td>设置选中的值</td>
       </tr>
       <tr>
+        <td>getSelection</td>
+        <td>获取选中的值</td>
+      </tr>
+      <tr>
         <td>inverseSelection</td>
         <td>设置选中的值反选</td>
       </tr>

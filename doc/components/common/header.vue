@@ -27,7 +27,7 @@
         <!-- <p>微信群</p> -->
         <div class="weixin-image">
           <img src="https://github.com/heyui/heyui/blob/master/doc/static/images/qrcode.jpg?raw=true"/>
-          <p>该二维码10月18日前有效。</p>
+          <p>该二维码10月25日前有效。</p>
         </div>
       </div>
     </Modal>

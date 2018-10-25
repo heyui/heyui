@@ -28,6 +28,14 @@ export default {
         return Props.size.has(value);
       }
     },
+    stop: {
+      type: Boolean,
+      default: false
+    },
+    preventDefault: {
+      type: Boolean,
+      default: false
+    },
     text: Boolean,
     iconCircle: Boolean
   },
@@ -35,8 +43,14 @@ export default {
     return {};
   },
   methods: {
-    trigger() {
-      this.$emit('click');
+    trigger(event) {
+      if(this.stop){
+        event.stopPropagation();
+      }
+      if(this.preventDefault){
+        event.preventDefault();
+      }
+      this.$emit('click', event);
     }
   },
   computed: {

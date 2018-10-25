@@ -183,10 +183,6 @@ class Notify {
     if (focusClicked) {
       focusClicked.blur();
     }
-    let focusDoms = $body.querySelector('input, button');
-    if (focusDoms) {
-      focusDoms.focus();
-    }
     if (param.hasCloseIcon) {
       $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
         that.close();
