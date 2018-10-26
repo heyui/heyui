@@ -1,18 +1,36 @@
 <template>
   <div>
-      <button class="h-btn" @click="open">Js调用Modal</button>
+      <Button @click="open">Js调用Modal</Button>
+      <Button @click="opened=true">Vue调用Modal</Button>
+      <Modal v-model="opened">
+        <div slot="header">Vue</div>
+        <div >这是使用vue调用的弹出框</div>
+        <div slot="footer">
+          <Button color="primary" @click="modalConfirm">确认</Button>
+          <Button @click="modalClose">关闭</Button>
+          <Button color="red" @click="modalDelete">删除</Button>
+        </div>
+      </Modal>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      opened: false
+    }
+  },
   methods: {
     open() {
-      //默认配置了'ok', 'cancel'两个按钮
       this.$Modal({
-        title: '自定义的弹出框2',
-        content: '<p>自定义的弹出框测试2</p><p>自定义的弹出框测试2</p>',
-        buttons: ['ok', {
+        title: 'Js',
+        content: '这是使用Js调用的弹出框',
+        buttons: [{
+          type: 'ok',
+          name: '确认',
+          color: 'primary'
+        }, {
           type: 'cancel',
           name: '关闭'
         }, {
@@ -21,25 +39,38 @@ export default {
           color: 'red'
         }],
         events: {
-          //默认有close,init的event,请不要定义同名的按钮
-          init: (m) => {
-            //modal打开
+          $init: (modal) => {
+            // trigger when modal inited
           },
-          delete: (m) => {
-            m.close();
+          $close: (modal) => {
+            // trigger when modal closed
+          },
+          delete: (modal) => {
+            modal.close();
             this.$Message.error('点击了删除按钮');
           },
-          ok: (m) => {
+          ok: (modal) => {
             this.$Message.info('点击了确认按钮');
-            m.close();
+            modal.close();
           },
-          cancel: (m) => {
+          cancel: (modal) => {
             this.$Message.warn('点击了取消按钮');
-            m.close();
+            modal.close();
           }
         }
       });
-      //heyui.$Modal js调用也可以
+    },
+    modalConfirm() {
+      this.$Message.info('点击了确认按钮');
+      this.opened = false;
+    },
+    modalClose() {
+      this.$Message.warn('点击了取消按钮');
+      this.opened = false;
+    },
+    modalDelete() {
+      this.$Message.error('点击了删除按钮');
+      this.opened = false;
     }
   }
 }

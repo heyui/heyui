@@ -213,8 +213,8 @@ class Notify {
       }
     }, 20);
 
-    if (param.events && utils.isFunction(param.events.init)) {
-      param.events.init.call(null, that, $content);
+    if (param.events && utils.isFunction(param.events.$init)) {
+      param.events.$init.call(null, that, $content);
     }
     if (param.timeout) {
       $body.addEventListener('mouseover', () => {
@@ -267,7 +267,7 @@ class Notify {
     body.style.overflow = '';
     body.style.paddingRight = '';
 
-    this.trigger('close');
+    this.trigger('$close');
 
     utils.removeClass($body, notifyShowCls);
 

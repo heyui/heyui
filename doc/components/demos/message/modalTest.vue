@@ -36,7 +36,8 @@ export default {
   methods: {
     triggerEvent() {
       this.close();
-      this.$emit("event", "fromchild", "测试");
+      // 向外层触发事件
+      this.$emit("event", "fromchildevent", "测试");
     },
     go() {
       //注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。

@@ -1,11 +1,11 @@
 <template>
   <div>
-      <button class="h-btn" @click="opened = true">打开弹出框</button>
-      <Modal v-model="opened" :has-mask="false">
-        <div slot="header">标题</div>
-        <div >这是一个普通的弹出框</div>
-        <Select dict="simple"></Select>
-        <div slot="footer"><button class="h-btn" @click="close">取消</button><button class="h-btn h-btn-primary" @click="confirm">确定</button></div>
+      <button class="h-btn" @click="open">Js打开弹出框</button>
+      <button class="h-btn" @click="opened = true">Vue打开弹出框</button>
+      <Modal v-model="opened" :hasMask="false">
+        <div slot="header">Vue</div>
+        <div >这是一个Vue的弹出框</div>
+        <div slot="footer"><button class="h-btn" @click="opened = false">取消</button></div>
       </Modal>
   </div>
 </template>
@@ -18,12 +18,12 @@ export default {
     }
   },
   methods: {
-    confirm() {
-      this.$Message("点击确定了。");
-      this.close();
-    },
-    close() {
-      this.opened = false;
+    open() {
+      this.$Modal({
+        title: 'Js',
+        hasMask: false,
+        content: '这是一个Js的弹出框'
+      })
     }
   }
 }

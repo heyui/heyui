@@ -2,48 +2,33 @@
   <div class="doc">
     <h2>Modal</h2>
 
-    <h3>Js call</h3>
-    <h4>Use method call Confirm</h4>
+    <h3>Confirm</h3>
+    <!-- <h4>使用方法调用Confirm</h4> -->
     <example demo="message/modal5"></example>
 
-    <h4>Use method to call Modal</h4>
+    <h3>Basic</h3>
     <example demo="message/modal6"></example>
 
-    <h4>Use method to define full-screen Modal</h4>
+    <h3>Fullscreen modal</h3>
     <example demo="message/modal12"></example>
 
-    <h4>Use method to define complex Modal</h4>
+    <h3>Define buttons</h3>
     <example demo="message/modal7"></example>
-
-    <h3>Modal Component</h3>
-    <h3>Basic</h3>
-    <example demo="message/modal1"></example>
-
-    <h3>Customized modal</h3>
-    <example demo="message/modal10"></example>
-
-    <h3>Maskless modal</h3>
-    <example demo="message/modal2"></example>
 
     <h3>Click mask cannot be closed</h3>
     <example demo="message/modal3"></example>
 
-    <h4>Open vertical center modal</h4>
+    <h3>Vertical center modal</h3>
     <example demo="message/modal4"></example>
 
-    <h4>Divider line modal</h4>
+    <h3>Maskless modal</h3>
+    <example demo="message/modal2"></example>
+
+    <h3>Divider line modal</h3>
     <example demo="message/modal9"></example>
 
-    <h4>Open full-screen Modal</h4>
-    <example demo="message/modal13"></example>
-
-    <h3>modal component use component content</h3>
-    <p>In system development, we often use new, editing and other functional and highly reusable modules. Here we provide modal component-based calls to help with better development.</p>
-    <example demo="message/modal8"></example>
-
-    <h3>modal js use component content</h3>
+    <h3>use component content</h3>
     <p>Use js to call the pop-up component Modal, which not only facilitates the use of parameters, but also integrates calls to js code.</p>
-    <blockquote>The components used in the popup box are the same as the components called by Vue above, and both methods are compatible.</blockquote>
     <example demo="message/modal11"></example>
     
     <blockquote>The code used in the popup box</blockquote>

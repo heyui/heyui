@@ -14,7 +14,6 @@ export default {
       let that = this;
       this.$Modal({
         hasDivider,
-        // width: 200,
         component: {
           // 这里也可以定义异步调用
           // vue: (resolve) => {
@@ -24,7 +23,7 @@ export default {
           data: { a: 1 }
         },
         events: {
-          fromchild:(modal, data)=>{
+          fromchildevent:(modal, data)=>{
             this.$Message(data);
           }
         }
