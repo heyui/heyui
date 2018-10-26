@@ -251,4 +251,9 @@ export default {
   'otherAffix2': resolve => require.ensure([], require => require('./other/affix2'), 'other'),
   'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),
   'otherScrollintoview1': resolve => require.ensure([], require => require('./other/scrollintoview1'), 'other'),
+  'carouselCarousel1': resolve => require.ensure([], require => require('./carousel/carousel1'), 'carousel'),
+  'carouselCarousel2': resolve => require.ensure([], require => require('./carousel/carousel2'), 'carousel'),
+  'carouselCarousel3': resolve => require.ensure([], require => require('./carousel/carousel3'), 'carousel'),
+  'carouselCarousel4': resolve => require.ensure([], require => require('./carousel/carousel4'), 'carousel'),
+  'carouselCarousel5': resolve => require.ensure([], require => require('./carousel/carousel5'), 'carousel'),
 }

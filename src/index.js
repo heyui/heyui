@@ -50,6 +50,7 @@ import Timeline from './components/timeline';
 import Transfer from './components/transfer';
 import { Button, ButtonGroup } from './components/button';
 import TextEllipsis from './components/textellipsis';
+import Carousel from './components/carousel';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -68,7 +69,6 @@ import filters from './filters';
 import config from './utils/config';
 import locale from './locale';
 import LocaleMinxin from './mixins/locale';
-
 
 const components = {
   Affix,
@@ -118,7 +118,9 @@ const components = {
   Tree,
   TreePicker,
   Uploader,
-  TextEllipsis
+  TextEllipsis,
+  Carousel,
+  CarouselItem: Carousel.CarouselItem,
 };
 
 const directives = {

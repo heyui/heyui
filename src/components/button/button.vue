@@ -50,7 +50,7 @@ export default {
       if(this.preventDefault){
         event.preventDefault();
       }
-      this.$emit('click');
+      this.$emit('click', event);
     }
   },
   computed: {

@@ -5,7 +5,7 @@
     
     <h3>组件调用</h3>
     <p>使用基本的Button组件实现各种button的样式。</p>
-    <p class="tip">如果需要使用<code>@click.stop</code>等特殊事件修饰符，请使用下面原生的方式调用button。</p>
+    <p class="tip">如果需要使用<code>stop</code>等事件处理方案，请使用<code>stop</code>参数</p>
     <example demo="basic/button2"></example>
 
     <h3>原生class</h3>
@@ -132,6 +132,35 @@
         <td>其实是定义一个icon的class，也可以自己写class样式</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>stop</td>
+        <td>click事件是否stopPropagation</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>preventDefault</td>
+        <td>click事件是否preventDefault</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+    </table>
+
+
+    <h3>Button 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>值</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>点击事件</td>
+        <td>Event</td>
+      </tr>
     </table>
 
     <h3>ButtonGroup 参数</h3>
@@ -156,20 +185,6 @@
         <td>string</td>
         <td>l, s, xs</td>
         <td>-</td>
-      </tr>
-      <tr>
-        <td>stop</td>
-        <td>click事件是否stopPropagation</td>
-        <td>boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>preventDefault</td>
-        <td>click事件是否preventDefault</td>
-        <td>boolean</td>
-        <td>-</td>
-        <td>false</td>
       </tr>
     </table>
   </div>

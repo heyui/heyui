@@ -77,7 +77,8 @@ const menus = utils.toArray({
   viewBreadcrumb: 'Breadcrumb 面包屑',
   otherAffix: 'Affix 图钉',
   otherBacktop: 'BackTop 返回顶部',
-  otherTextellipsis: 'TextEllipsis 超出文本省略'
+  otherTextellipsis: 'TextEllipsis 超出文本省略',
+  carousel: 'Carousel 走马灯',
 }, 'key', 'title').sort((a, b) => a.title > b.title ? 1 : -1);
 
 const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')[0] }));

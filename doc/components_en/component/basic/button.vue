@@ -5,7 +5,7 @@
 
     <h3>Component</h3>
     <p>Use basic Button components to implement various button styles.</p>
-    <p class="tip">If you need to use special event modifiers such as <code>@click.stop</code>, please use button in the native way.</p>
+    <p class="tip">If you need to use special event handler such as <code>stop</code>, please use <code>stop</code> parameter.</p>
     <example demo="basic/button2"></example>
 
     <h3>Native class</h3>
@@ -132,6 +132,34 @@
         <td>Actually define an icon of the class, you can also write their own class style</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>stop</td>
+        <td>click event use stopPropagation</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>preventDefault</td>
+        <td>click event use preventDefault</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Button Event</h3>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>desc</th>
+        <th>value</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>click event</td>
+        <td>Event</td>
+      </tr>
     </table>
 
     <h3>ButtonGroup Property</h3>
@@ -156,20 +184,6 @@
         <td>string</td>
         <td>l, s, xs</td>
         <td>-</td>
-      </tr>
-      <tr>
-        <td>stop</td>
-        <td>click event use stopPropagation</td>
-        <td>boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>preventDefault</td>
-        <td>click event use preventDefault</td>
-        <td>boolean</td>
-        <td>-</td>
-        <td>false</td>
       </tr>
     </table>
   </div>

@@ -67,7 +67,8 @@ const titles = {
   'component': '组件',
   'resourceheycli': '资源',
   'about': '关于',
-  'pluginTreePicker': '下拉树选择'
+  'pluginTreePicker': '下拉树选择',
+  'carousel': 'Carousel 走马灯',
 }
 
 
