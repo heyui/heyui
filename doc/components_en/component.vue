@@ -140,6 +140,9 @@
             <li>
               <router-link to="/en/component/view/timeline">Timeline</router-link>
             </li>
+            <li>
+              <router-link to="/component/view/transfer">Transfer</router-link>
+            </li>
           </ul>
           <ul>
             <li class="title">Other</li>

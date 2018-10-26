@@ -443,6 +443,14 @@ const router = {
       component: () =>
         import ('components/component/view/timeline')
     }, {
+      path: 'view/transfer',
+      name: 'viewTransfer',
+      meta: {
+        title: 'Tranfer',
+      },
+      component: () =>
+        import ('components/component/view/transfer')
+    }, {
       path: 'view/breadcrumb',
       name: 'viewBreadcrumb',
       meta: {
