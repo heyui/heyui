@@ -1,307 +1,199 @@
-<style lang="less">
-  .h-carousel{
-		overflow: hidden;
-		height: 300px;
-		position: relative;
-		.h-carousel-list{
-			width: 1000%;
-			height: 300px;
-			.h-carousel-item{
-        width:10%;
-				height: 300px;
-				background: #999;
-				float: left;
-				position: relative;
-				.h-carousel-bg{
-					width: 100%;
-					height: 100%;
-					background-size: 100%;	
-				}
-			}		
-		}		
-		.h-carousel-pagination{
-			position: absolute;
-			bottom:10%;
-			left: 50%;
-			transform: translateX(-50%);
-			&.h-carousel-pagination-circle{
-				.h-carousel-pagination-item{
-					width: 8px;
-					height: 8px;
-					background-color: #fff;
-					opacity: 0.4;
-					display: inline-block;
-					border-radius: 4px;
-					margin-right: 15px;
-					cursor: pointer;
-					position: relative;
-					&.active{
-						opacity: 1;
-					}					
-				}				
-			}
-			&.h-carousel-pagination-square{
-				.h-carousel-pagination-item{
-					width: 30px;
-					height: 2px;
-					background-color: #fff;
-					opacity: 0.4;
-					display: inline-block;
-					border-radius: 4px;
-					margin-right: 15px;
-					cursor: pointer;
-					position: relative;
-					&.active{						
-						opacity: 1;
-					}					
-				}				
-      }
-      &.h-carousel-pagination-hidden{
-        display: none!important;
-      }
-    }
-
-		.h-carousel-arrow{
-			position: absolute;
-			width: 100%; 
-			height: 100%;
-			top: 0;
-			left: 0;			
-			.h-icon-left,.h-icon-right{
-				color: #fff;
-				font-size: 42px;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-        cursor: pointer;	
-        opacity: 0.4;
-        &:hover{
-          opacity: 1;
-        }
-			}
-			.h-icon-left{
-				left: 2%;
-			}
-			.h-icon-right{
-				right: 2%;
-			}
-			&.h-carousel-arrow-hover{
-				display: none;				
-			}
-		}
-		&:hover{
-			.h-carousel-arrow.h-carousel-arrow-hover{
-				display: block;
-			}
-		}
-		.h-carousel-arrow-hidden{
-			display: none!important;
-		}
-	}
-
-</style>
 <template>
-	<div>
-		<div class="h-carousel" :class="className">
-			<div class="h-carousel-list">
-				<div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index">
-					<div v-if="!$scopedSlots.item" class="h-carousel-bg" :style="{backgroundImage:`url(${params.image})`}"></div>
-					<slot :carousel="params" name="item"></slot>
-				</div>
-			</div>    
-			<div class="h-carousel-arrow" :class="arrowCls">
-				<div class="h-icon-left" @click="clickPrev"></div>
-				<div class="h-icon-right" @click="clickNext"></div>
+	<div class="h-carousel" :style="{height: `${height}px`}">
+		<div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+			<div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index">
+				<div v-if="!$scopedSlots.item" class="h-carousel-bg" :style="{backgroundImage:`url(${params.image})`}"></div>
+				<slot :carousel="params" name="item"></slot>
 			</div>
-			<div class="h-carousel-pagination" v-if="pageTheme!='custom'" :class="paginationCls">
-				<span class="h-carousel-pagination-item" v-for="(p, index) of datas" :key="index" :class="{'active':(index+1)==activeIndex||(activeIndex==0&&index==(datas.length-1))||(activeIndex==(datas.length+1)&&index==0)}" @click="clickPage(index+1)"></span>
-			</div>
-		</div>		
-		<div class="h-carousel-pagination" v-if="pageTheme=='custom'">
-			<template v-for="(p, index) of datas">
-				<div class="h-carousel-pagination-item" :key="index" :class="{'active':(index+1)==activeIndex||(activeIndex==0&&index==(datas.length-1))||(activeIndex==(datas.length+1)&&index==0)}" @click="clickPage(index+1)">
-					<slot :carousel="p" name="page"></slot>
-				</div>
-			</template>		
+		</div>    
+		<div class="h-carousel-arrow" :class="arrowCls">
+			<div class="h-icon-left" @click="prev"></div>
+			<div class="h-icon-right" @click="next"></div>
 		</div>
+		<ul class="h-carousel-pagination" :class="paginationCls">
+			<li class="h-carousel-pagination-item" v-for="(p, index) of datas" :key="index" :class="{'active': isActive(index)}"  @mouseover="triggerChange('hover', index+1)" @click="triggerChange('click', index+1)"><span></span></li>
+		</ul>
 	</div>
 </template>
 <script>
-import utils from '../../utils/utils';
+import utils from '../../utils/utils'
 export default {
   props: {
-		speed: {
-			type: Number,
-			default: 300,
-		},
-		autoplay: {
-			type: Number,
-			default: 0,
-		},
-		arrowType: {
-			type: String,
-			default: "hidden",
-		},
-		pageTheme: {
-			type: String,
-			default: "circle"
-		},
-		datas: Array,
-		loop: {
-			type: Boolean,
-			default: true,
-		},
-		hoverStop: {
-			type: Boolean,
-			default: true,
-		},
-		className:{
-			type: String,
-			default: "",
-		},
-	},
-  data() {
-    return {			
-			activeIndex: 1,
-			scrollInterval: null,
-			length: this.datas.length+2,
-    };
-	},
-	computed:{
-		carouselList() {
-			if (this.datas.length == 0) {
-				return [];
-			}
-			let datas = this.datas;
-			return [datas[this.datas.length-1], ...datas, datas[0]];
-		},
-		paginationCls() {
-      return `h-carousel-pagination-${this.pageTheme}`;
-		},
-		arrowCls() {
-      return `h-carousel-arrow-${this.arrowType}`;
+    height: {
+      type: Number,
+      default: 300
     },
-	},
-	watch:{
-    autoplay(){
-      if(this.autoplay>0){
-				this.scroll();
-			}else{
-        clearTimeout(this.scrollInterval);
+    speed: {
+      type: Number,
+      default: 3000
+    },
+    autoplay: {
+      type: Boolean,
+      default: true
+    },
+    changeSpeed: {
+      type: Number,
+      default: 500
+    },
+    arrow: {
+      type: String,
+      default: 'hover'
+    },
+    pageTheme: {
+      type: String,
+      default: 'square'
+    },
+    datas: Array,
+    // loop: {
+    //   type: Boolean,
+    //   default: true
+    // },
+    isHoverStop: {
+      type: Boolean,
+      default: true
+    },
+    paginationTrigger: {
+      type: String,
+      default: 'click'
+    }
+  },
+  data() {
+    return {
+      activeIndex: 1,
+      scrollTimeout: null,
+      redirectTimeout1: null,
+      redirectTimeout2: null,
+    }
+  },
+  computed: {
+    carouselList() {
+      if (this.datas.length == 0) {
+        return []
+      }
+      let datas = this.datas;
+      return [datas[this.datas.length - 1], ...datas, datas[0]]
+    },
+    paginationCls() {
+      return `h-carousel-pagination-${this.pageTheme}`
+    },
+    arrowCls() {
+      return `h-carousel-arrow-${this.arrow}`
+		},
+		
+  },
+  watch: {
+    autoplay() {
+      if (this.autoplay) {
+        this.startAutoplay(true);
+      } else {
+        this.stopAutoplay(true);
       }
     }
   },
-	mounted() {
-		this.$nextTick(()=>{
-			this.init();		
-		});
-	},
-	beforeDestroy(){
-		window.removeEventListener('resize');
-	},
-	methods:{
-		init(){
-			if(this.autoplay>0){
-				this.scroll();
-			}
-			setTimeout(() => {
-				this.scrollOnce("immediately");
-			},300);
-			if(this.hoverStop){
-        let listDom = this.$el.querySelector('.h-carousel-list');
-				listDom.onmouseover = ()=>{
-					clearTimeout(this.scrollInterval);
-				}
-				listDom.onmouseout = ()=>{
-					if(this.autoplay>0){
-						this.scroll();
-					}					
-				}
-			}
-			window.addEventListener('resize',() => this.scrollOnce("immediately"),false);
-    },		
-    scrollOnce(type){
-      let itemWidth = this.$el.clientWidth;
-      let width = this.activeIndex * itemWidth;
-      let listDom = this.$el.querySelector('.h-carousel-list');
-      if(type=="immediately"){
-        listDom.style.transitionDuration = `0ms`;	
-      }else{
-        listDom.style.transitionDuration = `${this.speed}ms`;	
-        this.$emit('changePage', this.carouselList[this.activeIndex]);
-      }
-      listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`;
+  mounted() {
+    this.$nextTick(() => {
+      this.init()
+    })
+  },
+  beforeDestroy() {
+    clearTimeout(this.scrollTimeout);
+    clearTimeout(this.redirectTimeout1);
+    clearTimeout(this.redirectTimeout2);
+    window.removeEventListener('resize', this.resizeEvent)
+  },
+  methods: {
+    isActive(index) {
+			let datas = this.datas;
+			let activeIndex = this.activeIndex;
+      return (
+        index + 1 == activeIndex ||
+        (activeIndex == 0 && index == datas.length - 1) ||
+        (activeIndex == datas.length + 1 && index == 0)
+      )
     },
-		scroll(){	
-			this.scrollInterval = setTimeout(()=>{
-				if(this.activeIndex < this.length-1){
-					this.activeIndex++;				
-          this.scrollOnce();
-					setTimeout(() => {
-						if(this.activeIndex == (this.length-1)){
-							this.activeIndex = 1;
-              if(this.loop==true){
-                this.scrollOnce("immediately");
-              }else{
-                this.scrollOnce();
-              }						
-						}
-          }, this.loop==true?this.speed:0);				
-          this.scroll();
-        }	
-			},this.autoplay);
+    init() {
+      this.startAutoplay(true);
+      setTimeout(() => {
+        this.change({index: this.activeIndex, immediately: true})
+      }, 300)
+      window.addEventListener('resize', this.resizeEvent, false)
 		},
-		clickPage(index,data){
-			clearTimeout(this.scrollInterval);
-			this.activeIndex = index;
-			this.scrollOnce();
-			if(this.autoplay>0&&this.hoverStop==false){
-				this.scroll();	
-      }
-      this.$emit('clickPage', this.carouselList[this.activeIndex]);
-		},
-		clickPrev(){
-			clearTimeout(this.scrollInterval);
-			if(this.activeIndex > 0){
-				this.activeIndex--;
+		stopAutoplay(force = false) {
+			if (this.isHoverStop || force) {
+				clearTimeout(this.scrollTimeout)
 			}
-			setTimeout(() => {				
-				if(this.activeIndex == 0){
-					this.activeIndex = this.length-2;
-					if(this.loop==true){
-            this.scrollOnce("immediately");
-          }else{
-            this.scrollOnce();
-          }
-				}
-			}, this.loop==true?this.speed:0);
-			this.scrollOnce();
-			if(this.autoplay>0&&this.hoverStop==false){
-				this.scroll();	
-      }
-      this.$emit('clickPrev', this.carouselList[this.activeIndex]);
 		},
-		clickNext(){
-			clearTimeout(this.scrollInterval);
-			if(this.activeIndex < (this.length-1)){
-				this.activeIndex++;
+		startAutoplay(force = false) {
+			if ((this.isHoverStop || force) && this.autoplay) {
+			  clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = setTimeout(() => {
+          this.next();
+        }, this.speed );
+      }
+		},
+    resizeEvent() {
+      this.change({index: this.activeIndex, immediately: true});
+    },
+    scroll(index, immediately) {
+      this.activeIndex = index;
+      let itemWidth = this.$el.clientWidth;
+      let width = index * itemWidth;
+      let listDom = this.$el.querySelector('.h-carousel-list');
+      if(immediately) {
+        listDom.style.transitionDuration = `0ms`
+      } else {
+        listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+      }
+      listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`
+
+    },
+    change({index = 1, immediately = false}) {
+      if (this.activeIndex == this.carouselList.length - 1) {
+        this.scroll(1, true);
+      } else if (this.activeIndex == 0) {
+        this.scroll(this.carouselList.length - 2, true);
+      }
+      clearTimeout(this.scrollTimeout);
+      clearTimeout(this.redirectTimeout1);
+      clearTimeout(this.redirectTimeout2);
+      if (immediately) {
+        this.scroll(index, immediately);
+      } else {
+        this.scroll(index, immediately);
+        this.$emit('change', index, this.carouselList[this.activeIndex]);
+        // 当翻页到第一页的时候，默默切换至真实的第一页
+        if (this.activeIndex == this.carouselList.length - 1) {
+          this.redirectTimeout1 = setTimeout(() => {
+            this.scroll(1, true);
+          }, this.changeSpeed + 100);
+        } else if (this.activeIndex == 0) {
+          this.redirectTimeout2 = setTimeout(() => {
+            this.scroll(this.carouselList.length - 2, true);
+          }, this.changeSpeed + 100);
+        }
+      }
+      this.startAutoplay(true);
+    },
+    changePageByStep(step) {
+      let activeIndex = this.activeIndex + step;
+      if (activeIndex >= this.carouselList.length ) {
+        activeIndex = 2;
+      } else if (activeIndex < 0 ) {
+        activeIndex = this.carouselList.length - 3;
+      }
+      this.change({index: activeIndex});
+    },
+    triggerChange(triggerType, index) {
+			if (this.paginationTrigger == triggerType ) {
+				this.change({index});
 			}
-			setTimeout(() => {			
-				if(this.activeIndex == (this.length-1)){
-          this.activeIndex = 1;
-          if(this.loop==true){
-            this.scrollOnce("immediately");
-          }else{
-            this.scrollOnce();
-          }
-				}
-			}, this.loop==true?this.speed:0);
-      this.scrollOnce();
-			if(this.autoplay>0&&this.hoverStop==false){
-				this.scroll();	
-      }
-      this.$emit('clickNext', this.carouselList[this.activeIndex]);
-		},
-	}
-};
+    },
+    prev() {
+      this.changePageByStep(-1)
+    },
+    next() {
+      this.changePageByStep(1);
+    }
+  }
+}
 </script>

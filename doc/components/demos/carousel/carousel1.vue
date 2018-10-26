@@ -1,13 +1,43 @@
+<style lang="less">
+  .carousel-demo1 .h-carousel-item .h-carousel-p{
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+  }
+</style>
 <template>
   <div>
-    <Carousel :datas="params" :autoplay="2000" pageTheme="square"></Carousel>
+    <div style="padding-bottom: 20px">
+      <Form readonly :labelWidth="130">
+        <FormItem label="自动切换"><h-switch small v-model="autoplay"></h-switch></FormItem>
+        <FormItem label="左右切换按钮"><SwitchList small v-model="arrow" :datas="arrows"></SwitchList></FormItem>
+        <FormItem label="底部指示器样式"><SwitchList small v-model="pageTheme" :datas="pageThemes"></SwitchList></FormItem>
+        <FormItem label="底部指示器触发"><SwitchList small v-model="paginationTrigger" :datas="paginationTriggers"></SwitchList></FormItem>
+      </Form>
+    </div>
+    <Carousel class="carousel-demo1" :datas="params" :height="300" :autoplay="autoplay" :paginationTrigger="paginationTrigger" :arrow="arrow" :pageTheme="pageTheme" :speed="2000" :changeSpeed="1000">
+      <template slot-scope="props" slot="item">
+        <p class="h-carousel-p">{{props.carousel.title}}</p>
+      </template>
+    </Carousel>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      value: false,
+      autoplay: true,
+      pageTheme: 'square',
+      pageThemes: {circle: '圆形', square: '方形', hidden: '隐藏'},
+      arrow: 'hover',
+      arrows: {hidden: '隐藏', always: '一直显示', hover: '悬停'},
+      paginationTrigger: 'click',
+      paginationTriggers: {click: '点击', hover: '悬停'},
       params:[
         {
           title:'Page 1',

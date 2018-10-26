@@ -27,7 +27,7 @@
 
 <template>
   <div>
-    <Carousel :datas="params" :autoplay="2000" pageTheme="custom" :loop="false" class="carousel-demo4"> 
+    <Carousel :datas="params" :speed="2000" pageTheme="custom" :loop="false" class="carousel-demo4"> 
       <template slot-scope="props" slot="page">
         <img :src="props.carousel.image" >
       </template>
