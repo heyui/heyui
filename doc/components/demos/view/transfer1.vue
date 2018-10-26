@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p>{{value1}}</p>
+    <p>值：{{value1}}</p>
     <Transfer v-model="value1" :datas="sourceDatas1" :option="option1"></Transfer>
 
-    <p>{{value2}}</p>
+    <p>值：{{value2}}</p>
     <Transfer v-model="value2" :datas="sourceDatas2" :option="option2" keyName="id"></Transfer>
   </div>
 </template>

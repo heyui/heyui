@@ -6,7 +6,7 @@
       <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
-          <Checkbox v-model="ltChecked"  :value="op[key]">
+          <Checkbox v-model="ltChecked"  :value="op[key]" :checked="false">
             <slot name="item" :option="op">{{op.text}}</slot>
           </Checkbox>
         </div>
@@ -68,7 +68,8 @@
         ltChecked: [],
         rtChecked: [],
         ltSearchText: "",
-        rtSearchText: ""
+        rtSearchText: "",
+        key: this.keyName || 'key'
       };
     },
     created() {

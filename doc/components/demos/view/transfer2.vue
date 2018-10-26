@@ -1,6 +1,6 @@
 <template>
 <div>
-  {{value}}
+  <p>值：{{value}}</p>
   <Transfer v-model="value" :datas="sourceDatas" keyName="code" :option="option"></Transfer>
 </div>
 </template>

@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    {{value}}
+    <p>值：{{value}}</p>
     <Transfer v-model="value" :datas="sourceDatas" keyName="code" @transfer="test">
       <template slot="sourceHeader"><div class="h-transfer-header">一线城市</div></template>
       <template slot="targetHeader"><div class="h-transfer-header">开通城市</div></template>
