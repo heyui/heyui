@@ -5,6 +5,7 @@
     <blockquote>1.10.0+</blockquote>
 
     <h3>基本调用</h3>
+    <p><code>datas</code> 中 <code>image</code> 控制显示的图片，<code>link</code> 控制是否为点击态。</p>
     <example demo="carousel/carousel2"></example>
 
     <h3>不同参数的控制</h3>
@@ -102,6 +103,11 @@
       <tr>
         <td>change</td>
         <td>切换轮播</td>
+        <td>( index, DataObject )</td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>点击事件</td>
         <td>( index, DataObject )</td>
       </tr>
     </table>

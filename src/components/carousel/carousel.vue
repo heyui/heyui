@@ -2,8 +2,8 @@
 	<div class="h-carousel">
     <div class="h-carousel-container" :style="{height: `${height}px`}">
       <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
-        <div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index">
-          <div v-if="!$scopedSlots.item" class="h-carousel-bg" :style="{backgroundImage:`url(${params.image})`}"></div>
+        <div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index" @click="clickTrigger(index, params)">
+          <div v-if="!$scopedSlots.item" class="h-carousel-bg" :class="{'h-carousel-bg-pointer': params.link}" :style="{backgroundImage:`url(${params.image})`}"></div>
           <slot :carousel="params" name="item"></slot>
         </div>
       </div>
@@ -104,6 +104,9 @@ export default {
     window.removeEventListener('resize', this.resizeEvent)
   },
   methods: {
+    clickTrigger(index, data) {
+      this.$emit('click', index, data);
+    },
     isActive(index) {
 			let datas = this.datas;
 			let activeIndex = this.activeIndex;

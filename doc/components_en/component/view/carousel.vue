@@ -101,6 +101,11 @@
         <td></td>
         <td>( index, DataObject )</td>
       </tr>
+      <tr>
+        <td>click</td>
+        <td></td>
+        <td>( index, DataObject )</td>
+      </tr>
     </table>
   </div>
 </template>

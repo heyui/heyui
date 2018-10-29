@@ -31,6 +31,9 @@
         height: 100%;
         background-size: 100%;
       }
+      .@{carousel-prefix}-bg-pointer {
+        cursor: pointer;
+      }
     }
   }
   .@{carousel-prefix}-arrow {
@@ -39,10 +42,10 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 2;
     transition: .3s;
     .h-icon-left,
     .h-icon-right {
+      z-index: 2;
       color: #fff;
       font-size: 32px;
       position: absolute;
