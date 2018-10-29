@@ -2,11 +2,14 @@
 
 .@{carousel-prefix} {
   position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  .@{carousel-prefix}-list {
+  & &-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  & &-list {
     position: relative;
     width: 100%;
     height: 100%;
@@ -71,13 +74,10 @@
 }
 
 .@{carousel-prefix}-pagination {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
+  position: relative;
 
-  & &-item {
+  &-circle &-item,&-square &-item {
     opacity: 0.4;
     display: inline-block;
     margin-right: 10px;
@@ -97,15 +97,23 @@
       margin-right: 0;
     }
   }
-  &&-circle &-item>span{
+
+  &-circle,&-square {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  &-circle &-item>span{
     width: 8px;
     height: 8px;
   }
-  &&-square &-item>span{
+  &-square &-item>span{
     width: 25px;
     height: 3px;
   }
-  &&-hidden {
+  &-hidden {
     display: none;
   }
 }

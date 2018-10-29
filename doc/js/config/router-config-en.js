@@ -14,8 +14,7 @@ const router = [{
     name: 'en_Component',
     meta: {
       title: 'Guide',
-    },
-    component: () =>
+    },    component: () =>
       import ('components_en/guide/guide')
   }, {
     path: 'basic/grid',
@@ -438,6 +437,14 @@ const router = [{
     },
     component: () =>
       import ('components_en/component/view/timeline')
+  }, {
+    path: 'view/carousel',
+    name: 'en_viewCarousel',
+    meta: {
+      title: 'viewCarousel',
+    },
+    component: () =>
+      import('components_en/component/view/carousel')
   }, {
     path: 'view/breadcrumb',
     name: 'en_viewBreadcrumb',

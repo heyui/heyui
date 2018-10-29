@@ -2,11 +2,9 @@
   .carousel-demo4{
     position: relative;
     .h-carousel-pagination{
-      width: 96%;
-      margin-left: 2%;
-      margin-top: 20px;
+      margin-top: 10px;
       height: 100px;
-      .h-carousel-pagination-item{			
+      .h-carousel-pagination-item{
         float: left;	
         width: 25%;
         cursor: pointer;
@@ -14,6 +12,7 @@
           width: 100%;
           height: 100px;
           opacity: 0.5;
+          transition: 0.3s;
         }
         &.active, &:hover{
           >img{
@@ -27,7 +26,7 @@
 
 <template>
   <div>
-    <Carousel :datas="params" :speed="2000" pageTheme="custom" :loop="false" class="carousel-demo4"> 
+    <Carousel :datas="params" :speed="2000" pageTheme="custom" class="carousel-demo4"> 
       <template slot-scope="props" slot="page">
         <img :src="props.carousel.image" >
       </template>

@@ -1,17 +1,19 @@
 <template>
-	<div class="h-carousel" :style="{height: `${height}px`}">
-		<div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
-			<div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index">
-				<div v-if="!$scopedSlots.item" class="h-carousel-bg" :style="{backgroundImage:`url(${params.image})`}"></div>
-				<slot :carousel="params" name="item"></slot>
-			</div>
-		</div>    
-		<div class="h-carousel-arrow" :class="arrowCls">
-			<div class="h-icon-left" @click="prev"></div>
-			<div class="h-icon-right" @click="next"></div>
-		</div>
+	<div class="h-carousel">
+    <div class="h-carousel-container" :style="{height: `${height}px`}">
+      <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+        <div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index">
+          <div v-if="!$scopedSlots.item" class="h-carousel-bg" :style="{backgroundImage:`url(${params.image})`}"></div>
+          <slot :carousel="params" name="item"></slot>
+        </div>
+      </div>
+      <div class="h-carousel-arrow" :class="arrowCls">
+        <div class="h-icon-left" @click="prev"></div>
+        <div class="h-icon-right" @click="next"></div>
+      </div>
+    </div>
 		<ul class="h-carousel-pagination" :class="paginationCls">
-			<li class="h-carousel-pagination-item" v-for="(p, index) of datas" :key="index" :class="{'active': isActive(index)}"  @mouseover="triggerChange('hover', index+1)" @click="triggerChange('click', index+1)"><span></span></li>
+			<li class="h-carousel-pagination-item" v-for="(p, index) of datas" :key="index" :class="{'active': isActive(index)}"  @mouseover="triggerChange('hover', index+1)" @click="triggerChange('click', index+1)"><slot v-if="$scopedSlots.page" :carousel="p" name="page"></slot><span v-else></span></li>
 		</ul>
 	</div>
 </template>
