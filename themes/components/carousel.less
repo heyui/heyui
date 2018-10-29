@@ -37,6 +37,7 @@
     top: 0;
     left: 0;
     z-index: 2;
+    transition: .3s;
     .h-icon-left,
     .h-icon-right {
       color: #fff;
@@ -58,11 +59,11 @@
       right: 2%;
     }
     &.@{carousel-prefix}-arrow-hover {
-      display: none;
+      opacity: 0;
     }
   }
   &:hover &-arrow-hover{
-    display: block;
+    opacity: 1;
   }
   .@{carousel-prefix}-arrow-hidden {
     display: none !important;
