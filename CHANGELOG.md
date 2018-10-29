@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/heyui/heyui/compare/v1.10.0...v1.10.1) (2018-10-29)
+
+
+### Bug Fixes
+
+* **Carousel:** add click event and param link ([18904e1](https://github.com/heyui/heyui/commit/18904e1))
+
+
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/heyui/heyui/compare/v1.9.1-alpha.4...v1.10.0) (2018-10-29)
 
