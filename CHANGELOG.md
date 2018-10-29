@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.10.4"></a>
+## [1.10.4](https://github.com/heyui/heyui/compare/v1.10.3...v1.10.4) (2018-10-29)
+
+
+### Bug Fixes
+
+* **Icon:** let font.css to font.less ([3218aea](https://github.com/heyui/heyui/commit/3218aea))
+
+
+
 <a name="1.10.3"></a>
 ## [1.10.3](https://github.com/heyui/heyui/compare/v1.10.2...v1.10.3) (2018-10-29)
 
