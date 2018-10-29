@@ -10,6 +10,7 @@
     <example demo="plugins/category1"></example> 
 
     <h3>Object Data</h3>
+    <p>Set <code>checkable: false</code> parameter in data object to control checkable。</p>
     <example demo="plugins/category2"></example> 
   
     <h3>Dict configuration</h3>
@@ -31,6 +32,13 @@
         <td>String</td>
         <td>key,object</td>
         <td>key</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td></td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
       <tr>
         <td>option</td>

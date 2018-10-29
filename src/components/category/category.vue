@@ -69,6 +69,7 @@ export default {
   methods: {
     openPicker() {
       let that = this;
+      if(this.disabled) return;
       this.$Modal({
         width: 600,
         hasDivider: true,

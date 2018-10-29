@@ -10,6 +10,7 @@
     <example demo="plugins/category1"></example> 
 
     <h3>对象调用</h3>
+    <p>设置数据中 <code>checkable: false</code> 属性，来定义选项是否可选。</p>
     <example demo="plugins/category2"></example> 
   
     <h3>字典配置</h3>
@@ -31,6 +32,13 @@
         <td>String</td>
         <td>key,object</td>
         <td>key</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td></td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
       <tr>
         <td>option</td>
