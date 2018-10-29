@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/heyui/heyui/compare/v1.9.1-alpha.4...v1.10.0) (2018-10-29)
+
+
+### Bug Fixes
+
+* **Button:** click event add Event data ([2298e67](https://github.com/heyui/heyui/commit/2298e67))
+* update icon font ([30be412](https://github.com/heyui/heyui/commit/30be412))
+* **Carousel:** optimize less ([9833a6a](https://github.com/heyui/heyui/commit/9833a6a))
+* **Carousel:** replace pagination position ([236f21c](https://github.com/heyui/heyui/commit/236f21c))
+* **Switchlist:** add vertical-align: middle style ([4f29083](https://github.com/heyui/heyui/commit/4f29083))
+
+
+### Features
+
+* Carousel ([8c20b13](https://github.com/heyui/heyui/commit/8c20b13))
+* Carousel optimize ([b321deb](https://github.com/heyui/heyui/commit/b321deb))
+
+
+
 <a name="1.9.1-alpha.4"></a>
 ## [1.9.1-alpha.4](https://github.com/heyui/heyui/compare/v1.9.1-alpha.3...v1.9.1-alpha.4) (2018-10-18)
 
