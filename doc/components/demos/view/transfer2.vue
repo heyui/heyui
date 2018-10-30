@@ -13,7 +13,7 @@
           filterable: true,
           placeholder: "输入地址搜索",
           render: function(op) {
-            return `op.text(${op.code})`;
+            return `${op.text}(${op.code})`;
           }
         },
         value: [1003,1011],
