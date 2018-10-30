@@ -87,11 +87,13 @@
 
         if(direction === 1 && this.ltChecked.length > 0) {
           this.value.push(...this.ltChecked);
+          this.ltChecked.length =  0;
         } 
         else if(direction === -1 && this.rtChecked.length > 0) {
           this.rtChecked.forEach(d => {
             this.value.splice(this.value.indexOf(d), 1);  
           });
+          this.rtChecked.length =  0;
         }
       }   
     },
