@@ -1,13 +1,16 @@
 <style lang="less">
-  .carousel-demo1 .h-carousel-item .h-carousel-p{
-    color: #fff;
-    font-size: 36px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
+  .carousel-demo1 .h-carousel-item{
+    background: @dark-color;
+    .h-carousel-p{
+      color: #fff;
+      font-size: 36px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+    }
   }
 </style>
 <template>
