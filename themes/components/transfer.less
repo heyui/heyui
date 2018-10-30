@@ -1,6 +1,6 @@
 @transfer-prefix: ~"@{prefix}transfer";
-@header-hegiht: 32px;
-@item-hegiht: 32px;
+@transfer-header-height: 32px;
+@transfer-item-height: 32px;
 
 .@{transfer-prefix} {
   display: flex;
@@ -10,8 +10,8 @@
     flex: 1;
     border: 1px solid #EEE;
     .@{transfer-prefix}-header {
-      height: @header-hegiht;
-      line-height: @header-hegiht;
+      height: @transfer-item-height;
+      line-height: @transfer-item-height;
       background: #f9f9f9;
       text-align: center;
     }
@@ -32,8 +32,8 @@
       padding: 4px 0;
       .@{transfer-prefix}-item {
         padding-left: 8px;
-        height: @item-hegiht;
-        line-height: @item-hegiht;
+        height: @transfer-item-height;
+        line-height: @transfer-item-height;
         cursor: pointer;
         .h-checkbox, .h-checkbox label {
           display: block;
