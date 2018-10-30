@@ -2,7 +2,7 @@
 <template>
   <div class="h-transfer">
     <div class="h-transfer-source"> 
-      <slot name="sourceHeader"></slot>
+      <slot name="sourceHeader"><div class="h-transfer-header" v-if="option&&option.ltHeadText">{{option.ltHeadText}}</div></slot>
       <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
@@ -13,7 +13,7 @@
             </slot>
           </Checkbox>
         </div>
-        <div class="h-transfer-item"  v-if="sources.length===0">无数据</div>
+        <div class="h-transfer-item text-center"  v-if="sources.length===0">无数据</div>
       </div>
     </div>
     
@@ -32,7 +32,7 @@
     </div>
 
     <div class="h-transfer-target">
-      <slot name="targetHeader"></slot>
+      <slot name="targetHeader"><div class="h-transfer-header" v-if="option&&option.rtHeadText">{{option.rtHeadText}}</div></slot>
       <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="rtSearchText"/></div>
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in targets" :key="op[key]"><label>
@@ -44,7 +44,7 @@
           </Checkbox>
         </label></div>
       </div>
-      <div class="h-transfer-item"  v-if="targets.length===0">无数据</div>
+      <div class="h-transfer-item text-center"  v-if="targets.length===0">无数据</div>
     </div> 
   </div>
 </template>
