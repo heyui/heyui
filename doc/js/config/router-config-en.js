@@ -454,6 +454,14 @@ const router = [{
     component: () =>
       import ('components_en/component/view/breadcrumb')
   }, {
+    path: 'view/transfer',
+    name: 'en_viewTransfer',
+    meta: {
+      title: 'Transfer',
+    },
+    component: () =>
+      import ('components_en/component/view/transfer')
+  }, {
     path: 'other/affix',
     name: 'en_otherAffix',
     meta: {

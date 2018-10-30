@@ -73,6 +73,7 @@ const menus = utils.toArray({
   // viewCollapse: 'Collapse 折叠面板',
   viewTabs: 'Tabs 标签页',
   viewTimeline: 'Timeline 时间轴',
+  viewTransfer: 'Transfer 穿梭框',
   viewBreadcrumb: 'Breadcrumb 面包屑',
   otherAffix: 'Affix 图钉',
   otherBacktop: 'BackTop 返回顶部',
