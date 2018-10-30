@@ -7,7 +7,10 @@
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
           <Checkbox v-model="ltChecked"  :value="op[key]" :checked="false">
-            <slot name="item" :option="op">{{op.text}}</slot>
+            <slot name="item" :option="op">
+              <template v-if="option&&option.render">{{option.render(op)}}</template>
+              <template v-else>{{op.text}}</template>
+            </slot>
           </Checkbox>
         </div>
         <div class="h-transfer-item"  v-if="sources.length===0">无数据</div>
@@ -34,7 +37,10 @@
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in targets" :key="op[key]"><label>
           <Checkbox v-model="rtChecked"  :value="op[key]">
-            <slot name="item" :option="op">{{op.text}}</slot>
+            <slot name="item" :option="op">
+              <template v-if="option&&option.render">{{option.render(op)}}</template>
+              <template v-else>{{op.text}}</template>
+            </slot>
           </Checkbox>
         </label></div>
       </div>
