@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/heyui/heyui/compare/v1.10.4...v1.11.0) (2018-10-30)
+
+
+### Bug Fixes
+
+* **Carousel:** clear item background color ([f1d91b0](https://github.com/heyui/heyui/commit/f1d91b0))
+
+
+### Features
+
+* Transfer 穿梭框 ([70ee3c3](https://github.com/heyui/heyui/commit/70ee3c3))
+
+
+
 <a name="1.10.4"></a>
 ## [1.10.4](https://github.com/heyui/heyui/compare/v1.10.3...v1.10.4) (2018-10-29)
 

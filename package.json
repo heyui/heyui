@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "1.10.4",
+  "version": "1.11.0",
   "description": "UI Toolkit for Web, Vue2.0.",
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
