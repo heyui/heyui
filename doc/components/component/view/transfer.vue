@@ -62,7 +62,7 @@
       </tr>
     </table>
 
-    <h3>option 配置</h3>
+    <h3>Option 配置</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -93,6 +93,13 @@
         <td>-</td>
       </tr>
       <tr>
+        <td>ltHeadText, rtHeadText</td>
+        <td>源和目标列表头部文案</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>ltText, rtText</td>
         <td>切换按钮的文案</td>
         <td>String</td>
@@ -109,7 +116,7 @@
     </table>
 
 
-    <h3>slot 配置</h3>
+    <h3>Slot 配置</h3>
     <table class="table">
       <tr>
         <th>参数</th>

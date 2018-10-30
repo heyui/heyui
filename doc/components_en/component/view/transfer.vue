@@ -93,7 +93,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
-
+      <tr>
+        <td>ltHeadText, rtHeadText</td>
+        <td>Source/target head text</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
       <tr>
         <td>ltText, rtText</td>
         <td>Switch text</td>
@@ -111,7 +117,7 @@
     </table>
 
 
-    <h3>slot Property</h3>
+    <h3>Slot Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>

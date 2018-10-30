@@ -10,6 +10,8 @@
     data() {
       return {
         option: {
+          ltHeadText: '一线城市',
+          rtHeadText: '开通城市',
           filterable: true,
           placeholder: "输入地址搜索",
           render: function(op) {
