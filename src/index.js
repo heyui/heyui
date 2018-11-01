@@ -51,6 +51,7 @@ import Transfer from './components/transfer';
 import { Button, ButtonGroup } from './components/button';
 import TextEllipsis from './components/textellipsis';
 import Carousel from './components/carousel';
+import { Collapse, CollapseItem } from './components/collapse';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -121,6 +122,8 @@ const components = {
   TextEllipsis,
   Carousel,
   CarouselItem: Carousel.CarouselItem,
+  Collapse,
+  CollapseItem,
 };
 
 const directives = {

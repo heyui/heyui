@@ -147,6 +147,9 @@
             <li>
               <router-link to="/component/view/transfer">Transfer 穿梭框</router-link>
             </li>
+            <li>
+              <router-link to="/component/view/collapse">Collapse 折叠面板</router-link>
+            </li>
           </ul>
           <ul>
             <li class="title">Other</li>

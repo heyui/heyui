@@ -1,0 +1,42 @@
+@collapse-prefix: ~"@{prefix}collapse";
+@collapse-item-prefix: ~"@{prefix}collapse-item";
+.@{collapse-prefix}{
+  display: block;
+}
+.@{collapse-item-prefix}{
+  display: block;
+  &-header{
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #eee;
+    padding: 0 10px;
+    font-weight: bold;
+    &:hover{
+      cursor: pointer;
+      color: @primary-color;
+    }
+  }
+  &-arrow{
+    float: right;
+    margin-top: 13px;
+    transform: rotateZ(0deg);
+    transition: all .2s;
+  }
+  &-content{
+    display: none;
+    padding: 10px;
+    padding-bottom: 30px;
+  }
+
+  &.@{collapse-item-prefix}-active{
+    .@{collapse-item-prefix}-header{
+      .@{collapse-item-prefix}-arrow{
+        transform: rotateZ(90deg);
+      }
+    }
+    .@{collapse-item-prefix}-content{
+      display: block;
+    }
+  }
+  
+}
