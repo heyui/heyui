@@ -21,10 +21,11 @@
     <h4>应用字典-展示</h4>    
     <p>在一些展示的数据中，我们需要通过<code>key/keys</code>获取对应的文本。</p>
     <ul class="text-ul">
-      <li><code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
+      <li>通过 filter <code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
+      <li><code v-html="'HeyUI.dictMapping(value, key, connector)'"></code>: 获取对应的文本</li>
     </ul>
     
-    <h4>字典应用-组件</h4>
+    <h3>组件</h3>
     <p>我们将字典标准化，控件可以通过字典的key驱动，而交互无非是在通过不同的数据量选择不同的交互类型。</p>
     <ul class="text-ul">
       <li>1~5个选择项单选：Radio, 或者Select</li>
@@ -37,7 +38,7 @@
     <h4>示例</h4>
     <example demo="basic/demo2"></example>
 
-    <h3>全局配置参数</h3>
+    <h3>全局配置组件</h3>
     <p>通过<code>HeyUI</code>可以对一些参数进行全局配置，具体配置项参考：<a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></p>
     <ul class="text-ul">
       <li><code>HeyUI.config(key, value)</code>: 设置配置，<code>key</code>可以是路径方式，例：<code>tree.default</code></li>

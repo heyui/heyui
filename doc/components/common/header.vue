@@ -10,7 +10,7 @@
           <!-- <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
           <router-link to="/component">组件</router-link>
-          <router-link to="/resource">资源</router-link>
+          <router-link to="/resource">生态</router-link>
           <a target="_blank" href="http://admin.heyui.top">Admin</a>
           <!-- <router-link to="/about">团队</router-link> -->
         </template>
