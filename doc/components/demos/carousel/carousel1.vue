@@ -18,9 +18,10 @@
         <FormItem label="左右切换按钮"><SwitchList small v-model="arrow" :datas="arrows"></SwitchList></FormItem>
         <FormItem label="底部指示器样式"><SwitchList small v-model="pageTheme" :datas="pageThemes"></SwitchList></FormItem>
         <FormItem label="底部指示器触发"><SwitchList small v-model="paginationTrigger" :datas="paginationTriggers"></SwitchList></FormItem>
+        <FormItem label="切换方式"><SwitchList small v-model="effect" :datas="effects"></SwitchList></FormItem>
       </Form>
     </div>
-    <Carousel class="carousel-demo1" :datas="params" :height="300" :autoplay="autoplay" :paginationTrigger="paginationTrigger" :arrow="arrow" :pageTheme="pageTheme" :speed="2000" :changeSpeed="1000">
+    <Carousel class="carousel-demo1" :datas="params" :height="300" :autoplay="autoplay" :paginationTrigger="paginationTrigger" :arrow="arrow" :pageTheme="pageTheme" :speed="2000" :changeSpeed="1000" :effect="effect">
       <template slot-scope="props" slot="item">
         <p class="h-carousel-p">{{props.carousel.title}}</p>
       </template>
@@ -38,6 +39,8 @@ export default {
       arrows: {hidden: '隐藏', always: '一直显示', hover: '悬停'},
       paginationTrigger: 'click',
       paginationTriggers: {click: '点击', hover: '悬停'},
+      effect: 'fade',
+      effects: {scroll: '滚动', fade: '淡入淡出'},
       params:[
         {
           title:'Page 1',

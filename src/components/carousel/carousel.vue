@@ -19,6 +19,7 @@
 </template>
 <script>
 import utils from '../../utils/utils'
+import index from '../../locale';
 export default {
   props: {
     height: {
@@ -57,6 +58,10 @@ export default {
     paginationTrigger: {
       type: String,
       default: 'click'
+    },
+    effect: {
+      type: String,
+      default: 'scroll'
     }
   },
   data() {
@@ -90,6 +95,9 @@ export default {
       } else {
         this.stopAutoplay(true);
       }
+    },
+    effect(){
+      this.init();
     }
   },
   mounted() {
@@ -118,7 +126,15 @@ export default {
     },
     init() {
       this.startAutoplay(true);
-      setTimeout(() => {
+      setTimeout(() => {        
+        switch(this.effect){
+          case "fade":
+            this.initfade();
+            break;
+          case "scroll":
+            this.initscroll();
+            break;
+        }
         this.change({index: this.activeIndex, immediately: true})
       }, 300)
       window.addEventListener('resize', this.resizeEvent, false)
@@ -129,7 +145,12 @@ export default {
 			}
 		},
 		startAutoplay(force = false) {
-			if ((this.isHoverStop || force) && this.autoplay) {
+      if (this.effect=="fade"){
+        clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = setTimeout(() => {
+          this.next();
+        }, this.speed );
+      }else if ((this.isHoverStop || force) && this.autoplay) {
 			  clearTimeout(this.scrollTimeout);
         this.scrollTimeout = setTimeout(() => {
           this.next();
@@ -137,20 +158,57 @@ export default {
       }
 		},
     resizeEvent() {
+      if(this.effect=="fade"){
+        this.initfade()
+      }
       this.change({index: this.activeIndex, immediately: true});
     },
     scroll(index, immediately) {
       this.activeIndex = index;
       let itemWidth = this.$el.clientWidth;
       let width = index * itemWidth;
-      let listDom = this.$el.querySelector('.h-carousel-list');
-      if(immediately) {
-        listDom.style.transitionDuration = `0ms`
-      } else {
-        listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+      switch(this.effect){
+        case "fade":
+          if(immediately==false){
+            let itemDom = this.$el.querySelectorAll('.h-carousel-item');
+            itemDom.forEach((item) => {
+              item.style.opacity = 0;
+              item.style.transitionDuration = `${this.changeSpeed}ms`;
+            });
+            itemDom[this.activeIndex].style.opacity = 1;
+          }
+          break;
+        case "scroll":
+          let listDom = this.$el.querySelector('.h-carousel-list');
+          if(immediately) {
+            listDom.style.transitionDuration = `0ms`        
+          } else {
+            listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+          }
+          listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`;
+          break;
       }
-      listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`
-
+    },
+    initfade(){
+      this.activeIndex = 1;
+      let itemWidth = this.$el.clientWidth;
+      let listDom = this.$el.querySelector('.h-carousel-list');
+      listDom.style.transform = `translate3d(${-itemWidth}px, 0px, 0px)`;
+      let itemDom = this.$el.querySelectorAll('.h-carousel-item');
+      itemDom.forEach((item,index) => {
+        let width = (index-1) * itemWidth;
+        item.style.transform = `translate3d(${-width}px, 0px, 0px)`;
+        item.style.opacity = 0;
+      });
+      itemDom[this.activeIndex].style.opacity = 1;
+    },
+    initscroll(){
+      this.activeIndex = 1;
+      let itemDom = this.$el.querySelectorAll('.h-carousel-item');
+      itemDom.forEach((item,index) => {
+        item.style.transform = ``;
+        item.style.opacity = 1;
+      });
     },
     change({index = 1, immediately = false}) {
       if (this.activeIndex == this.carouselList.length - 1) {
