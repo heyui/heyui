@@ -2,7 +2,14 @@
 </style>
 <template>
   <div class="">
-    1
+    <Collapse v-model="value">
+      <CollapseItem title="title1">
+        我是内容1
+      </CollapseItem>
+      <CollapseItem title="title2">
+        我是内容2
+      </CollapseItem>
+    </Collapse>
   </div>
 </template>
 <script>
@@ -12,7 +19,7 @@ export default {
   },
   data() {
     return {
-      
+      value: []
     }
   },
   computed: {

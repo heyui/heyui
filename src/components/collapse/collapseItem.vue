@@ -1,33 +1,95 @@
 <style lang='less'>
+.h-collapse-item{
+  display: block;
+  &-header{
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #eee;
+    padding: 0 10px;
+    font-weight: bold;
+    &:hover{
+      cursor: pointer;
+      color: @primary-color;
+    }
+  }
+  &-arrow{
+    float: right;
+    margin-top: 13px;
+    transform: rotateZ(90deg);
+    &.is-active{
+      transform: rotateZ(0deg);
+      transition: all .2s;
+    }
+  }
+  &-content{
+    padding: 10px;
+    padding-bottom: 30px;
+  }
+}
 </style>
 <template>
-  <div class="h-collapse-item">
-    <slot name="title"></slot>
-    <slot></slot>
+  <div :class="collapseItemCls">
+    <div :class="collapseItemHeaderCls" @click="toggle">
+      <slot name="title">{{title}}</slot>
+      <i class="h-collapse-item-arrow h-icon-right" :class="{'is-active': isActive}"></i>
+    </div>
+    <div :class="collapseItemContentCls">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <script>
+const prefix = 'h-collapse-item';
+
 export default {
   name: 'hCollapseItem',
   props: {
-    
+    name: {
+      type: [String, Number]
+    },
+    title: {
+      type: String
+    },
+    hideArrow: {
+      type: Boolean
+    }
   },
   components: {
       
   },
   data() {
     return {
-      
+      isActive: false,
     }
   },
+  inject: ['collapse'],
   computed: {
-    
+    collapseItemCls() {
+      return {
+        [`${prefix}`]: true,
+        // {
+        //    [`${prefix}-active`]: trues,
+        // },
+      }
+    },
+    collapseItemHeaderCls() {
+      return {
+        [`${prefix}-header`]: true,
+      }
+    },
+    collapseItemContentCls() {
+      return {
+        [`${prefix}-content`]: true,
+      }
+    }
   },
   created() {
     
   },
   methods: {
-      
+    toggle() {
+      this.collapse.toggle(this.name)
+    }
   },
 }
 </script>
