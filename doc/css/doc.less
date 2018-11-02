@@ -1,7 +1,3 @@
-@import (less) "../../themes/common.less";
-@import "./prism.css";
-
-
 .clearfix() {
   &::after {
     content: "";
@@ -51,10 +47,10 @@ h2 {
   z-index: 3;
   background: rgba(255, 255, 255, 0.8);
   .change-lang {
-    margin-top: 19px;
+    margin-top: 17px;
     // margin-right: -10px;
     >.h-btn{
-      height: 26px;
+      height: 28px;
     }
   }
   .logo {
@@ -292,7 +288,7 @@ h2 {
         font-size: 23px;
       }
       .h-btn{
-        font-size: 15px;
+        font-size: 16px;
         margin-right: 10px;
       }
     }
@@ -311,7 +307,12 @@ h2 {
     position: fixed;
     bottom: -12vw;
     transform: rotate(40deg);
-    z-index: -1;
+    z-index: 1;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      box-shadow: 0 0 10px 0 #d36eb0;
+    }
   }
   .bg2{
     height: 26vw;
@@ -321,18 +322,28 @@ h2 {
     left: 21vw;
     bottom: -12vw;
     transform: rotate(45deg);
-    z-index: -1;
+    z-index: 1;
     border-radius: 20vw;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      box-shadow: 0 0 10px 0 #7276f5;
+    }
   }
   .bg3{
     height: 35vw;
     width: 34vw;
-    background: #b7dd5a;
+    background: #b6cf4d;
     position: fixed;
     left: 47vw;
     bottom: -25vw;
     transform: rotate(75deg);
-    z-index: -1;
+    z-index: 1;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+      box-shadow: 0 0 10px 0 #b6cf4d;
+    }
   }
   .bg4{
     height: 30vw;
@@ -342,8 +353,12 @@ h2 {
     left: 76vw;
     bottom: -16vw;
     transform: rotate(75deg);
-    z-index: -1;
+    z-index: 1;
     border-radius: 20vw;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 10px 0 #cf5e4d;
+    }
   }
 }
 @keyframes skygradient {
