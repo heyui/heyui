@@ -9,6 +9,9 @@
       <CollapseItem title="title2">
         我是内容2
       </CollapseItem>
+      <CollapseItem title="title3">
+        我是内容3
+      </CollapseItem>
     </Collapse>
   </div>
 </template>
@@ -19,7 +22,7 @@ export default {
   },
   data() {
     return {
-      value: []
+      value: [0]
     }
   },
   computed: {

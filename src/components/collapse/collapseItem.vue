@@ -15,23 +15,37 @@
   &-arrow{
     float: right;
     margin-top: 13px;
-    transform: rotateZ(90deg);
+    transform: rotateZ(0deg);
+    transition: all .2s;
     &.is-active{
-      transform: rotateZ(0deg);
-      transition: all .2s;
+      transform: rotateZ(90deg);
     }
   }
   &-content{
+    display: none;
     padding: 10px;
     padding-bottom: 30px;
   }
+
+  &.h-collapse-item-active{
+    .h-collapse-item-header{
+      .h-collapse-item-arrow{
+        transform: rotateZ(90deg);
+        transition: all .2s;
+      }
+    }
+    .h-collapse-item-content{
+      display: block;
+    }
+  }
+  
 }
 </style>
 <template>
   <div :class="collapseItemCls">
     <div :class="collapseItemHeaderCls" @click="toggle">
       <slot name="title">{{title}}</slot>
-      <i class="h-collapse-item-arrow h-icon-right" :class="{'is-active': isActive}"></i>
+      <i class="h-collapse-item-arrow h-icon-right"></i>
     </div>
     <div :class="collapseItemContentCls">
       <slot></slot>
@@ -67,9 +81,7 @@ export default {
     collapseItemCls() {
       return {
         [`${prefix}`]: true,
-        // {
-        //    [`${prefix}-active`]: trues,
-        // },
+        [`${prefix}-active`]: this.isActive,
       }
     },
     collapseItemHeaderCls() {
@@ -88,8 +100,9 @@ export default {
   },
   methods: {
     toggle() {
-      this.collapse.toggle(this.name)
+      this.collapse.toggle(this.name || this.index)
     }
+    // }
   },
 }
 </script>

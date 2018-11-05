@@ -56,22 +56,19 @@ export default {
         let name = $item.name || index;
         $item.isActive = this.activedKeys.includes(name);
         $item.index = index;
-        log($item)
       })
     },
     toggle(value) {
-      log(value)
       if(this.accordion) {
-        this.activedKeys = [...value]
+        this.activedKeys = [].concat(value);
       } else {
-        let index = this.activedKeys.indexOf(value)
+        let index = this.activedKeys.indexOf(value);
         if(index > -1){
-          this.activedKeys.splice(index, 1)
+          this.activedKeys.splice(index, 1);
         } else {
-          this.activedKeys.push(value)
+          this.activedKeys.push(value);
         }
       }
-      log(this.activedKeys)
       this.setActives();
       this.$emit('input', this.activedKeys);
       this.$emit('change', this.activedKeys);
