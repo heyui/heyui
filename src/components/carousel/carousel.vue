@@ -4,7 +4,7 @@
       <div class="h-carousel-list h-carousel-scroll-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-if="effect=='scroll'">
         <div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index" @click="clickTrigger(index, params)">
           <div v-if="!$scopedSlots.item" class="h-carousel-bg" :class="{'h-carousel-bg-pointer': params.link}" :style="{backgroundImage:`url(${params.image})`}"></div>
-          <slot :carousel="params" name="item"></slot>
+          <slot :carousel="params" name="item" :index="index"></slot>
         </div>
       </div>
       <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-else>
@@ -26,7 +26,6 @@
 	</div>
 </template>
 <script>
-import utils from '../../utils/utils'
 export default {
   props: {
     height: {
