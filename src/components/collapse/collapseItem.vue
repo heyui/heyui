@@ -17,9 +17,6 @@
     margin-top: 13px;
     transform: rotateZ(0deg);
     transition: all .2s;
-    &.is-active{
-      transform: rotateZ(90deg);
-    }
   }
   &-content{
     display: none;
@@ -31,7 +28,6 @@
     .h-collapse-item-header{
       .h-collapse-item-arrow{
         transform: rotateZ(90deg);
-        transition: all .2s;
       }
     }
     .h-collapse-item-content{

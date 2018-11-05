@@ -60,7 +60,12 @@ export default {
     },
     toggle(value) {
       if(this.accordion) {
-        this.activedKeys = [].concat(value);
+        let index = this.activedKeys.indexOf(value);
+        if(index > -1) {
+          this.activedKeys = [];
+        } else {
+          this.activedKeys = [].concat(value);
+        }
       } else {
         let index = this.activedKeys.indexOf(value);
         if(index > -1){
