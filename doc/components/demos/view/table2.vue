@@ -2,7 +2,7 @@
   <div>
     <p> <Button color="blue" icon="h-icon-plus" @click="add(datas)">添加一行</Button></p>
     <Table :datas="datas" stripe checkbox>
-      <TableItem title="Index" :tooltip="true"><template slot-scope="props">{{props.index}}</template></TableItem>
+      <TableItem title="Index" :tooltip="true"><template slot-scope="{index}">{{index}}</template></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age"></TableItem>
       <TableItem title="Address" align="center" prop="address"></TableItem>

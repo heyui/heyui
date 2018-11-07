@@ -27,8 +27,8 @@
 <template>
   <div>
     <Carousel :datas="params" :speed="2000" pageTheme="custom" class="carousel-demo4"> 
-      <template slot-scope="props" slot="page">
-        <img :src="props.carousel.image" >
+      <template slot-scope="{carousel}" slot="page">
+        <img :src="carousel.image" >
       </template>
     </Carousel>
   </div>

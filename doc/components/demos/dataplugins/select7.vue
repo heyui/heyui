@@ -3,7 +3,7 @@
     <p>选中值：{{select}}</p>
     <div v-width="300">
       <Select v-model="select" :datas="param">
-        <template slot-scope="props" slot="item"><div>标题：{{props.item.title}}<span style="float:right" class='gray1-color'>{{props.item.key}}</span></div><div class='gray1-color'>描述：{{props.item.title}}</div></template>
+        <template slot-scope="{item}" slot="item"><div>标题：{{item.title}}<span style="float:right" class='gray1-color'>{{item.key}}</span></div><div class='gray1-color'>描述：{{item.title}}</div></template>
       </Select>
     </div>
   </div>
