@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.11.1-alpha.0"></a>
+## [1.11.1-alpha.0](https://github.com/heyui/heyui/compare/v1.11.0...v1.11.1-alpha.0) (2018-11-07)
+
+
+### Bug Fixes
+
+* common style optimize ([c7f95fc](https://github.com/heyui/heyui/commit/c7f95fc))
+* **Carousel:** add index with slot ([ca05f15](https://github.com/heyui/heyui/commit/ca05f15))
+* **Carousel:** optimize background-size ([f54f0fb](https://github.com/heyui/heyui/commit/f54f0fb))
+* **Validator:** use extend function replace extend ([5f6d8dd](https://github.com/heyui/heyui/commit/5f6d8dd))
+
+
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/heyui/heyui/compare/v1.10.4...v1.11.0) (2018-10-30)
 
