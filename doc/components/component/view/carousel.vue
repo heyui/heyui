@@ -91,6 +91,13 @@
         <td>hover, click</td>
         <td>click</td>
       </tr>
+      <tr>
+        <td>effect</td>
+        <td>切换模式</td>
+        <td>String</td>
+        <td>scroll, fade</td>
+        <td>scroll</td>
+      </tr>
     </table>
 
     <h3>Carousel 事件</h3>

@@ -34,6 +34,9 @@
       .@{carousel-prefix}-bg-pointer {
         cursor: pointer;
       }
+      &.@{carousel-prefix}-effect-item{
+        position: absolute;
+      }
     }
   }
   .@{carousel-prefix}-arrow {
@@ -119,4 +122,11 @@
   &-hidden {
     display: none;
   }
+}
+
+.h-carousel-effect-fade-enter-active, .h-carousel-effect-fade-leave-active {
+  transition: opacity 1s;
+}
+.h-carousel-effect-fade-enter, .h-carousel-effect-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
