@@ -77,14 +77,22 @@
         <td>-</td>
         <td>-</td>
       </tr>
-      <tr>
-        <td>hide-arrow</td>
-        <td>隐藏箭头</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
     </table>
 
+    <h3>CollapseItem slot参数</h3>
+    <table class="table">
+      <tr>
+        <th>名称</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>面板头内容</td>
+      </tr>
+      <tr>
+        <td>无</td>
+        <td>描述内容</td>
+      </tr>
+    </table>
   </div>
 </template>
