@@ -48,6 +48,10 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    isTipError: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -161,9 +165,18 @@ export default {
         }
       }
       utils.extend(true, this.messages, returnResult);
+      let result = { result: isSuccess, messages: utils.toArray(this.messages, 'prop').filter(item => !item.valid) };
       if (!isSuccess) {
+        let m = result.messages[0];
+        if(this.isTipError) {
+          if (m.type == 'base') {
+            this.$Message.error(`${m.label}${m.message}`);
+          } else {
+            this.$Message.error(`${m.message}`);
+          }
+        }
         this.$nextTick(() => {
-          let firstError = this.$el.querySelector('.h-form-item-valid-error');
+          let firstError = this.$el.querySelector(`.h-form-item-valid-error[prop='${m.prop}']`);
           if (firstError){
             scrollIntoView(firstError, {
               time: 500,
@@ -175,7 +188,7 @@ export default {
           }
         })
       }
-      return { result: isSuccess, messages: utils.toArray(this.messages).filter(item => !item.valid) };
+      return result;
     },
     validAsync() {
       return new Promise((resolve, reject )=>{

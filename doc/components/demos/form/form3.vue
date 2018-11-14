@@ -1,88 +1,88 @@
 <template>
   <div>
-    <div v-height="50">
-      <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
-    </div>
-    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2">
-      <FormItem label="Input" prop="input">
-        <input type="text" v-model="data.input" placeholder="只能输入15，限制输入30个字" v-wordlimit='30' />
+    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2" isTipError>
+      <FormItem single>
+        <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
+      </FormItem>
+      <FormItem label="Input" prop="inputData">
+        <input type="text" v-model="data.inputData" placeholder="只能输入15，限制输入30个字" v-wordlimit='30' />
         <template slot="error" slot-scope="props">
           <!-- *type*: base, combine, async -->
           <span class="link" v-if="props.type == 'async'" @click="open">+++++++自定义的错误提示+++++++</span>
         </template>
       </FormItem>
-      <FormItem label="Integer" prop="int">
-        <Slider v-model="data.int"></Slider>
+      <FormItem label="Integer" prop="intData">
+        <Slider v-model="data.intData"></Slider>
       </FormItem>
-      <FormItem label="Integer" prop="int">
-        <NumberInput v-model="data.int" :min="0" :max="100"></NumberInput>
+      <FormItem label="Integer" prop="intData">
+        <NumberInput v-model="data.intData" :min="0" :max="100"></NumberInput>
       </FormItem>
       <FormItem label="Readonly" readonly>只读数据</FormItem>
-      <FormItem label="Digital" prop="number">
-        <NumberInput type="text" v-model="data.number" />
+      <FormItem label="Digital" prop="numberData">
+        <NumberInput type="text" v-model="data.numberData" />
       </FormItem>
-      <FormItem label="Mail" prop="email">
-        <input type="text" v-model="data.email" />
+      <FormItem label="Mail" prop="emailData">
+        <input type="text" v-model="data.emailData" />
       </FormItem>
-      <FormItem label="URL" prop="url">
-        <input type="text" v-model="data.url" />
+      <FormItem label="URL" prop="urlData">
+        <input type="text" v-model="data.urlData" />
       </FormItem>
-      <FormItem label="Cellphone " prop="tel">
-        <input type="text" v-model="data.tel" />
+      <FormItem label="Cellphone " prop="telData">
+        <input type="text" v-model="data.telData" />
       </FormItem>
-      <FormItem label="Phone" prop="mobile">
-        <input type="text" v-model="data.mobile" />
+      <FormItem label="Phone" prop="mobileData">
+        <input type="text" v-model="data.mobileData" />
       </FormItem>
       <FormItem label="Amount" :required="true" single>
         <div class="h-input-group">
           <div class="h-input-addon">
-            <Select v-model="data.select1" :datas="param1" :no-border="true" :null-option="false"></Select>
+            <Select v-model="data.select1Data" :datas="param1" :no-border="true" :null-option="false"></Select>
           </div>
-          <FormItem prop="money.min" label="起始金额" :show-label="false">
-            <input type="text" placeholder="起始金额" v-model="data.money.min" />
+          <FormItem prop="money.minData" label="起始金额" :show-label="false">
+            <input type="text" placeholder="起始金额" v-model="data.money.minData" />
           </FormItem>
           <span class="h-input-addon">-</span>
-          <FormItem prop="money.max" label="结束金额" :show-label="false">
-            <input type="text" placeholder="结束金额" v-model="data.money.max" />
+          <FormItem prop="money.maxData" label="结束金额" :show-label="false">
+            <input type="text" placeholder="结束金额" v-model="data.money.maxData" />
           </FormItem>
           <span class="h-input-addon">K</span>
         </div>
       </FormItem>
-      <FormItem label="Select" prop="select2">
-        <Select v-model="data.select2" dict="simple"></Select>
+      <FormItem label="Select" prop="select2Data">
+        <Select v-model="data.select2Data" dict="simple"></Select>
       </FormItem>
-      <FormItem label="Tags" prop="taginputs">
-        <TagInput v-model="data.taginputs"></TagInput>
+      <FormItem label="Tags" prop="taginputsData">
+        <TagInput v-model="data.taginputsData"></TagInput>
       </FormItem>
-      <FormItem label="Multiple" prop="select3">
-        <Select v-model="data.select3" dict="simple" :multiple="true"></Select>
+      <FormItem label="Multiple" prop="select3Data">
+        <Select v-model="data.select3Data" dict="simple" :multiple="true"></Select>
       </FormItem>
-      <FormItem label="Date" ref="datapicker" prop="date">
-        <DatePicker v-model="data.date"></DatePicker>
+      <FormItem label="Date" ref="datapicker" prop="dateData">
+        <DatePicker v-model="data.dateData"></DatePicker>
       </FormItem>
-      <FormItem label="Score" prop="rate">
-        <Rate v-model="data.rate" :show-text="true"></Rate>
+      <FormItem label="Score" prop="rateData">
+        <Rate v-model="data.rateData" :show-text="true"></Rate>
       </FormItem>
-      <FormItem label="Textarea" :single="true" prop="textarea">
-        <textarea rows="3" v-autosize v-wordcount="50" v-model="data.textarea"></textarea>
+      <FormItem label="Textarea" :single="true" prop="textareaData">
+        <textarea rows="3" v-autosize v-wordcount="50" v-model="data.textareaData"></textarea>
       </FormItem>
-      <FormItem label="Single" prop="radio">
-        <Radio v-model="data.radio" :datas="dataParam"></Radio>
+      <FormItem label="Single" prop="radioData">
+        <Radio v-model="data.radioData" :datas="dataParam"></Radio>
       </FormItem>
-      <FormItem label="Multiple" prop="checkbox">
-        <Checkbox v-model="data.checkbox" :datas="dataParam"></Checkbox>
+      <FormItem label="Multiple" prop="checkboxData">
+        <Checkbox v-model="data.checkboxData" :datas="dataParam"></Checkbox>
       </FormItem>
-      <FormItem label="Fuzzy" prop="autocomplete">
-        <AutoComplete v-model="data.autocomplete" config="simple"></AutoComplete>
+      <FormItem label="Fuzzy" prop="autocompleteData">
+        <AutoComplete v-model="data.autocompleteData" config="simple"></AutoComplete>
       </FormItem>
       <!-- 
           这里定义的required属性同样适用与验证规则中。
          -->
-      <FormItem label="Custom" prop="things[0]" required>
-        <input type="text" v-model="data.things[0]" />
+      <FormItem label="Custom" prop="thingsData[0]" required>
+        <input type="text" v-model="data.thingsData[0]" />
       </FormItem>
       <FormItemList>
-        <FormItem v-for="(item, index) of data.inputs" :key="index" :label="'Custom'+(index+1)" :prop="'inputs['+index+'].value'">
+        <FormItem v-for="(item, index) of data.inputsData" :key="index" :label="'Custom'+(index+1)" :prop="'inputsData['+index+'].value'">
           <Row type="flex">
             <Col class="flex1">
             <input type="text" v-model="item.value" />
@@ -112,33 +112,32 @@
 <script>
 export default {
   data() {
-    let that = this;
     return {
       mode: 'single',
       data: {
-        int: null,
-        number: null,
-        url: null,
-        email: null,
-        tel: null,
-        mobile: null,
-        input: '',
-        textarea: '测试',
-        radio: 1,
-        rate: null,
-        checkbox: [1],
-        select1: '人民币',
-        select2: '',
-        select3: [],
-        taginputs: [],
-        autocomplete: null,
+        intData: null,
+        numberData: null,
+        urlData: null,
+        emailData: null,
+        telData: null,
+        mobileData: null,
+        inputData: '',
+        textareaData: '测试',
+        radioData: 1,
+        rateData: null,
+        checkboxData: [1],
+        select1Data: '人民币',
+        select2Data: '',
+        select3Data: [],
+        taginputsData: [],
+        autocompleteData: null,
         money: {
-          min: null,
-          max: null
+          minData: null,
+          maxData: null
         },
-        date: null,
-        inputs: [],
-        things: ['']
+        dateData: null,
+        inputsData: [],
+        thingsData: ['']
       },
       dataParam: {
         1: '男',
@@ -149,18 +148,18 @@ export default {
       isLoading: false,
       modeParam: {
         single: '一个区块一行',
-        block: '标题独立一行',
         twocolumn: '两列一行',
         threecolumn: '三列一行',
+        block: '标题独立一行',
       },
       isInputAsyncError: false,
       validationRules: {
         rules: {
-          textarea: {
+          textareaData: {
             maxLen: 50,
             minLen: 10
           },
-          input: {
+          inputData: {
             //这里的判断不会影响最终的valid结果，所以也可以作为一些验证提示
             validAsync(value, next, parent, data) {
               log(value)
@@ -175,37 +174,37 @@ export default {
           }
         },
         required: [
-          'autocomplete',
-          'select2',
-          'select3',
-          'inputs[].value',
-          'input',
-          'radio',
-          'rate',
-          'checkbox',
-          'money',
-          'date',
-          'taginputs',
-          'money.min',
-          'money.max',
-          'int',
-          'number',
-          'url',
-          'email',
-          'tel',
-          'mobile',
-          'textarea'
+          'autocompleteData',
+          'select2Data',
+          'select3Data',
+          'inputsData[].value',
+          'inputData',
+          'radioData',
+          'rateData',
+          'checkboxData',
+          'moneyData',
+          'dateData',
+          'taginputsData',
+          'money.minData',
+          'money.maxData',
+          'intData',
+          'numberData',
+          'urlData',
+          'emailData',
+          'telData',
+          'mobileData',
+          'textareaData'
         ],
-        int: ['int'],
-        number: ['number', 'money.min', 'money.max'],
-        url: ['url'],
-        email: ['email'],
-        tel: ['tel'],
-        mobile: ['mobile'],
+        int: ['intData'],
+        number: ['numberData', 'money.minData', 'money.maxData'],
+        url: ['urlData'],
+        email: ['emailData'],
+        tel: ['telData'],
+        mobile: ['mobileData'],
         combineRules: [
           {
             parentRef: "money",
-            refs: ['min', 'max'],
+            refs: ['minData', 'maxData'],
             valid: {
               valid: 'lessThan',
               message: '起始金额不能大于结束金额'
@@ -219,14 +218,12 @@ export default {
     submit() {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
-      // log(validResult.messages);
       if (validResult.result) {
         this.$Message("验证成功");
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);
       } else {
-        this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
         this.isLoading = false;
       }
     },
@@ -239,7 +236,6 @@ export default {
             this.isLoading = false;
           }, 1000);
         } else {
-          this.$Message.error(`还有${result.messages.length}个错误未通过验证。`);
           this.isLoading = false;
         }
       });
@@ -258,10 +254,10 @@ export default {
       this.$refs.datapicker.reset();
     },
     add() {
-      this.data.inputs.push({ value: '' });
+      this.data.inputsData.push({ value: '' });
     },
     remove(index) {
-      this.data.inputs.splice(index, 1);
+      this.data.inputsData.splice(index, 1);
     }
   }
 };

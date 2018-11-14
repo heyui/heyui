@@ -70,15 +70,6 @@ class Validator {
     let keys = Object.keys(typeValids);
     keys.unshift('required');
 
-    for (let key in genRules.rules) {
-      let rule = genRules.rules[key];
-      if (utils.isObject(rule)) {
-        if (!utils.isArray(rule.valids)) {}
-      } else {
-        delete genRules.rules[key];
-      }
-    }
-
     for (let v of keys) {
       let validList = rules[v];
       if (utils.isArray(validList)) {

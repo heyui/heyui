@@ -1,8 +1,10 @@
 <template>
   <div>
-    <Form :label-width="110" :model="data" ref="form" :rules="rules">
+    <Form :label-width="110" :model="data" ref="form" :rules="rules" :isTipError="isTipError">
       <FormItem>
         <Checkbox v-model="required">是否必填</Checkbox>
+        <i class="h-split"></i>
+        <Checkbox v-model="isTipError">是否使用tip提示错误</Checkbox>
       </FormItem>
       <!-- 
           这里定义的required属性会应用与验证规则中，适用于一些变动性的必填项。
@@ -25,6 +27,7 @@ export default {
   data() {
     return {
       required: true,
+      isTipError: true,
       data: {
         list: [null],
         value: null
@@ -42,8 +45,6 @@ export default {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
         this.$Message("验证成功");
-      } else {
-        this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
       }
     },
     reset() {

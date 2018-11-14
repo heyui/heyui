@@ -3,7 +3,7 @@
     <div v-height="50">
       <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
     </div>
-    <Form :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
+    <Form ref="form" :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
       <FormItem label="用户名" prop="name">
         <input type="text" v-model="model.name" />
       </FormItem>
@@ -11,8 +11,8 @@
         <input type="password" v-model="model.password" />
       </FormItem>
       <FormItem>
-        <Button color="primary" :loading="isLoading" @click="isLoading=!isLoading">提交</Button>&nbsp;&nbsp;&nbsp;
-        <Button @click="isLoading=!isLoading">取消</Button>
+        <Button color="primary" :loading="isLoading" @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
+        <Button @click="reset">取消</Button>
       </FormItem>
     </Form>
   </div>
@@ -37,6 +37,23 @@ export default {
           'password'
         ]
       }
+    }
+  },
+  methods: {
+    submit() {
+      this.isLoading = true;
+      let validResult = this.$refs.form.valid();
+      if (validResult.result) {
+        this.$Message("验证成功");
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
+      } else {
+        this.isLoading = false;
+      }
+    },
+    reset() {
+      this.$refs.form.reset();
     }
   }
 };
