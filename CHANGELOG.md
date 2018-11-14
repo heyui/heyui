@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.0-alpha.0"></a>
+# [1.12.0-alpha.0](https://github.com/heyui/heyui/compare/v1.11.1-alpha.0...v1.12.0-alpha.0) (2018-11-14)
+
+
+### Bug Fixes
+
+* **WordCount:** set style margin 0 ([eb78039](https://github.com/heyui/heyui/commit/eb78039))
+
+
+### Features
+
+* **Table:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
+
+
+
 <a name="1.11.1-alpha.0"></a>
 ## [1.11.1-alpha.0](https://github.com/heyui/heyui/compare/v1.11.0...v1.11.1-alpha.0) (2018-11-07)
 
