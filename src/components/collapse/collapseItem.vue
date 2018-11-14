@@ -60,9 +60,6 @@ export default {
     title: {
       type: String
     },
-    hideArrow: {
-      type: Boolean
-    }
   },
   components: {
       
