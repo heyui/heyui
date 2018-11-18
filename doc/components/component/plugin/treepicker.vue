@@ -15,7 +15,7 @@
 
 
     <h3>TreePicker 参数</h3>
-    <blockquote>multiple, option, config, filterable等配置参照Tree的配置</blockquote>
+    <blockquote>multiple, option, config, filterable, disabled等配置参照Tree的配置</blockquote>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -95,6 +95,27 @@
         <td>chooseAll</td>
         <td>选中所有值(多选)</td>
         <td></td>
+      </tr>
+    </table>
+
+
+    <h3>TreePicker 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件名</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>loadDataSuccess</td>
+        <td>当异步数据请求加载成功的时候</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>当单选的时候</td>
+      </tr>
+      <tr>
+        <td>choose</td>
+        <td>当多选的时候</td>
       </tr>
     </table>
   </div>

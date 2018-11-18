@@ -231,6 +231,32 @@
         <td>inverse selection</td>
       </tr>
     </table>
+
+    <h3>TreePicker Event</h3>
+
+    <h3>Tree Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>The v-model value changes</td>
+      </tr>
+      <tr>
+        <td>choose</td>
+        <td>Checkbox selection change</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>Tree's select change</td>
+      </tr>
+      <tr>
+        <td>loadDataSuccess</td>
+        <td>When the asynchronous data load is successful.	</td>
+      </tr>
+    </table>
   </div>
 </template>
 
