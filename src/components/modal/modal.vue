@@ -5,9 +5,9 @@
       <div class="h-notify-body" @click.self="setvalue(true)">
         <div :class="containerCls" v-if="isShow">
           <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-          <header v-if="hasHeader"><slot name='header'></slot></header>
+          <header class="h-modal-header" v-if="hasHeader"><slot name='header'></slot></header>
           <div :class="contentCls"><slot></slot></div>
-          <footer v-if="hasFooter"><slot name='footer'></slot></footer>
+          <footer class="h-modal-footer" v-if="hasFooter"><slot name='footer'></slot></footer>
         </div>
       </div>
     </div>

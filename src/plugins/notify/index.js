@@ -49,7 +49,7 @@ class Notify {
     }
     html += `<div class="${notifyContainerCls}">`;
     if (param.hasCloseIcon) html += `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
-    if (param.title) html += `<header>${param.title}</header>`;
+    if (param.title) html += `<header class="${param.type}-header">${param.title}</header>`;
     html += `<div class="${notifyContentCls}"></div>`;
     param.hasFooter = utils.isArray(param.buttons) && param.buttons.length > 0 && !param.component;
     if (param.hasFooter) {
@@ -73,7 +73,7 @@ class Notify {
         if (color) color = `h-btn-${color}`;
         footeHtml += `<button class="h-btn ${color}" attr="${attr}" >${name}</button>`;
       }
-      html += `<footer>${footeHtml}</footer>`;
+      html += `<footer class="${param.type}-footer">${footeHtml}</footer>`;
     }
     if (param.type === TYPE.MODAL) {
       html += `</div>`;

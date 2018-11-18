@@ -22,13 +22,13 @@
             max-height: 0;
             overflow: hidden;
 
-            header {
+            .@{notice-prefix}-header, header:first-child {
                 min-height: 20px;
                 line-height: 20px;
                 font-size: 16px;
                 padding: @notice-padding 0 0 @notice-padding;
             }
-            footer {
+            .@{notice-prefix}-footer, footer:last-child {
                 padding: 10px @notice-padding;
                 text-align: left;
             }
@@ -45,7 +45,7 @@
     }
     
     &.@{notice-prefix}-has-icon{
-        header{
+        .@{notice-prefix}-header, header:first-child{
             margin-left: 40px;
         }
         .@{notify-prefix}-content{
@@ -60,7 +60,7 @@
                 top: -20px;
             }
         }
-        footer {
+        headerfooter {
             margin-left: 40px;
         }
     }
