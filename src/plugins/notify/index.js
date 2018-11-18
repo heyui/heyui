@@ -18,6 +18,12 @@ const Default = {
   noPadding: false
 };
 
+const TYPE = {
+  MODAL: 'h-modal',
+  MESSAGE: 'h-message',
+  NOTICE: 'h-notice',
+}
+
 const notifyCls = 'h-notify';
 const notifyHasCloseCls = 'h-notify-has-close';
 const notifyContentCls = 'h-notify-content';
@@ -38,7 +44,7 @@ class Notify {
     if (param.hasMask) {
       html += `<div class="${notifyMaskCls}"></div>`;
     }
-    if (param.type === 'h-modal' && param.hasMask) {
+    if (param.type === TYPE.MODAL && param.hasMask) {
       html += `<div class="${notifyBodyCls}">`;
     }
     html += `<div class="${notifyContainerCls}">`;
@@ -69,7 +75,7 @@ class Notify {
       }
       html += `<footer>${footeHtml}</footer>`;
     }
-    if (param.type === 'h-modal') {
+    if (param.type === TYPE.MODAL) {
       html += `</div>`;
     }
 
@@ -180,7 +186,7 @@ class Notify {
     }
     //fix: button在focus状态，enter或者空格键都会再次触发
     let focusClicked = document.querySelector(':focus');
-    if (focusClicked) {
+    if (focusClicked && param.type === TYPE.MODAL) {
       focusClicked.blur();
     }
     if (param.hasCloseIcon) {
