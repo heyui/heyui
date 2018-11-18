@@ -1,5 +1,5 @@
 <template>
-  <div v-width="900">
+  <div>
     <div class="h-panel">
       <div class="h-panel-bar">
         <span class="h-panel-title">标题</span>
