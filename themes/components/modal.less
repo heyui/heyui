@@ -11,6 +11,10 @@
             overflow: initial;
         }
         &-container {
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            top: 10px;
             margin-bottom: 100px;
             min-width: 350px;
             header {
@@ -79,6 +83,9 @@
             }
         }
         &-show {
+            .@{notify-cls}-container {
+                top: 100px;
+            }
             .@{notify-cls}-container-center {
                 top: 50%;
                 transform: translate(-50%, -50%);

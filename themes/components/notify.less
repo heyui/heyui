@@ -16,12 +16,8 @@
             z-index: @zindex-notify;
         }
         &-container {
-            position: fixed;
-            left: 50%;
-            transform: translate(-50%, 0%);
             background-color: @white-color;
             border-radius: 3px;
-            top: 10px;
             box-shadow: @box-shadow-notify;
             transition: @transition-time;
             opacity: 0;
@@ -61,7 +57,6 @@
                 opacity: 1;
             }
             .@{notify-prefix}-container {
-                top: 100px;
                 opacity: 1;
             }
         }

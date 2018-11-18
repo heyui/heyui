@@ -7,16 +7,16 @@
         position: fixed;
         top: 50px;
         right: 10px;
-        z-index: 1000;
+        z-index: @zindex-notice;
+        pointer-events: none;
     }
     transition: .7s;
+    pointer-events: initial;
     .@{notify-prefix} {
         &-container {
             min-width: @notice-width;
-            top: auto;
             right: -100px;
             margin-bottom: 20px;
-            left: auto;
             transform: none;
             position: relative;
             max-height: 0;
@@ -36,7 +36,7 @@
         
         &-content {
             padding: @notice-padding - 4px @notice-padding;
-            color: @gray-color;
+            color: @dark-color;
             [class^="h-icon"], [class*=" h-icon"]{
                 margin-right: 10px;
                 display: inline-block;
@@ -69,7 +69,6 @@
 
         &-show {
             .@{notify-prefix}-container {
-                top: auto;
                 right: 0px;
                 max-height: 1000px;
             }

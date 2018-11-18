@@ -387,7 +387,13 @@ class Pop {
     oppositetriggerEvents.forEach((event) => {
       const func = (evt) => {
         if (evt.usedByPop === true) { return; }
-        this.scheduleHide(reference, options, evt);
+        if (event == 'mouseleave') {
+          this.timeout = setTimeout(() => {
+            this.scheduleHide(reference, options, evt);
+          }, 1000)
+        } else {
+          this.scheduleHide(reference, options, evt);
+        }
       };
       this.triggerEvents.push({ event, func });
       reference.addEventListener(event, func, event == 'blur');
