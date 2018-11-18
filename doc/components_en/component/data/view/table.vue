@@ -10,6 +10,9 @@
     <h3>TableItem definition mode</h3>
     <example demo="view/table2"></example>
 
+    <h3>Data render</h3>
+    <example demo="view/table9"></example>
+
     <h3>Sort and loading</h3>
     <p>Set <code>sort</code> to <code>true</code> for Column, then use custom sort to adjust data according to sort event.</p>
     <p>Set <code>sort</code> to <code>auto</code> for Column, you can use data sorting by default.</p>
