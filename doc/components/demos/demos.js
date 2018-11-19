@@ -190,6 +190,7 @@ export default {
   'viewTable6': resolve => require.ensure([], require => require('./view/table6.vue'), 'view'),
   'viewTable7': resolve => require.ensure([], require => require('./view/table7.vue'), 'view'),
   'viewTable8': resolve => require.ensure([], require => require('./view/table8.vue'), 'view'),
+  'viewTable9': resolve => require.ensure([], require => require('./view/table9.vue'), 'view'),
   'viewTabs1': resolve => require.ensure([], require => require('./view/tabs1.vue'), 'view'),
   'viewTabs2': resolve => require.ensure([], require => require('./view/tabs2.vue'), 'view'),
   'viewTabs3': resolve => require.ensure([], require => require('./view/tabs3.vue'), 'view'),

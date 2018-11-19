@@ -22,7 +22,9 @@ export default {
     fixed: String,
     label: String,
     prop: String,
+    dict: String,
     align: String,
+    unit: String,
     tooltip: {
       type: Boolean,
       default: false

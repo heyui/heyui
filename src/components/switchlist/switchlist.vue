@@ -1,6 +1,6 @@
 <template>
   <div class="h-switchlist" :class="{'h-switchlist-small':small}" :disabled="disabled">
-    <span :checked="option[key]==value" :disabled="disabled" v-for="option of arr" :key="option[key]" @click="setvalue(option[key])">{{option[title]}}</span>
+    <span :checked="option[key]==value" :disabled="disabled" v-for="option of arr" :key="option[key]" @click="setvalue(option[key])"><i v-if="option.icon" :class="option.icon"></i>{{option[title]}}</span>
   </div>
 </template>
 <script>

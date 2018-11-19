@@ -7,28 +7,28 @@
         position: fixed;
         top: 50px;
         right: 10px;
-        z-index: 1000;
+        z-index: @zindex-notice;
+        pointer-events: none;
     }
     transition: .7s;
+    pointer-events: initial;
     .@{notify-prefix} {
         &-container {
             min-width: @notice-width;
-            top: auto;
             right: -100px;
             margin-bottom: 20px;
-            left: auto;
             transform: none;
             position: relative;
             max-height: 0;
             overflow: hidden;
 
-            header {
+            .@{notice-prefix}-header, header:first-child {
                 min-height: 20px;
                 line-height: 20px;
                 font-size: 16px;
                 padding: @notice-padding 0 0 @notice-padding;
             }
-            footer {
+            .@{notice-prefix}-footer, footer:last-child {
                 padding: 10px @notice-padding;
                 text-align: left;
             }
@@ -36,7 +36,7 @@
         
         &-content {
             padding: @notice-padding - 4px @notice-padding;
-            color: @gray-color;
+            color: @dark-color;
             [class^="h-icon"], [class*=" h-icon"]{
                 margin-right: 10px;
                 display: inline-block;
@@ -45,7 +45,7 @@
     }
     
     &.@{notice-prefix}-has-icon{
-        header{
+        .@{notice-prefix}-header, header:first-child{
             margin-left: 40px;
         }
         .@{notify-prefix}-content{
@@ -60,7 +60,7 @@
                 top: -20px;
             }
         }
-        footer {
+        headerfooter {
             margin-left: 40px;
         }
     }
@@ -69,7 +69,6 @@
 
         &-show {
             .@{notify-prefix}-container {
-                top: auto;
                 right: 0px;
                 max-height: 1000px;
             }

@@ -149,7 +149,8 @@ export default {
     },
     groupCls() {
       return {
-        [`${this.className}-dropdown`]: !!this.className
+        [`${this.className}-dropdown`]: !!this.className,
+        'h-dropdownmenu-group': true
       }
     },
     options() {

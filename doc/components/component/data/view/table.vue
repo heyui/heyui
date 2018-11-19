@@ -10,6 +10,10 @@
     <h3>TableItem定义模式</h3>
     <example demo="view/table2"></example>
 
+    <h3>数据渲染</h3>
+    <p><code>Table</code>组件内置了一系列的数据渲染模式。</p>
+    <example demo="view/table9"></example>
+
     <h3>排序与加载</h3>
     <p>给<code>Column</code>设置<code>sort</code>为true，则使用自定义排序，根据sort事件对数据做出调整。</p>
     <p>给<code>Column</code>设置<code>sort</code>为<code>auto</code>，则可以默认使用数据排序</p>

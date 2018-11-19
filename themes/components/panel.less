@@ -10,18 +10,8 @@
         border: none;
     }
 
-    &:hover {
-        border-color: #eee;
-    }
-
-    &-extra {
-        position: absolute;
-        right: 16px;
-        top: 14px;
-    }
-
     &-bar {
-        padding: 8px 16px;
+        padding: @panel-space @panel-space * 2;
         border-bottom: @border;
         position: relative;
         >span{
@@ -30,18 +20,18 @@
     }
 
     &-bar &-title {
-        line-height: 26px;
-        font-size: 120%;
+        line-height: @panel-space * 2 + @font-size;
+        font-size: 18px;
         display: inline-block;
         vertical-align: middle;
     }
 
     &-bar &-right {
         .middle();
-        right: 16px;
+        right: @panel-space * 2;
     }
 
     &-body {
-        padding: 16px;
+        padding: @panel-space * 2;
     }
 }
