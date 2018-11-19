@@ -10,17 +10,16 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import Dropdown from '../../plugins/dropdown';
+import Dropdown from '../../plugins/dropdown'
 
-const prefix = 'h-dropdowncustom';
+const prefix = 'h-dropdowncustom'
 
 export default {
   name: 'hDropdownCustom',
   props: {
     trigger: {
-      type: String,  //click,hover
-      default: "click"
+      type: String, //click,hover
+      default: 'click'
     },
     equalWidth: {
       type: Boolean,
@@ -35,7 +34,11 @@ export default {
       default: false
     },
     placement: {
-      type: String,
+      type: String
+    },
+    delay: {
+      type: Number,
+      default: 0
     },
     className: {
       type: String,
@@ -48,14 +51,14 @@ export default {
     return {
       isShow: false,
       dropdown: null,
-      el: null,
-    };
+      el: null
+    }
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.el = this.$el.querySelector('.h-dropdowncustom-show');
-      let content = this.$el.querySelector('.h-dropdowncustom-group');
-      let that = this;
+      let el = (this.el = this.$el.querySelector('.h-dropdowncustom-show'))
+      let content = this.$el.querySelector('.h-dropdowncustom-group')
+      let that = this
       this.dropdown = new Dropdown(el, {
         content,
         className: `${this.className}-dropdown-container`,
@@ -64,35 +67,36 @@ export default {
         equalWidth: this.equalWidth,
         placement: this.placement,
         disabled: this.disabled,
+        delay: this.delay,
         events: {
-          show(next){
-            that.isShow = true;
-            that.$emit('show');
+          show() {
+            that.isShow = true
+            that.$emit('show')
           },
-          hide: ()=>{
-            that.$emit('hide');
+          hide: () => {
+            that.$emit('hide')
           }
         }
-      });
-    });
+      })
+    })
   },
   watch: {
     disabled() {
       if (this.disabled) {
-        this.dropdown.disabled();
+        this.dropdown.disabled()
       } else {
-        this.dropdown.enabled();
+        this.dropdown.enabled()
       }
     }
   },
   beforeDestroy() {
-    let el = this.el;
-    if(el) {
-      el.style.display = 'none';
-      this.$el.appendChild(el);
+    let el = this.el
+    if (el) {
+      el.style.display = 'none'
+      this.$el.appendChild(el)
     }
-    if(this.dropdown) {
-      this.dropdown.destory();
+    if (this.dropdown) {
+      this.dropdown.destory()
     }
   },
   computed: {
@@ -107,25 +111,25 @@ export default {
         [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon,
         [this.className]: !!this.className,
-        [this.showClass] : !!this.showClass
+        [this.showClass]: !!this.showClass
       }
     },
     groupCls() {
       return {
-        [`${prefix}-group`]: true,
+        [`${prefix}-group`]: true
       }
     }
   },
   methods: {
     update() {
-      this.dropdown.update();
+      this.dropdown.update()
     },
     hide() {
-      this.dropdown.hide();
+      this.dropdown.hide()
     },
     show() {
-      this.dropdown.show();
+      this.dropdown.show()
     }
   }
-};
+}
 </script>

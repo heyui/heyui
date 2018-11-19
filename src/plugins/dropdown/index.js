@@ -11,7 +11,7 @@ const Default = {
   innerSelector: '.h-dropdown-inner',
   preventOverflow: true,
   type: 'dropdown',
-  delay: 300,
+  delay: 0,
 }
 
 class Dropdown extends Pop {

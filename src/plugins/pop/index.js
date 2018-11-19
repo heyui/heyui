@@ -148,6 +148,10 @@ class Pop {
 
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
+
+    if (this.options.trigger.indexOf('hover') > -1) {
+      this.setPopNodeEvent();
+    }
   }
 
   initPopper() {
@@ -226,7 +230,7 @@ class Pop {
     this.options.disabled = false;
   }
 
-  _doshow() {
+  doshow() {
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -244,6 +248,7 @@ class Pop {
     this.popNode.style.display = '';
     utils.addClass(this.reference, 'h-pop-trigger');
     if (this.timeout) clearTimeout(this.timeout);
+    if (this.timeout2) clearTimeout(this.timeout2);
     this.timeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
       this.popperInstance.update();
@@ -256,12 +261,12 @@ class Pop {
     this.isOpen = true;
     if (this.options.events && utils.isFunction(this.options.events.show)) {
       // this.options.events.show(() => {
-      //   this._doshow();
+      //   this.doshow();
       // });
       this.options.events.show();
       // return;
     }
-    this._doshow();
+    this.doshow();
     return this;
   }
 
@@ -274,21 +279,24 @@ class Pop {
   hide() {
     if (!this.popperInstance) return this;
     if (!this.isOpen) { return this; }
-    if (this.options.events && utils.isFunction(this.options.events.hide)) {
-      this.options.events.hide.call(null);
-    }
-    this.isOpen = false;
-    this.popNode.setAttribute('aria-hidden', 'true');
-    utils.removeClass(this.reference, 'h-pop-trigger');
-    if (this.timeout) clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      if (this.popNode) {
-        this.popNode.style.display = 'none';
 
-        if (this.popperInstance) {
-          this.popperInstance.disableEventListeners();
-        }
+    if (this.timeout) clearTimeout(this.timeout);
+    if (this.timeout2) clearTimeout(this.timeout2);
+    this.timeout = setTimeout(() => {
+      utils.removeClass(this.reference, 'h-pop-trigger');
+      if (this.options.events && utils.isFunction(this.options.events.hide)) {
+        this.options.events.hide.call(null);
       }
+      this.popNode.setAttribute('aria-hidden', 'true');
+      this.isOpen = false;
+      this.timeout2 = setTimeout(() => {
+        if (this.popNode) {
+          this.popNode.style.display = 'none';
+          if (this.popperInstance) {
+            this.popperInstance.disableEventListeners();
+          }
+        }
+      }, 300)
     }, this.options.delay);
     return this;
   }
@@ -378,7 +386,7 @@ class Pop {
         }
         if (this.isOpen === true) { return; }
         evt.usedByPop = true;
-        this.scheduleShow(reference, options, evt);
+        this.scheduleShow();
       };
       this.triggerEvents.push({ event, func });
       reference.addEventListener(event, func, event == 'focus');
@@ -387,13 +395,7 @@ class Pop {
     oppositetriggerEvents.forEach((event) => {
       const func = (evt) => {
         if (evt.usedByPop === true) { return; }
-        if (event == 'mouseleave') {
-          this.timeout = setTimeout(() => {
-            this.scheduleHide(reference, options, evt);
-          }, 1000)
-        } else {
-          this.scheduleHide(reference, options, evt);
-        }
+        this.scheduleHide();
       };
       this.triggerEvents.push({ event, func });
       reference.addEventListener(event, func, event == 'blur');
@@ -420,35 +422,22 @@ class Pop {
     this.show();
   }
 
-  scheduleHide(reference, options, evt) {
+  scheduleHide() {
     if (this.isOpen === false) { return; }
     if (!document.body.contains(this.popNode)) { return; }
-    if (evt.type === 'mouseleave') {
-      const isSet = this.setPopNodeEvent(evt, reference, options);
-      if (isSet) { return; }
-    }
-
-    this.hide(reference, options);
+    this.hide();
   }
 
-  setPopNodeEvent(evt, reference, options) {
-    const relatedreference = evt.relatedreference || evt.relatedTarget || evt.toElement;
-
-    const callback = (evt2) => {
-      const relatedreference2 = evt2.relatedreference || evt2.toElement;
-
-      this.popNode.removeEventListener(evt.type, callback);
-
-      if (!reference.contains(relatedreference2)) {
-        this.scheduleHide(reference, options, evt2);
+  setPopNodeEvent() {
+    this.popNode.addEventListener('mouseenter', () => {
+      this.doshow();
+    });
+    this.popNode.addEventListener('mouseout', (event) => {
+      const relatedreference = event.relatedreference || event.toElement;
+      if (!this.popNode.contains(relatedreference) && relatedreference != this.reference && !this.reference.contains(relatedreference)) {
+        this.scheduleHide();
       }
-    };
-    if (this.popNode.contains(relatedreference)) {
-      this.popNode.addEventListener(evt.type, callback);
-      return true;
-    }
-
-    return false;
+    });
   }
 }
 
