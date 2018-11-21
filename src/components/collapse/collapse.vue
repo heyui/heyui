@@ -1,8 +1,3 @@
-<style lang='less'>
-.h-collapse{
-  display: block;
-}
-</style>
 <template>
   <div :class="collapseCls">
     <slot></slot>
