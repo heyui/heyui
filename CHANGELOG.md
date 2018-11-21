@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.0-alpha.3"></a>
+# [1.12.0-alpha.3](https://github.com/heyui/heyui/compare/v1.12.0-alpha.2...v1.12.0-alpha.3) (2018-11-21)
+
+
+### Bug Fixes
+
+* dictMapping add return ([8faf001](https://github.com/heyui/heyui/commit/8faf001))
+
+
+
 <a name="1.12.0-alpha.2"></a>
 # [1.12.0-alpha.2](https://github.com/heyui/heyui/compare/v1.12.0-alpha.0...v1.12.0-alpha.2) (2018-11-19)
 
