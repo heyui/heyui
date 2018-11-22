@@ -407,7 +407,6 @@ class Pop {
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
           return false;
         }
-        
         let targetReference = e.reference;
         if (reference && this.popNode.contains(targetReference)) {
           return false;
@@ -433,7 +432,7 @@ class Pop {
       this.doshow();
     });
     this.popNode.addEventListener('mouseout', (event) => {
-      const relatedreference = event.relatedreference || event.toElement;
+      const relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
       if (!this.popNode.contains(relatedreference) && relatedreference != this.reference && !this.reference.contains(relatedreference)) {
         this.scheduleHide();
       }
