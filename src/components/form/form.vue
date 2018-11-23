@@ -168,7 +168,7 @@ export default {
       let result = { result: isSuccess, messages: utils.toArray(this.messages, 'prop').filter(item => !item.valid) };
       if (!isSuccess) {
         let m = result.messages[0];
-        if(this.isTipError) {
+        if (this.isTipError) {
           if (m.type == 'base') {
             this.$Message.error(`${m.label}${m.message}`);
           } else {

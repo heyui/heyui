@@ -79,7 +79,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **Message:** message use list mode ([857f857](https://github.com/heyui/heyui/commit/857f857))
 * **SwitchList:**  add icon ([62f9361](https://github.com/heyui/heyui/commit/62f9361))
-* **Table:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
+* **Form:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
 
 
 
@@ -94,7 +94,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* **Table:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
+* **Form:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
 
 
 
