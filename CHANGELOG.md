@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/heyui/heyui/compare/v1.12.0...v1.12.1) (2018-11-24)
+
+
+### Bug Fixes
+
+* solve the problem when use js direct ([b6768d3](https://github.com/heyui/heyui/commit/b6768d3)), closes [#42](https://github.com/heyui/heyui/issues/42)
+* **Comfirm:** add reject handler ([509acfa](https://github.com/heyui/heyui/commit/509acfa))
+
+
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/heyui/heyui/compare/v1.12.0-alpha.4...v1.12.0) (2018-11-23)
 
