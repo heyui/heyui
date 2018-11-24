@@ -9,7 +9,7 @@ let Default = {
 }
 
 function Confirm(content, title) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     let param = {
       type: prefixCls,
       content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
@@ -21,6 +21,7 @@ function Confirm(content, title) {
         },
         cancel: (n) => {
           n.close();
+          reject();
         }
       },
       title,
