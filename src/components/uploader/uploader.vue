@@ -91,7 +91,10 @@ export default {
       type: String,
       default: 'file' //url
     },
-    uploadList: Array,
+    uploadList: { 
+      type: Array,
+      default: () => []
+    },
     files: {
       type: [Array, Object, String],
       default: () => []

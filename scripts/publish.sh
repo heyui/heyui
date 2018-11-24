@@ -2,6 +2,7 @@ echo "打包hey build"
 hey b
 hey b -f hey.esm.js
 hey b -f hey.lang.js
+hey b -f hey.uncompressed.js
 lessc ./themes/index.less>./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/fonts/
 
 set -e

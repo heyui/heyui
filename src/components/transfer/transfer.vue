@@ -53,10 +53,12 @@
   export default {
     props: {
       value: { 
-        type: Array
+        type: Array,
+        default: () => []
       },
       datas: {
-        type: Array
+        type: Array,
+        default: () => []
       },
       keyName: {
         type: String,
