@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.2-alpha.0"></a>
+## [1.12.2-alpha.0](https://github.com/heyui/heyui/compare/v1.12.1...v1.12.2-alpha.0) (2018-11-26)
+
+
+### Bug Fixes
+
+* **Table:** add selectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
+
+
+
 <a name="1.12.1"></a>
 ## [1.12.1](https://github.com/heyui/heyui/compare/v1.12.0...v1.12.1) (2018-11-24)
 
