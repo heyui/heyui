@@ -31,8 +31,12 @@
     <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
     <example demo="view/table3"></example>
   
-    <h3>Table 选择行</h3>
+    <h3>Table 多选</h3>
+    <p>设定<code>selectWhenClickTr</code>属性可以点击整行选中。</p>
     <example demo="view/table4"></example>
+
+    <h3>Table 单选</h3>
+    <example demo="view/table10"></example>
 
     <h3>Table 气泡提示与定义border, stripe样式</h3>
     <example demo="view/table7"></example>
@@ -94,7 +98,7 @@
     </table>
 
 
-    <h3>Column 参数</h3>
+    <h3>TableItem / Column 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -174,6 +178,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectRow</td>
+        <td>单行选中切换</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Table 事件</h3>
@@ -201,6 +212,10 @@
       <tr>
         <td>trdblclick</td>
         <td>当tr被双击的时候</td>
+      </tr>
+      <tr>
+        <td>rowSelect</td>
+        <td>当tr被单击选中的时候</td>
       </tr>
     </table>
 

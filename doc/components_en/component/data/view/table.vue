@@ -30,8 +30,11 @@
     <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
     <example demo="view/table3"></example>
   
-    <h3>Table select line</h3>
+    <h3>Table choose lines</h3>
     <example demo="view/table4"></example>
+
+    <h3>Table select line</h3>
+    <example demo="view/table10"></example>
 
     <h3>Table bubble tips and border, stripe style</h3>
     <example demo="view/table7"></example>
@@ -39,6 +42,7 @@
 
     <h3>Custom table header</h3>
     <example demo="view/table8"></example>
+
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -87,6 +91,13 @@
       <tr>
         <td>stripe</td>
         <td>Table using a grid background</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>selectRow</td>
+        <td>Whether to use row select.</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
@@ -201,6 +212,10 @@
       <tr>
         <td>trdblclick</td>
         <td>When tr is double clicked</td>
+      </tr>
+      <tr>
+        <td>rowSelect</td>
+        <td>When tr is selected</td>
       </tr>
     </table>
 
