@@ -127,7 +127,7 @@
                 color: @white-color;
               }
               &-range-selected {
-                background-color: @tag-background-color;
+                background-color: @highlight-background-color;
               }
               &-not-now-day {
                 color: @gray1-color;
@@ -139,6 +139,15 @@
                 pointer-events: none;
               }
             }
+          }
+        }
+        &-month,
+        &-year,
+        &-minute,
+        &-hour,
+        &-date {
+          >div>span {
+            border-radius: 50%;
           }
         }
         &-month,
@@ -154,6 +163,7 @@
           min-width: 200px;
           width: auto;
           >div>span {
+            border-radius: 5px;
             width: 100%;
             display: block;
           }
