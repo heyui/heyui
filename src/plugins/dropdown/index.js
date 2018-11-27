@@ -12,6 +12,7 @@ const Default = {
   preventOverflow: true,
   type: 'dropdown',
   delay: 0,
+  offset: '0, 1'
 }
 
 class Dropdown extends Pop {
