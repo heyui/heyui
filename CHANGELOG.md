@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.2-alpha.1"></a>
+## [1.12.2-alpha.1](https://github.com/heyui/heyui/compare/v1.12.2-alpha.0...v1.12.2-alpha.1) (2018-11-27)
+
+
+### Bug Fixes
+
+* **Form:** isTipError -> showErrorTip ([ec6850c](https://github.com/heyui/heyui/commit/ec6850c))
+
+
+
 <a name="1.12.2-alpha.0"></a>
 ## [1.12.2-alpha.0](https://github.com/heyui/heyui/compare/v1.12.1...v1.12.2-alpha.0) (2018-11-26)
 
