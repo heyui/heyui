@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Form :label-width="110" :model="data" ref="form" :rules="rules" :isTipError="isTipError">
+    <Form :label-width="110" :model="data" ref="form" :rules="rules" :showErrorTip="showErrorTip">
       <FormItem>
         <Checkbox v-model="required">是否必填</Checkbox>
         <i class="h-split"></i>
-        <Checkbox v-model="isTipError">是否使用tip提示错误</Checkbox>
+        <Checkbox v-model="showErrorTip">是否使用tip提示错误</Checkbox>
       </FormItem>
       <!-- 
           这里定义的required属性会应用与验证规则中，适用于一些变动性的必填项。
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       required: true,
-      isTipError: true,
+      showErrorTip: true,
       data: {
         list: [null],
         value: null

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Form :label-width="110" :model="data" ref="form" :rules="rules" isTipError>
+    <Form :label-width="110" :model="data" ref="form" :rules="rules" showErrorTip>
       <FormItem label="数字" prop="number">
         <input type="text" v-model="data.number" />
       </FormItem>

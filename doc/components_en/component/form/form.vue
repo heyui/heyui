@@ -94,6 +94,13 @@
         <td>-</td>
         <td>0</td>
       </tr>
+      <tr>
+        <td>showErrorTip</td>
+        <td>Show error tip auto</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Form Methods</h3>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2" isTipError>
+    <Form :label-width="110" :mode="mode" :model="data" :rules="validationRules" ref="form" :top="0.2" showErrorTip>
       <FormItem single>
         <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
       </FormItem>

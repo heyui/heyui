@@ -95,7 +95,7 @@
         <td>0</td>
       </tr>
       <tr>
-        <td>isTipError</td>
+        <td>showErrorTip</td>
         <td>是否出错误的提示Tip</td>
         <td>Boolean</td>
         <td>-</td>
