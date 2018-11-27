@@ -8838,7 +8838,7 @@ exports.default = {
       type: Boolean,
       default: false
     },
-    isTipError: {
+    showErrorTip: {
       type: Boolean,
       default: false
     }
@@ -8965,7 +8965,7 @@ exports.default = {
         }) };
       if (!isSuccess) {
         var m = result.messages[0];
-        if (this.isTipError) {
+        if (this.showErrorTip) {
           if (m.type == 'base') {
             this.$Message.error('' + m.label + m.message);
           } else {
