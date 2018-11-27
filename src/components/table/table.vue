@@ -42,7 +42,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1 || d._rowSelected}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -67,7 +67,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1 || d._rowSelected}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -85,7 +85,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': checks.indexOf(d)>-1 || d._rowSelected}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
@@ -207,7 +207,6 @@
             this.checks.splice(0, this.checks.length);
           }
           this.datasBak = [...this.datas];
-          this.initRowSelected();
         },
         deep: true
       },
@@ -233,7 +232,6 @@
     },
     mounted() {
       this.initColumns();
-      this.initRowSelected();
       this.$nextTick(() => {
         let body = this.$el.querySelector(".h-table-body");
         if (body) {
@@ -299,8 +297,14 @@
       });
     },
     methods: {
-      initRowSelected() {
-        this.rowSelected = this.datas.filter(item => item._rowSelected)[0] || null;
+      isChecked(d) {
+        return this.checks.indexOf(d) > -1 || (this.selectRow && d == this.rowSelected);
+      },
+      setRowSelect(data) {
+        this.rowSelected = data;
+      },
+      clearRowSelect() {
+        this.rowSelected = null;
       },
       invereSelection() {
         this.checks = this.datas.filter(item => this.checks.indexOf(item) == -1);
@@ -416,11 +420,7 @@
         }
 
         if (this.selectRow) {
-          if (this.rowSelected) {
-            this.$set(this.rowSelected, '_rowSelected', false);
-          }
           this.rowSelected = data;
-          this.$set(data, '_rowSelected', true);
           this.$emit('rowSelect', data);
         }
         this.$emit('trclick', data, event);
