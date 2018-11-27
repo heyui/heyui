@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.2-alpha.2"></a>
+## [1.12.2-alpha.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.1...v1.12.2-alpha.2) (2018-11-27)
+
+
+### Bug Fixes
+
+* **Dropdown:** use offset 0, 1 ([241040a](https://github.com/heyui/heyui/commit/241040a))
+* **Table:** rowSelect use diffrent way ([f39f36f](https://github.com/heyui/heyui/commit/f39f36f))
+
+
+
 <a name="1.12.2-alpha.1"></a>
 ## [1.12.2-alpha.1](https://github.com/heyui/heyui/compare/v1.12.2-alpha.0...v1.12.2-alpha.1) (2018-11-27)
 
