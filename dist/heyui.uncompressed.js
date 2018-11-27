@@ -1112,7 +1112,8 @@ var Default = {
   innerSelector: '.h-dropdown-inner',
   preventOverflow: true,
   type: 'dropdown',
-  delay: 0
+  delay: 0,
+  offset: '0, 1'
 };
 
 var Dropdown = function (_Pop) {
@@ -12370,7 +12371,6 @@ exports.default = {
           this.checks.splice(0, this.checks.length);
         }
         this.datasBak = [].concat((0, _toConsumableArray3.default)(this.datas));
-        this.initRowSelected();
       },
 
       deep: true
@@ -12401,7 +12401,6 @@ exports.default = {
     var _this = this;
 
     this.initColumns();
-    this.initRowSelected();
     this.$nextTick(function () {
       var body = _this.$el.querySelector(".h-table-body");
       if (body) {
@@ -12531,10 +12530,14 @@ exports.default = {
   },
 
   methods: {
-    initRowSelected: function initRowSelected() {
-      this.rowSelected = this.datas.filter(function (item) {
-        return item._rowSelected;
-      })[0] || null;
+    isChecked: function isChecked(d) {
+      return this.checks.indexOf(d) > -1 || this.selectRow && d == this.rowSelected;
+    },
+    setRowSelect: function setRowSelect(data) {
+      this.rowSelected = data;
+    },
+    clearRowSelect: function clearRowSelect() {
+      this.rowSelected = null;
     },
     invereSelection: function invereSelection() {
       var _this2 = this;
@@ -12681,11 +12684,7 @@ exports.default = {
       }
 
       if (this.selectRow) {
-        if (this.rowSelected) {
-          this.$set(this.rowSelected, '_rowSelected', false);
-        }
         this.rowSelected = data;
-        this.$set(data, '_rowSelected', true);
         this.$emit('rowSelect', data);
       }
       this.$emit('trclick', data, event);
@@ -27280,7 +27279,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return [_c('TableTr', {
       key: index + _vm.update.datas,
       class: {
-        'h-table-tr-selected': _vm.checks.indexOf(d) > -1 || d._rowSelected
+        'h-table-tr-selected': _vm.isChecked(d)
       },
       attrs: {
         "datas": d,
@@ -27355,7 +27354,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return [_c('TableTr', {
       key: index + _vm.update.datas,
       class: {
-        'h-table-tr-selected': _vm.checks.indexOf(d) > -1 || d._rowSelected
+        'h-table-tr-selected': _vm.isChecked(d)
       },
       attrs: {
         "datas": d,
@@ -27415,7 +27414,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return [_c('TableTr', {
       key: index + _vm.update.datas,
       class: {
-        'h-table-tr-selected': _vm.checks.indexOf(d) > -1 || d._rowSelected
+        'h-table-tr-selected': _vm.isChecked(d)
       },
       attrs: {
         "datas": d,
