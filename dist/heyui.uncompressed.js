@@ -9033,29 +9033,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _set = __webpack_require__(18);
-
-var _set2 = _interopRequireDefault(_set);
-
 var _defineProperty2 = __webpack_require__(2);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _props; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var _set = __webpack_require__(18);
+
+var _set2 = _interopRequireDefault(_set);
 
 var _utils = __webpack_require__(1);
 
@@ -9063,10 +9047,25 @@ var _utils2 = _interopRequireDefault(_utils);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var prefixCls = 'h-form-item';
+var prefixCls = 'h-form-item'; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
   name: 'hFormItem',
-  props: (_props = {
+  props: {
     label: String,
     prop: String,
     required: {
@@ -9093,10 +9092,7 @@ exports.default = {
       type: Boolean,
       default: false
     }
-  }, (0, _defineProperty3.default)(_props, 'required', {
-    type: Boolean,
-    default: false
-  }), (0, _defineProperty3.default)(_props, 'rule', Object), _props),
+  },
   data: function data() {
     return {
       validResult: null,
