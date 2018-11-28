@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.2-alpha.3"></a>
+## [1.12.2-alpha.3](https://github.com/heyui/heyui/compare/v1.12.2-alpha.2...v1.12.2-alpha.3) (2018-11-28)
+
+
+### Bug Fixes
+
+* **FormItem:** remove unused props ([a59c2a3](https://github.com/heyui/heyui/commit/a59c2a3))
+* **TagInput:** optimize tag style ([3da8ab0](https://github.com/heyui/heyui/commit/3da8ab0))
+
+
+
 <a name="1.12.2-alpha.2"></a>
 ## [1.12.2-alpha.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.1...v1.12.2-alpha.2) (2018-11-27)
 
