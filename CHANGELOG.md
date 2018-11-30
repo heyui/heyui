@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.2"></a>
+## [1.12.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.3...v1.12.2) (2018-11-30)
+
+
+### Bug Fixes
+
+* **Pop:** update pop mechanism ([a057c26](https://github.com/heyui/heyui/commit/a057c26))
+
+
+
 <a name="1.12.2-alpha.3"></a>
 ## [1.12.2-alpha.3](https://github.com/heyui/heyui/compare/v1.12.2-alpha.2...v1.12.2-alpha.3) (2018-11-28)
 
