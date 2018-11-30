@@ -2574,8 +2574,7 @@ var DEFAULT_OPTIONS = {
  * @param {HTMLElement} options.boundariesElement
  *      The element used as boundaries for the pop. For more information refer to Popper.js'
  *      [boundariesElement docs](https://popper.js.org/popper-documentation.html)
- * @param {Number|String} options.offset=0 - Offset of the pop relative to its reference. For more information refer to Popper.js'
- *      [offset docs](https://popper.js.org/popper-documentation.html)
+ * @param {Number|String} options.offset
  * @return {Object} instance - The generated pop instance
  */
 
@@ -2604,15 +2603,6 @@ var Pop = function () {
   }
 
   (0, _createClass3.default)(Pop, [{
-    key: 'toggle',
-    value: function toggle() {
-      if (this.isOpen) {
-        return this.hide();
-      } else {
-        return this.show();
-      }
-    }
-  }, {
     key: 'create',
     value: function create(reference, template, content) {
       var popGenerator = window.document.createElement('div');
@@ -2675,7 +2665,7 @@ var Pop = function () {
       popNode.setAttribute('aria-describedby', popNode.id);
       var container = this.findContainer(options.container, reference);
 
-      this.append(popNode, container);
+      container.appendChild(popNode);
       if (options.class) {
         _utils2.default.addClass(popNode, options.class);
       }
@@ -2699,7 +2689,9 @@ var Pop = function () {
       var container = this.findContainer(options.container, reference);
 
       var modifiers = {
-        computeStyle: { gpuAcceleration: false },
+        computeStyle: {
+          gpuAcceleration: false
+        },
         arrow: {
           enabled: false
         },
@@ -2710,22 +2702,9 @@ var Pop = function () {
           boundariesElement: 'window',
           enabled: true
         }
+      };
 
-        // if (this.options.arrowSelector) {
-        //   modifiers.arrow = {
-        //     enabled: true,
-        //     element: this.options.arrowSelector
-        //   }
-        // }
-        // if (this.options.innerSelector) {
-        //   modifiers.inner = {
-        //     enabled: true,
-        //     element: this.options.innerSelector
-        //   }
-        // }
-
-
-      };if (this.options.offset) {
+      if (this.options.offset) {
         modifiers.offset = {
           enabled: true,
           offset: this.options.offset
@@ -2769,10 +2748,19 @@ var Pop = function () {
       this.options.disabled = false;
     }
   }, {
-    key: 'doshow',
-    value: function doshow() {
+    key: 'show',
+    value: function show() {
       var _this = this;
 
+      if (this.timeout) clearTimeout(this.timeout);
+      if (this.timeout2) clearTimeout(this.timeout2);
+      if (this.isOpen || this.options.disabled) {
+        return this;
+      }
+      this.isOpen = true;
+      if (this.options.events && _utils2.default.isFunction(this.options.events.show)) {
+        this.options.events.show();
+      }
       if (!this.popNode) {
         this.initPopNode();
       }
@@ -2789,29 +2777,10 @@ var Pop = function () {
 
       this.popNode.style.display = '';
       _utils2.default.addClass(this.reference, 'h-pop-trigger');
-      if (this.timeout) clearTimeout(this.timeout);
-      if (this.timeout2) clearTimeout(this.timeout2);
       this.timeout = setTimeout(function () {
         _this.popNode.setAttribute('aria-hidden', 'false');
         _this.popperInstance.update();
       }, 0);
-    }
-  }, {
-    key: 'show',
-    value: function show() {
-      if (this.isOpen || this.options.disabled) {
-        return this;
-      }
-      // if (this.type == 'tooltip' && )
-      this.isOpen = true;
-      if (this.options.events && _utils2.default.isFunction(this.options.events.show)) {
-        // this.options.events.show(() => {
-        //   this.doshow();
-        // });
-        this.options.events.show();
-        // return;
-      }
-      this.doshow();
       return this;
     }
   }, {
@@ -2826,13 +2795,16 @@ var Pop = function () {
     value: function hide() {
       var _this2 = this;
 
-      if (!this.popperInstance) return this;
-      if (!this.isOpen) {
-        return this;
-      }
-
       if (this.timeout) clearTimeout(this.timeout);
       if (this.timeout2) clearTimeout(this.timeout2);
+      if (this.isOpen === false) {
+        return;
+      }
+      if (!document.body.contains(this.popNode)) {
+        return;
+      }
+      if (!this.popNode) return this;
+      if (!this.popperInstance) return this;
       this.timeout = setTimeout(function () {
         _utils2.default.removeClass(_this2.reference, 'h-pop-trigger');
         if (_this2.options.events && _utils2.default.isFunction(_this2.options.events.hide)) {
@@ -2887,11 +2859,6 @@ var Pop = function () {
         container = reference.parentNode;
       }
       return container;
-    }
-  }, {
-    key: 'append',
-    value: function append(popNode, container) {
-      container.appendChild(popNode);
     }
   }, {
     key: 'setEventListeners',
@@ -2950,9 +2917,12 @@ var Pop = function () {
             return;
           }
           evt.usedByPop = true;
-          _this4.scheduleShow();
+          _this4.show();
         };
-        _this4.triggerEvents.push({ event: event, func: func });
+        _this4.triggerEvents.push({
+          event: event,
+          func: func
+        });
         reference.addEventListener(event, func, event == 'focus');
       });
 
@@ -2961,9 +2931,12 @@ var Pop = function () {
           if (evt.usedByPop === true) {
             return;
           }
-          _this4.scheduleHide();
+          _this4.hide();
         };
-        _this4.triggerEvents.push({ event: event, func: func });
+        _this4.triggerEvents.push({
+          event: event,
+          func: func
+        });
         reference.addEventListener(event, func, event == 'blur');
       });
 
@@ -2983,33 +2956,17 @@ var Pop = function () {
       }
     }
   }, {
-    key: 'scheduleShow',
-    value: function scheduleShow() {
-      this.show();
-    }
-  }, {
-    key: 'scheduleHide',
-    value: function scheduleHide() {
-      if (this.isOpen === false) {
-        return;
-      }
-      if (!document.body.contains(this.popNode)) {
-        return;
-      }
-      this.hide();
-    }
-  }, {
     key: 'setPopNodeEvent',
     value: function setPopNodeEvent() {
       var _this5 = this;
 
       this.popNode.addEventListener('mouseenter', function () {
-        _this5.doshow();
+        _this5.show();
       });
       this.popNode.addEventListener('mouseout', function (event) {
         var relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
         if (!_this5.popNode.contains(relatedreference) && relatedreference != _this5.reference && !_this5.reference.contains(relatedreference)) {
-          _this5.scheduleHide();
+          _this5.hide();
         }
       });
     }
