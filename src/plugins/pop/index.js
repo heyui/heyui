@@ -46,8 +46,7 @@ const DEFAULT_OPTIONS = {
  * @param {HTMLElement} options.boundariesElement
  *      The element used as boundaries for the pop. For more information refer to Popper.js'
  *      [boundariesElement docs](https://popper.js.org/popper-documentation.html)
- * @param {Number|String} options.offset=0 - Offset of the pop relative to its reference. For more information refer to Popper.js'
- *      [offset docs](https://popper.js.org/popper-documentation.html)
+ * @param {Number|String} options.offset
  * @return {Object} instance - The generated pop instance
  */
 class Pop {
@@ -71,14 +70,6 @@ class Pop {
       options.content.style.display = "none";
     }
     this.setEventListeners(triggerEvents, options);
-  }
-
-  toggle() {
-    if (this.isOpen) {
-      return this.hide();
-    } else {
-      return this.show();
-    }
   }
 
   create(reference, template, content) {
@@ -131,14 +122,16 @@ class Pop {
     let options = this.options
     const content = options.content || reference.getAttribute('content');
 
-    if (!content) { return this; }
+    if (!content) {
+      return this;
+    }
 
     const popNode = this.create(reference, options.template, content, options.html);
 
     popNode.setAttribute('aria-describedby', popNode.id);
     const container = this.findContainer(options.container, reference);
 
-    this.append(popNode, container);
+    container.appendChild(popNode)
     if (options.class) {
       utils.addClass(popNode, options.class);
     }
@@ -161,7 +154,9 @@ class Pop {
     const container = this.findContainer(options.container, reference);
 
     let modifiers = {
-      computeStyle: { gpuAcceleration: false },
+      computeStyle: {
+        gpuAcceleration: false
+      },
       arrow: {
         enabled: false
       },
@@ -173,20 +168,6 @@ class Pop {
         enabled: true
       }
     }
-
-    // if (this.options.arrowSelector) {
-    //   modifiers.arrow = {
-    //     enabled: true,
-    //     element: this.options.arrowSelector
-    //   }
-    // }
-    // if (this.options.innerSelector) {
-    //   modifiers.inner = {
-    //     enabled: true,
-    //     element: this.options.innerSelector
-    //   }
-    // }
-
 
     if (this.options.offset) {
       modifiers.offset = {
@@ -230,7 +211,16 @@ class Pop {
     this.options.disabled = false;
   }
 
-  doshow() {
+  show() {
+    if (this.timeout) clearTimeout(this.timeout);
+    if (this.timeout2) clearTimeout(this.timeout2);
+    if (this.isOpen || this.options.disabled) {
+      return this;
+    }
+    this.isOpen = true;
+    if (this.options.events && utils.isFunction(this.options.events.show)) {
+      this.options.events.show();
+    }
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -247,26 +237,10 @@ class Pop {
 
     this.popNode.style.display = '';
     utils.addClass(this.reference, 'h-pop-trigger');
-    if (this.timeout) clearTimeout(this.timeout);
-    if (this.timeout2) clearTimeout(this.timeout2);
     this.timeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
       this.popperInstance.update();
     }, 0);
-  }
-
-  show() {
-    if (this.isOpen || this.options.disabled) { return this; }
-    // if (this.type == 'tooltip' && )
-    this.isOpen = true;
-    if (this.options.events && utils.isFunction(this.options.events.show)) {
-      // this.options.events.show(() => {
-      //   this.doshow();
-      // });
-      this.options.events.show();
-      // return;
-    }
-    this.doshow();
     return this;
   }
 
@@ -277,11 +251,14 @@ class Pop {
   }
 
   hide() {
-    if (!this.popperInstance) return this;
-    if (!this.isOpen) { return this; }
-
     if (this.timeout) clearTimeout(this.timeout);
     if (this.timeout2) clearTimeout(this.timeout2);
+    if (this.isOpen === false) { return; }
+    if (!document.body.contains(this.popNode)) {
+      return;
+    }
+    if (!this.popNode) return this;
+    if (!this.popperInstance) return this;
     this.timeout = setTimeout(() => {
       utils.removeClass(this.reference, 'h-pop-trigger');
       if (this.options.events && utils.isFunction(this.options.events.hide)) {
@@ -309,7 +286,10 @@ class Pop {
       this.popperInstance.destroy();
     }
 
-    this.triggerEvents.forEach(({ event, func }) => {
+    this.triggerEvents.forEach(({
+      event,
+      func
+    }) => {
       this.reference.removeEventListener(event, func, event == 'focus' || event == 'blur');
     });
     this.triggerEvents = [];
@@ -329,10 +309,6 @@ class Pop {
       container = reference.parentNode;
     }
     return container;
-  }
-
-  append(popNode, container) {
-    container.appendChild(popNode);
   }
 
   setEventListeners(triggerEvents, options) {
@@ -384,20 +360,30 @@ class Pop {
             this.popperInstance.update();
           }
         }
-        if (this.isOpen === true) { return; }
+        if (this.isOpen === true) {
+          return;
+        }
         evt.usedByPop = true;
-        this.scheduleShow();
+        this.show();
       };
-      this.triggerEvents.push({ event, func });
+      this.triggerEvents.push({
+        event,
+        func
+      });
       reference.addEventListener(event, func, event == 'focus');
     });
 
     oppositetriggerEvents.forEach((event) => {
       const func = (evt) => {
-        if (evt.usedByPop === true) { return; }
-        this.scheduleHide();
+        if (evt.usedByPop === true) {
+          return;
+        }
+        this.hide();
       };
-      this.triggerEvents.push({ event, func });
+      this.triggerEvents.push({
+        event,
+        func
+      });
       reference.addEventListener(event, func, event == 'blur');
     });
 
@@ -417,24 +403,14 @@ class Pop {
     }
   }
 
-  scheduleShow() {
-    this.show();
-  }
-
-  scheduleHide() {
-    if (this.isOpen === false) { return; }
-    if (!document.body.contains(this.popNode)) { return; }
-    this.hide();
-  }
-
   setPopNodeEvent() {
     this.popNode.addEventListener('mouseenter', () => {
-      this.doshow();
+      this.show();
     });
     this.popNode.addEventListener('mouseout', (event) => {
       const relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
       if (!this.popNode.contains(relatedreference) && relatedreference != this.reference && !this.reference.contains(relatedreference)) {
-        this.scheduleHide();
+        this.hide();
       }
     });
   }
