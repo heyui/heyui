@@ -50,6 +50,7 @@ export default {
         result = value[this.key];
       }
       this.$emit('input', result);
+      this.$emit('change', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, result);
       this.$el.dispatchEvent(event);
