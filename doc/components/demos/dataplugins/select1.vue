@@ -4,7 +4,7 @@
       <button class="h-btn h-btn-s" @click="update">修改值</button>
     </p>
     <div v-width="300">
-      <Select v-model="select" :datas="param" placeholder="自定义placeholder" null-option-text="自定义请选择项"></Select>
+      <Select v-model="select" :datas="param" placeholder="自定义placeholder" null-option-text="自定义请选择项" @change="change"></Select>
     </div>
     <br/>
     <p>选中值：{{select2}}<i class="h-split"></i>
@@ -51,6 +51,9 @@ export default {
     },
     update3() {
       this.select3 = 'a2';
+    },
+    change(data) {
+      log('changeData:', data)
     }
   }
 }
