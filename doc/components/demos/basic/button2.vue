@@ -87,8 +87,8 @@
     <h4>Button Group</h4>
     <div class="buttons">
       <ButtonGroup>
-        <Button color="primary" icon="h-icon-left"></Button>
-        <Button color="primary" icon="h-icon-right"></Button>
+        <Button color="primary" v-tooltip content="后退" icon="h-icon-left"></Button>
+        <Button color="primary" v-tooltip content="前进" icon="h-icon-right"></Button>
       </ButtonGroup>
       <ButtonGroup>
         <Button icon="h-icon-inbox">Create</Button>
