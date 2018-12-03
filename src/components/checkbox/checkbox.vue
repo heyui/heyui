@@ -90,6 +90,7 @@ export default {
         let key = option[this.key];
         value = utils.toggleValue(value, key);
       }
+      this.$emit('change', value);
       this.$emit('input', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);

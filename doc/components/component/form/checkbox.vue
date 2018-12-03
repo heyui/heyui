@@ -78,5 +78,19 @@
         <td>全局config <code>dict.titleName</code></td>
       </tr>
     </table>
+
+    <h3>Checkbox 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>返回数据</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>当数据产生变动的时候触发</td>
+        <td>当前绑定的v-model值</td>
+      </tr>
+    </table>
   </div>
 </template>
