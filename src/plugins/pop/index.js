@@ -264,7 +264,9 @@ class Pop {
       if (this.options.events && utils.isFunction(this.options.events.hide)) {
         this.options.events.hide.call(null);
       }
-      this.popNode.setAttribute('aria-hidden', 'true');
+      if (this.popNode) {
+        this.popNode.setAttribute('aria-hidden', 'true');
+      }
       this.isOpen = false;
       this.timeout2 = setTimeout(() => {
         if (this.popNode) {
