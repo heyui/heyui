@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.3"></a>
+## [1.12.3](https://github.com/heyui/heyui/compare/v1.12.2...v1.12.3) (2018-12-05)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** remove strict css structure ([0745ac7](https://github.com/heyui/heyui/commit/0745ac7))
+* **Checkbox:** add event change ([72bf4f1](https://github.com/heyui/heyui/commit/72bf4f1))
+* **Checkbox:** add warn when use error value ([e62f0aa](https://github.com/heyui/heyui/commit/e62f0aa))
+* **Date:** optimize css ([71441de](https://github.com/heyui/heyui/commit/71441de))
+* **Pop:** add judge ([1598937](https://github.com/heyui/heyui/commit/1598937))
+* **Radio:** add event change ([aa3dde3](https://github.com/heyui/heyui/commit/aa3dde3))
+* **Select:** add change event ([48f092f](https://github.com/heyui/heyui/commit/48f092f))
+* **TreePicker:**  add refresh method ([d2cff1d](https://github.com/heyui/heyui/commit/d2cff1d))
+
+
+
 <a name="1.12.2"></a>
 ## [1.12.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.3...v1.12.2) (2018-11-30)
 
