@@ -212,8 +212,8 @@ class Pop {
   }
 
   show() {
-    if (this.timeout) clearTimeout(this.timeout);
-    if (this.timeout2) clearTimeout(this.timeout2);
+    if (this.hideTimeout) clearTimeout(this.hideTimeout);
+    if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
     if (this.isOpen || this.options.disabled) {
       return this;
     }
@@ -237,7 +237,7 @@ class Pop {
 
     this.popNode.style.display = '';
     utils.addClass(this.reference, 'h-pop-trigger');
-    this.timeout = setTimeout(() => {
+    this.showTimeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
       this.popperInstance.update();
     }, 0);
@@ -251,15 +251,15 @@ class Pop {
   }
 
   hide() {
-    if (this.timeout) clearTimeout(this.timeout);
-    if (this.timeout2) clearTimeout(this.timeout2);
+    if (this.showTimeout) clearTimeout(this.showTimeout);
+    if (this.hideTimeout) clearTimeout(this.hideTimeout);
     if (this.isOpen === false) { return; }
     if (!document.body.contains(this.popNode)) {
       return;
     }
     if (!this.popNode) return this;
     if (!this.popperInstance) return this;
-    this.timeout = setTimeout(() => {
+    this.hideTimeout = setTimeout(() => {
       utils.removeClass(this.reference, 'h-pop-trigger');
       if (this.options.events && utils.isFunction(this.options.events.hide)) {
         this.options.events.hide.call(null);
@@ -268,7 +268,7 @@ class Pop {
         this.popNode.setAttribute('aria-hidden', 'true');
       }
       this.isOpen = false;
-      this.timeout2 = setTimeout(() => {
+      this.hideTimeout2 = setTimeout(() => {
         if (this.popNode) {
           this.popNode.style.display = 'none';
           if (this.popperInstance) {
