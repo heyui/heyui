@@ -2810,7 +2810,9 @@ var Pop = function () {
         if (_this2.options.events && _utils2.default.isFunction(_this2.options.events.hide)) {
           _this2.options.events.hide.call(null);
         }
-        _this2.popNode.setAttribute('aria-hidden', 'true');
+        if (_this2.popNode) {
+          _this2.popNode.setAttribute('aria-hidden', 'true');
+        }
         _this2.isOpen = false;
         _this2.timeout2 = setTimeout(function () {
           if (_this2.popNode) {
@@ -6415,6 +6417,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'hCheckbox',
@@ -6434,7 +6441,7 @@ exports.default = {
       type: Boolean,
       default: false
     },
-    checkStatus: [Array, Boolean],
+    checkStatus: [Array, Boolean, Object],
     indeterminate: {
       type: Boolean,
       default: false
@@ -6501,6 +6508,7 @@ exports.default = {
         var key = option[this.key];
         value = _utils2.default.toggleValue(value, key);
       }
+      this.$emit('change', value);
       this.$emit('input', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
@@ -6522,7 +6530,11 @@ exports.default = {
   },
   computed: {
     checkList: function checkList() {
-      return this.checkStatus || [];
+      var checkStatus = this.checkStatus || [];
+      if ((!_utils2.default.isNull(this.value) || !this.isSingle) && !_utils2.default.isArray(checkStatus)) {
+        console.warn('Checkbox: It\'s not allowed to use v-model with non-array value.');
+      }
+      return _utils2.default.isArray(checkStatus) ? checkStatus : [];
     },
     isSingle: function isSingle() {
       return this.arr.length == 0;
@@ -6669,21 +6681,6 @@ var _locale2 = _interopRequireDefault(_locale);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6887,18 +6884,30 @@ exports.default = {
       nowView.add(num, type);
       this.$emit('updateView', nowView.time(), this.range);
     },
-    isSelected: function isSelected(d) {
-      var length = DateJudgeLength[this.view];
+    getDateCls: function getDateCls(d) {
+      var isStartSelected = false;
+      var isEndSelected = false;
+      var isRangeSelected = false;
+      var isSelected = false;
       if (_utils2.default.isObject(this.value)) {
-        return this.value.start == d.string || this.value.end == d.string;
+        isStartSelected = this.value.start == d.string;
+        isEndSelected = this.value.end == d.string;
+      } else {
+        var length = DateJudgeLength[this.view];
+        isSelected = this.value.substring(0, length) == d.string.substring(0, length);
       }
-      return this.value.substring(0, length) == d.string.substring(0, length);
-    },
-    isRangeSelected: function isRangeSelected(d) {
       if (this.range && _utils2.default.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
-        return this.value.start < d.string && this.rangeEnd > d.string || this.value.start > d.string && this.rangeEnd < d.string;
+        isRangeSelected = this.value.start < d.string && this.rangeEnd > d.string || this.value.start > d.string && this.rangeEnd < d.string;
       }
-      return false;
+      return {
+        'h-date-not-now-day': !d.isNowDays,
+        'h-date-today': d.isToday,
+        'h-date-selected': isSelected || isStartSelected || isEndSelected,
+        'h-date-range-selected': isRangeSelected,
+        'h-date-start-selected': isStartSelected,
+        'h-date-end-selected': isEndSelected,
+        'h-date-disabled': d.disabled
+      };
     },
     chooseDate: function chooseDate(d) {
       if (this.view == endView[this.type]) {
@@ -7160,7 +7169,12 @@ exports.default = {
           _dates5.push(genData({
             date: (0, _manba2.default)(date.time()),
             type: _manba2.default.WEEK,
-            show: this.t('h.date.show.week', { year: date.year(), weeknum: index, daystart: date.format('MM-DD'), dayend: (0, _manba2.default)(date).add(6).format('MM-DD') }),
+            show: this.t('h.date.show.week', {
+              year: date.year(),
+              weeknum: index,
+              daystart: date.format('MM-DD'),
+              dayend: (0, _manba2.default)(date).add(6).format('MM-DD')
+            }),
             vm: this,
             isNowDays: true
           }));
@@ -7180,7 +7194,10 @@ exports.default = {
           _dates6.push(genData({
             date: (0, _manba2.default)(_date.time()),
             type: _manba2.default.MONTH,
-            show: this.t('h.date.show.quarter', { year: _date.year(), quarter: _index }),
+            show: this.t('h.date.show.quarter', {
+              year: _date.year(),
+              quarter: _index
+            }),
             vm: this,
             isNowDays: true,
             view: this.view
@@ -8808,7 +8825,6 @@ exports.default = {
     };
   },
   beforeMount: function beforeMount() {
-    // log('rule init', this.rules, this.validator);
     if (this.model && this.rules) this.validator = new _validator2.default(this.rules);
   },
   destroyed: function destroyed() {
@@ -8844,6 +8860,7 @@ exports.default = {
           this.validator = new _validator2.default(this.rules);
         }
       },
+
       deep: true
     }
   },
@@ -8863,23 +8880,30 @@ exports.default = {
       var _this2 = this;
 
       if (!prop || !this.validator || !this.model) {
-        return { valid: true };
+        return {
+          valid: true
+        };
       }
-      var returnResult = this.validator.validField(prop, this.model, { next: function next(result) {
+      var returnResult = this.validator.validField(prop, this.model, {
+        next: function next(result) {
           _utils2.default.extend(true, _this2.messages, result);
-        } });
-      // log(returnResult);
+        }
+      });
       _utils2.default.extend(true, this.messages, returnResult);
       return _utils2.default.extend({}, this.messages[prop]);
     },
     validFieldJs: function validFieldJs(prop, _next) {
       if (!prop || !this.validator || !this.model) {
-        return { valid: true };
+        return {
+          valid: true
+        };
       }
       var defaultM = this.messages[prop];
-      var returnResult = this.validator.validField(prop, this.model, { next: function next(result) {
+      var returnResult = this.validator.validField(prop, this.model, {
+        next: function next() {
           _next(_utils2.default.extend({}, defaultM, returnResult[prop]));
-        } });
+        }
+      });
       return _utils2.default.extend({}, defaultM, returnResult[prop]);
     },
     setConfig: function setConfig(prop, options) {
@@ -8892,14 +8916,21 @@ exports.default = {
     },
     getErrorMessage: function getErrorMessage(prop, label) {
       if (this.messages[prop]) return this.messages[prop];
-      var message = { valid: true, message: null, label: label };
+      var message = {
+        valid: true,
+        message: null,
+        label: label
+      };
       this.messages[prop] = message;
       return message;
     },
     updateErrorMessage: function updateErrorMessage(prop, oldProp) {
       var message = _utils2.default.copy(this.messages[oldProp]);
       if (_utils2.default.isNull(message)) {
-        message = { valid: true, message: null };
+        message = {
+          valid: true,
+          message: null
+        };
       }
       this.messages[prop] = message;
       return message;
@@ -8908,8 +8939,6 @@ exports.default = {
       delete this.messages[prop];
     },
     renderMessage: function renderMessage(returnResult) {
-      var _this3 = this;
-
       var isSuccess = true;
       for (var r in returnResult) {
         if (!returnResult[r].valid) {
@@ -8918,10 +8947,18 @@ exports.default = {
         }
       }
       _utils2.default.extend(true, this.messages, returnResult);
-      var result = { result: isSuccess, messages: _utils2.default.toArray(this.messages, 'prop').filter(function (item) {
+      var result = {
+        result: isSuccess,
+        messages: _utils2.default.toArray(this.messages, 'prop').filter(function (item) {
           return !item.valid;
-        }) };
-      if (!isSuccess) {
+        })
+      };
+      return result;
+    },
+    tipError: function tipError(result) {
+      var _this3 = this;
+
+      if (!result.result) {
         var m = result.messages[0];
         if (this.showErrorTip) {
           if (m.type == 'base') {
@@ -8943,13 +8980,12 @@ exports.default = {
           }
         });
       }
-      return result;
     },
     validAsync: function validAsync() {
       var _this4 = this;
 
-      return new _promise2.default(function (resolve, reject) {
-        var result = _this4.valid(function (result) {
+      return new _promise2.default(function (resolve) {
+        _this4.valid(function (result) {
           resolve(_this4.renderMessage(result));
         });
       });
@@ -8958,7 +8994,10 @@ exports.default = {
       var _this5 = this;
 
       if (!this.validator || !this.model) {
-        return { result: true, messages: [] };
+        return {
+          result: true,
+          messages: []
+        };
       }
       var returnResult = this.validator.valid(this.model, function (result) {
         _utils2.default.extend(true, _this5.messages, result);
@@ -8967,7 +9006,9 @@ exports.default = {
           next.call(null, result);
         }
       });
-      return this.renderMessage(returnResult);
+      var result = this.renderMessage(returnResult);
+      this.tipError(result);
+      return result;
     }
   },
   computed: {
@@ -10688,6 +10729,7 @@ exports.default = {
         result = value[this.key];
       }
       this.$emit('input', result);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, result);
       this.$el.dispatchEvent(event);
@@ -11250,6 +11292,7 @@ exports.default = {
       this.setObjects();
       var value = this.type == 'key' ? this.codes : this.objects;
       this.$emit('input', value);
+      this.$emit('change', this.objects);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.objects);
       this.$el.dispatchEvent(event);
@@ -14429,12 +14472,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var prefix = 'h-treepicker';
+var prefix = "h-treepicker";
 
-// import treepickerModal from './treepickerModal';
 exports.default = {
-  name: 'hTreePicker',
+  name: "hTreePicker",
   component: { Tree: _tree2.default },
   props: {
     option: Object,
@@ -14444,7 +14507,7 @@ exports.default = {
     },
     type: {
       type: [String],
-      default: 'key' //object
+      default: "key"
     },
     disabled: {
       type: Boolean,
@@ -14485,7 +14548,7 @@ exports.default = {
   beforeDestroy: function beforeDestroy() {
     var el = this.el;
     if (el) {
-      el.style.display = 'none';
+      el.style.display = "none";
       this.$el.appendChild(el);
     }
     if (this.dropdown) {
@@ -14499,11 +14562,11 @@ exports.default = {
     this.parse();
     this.$nextTick(function () {
       if (_this.inline) return;
-      var el = _this.el = _this.$el.querySelector('.' + prefix + '>.h-treepicker-show');
-      var content = _this.$el.querySelector('.h-treepicker-group');
+      var el = _this.el = _this.$el.querySelector("." + prefix + ">.h-treepicker-show");
+      var content = _this.$el.querySelector(".h-treepicker-group");
 
       _this.dropdown = new _dropdown2.default(el, {
-        trigger: 'click',
+        trigger: "click",
         triggerOnce: true,
         content: content,
         disabled: _this.disabled
@@ -14521,9 +14584,14 @@ exports.default = {
     }
   },
   methods: {
+    refresh: function refresh() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.refresh();
+      }
+    },
     loadDataSuccess: function loadDataSuccess() {
       this.parse();
-      this.$emit('loadDataSuccess');
+      this.$emit("loadDataSuccess");
     },
     getChoose: function getChoose() {
       if (this.$refs.tree) {
@@ -14539,12 +14607,12 @@ exports.default = {
     },
     select: function select(data) {
       this.object = data;
-      this.$emit('select', data);
+      this.$emit("select", data);
       if (!this.multiple) this.setvalue();
     },
     choose: function choose(data) {
       this.objects = data;
-      this.$emit('choose', data);
+      this.$emit("choose", data);
       if (this.multiple) this.setvalue();
     },
     chooseAll: function chooseAll() {
@@ -14571,7 +14639,7 @@ exports.default = {
     parse: function parse() {
       var _this2 = this;
 
-      if (this.type == 'key') {
+      if (this.type == "key") {
         this.valuebak = _utils2.default.copy(this.value);
       } else {
         if (this.multiple) {
@@ -14590,10 +14658,10 @@ exports.default = {
 
       if (this.multiple) {
         return this.objects.map(function (item) {
-          return _this3.type == 'key' ? item[_this3.param.keyName] : item;
+          return _this3.type == "key" ? item[_this3.param.keyName] : item;
         });
       } else if (this.object) {
-        return this.type == 'key' ? this.object[this.param.keyName] : this.object;
+        return this.type == "key" ? this.object[this.param.keyName] : this.object;
       }
       return null;
     },
@@ -14614,7 +14682,7 @@ exports.default = {
       var _this4 = this;
 
       var value = this.dispose();
-      this.$emit('input', value);
+      this.$emit("input", value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -14626,28 +14694,28 @@ exports.default = {
       var _this5 = this;
 
       this.$nextTick(function () {
-        _this5.$emit('change', _utils2.default.copy(_this5.multiple ? _this5.objects : _this5.object));
+        _this5.$emit("change", _utils2.default.copy(_this5.multiple ? _this5.objects : _this5.object));
       });
     }
   },
   computed: {
     param: function param() {
       if (this.config) {
-        return _utils2.default.extend({}, _config2.default.getOption("tree.default"), _config2.default.getOption('tree.configs.' + this.config), this.option);
+        return _utils2.default.extend({}, _config2.default.getOption("tree.default"), _config2.default.getOption("tree.configs." + this.config), this.option);
       } else {
         return _utils2.default.extend({}, _config2.default.getOption("tree.default"), this.option);
       }
     },
     showCls: function showCls() {
-      return (0, _defineProperty3.default)({}, this.className + '-show', !!this.className);
+      return (0, _defineProperty3.default)({}, this.className + "-show", !!this.className);
     },
     groupCls: function groupCls() {
-      return (0, _defineProperty3.default)({}, this.className + '-dropdown', !!this.className);
+      return (0, _defineProperty3.default)({}, this.className + "-dropdown", !!this.className);
     },
     treepickerCls: function treepickerCls() {
       var _ref3;
 
-      return _ref3 = {}, (0, _defineProperty3.default)(_ref3, '' + prefix, true), (0, _defineProperty3.default)(_ref3, prefix + '-input-border', true), (0, _defineProperty3.default)(_ref3, prefix + '-no-autosize', true), (0, _defineProperty3.default)(_ref3, prefix + '-multiple', this.multiple), (0, _defineProperty3.default)(_ref3, prefix + '-disabled', this.disabled), _ref3;
+      return _ref3 = {}, (0, _defineProperty3.default)(_ref3, "" + prefix, true), (0, _defineProperty3.default)(_ref3, prefix + "-input-border", true), (0, _defineProperty3.default)(_ref3, prefix + "-no-autosize", true), (0, _defineProperty3.default)(_ref3, prefix + "-multiple", this.multiple), (0, _defineProperty3.default)(_ref3, prefix + "-disabled", this.disabled), _ref3;
     }
   }
 };
@@ -25212,7 +25280,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.changeView('month')
       }
     }
-  }, [_vm._v(_vm._s(_vm.months[_vm.nowView.month() - 1]))]), _vm._v(" "), _c('span', {
+  }, [_vm._v(_vm._s(_vm.months[_vm.nowView.month() -
+    1]))]), _vm._v(" "), _c('span', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -25303,9 +25372,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.dates), function(d) {
     return _c('span', {
       key: d.string,
-      class: {
-        'h-date-not-now-day': !d.isNowDays, 'h-date-today': d.isToday, 'h-date-selected': _vm.isSelected(d), 'h-date-range-selected': _vm.isRangeSelected(d), 'h-date-disabled': d.disabled
-      },
+      class: _vm.getDateCls(d),
       attrs: {
         "string": d.string
       },
@@ -25888,7 +25955,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.objects), function(obj) {
     return _c('span', {
       key: obj[_vm.param.keyName]
-    }, [_c('span', [_vm._v(_vm._s(obj[_vm.param.titleName]))]), (!_vm.disabled) ? _c('i', {
+    }, [_c('span', [_vm._v(_vm._s(obj[_vm.param.titleName]))]), _vm._v(" "), (!_vm.disabled) ? _c('i', {
       staticClass: "h-icon-close",
       on: {
         "click": function($event) {
