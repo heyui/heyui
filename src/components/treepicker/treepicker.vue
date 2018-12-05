@@ -2,41 +2,61 @@
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple&&objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">{{'h.treepicker.selectDesc' | hlang([valuebak.length])}}</div>
-        <div v-else class="h-treepicker-multiple-tags"><span v-for="obj of objects"
-                :key="obj[param.keyName]"><span>{{obj[param.titleName]}}</span><i class="h-icon-close"
-              @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <div
+          v-if="showCount"
+          class="h-treepicker-value-single"
+        >{{'h.treepicker.selectDesc' | hlang([valuebak.length])}}</div>
+        <div v-else class="h-treepicker-multiple-tags">
+          <span v-for="obj of objects" :key="obj[param.keyName]">
+            <span>{{obj[param.titleName]}}</span>
+            <i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+          </span>
         </div>
       </template>
-      <div v-else-if="!multiple&&object" class="h-treepicker-value-single">{{object[param.titleName]}}</div>
-      <div v-else class="h-treepicker-placeholder">{{'h.treepicker.placeholder' | hlang(null, placeholder)}}</div>
+      <div
+        v-else-if="!multiple&&object"
+        class="h-treepicker-value-single"
+      >{{object[param.titleName]}}</div>
+      <div
+        v-else
+        class="h-treepicker-placeholder"
+      >{{'h.treepicker.placeholder' | hlang(null, placeholder)}}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">
       <div class="h-treepicker-body">
-        <Tree ref="tree" @loadDataSuccess="loadDataSuccess" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple" v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable" :config="config"></Tree>
+        <Tree
+          ref="tree"
+          @loadDataSuccess="loadDataSuccess"
+          :toggleOnSelect="toggleOnSelect"
+          :option="option"
+          :multiple="multiple"
+          v-model="valuebak"
+          :chooseMode="chooseMode"
+          @select="select"
+          @choose="choose"
+          :filterable="filterable"
+          :config="config"
+        ></Tree>
       </div>
       <div class="h-treepicker-footer">
-        <button class="h-btn h-btn-text h-btn-s"
-                @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">{{'h.common.confirm' | hlang}}</button>
+        <button class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
+import config from "../../utils/config";
+import utils from "../../utils/utils";
+import Dropdown from "../../plugins/dropdown";
 
-// import treepickerModal from './treepickerModal';
-import Tree from '../tree';
+import Tree from "../tree";
 
-const prefix = 'h-treepicker';
+const prefix = "h-treepicker";
 
 export default {
-  name: 'hTreePicker',
+  name: "hTreePicker",
   component: { Tree },
   props: {
     option: Object,
@@ -46,7 +66,7 @@ export default {
     },
     type: {
       type: [String],
-      default: 'key'  //object
+      default: "key"
     },
     disabled: {
       type: Boolean,
@@ -54,7 +74,7 @@ export default {
     },
     limit: Number,
     placeholder: {
-      type: String,
+      type: String
     },
     filterable: {
       type: Boolean,
@@ -86,11 +106,11 @@ export default {
   },
   beforeDestroy() {
     let el = this.el;
-    if(el) {
-      el.style.display = 'none';
+    if (el) {
+      el.style.display = "none";
       this.$el.appendChild(el);
     }
-    if(this.dropdown) {
+    if (this.dropdown) {
       this.dropdown.destory();
     }
   },
@@ -98,15 +118,17 @@ export default {
     let that = this;
     this.parse();
     this.$nextTick(() => {
-      if(this.inline) return;
-      let el = this.el = this.$el.querySelector(`.${prefix}>.h-treepicker-show`);
+      if (this.inline) return;
+      let el = (this.el = this.$el.querySelector(
+        `.${prefix}>.h-treepicker-show`
+      ));
       let content = this.$el.querySelector(`.h-treepicker-group`);
-      
+
       this.dropdown = new Dropdown(el, {
-        trigger: 'click',
+        trigger: "click",
         triggerOnce: true,
         content,
-        disabled: this.disabled,
+        disabled: this.disabled
       });
 
       if (this.disabled) {
@@ -117,12 +139,17 @@ export default {
   watch: {
     value() {
       this.parse();
-    },
+    }
   },
   methods: {
+    refresh() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.refresh();
+      }
+    },
     loadDataSuccess() {
       this.parse();
-      this.$emit('loadDataSuccess');
+      this.$emit("loadDataSuccess");
     },
     getChoose() {
       if (this.$refs.tree) {
@@ -138,13 +165,13 @@ export default {
     },
     select(data) {
       this.object = data;
-      this.$emit('select', data);
-      if(!this.multiple) this.setvalue();
+      this.$emit("select", data);
+      if (!this.multiple) this.setvalue();
     },
     choose(data) {
       this.objects = data;
-      this.$emit('choose', data);
-      if(this.multiple) this.setvalue();
+      this.$emit("choose", data);
+      if (this.multiple) this.setvalue();
     },
     chooseAll() {
       if (this.$refs.tree) {
@@ -168,11 +195,13 @@ export default {
       this.setvalue();
     },
     parse() {
-      if (this.type == 'key') {
+      if (this.type == "key") {
         this.valuebak = utils.copy(this.value);
       } else {
         if (this.multiple) {
-          this.valuebak = (this.value||[]).map(item=>item[this.param.keyName]);
+          this.valuebak = (this.value || []).map(
+            item => item[this.param.keyName]
+          );
           this.objects = utils.copy(this.value);
         } else {
           this.valuebak = this.value ? this.value[this.param.keyName] : null;
@@ -182,9 +211,13 @@ export default {
     },
     dispose() {
       if (this.multiple) {
-        return this.objects.map(item => this.type=='key'?item[this.param.keyName]:item);
-      } else if(this.object) {
-        return this.type=='key'?this.object[this.param.keyName]:this.object;
+        return this.objects.map(item =>
+          this.type == "key" ? item[this.param.keyName] : item
+        );
+      } else if (this.object) {
+        return this.type == "key"
+          ? this.object[this.param.keyName]
+          : this.object;
       }
       return null;
     },
@@ -203,24 +236,32 @@ export default {
     },
     setvalue() {
       let value = this.dispose();
-      this.$emit('input', value);
+      this.$emit("input", value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
-      this.$nextTick(()=>{
-        if(this.dropdown) this.dropdown.update();
-      })
+      this.$nextTick(() => {
+        if (this.dropdown) this.dropdown.update();
+      });
     },
     triggerChange() {
-      this.$nextTick(()=>{
-        this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
-      })
+      this.$nextTick(() => {
+        this.$emit(
+          "change",
+          utils.copy(this.multiple ? this.objects : this.object)
+        );
+      });
     }
   },
   computed: {
     param() {
       if (this.config) {
-        return utils.extend({}, config.getOption("tree.default"), config.getOption(`tree.configs.${this.config}`), this.option);
+        return utils.extend(
+          {},
+          config.getOption("tree.default"),
+          config.getOption(`tree.configs.${this.config}`),
+          this.option
+        );
       } else {
         return utils.extend({}, config.getOption("tree.default"), this.option);
       }
@@ -228,12 +269,12 @@ export default {
     showCls() {
       return {
         [`${this.className}-show`]: !!this.className
-      }
+      };
     },
     groupCls() {
       return {
         [`${this.className}-dropdown`]: !!this.className
-      }
+      };
     },
     treepickerCls() {
       return {
@@ -241,9 +282,9 @@ export default {
         [`${prefix}-input-border`]: true,
         [`${prefix}-no-autosize`]: true,
         [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-disabled`]: this.disabled,
-      }
-    },
+        [`${prefix}-disabled`]: this.disabled
+      };
+    }
   }
 };
 </script>

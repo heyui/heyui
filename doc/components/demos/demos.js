@@ -230,6 +230,7 @@ export default {
   'pluginsTreepicker1': resolve => require.ensure([], require => require('./plugins/treepicker1'), 'plugins'),
   'pluginsTreepicker2': resolve => require.ensure([], require => require('./plugins/treepicker2'), 'plugins'),
   'pluginsTreepicker3': resolve => require.ensure([], require => require('./plugins/treepicker3'), 'plugins'),
+  'pluginsTreepicker4': resolve => require.ensure([], require => require('./plugins/treepicker4'), 'plugins'),
   'pluginsTree1': resolve => require.ensure([], require => require('./plugins/tree1'), 'plugins'),
   'pluginsTree2': resolve => require.ensure([], require => require('./plugins/tree2'), 'plugins'),
   'pluginsTree3': resolve => require.ensure([], require => require('./plugins/tree3'), 'plugins'),

@@ -195,14 +195,6 @@ const router = {
       component: () =>
         import ('components/component/data/plugin/city')
     }, {
-      path: 'data/plugin/tree',
-      name: 'dataPluginTree',
-      meta: {
-        title: 'Tree',
-      },
-      component: () =>
-        import ('components/component/data/plugin/tree')
-    }, {
       path: 'data/plugin/taginput',
       name: 'pluginTaginput',
       meta: {

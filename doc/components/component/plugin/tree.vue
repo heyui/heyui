@@ -130,6 +130,11 @@
         <td>收起所有的折叠</td>
         <td></td>
       </tr>
+      <tr>
+        <td>refresh</td>
+        <td>刷新数据</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Tree 事件</h3>

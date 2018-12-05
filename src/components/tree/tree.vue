@@ -263,7 +263,7 @@ export default {
       }
     },
     chooseAll() {
-      for(let key in this.treeObj) {
+      for (let key in this.treeObj) {
         this.treeObj[key].status.choose = true;
       }
       this.setvalue();

@@ -129,6 +129,11 @@
         <td>Collapse all folds</td>
         <td></td>
       </tr>
+      <tr>
+        <td>refresh</td>
+        <td>refresh view</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Tree Event</h3>
