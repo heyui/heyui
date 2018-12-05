@@ -2752,8 +2752,8 @@ var Pop = function () {
     value: function show() {
       var _this = this;
 
-      if (this.timeout) clearTimeout(this.timeout);
-      if (this.timeout2) clearTimeout(this.timeout2);
+      if (this.hideTimeout) clearTimeout(this.hideTimeout);
+      if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
       if (this.isOpen || this.options.disabled) {
         return this;
       }
@@ -2777,7 +2777,7 @@ var Pop = function () {
 
       this.popNode.style.display = '';
       _utils2.default.addClass(this.reference, 'h-pop-trigger');
-      this.timeout = setTimeout(function () {
+      this.showTimeout = setTimeout(function () {
         _this.popNode.setAttribute('aria-hidden', 'false');
         _this.popperInstance.update();
       }, 0);
@@ -2795,8 +2795,8 @@ var Pop = function () {
     value: function hide() {
       var _this2 = this;
 
-      if (this.timeout) clearTimeout(this.timeout);
-      if (this.timeout2) clearTimeout(this.timeout2);
+      if (this.showTimeout) clearTimeout(this.showTimeout);
+      if (this.hideTimeout) clearTimeout(this.hideTimeout);
       if (this.isOpen === false) {
         return;
       }
@@ -2805,7 +2805,7 @@ var Pop = function () {
       }
       if (!this.popNode) return this;
       if (!this.popperInstance) return this;
-      this.timeout = setTimeout(function () {
+      this.hideTimeout = setTimeout(function () {
         _utils2.default.removeClass(_this2.reference, 'h-pop-trigger');
         if (_this2.options.events && _utils2.default.isFunction(_this2.options.events.hide)) {
           _this2.options.events.hide.call(null);
@@ -2814,7 +2814,7 @@ var Pop = function () {
           _this2.popNode.setAttribute('aria-hidden', 'true');
         }
         _this2.isOpen = false;
-        _this2.timeout2 = setTimeout(function () {
+        _this2.hideTimeout2 = setTimeout(function () {
           if (_this2.popNode) {
             _this2.popNode.style.display = 'none';
             if (_this2.popperInstance) {
