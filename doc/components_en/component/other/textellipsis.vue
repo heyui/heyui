@@ -64,6 +64,13 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>placement</td>
+        <td>tooltip placement</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>TextEllipsis Event</h3>

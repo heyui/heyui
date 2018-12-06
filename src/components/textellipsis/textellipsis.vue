@@ -1,13 +1,12 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span class="text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :content="text">{{text}}</span>
+    <span class="text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">{{text}}</span>
     <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
 
 export default {
   name: 'hTextEllipsis',
@@ -22,7 +21,8 @@ export default {
       type: Boolean,
       default: false
     },
-    tooltipTheme: String
+    tooltipTheme: String,
+    placement: String
   },
   data() {
     return {
@@ -51,7 +51,7 @@ export default {
       this.keyIndex += 1;
       let more = this.$el.querySelector('.h-text-ellipsis-more');
       more.style.display = 'none';
-      if(this.isLimitHeight) {
+      if (this.isLimitHeight) {
         this.limitShow();
       }
     },
