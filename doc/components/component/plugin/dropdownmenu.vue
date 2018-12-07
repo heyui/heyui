@@ -162,6 +162,13 @@
         <td>-</td>
         <td>全局config <code>dict.titleName</code></td>
       </tr>
+      <tr>
+        <td>button</td>
+        <td>使用按钮的样式调用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
 

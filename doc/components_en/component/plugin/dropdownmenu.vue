@@ -162,6 +162,13 @@
         <td>-</td>
         <td>config <code>dict.titleName</code></td>
       </tr>
+      <tr>
+        <td>button</td>
+        <td>Use button style</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>DropdownMenu Method</h3>

@@ -161,20 +161,23 @@
       &:hover {
         z-index: 2;
       }
-      &:first-of-type {
-        border-radius: @border-radius 0 0 @border-radius;
+      &:first-child {
+        border-top-left-radius: @border-radius;
+        border-bottom-left-radius: @border-radius;
       }
-      &:last-of-type {
-        border-radius: 0 @border-radius @border-radius 0;
+      &:last-child {
+        border-top-right-radius: @border-radius;
+        border-bottom-right-radius: @border-radius;
       }
     }
     &.@{btn-prefix}-group {
       &-circle {
         >:first-of-type {
-          border-radius: 50% 0 0 50%;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;
         }
         >:last-of-type {
-          border-radius: 0 50% 50% 0;
+          border-bottom-right-radius: 50%;
         }
       }
       .@{btn-prefix}[disabled]{

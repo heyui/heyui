@@ -208,8 +208,8 @@
     top: 50%;
     height: 10px;
     line-height: 12px;
-    transform: translate(0, -50%);
-    transition: all @transition-time;
+    transform: translate(0, -50%) scale(0.8);
+    transition: transform @transition-time;
   }
   &:hover when (@hasColor){
     >.h-icon-down {
@@ -217,8 +217,7 @@
     }
   }
   &.@{pop-ref-prefix}>.h-icon-down {
-    transform: rotate(-180deg) translate(0, 50%);
-
+    transform: rotate(-180deg) translate(0, 50%) scale(0.8);
     & when (@hasColor){
       color: @primary-color;
     }

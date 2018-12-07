@@ -1,5 +1,5 @@
 <template>
-  <DropdownCustom ref="dropdown" @show="$emit('show')" :delay="delay" @hide="$emit('hide')" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
+  <DropdownCustom :button="button" ref="dropdown" @show="$emit('show')" :delay="delay" @hide="$emit('hide')" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
   :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
     <slot></slot>
     <ul slot="content" :class="groupCls" :style="groupStyle">
@@ -80,7 +80,11 @@ export default {
       type: String,
       default: () => config.getOption('dict', 'titleName')
     },
-    offset: [String, Number]
+    offset: [String, Number],
+    button: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {

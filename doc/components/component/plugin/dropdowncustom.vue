@@ -103,6 +103,13 @@
           <div>'-10px + 5vh, 5px - 6%'</div>
         </td>
       </tr>
+      <tr>
+        <td>button</td>
+        <td>使用按钮的样式调用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
 

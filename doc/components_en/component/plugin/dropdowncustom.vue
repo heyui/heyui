@@ -103,6 +103,13 @@
           <div>'-10px + 5vh, 5px - 6%'</div>
         </td>
       </tr>
+      <tr>
+        <td>button</td>
+        <td>Use button style</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
 
