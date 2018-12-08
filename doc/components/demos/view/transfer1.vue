@@ -14,7 +14,7 @@
       let sourceDatas1 = this.generateDemoData('key');
       let sourceDatas2 = this.generateDemoData('id');
       return {
-        value1: [1,2],
+        value1: null,
         sourceDatas1,
         option1: {
           ltText: '左移',

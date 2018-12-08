@@ -22,13 +22,12 @@
         <template v-if="option&&option.ltText">{{option.ltText}}</template>
         <i v-else-if="option&&option.ltIcon" :class="option.ltIcon"></i>
         <i v-else class="h-icon-left"></i>
-      </slot>
       </button>
-      <button class="h-btn h-btn-s" @click="move(1)"><slot name="moveToTarget">
+      <button class="h-btn h-btn-s" @click="move(1)">
         <template v-if="option&&option.rtText">{{option.rtText}}</template>
         <i v-else-if="option&&option.rtIcon" :class="option.rtIcon"></i>
         <i v-else class="h-icon-right"></i>
-      </slot></button>
+      </button>
     </div>
 
     <div class="h-transfer-target">
@@ -66,9 +65,7 @@
       },
       option: {
         type: Object,
-        default: () => {
-          return {};
-        }
+        default: () => ({})
       }
     },
     data() {
@@ -86,31 +83,36 @@
     methods: {
       move(direction) {
         this.$emit('transfer', direction, this.sources, this.targets);
-
+        let value = this.value?[...this.value]:[];
         if(direction === 1 && this.ltChecked.length > 0) {
-          this.value.push(...this.ltChecked);
+          this.rtSearchText = null;
+          value.push(...this.ltChecked);
           this.ltChecked.length =  0;
         } 
         else if(direction === -1 && this.rtChecked.length > 0) {
+          this.ltSearchText = null;
           this.rtChecked.forEach(d => {
-            this.value.splice(this.value.indexOf(d), 1);  
+            value.splice(value.indexOf(d), 1);  
           });
           this.rtChecked.length =  0;
         }
+        this.$emit('input', value);
       }   
     },
     computed: {
       sources() {
+        let value = this.value || [];
         let key = this.keyName || 'key';
-        let result =  this.datas.filter(d => this.value.indexOf(d[key]) == -1);
+        let result =  this.datas.filter(d => value.indexOf(d[key]) == -1);
         if(this.ltSearchText && this.ltSearchText.trim()) {
           return result.filter(d => d.text.indexOf(this.ltSearchText.trim()) != -1);
         }
         return result;
       },
       targets() {
+        let value = this.value || [];
         let key = this.keyName || 'key';
-        let result =  this.datas.filter(d => this.value.indexOf(d[key]) != -1);
+        let result =  this.datas.filter(d => value.indexOf(d[key]) != -1);
         if(this.rtSearchText && this.rtSearchText.trim()) {
           return result.filter(d => d.text.indexOf(this.rtSearchText.trim()) != -1);
         }
