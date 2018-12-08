@@ -68,7 +68,7 @@
         <td>trigger</td>
         <td>Trigger method</td>
         <td>String</td>
-        <td>click, hover, focus, contextMenu</td>
+        <td>click, hover, focus, contextMenu, manual</td>
         <td>click</td>
       </tr>
       <tr>

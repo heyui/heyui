@@ -29,9 +29,6 @@ const DEFAULT_OPTIONS = {
  * @param {Object} options - Configuration of the pop
  * @param {HTMLElement|String|false} options.container=false - Append the pop to a specific element.
  * @param {Number|Object} options.delay=0
- *      Delay showing and hiding the pop (ms) - does not apply to manual trigger type.
- *      If a number is supplied, delay is applied to both hide/show.
- *      Object structure is: `{ show: 500, hide: 100 }`
  * @param {Boolean} options.html=false - Insert HTML into the pop. If false, the content will inserted with `innerText`.
  * @param {String|PlacementFunction} options.placement='top' - One of the allowed placements, or a function returning one of them.
  * @param {String} options.template='<div class="pop" role="pop"><div class="pop-arrow"></div><div class="pop-inner"></div></div>'
@@ -40,8 +37,8 @@ const DEFAULT_OPTIONS = {
  *      `.pop-arrow` or `.pop__arrow` will become the pop's arrow.
  *      The outermost wrapper element should have the `.pop` class.
  * @param {String|HTMLElement|ContentFunction} options.content='' - Default content value if `content` attribute isn't present.
- * @param {String} options.trigger='hover focus manual'
- *      How pop is triggered - click | hover | focus | manual.
+ * @param {String} options.trigger='click hover focus manual contextMenu'
+ *      How pop is triggered - click | hover | focus | manual | contextMenu.
  *      You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.
  * @param {HTMLElement} options.boundariesElement
  *      The element used as boundaries for the pop. For more information refer to Popper.js'

@@ -44,7 +44,7 @@
         <td>trigger</td>
         <td>触发方式</td>
         <td>String</td>
-        <td>click, hover, focus, contextMenu</td>
+        <td>click, hover, focus, contextMenu, manual(手动)</td>
         <td>click</td>
       </tr>
       <tr>
