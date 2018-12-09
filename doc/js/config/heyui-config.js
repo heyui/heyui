@@ -55,6 +55,7 @@ const menus = utils.toArray({
   viewTag: 'Tag 标签',
   viewProgress: 'Progress 进度条',
   viewCircle: 'Circle 进度环',
+  viewCollapse: 'Collapse 折叠面板',
   pluginTree: 'Tree 树',
   // pluginDialog: 'Dialog 弹框',
   pluginSearch: 'Search 搜索框',
