@@ -21,7 +21,6 @@
       // background-color: @gray-color;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
       flex-shrink: 0;
       width: 100%;
       height: 100%;
@@ -29,10 +28,14 @@
       position: relative;
       .@{carousel-prefix}-bg {
         height: 100%;
-        background-size: 100%;
+        background-position: center;
+        background-size: cover;
       }
       .@{carousel-prefix}-bg-pointer {
         cursor: pointer;
+      }
+      &.@{carousel-prefix}-effect-item{
+        position: absolute;
       }
     }
   }
@@ -119,4 +122,11 @@
   &-hidden {
     display: none;
   }
+}
+
+.h-carousel-effect-fade-enter-active, .h-carousel-effect-fade-leave-active {
+  transition: opacity 1s;
+}
+.h-carousel-effect-fade-enter, .h-carousel-effect-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }

@@ -8,9 +8,7 @@
       <Button @click="updateSelect" size="xs">设置选中值</Button>
       <Button @click="getSelect" size="xs">获得选中值</Button>
     </p>
-    <Tree :option="param" ref="demo" :toggleOnSelect="toggleOnSelect" v-model="value" @open="open"  @select="select"  @choose="choose">
-      <div slot-scope="props" slot="item"><input type="text" v-model="props.item.title" /><i class="h-icon-edit"></i><i class="h-icon-trash"></i></div>
-    </Tree>
+    <Tree :option="param" ref="demo" :toggleOnSelect="toggleOnSelect" v-model="value" @open="open"  @select="select"  @choose="choose"></Tree>
   </div>
 </template>
 <script>

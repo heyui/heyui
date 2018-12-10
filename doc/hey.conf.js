@@ -30,5 +30,5 @@ module.exports = {
     },
     externals: {}
   },
-  copy: ["./static/images/**/*", "./simple.html", "./components/demos/**/*.vue", "./components/common/qiniu.vue", "./components/demos/**/*.txt", "./.well-known/pki-validation/fileauth.txt"]
+  copy: ["./static/images/**/*", "./simple.html", "./components/demos/**/*.vue", "./components/common/qiniu.vue", "./components/demos/**/*.txt", "./.well-known/pki-validation/fileauth.txt", 'themes/**/*.css']
 }

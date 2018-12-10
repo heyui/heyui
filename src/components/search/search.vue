@@ -56,6 +56,7 @@ export default {
   },
   methods: {
     search(value) {
+      value = value === null ? '' : value;
       this.inputValue = value;
       this.$emit('input', value);
       this.$emit('onsearch', value.trim());

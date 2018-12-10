@@ -45,12 +45,7 @@ export default {
     noPadding: {
       type: Boolean,
       default: false
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
-    rule: Object
+    }
   },
   data() {
     return {
@@ -76,9 +71,9 @@ export default {
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
     },
-    required(){
+    required() {
       let parent = this.getParent();
-      parent.setConfig(this.prop, {required: this.required});
+      parent.setConfig(this.prop, { required: this.required });
     }
   },
   mounted() {
@@ -109,7 +104,7 @@ export default {
   methods: {
     getParent() {
       let parent = this.$parent;
-      let filterTag = new Set(['Form', 'hForm']);
+      let filterTag = new Set(['Form', 'hForm', 'h-form']);
       while (parent != null && !filterTag.has(parent.$options._componentTag)) {
         parent = parent.$parent;
       }

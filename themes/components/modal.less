@@ -1,32 +1,36 @@
-@modal-cls: ~"@{prefix}modal";
-@notify-cls: ~"@{prefix}notify";
+@modal-prefix: ~"@{prefix}modal";
+@notify-prefix: ~"@{prefix}notify";
 @modal-padding: 15px;
-.@{modal-cls} {
+.@{modal-prefix} {
     // z-index: @zindex-modal;
     // position: absolute;
     position: static;
-    .@{notify-cls} {
+    .@{notify-prefix} {
         &-body{
             position: relative;
             overflow: initial;
         }
         &-container {
-            margin-bottom: 100px;
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            top: 10px;
+            margin-bottom: 10px;
             min-width: 350px;
-            header {
+            .@{modal-prefix}-header, header:first-child{
                 min-height: 40px;
                 line-height: 40px;
                 font-size: 16px;
                 padding-left: @modal-padding;
             }
-            footer {
+            .@{modal-prefix}-footer, footer:last-child {
                 padding: 10px @modal-padding;
                 text-align: right;
             }
         }
         &-content {
             padding: 10px @modal-padding;
-            &.@{notify-cls}-content-component{
+            &.@{notify-prefix}-content-component{
                 padding: 0;
             }
         }
@@ -50,9 +54,9 @@
       }
     }
 
-    &.@{notify-cls} {
+    &.@{notify-prefix} {
         &-has-mask{
-            .@{notify-cls} {
+            .@{notify-prefix} {
                 &-body{
                     position: fixed;
                     overflow: auto;
@@ -63,27 +67,30 @@
             }
         }
         &-no-mask {
-            .@{notify-cls} {
+            .@{notify-prefix} {
                 &-container {
                     z-index: 1000;
                 }
             }
         }
 
-        &-has-divider{
-            header{
+        &-has-divider .@{notify-prefix}-container{
+            .@{modal-prefix}-header, header:first-child{
                 border-bottom: 1px solid @border-color;
             }
-            footer{
+            .@{modal-prefix}-footer, footer:last-child{
                 border-top: 1px solid @border-color;
             }
         }
         &-show {
-            .@{notify-cls}-container-center {
+            .@{notify-prefix}-container {
+                top: 100px;
+            }
+            .@{notify-prefix}-container-center {
                 top: 50%;
                 transform: translate(-50%, -50%);
             }
-            &.@{modal-cls}-full-screen{
+            &.@{modal-prefix}-full-screen{
               .h-notify-container{
                 top: 0 !important;
                 bottom: 0;

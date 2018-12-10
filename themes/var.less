@@ -19,12 +19,14 @@
 @gray4-color: #f9f9f9;
 
 //hover
-@hover-background-color: rgb(245, 245, 245);
+@hover-background-color: #f8f8f8;
+
+@highlight-background-color: fade(@primary-color, 15%);
 
 
 //tag
-@tag-background-color: lighten(@primary-color, 37%);
-@tag-color: @primary-color;
+@tag-background-color: #f5f5f5;
+@tag-border-color: #ececec;
 
 //font-size
 @font-size : 14px;
@@ -37,6 +39,12 @@
 @font-family : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 @line-height : 1.5;
 @line-height-computed : floor((@font-size * @line-height));
+
+@button-size-normal-padding: 8px 15px;
+@button-size-l-padding: 10px 20px;
+@button-size-m-padding: 7px 16px;
+@button-size-s-padding: 5px 10px;
+@button-size-xs-padding: 2px 6px;
 
 // Input
 @input-height : 30px;
@@ -77,6 +85,7 @@
 @zindex-dropdown : 1000;
 @zindex-modal : 1000;
 @zindex-notify : 1000;
+@zindex-notice : 1000;
 @zindex-message : 1010;
 @zindex-tooltip : 1060;
 @zindex-loading-fullscreen : 2000;
@@ -84,3 +93,6 @@
 // Animation
 @animation-time : .3s;
 @transition-time : .2s;
+
+// panel
+@panel-space: 10px; 

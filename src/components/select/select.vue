@@ -304,13 +304,14 @@ export default {
       this.setObjects();
       let value = this.type == 'key' ? this.codes : this.objects;
       this.$emit('input', value);
+      this.$emit('change', this.objects);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.objects);
       this.$el.dispatchEvent(event);
       this.nowSelected = -1;
       if (this.multiple) {
         this.searchInput = '';
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.dropdown.update();
         })
       } else {

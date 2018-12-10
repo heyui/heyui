@@ -275,7 +275,7 @@ export default {
         if (this.mustMatch) {
           value = this.getV(this.object)
         } else {
-          if (!utils.isNull(this.object.key)) {
+          if (!utils.isNull(this.object.key) && this.object.key !== '') {
             if (this.type == 'key') {
               value = this.object.key
             } else if (this.type == 'title') {

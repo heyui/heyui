@@ -23,14 +23,22 @@ const iconColor = {
   loading: 'blue'
 };
 
+let messageDom = null;
+
 function Message(content, timeout, type, onClose) {
+  if (!messageDom) {
+    messageDom = document.createElement('div');
+    utils.addClass(messageDom, `${prefixCls}-container`);
+    document.body.appendChild(messageDom);
+  }
   let param = {
     type: prefixCls,
     content: `<div><i class="${iconPrefixCls}-${iconNames[type]} ${iconColor[type]}-color"></i>${content}</div>`,
     event: {
       close: onClose
     },
-    timeout
+    timeout,
+    parent: messageDom
   };
   param = utils.extend({}, Default, param, true);
   if (param.timeout < 1) param.hasCloseIcon = true;

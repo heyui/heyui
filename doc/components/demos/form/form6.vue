@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Form :label-width="110" :model="data" ref="form" :rules="rules">
+    <Form :label-width="110" :model="data" ref="form" :rules="rules" showErrorTip>
       <FormItem label="数字" prop="number">
         <input type="text" v-model="data.number" />
       </FormItem>
@@ -67,8 +67,6 @@ export default {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
         this.$Message("验证成功");
-      } else {
-        this.$Message.error(`还有${validResult.messages.length}个错误未通过验证。`);
       }
     },
     reset() {

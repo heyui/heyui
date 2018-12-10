@@ -26,6 +26,8 @@ export default {
       ],
       datas: [
         { id: 5, name: '测试5', age: 12, address: "上海" },
+        { id: 5, name: '测试5', age: 12, address: "上海" },
+        { id: 6, name: '测试6', age: 13, address: "上海" },
         { id: 6, name: '测试6', age: 13, address: "上海" },
       ]
     }

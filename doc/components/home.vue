@@ -13,10 +13,10 @@
       </div>
     </div>
 
-    <div class="bg1"></div>
-    <div class="bg2"></div>
-    <div class="bg3"></div>
-    <div class="bg4"></div>
+    <div class="bg1" @click="dynamicLoadCss('pink')"></div>
+    <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
+    <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
+    <div class="bg4" @click="dynamicLoadCss('red')"></div>
     <com-foot></com-foot>
   </div>
 </template>
@@ -36,6 +36,19 @@ export default {
   methods: {
     goLink(params) {
       this.$router.push(params);
+    },
+    dynamicLoadCss(type) {
+      let old = document.getElementById('loadcss');
+      var head = document.getElementsByTagName('head')[0];
+      var link = document.createElement('link');
+      link.type='text/css';
+      link.rel = 'stylesheet';
+      link.href = `/themes/${type}/index.css`;
+      link.id = 'loadcss';
+      head.appendChild(link);
+      if(old) {
+        head.removeChild(old);
+      }
     },
     goGithub() {
       window.open('https://github.com/heyui/heyui');

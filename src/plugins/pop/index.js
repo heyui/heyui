@@ -29,9 +29,6 @@ const DEFAULT_OPTIONS = {
  * @param {Object} options - Configuration of the pop
  * @param {HTMLElement|String|false} options.container=false - Append the pop to a specific element.
  * @param {Number|Object} options.delay=0
- *      Delay showing and hiding the pop (ms) - does not apply to manual trigger type.
- *      If a number is supplied, delay is applied to both hide/show.
- *      Object structure is: `{ show: 500, hide: 100 }`
  * @param {Boolean} options.html=false - Insert HTML into the pop. If false, the content will inserted with `innerText`.
  * @param {String|PlacementFunction} options.placement='top' - One of the allowed placements, or a function returning one of them.
  * @param {String} options.template='<div class="pop" role="pop"><div class="pop-arrow"></div><div class="pop-inner"></div></div>'
@@ -40,14 +37,13 @@ const DEFAULT_OPTIONS = {
  *      `.pop-arrow` or `.pop__arrow` will become the pop's arrow.
  *      The outermost wrapper element should have the `.pop` class.
  * @param {String|HTMLElement|ContentFunction} options.content='' - Default content value if `content` attribute isn't present.
- * @param {String} options.trigger='hover focus manual'
- *      How pop is triggered - click | hover | focus | manual.
+ * @param {String} options.trigger='click hover focus manual contextMenu'
+ *      How pop is triggered - click | hover | focus | manual | contextMenu.
  *      You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.
  * @param {HTMLElement} options.boundariesElement
  *      The element used as boundaries for the pop. For more information refer to Popper.js'
  *      [boundariesElement docs](https://popper.js.org/popper-documentation.html)
- * @param {Number|String} options.offset=0 - Offset of the pop relative to its reference. For more information refer to Popper.js'
- *      [offset docs](https://popper.js.org/popper-documentation.html)
+ * @param {Number|String} options.offset
  * @return {Object} instance - The generated pop instance
  */
 class Pop {
@@ -71,14 +67,6 @@ class Pop {
       options.content.style.display = "none";
     }
     this.setEventListeners(triggerEvents, options);
-  }
-
-  toggle() {
-    if (this.isOpen) {
-      return this.hide();
-    } else {
-      return this.show();
-    }
   }
 
   create(reference, template, content) {
@@ -131,14 +119,16 @@ class Pop {
     let options = this.options
     const content = options.content || reference.getAttribute('content');
 
-    if (!content) { return this; }
+    if (!content) {
+      return this;
+    }
 
     const popNode = this.create(reference, options.template, content, options.html);
 
     popNode.setAttribute('aria-describedby', popNode.id);
     const container = this.findContainer(options.container, reference);
 
-    this.append(popNode, container);
+    container.appendChild(popNode)
     if (options.class) {
       utils.addClass(popNode, options.class);
     }
@@ -148,6 +138,10 @@ class Pop {
 
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
+
+    if (this.options.trigger.indexOf('hover') > -1) {
+      this.setPopNodeEvent();
+    }
   }
 
   initPopper() {
@@ -157,7 +151,9 @@ class Pop {
     const container = this.findContainer(options.container, reference);
 
     let modifiers = {
-      computeStyle: { gpuAcceleration: false },
+      computeStyle: {
+        gpuAcceleration: false
+      },
       arrow: {
         enabled: false
       },
@@ -169,20 +165,6 @@ class Pop {
         enabled: true
       }
     }
-
-    // if (this.options.arrowSelector) {
-    //   modifiers.arrow = {
-    //     enabled: true,
-    //     element: this.options.arrowSelector
-    //   }
-    // }
-    // if (this.options.innerSelector) {
-    //   modifiers.inner = {
-    //     enabled: true,
-    //     element: this.options.innerSelector
-    //   }
-    // }
-
 
     if (this.options.offset) {
       modifiers.offset = {
@@ -226,7 +208,16 @@ class Pop {
     this.options.disabled = false;
   }
 
-  _doshow() {
+  show() {
+    if (this.hideTimeout) clearTimeout(this.hideTimeout);
+    if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
+    if (this.isOpen || this.options.disabled) {
+      return this;
+    }
+    this.isOpen = true;
+    if (this.options.events && utils.isFunction(this.options.events.show)) {
+      this.options.events.show();
+    }
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -243,25 +234,10 @@ class Pop {
 
     this.popNode.style.display = '';
     utils.addClass(this.reference, 'h-pop-trigger');
-    if (this.timeout) clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
+    this.showTimeout = setTimeout(() => {
       this.popNode.setAttribute('aria-hidden', 'false');
       this.popperInstance.update();
     }, 0);
-  }
-
-  show() {
-    if (this.isOpen || this.options.disabled) { return this; }
-    // if (this.type == 'tooltip' && )
-    this.isOpen = true;
-    if (this.options.events && utils.isFunction(this.options.events.show)) {
-      // this.options.events.show(() => {
-      //   this._doshow();
-      // });
-      this.options.events.show();
-      // return;
-    }
-    this._doshow();
     return this;
   }
 
@@ -272,23 +248,31 @@ class Pop {
   }
 
   hide() {
-    if (!this.popperInstance) return this;
-    if (!this.isOpen) { return this; }
-    if (this.options.events && utils.isFunction(this.options.events.hide)) {
-      this.options.events.hide.call(null);
+    if (this.showTimeout) clearTimeout(this.showTimeout);
+    if (this.hideTimeout) clearTimeout(this.hideTimeout);
+    if (this.isOpen === false) { return; }
+    if (!document.body.contains(this.popNode)) {
+      return;
     }
-    this.isOpen = false;
-    this.popNode.setAttribute('aria-hidden', 'true');
-    utils.removeClass(this.reference, 'h-pop-trigger');
-    if (this.timeout) clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      if (this.popNode) {
-        this.popNode.style.display = 'none';
-
-        if (this.popperInstance) {
-          this.popperInstance.disableEventListeners();
-        }
+    if (!this.popNode) return this;
+    if (!this.popperInstance) return this;
+    this.hideTimeout = setTimeout(() => {
+      utils.removeClass(this.reference, 'h-pop-trigger');
+      if (this.options.events && utils.isFunction(this.options.events.hide)) {
+        this.options.events.hide.call(null);
       }
+      if (this.popNode) {
+        this.popNode.setAttribute('aria-hidden', 'true');
+      }
+      this.isOpen = false;
+      this.hideTimeout2 = setTimeout(() => {
+        if (this.popNode) {
+          this.popNode.style.display = 'none';
+          if (this.popperInstance) {
+            this.popperInstance.disableEventListeners();
+          }
+        }
+      }, 300)
     }, this.options.delay);
     return this;
   }
@@ -301,7 +285,10 @@ class Pop {
       this.popperInstance.destroy();
     }
 
-    this.triggerEvents.forEach(({ event, func }) => {
+    this.triggerEvents.forEach(({
+      event,
+      func
+    }) => {
       this.reference.removeEventListener(event, func, event == 'focus' || event == 'blur');
     });
     this.triggerEvents = [];
@@ -321,10 +308,6 @@ class Pop {
       container = reference.parentNode;
     }
     return container;
-  }
-
-  append(popNode, container) {
-    container.appendChild(popNode);
   }
 
   setEventListeners(triggerEvents, options) {
@@ -376,20 +359,30 @@ class Pop {
             this.popperInstance.update();
           }
         }
-        if (this.isOpen === true) { return; }
+        if (this.isOpen === true) {
+          return;
+        }
         evt.usedByPop = true;
-        this.scheduleShow(reference, options, evt);
+        this.show();
       };
-      this.triggerEvents.push({ event, func });
+      this.triggerEvents.push({
+        event,
+        func
+      });
       reference.addEventListener(event, func, event == 'focus');
     });
 
     oppositetriggerEvents.forEach((event) => {
       const func = (evt) => {
-        if (evt.usedByPop === true) { return; }
-        this.scheduleHide(reference, options, evt);
+        if (evt.usedByPop === true) {
+          return;
+        }
+        this.hide();
       };
-      this.triggerEvents.push({ event, func });
+      this.triggerEvents.push({
+        event,
+        func
+      });
       reference.addEventListener(event, func, event == 'blur');
     });
 
@@ -399,7 +392,6 @@ class Pop {
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
           return false;
         }
-        
         let targetReference = e.reference;
         if (reference && this.popNode.contains(targetReference)) {
           return false;
@@ -410,39 +402,16 @@ class Pop {
     }
   }
 
-  scheduleShow() {
-    this.show();
-  }
-
-  scheduleHide(reference, options, evt) {
-    if (this.isOpen === false) { return; }
-    if (!document.body.contains(this.popNode)) { return; }
-    if (evt.type === 'mouseleave') {
-      const isSet = this.setPopNodeEvent(evt, reference, options);
-      if (isSet) { return; }
-    }
-
-    this.hide(reference, options);
-  }
-
-  setPopNodeEvent(evt, reference, options) {
-    const relatedreference = evt.relatedreference || evt.relatedTarget || evt.toElement;
-
-    const callback = (evt2) => {
-      const relatedreference2 = evt2.relatedreference || evt2.toElement;
-
-      this.popNode.removeEventListener(evt.type, callback);
-
-      if (!reference.contains(relatedreference2)) {
-        this.scheduleHide(reference, options, evt2);
+  setPopNodeEvent() {
+    this.popNode.addEventListener('mouseenter', () => {
+      this.show();
+    });
+    this.popNode.addEventListener('mouseout', (event) => {
+      const relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
+      if (!this.popNode.contains(relatedreference) && relatedreference != this.reference && !this.reference.contains(relatedreference)) {
+        this.hide();
       }
-    };
-    if (this.popNode.contains(relatedreference)) {
-      this.popNode.addEventListener(evt.type, callback);
-      return true;
-    }
-
-    return false;
+    });
   }
 }
 

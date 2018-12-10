@@ -124,12 +124,12 @@
     }
   }
   
-  &-tr-selected{
+  &-tr-hovered{
     background-color: @hover-background-color !important;
   }
   
-  &-tr-hovered{
-    background-color: @hover-background-color !important;
+  &-tr-selected{
+    background-color: @highlight-background-color !important;
   }
 
   &-content-empty{
@@ -157,6 +157,10 @@
         color: @primary-color;
       }
     }
+  }
+
+  &.h-loading-parent {
+    min-height: 50px;
   }
   
 }

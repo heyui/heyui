@@ -1,5 +1,5 @@
 <template>
-  <DropdownCustom ref="dropdown" @show="$emit('show')" @hide="$emit('hide')" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
+  <DropdownCustom :button="button" ref="dropdown" @show="$emit('show')" :delay="delay" @hide="$emit('hide')" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
   :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
     <slot></slot>
     <ul slot="content" :class="groupCls" :style="groupStyle">
@@ -25,7 +25,6 @@
 <script>
 import config from '../../utils/config';
 import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
 import DropdownCustom from '../dropdowncustom';
 import Badge from '../badge';
 
@@ -65,6 +64,10 @@ export default {
       type: Number,
       default: 99
     },
+    delay: {
+      type: Number,
+      default: 0
+    },
     className: {
       type: String,
       default: 'h-dropdownmenu-default'
@@ -77,7 +80,11 @@ export default {
       type: String,
       default: () => config.getOption('dict', 'titleName')
     },
-    offset: [String, Number]
+    offset: [String, Number],
+    button: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -149,7 +156,8 @@ export default {
     },
     groupCls() {
       return {
-        [`${this.className}-dropdown`]: !!this.className
+        [`${this.className}-dropdown`]: !!this.className,
+        'h-dropdownmenu-group': true
       }
     },
     options() {

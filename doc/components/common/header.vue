@@ -10,7 +10,7 @@
           <!-- <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
           <router-link to="/component">组件</router-link>
-          <router-link to="/resource">资源</router-link>
+          <router-link to="/resource">生态</router-link>
           <a target="_blank" href="http://admin.heyui.top">Admin</a>
           <!-- <router-link to="/about">团队</router-link> -->
         </template>
@@ -26,8 +26,9 @@
       <div>
         <!-- <p>微信群</p> -->
         <div class="weixin-image">
-          <img src="https://github.com/heyui/heyui/blob/master/doc/static/images/qrcode.jpg?raw=true&_t=1"/>
-          <p>该二维码11月15日前有效。</p>
+          <p>由于微信群已满100人</p>
+          <p>请感兴趣的朋友添加微信号：heyui-robot</p>
+          <p>我们会定期拉人入群。</p>
         </div>
       </div>
     </Modal>

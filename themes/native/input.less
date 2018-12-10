@@ -1,4 +1,5 @@
 @input-prefix: ~"@{prefix}input";
+@input-base-padding: @input-height / 4;
 input[type=text],
 input[type=password],
 input[type=search],
@@ -12,7 +13,7 @@ textarea {
   border-radius: @border-radius;
   border: @border;
   display: inline-block;
-  padding: 4px 6px;
+  padding: 4px @input-base-padding;
   // line-height: @font-size-input;
   line-height: 1.5;
   // width: 200px;
@@ -66,7 +67,7 @@ input[type=url],{
 }
 
 textarea{
-  line-height: 1.4;
+  padding: @input-base-padding;
 }
 
 .@{input-prefix} {

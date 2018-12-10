@@ -1,11 +1,19 @@
 <template>
 	<div class="h-carousel">
     <div class="h-carousel-container" :style="{height: `${height}px`}">
-      <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+      <div class="h-carousel-list h-carousel-scroll-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-if="effect=='scroll'">
         <div class="h-carousel-item" v-for="(params,index) in carouselList" :key="index" @click="clickTrigger(index, params)">
           <div v-if="!$scopedSlots.item" class="h-carousel-bg" :class="{'h-carousel-bg-pointer': params.link}" :style="{backgroundImage:`url(${params.image})`}"></div>
-          <slot :carousel="params" name="item"></slot>
+          <slot :carousel="params" name="item" :index="index"></slot>
         </div>
+      </div>
+      <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-else>
+        <transition :name="`h-carousel-effect-${effect}`">
+          <div class="h-carousel-item h-carousel-effect-item":key="activeIndex" @click="clickTrigger(activeIndex, carouselItem)">
+            <div v-if="!$scopedSlots.item" class="h-carousel-bg" :class="{'h-carousel-bg-pointer': carouselItem.link}" :style="{backgroundImage:`url(${carouselItem.image})`}"></div>
+            <slot :carousel="carouselItem" name="item"></slot>
+          </div>
+        </transition>
       </div>
       <div class="h-carousel-arrow" :class="arrowCls">
         <div class="h-icon-left" @click="prev"></div>
@@ -18,7 +26,6 @@
 	</div>
 </template>
 <script>
-import utils from '../../utils/utils'
 export default {
   props: {
     height: {
@@ -57,6 +64,10 @@ export default {
     paginationTrigger: {
       type: String,
       default: 'click'
+    },
+    effect: {
+      type: String,
+      default: 'scroll'
     }
   },
   data() {
@@ -75,6 +86,14 @@ export default {
       let datas = this.datas;
       return [datas[this.datas.length - 1], ...datas, datas[0]]
     },
+    carouselItem() {
+      if (this.activeIndex == this.carouselList.length - 1) {
+        this.activeIndex = 1;
+      } else if (this.activeIndex == 0) {
+        this.activeIndex = this.carouselList.length - 2;
+      }      
+      return this.datas[this.activeIndex - 1];
+    },
     paginationCls() {
       return `h-carousel-pagination-${this.pageTheme}`
     },
@@ -90,6 +109,12 @@ export default {
       } else {
         this.stopAutoplay(true);
       }
+    },
+    effect(){
+      clearTimeout(this.scrollTimeout);
+      clearTimeout(this.redirectTimeout1);
+      clearTimeout(this.redirectTimeout2);
+      this.init();
     }
   },
   mounted() {
@@ -143,14 +168,19 @@ export default {
       this.activeIndex = index;
       let itemWidth = this.$el.clientWidth;
       let width = index * itemWidth;
-      let listDom = this.$el.querySelector('.h-carousel-list');
-      if(immediately) {
-        listDom.style.transitionDuration = `0ms`
-      } else {
-        listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+      switch(this.effect){
+        case "scroll":
+          let listDom = this.$el.querySelector('.h-carousel-scroll-list');
+          if(immediately) {
+            listDom.style.transitionDuration = `0ms`
+          } else {
+            listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+          }
+          listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`;
+          break;
+        default:
+          break;
       }
-      listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`
-
     },
     change({index = 1, immediately = false}) {
       if (this.activeIndex == this.carouselList.length - 1) {

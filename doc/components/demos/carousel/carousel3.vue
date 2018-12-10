@@ -14,8 +14,8 @@
 <template>
   <div>
     <Carousel :datas="params" arrowType="hover" @clickPage="clickPage" @clickNext="clickNext" @clickPrev="clickPrev" class="carousel-demo3">
-      <template slot-scope="props" slot="item">
-        <p class="h-carousel-p">{{props.carousel.title}}</p>
+      <template slot-scope="{carousel}" slot="item">
+        <p class="h-carousel-p">{{carousel.title}}</p>
       </template>
     </Carousel>
   </div>

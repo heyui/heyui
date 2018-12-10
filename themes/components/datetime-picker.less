@@ -126,8 +126,17 @@
                 background-color: @primary-color;
                 color: @white-color;
               }
+              &-start-selected {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+              }
+              &-end-selected {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+              }
               &-range-selected {
-                background-color: @tag-background-color;
+                border-radius: 0;
+                background-color: @highlight-background-color;
               }
               &-not-now-day {
                 color: @gray1-color;
@@ -139,6 +148,13 @@
                 pointer-events: none;
               }
             }
+          }
+        }
+        &-month,
+        &-year,
+        &-date {
+          >div>span {
+            border-radius: 50%;
           }
         }
         &-month,
@@ -154,6 +170,7 @@
           min-width: 200px;
           width: auto;
           >div>span {
+            border-radius: 5px;
             width: 100%;
             display: block;
           }
@@ -161,6 +178,7 @@
         &-minute,
         &-hour {
           >div>span {
+            border-radius: 5px;
             height: 30px;
             width: 50px;
             line-height: 30px;
@@ -180,9 +198,11 @@
     .@{prefix}input{
       width: 100%;
     }
-    .@{pop-ref-prefix} >input {
-      border-color: @primary-color;
-      box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+    .@{datetime-picker-prefix}-show:hover, .@{pop-ref-prefix} {
+      > input:not([disabled]) {
+        border-color: @primary-color;
+        box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+      }
     }
   }
 }

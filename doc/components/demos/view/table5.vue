@@ -37,6 +37,7 @@ export default {
       }, 5000);
     },
     triggerSort(data) {
+      console.log(data)
       this.datas.sort((a, b)=>{
         let ad = a[data.prop], bd = b[data.prop];
         let index = ad == bd ? 0 : (ad > bd) ? 1 : -1;

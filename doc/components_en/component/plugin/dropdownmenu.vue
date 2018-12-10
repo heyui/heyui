@@ -68,7 +68,7 @@
         <td>trigger</td>
         <td>Trigger method</td>
         <td>String</td>
-        <td>click, hover, focus, contextMenu</td>
+        <td>click, hover, focus, contextMenu, manual</td>
         <td>click</td>
       </tr>
       <tr>
@@ -161,6 +161,13 @@
         <td>String</td>
         <td>-</td>
         <td>config <code>dict.titleName</code></td>
+      </tr>
+      <tr>
+        <td>button</td>
+        <td>Use button style</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
     </table>
 

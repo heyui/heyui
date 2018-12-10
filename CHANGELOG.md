@@ -2,6 +2,205 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.12.4"></a>
+## [1.12.4](https://github.com/heyui/heyui/compare/v1.12.3...v1.12.4) (2018-12-05)
+
+
+### Bug Fixes
+
+* **Pop:** optimize pop ([9913028](https://github.com/heyui/heyui/commit/9913028))
+
+
+
+<a name="1.12.3"></a>
+## [1.12.3](https://github.com/heyui/heyui/compare/v1.12.2...v1.12.3) (2018-12-05)
+
+
+### Bug Fixes
+
+* **ButtonGroup:** remove strict css structure ([0745ac7](https://github.com/heyui/heyui/commit/0745ac7))
+* **Checkbox:** add event change ([72bf4f1](https://github.com/heyui/heyui/commit/72bf4f1))
+* **Checkbox:** add warn when use error value ([e62f0aa](https://github.com/heyui/heyui/commit/e62f0aa))
+* **Date:** optimize css ([71441de](https://github.com/heyui/heyui/commit/71441de))
+* **Pop:** add judge ([1598937](https://github.com/heyui/heyui/commit/1598937))
+* **Radio:** add event change ([aa3dde3](https://github.com/heyui/heyui/commit/aa3dde3))
+* **Select:** add change event ([48f092f](https://github.com/heyui/heyui/commit/48f092f))
+* **TreePicker:**  add refresh method ([d2cff1d](https://github.com/heyui/heyui/commit/d2cff1d))
+
+
+
+<a name="1.12.2"></a>
+## [1.12.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.3...v1.12.2) (2018-11-30)
+
+
+### Bug Fixes
+
+* **Pop:** update pop mechanism ([a057c26](https://github.com/heyui/heyui/commit/a057c26))
+
+
+
+<a name="1.12.2-alpha.3"></a>
+## [1.12.2-alpha.3](https://github.com/heyui/heyui/compare/v1.12.2-alpha.2...v1.12.2-alpha.3) (2018-11-28)
+
+
+### Bug Fixes
+
+* **FormItem:** remove unused props ([a59c2a3](https://github.com/heyui/heyui/commit/a59c2a3))
+* **TagInput:** optimize tag style ([3da8ab0](https://github.com/heyui/heyui/commit/3da8ab0))
+
+
+
+<a name="1.12.2-alpha.2"></a>
+## [1.12.2-alpha.2](https://github.com/heyui/heyui/compare/v1.12.2-alpha.1...v1.12.2-alpha.2) (2018-11-27)
+
+
+### Bug Fixes
+
+* **Dropdown:** use offset 0, 1 ([241040a](https://github.com/heyui/heyui/commit/241040a))
+* **Table:** rowSelect use diffrent way ([f39f36f](https://github.com/heyui/heyui/commit/f39f36f))
+
+
+
+<a name="1.12.2-alpha.1"></a>
+## [1.12.2-alpha.1](https://github.com/heyui/heyui/compare/v1.12.2-alpha.0...v1.12.2-alpha.1) (2018-11-27)
+
+
+### Bug Fixes
+
+* **Form:** isTipError -> showErrorTip ([ec6850c](https://github.com/heyui/heyui/commit/ec6850c))
+
+
+
+<a name="1.12.2-alpha.0"></a>
+## [1.12.2-alpha.0](https://github.com/heyui/heyui/compare/v1.12.1...v1.12.2-alpha.0) (2018-11-26)
+
+
+### Bug Fixes
+
+* **Table:** add selectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
+
+
+
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/heyui/heyui/compare/v1.12.0...v1.12.1) (2018-11-24)
+
+
+### Bug Fixes
+
+* solve the problem when use js direct ([b6768d3](https://github.com/heyui/heyui/commit/b6768d3)), closes [#42](https://github.com/heyui/heyui/issues/42)
+* **Comfirm:** add reject handler ([509acfa](https://github.com/heyui/heyui/commit/509acfa))
+
+
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/heyui/heyui/compare/v1.12.0-alpha.4...v1.12.0) (2018-11-23)
+
+
+
+<a name="1.12.0-alpha.4"></a>
+# [1.12.0-alpha.4](https://github.com/heyui/heyui/compare/v1.12.0-alpha.3...v1.12.0-alpha.4) (2018-11-22)
+
+
+### Bug Fixes
+
+* **Dropdown:**  firefox compatibility ([8cff621](https://github.com/heyui/heyui/commit/8cff621))
+
+
+
+<a name="1.12.0-alpha.3"></a>
+# [1.12.0-alpha.3](https://github.com/heyui/heyui/compare/v1.12.0-alpha.2...v1.12.0-alpha.3) (2018-11-21)
+
+
+### Bug Fixes
+
+* dictMapping add return ([8faf001](https://github.com/heyui/heyui/commit/8faf001))
+
+
+
+<a name="1.12.0-alpha.2"></a>
+# [1.12.0-alpha.2](https://github.com/heyui/heyui/compare/v1.12.0-alpha.0...v1.12.0-alpha.2) (2018-11-19)
+
+
+### Bug Fixes
+
+* close icon use small size ([4d7de5b](https://github.com/heyui/heyui/commit/4d7de5b))
+* **Dropdown:** refactor hover trigger ([c5e3346](https://github.com/heyui/heyui/commit/c5e3346))
+* **DropdownMenu:** add h-dropdownmenu-group class ([5374cf9](https://github.com/heyui/heyui/commit/5374cf9))
+* **Modal & Notice:** header and footer use class name ([28d50b7](https://github.com/heyui/heyui/commit/28d50b7))
+* **Notify:**  optimize close icon css ([f1ca362](https://github.com/heyui/heyui/commit/f1ca362))
+* **Notity:** blur focus dom when type is modal ([689cca6](https://github.com/heyui/heyui/commit/689cca6))
+* **panel:** panel add var param ([dac42f5](https://github.com/heyui/heyui/commit/dac42f5))
+* **Search:** fix null value trim() ([ce99075](https://github.com/heyui/heyui/commit/ce99075))
+* **Table:** add render mode ([6f144f0](https://github.com/heyui/heyui/commit/6f144f0))
+* **Table:** change loading min-height ([8fa3b11](https://github.com/heyui/heyui/commit/8fa3b11))
+* icon arrangement ([07afca9](https://github.com/heyui/heyui/commit/07afca9))
+* tabs border default color ([4e74735](https://github.com/heyui/heyui/commit/4e74735))
+
+
+### Features
+
+* **Message:** message use list mode ([857f857](https://github.com/heyui/heyui/commit/857f857))
+* **SwitchList:**  add icon ([62f9361](https://github.com/heyui/heyui/commit/62f9361))
+
+
+
+<a name="1.12.0-alpha.1"></a>
+# [1.12.0-alpha.1](https://github.com/heyui/heyui/compare/v1.11.0...v1.12.0-alpha.1) (2018-11-18)
+
+
+### Bug Fixes
+
+* **Carousel:** add index with slot ([ca05f15](https://github.com/heyui/heyui/commit/ca05f15))
+* **Carousel:** optimize background-size ([f54f0fb](https://github.com/heyui/heyui/commit/f54f0fb))
+* **DropdownMenu:** add h-dropdownmenu-group class ([5374cf9](https://github.com/heyui/heyui/commit/5374cf9))
+* **Modal & Notice:** header and footer use class name ([28d50b7](https://github.com/heyui/heyui/commit/28d50b7))
+* **Notity:** blur focus dom when type is modal ([689cca6](https://github.com/heyui/heyui/commit/689cca6))
+* **panel:** panel add var param ([dac42f5](https://github.com/heyui/heyui/commit/dac42f5))
+* **Search:** fix null value trim() ([ce99075](https://github.com/heyui/heyui/commit/ce99075))
+* common style optimize ([c7f95fc](https://github.com/heyui/heyui/commit/c7f95fc))
+* icon arrangement ([07afca9](https://github.com/heyui/heyui/commit/07afca9))
+* **Table:** add render mode ([6f144f0](https://github.com/heyui/heyui/commit/6f144f0))
+* **Table:** change loading min-height ([8fa3b11](https://github.com/heyui/heyui/commit/8fa3b11))
+* **Validator:** use extend function replace extend ([5f6d8dd](https://github.com/heyui/heyui/commit/5f6d8dd))
+* **WordCount:** set style margin 0 ([eb78039](https://github.com/heyui/heyui/commit/eb78039))
+
+
+### Features
+
+* **Message:** message use list mode ([857f857](https://github.com/heyui/heyui/commit/857f857))
+* **SwitchList:**  add icon ([62f9361](https://github.com/heyui/heyui/commit/62f9361))
+* **Form:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
+
+
+
+<a name="1.12.0-alpha.0"></a>
+# [1.12.0-alpha.0](https://github.com/heyui/heyui/compare/v1.11.1-alpha.0...v1.12.0-alpha.0) (2018-11-14)
+
+
+### Bug Fixes
+
+* **WordCount:** set style margin 0 ([eb78039](https://github.com/heyui/heyui/commit/eb78039))
+
+
+### Features
+
+* **Form:** add isTipError ([b364bea](https://github.com/heyui/heyui/commit/b364bea))
+
+
+
+<a name="1.11.1-alpha.0"></a>
+## [1.11.1-alpha.0](https://github.com/heyui/heyui/compare/v1.11.0...v1.11.1-alpha.0) (2018-11-07)
+
+
+### Bug Fixes
+
+* common style optimize ([c7f95fc](https://github.com/heyui/heyui/commit/c7f95fc))
+* **Carousel:** add index with slot ([ca05f15](https://github.com/heyui/heyui/commit/ca05f15))
+* **Carousel:** optimize background-size ([f54f0fb](https://github.com/heyui/heyui/commit/f54f0fb))
+* **Validator:** use extend function replace extend ([5f6d8dd](https://github.com/heyui/heyui/commit/5f6d8dd))
+
+
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/heyui/heyui/compare/v1.10.4...v1.11.0) (2018-10-30)
 

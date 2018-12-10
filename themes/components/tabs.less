@@ -1,6 +1,6 @@
 @tabs-prefix: ~"@{prefix}tabs";
 .@{tabs-prefix} {
-  >div {
+  >.h-tabs-item {
     cursor: pointer;
     display: inline-block;
     transition: @transition-time all;
@@ -11,14 +11,14 @@
     border-bottom: @border;
     line-height:1;
     font-size: @font-size + 1px;
-    >div {
+    >.h-tabs-item {
       padding: 10px 15px;
       margin-bottom: -4px;
-      border-bottom: 3px solid @white-color;
+      border-bottom: 3px solid transparent;
       +div {
         margin-left: 20px;
       }
-      &:hover, &.@{tabs-prefix}-selected {
+      &:hover, &.@{tabs-prefix}-item-selected {
         color: @primary-color;
         border-bottom: 3px solid @primary-color;
       }
@@ -28,7 +28,7 @@
   &-card {
     border-bottom: 1px solid @gray1-color;
     line-height:1;
-    >div {
+    >.h-tabs-item {
       padding: 8px 16px;
       margin-bottom: -1px;
       border-radius: @border-radius @border-radius 0 0;
@@ -37,7 +37,7 @@
       +div {
         margin-left: 5px;
       }
-      &:hover, &.@{tabs-prefix}-selected {
+      &:hover, &.@{tabs-prefix}-item-selected {
         color: @primary-color;
         background: @white-color;
         border-color: @gray1-color;
@@ -50,13 +50,13 @@
   &-menu {
     line-height:1;
     font-size: 15px;
-    >div {
+    >.h-tabs-item {
       display: block;
       padding: 12px 16px;
       +div {
         margin-top: 5px;
       }
-      &:hover, &.@{tabs-prefix}-selected {
+      &:hover, &.@{tabs-prefix}-item-selected {
         color: @primary-color;
       }
     }

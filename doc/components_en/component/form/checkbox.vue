@@ -78,5 +78,19 @@
         <td>config <code>dict.titleName</code></td>
       </tr>
     </table>
+
+    <h3>Radio Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Return value</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>When data changed</td>
+        <td>v-model value</td>
+      </tr>
+    </table>
   </div>
 </template>

@@ -10,6 +10,10 @@
     <h3>TableItem定义模式</h3>
     <example demo="view/table2"></example>
 
+    <h3>数据渲染</h3>
+    <p><code>Table</code>组件内置了一系列的数据渲染模式。</p>
+    <example demo="view/table9"></example>
+
     <h3>排序与加载</h3>
     <p>给<code>Column</code>设置<code>sort</code>为true，则使用自定义排序，根据sort事件对数据做出调整。</p>
     <p>给<code>Column</code>设置<code>sort</code>为<code>auto</code>，则可以默认使用数据排序</p>
@@ -27,8 +31,12 @@
     <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
     <example demo="view/table3"></example>
   
-    <h3>Table 选择行</h3>
+    <h3>Table 多选</h3>
+    <p>设定<code>selectWhenClickTr</code>属性可以点击整行选中。</p>
     <example demo="view/table4"></example>
+
+    <h3>Table 单选</h3>
+    <example demo="view/table10"></example>
 
     <h3>Table 气泡提示与定义border, stripe样式</h3>
     <example demo="view/table7"></example>
@@ -90,7 +98,7 @@
     </table>
 
 
-    <h3>Column 参数</h3>
+    <h3>TableItem / Column 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -170,6 +178,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectRow</td>
+        <td>单行选中切换</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Table 事件</h3>
@@ -197,6 +212,10 @@
       <tr>
         <td>trdblclick</td>
         <td>当tr被双击的时候</td>
+      </tr>
+      <tr>
+        <td>rowSelect</td>
+        <td>当tr被单击选中的时候</td>
       </tr>
     </table>
 

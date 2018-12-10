@@ -4,24 +4,24 @@
       <Button @click="add(datas)" icon="h-icon-plus">添加一行</Button>
     </p>
     <Table :datas="datas" stripe checkbox>
-      <TableItem title="序号"><template slot-scope="props">{{props.index}}</template></TableItem>
+      <TableItem title="序号"><template slot-scope="{index}">{{index}}</template></TableItem>
       <TableItem title="姓名" prop="name"></TableItem>
       <TableItem title="年龄" prop="age"></TableItem>
       <TableItem title="地址" prop="address"></TableItem>
       <TableItem title="操作">
-        <template slot-scope="props">
-          <span class="text-hover" @click="open(props.data)">{{props.data._expand?'收起':'展开'}}</span>
-          <span class="text-hover" @click="remove(props.data)">删除</span>
+        <template slot-scope="{data}">
+          <span class="text-hover" @click="open(data)">{{data._expand?'收起':'展开'}}</span>
+          <span class="text-hover" @click="remove(data)">删除</span>
         </template>
       </TableItem>
-      <template slot="expand" slot-scope="props">
+      <template slot="expand" slot-scope="{index, data}">
         <Form readonly mode="twocolumn">
-          <FormItem label="序号">{{props.index}}</FormItem>
-          <FormItem label="姓名">{{props.data.name}}</FormItem>
-          <FormItem label="年龄">{{props.data.age}}</FormItem>
-          <FormItem label="地址">{{props.data.address}}</FormItem>
+          <FormItem label="序号">{{index}}</FormItem>
+          <FormItem label="姓名">{{data.name}}</FormItem>
+          <FormItem label="年龄">{{data.age}}</FormItem>
+          <FormItem label="地址">{{data.address}}</FormItem>
         </Form>
-        <Loading :loading="props.data.loading"></Loading>
+        <Loading :loading="data.loading"></Loading>
       </template>
     </Table>
   </div>

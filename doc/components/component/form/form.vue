@@ -94,6 +94,13 @@
         <td>-</td>
         <td>0</td>
       </tr>
+      <tr>
+        <td>showErrorTip</td>
+        <td>是否出错误的提示Tip</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Form 方法</h3>

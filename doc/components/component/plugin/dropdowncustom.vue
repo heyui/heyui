@@ -44,7 +44,7 @@
         <td>trigger</td>
         <td>触发方式</td>
         <td>String</td>
-        <td>click, hover, focus, contextMenu</td>
+        <td>click, hover, focus, contextMenu, manual(手动)</td>
         <td>click</td>
       </tr>
       <tr>
@@ -102,6 +102,13 @@
           <div>'10 - 5vh + 3%'</div>
           <div>'-10px + 5vh, 5px - 6%'</div>
         </td>
+      </tr>
+      <tr>
+        <td>button</td>
+        <td>使用按钮的样式调用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
     </table>
 

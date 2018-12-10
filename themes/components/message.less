@@ -3,13 +3,30 @@
 @icon-prefix: ~"@{prefix}icon";
 
 .@{message-prefix}{
-    z-index: auto;
-    .@{notify-prefix}{
+    &-container{
+        position: fixed;
+        top: 30px;
+        z-index: @zindex-message;
+        pointer-events: none;
+        left: 0;
+        text-align: center;
+        right: 0;
+    }
+
+    .@{notify-prefix} {
         &-container {
-            z-index: @zindex-message;
+            margin: 0 auto;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            pointer-events: initial;
+            max-height: 0;
         }
+
         &-content{
-            padding: 8px 18px;
+            padding: 0px 18px;
+            transition: .2s;
             [class^="h-icon"], [class*=" h-icon"]{
                 margin-right: 10px;
                 display: inline-block;
@@ -25,7 +42,12 @@
     &.@{notify-prefix} {
         &-show {
             .@{notify-prefix}-container {
-                top: 40px;
+                max-height: 1000px;
+                margin-top: 10px;
+            }
+            .@{notify-prefix}-content{
+                padding-top: 8px;
+                padding-bottom: 8px;
             }
         }
     }

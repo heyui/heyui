@@ -1,21 +1,18 @@
 
 <style lang="less">
-.button-dropdown.h-dropdowncustom-show-toggle{
-  &:hover, &.@{pop-ref-prefix}{
-    color: @primary-color;
-  }
-  .h-dropdowncustom-show-content{
-    padding: 0;
-  }
-  .h-btn {
-    padding-right: 26px;
-  }
-}
 </style>
 <template>
-  <DropdownMenu @click="trigger" :datas="param" class-name="button-dropdown">
-    <Button>菜单menu</Button>
-  </DropdownMenu>
+  <div>
+    <ButtonGroup>
+      <Button icon="h-icon-inbox">Create</Button>
+      <DropdownMenu button @click="trigger" :datas="param">Edit</DropdownMenu>
+    </ButtonGroup>
+    <ButtonGroup>
+      <Button color="primary" icon="h-icon-inbox">Create</Button>
+      <DropdownMenu class="h-btn-primary" button @click="trigger" :datas="param"></DropdownMenu>
+    </ButtonGroup>
+    <DropdownMenu button class="h-btn-primary" @click="trigger" :datas="param">开始</DropdownMenu>
+  </div>
 </template>
 <script>
 

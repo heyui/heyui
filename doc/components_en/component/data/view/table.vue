@@ -10,6 +10,9 @@
     <h3>TableItem definition mode</h3>
     <example demo="view/table2"></example>
 
+    <h3>Data render</h3>
+    <example demo="view/table9"></example>
+
     <h3>Sort and loading</h3>
     <p>Set <code>sort</code> to <code>true</code> for Column, then use custom sort to adjust data according to sort event.</p>
     <p>Set <code>sort</code> to <code>auto</code> for Column, you can use data sorting by default.</p>
@@ -27,8 +30,11 @@
     <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
     <example demo="view/table3"></example>
   
-    <h3>Table select line</h3>
+    <h3>Table choose lines</h3>
     <example demo="view/table4"></example>
+
+    <h3>Table select line</h3>
+    <example demo="view/table10"></example>
 
     <h3>Table bubble tips and border, stripe style</h3>
     <example demo="view/table7"></example>
@@ -36,6 +42,7 @@
 
     <h3>Custom table header</h3>
     <example demo="view/table8"></example>
+
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -84,6 +91,13 @@
       <tr>
         <td>stripe</td>
         <td>Table using a grid background</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>selectRow</td>
+        <td>Whether to use row select.</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
@@ -199,6 +213,10 @@
         <td>trdblclick</td>
         <td>When tr is double clicked</td>
       </tr>
+      <tr>
+        <td>rowSelect</td>
+        <td>When tr is selected</td>
+      </tr>
     </table>
 
     <h3>Table Method</h3>
@@ -226,6 +244,32 @@
       <tr>
         <td>inverseSelection</td>
         <td>inverse selection</td>
+      </tr>
+    </table>
+
+    <h3>TreePicker Event</h3>
+
+    <h3>Tree Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>The v-model value changes</td>
+      </tr>
+      <tr>
+        <td>choose</td>
+        <td>Checkbox selection change</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>Tree's select change</td>
+      </tr>
+      <tr>
+        <td>loadDataSuccess</td>
+        <td>When the asynchronous data load is successful.	</td>
       </tr>
     </table>
   </div>

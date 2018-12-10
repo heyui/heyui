@@ -1,13 +1,12 @@
 <template>
   <div>
-    <!--header与footer自带modal的样式-->
-    <header>测试</header>
+    <header class="h-modal-header">测试</header>
     <div style="padding:15px">
       <Select dict="simple"></Select>
       <p>传递的参数：{{params.a}}</p>
       <p>vuex传递的值：{{test}}</p>
     </div>
-    <footer>
+    <footer class="h-modal-footer">
       <button class="h-btn h-btn-primary" @click="triggerEvent">确定</button>
       <button class="h-btn h-btn-blue" @click="go">跳转</button>
       <button class="h-btn" @click="close">关闭</button>

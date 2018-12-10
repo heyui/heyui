@@ -18,7 +18,7 @@ import en from '../src/locale/lang/en-US';
 import zh from '../src/locale/lang/zh-CN';
 
 
-require('./css/doc.less');
+require('./css/index.less');
 
 Vue.use(VueHighlightJS)
 
