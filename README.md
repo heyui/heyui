@@ -112,6 +112,14 @@ hey dev
   </tbody>
 </table>
 
+## Community
+
+请感兴趣的朋友添加微信号：heyui-robot
+
+我们会定期拉人入群。
+
+## 
+
 ## Browser Support
 Modern browsers and Internet Explorer 9+.
 
