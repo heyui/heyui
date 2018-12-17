@@ -1,103 +1,114 @@
 @timeline-prefix-cls: ~"@{prefix}timeline";
 
-.genbordercolor(@name){
-    &.@{name}{
-        border-color:@@name;
+.gencolor(@name) {
+  &.@{timeline-prefix-cls}-item-@{name} {
+    .@{timeline-prefix-cls}-item-circle {
+      border-color: @@name;
+      color: @@name;
     }
+  }
 }
 
 .@{timeline-prefix-cls} {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px;
+
+  &-item {
     list-style: none;
-    margin: 0;
-    padding: 0 10px;
+    position: relative;
+    display: flex;
 
-    &-item {
-        list-style: none;
-        position: relative;
-        display: flex;
+    .gencolor(green-color);
+    .gencolor(red-color);
+    .gencolor(yellow-color);
 
-        &-pending &-tail {
-            display: none;
-        }
+    &-pending &-tail {
+      display: none;
+    }
 
+    &-time {
+      width: 100px;
+      text-align: right;
+      padding: 0px 24px 30px 0px;
+      color: @gray-color;
+      font-size: 13px;
+      display: none;
+      text-align: right;
+    }
+
+    &-content {
+      padding: 0px 0px 30px 24px;
+      position: relative;
+      flex: 1;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        bottom: 0px;
+        left: -0.5px;
+        border-left: 1px dashed @gray1-color;
+        z-index: 1;
+      }
+    }
+
+
+    &-circle {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 1px solid @blue-color;
+      color: @blue-color;
+      border-radius: 14px;
+      left: -7px;
+      top: 3px;
+      background: #FFF;
+      z-index: 2;
+    }
+
+    &.has-icon .@{timeline-prefix-cls}-item-circle {
+      font-size: 14px;
+      border: none;
+
+      [class*=" h-icon"],
+      [class^=h-icon] {
+        vertical-align: 2px;
+      }
+    }
+
+    &:last-child {
+      .@{timeline-prefix-cls}-item {
+
+        &-content,
         &-time {
-            width: 100px;
-            text-align: right;
-            padding: 0px 24px 30px 0px;
-            color: @gray-color;
-            font-size: 13px;
-            display: none;
-            text-align: right;
+          padding-bottom: 10px;
+
+          &:after {
+            border-left: 1px solid transparent;
+          }
         }
-
-        &-content {
-            padding: 0px 0px 30px 24px;
-            position: relative;
-            flex:1;
-            &:after{
-                content: '';
-                position: absolute;
-                top: 3px;
-                bottom: 0px;
-                left: -0.5px;
-                border-left: 1px dashed @gray1-color;
-                z-index: 1;
-            }
-        }
-
-
-        &-circle {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            border: 1px solid @blue-color;
-            border-radius: 14px;
-            left: -7px;
-            top: 3px;
-            background: #FFF;
-            z-index: 2;
-
-            .genbordercolor(green-color);
-            .genbordercolor(red-color);
-            .genbordercolor(yellow-color);
-        }
-
-        &.has-icon .@{timeline-prefix-cls}-item-circle{
-            font-size: 14px;
-            border: none;
-            [class*=" h-icon"], [class^=h-icon]{
-                vertical-align: 2px;
-            }
-        }
-
-        &:last-child {
-            .@{timeline-prefix-cls}-item{
-                &-content,&-time {
-                    padding-bottom: 10px;
-                    &:after{
-                        border-left:1px solid transparent;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 
 
 
-    &-time{
-        .@{timeline-prefix-cls}-item-time{
-            display: block;
-        }
+  &-time {
+    .@{timeline-prefix-cls}-item-time {
+      display: block;
     }
+  }
 
-    &-pending &-item{
-        &:nth-last-of-type(2) {
-            .@{timeline-prefix-cls}-item-content{
-                padding-bottom: 40px;
-                &:after {
-                    border-left: 1px dotted @border-color;
-                }
-            }
+  &-pending &-item {
+    &:nth-last-of-type(2) {
+      .@{timeline-prefix-cls}-item-content {
+        padding-bottom: 40px;
+
+        &:after {
+          border-left: 1px dotted @border-color;
         }
+      }
     }
+  }
 }

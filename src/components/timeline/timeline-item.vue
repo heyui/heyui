@@ -1,5 +1,5 @@
 <template>
-  <li :class="itemClass">
+  <li :class="itemCls">
     <div :class="timeSC.classes" :style="timeSC.styles">
       <slot name="time"></slot>
     </div>
@@ -15,35 +15,27 @@ const prefix = 'h-timeline';
 export default {
   name: 'hTimeLineItem',
   props: {
-    color: {
-      type: String,
-      default: 'blue'
-    },
+    color: String,
     icon: String
   },
   data() {
     return {
-      prefix: prefix,
-      itemClass: {
-        [prefix + '-item']: true,
-        'has-icon': !!this.icon
-      }
+      prefix
     };
   },
   computed: {
+    itemCls() {
+      return {
+        [`${prefix}-item`]: true,
+        'has-icon': !!this.icon,
+        [`${prefix}-item-${this.color}-color`]: !!this.color
+      }
+    },
     circleSC() {
       let styles = {};
       let classes = {
         [`${prefix}-item-circle`]: true,
       };
-      let color = this.color;
-      if (color.startsWith("#")) {
-        styles.color = color;
-        styles['border-color'] = color;
-      } else {
-        classes[`${color}-color`] = true;
-      }
-
       return {
         styles,
         classes
