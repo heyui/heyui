@@ -118,8 +118,6 @@ hey dev
 
 我们会定期拉人入群。
 
-## 
-
 ## Browser Support
 Modern browsers and Internet Explorer 9+.
 
