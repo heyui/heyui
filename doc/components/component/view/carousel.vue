@@ -118,5 +118,24 @@
         <td>( index, DataObject )</td>
       </tr>
     </table>
+
+    <h3>Carousel 方法</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>prev</td>
+        <td>切换上一张</td>
+        <td>prev()</td>
+      </tr>
+      <tr>
+        <td>next</td>
+        <td>切换下一张</td>
+        <td>next()</td>
+      </tr>
+    </table>
   </div>
 </template>

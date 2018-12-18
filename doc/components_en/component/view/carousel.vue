@@ -107,5 +107,25 @@
         <td>( index, DataObject )</td>
       </tr>
     </table>
+
+
+    <h3>Carousel Method</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>prev</td>
+        <td>change prev page</td>
+        <td>prev()</td>
+      </tr>
+      <tr>
+        <td>next</td>
+        <td>change next page</td>
+        <td>next()</td>
+      </tr>
+    </table>
   </div>
 </template>
