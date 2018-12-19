@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: '测试5', dictData: null, age: 12, address: "上海" },
+        { id: 5, name: '测试5', dictData: null, age: 12, address: "上海"},
         { id: 6, name: '测试6', dictData: 2, age: 13, address: "上海" },
         { id: 7, name: '测试7', dictData: 3, age: 0, address: "上海" },
         { id: 5, name: '测试5', dictData: 4, age: undefined, address: "上海" },

@@ -42,7 +42,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -67,7 +67,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -85,7 +85,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d)}">
+                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
                 <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
               </TableTr>
             </template>
@@ -410,7 +410,7 @@
         this.computeColumns = columns;
       },
       triggerTrClicked(data, event) {
-        if (this.selectWhenClickTr && !utils.hasClass(event.target, 'h-checkbox-native')) {
+        if (this.selectWhenClickTr && !utils.hasClass(event.target, 'h-checkbox-native') && !data._disabledSelect) {
           let list = this.checks;
           if (list.some(item => item == data)) {
             list.splice(list.indexOf(data), 1);
@@ -419,7 +419,7 @@
           }
         }
 
-        if (this.selectRow) {
+        if (this.selectRow && !data._disabledSelect) {
           this.rowSelected = data;
           this.$emit('rowSelect', data);
         }
