@@ -1,5 +1,6 @@
+import select from '../select';
 
-export default function(text){
+export default function (text, callback) {
   const container = document.body;
   const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
 
@@ -22,20 +23,20 @@ export default function(text){
   fakeElem.style.padding = '0';
   fakeElem.style.margin = '0';
   fakeElem.style.position = 'absolute';
-  fakeElem.style[ isRTL ? 'right' : 'left' ] = '-9999px';
+  fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
   let yPosition = window.pageYOffset || document.documentElement.scrollTop;
   fakeElem.style.top = `${yPosition}px`;
   fakeElem.setAttribute('readonly', '');
   fakeElem.value = text;
   container.appendChild(fakeElem);
-  // this.selectedText = select(fakeElem);
-  this.copyText();
+  select(fakeElem);
   let succeeded;
-
   try {
-      succeeded = document.execCommand(this.action);
+    succeeded = document.execCommand(this.action);
+  } catch (err) {
+    succeeded = false;
   }
-  catch (err) {
-      succeeded = false;
+  if (callback) {
+    callback.call(null, [succeeded]);
   }
 }
