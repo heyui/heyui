@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.13.0-alpha.0"></a>
+# [1.13.0-alpha.0](https://github.com/heyui/heyui/compare/v1.12.4...v1.13.0-alpha.0) (2018-12-19)
+
+
+### Bug Fixes
+
+* **AutoComplete:** handle error when set value '' ([53a32c1](https://github.com/heyui/heyui/commit/53a32c1))
+* **Dropdown:** add button dropdown ([491cf86](https://github.com/heyui/heyui/commit/491cf86))
+* **SwitchList:** add event change ([abf03d0](https://github.com/heyui/heyui/commit/abf03d0))
+* **Table:** add _disabledSelect params in data ([13cf1a5](https://github.com/heyui/heyui/commit/13cf1a5))
+* **TimeLine:** style optimize ([5651f44](https://github.com/heyui/heyui/commit/5651f44))
+* **Tooltip:** add param placement ([bd4687c](https://github.com/heyui/heyui/commit/bd4687c))
+* **Tranfer:** fix error when value is null ([3e03450](https://github.com/heyui/heyui/commit/3e03450))
+
+
+### Features
+
+* add collapse component and document ([970752d](https://github.com/heyui/heyui/commit/970752d))
+
+
+
 <a name="1.12.4"></a>
 ## [1.12.4](https://github.com/heyui/heyui/compare/v1.12.3...v1.12.4) (2018-12-05)
 
