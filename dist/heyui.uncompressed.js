@@ -4461,7 +4461,7 @@ exports.default = {
       isFixed: false,
       fixPosition: 'top',
       containerDom: null,
-      isAbsolute: !!this.container,
+      isAbsolute: !!this.container && !this.disabled,
       y: 0
     };
   },
