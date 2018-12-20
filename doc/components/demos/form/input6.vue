@@ -15,6 +15,11 @@
       <input type="text" placeholder="结束金额" />
       <span class="h-input-addon">K</span>
     </div>
+    <br>
+    <div class="h-input-group" v-width="500">
+      <input type="text" placeholder="输入" />
+      <Button color="primary">确定</Button>
+    </div>
   </div>
 </template>
 <script>
