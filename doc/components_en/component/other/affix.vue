@@ -50,6 +50,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>disabled</td>
+        <td></td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
 

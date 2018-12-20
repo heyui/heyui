@@ -51,6 +51,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>disabled</td>
+        <td>禁用</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
 
