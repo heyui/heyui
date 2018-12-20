@@ -11,7 +11,7 @@
     <h3>基本调用</h3>
     <example demo="plugins/dropdowncustom1"></example>
 
-    <h3>不同的触发方式</h3>
+    <h3>不同样式组合调用</h3>
     <example demo="plugins/dropdowncustom2"></example>
 
     <h3>是否显示切换的icon</h3>

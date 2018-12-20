@@ -11,7 +11,7 @@
     <h3>基本调用</h3>
     <example demo="plugins/dropdownmenu1"></example>
   
-    <h3>不同参数调用</h3>
+    <h3>不同样式组合调用</h3>
     <example demo="plugins/dropdownmenu2"></example>
   
     <h3>组合调用</h3>

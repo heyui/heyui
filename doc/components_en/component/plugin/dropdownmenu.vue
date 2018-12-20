@@ -11,7 +11,7 @@
     <h3>Basic</h3>
     <example demo="plugins/dropdownmenu1"></example>
   
-    <h3>Different parameters called</h3>
+    <h3>Different style</h3>
     <example demo="plugins/dropdownmenu2"></example>
   
     <h3>Combination</h3>

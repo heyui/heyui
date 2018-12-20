@@ -11,7 +11,7 @@
     <h3>Basic</h3>
     <example demo="plugins/dropdowncustom1"></example>
 
-    <h3>Different trigger methods</h3>
+    <h3>Different style</h3>
     <example demo="plugins/dropdowncustom2"></example>
 
     <h3>Whether to show the switch icon</h3>

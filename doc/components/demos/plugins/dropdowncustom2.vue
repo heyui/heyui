@@ -1,12 +1,43 @@
+
+<style lang="less">
+</style>
 <template>
-  <DropdownCustom trigger="hover" class-name="h-text-dropdown">
-    <span>个人信息</span>
-    <div slot="content" v-width="200">
-      <div v-padding="20">
-        <img :width="80" :height="80" style="border-radius:80px;float:left" src="http://www.ch-un.com/images/head.jpg">
-        <div style="height:80px;margin-left:90px;line-height:80px;">LAN</div>
+  <div>
+    <ButtonGroup>
+      <Button icon="h-icon-inbox">Create</Button>
+      <DropdownCustom button @click="trigger">
+        <span>Edit</span>
+        <div slot="content" v-width="200" v-height="200">
+          自定义
+        </div>
+      </DropdownCustom>
+    </ButtonGroup>
+    <ButtonGroup>
+      <Button color="primary" icon="h-icon-inbox">Create</Button>
+      <DropdownCustom class="h-btn-primary" button @click="trigger">
+        <span>Edit</span>
+        <div slot="content" v-width="200" v-height="200">
+          自定义
+        </div>
+      </DropdownCustom>
+    </ButtonGroup>
+    <DropdownCustom button class="h-btn-primary" @click="trigger">
+      <span>开始</span>
+      <div slot="content" v-width="200" v-height="200">
+        自定义
       </div>
-      <Row style="line-height:40px;border-top:1px solid #EEE;"><Col width=12 class="text-center" style="border-right:1px solid #EEE;"><a>个人信息</a></Col><Col width=12 class="text-center"><a>注销</a></Col></Row>
-    </div>
-  </DropdownCustom>
+    </DropdownCustom>
+  </div>
 </template>
+<script>
+
+export default {
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+  },
+};
+</script>
