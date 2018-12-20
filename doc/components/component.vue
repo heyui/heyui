@@ -10,6 +10,7 @@
             <li><router-link to="/component/themes">更换主题</router-link></li>
             <li><router-link to="/component/i18n">国际化</router-link></li>
             <li><router-link to="/component/config">全局配置</router-link></li>
+            <li><router-link to="/component/methods">全局方法</router-link></li>
             <li><Badge :count="1" :dot="true"><router-link to="/component/guideheysnippets">插件 for vscode</router-link></Badge></li>
             <!-- <li><router-link to="/guide/logs">更新日志</router-link></li> -->
           </ul>

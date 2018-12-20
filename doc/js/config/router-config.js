@@ -541,6 +541,14 @@ const router = {
       component: () =>
         import ('components/guide/config')
     },{
+      path: 'methods',
+      name: 'methods',
+      meta: {
+        title: 'Methods',
+      },
+      component: () =>
+        import ('components/guide/methods')
+    },{
       path: 'guideheysnippets',
       name: 'guideheysnippets',
       meta: {

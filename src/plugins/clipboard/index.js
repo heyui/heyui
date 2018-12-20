@@ -3,20 +3,6 @@ import select from '../select';
 export default function (text, callback) {
   const container = document.body;
   const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
-
-
-  const removeFake = () => {
-    container.removeEventListener('click', fakeHandlerCallback);
-    fakeHandler = null;
-    fakeHandlerCallback = null;
-  };
-
-  removeFake();
-
-  const fakeHandlerCallback = () => removeFake();
-  const fakeHandler = container.addEventListener('click', fakeHandlerCallback) || true;
-
-
   const fakeElem = document.createElement('textarea');
   fakeElem.style.fontSize = '12pt';
   fakeElem.style.border = '0';
