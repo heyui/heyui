@@ -4436,7 +4436,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-
+//
+//
+//
+//
 
 var prefix = 'h-affix';
 
@@ -4447,18 +4450,18 @@ exports.default = {
     offsetBottom: Number,
     container: Function,
     fixedOffsetTop: Number,
-    fixedOffsetBottom: Number
-    // parentOffsetTop: Number,
-    // parentOffsetBottom: Number,
+    fixedOffsetBottom: Number,
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   data: function data() {
     return {
-      cFixedOffsetTop: this.fixedOffsetTop || this.offsetTop,
-      cFixedOffsetBottom: this.fixedOffsetBottom || this.offsetBottom,
       isFixed: false,
       fixPosition: 'top',
       containerDom: null,
-      isAbsolute: this.container ? true : false,
+      isAbsolute: !!this.container,
       y: 0
     };
   },
@@ -4466,7 +4469,6 @@ exports.default = {
     var _this = this;
 
     this.$nextTick(function () {
-      // log('init')
       if (_this.container) {
         _this.containerDom = _this.container.call();
       }
@@ -4480,6 +4482,27 @@ exports.default = {
     window.removeEventListener('resize', this.trigger);
   },
 
+  watch: {
+    offsetTop: function offsetTop() {
+      this.refresh();
+    },
+    offsetBottom: function offsetBottom() {
+      this.refresh();
+    },
+    fixedOffsetTop: function fixedOffsetTop() {
+      this.refresh();
+    },
+    fixedOffsetBottom: function fixedOffsetBottom() {
+      this.refresh();
+    },
+    disabled: function disabled() {
+      if (this.disabled) {
+        this.isFixed = false;
+      } else {
+        this.refresh();
+      }
+    }
+  },
   methods: {
     refresh: function refresh() {
       var evObj = document.createEvent('HTMLEvents');
@@ -4487,22 +4510,18 @@ exports.default = {
       document.body.dispatchEvent(evObj);
     },
     trigger: function trigger(event) {
+      if (this.disabled) return;
       var el = this.$el.firstChild;
       if (event.target == el) return false;
       var original = this.isFixed;
-      // log(1)
       if (this.containerDom) {
-        // let offsetTop = this.offsetTop || 0;
-        // let offsetBottom = this.offsetBottom || 0;
-        var cFixedOffsetTop = this.cFixedOffsetTop;
-        var cFixedOffsetBottom = this.cFixedOffsetBottom;
-        // let cFixedOffsetTop = this.cFixedOffsetTop = (window.innerHeight - el.clientHeight) / 2;
-        // let cFixedOffsetBottom = this.cFixedOffsetBottom = (window.innerHeight - el.clientHeight) / 2;
-        var parentOffsetTop = this.offsetTop || 0;
-        var parentOffsetBottom = this.offsetBottom || 0;
+        // let cFixedOffsetTop = this.cFixedOffsetTop;
+        // let cFixedOffsetBottom = this.cFixedOffsetBottom;
+        // let parentOffsetTop = this.offsetTop || 0;
+        // let parentOffsetBottom = this.offsetBottom || 0;
         var position = el.getBoundingClientRect();
         var containerPosition = this.containerDom.getBoundingClientRect();
-        var dis = containerPosition.top - this.y;
+        // let dis = containerPosition.top - this.y;
         this.y = containerPosition.top;
         // log('===========new===========')
         // log('dis', dis);
@@ -4585,6 +4604,12 @@ exports.default = {
     }
   },
   computed: {
+    cFixedOffsetTop: function cFixedOffsetTop() {
+      return this.fixedOffsetTop || this.offsetTop;
+    },
+    cFixedOffsetBottom: function cFixedOffsetBottom() {
+      return this.fixedOffsetBottom || this.offsetBottom;
+    },
     affixCls: function affixCls() {
       var _ref;
 
