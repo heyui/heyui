@@ -10,15 +10,13 @@
 </template>
 
 <script>
-import heyui from '../../../../src'; //demo测试路径
-// import heyui from 'heyui'; 实际调用
 
 export default {
   methods: {
     scrollIntoView(position) {
-      heyui.$ScrollIntoView(this.$el.querySelector('.demo-top'), {
+      this.$ScrollIntoView(this.$el.querySelector('.demo-top'), {
         time: 500,
-        align:{
+        align: {
           top: position == 'top' ? 0 : 0.5, //视图比例 0 to 1, 默认 0.5 (center)
           topOffset: position == 'top' ? 80 : 0, //视图位移 pixels to offset top alignment
         },

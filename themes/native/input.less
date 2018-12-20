@@ -107,6 +107,12 @@ textarea{
   &-group {
     position: relative;
     display: flex;
+    > .h-btn {
+      padding-top: (@input-height - @font-size) / 2 - 1px;
+      padding-bottom: (@input-height - @font-size) / 2 - 1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
     >input,>div {
       display: inline-block;
       position: relative;

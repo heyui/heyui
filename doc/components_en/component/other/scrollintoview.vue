@@ -19,7 +19,7 @@
   }
 });</codes>
 
-    <h3>ScrollIntoView 参数</h3>
+    <h3>ScrollIntoView Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>

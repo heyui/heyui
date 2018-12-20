@@ -176,6 +176,9 @@
               <router-link to="/component/other/scrollintoview">ScrollIntoView 滚动至视图内</router-link>
             </li>
             <li>
+              <router-link to="/component/other/clipboard">Clipboard 复制剪切板</router-link>
+            </li>
+            <li>
               <router-link to="/component/other/textellipsis">TextEllipsis 超出文本省略</router-link>
             </li>
           </ul>

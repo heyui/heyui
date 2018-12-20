@@ -168,6 +168,9 @@
               <router-link to="/en/component/other/scrollintoview">ScrollIntoView</router-link>
             </li>
             <li>
+              <router-link to="/en/component/other/clipboard">Clipboard</router-link>
+            </li>
+            <li>
               <router-link to="/en/component/other/textellipsis">TextEllipsis</router-link>
             </li>
           </ul>

@@ -485,7 +485,15 @@ const router = [{
     },
     component: () =>
       import ('components_en/component/other/scrollintoview')
-  }, 
+  }, {
+    path: 'other/clipboard',
+    name: 'en_otherClipboard',
+    meta: {
+      title: 'Clipboard',
+    },
+    component: () =>
+      import ('components_en/component/other/clipboard')
+  },
   {
     path: 'other/textellipsis',
     name: 'en_otherTextellipsis',
@@ -543,6 +551,14 @@ const router = [{
     },
     component: () =>
       import ('components_en/guide/config')
+  },{
+    path: 'methods',
+    name: 'en_methods',
+    meta: {
+      title: 'Methods',
+    },
+    component: () =>
+      import ('components_en/guide/methods')
   },{
     path: 'guideheysnippets',
     name: 'en_guideheysnippets',

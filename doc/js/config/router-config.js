@@ -482,7 +482,15 @@ const router = {
       },
       component: () =>
         import ('components/component/other/scrollintoview')
-    }, 
+    }, {
+      path: 'other/clipboard',
+      name: 'otherClipboard',
+      meta: {
+        title: 'Clipboard',
+      },
+      component: () =>
+        import ('components/component/other/clipboard')
+    },
     {
       path: 'other/textellipsis',
       name: 'otherTextellipsis',

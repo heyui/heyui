@@ -65,6 +65,7 @@ import $Notice from './plugins/notice';
 import $Loading from './plugins/loading';
 import $LoadingBar from './plugins/loadingBar';
 import $ScrollIntoView from './plugins/scrollIntoView';
+import $Clipboard from './plugins/clipboard';
 
 import filters from './filters';
 import config from './utils/config';
@@ -184,6 +185,7 @@ const install = function (Vue, opts) {
   HeyUI.$Modal = Vue.prototype.$Modal = $Modal(Vue);
   HeyUI.$Notice = Vue.prototype.$Notice = $Notice(Vue);
   HeyUI.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
+  HeyUI.$Clipboard = Vue.prototype.$Clipboard = $Clipboard;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
