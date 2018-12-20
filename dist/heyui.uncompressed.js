@@ -4498,6 +4498,7 @@ exports.default = {
     disabled: function disabled() {
       if (this.disabled) {
         this.isFixed = false;
+        this.isAbsolute = false;
       } else {
         this.refresh();
       }
