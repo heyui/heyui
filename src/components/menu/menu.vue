@@ -1,11 +1,11 @@
 <template>
   <ul :class="classes">
     <hMenuItem v-for="menu of menuDatas"
-        :key="menu.key"
-        :data="menu"
-        :param="param"
-        :status="status"
-        @trigger="trigger"></hMenuItem>
+      :key="menu.key"
+      :data="menu"
+      :param="param"
+      :status="status"
+      @trigger="trigger"></hMenuItem>
 
   </ul>
 </template>
@@ -61,6 +61,10 @@ export default {
     className: {
       type: String,
       default: 'h-menu-dark'
+    },
+    accordion: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -98,14 +102,26 @@ export default {
     },
     trigger(data) {
       if (data.type == 'togglemenuEvent') {
-        this.status.opened = utils.toggleValue(this.status.opened, data.data.key);
-        this.$emit('click', data.data);
-        if (data.data.children && data.data.children.length > 0) {
+        let menu = data.data;
+        this.status.opened = utils.toggleValue(this.status.opened, menu.key);
+
+        // accordion
+        if (this.accordion && this.status.opened.indexOf(menu.key) > -1) {
+          for (let key in this.menuobj) {
+            let mo = this.menuobj[key];
+            if (mo.parent === menu.parent && menu.key != key && this.status.opened.indexOf(mo.key) > -1) {
+              this.status.opened.splice(this.status.opened.indexOf(mo.key), 1);
+            }
+          }
+        }
+        
+        this.$emit('click', menu);
+        if (menu.children && menu.children.length > 0) {
           return;
         }
-        this.status.selected = data.data.key;
-        this.$emit('select', data.data.value);
-        this.$emit('onclick', data.data.value);
+        this.status.selected = menu.key;
+        this.$emit('select', menu.value);
+        this.$emit('onclick', menu.value);
       }
     }
   },

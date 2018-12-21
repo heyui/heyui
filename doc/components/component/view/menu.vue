@@ -95,6 +95,13 @@
         <td>-</td>
         <td>children</td>
       </tr>
+      <tr>
+        <td>accordion</td>
+        <td>是否启动手风琴模式</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
   </div>
 </template>
