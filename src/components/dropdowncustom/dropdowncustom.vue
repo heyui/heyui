@@ -73,9 +73,9 @@ export default {
         disabled: this.disabled,
         delay: this.delay,
         events: {
-          show() {
+          show(event) {
             that.isShow = true
-            that.$emit('show')
+            that.$emit('show', event)
           },
           hide: () => {
             that.$emit('hide')

@@ -16,9 +16,9 @@ export default {
     }
   },
   methods: {
-    trigger(code, data) {
+    trigger(code, data, event) {
       this.$Message.info(`您点击了${code}`);
-      log(data)
+      log(data, event)
     }
   },
 };

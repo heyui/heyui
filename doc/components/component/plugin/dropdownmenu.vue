@@ -187,7 +187,7 @@
       <tr>
         <td>show</td>
         <td>打开的时候触发</td>
-        <td></td>
+        <td>event</td>
       </tr>
       <tr>
         <td>hide</td>

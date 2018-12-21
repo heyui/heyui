@@ -208,7 +208,7 @@ class Pop {
     this.options.disabled = false;
   }
 
-  show() {
+  show(event) {
     if (this.hideTimeout) clearTimeout(this.hideTimeout);
     if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
     if (this.isOpen || this.options.disabled) {
@@ -216,7 +216,7 @@ class Pop {
     }
     this.isOpen = true;
     if (this.options.events && utils.isFunction(this.options.events.show)) {
-      this.options.events.show();
+      this.options.events.show(event);
     }
     if (!this.popNode) {
       this.initPopNode();
@@ -363,7 +363,7 @@ class Pop {
           return;
         }
         evt.usedByPop = true;
-        this.show();
+        this.show(event);
       };
       this.triggerEvents.push({
         event,
@@ -403,8 +403,8 @@ class Pop {
   }
 
   setPopNodeEvent() {
-    this.popNode.addEventListener('mouseenter', () => {
-      this.show();
+    this.popNode.addEventListener('mouseenter', (event) => {
+      this.show(event);
     });
     this.popNode.addEventListener('mouseout', (event) => {
       const relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
