@@ -53,7 +53,7 @@ export default {
     init() {
       let that = this;
       //七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
-      //uploader七牛文档请参考http://www.cnblogs.com/2050/p/3913184.html
+      //uploader文档请参考http://www.cnblogs.com/2050/p/3913184.html
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
