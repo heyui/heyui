@@ -15,6 +15,9 @@
     <p>对于对象数组的解析，系统默认使用<code>key</code>, <code>title</code>两个参数进行识别。可以通过全局配置修改两个参数名称，详情请参考<router-link to="/component/config">全局配置</router-link></p>
     <example demo="form/checkbox3"></example>
 
+    <h3>自定义展示内容</h3>
+    <example demo="form/checkbox5"></example>
+
     <h3>组件式数据字典调用</h3>
     <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/component/config">全局配置</router-link>。</p>
     <example demo="form/checkbox4"></example>

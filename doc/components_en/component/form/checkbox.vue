@@ -15,6 +15,9 @@
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>
     <example demo="form/checkbox3"></example>
 
+    <h3>Custom Show</h3>
+    <example demo="form/checkbox5"></example>
+
     <h3>Use dictionary</h3>
     <p>Hey UI will provide a data dictionary system call, and built-in <code>dictMapping</code>methods to display. For details, go to <router-link to="/en/component/config">Global Configuration</router-link>。</p>
     <example demo="form/checkbox4"></example>
