@@ -15,6 +15,9 @@
     <h3>自定义key, title</h3>
     <example demo="form/radio3"></example>
 
+    <h3>自定义展示内容</h3>
+    <example demo="form/radio5"></example>
+
     <h3>组件式数据字典调用</h3>
     <p>Hey UI将提供数据字典的调用方式模型，并内置<code>dictMapping</code>方法做展示。详情请至<router-link to="/component/config">全局配置</router-link>。</p>
     <example demo="form/radio4"></example>

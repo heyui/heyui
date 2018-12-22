@@ -1,7 +1,7 @@
 <template>
   <div class="h-radio" :disabled="disabled" :class="{'h-radio-disabled': disabled}">
     <template v-if="!isSingle">
-      <label v-for="option of arr" :key="option[key]" @click="setvalue(option)" :class="{'h-radio-checked': option[key]==selectStatus, 'h-radio-un-checked': option[key] != selectStatus, 'h-radio-label-disabled': disabled}"><span class="radio-icon h-radio-icon" :checked="option[key]==selectStatus" :disabled="disabled"></span><span class="h-radio-text">{{option[title]}}</span></label>
+      <label v-for="option of arr" :key="option[key]" @click="setvalue(option)" :class="{'h-radio-checked': option[key]==selectStatus, 'h-radio-un-checked': option[key] != selectStatus, 'h-radio-label-disabled': disabled}"><span class="radio-icon h-radio-icon" :checked="option[key]==selectStatus" :disabled="disabled"></span><span class="h-radio-text" v-if="!$scopedSlots.item">{{option[title]}}</span><slot v-else :item="option" name="item"></slot></label>
     </template>
     <label v-else @click="setvalue()" :class="{'h-radio-checked': value == selectStatus, 'h-radio-un-checked': value != selectStatus, 'h-radio-label-disabled': disabled}"><span class="radio-icon h-radio-icon" :checked="value == selectStatus" :disabled="disabled"></span><span><slot></slot></span></label>
   </div>

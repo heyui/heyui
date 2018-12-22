@@ -14,6 +14,9 @@
     <h3>Custom key, title</h3>
     <example demo="form/radio3"></example>
 
+    <h3>Custom Show</h3>
+    <example demo="form/radio5"></example>
+
     <h3>Use dictionary</h3>
     <p>Hey UI will provide a data dictionary system call, and built-in <code>dictMapping</code>methods to display. For details, go to <router-link to="/en/component/config">Global Configuration</router-link>。</p>
     <example demo="form/radio4"></example>
