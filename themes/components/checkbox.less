@@ -10,7 +10,7 @@
   border: @checkbox-border;
   cursor: pointer;
   border-radius: 2px;
-  vertical-align: -2px;
+  vertical-align: middle;
   transition: background, border linear @transition-time;
   position: relative;
   font-family: inherit;
@@ -84,7 +84,11 @@
     }
     span{
       line-height: 16px;
-      // vertical-align: middle;
+      vertical-align: middle;
+    }
+    i {
+      line-height: 16px;
+      vertical-align: middle;
     }
     &:hover>.@{checkbox-prefix}-native{
       border-color: @primary-color;
