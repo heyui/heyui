@@ -77,6 +77,7 @@ const menus = utils.toArray({
   viewTimeline: 'Timeline 时间轴',
   viewTransfer: 'Transfer 穿梭框',
   viewBreadcrumb: 'Breadcrumb 面包屑',
+  viewAvatar: 'Avatar 头像信息',
   otherAffix: 'Affix 图钉',
   otherBacktop: 'BackTop 返回顶部',
   otherTextellipsis: 'TextEllipsis 超出文本省略',

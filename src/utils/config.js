@@ -65,6 +65,11 @@ const config = {
     },
     onChange() {}
   },
+  avatar: {
+    handleSrc(src) {
+      return src;
+    }
+  },
   datepicker: {
     startWeek: 1,
     format: {

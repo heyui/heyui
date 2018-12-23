@@ -458,7 +458,15 @@ const router = {
       },
       component: () =>
         import('components/component/view/breadcrumb')
-    },  {
+    }, {
+      path: 'view/avatar',
+      name: 'viewAvatar',
+      meta: {
+        title: 'Avatar',
+      },
+      component: () =>
+        import('components/component/view/avatar')
+    }, {
       path: 'other/affix',
       name: 'otherAffix',
       meta: {

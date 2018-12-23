@@ -8,6 +8,7 @@
  *
  */
 import Affix from './components/affix';
+import Avatar from './components/avatar';
 import BackTop from './components/backtop';
 import Badge from './components/badge';
 import Breadcrumb from './components/breadcrumb';
@@ -74,6 +75,7 @@ import LocaleMinxin from './mixins/locale';
 
 const components = {
   Affix,
+  Avatar,
   AutoComplete,
   BackTop,
   Badge,

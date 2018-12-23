@@ -137,6 +137,9 @@
               <router-link to="/component/view/breadcrumb">Breadcrumb 面包屑</router-link>
             </li>
             <li>
+              <router-link to="/component/view/avatar">Avatar 头像信息</router-link>
+            </li>
+            <li>
               <router-link to="/component/form/switchlist">SwitchList 选项</router-link>
             </li>
             <li>

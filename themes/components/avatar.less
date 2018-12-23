@@ -1,0 +1,26 @@
+@avatarCls: ~"@{prefix}avatar";
+.@{avatarCls} {
+  position: relative;
+  &-image-container{
+    position: absolute;
+    &.h-avatar-middle {
+      .middle;
+    }
+  }
+  &-image-container &-image {
+    position: absolute;
+    z-index: 1;
+    background-size: cover;
+    // border-radius: 50%;
+    height: 100%;
+    width: 100%;
+  }
+
+  &&-shape-circle &-image {
+    border-radius: 50%;
+  }
+
+  &&-shape-square &-image {
+    border-radius: @border-radius;
+  }
+}
