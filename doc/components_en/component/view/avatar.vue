@@ -6,10 +6,10 @@
     <h3>Basic</h3>
     <example demo="view/avatar1"></example>
 
-    <h3>Icon</h3>
+    <h3>Shape and type</h3>
     <example demo="view/avatar2"></example>
 
-    <h3>Breadcrumb Property</h3>
+    <h3>Avatar Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>
@@ -19,37 +19,39 @@
         <th>Default</th>
       </tr>
       <tr>
-        <td>datas</td>
-        <td>datas</td>
-        <td>Array</td>
+        <td>src</td>
+        <td>image src</td>
+        <td>String</td>
         <td>-</td>
         <td></td>
       </tr>
       <tr>
-        <td>separator</td>
-        <td>custom delimiter</td>
+        <td>width</td>
+        <td>image size</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>distance</td>
+        <td>distance of image and text</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>imageTop</td>
+        <td>set image top</td>
+        <td>Number</td>
+        <td>if not set, image will vertical middle</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>different type</td>
         <td>String</td>
-        <td>-</td>
-        <td> / </td>
-      </tr>
-      <tr>
-        <td>selfControl</td>
-        <td>Custom trigger execution</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-    </table>
-
-    <h3>Breadcrumb Event</h3>
-    <table class="table">
-      <tr>
-        <th>Event</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>click</td>
-        <td>Breadcrumb click event</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 

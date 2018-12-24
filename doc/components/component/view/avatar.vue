@@ -22,37 +22,39 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>datas</td>
-        <td>数据</td>
-        <td>Array</td>
+        <td>src</td>
+        <td>图像地址</td>
+        <td>String</td>
         <td>-</td>
         <td></td>
       </tr>
       <tr>
-        <td>separator</td>
-        <td>自定义分隔符</td>
+        <td>width</td>
+        <td>图像大小</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>distance</td>
+        <td>图片与文字的间距</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>imageTop</td>
+        <td>设置图片与顶部的位移</td>
+        <td>Number</td>
+        <td>如果不设置的话，图像居中对齐</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>设置不同类型，自定义样式</td>
         <td>String</td>
-        <td>-</td>
-        <td> / </td>
-      </tr>
-      <tr>
-        <td>selfControl</td>
-        <td>自定义触发执行</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
-      </tr>
-    </table>
-
-    <h3>Breadcrumb 事件</h3>
-    <table class="table">
-      <tr>
-        <th>事件</th>
-        <th>数据</th>
-      </tr>
-      <tr>
-        <td>click</td>
-        <td>点击BreadCrumb触发的事件</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 

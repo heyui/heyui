@@ -28,7 +28,7 @@ export default {
       type: Number,
       default: 15
     },
-    imageTop: [String, Number],
+    imageTop: Number,
     type: String
   },
   computed: {
@@ -59,7 +59,7 @@ export default {
         height: `${this.width}px`,
       }
       if (this.imageTop) {
-        s.top = this.imageTop;
+        s.top = `${this.imageTop}px`;
       }
       return s;
     },

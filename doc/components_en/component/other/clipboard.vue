@@ -6,8 +6,15 @@
     <example demo="other/clipboard1"></example>
   
 
-    <h3>Basic Property</h3>
+    <h3>Clipboard Property</h3>
     <table class="table">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Optional</th>
+        <th>Default</th>
+      </tr>
       <tr>
         <td>text</td>
         <td>copy text</td>

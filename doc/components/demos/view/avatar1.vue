@@ -5,7 +5,7 @@
       <p class="dark2-color">描述</p>
     </Avatar>
     <br>
-    <Avatar :src="src" :width="60" v-width="300" imageTop="5px">
+    <Avatar :src="src" :width="60" v-width="300" :imageTop="5">
       <div style="font-size: 20px;" class="text-ellipsis">超出部分省略，自定义尺寸的显示</div>
       <p class="dark2-color">描述1</p>
       <p class="dark2-color">描述2</p>
