@@ -514,7 +514,7 @@ h2 {
       max-height: 10000px;
       overflow-x: auto;
       &:hover+.expand-button {
-        opacity: 1;
+        color: @primary-color;
       }
       margin-bottom: 35px;
     }
@@ -527,11 +527,12 @@ h2 {
     height: 36px;
     line-height: 36px;
     text-align: center;
-    opacity: 0;
-    transition: opacity 0.2s;
+    background-color: #FFF;
+    transition: color 0.2s;
+    color: fade(@primary-color, 50%);
     &:hover {
-      opacity: 1;
-      background-color: rgba(0, 0, 0, 0.02);
+      color: @primary-color;
+      // background-color: rgba(0, 0, 0, 0.02);
     }
   }
 }
