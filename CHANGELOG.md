@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.13.0-alpha.4"></a>
+# [1.13.0-alpha.4](https://github.com/heyui/heyui/compare/v1.13.0-alpha.3...v1.13.0-alpha.4) (2018-12-25)
+
+
+### Bug Fixes
+
+* **Checkbox:** custom show ([0a79150](https://github.com/heyui/heyui/commit/0a79150))
+* **Checkbox:** optimize css ([141e932](https://github.com/heyui/heyui/commit/141e932))
+* **DateFullRangePicker:** add type date ([d7a698e](https://github.com/heyui/heyui/commit/d7a698e))
+* **DropdownCustom:** add event params  on events ([d222f70](https://github.com/heyui/heyui/commit/d222f70))
+* **Menu:** add accordion mode ([66f4782](https://github.com/heyui/heyui/commit/66f4782))
+* **Radio:** custom show ([89ef999](https://github.com/heyui/heyui/commit/89ef999))
+* 14499 【回归】IE浏览器，订单动态、职位动态等页面，列表中展示有误 ([ba81601](https://github.com/heyui/heyui/commit/ba81601))
+* **Tree:** optimize css ([5c5b21f](https://github.com/heyui/heyui/commit/5c5b21f))
+
+
+### Features
+
+* Avatar ([00260a5](https://github.com/heyui/heyui/commit/00260a5))
+* Clipboard ([2bdc42e](https://github.com/heyui/heyui/commit/2bdc42e))
+
+
+
 <a name="1.13.0-alpha.3"></a>
 # [1.13.0-alpha.3](https://github.com/heyui/heyui/compare/v1.13.0-alpha.2...v1.13.0-alpha.3) (2018-12-20)
 
