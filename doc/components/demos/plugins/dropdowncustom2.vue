@@ -5,7 +5,7 @@
   <div>
     <ButtonGroup>
       <Button icon="h-icon-inbox">Create</Button>
-      <DropdownCustom button @click="trigger">
+      <DropdownCustom button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
           自定义
@@ -14,14 +14,14 @@
     </ButtonGroup>
     <ButtonGroup>
       <Button color="primary" icon="h-icon-inbox">Create</Button>
-      <DropdownCustom class="h-btn-primary" button @click="trigger">
+      <DropdownCustom class="h-btn-primary" button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
           自定义
         </div>
       </DropdownCustom>
     </ButtonGroup>
-    <DropdownCustom button class="h-btn-primary" @click="trigger">
+    <DropdownCustom button class="h-btn-primary">
       <span>开始</span>
       <div slot="content" v-width="200" v-height="200">
         自定义
