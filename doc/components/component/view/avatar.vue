@@ -1,6 +1,8 @@
 <template>
   <div class="doc">
     <h2>Avatar 头像信息</h2>
+    <blockquote>1.13.0+</blockquote>
+    
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-avatar</code>。</p>
 
     <h3>基本调用</h3>

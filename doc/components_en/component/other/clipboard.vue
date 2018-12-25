@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Clipboard</h2>
+    <blockquote>1.13.0+</blockquote>
 
     <h3>Basic</h3>
     <example demo="other/clipboard1"></example>

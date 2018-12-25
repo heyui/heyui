@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Clipboard 复制剪切板</h2>
+    <blockquote>1.13.0+</blockquote>
 
     <h3>基本调用</h3>
     <example demo="other/clipboard1"></example>

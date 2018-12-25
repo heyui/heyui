@@ -1,6 +1,7 @@
 <template>
   <div class="doc">
     <h2>Avatar</h2>
+    <blockquote>1.13.0+</blockquote>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-avatar</code>. </p>
 
     <h3>Basic</h3>
