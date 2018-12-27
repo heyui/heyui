@@ -13,15 +13,17 @@
       <li><code>HeyUI.initDict({key: value})</code>: Initialize Dictionary Object</li>
       <li><code>HeyUI.addDict(key, value)</code> Add dictionary</li>
     </ul>
+
     <p>Correspondingly, we also provide methods for obtaining dictionary values.</p>
     <ul class="text-ul">
       <li><code>HeyUI.getDict(key)</code>: Get dictionary value</li>
     </ul>
 
-    <h4>Application Dictionary - Show</h4>    
+    <h4>Application Dictionary</h4>    
     <p>In some of the data shown, we need to use <code>key/keys</code> to get the corresponding text.</p>
     <ul class="text-ul">
-      <li><code v-html="'{{value | dictMapping(key)}}'"></code>: Display Corresponding Text</li>
+      <li>use filter<code v-html="'{{value | dictMapping(key)}}'"></code>: Display Corresponding Text</li>
+      <li><code v-html="'HeyUI.dictMapping(value, key, connector)'"></code>: Display Corresponding Text</li>
     </ul>
     
     <h4>Dictionary Apps - Components</h4>

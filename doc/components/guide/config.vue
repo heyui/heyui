@@ -18,7 +18,7 @@
       <li><code>HeyUI.getDict(key)</code>: 获取字典值</li>
     </ul>
 
-    <h4>应用字典-展示</h4>    
+    <h4>应用字典</h4>    
     <p>在一些展示的数据中，我们需要通过<code>key/keys</code>获取对应的文本。</p>
     <ul class="text-ul">
       <li>通过 filter <code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
