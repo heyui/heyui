@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p><h-switch v-model="accordion" small>缩起菜单</h-switch></p>
     <p><h-switch v-model="accordion" small>开启手风琴模式</h-switch></p>
     <p>
       <button class="h-btn h-btn-s" @click="select('favor2-3')">选中"收藏-2-3"</button>
@@ -15,6 +16,8 @@ export default {
   data() {
     return {
       accordion: false,
+      inlineCollapsed: false,
+      // mode: 'false',
       data: [
         {
           title: '首页',

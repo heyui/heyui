@@ -65,6 +65,14 @@ export default {
     accordion: {
       type: Boolean,
       default: false
+    },
+    mode: {
+      type: String,
+      default: 'normal' //normal, vertical
+    },
+    inlineCollapsed: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -82,8 +90,13 @@ export default {
     classes() {
       return {
         [`${prefix}`]: true,
-        [this.className]: true
+        [this.className]: true,
+        [`${prefix}-mode-${this.mode}`]: !this.isDropdownMenu,
+        [`${prefix}-mode-vertical`]: this.isDropdownMenu,
       };
+    },
+    isDropdownMenu() {
+      return this.mode === 'vertical' || this.inlineCollapsed;
     },
     menuobj() {
       return getObj(this.menuDatas);
