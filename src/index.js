@@ -196,4 +196,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 HeyUI.install = install;
 
-module.exports = HeyUI;
+export default HeyUI;
