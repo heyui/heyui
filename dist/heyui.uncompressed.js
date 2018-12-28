@@ -10224,6 +10224,14 @@ exports.default = {
     accordion: {
       type: Boolean,
       default: false
+    },
+    mode: {
+      type: String,
+      default: 'normal' //normal, vertical
+    },
+    inlineCollapsed: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -10242,7 +10250,10 @@ exports.default = {
     classes: function classes() {
       var _ref;
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, this.className, true), _ref;
+      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, this.className, true), (0, _defineProperty3.default)(_ref, prefix + '-mode-' + this.mode, !this.isDropdownMenu), (0, _defineProperty3.default)(_ref, prefix + '-mode-vertical', this.isDropdownMenu), _ref;
+    },
+    isDropdownMenu: function isDropdownMenu() {
+      return this.mode === 'vertical' || this.inlineCollapsed;
     },
     menuobj: function menuobj() {
       return getObj(this.menuDatas);
