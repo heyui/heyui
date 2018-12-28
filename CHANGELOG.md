@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/heyui/heyui/compare/v1.13.0-alpha.4...v1.13.0) (2018-12-28)
+
+
+### Bug Fixes
+
+* **Button:** circle group button style ([a8e7ae9](https://github.com/heyui/heyui/commit/a8e7ae9))
+* **Button:** update button group style ([a7f1019](https://github.com/heyui/heyui/commit/a7f1019))
+
+
+
 <a name="1.13.0-alpha.4"></a>
 # [1.13.0-alpha.4](https://github.com/heyui/heyui/compare/v1.13.0-alpha.3...v1.13.0-alpha.4) (2018-12-25)
 
