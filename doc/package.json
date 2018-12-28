@@ -29,7 +29,6 @@
     "jquery": "^3.2.1",
     "jquery-smooth-scroll": "^2.1.2",
     "manba": "^1.1.2",
-    "npm": "^5.7.1",
     "plupload-es6": "^2.1.11",
     "popper.js": "^1.10.8",
     "qiniu-js-es6": "^1.0.28",
