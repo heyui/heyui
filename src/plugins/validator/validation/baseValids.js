@@ -34,4 +34,4 @@ let valids = {
     return result === true ? true : locale.t('h.validation.base.min', { value: configValue });
   }
 };
-module.exports = valids;
+export default valids;

@@ -47,4 +47,4 @@ let valids = {
   } //international mobile
 };
 
-module.exports = valids;
+export default valids;
