@@ -40,7 +40,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^5.11.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-html": "^1.5.5",
     "eslint-plugin-import": "^2.0.1",
