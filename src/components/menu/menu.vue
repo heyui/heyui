@@ -93,6 +93,7 @@ export default {
         [this.className]: true,
         [`${prefix}-mode-${this.mode}`]: !this.isDropdownMenu,
         [`${prefix}-mode-vertical`]: this.isDropdownMenu,
+        [`${prefix}-size-collapse`]: this.inlineCollapsed,
       };
     },
     isDropdownMenu() {

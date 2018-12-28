@@ -1,13 +1,13 @@
 <template>
   <div>
-    <p><h-switch v-model="accordion" small>缩起菜单</h-switch></p>
+    <!-- <p><h-switch v-model="inlineCollapsed" small>缩起菜单</h-switch></p> -->
     <p><h-switch v-model="accordion" small>开启手风琴模式</h-switch></p>
     <p>
       <button class="h-btn h-btn-s" @click="select('favor2-3')">选中"收藏-2-3"</button>
       <button class="h-btn h-btn-s" @click="select('task1-1')">选中"任务-1"</button>
       <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
     </p>
-    <Menu :datas="data" ref="menu" :accordion="accordion" v-width="250" @select="triggerSelect" @click="triggerClick"></Menu>
+    <Menu :datas="data" :inlineCollapsed="inlineCollapsed" ref="menu" :accordion="accordion" v-width="250" @select="triggerSelect" @click="triggerClick"></Menu>
   </div>
 </template>
 
