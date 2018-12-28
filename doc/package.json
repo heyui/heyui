@@ -20,6 +20,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
+    "core-js": "^2.4.1",
     "fetch": "^1.1.0",
     "fetch-jsonp": "^1.0.6",
     "hey-log": "0.0.7",
