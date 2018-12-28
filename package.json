@@ -29,7 +29,7 @@
     "headr": "0.0.4",
     "hey-log": "^0.0.8",
     "hey-utils": "^0.4.0",
-    "less": "^3.0.0",
+    "less": "^3.9.0",
     "standard-version": "^4.4.0"
   },
   "readmeFilename": "README.md",
