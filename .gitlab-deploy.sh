@@ -2,7 +2,7 @@
 
 # . /etc/profile
 cd doc
-npm install --registry=http://registry.npm.taobao.org
+npm install --production
 # npm install
 hey build
 #cos-put /srv/cw-webui
