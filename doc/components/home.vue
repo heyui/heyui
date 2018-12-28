@@ -59,9 +59,6 @@ export default {
       if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
         return;
       }
-      // import('js/ani.js').then((animate) => {
-      //   animate.default.initWorld(this.$el.querySelector('.universe'))
-      // })
     })
   },
   components: {

@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import animate from 'js/ani.js'
-// let animate
 import comHead from './common/header.vue';
 import comFoot from './common/footer.vue';
 import comFrame from './common/frame.vue';
@@ -60,9 +58,6 @@ export default {
       if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
         return;
       }
-      // import('js/ani.js').then((animate) => {
-      //   animate.default.initWorld(this.$el.querySelector('.universe'))
-      // })
     })
   },
   components: {
