@@ -126,7 +126,7 @@
         <td>false</td>
       </tr>
       <tr>
-        <td>render</td>
+        <td>optionRender</td>
         <td>下拉菜单的展示自定义</td>
         <td>Function</td>
         <td>-</td>
