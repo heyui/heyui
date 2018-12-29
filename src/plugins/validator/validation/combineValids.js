@@ -9,4 +9,4 @@ let valids = {
     return value1 == value2;
   }
 };
-module.exports = valids;
+export default valids;
