@@ -1,2 +1,2 @@
 let valids = {};
-module.exports = valids;
+export default valids;
