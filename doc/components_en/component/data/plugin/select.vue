@@ -125,7 +125,7 @@
         <td>false</td>
       </tr>
       <tr>
-        <td>render</td>
+        <td>optionRender</td>
         <td>Dropdown menu display customization</td>
         <td>Function</td>
         <td>-</td>
