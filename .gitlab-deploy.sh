@@ -2,6 +2,7 @@
 
 # . /etc/profile
 cd doc
+rm -rf node_modules
 npm install --production
 # npm install
 hey build
