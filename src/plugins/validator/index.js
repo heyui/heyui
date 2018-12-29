@@ -1,7 +1,7 @@
-let utils = require('hey-utils');
-let typeValids = require('./validation/typeValids');
-let baseValids = require('./validation/baseValids');
-let combineValids = require('./validation/combineValids');
+import utils from 'hey-utils';
+import typeValids from './validation/typeValids';
+import baseValids from './validation/baseValids';
+import combineValids from './validation/combineValids';
 
 const extendResult = function (result1, result2) {
   let result = {};
@@ -311,4 +311,4 @@ class Validator {
   }
 }
 
-module.exports = Validator;
+export default Validator;
