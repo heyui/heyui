@@ -47,7 +47,7 @@
                 :key="option[key]"
                 @click="setvalue(option)"
                 :class="getLiCls(option, index)">
-              <div v-if="!!render"
+              <div v-if="!!optionRender"
                   v-html="option[html]"></div>
               <template v-else-if="!$scopedSlots.item">{{option[title]}}</template>
               <slot v-else :item="option" name="item"></slot>
@@ -129,7 +129,7 @@ export default {
       type: String,
       default: () => config.getOption('dict', 'titleName')
     },
-    render: Function,
+    optionRender: Function,
     value: [Number, String, Array, Object],
     className: String,
   },
@@ -137,7 +137,7 @@ export default {
     return {
       key: this.keyName,
       title: this.titleName,
-      html: "select_rander_html",
+      html: "select_render_html",
       codes: [],
       objects: {},
       hasNullOption: this.nullOption && !this.multiple,
