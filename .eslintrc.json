@@ -15,9 +15,6 @@
     "$": false,
     "Vue": false
   },
-  "plugins": [
-    "html"
-  ],
   "extends": "airbnb-base",
   "rules": {
     "no-underscore-dangle": [
