@@ -65,14 +65,14 @@
       </tr>
       <tr>
         <td>content</td>
-        <td>设定内容</td>
+        <td>设定内容，目前只支持js定义</td>
         <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
         <td>width</td>
-        <td>设定宽度</td>
+        <td>设定宽度，目前只支持js定义</td>
         <td>Number</td>
         <td>-</td>
         <td></td>
@@ -107,7 +107,7 @@
       </tr>
       <tr>
         <td>buttons</td>
-        <td>设定底层按钮</td>
+        <td>设定底层按钮，目前只支持js定义</td>
         <td>Array</td>
         <td>-</td>
         <td>['cancel']</td>
