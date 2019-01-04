@@ -8,10 +8,7 @@
     <p>配合<code>vue-router</code>：</p>
     <codes src="/codes/menu1.txt" type="javascript"></codes>
 
-    <h3>白色</h3>
-    <example demo="view/menu2"></example>
-
-    <h3>自定义</h3>
+    <h3>自定义样式</h3>
     <p>该样式是自己的设置的class，可以做任意调整。</p>
     <example demo="view/menu3"></example>
     <p>样式：</p>
@@ -46,6 +43,20 @@
         <td>string</td>
         <td>-</td>
         <td>h-menu-dark</td>
+      </tr>
+      <tr>
+        <td>inlineCollapsed</td>
+        <td>是否使用折叠模式</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>accordion</td>
+        <td>是否启动手风琴模式</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
       </tr>
     </table>
 
@@ -94,13 +105,6 @@
         <td>String</td>
         <td>-</td>
         <td>children</td>
-      </tr>
-      <tr>
-        <td>accordion</td>
-        <td>是否启动手风琴模式</td>
-        <td>Boolean</td>
-        <td>-</td>
-        <td>false</td>
       </tr>
     </table>
   </div>

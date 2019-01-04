@@ -55,6 +55,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>inlineCollapsed</td>
+        <td>use collapsed mode</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Menu Event</h3>

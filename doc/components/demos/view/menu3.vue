@@ -1,6 +1,31 @@
+<style lang="less">
+@menu-prefix: ~"@{prefix}menu";
+.menu-custom {
+  background: @white-color;
+  .@{menu-prefix} {
+    &-show {
+      translate: font-size, color .3s;
+      &:hover {
+        // background: @yellow-color;
+        font-size: 16px;
+        color: @yellow-color;
+      }
+    }
+    &-li {
+      &-selected {
+        font-size: 16px;
+        font-weight: bold;
+        // background: @yellow-color;
+        color: @yellow-color;
+      }
+    }
+  }
+}
+</style>
+
 <template>
   <div v-bg-color:gray4 v-padding="20">
-    <Menu :datas="data" v-width="250" className="h-menu-custom"></Menu>
+    <Menu :datas="data" v-width="250" className="menu-custom"></Menu>
   </div>
 </template>
 

@@ -1,13 +1,20 @@
 <template>
   <div>
-    <!-- <p><h-switch v-model="inlineCollapsed" small>缩起菜单</h-switch></p> -->
-    <p><h-switch v-model="accordion" small>开启手风琴模式</h-switch></p>
+    <p>
+      <SwitchList v-model="theme" :datas="{'h-menu-white': '白色', 'h-menu-dark': '黑色'}"></SwitchList>
+    </p>
+    <p><h-switch v-model="accordion" small>手风琴模式</h-switch></p>
+    <p><h-switch v-model="inlineCollapsed" small>收起菜单</h-switch></p>
     <p>
       <button class="h-btn h-btn-s" @click="select('favor2-3')">选中"收藏-2-3"</button>
       <button class="h-btn h-btn-s" @click="select('task1-1')">选中"任务-1"</button>
       <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
     </p>
-    <Menu :datas="data" :inlineCollapsed="inlineCollapsed" ref="menu" :accordion="accordion" v-width="250" @select="triggerSelect" @click="triggerClick"></Menu>
+    <div class="bg-gray2-color" v-padding="20">
+      <div v-width="250">
+        <Menu :datas="data" :className="theme" :inlineCollapsed="inlineCollapsed" ref="menu" :accordion="accordion" @select="triggerSelect" @click="triggerClick"></Menu>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +24,7 @@ export default {
     return {
       accordion: false,
       inlineCollapsed: false,
+      theme: 'h-menu-dark',
       // mode: 'false',
       data: [
         {
