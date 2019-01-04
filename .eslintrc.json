@@ -18,7 +18,6 @@
   "plugins": [
     "html"
   ],
-  "ext": [".js", ".css", ".vue"],
   "extends": "airbnb-base",
   "rules": {
     "no-underscore-dangle": [
