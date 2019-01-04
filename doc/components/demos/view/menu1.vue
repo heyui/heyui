@@ -46,7 +46,6 @@ export default {
             {
               title: '收藏-1',
               key: 'favor2-1',
-              count: 20,
             },
             {
               title: '收藏-2',

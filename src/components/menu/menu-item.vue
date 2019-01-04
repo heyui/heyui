@@ -1,6 +1,6 @@
 <template>
   <li class="h-menu-li" :class="{'h-menu-li-opened':(status.opened.indexOf(data.key) != -1)}">
-    <div class="h-menu-show"
+    <div class="h-menu-show" v-tooltip="inlineCollapsed&&!data.children.length" :content="data.title" placement="right"
          @click="togglemenu(data)"
          :class="{'h-menu-show-disabled':data.status.disabled, 'h-menu-li-selected': data.key&&status.selected == data.key}">
       <span class='h-menu-show-icon' v-show='data.icon'><i :class="data.icon"></i></span>
@@ -29,7 +29,11 @@ export default {
   props: {
     data: Object,
     param: Object,
-    status: Object
+    status: Object,
+    inlineCollapsed: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {

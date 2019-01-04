@@ -5,6 +5,7 @@
       :data="menu"
       :param="param"
       :status="status"
+      :inlineCollapsed="inlineCollapsed"
       @trigger="trigger"></hMenuItem>
 
   </ul>

@@ -165,31 +165,41 @@
       }
     }
     .h-menu-ul{
-      padding: 0;
+      padding: 5px 0;
       margin-left: 5px;
-      display: none;
+      // display: none;
       left: 100%;
       top: 0;
-      width: 0;
+      width: 150px;
       border-radius: 4px;
+      overflow: hidden;
       // visibility: hidden;
       position: absolute;
+      max-width: 0;
       // overflow: visible;
-      // transition: transform,opacity 0.2s;
-      // opacity: 0.5;
-      // transform: scale(0.5);
+      transition: 0.2s cubic-bezier(0.78, 0.17, 0.43, 1);
+      white-space: nowrap;
+      display: inline-block;
+      overflow: hidden;
+      opacity: 0.8;
+      transform: scale(0.8);
+      transform-origin: left;
+      .h-menu-show{
+        overflow: hidden;
+      }
     }
     .h-menu-show-expand > i{
       transform: rotate(-90deg);
     }
     .h-menu-li:hover {
       > .h-menu-ul {
-        padding: 5px 0;
-        // opacity: 1;
+        // padding: 5px 0;
+        max-width: 250%;
+        opacity: 1;
         // visibility: visible;
-        // transform: scale(1);
-        width: 150px;
-        display: block;
+        transform: scale(1);
+        // display: block;
+        overflow: visible;
         &:before{
           content: '';
           position: absolute;
