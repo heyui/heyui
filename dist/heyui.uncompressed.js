@@ -2377,7 +2377,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/datetime/date-base.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/datetime/date-base.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] date-base.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4040,7 +4040,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/collapse/collapseItem.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/collapse/collapseItem.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] collapseItem.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4080,7 +4080,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/modal/modal.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/modal/modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4120,7 +4120,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/table/table-item.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/table/table-item.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] table-item.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -4155,6 +4155,10 @@ module.exports = Component.exports
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _keys = __webpack_require__(21);
 
@@ -4529,7 +4533,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 HeyUI.install = install;
 
-module.exports = HeyUI;
+exports.default = HeyUI;
 
 /***/ }),
 /* 108 */
@@ -6291,7 +6295,6 @@ var _categoryModal2 = _interopRequireDefault(_categoryModal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var prefix = 'h-category'; //
 //
 //
 //
@@ -6304,7 +6307,8 @@ var prefix = 'h-category'; //
 //
 //
 //
-//
+
+var prefix = 'h-category';
 
 exports.default = {
   name: 'hCategory',
@@ -6351,6 +6355,10 @@ exports.default = {
   watch: {
     value: function value() {
       this.parse();
+    },
+
+    'option.datas': function optionDatas() {
+      this.initCategoryDatas();
     }
   },
   methods: {
@@ -6495,7 +6503,17 @@ exports.default = {
         for (var _iterator2 = (0, _getIterator3.default)(list), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
           var data = _step2.value;
 
-          var obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey: parentKey, status: { opened: false, selected: false, checkable: data.checkable === false ? false : true } };
+          var obj = {
+            key: data[this.param.keyName],
+            title: data[this.param.titleName],
+            value: data,
+            parentKey: parentKey,
+            status: {
+              opened: false,
+              selected: false,
+              checkable: data.checkable === false ? false : true
+            }
+          };
           var children = data[this.param.childrenName] || [];
           obj[this.param.childrenName] = this.initTreeModeData(children, obj.key);
           this.categoryObj[obj.key] = obj;
@@ -9615,7 +9633,7 @@ exports.default = {
     getParent: function getParent() {
       var parent = this.$parent;
       var filterTag = new _set2.default(['Form', 'hForm', 'h-form']);
-      while (parent != null && !filterTag.has(parent.$options._componentTag)) {
+      while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
         parent = parent.$parent;
       }
       if (!parent) {
@@ -9625,8 +9643,8 @@ exports.default = {
     },
     getDirectParent: function getDirectParent() {
       var parent = this.$parent;
-      var filterTag = new _set2.default(['Form', 'h-form', 'h-form-item', 'FormItem']);
-      while (parent != null && !filterTag.has(parent.$options._componentTag)) {
+      var filterTag = new _set2.default(['Form', 'hForm', 'h-form', 'h-form-item', 'hFormItem', 'FormItem']);
+      while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
         parent = parent.$parent;
       }
       if (!parent) {
@@ -10035,7 +10053,11 @@ exports.default = {
   props: {
     data: Object,
     param: Object,
-    status: Object
+    status: Object,
+    inlineCollapsed: {
+      type: Boolean,
+      default: false
+    }
   },
   data: function data() {
     return {};
@@ -10111,6 +10133,7 @@ var _menuItem2 = _interopRequireDefault(_menuItem);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var prefix = 'h-menu'; //
+//
 //
 //
 //
@@ -10250,7 +10273,7 @@ exports.default = {
     classes: function classes() {
       var _ref;
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, this.className, true), (0, _defineProperty3.default)(_ref, prefix + '-mode-' + this.mode, !this.isDropdownMenu), (0, _defineProperty3.default)(_ref, prefix + '-mode-vertical', this.isDropdownMenu), _ref;
+      return _ref = {}, (0, _defineProperty3.default)(_ref, '' + prefix, true), (0, _defineProperty3.default)(_ref, this.className, true), (0, _defineProperty3.default)(_ref, prefix + '-mode-' + this.mode, !this.isDropdownMenu), (0, _defineProperty3.default)(_ref, prefix + '-mode-vertical', this.isDropdownMenu), (0, _defineProperty3.default)(_ref, prefix + '-size-collapse', this.inlineCollapsed), _ref;
     },
     isDropdownMenu: function isDropdownMenu() {
       return this.mode === 'vertical' || this.inlineCollapsed;
@@ -11576,7 +11599,7 @@ exports.default = {
         return _config2.default.getOption('dict', 'titleName');
       }
     },
-    render: Function,
+    optionRender: Function,
     value: [Number, String, Array, Object],
     className: String
   },
@@ -11584,7 +11607,7 @@ exports.default = {
     return {
       key: this.keyName,
       title: this.titleName,
-      html: "select_rander_html",
+      html: "select_render_html",
       codes: [],
       objects: {},
       hasNullOption: this.nullOption && !this.multiple,
@@ -14213,14 +14236,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 var prefix = 'h-tree';
 
@@ -14425,6 +14440,10 @@ exports.default = {
         return;
       }
       this.parse();
+    },
+
+    'option.datas': function optionDatas() {
+      this.initTreeDatas();
     }
   },
   mounted: function mounted() {
@@ -14583,7 +14602,24 @@ exports.default = {
         for (var _iterator7 = (0, _getIterator3.default)(list), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
           var data = _step7.value;
 
-          var obj = { key: data[this.param.keyName], title: data[this.param.titleName], value: data, parentKey: parentKey, icon: data.treeIcon, status: { hide: false, opened: false, loading: false, checkable: data.checkable === false ? false : true, isWait: isWait, selected: false, indeterminate: false, choose: false, disabled: !!data.disabled } };
+          var obj = {
+            key: data[this.param.keyName],
+            title: data[this.param.titleName],
+            value: data,
+            parentKey: parentKey,
+            icon: data.treeIcon,
+            status: {
+              hide: false,
+              opened: false,
+              loading: false,
+              checkable: data.checkable !== false,
+              isWait: isWait,
+              selected: false,
+              indeterminate: false,
+              choose: false,
+              disabled: !!data.disabled
+            }
+          };
           var children = data[this.param.childrenName] || [];
           obj.children = this.initTreeModeData(children, isWait, obj.key);
           this.treeObj[obj.key] = obj;
@@ -20592,6 +20628,10 @@ module.exports = select;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _classCallCheck2 = __webpack_require__(22);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -20620,12 +20660,23 @@ var _set = __webpack_require__(18);
 
 var _set2 = _interopRequireDefault(_set);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _heyUtils = __webpack_require__(106);
 
-var utils = __webpack_require__(106);
-var typeValids = __webpack_require__(224);
-var baseValids = __webpack_require__(222);
-var combineValids = __webpack_require__(223);
+var _heyUtils2 = _interopRequireDefault(_heyUtils);
+
+var _typeValids = __webpack_require__(224);
+
+var _typeValids2 = _interopRequireDefault(_typeValids);
+
+var _baseValids = __webpack_require__(222);
+
+var _baseValids2 = _interopRequireDefault(_baseValids);
+
+var _combineValids = __webpack_require__(223);
+
+var _combineValids2 = _interopRequireDefault(_combineValids);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var extendResult = function extendResult(result1, result2) {
   var result = {};
@@ -20667,19 +20718,19 @@ var extendResult = function extendResult(result1, result2) {
 };
 
 var ruleExecute = function ruleExecute(rule, argus) {
-  if (utils.isFunction(rule)) {
+  if (_heyUtils2.default.isFunction(rule)) {
     return rule.call.apply(rule, [null].concat((0, _toConsumableArray3.default)(argus)));
-  } else if (utils.isObject(rule)) {
+  } else if (_heyUtils2.default.isObject(rule)) {
     var result = null;
     if (rule.pattern) {
       result = rule.pattern.test(String(argus[0]));
-    } else if (utils.isFunction(rule.valid)) {
+    } else if (_heyUtils2.default.isFunction(rule.valid)) {
       result = rule.valid.apply(null, argus);
     }
     if (result === true) {
       return true;
     }
-    return utils.isFunction(rule.message) ? rule.message() : rule.message;
+    return _heyUtils2.default.isFunction(rule.message) ? rule.message() : rule.message;
   }
 };
 
@@ -20701,7 +20752,7 @@ var Validator = function () {
   function Validator(rules) {
     (0, _classCallCheck3.default)(this, Validator);
 
-    if (!utils.isObject(rules)) {
+    if (!_heyUtils2.default.isObject(rules)) {
       console.error("validator: please pass the correct validation parameters");
     }
     this.combineRuleResults = {};
@@ -20714,8 +20765,8 @@ var Validator = function () {
     key: 'initRules',
     value: function initRules(rules) {
       var genRules = {};
-      utils.extend(true, genRules, DEFAULT, rules);
-      var keys = (0, _keys2.default)(typeValids);
+      _heyUtils2.default.extend(true, genRules, DEFAULT, rules);
+      var keys = (0, _keys2.default)(_typeValids2.default);
       keys.unshift('required');
 
       var _iteratorNormalCompletion2 = true;
@@ -20727,7 +20778,7 @@ var Validator = function () {
           var v = _step2.value;
 
           var validList = rules[v];
-          if (utils.isArray(validList)) {
+          if (_heyUtils2.default.isArray(validList)) {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
@@ -20737,7 +20788,7 @@ var Validator = function () {
                 var p = _step3.value;
 
                 var rule = genRules.rules[p];
-                if (!utils.isObject(rule)) {
+                if (!_heyUtils2.default.isObject(rule)) {
                   rule = genRules.rules[p] = {};
                 }
                 if (v == 'required') {
@@ -20797,7 +20848,7 @@ var Validator = function () {
         for (var _iterator4 = (0, _getIterator3.default)(rules), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
           var rule = _step4.value;
 
-          rule.id = utils.uuid();
+          rule.id = _heyUtils2.default.uuid();
           var parentRef = '';
           if (rule.parentRef) parentRef = rule.parentRef + '.';
           var _iteratorNormalCompletion5 = true;
@@ -20809,7 +20860,7 @@ var Validator = function () {
               var ref = _step5.value;
 
               var refProp = parentRef + ref;
-              if (utils.isArray(genRules[refProp])) {
+              if (_heyUtils2.default.isArray(genRules[refProp])) {
                 genRules[refProp].push(rule);
               } else {
                 genRules[refProp] = [rule];
@@ -20851,7 +20902,7 @@ var Validator = function () {
     key: 'valid',
     value: function valid(data, _next, allNext) {
       var loadings = [];
-      var uuid = utils.uuid();
+      var uuid = _heyUtils2.default.uuid();
       var result = this.validData(data, {
         uuid: uuid,
         next: function next(r) {
@@ -20860,7 +20911,7 @@ var Validator = function () {
               loadings.splice(loadings.indexOf(key), 1);
             }
           }
-          utils.extend(result, r);
+          _heyUtils2.default.extend(result, r);
           if (_next) {
             _next.call(this, r);
           }
@@ -20894,12 +20945,12 @@ var Validator = function () {
         result = this.validField(prop, sourceData, { next: next, uuid: uuid });
       }
       if (sourceData == undefined) sourceData = data;
-      if (utils.isArray(data)) {
+      if (_heyUtils2.default.isArray(data)) {
         for (var i = 0; i < data.length; i++) {
           var nowProp = prop + '[' + i + ']';
           result = extendResult(result, this.validData(data[i], { next: next, prop: nowProp, sourceData: sourceData, uuid: uuid }));
         }
-      } else if (utils.isObject(data)) {
+      } else if (_heyUtils2.default.isObject(data)) {
         for (var d in data) {
           var _nowProp = prop + (prop == "" ? "" : ".") + d;
           result = extendResult(result, this.validData(data[d], { next: next, prop: _nowProp, sourceData: sourceData, uuid: uuid }));
@@ -20920,7 +20971,7 @@ var Validator = function () {
     key: 'setConfig',
     value: function setConfig(prop, options) {
       var ruleKey = prop;
-      this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
+      this.rules[ruleKey] = _heyUtils2.default.extend(true, this.rules[ruleKey], options);
     }
   }, {
     key: 'validFieldBase',
@@ -20930,18 +20981,18 @@ var Validator = function () {
           parent = _ref4.parent;
 
       if (rule && (0, _keys2.default)(rule).length > 0) {
-        var result = ruleExecute(baseValids.required, [value]);
+        var result = ruleExecute(_baseValids2.default.required, [value]);
 
         if (rule.required && result !== true) {
           return result;
         }
         if (result === true) {
           if (rule.type) {
-            result = ruleExecute(typeValids[rule.type], [value]);
+            result = ruleExecute(_typeValids2.default[rule.type], [value]);
             if (result !== true) return result;
           }
 
-          var baseValidKeys = (0, _keys2.default)(baseValids);
+          var baseValidKeys = (0, _keys2.default)(_baseValids2.default);
           baseValidKeys.shift();
           var _iteratorNormalCompletion6 = true;
           var _didIteratorError6 = false;
@@ -20951,8 +21002,8 @@ var Validator = function () {
             for (var _iterator6 = (0, _getIterator3.default)(baseValidKeys), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
               var key = _step6.value;
 
-              if (!utils.isNull(rule[key])) {
-                var _result = ruleExecute(baseValids[key], [value, rule[key]]);
+              if (!_heyUtils2.default.isNull(rule[key])) {
+                var _result = ruleExecute(_baseValids2.default[key], [value, rule[key]]);
                 if (_result !== true) return _result;
               }
             }
@@ -20971,12 +21022,12 @@ var Validator = function () {
             }
           }
 
-          if (!utils.isNull(rule.valid)) {
+          if (!_heyUtils2.default.isNull(rule.valid)) {
             result = ruleExecute(rule.valid, [value, parent]);
             if (result !== true) return result;
           }
         } else {
-          if (!utils.isNull(rule.validAnyway)) {
+          if (!_heyUtils2.default.isNull(rule.validAnyway)) {
             result = ruleExecute(rule.validAnyway, [value, parent]);
             if (result !== true) return result;
           }
@@ -20991,25 +21042,25 @@ var Validator = function () {
           next = _ref5.next,
           uuid = _ref5.uuid;
 
-      if (utils.isNull(prop)) {
+      if (_heyUtils2.default.isNull(prop)) {
         return returnArgs(prop);
       }
 
-      var value = utils.getKeyValue(data, prop);
+      var value = _heyUtils2.default.getKeyValue(data, prop);
       var rule = this.rules[prop] || {};
 
       var combineRules = this.combineRules[prop] || [];
       if (prop.indexOf("[") > -1) {
         var arrayRuleKey = prop.replace(/\[\w+\]/, "[]");
-        rule = utils.extend({}, rule, this.rules[arrayRuleKey]);
-        combineRules = utils.extend([], combineRules, this.combineRules[arrayRuleKey]);
+        rule = _heyUtils2.default.extend({}, rule, this.rules[arrayRuleKey]);
+        combineRules = _heyUtils2.default.extend([], combineRules, this.combineRules[arrayRuleKey]);
       }
 
       var parent = data;
       var parentProp = '';
       if (prop.lastIndexOf(".") > -1) {
         parentProp = prop.substr(0, prop.lastIndexOf("."));
-        parent = utils.getKeyValue(data, parentProp);
+        parent = _heyUtils2.default.getKeyValue(data, parentProp);
       }
 
       var result = this.validFieldBase({ rule: rule, value: value, parent: parent });
@@ -21019,7 +21070,7 @@ var Validator = function () {
 
       result = this.combineRulesValid(combineRules, value, parent, parentProp, uuid);
       var baseResult = returnArgs(prop, undefined, 'base');
-      if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
+      if (result === true && _heyUtils2.default.isFunction(next) && _heyUtils2.default.isFunction(rule.validAsync)) {
         rule.validAsync.call(null, value, function (result1) {
           var n = returnArgs(prop, result1, 'async');
           n[prop].loading = false;
@@ -21027,7 +21078,7 @@ var Validator = function () {
         }, parent, data);
         baseResult[prop].loading = true;
       }
-      return utils.extend(baseResult, result);
+      return _heyUtils2.default.extend(baseResult, result);
     }
   }, {
     key: 'combineRulesValid',
@@ -21058,7 +21109,7 @@ var Validator = function () {
               for (var _iterator8 = (0, _getIterator3.default)(rule.refs), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
                 var ref = _step8.value;
 
-                var v = utils.getKeyValue(parent, ref);
+                var v = _heyUtils2.default.getKeyValue(parent, ref);
                 var refProp = (rule.parentRef && parentProp ? parentProp + "." : "") + ref;
                 //When the basic parameters are not validated, it will stop validate.
                 if (this.validFieldBase({ rule: this.rules[refProp], value: v, parent: parent }) != true) {
@@ -21084,9 +21135,9 @@ var Validator = function () {
 
             if (values.length < rule.refs.length) continue;
             var valid = rule.valid;
-            if (utils.isObject(valid) && utils.isString(valid.valid)) {
-              valid.valid = combineValids[valid.valid];
-              if (utils.isNull(valid.valid)) {
+            if (_heyUtils2.default.isObject(valid) && _heyUtils2.default.isString(valid.valid)) {
+              valid.valid = _combineValids2.default[valid.valid];
+              if (_heyUtils2.default.isNull(valid.valid)) {
                 throw Error('There is no validation rule named ' + valid);
               }
             }
@@ -21100,7 +21151,7 @@ var Validator = function () {
           }
 
           if (!refValids[prop] || refValids[prop].valid) {
-            utils.extend(refValids, combineResult);
+            _heyUtils2.default.extend(refValids, combineResult);
           }
         }
       } catch (err) {
@@ -21135,7 +21186,7 @@ var Validator = function () {
   return Validator;
 }();
 
-module.exports = Validator;
+exports.default = Validator;
 
 /***/ }),
 /* 222 */
@@ -21143,6 +21194,10 @@ module.exports = Validator;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _locale = __webpack_require__(9);
 
@@ -21184,7 +21239,7 @@ var valids = {
     return result === true ? true : _locale2.default.t('h.validation.base.min', { value: configValue });
   }
 };
-module.exports = valids;
+exports.default = valids;
 
 /***/ }),
 /* 223 */
@@ -21193,6 +21248,9 @@ module.exports = valids;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var valids = {
   lessThan: function lessThan(value1, value2) {
     return Number(value1) < Number(value2);
@@ -21204,7 +21262,7 @@ var valids = {
     return value1 == value2;
   }
 };
-module.exports = valids;
+exports.default = valids;
 
 /***/ }),
 /* 224 */
@@ -21212,6 +21270,10 @@ module.exports = valids;
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _locale = __webpack_require__(9);
 
@@ -21267,7 +21329,7 @@ var valids = {
   } //international mobile
 };
 
-module.exports = valids;
+exports.default = valids;
 
 /***/ }),
 /* 225 */
@@ -22805,7 +22867,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/affix/affix.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/affix/affix.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] affix.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -22845,7 +22907,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/autocomplete/autocomplete.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/autocomplete/autocomplete.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] autocomplete.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -22885,7 +22947,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/avatar/avatar.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/avatar/avatar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] avatar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -22925,7 +22987,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/backtop/backtop.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/backtop/backtop.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] backtop.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -22965,7 +23027,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/badge/badge.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/badge/badge.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] badge.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23005,7 +23067,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/breadcrumb/breadcrumb.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/breadcrumb/breadcrumb.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] breadcrumb.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23045,7 +23107,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/button/button.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/button/button.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] button.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23085,7 +23147,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/button/buttonGroup.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/button/buttonGroup.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] buttonGroup.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23125,7 +23187,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/carousel/carousel.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/carousel/carousel.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] carousel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23165,7 +23227,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/category/category.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/category/category.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] category.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23205,7 +23267,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/category/categoryModal.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/category/categoryModal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] categoryModal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23245,7 +23307,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/checkbox/checkbox.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/checkbox/checkbox.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] checkbox.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23285,7 +23347,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/circle/circle.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/circle/circle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] circle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23325,7 +23387,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/collapse/collapse.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/collapse/collapse.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] collapse.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23365,7 +23427,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/datetime/datefullrangepicker.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/datetime/datefullrangepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] datefullrangepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23405,7 +23467,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/datetime/datepicker.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/datetime/datepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] datepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23445,7 +23507,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/datetime/daterangepicker.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/datetime/daterangepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] daterangepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23485,7 +23547,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/dropdowncustom/dropdowncustom.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/dropdowncustom/dropdowncustom.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] dropdowncustom.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23525,7 +23587,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/dropdownmenu/dropdownmenu.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/dropdownmenu/dropdownmenu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] dropdownmenu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23565,7 +23627,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/form/form.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/form/form.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] form.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23605,7 +23667,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/form/formItem.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/form/formItem.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] formItem.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23645,7 +23707,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/form/formItemList.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/form/formItemList.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] formItemList.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23685,7 +23747,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/layout/col.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/layout/col.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] col.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23725,7 +23787,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/layout/row.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/layout/row.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] row.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23765,7 +23827,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/loading/loading.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/loading/loading.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] loading.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23805,7 +23867,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/menu/menu-item.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/menu/menu-item.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] menu-item.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23845,7 +23907,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/menu/menu.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/menu/menu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] menu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23885,7 +23947,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/modal/modalComponent.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/modal/modalComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] modalComponent.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23925,7 +23987,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/numberinput/numberinput.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/numberinput/numberinput.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] numberinput.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23965,7 +24027,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/pagination/pagination.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/pagination/pagination.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] pagination.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24005,7 +24067,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/poptip/poptip.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/poptip/poptip.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] poptip.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24045,7 +24107,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/progress/progress.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/progress/progress.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] progress.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24085,7 +24147,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/radio/radio.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/radio/radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24125,7 +24187,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/rate/rate.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/rate/rate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] rate.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24165,7 +24227,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/search/search.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/search/search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24205,7 +24267,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/select/select.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/select/select.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] select.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24245,7 +24307,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/slider/slider.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/slider/slider.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slider.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24285,7 +24347,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/steps/steps.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/steps/steps.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] steps.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24325,7 +24387,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/switch/switch.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/switch/switch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] switch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24365,7 +24427,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/switchlist/switchlist.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/switchlist/switchlist.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] switchlist.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24405,7 +24467,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/table/table-td.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/table/table-td.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] table-td.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24445,7 +24507,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/table/table.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/table/table.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] table.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24485,7 +24547,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/tabs/tabs.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/tabs/tabs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tabs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24525,7 +24587,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/taginput/taginput.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/taginput/taginput.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] taginput.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24565,7 +24627,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/textellipsis/textellipsis.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/textellipsis/textellipsis.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] textellipsis.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24605,7 +24667,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/timeline/timeline-item.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/timeline/timeline-item.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] timeline-item.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24645,7 +24707,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/timeline/timeline.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/timeline/timeline.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] timeline.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24685,7 +24747,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/tooltip/tooltip.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/tooltip/tooltip.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tooltip.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24725,7 +24787,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/transfer/transfer.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/transfer/transfer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] transfer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24765,7 +24827,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/tree/tree-item.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/tree/tree-item.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tree-item.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24805,7 +24867,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/tree/tree.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/tree/tree.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tree.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24845,7 +24907,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/treepicker/treepicker.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/treepicker/treepicker.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] treepicker.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24885,7 +24947,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/alicia/Documents/develop/github/heyui/heyui/src/components/uploader/uploader.vue"
+Component.options.__file = "/Users/lan/Documents/develop/heyui/src/components/uploader/uploader.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] uploader.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -26972,7 +27034,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.setvalue(option)
         }
       }
-    }, [(!!_vm.render) ? _c('div', {
+    }, [(!!_vm.optionRender) ? _c('div', {
       domProps: {
         "innerHTML": _vm._s(option[_vm.html])
       }
@@ -27641,9 +27703,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'h-menu-li-opened': (_vm.status.opened.indexOf(_vm.data.key) != -1)
     }
   }, [_c('div', {
+    directives: [{
+      name: "tooltip",
+      rawName: "v-tooltip",
+      value: (_vm.inlineCollapsed && !_vm.data.children.length),
+      expression: "inlineCollapsed&&!data.children.length"
+    }],
     staticClass: "h-menu-show",
     class: {
       'h-menu-show-disabled': _vm.data.status.disabled, 'h-menu-li-selected': _vm.data.key && _vm.status.selected == _vm.data.key
+    },
+    attrs: {
+      "content": _vm.data.title,
+      "placement": "right"
     },
     on: {
       "click": function($event) {
@@ -28339,7 +28411,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "data": menu,
         "param": _vm.param,
-        "status": _vm.status
+        "status": _vm.status,
+        "inlineCollapsed": _vm.inlineCollapsed
       },
       on: {
         "trigger": _vm.trigger
