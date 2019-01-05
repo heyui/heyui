@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.13.1-alpha.0"></a>
+## [1.13.1-alpha.0](https://github.com/heyui/heyui/compare/v1.13.0...v1.13.1-alpha.0) (2019-01-05)
+
+
+### Bug Fixes
+
+* **Form:** add number input css ([b3676a3](https://github.com/heyui/heyui/commit/b3676a3))
+* category add datas watch ([3cfcc4a](https://github.com/heyui/heyui/commit/3cfcc4a))
+* **Menu:** add inlineCollapsed mode ([a046ed4](https://github.com/heyui/heyui/commit/a046ed4))
+* **Menu:** optimize size-collapse style ([a7c741e](https://github.com/heyui/heyui/commit/a7c741e))
+* **Select:** rename the prop `render` to `optionRender`, fix [#48](https://github.com/heyui/heyui/issues/48) ([29912a3](https://github.com/heyui/heyui/commit/29912a3))
+* **Tree:** add option datas watch ([2b3201c](https://github.com/heyui/heyui/commit/2b3201c))
+* **Validator:** change module to es6 ([6597981](https://github.com/heyui/heyui/commit/6597981))
+* **Validator:** change module to es6 ([08e7a6f](https://github.com/heyui/heyui/commit/08e7a6f))
+
+
+
 <a name="1.13.0"></a>
 # [1.13.0](https://github.com/heyui/heyui/compare/v1.13.0-alpha.4...v1.13.0) (2018-12-28)
 
