@@ -4156,10 +4156,6 @@ module.exports = Component.exports
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _keys = __webpack_require__(21);
 
 var _keys2 = _interopRequireDefault(_keys);
@@ -4533,7 +4529,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 HeyUI.install = install;
 
-exports.default = HeyUI;
+module.exports = HeyUI;
 
 /***/ }),
 /* 108 */
