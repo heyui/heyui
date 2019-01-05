@@ -46,14 +46,14 @@
       </tr>
       <tr>
         <td>inlineCollapsed</td>
-        <td>是否使用折叠模式</td>
+        <td>是否使用折叠模式，兼容：1.13.1+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>accordion</td>
-        <td>是否启动手风琴模式</td>
+        <td>是否启动手风琴模式，兼容：1.12.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
