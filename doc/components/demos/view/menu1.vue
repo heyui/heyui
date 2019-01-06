@@ -1,3 +1,9 @@
+<style lang="less">
+ .menu-demo-1-vue{
+   transition: 0.6s width;
+ }
+</style>
+
 <template>
   <div>
     <p>
@@ -11,7 +17,7 @@
       <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
     </p>
     <div class="bg-gray2-color" v-padding="20">
-      <div v-width="250">
+      <div class="menu-demo-1-vue" :style="{width: inlineCollapsed?'60px':'250px'}">
         <Menu :datas="data" :className="theme" :inlineCollapsed="inlineCollapsed" ref="menu" :accordion="accordion" @select="triggerSelect" @click="triggerClick"></Menu>
       </div>
     </div>
