@@ -25,7 +25,8 @@
       .middle();
     }
     &-desc {
-
+      transition: opacity .3s cubic-bezier(.645, .045, .355, 1),width .3s cubic-bezier(.645, .045, .355, 1);
+      opacity: 1;
     }
     &-icon {
       // font-size: 120%;
@@ -150,7 +151,8 @@
         }
         .h-menu-show-desc {
           opacity: 0;
-          position: absolute;
+          // position: absolute;
+          display: inline-block;
           width: 0;
           text-overflow: clip;
         }
