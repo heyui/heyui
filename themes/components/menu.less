@@ -14,20 +14,24 @@
   }
   &-show {
     position: relative;
-    padding: 0px 26px;
-    height: 40px;
-    line-height: 40px;
+    padding: 15px 26px;
     cursor: pointer;
+    text-overflow: clip;
+    white-space: nowrap;
+    transition: padding .2s;
     &-expand {
       right: 20px;
       font-size: 12px;
       .middle();
     }
     &-desc {
-      transition: opacity,width .2s;
-    }
 
+    }
+    &-icon {
+      // font-size: 120%;
+    }
     &-count{
+      transition: right .2s;
       z-index: 2;
       right: 60px;
       .middle();
@@ -62,9 +66,6 @@
   }
   .h-menu-show {
     transition: color @transition-time;
-    &-desc {
-      transition-delay: 0.3s;
-    }
     &-icon{
       margin-right: 5px;
     }
@@ -142,18 +143,16 @@
   &&-size-collapse {
     > .h-menu-li {
       > .h-menu-show {
-        padding: 0px 22px;
+        padding-left: 22px;
+        padding-right: 22px;
         .h-menu-show-icon{
-          font-size: 16px;
           margin-right: 0px;
-          transition: .4s;
         }
         .h-menu-show-desc {
           opacity: 0;
           position: absolute;
           width: 0;
           text-overflow: clip;
-          transition-delay: 0s;
         }
         .h-menu-show-count{
           right: 10px;
