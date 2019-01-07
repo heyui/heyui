@@ -1,6 +1,6 @@
 <style lang="less">
  .menu-demo-1-vue{
-   transition: 0.4s width cubic-bezier(0.01, 0.71, 0.54, 1);
+   transition: 0.2s width cubic-bezier(0.01, 0.71, 0.54, 1);
  }
 </style>
 
