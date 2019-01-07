@@ -20,7 +20,8 @@ const loadData = function (filter, callback) {
     });
 }
 const menus = utils.toArray({
-  basicGrid: 'Grid 布局',
+  basicGrid: 'Grid 栅格',
+  basicLayout: 'Layout 布局',
   basicColor: 'Color 色彩',
   basicIcon: 'Icon 图标',
   basicExtend: 'Extend 扩展',

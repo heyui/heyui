@@ -19,6 +19,9 @@
               <router-link to="/en/component/basic/grid">Grid</router-link>
             </li>
             <li>
+              <router-link to="/en/component/basic/layout">Layout</router-link>
+            </li>
+            <li>
               <router-link to="/en/component/basic/color">Color</router-link>
             </li>
             <li>

@@ -1,6 +1,6 @@
 <template>
   <div class="doc">
-    <h2>Grid 布局</h2>
+    <h2>Grid 栅格</h2>
     <p>我们采用标准的24格布局容器，利用容器完成简单的网络布局。</p>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-row</code>, <code>h-col</code>。</p>
     <h3>基本的排版</h3>

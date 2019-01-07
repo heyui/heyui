@@ -25,6 +25,14 @@ const router = [{
     component: () =>
       import ('components_en/component/basic/grid')
   }, {
+    path: 'basic/layout',
+    name: 'en_basicLayout',
+    meta: {
+      title: 'Layout',
+    },
+    component: () =>
+      import ('components_en/component/basic/layout')
+  }, {
     path: 'basic/color',
     name: 'en_basicColor',
     meta: {

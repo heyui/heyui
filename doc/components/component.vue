@@ -17,7 +17,10 @@
           <li class="title">样式</li>
           <ul>
             <li>
-              <router-link to="/component/basic/grid">Grid 布局</router-link>
+              <router-link to="/component/basic/grid">Grid 栅格</router-link>
+            </li>
+            <li>
+              <router-link to="/component/basic/layout">Layout 布局</router-link>
             </li>
             <li>
               <router-link to="/component/basic/color">Color 色彩</router-link>

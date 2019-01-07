@@ -6,7 +6,7 @@
 <script>
 import utils from '../../utils/utils';
 
-const prefixCls = 'h-footer';
+const prefixCls = 'h-layout-footer';
 
 export default {
   name: 'hFooter',

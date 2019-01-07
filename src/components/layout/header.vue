@@ -6,7 +6,7 @@
 <script>
 import utils from '../../utils/utils';
 
-const prefixCls = 'h-header';
+const prefixCls = 'h-layout-header';
 
 export default {
   name: 'hHeader',

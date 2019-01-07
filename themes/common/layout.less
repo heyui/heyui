@@ -1,10 +1,26 @@
 @layout-prefix: ~"@{prefix}layout";
-@header-prefix: ~"@{prefix}header";
-@content-prefix: ~"@{prefix}content";
-@footer-prefix: ~"@{prefix}footer";
-@sider-prefix: ~"@{prefix}sider";
+@header-prefix: ~"@{prefix}layout-header";
+@content-prefix: ~"@{prefix}layout-content";
+@footer-prefix: ~"@{prefix}layout-footer";
+@sider-prefix: ~"@{prefix}layout-sider";
 
 
 .@{layout-prefix} {
-  
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  min-height: 0;
+  &&-has-sider{
+    flex-direction: row;
+  }
+}
+
+.@{header-prefix}, .@{footer-prefix} {
+  height: 64px;
+}
+
+.@{sider-prefix} {
+  transition: all .2s;
+  position: relative;
+  min-width: 0;
 }

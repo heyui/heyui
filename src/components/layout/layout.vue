@@ -14,13 +14,28 @@ export default {
   },
   computed: {
     classes() {
-      let classList = [`${prefixCls}`];
+      let classList = {
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-has-sider`]: this.hasSiderChild
+      };
       return classList;
     },
     styles() {
       let style = {};
       
       return style;
+    },
+    hasSiderChild() {
+      let siderTag = new Set(['Slider', 'h-sider']);
+      this.$nextTick(()=>{
+        log(this.$children.length)
+      })
+      for (let c of this.$children) {
+        if(siderTag.has(c.$options._componentTag || c.$options.name)) {
+          return true;
+        }
+      }
+      return false;
     }
   }
 };
