@@ -46,6 +46,13 @@ import AutoComplete from './components/autocomplete';
 import {
   Row,
   Col
+} from './components/grid';
+import {
+  HHeader,
+  HFooter,
+  Content,
+  Sider,
+  Layout,
 } from './components/layout';
 import Timeline from './components/timeline';
 import Transfer from './components/transfer';
@@ -127,6 +134,11 @@ const components = {
   CarouselItem: Carousel.CarouselItem,
   Collapse,
   CollapseItem,
+  HHeader,
+  HFooter,
+  Content,
+  Sider,
+  Layout,
 };
 
 const directives = {
