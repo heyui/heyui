@@ -44,7 +44,7 @@
     <table class="table">
       <tr>
         <th>事件</th>
-        <th>数据</th>
+        <th>描述</th>
         <th>返回值</th>
       </tr>
       <tr>
@@ -79,7 +79,7 @@
       </tr>
     </table>
 
-    <h3>CollapseItem slot参数</h3>
+    <h3>CollapseItem slot 参数</h3>
     <table class="table">
       <tr>
         <th>名称</th>
