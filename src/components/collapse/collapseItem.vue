@@ -1,16 +1,18 @@
 <template>
-  <div :class="collapseItemCls">
-    <div :class="collapseItemHeaderCls" @click="toggle">
+  <div class="h-collapse-item" :class="{'h-collapse-item-active': isActive}">
+    <div class="h-collapse-item-header" @click="toggle">
+      <span class=""></span>
+      <i class="h-collapse-item-expand h-icon-right"></i>
       <slot name="title">{{title}}</slot>
-      <i class="h-collapse-item-arrow h-icon-right"></i>
     </div>
-    <div :class="collapseItemContentCls">
-      <slot></slot>
+    <div class="h-collapse-item-content">
+      <div class="h-collapse-item-content-box">
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
 <script>
-const prefix = 'h-collapse-item';
 
 export default {
   name: 'hCollapseItem',
@@ -32,22 +34,6 @@ export default {
   },
   inject: ['collapse'],
   computed: {
-    collapseItemCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-active`]: this.isActive,
-      }
-    },
-    collapseItemHeaderCls() {
-      return {
-        [`${prefix}-header`]: true,
-      }
-    },
-    collapseItemContentCls() {
-      return {
-        [`${prefix}-content`]: true,
-      }
-    }
   },
   created() {
     
