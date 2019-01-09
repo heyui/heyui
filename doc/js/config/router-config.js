@@ -653,7 +653,12 @@ const router = {
     path: '/about',
     name: 'about',
     component: (resolve) => require(['components/about'], resolve)
-  }, ...enRouters]
+  }, {
+    path: '/frame/example',
+    name: 'frameExample',
+    component: (resolve) => require(['components/common/example-html'], resolve)
+  },
+  ...enRouters]
 }
 
 

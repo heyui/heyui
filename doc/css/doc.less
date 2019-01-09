@@ -11,7 +11,7 @@ body {
   color: #34495e;
   margin: 0px;
   font-size: 15px;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 h2,
@@ -767,5 +767,35 @@ h2 {
       width: 320px;
       height: 320px;
     }
+  }
+}
+
+.browser-mockup {
+  border-top: 2em solid rgba(230,230,230,0.7);
+  box-shadow: 0 0.1em 0.5em 0 rgba(0,0,0,0.28);
+  position: relative;
+  border-radius: 3px 3px 0 0;
+  &:before{
+    display: block;
+    position: absolute;
+    content: '';
+    top: -1.25em;
+    left: 1em;
+    width: .5em;
+    height: .5em;
+    border-radius: 50%;
+    background-color: #f44;
+    box-shadow: 0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5;
+  }
+  &:after{
+    display: block;
+    position: absolute;
+    content: '';
+    top: -1.6em;
+    left: 5.5em;
+    right: 10px;
+    height: 1.2em;
+    border-radius: 2px;
+    background-color: white;
   }
 }

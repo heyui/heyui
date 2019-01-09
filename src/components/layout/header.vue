@@ -11,11 +11,14 @@ const prefixCls = 'h-layout-header';
 export default {
   name: 'hHeader',
   props: {
+    theme: String
   },
   computed: {
     classes() {
-      let classList = [`${prefixCls}`];
-      return classList;
+      return {
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-theme-${this.theme}`]: this.theme
+      };
     },
     styles() {
       let style = {};

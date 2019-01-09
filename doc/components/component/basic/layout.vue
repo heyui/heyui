@@ -5,14 +5,15 @@
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-layout</code>, <code>h-header</code>, <code>h-footer</code>, <code>h-content</code>, <code>h-sider</code>。</p>
     <h3>基本的页面布局</h3>
     <example demo="basic/layout1"></example>
-    <h3>组件排版</h3>
-    <example demo="basic/layout2"></example>
-    <h3>区块间隔</h3>
-    <example demo="basic/layout3"></example>
-    <h3>横向，竖向区块间隔</h3>
-    <example demo="basic/layout4"></example>
-    <h3>Flex布局</h3>
-    <example demo="basic/layout5"></example>
+
+    <h3>上中下布局</h3>
+    <p>最基本的『上-中-下』布局。</p>
+    <example demo="basic/layout2" iframe></example>
+    <h3>上左右布局</h3>
+    <example demo="basic/layout3" iframe></example>
+    <h3>左上下布局</h3>
+    <example demo="basic/layout4" iframe></example>
+    
     <h3>Layout 参数</h3>
     <table class="table">
       <tr>

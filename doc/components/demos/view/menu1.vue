@@ -17,7 +17,7 @@
       <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
     </p>
     <div class="bg-gray2-color" v-padding="20">
-      <div class="menu-demo-1-vue" :style="{width: inlineCollapsed?'60px':'250px'}">
+      <div class="menu-demo-1-vue" :style="{width: inlineCollapsed?'70px':'250px'}">
         <Menu :datas="data" :className="theme" :inlineCollapsed="inlineCollapsed" ref="menu" :accordion="accordion" @select="triggerSelect" @click="triggerClick"></Menu>
       </div>
     </div>

@@ -11,24 +11,24 @@ const prefixCls = 'h-layout-sider';
 export default {
   name: 'hSider',
   props: {
-    width: {
-      type: Number,
-      default: 200
-    }
+    theme: String
   },
   computed: {
     classes() {
-      let classList = [`${prefixCls}`];
-      return classList;
+      return {
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-theme-${this.theme}`]: this.theme
+      };
     },
     styles() {
       let style = {
-        flex: `0 0 ${this.width}px`,
-        [`max-width`]: `${this.width}px`,
-        [`min-width`]: `${this.width}px`,
-        width: `${this.width}px`
       };
       return style;
+    }
+  },
+  beforeDestroyed() {
+    if(this.$parent && this.$parent.updateSider) {
+      this.$parent.updateSider();
     }
   }
 };

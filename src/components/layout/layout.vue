@@ -11,12 +11,49 @@ const prefixCls = 'h-layout';
 export default {
   name: 'hLayout',
   props: {
+    headerFixed: {
+      type: Boolean,
+      default: false
+    },
+    siderFixed: {
+      type: Boolean,
+      default: false
+    },
+    siderCollapsed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      hasSiderChild: false
+    }
+  },
+  mounted() {
+    this.updateSider();
+  },
+  methods: {
+    updateSider() {
+      const siderTag = new Set(['hSider', 'Sider', 'h-sider']);
+      this.$nextTick(()=>{
+        for (let c of this.$children) {
+          if(siderTag.has(c.$options._componentTag || c.$options.name)) {
+            this.hasSiderChild = true;
+            return;
+          }
+        }
+        this.hasSiderChild = false;
+      })
+    }
   },
   computed: {
     classes() {
       let classList = {
         [`${prefixCls}`]: true,
-        [`${prefixCls}-has-sider`]: this.hasSiderChild
+        [`${prefixCls}-has-sider`]: this.hasSiderChild,
+        [`${prefixCls}-header-fixed`]: this.headerFixed,
+        [`${prefixCls}-sider-fixed`]: this.siderFixed && !this.siderCollapsed,
+        [`${prefixCls}-sider-collapsed`]: this.siderCollapsed,
       };
       return classList;
     },
@@ -24,18 +61,6 @@ export default {
       let style = {};
       
       return style;
-    },
-    hasSiderChild() {
-      let siderTag = new Set(['Slider', 'h-sider']);
-      this.$nextTick(()=>{
-        log(this.$children.length)
-      })
-      for (let c of this.$children) {
-        if(siderTag.has(c.$options._componentTag || c.$options.name)) {
-          return true;
-        }
-      }
-      return false;
     }
   }
 };
