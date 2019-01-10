@@ -50,7 +50,7 @@ export default {
         [`${prefixCls}`]: true,
         [`${prefixCls}-has-sider`]: this.hasSiderChild,
         [`${prefixCls}-header-fixed`]: this.headerFixed,
-        [`${prefixCls}-sider-fixed`]: this.siderFixed && !this.siderCollapsed,
+        [`${prefixCls}-sider-fixed`]: this.siderFixed,
         [`${prefixCls}-sider-collapsed`]: this.siderCollapsed,
       };
       return classList;
