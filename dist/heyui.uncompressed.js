@@ -10119,7 +10119,7 @@ exports.default = {
     classes: function classes() {
       var _classList;
 
-      var classList = (_classList = {}, (0, _defineProperty3.default)(_classList, '' + prefixCls, true), (0, _defineProperty3.default)(_classList, prefixCls + '-has-sider', this.hasSiderChild), (0, _defineProperty3.default)(_classList, prefixCls + '-header-fixed', this.headerFixed), (0, _defineProperty3.default)(_classList, prefixCls + '-sider-fixed', this.siderFixed && !this.siderCollapsed), (0, _defineProperty3.default)(_classList, prefixCls + '-sider-collapsed', this.siderCollapsed), _classList);
+      var classList = (_classList = {}, (0, _defineProperty3.default)(_classList, '' + prefixCls, true), (0, _defineProperty3.default)(_classList, prefixCls + '-has-sider', this.hasSiderChild), (0, _defineProperty3.default)(_classList, prefixCls + '-header-fixed', this.headerFixed), (0, _defineProperty3.default)(_classList, prefixCls + '-sider-fixed', this.siderFixed), (0, _defineProperty3.default)(_classList, prefixCls + '-sider-collapsed', this.siderCollapsed), _classList);
       return classList;
     },
     styles: function styles() {
