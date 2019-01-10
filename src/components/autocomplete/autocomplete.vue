@@ -451,7 +451,11 @@ export default {
       if (this.multiple) {
         this.objects.push(utils.copy(data))
       } else {
-        this.object = utils.copy(data)
+        if (data === null || data === undefined) {
+          this.object = { key: null, title: null, value: null };
+        } else {
+          this.object = utils.copy(data)
+        }
       }
       this.tempValue = null
     },
