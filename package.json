@@ -17,7 +17,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lodash.get": "^4.4.2",
     "manba": "^1.2.0"
   },
   "devDependencies": {

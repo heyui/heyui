@@ -3,7 +3,7 @@
 </template>
 <script>
 import utils from '../../utils/utils';
-import _get from 'lodash.get';
+import hutils from 'hey-utils';
 
 export default {
   name: 'hTableTd',
@@ -26,7 +26,7 @@ export default {
     },
     show() {
       if (this.prop=='$index') return this.index;
-      let value = _get(this.data, this.prop);
+      let value = hutils.getKeyValue(this.data, this.prop);
       if (this.dict) {
         return utils.dictMapping(value, this.dict);
       }
