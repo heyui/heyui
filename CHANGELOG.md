@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.14.0-alpha.2"></a>
+# [1.14.0-alpha.2](https://github.com/heyui/heyui/compare/v1.14.0-alpha.1...v1.14.0-alpha.2) (2019-01-10)
+
+
+### Bug Fixes
+
+* **Layout:** add clearfix style ([12dd7f2](https://github.com/heyui/heyui/commit/12dd7f2))
+
+
+
 <a name="1.14.0-alpha.1"></a>
 # [1.14.0-alpha.1](https://github.com/heyui/heyui/compare/v1.14.0-alpha.0...v1.14.0-alpha.1) (2019-01-10)
 
