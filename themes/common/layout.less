@@ -15,7 +15,7 @@
     flex-direction: row;
   }
   &&-header-fixed {
-    padding-top: @layout-header-width;
+    padding-top: @layout-header-height;
     > .@{header-prefix} {
       top: 0;
       left: 0;
@@ -56,7 +56,7 @@
     }
   }
   &&-header-fixed > &-sider-fixed > .@{sider-prefix}{
-    top: @layout-header-width;
+    top: @layout-header-height;
   }
   &&-has-sider > &-header-fixed > .@{header-prefix}{
     left: @layout-sider-width;
@@ -67,8 +67,8 @@
 }
 
 .@{header-prefix}{
-  height: @layout-header-width;
-  line-height: @layout-header-width;
+  height: @layout-header-height;
+  line-height: @layout-header-height;
   z-index: 1;
   &-theme-dark {
     color: rgba(255,255,255,0.65);

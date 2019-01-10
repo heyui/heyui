@@ -7,7 +7,7 @@
     <h3>Overview of Components</h3>
     <p>Components are configured in <code>var.less</code> with three sizes:</p>
     <ul class="text-ul">
-      <li><code>@layout-header-width</code>: The height of the header, default value: 64px</li>
+      <li><code>@layout-header-height</code>: The height of the header, default value: 64px</li>
       <li><code>@layout-sider-width</code>: Sider width, default value: 200px</li>
       <li><code>@layout-sider-collapse-width</code>: The width that Sider collapsed, default value: 70px</li>
     </ul>

@@ -7,7 +7,7 @@
     <h3>组件概述</h3>
     <p>组件在<code>var.less</code>中配置三个尺寸，分别为：</p>
     <ul class="text-ul">
-      <li><code>@layout-header-width</code>: 布局中Header的高度，默认值为: 64px</li>
+      <li><code>@layout-header-height</code>: 布局中Header的高度，默认值为: 64px</li>
       <li><code>@layout-sider-width</code>: 布局中Sider的宽度，默认值为: 200px</li>
       <li><code>@layout-sider-collapse-width</code>: 布局中Sider收起的宽度，默认值为: 70px</li>
     </ul>
