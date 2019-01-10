@@ -1,8 +1,18 @@
 <template>
   <div class="doc">
     <h2>Layout 布局</h2>
-    <p></p>
+    <blockquote>1.14.0+</blockquote>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-layout</code>, <code>h-header</code>, <code>h-footer</code>, <code>h-content</code>, <code>h-sider</code>。</p>
+
+    <h3>组件概述</h3>
+    <p>组件在<code>var.less</code>中配置三个尺寸，分别为：</p>
+    <ul class="text-ul">
+      <li><code>@layout-header-width</code>: 布局中Header的高度，默认值为: 64px</li>
+      <li><code>@layout-sider-width</code>: 布局中Sider的宽度，默认值为: 200px</li>
+      <li><code>@layout-sider-collapse-width</code>: 布局中Sider收起的宽度，默认值为: 70px</li>
+    </ul>
+    <p>用户可以通过自己的设计需求修改这三个尺寸，<code>var.less</code>文件的内容：<a href="https://github.com/heyui/heyui/blob/master/themes/var.less" target="_blank">链接</a></p>
+
     <h3>基本的页面布局</h3>
     <example demo="basic/layout1"></example>
 
@@ -24,53 +34,62 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>type</td>
-        <td>模式</td>
-        <td>string</td>
-        <td>flex</td>
+        <td>headerFixed</td>
+        <td>是否固定头部</td>
+        <td>Boolean</td>
+        <td>false</td>
         <td>-</td>
       </tr>
       <tr>
-        <td>space</td>
-        <td>区块间隔</td>
-        <td>number</td>
+        <td>siderFixed</td>
+        <td>是否固定侧边栏</td>
+        <td>Boolean</td>
+        <td>false</td>
         <td>-</td>
-        <td>0</td>
       </tr>
       <tr>
-        <td>space-x</td>
-        <td>横向区块间隔</td>
-        <td>number</td>
+        <td>siderCollapsed</td>
+        <td>是否收起侧边栏</td>
+        <td>Boolean</td>
+        <td>false</td>
         <td>-</td>
-        <td>0</td>
+      </tr>
+    </table>
+
+
+    <h3>Header 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
       </tr>
       <tr>
-        <td>space-y</td>
-        <td>竖向区块间隔</td>
-        <td>number</td>
-        <td>-</td>
-        <td>0</td>
+        <td>theme</td>
+        <td>主题</td>
+        <td>String</td>
+        <td></td>
+        <td>white, dark</td>
+      </tr>
+    </table>
+
+    <h3>Sider 参数</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+        <th>类型</th>
+        <th>可选值</th>
+        <th>默认值</th>
       </tr>
       <tr>
-        <td>direction</td>
-        <td>flex布局区块方向</td>
-        <td>string</td>
-        <td>row, column, row-reverse, column-reverse</td>
-        <td>row</td>
-      </tr>
-      <tr>
-        <td>justify</td>
-        <td>flex布局区块排列方式</td>
-        <td>string</td>
-        <td>start, end, center, space-around, space-between</td>
-        <td>start</td>
-      </tr>
-      <tr>
-        <td>align</td>
-        <td>flex布局区块对齐方式</td>
-        <td>string</td>
-        <td>top, middle, bottom</td>
-        <td>top</td>
+        <td>theme</td>
+        <td>主题</td>
+        <td>String</td>
+        <td></td>
+        <td>white, dark</td>
       </tr>
     </table>
   </div>

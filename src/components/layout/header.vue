@@ -1,11 +1,9 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
-
 const prefixCls = 'h-layout-header';
 
 export default {
@@ -19,11 +17,6 @@ export default {
         [`${prefixCls}`]: true,
         [`${prefixCls}-theme-${this.theme}`]: this.theme
       };
-    },
-    styles() {
-      let style = {};
-      
-      return style;
     }
   }
 };
