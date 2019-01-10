@@ -42,7 +42,7 @@
         <td>自定义class</td>
         <td>string</td>
         <td>-</td>
-        <td>h-menu-dark</td>
+        <td>h-menu-dark, h-menu-white</td>
       </tr>
       <tr>
         <td>inlineCollapsed</td>
