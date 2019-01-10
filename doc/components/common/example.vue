@@ -1,7 +1,7 @@
 <template>
   <div class="demo-box">
     <div class="demo" v-if="noDemo!==true">
-      <div class="browser-mockup" v-if="iframe"><iframe :src="iframePath" width="100%" frameborder="0" height="400"></iframe></div>
+      <div class="browser-mockup" v-if="iframe"><iframe style="display: block; border: 0px;" :src="iframePath" width="100%" frameborder="0" height="400"></iframe></div>
       <component v-else :is="com" :key="com"></component>
     </div>
     <pre v-highlightjs="sourcecode" :class="{'expand':expand}"><code class="html"></code></pre>
