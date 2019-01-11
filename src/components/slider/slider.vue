@@ -121,6 +121,7 @@ export default {
       if (!this.hasStart) {
         nowValue = nowPosition;
         this.$emit('input', nowValue);
+        this.$emit('change', nowValue);
         type = 'end';
       } else {
         nowValue = {};
@@ -145,6 +146,7 @@ export default {
       }
 
       this.$emit('input', nowValue);
+      this.$emit('change', nowValue);
       let evt = document.createEvent("CustomEvent");
       evt.initCustomEvent("setvalue", true, true, nowValue);
       this.$el.dispatchEvent(evt);

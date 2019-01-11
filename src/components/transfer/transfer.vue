@@ -97,6 +97,7 @@
           this.rtChecked.length =  0;
         }
         this.$emit('input', value);
+        this.$emit('change', value);
       }   
     },
     computed: {

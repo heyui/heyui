@@ -27,6 +27,7 @@ export default {
     setvalue(value) {
       if (this.readonly) return;
       this.$emit('input', value);
+      this.$emit('change', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.value);
       this.$el.dispatchEvent(event);

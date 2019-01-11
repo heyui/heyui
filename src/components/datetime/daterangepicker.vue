@@ -283,6 +283,7 @@ export default {
       }
       this.parse(value);
       this.$emit('input', value);
+      this.$emit('change', value);
       let event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
