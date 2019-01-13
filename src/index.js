@@ -60,6 +60,7 @@ import { Button, ButtonGroup } from './components/button';
 import TextEllipsis from './components/textellipsis';
 import Carousel from './components/carousel';
 import { Collapse, CollapseItem } from './components/collapse';
+import CollapseTransition from './components/transition/collapse-transition';
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -134,6 +135,7 @@ const components = {
   CarouselItem: Carousel.CarouselItem,
   Collapse,
   CollapseItem,
+  CollapseTransition,
   HHeader,
   HFooter,
   Content,

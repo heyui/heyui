@@ -5,11 +5,13 @@
       <i class="h-collapse-item-expand h-icon-right"></i>
       <slot name="title">{{title}}</slot>
     </div>
-    <div class="h-collapse-item-content">
-      <div class="h-collapse-item-content-box">
-        <slot></slot>
+    <h-collapse-transition>
+      <div class="h-collapse-item-content" v-show="isActive">
+        <div class="h-collapse-item-content-box">
+          <slot></slot>
+        </div>
       </div>
-    </div>
+    </h-collapse-transition>
   </div>
 </template>
 <script>
@@ -42,7 +44,6 @@ export default {
     toggle() {
       this.collapse.toggle(this.name || this.index)
     }
-    // }
   },
 }
 </script>
