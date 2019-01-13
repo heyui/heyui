@@ -1,12 +1,10 @@
 <template>
-  <div :class="collapseCls">
+  <div class="h-collapse">
     <slot></slot>
   </div>
 </template>
 <script>
 import CollapseItem from './collapseItem'
-
-const prefixCls = 'h-collapse'
 
 export default {
   name: 'hCollapse',
@@ -33,14 +31,6 @@ export default {
     return {
       collapse: this
     }
-  },
-  computed: {
-    collapseCls() {
-      return `${prefixCls}`
-    }
-  },
-  watch: {
-
   },
   mounted() {
     this.setActives();
