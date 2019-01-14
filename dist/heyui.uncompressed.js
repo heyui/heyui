@@ -5291,7 +5291,11 @@ exports.default = {
       if (this.multiple) {
         this.objects.push(_utils2.default.copy(data));
       } else {
-        this.object = _utils2.default.copy(data);
+        if (data === null || data === undefined) {
+          this.object = { key: null, title: null, value: null };
+        } else {
+          this.object = _utils2.default.copy(data);
+        }
       }
       this.tempValue = null;
     },
@@ -7991,6 +7995,7 @@ exports.default = {
       value = (_value2 = {}, (0, _defineProperty3.default)(_value2, this.paramName.start, value.start), (0, _defineProperty3.default)(_value2, this.paramName.end, value.end), (0, _defineProperty3.default)(_value2, 'type', this.view), _value2);
       this.parse(value);
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -8400,6 +8405,7 @@ exports.default = {
         value = (0, _manba2.default)(string).format(this.nowFormat);
       }
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -8795,6 +8801,7 @@ exports.default = {
       value = (_value = {}, (0, _defineProperty3.default)(_value, this.paramName.start, value.start), (0, _defineProperty3.default)(_value, this.paramName.end, value.end), _value);
       this.parse(value);
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -11550,6 +11557,7 @@ exports.default = {
     setvalue: function setvalue(value) {
       if (this.readonly) return;
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.value);
       this.$el.dispatchEvent(event);
@@ -12324,6 +12332,7 @@ exports.default = {
       if (!this.hasStart) {
         nowValue = nowPosition;
         this.$emit('input', nowValue);
+        this.$emit('change', nowValue);
         type = 'end';
       } else {
         nowValue = {};
@@ -12348,6 +12357,7 @@ exports.default = {
       }
 
       this.$emit('input', nowValue);
+      this.$emit('change', nowValue);
       var evt = document.createEvent("CustomEvent");
       evt.initCustomEvent("setvalue", true, true, nowValue);
       this.$el.dispatchEvent(evt);
@@ -12589,6 +12599,7 @@ exports.default = {
       if (this.disabled) return;
       var value = this.isChecked ? this.falseValue : this.trueValue;
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, this.value);
       this.$el.dispatchEvent(event);
@@ -13753,6 +13764,7 @@ exports.default = {
         }
       }
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
@@ -14244,6 +14256,7 @@ exports.default = {
         this.rtChecked.length = 0;
       }
       this.$emit('input', value);
+      this.$emit('change', value);
     }
   },
   computed: {
@@ -15080,6 +15093,7 @@ exports.default = {
       }
       this.updateFromInput = true;
       this.$emit('input', value);
+      this.$emit('change', value);
       var event = document.createEvent("CustomEvent");
       event.initCustomEvent("setvalue", true, true, value);
       this.$el.dispatchEvent(event);
