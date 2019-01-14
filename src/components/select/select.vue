@@ -41,6 +41,7 @@
       <div class="h-select-group-container" v-if="isShow">
         <!-- <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search> -->
         <div class="h-select-list">
+          <slot name="top" :results="filterOptions"></slot>
           <ul class="h-select-ul">
             <template v-for="(option, index) of filterOptions">
             <li v-if="!option.hidden"
@@ -57,6 +58,7 @@
             </template>
             <li v-if="filterOptions.length==0" class="h-select-ul-empty">{{showEmptyContent}}</li>
           </ul>
+          <slot name="bottom" :results="filterOptions"></slot>
         </div>
       </div>
     </div>
