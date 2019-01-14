@@ -78,8 +78,13 @@
       </tr>
     </table>
 
-    <h3 class="democodes">七牛的通用示例</h3>
-    <p>本示例写明了通用的处理方案，如果使用其他上传方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
+    <h3 class="democodes">上传的通用示例</h3>
+    <p>本示例写明了通用的上传处理方案，如果使用自己服务器上传的方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
+    <codes src="/codes/uploader.js" type="javascript"></codes>
+
+
+    <h3 class="democodes">七牛上传的通用示例</h3>
+    <p>本示例写明了七牛上传的处理方案。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
     <codes src="/common/qiniu.vue" type="html"></codes>
   </div>
 </template>
