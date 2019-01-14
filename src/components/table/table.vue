@@ -410,7 +410,13 @@
         this.computeColumns = columns;
       },
       triggerTrClicked(data, event) {
-        if (this.selectWhenClickTr && !utils.hasClass(event.target, 'h-checkbox-native') && !data._disabledSelect) {
+
+        if (this.selectRow && !data._disabledSelect) {
+          this.rowSelected = data;
+          this.$emit('rowSelect', data);
+        }
+
+        if (this.checkbox && this.selectWhenClickTr && !utils.hasClass(event.target, 'h-checkbox-native') && !data._disabledSelect) {
           let list = this.checks;
           if (list.some(item => item == data)) {
             list.splice(list.indexOf(data), 1);
@@ -418,11 +424,7 @@
             list.push(data);
           }
         }
-
-        if (this.selectRow && !data._disabledSelect) {
-          this.rowSelected = data;
-          this.$emit('rowSelect', data);
-        }
+        
         this.$emit('trclick', data, event);
       },
       triggerTrDblclicked(data, event) {
