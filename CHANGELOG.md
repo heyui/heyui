@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/heyui/heyui/compare/v1.14.0-alpha.4...v1.14.0) (2019-01-14)
+
+
+### Bug Fixes
+
+* **AutoComplete:** fix add(undefined) ([90f96aa](https://github.com/heyui/heyui/commit/90f96aa))
+* **Form:** change label color ([29127f2](https://github.com/heyui/heyui/commit/29127f2))
+* **Switch:** add change event ([6b1667c](https://github.com/heyui/heyui/commit/6b1667c))
+* add change event ([806013f](https://github.com/heyui/heyui/commit/806013f))
+
+
+
 <a name="1.14.0-alpha.4"></a>
 # [1.14.0-alpha.4](https://github.com/heyui/heyui/compare/v1.14.0-alpha.3...v1.14.0-alpha.4) (2019-01-10)
 
