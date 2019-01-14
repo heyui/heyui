@@ -165,6 +165,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>readonly</td>
+        <td>show readonly text</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>single</td>
         <td>Whether it is a separate line, mainly used in <code>twocolumn</code> or <code>threecolumn</code> mode.</td>
         <td>Boolean</td>

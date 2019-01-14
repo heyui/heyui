@@ -165,6 +165,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>readonly</td>
+        <td>显示只读文本</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>single</td>
         <td>是否为独立一行，主要是在<code>twocolumn</code>模式下使用，适用于<code>textarea</code>这种不定高度的模块。</td>
         <td>Boolean</td>
