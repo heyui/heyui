@@ -3,7 +3,7 @@
  * HeyUI JavaScript Library
  * https://heyui.top/
  *
- * Copyright (C) Lan 2017-2018
+ * Copyright © Lan 2017-present
  * Released under the MIT license
  *
  */
