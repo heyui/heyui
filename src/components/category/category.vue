@@ -15,7 +15,7 @@
   import utils from '../../utils/utils';
 
   import categoryModal from './categoryModal';
-import func from '../../utils/config';
+  import func from '../../utils/config';
 
   const prefix = 'h-category';
 
@@ -128,7 +128,9 @@ import func from '../../utils/config';
       },
       dispose() {
         if (this.multiple) {
-          return this.objects.map(item => this.type == 'key' ? item.key : item.value);
+          return this.objects.map(item => this.type == 'key' ? item.key : item.value).filter(item => {
+            return item !== undefined
+          });
         } else if (this.object) {
           return this.type == 'key' ? this.object.key : this.object.value;
         }
