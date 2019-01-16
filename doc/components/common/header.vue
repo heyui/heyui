@@ -11,7 +11,7 @@
           <!-- <router-link to="/guide">入门</router-link> -->
           <router-link to="/component">组件</router-link>
           <router-link to="/resource">生态</router-link>
-          <a target="_blank" href="http://admin.heyui.top">Admin</a>
+          <a target="_blank" href="http://admin.heyui.top/login">Admin</a>
           <!-- <router-link to="/about">团队</router-link> -->
         </template>
           <ButtonGroup class="change-lang">
