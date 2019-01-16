@@ -11,6 +11,11 @@
     <example demo="view/table2"></example>
 
     <h3>Data render</h3>
+    <ul class="text-ul">
+      <li><code>unit</code>: setting data unit</li>
+      <li><code>dict</code>: use dict render data</li>
+      <li><code>render</code>: define render function</li>
+    </ul>
     <example demo="view/table9"></example>
 
     <h3>Sort and loading</h3>
@@ -102,10 +107,17 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectWhenClickTr</td>
+        <td>When clicking on tr, trigger the checkbox switch</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
 
-    <h3>Column Property</h3>
+    <h3>TableItem / Column Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>
@@ -142,7 +154,6 @@
         <td>-</td>
         <td></td>
       </tr>
-
       <tr>
         <td>align</td>
         <td>Header alignment in table</td>
@@ -179,11 +190,25 @@
         <td>false</td>
       </tr>
       <tr>
-        <td>selectWhenClickTr</td>
-        <td>When clicking on tr, trigger the checkbox switch</td>
-        <td>Boolean</td>
+        <td>dict</td>
+        <td>use dict render data</td>
+        <td>String</td>
         <td></td>
-        <td>false</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unit</td>
+        <td>setting data unit</td>
+        <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>render</td>
+        <td>define render function</td>
+        <td>Function</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 

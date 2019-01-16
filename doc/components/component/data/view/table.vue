@@ -12,6 +12,11 @@
 
     <h3>数据渲染</h3>
     <p><code>Table</code>组件内置了一系列的数据渲染模式。</p>
+    <ul class="text-ul">
+      <li><code>unit</code>: 定义字段的单位</li>
+      <li><code>dict</code>: 定义字段使用字典渲染</li>
+      <li><code>render</code>: 自定义字段渲染方法</li>
+    </ul>
     <example demo="view/table9"></example>
 
     <h3>排序与加载</h3>
@@ -95,6 +100,20 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectRow</td>
+        <td>单行选中切换</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>selectWhenClickTr</td>
+        <td>当点击tr的时候，触发checkbox选中切换</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
 
@@ -172,18 +191,25 @@
         <td>false</td>
       </tr>
       <tr>
-        <td>selectWhenClickTr</td>
-        <td>当点击tr的时候，触发checkbox选中切换</td>
-        <td>Boolean</td>
+        <td>dict</td>
+        <td>字典渲染字段</td>
+        <td>String</td>
         <td></td>
-        <td>false</td>
+        <td></td>
       </tr>
       <tr>
-        <td>selectRow</td>
-        <td>单行选中切换</td>
-        <td>Boolean</td>
+        <td>unit</td>
+        <td>字段显示单位</td>
+        <td>String</td>
         <td></td>
-        <td>false</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>render</td>
+        <td>自定义字段处理方法</td>
+        <td>Function</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 
