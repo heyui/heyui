@@ -17,7 +17,7 @@
             <p><h-switch v-model="siderCollapsed">收起菜单</h-switch></p>
           </div>
           <HFooter class="text-center">
-            Copyright © <a href="http://www.ch-un.com" target="_blank">Lan</a> 2017-present
+            Copyright © 2019 <a href="http://www.ch-un.com" target="_blank">Lan</a>
           </HFooter>
         </Content>
       </Layout>

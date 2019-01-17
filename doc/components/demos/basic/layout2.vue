@@ -10,7 +10,7 @@
       </div>
     </Content>
     <HFooter class="text-center">
-      Copyright © <a href="http://www.ch-un.com" target="_blank">Lan</a> 2019
+      Copyright © 2019 <a href="http://www.ch-un.com" target="_blank">Lan</a>
     </HFooter>
   </Layout>
 </template>
