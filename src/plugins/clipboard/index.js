@@ -32,7 +32,7 @@ export default function ({ text, showSuccessTip = "复制成功", showFailureTip
     if (showFailureTip) {
       Message.error(showFailureTip)
     }
-    if (successCallback) {
+    if (failureCallback) {
       failureCallback.call();
     }
   }
