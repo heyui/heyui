@@ -201,6 +201,11 @@
         <td>Hide the dropdown box</td>
         <td>none</td>
       </tr>
+      <tr>
+        <td>search</td>
+        <td>trigger search</td>
+        <td>无</td>
+      </tr>
     </table>
     
     <h3>option Property</h3>
@@ -253,6 +258,18 @@
         <td>Number</td>
         <td>-</td>
         <td>100</td>
+      </tr>
+    </table>
+
+    <h3>Slot top/bottom</h3>
+    <table class="table">
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>results</td>
+        <td>results list</td>
       </tr>
     </table>
   </div>

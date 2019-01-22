@@ -6,30 +6,32 @@
            @click.stop="remove(obj)"
            v-if="!disabled"></i></span>
         <input :disabled="disabled"
-               type="text"
-               class="h-autocomplete-input"
-               @focus="focus"
-               v-model="tempValue"
-               @blur.stop="blur"
-               @paste="paste"
-               @keyup="handle"
-               @keydown="keydownHandle"
-               @keypress.enter="enterHandle"
-               :placeholder="showPlaceholder" />
+          ref="input"
+          type="text"
+          class="h-autocomplete-input"
+          @focus="focus"
+          v-model="tempValue"
+          @blur.stop="blur"
+          @paste="paste"
+          @keyup="handle"
+          @keydown="keydownHandle"
+          @keypress.enter="enterHandle"
+          :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
       </template>
       <template v-if="!multiple">
         <input type="text"
-               :disabled="disabled"
-               class="h-autocomplete-input"
-               @focus="focus"
-               v-model="tempValue"
-               @paste="paste"
-               @blur.stop="blur"
-               @keyup="handle"
-               @keypress.enter="enterHandle"
-               :placeholder="showPlaceholder" />
+          ref="input"
+          :disabled="disabled"
+          class="h-autocomplete-input"
+          @focus="focus"
+          v-model="tempValue"
+          @paste="paste"
+          @blur.stop="blur"
+          @keyup="handle"
+          @keypress.enter="enterHandle"
+          :placeholder="showPlaceholder" />
         <i class="h-icon-loading"
            v-if="loading"></i>
         <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
@@ -316,7 +318,7 @@ export default {
       this.focusing = true
       this.focusValue = event.target.value
       if (this.multiple) this.searchValue = null
-      this.search(event.target)
+      this.search()
     },
     focusData(value) {
       this.focusValue = this.object.title
@@ -325,7 +327,7 @@ export default {
     paste(event) {
       setTimeout(() => {
         // this.tempValue = event.target.value;
-        this.search(event.target)
+        this.search()
       }, 0)
     },
     blur(event) {
@@ -377,7 +379,7 @@ export default {
       } else if (code == 13) {
         //compatible ie，use enterHandle handle。
       } else {
-        this.search(event.target)
+        this.search()
       }
     },
     enterHandle(event) {
@@ -393,7 +395,8 @@ export default {
         this.setvalue('enter')
       }
     },
-    search(target) {
+    search() {
+      let target = this.$refs.input;
       let value = target.value
       this.tempValue = value || null
       if (value != this.object.title && this.object.title) {

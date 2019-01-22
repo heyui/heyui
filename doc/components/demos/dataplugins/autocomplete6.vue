@@ -2,42 +2,47 @@
   <div >
     <p>value:{{value}}</p>
     <div v-width="300">
-      <AutoComplete :option="param" v-model="value" @change="onChange">
+      <AutoComplete ref="autocomplete" :option="param" v-model="value" @change="onChange">
         <div slot="top" class="text-center" style="line-height:40px">自定义头部</div>
         <template slot="item" slot-scope="{item}"><div>{{item.title}}<span class="float-right gray-color">{{item.title.length}}个字</span></div></template>
-        <div slot="bottom" class="text-center link" style="line-height:40px">查看更多</div>
+        <div slot="bottom" @mousedown.stop.prevent>
+          <Pagination :cur="pagination.page" :total="pagination.total" @change="changePage" layout="pager" small></Pagination>
+        </div>
       </AutoComplete>
     </div>
   </div>
 </template>
 <script>
 
-import jsonp from 'fetch-jsonp';
-
-const loadData = function (filter, callback) {
-  jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
-    .then(response => response.json())
-    .then((d) => {
-      callback(d.result.map((r) => {
-        return {
-          title: r[0],
-          key: r[1] + Math.random(),
-        };
-      }));
-    });
-}
-
 export default {
   data() {
     return {
-      value: '',
+      pagination: {
+        page: 1,
+        total: 30
+      },
+      value: null,
       param: {
-        loadData,
-        minWord: 1
-      }
+        minWord: 0,
+        loadData: this.loadData
+      },
+      keyword: ''
     }
   },
   methods: {
+    loadData(filter, callback) {
+      if (this.keyword !== filter) {
+        this.keyword = filter;
+        this.pagination.page = 1;
+      }
+      setTimeout(()=>{
+        callback(Array.apply(null, Array(6)).map((item, index)=>`page_${filter}_${this.pagination.page}_${index}`));
+      }, 100)
+    },
+    changePage(page) {
+      this.pagination.page = page.cur;
+      this.$refs.autocomplete.search();
+    },
     onChange(data, trigger) {
       log(data, trigger);
     },

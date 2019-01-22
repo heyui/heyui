@@ -202,6 +202,11 @@
         <td>隐藏下拉框</td>
         <td>无</td>
       </tr>
+      <tr>
+        <td>search</td>
+        <td>主动触发搜索</td>
+        <td>无</td>
+      </tr>
     </table>
     
     <h3>option 配置</h3>
@@ -254,6 +259,19 @@
         <td>Number</td>
         <td>-</td>
         <td>100</td>
+      </tr>
+    </table>
+
+
+    <h3>Slot top/bottom</h3>
+    <table class="table">
+      <tr>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>results</td>
+        <td>当前列表结果值</td>
       </tr>
     </table>
   </div>
