@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.0-alpha.0"></a>
+# [1.15.0-alpha.0](https://github.com/heyui/heyui/compare/v1.14.0...v1.15.0-alpha.0) (2019-01-23)
+
+
+### Bug Fixes
+
+* selectWhenClickTr && selectRow handler ([1534b8e](https://github.com/heyui/heyui/commit/1534b8e))
+* **AutoComplete:** add method search ([2096518](https://github.com/heyui/heyui/commit/2096518))
+* **Category:** fix undefined value dispose ([1a50c66](https://github.com/heyui/heyui/commit/1a50c66))
+* **ClipBoard:** fix failureCallback ([42ff47f](https://github.com/heyui/heyui/commit/42ff47f))
+* **Datetime:** optimize datetime style ([9bf5772](https://github.com/heyui/heyui/commit/9bf5772))
+* **Layout:** fix z-index setting ([71a365d](https://github.com/heyui/heyui/commit/71a365d))
+* **Table:** add render td params ([cc81e86](https://github.com/heyui/heyui/commit/cc81e86))
+* **TextEllipsis:** optimize limit function ([aa827fe](https://github.com/heyui/heyui/commit/aa827fe))
+
+
+### Features
+
+* add collapse-transition ([074a014](https://github.com/heyui/heyui/commit/074a014))
+* **Select:** select add top and bottom ([9d445f8](https://github.com/heyui/heyui/commit/9d445f8))
+
+
+
 <a name="1.14.0"></a>
 # [1.14.0](https://github.com/heyui/heyui/compare/v1.14.0-alpha.4...v1.14.0) (2019-01-14)
 
