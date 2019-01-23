@@ -66,7 +66,11 @@ export default {
             more.style.display = 'inline-block';
             let text = this.text;
             while (title.offsetHeight > this.height && n > 0) {
-              textDom.innerText = text = text.substring(0, text.length-1);
+              if(title.offsetHeight > this.height * 3) {
+                textDom.innerText = text = text.substring(0, Math.floor(text.length / 2));
+              } else {
+                textDom.innerText = text = text.substring(0, text.length-1);
+              }
               n--;
             }
             this.$emit('hide');
