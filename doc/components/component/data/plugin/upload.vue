@@ -16,7 +16,6 @@
 
     <h3>单图片上传-url</h3>    
     <example demo="dataplugins/uploader3"></example>
-
   
     <h3>多图片上传-url数组</h3>
     <example demo="dataplugins/uploader4"></example>
@@ -27,9 +26,11 @@
     <h3>多文件上传</h3>
     <example demo="dataplugins/uploader6"></example>
 
-  
     <h3>拖拽上传</h3>
     <example demo="dataplugins/uploader7"></example>
+
+    <h3>只读展示</h3>
+    <example demo="dataplugins/uploader8"></example>
 
 
     <h3>Uploader 参数</h3>

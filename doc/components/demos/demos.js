@@ -93,6 +93,7 @@ export default {
   'datapluginsUploader5': resolve => require.ensure([], require => require('./dataplugins/uploader5.vue'), 'dataplugins'),
   'datapluginsUploader6': resolve => require.ensure([], require => require('./dataplugins/uploader6.vue'), 'dataplugins'),
   'datapluginsUploader7': resolve => require.ensure([], require => require('./dataplugins/uploader7.vue'), 'dataplugins'),
+  'datapluginsUploader8': resolve => require.ensure([], require => require('./dataplugins/uploader8.vue'), 'dataplugins'),
   'datapluginsSelect1': resolve => require.ensure([], require => require('./dataplugins/select1.vue'), 'dataplugins'),
   'datapluginsSelect2': resolve => require.ensure([], require => require('./dataplugins/select2.vue'), 'dataplugins'),
   'datapluginsSelect3': resolve => require.ensure([], require => require('./dataplugins/select3.vue'), 'dataplugins'),
