@@ -1,8 +1,7 @@
 <template>
   <div>
     <p>total:<NumberInput v-width="200" v-model="total" :useOperate="true" :step="10"></NumberInput></p>
-    <p>pagerSize:<NumberInput v-width="200" v-model="pagerSize" :useOperate="true" :step="1"></NumberInput></p>
-    <Pagination :cur="current" :pagerSize="pagerSize" :total="total" @change="currentChange"></Pagination>
+    <Pagination :cur="current" :total="total" @change="currentChange"></Pagination>
   </div>
 </template>
 
@@ -12,7 +11,6 @@ export default {
     return {
       current: 1,
       total: 40,
-      pagerSize: 5,
     }
   },
   methods: {
