@@ -20,7 +20,8 @@ export default {
           //   require(['./modalTest'], resolve);
           // },
           vue: modalTest,
-          data: { a: 1 }
+          data: { a: 'test1' }, // 子组件使用props params参数获取数据
+          datas: { param2: 'test2' } // 子组件直接使用 props 即可使用，兼容性 1.5.0+
         },
         events: {
           fromchildevent:(modal, data)=>{

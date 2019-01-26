@@ -21,9 +21,9 @@ export default {
         `${link}image-3.jpg`
       ],
       imageObjects: [
-        { thumbUrl: `${link}thumb-1.jpg`, url: `${link}image-1.jpg` },
-        { thumbUrl: `${link}thumb-2.jpg`, url: `${link}image-2.jpg` },
-        { thumbUrl: `${link}thumb-3.jpg`, url: `${link}image-3.jpg` },
+        { thumbUrl: `${link}thumb-4.jpg`, url: `${link}image-4.jpg` },
+        { thumbUrl: `${link}thumb-5.jpg`, url: `${link}image-5.jpg` },
+        { thumbUrl: `${link}thumb-6.jpg`, url: `${link}image-6.jpg` },
       ],
       attachments: [
         { url: `${link}thumb-1.jpg`, name: `文件1.jpg` },

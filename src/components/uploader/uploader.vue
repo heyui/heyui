@@ -47,13 +47,11 @@
         </div>
       </div>
     </template>
-    <ImagePreview v-if="type=='images'" :datas="fileList" v-model="preview" :index="previewIndex"></ImagePreview>
   </div>
 </template>
 <script>
 import utils from '../../utils/utils';
 import config from '../../utils/config';
-import ImagePreview from '../imagepreview/imagepreview';
 
 
 const prefix = 'h-uploader';
@@ -122,15 +120,13 @@ export default {
     },
     clickImage(index, file) {
       if (this.readonly) {
-        this.previewIndex = index;
-        this.preview = true;
+        this.$ImagePreview(this.fileList, index);
       } else {
         this.$emit('imageclick', file);
       }
     },
     previewImage(index) {
-      this.previewIndex = index;
-      this.preview = true;
+      this.$ImagePreview(this.fileList, index);
     },
     getBrowseButton() {
       return this.$el.querySelector(".h-uploader-browse-button");
@@ -203,9 +199,6 @@ export default {
     file() {
       return this.fileList.length ? this.fileList[0] : null;
     }
-  },
-  components: {
-    ImagePreview
   }
 };
 </script>

@@ -19,6 +19,7 @@ import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
+import ImagePreview from './components/imagepreview';
 import Form from './components/form';
 import Menu from './components/menu';
 import modal from './components/modal';
@@ -75,6 +76,7 @@ import $Loading from './plugins/loading';
 import $LoadingBar from './plugins/loadingBar';
 import $ScrollIntoView from './plugins/scrollIntoView';
 import $Clipboard from './plugins/clipboard';
+import $ImagePreview from './plugins/imagepreview';
 
 import filters from './filters';
 import config from './utils/config';
@@ -101,6 +103,7 @@ const components = {
   Form,
   FormItem: Form.Item,
   FormItemList: Form.ItemList,
+  ImagePreview,
   Menu,
   Modal: modal.Modal,
   ModalComponent: modal.ModalComponent,
@@ -202,6 +205,7 @@ const install = function (Vue, opts) {
   HeyUI.$Notice = Vue.prototype.$Notice = $Notice(Vue);
   HeyUI.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
   HeyUI.$Clipboard = Vue.prototype.$Clipboard = $Clipboard;
+  HeyUI.$ImagePreview = Vue.prototype.$ImagePreview = $ImagePreview;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

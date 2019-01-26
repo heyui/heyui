@@ -87,9 +87,6 @@ class Notify {
     } else {
       utils.addClass($body, 'h-notify-no-mask');
     }
-    // if (param.type == 'h-modal') {
-    //   utils.addClass($body, 'h-dropdown-common-container');
-    // }
     if (param.fullScreen) {
       utils.addClass($body, 'h-modal-full-screen');
     }
@@ -122,14 +119,10 @@ class Notify {
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
-        // template: `<div><plugin @event='trigger' :param="propsData" @close="close"></plugin></div>`,
         render(createElement) {
           return createElement(
             'div', {}, [createElement('plugin', {
-              props: {
-                param: this.propsData,
-                params: this.propsData
-              },
+              props: this.propsData,
               on: {
                 event: this.trigger,
                 close: this.close
@@ -139,7 +132,10 @@ class Notify {
         },
         data() {
           return {
-            propsData: param.component.data,
+            propsData: utils.extend({}, param.component.datas, {
+              param: param.component.data,
+              params: param.component.data
+            }),
             modal: that
           }
         },
@@ -278,7 +274,7 @@ class Notify {
     utils.removeClass($body, notifyShowCls);
 
     $body.addEventListener("transitionend", (event) => {
-      if ((event.propertyName == 'opacity' || event.propertyName == 'top' || event.propertyName == 'right') && $body) {
+      if (event.target == this.$container) {
         utils.removeDom($body);
       }
     });

@@ -3,7 +3,7 @@
     <header class="h-modal-header">测试</header>
     <div style="padding:15px">
       <Select dict="simple"></Select>
-      <p>传递的参数：{{params.a}}</p>
+      <p>传递的参数：{{params.a}}, {{param2}}</p>
       <p>vuex传递的值：{{test}}</p>
     </div>
     <footer class="h-modal-footer">
@@ -24,7 +24,8 @@ export default {
     }
   },
   props: {
-    params: Object
+    params: Object,
+    param2: String
   },
   store,
   computed: {
