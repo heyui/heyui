@@ -1,144 +1,115 @@
 <template>
-  <Modal v-model="value" className="h-image-preview-modal">
-    <div class="h-image-preview">
-      <span class="h-image-preview-icon h-image-preview-left-icon"><i class="h-icon-left"></i></span>
-      <img :src="previewFile.url" class="h-image-preview-image" :alt="previewFile.name"></img>
-      <span class="h-image-preview-icon h-image-preview-right-icon"><i class="h-icon-right"></i></span>
+  <Modal :value="value" @input="updateValue" className="h-image-preview-modal">
+    <div class="h-image-preview" :style="previewStyle">
+      <span class="h-image-preview-index"> {{showIndex + 1}} / {{datas.length}} </span>
+      <span v-if="showIndex != 0" class="h-image-preview-icon h-image-preview-left-icon" @click="change(showIndex - 1)"><i class="h-icon-left"></i></span>
+      <transition name="fade">
+        <img :src="previewFile.url" v-show="!changeing" ref="img" @load="initStyle" class="h-image-preview-image" :alt="previewFile.name"/>
+      </transition>
+      <slot :data="previewFile" name="item" :index="index"></slot>
+      <span v-if="showIndex != datas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"><i class="h-icon-right"></i></span>
+      <Loading :loading="changeing"></Loading>
     </div>
   </Modal>
 </template>
 <script>
 
+import utils from '../../utils/utils';
+import Modal from '../modal/modal';
+import Loading from '../loading/loading';
+
 export default {
   name: 'hImagePreview',
   props: {
     value: {
-      type: [Array, Object, String],
+      type: Boolean,
+      default: false
+    },
+    datas: {
+      type: [Array],
       default: () => ([])
     },
-    dataType: {
-      type: String,
-      default: 'file' //url
+    index: {
+      type: Number,
+      default: 0
     },
-    uploadList: { 
-      type: Array,
-      default: () => []
-    },
-    files: {
-      type: [Array, Object, String],
-      default: () => []
-    },
-    limit: Number,
-    className: String,
     readonly: {
       type: Boolean,
       default: false
     }
   },
   data() {
-    let param = {};
-    if (this.config) {
-      param = utils.extend({}, config.getOption("uploader"), this.option);
-    } else {
-      param = utils.extend({}, config.getOption("uploader"), this.option);
-    }
     return {
-      param,
-      preview: false,
-      previewFile: {},
-      isdragging: false
+      height: 0,
+      width: 0,
+      showIndex: this.index,
+      changeing: false
+    }
+  },
+  watch: {
+    value() {
+      if (this.value) {
+        this.width = 0;
+        this.height = 0;
+        this.change(this.index);
+      } else {
+        this.changeing = false;
+      }
     }
   },
   methods: {
-    clickfile(file) {
-      this.$emit('fileclick', file);
-    },
-    clickImage(file) {
-      if (this.readonly) {
-        this.preview = true;
-        this.previewFile = file;
-      } else {
-        this.$emit('imageclick', file);
+    initStyle(e) {
+      let width = this.$refs.img.width;
+      let height = this.$refs.img.height;
+      if (width > 800 || height > 800) {
+        let percent = Math.max(width, height) / 800;
+        width = width / percent;
+        height = height / percent;
       }
+      this.width = width;
+      this.height = height;
+      setTimeout(() => {
+        this.changeing = false;
+      }, 300);
     },
-    previewImage(file) {
-      this.preview = true;
-      this.previewFile = file;
+    updateValue(value) {
+      this.$emit('input', value);
     },
-    getBrowseButton() {
-      return this.$el.querySelector(".h-uploader-browse-button");
-    },
-    getDropElement() {
-      return this.$el.querySelector(".h-uploader-drop-element");
-    },
-    getBackgroundImage(file) {
-      let param = {};
-      if (file.thumbUrl || file.url) {
-        param['background-image'] = `url(${file.thumbUrl || file.url})`;
+    change(index) {
+      if (index < 0 || index > this.datas.length - 1) {
+        return false;
       }
-      return param;
+      this.changeing = true;
+      setTimeout(() => {
+        this.showIndex = index;
+      }, 300);
     },
-    getFileList() {
-      if (this.isSingle) {
-        return this.file ? dispose(this.file, this.dataType, this.param) : null;
-      }
-
-      let list = [];
-      for (let f of this.fileList) {
-        list.push(dispose(f, this.dataType, this.param));
-      }
-      return list;
-    },
-    deleteFile(index) {
-      this.$emit("deletefile", index);
-    }
   },
   computed: {
-    showUploadButton() {
-      if(this.readonly) return false;
-      return (!this.isSingle && (!this.limit || this.limit > this.files.length)) || (this.isSingle&&!this.files);
-    },
-    showReUploadWord() {
-      return this.t('h.uploader.reUpload');
-    },
-    showUploadWord() {
-      return this.t('h.uploader.upload');
-    },
-    isSingle() {
-      return this.type == 'image' || this.type == 'file';
-    },
-    uploaderCls() {
+    previewStyle() {
       return {
-        [prefix]: true,
-        [`${prefix}-${this.type}-container`]: true,
-        [this.className]: this.className
+        height: `${this.height}px`,
+        width: `${this.width}px`,
       }
     },
-    fileList() {
-      let list = [];
-      if (utils.isArray(this.files)) {
-        for (let v of this.files) {
-          list.push(parse(v, this.param));
-        }
-      } else if (this.files) {
-        list.push(parse(this.files, this.param));
+    previewFile() {
+      if (this.datas.length == 0 || this.value === false) {
+        return {};
       }
-
-      if (this.uploadList.length > 0) {
-        if (this.isSingle) {
-          list = [this.uploadList[0]];
-        } else {
-          list.push(...this.uploadList);
+      let data = this.datas[this.showIndex];
+      this.$nextTick(() => {
+        if(this.$refs.img && this.$refs.img.complete) {
+          setTimeout(() => {
+            this.changeing = false;
+          }, 300);
         }
-      }
-      return list;
+      })
+      return utils.isString(data) ? {url: data} : data;
     },
-    file() {
-      return this.fileList.length ? this.fileList[0] : null;
-    }
   },
   components: {
-    Modal
+    Modal,
+    Loading
   }
 };
 </script>

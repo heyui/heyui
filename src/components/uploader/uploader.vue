@@ -1,12 +1,5 @@
 <template>
   <div :class="uploaderCls">
-    <Modal v-model="preview" className="h-image-preview-modal">
-      <div class="h-image-preview">
-        <span class="h-image-preview-icon h-image-preview-left-icon"><i class="h-icon-left"></i></span>
-        <img :src="previewFile.url" class="h-image-preview-image" :alt="previewFile.name"></img>
-        <span class="h-image-preview-icon h-image-preview-right-icon"><i class="h-icon-right"></i></span>
-      </div>
-    </Modal>
     <template v-if="type=='image'">
       <div class="h-uploader-image" v-if="file">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
@@ -31,9 +24,9 @@
         <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
           <Progress :percent="file.percent"  :stroke-width="5"></Progress>
         </div>
-        <div class="h-uploader-image-operate" v-else @click="clickImage(file)" :class="{'h-uploader-image-operate-pointer': readonly}">
+        <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{'h-uploader-image-operate-pointer': readonly}">
           <div v-if="!readonly">
-            <span class="h-uploader-operate" @click="previewImage(file)"><i class="h-icon-fullscreen"></i></span>
+            <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
             <i class="h-split" v-width="3"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
           </div>
@@ -54,12 +47,13 @@
         </div>
       </div>
     </template>
+    <ImagePreview v-if="type=='images'" :datas="fileList" v-model="preview" :index="previewIndex"></ImagePreview>
   </div>
 </template>
 <script>
 import utils from '../../utils/utils';
 import config from '../../utils/config';
-import Modal from '../modal/modal';
+import ImagePreview from '../imagepreview/imagepreview';
 
 
 const prefix = 'h-uploader';
@@ -118,7 +112,7 @@ export default {
     return {
       param,
       preview: false,
-      previewFile: {},
+      previewIndex: -1,
       isdragging: false
     }
   },
@@ -126,17 +120,17 @@ export default {
     clickfile(file) {
       this.$emit('fileclick', file);
     },
-    clickImage(file) {
+    clickImage(index, file) {
       if (this.readonly) {
+        this.previewIndex = index;
         this.preview = true;
-        this.previewFile = file;
       } else {
         this.$emit('imageclick', file);
       }
     },
-    previewImage(file) {
+    previewImage(index) {
+      this.previewIndex = index;
       this.preview = true;
-      this.previewFile = file;
     },
     getBrowseButton() {
       return this.$el.querySelector(".h-uploader-browse-button");
@@ -211,7 +205,7 @@ export default {
     }
   },
   components: {
-    Modal
+    ImagePreview
   }
 };
 </script>

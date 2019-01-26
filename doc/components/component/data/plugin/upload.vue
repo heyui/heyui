@@ -77,6 +77,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>readonly</td>
+        <td>readonly, 1.5.0+</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3 class="democodes">上传的通用示例</h3>
