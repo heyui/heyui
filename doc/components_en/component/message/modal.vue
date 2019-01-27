@@ -59,20 +59,6 @@
         <td>true</td>
       </tr>
       <tr>
-        <td>content</td>
-        <td>content</td>
-        <td>String</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>width</td>
-        <td>Set the width</td>
-        <td>Number</td>
-        <td>-</td>
-        <td></td>
-      </tr>
-      <tr>
         <td>hasDivider</td>
         <td>Is there a line division head and tail?</td>
         <td>Boolean</td>
@@ -101,23 +87,44 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>className</td>
+        <td>class name</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>self defined type</td>
+        <td>String</td>
+        <td>-</td>
+        <td>['drawer-right','drawer-left']</td>
+      </tr>
+      <tr>
         <td>buttons</td>
-        <td>Set the bottom buttons</td>
+        <td>init buttons, only for js</td>
         <td>Array</td>
         <td>-</td>
         <td>['cancel']</td>
       </tr>
       <tr>
-        <td>events</td>
-        <td>Event listener</td>
-        <td>Object</td>
+        <td>content</td>
+        <td>setting modal content, only for js</td>
+        <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
-        <td>className</td>
-        <td>class name</td>
-        <td>String</td>
+        <td>width</td>
+        <td>set modal width, only for js</td>
+        <td>Number</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>events</td>
+        <td>event listener, only for js</td>
+        <td>Object</td>
         <td>-</td>
         <td>-</td>
       </tr>

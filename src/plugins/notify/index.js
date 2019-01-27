@@ -8,7 +8,6 @@ const Default = {
   style: null,
   class: null,
   buttons: [],
-  middle: false,
   hasMask: false,
   closeOnMask: true,
   hasCloseIcon: false,
@@ -87,21 +86,18 @@ class Notify {
     } else {
       utils.addClass($body, 'h-notify-no-mask');
     }
-    if (param.fullScreen) {
-      utils.addClass($body, 'h-modal-full-screen');
-    }
     if (param.class) {
       utils.addClass($body, param.class);
     }
     if (param.className) {
       utils.addClass($body, param.className);
     }
+    if (param.class) {
+      utils.addClass($body, param.class);
+    }
     $body.innerHTML = html;
     let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
     let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);
-    if (param.middle) {
-      utils.addClass($container, `${notifyCls}-container-center`);
-    }
     this.$body = $body;
 
     let content = param.content;
@@ -161,9 +157,6 @@ class Notify {
       utils.addClass($body, param.type);
     }
 
-    if (param.width) {
-      $container.style.width = `${param.width}px`;
-    }
     if (param.height) {
       $content.style.height = `${param.height}px`;
     }
@@ -172,6 +165,9 @@ class Notify {
     }
     if (param.style) {
       utils.addClass($body, param.style);
+    }
+    if (param.width) {
+      $container.style.width = `${param.width}px`;
     }
 
     let parentDom = param.parent || document.body;
@@ -280,7 +276,7 @@ class Notify {
     });
     setTimeout(() => {
       utils.removeDom($body);
-    }, 4000);
+    }, 400);
   }
 }
 

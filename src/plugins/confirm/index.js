@@ -25,7 +25,7 @@ function Confirm(content, title) {
         }
       },
       title,
-      class: 'h-modal-comfirm',
+      className: 'h-modal-comfirm h-modal-type-default',
       hasMask: true,
       closeOnMask: true,
       hasCloseIcon: false,

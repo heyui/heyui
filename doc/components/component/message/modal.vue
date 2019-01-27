@@ -9,6 +9,9 @@
     <h3>基础调用</h3>
     <example demo="message/modal6"></example>
 
+    <h3>自定义Modal</h3>
+    <example demo="message/modal14"></example>
+
     <h3>全屏的Modal</h3>
     <example demo="message/modal12"></example>
 
@@ -31,7 +34,7 @@
     <p>系统开发中，我们经常使用到新增，编辑等功能性以及复用性很强的模块，这里我们提供modal的组件式调用，帮助开发中更好的编写。</p>
     <example demo="message/modal8"></example> -->
 
-    <h3>Js的Modal调用组件</h3>
+    <h3>Modal调用组件</h3>
     <p>使用js调用弹出的组件式Modal，这样不仅方便参数的使用，还可以将js代码集成调用。</p>
     <!-- <blockquote>弹出框中使用的组件和上方Vue调用的组件是同一个，两种方式都能兼容。</blockquote> -->
     <example demo="message/modal11"></example>
@@ -64,20 +67,6 @@
         <td>true</td>
       </tr>
       <tr>
-        <td>content</td>
-        <td>设定内容，目前只支持js定义</td>
-        <td>String</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>width</td>
-        <td>设定宽度，目前只支持js定义</td>
-        <td>Number</td>
-        <td>-</td>
-        <td></td>
-      </tr>
-      <tr>
         <td>hasDivider</td>
         <td>是否有线条分割头部以及尾部</td>
         <td>Boolean</td>
@@ -106,6 +95,20 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>type</td>
+        <td>自定义类型，无默认的打开样式。</td>
+        <td>String</td>
+        <td>-</td>
+        <td>['drawer-right','drawer-left']</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>自定义class</td>
+        <td>String</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>buttons</td>
         <td>设定底层按钮，目前只支持js定义</td>
         <td>Array</td>
@@ -113,16 +116,23 @@
         <td>['cancel']</td>
       </tr>
       <tr>
-        <td>events</td>
-        <td>事件监听</td>
-        <td>Object</td>
+        <td>content</td>
+        <td>设定内容，目前只支持js定义</td>
+        <td>String</td>
         <td>-</td>
         <td>-</td>
       </tr>
       <tr>
-        <td>className</td>
-        <td>自定义class</td>
-        <td>String</td>
+        <td>width</td>
+        <td>设定宽度，目前只支持js定义</td>
+        <td>Number</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>events</td>
+        <td>事件监听，目前只支持js定义</td>
+        <td>Object</td>
         <td>-</td>
         <td>-</td>
       </tr>

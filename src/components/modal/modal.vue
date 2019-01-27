@@ -3,12 +3,14 @@
     <div :class="noticeCls">
       <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
       <div class="h-notify-body" @click.self="setvalue(true)">
-        <div :class="containerCls" v-if="isShow">
-          <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-          <header class="h-modal-header" v-if="hasHeader"><slot name='header'></slot></header>
-          <div :class="contentCls"><slot></slot></div>
-          <footer class="h-modal-footer" v-if="hasFooter"><slot name='footer'></slot></footer>
-        </div>
+        <transition :name="type">
+          <div :class="containerCls" v-if="isShow">
+            <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
+            <header class="h-modal-header" v-if="hasHeader"><slot name='header'></slot></header>
+            <div :class="contentCls"><slot></slot></div>
+            <footer class="h-modal-footer" v-if="hasFooter"><slot name='footer'></slot></footer>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -50,7 +52,12 @@ export default {
       type: Boolean,
       default: false
     },
-    className: String
+    transparent: {
+      type: Boolean,
+      default: false
+    },
+    className: String,
+    type: String
   },
   watch: {
     value() {
@@ -126,19 +133,21 @@ export default {
     containerCls() {
       return {
         [`${notifyprefix}-container`]: true,
-        [`${notifyprefix}-container-center`]: !!this.middle,
       }
     },
     noticeCls() {
       return {
         [prefix]: true,
         [notifyprefix]: true,
+        [`${prefix}-type-default`]: !this.type,
         [`${notifyprefix}-show`]: this.isOpened,
         [`${notifyprefix}-has-mask`]: this.hasMask,
         [`${notifyprefix}-no-mask`]: !this.hasMask,
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
-        [`${notifyprefix}-has-divider`]: this.hasDivider,
-        // 'h-dropdown-common-container': true,
+        [`${prefix}-has-divider`]: this.hasDivider,
+        [`${prefix}-container-center`]: !!this.middle,
+        [`${prefix}-type-${this.type}`]: this.type,
+        [`${prefix}-transparent`]: this.transparent,
         [`${prefix}-full-screen`]: this.fullScreen,
         [this.className]: !!this.className
       }
