@@ -93,7 +93,7 @@
             <li class="title">Advance</li>
             <!--<li><router-link to="/en/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
             <li>
-              <router-link to="/en/component/data/plugin/upload">Upload</router-link>
+              <router-link to="/en/component/data/plugin/upload">Uploader</router-link>
             </li>
             <li>
               <router-link to="/en/component/plugin/tree">Tree</router-link>
@@ -146,6 +146,12 @@
             </li>
             <li>
               <router-link to="/en/component/view/timeline">Timeline</router-link>
+            </li>
+            <li>
+              <router-link to="/en/component/view/imagepreview">ImagePreview</router-link>
+            </li>
+            <li>
+              <router-link to="/en/component/view/carousel">Carousel</router-link>
             </li>
             <li>
               <router-link to="/component/view/transfer">Transfer</router-link>

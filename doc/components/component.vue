@@ -94,7 +94,7 @@
             <li class="title">Advance</li>
             <!--<li><router-link to="/component/data/plugin/city">CityPicker 城市选择</router-link></li>-->
             <li>
-              <router-link to="/component/data/plugin/upload">Upload 上传</router-link>
+              <router-link to="/component/data/plugin/upload">Uploader 上传</router-link>
             </li>
             <li>
               <router-link to="/component/plugin/tree">Tree 树</router-link>
@@ -147,6 +147,9 @@
             </li>
             <li>
               <router-link to="/component/view/timeline">Timeline 时间轴</router-link>
+            </li>
+            <li>
+              <router-link to="/component/view/imagepreview">ImagePreview 图片预览</router-link>
             </li>
             <li>
               <router-link to="/component/view/carousel">Carousel 跑马灯</router-link>

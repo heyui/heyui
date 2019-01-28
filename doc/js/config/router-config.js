@@ -443,6 +443,14 @@ const router = {
       component: () =>
         import ('components/component/view/timeline')
     }, {
+      path: 'view/imagepreview',
+      name: 'viewImagePreview',
+      meta: {
+        title: 'viewImagePreview',
+      },
+      component: () =>
+        import('components/component/view/imagepreview')
+    },{
       path: 'view/carousel',
       name: 'viewCarousel',
       meta: {

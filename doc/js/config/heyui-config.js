@@ -48,7 +48,7 @@ const menus = utils.toArray({
   pluginTreePicker: 'TreePicker 树选择',
   pluginTaginput: 'TagInput 标签输入框',
   pluginNumberinput: 'NumberInput 数字输入框',
-  pluginUpload: 'Upload 上传',
+  pluginUpload: 'Uploader 上传',
   // pluginValid: 'Valid 数据验证',
   // viewSearchinput: 'SearchInput 搜索框',
   viewTable: 'Table 表格',
@@ -83,6 +83,7 @@ const menus = utils.toArray({
   otherBacktop: 'BackTop 返回顶部',
   otherTextellipsis: 'TextEllipsis 超出文本省略',
   viewCarousel: 'Carousel 走马灯',
+  viewImagePreview: 'ImagePreview 图片预览',
 }, 'key', 'title').sort((a, b) => a.title > b.title ? 1 : -1);
 
 const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')[0] }));

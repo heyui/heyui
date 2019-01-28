@@ -446,6 +446,14 @@ const router = [{
     component: () =>
       import ('components_en/component/view/timeline')
   }, {
+    path: 'view/imagepreview',
+    name: 'en_viewImagePreview',
+    meta: {
+      title: 'viewImagePreview',
+    },
+    component: () =>
+      import('components_en/component/view/imagepreview')
+  }, {
     path: 'view/carousel',
     name: 'en_viewCarousel',
     meta: {
