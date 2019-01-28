@@ -16003,8 +16003,8 @@ exports.default = {
   },
 
   methods: {
-    clickfile: function clickfile(file) {
-      this.$emit('fileclick', file);
+    clickfile: function clickfile(file, index) {
+      this.$emit('fileclick', file, index);
     },
     clickImage: function clickImage(index, file) {
       if (this.readonly) {
@@ -29074,7 +29074,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "link",
       on: {
         "click": function($event) {
-          _vm.clickfile(file)
+          _vm.clickfile(file, index)
         }
       }
     }, [_vm._v(_vm._s(file.name))]), (!_vm.readonly) ? _c('i', {
