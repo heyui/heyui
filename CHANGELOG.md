@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.0-alpha.1"></a>
+# [1.15.0-alpha.1](https://github.com/heyui/heyui/compare/v1.15.0-alpha.0...v1.15.0-alpha.1) (2019-01-28)
+
+
+### Bug Fixes
+
+* **ImagePreview:** add $ImagePreview methods ([9021535](https://github.com/heyui/heyui/commit/9021535))
+
+
+### Features
+
+* ImagePreview ([bf59614](https://github.com/heyui/heyui/commit/bf59614))
+* **Modal:** add type parameter ([f7b8b0f](https://github.com/heyui/heyui/commit/f7b8b0f))
+
+
+
 <a name="1.15.0-alpha.0"></a>
 # [1.15.0-alpha.0](https://github.com/heyui/heyui/compare/v1.14.0...v1.15.0-alpha.0) (2019-01-23)
 
