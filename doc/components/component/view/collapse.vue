@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Collapse 折叠面板</h2>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-collapse</code>。</p>
+    <blockquote>1.14.0+</blockquote>
 
     <h3>基本调用</h3>
     <p>可同时展开多个面板，面板之间不影响</p>

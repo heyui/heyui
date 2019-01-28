@@ -1,12 +1,12 @@
 <template>
   <div class="doc">
-    <h2>Upload</h2>
+    <h2>Uploader</h2>
     <p>HeyUI's upload will provide a set of styles and provide seven cattle upload demo.</p>
     <p>Different systems can be developed based on their upload implementation.</p>
     <p>All of the examples will be used with <a href="https://github.com/moxiecode/plupload" target="_blank">plupload</a>, because the component has already implemented drag and drop and upload functions, and it will not be expanded here.</p>
     <p>We will provide a demo using the plupload qiniu upload. Because everyone implements the uploaded package are not consistent, so here will provide a <span class="link" @click="goDown">example</span>。</p>
 
-    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-upload</code>. </p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-uploader</code>. </p>
 
     <h3>Single image upload-file object</h3>
     <example demo="dataplugins/uploader1"></example>
@@ -83,6 +83,20 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Uploader Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Return value</th>
+      </tr>
+      <tr>
+        <td>fileClick</td>
+        <td>when file link clicked</td>
+        <td>file, index</td>
       </tr>
     </table>
 

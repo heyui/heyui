@@ -42,7 +42,7 @@
             <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
           </div>
           <div class="h-uploader-file-info" v-else>
-            <span class="link" @click="clickfile(file)">{{file.name}}</span><i class="h-icon-trash middle-right link" v-if="!readonly" @click="deleteFile(index)"></i>
+            <span class="link" @click="clickfile(file, index)">{{file.name}}</span><i class="h-icon-trash middle-right link" v-if="!readonly" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
@@ -115,8 +115,8 @@ export default {
     }
   },
   methods: {
-    clickfile(file) {
-      this.$emit('fileclick', file);
+    clickfile(file, index) {
+      this.$emit('fileclick', file, index);
     },
     clickImage(index, file) {
       if (this.readonly) {

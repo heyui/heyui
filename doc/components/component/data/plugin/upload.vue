@@ -1,6 +1,6 @@
 <template>
   <div class="doc">
-    <h2>Upload 上传</h2>
+    <h2>Uploader 上传</h2>
     <p>HeyUI的上传，将提供一组样式，并提供七牛上传的demo。</p>
     <p>不同的系统可以根据自己的上传实现来开发。</p>
     <p>所有的示例将使用<a href="https://github.com/moxiecode/plupload" target="_blank">plupload</a>配套使用，因为组件已经将拖拽以及上传功能实现，这里也不做扩展了。</p>
@@ -83,6 +83,21 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+    </table>
+
+
+    <h3>Uploader 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>说明</th>
+        <th>返回数据</th>
+      </tr>
+      <tr>
+        <td>fileClick</td>
+        <td>文件链接点击的时候</td>
+        <td>file, index</td>
       </tr>
     </table>
 

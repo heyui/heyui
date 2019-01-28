@@ -26,15 +26,15 @@ export default {
         { thumbUrl: `${link}thumb-6.jpg`, url: `${link}image-6.jpg` },
       ],
       attachments: [
-        { url: `${link}thumb-1.jpg`, name: `文件1.jpg` },
-        { url: `${link}thumb-2.jpg`, name: `文件2.jpg` },
-        { url: `${link}thumb-3.jpg`, name: `文件3.jpg` },
+        { url: `${link}image-1.jpg`, name: `文件1.jpg` },
+        { url: `${link}image-2.jpg`, name: `文件2.jpg` },
+        { url: `${link}image-3.jpg`, name: `文件3.jpg` },
       ]
     }
   },
   methods: {
-    fileclick() {
-      this.$Message('自定义处理')
+    fileclick(file, index) {
+      this.$ImagePreview(this.attachments, index);
     }
   }
 }

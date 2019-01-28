@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Collapse</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-collapse</code>.</p>
+    <blockquote>1.14.0+</blockquote>
 
     <h3>Basic</h3>
     <p>Multiple panels can be expanded simultaneously without affecting each other.</p>

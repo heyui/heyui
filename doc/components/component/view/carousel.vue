@@ -14,18 +14,6 @@
     <h3>自定义导航</h3>
     <example demo="carousel/carousel4"></example>
 
-    <!-- <h3>带arrow 走马灯</h3>
-    <example demo="carousel/carousel2"></example>
-
-    <h3>arrow的hover方式 无autoplay走马灯</h3>
-    <example demo="carousel/carousel3"></example>
-
-    <h3>loop为false的自定义导航走马灯</h3>
-    <example demo="carousel/carousel4"></example>
-
-    <h3>只有一张图的情况,请自定义不需要下标</h3>
-    <example demo="carousel/carousel5"></example> -->
-
     <h3>Carousel 参数</h3>
     <table class="table">
       <tr>
