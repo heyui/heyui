@@ -9,6 +9,9 @@
     <h3>Basic</h3>
     <example demo="message/modal6"></example>
 
+    <h3>Custom Modal</h3>
+    <example demo="message/modal14"></example>
+
     <h3>Fullscreen modal</h3>
     <example demo="message/modal12"></example>
 
@@ -82,6 +85,13 @@
       <tr>
         <td>fullScreen</td>
         <td>Whether full screen</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>transparent</td>
+        <td>Whether background transparent</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>

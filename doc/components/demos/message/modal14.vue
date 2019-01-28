@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Button @click="openSelfDefine()">自定义弹框</Button>
+    <Button @click="openSelfDefine()">无背景色弹框</Button>
     <Button @click="open('right')">右侧弹框(系统自带)</Button>
     <Button @click="open('left')">左侧弹框(系统自带)</Button>
   </div>

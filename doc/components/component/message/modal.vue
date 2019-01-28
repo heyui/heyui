@@ -95,6 +95,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>transparent</td>
+        <td>是否背景色透明</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>type</td>
         <td>自定义类型，无默认的打开样式。</td>
         <td>String</td>
