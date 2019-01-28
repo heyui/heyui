@@ -8,7 +8,7 @@
     <h3>Readonly</h3>
     <example demo="form/rate2"></example>
 
-    <h3>Radio Property</h3>
+    <h3>Rate Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>
@@ -30,6 +30,25 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Rate Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Return value</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>When data changed</td>
+        <td>total object value</td>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>When data changed</td>
+        <td>v-model value</td>
       </tr>
     </table>
   </div>

@@ -103,7 +103,7 @@
 
     <h3 class="democodes">上传的通用示例</h3>
     <p>本示例写明了通用的上传处理方案，如果使用自己服务器上传的方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
-    <codes src="/codes/uploader.js" type="javascript"></codes>
+    <codes src="/codes/uploader.txt" type="javascript"></codes>
 
 
     <h3 class="democodes">七牛上传的通用示例</h3>

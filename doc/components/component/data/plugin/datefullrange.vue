@@ -70,6 +70,10 @@
         <td>数据产生变化</td>
       </tr>
       <tr>
+        <td>change</td>
+        <td>数据产生变化</td>
+      </tr>
+      <tr>
         <td>confirm</td>
         <td>点击确定按钮</td>
       </tr>

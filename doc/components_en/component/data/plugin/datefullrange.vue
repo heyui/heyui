@@ -72,6 +72,10 @@
         <td>Data changes</td>
       </tr>
       <tr>
+        <td>change</td>
+        <td>Data changes</td>
+      </tr>
+      <tr>
         <td>confirm</td>
         <td>Click OK button</td>
       </tr>

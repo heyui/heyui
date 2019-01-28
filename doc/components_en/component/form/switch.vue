@@ -49,5 +49,24 @@
         <td>false</td>
       </tr>
     </table>
+
+    <h3>Switch Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Return value</th>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>When data changed</td>
+        <td>total object value</td>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>When data changed</td>
+        <td>v-model value</td>
+      </tr>
+    </table>
   </div>
 </template>
