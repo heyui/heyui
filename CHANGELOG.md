@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.1-alpha.0"></a>
+## [1.15.1-alpha.0](https://github.com/heyui/heyui/compare/v1.15.0...v1.15.1-alpha.0) (2019-02-13)
+
+
+### Bug Fixes
+
+* **Menu:** add [@menu-white-background-color](https://github.com/menu-white-background-color) ([726f58f](https://github.com/heyui/heyui/commit/726f58f))
+* **Menu:** remove init menu size ([9568d16](https://github.com/heyui/heyui/commit/9568d16))
+* **Table:** optimize table regulation ([11f672d](https://github.com/heyui/heyui/commit/11f672d))
+
+
+
 <a name="1.15.0"></a>
 # [1.15.0](https://github.com/heyui/heyui/compare/v1.15.0-alpha.2...v1.15.0) (2019-01-29)
 
