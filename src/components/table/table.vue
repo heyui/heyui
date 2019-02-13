@@ -20,10 +20,7 @@
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length"
               :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <slot v-if="!columns.length&&!$scopedSlots.default"></slot>
-          <template v-else>
-            <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c"></TableTh>
-          </template>
+          <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c"></TableTh>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -46,7 +43,7 @@
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
-                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
               </TableTr>
               <tr :key="index+update.datas+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
                 <td class="h-table-expand-cell" :colspan="totalCol">
@@ -71,7 +68,7 @@
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
-                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
               </TableTr>
             </template>
           </tbody>
@@ -86,7 +83,7 @@
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
                 :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
-                <slot :data="d" :index="index" v-if="$scopedSlots.default"></slot>
+                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
               </TableTr>
             </template>
           </tbody>
@@ -104,7 +101,7 @@
             <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length"
               @click.native="checkAll"></Checkbox>
           </th>
-          <th v-for="(c, index) of fixedColumnLeft" :key="index+update.columns" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
+          <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata"></TableTh>
         </tr>
       </table>
     </div>
@@ -114,7 +111,7 @@
           <col v-for="(c, index) of fixedColumnRight" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <th v-for="(c, index) of fixedColumnRight" :key="index+update.columns" :class="{[`text-${c.align}`]: !!c.align}">{{c.title}}</th>
+          <TableTh v-for="(thdata, index) of fixedColumnRight" :key="index+update.columns" v-bind="thdata"></TableTh>
         </tr>
       </table>
     </div>
@@ -124,7 +121,8 @@
 <script>
   import utils from '../../utils/utils';
   import TableTr from './table-tr';
-  import TableTh from './table-item';
+  import TableItem from './table-item';
+  import TableTh from './table-th';
 
   const prefix = 'h-table';
 
@@ -432,6 +430,10 @@
       }
     },
     computed: {
+      isTemplateMode() {
+        let defaultSlot = this.$scopedSlots.default;
+        return defaultSlot && defaultSlot.name == 'normalized';
+      },
       totalCol() {
         return (this.checkbox ? 1 : 0) + this.computeColumns.length;
       },
