@@ -12,7 +12,12 @@
   flex: auto;
   min-height: 0;
   z-index: 1;
+  overflow: hidden;
   .clearfix();
+
+  & &{
+    overflow: hidden;
+  }
   &&-has-sider{
     flex-direction: row;
   }
