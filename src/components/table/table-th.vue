@@ -3,8 +3,8 @@
     <div v-tooltip="tooltip" :placement="placement" :content="content || title">
       <span>{{title}}</span>
       <span class="h-table-sort-handler" v-if="sort">
-        <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == prop" :class="{'sort-selected': sortStatus.type == 'asc' && sortStatus.prop == prop}"><i class="h-icon-top"></i></span>
-        <span class="h-table-sort-desc" v-else :class="{'sort-selected': sortStatus.type == 'desc' && sortStatus.prop == prop}"><i class="h-icon-down"></i></span>
+        <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == prop" :class="{'h-table-sort-selected': sortStatus.type == 'asc' && sortStatus.prop == prop}"><i class="h-icon-top"></i></span>
+        <span class="h-table-sort-desc" v-else :class="{'h-table-sort-selected': sortStatus.type == 'desc' && sortStatus.prop == prop}"><i class="h-icon-down"></i></span>
       </span>
     </div>
   </th>
