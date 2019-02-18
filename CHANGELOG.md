@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.1-alpha.3"></a>
+## [1.15.1-alpha.3](https://github.com/heyui/heyui/compare/v1.15.1-alpha.2...v1.15.1-alpha.3) (2019-02-18)
+
+
+### Bug Fixes
+
+* **Table:** fix click error ([f5d194e](https://github.com/heyui/heyui/commit/f5d194e))
+
+
+
 <a name="1.15.1-alpha.2"></a>
 ## [1.15.1-alpha.2](https://github.com/heyui/heyui/compare/v1.15.1-alpha.1...v1.15.1-alpha.2) (2019-02-18)
 
