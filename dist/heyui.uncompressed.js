@@ -13854,7 +13854,7 @@ exports.default = {
       }
       this.computeColumns = columns;
     },
-    triggerTrClicked: function triggerTrClicked(data, event) {
+    triggerTrClicked: function triggerTrClicked(data, index, event) {
 
       if (this.selectRow && !data._disabledSelect) {
         this.rowSelected = data;
@@ -13872,10 +13872,10 @@ exports.default = {
         }
       }
 
-      this.$emit('trclick', data, event);
+      this.$emit('trclick', data, event, index);
     },
-    triggerTrDblclicked: function triggerTrDblclicked(data, event) {
-      this.$emit('trdblclick', data, event);
+    triggerTrDblclicked: function triggerTrDblclicked(data, index, event) {
+      this.$emit('trdblclick', data, event, index);
     }
   },
   computed: {
@@ -16985,10 +16985,10 @@ exports.default = {
 
   methods: {
     clickHandler: function clickHandler(event) {
-      this.$emit('click', this.datas, event);
+      this.$emit('click', this.datas, index, event);
     },
     dblclickHandler: function dblclickHandler(event) {
-      this.$emit('dblclick', this.datas, event);
+      this.$emit('dblclick', this.datas, index, event);
     }
   }
 };
@@ -26381,14 +26381,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.prop) ? _c('span', {
     staticClass: "h-table-sort-asc",
     class: {
-      'sort-selected': _vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.prop
+      'h-table-sort-selected': _vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.prop
     }
   }, [_c('i', {
     staticClass: "h-icon-top"
   })]) : _c('span', {
     staticClass: "h-table-sort-desc",
     class: {
-      'sort-selected': _vm.sortStatus.type == 'desc' && _vm.sortStatus.prop == _vm.prop
+      'h-table-sort-selected': _vm.sortStatus.type == 'desc' && _vm.sortStatus.prop == _vm.prop
     }
   }, [_c('i', {
     staticClass: "h-icon-down"
