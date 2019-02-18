@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.1-alpha.2"></a>
+## [1.15.1-alpha.2](https://github.com/heyui/heyui/compare/v1.15.1-alpha.1...v1.15.1-alpha.2) (2019-02-18)
+
+
+### Bug Fixes
+
+* **Avatar:** add background-position ([0f31d7f](https://github.com/heyui/heyui/commit/0f31d7f))
+* **Table:** event trclick add index parameter ([7f02164](https://github.com/heyui/heyui/commit/7f02164))
+* **Table:** sort-selected class -> h-table-sort-selected ([c8082c7](https://github.com/heyui/heyui/commit/c8082c7))
+
+
+
 <a name="1.15.1-alpha.1"></a>
 ## [1.15.1-alpha.1](https://github.com/heyui/heyui/compare/v1.15.1-alpha.0...v1.15.1-alpha.1) (2019-02-14)
 
