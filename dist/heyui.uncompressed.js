@@ -16985,10 +16985,10 @@ exports.default = {
 
   methods: {
     clickHandler: function clickHandler(event) {
-      this.$emit('click', this.datas, index, event);
+      this.$emit('click', this.datas, this.index, event);
     },
     dblclickHandler: function dblclickHandler(event) {
-      this.$emit('dblclick', this.datas, index, event);
+      this.$emit('dblclick', this.datas, this.index, event);
     }
   }
 };
