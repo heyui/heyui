@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     clickHandler(event) {
-      this.$emit('click', this.datas, event)
+      this.$emit('click', this.datas, index, event)
     },
     dblclickHandler(event) {
-      this.$emit('dblclick', this.datas, event)
+      this.$emit('dblclick', this.datas, index, event)
     }
   }
 }

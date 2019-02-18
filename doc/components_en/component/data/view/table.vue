@@ -217,30 +217,37 @@
       <tr>
         <th>Event</th>
         <th>Description</th>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>sort</td>
         <td>Events fired when sorted</td>
+        <td>{type: [asc|desc], prop: String}</td>
       </tr>
       <tr>
         <td>select</td>
         <td>Events that fire when checkbox is changed</td>
+        <td>checks</td>
       </tr>
       <tr>
         <td>selectAll</td>
         <td>When checkbox is selected</td>
+        <td>checks</td>
       </tr>
       <tr>
         <td>trclick</td>
         <td>When tr is clicked</td>
+        <td>(data, event, index)</td>
       </tr>
       <tr>
         <td>trdblclick</td>
         <td>When tr is double clicked</td>
+        <td>(data, event, index)</td>
       </tr>
       <tr>
         <td>rowSelect</td>
         <td>When tr is selected</td>
+        <td>data</td>
       </tr>
     </table>
 
@@ -249,54 +256,41 @@
       <tr>
         <th>Method</th>
         <th>Description</th>
+        <th>Parameter</th>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>clearSort</td>
         <td>Clear sort</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>clearSelection</td>
         <td>Clear selected</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>setSelection</td>
         <td>Set the selected value</td>
+        <td>data</td>
+        <td></td>
       </tr>
       <tr>
         <td>getSelection</td>
         <td>get selected values</td>
+        <td></td>
+        <td>checks: Array</td>
       </tr>
       <tr>
-        <td>inverseSelection</td>
+        <td>invereSelection</td>
         <td>inverse selection</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 
-    <h3>TreePicker Event</h3>
-
-    <h3>Tree Event</h3>
-    <table class="table">
-      <tr>
-        <th>Event</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td>input</td>
-        <td>The v-model value changes</td>
-      </tr>
-      <tr>
-        <td>choose</td>
-        <td>Checkbox selection change</td>
-      </tr>
-      <tr>
-        <td>select</td>
-        <td>Tree's select change</td>
-      </tr>
-      <tr>
-        <td>loadDataSuccess</td>
-        <td>When the asynchronous data load is successful.	</td>
-      </tr>
-    </table>
   </div>
 </template>
 

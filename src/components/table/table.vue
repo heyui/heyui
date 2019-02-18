@@ -407,7 +407,7 @@
         }
         this.computeColumns = columns;
       },
-      triggerTrClicked(data, event) {
+      triggerTrClicked(data, index, event) {
 
         if (this.selectRow && !data._disabledSelect) {
           this.rowSelected = data;
@@ -423,10 +423,10 @@
           }
         }
         
-        this.$emit('trclick', data, event);
+        this.$emit('trclick', data, event, index);
       },
-      triggerTrDblclicked(data, event) {
-        this.$emit('trdblclick', data, event);
+      triggerTrDblclicked(data, index, event) {
+        this.$emit('trdblclick', data, event, index);
       }
     },
     computed: {

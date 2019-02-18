@@ -218,30 +218,37 @@
       <tr>
         <th>事件</th>
         <th>说明</th>
+        <th>返回值</th>
       </tr>
       <tr>
         <td>sort</td>
         <td>当排序的时候触发的事件</td>
+        <td>{type: [asc|desc], prop: String}</td>
       </tr>
       <tr>
         <td>select</td>
         <td>当checkbox有变动的时候触发的事件</td>
+        <td>checks</td>
       </tr>
       <tr>
         <td>selectAll</td>
         <td>当checkbox全选的时候</td>
+        <td>checks</td>
       </tr>
       <tr>
         <td>trclick</td>
         <td>当tr被点击的时候</td>
+        <td>(data, event, index)</td>
       </tr>
       <tr>
         <td>trdblclick</td>
         <td>当tr被双击的时候</td>
+        <td>(data, event, index)</td>
       </tr>
       <tr>
         <td>rowSelect</td>
         <td>当tr被单击选中的时候</td>
+        <td>data</td>
       </tr>
     </table>
 
@@ -250,26 +257,38 @@
       <tr>
         <th>方法</th>
         <th>说明</th>
+        <th>参数</th>
+        <th>返回值</th>
       </tr>
       <tr>
         <td>clearSort</td>
         <td>清空排序</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>clearSelection</td>
         <td>清空选中</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>setSelection</td>
         <td>设置选中的值</td>
+        <td>data</td>
+        <td></td>
       </tr>
       <tr>
         <td>getSelection</td>
         <td>获取选中的值</td>
+        <td></td>
+        <td>checks: Array</td>
       </tr>
       <tr>
-        <td>inverseSelection</td>
+        <td>invereSelection</td>
         <td>设置选中的值反选</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
   </div>
