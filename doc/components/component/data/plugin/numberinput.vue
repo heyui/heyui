@@ -83,14 +83,17 @@
       <tr>
         <th>参数</th>
         <th>说明</th>
+        <th>返回数据</th>
       </tr>
       <tr>
         <td>input</td>
         <td>数据产生改变的时候</td>
+        <td>当前绑定的v-model值</td>
       </tr>
       <tr>
         <td>change</td>
         <td>数据产生改变blur的时候</td>
+        <td>完整对象</td>
       </tr>
     </table>
   </div>

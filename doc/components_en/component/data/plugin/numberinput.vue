@@ -81,16 +81,19 @@
     <h3>NumberInput Event</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
-        <th>说明</th>
+        <th>Event</th>
+        <th>Desc</th>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>input</td>
         <td>When data changes</td>
+        <td>v-model value</td>
       </tr>
       <tr>
         <td>change</td>
         <td>When data changes blur</td>
+        <td>total object value</td>
       </tr>
     </table>
   </div>

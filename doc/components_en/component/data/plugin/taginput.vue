@@ -62,17 +62,17 @@
       <tr>
         <th>Event</th>
         <th>Description</th>
-        <th>Return value</th>
-      </tr>
-      <tr>
-        <td>change</td>
-        <td>When data changed</td>
-        <td>total object value</td>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>input</td>
         <td>When data changed</td>
         <td>v-model value</td>
+      </tr>
+      <tr>
+        <td>change</td>
+        <td>When data changed</td>
+        <td>total object value</td>
       </tr>
     </table>
   </div>

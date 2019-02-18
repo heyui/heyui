@@ -151,9 +151,9 @@
     <h3>Button Event</h3>
     <table class="table">
       <tr>
-        <th>name</th>
-        <th>desc</th>
-        <th>value</th>
+        <th>Event</th>
+        <th>Desc</th>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>click</td>

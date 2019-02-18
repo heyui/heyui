@@ -108,22 +108,32 @@
       <tr>
         <th>方法名</th>
         <th>说明</th>
+        <th>参数</th>
+        <th>返回值</th>
       </tr>
       <tr>
         <td>valid</td>
         <td>验证整体表单</td>
+        <td>无</td>
+        <td>{ result: isSuccess, messages: Array }</td>
       </tr>
       <tr>
         <td>validField</td>
         <td>验证个体字段</td>
+        <td>prop: String</td>
+        <td>{valid: Boolean, message: String, label: String}</td>
       </tr>
       <tr>
-        <td>validFieldJs(prop, next)</td>
+        <td>validFieldJs</td>
         <td>单纯执行验证，不触发dom操作</td>
+        <td>prop, next: Function</td>
+        <td>{valid: Boolean, message: String, label: String}</td>
       </tr>
       <tr>
         <td>reset</td>
         <td>重置验证</td>
+        <td>无</td>
+        <td>无</td>
       </tr>
     </table>
 
@@ -185,10 +195,12 @@
       <tr>
         <th>方法名</th>
         <th>说明</th>
+        <th>参数</th>
       </tr>
       <tr>
         <td>reset</td>
         <td>reset(): 重置验证一个FormItem</td>
+        <td>无</td>
       </tr>
     </table>
   </div>

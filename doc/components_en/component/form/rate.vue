@@ -38,7 +38,7 @@
       <tr>
         <th>Event</th>
         <th>Description</th>
-        <th>Return value</th>
+        <th>Return Value</th>
       </tr>
       <tr>
         <td>change</td>

@@ -262,32 +262,32 @@
       <tr>
         <td>clearSort</td>
         <td>Clear sort</td>
-        <td></td>
-        <td></td>
+        <td>Empty</td>
+        <td>Empty</td>
       </tr>
       <tr>
         <td>clearSelection</td>
         <td>Clear selected</td>
-        <td></td>
-        <td></td>
+        <td>Empty</td>
+        <td>Empty</td>
       </tr>
       <tr>
         <td>setSelection</td>
         <td>Set the selected value</td>
         <td>data</td>
-        <td></td>
+        <td>Empty</td>
       </tr>
       <tr>
         <td>getSelection</td>
         <td>get selected values</td>
-        <td></td>
+        <td>Empty</td>
         <td>checks: Array</td>
       </tr>
       <tr>
         <td>invereSelection</td>
         <td>inverse selection</td>
-        <td></td>
-        <td></td>
+        <td>Empty</td>
+        <td>Empty</td>
       </tr>
     </table>
 

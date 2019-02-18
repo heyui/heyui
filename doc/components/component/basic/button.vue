@@ -154,7 +154,7 @@
       <tr>
         <th>事件</th>
         <th>说明</th>
-        <th>值</th>
+        <th>返回值</th>
       </tr>
       <tr>
         <td>click</td>

@@ -85,12 +85,12 @@
       <tr>
         <td>change</td>
         <td>当数据产生变动的时候触发</td>
-        <td>完整对象</td>
+        <td>完整数据对象</td>
       </tr>
       <tr>
         <td>input</td>
         <td>当数据产生变动的时候触发</td>
-        <td>当前绑定的v-model值</td>
+        <td>绑定的v-model值</td>
       </tr>
     </table>
   </div>

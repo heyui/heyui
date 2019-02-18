@@ -263,32 +263,32 @@
       <tr>
         <td>clearSort</td>
         <td>清空排序</td>
-        <td></td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>clearSelection</td>
         <td>清空选中</td>
-        <td></td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>setSelection</td>
         <td>设置选中的值</td>
         <td>data</td>
-        <td></td>
+        <td>无</td>
       </tr>
       <tr>
         <td>getSelection</td>
         <td>获取选中的值</td>
-        <td></td>
+        <td>无</td>
         <td>checks: Array</td>
       </tr>
       <tr>
         <td>invereSelection</td>
         <td>设置选中的值反选</td>
-        <td></td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
     </table>
   </div>
