@@ -1,27 +1,31 @@
-
 <p align="center">
   <img height="100"  width="100" src="https://www.heyui.top/static/images/logo.png"/>
 </p>
 
 # HeyUI
+
 [![npm package](https://img.shields.io/npm/v/heyui.svg?style=flat-square)](https://www.npmjs.org/package/heyui)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/dist/heyui.esm.js?style=flat-square&compression=gzip&label=gzip%20size:%20JS)
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/themes/index.css?style=flat-square&compression=gzip&label=gzip%20size:%20CSS)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
->A UI components Library.
+> A UI components Library.
 
 ## Documentation
+
 visit [heyui.top](http://www.heyui.top).
 
 ## Install
+
 ```js
 npm install heyui --save
 ```
+
 ## Start
 
 ### Basic
-``` html
+
+```html
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/heyui"></script>
@@ -30,25 +34,29 @@ npm install heyui --save
 ```
 
 #### Basic Online Demo
-* [codepen demo](https://codepen.io/vvpvvp/pen/WJYKyq)
-* [html demo](https://www.heyui.top/simple.html)
+
+-   [codepen demo](https://codepen.io/vvpvvp/pen/WJYKyq)
+-   [html demo](https://www.heyui.top/simple.html)
 
 ### Advanced
 
 ```js
-import Vue from 'vue'
-import HeyUI from 'heyui'
-require("heyui/themes/index.less");
+import Vue from "vue"
+import HeyUI from "heyui"
+require("heyui/themes/index.less")
 
 Vue.use(HeyUI)
 ```
 
 #### Advanced Online Demo
-* [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
+
+-   [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
 
 ## Development
+
 You need install [hey-cli](https://www.npmjs.org/package/hey-cli).
-``` sh
+
+```sh
 #build
 npm install
 # build complete heyui
@@ -65,12 +73,12 @@ hey dev
 
 ```
 
-
 ## Admin Template
 
 [HeyUI Admin Template](http://admin.heyui.top)
 
 ## Ecosystem
+
 <table>
   <thead>
     <tr>
@@ -114,11 +122,12 @@ hey dev
 
 ## Community
 
-请感兴趣的朋友添加微信号：heyui-robot
+Interested friends please add a micro signal: heyui-robot
 
-我们会定期拉人入群。
+We will pull people into the group regularly.
 
 ## Browser Support
+
 Modern browsers and Internet Explorer 9+.
 
 ## LICENSE
@@ -126,4 +135,3 @@ Modern browsers and Internet Explorer 9+.
 [MIT](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2017-present, Lan
-
