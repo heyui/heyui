@@ -116,7 +116,7 @@
       </tr>
       <tr>
         <td>sortProp</td>
-        <td>sort prop，when prop is null，use sortProp</td>
+        <td>sort prop，when prop is null，use sortProp, <code>1.15.1+</code></td>
         <td>String</td>
         <td></td>
         <td></td>
@@ -298,7 +298,7 @@
       </tr>
       <tr>
         <td>triggerSort</td>
-        <td>Set sort, trigger sort event when triggerType is true, and sort automatically when triggerType is auto</td>
+        <td>Set sort, trigger sort event when triggerType is true, and sort automatically when triggerType is auto, <code>1.15.1+</code></td>
         <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>Empty</td>
       </tr>
