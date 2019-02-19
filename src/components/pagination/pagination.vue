@@ -104,6 +104,9 @@ export default {
   watch: {
     cur() {
       this.curNow = this.cur;
+    },
+    size() {
+      this.sizeNow = this.size;
     }
   },
   methods: {
