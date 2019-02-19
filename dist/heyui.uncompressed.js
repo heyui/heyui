@@ -13108,6 +13108,7 @@ exports.default = {
     align: String,
     unit: String,
     render: Function,
+    sortProp: String,
     tooltip: {
       type: Boolean,
       default: false
@@ -13257,16 +13258,23 @@ exports.default = {
       type: Boolean,
       default: false
     },
+    sortProp: String,
     sort: {
       type: [Boolean, String],
       default: false
+    },
+    sortStatus: {
+      type: Object,
+      default: function _default() {
+        return { type: null, prop: null };
+      }
     },
     placement: String,
     content: String
   },
   data: function data() {
     return {
-      sortStatus: { type: null, prop: null }
+      // sortStatus: {type: null, prop: null}
     };
   },
 
@@ -13274,15 +13282,15 @@ exports.default = {
     triggerSort: function triggerSort() {
       if (!this.sort) return false;
       var sortStatus = _utils2.default.copy(this.sortStatus);
-      if (this.sortStatus.type && this.sortStatus.prop == this.prop) {
+      if (this.sortStatus.type && this.sortStatus.prop == this.sortUseProp) {
         sortStatus.type = this.sortStatus.type == 'asc' ? 'desc' : 'asc';
       } else {
         sortStatus.type = 'desc';
-        sortStatus.prop = this.prop;
+        sortStatus.prop = this.sortUseProp;
       }
       var parent = this.$parent;
       if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
-        this.sortStatus = parent.triggerSort(sortStatus, this.sort);
+        parent.triggerSort(sortStatus, this.sort);
       }
     }
   },
@@ -13291,6 +13299,9 @@ exports.default = {
       var _ref;
 
       return _ref = {}, (0, _defineProperty3.default)(_ref, 'text-' + this.align, !!this.align), (0, _defineProperty3.default)(_ref, 'pointer', this.sort), _ref;
+    },
+    sortUseProp: function sortUseProp() {
+      return this.sortProp || this.prop;
     }
   }
 }; //
@@ -13749,7 +13760,6 @@ exports.default = {
           return sortStatus.type == 'asc' ? index : -index;
         });
       }
-      return this.sortStatus;
     },
     setSelection: function setSelection(data) {
       if (_utils2.default.isArray(data)) {
@@ -26378,17 +26388,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), (_vm.sort) ? _c('span', {
     staticClass: "h-table-sort-handler"
-  }, [(_vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.prop) ? _c('span', {
+  }, [(_vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.sortUseProp) ? _c('span', {
     staticClass: "h-table-sort-asc",
     class: {
-      'h-table-sort-selected': _vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.prop
+      'h-table-sort-selected sort-selected': _vm.sortStatus.type == 'asc' && _vm.sortStatus.prop == _vm.sortUseProp
     }
   }, [_c('i', {
     staticClass: "h-icon-top"
   })]) : _c('span', {
     staticClass: "h-table-sort-desc",
     class: {
-      'h-table-sort-selected': _vm.sortStatus.type == 'desc' && _vm.sortStatus.prop == _vm.prop
+      'h-table-sort-selected sort-selected': _vm.sortStatus.type == 'desc' && _vm.sortStatus.prop == _vm.sortUseProp
     }
   }, [_c('i', {
     staticClass: "h-icon-down"
@@ -29254,7 +29264,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }) : _vm._e()], 1) : _vm._e(), _vm._v(" "), _vm._l((thdata), function(thdata, index) {
       return _c('TableTh', _vm._b({
-        key: index + _vm.update.columns
+        key: index + _vm.update.columns,
+        attrs: {
+          "sortStatus": _vm.sortStatus
+        }
       }, 'TableTh', thdata, false))
     })], 2)
   }) : _c('tr', [(_vm.checkbox) ? _c('th', {
@@ -29271,7 +29284,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1) : _vm._e(), _vm._v(" "), _vm._l((_vm.computeColumns), function(c, index) {
     return _c('TableTh', _vm._b({
-      key: index + _vm.update.columns
+      key: index + _vm.update.columns,
+      attrs: {
+        "sortStatus": _vm.sortStatus
+      }
     }, 'TableTh', c, false))
   })], 2)], 2), _vm._v(" "), _c('div', {
     staticClass: "h-table-fixed-cover",
@@ -29492,7 +29508,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e(), _vm._v(" "), _vm._l((_vm.fixedColumnLeft), function(thdata, index) {
     return _c('TableTh', _vm._b({
-      key: index + _vm.update.columns
+      key: index + _vm.update.columns,
+      attrs: {
+        "sortStatus": _vm.sortStatus
+      }
     }, 'TableTh', thdata, false))
   })], 2)])]) : _vm._e(), _vm._v(" "), (_vm.fixedColumnRight.length) ? _c('div', {
     staticClass: "h-table-fixed-header-right",
@@ -29515,7 +29534,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   })), _vm._v(" "), _c('tr', _vm._l((_vm.fixedColumnRight), function(thdata, index) {
     return _c('TableTh', _vm._b({
-      key: index + _vm.update.columns
+      key: index + _vm.update.columns,
+      attrs: {
+        "sortStatus": _vm.sortStatus
+      }
     }, 'TableTh', thdata, false))
   }))])]) : _vm._e(), _vm._v(" "), _c('Loading', {
     attrs: {
