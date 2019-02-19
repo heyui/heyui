@@ -3,11 +3,10 @@
     <h2>AutoComplete</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-autocomplete</code>. </p>
   
-    <h3>Basic</h3>
-    <p>You can use <code>dict</code> call the system's global configuration, or by <code>datas</code>passing data.</p>
+    <h3>Asynchronous data request</h3>
     <p>You can <code>autocomplete.default</code> set the control's default parameter values through global configuration parameters.</p>
     <p>There are three types of data: <code>key</code>,<code>title</code>,<code>object</code>, if the demand for more complex and listen for the <code>change</code> event manual processing.</p>
-    <example demo="dataplugins/autocomplete1"></example>
+    <example demo="dataplugins/autocomplete4"></example>
     
     <h3>Selection mode</h3>
     <example demo="dataplugins/autocomplete8"></example>
@@ -30,6 +29,10 @@
 
     <h3>disabled</h3>
     <example demo="dataplugins/autocomplete2"></example>
+
+    <h3>Static data</h3>
+    <p>You can use <code>dict</code> call the system's global configuration, or by <code>datas</code>passing data.</p>
+    <example demo="dataplugins/autocomplete1"></example>
 <!--   
     <h3>多选</h3>
     <example demo="dataplugins/autocomplete3"></example> -->

@@ -1,9 +1,7 @@
 <template>
   <div >
     <p>value:{{value}}</p>
-    <div v-width="300"><AutoComplete dict="simple"
-                  :multiple="true"
-                  v-model="value" @change="onChange"></AutoComplete></div>
+    <div v-width="300"><AutoComplete dict="simple" :multiple="true" v-model="value" @change="onChange"></AutoComplete></div>
   </div>
 </template>
 <script>

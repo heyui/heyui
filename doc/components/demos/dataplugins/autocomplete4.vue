@@ -1,8 +1,7 @@
 <template>
   <div>
     <p>value:{{value}}</p>
-    <div v-width="300"><AutoComplete :option="param"
-                  v-model="value" @change="onChange" type="title"></AutoComplete></div>
+    <div v-width="300"><AutoComplete :option="param" v-model="value" @change="onChange" type="title"></AutoComplete></div>
   </div>
 </template>
 <script>
