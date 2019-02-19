@@ -12,7 +12,7 @@
               <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length"
                 :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
             </th>
-            <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata"></TableTh>
+            <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
           </tr>
         </template>
         <tr v-else>
@@ -20,7 +20,7 @@
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length"
               :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
           </th>
-          <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c"></TableTh>
+          <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -101,7 +101,7 @@
             <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length"
               @click.native="checkAll"></Checkbox>
           </th>
-          <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata"></TableTh>
+          <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
         </tr>
       </table>
     </div>
@@ -111,7 +111,7 @@
           <col v-for="(c, index) of fixedColumnRight" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <TableTh v-for="(thdata, index) of fixedColumnRight" :key="index+update.columns" v-bind="thdata"></TableTh>
+          <TableTh v-for="(thdata, index) of fixedColumnRight" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
         </tr>
       </table>
     </div>
@@ -327,7 +327,6 @@
             return sortStatus.type == 'asc' ? index : -index;
           })
         }
-        return this.sortStatus;
       },
       setSelection(data) {
         if (utils.isArray(data)) {

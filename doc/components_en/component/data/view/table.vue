@@ -114,6 +114,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>sortProp</td>
+        <td>sort prop，when prop is null，use sortProp</td>
+        <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
 
@@ -287,6 +294,12 @@
         <td>invereSelection</td>
         <td>inverse selection</td>
         <td>Empty</td>
+        <td>Empty</td>
+      </tr>
+      <tr>
+        <td>triggerSort</td>
+        <td>Set sort, trigger sort event when triggerType is true, and sort automatically when triggerType is auto</td>
+        <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>Empty</td>
       </tr>
     </table>

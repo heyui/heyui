@@ -18,6 +18,7 @@ export default {
     align: String,
     unit: String,
     render: Function,
+    sortProp: String,
     tooltip: {
       type: Boolean,
       default: false

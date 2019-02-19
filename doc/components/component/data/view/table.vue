@@ -211,6 +211,13 @@
         <td></td>
         <td></td>
       </tr>
+      <tr>
+        <td>sortProp</td>
+        <td>排序字段，当prop为空的时候，使用该字段</td>
+        <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Table 事件</h3>
@@ -223,7 +230,7 @@
       <tr>
         <td>sort</td>
         <td>当排序的时候触发的事件</td>
-        <td>{type: [asc|desc], prop: String}</td>
+        <td>{type: ['asc'|'desc'], prop: String}</td>
       </tr>
       <tr>
         <td>select</td>
@@ -288,6 +295,12 @@
         <td>invereSelection</td>
         <td>设置选中的值反选</td>
         <td>无</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>triggerSort</td>
+        <td>设置排序，triggerType为true的时候触发<code>sort</code>事件，为auto时自动排序</td>
+        <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>无</td>
       </tr>
     </table>
