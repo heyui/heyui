@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.1-alpha.4"></a>
+## [1.15.1-alpha.4](https://github.com/heyui/heyui/compare/v1.15.1-alpha.3...v1.15.1-alpha.4) (2019-02-19)
+
+
+### Bug Fixes
+
+* **Table:** compatible sort selected class ([710afb4](https://github.com/heyui/heyui/commit/710afb4))
+* **Table:** sort optimize ([de82042](https://github.com/heyui/heyui/commit/de82042))
+
+
+
 <a name="1.15.1-alpha.3"></a>
 ## [1.15.1-alpha.3](https://github.com/heyui/heyui/compare/v1.15.1-alpha.2...v1.15.1-alpha.3) (2019-02-18)
 
