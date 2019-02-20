@@ -35,8 +35,8 @@ npm install heyui --save
 
 #### Basic Online Demo
 
--   [codepen demo](https://codepen.io/vvpvvp/pen/WJYKyq)
--   [html demo](https://www.heyui.top/simple.html)
+- [codepen demo](https://codepen.io/vvpvvp/pen/WJYKyq)
+- [html demo](https://www.heyui.top/simple.html)
 
 ### Advanced
 
@@ -50,7 +50,7 @@ Vue.use(HeyUI)
 
 #### Advanced Online Demo
 
--   [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
+- [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
 
 ## Development
 
@@ -122,7 +122,7 @@ hey dev
 
 ## Community
 
-Interested friends please add a micro signal: heyui-robot
+a micro signal -> WeChat(微信) number: heyui-robot
 
 We will pull people into the group regularly.
 
