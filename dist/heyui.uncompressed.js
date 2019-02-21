@@ -13894,7 +13894,7 @@ exports.default = {
   computed: {
     isTemplateMode: function isTemplateMode() {
       var defaultSlot = this.$scopedSlots.default;
-      return defaultSlot && defaultSlot.name == 'normalized';
+      return defaultSlot && (defaultSlot.name == 'normalized' || !this.$slots.default);
     },
     totalCol: function totalCol() {
       return (this.checkbox ? 1 : 0) + this.computeColumns.length;
