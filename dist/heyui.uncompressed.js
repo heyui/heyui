@@ -11579,6 +11579,9 @@ exports.default = {
   watch: {
     cur: function cur() {
       this.curNow = this.cur;
+    },
+    size: function size() {
+      this.sizeNow = this.size;
     }
   },
   methods: {
