@@ -7,10 +7,10 @@
 </style>
 <template>
   <Row>
-    <Col><div v-bg-color:gray></div></Col>
-    <Col width="6"><div class="bg-gray-color"></div></Col>
-    <Col width="6"><div class="bg-gray1-color"></div></Col>
-    <Col width="6"><div class="bg-gray2-color"></div></Col>
-    <Col width="6"><div class="bg-gray3-color"></div></Col>
+    <Cell><div v-bg-color:gray></div></Cell>
+    <Cell width="6"><div class="bg-gray-color"></div></Cell>
+    <Cell width="6"><div class="bg-gray1-color"></div></Cell>
+    <Cell width="6"><div class="bg-gray2-color"></div></Cell>
+    <Cell width="6"><div class="bg-gray3-color"></div></Cell>
   </Row>
 </template>

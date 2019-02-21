@@ -10,34 +10,34 @@
   <div>
     <p>默认横向排列</p>
     <Row :space-x="10" type="flex" v-height="50">
-      <Col v-width="50"> left </Col>
-      <Col v-width="100"> center</Col>
-      <Col :flex='1'> right </Col>
+      <Cell v-width="50"> left </Cell>
+      <Cell v-width="100"> center</Cell>
+      <Cell :flex='1'> right </Cell>
     </Row>
     <blockquote>direction方向:row(默认), column, row-reverse, column-reverse</blockquote>
     <p>direction: column</p>
     <Row type="flex" direction="column" v-height="150" :space-y="10">
-      <Col v-height="30"> top </Col>
-      <Col v-height="30"> middle </Col>
-      <Col :flex='1'> bottom </Col>
+      <Cell v-height="30"> top </Cell>
+      <Cell v-height="30"> middle </Cell>
+      <Cell :flex='1'> bottom </Cell>
     </Row>
     <blockquote>justify排列方式: start, end, center, space-around, space-between</blockquote>
     <p>justify: end</p>
     <Row type="flex" justify="end" :space="10">
-      <Col :width='4' v-for='n in 4' :key='n'>{{n}}</Col>
+      <Cell :width='4' v-for='n in 4' :key='n'>{{n}}</Cell>
     </Row>
     <p>justify: space-around</p>
     <Row type="flex" justify="space-around" :space="10">
-      <Col :width='4' v-for='n in 4' :key='n'>{{n}}</Col>
+      <Cell :width='4' v-for='n in 4' :key='n'>{{n}}</Cell>
     </Row>
     <blockquote>align对齐方式:top, middle, bottom</blockquote>
     <p>align: bottom</p>
     <Row type="flex" align="bottom" :space="10">
-      <Col :width='4' v-for='n in 4' :key='n' v-height='n*15'>{{n}}</Col>
+      <Cell :width='4' v-for='n in 4' :key='n' v-height='n*15'>{{n}}</Cell>
     </Row>
     <p>align: top</p>
     <Row type="flex" align="top" :space="10">
-      <Col :width='4' v-for='n in 4' :key='n' v-height='n*15'>{{n}}</Col>
+      <Cell :width='4' v-for='n in 4' :key='n' v-height='n*15'>{{n}}</Cell>
     </Row>
   </div>
 </template>

@@ -12,80 +12,80 @@
     <p>我们将提供统一的var.less调用，关于调用方式请参照<router-link to="/component/themes">更换主题</router-link></p>
     <h3>Primary</h3>
     <Row :space='20' class="color-spans">
-      <Col :width='8'>
+      <Cell :width='8'>
       <div v-bg-color:primary  v-color:white>
         <p>@primary-color</p>
       </div>
-      </Col>
+      </Cell>
     </Row>
 
     <h3>主色</h3>
     <Row :space='20' class="color-spans">
-      <Col :width='6'>
+      <Cell :width='6'>
       <div v-bg-color:blue  v-color:white>
         <p>@blue-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:green  v-color:white>
         <p>@green-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:yellow  v-color:white>
         <p>@yellow-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:red  v-color:white>
         <p>@red-color</p>
       </div>
-      </Col>
+      </Cell>
     </Row>
 
 
     <h3>灰色</h3>
     <Row :space='20' class="color-spans">
-      <Col :width='12'>
+      <Cell :width='12'>
       <div v-bg-color:dark  v-color:white>
         <p>@dark-color</p>
       </div>
-      </Col>
-      <Col :width='12'>
+      </Cell>
+      <Cell :width='12'>
       <div v-bg-color:dark1  v-color:white>
         <p>@dark1-color</p>
       </div>
-      </Col>
-      <Col :width='12'>
+      </Cell>
+      <Cell :width='12'>
       <div v-bg-color:dark2  v-color:white>
         <p>@dark2-color</p>
       </div>
-      </Col>
-      <Col :width='12'>
+      </Cell>
+      <Cell :width='12'>
       <div v-bg-color:gray  v-color:white>
         <p>@gray-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:gray1  v-color:dark>
         <p>@gray1-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:gray2  v-color:dark>
         <p>@gray2-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:gray3  v-color:dark>
         <p>@gray3-color</p>
       </div>
-      </Col>
-      <Col :width='6'>
+      </Cell>
+      <Cell :width='6'>
       <div v-bg-color:gray4  v-color:dark>
         <p>@gray4-color</p>
       </div>
-      </Col>
+      </Cell>
     </Row>
 
 

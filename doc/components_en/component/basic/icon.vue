@@ -25,12 +25,12 @@
 
     <h3>Icon Library</h3>
     <Row :space="15">
-      <Col v-for='n of list' :xs='12' :sm='12' :md='6' :lg='4' :xl='3' :key="n">
+      <Cell v-for='n of list' :xs='12' :sm='12' :md='6' :lg='4' :xl='3' :key="n">
         <div>
           <p><i :class="n"></i></p>
           <p>{{n}}</p>
         </div>
-      </Col>
+      </Cell>
     </Row>
   </div>
 </template>

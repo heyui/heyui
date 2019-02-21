@@ -15,7 +15,7 @@
 
 <template>
   <Row>
-    <Col :width="12">
+    <Cell :width="12">
       <Avatar type="org">
         <div style="font-size: 16px;">唐门</div>
         <p class="dark2-color">描述</p>
@@ -28,8 +28,8 @@
         <div style="font-size: 16px;" class="text-ellipsis">唐舞桐</div>
         <p class="dark2-color">描述</p>
       </Avatar>
-    </Col>
-    <Col :width="12">
+    </Cell>
+    <Cell :width="12">
       <Avatar type="org" shape="square">
         <div style="font-size: 16px;">唐门</div>
         <p class="dark2-color">描述</p>
@@ -42,7 +42,7 @@
         <div style="font-size: 16px;" class="text-ellipsis">唐舞桐</div>
         <p class="dark2-color">描述</p>
       </Avatar>
-    </Col>
+    </Cell>
   </Row>
 </template>
 

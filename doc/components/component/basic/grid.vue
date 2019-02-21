@@ -2,19 +2,17 @@
   <div class="doc">
     <h2>Grid 栅格</h2>
     <p>我们采用标准的24格布局容器，利用容器完成简单的网络布局。</p>
-    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-row</code>, <code>h-col</code>。</p>
-    <h3>基本的排版</h3>
-    <p>利用基本的class<code>.h-col-{n}</code>进行排版布局。</p>
-    <example demo="basic/grid1"></example>
-    <h3>组件排版</h3>
-    <p>利用组件<code>Row</code>,<code>Col</code>进行排版布局，通过<code>width</code>设定宽度。</p>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-row</code>, <code>h-cell</code>。</p>
+    <p class="component-name-tip">由于<code>Col</code>和html原生<code>col标签</code>产生冲突，1.16.0版本后，<code>Col组件</code>重命名为<code>Cell组件</code>，Col组件依旧会继续兼容。</p>
+    <h3>基础排版</h3>
+    <p>利用组件<code>Row</code>,<code>Cell</code>进行排版布局，通过<code>width</code>设定宽度。</p>
     <example demo="basic/grid2"></example>
     <h3>区块间隔</h3>
-    <p>通过给<code>Row</code>添加<code>space</code>属性，让<code>Col</code>产生间距。间距可以设置为任意整数数值。</p>
+    <p>通过给<code>Row</code>添加<code>space</code>属性，让<code>Cell</code>产生间距。间距可以设置为任意整数数值。</p>
     <p class="tip">我们使用的并非是栅格的排列布局，所以可以对循环的区块做布局。</p>
     <example demo="basic/grid3"></example>
     <h3>横向，竖向区块间隔</h3>
-    <p>通过给<code>Row</code>添加<code>space-x</code>,<code>space-y</code>属性，让<code>Col</code>产生间距。</p>
+    <p>通过给<code>Row</code>添加<code>space-x</code>,<code>space-y</code>属性，让<code>Cell</code>产生间距。</p>
     <example demo="basic/grid4"></example>
     <h3>Flex布局</h3>
     <p>Flex布局主要使用在flex自适应的场景中。</p>
@@ -83,7 +81,7 @@
       </tr>
     </table>
 
-    <h3>Col 参数</h3>
+    <h3>Cell 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
