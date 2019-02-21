@@ -213,7 +213,7 @@
       </tr>
       <tr>
         <td>sortProp</td>
-        <td>排序字段，当prop为空的时候，使用该字段，<code>1.16.0+新增</code></td>
+        <td>排序字段，当sortProp为空的时候，使用prop字段，<code>1.16.0+新增</code></td>
         <td>String</td>
         <td></td>
         <td></td>

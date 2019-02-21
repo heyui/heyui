@@ -116,7 +116,7 @@
       </tr>
       <tr>
         <td>sortProp</td>
-        <td>sort prop，when prop is null，use sortProp, <code>1.16.0+</code></td>
+        <td>sort prop，when sortProp is null，use prop, <code>1.16.0+</code></td>
         <td>String</td>
         <td></td>
         <td></td>
