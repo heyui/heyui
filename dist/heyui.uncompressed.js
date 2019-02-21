@@ -13838,7 +13838,7 @@ exports.default = {
           _this4.$nextTick(function () {
             _this4.resize();
           });
-        }, 100);
+        }, 10)();
       }
     },
     initColumns: function initColumns() {
@@ -22155,17 +22155,26 @@ exports.default = valids;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function debounce(func, wait, options) {
-  var nativeMax = Math.max,
-      toNumber,
-      nativeMin;
 
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
+var _utils = __webpack_require__(1);
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function debounce(func) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var options = arguments[2];
+
+  var nativeMax = Math.max;
+  var nativeMin = Math.min;
+
+  var lastArgs = void 0,
+      lastThis = void 0,
+      maxWait = void 0,
+      result = void 0,
+      timerId = void 0,
+      lastCallTime = void 0,
 
   // func 上一次执行的时间
   lastInvokeTime = 0,
@@ -22174,18 +22183,15 @@ function debounce(func, wait, options) {
       trailing = true;
 
   // func必须是函数
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
+  if (!_utils2.default.isFunction(func)) {
+    throw new TypeError('debounce: func is not Function');
   }
 
-  // 对间隔时间的处理
-  wait = toNumber(wait) || 0;
-
   // 对options中传入参数的处理
-  if (isObject(options)) {
+  if (_utils2.default.isObject(options)) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    maxWait = maxing ? nativeMax(options.maxWait || 0, wait) : maxWait;
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
 
@@ -22238,7 +22244,7 @@ function debounce(func, wait, options) {
 
   // 在 trailing edge 且时间符合条件时，调用 trailingEdge函数，否则重启定时器
   function timerExpired() {
-    var time = now();
+    var time = new Date().getTime();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -22271,11 +22277,11 @@ function debounce(func, wait, options) {
 
   // flush方法--立即调用
   function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
+    return timerId === undefined ? result : trailingEdge(new Date().getTime());
   }
 
   function debounced() {
-    var time = now(),
+    var time = new Date().getTime(),
 
     //是否满足时间条件
     isInvoking = shouldInvoke(time);
