@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.16.0-alpha.6"></a>
+# [1.16.0-alpha.6](https://github.com/heyui/heyui/compare/v1.16.0-alpha.5...v1.16.0-alpha.6) (2019-02-21)
+
+
+### Bug Fixes
+
+* **Table:** fix restructure with vue2.5, vue2.6 ([70fb7c9](https://github.com/heyui/heyui/commit/70fb7c9))
+
+
+
 <a name="1.16.0-alpha.5"></a>
 # [1.16.0-alpha.5](https://github.com/heyui/heyui/compare/v1.15.1-alpha.4...v1.16.0-alpha.5) (2019-02-21)
 
