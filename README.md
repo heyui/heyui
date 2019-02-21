@@ -122,7 +122,7 @@ hey dev
 
 ## Community
 
-a micro signal -> WeChat(微信) number: heyui-robot
+Interested friends please add WeChat(微信) number: heyui-robot
 
 We will pull people into the group regularly.
 
