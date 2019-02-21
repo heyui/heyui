@@ -39,11 +39,13 @@ export default {
   data(){
     return {};
   },
-  init() {
-    let parent = this.$parent;
-    if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
-      parent.refresh();
-    }
+  methods: {
+    init() {
+      let parent = this.$parent;
+      if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
+        parent.refresh();
+      }
+    },
   },
   watch: {
     title(){

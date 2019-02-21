@@ -115,6 +115,7 @@
         </tr>
       </table>
     </div>
+    <div class="h-table-items" v-if="!isTemplateMode"><slot></slot></div>
     <Loading :loading="loading"></Loading>
   </div>
 </template>
@@ -123,6 +124,7 @@
   import TableTr from './table-tr';
   import TableItem from './table-item';
   import TableTh from './table-th';
+  import debounce from '../../utils/debounce'
 
   const prefix = 'h-table';
 
@@ -166,6 +168,7 @@
     },
     data() {
       return {
+        isMounted: false,
         update: {
           datas: 0,
           columns: 0
@@ -229,6 +232,7 @@
       window.removeEventListener('resize', this.resize);
     },
     mounted() {
+      this.isMounted = true;
       this.initColumns();
       this.$nextTick(() => {
         let body = this.$el.querySelector(".h-table-body");
@@ -385,10 +389,14 @@
         this.rightWidth = rightWidth;
       },
       refresh() {
-        this.initColumns();
-        this.$nextTick(() => {
-          this.resize();
-        })
+        if (this.isMounted) {
+          debounce(() => {
+            this.initColumns();
+            this.$nextTick(() => {
+              this.resize();
+            })
+          }, 100)
+        }
       },
       initColumns() {
         if (this.columns.length) {
