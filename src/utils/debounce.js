@@ -1,9 +1,10 @@
-function debounce(func, wait, options) {
-  var nativeMax = Math.max,
-    toNumber,
-    nativeMin
+import utils from './utils'
 
-  var lastArgs,
+function debounce(func, wait = 0, options) {
+  const nativeMax = Math.max;
+  const nativeMin = Math.min;
+
+  let lastArgs,
     lastThis,
     maxWait,
     result,
@@ -16,24 +17,21 @@ function debounce(func, wait, options) {
     trailing = true;
 
   // func必须是函数
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
+  if (!utils.isFunction(func)) {
+    throw new TypeError('debounce: func is not Function');
   }
 
-  // 对间隔时间的处理
-  wait = toNumber(wait) || 0;
-
   // 对options中传入参数的处理
-  if (isObject(options)) {
+  if (utils.isObject(options)) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    maxWait = maxing ? nativeMax(options.maxWait || 0, wait) : maxWait;
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
 
   // 执行要被触发的函数
   function invokeFunc(time) {
-    var args = lastArgs,
+    let args = lastArgs,
       thisArg = lastThis;
     lastArgs = lastThis = undefined;
     lastInvokeTime = time;
@@ -54,7 +52,7 @@ function debounce(func, wait, options) {
   // 剩余时间
   function remainingWait(time) {
     // 距离上次debounced函数被调用的时间
-    var timeSinceLastCall = time - lastCallTime,
+    let timeSinceLastCall = time - lastCallTime,
       // 距离上次函数被执行的时间
       timeSinceLastInvoke = time - lastInvokeTime,
       // 用 wait 减去 timeSinceLastCall 计算出下一次trailing的位置
@@ -67,18 +65,21 @@ function debounce(func, wait, options) {
 
   // 根据时间判断 func 能否被执行
   function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
+    let timeSinceLastCall = time - lastCallTime,
       timeSinceLastInvoke = time - lastInvokeTime;
     // 几种满足条件的情况
     return (lastCallTime === undefined // 首次执行
-      || (timeSinceLastCall >= wait) // 距离上次被调用已经超过 wait
-      || (timeSinceLastCall < 0)// 系统时间倒退
-      || (maxing && timeSinceLastInvoke >= maxWait)); //超过最大等待时间
+      ||
+      (timeSinceLastCall >= wait) // 距离上次被调用已经超过 wait
+      ||
+      (timeSinceLastCall < 0) // 系统时间倒退
+      ||
+      (maxing && timeSinceLastInvoke >= maxWait)); //超过最大等待时间
   }
 
   // 在 trailing edge 且时间符合条件时，调用 trailingEdge函数，否则重启定时器
   function timerExpired() {
-    var time = now();
+    let time = new Date().getTime();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -111,11 +112,11 @@ function debounce(func, wait, options) {
 
   // flush方法--立即调用
   function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
+    return timerId === undefined ? result : trailingEdge(new Date().getTime());
   }
 
   function debounced() {
-    var time = now(),
+    let time = new Date().getTime(),
       //是否满足时间条件
       isInvoking = shouldInvoke(time);
     lastArgs = arguments;

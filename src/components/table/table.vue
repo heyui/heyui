@@ -395,7 +395,7 @@
             this.$nextTick(() => {
               this.resize();
             })
-          }, 100)
+          }, 10)()
         }
       },
       initColumns() {
