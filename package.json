@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "eslint": "^5.3.0",
-    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-vue": "^5.2.2",
