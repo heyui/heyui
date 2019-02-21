@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.16.0-alpha.5"></a>
+# [1.16.0-alpha.5](https://github.com/heyui/heyui/compare/v1.15.1-alpha.4...v1.16.0-alpha.5) (2019-02-21)
+
+
+### Bug Fixes
+
+* **Pagination:** prop size add watch ([f716622](https://github.com/heyui/heyui/commit/f716622))
+
+
+
 <a name="1.15.1-alpha.4"></a>
 ## [1.15.1-alpha.4](https://github.com/heyui/heyui/compare/v1.15.1-alpha.3...v1.15.1-alpha.4) (2019-02-19)
 
