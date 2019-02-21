@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.16.0-alpha.8"></a>
+# [1.16.0-alpha.8](https://github.com/heyui/heyui/compare/v1.16.0-alpha.7...v1.16.0-alpha.8) (2019-02-21)
+
+
+### Bug Fixes
+
+* **Table:** optimize debounce ([42c8e47](https://github.com/heyui/heyui/commit/42c8e47))
+
+
+
 <a name="1.16.0-alpha.7"></a>
 # [1.16.0-alpha.7](https://github.com/heyui/heyui/compare/v1.16.0-alpha.6...v1.16.0-alpha.7) (2019-02-21)
 
