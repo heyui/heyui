@@ -213,7 +213,7 @@
       </tr>
       <tr>
         <td>sortProp</td>
-        <td>排序字段，当prop为空的时候，使用该字段，<code>1.15.1+新增</code></td>
+        <td>排序字段，当prop为空的时候，使用该字段，<code>1.16.0+新增</code></td>
         <td>String</td>
         <td></td>
         <td></td>
@@ -299,7 +299,7 @@
       </tr>
       <tr>
         <td>triggerSort</td>
-        <td>设置排序，triggerType为true的时候触发<code>sort</code>事件，为auto时自动排序，<code>1.15.1+新增</code></td>
+        <td>设置排序，triggerType为true的时候触发<code>sort</code>事件，为auto时自动排序，<code>1.16.0+新增</code></td>
         <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>无</td>
       </tr>
