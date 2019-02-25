@@ -11,6 +11,10 @@
 
 > A UI components Library.
 
+## Components
+
+<img src="https://raw.githubusercontent.com/heyui/heyui/master/doc/static/images/mindmap.png" style="max-width: 700px"/>
+
 ## Documentation
 
 visit [heyui.top](http://www.heyui.top).
