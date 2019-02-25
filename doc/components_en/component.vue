@@ -67,6 +67,9 @@
               <router-link to="/en/component/form/rate">Rate</router-link>
             </li>
             <li>
+              <router-link to="/en/component/form/switchlist">SwitchList</router-link>
+            </li>
+            <li>
               <router-link to="/en/component/form/form">Form</router-link>
             </li>
           </ul>
@@ -103,6 +106,9 @@
             </li>
             <li>
               <router-link to="/en/component/plugin/category">Category</router-link>
+            </li>
+            <li>
+              <router-link to="/component/view/transfer">Transfer</router-link>
             </li>
             <!--<li><router-link to="/en/component/data/plugin/valid">Valid 数据验证</router-link></li>-->
           </ul>
@@ -142,9 +148,6 @@
               <router-link to="/en/component/view/avatar">Avatar</router-link>
             </li>
             <li>
-              <router-link to="/en/component/form/switchlist">SwitchList</router-link>
-            </li>
-            <li>
               <router-link to="/en/component/view/timeline">Timeline</router-link>
             </li>
             <li>
@@ -152,9 +155,6 @@
             </li>
             <li>
               <router-link to="/en/component/view/carousel">Carousel</router-link>
-            </li>
-            <li>
-              <router-link to="/component/view/transfer">Transfer</router-link>
             </li>
           </ul>
           <ul>
