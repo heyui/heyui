@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.16.0"></a>
+# [1.16.0](https://github.com/heyui/heyui/compare/v1.16.0-alpha.10...v1.16.0) (2019-02-25)
+
+
+
 <a name="1.16.0-alpha.10"></a>
 # [1.16.0-alpha.10](https://github.com/heyui/heyui/compare/v1.16.0-alpha.9...v1.16.0-alpha.10) (2019-02-22)
 
