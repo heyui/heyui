@@ -36,14 +36,14 @@
       </tr>
       <tr>
         <td>trueValue</td>
-        <td>选中的值</td>
+        <td>选中的值，使用 === 比较</td>
         <td>-</td>
         <td>-</td>
         <td>true</td>
       </tr>
       <tr>
         <td>falseValue</td>
-        <td>未选中的值</td>
+        <td>未选中的值，使用 === 比较</td>
         <td>-</td>
         <td>-</td>
         <td>false</td>

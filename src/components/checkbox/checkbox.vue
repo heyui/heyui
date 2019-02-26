@@ -30,10 +30,9 @@
       },
       value: [Object, Number, String],
       checked: {
-        type: Boolean,
-        default: false
+        type: Boolean
       },
-      checkStatus: [Array, Boolean, Object],
+      checkStatus: [Array, Boolean, Object, Number, String],
       indeterminate: {
         type: Boolean,
         default: false
@@ -45,6 +44,12 @@
       titleName: {
         type: String,
         default: () => config.getOption('dict', 'titleName')
+      },
+      trueValue: {
+        default: true
+      },
+      falseValue: {
+        default: false
       }
     },
     data() {
@@ -70,8 +75,12 @@
         if (this.isSingle) {
           if (!utils.isNull(this.value)) {
             this.isChecked = this.checkList.indexOf(this.value) != -1;
-          } else if (utils.isBoolean(this.checkStatus) || utils.isBoolean(this.checked)) {
-            this.isChecked = this.checkStatus || this.checked;
+          } else if (this.checked === true) {
+            this.isChecked = this.checked;
+          } else if (this.checkStatus === this.trueValue) {
+            this.isChecked = true;
+          } else if (this.checkStatus === this.falseValue) {
+            this.isChecked = false;
           } else {
             this.isChecked = false;
           }
@@ -84,11 +93,11 @@
           if (!utils.isNull(this.value)) {
             value = utils.toggleValue(this.checkList, this.value);
           } else if (!utils.isNull(this.checkStatus)) {
-            value = !this.isChecked;
-          } else if (utils.isBoolean(this.checked)) {
+            value = this.isChecked ? this.falseValue : this.trueValue;
+          } else if (this.checked === true) {
             value = this.checked;
           } else {
-            value = this.isChecked = !this.isChecked;
+            value = this.isChecked ? this.falseValue : this.trueValue;
           }
         } else {
           value = utils.copy(this.checkStatus);

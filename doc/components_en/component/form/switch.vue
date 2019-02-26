@@ -36,14 +36,14 @@
       </tr>
       <tr>
         <td>trueValue</td>
-        <td></td>
+        <td>true value, use === compare</td>
         <td>-</td>
         <td>-</td>
         <td>true</td>
       </tr>
       <tr>
         <td>falseValue</td>
-        <td></td>
+        <td>false value, use === compare</td>
         <td>-</td>
         <td>-</td>
         <td>false</td>

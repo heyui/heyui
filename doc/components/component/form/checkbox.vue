@@ -80,6 +80,20 @@
         <td>-</td>
         <td>全局config <code>dict.titleName</code></td>
       </tr>
+      <tr>
+        <td>trueValue</td>
+        <td>选中的值，使用 === 比较</td>
+        <td>-</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>falseValue</td>
+        <td>未选中的值，使用 === 比较</td>
+        <td>-</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Checkbox 事件</h3>
