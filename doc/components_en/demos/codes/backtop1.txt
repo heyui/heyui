@@ -1,0 +1,13 @@
+.h-backtop-custom{
+  .h-backtop-inner {
+    background-color: @primary-color;
+    border-radius: 2px;
+    color: @white-color;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    transition: all @transition-time ease-in-out;
+    &:hover {
+      background-color: lighten(@primary-color, 10%);
+    }
+  }
+}

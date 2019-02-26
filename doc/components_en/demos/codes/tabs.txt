@@ -1,0 +1,16 @@
+.h-tabs-custom {
+  >div {
+    display: block;
+    padding: 12px 16px;
+    line-height:1;
+    font-size: 15px;
+    .li-hover();
+    +div {
+      margin-top: 5px;
+    }
+    &.@{tabs-prefix}-selected{
+      color: @white-color;
+      background-color: @primary-color;
+    }
+  }
+}
