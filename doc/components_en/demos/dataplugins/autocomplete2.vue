@@ -2,7 +2,7 @@
   <div>
     <p>
     <h-switch v-model="disabled"
-                :small="true">禁用</h-switch> value:{{value}}
+                :small="true">Disable</h-switch> value: {{value}}
     </p>
     <div v-width="300"><AutoComplete dict="simple"
                   :disabled="disabled"
@@ -13,14 +13,14 @@
 export default {
   data() {
     return {
-      value: '',
+      value: "",
       disabled: true
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

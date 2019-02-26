@@ -1,24 +1,24 @@
 <template>
   <div>
     <Form :label-width="110" :model="data" ref="form" :rules="rules" showErrorTip>
-      <FormItem label="数字" prop="number">
+      <FormItem label="digital" prop="number">
         <input type="text" v-model="data.number" />
       </FormItem>
-      <FormItem label="电话" prop="mobile">
+      <FormItem label="phone" prop="mobile">
         <input type="text" v-model="data.mobile" />
       </FormItem>
       <FormItem>
-        <Button @click="validJs('number')">js验证number</Button>
-        <Button @click="validJs('mobile')">js验证mobile</Button>
-          【不触发dom报错】
+        <Button @click="validJs('number')">Js verification number</Button>
+        <Button @click="validJs('mobile')">Js verification mobile</Button>
+          [Do not trigger dom error]
       </FormItem>
       <FormItem>
-        <Button @click="valid('number')">验证number</Button>
-        <Button @click="valid('mobile')">验证mobile</Button>
+        <Button @click="valid('number')">Verify number</Button>
+        <Button @click="valid('mobile')">Verify mobile</Button>
       </FormItem>
       <FormItem>
-        <Button color="primary" @click="submit">提交</Button>
-        <Button @click="reset">清除验证</Button>
+        <Button color="primary" @click="submit">submit</Button>
+        <Button @click="reset">Clear verification</Button>
       </FormItem>
     </Form>
   </div>
@@ -33,11 +33,11 @@ export default {
         mobile: null
       },
       rules: {
-        number: ['number'],
-        mobile: ['mobile'],
-        required: ['number', 'mobile']
+        number: ["number"],
+        mobile: ["mobile"],
+        required: ["number", "mobile"]
       }
-    }
+    };
   },
   watch: {
     required() {
@@ -47,18 +47,18 @@ export default {
   methods: {
     valid(field) {
       let validResult = this.$refs.form.validField(field);
-      log(validResult)
+      log(validResult);
       if (validResult.valid) {
-        this.$Message("验证成功");
+        this.$Message("Successful verification");
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
     },
     validJs(field) {
       let validResult = this.$refs.form.validFieldJs(field);
-      log(validResult)
+      log(validResult);
       if (validResult.valid) {
-        this.$Message("验证成功");
+        this.$Message("Successful verification");
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
@@ -66,12 +66,12 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message("Successful verification");
       }
     },
     reset() {
       this.$refs.form.reset();
-    },
+    }
   }
 };
 </script>

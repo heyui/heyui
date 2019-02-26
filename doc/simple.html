@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app" v-padding="20">
-    <p><h-button color="primary" @click="show = true">打开vue弹框</h-button></p>
-    <p><h-button color="primary" @click="openModal">打开js弹框</h-button></p>
-    <Modal v-model="show">
-      <div slot="header">标题</div>
-      <div>
-        这是一个vue调用的弹框
-      </div>
-      <div slot="footer">
-        <h-button @click="show=false">取消</h-button>
-      </div>
-    </Modal>
-  </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdn.jsdelivr.net/npm/heyui"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css">
-<script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue!',
-      show: false
-    },
-    methods: {
-      openModal() {
-        this.$Modal({
-          title: '标题',
-          content: '这是一个js调用的弹框'
-        })
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app" v-padding="20">
+      <p>
+        <h-button color="primary" @click="show = true">Open vue frame</h-button>
+      </p>
+      <p>
+        <h-button color="primary" @click="openModal"
+          >Open js bullet box</h-button
+        >
+      </p>
+      <Modal v-model="show">
+        <div slot="header">title</div>
+        <div>
+          This is a bullet box called by vue
+        </div>
+        <div slot="footer">
+          <h-button @click="show=false">cancel</h-button>
+        </div>
+      </Modal>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/heyui"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css"
+  />
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello Vue!",
+        show: false
+      },
+      methods: {
+        openModal() {
+          this.$Modal({
+            title: "title",
+            content: "This is a js call box"
+          });
+        }
       }
-    }
-  })
-</script>
+    });
+  </script>
 </html>

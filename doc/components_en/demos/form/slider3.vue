@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>对应的值：{{value}}</p>
+    <p>Corresponding value：{{value}}</p>
     <Slider v-model="value" :step="5"></Slider>
-    <p>对应的值：{{value2}}</p>
+    <p>Corresponding value：{{value2}}</p>
     <Slider v-model="value2" :step="5" multiple></Slider>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
         start: 0,
         end: 20
       }
-    }
+    };
   }
 };
 </script>

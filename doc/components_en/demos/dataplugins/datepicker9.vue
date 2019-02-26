@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import manba from 'manba';
+import manba from "manba";
 
 export default {
   data() {
     return {
-      value: ''
-    }
+      value: ""
+    };
   }
-}
+};
 </script>

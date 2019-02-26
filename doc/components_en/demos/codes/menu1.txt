@@ -1,8 +1,8 @@
-//节选片段
+//Excerpt fragment
 watch: {
   $route() {
     if (this.$route.name) {
-      //router的name与menu的key对应
+      //The name of the router corresponds to the key of the menu
       this.$refs.menu.select(this.$route.name);
     }
   }

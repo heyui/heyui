@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import manba from 'manba';
+import manba from "manba";
 export default {
   data() {
     return {
       value: manba().format(),
-      value2: null,
-    }
+      value2: null
+    };
   }
-}
+};
 </script>

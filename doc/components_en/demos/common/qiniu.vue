@@ -6,21 +6,20 @@
   </div>
 </template>
 <script>
-
-//由于七牛和plupload的封装不是es6模式的，所以我们自己封装了两个对应的es6包
-import qiniujs from 'qiniu-js-es6';
-import pluploadjs from 'plupload-es6';
-import utils from 'hey-utils';
+//Since the package of Qi Niu and plupload is not es6 mode, we have encapsulated two corresponding es6 packages.
+import qiniujs from "qiniu-js-es6";
+import pluploadjs from "plupload-es6";
+import utils from "hey-utils";
 
 export default {
   props: {
     options: {
       type: Object,
-      default: () => { }
+      default: () => {}
     },
     type: {
       type: String,
-      default: 'image'
+      default: "image"
     },
     dataType: String,
     dragdrop: {
@@ -36,12 +35,12 @@ export default {
   data() {
     return {
       uploadList: []
-    }
+    };
   },
   methods: {
     deletefile(index) {
       let value = null;
-      if(this.type == 'images' || this.type == 'files') {
+      if (this.type == "images" || this.type == "files") {
         value = utils.copy(this.value);
         value.splice(index, 1);
       } else {
@@ -52,27 +51,27 @@ export default {
     },
     init() {
       let that = this;
-      //七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
-      //uploader文档请参考http://www.cnblogs.com/2050/p/3913184.html
+      //Seven cattle documents please refer to https://developer.qiniu.com/kodo/sdk/1283/javascript
+      //Uploader documentation please refer to http://www.cnblogs.com/2050/p/3913184.html
       let param = {
-        runtimes: 'html5',
+        runtimes: "html5",
         browse_button: this.$refs.uploader.getBrowseButton(),
-        uptoken_url: 'https://www.heyui.top/api/uptoken',
-        domain: '//oroc6hc3j.bkt.clouddn.com',
-        chunk_size: '4mb',
+        uptoken_url: "https://www.heyui.top/api/uptoken",
+        domain: "//oroc6hc3j.bkt.clouddn.com",
+        chunk_size: "4mb",
         unique_names: true,
         auto_start: false,
         filters: {},
         init: {
           FilesAdded(up, files) {
-            if (that.limit && (files.length + that.value.length > that.limit)) {
-              that.$Message.error(`你上传的文件超过${that.limit}个。`);
+            if (that.limit && files.length + that.value.length > that.limit) {
+              that.$Message.error(`You uploaded more than ${that.limit}个。`);
               return;
             }
-            files.forEach((file) => {
+            files.forEach(file => {
               if (FileReader) {
                 let reader = new FileReader();
-                reader.onload = (event) => {
+                reader.onload = event => {
                   file.thumbUrl = event.target.result;
                 };
                 reader.readAsDataURL(file.getNative());
@@ -82,17 +81,15 @@ export default {
             // that.$emit("startUpload");
             up.start();
           },
-          BeforeUpload(up, file) {
-            
-          },
+          BeforeUpload(up, file) {},
           UploadProgress(up, file) {
             // log(file.percent);
           },
           FileUploaded(up, file, info) {
             // log('FileUploaded', file.status);
-            let domain = up.getOption('domain');
+            let domain = up.getOption("domain");
             let res = JSON.parse(info.response);
-            let sourceLink = `${domain}/${res.key}`; //获取上传成功后的文件的Url
+            let sourceLink = `${domain}/${res.key}`; //Get the Url of the file after successful upload
             file.url = sourceLink;
           },
           Error(up, err, errTip) {
@@ -103,18 +100,18 @@ export default {
             that.$emit("completeUpload");
             let fileList = that.$refs.uploader.getFileList();
             //   fileList.map(item=>{
-            //     // 对返回的数据做最后的组装
+            //     // Final assembly of the returned data
             //     // item.type = 5;
             //     // item.fileType = ...
             //   })
             that.$emit("input", fileList);
-            if(that.type == 'files' || that.type == 'images'){
+            if (that.type == "files" || that.type == "images") {
               that.uploadList.splice(0, that.uploadList.length);
             }
-          },
+          }
           // Key(up, file) {
-          //     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-          //     // 该配置必须要在unique_names: false，save_key: false时才生效
+          //     // If you want to personalize the key of each file in the front end, you can configure this function.
+          //     // This configuration must be in unique_names: false，save_key: false Only take effect
           //     var key = "";
           //     // do something with key here
           //     return key
@@ -127,15 +124,15 @@ export default {
       }
 
       utils.extend(param, this.options);
-      let muti = this.type == 'files' || this.type == 'images';
+      let muti = this.type == "files" || this.type == "images";
       param.multi_selection = muti;
       qiniujs.Qiniu.uploader(param);
     },
     fileclick(file) {
       this.$Modal({
-        title: '预览或者下载',
-        content: `自定义处理文件预览或者下载`
-      })
+        title: "Preview or download",
+        content: `Customize file preview or download`
+      });
     }
   },
   mounted() {
@@ -143,5 +140,5 @@ export default {
       this.init();
     });
   }
-}
+};
 </script>

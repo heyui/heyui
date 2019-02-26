@@ -1,9 +1,9 @@
 <template>
   <div>
       <p>value:{{min}}-{{max}}</p>
-      <DatePicker v-model="min" placeholder="请选择开始日期" type="datetime" :option="{end:max}"></DatePicker>
+      <DatePicker v-model="min" placeholder="Please select a start date" type="datetime" :option="{end:max}"></DatePicker>
       -
-      <DatePicker v-model="max" placeholder="请选择结束日期" type="datetime" :option="{start:min}"></DatePicker>
+      <DatePicker v-model="max" placeholder="Please select an end date" type="datetime" :option="{start:min}"></DatePicker>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     return {
       min: null,
       max: null
-    }
+    };
   }
-}
+};
 </script>

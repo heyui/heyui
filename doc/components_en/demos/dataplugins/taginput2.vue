@@ -8,8 +8,8 @@
 export default {
   data() {
     return {
-      value: ['测试1', '测试2', '测试3', '测试4']
-    }
+      value: ["Tag 1", "Tag 2", "Tag 3", "Tag 4"]
+    };
   }
-}
+};
 </script>

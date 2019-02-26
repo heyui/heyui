@@ -7,17 +7,17 @@
 </template>
 
 <script>
-import InitUploader from 'js/plugin/uploader/customUploader';
-import pluploadjs from 'plupload-es6';
+import InitUploader from "js/plugin/uploader/customUploader";
+import pluploadjs from "plupload-es6";
 export default {
   props: {
     options: {
       type: Object,
-      default: () => { }
+      default: () => {}
     },
     type: {
       type: String,
-      default: 'image'
+      default: "image"
     },
     dataType: String,
     dragdrop: {
@@ -29,7 +29,7 @@ export default {
     },
     perm: {
       type: String,
-      default: 'PRIVATE'
+      default: "PRIVATE"
     },
     limit: Number,
     className: String,
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       uploadList: []
-    }
+    };
   },
   methods: {
     deletefile(index) {
@@ -51,18 +51,20 @@ export default {
         perm: this.perm,
         browserButton: this.$refs.uploader.getBrowseButton(),
         dragdropElement: this.dragdrop && this.$refs.uploader.getDropElement(),
-        multiSelection: this.type == 'files' || this.type == 'images',
+        multiSelection: this.type == "files" || this.type == "images",
         overwriteParam: this.options,
         fnFilesAdded(up, files) {
           if (that.value.length + files.length > that.limit) {
-            that.$Message.error(`你上传的文件数量已超过${that.limit}个。`);
+            that.$Message.error(
+              `The number of files you uploaded has exceeded ${that.limit}个。`
+            );
             return false;
           }
-          pluploadjs.plupload.each(files, (file) => {
-            file.fileType = file.name.split('.').reverse()[0];
+          pluploadjs.plupload.each(files, file => {
+            file.fileType = file.name.split(".").reverse()[0];
             if (FileReader) {
               let reader = new FileReader();
-              reader.onload = (event) => {
+              reader.onload = event => {
                 file.thumbUrl = event.target.result;
               };
               reader.readAsDataURL(file.getNative());
@@ -77,62 +79,75 @@ export default {
         // fnUploadProgress: () => {},
         fnFileUploaded(up, file, info) {
           // log('FileUploaded', file.status);
-          let domain = up.getOption('domain');
+          let domain = up.getOption("domain");
           let res = JSON.parse(info.response);
-          let sourceLink = `${domain}${res.key}`; //获取上传成功后的文件的Url
+          let sourceLink = `${domain}${res.key}`; //Get the Url of the file after successful upload
           file.url = sourceLink;
           file.key = res.key;
         },
         fnUploadComplete() {
-          that.$emit('completeUpload');
+          that.$emit("completeUpload");
           let fileList = that.$refs.uploader.getFileList();
-          if (that.dataType === 'file') {
-            fileList = fileList.map((f) => {
+          if (that.dataType === "file") {
+            fileList = fileList.map(f => {
               if (f.file) {
                 return {
                   key: f.file.key,
                   name: f.name,
                   type: that.bizType,
                   fileType: f.file.fileType,
-                  url: f.url,
+                  url: f.url
                 };
               } else {
                 return f;
               }
             });
           }
-          that.$emit('input', fileList);
+          that.$emit("input", fileList);
           that.uploadList.splice(0, that.uploadList.length);
         },
         fnError(up, err, errTip) {
           that.uploadList.splice(0, that.uploadList.length);
           that.$Message.error(errTip);
-        },
+        }
       });
     },
     fileclick(file) {
       let originalType = file.original.fileType || file.original.file.type;
-      if(originalType == "image/jpeg" || originalType == "image/png" || originalType == "png" || originalType == "jpg" || originalType == "jpeg") {
+      if (
+        originalType == "image/jpeg" ||
+        originalType == "image/png" ||
+        originalType == "png" ||
+        originalType == "jpg" ||
+        originalType == "jpeg"
+      ) {
         this.$Modal({
-          title: this.options.fileClickModelTitle || '',
+          title: this.options.fileClickModelTitle || "",
           content: `<img style="max-width:900px"  src="${file.url}"></img>`,
           hasCloseIcon: false,
-          buttons:[]
-        })
-      }else if(originalType=='aac'||originalType=='mp3'||originalType=='wav'){
+          buttons: []
+        });
+      } else if (
+        originalType == "aac" ||
+        originalType == "mp3" ||
+        originalType == "wav"
+      ) {
         this.$Modal({
           buttons: [],
-          content: `<audio class="audio-play" preload="none" src="${file.url}" controls="controls"></audio>`,
-        })
+          content: `<audio class="audio-play" preload="none" src="${
+            file.url
+          }" controls="controls"></audio>`
+        });
       }
-    },
+    }
   },
   mounted() {
-    //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+    //Please refer to https for documentation.
+    //developer.qiniu.com/kodo/sdk/1283/javascript
     let that = this;
     this.$nextTick(() => {
       that.initUploader();
     });
   }
-}
+};
 </script>

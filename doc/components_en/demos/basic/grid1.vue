@@ -1,9 +1,9 @@
 <style type="text/css" scoped>
-  .h-row>div{
-    height: 30px;
-    color: #FFF;
-    text-align: center;
-  }
+.h-row > div {
+  height: 30px;
+  color: #fff;
+  text-align: center;
+}
 </style>
 <template>
   <div class="h-row">
@@ -14,9 +14,9 @@
   </div>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {}
-    }
+export default {
+  data: function() {
+    return {};
   }
+};
 </script>

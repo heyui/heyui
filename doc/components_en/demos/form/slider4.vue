@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>对应的值：{{value}}</p>
+    <p>Corresponding value：{{value}}</p>
     <Slider v-model="value" :show="show" :range="{start: 1000, end: 2000}"></Slider>
   </div>
 </template>
@@ -8,12 +8,12 @@
 export default {
   data() {
     return {
-      value: 1300,
-    }
+      value: 1300
+    };
   },
   methods: {
     show(value) {
-      return `现在的值：${value}`;
+      return `Current value: ${value}`;
     }
   }
 };

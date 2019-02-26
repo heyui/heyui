@@ -1,9 +1,9 @@
 <style type="text/css" scoped>
-  .h-row>div>div{
-    height: 30px;
-    color: #FFF;
-    text-align: center;
-  }
+.h-row > div > div {
+  height: 30px;
+  color: #fff;
+  text-align: center;
+}
 </style>
 <template>
   <Row>

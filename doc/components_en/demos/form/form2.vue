@@ -1,22 +1,22 @@
 <template>
   <Form :readonly="true">
-    <FormItem label="姓名">{{data.name}}</FormItem>
-    <FormItem label="年龄">{{data.age}}</FormItem>
-    <FormItem label="学校">{{data.school}}</FormItem>
-    <FormItem label="性别">{{data.sex}}</FormItem>
+    <FormItem label="Name">{{data.name}}</FormItem>
+    <FormItem label="Age">{{data.age}}</FormItem>
+    <FormItem label="School">{{data.school}}</FormItem>
+    <FormItem label="Gender">{{data.sex}}</FormItem>
   </Form>
 </template>
 <script>
 export default {
   data() {
     return {
-      data:{
-        name: "小王",
+      data: {
+        name: "Harward",
         age: 18,
-        school: "中国某某大学",
-        sex: "女"
+        school: "A university in USA",
+        sex: "Female"
       }
-    }
+    };
   }
 };
 </script>

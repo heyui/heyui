@@ -5,10 +5,10 @@
         <SwitchList :datas="modeParam" v-model="mode" :small="true"></SwitchList>
       </FormItem>
       <FormItem label="Input" prop="inputData">
-        <input type="text" v-model="data.inputData" placeholder="只能输入15，限制输入30个字" v-wordlimit='30' />
+        <input type="text" v-model="data.inputData" placeholder="Only enter 15 and limit the input of 30 words" v-wordlimit='30' />
         <template slot="error" slot-scope="props">
           <!-- *type*: base, combine, async -->
-          <span class="link" v-if="props.type == 'async'" @click="open">+++++++自定义的错误提示+++++++</span>
+          <span class="link" v-if="props.type == 'async'" @click="open">+++++++Custom error message+++++++</span>
         </template>
       </FormItem>
       <FormItem label="Integer" prop="intData">
@@ -17,7 +17,7 @@
       <FormItem label="Integer" prop="intData">
         <NumberInput v-model="data.intData" :min="0" :max="100"></NumberInput>
       </FormItem>
-      <FormItem label="Readonly" readonly>只读数据</FormItem>
+      <FormItem label="Readonly" readonly>Read-only data</FormItem>
       <FormItem label="Digital" prop="numberData">
         <NumberInput type="text" v-model="data.numberData" />
       </FormItem>
@@ -38,12 +38,12 @@
           <div class="h-input-addon">
             <Select v-model="data.select1Data" :datas="param1" :no-border="true" :null-option="false"></Select>
           </div>
-          <FormItem prop="money.minData" label="起始金额" :show-label="false">
-            <input type="text" placeholder="起始金额" v-model="data.money.minData" />
+          <FormItem prop="money.minData" label="Starting amount" :show-label="false">
+            <input type="text" placeholder="Starting amount" v-model="data.money.minData" />
           </FormItem>
           <span class="h-input-addon">-</span>
-          <FormItem prop="money.maxData" label="结束金额" :show-label="false">
-            <input type="text" placeholder="结束金额" v-model="data.money.maxData" />
+          <FormItem prop="money.maxData" label="End amount" :show-label="false">
+            <input type="text" placeholder="End amount" v-model="data.money.maxData" />
           </FormItem>
           <span class="h-input-addon">K</span>
         </div>
@@ -76,7 +76,7 @@
         <AutoComplete v-model="data.autocompleteData" config="simple"></AutoComplete>
       </FormItem>
       <!-- 
-          这里定义的required属性同样适用与验证规则中。
+          The required attribute defined here also applies to the validation rules.
          -->
       <FormItem label="Custom" prop="thingsData[0]" required>
         <input type="text" v-model="data.thingsData[0]" />
@@ -88,7 +88,7 @@
             <input type="text" v-model="item.value" />
             </Col>
             <Col class="text-right" v-width="50">
-            <Poptip @confirm="remove(index)" content="确定删除？">
+            <Poptip @confirm="remove(index)" content="Confirm delete?">
               <Button text-color="red" :no-border="true" icon="h-icon-trash"></Button>
             </Poptip>
             </Col>
@@ -96,15 +96,15 @@
         </FormItem>
       </FormItemList>
       <FormItem :single="true" single>
-        <Button size="s" text-color="blue" @click="add">添加输入框</Button>
+        <Button size="s" text-color="blue" @click="add">Add input box</Button>
       </FormItem>
       <FormItem :no-padding="true" single>
-        <Button color="primary" :loading="isLoading" @click="submit" v-tooltip content="执行异步验证但是不等待结果">提交</Button>
+        <Button color="primary" :loading="isLoading" @click="submit" v-tooltip content="Perform asynchronous verification but do not wait for results">submit</Button>
         <i class="h-split"></i>
-        <Button color="green" :loading="isLoading" @click="submitAsync" v-tooltip content="等待所有异步验证都执行完后提交">异步提交</Button>
+        <Button color="green" :loading="isLoading" @click="submitAsync" v-tooltip content="Wait for all asynchronous validations to be submitted after execution">Asynchronous submission</Button>
         <i class="h-split"></i>
-        <Button @click="reset">清除验证</Button>
-        <Button @click="resetDatepicker">清除日期的验证</Button>
+        <Button @click="reset">Clear verification</Button>
+        <Button @click="resetDatepicker">Clear date verification</Button>
       </FormItem>
     </Form>
   </div>
@@ -113,7 +113,7 @@
 export default {
   data() {
     return {
-      mode: 'single',
+      mode: "single",
       data: {
         intData: null,
         numberData: null,
@@ -121,13 +121,13 @@ export default {
         emailData: null,
         telData: null,
         mobileData: null,
-        inputData: '',
-        textareaData: '测试',
+        inputData: "",
+        textareaData: "test",
         radioData: 1,
         rateData: null,
         checkboxData: [1],
-        select1Data: '人民币',
-        select2Data: '',
+        select1Data: "Renminbi",
+        select2Data: "",
         select3Data: [],
         taginputsData: [],
         autocompleteData: null,
@@ -137,20 +137,20 @@ export default {
         },
         dateData: null,
         inputsData: [],
-        thingsData: ['']
+        thingsData: [""]
       },
       dataParam: {
-        1: '男',
-        2: '女',
-        3: '其他'
+        1: "male",
+        2: "Female",
+        3: "other"
       },
-      param1: ['美金', '人民币', '卢布'],
+      param1: ["US dollar", "Renminbi", "ruble"],
       isLoading: false,
       modeParam: {
-        single: '一个区块一行',
-        twocolumn: '两列一行',
-        threecolumn: '三列一行',
-        block: '标题独立一行',
+        single: "One column per line",
+        twocolumn: "Two columns and one row",
+        threecolumn: "Three columns and one row",
+        block: "Independent title"
       },
       isInputAsyncError: false,
       validationRules: {
@@ -160,66 +160,67 @@ export default {
             minLen: 10
           },
           inputData: {
-            //这里的判断不会影响最终的valid结果，所以也可以作为一些验证提示
+            //The judgment here does not affect the final valid result, so it can also be used as some validation hints.
             validAsync(value, next, parent, data) {
-              log(value)
+              log(value);
               setTimeout(() => {
                 if (value == 15) {
                   next();
                 } else {
-                  next("ID不等于15");
+                  next("ID is not equal to 15");
                 }
               }, 10);
             }
           }
         },
         required: [
-          'autocompleteData',
-          'select2Data',
-          'select3Data',
-          'inputsData[].value',
-          'inputData',
-          'radioData',
-          'rateData',
-          'checkboxData',
-          'moneyData',
-          'dateData',
-          'taginputsData',
-          'money.minData',
-          'money.maxData',
-          'intData',
-          'numberData',
-          'urlData',
-          'emailData',
-          'telData',
-          'mobileData',
-          'textareaData'
+          "autocompleteData",
+          "select2Data",
+          "select3Data",
+          "inputsData[].value",
+          "inputData",
+          "radioData",
+          "rateData",
+          "checkboxData",
+          "moneyData",
+          "dateData",
+          "taginputsData",
+          "money.minData",
+          "money.maxData",
+          "intData",
+          "numberData",
+          "urlData",
+          "emailData",
+          "telData",
+          "mobileData",
+          "textareaData"
         ],
-        int: ['intData'],
-        number: ['numberData', 'money.minData', 'money.maxData'],
-        url: ['urlData'],
-        email: ['emailData'],
-        tel: ['telData'],
-        mobile: ['mobileData'],
+        int: ["intData"],
+        number: ["numberData", "money.minData", "money.maxData"],
+        url: ["urlData"],
+        email: ["emailData"],
+        tel: ["telData"],
+        mobile: ["mobileData"],
         combineRules: [
           {
             parentRef: "money",
-            refs: ['minData', 'maxData'],
+            refs: ["minData", "maxData"],
             valid: {
-              valid: 'lessThan',
-              message: '起始金额不能大于结束金额'
+              valid: "lessThan",
+              message:
+                "The starting amount cannot be greater than the ending amount"
             }
           }
         ]
       }
-    }
+    };
   },
   methods: {
     submit() {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message("Successful verification");
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);
@@ -229,9 +230,9 @@ export default {
     },
     submitAsync() {
       this.isLoading = true;
-      this.$refs.form.validAsync().then(result=>{
+      this.$refs.form.validAsync().then(result => {
         if (result.result) {
-          this.$Message("验证成功");
+          this.$Message("Successful verification");
           setTimeout(() => {
             this.isLoading = false;
           }, 1000);
@@ -242,9 +243,9 @@ export default {
     },
     open() {
       this.$Modal({
-        title: "处理",
-        content: '我要去做特殊的处理'
-      })
+        title: "deal with",
+        content: "I am going to do a special treatment."
+      });
     },
     reset() {
       this.isLoading = false;
@@ -254,7 +255,7 @@ export default {
       this.$refs.datapicker.reset();
     },
     add() {
-      this.data.inputsData.push({ value: '' });
+      this.data.inputsData.push({ value: "" });
     },
     remove(index) {
       this.data.inputsData.splice(index, 1);

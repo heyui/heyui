@@ -5,36 +5,37 @@
   </div>
 </template>
 <script>
+import jsonp from "fetch-jsonp";
 
-import jsonp from 'fetch-jsonp';
-
-const loadData = function (filter, callback) {
-  // this 为 option 配置
-  // this.orgId 使用传递的参数获取数据，例：搜索某公司下的员工
+const loadData = function(filter, callback) {
+  // This is configured for option
+  // this.orgId Use the passed parameters to get the data, for example: Search for employees under a company
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
-    .then((d) => {
-      callback(d.result.map((r) => {
-        return r[0];
-      }));
+    .then(d => {
+      callback(
+        d.result.map(r => {
+          return r[0];
+        })
+      );
     });
-}
+};
 
 export default {
   data() {
     return {
-      value: '测试',
+      value: "test",
       param: {
-        orgId: 1, //自定义参数传递
+        orgId: 1, //Custom parameter passing
         loadData,
         minWord: 1
       }
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

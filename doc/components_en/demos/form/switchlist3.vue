@@ -8,9 +8,9 @@
 export default {
   data() {
     return {
-      value1: '选择1',
-      param1: ['选择1', '选择2', '选择3'],
-    }
+      value1: "select 1",
+      param1: ["select 1", "select 2", "select 3"]
+    };
   }
 };
 </script>

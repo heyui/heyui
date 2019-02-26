@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><h-switch v-model="disabled" :small="true">禁用</h-switch></p>
+    <p><h-switch v-model="disabled" :small="true">Disable</h-switch></p>
     <p><DateRangePicker v-model="value" :disabled="disabled"></DateRangePicker></p>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
     return {
       value: {},
       disabled: true
-    }
+    };
   }
-}
+};
 </script>

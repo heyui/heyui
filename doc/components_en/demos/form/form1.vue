@@ -4,15 +4,15 @@
       <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
     </div>
     <Form ref="form" :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
-      <FormItem label="用户名" prop="name">
+      <FormItem label="username" prop="name">
         <input type="text" v-model="model.name" />
       </FormItem>
-      <FormItem label="密码" prop="password">
+      <FormItem label="password" prop="password">
         <input type="password" v-model="model.password" />
       </FormItem>
       <FormItem>
-        <Button color="primary" :loading="isLoading" @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
-        <Button @click="reset">取消</Button>
+        <Button color="primary" :loading="isLoading" @click="submit">submit</Button>&nbsp;&nbsp;&nbsp;
+        <Button @click="reset">cancel</Button>
       </FormItem>
     </Form>
   </div>
@@ -24,27 +24,24 @@ export default {
       isLoading: false,
       labelPosition: "left",
       labels: {
-        left: 'Label左对齐',
-        right: 'Label右对齐',
+        left: "Label left aligned",
+        right: "Label right aligned"
       },
       model: {
         name: "",
         password: ""
       },
       validationRules: {
-        required: [
-          'name',
-          'password'
-        ]
+        required: ["name", "password"]
       }
-    }
+    };
   },
   methods: {
     submit() {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message("Successful verification");
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);

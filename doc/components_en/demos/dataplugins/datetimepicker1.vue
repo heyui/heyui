@@ -9,8 +9,8 @@
 export default {
   data() {
     return {
-      value: ''
-    }
+      value: ""
+    };
   }
-}
+};
 </script>

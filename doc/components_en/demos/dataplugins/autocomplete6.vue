@@ -3,8 +3,8 @@
     <p>value:{{value}}</p>
     <div v-width="300">
       <AutoComplete ref="autocomplete" :option="param" v-model="value" @change="onChange">
-        <div slot="top" class="text-center" style="line-height:40px">自定义头部</div>
-        <template slot="item" slot-scope="{item}"><div>{{item.title}}<span class="float-right gray-color">{{item.title.length}}个字</span></div></template>
+        <div slot="top" class="text-center" style="line-height:40px">Custom head</div>
+        <template slot="item" slot-scope="{item}"><div>{{item.title}}<span class="float-right gray-color">{{item.title.length}} Word</span></div></template>
         <div slot="bottom" @mousedown.stop.prevent>
           <Pagination :cur="pagination.page" :total="pagination.total" @change="changePage" layout="pager" small></Pagination>
         </div>
@@ -13,7 +13,6 @@
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
@@ -26,8 +25,8 @@ export default {
         minWord: 0,
         loadData: this.loadData
       },
-      keyword: ''
-    }
+      keyword: ""
+    };
   },
   methods: {
     loadData(filter, callback) {
@@ -35,9 +34,13 @@ export default {
         this.keyword = filter;
         this.pagination.page = 1;
       }
-      setTimeout(()=>{
-        callback(Array.apply(null, Array(6)).map((item, index)=>`page_${filter}_${this.pagination.page}_${index}`));
-      }, 100)
+      setTimeout(() => {
+        callback(
+          Array.apply(null, Array(6)).map(
+            (item, index) => `page_${filter}_${this.pagination.page}_${index}`
+          )
+        );
+      }, 100);
     },
     changePage(page) {
       this.pagination.page = page.cur;
@@ -45,7 +48,7 @@ export default {
     },
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

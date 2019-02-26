@@ -6,24 +6,26 @@
 </template>
 
 <script>
-import manba from 'manba';
+import manba from "manba";
 
 export default {
   data() {
     return {
       value: {},
       param: {
-        shortcuts:[{
-          title: '近三天',
-          value(){
-            return {
-              start: manba().add(-3, manba.DAY),
-              end: manba(),
-            };
+        shortcuts: [
+          {
+            title: "Nearly three days",
+            value() {
+              return {
+                start: manba().add(-3, manba.DAY),
+                end: manba()
+              };
+            }
           }
-        }]
+        ]
       }
-    }
+    };
   }
-}
+};
 </script>

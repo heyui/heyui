@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>对应的值：{{value}}</p>
+    <p>Corresponding values: {{value}}</p>
     <Slider v-model="value" :showtip="false"></Slider>
   </div>
 </template>
@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       value: 0
-    }
+    };
   }
 };
 </script>

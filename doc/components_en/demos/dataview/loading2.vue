@@ -1,14 +1,14 @@
 <template>
   <div>
     <p>
-      <Button @click="pageload">Vue 调用全局加载</Button>
-      <Button @click="pageloadJs">Js 调用全局加载</Button>
+      <Button @click="pageload">Vue call global loading</Button>
+      <Button @click="pageloadJs">Js call global loading</Button>
     </p>
   </div>
 </template>
 <script>
-import heyui from '../../../../src'; //demo测试路径
-// import heyui from 'heyui'; 实际调用
+import heyui from "../../../../src"; //Demo test path
+// import heyui from 'heyui'; Actual call
 
 export default {
   methods: {
@@ -19,11 +19,11 @@ export default {
       }, 3000);
     },
     pageloadJs() {
-      heyui.$Loading("加载中");
+      heyui.$Loading("Loading");
       setTimeout(() => {
         heyui.$Loading.close();
       }, 3000);
     }
   }
-}
+};
 </script>

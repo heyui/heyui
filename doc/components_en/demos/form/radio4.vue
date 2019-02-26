@@ -5,17 +5,17 @@
   </div>
 </template>
 <!-- 
-  系统初始化的时候
+  When the system is initialized
   HeyUI.initDict({
-    simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
+    simple: { 1: 'select 1', 2: 'select 2', 3: 'select 3' }
   }); 
 -->
 <script>
 export default {
   data() {
     return {
-      value: '1'
-    }
+      value: "1"
+    };
   }
 };
 </script>

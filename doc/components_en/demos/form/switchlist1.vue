@@ -13,25 +13,29 @@
 export default {
   data() {
     return {
-      value1: '选择1',
-      value2: '1',
-      value3: '1',
-      param1: ['选择1', '选择2', '选择3'],
-      param2: { 1: '选择1', 2: '选择2', 3: '选择3' },
-      param3: [{
-        key: '1',
-        title: '选择1',
-        icon: 'h-icon-home'
-      },{
-        key: '2',
-        title: '选择2',
-        icon: 'h-icon-task'
-      },{
-        key: '3',
-        title: '选择3',
-        icon: 'h-icon-users'
-      }]
-    }
+      value1: "select 1",
+      value2: "1",
+      value3: "1",
+      param1: ["select 1", "select 2", "select 3"],
+      param2: { 1: "select 1", 2: "select 2", 3: "select 3" },
+      param3: [
+        {
+          key: "1",
+          title: "select 1",
+          icon: "h-icon-home"
+        },
+        {
+          key: "2",
+          title: "select 2",
+          icon: "h-icon-task"
+        },
+        {
+          key: "3",
+          title: "select 3",
+          icon: "h-icon-users"
+        }
+      ]
+    };
   }
 };
 </script>
