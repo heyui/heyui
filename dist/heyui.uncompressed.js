@@ -6958,10 +6958,9 @@ exports.default = {
     },
     value: [Object, Number, String],
     checked: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
-    checkStatus: [Array, Boolean, Object],
+    checkStatus: [Array, Boolean, Object, Number, String],
     indeterminate: {
       type: Boolean,
       default: false
@@ -6977,6 +6976,12 @@ exports.default = {
       default: function _default() {
         return _config2.default.getOption('dict', 'titleName');
       }
+    },
+    trueValue: {
+      default: true
+    },
+    falseValue: {
+      default: false
     }
   },
   data: function data() {
@@ -7003,8 +7008,12 @@ exports.default = {
       if (this.isSingle) {
         if (!_utils2.default.isNull(this.value)) {
           this.isChecked = this.checkList.indexOf(this.value) != -1;
-        } else if (_utils2.default.isBoolean(this.checkStatus) || _utils2.default.isBoolean(this.checked)) {
-          this.isChecked = this.checkStatus || this.checked;
+        } else if (this.checked === true) {
+          this.isChecked = this.checked;
+        } else if (this.checkStatus === this.trueValue) {
+          this.isChecked = true;
+        } else if (this.checkStatus === this.falseValue) {
+          this.isChecked = false;
         } else {
           this.isChecked = false;
         }
@@ -7017,11 +7026,11 @@ exports.default = {
         if (!_utils2.default.isNull(this.value)) {
           value = _utils2.default.toggleValue(this.checkList, this.value);
         } else if (!_utils2.default.isNull(this.checkStatus)) {
-          value = !this.isChecked;
-        } else if (_utils2.default.isBoolean(this.checked)) {
+          value = this.isChecked ? this.falseValue : this.trueValue;
+        } else if (this.checked === true) {
           value = this.checked;
         } else {
-          value = this.isChecked = !this.isChecked;
+          value = this.isChecked ? this.falseValue : this.trueValue;
         }
       } else {
         value = _utils2.default.copy(this.checkStatus);
