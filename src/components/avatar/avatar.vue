@@ -1,6 +1,6 @@
 <template>
   <div class="h-avatar" :class="avatarClass">
-    <div :style="avatarImageStyle" :class="avatarImageClass" class="h-avatar-image-container">
+    <div :style="avatarImageStyle" @click="click" :class="avatarImageClass" class="h-avatar-image-container">
       <div class="h-avatar-image" :style="imageStyle"></div>
     </div>
     <div class="h-avatar-info" :style="infoStyle">
@@ -30,6 +30,11 @@ export default {
     },
     imageTop: Number,
     type: String
+  },
+  methods: {
+    click(event) {
+      this.$emit('click', event)
+    }
   },
   computed: {
     imageStyle() {

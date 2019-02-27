@@ -12,6 +12,9 @@ module.exports = {
     "commonjs": true,
     "es6": true
   },
+  "globals": {
+    "log": true,
+  },
   "extends": "eslint:recommended",
   "plugins": ["vue"],
   "rules": {

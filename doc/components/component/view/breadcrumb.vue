@@ -48,11 +48,13 @@
     <table class="table">
       <tr>
         <th>事件</th>
+        <th>描述</th>
         <th>数据</th>
       </tr>
       <tr>
         <td>click</td>
         <td>点击BreadCrumb触发的事件</td>
+        <td>data</td>
       </tr>
     </table>
 

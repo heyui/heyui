@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Avatar :src="src">
+    <Avatar :src="src" @click="click">
       <div style="font-size: 18px;">默认尺寸的显示</div>
       <p class="dark2-color">描述</p>
     </Avatar>
@@ -11,17 +11,21 @@
       <p class="dark2-color">描述2</p>
       <p class="dark2-color">描述3</p>
     </Avatar>
-
   </div>
 </template>
 
 <script>
-
-export default {
-  data() {
-    return {
-      src: 'https://pic.52112.com/icon/256/20180507/15471/722194.png'
+  export default {
+    data() {
+      return {
+        src: 'https://pic.52112.com/icon/256/20180507/15471/722194.png'
+      }
+    },
+    methods: {
+      click(event) {
+        log(event)
+      }
     }
   }
-}
+
 </script>

@@ -60,5 +60,19 @@
       </tr>
     </table>
 
+    <h3>Avatar 事件</h3>
+    <table class="table">
+      <tr>
+        <th>事件</th>
+        <th>描述</th>
+        <th>数据</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>点击头像触发的事件</td>
+        <td>event</td>
+      </tr>
+    </table>
+
   </div>
 </template>

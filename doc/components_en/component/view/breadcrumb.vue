@@ -49,10 +49,12 @@
       <tr>
         <th>Event</th>
         <th>Description</th>
+        <th>Data</th>
       </tr>
       <tr>
         <td>click</td>
         <td>Breadcrumb click event</td>
+        <td>data</td>
       </tr>
     </table>
 

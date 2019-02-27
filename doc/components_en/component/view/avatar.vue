@@ -56,5 +56,19 @@
       </tr>
     </table>
 
+    <h3>Avatar Event</h3>
+    <table class="table">
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Data</th>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>click avatar event</td>
+        <td>data</td>
+      </tr>
+    </table>
+
   </div>
 </template>
