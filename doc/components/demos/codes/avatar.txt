@@ -1,14 +1,9 @@
 
 // 通过配置可以设置src的全局处理方式，比如根据width参数设置不同的图片大小
-HeyUI.config("avatar.handleSrc", (src) {
-   // this.width 可以获取组件的参数
-   return src;
-});
-
-// 比如以下处理：
-handleSrc(src) {
-  let width = this.width;
+HeyUI.config("avatar.handleSrc", (src) => {
   if (!src) return '';
+   // this.width 可以获取组件的参数
+  let width = this.width;
   if (width == undefined) return src;
   return `${src}?imageView2/1/w/${width*2}/h/${width*2}`;
-}
+});
