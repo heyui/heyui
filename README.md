@@ -126,9 +126,9 @@ hey dev
 
 ## Community
 
-Interested friends please add WeChat(微信) number: heyui-robot
+感兴趣的朋友请添加微信号：heyui-robot
 
-We will pull people into the group regularly.
+我们会定期拉人入群。
 
 ## Browser Support
 
