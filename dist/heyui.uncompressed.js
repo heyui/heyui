@@ -5668,6 +5668,11 @@ exports.default = {
     imageTop: Number,
     type: String
   },
+  methods: {
+    click: function click(event) {
+      this.$emit('click', event);
+    }
+  },
   computed: {
     imageStyle: function imageStyle() {
       if (this.src) {
@@ -27638,7 +27643,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "h-avatar-image-container",
     class: _vm.avatarImageClass,
-    style: (_vm.avatarImageStyle)
+    style: (_vm.avatarImageStyle),
+    on: {
+      "click": _vm.click
+    }
   }, [_c('div', {
     staticClass: "h-avatar-image",
     style: (_vm.imageStyle)
