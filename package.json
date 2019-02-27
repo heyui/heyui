@@ -17,7 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "manba": "^1.2.0"
+    "manba": "^1.2.8"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
