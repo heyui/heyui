@@ -95,7 +95,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      let el = this.el = this.$el.firstChild;
+      this.el = this.$el.firstChild;
       document.body.appendChild(this.el);
       if (!this.value) {
         this.el.style.display = 'none';

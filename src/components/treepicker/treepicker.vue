@@ -99,7 +99,6 @@ export default {
     }
   },
   mounted () {
-    let that = this;
     this.parse();
     this.$nextTick(() => {
       if (this.inline) return;

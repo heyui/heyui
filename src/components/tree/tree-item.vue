@@ -31,8 +31,6 @@
   </li>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
 
 export default {
   name: 'hTreeItem',

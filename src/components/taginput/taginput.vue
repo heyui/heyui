@@ -110,7 +110,7 @@ export default {
         if (utils.isNull(this.value) || this.value === '') {
           return [];
         }
-        return new String(this.value).split(this.split);
+        return String(this.value).split(this.split);
       }
     }
   }

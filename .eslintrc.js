@@ -3,11 +3,20 @@ module.exports = {
   env: {
     node: true
   },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module"
+  },
   'extends': [
+    'plugin:vue/essential',
     '@vue/standard'
   ],
-  "globals": {
-  },
+  "globals": {},
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -20,6 +29,7 @@ module.exports = {
         "error",
         "unix"
     ],
+    "no-useless-call": "off"
   },
   parserOptions: {
     parser: 'babel-eslint'

@@ -1,4 +1,3 @@
-import Modal from '../modal';
 import Preview from '../../components/imagepreview/preview';
 
 export default function (datas, index) {

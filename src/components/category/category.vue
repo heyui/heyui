@@ -15,7 +15,6 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 
 import categoryModal from './categoryModal';
-import func from '../../utils/config';
 
 const prefix = 'h-category';
 

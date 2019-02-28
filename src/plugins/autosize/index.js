@@ -25,16 +25,11 @@ const map = (typeof Map === 'function') ? new Map() : (function () {
   };
 })();
 
-let createEvent = (name) => new Event(name, { bubbles: true });
-try {
-  new Event('test');
-} catch (e) {
-  createEvent = (name) => {
-    const evt = document.createEvent('Event');
-    evt.initEvent(name, true, false);
-    return evt;
-  };
-}
+const createEvent = (name) => {
+  const evt = document.createEvent('Event');
+  evt.initEvent(name, true, false);
+  return evt;
+};
 
 function assign (ta) {
   if (!ta || !ta.nodeName || ta.nodeName !== 'TEXTAREA' || map.has(ta)) return;
@@ -68,8 +63,6 @@ function assign (ta) {
     {
       const width = ta.style.width;
       ta.style.width = '0px';
-      ta.offsetWidth;
-      /* jshint ignore:end */
       ta.style.width = width;
     }
 

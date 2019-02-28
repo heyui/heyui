@@ -17,9 +17,8 @@ export default function ({ text, showSuccessTip = '复制成功', showFailureTip
   fakeElem.value = text;
   container.appendChild(fakeElem);
   select(fakeElem);
-  let succeeded;
   try {
-    succeeded = document.execCommand('copy');
+    document.execCommand('copy');
     if (showSuccessTip) {
       Message.success(showSuccessTip);
     }
@@ -27,7 +26,6 @@ export default function ({ text, showSuccessTip = '复制成功', showFailureTip
       successCallback.call();
     }
   } catch (err) {
-    succeeded = false;
     console.error(err);
     if (showFailureTip) {
       Message.error(showFailureTip);

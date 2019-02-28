@@ -1,54 +1,21 @@
 <template>
   <div :class="autocompleteCls">
     <div :class="showCls">
-      <template v-if="multiple"><span v-for="(obj, index) of objects"
-              :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close"
-           @click.stop="remove(obj)"
-           v-if="!disabled"></i></span>
-        <input :disabled="disabled"
-          ref="input"
-          type="text"
-          class="h-autocomplete-input"
-          @focus="focus"
-          v-model="tempValue"
-          @blur.stop="blur"
-          @paste="paste"
-          @keyup="handle"
-          @keydown="keydownHandle"
-          @keypress.enter="enterHandle"
-          :placeholder="showPlaceholder" />
-        <i class="h-icon-loading"
-           v-if="loading"></i>
+      <template v-if="multiple"><span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <input :disabled="disabled" ref="input" type="text" class="h-autocomplete-input" @focus="focus" v-model="tempValue" @blur.stop="blur" @paste="paste" @keyup="handle" @keydown="keydownHandle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" />
+        <i class="h-icon-loading" v-if="loading"></i>
       </template>
       <template v-if="!multiple">
-        <input type="text"
-          ref="input"
-          :disabled="disabled"
-          class="h-autocomplete-input"
-          @focus="focus"
-          v-model="tempValue"
-          @paste="paste"
-          @blur.stop="blur"
-          @keyup="handle"
-          @keypress.enter="enterHandle"
-          :placeholder="showPlaceholder" />
-        <i class="h-icon-loading"
-           v-if="loading"></i>
+        <input type="text" ref="input" :disabled="disabled" class="h-autocomplete-input" @focus="focus" v-model="tempValue" @paste="paste" @blur.stop="blur" @keyup="handle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" />
+        <i class="h-icon-loading" v-if="loading"></i>
         <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
       </template>
     </div>
-
-    <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
       <ul class="h-autocomplete-ul" v-if="isShow">
         <slot name="top" :results="results"></slot>
-        <li v-for="(result, index) of results"
-            :key="result.key"
-            class="h-autocomplete-item"
-            :class="{'h-autocomplete-item-selected': index == nowSelected}"
-            @mousedown="picker(result)">
-          <div v-if="!!result.html"
-               v-html="result.html"></div>
+        <li v-for="(result, index) of results" :key="result.key" class="h-autocomplete-item" :class="{'h-autocomplete-item-selected': index == nowSelected}" @mousedown="picker(result)">
+          <div v-if="!!result.html" v-html="result.html"></div>
           <template v-else-if="!$scopedSlots.item">{{result.title}}</template>
           <slot v-else :item="result" name="item"></slot>
         </li>
@@ -118,7 +85,11 @@ export default {
       html: 'autocomplete_rander_html',
       focusing: false,
       objects: [],
-      object: { key: null, title: this.show, value: null },
+      object: {
+        key: null,
+        title: this.show,
+        value: null
+      },
       nowSelected: -1,
       tempValue: null,
       searchValue: null,
@@ -243,7 +214,11 @@ export default {
           value = this.value;
         }
         if (utils.isNull(value)) {
-          this.object = { key: null, title: null, value: null };
+          this.object = {
+            key: null,
+            title: null,
+            value: null
+          };
         } else {
           utils.extend(this.object, this.getValue(value));
         }
@@ -256,7 +231,9 @@ export default {
       if (this.type == 'key' || this.type == 'title') {
         inputValue = this.tempValue;
       } else if (!utils.isBlank(this.tempValue)) {
-        inputValue = { [this.param.titleName]: this.tempValue };
+        inputValue = {
+          [this.param.titleName]: this.tempValue
+        };
       } else {
         inputValue = null;
       }
@@ -307,7 +284,9 @@ export default {
         return this.param.getValue.call(this.param, item);
       } else {
         if (!utils.isObject(item) && this.type == 'object') {
-          return utils.getValue({ [this.param.titleName]: item }, this.param);
+          return utils.getValue({
+            [this.param.titleName]: item
+          }, this.param);
         } else {
           return utils.getValue(item, this.param);
         }
@@ -339,7 +318,11 @@ export default {
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
           if (this.focusValue != '' && !this.multiple) {
-            this.object = { key: null, title: null, value: null };
+            this.object = {
+              key: null,
+              title: null,
+              value: null
+            };
             this.setvalue('blur');
           } else {
             this.tempValue = null;
@@ -455,7 +438,11 @@ export default {
         this.objects.push(utils.copy(data));
       } else {
         if (data === null || data === undefined) {
-          this.object = { key: null, title: null, value: null };
+          this.object = {
+            key: null,
+            title: null,
+            value: null
+          };
         } else {
           this.object = utils.copy(data);
         }
@@ -511,7 +498,11 @@ export default {
     clear () {
       this.tempValue = null;
       this.focusValue = null;
-      this.object = { key: null, title: null, value: null };
+      this.object = {
+        key: null,
+        title: null,
+        value: null
+      };
       this.setvalue('clear');
     }
   },
@@ -524,24 +515,18 @@ export default {
     },
     param () {
       if (this.config) {
-        return utils.extend(
-          {},
+        return utils.extend({},
           config.getOption('autocomplete.default'),
           config.getOption(`autocomplete.configs.${this.config}`),
           this.option
         );
       } else {
-        return utils.extend(
-          {},
+        return utils.extend({},
           config.getOption('autocomplete.default'),
           this.option
         );
       }
     },
-    // showValue() {
-    //   log('showvalue', this.tempValue, this.object.title);
-    //   return this.tempValue == null ? this.object.title : this.tempValue
-    // },
     autocompleteCls () {
       let autosize = !!this.noBorder;
       if (!autosize) {
@@ -582,11 +567,7 @@ export default {
         if (this.searchValue) {
           let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter(item => {
-            return (
-              (item.html || item[this.param.titleName] || '')
-                .toLowerCase()
-                .indexOf(searchValue) != -1
-            );
+            return ((item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1);
           });
         }
       }

@@ -21,7 +21,7 @@ function Confirm (content, title) {
         },
         cancel: (n) => {
           n.close();
-          reject();
+          reject(new Error('cancel'));
         }
       },
       title,

@@ -65,16 +65,6 @@ import dateBase from './date-base';
 
 const prefix = 'h-datetime';
 
-const manbaType = {
-  year: manba.YEAR,
-  month: manba.MONTH,
-  date: manba.DAY,
-  datetime:
-  manba.MINUTE,
-  time: manba.MINUTE,
-  datehour: manba.HOUR
-};
-
 export default {
   name: 'hDateRangePicker',
   props: {

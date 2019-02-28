@@ -223,7 +223,6 @@ export default {
       }
       this.treeDatas = this.initDatas(datas);
       this.parse();
-      // this.treeDataShow = this.treeDatas;
     },
     initDatas (datas) {
       let list = datas = utils.copy(datas);
@@ -378,7 +377,6 @@ export default {
         return utils.extend({}, config.getOption('tree.default'), this.option);
       }
     },
-    treeDataShow () {},
     treeCls () {
       return {
         [prefix]: true,

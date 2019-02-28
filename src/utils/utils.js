@@ -159,7 +159,7 @@ export default utils.extend({}, utils, {
     if (utils.isArray(dict)) {
       dict = utils.toObject(dict, keyField);
     }
-    return value.map((ele) => {
+    let result = value.map((ele) => {
       if (utils.isObject(ele)) {
         return ele[titleField];
       }
@@ -168,9 +168,8 @@ export default utils.extend({}, utils, {
         return d[titleField];
       }
       return d;
-    })
-      .filter(ele => (ele && ele !== ''))
-      .join(connector || ', ');
+    });
+    return result.filter(ele => (ele && ele !== '')).join(connector || ', ');
   },
   initOptions (datas, param) {
     let key = config.getOption('dict.keyName');

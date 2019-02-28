@@ -57,6 +57,7 @@ export default {
           'h-avatar-middle': true
         };
       }
+      return {};
     },
     avatarImageStyle () {
       let s = {
@@ -76,4 +77,5 @@ export default {
     }
   }
 };
+
 </script>

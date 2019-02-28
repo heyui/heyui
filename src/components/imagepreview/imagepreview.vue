@@ -5,7 +5,6 @@
 </template>
 <script>
 
-import utils from '../../utils/utils';
 import Modal from '../modal/modal';
 import Preview from './preview.vue';
 

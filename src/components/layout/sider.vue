@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
 
 const prefixCls = 'h-layout-sider';
 

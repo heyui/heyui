@@ -74,7 +74,7 @@ export default {
       this.setvalue(utils.add(value || 0, -this.step), 'handler');
     },
     input (event) {
-      if (isNaN(new Number(event.target.value))) return false;
+      if (isNaN(Number(event.target.value))) return false;
       let value = this.getValue(event.target.value);
       if (utils.isNumber(this.value) && Math.abs(value - this.value) <= 1 && this.precision) {
         return;

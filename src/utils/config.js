@@ -1,4 +1,3 @@
-import locale from '../locale';
 import utils from './utils';
 
 const config = {

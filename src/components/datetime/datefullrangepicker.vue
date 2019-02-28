@@ -41,15 +41,6 @@ import dateBase from './date-base';
 
 const prefix = 'h-datetime';
 
-const manbaType = {
-  year: manba.YEAR,
-  month: manba.MONTH,
-  date: manba.DAY,
-  datetime: manba.MINUTE,
-  time: manba.MINUTE,
-  datehour: manba.HOUR
-};
-
 export default {
   name: 'hDateFullRangePicker',
   props: {
@@ -181,7 +172,6 @@ export default {
       if (this.nowDate.end) {
         end = manba(this.nowDate.end);
       }
-      let endRange = 1;
       this.nowView = {
         start,
         end

@@ -22,7 +22,7 @@ let valids = {
     }
   },
   url: {
-    pattern: /^((\w+):\/\/)?([^\s]?[^\s]+\.)*[^\s]+\-?[^\s]+\.[^\s]{2,}(\/.*)*\/?$/,
+    pattern: /^((\w+):\/\/)?([^\s]?[^\s]+\.)*[^\s]+-?[^\s]+\.[^\s]{2,}(\/.*)*\/?$/,
     message () {
       return locale.t('h.validation.type.url');
     }
@@ -40,7 +40,7 @@ let valids = {
     }
   },
   globalmobile: {
-    pattern: /^[\+\-0-9a]+$/,
+    pattern: /^[+\-0-9a]+$/,
     message () {
       return locale.t('h.validation.type.globalmobile');
     }
