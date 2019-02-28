@@ -1,13 +1,13 @@
 <template>
   <div :class="stepsCls">
-    <div v-for="(a, index) of arr" :class="{'h-steps-actived':index <= stepIndex, 'h-steps-item': true, 'h-steps-item-first': index==0, 'h-steps-item-last': index+1 == arr.length}">
+    <div v-for="(a, index) of arr" :key="index" :class="{'h-steps-actived':index <= stepIndex, 'h-steps-item': true, 'h-steps-item-first': index==0, 'h-steps-item-last': index+1 == arr.length}">
       <div class="h-steps-tail" :class="{'h-steps-tail-actived': index+1 <= stepIndex}"></div>
       <div class="h-steps-content">
         <div class="h-steps-icon">
           <span v-if="a.icon" class="h-steps-icon-custom"><i :class="a.icon"></i></span>
           <span v-else class="h-steps-index">
             <i class="h-steps-index-num">{{index+1}}</i>
-            <i class="h-icon-check h-steps-success"></i>            
+            <i class="h-icon-check h-steps-success"></i>
           </span>
         </div>
         <div class="h-steps-words">
@@ -46,19 +46,19 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  data() {
+  data () {
     return {
       key: this.keyName,
       title: this.titleName
-    }
+    };
   },
   computed: {
-    stepsCls() {
+    stepsCls () {
       return {
         [`${prefix}`]: true
-      }
+      };
     },
-    stepIndex() {
+    stepIndex () {
       if (utils.isNumber(this.step)) {
         return this.step;
       }
@@ -69,8 +69,9 @@ export default {
         }
         index = index + 1;
       }
+      return index;
     },
-    arr() {
+    arr () {
       if (!this.datas && !this.dict) {
         console.error('Steps Component: Datas or dict parameters need to be defined at least.');
         return [];

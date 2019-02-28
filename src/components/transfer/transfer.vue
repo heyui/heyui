@@ -1,7 +1,7 @@
 
 <template>
   <div class="h-transfer">
-    <div class="h-transfer-source"> 
+    <div class="h-transfer-source">
       <slot name="sourceHeader"><div class="h-transfer-header" v-if="option&&option.ltHeadText">{{option.ltHeadText}}</div></slot>
       <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
       <div class="h-transfer-list">
@@ -16,7 +16,7 @@
         <div class="h-transfer-item text-center"  v-if="sources.length===0">无数据</div>
       </div>
     </div>
-    
+
     <div class="h-transfer-switch">
       <button class="h-btn h-btn-s" @click="move(-1)">
         <template v-if="option&&option.ltText">{{option.ltText}}</template>
@@ -44,81 +44,80 @@
         </label></div>
       </div>
       <div class="h-transfer-item text-center"  v-if="targets.length===0">无数据</div>
-    </div> 
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    props: {
-      value: { 
-        type: Array,
-        default: () => []
-      },
-      datas: {
-        type: Array,
-        default: () => []
-      },
-      keyName: {
-        type: String,
-        default: "key",
-      },
-      option: {
-        type: Object,
-        default: () => ({})
-      }
+export default {
+  props: {
+    value: {
+      type: Array,
+      default: () => []
     },
-    data() {
-      return {
-        ltChecked: [],
-        rtChecked: [],
-        ltSearchText: "",
-        rtSearchText: "",
-        key: this.keyName || 'key'
-      };
+    datas: {
+      type: Array,
+      default: () => []
     },
-    created() {
-      this.$emit('init', this.sources, this.targets);
+    keyName: {
+      type: String,
+      default: 'key'
     },
-    methods: {
-      move(direction) {
-        this.$emit('transfer', direction, this.sources, this.targets);
-        let value = this.value?[...this.value]:[];
-        if(direction === 1 && this.ltChecked.length > 0) {
-          this.rtSearchText = null;
-          value.push(...this.ltChecked);
-          this.ltChecked.length =  0;
-        } 
-        else if(direction === -1 && this.rtChecked.length > 0) {
-          this.ltSearchText = null;
-          this.rtChecked.forEach(d => {
-            value.splice(value.indexOf(d), 1);  
-          });
-          this.rtChecked.length =  0;
-        }
-        this.$emit('input', value);
-        this.$emit('change', value);
-      }   
-    },
-    computed: {
-      sources() {
-        let value = this.value || [];
-        let key = this.keyName || 'key';
-        let result =  this.datas.filter(d => value.indexOf(d[key]) == -1);
-        if(this.ltSearchText && this.ltSearchText.trim()) {
-          return result.filter(d => d.text.indexOf(this.ltSearchText.trim()) != -1);
-        }
-        return result;
-      },
-      targets() {
-        let value = this.value || [];
-        let key = this.keyName || 'key';
-        let result =  this.datas.filter(d => value.indexOf(d[key]) != -1);
-        if(this.rtSearchText && this.rtSearchText.trim()) {
-          return result.filter(d => d.text.indexOf(this.rtSearchText.trim()) != -1);
-        }
-        return result;
-      }
+    option: {
+      type: Object,
+      default: () => ({})
     }
-  };
+  },
+  data () {
+    return {
+      ltChecked: [],
+      rtChecked: [],
+      ltSearchText: '',
+      rtSearchText: '',
+      key: this.keyName || 'key'
+    };
+  },
+  created () {
+    this.$emit('init', this.sources, this.targets);
+  },
+  methods: {
+    move (direction) {
+      this.$emit('transfer', direction, this.sources, this.targets);
+      let value = this.value ? [...this.value] : [];
+      if (direction === 1 && this.ltChecked.length > 0) {
+        this.rtSearchText = null;
+        value.push(...this.ltChecked);
+        this.ltChecked.length = 0;
+      } else if (direction === -1 && this.rtChecked.length > 0) {
+        this.ltSearchText = null;
+        this.rtChecked.forEach(d => {
+          value.splice(value.indexOf(d), 1);
+        });
+        this.rtChecked.length = 0;
+      }
+      this.$emit('input', value);
+      this.$emit('change', value);
+    }
+  },
+  computed: {
+    sources () {
+      let value = this.value || [];
+      let key = this.keyName || 'key';
+      let result = this.datas.filter(d => value.indexOf(d[key]) == -1);
+      if (this.ltSearchText && this.ltSearchText.trim()) {
+        return result.filter(d => d.text.indexOf(this.ltSearchText.trim()) != -1);
+      }
+      return result;
+    },
+    targets () {
+      let value = this.value || [];
+      let key = this.keyName || 'key';
+      let result = this.datas.filter(d => value.indexOf(d[key]) != -1);
+      if (this.rtSearchText && this.rtSearchText.trim()) {
+        return result.filter(d => d.text.indexOf(this.rtSearchText.trim()) != -1);
+      }
+      return result;
+    }
+  }
+};
 </script>

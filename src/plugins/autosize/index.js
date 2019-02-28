@@ -1,28 +1,28 @@
-const map = (typeof Map === "function") ? new Map() : (function () {
+const map = (typeof Map === 'function') ? new Map() : (function () {
   const keys = [];
   const values = [];
 
   return {
-    has(key) {
+    has (key) {
       return keys.indexOf(key) > -1;
     },
-    get(key) {
+    get (key) {
       return values[keys.indexOf(key)];
     },
-    set(key, value) {
+    set (key, value) {
       if (keys.indexOf(key) === -1) {
         keys.push(key);
         values.push(value);
       }
     },
-    delete(key) {
+    delete (key) {
       const index = keys.indexOf(key);
       if (index > -1) {
         keys.splice(index, 1);
         values.splice(index, 1);
       }
-    },
-  }
+    }
+  };
 })();
 
 let createEvent = (name) => new Event(name, { bubbles: true });
@@ -36,14 +36,14 @@ try {
   };
 }
 
-function assign(ta) {
+function assign (ta) {
   if (!ta || !ta.nodeName || ta.nodeName !== 'TEXTAREA' || map.has(ta)) return;
 
   let heightOffset = null;
   let clientWidth = ta.clientWidth;
   let cachedHeight = null;
 
-  function init() {
+  function init () {
     const style = window.getComputedStyle(ta, null);
 
     if (style.resize === 'vertical') {
@@ -64,7 +64,7 @@ function assign(ta) {
     update();
   }
 
-  function changeOverflow(value) {
+  function changeOverflow (value) {
     {
       const width = ta.style.width;
       ta.style.width = '0px';
@@ -76,15 +76,15 @@ function assign(ta) {
     ta.style.overflowY = value;
   }
 
-  function getParentOverflows(el) {
+  function getParentOverflows (el) {
     const arr = [];
 
     while (el && el.parentNode && el.parentNode instanceof Element) {
       if (el.parentNode.scrollTop) {
         arr.push({
           node: el.parentNode,
-          scrollTop: el.parentNode.scrollTop,
-        })
+          scrollTop: el.parentNode.scrollTop
+        });
       }
       el = el.parentNode;
     }
@@ -92,7 +92,7 @@ function assign(ta) {
     return arr;
   }
 
-  function resize() {
+  function resize () {
     const originalHeight = ta.style.height;
     const overflows = getParentOverflows(ta);
     const docTop = document.documentElement && document.documentElement.scrollTop;
@@ -111,7 +111,7 @@ function assign(ta) {
     clientWidth = ta.clientWidth;
 
     overflows.forEach(el => {
-      el.node.scrollTop = el.scrollTop
+      el.node.scrollTop = el.scrollTop;
     });
 
     if (docTop) {
@@ -119,7 +119,7 @@ function assign(ta) {
     }
   }
 
-  function update() {
+  function update () {
     resize();
 
     const styleHeight = Math.round(parseFloat(ta.style.height));
@@ -172,7 +172,7 @@ function assign(ta) {
     resize: ta.style.resize,
     overflowY: ta.style.overflowY,
     overflowX: ta.style.overflowX,
-    wordWrap: ta.style.wordWrap,
+    wordWrap: ta.style.wordWrap
   });
 
   ta.addEventListener('autosize:destroy', destroy, false);
@@ -189,20 +189,20 @@ function assign(ta) {
 
   map.set(ta, {
     destroy,
-    update,
+    update
   });
 
   init();
 }
 
-function destroy(ta) {
+function destroy (ta) {
   const methods = map.get(ta);
   if (methods) {
     methods.destroy();
   }
 }
 
-function update(ta) {
+function update (ta) {
   const methods = map.get(ta);
   if (methods) {
     methods.update();

@@ -10,23 +10,23 @@ const lang = {
       any: 'any'
     },
     confirm: {
-      title: 'Confirm',
+      title: 'Confirm'
     },
     select: {
       nullOptionText: 'please choose',
       placeholder: 'select',
       emptyContent: 'no results found',
       searchPlaceHolder: 'search',
-      limitSize: 'You can select up to {0} data.',
+      limitSize: 'You can select up to {0} data.'
     },
     category: {
       placeholder: 'please choose',
-      nullOptionText: 'please choose',
+      nullOptionText: 'please choose'
     },
     categoryModal: {
       limitWords: 'You can select up to {size} data.',
       emptyContent: 'No results found',
-      total: 'total',
+      total: 'total'
     },
     autoComplate: {
       placeholder: 'Search Input',
@@ -38,16 +38,16 @@ const lang = {
         maxLen: " text length can't exceed {value} bits",
         minLen: " text length can't be less than {value} bits",
         max: ' no more than {value}',
-        min: " can't be less than {value}",
+        min: " can't be less than {value}"
       },
       type: {
         int: ' is not the correct integer format',
         number: ' is not the correct digital format',
         email: ' is not the correct mailbox format',
         url: ' is not the correct URL format',
-        tel: " is not the correct phone number format",
+        tel: ' is not the correct phone number format',
         mobile: ' is not the correct mobile number format',
-        globalmobile: ' is not the correct international mobile number format',
+        globalmobile: ' is not the correct international mobile number format'
       }
     },
     date: {
@@ -61,12 +61,12 @@ const lang = {
       header: {
         year: '',
         month: '',
-        day: '',
+        day: ''
       },
       show: {
         week: '{year} {weeknum}th week {daystart} - {dayend}',
         weekInput: '{year} {week}th week',
-        quarter: '{year} {quarter}th quarter',
+        quarter: '{year} {quarter}th quarter'
       },
       months: {
         january: 'Jan',
@@ -80,7 +80,7 @@ const lang = {
         september: 'Sep',
         october: 'Oct',
         november: 'Nov',
-        december: 'Dec',
+        december: 'Dec'
       },
       weeks: {
         monday: 'Mon',
@@ -89,7 +89,7 @@ const lang = {
         thursday: 'Thu',
         friday: 'Fri',
         saturday: 'Sat',
-        sunday: 'Sun',
+        sunday: 'Sun'
       }
     },
     datepicker: {
@@ -108,7 +108,7 @@ const lang = {
     },
     treepicker: {
       selectDesc: 'You have selected {0} items',
-      placeholder: 'please select',
+      placeholder: 'please select'
     },
     search: {
       placeholder: 'search...',
@@ -133,6 +133,5 @@ const lang = {
     }
   }
 };
-
 
 export default lang;

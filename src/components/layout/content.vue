@@ -9,7 +9,7 @@ const prefixCls = 'h-layout-content';
 export default {
   name: 'hContent',
   computed: {
-    classes() {
+    classes () {
       let classList = [`${prefixCls}`];
       return classList;
     }

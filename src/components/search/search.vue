@@ -41,21 +41,21 @@ export default {
       default: false
     },
     searchText: {
-      type: String,
+      type: String
     }
   },
-  data() {
+  data () {
     return {
-      inputValue: this.value,
+      inputValue: this.value
     };
   },
   watch: {
-    value() {
+    value () {
       this.inputValue = this.value;
     }
   },
   methods: {
-    search(value) {
+    search (value) {
       value = value === null ? '' : value;
       this.inputValue = value;
       this.$emit('input', value);
@@ -63,7 +63,7 @@ export default {
       this.$emit('search', value.trim());
       this.$emit('change', value.trim());
     },
-    inputTrigger(value) {
+    inputTrigger (value) {
       if (this.triggerType == 'input') {
         this.search(value);
       } else {
@@ -72,17 +72,17 @@ export default {
     }
   },
   computed: {
-    showPlaceholder() {
+    showPlaceholder () {
       return this.placeholder || this.t('h.search.placeholder');
     },
-    cls() {
+    cls () {
       return {
         [`${prefix}`]: true,
         [`${prefix}-block`]: this.block,
         [`${prefix}-searching`]: this.value !== '' && this.value !== null && this.value !== undefined,
         [`${prefix}-has-button`]: this.showSearchButton,
-        [`${prefix}-${this.position}`]: true,
-      }
+        [`${prefix}-${this.position}`]: true
+      };
     }
   }
 };

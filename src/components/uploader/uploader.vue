@@ -53,7 +53,6 @@
 import utils from '../../utils/utils';
 import config from '../../utils/config';
 
-
 const prefix = 'h-uploader';
 
 const parse = function (value, param) {
@@ -62,9 +61,9 @@ const parse = function (value, param) {
   } else if (utils.isObject(value)) {
     return { url: value[param.urlName], name: value[param.fileName], thumbUrl: value.thumbUrl || param.thumbUrl.call(value), original: value };
   }
-}
+};
 const dispose = function (value, type, param) {
-  if (type == "url") {
+  if (type == 'url') {
     return value.url;
   } else if (utils.isObject(value)) {
     if (value.original) {
@@ -72,20 +71,20 @@ const dispose = function (value, type, param) {
     }
     return { [param.urlName]: value.url, [param.fileName]: value.name, thumbUrl: value.thumbUrl, file: value };
   }
-}
+};
 
 export default {
   name: 'hUploader',
   props: {
     type: {
       type: String,
-      default: 'file' //files, image, images
+      default: 'file' // files, image, images
     },
     dataType: {
       type: String,
-      default: 'file' //url
+      default: 'file' // url
     },
-    uploadList: { 
+    uploadList: {
       type: Array,
       default: () => ([])
     },
@@ -100,48 +99,48 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     let param = {};
     if (this.config) {
-      param = utils.extend({}, config.getOption("uploader"), this.option);
+      param = utils.extend({}, config.getOption('uploader'), this.option);
     } else {
-      param = utils.extend({}, config.getOption("uploader"), this.option);
+      param = utils.extend({}, config.getOption('uploader'), this.option);
     }
     return {
       param,
       preview: false,
       previewIndex: -1,
       isdragging: false
-    }
+    };
   },
   methods: {
-    clickfile(file, index) {
+    clickfile (file, index) {
       this.$emit('fileclick', file, index);
     },
-    clickImage(index, file) {
+    clickImage (index, file) {
       if (this.readonly) {
         this.$ImagePreview(this.fileList, index);
       } else {
         this.$emit('imageclick', file);
       }
     },
-    previewImage(index) {
+    previewImage (index) {
       this.$ImagePreview(this.fileList, index);
     },
-    getBrowseButton() {
-      return this.$el.querySelector(".h-uploader-browse-button");
+    getBrowseButton () {
+      return this.$el.querySelector('.h-uploader-browse-button');
     },
-    getDropElement() {
-      return this.$el.querySelector(".h-uploader-drop-element");
+    getDropElement () {
+      return this.$el.querySelector('.h-uploader-drop-element');
     },
-    getBackgroundImage(file) {
+    getBackgroundImage (file) {
       let param = {};
       if (file.thumbUrl || file.url) {
         param['background-image'] = `url(${file.thumbUrl || file.url})`;
       }
       return param;
     },
-    getFileList() {
+    getFileList () {
       if (this.isSingle) {
         return this.file ? dispose(this.file, this.dataType, this.param) : null;
       }
@@ -152,32 +151,32 @@ export default {
       }
       return list;
     },
-    deleteFile(index) {
-      this.$emit("deletefile", index);
+    deleteFile (index) {
+      this.$emit('deletefile', index);
     }
   },
   computed: {
-    showUploadButton() {
-      if(this.readonly) return false;
-      return (!this.isSingle && (!this.limit || this.limit > this.files.length)) || (this.isSingle&&!this.files);
+    showUploadButton () {
+      if (this.readonly) return false;
+      return (!this.isSingle && (!this.limit || this.limit > this.files.length)) || (this.isSingle && !this.files);
     },
-    showReUploadWord() {
+    showReUploadWord () {
       return this.t('h.uploader.reUpload');
     },
-    showUploadWord() {
+    showUploadWord () {
       return this.t('h.uploader.upload');
     },
-    isSingle() {
+    isSingle () {
       return this.type == 'image' || this.type == 'file';
     },
-    uploaderCls() {
+    uploaderCls () {
       return {
         [prefix]: true,
         [`${prefix}-${this.type}-container`]: true,
         [this.className]: this.className
-      }
+      };
     },
-    fileList() {
+    fileList () {
       let list = [];
       if (utils.isArray(this.files)) {
         for (let v of this.files) {
@@ -196,7 +195,7 @@ export default {
       }
       return list;
     },
-    file() {
+    file () {
       return this.fileList.length ? this.fileList[0] : null;
     }
   }

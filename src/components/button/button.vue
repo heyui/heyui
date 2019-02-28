@@ -7,7 +7,7 @@
 const prefix = 'h-btn';
 const Props = {
   size: new Set(['l', 's', 'xs'])
-}
+};
 export default {
   name: 'hButton',
   props: {
@@ -24,7 +24,7 @@ export default {
     },
     size: {
       type: String,
-      validator(value) {
+      validator (value) {
         return Props.size.has(value);
       }
     },
@@ -39,29 +39,29 @@ export default {
     text: Boolean,
     iconCircle: Boolean
   },
-  data() {
+  data () {
     return {};
   },
   methods: {
-    trigger(event) {
-      if(this.stop){
+    trigger (event) {
+      if (this.stop) {
         event.stopPropagation();
       }
-      if(this.preventDefault){
+      if (this.preventDefault) {
         event.preventDefault();
       }
       this.$emit('click', event);
     }
   },
   computed: {
-    hasText() {
+    hasText () {
       let slot = this.$slots.default;
       if (slot && slot.length > 0) {
         return true;
       }
       return false;
     },
-    buttonCls() {
+    buttonCls () {
       return {
         [`${prefix}`]: true,
         [`${prefix}-circle`]: !!this.circle || !!this.iconCircle,
@@ -72,16 +72,16 @@ export default {
         [`${prefix}-text-${this.textColor}`]: !!this.textColor,
         [`${prefix}-${this.color}`]: !!this.color,
         [`${prefix}-${this.size}`]: !!this.size,
-        [`${prefix}-no-border`]: this.noBorder === true,
+        [`${prefix}-no-border`]: this.noBorder === true
       };
     },
-    iconCode() {
+    iconCode () {
       return this.loading ? 'h-icon-loading' : this.icon;
     },
-    iconCls() {
+    iconCls () {
       const iconCode = this.loading ? 'h-icon-loading' : this.icon;
       return {
-        [`${iconCode}`]: !!iconCode,
+        [`${iconCode}`]: !!iconCode
       };
     }
   }

@@ -1,23 +1,27 @@
 module.exports = {
-  "root": true,
-  "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    },
-    "ecmaVersion": 6,
-    "sourceType": "module"
+  root: true,
+  env: {
+    node: true
   },
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true
-  },
+  'extends': [
+    '@vue/standard'
+  ],
   "globals": {
-    "log": true,
   },
-  "extends": "eslint:recommended",
-  "plugins": ["vue"],
-  "rules": {
-    "no-console": ["error", { allow: ["warn", "error"] }]
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "semi": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": "off",
+    "linebreak-style": [
+        "error",
+        "unix"
+    ],
+  },
+  parserOptions: {
+    parser: 'babel-eslint'
   }
 }

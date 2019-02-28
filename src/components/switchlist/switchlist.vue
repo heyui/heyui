@@ -30,26 +30,26 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  data() {
+  data () {
     return {
       key: this.keyName,
-      title: this.titleName,
+      title: this.titleName
     };
   },
   methods: {
-    setvalue(option) {
+    setvalue (option) {
       let key = option[this.key];
       if (this.disabled) return;
-      if(key == this.value) return;
+      if (key == this.value) return;
       this.$emit('input', key);
       this.$emit('change', option);
-      let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, this.value);
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, this.value);
       this.$el.dispatchEvent(event);
     }
   },
   computed: {
-    arr() {
+    arr () {
       if (!this.datas && !this.dict) {
         console.error('Switchlist Component: Datas or dict parameters need to be defined at least.');
         return [];

@@ -24,22 +24,22 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {};
   },
   computed: {
-    isChecked() {
+    isChecked () {
       return this.value == this.trueValue;
     }
   },
   methods: {
-    setvalue() {
+    setvalue () {
       if (this.disabled) return;
       let value = this.isChecked ? this.falseValue : this.trueValue;
       this.$emit('input', value);
       this.$emit('change', value);
-      let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, this.value);
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, this.value);
       this.$el.dispatchEvent(event);
     }
   }

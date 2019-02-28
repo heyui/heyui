@@ -1,20 +1,30 @@
-import utils from './utils'
+import utils from './utils';
 
-function debounce(func, wait = 0, options) {
+function debounce (func, wait = 0, options) {
   const nativeMax = Math.max;
   const nativeMin = Math.min;
 
-  let lastArgs,
-    lastThis,
-    maxWait,
-    result,
-    timerId,
-    lastCallTime,
-    // func 上一次执行的时间
-    lastInvokeTime = 0,
-    leading = false,
-    maxing = false,
-    trailing = true;
+  let lastArgs;
+
+  let lastThis;
+
+  let maxWait;
+
+  let result;
+
+  let timerId;
+
+  let lastCallTime;
+
+  // func 上一次执行的时间
+
+  let lastInvokeTime = 0;
+
+  let leading = false;
+
+  let maxing = false;
+
+  let trailing = true;
 
   // func必须是函数
   if (!utils.isFunction(func)) {
@@ -30,9 +40,10 @@ function debounce(func, wait = 0, options) {
   }
 
   // 执行要被触发的函数
-  function invokeFunc(time) {
-    let args = lastArgs,
-      thisArg = lastThis;
+  function invokeFunc (time) {
+    let args = lastArgs;
+
+    let thisArg = lastThis;
     lastArgs = lastThis = undefined;
     lastInvokeTime = time;
     result = func.apply(thisArg, args);
@@ -40,7 +51,7 @@ function debounce(func, wait = 0, options) {
   }
 
   // 在leading edge阶段执行函数
-  function leadingEdge(time) {
+  function leadingEdge (time) {
     // Reset any `maxWait` timer.
     lastInvokeTime = time;
     // 为 trailing edge 触发函数调用设定定时器
@@ -50,13 +61,17 @@ function debounce(func, wait = 0, options) {
   }
 
   // 剩余时间
-  function remainingWait(time) {
+  function remainingWait (time) {
     // 距离上次debounced函数被调用的时间
-    let timeSinceLastCall = time - lastCallTime,
-      // 距离上次函数被执行的时间
-      timeSinceLastInvoke = time - lastInvokeTime,
-      // 用 wait 减去 timeSinceLastCall 计算出下一次trailing的位置
-      result = wait - timeSinceLastCall;
+    let timeSinceLastCall = time - lastCallTime;
+
+    // 距离上次函数被执行的时间
+
+    let timeSinceLastInvoke = time - lastInvokeTime;
+
+    // 用 wait 减去 timeSinceLastCall 计算出下一次trailing的位置
+
+    let result = wait - timeSinceLastCall;
     // 两种情况
     // 有maxing: 比较出下一次maxing和下一次trailing的最小值，作为下一次函数要执行的时间
     // 无maxing: 在下一次trailing时执行timerExpired
@@ -64,22 +79,21 @@ function debounce(func, wait = 0, options) {
   }
 
   // 根据时间判断 func 能否被执行
-  function shouldInvoke(time) {
-    let timeSinceLastCall = time - lastCallTime,
-      timeSinceLastInvoke = time - lastInvokeTime;
+  function shouldInvoke (time) {
+    let timeSinceLastCall = time - lastCallTime;
+
+    let timeSinceLastInvoke = time - lastInvokeTime;
     // 几种满足条件的情况
-    return (lastCallTime === undefined // 首次执行
-      ||
-      (timeSinceLastCall >= wait) // 距离上次被调用已经超过 wait
-      ||
-      (timeSinceLastCall < 0) // 系统时间倒退
-      ||
-      (maxing && timeSinceLastInvoke >= maxWait)); //超过最大等待时间
+    return (lastCallTime === undefined ||
+      (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) ||
+      (maxing && timeSinceLastInvoke >= maxWait)); // 超过最大等待时间
   }
 
   // 在 trailing edge 且时间符合条件时，调用 trailingEdge函数，否则重启定时器
-  function timerExpired() {
-    let time = new Date().getTime();
+  function timerExpired () {
+    let time = new Date()
+      .getTime();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -88,7 +102,7 @@ function debounce(func, wait = 0, options) {
   }
 
   // 在trailing edge阶段执行函数
-  function trailingEdge(time) {
+  function trailingEdge (time) {
     timerId = undefined;
     // 有lastArgs才执行，
     // 意味着只有 func 已经被 debounced 过一次以后才会在 trailing edge 执行
@@ -102,7 +116,7 @@ function debounce(func, wait = 0, options) {
   }
 
   // cancel方法
-  function cancel() {
+  function cancel () {
     if (timerId !== undefined) {
       clearTimeout(timerId);
     }
@@ -111,17 +125,21 @@ function debounce(func, wait = 0, options) {
   }
 
   // flush方法--立即调用
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(new Date().getTime());
+  function flush () {
+    return timerId === undefined ? result : trailingEdge(new Date()
+      .getTime());
   }
 
-  function debounced() {
-    let time = new Date().getTime(),
-      //是否满足时间条件
-      isInvoking = shouldInvoke(time);
+  function debounced () {
+    let time = new Date()
+      .getTime();
+
+    // 是否满足时间条件
+
+    let isInvoking = shouldInvoke(time);
     lastArgs = arguments;
     lastThis = this;
-    lastCallTime = time; //函数被调用的时间
+    lastCallTime = time; // 函数被调用的时间
     // 无timerId的情况有两种：
     // 1.首次调用
     // 2.trailingEdge执行过函数

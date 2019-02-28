@@ -15,30 +15,29 @@ export default {
     unit: String,
     render: Function
   },
-  data(){
+  data () {
     return {};
   },
   computed: {
-    cls() {
+    cls () {
       return {
         [`text-${this.align}`]: !!this.align
-      }
+      };
     },
-    show() {
-      if (this.prop=='$index') return this.index;
+    show () {
+      if (this.prop == '$index') return this.index;
       if (this.render) {
-        return this.render.call(null, this.data)
+        return this.render.call(null, this.data);
       }
       let value = this.data[this.prop];
       if (this.dict) {
         return utils.dictMapping(value, this.dict);
       }
       if (this.unit) {
-        return value === '' || value === null || value === undefined ? '' : `${value}${this.unit}`
+        return value === '' || value === null || value === undefined ? '' : `${value}${this.unit}`;
       }
       return value;
     }
   }
-}
+};
 </script>
-

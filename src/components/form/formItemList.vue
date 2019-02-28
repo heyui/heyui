@@ -4,15 +4,15 @@
 <script>
 export default {
   name: 'hFormItemList',
-  data() {
+  data () {
     return {
     };
   },
   computed: {
-    labelWidth() {
+    labelWidth () {
       return this.$parent.labelWidth;
     },
-    mode() {
+    mode () {
       return this.$parent.mode;
     }
   }

@@ -7,27 +7,27 @@
 const prefix = 'h-btn-group';
 const Props = {
   size: new Set(['l', 's', 'xs'])
-}
+};
 export default {
   name: 'hButtonGroup',
   props: {
     circle: Boolean,
     size: {
       type: String,
-      validator(value) {
+      validator (value) {
         return Props.size.has(value);
       }
     }
   },
-  data() {
+  data () {
     return {};
   },
   computed: {
-    buttonGroupCls() {
+    buttonGroupCls () {
       return {
         [`${prefix}`]: true,
         [`${prefix}-circle`]: !!this.circle,
-        [`${prefix}-${this.size}`]: !!this.size,
+        [`${prefix}-${this.size}`]: !!this.size
       };
     }
   }

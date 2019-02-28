@@ -6,7 +6,7 @@ const iconPrefixCls = 'h-icon';
 
 let Default = {
   timeout: 3000
-}
+};
 
 const iconNames = {
   info: 'info',
@@ -25,7 +25,7 @@ const iconColor = {
 
 let messageDom = null;
 
-function Message(content, timeout, type, onClose) {
+function Message (content, timeout, type, onClose) {
   if (!messageDom) {
     messageDom = document.createElement('div');
     utils.addClass(messageDom, `${prefixCls}-container`);
@@ -45,7 +45,7 @@ function Message(content, timeout, type, onClose) {
   return Notify(param);
 }
 
-function message(content, timeout, onClose) {
+function message (content, timeout, onClose) {
   if (utils.isObject(content)) {
     return Message(content.text, content.timeout, content.type || 'info', content.onClose);
   }
@@ -54,7 +54,7 @@ function message(content, timeout, onClose) {
 
 message.info = (content, timeout, onClose) => {
   return Message(content, timeout, 'info', onClose);
-}
+};
 
 message.success = (content, timeout, onClose) => {
   return Message(content, timeout, 'success', onClose);

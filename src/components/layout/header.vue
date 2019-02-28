@@ -12,7 +12,7 @@ export default {
     theme: String
   },
   computed: {
-    classes() {
+    classes () {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-theme-${this.theme}`]: this.theme

@@ -9,13 +9,13 @@ const wordlimit = function (el, total, vnode) {
       vnode.context.$Message.error(locale.t('h.wordlimit.warn', [total]));
     }
   }
-}
+};
 export default {
-  inserted(el, binding, vnode) {
+  inserted (el, binding, vnode) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       wordlimit(el, total);
-      el.addEventListener("input", () => {
+      el.addEventListener('input', () => {
         wordlimit(el, total, vnode);
       });
       for (let d of vnode.data.directives) {
@@ -27,11 +27,11 @@ export default {
         }
       }
     }
-  },
+  }
   // update(el, binding, vnode, voldnode) {
   //   let total = binding.value;
   //   if (vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
   //     wordlimit(el, total, vnode);
   //   }
   // },
-}
+};

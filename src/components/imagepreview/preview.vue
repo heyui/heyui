@@ -31,17 +31,17 @@ export default {
       default: 0
     }
   },
-  data() {
+  data () {
     return {
       height: 200,
       width: 200,
       showIndex: -1,
       changeing: false,
       previewFile: {}
-    }
+    };
   },
   watch: {
-    isShow() {
+    isShow () {
       if (this.isShow) {
         this.width = 200;
         this.height = 200;
@@ -51,11 +51,11 @@ export default {
       }
     }
   },
-  mounted() {
+  mounted () {
     this.change(this.index);
   },
   methods: {
-    initStyle(e) {
+    initStyle (e) {
       let width = this.$refs.img.width;
       let height = this.$refs.img.height;
       if (width > 800 || height > 800) {
@@ -69,7 +69,7 @@ export default {
         this.changeing = false;
       }, 300);
     },
-    change(index) {
+    change (index) {
       if (index < 0 || index > this.datas.length - 1) {
         return false;
       }
@@ -79,30 +79,30 @@ export default {
         this.updatePreview();
       }, 300);
     },
-    updatePreview() {
+    updatePreview () {
       if (this.datas.length == 0 || this.isShow === false) {
         return {};
       }
       let data = this.datas[this.showIndex];
-      let previewFile = utils.isString(data) ? {url: data} : data;
-      if(previewFile.url == this.previewFile.url) {
+      let previewFile = utils.isString(data) ? { url: data } : data;
+      if (previewFile.url == this.previewFile.url) {
         this.$nextTick(() => {
           if (this.$refs.img && this.$refs.img.complete) {
             setTimeout(() => {
               this.changeing = false;
             }, 300);
           }
-        })
+        });
       }
       this.previewFile = previewFile;
     }
   },
   computed: {
-    previewStyle() {
+    previewStyle () {
       return {
         height: `${this.height}px`,
-        width: `${this.width}px`,
-      }
+        width: `${this.width}px`
+      };
     }
   },
   components: {

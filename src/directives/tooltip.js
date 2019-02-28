@@ -26,8 +26,8 @@ const getContent = function (el, vnode) {
     param.content = `<div class="h-tooltip-inner-content">${el.innerText}</div>`;
     param.html = true;
   }
-  return param
-}
+  return param;
+};
 
 const init = function (el, binding, vnode) {
   if (binding.value === false) {
@@ -39,12 +39,12 @@ const init = function (el, binding, vnode) {
   param.container = document.body;
   param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);
   el.tooltip = new Tooltip(el, param);
-}
+};
 export default {
-  inserted(el, binding, vnode) {
+  inserted (el, binding, vnode) {
     init(el, binding, vnode);
   },
-  update(el, binding, vnode) {
+  update (el, binding, vnode) {
     if (el.tooltip) {
       vnode.context.$nextTick(() => {
         if (binding.value === false) {
@@ -58,15 +58,15 @@ export default {
         } else {
           el.tooltip.updateTemplate(param.content, param.html);
         }
-      })
+      });
     } else {
       init(el, binding, vnode);
     }
   },
-  unbind(el) {
+  unbind (el) {
     if (el.tooltip) {
       el.tooltip.destory();
       delete el.tooltip;
     }
   }
-}
+};

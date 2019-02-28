@@ -9,7 +9,7 @@
 const prefix = 'h-badge';
 const Props = {
   position: new Set(['right', 'left'])
-}
+};
 
 export default {
   name: 'hBadge',
@@ -32,33 +32,33 @@ export default {
     },
     position: {
       type: String,
-      validator(value) {
+      validator (value) {
         return Props.position.has(value);
       }
     }
   },
-  data() {
+  data () {
     return {
     };
   },
   methods: {
   },
   computed: {
-    showCount() {
-      return this.dot ? "" : (this.count > this.maxCount ? `${this.maxCount}+` : this.count);
+    showCount () {
+      return this.dot ? '' : (this.count > this.maxCount ? `${this.maxCount}+` : this.count);
     },
-    badgeCls() {
+    badgeCls () {
       return {
         [`${prefix}`]: true,
-        [`${prefix}-position-right`]: this.position == 'right',
-      }
+        [`${prefix}-position-right`]: this.position == 'right'
+      };
     },
-    badgeCountCls() {
+    badgeCountCls () {
       return {
         [`${prefix}-count`]: true,
         [`${prefix}-count-show`]: this.count > 0 || this.showZero,
         [`${prefix}-count-dot`]: this.dot
-      }
+      };
     }
   }
 };

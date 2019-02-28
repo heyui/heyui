@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import utils from "../../utils/utils";
+import utils from '../../utils/utils';
 
 const prefixCls = 'h-form-item';
 export default {
@@ -47,21 +47,21 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       validResult: null,
       configRequired: false,
       errorMessage: { valid: true }
     };
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (this.prop) {
       let parent = this.getParent();
       parent.removeProp(this.prop);
     }
   },
   watch: {
-    prop(prop, oldProp) {
+    prop (prop, oldProp) {
       let parent = this.getParent();
       if (this.prop) {
         let message = parent.getConfig(this.prop);
@@ -71,19 +71,19 @@ export default {
         this.errorMessage = parent.updateErrorMessage(prop, oldProp);
       }
     },
-    required() {
+    required () {
       let parent = this.getParent();
       parent.setConfig(this.prop, { required: this.required });
     }
   },
-  mounted() {
+  mounted () {
     // this.$nextTick(() => {
-      // this.$el.addEventListener("blur", (event) => {
-      //   this.trigger(event);
-      // }, true);
-      // this.$el.addEventListener("setvalue", (event) => {
-      //   this.trigger(event);
-      // });
+    // this.$el.addEventListener("blur", (event) => {
+    //   this.trigger(event);
+    // }, true);
+    // this.$el.addEventListener("setvalue", (event) => {
+    //   this.trigger(event);
+    // });
     // });
     let parent = this.getParent();
 
@@ -92,8 +92,8 @@ export default {
       if (message) {
         this.configRequired = !!message.required;
       }
-      if(this.required){
-        parent.setConfig(this.prop, {required: true});
+      if (this.required) {
+        parent.setConfig(this.prop, { required: true });
       }
       // if(this.label){
       //   parent.setConfig(this.prop, {label: this.label});
@@ -102,7 +102,7 @@ export default {
     }
   },
   methods: {
-    getParent() {
+    getParent () {
       let parent = this.$parent;
       let filterTag = new Set(['Form', 'hForm', 'h-form']);
       while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
@@ -113,7 +113,7 @@ export default {
       }
       return parent;
     },
-    getDirectParent() {
+    getDirectParent () {
       let parent = this.$parent;
       let filterTag = new Set(['Form', 'hForm', 'h-form', 'h-form-item', 'hFormItem', 'FormItem']);
       while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
@@ -124,10 +124,10 @@ export default {
       }
       return parent;
     },
-    reset() {
+    reset () {
       this.errorMessage.valid = true;
     },
-    trigger() {
+    trigger () {
       let parent = this.getParent();
       if (!parent) return false;
       let prop = this.prop;
@@ -135,10 +135,10 @@ export default {
         return;
       }
       this.getParent().validField(prop);
-    },
+    }
   },
   computed: {
-    initLabelWidth() {
+    initLabelWidth () {
       let parent = this.getDirectParent(true);
       // if (!parent) return 'auto';
       let mode = this.$parent.mode;
@@ -146,7 +146,7 @@ export default {
       let width = hasWidth ? (parent.labelWidth || false) : false;
       return width ? `${width}px` : 'auto';
     },
-    formItemCls() {
+    formItemCls () {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-single`]: this.single,
@@ -154,20 +154,20 @@ export default {
         [`${prefixCls}-required`]: this.required || this.configRequired,
         [`${prefixCls}-valid-error`]: !this.errorMessage.valid,
         [`${prefixCls}-no-padding`]: !!this.noPadding
-      }
+      };
     },
-    labelCls() {
+    labelCls () {
       return {
-        [`${prefixCls}-label`]: true,
-      }
+        [`${prefixCls}-label`]: true
+      };
     },
-    labelStyleCls() {
+    labelStyleCls () {
       let param = {
         width: this.initLabelWidth
       };
       return param;
     },
-    contentStyleCls() {
+    contentStyleCls () {
       let param = {
         'margin-left': this.showLabel ? this.initLabelWidth : '0px'
       };

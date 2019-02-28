@@ -6,9 +6,9 @@ const prefixCls = 'h-modal';
 
 let Default = {
   middle: false
-}
+};
 
-function Confirm(content, title) {
+function Confirm (content, title) {
   return new Promise((resolve, reject) => {
     let param = {
       type: prefixCls,
@@ -17,7 +17,7 @@ function Confirm(content, title) {
       events: {
         ok: (n) => {
           n.close();
-          resolve()
+          resolve();
         },
         cancel: (n) => {
           n.close();
@@ -36,7 +36,7 @@ function Confirm(content, title) {
   });
 }
 
-function confirm(content, title) {
+function confirm (content, title) {
   if (!title) {
     title = locale.t('h.confirm.title');
   }

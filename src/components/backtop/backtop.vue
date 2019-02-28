@@ -11,7 +11,6 @@
 
 const prefix = 'h-backtop';
 
-
 export default {
   name: 'hBackTop',
   props: {
@@ -32,22 +31,22 @@ export default {
       default: 'h-backtop-default'
     }
   },
-  data() {
+  data () {
     return {
       show: false,
       timeout: null
     };
   },
   watch: {
-    show() {
-      this.$el.style.display = "block";
+    show () {
+      this.$el.style.display = 'block';
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       let target = this.target();
       if (target) {
-        target.addEventListener("scroll", () => {
+        target.addEventListener('scroll', () => {
           if (target.scrollTop > 300) {
             this.show = true;
           } else {
@@ -55,21 +54,21 @@ export default {
           }
         });
       }
-      this.$el.addEventListener("webkitAnimationEnd", () => {
-        this.$el.style.display = this.show ? "block" : "none";
-      })
+      this.$el.addEventListener('webkitAnimationEnd', () => {
+        this.$el.style.display = this.show ? 'block' : 'none';
+      });
     });
   },
   methods: {
-    backtop() {
+    backtop () {
       if (this.timeout) return;
       let target = this.target();
       if (target) {
-        this.scrollTop(target, (target.scrollHeight - target.offsetHeight)/10);
+        this.scrollTop(target, (target.scrollHeight - target.offsetHeight) / 10);
       }
-      this.$emit("backtop");
+      this.$emit('backtop');
     },
-    scrollTop(target, step) {
+    scrollTop (target, step) {
       this.timeout = setTimeout(() => {
         if (target.scrollTop > step) {
           target.scrollTop -= step;
@@ -82,18 +81,18 @@ export default {
     }
   },
   computed: {
-    backtopCls() {
+    backtopCls () {
       return {
         [`${prefix}`]: true,
         [`${prefix}-show`]: this.show,
         [this.className]: !!this.className
-      }
+      };
     },
-    backtopStyle() {
+    backtopStyle () {
       return {
         bottom: `${this.bottom}px`,
         right: `${this.right}px`
-      }
+      };
     }
   }
 };

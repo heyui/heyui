@@ -8,7 +8,7 @@ let lang = zhLang;
 const langs = {
   zh: zhLang,
   en: enLang
-}
+};
 let nowLang = null;
 let merged = {};
 let vuei18n = null;

@@ -13,8 +13,8 @@ export default {
   name: 'hTooltip',
   props: {
     trigger: {
-      type: String,  //click,hover
-      default: "hover"
+      type: String, // click,hover
+      default: 'hover'
     },
     content: String,
     placement: {
@@ -26,34 +26,34 @@ export default {
       default: false
     },
     className: {
-      type: String,
+      type: String
     },
     theme: String,
     delay: {
       type: Number,
       default: 0
-    },
+    }
   },
-  mounted() {
+  mounted () {
     this.init();
   },
   methods: {
-    show() {
+    show () {
       if (this.tooltip) {
         this.tooltip.show();
       }
     },
-    hide() {
+    hide () {
       if (this.tooltip) {
         this.tooltip.hide();
       }
     },
-    update() {
+    update () {
       if (this.tooltip) {
         this.tooltip.update();
       }
     },
-    init() {
+    init () {
       this.$nextTick(() => {
         let el = this.$el;
         let content = this.$el.querySelector('.h-tooltip-inner-content');
@@ -68,10 +68,10 @@ export default {
           disabled: this.disabled,
           delay: this.delay,
           events: {
-            show: ()=>{
+            show: () => {
               this.$emit('show');
             },
-            hide: ()=>{
+            hide: () => {
               this.$emit('hide');
             }
           }
@@ -80,34 +80,34 @@ export default {
     }
   },
   watch: {
-    disabled() {
-      if(!this.tooltip) return;
+    disabled () {
+      if (!this.tooltip) return;
       if (!this.disabled) {
-        this.tooltip.enabled()
+        this.tooltip.enabled();
       } else {
-        this.tooltip.disabled()
+        this.tooltip.disabled();
       }
     },
-    content() {
-      if(!this.tooltip) return;
+    content () {
+      if (!this.tooltip) return;
       this.tooltip.update();
     }
   },
   computed: {
-    tooltipCls() {
+    tooltipCls () {
       return {
         [`${prefix}`]: true
-      }
+      };
     },
-    showCls() {
+    showCls () {
       return {
         [`${prefix}-show`]: true
-      }
+      };
     },
-    groupCls() {
+    groupCls () {
       return {
         [`${prefix}`]: true
-      }
+      };
     }
   }
 };

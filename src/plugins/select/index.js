@@ -1,4 +1,4 @@
-function select(element) {
+function select (element) {
   let selectedText;
 
   if (element.nodeName === 'SELECT') {

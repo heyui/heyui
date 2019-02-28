@@ -11,7 +11,7 @@ export default {
   props: {
   },
   computed: {
-    classes() {
+    classes () {
       let classList = [`${prefixCls}`];
       return classList;
     }

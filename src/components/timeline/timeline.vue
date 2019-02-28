@@ -19,11 +19,11 @@ export default {
     }
   },
   computed: {
-    classes() {
+    classes () {
       return [
         `${prefixCls}`, {
           [`${prefixCls}-pending`]: this.pending,
-          [`${prefixCls}-time`]:this.time
+          [`${prefixCls}-time`]: this.time
         }
       ];
     }

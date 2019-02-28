@@ -35,16 +35,16 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
     };
   },
   methods: {
-    trigger(data) {
-      this.$emit("trigger", data);
+    trigger (data) {
+      this.$emit('trigger', data);
     },
-    togglemenu(data) {
-      this.$emit("trigger", { type: "togglemenuEvent", data });
+    togglemenu (data) {
+      this.$emit('trigger', { type: 'togglemenuEvent', data });
     }
   }
 };

@@ -10,22 +10,22 @@ const lang = {
       any: '不限'
     },
     confirm: {
-      title: '提示',
+      title: '提示'
     },
     select: {
       nullOptionText: '请选择',
       emptyContent: '未搜索到相关数据',
       placeholder: '请选择',
       searchPlaceHolder: '请输入筛选文本',
-      limitSize: '您最多可以选择{0}个选项',
+      limitSize: '您最多可以选择{0}个选项'
     },
     category: {
-      placeholder: '请选择',
+      placeholder: '请选择'
     },
     categoryModal: {
       limitWords: '您最多可以选择{size}条数据。',
       emptyContent: '未搜索到相关数据',
-      total: '全部',
+      total: '全部'
     },
     autoComplate: {
       placeholder: '请输入',
@@ -37,7 +37,7 @@ const lang = {
         maxLen: '文字长度不能超过{value}个字',
         minLen: '文字长度不能少于{value}个字',
         max: '不能大于{value}',
-        min: '不能小于{value}',
+        min: '不能小于{value}'
       },
       type: {
         int: '不是正确的整数格式',
@@ -46,7 +46,7 @@ const lang = {
         url: '不是正确的网址格式',
         tel: '不是正确的电话号码格式',
         mobile: '不是正确的手机号码格式',
-        globalmobile: '不是正确的国际号码格式',
+        globalmobile: '不是正确的国际号码格式'
       }
     },
     date: {
@@ -60,12 +60,12 @@ const lang = {
       header: {
         year: '年',
         month: '月',
-        day: '日',
+        day: '日'
       },
       show: {
         week: '{year}年 第{weeknum}周 {daystart} 至 {dayend}',
         weekInput: '{year}年 第{week}周',
-        quarter: '{year}年 第{quarter}季度',
+        quarter: '{year}年 第{quarter}季度'
       },
       months: {
         january: '一月',
@@ -79,7 +79,7 @@ const lang = {
         september: '九月',
         october: '十月',
         november: '十一',
-        december: '十二',
+        december: '十二'
       },
       weeks: {
         monday: '一',
@@ -88,7 +88,7 @@ const lang = {
         thursday: '四',
         friday: '五',
         saturday: '六',
-        sunday: '日',
+        sunday: '日'
       }
     },
     datepicker: {
@@ -103,11 +103,11 @@ const lang = {
       warn: '您最多可以输入{0}个字'
     },
     wordcount: {
-      warn: '您已超出{0}个字',
+      warn: '您已超出{0}个字'
     },
     treepicker: {
       selectDesc: '您总共选择{0}项',
-      placeholder: '请选择',
+      placeholder: '请选择'
     },
     search: {
       placeholder: '请输入关键词查询',

@@ -22,25 +22,25 @@ export default {
     text: String,
     minHeight: Number
   },
-  data() {
+  data () {
     return {
       isSetStyle: false
-    }
+    };
   },
-  unbind() {
+  unbind () {
 
   },
-  mounted() {
+  mounted () {
     this.initStyle();
   },
   methods: {
-    initStyle() {
+    initStyle () {
       if (this.loading) {
         this.$nextTick(() => {
           utils.addClass(this.$el, 'h-loading-loading');
           utils.addClass(this.$el, 'h-loading-visible');
           let parent = this.$el.parentNode;
-          if(parent) {
+          if (parent) {
             utils.addClass(parent, 'h-loading-parent');
           }
         });
@@ -49,7 +49,7 @@ export default {
         setTimeout(() => {
           utils.removeClass(this.$el, 'h-loading-visible');
           let parent = this.$el.parentNode;
-          if(parent) {
+          if (parent) {
             utils.removeClass(parent, 'h-loading-parent');
           }
         }, 500);
@@ -57,22 +57,22 @@ export default {
     }
   },
   watch: {
-    loading() {
+    loading () {
       this.initStyle();
     }
   },
   computed: {
-    circularCls() {
+    circularCls () {
       return {
-        [`${prefix}-circular`]: true,
+        [`${prefix}-circular`]: true
       };
     },
-    textCls() {
+    textCls () {
       return {
-        [`${prefix}-text`]: true,
+        [`${prefix}-text`]: true
       };
     },
-    loadingCls() {
+    loadingCls () {
       return {
         [`${prefix}`]: true
       };

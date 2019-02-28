@@ -37,7 +37,7 @@
                    @input="setvalue"
                    @changeView="updateDropdown"></date-base>
       </div>
-  
+
       <div class="h-date-footer"
            v-if="hasConfirm & !inline">
         <button class="h-btn h-btn-text"
@@ -65,7 +65,7 @@ const manbaType = {
   datetime: manba.MINUTE,
   time: manba.MINUTE,
   datehour: manba.HOUR
-}
+};
 
 const options = config.getOption('datepicker');
 
@@ -82,7 +82,7 @@ export default {
     },
     type: {
       type: [String],
-      default: 'date'  //year, month, week
+      default: 'date' // year, month, week
     },
     option: Object,
     format: String,
@@ -95,7 +95,7 @@ export default {
       default: false
     },
     placeholder: {
-      type: String,
+      type: String
     },
     hasButtons: {
       type: Boolean,
@@ -114,7 +114,7 @@ export default {
       type: Number
     }
   },
-  data() {
+  data () {
     return {
       nowDate: '',
       showDate: '',
@@ -123,40 +123,40 @@ export default {
     };
   },
   watch: {
-    value() {
+    value () {
       this.parse(this.value);
     },
-    disabled() {
+    disabled () {
       if (this.disabled) {
         this.dropdown.disabled();
       } else {
         this.dropdown.enabled();
       }
     },
-    type() {
+    type () {
       this.parse(this.value);
     }
   },
-  beforeMount() {
+  beforeMount () {
     this.parse(this.value);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     let el = this.el;
-    if(el) {
+    if (el) {
       el.style.display = 'none';
       this.$el.appendChild(el);
     }
-    if(this.dropdown) {
+    if (this.dropdown) {
       this.dropdown.destory();
     }
   },
-  mounted() {
+  mounted () {
     let that = this;
     this.$nextTick(() => {
-      if(this.inline) return;
+      if (this.inline) return;
       let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
       let content = this.$el.querySelector(`.h-date-picker`);
-      
+
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         triggerOnce: true,
@@ -164,15 +164,15 @@ export default {
         disabled: this.disabled,
         placement: this.placement,
         events: {
-          show() {
+          show () {
             that.isShow = true;
-            that.$nextTick(()=>{
+            that.$nextTick(() => {
               that.parse(that.value);
               that.$refs.datebase.resetView();
               if (that.nowDate) {
                 that.nowView = manba(that.nowDate);
               }
-            })
+            });
           }
         }
       });
@@ -182,40 +182,40 @@ export default {
     });
   },
   methods: {
-    setShortcutValue(s) {
+    setShortcutValue (s) {
       let value = s.value.call(null);
       this.parse(value);
       this.setvalue(this.nowDate);
       this.hide();
     },
-    clear() {
+    clear () {
       this.$emit('clear');
       this.setvalue('');
       this.hide();
     },
-    confirm() {
+    confirm () {
       this.$emit('confirm');
       this.hide();
     },
-    updateView(value) {
+    updateView (value) {
       this.nowView = manba(value);
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.updateDropdown();
-      })
+      });
     },
-    updateDropdown() {
-      if(this.dropdown) this.dropdown.update();
+    updateDropdown () {
+      if (this.dropdown) this.dropdown.update();
     },
-    inputEvent(event) {
+    inputEvent (event) {
       let value = event.target.value;
-      try { manba(value) } catch (evt) { return; }
+      try { manba(value); } catch (evt) { return; }
       // this.parse(value, false);
       this.setvalue(value);
     },
-    changeEvent(event) {
+    changeEvent (event) {
       let value = event.target.value;
       this.parse(value);
-      if (this.nowDate && utils.isObject(this.option) && this.type != "time") {
+      if (this.nowDate && utils.isObject(this.option) && this.type != 'time') {
         let disabled = false;
         let nowDate = manba(this.nowDate);
         let type = manbaType[this.type];
@@ -228,7 +228,7 @@ export default {
       }
       this.setvalue(this.nowDate);
     },
-    parse(value, initShow = true) {
+    parse (value, initShow = true) {
       if (value != '' && !utils.isNull(value)) {
         try {
           if (this.type == 'time') {
@@ -238,9 +238,9 @@ export default {
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = this.t('h.date.show.weekInput', {year:this.nowView.year(), week: this.nowView.getWeekOfYear(manba.MONDAY)});
+              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(manba.MONDAY) });
             } else if (this.type == 'quarter') {
-              this.showDate = this.t('h.date.show.quarter', {year:this.nowView.year(), quarter:Math.ceil(this.nowView.month() / 3)});
+              this.showDate = this.t('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
             } else {
               this.showDate = this.nowView.format(this.nowFormat);
             }
@@ -255,10 +255,10 @@ export default {
       this.nowDate = '';
       if (initShow) this.showDate = '';
     },
-    hide() {
-      if(this.dropdown) this.dropdown.hide();
+    hide () {
+      if (this.dropdown) this.dropdown.hide();
     },
-    setvalue(string, isEnd = true) {
+    setvalue (string, isEnd = true) {
       // log(string);
       let value = string;
       if (string != '') {
@@ -266,8 +266,8 @@ export default {
       }
       this.$emit('input', value);
       this.$emit('change', value);
-      let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, value);
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
       if (isEnd) {
         this.hide();
@@ -276,20 +276,20 @@ export default {
     }
   },
   computed: {
-    showPlaceholder() {
+    showPlaceholder () {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
-    nowFormat() {
+    nowFormat () {
       let format = this.format || options.format[this.type];
       if (this.type == 'datetime' && this.hasSeconds) {
         format = options.format.datetimesecond;
       }
       return format;
     },
-    hasConfirm() {
+    hasConfirm () {
       return this.type == 'datetime' || this.type == 'datehour' || this.hasButtons;
     },
-    shortcuts() {
+    shortcuts () {
       let shortcuts = [];
       let shortcutsConfig = null;
       if (this.option && this.option.shortcuts) {
@@ -306,18 +306,18 @@ export default {
       }
       return shortcuts;
     },
-    dateCls() {
+    dateCls () {
       return {
         [`${prefix}`]: !this.inline,
         [`${prefix}-inline`]: this.inline,
         [`${prefix}-input-border`]: !this.noBorder,
         [`${prefix}-disabled`]: this.disabled
-      }
+      };
     },
-    datePickerCls() {
+    datePickerCls () {
       return {
         [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
-      }
+      };
     }
   },
   components: {

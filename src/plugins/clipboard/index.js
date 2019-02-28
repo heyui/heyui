@@ -1,7 +1,7 @@
 import select from '../select';
-import Message from '../message'
+import Message from '../message';
 
-export default function ({ text, showSuccessTip = "复制成功", showFailureTip = '复制失败', successCallback, failureCallback }) {
+export default function ({ text, showSuccessTip = '复制成功', showFailureTip = '复制失败', successCallback, failureCallback }) {
   const container = document.body;
   const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
   const fakeElem = document.createElement('textarea');
@@ -21,16 +21,16 @@ export default function ({ text, showSuccessTip = "复制成功", showFailureTip
   try {
     succeeded = document.execCommand('copy');
     if (showSuccessTip) {
-      Message.success(showSuccessTip)
+      Message.success(showSuccessTip);
     }
     if (successCallback) {
       successCallback.call();
     }
   } catch (err) {
     succeeded = false;
-    console.error(err)
+    console.error(err);
     if (showFailureTip) {
-      Message.error(showFailureTip)
+      Message.error(showFailureTip);
     }
     if (failureCallback) {
       failureCallback.call();

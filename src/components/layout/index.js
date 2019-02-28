@@ -4,10 +4,10 @@ import Content from './content.vue';
 import Sider from './sider.vue';
 import Layout from './layout.vue';
 
-export { 
+export {
   HHeader,
   HFooter,
   Content,
   Sider,
-  Layout,
+  Layout
 };

@@ -24,7 +24,7 @@ export default {
     tooltipTheme: String,
     placement: String
   },
-  data() {
+  data () {
     return {
       keyIndex: 0,
       oversize: false,
@@ -32,21 +32,21 @@ export default {
     };
   },
   watch: {
-    isLimitHeight() {
+    isLimitHeight () {
       this.init();
     },
-    text() {
+    text () {
       this.init();
     },
-    height() {
+    height () {
       this.init();
     }
   },
-  mounted() {
+  mounted () {
     this.init();
   },
   methods: {
-    init() {
+    init () {
       this.oversize = false;
       this.keyIndex += 1;
       let more = this.$el.querySelector('.h-text-ellipsis-more');
@@ -55,21 +55,21 @@ export default {
         this.limitShow();
       }
     },
-    limitShow() {
+    limitShow () {
       this.$nextTick(() => {
         let textDom = this.$el.querySelector('.text-ellipsis-limit-text');
         let title = this.$el;
         let more = this.$el.querySelector('.h-text-ellipsis-more');
         let n = 1000;
-        if(textDom) {
-          if(title.offsetHeight > this.height) {
+        if (textDom) {
+          if (title.offsetHeight > this.height) {
             more.style.display = 'inline-block';
             let text = this.text;
             while (title.offsetHeight > this.height && n > 0) {
-              if(title.offsetHeight > this.height * 3) {
+              if (title.offsetHeight > this.height * 3) {
                 textDom.innerText = text = text.substring(0, Math.floor(text.length / 2));
               } else {
-                textDom.innerText = text = text.substring(0, text.length-1);
+                textDom.innerText = text = text.substring(0, text.length - 1);
               }
               n--;
             }
@@ -80,7 +80,7 @@ export default {
             this.isHide = false;
           }
         }
-      })
+      });
     }
   }
 };

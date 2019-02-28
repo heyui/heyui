@@ -25,12 +25,12 @@ export default {
       default: 0
     }
   },
-  data() {
+  data () {
     return {
-    }
+    };
   },
   methods: {
-    updateValue(value) {
+    updateValue (value) {
       this.$emit('input', value);
     }
   },

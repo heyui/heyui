@@ -5,10 +5,9 @@ const prefixCls = 'h-notice';
 const iconPrefixCls = 'h-icon';
 let Vue = null;
 
-
 let Default = {
   timeout: 4000
-}
+};
 
 const iconNames = {
   info: 'info',
@@ -25,7 +24,7 @@ const iconColor = {
 
 let noticeDom = null;
 
-function Notice(originalParam) {
+function Notice (originalParam) {
   if (!noticeDom) {
     noticeDom = document.createElement('div');
     utils.addClass(noticeDom, `${prefixCls}-container`);
@@ -39,7 +38,7 @@ function Notice(originalParam) {
   };
   if (new Set(Object.keys(iconNames)).has(originalParam.type)) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
-    originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`
+    originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`;
     delete originalParam.type;
   } else if (originalParam.icon) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
@@ -50,7 +49,7 @@ function Notice(originalParam) {
   return Notify(param);
 }
 
-function notice(param, timeout) {
+function notice (param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout });
   } else if (utils.isObject(param)) {
@@ -71,7 +70,7 @@ notice.config = (options) => {
   }
 };
 
-function noticeWithType(type, param, timeout) {
+function noticeWithType (type, param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout, type });
   } else if (utils.isObject(param)) {

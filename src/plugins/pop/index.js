@@ -47,8 +47,7 @@ const DEFAULT_OPTIONS = {
  * @return {Object} instance - The generated pop instance
  */
 class Pop {
-
-  constructor(reference, options) {
+  constructor (reference, options) {
     options = utils.extend({}, DEFAULT_OPTIONS, options);
     this.reference = reference;
 
@@ -64,12 +63,12 @@ class Pop {
     this.innerSelector = options.innerSelector;
     this.triggerEvents = [];
     if (options.content.nodeType === 1) {
-      options.content.style.display = "none";
+      options.content.style.display = 'none';
     }
     this.setEventListeners(triggerEvents, options);
   }
 
-  create(reference, template, content) {
+  create (reference, template, content) {
     const popGenerator = window.document.createElement('div');
     popGenerator.innerHTML = template;
     const popNode = popGenerator.childNodes[0];
@@ -79,7 +78,7 @@ class Pop {
     const contentNode = popGenerator.querySelector(this.innerSelector);
     if (content.nodeType === 1) {
       if (allowHtml) contentNode.appendChild(content);
-      content.style.display = "block";
+      content.style.display = 'block';
     } else if (utils.isFunction(content)) {
       const contentText = content.call(reference);
       if (allowHtml) {
@@ -96,7 +95,7 @@ class Pop {
     return popNode;
   }
 
-  updateContent(content) {
+  updateContent (content) {
     this.options.content = content;
     if (!this.popNode || content == undefined) {
       return;
@@ -105,7 +104,7 @@ class Pop {
     const allowHtml = this.options.html;
     if (content.nodeType === 1) {
       if (allowHtml) contentNode.replaceChild(content, contentNode.firstChild);
-      content.style.display = "block";
+      content.style.display = 'block';
     } else if (allowHtml) {
       contentNode.innerHTML = content;
     } else {
@@ -114,9 +113,9 @@ class Pop {
     this.update();
   }
 
-  initPopNode() {
+  initPopNode () {
     let reference = this.reference;
-    let options = this.options
+    let options = this.options;
     const content = options.content || reference.getAttribute('content');
 
     if (!content) {
@@ -128,7 +127,7 @@ class Pop {
     popNode.setAttribute('aria-describedby', popNode.id);
     const container = this.findContainer(options.container, reference);
 
-    container.appendChild(popNode)
+    container.appendChild(popNode);
     if (options.class) {
       utils.addClass(popNode, options.class);
     }
@@ -144,7 +143,7 @@ class Pop {
     }
   }
 
-  initPopper() {
+  initPopper () {
     let reference = this.reference;
     let options = this.options;
     let popNode = this.popNode;
@@ -164,32 +163,32 @@ class Pop {
         boundariesElement: 'window',
         enabled: true
       }
-    }
+    };
 
     if (this.options.offset) {
       modifiers.offset = {
         enabled: true,
         offset: this.options.offset
-      }
+      };
     }
 
     if (this.options.preventOverflow && container.tagName != 'BODY') {
       modifiers.hide = {
-        enabled: false,
+        enabled: false
       };
       modifiers.flip = {
         boundariesElement: container,
         enabled: true
-      }
+      };
 
       modifiers.preventOverflow = {
-        enabled: false,
-      }
+        enabled: false
+      };
     }
     if (this.options.trigger == 'contextMenu') {
       modifiers.flip = {
         enabled: false
-      }
+      };
     }
 
     let popperOptions = {
@@ -200,15 +199,15 @@ class Pop {
     this.popperInstance = new Popper(reference, popNode, popperOptions);
   }
 
-  disabled() {
+  disabled () {
     this.options.disabled = true;
   }
 
-  enabled() {
+  enabled () {
     this.options.disabled = false;
   }
 
-  show(event) {
+  show (event) {
     if (this.hideTimeout) clearTimeout(this.hideTimeout);
     if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
     if (this.isOpen || this.options.disabled) {
@@ -241,13 +240,13 @@ class Pop {
     return this;
   }
 
-  update() {
+  update () {
     if (this.popperInstance) {
       this.popperInstance.update();
     }
   }
 
-  hide() {
+  hide () {
     if (this.showTimeout) clearTimeout(this.showTimeout);
     if (this.hideTimeout) clearTimeout(this.hideTimeout);
     if (this.isOpen === false) { return; }
@@ -272,12 +271,12 @@ class Pop {
             this.popperInstance.disableEventListeners();
           }
         }
-      }, 300)
+      }, 300);
     }, this.options.delay);
     return this;
   }
 
-  destory() {
+  destory () {
     if (this.documentHandler) {
       document.removeEventListener('click', this.documentHandler);
     }
@@ -301,7 +300,7 @@ class Pop {
     return this;
   }
 
-  findContainer(container, reference) {
+  findContainer (container, reference) {
     if (typeof container === 'string') {
       container = window.document.querySelector(container);
     } else if (container === false) {
@@ -310,7 +309,7 @@ class Pop {
     return container;
   }
 
-  setEventListeners(triggerEvents, options) {
+  setEventListeners (triggerEvents, options) {
     let reference = this.reference;
     const directtriggerEvents = [];
     const oppositetriggerEvents = [];
@@ -354,7 +353,7 @@ class Pop {
             this.popperInstance.defaultOptions.modifiers.offset = {
               enabled: true,
               offset: this.options.offset
-            }
+            };
             this.popperInstance.updateModifiers();
             this.popperInstance.update();
           }
@@ -402,7 +401,7 @@ class Pop {
     }
   }
 
-  setPopNodeEvent() {
+  setPopNodeEvent () {
     this.popNode.addEventListener('mouseenter', (event) => {
       this.show(event);
     });

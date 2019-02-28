@@ -20,6 +20,8 @@
     "manba": "^1.2.8"
   },
   "devDependencies": {
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.3.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
@@ -37,6 +39,7 @@
     "pa": "sh ./scripts/publish.sh -alpha",
     "pb": "sh ./scripts/publish.sh -beta",
     "p": "sh ./scripts/publish.sh",
+    "eslintfix": "eslint --fix --ext .js,.vue src",
     "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
   },
   "standard-version": {

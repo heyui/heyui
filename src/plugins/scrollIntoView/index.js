@@ -22,11 +22,10 @@ scrollIntoView(someElement, {
 });
 */
 
-
 const COMPLETE = 'COMPLETE';
 const CANCELED = 'CANCELED';
 
-function requestAnimation(task) {
+function requestAnimation (task) {
   if ('requestAnimationFrame' in window) {
     return window.requestAnimationFrame(task);
   }
@@ -34,7 +33,7 @@ function requestAnimation(task) {
   setTimeout(task, 16);
 }
 
-function setElementScroll(element, x, y) {
+function setElementScroll (element, x, y) {
   if (element === window) {
     element.scrollTo(x, y);
   } else {
@@ -43,7 +42,7 @@ function setElementScroll(element, x, y) {
   }
 }
 
-function getTargetScrollLocation(target, parent, align) {
+function getTargetScrollLocation (target, parent, align) {
   let targetPosition = target.getBoundingClientRect();
   let parentPosition = null;
   let x = null;
@@ -92,7 +91,7 @@ function getTargetScrollLocation(target, parent, align) {
   };
 }
 
-function animate(parent) {
+function animate (parent) {
   requestAnimation(function () {
     let scrollSettings = parent.scrollOption;
     if (!scrollSettings) {
@@ -122,7 +121,7 @@ function animate(parent) {
   });
 }
 
-function transitionScrollTo(target, parent, settings, callback) {
+function transitionScrollTo (target, parent, settings, callback) {
   let idle = !parent.scrollOption;
   let lastSettings = parent.scrollOption;
   let now = Date.now();
@@ -132,7 +131,7 @@ function transitionScrollTo(target, parent, settings, callback) {
     lastSettings.end(CANCELED);
   }
 
-  function end(endType) {
+  function end (endType) {
     parent.scrollOption = null;
     if (parent.parentElement && parent.parentElement.scrollOption) {
       parent.parentElement.scrollOption.end(endType);
@@ -158,7 +157,7 @@ function transitionScrollTo(target, parent, settings, callback) {
   }
 }
 
-function defaultIsScrollable(element) {
+function defaultIsScrollable (element) {
   return (
     element === window ||
     ((
@@ -168,7 +167,7 @@ function defaultIsScrollable(element) {
   );
 }
 
-function defaultValidTarget() {
+function defaultValidTarget () {
   return true;
 }
 
@@ -192,7 +191,7 @@ export default function (target, settings, callback) {
   let parent = target.parentElement;
   let parents = 0;
 
-  function done(endType) {
+  function done (endType) {
     parents -= 1;
     if (!parents && callback) {
       callback(endType);
@@ -219,4 +218,3 @@ export default function (target, settings, callback) {
     }
   }
 }
-

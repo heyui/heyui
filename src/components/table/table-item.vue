@@ -2,7 +2,6 @@
 <div></div>
 </template>
 <script>
-import utils from '../../utils/utils';
 
 export default {
   name: 'hTableItem',
@@ -30,43 +29,42 @@ export default {
     placement: String,
     content: String
   },
-  beforeMount(){
+  beforeMount () {
     this.init();
   },
-  beforeDestroy(){
+  beforeDestroy () {
     this.init();
   },
-  data(){
+  data () {
     return {};
   },
   methods: {
-    init() {
+    init () {
       let parent = this.$parent;
       if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
         parent.refresh();
       }
-    },
+    }
   },
   watch: {
-    title(){
+    title () {
       this.init();
     },
-    width(){
+    width () {
       this.init();
     },
-    fixed(){
+    fixed () {
       this.init();
     },
-    label(){
+    label () {
       this.init();
     },
-    prop(){
+    prop () {
       this.init();
     },
-    align(){
+    align () {
       this.init();
-    },
+    }
   }
-}
+};
 </script>
-

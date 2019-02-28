@@ -38,7 +38,7 @@ export default {
     },
     hasDivider: {
       type: Boolean,
-      default:() => config.getOption('modal', 'hasDivider')
+      default: () => config.getOption('modal', 'hasDivider')
     },
     closeOnMask: {
       type: Boolean,
@@ -56,19 +56,19 @@ export default {
     propsData: [Boolean, Object, String, Array]
   },
   watch: {
-    value() {
+    value () {
       if (this.value) {
         this.el.style.display = 'block';
         this.nowComponent = this.$options.propsData.component;
 
-        if(this.hasMask){
+        if (this.hasMask) {
           let body = document.documentElement;
           let scrollWidth = window.innerWidth - body.clientWidth;
           body.style.overflow = 'hidden';
           body.style.paddingRight = `${scrollWidth}px`;
         }
         setTimeout(() => {
-          this.isOpened = this.value
+          this.isOpened = this.value;
         }, 100);
       } else {
         this.isOpened = this.value;
@@ -77,72 +77,72 @@ export default {
         body.style.paddingRight = '';
         setTimeout(() => {
           this.el.style.display = 'none';
-          this.nowComponent = "";
+          this.nowComponent = '';
         }, 200);
       }
     }
   },
-  data() {
+  data () {
     return {
       nowComponent: '',
       isOpened: this.value
     };
   },
-  beforeDestroy() {
+  beforeDestroy () {
     let el = this.el;
     el.style.display = 'none';
     this.$el.appendChild(el);
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       let el = this.el = this.$el.firstChild;
       document.body.appendChild(this.el);
       if (!this.value) {
         this.el.style.display = 'none';
       }
-    })
+    });
   },
   methods: {
-    trigger(name, data) {
+    trigger (name, data) {
       this.$emit(name, data);
     },
-    close() {
+    close () {
       this.isOpened = false;
       setTimeout(() => {
         this.el.style.display = 'none';
-        this.nowComponent = "";
+        this.nowComponent = '';
       }, 200);
       this.$emit('input', false);
     },
-    setvalue(fromMask) {
+    setvalue (fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('input', !this.value);
       }
-    },
+    }
   },
   computed: {
-    contentCls() {
+    contentCls () {
       return {
         [`${notifyprefix}-content`]: true,
-        [`${notifyprefix}-content-component`]: true,
-      }
+        [`${notifyprefix}-content-component`]: true
+      };
     },
-    containerCls() {
+    containerCls () {
       return {
         [`${notifyprefix}-container`]: true,
-        [`${notifyprefix}-container-center`]: !!this.middle,
-      }
+        [`${notifyprefix}-container-center`]: !!this.middle
+      };
     },
-    noticeCls() {
+    noticeCls () {
       return {
         [prefix]: true,
         [notifyprefix]: true,
         [`${notifyprefix}-show`]: this.isOpened,
         [`${notifyprefix}-has-mask`]: this.hasMask,
         [`${notifyprefix}-has-close`]: this.hasCloseIcon,
-        [`${notifyprefix}-has-divider`]: this.hasDivider,
+        [`${notifyprefix}-has-divider`]: this.hasDivider
         // 'h-dropdown-common-container': true
-      }
+      };
     }
   }
 };

@@ -36,8 +36,8 @@ export default {
     dict: String,
     datas: [Array, Object],
     trigger: {
-      type: String,  //click,hover,contextMenu`
-      default: "click"
+      type: String, // click,hover,contextMenu`
+      default: 'click'
     },
     equalWidth: {
       type: Boolean,
@@ -86,54 +86,54 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       key: this.keyName,
       title: this.titleName,
       html: 'dropdownmenuHtml',
       isShow: false,
-      el: null,
+      el: null
     };
   },
-  mounted() {
+  mounted () {
   },
-  beforeDestroy() {
+  beforeDestroy () {
   },
   methods: {
-    onclick(event, option) {
-      if (!!option.disabled) return;
-      this.$emit("onclick", option[this.key], option, event);
-      this.$emit("click", option[this.key], option, event);
+    onclick (event, option) {
+      if (option.disabled) return;
+      this.$emit('onclick', option[this.key], option, event);
+      this.$emit('click', option[this.key], option, event);
       this.$refs.dropdown.hide();
     }
   },
   computed: {
-    dropdownmenuCls() {
+    dropdownmenuCls () {
       return {
         [`${prefix}`]: true
-      }
+      };
     },
-    groupStyle() {
+    groupStyle () {
       let styles = {};
       if (this.width) {
         styles.width = `${this.width}px`;
       }
       return styles;
     },
-    showCls() {
+    showCls () {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
         [this.className]: true
-      }
+      };
     },
-    groupCls() {
+    groupCls () {
       return {
         [`${this.className}-dropdown`]: !!this.className,
         'h-dropdownmenu-group': true
-      }
+      };
     },
-    options() {
+    options () {
       if (!this.datas && !this.dict) {
         console.error('Dropdownmenu Component: Datas or dict parameters need to be defined at least.');
         return [];

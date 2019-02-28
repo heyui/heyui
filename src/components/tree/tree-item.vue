@@ -44,35 +44,35 @@ export default {
     chooseMode: String,
     toggleOnSelect: Boolean
   },
-  data() {
+  data () {
     return {
     };
   },
   methods: {
-    select() {
+    select () {
       if (this.toggleOnSelect || this.multiple) {
         this.toggleTree();
       }
       if (this.data.status.disabled) return;
-      this.$emit("trigger", { type: "selectEvent", data: this.data });
+      this.$emit('trigger', { type: 'selectEvent', data: this.data });
       if (this.multiple && this.data.children.length == 0) {
         this.data.status.choose = !this.data.status.choose;
         this.choose();
       }
     },
-    choose() {
+    choose () {
       this.data.status.indeterminate = false;
-      this.$emit("trigger", { type: "chooseEvent", data: this.data });
+      this.$emit('trigger', { type: 'chooseEvent', data: this.data });
     },
-    trigger(data) {
-      if (data.type == "chooseEvent") {
+    trigger (data) {
+      if (data.type == 'chooseEvent') {
         if (this.chooseMode != 'independent') {
           if (this.data.children) {
             let chooseStatus = true;
             let indeterminateStatus = false;
             for (let child of this.data.children) {
               if (!child.status.choose && chooseStatus) {
-                chooseStatus = false
+                chooseStatus = false;
               }
               if (child.status.choose) {
                 indeterminateStatus = true;
@@ -88,17 +88,17 @@ export default {
           }
         }
       }
-      this.$emit("trigger", data);
+      this.$emit('trigger', data);
     },
-    toggleTree() {
+    toggleTree () {
       if (this.data.status.isWait) {
         this.loadData();
       } else {
-        this.$emit("trigger", { type: "toggleTreeEvent", data: this.data });
+        this.$emit('trigger', { type: 'toggleTreeEvent', data: this.data });
       }
     },
-    loadData() {
-      this.$emit("trigger", { type: "loadDataEvent", data: this.data });
+    loadData () {
+      this.$emit('trigger', { type: 'loadDataEvent', data: this.data });
     }
   }
 };

@@ -20,8 +20,8 @@ const Default = {
 const TYPE = {
   MODAL: 'h-modal',
   MESSAGE: 'h-message',
-  NOTICE: 'h-notice',
-}
+  NOTICE: 'h-notice'
+};
 
 const notifyCls = 'h-notify';
 const notifyHasCloseCls = 'h-notify-has-close';
@@ -34,7 +34,7 @@ const notifyShowCls = 'h-notify-show';
 const closeIcon = 'h-icon-close';
 
 class Notify {
-  constructor(orignalparam) {
+  constructor (orignalparam) {
     const that = this;
     this.mouseOver = false;
     this.closeTimeout = false;
@@ -115,7 +115,7 @@ class Notify {
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
-        render(createElement) {
+        render (createElement) {
           return createElement(
             'div', {}, [createElement('plugin', {
               props: this.propsData,
@@ -124,29 +124,29 @@ class Notify {
                 close: this.close
               }
             })]
-          )
+          );
         },
-        data() {
+        data () {
           return {
             propsData: utils.extend({}, param.component.datas, {
               param: param.component.data,
               params: param.component.data
             }),
             modal: that
-          }
+          };
         },
         methods: {
-          trigger(name, data) {
+          trigger (name, data) {
             that.trigger(name, data);
           },
-          close() {
+          close () {
             that.close();
           }
         },
         components: {
-          plugin: param.component.vue,
-        },
-      })
+          plugin: param.component.vue
+        }
+      });
     }
 
     if (param.hasCloseIcon) {
@@ -176,7 +176,7 @@ class Notify {
     } else {
       parentDom.appendChild($body);
     }
-    //fix: button在focus状态，enter或者空格键都会再次触发
+    // fix: button在focus状态，enter或者空格键都会再次触发
     let focusClicked = document.querySelector(':focus');
     if (focusClicked && param.type === TYPE.MODAL) {
       focusClicked.blur();
@@ -184,10 +184,10 @@ class Notify {
     if (param.hasCloseIcon) {
       $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
         that.close();
-      }
+      };
     }
     if (param.hasFooter) {
-      let buttons = $body.querySelectorAll(`.${notifyContainerCls}>footer>button`)
+      let buttons = $body.querySelectorAll(`.${notifyContainerCls}>footer>button`);
       for (let button of buttons) {
         button.onclick = function (event) {
           let attr = event.target.getAttribute('attr');
@@ -197,7 +197,7 @@ class Notify {
             }
             that.trigger(attr);
           }
-        }
+        };
       }
     }
 
@@ -235,26 +235,26 @@ class Notify {
     if (param.closeOnMask && param.hasMask) {
       $body.querySelector(`.${notifyMaskCls}`).onclick = () => {
         this.close();
-      }
+      };
       let modalBody = $body.querySelector(`.${notifyBodyCls}`);
       if (modalBody) {
         modalBody.onclick = (event) => {
           if (event.target == modalBody) {
             this.close();
           }
-        }
+        };
       }
     }
   }
 
-  trigger(event, data) {
+  trigger (event, data) {
     let param = this.param;
     if (param.events && utils.isFunction(param.events[event])) {
       param.events[event].call(null, this, data);
     }
   }
 
-  close() {
+  close () {
     let that = this;
     const $body = this.$body;
     if (this.vm) {
@@ -269,7 +269,7 @@ class Notify {
 
     utils.removeClass($body, notifyShowCls);
 
-    $body.addEventListener("transitionend", (event) => {
+    $body.addEventListener('transitionend', (event) => {
       if (event.target == this.$container) {
         utils.removeDom($body);
       }

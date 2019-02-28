@@ -10,15 +10,15 @@
   </div>
 </template>
 <script>
-import Dropdown from '../../plugins/dropdown'
+import Dropdown from '../../plugins/dropdown';
 
-const prefix = 'h-dropdowncustom'
+const prefix = 'h-dropdowncustom';
 
 export default {
   name: 'hDropdownCustom',
   props: {
     trigger: {
-      type: String, //click,hover
+      type: String, // click,hover
       default: 'click'
     },
     equalWidth: {
@@ -51,18 +51,18 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       isShow: false,
       dropdown: null,
       el: null
-    }
+    };
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      let el = (this.el = this.$el.querySelector('.h-dropdowncustom-show'))
-      let content = this.$el.querySelector('.h-dropdowncustom-group')
-      let that = this
+      let el = (this.el = this.$el.querySelector('.h-dropdowncustom-show'));
+      let content = this.$el.querySelector('.h-dropdowncustom-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         content,
         className: `${this.className}-dropdown-container`,
@@ -73,68 +73,68 @@ export default {
         disabled: this.disabled,
         delay: this.delay,
         events: {
-          show(event) {
-            that.isShow = true
-            that.$emit('show', event)
+          show (event) {
+            that.isShow = true;
+            that.$emit('show', event);
           },
           hide: () => {
-            that.$emit('hide')
+            that.$emit('hide');
           }
         }
-      })
-    })
+      });
+    });
   },
   watch: {
-    disabled() {
+    disabled () {
       if (this.disabled) {
-        this.dropdown.disabled()
+        this.dropdown.disabled();
       } else {
-        this.dropdown.enabled()
+        this.dropdown.enabled();
       }
     }
   },
-  beforeDestroy() {
-    let el = this.el
+  beforeDestroy () {
+    let el = this.el;
     if (el) {
-      el.style.display = 'none'
-      this.$el.appendChild(el)
+      el.style.display = 'none';
+      this.$el.appendChild(el);
     }
     if (this.dropdown) {
-      this.dropdown.destory()
+      this.dropdown.destory();
     }
   },
   computed: {
-    dropdowncustomCls() {
+    dropdowncustomCls () {
       return {
         [`${prefix}`]: true,
-        'h-btn': this.button,
-      }
+        'h-btn': this.button
+      };
     },
-    showCls() {
+    showCls () {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon,
         [this.className]: !!this.className,
         [this.showClass]: !!this.showClass
-      }
+      };
     },
-    groupCls() {
+    groupCls () {
       return {
         [`${prefix}-group`]: true
-      }
+      };
     }
   },
   methods: {
-    update() {
-      this.dropdown.update()
+    update () {
+      this.dropdown.update();
     },
-    hide() {
-      this.dropdown.hide()
+    hide () {
+      this.dropdown.hide();
     },
-    show() {
-      this.dropdown.show()
+    show () {
+      this.dropdown.show();
     }
   }
-}
+};
 </script>

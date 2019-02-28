@@ -37,7 +37,7 @@
         <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
       </template>
     </div>
-  
+
     <!--:class="{'h-autocomplete-item-selected': result==nowSelected}"-->
     <div :class="groupCls">
       <ul class="h-autocomplete-ul" v-if="isShow">
@@ -59,12 +59,12 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config'
-import utils from '../../utils/utils'
-import Dropdown from '../../plugins/dropdown'
-import Locale from '../../mixins/locale'
+import config from '../../utils/config';
+import utils from '../../utils/utils';
+import Dropdown from '../../plugins/dropdown';
+import Locale from '../../mixins/locale';
 
-const prefix = 'h-autocomplete'
+const prefix = 'h-autocomplete';
 
 export default {
   name: 'hAutoComplete',
@@ -84,7 +84,7 @@ export default {
     },
     type: {
       type: [String],
-      default: 'key' //object, title
+      default: 'key' // object, title
     },
     disabled: {
       type: Boolean,
@@ -113,7 +113,7 @@ export default {
       default: true
     }
   },
-  data() {
+  data () {
     return {
       html: 'autocomplete_rander_html',
       focusing: false,
@@ -131,60 +131,60 @@ export default {
       searchTimeout: null,
       el: null,
       lastTrigger: null
-    }
+    };
   },
   watch: {
-    value() {
+    value () {
       if (this.oldValue == this.value) {
-        return
+        return;
       }
-      this.parse()
+      this.parse();
     },
-    disabled() {
+    disabled () {
       if (this.disabled) {
-        this.dropdown.disabled()
+        this.dropdown.disabled();
       } else {
-        this.dropdown.enabled()
+        this.dropdown.enabled();
       }
     },
-    nowSelected() {
+    nowSelected () {
       this.$nextTick(() => {
         if (this.content && this.nowSelected > -1) {
-          let dom = this.content.querySelector('.h-autocomplete-item-selected')
-          let uldom = this.content.querySelector('.h-autocomplete-ul')
+          let dom = this.content.querySelector('.h-autocomplete-item-selected');
+          let uldom = this.content.querySelector('.h-autocomplete-ul');
           if (dom && uldom) {
             if (
               dom.offsetTop + dom.offsetHeight - this.content.scrollTop >
               this.content.offsetHeight
             ) {
               this.content.scrollTop =
-                dom.offsetTop + dom.offsetHeight - this.content.offsetHeight
+                dom.offsetTop + dom.offsetHeight - this.content.offsetHeight;
             } else if (dom.offsetTop - this.content.scrollTop < 0) {
-              this.content.scrollTop = dom.offsetTop
+              this.content.scrollTop = dom.offsetTop;
             }
           }
         }
-      })
+      });
     }
   },
-  beforeMount() {
-    this.parse()
+  beforeMount () {
+    this.parse();
   },
-  beforeDestroy() {
-    let el = this.el
+  beforeDestroy () {
+    let el = this.el;
     if (el) {
-      el.style.display = 'none'
-      this.$el.appendChild(el)
+      el.style.display = 'none';
+      this.$el.appendChild(el);
     }
     if (this.dropdown) {
-      this.dropdown.destory()
+      this.dropdown.destory();
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      let el = (this.el = this.$el.querySelector('.h-autocomplete-show'))
-      this.content = this.$el.querySelector('.h-autocomplete-group')
-      let that = this
+      let el = (this.el = this.$el.querySelector('.h-autocomplete-show'));
+      this.content = this.$el.querySelector('.h-autocomplete-group');
+      let that = this;
       this.dropdown = new Dropdown(el, {
         trigger: '',
         triggerOnce: true,
@@ -192,44 +192,44 @@ export default {
         disabled: this.disabled,
         equalWidth: true,
         events: {
-          show() {
-            that.isShow = true
+          show () {
+            that.isShow = true;
           }
         }
-      })
-    })
+      });
+    });
   },
   methods: {
-    getKey(key) {
-      return key + Math.random()
+    getKey (key) {
+      return key + Math.random();
     },
-    parse() {
-      this.tempValue = null
+    parse () {
+      this.tempValue = null;
       if (this.multiple) {
-        let os = []
+        let os = [];
         if (utils.isArray(this.value) && this.value.length > 0) {
           for (let v of this.value) {
-            os.push(this.getValue(v))
+            os.push(this.getValue(v));
           }
         }
-        this.objects = os
+        this.objects = os;
       } else {
-        let value = null
+        let value = null;
         if (this.type == 'key') {
           if (!utils.isNull(this.value)) {
             if (!this.show && (this.dict || this.datas) && this.results) {
               let result = this.results.filter(
                 item => item[this.param.keyName] == this.value
-              )
+              );
               if (result.length > 0) {
-                value = result[0]
+                value = result[0];
               }
             }
             if (!value) {
               value = {
                 [this.param.keyName]: this.value,
                 [this.param.titleName]: this.show
-              }
+              };
             }
           }
         } else if (this.type == 'title') {
@@ -237,315 +237,315 @@ export default {
             value = {
               [this.param.keyName]: this.value,
               [this.param.titleName]: this.value
-            }
+            };
           }
         } else {
-          value = this.value
+          value = this.value;
         }
         if (utils.isNull(value)) {
-          this.object = { key: null, title: null, value: null }
+          this.object = { key: null, title: null, value: null };
         } else {
-          utils.extend(this.object, this.getValue(value))
+          utils.extend(this.object, this.getValue(value));
         }
-        this.tempValue = this.object.title
+        this.tempValue = this.object.title;
       }
-      this.oldValue = this.value
+      this.oldValue = this.value;
     },
-    getDisposeValue() {
-      let inputValue = null
+    getDisposeValue () {
+      let inputValue = null;
       if (this.type == 'key' || this.type == 'title') {
-        inputValue = this.tempValue
+        inputValue = this.tempValue;
       } else if (!utils.isBlank(this.tempValue)) {
-        inputValue = { [this.param.titleName]: this.tempValue }
+        inputValue = { [this.param.titleName]: this.tempValue };
       } else {
-        inputValue = null
+        inputValue = null;
       }
-      return inputValue
+      return inputValue;
     },
-    dispose() {
-      let value = null
-      let inputValue = this.getDisposeValue()
+    dispose () {
+      let value = null;
+      let inputValue = this.getDisposeValue();
       if (this.multiple) {
-        value = []
+        value = [];
         if (utils.isArray(this.objects) && this.objects.length > 0) {
           for (let o of this.objects) {
-            value.push(this.getV(o))
+            value.push(this.getV(o));
           }
         }
-        return value
+        return value;
       } else {
         if (this.mustMatch) {
-          value = this.getV(this.object)
+          value = this.getV(this.object);
         } else {
           if (!utils.isNull(this.object.key) && this.object.key !== '') {
             if (this.type == 'key') {
-              value = this.object.key
+              value = this.object.key;
             } else if (this.type == 'title') {
-              value = this.object.title
+              value = this.object.title;
             } else {
-              value = utils.copy(this.object.value)
+              value = utils.copy(this.object.value);
             }
           } else if (!utils.isNull(inputValue)) {
-            value = inputValue
-            this.object.title = this.tempValue
+            value = inputValue;
+            this.object.title = this.tempValue;
           }
         }
-        return value
+        return value;
       }
     },
-    getV(object) {
+    getV (object) {
       if (this.type == 'key') {
-        return object.key
+        return object.key;
       } else if (this.type == 'title') {
-        return object.title
+        return object.title;
       } else {
-        return object.value
+        return object.value;
       }
     },
-    getValue(item) {
+    getValue (item) {
       if (utils.isFunction(this.param.getValue)) {
-        return this.param.getValue.call(this.param, item)
+        return this.param.getValue.call(this.param, item);
       } else {
         if (!utils.isObject(item) && this.type == 'object') {
-          return utils.getValue({ [this.param.titleName]: item }, this.param)
+          return utils.getValue({ [this.param.titleName]: item }, this.param);
         } else {
-          return utils.getValue(item, this.param)
+          return utils.getValue(item, this.param);
         }
       }
     },
-    focus(event) {
-      this.lastTrigger = null
-      this.focusing = true
-      this.focusValue = event.target.value
-      if (this.multiple) this.searchValue = null
-      this.search()
+    focus (event) {
+      this.lastTrigger = null;
+      this.focusing = true;
+      this.focusValue = event.target.value;
+      if (this.multiple) this.searchValue = null;
+      this.search();
     },
-    focusData(value) {
-      this.focusValue = this.object.title
-      if (this.multiple) this.searchValue = null
+    focusData (value) {
+      this.focusValue = this.object.title;
+      if (this.multiple) this.searchValue = null;
     },
-    paste(event) {
+    paste (event) {
       setTimeout(() => {
         // this.tempValue = event.target.value;
-        this.search()
-      }, 0)
+        this.search();
+      }, 0);
     },
-    blur(event) {
-      this.focusing = false
-      if (this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return
-      let nowValue = event.target.value
+    blur (event) {
+      this.focusing = false;
+      if (this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
+      let nowValue = event.target.value;
       // log('blur', nowValue, this.tempValue);
-      let focusValue = this.focusValue
+      let focusValue = this.focusValue;
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
           if (this.focusValue != '' && !this.multiple) {
-            this.object = { key: null, title: null, value: null }
-            this.setvalue('blur')
+            this.object = { key: null, title: null, value: null };
+            this.setvalue('blur');
           } else {
-            this.tempValue = null
+            this.tempValue = null;
           }
         } else {
           // this.tempValue = nowValue;
           if (nowValue) {
-            this.objects.push(this.getValue(nowValue))
+            this.objects.push(this.getValue(nowValue));
           }
-          this.setvalue('blur')
+          this.setvalue('blur');
         }
       }
-      this.loading = false
+      this.loading = false;
       if (this.searchTimeout) {
-        clearTimeout(this.searchTimeout)
+        clearTimeout(this.searchTimeout);
       }
     },
-    keydownHandle(event) {
-      let code = event.keyCode || event.which || event.charCode
+    keydownHandle (event) {
+      let code = event.keyCode || event.which || event.charCode;
       if (code == 8 && event.target.value === '' && this.objects.length > 0) {
-        this.remove(this.objects[this.objects.length - 1])
+        this.remove(this.objects[this.objects.length - 1]);
       } else if (this.endInput && event.key == this.endInput) {
-        event.preventDefault()
-        this.enterHandle(event)
+        event.preventDefault();
+        this.enterHandle(event);
       }
     },
-    handle(event) {
-      let code = event.keyCode || event.which || event.charCode
+    handle (event) {
+      let code = event.keyCode || event.which || event.charCode;
       if (code == 38) {
         if (this.nowSelected > 0) {
-          this.nowSelected -= 1
+          this.nowSelected -= 1;
         }
       } else if (code == 40) {
         if (this.nowSelected < this.results.length - 1) {
-          this.nowSelected += 1
+          this.nowSelected += 1;
         }
       } else if (code == 13) {
-        //compatible ie，use enterHandle handle。
+        // compatible ie，use enterHandle handle。
       } else {
-        this.search()
+        this.search();
       }
     },
-    enterHandle(event) {
-      let nowValue = (this.tempValue = event.target.value)
-      event.preventDefault()
+    enterHandle (event) {
+      let nowValue = (this.tempValue = event.target.value);
+      event.preventDefault();
       if (this.nowSelected >= 0) {
-        this.add(this.results[this.nowSelected])
-        this.setvalue('enter')
+        this.add(this.results[this.nowSelected]);
+        this.setvalue('enter');
       } else {
         if (!this.mustMatch && this.multiple && nowValue) {
-          this.objects.push(this.getValue(nowValue))
+          this.objects.push(this.getValue(nowValue));
         }
-        this.setvalue('enter')
+        this.setvalue('enter');
       }
     },
-    search() {
+    search () {
       let target = this.$refs.input;
-      let value = target.value
-      this.tempValue = value || null
+      let value = target.value;
+      this.tempValue = value || null;
       if (value != this.object.title && this.object.title) {
-        this.object.key = null
-        this.object.title = null
-        this.object.value = null
+        this.object.key = null;
+        this.object.title = null;
+        this.object.value = null;
       }
-      this.loading = false
+      this.loading = false;
       if (this.searchTimeout) {
-        clearTimeout(this.searchTimeout)
+        clearTimeout(this.searchTimeout);
       }
       if (value.length >= this.param.minWord) {
         this.searchTimeout = setTimeout(() => {
           this.updateDropdown();
           if (utils.isFunction(this.param.loadData)) {
-            this.loading = true
+            this.loading = true;
             this.param.loadData.call(
               this.param,
               value,
               datas => {
                 if (target.value === value) {
-                  this.loading = false
-                  this.loadDatas = datas
+                  this.loading = false;
+                  this.loadDatas = datas;
                   this.updateDropdown();
-                  this.nowSelected = this.autoSelectFirst ? 0 : -1
+                  this.nowSelected = this.autoSelectFirst ? 0 : -1;
                 }
               },
               _ => {
-                this.loading = false
+                this.loading = false;
               }
-            )
+            );
           } else {
-            this.nowSelected = this.autoSelectFirst ? 0 : -1
+            this.nowSelected = this.autoSelectFirst ? 0 : -1;
           }
-        }, this.delay)
-        this.searchValue = value
-        this.dropdown.update()
+        }, this.delay);
+        this.searchValue = value;
+        this.dropdown.update();
       } else {
-        this.dropdown.hide()
+        this.dropdown.hide();
       }
     },
-    updateDropdown() {
+    updateDropdown () {
       this.$nextTick(() => {
         if (this.dropdown) {
           if (this.results.length == 0 && !this.showDropdownWhenNoResult) {
-            this.dropdown.hide()
+            this.dropdown.hide();
           } else {
-            this.dropdown.show()
-            this.dropdown.update()
+            this.dropdown.show();
+            this.dropdown.update();
           }
         }
-      })
+      });
     },
-    add(data) {
+    add (data) {
       if (this.multiple) {
-        this.objects.push(utils.copy(data))
+        this.objects.push(utils.copy(data));
       } else {
         if (data === null || data === undefined) {
           this.object = { key: null, title: null, value: null };
         } else {
-          this.object = utils.copy(data)
+          this.object = utils.copy(data);
         }
       }
-      this.tempValue = null
+      this.tempValue = null;
     },
-    remove(object) {
-      this.objects.splice(this.objects.indexOf(object), 1)
-      this.setvalue('remove')
+    remove (object) {
+      this.objects.splice(this.objects.indexOf(object), 1);
+      this.setvalue('remove');
     },
-    picker(data) {
-      this.add(data)
-      this.setvalue('picker')
+    picker (data) {
+      this.add(data);
+      this.setvalue('picker');
     },
-    setvalue(trigger) {
-      if (this.disabled) return
+    setvalue (trigger) {
+      if (this.disabled) return;
       // log('setvalue', trigger)
-      this.lastTrigger = trigger
-      this.nowSelected = -1
-      let value = (this.oldValue = this.dispose())
-      this.focusValue = null
-      this.focusData()
+      this.lastTrigger = trigger;
+      this.nowSelected = -1;
+      let value = (this.oldValue = this.dispose());
+      this.focusValue = null;
+      this.focusData();
       if (this.multiple) {
-        this.tempValue = null
+        this.tempValue = null;
       } else {
-        this.tempValue = this.object.title
+        this.tempValue = this.object.title;
       }
       // if (this.mustMatch || this.object.key || this.multiple) {
       // }
       // this.focusValue = this.showValue;
       // if (this.object.key === null) this.object.title = this.showValue
-      this.$emit('input', value, trigger)
+      this.$emit('input', value, trigger);
       this.$emit(
         'change',
         utils.copy(this.multiple ? this.objects : this.object),
         trigger
-      )
-      let event = document.createEvent('CustomEvent')
-      event.initCustomEvent('setvalue', true, true, value)
-      this.$el.dispatchEvent(event)
+      );
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, value);
+      this.$el.dispatchEvent(event);
       if (trigger) {
-        this.$emit(trigger, value)
+        this.$emit(trigger, value);
       }
-      this.dropdown.hide()
+      this.dropdown.hide();
       setTimeout(() => {
-        this.searchValue = null
-      }, 100)
+        this.searchValue = null;
+      }, 100);
     },
-    hide() {
-      this.loading = false
-      this.dropdown.hide()
+    hide () {
+      this.loading = false;
+      this.dropdown.hide();
     },
-    clear() {
-      this.tempValue = null
-      this.focusValue = null
-      this.object = { key: null, title: null, value: null }
-      this.setvalue('clear')
+    clear () {
+      this.tempValue = null;
+      this.focusValue = null;
+      this.object = { key: null, title: null, value: null };
+      this.setvalue('clear');
     }
   },
   computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.autoComplate.placeholder')
+    showPlaceholder () {
+      return this.placeholder || this.t('h.autoComplate.placeholder');
     },
-    showEmptyContent() {
-      return this.emptyContent || this.t('h.autoComplate.emptyContent')
+    showEmptyContent () {
+      return this.emptyContent || this.t('h.autoComplate.emptyContent');
     },
-    param() {
+    param () {
       if (this.config) {
         return utils.extend(
           {},
           config.getOption('autocomplete.default'),
           config.getOption(`autocomplete.configs.${this.config}`),
           this.option
-        )
+        );
       } else {
         return utils.extend(
           {},
           config.getOption('autocomplete.default'),
           this.option
-        )
+        );
       }
     },
     // showValue() {
     //   log('showvalue', this.tempValue, this.object.title);
     //   return this.tempValue == null ? this.object.title : this.tempValue
     // },
-    autocompleteCls() {
-      let autosize = !!this.noBorder
+    autocompleteCls () {
+      let autosize = !!this.noBorder;
       if (!autosize) {
-        autosize = this.autosize
+        autosize = this.autosize;
       }
       return {
         [`${prefix}`]: true,
@@ -554,59 +554,59 @@ export default {
         [`${prefix}-no-autosize`]: !autosize,
         [`${prefix}-disabled`]: this.disabled,
         focusing: this.focusing
-      }
+      };
     },
-    showCls() {
+    showCls () {
       return {
         [`${prefix}-show`]: true,
         [`${this.className}-show`]: !!this.className,
         focusing: this.focusing
-      }
+      };
     },
-    groupCls() {
+    groupCls () {
       return {
         [`${prefix}-group`]: true,
         [`${prefix}-multiple`]: this.multiple,
         [`${this.className}-dropdown`]: !!this.className
-      }
+      };
     },
-    results() {
-      let datas = this.datas
+    results () {
+      let datas = this.datas;
       if (this.dict) {
-        datas = config.getDict(this.dict)
+        datas = config.getDict(this.dict);
       }
       if (utils.isNull(datas)) {
-        datas = this.loadDatas
+        datas = this.loadDatas;
       } else {
-        datas = utils.initOptions(datas, this)
+        datas = utils.initOptions(datas, this);
         if (this.searchValue) {
-          let searchValue = this.searchValue.toLowerCase()
+          let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter(item => {
             return (
               (item.html || item[this.param.titleName] || '')
                 .toLowerCase()
                 .indexOf(searchValue) != -1
-            )
-          })
+            );
+          });
         }
       }
       if (this.objects.length > 0) {
         let keyArray = utils
           .getArray(this.objects, 'key')
-          .filter(item => !utils.isNull(item))
+          .filter(item => !utils.isNull(item));
         datas = datas.filter(item => {
-          return keyArray.indexOf(item[this.param.keyName]) == -1
-        })
+          return keyArray.indexOf(item[this.param.keyName]) == -1;
+        });
       }
       if (this.maxList) {
-        datas.splice(0, this.maxList)
+        datas.splice(0, this.maxList);
       }
-      let results = []
+      let results = [];
       for (let data of datas) {
-        results.push(this.getValue(data))
+        results.push(this.getValue(data));
       }
-      return results
+      return results;
     }
   }
-}
+};
 </script>

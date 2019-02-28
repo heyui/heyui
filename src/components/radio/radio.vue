@@ -32,16 +32,16 @@ export default {
     titleName: {
       type: String,
       default: () => config.getOption('dict', 'titleName')
-    },
+    }
   },
-  data() {
+  data () {
     return {
       key: this.keyName,
-      title: this.titleName,
+      title: this.titleName
     };
   },
   methods: {
-    setvalue(value) {
+    setvalue (value) {
       if (this.disabled) return;
       let result = null;
       if (this.isSingle) {
@@ -51,16 +51,16 @@ export default {
       }
       this.$emit('input', result);
       this.$emit('change', value);
-      let event = document.createEvent("CustomEvent");
-      event.initCustomEvent("setvalue", true, true, result);
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, result);
       this.$el.dispatchEvent(event);
     }
   },
   computed: {
-    isSingle() {
+    isSingle () {
       return !utils.isNull(this.value) && this.arr.length == 0;
     },
-    arr() {
+    arr () {
       if (!this.datas && !this.dict) {
         return [];
       }
