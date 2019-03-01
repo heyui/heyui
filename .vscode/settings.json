@@ -9,6 +9,7 @@
   "files.associations": {
     "*.vue": "vue"
   },
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   //配置 ESLint 检查的文件类型
   "eslint.validate": [
     "javascript",
