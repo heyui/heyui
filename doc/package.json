@@ -40,11 +40,12 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^5.11.1",
-    "eslint-config-airbnb-base": "^9.0.0",
-    "eslint-plugin-html": "^1.5.5",
-    "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-vue": "^0.1.1"
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.3.0",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-vue": "^5.2.2"
   },
   "readmeFilename": "README.md",
   "scripts": {
