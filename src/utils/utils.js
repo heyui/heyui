@@ -4,11 +4,11 @@ import config from './config';
 const rclass = /[\t\r\n\f]/g;
 const rnotwhite = (/\S+/g);
 
-function getClass (elem) {
+function getClass(elem) {
   return (elem.getAttribute && elem.getAttribute('class')) || '';
 }
 export default utils.extend({}, utils, {
-  addClass (elem, value) {
+  addClass(elem, value) {
     let classes;
     let cur;
     let curValue;
@@ -37,7 +37,7 @@ export default utils.extend({}, utils, {
       }
     }
   },
-  removeClass (elem, value) {
+  removeClass(elem, value) {
     let classes;
     let cur;
     let curValue;
@@ -70,16 +70,16 @@ export default utils.extend({}, utils, {
 
     return this;
   },
-  removeDom (elem) {
+  removeDom(elem) {
     if (elem && elem.parentNode) {
       elem.parentNode.removeChild(elem);
     }
   },
-  padLeft (str, size) {
+  padLeft(str, size) {
     let s = `00000${str}`;
     return s.substr(s.length - size);
   },
-  hasClass (elem, selector) {
+  hasClass(elem, selector) {
     let className;
     className = ` ${selector} `;
     if (elem.nodeType === 1 && (` ${getClass(elem)} `)
@@ -90,7 +90,7 @@ export default utils.extend({}, utils, {
 
     return false;
   },
-  initParam (param, paramFrom, array) {
+  initParam(param, paramFrom, array) {
     if (this.isArray(array) && this.isObject(param) && this.isObject(param)) {
       for (let a of array) {
         if (paramFrom[a]) param[a] = paramFrom[a];
@@ -98,7 +98,7 @@ export default utils.extend({}, utils, {
     }
     return param;
   },
-  toggleValue (list, value) {
+  toggleValue(list, value) {
     if (!this.isArray(list)) return [value];
     let copyList = this.extend([], list);
     if (list.some(item => item == value)) {
@@ -108,7 +108,7 @@ export default utils.extend({}, utils, {
     }
     return copyList;
   },
-  toggleValueByKey (list, key, value) {
+  toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return;
     let index = -1;
     for (let l of list) {
@@ -124,21 +124,21 @@ export default utils.extend({}, utils, {
       list.push(value);
     }
   },
-  getArray (array, keyName = 'id') {
+  getArray(array, keyName = 'id') {
     const list = [];
     for (let a of array) {
       list.push(a[keyName]);
     }
     return list;
   },
-  numList (start, end, step) {
+  numList(start, end, step) {
     let data = [];
     for (let i = start; i < end; i = i + step) {
       data.push(i);
     }
     return data;
   },
-  dictMapping (value, key, connector) {
+  dictMapping(value, key, connector) {
     let dict = config.getDict(key);
     if (!dict || utils.isNull(value)) return '';
     if (utils.isString(value) && connector) {
@@ -171,7 +171,7 @@ export default utils.extend({}, utils, {
     });
     return result.filter(ele => (ele && ele !== '')).join(connector || ', ');
   },
-  initOptions (datas, param) {
+  initOptions(datas, param) {
     let key = config.getOption('dict.keyName');
     let title = config.getOption('dict.titleName');
     let options = [];
@@ -201,7 +201,7 @@ export default utils.extend({}, utils, {
     }
     return options;
   },
-  generateTree (data, param) {
+  generateTree(data, param) {
     if (!this.isArray(data)) {
       console.error('generateTree：data must be Array。');
       return null;
@@ -233,10 +233,10 @@ export default utils.extend({}, utils, {
     }
     return result;
   },
-  isBlank (value) {
+  isBlank(value) {
     return this.isNull(value) || value === '';
   },
-  getValue (item, param) {
+  getValue(item, param) {
     let title = '';
     let key = null;
     if (utils.isObject(item)) {

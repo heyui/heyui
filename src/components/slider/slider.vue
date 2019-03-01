@@ -47,7 +47,7 @@ export default {
       })
     }
   },
-  data () {
+  data() {
     return {
       eventControl: {
         type: null,
@@ -60,7 +60,7 @@ export default {
       }
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       if (!this.showtip) return;
       if (this.hasStart) {
@@ -86,14 +86,14 @@ export default {
     });
   },
   methods: {
-    showContent (value) {
+    showContent(value) {
       if (this.show) {
         return this.show.call(null, value);
       } else {
         return value || this.range.start;
       }
     },
-    mousedown (type, event) {
+    mousedown(type, event) {
       if (this.readonly) return;
       utils.addClass(event.target, 'h-slider-node-dragging');
       this.eventControl.type = type;
@@ -103,7 +103,7 @@ export default {
       document.body.addEventListener('mouseup', this.mouseup);
       if (this.tooltip[type]) this.tooltip[type].show();
     },
-    mousemove (event) {
+    mousemove(event) {
       if (this.readonly) return;
       let postition = event.clientX - this.eventControl.x;
       if (postition == 0) return;
@@ -155,7 +155,7 @@ export default {
         this.tooltip[type].update();
       }
     },
-    mouseup () {
+    mouseup() {
       if (this.readonly) return;
       document.body.removeEventListener('mousemove', this.mousemove);
       document.body.removeEventListener('mouseup', this.mouseup);
@@ -167,24 +167,24 @@ export default {
     }
   },
   computed: {
-    hasStart () {
+    hasStart() {
       return this.multiple;
     },
-    trackStyle () {
+    trackStyle() {
       let dis = this.range.end - this.range.start;
       return {
         left: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
         right: `${parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`
       };
     },
-    nodePosition () {
+    nodePosition() {
       let dis = this.range.end - this.range.start;
       return {
         start: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
         end: `${100 - parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`
       };
     },
-    values () {
+    values() {
       if (!this.multiple) {
         return {
           start: this.range.start,
@@ -196,7 +196,7 @@ export default {
         end: this.range.start
       }, this.value);
     },
-    sliderCls () {
+    sliderCls() {
       return {
         [`${prefix}`]: true
       };

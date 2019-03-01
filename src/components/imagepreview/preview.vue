@@ -31,7 +31,7 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       height: 200,
       width: 200,
@@ -41,7 +41,7 @@ export default {
     };
   },
   watch: {
-    isShow () {
+    isShow() {
       if (this.isShow) {
         this.width = 200;
         this.height = 200;
@@ -51,11 +51,11 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.change(this.index);
   },
   methods: {
-    initStyle (e) {
+    initStyle(e) {
       let width = this.$refs.img.width;
       let height = this.$refs.img.height;
       if (width > 800 || height > 800) {
@@ -69,7 +69,7 @@ export default {
         this.changeing = false;
       }, 300);
     },
-    change (index) {
+    change(index) {
       if (index < 0 || index > this.datas.length - 1) {
         return false;
       }
@@ -79,7 +79,7 @@ export default {
         this.updatePreview();
       }, 300);
     },
-    updatePreview () {
+    updatePreview() {
       if (this.datas.length == 0 || this.isShow === false) {
         return {};
       }
@@ -98,7 +98,7 @@ export default {
     }
   },
   computed: {
-    previewStyle () {
+    previewStyle() {
       return {
         height: `${this.height}px`,
         width: `${this.width}px`

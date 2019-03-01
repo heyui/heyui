@@ -86,7 +86,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       key: this.keyName,
       title: this.titleName,
@@ -95,12 +95,12 @@ export default {
       el: null
     };
   },
-  mounted () {
+  mounted() {
   },
-  beforeDestroy () {
+  beforeDestroy() {
   },
   methods: {
-    onclick (event, option) {
+    onclick(event, option) {
       if (option.disabled) return;
       this.$emit('onclick', option[this.key], option, event);
       this.$emit('click', option[this.key], option, event);
@@ -108,32 +108,32 @@ export default {
     }
   },
   computed: {
-    dropdownmenuCls () {
+    dropdownmenuCls() {
       return {
         [`${prefix}`]: true
       };
     },
-    groupStyle () {
+    groupStyle() {
       let styles = {};
       if (this.width) {
         styles.width = `${this.width}px`;
       }
       return styles;
     },
-    showCls () {
+    showCls() {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
         [this.className]: true
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${this.className}-dropdown`]: !!this.className,
         'h-dropdownmenu-group': true
       };
     },
-    options () {
+    options() {
       if (!this.datas && !this.dict) {
         console.error('Dropdownmenu Component: Datas or dict parameters need to be defined at least.');
         return [];

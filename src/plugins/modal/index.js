@@ -14,7 +14,7 @@ let Default = {
   className: ''
 };
 
-function Modal (originalParam) {
+function Modal(originalParam) {
   let cls = prefixCls;
   let param = utils.extend({ hasMask: true, closeOnMask: true, buttons: ['cancel'] }, Default, originalParam, true);
 
@@ -44,7 +44,7 @@ function Modal (originalParam) {
   return Notify(param);
 }
 
-function modal (param) {
+function modal(param) {
   if (this.$router) {
     param.$router = this.$router;
   }

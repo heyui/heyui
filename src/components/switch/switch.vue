@@ -24,16 +24,16 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {};
   },
   computed: {
-    isChecked () {
+    isChecked() {
       return this.value == this.trueValue;
     }
   },
   methods: {
-    setvalue () {
+    setvalue() {
       if (this.disabled) return;
       let value = this.isChecked ? this.falseValue : this.trueValue;
       this.$emit('input', value);

@@ -60,7 +60,7 @@ export default {
     type: String
   },
   watch: {
-    value () {
+    value() {
       if (this.value) {
         this.show();
       } else {
@@ -68,14 +68,14 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
       isOpened: this.value,
       isShow: this.value,
       el: null
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       let el = this.el = this.$el.firstChild;
       document.body.appendChild(el);
@@ -84,7 +84,7 @@ export default {
       }
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -92,7 +92,7 @@ export default {
     }
   },
   methods: {
-    show () {
+    show() {
       let el = this.el;
       document.body.appendChild(el);
       el.style.display = 'block';
@@ -107,7 +107,7 @@ export default {
         this.isOpened = true;
       }, 100);
     },
-    hide () {
+    hide() {
       let el = this.el;
       this.isOpened = false;
       setTimeout(() => {
@@ -118,24 +118,24 @@ export default {
       body.style.overflow = '';
       body.style.paddingRight = '';
     },
-    setvalue (fromMask) {
+    setvalue(fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('input', false);
       }
     }
   },
   computed: {
-    contentCls () {
+    contentCls() {
       return {
         [`${notifyprefix}-content`]: true
       };
     },
-    containerCls () {
+    containerCls() {
       return {
         [`${notifyprefix}-container`]: true
       };
     },
-    noticeCls () {
+    noticeCls() {
       return {
         [prefix]: true,
         [notifyprefix]: true,
@@ -152,10 +152,10 @@ export default {
         [this.className]: !!this.className
       };
     },
-    hasHeader () {
+    hasHeader() {
       return !!this.$slots.header;
     },
-    hasFooter () {
+    hasFooter() {
       return !!this.$slots.footer;
     }
   }

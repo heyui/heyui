@@ -107,7 +107,7 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       updateFromInput: false,
       globalloading: false,
@@ -124,7 +124,7 @@ export default {
     };
   },
   watch: {
-    value () {
+    value() {
       if (this.updateFromInput) {
         this.updateFromInput = false;
         return;
@@ -135,19 +135,19 @@ export default {
       this.initTreeDatas();
     }
   },
-  mounted () {
+  mounted() {
     this.initTreeDatas();
     this.parse();
   },
   methods: {
-    parse () {
+    parse() {
       if (this.multiple) {
         this.updateChoose(this.value, false);
       } else {
         this.updateSelect(this.value, false);
       }
     },
-    searchTree (value) {
+    searchTree(value) {
       this.searchValue = value;
       if (!utils.isNull(this.searchValue) && this.searchValue !== '') {
         let searchValue = this.searchValue.toLowerCase();
@@ -163,7 +163,7 @@ export default {
         }
       }
     },
-    trigger (data) {
+    trigger(data) {
       let type = data.type;
       data = data.data;
       if (type == 'toggleTreeEvent') {
@@ -196,7 +196,7 @@ export default {
         if (this.multiple) this.setvalue();
       }
     },
-    initTreeDatas () {
+    initTreeDatas() {
       let datas = [];
       if (utils.isArray(this.param.datas)) {
         datas = this.param.datas;
@@ -224,7 +224,7 @@ export default {
       this.treeDatas = this.initDatas(datas);
       this.parse();
     },
-    initDatas (datas) {
+    initDatas(datas) {
       let list = datas = utils.copy(datas);
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(datas, this.param);
@@ -232,7 +232,7 @@ export default {
       let isWait = utils.isFunction(this.param.getDatas);
       return this.initTreeModeData(list, isWait);
     },
-    initTreeModeData (list, isWait, parentKey) {
+    initTreeModeData(list, isWait, parentKey) {
       let datas = [];
       for (let data of list) {
         let obj = {
@@ -260,26 +260,26 @@ export default {
       }
       return datas;
     },
-    refresh () {
+    refresh() {
       this.initTreeDatas();
     },
-    expandAll () {
+    expandAll() {
       for (let tree of Object.keys(this.treeObj)) {
         this.treeObj[tree].status.opened = true;
       }
     },
-    foldAll () {
+    foldAll() {
       for (let tree of Object.keys(this.treeObj)) {
         this.treeObj[tree].status.opened = false;
       }
     },
-    chooseAll () {
+    chooseAll() {
       for (let key in this.treeObj) {
         this.treeObj[key].status.choose = true;
       }
       this.setvalue();
     },
-    updateSelect (key, updateValue = true) {
+    updateSelect(key, updateValue = true) {
       let option = this.treeObj[key];
       if (option) {
         this.status.selected = key;
@@ -289,14 +289,14 @@ export default {
         this.setvalue();
       }
     },
-    getSelect () {
+    getSelect() {
       if (utils.isNull(this.status.selected)) {
         return null;
       }
       let option = this.treeObj[this.status.selected];
       return option.value;
     },
-    updateChoose (choose, updateValue = true) {
+    updateChoose(choose, updateValue = true) {
       if (!this.multiple) return;
       choose = choose || [];
       for (let key of Object.keys(this.treeObj)) {
@@ -327,7 +327,7 @@ export default {
         this.setvalue();
       }
     },
-    setvalue () {
+    setvalue() {
       let value = null;
       if (this.multiple) {
         let choose = this.getChoose();
@@ -344,7 +344,7 @@ export default {
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
     },
-    getFullChoose () {
+    getFullChoose() {
       let options = [];
       for (let key of Object.keys(this.treeObj)) {
         let tree = this.treeObj[key];
@@ -354,7 +354,7 @@ export default {
       }
       return options;
     },
-    getChoose () {
+    getChoose() {
       if (this.chooseMode == 'some') {
         return this.getFullChoose();
       } else if (this.chooseMode == 'independent') {
@@ -369,7 +369,7 @@ export default {
     }
   },
   computed: {
-    param () {
+    param() {
       if (this.config) {
         return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`),
           this.option);
@@ -377,7 +377,7 @@ export default {
         return utils.extend({}, config.getOption('tree.default'), this.option);
       }
     },
-    treeCls () {
+    treeCls() {
       return {
         [prefix]: true,
         [`${prefix}-multiple`]: this.multiple,

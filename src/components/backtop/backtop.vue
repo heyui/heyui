@@ -31,18 +31,18 @@ export default {
       default: 'h-backtop-default'
     }
   },
-  data () {
+  data() {
     return {
       show: false,
       timeout: null
     };
   },
   watch: {
-    show () {
+    show() {
       this.$el.style.display = 'block';
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       let target = this.target();
       if (target) {
@@ -60,7 +60,7 @@ export default {
     });
   },
   methods: {
-    backtop () {
+    backtop() {
       if (this.timeout) return;
       let target = this.target();
       if (target) {
@@ -68,7 +68,7 @@ export default {
       }
       this.$emit('backtop');
     },
-    scrollTop (target, step) {
+    scrollTop(target, step) {
       this.timeout = setTimeout(() => {
         if (target.scrollTop > step) {
           target.scrollTop -= step;
@@ -81,14 +81,14 @@ export default {
     }
   },
   computed: {
-    backtopCls () {
+    backtopCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-show`]: this.show,
         [this.className]: !!this.className
       };
     },
-    backtopStyle () {
+    backtopStyle() {
       return {
         bottom: `${this.bottom}px`,
         right: `${this.right}px`

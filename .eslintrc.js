@@ -29,7 +29,8 @@ module.exports = {
         "error",
         "unix"
     ],
-    "no-useless-call": "off"
+    "no-useless-call": "off",
+    "space-before-function-paren": ["error", { "anonymous": "always", "named": "never", "asyncArrow": "always" }]
   },
   parserOptions: {
     parser: 'babel-eslint'

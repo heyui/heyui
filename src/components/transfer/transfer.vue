@@ -68,7 +68,7 @@ export default {
       default: () => ({})
     }
   },
-  data () {
+  data() {
     return {
       ltChecked: [],
       rtChecked: [],
@@ -77,11 +77,11 @@ export default {
       key: this.keyName || 'key'
     };
   },
-  created () {
+  created() {
     this.$emit('init', this.sources, this.targets);
   },
   methods: {
-    move (direction) {
+    move(direction) {
       this.$emit('transfer', direction, this.sources, this.targets);
       let value = this.value ? [...this.value] : [];
       if (direction === 1 && this.ltChecked.length > 0) {
@@ -100,7 +100,7 @@ export default {
     }
   },
   computed: {
-    sources () {
+    sources() {
       let value = this.value || [];
       let key = this.keyName || 'key';
       let result = this.datas.filter(d => value.indexOf(d[key]) == -1);
@@ -109,7 +109,7 @@ export default {
       }
       return result;
     },
-    targets () {
+    targets() {
       let value = this.value || [];
       let key = this.keyName || 'key';
       let result = this.datas.filter(d => value.indexOf(d[key]) != -1);

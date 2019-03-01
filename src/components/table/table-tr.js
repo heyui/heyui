@@ -7,7 +7,7 @@ export default {
     datas: [Object, Array],
     index: Number
   },
-  render (h) {
+  render(h) {
     let tds = [];
     if (this.$slots && this.$slots.default) {
       tds.push(...this.$slots.default);
@@ -46,10 +46,10 @@ export default {
     );
   },
   methods: {
-    clickHandler (event) {
+    clickHandler(event) {
       this.$emit('click', this.datas, this.index, event);
     },
-    dblclickHandler (event) {
+    dblclickHandler(event) {
       this.$emit('dblclick', this.datas, this.index, event);
     }
   }

@@ -42,12 +42,12 @@ export default {
     chooseMode: String,
     toggleOnSelect: Boolean
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
-    select () {
+    select() {
       if (this.toggleOnSelect || this.multiple) {
         this.toggleTree();
       }
@@ -58,11 +58,11 @@ export default {
         this.choose();
       }
     },
-    choose () {
+    choose() {
       this.data.status.indeterminate = false;
       this.$emit('trigger', { type: 'chooseEvent', data: this.data });
     },
-    trigger (data) {
+    trigger(data) {
       if (data.type == 'chooseEvent') {
         if (this.chooseMode != 'independent') {
           if (this.data.children) {
@@ -88,14 +88,14 @@ export default {
       }
       this.$emit('trigger', data);
     },
-    toggleTree () {
+    toggleTree() {
       if (this.data.status.isWait) {
         this.loadData();
       } else {
         this.$emit('trigger', { type: 'toggleTreeEvent', data: this.data });
       }
     },
-    loadData () {
+    loadData() {
       this.$emit('trigger', { type: 'loadDataEvent', data: this.data });
     }
   }

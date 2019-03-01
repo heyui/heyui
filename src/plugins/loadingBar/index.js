@@ -3,21 +3,21 @@ import utils from '../../utils/utils';
 const prefixCls = 'h-loadingbar';
 
 class LoadingBar {
-  constructor () {
+  constructor() {
     this.dom = null;
     this.timeout = null;
     this.inner = null;
     this.width = 0;
   }
 
-  initDom () {
+  initDom() {
     this.dom = document.createElement('div');
     this.dom.innerHTML = `<div class="${prefixCls}"><div class="${prefixCls}-inner"></div></div>`;
     document.body.appendChild(this.dom);
     this.inner = this.dom.querySelector(`.${prefixCls}-inner`);
   }
 
-  start () {
+  start() {
     if (!this.dom) {
       this.initDom();
     }
@@ -25,7 +25,7 @@ class LoadingBar {
     this.loading(5, 90);
   }
 
-  loading (step, end, callback) {
+  loading(step, end, callback) {
     if (this.width >= end) {
       if (utils.isFunction(callback)) {
         callback.call(this);
@@ -48,11 +48,11 @@ class LoadingBar {
     }, 200);
   }
 
-  success () {
+  success() {
     this.end(1);
   }
 
-  end (success) {
+  end(success) {
     if (!this.dom) {
       this.initDom();
     }
@@ -69,14 +69,14 @@ class LoadingBar {
     });
   }
 
-  fail () {
+  fail() {
     this.end(0);
   }
 }
 
 const $loadingBar = new LoadingBar();
 
-function loadingBar () {
+function loadingBar() {
   return $loadingBar;
 }
 

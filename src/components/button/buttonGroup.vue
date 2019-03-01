@@ -14,16 +14,16 @@ export default {
     circle: Boolean,
     size: {
       type: String,
-      validator (value) {
+      validator(value) {
         return Props.size.has(value);
       }
     }
   },
-  data () {
+  data() {
     return {};
   },
   computed: {
-    buttonGroupCls () {
+    buttonGroupCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-circle`]: !!this.circle,

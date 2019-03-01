@@ -29,7 +29,7 @@ export default {
   components: {
 
   },
-  data () {
+  data() {
     return {
       isActive: false
     };
@@ -37,11 +37,11 @@ export default {
   inject: ['collapse'],
   computed: {
   },
-  created () {
+  created() {
 
   },
   methods: {
-    toggle () {
+    toggle() {
       this.collapse.toggle(this.name || this.index);
     }
   }

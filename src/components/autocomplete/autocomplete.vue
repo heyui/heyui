@@ -80,7 +80,7 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       html: 'autocomplete_rander_html',
       focusing: false,
@@ -105,20 +105,20 @@ export default {
     };
   },
   watch: {
-    value () {
+    value() {
       if (this.oldValue == this.value) {
         return;
       }
       this.parse();
     },
-    disabled () {
+    disabled() {
       if (this.disabled) {
         this.dropdown.disabled();
       } else {
         this.dropdown.enabled();
       }
     },
-    nowSelected () {
+    nowSelected() {
       this.$nextTick(() => {
         if (this.content && this.nowSelected > -1) {
           let dom = this.content.querySelector('.h-autocomplete-item-selected');
@@ -138,10 +138,10 @@ export default {
       });
     }
   },
-  beforeMount () {
+  beforeMount() {
     this.parse();
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -151,7 +151,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       let el = (this.el = this.$el.querySelector('.h-autocomplete-show'));
       this.content = this.$el.querySelector('.h-autocomplete-group');
@@ -163,7 +163,7 @@ export default {
         disabled: this.disabled,
         equalWidth: true,
         events: {
-          show () {
+          show() {
             that.isShow = true;
           }
         }
@@ -171,10 +171,10 @@ export default {
     });
   },
   methods: {
-    getKey (key) {
+    getKey(key) {
       return key + Math.random();
     },
-    parse () {
+    parse() {
       this.tempValue = null;
       if (this.multiple) {
         let os = [];
@@ -226,7 +226,7 @@ export default {
       }
       this.oldValue = this.value;
     },
-    getDisposeValue () {
+    getDisposeValue() {
       let inputValue = null;
       if (this.type == 'key' || this.type == 'title') {
         inputValue = this.tempValue;
@@ -239,7 +239,7 @@ export default {
       }
       return inputValue;
     },
-    dispose () {
+    dispose() {
       let value = null;
       let inputValue = this.getDisposeValue();
       if (this.multiple) {
@@ -270,7 +270,7 @@ export default {
         return value;
       }
     },
-    getV (object) {
+    getV(object) {
       if (this.type == 'key') {
         return object.key;
       } else if (this.type == 'title') {
@@ -279,7 +279,7 @@ export default {
         return object.value;
       }
     },
-    getValue (item) {
+    getValue(item) {
       if (utils.isFunction(this.param.getValue)) {
         return this.param.getValue.call(this.param, item);
       } else {
@@ -292,24 +292,24 @@ export default {
         }
       }
     },
-    focus (event) {
+    focus(event) {
       this.lastTrigger = null;
       this.focusing = true;
       this.focusValue = event.target.value;
       if (this.multiple) this.searchValue = null;
       this.search();
     },
-    focusData (value) {
+    focusData(value) {
       this.focusValue = this.object.title;
       if (this.multiple) this.searchValue = null;
     },
-    paste (event) {
+    paste(event) {
       setTimeout(() => {
         // this.tempValue = event.target.value;
         this.search();
       }, 0);
     },
-    blur (event) {
+    blur(event) {
       this.focusing = false;
       if (this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
       let nowValue = event.target.value;
@@ -340,7 +340,7 @@ export default {
         clearTimeout(this.searchTimeout);
       }
     },
-    keydownHandle (event) {
+    keydownHandle(event) {
       let code = event.keyCode || event.which || event.charCode;
       if (code == 8 && event.target.value === '' && this.objects.length > 0) {
         this.remove(this.objects[this.objects.length - 1]);
@@ -349,7 +349,7 @@ export default {
         this.enterHandle(event);
       }
     },
-    handle (event) {
+    handle(event) {
       let code = event.keyCode || event.which || event.charCode;
       if (code == 38) {
         if (this.nowSelected > 0) {
@@ -365,7 +365,7 @@ export default {
         this.search();
       }
     },
-    enterHandle (event) {
+    enterHandle(event) {
       let nowValue = (this.tempValue = event.target.value);
       event.preventDefault();
       if (this.nowSelected >= 0) {
@@ -378,7 +378,7 @@ export default {
         this.setvalue('enter');
       }
     },
-    search () {
+    search() {
       let target = this.$refs.input;
       let value = target.value;
       this.tempValue = value || null;
@@ -421,7 +421,7 @@ export default {
         this.dropdown.hide();
       }
     },
-    updateDropdown () {
+    updateDropdown() {
       this.$nextTick(() => {
         if (this.dropdown) {
           if (this.results.length == 0 && !this.showDropdownWhenNoResult) {
@@ -433,7 +433,7 @@ export default {
         }
       });
     },
-    add (data) {
+    add(data) {
       if (this.multiple) {
         this.objects.push(utils.copy(data));
       } else {
@@ -449,15 +449,15 @@ export default {
       }
       this.tempValue = null;
     },
-    remove (object) {
+    remove(object) {
       this.objects.splice(this.objects.indexOf(object), 1);
       this.setvalue('remove');
     },
-    picker (data) {
+    picker(data) {
       this.add(data);
       this.setvalue('picker');
     },
-    setvalue (trigger) {
+    setvalue(trigger) {
       if (this.disabled) return;
       // log('setvalue', trigger)
       this.lastTrigger = trigger;
@@ -491,11 +491,11 @@ export default {
         this.searchValue = null;
       }, 100);
     },
-    hide () {
+    hide() {
       this.loading = false;
       this.dropdown.hide();
     },
-    clear () {
+    clear() {
       this.tempValue = null;
       this.focusValue = null;
       this.object = {
@@ -507,13 +507,13 @@ export default {
     }
   },
   computed: {
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.autoComplate.placeholder');
     },
-    showEmptyContent () {
+    showEmptyContent() {
       return this.emptyContent || this.t('h.autoComplate.emptyContent');
     },
-    param () {
+    param() {
       if (this.config) {
         return utils.extend({},
           config.getOption('autocomplete.default'),
@@ -527,7 +527,7 @@ export default {
         );
       }
     },
-    autocompleteCls () {
+    autocompleteCls() {
       let autosize = !!this.noBorder;
       if (!autosize) {
         autosize = this.autosize;
@@ -541,21 +541,21 @@ export default {
         focusing: this.focusing
       };
     },
-    showCls () {
+    showCls() {
       return {
         [`${prefix}-show`]: true,
         [`${this.className}-show`]: !!this.className,
         focusing: this.focusing
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${prefix}-group`]: true,
         [`${prefix}-multiple`]: this.multiple,
         [`${this.className}-dropdown`]: !!this.className
       };
     },
-    results () {
+    results() {
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);

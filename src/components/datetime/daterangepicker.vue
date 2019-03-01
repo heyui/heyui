@@ -95,10 +95,10 @@ export default {
     }
   },
   watch: {
-    value () {
+    value() {
       this.parse(this.value);
     },
-    disabled () {
+    disabled() {
       if (this.disabled) {
         this.dropdown.disabled();
       } else {
@@ -106,7 +106,7 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     let format = this.format || config.getOption('datepicker.format')[this.type];
     if (this.type == 'datetime' && this.hasSeconds) {
       format = config.getOption('datepicker.format.datetimesecond');
@@ -126,10 +126,10 @@ export default {
       isShow: false
     };
   },
-  beforeMount () {
+  beforeMount() {
     this.parse(this.value);
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -139,7 +139,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     let that = this;
     this.$nextTick(() => {
       let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
@@ -149,7 +149,7 @@ export default {
         content,
         disabled: this.disabled,
         events: {
-          show () {
+          show() {
             that.isShow = true;
             that.$nextTick(() => {
               that.initNowView();
@@ -160,16 +160,16 @@ export default {
     });
   },
   methods: {
-    updateRangeEnd (string) {
+    updateRangeEnd(string) {
       this.rangeEnd = string;
     },
-    setShortcutValue (s) {
+    setShortcutValue(s) {
       let value = s.value.call(null);
       this.parse(value);
       this.updateValue(this.nowDate);
       this.hide();
     },
-    updateView (value, rangeType) {
+    updateView(value, rangeType) {
       this.nowView[rangeType] = manba(value);
       if (this.nowView.start.time() >= this.nowView.end.time()) {
         if (rangeType == 'end') {
@@ -180,10 +180,10 @@ export default {
       }
       this.dropdown.update();
     },
-    changeView () {
+    changeView() {
       this.dropdown.update();
     },
-    changeEvent (event) {
+    changeEvent(event) {
       // let value = event.target.value;
       // this.parse(value);
       // if (utils.isObject(this.option) && this.type != "time") {
@@ -197,7 +197,7 @@ export default {
       //   }
       // }
     },
-    parseSingle (value, range) {
+    parseSingle(value, range) {
       if (utils.isObject(value) && value[this.paramName[range]]) {
         try {
           let nowValue = manba(value[this.paramName[range]]);
@@ -208,12 +208,12 @@ export default {
       }
       this.nowDate[range] = '';
     },
-    parse (value) {
+    parse(value) {
       this.parseSingle(value, 'start');
       this.parseSingle(value, 'end');
       this.rangeEnd = this.nowDate.end;
     },
-    initNowView () {
+    initNowView() {
       let start = manba();
       if (this.nowDate.start) {
         start = manba(this.nowDate.start);
@@ -226,20 +226,20 @@ export default {
       this.$refs.start.resetView();
       this.$refs.end.resetView();
     },
-    confirm () {
+    confirm() {
       this.$emit('confirm');
       this.hide();
     },
-    hide () {
+    hide() {
       this.dropdown.hide();
     },
-    clear () {
+    clear() {
       this.$emit('clear');
       this.updateValue({});
       this.initNowView();
       this.hide();
     },
-    setvalue (string, isEnd = false, range) {
+    setvalue(string, isEnd = false, range) {
       string = string || '';
       let lastDate = utils.copy(this.nowDate);
       if (!isEnd) {
@@ -266,7 +266,7 @@ export default {
 
       this.updateValue(lastDate);
     },
-    updateValue (value) {
+    updateValue(value) {
       value = {
         [this.paramName.start]: value.start,
         [this.paramName.end]: value.end
@@ -281,16 +281,16 @@ export default {
     }
   },
   computed: {
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
-    show () {
+    show() {
       if (!utils.isObject(this.value)) {
         return '';
       }
       return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end || this.t('h.datepicker.end')}`;
     },
-    shortcuts () {
+    shortcuts() {
       let shortcuts = [];
       let shortcutsConfig = null;
       if (this.option && this.option.shortcuts) {
@@ -307,7 +307,7 @@ export default {
       }
       return shortcuts;
     },
-    dateCls () {
+    dateCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-range`]: true,
@@ -315,15 +315,15 @@ export default {
         [`${prefix}-disabled`]: this.disabled
       };
     },
-    datePickerCls () {
+    datePickerCls() {
       return {
         [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
       };
     },
-    startOption () {
+    startOption() {
       return this.option;
     },
-    endOption () {
+    endOption() {
       return this.option;
     }
   },

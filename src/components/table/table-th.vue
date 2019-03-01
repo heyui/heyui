@@ -42,13 +42,13 @@ export default {
     placement: String,
     content: String
   },
-  data () {
+  data() {
     return {
       // sortStatus: {type: null, prop: null}
     };
   },
   methods: {
-    triggerSort () {
+    triggerSort() {
       if (!this.sort) return false;
       let sortStatus = utils.copy(this.sortStatus);
       if (this.sortStatus.type && this.sortStatus.prop == this.sortUseProp) {
@@ -64,13 +64,13 @@ export default {
     }
   },
   computed: {
-    cls () {
+    cls() {
       return {
         [`text-${this.align}`]: !!this.align,
         pointer: this.sort
       };
     },
-    sortUseProp () {
+    sortUseProp() {
       return this.sortProp || this.prop;
     }
   }

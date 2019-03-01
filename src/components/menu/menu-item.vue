@@ -34,15 +34,15 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
-    trigger (data) {
+    trigger(data) {
       this.$emit('trigger', data);
     },
-    togglemenu (data) {
+    togglemenu(data) {
       this.$emit('trigger', { type: 'togglemenuEvent', data });
     }
   }

@@ -24,15 +24,15 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
 
     };
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    trigger (data) {
+    trigger(data) {
       if (!this.selfControl && data.route && this.$router) {
         this.$router.push(data.route);
       }

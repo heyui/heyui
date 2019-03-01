@@ -54,21 +54,21 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       messages: {},
       validator: null
     };
   },
-  beforeMount () {
+  beforeMount() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
   },
-  destroyed () {
+  destroyed() {
     if (this.validator) {
       this.validator.destroy();
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.$el.addEventListener('blur', (event) => {
         // this.trigger(event);
@@ -86,7 +86,7 @@ export default {
   },
   watch: {
     rules: {
-      handler () {
+      handler() {
         if (this.validator) {
           if (this.rules) this.validator.updateRule(this.rules);
         } else if (this.model && this.rules) {
@@ -97,18 +97,18 @@ export default {
     }
   },
   methods: {
-    reset () {
+    reset() {
       for (let m in this.messages) {
         this.messages[m].valid = true;
       }
     },
-    trigger (target) {
+    trigger(target) {
       let formItem = findDomUtil(target, this.$el);
       if (formItem && formItem.getAttribute('validable') == 'true') {
         this.validField(formItem.getAttribute('prop'));
       }
     },
-    validField (prop) {
+    validField(prop) {
       if (!prop || !this.validator || !this.model) {
         return {
           valid: true
@@ -122,7 +122,7 @@ export default {
       utils.extend(true, this.messages, returnResult);
       return utils.extend({}, this.messages[prop]);
     },
-    validFieldJs (prop, next) {
+    validFieldJs(prop, next) {
       if (!prop || !this.validator || !this.model) {
         return {
           valid: true
@@ -136,15 +136,15 @@ export default {
       });
       return utils.extend({}, defaultM, returnResult[prop]);
     },
-    setConfig (prop, options) {
+    setConfig(prop, options) {
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getConfig (prop) {
+    getConfig(prop) {
       if (!this.validator) return false;
       return this.validator.getConfig(prop);
     },
-    getErrorMessage (prop, label) {
+    getErrorMessage(prop, label) {
       if (this.messages[prop]) return this.messages[prop];
       let message = {
         valid: true,
@@ -154,7 +154,7 @@ export default {
       this.messages[prop] = message;
       return message;
     },
-    updateErrorMessage (prop, oldProp) {
+    updateErrorMessage(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
       if (utils.isNull(message)) {
         message = {
@@ -165,10 +165,10 @@ export default {
       this.messages[prop] = message;
       return message;
     },
-    removeProp (prop) {
+    removeProp(prop) {
       delete this.messages[prop];
     },
-    renderMessage (returnResult) {
+    renderMessage(returnResult) {
       let isSuccess = true;
       for (let r in returnResult) {
         if (!returnResult[r].valid) {
@@ -183,7 +183,7 @@ export default {
       };
       return result;
     },
-    tipError (result) {
+    tipError(result) {
       if (!result.result) {
         let m = result.messages[0];
         if (this.showErrorTip) {
@@ -207,14 +207,14 @@ export default {
         });
       }
     },
-    validAsync () {
+    validAsync() {
       return new Promise((resolve) => {
         this.valid((result) => {
           resolve(this.renderMessage(result));
         });
       });
     },
-    valid (next) {
+    valid(next) {
       if (!this.validator || !this.model) {
         return {
           result: true,
@@ -234,7 +234,7 @@ export default {
     }
   },
   computed: {
-    formCls () {
+    formCls() {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-${this.mode}`]: true,

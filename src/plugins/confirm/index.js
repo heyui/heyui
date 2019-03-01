@@ -8,7 +8,7 @@ let Default = {
   middle: false
 };
 
-function Confirm (content, title) {
+function Confirm(content, title) {
   return new Promise((resolve, reject) => {
     let param = {
       type: prefixCls,
@@ -36,7 +36,7 @@ function Confirm (content, title) {
   });
 }
 
-function confirm (content, title) {
+function confirm(content, title) {
   if (!title) {
     title = locale.t('h.confirm.title');
   }

@@ -135,7 +135,7 @@ export default {
     value: [Number, String, Array, Object],
     className: String
   },
-  data () {
+  data() {
     return {
       key: this.keyName,
       title: this.titleName,
@@ -150,13 +150,13 @@ export default {
     };
   },
   watch: {
-    datas () {
+    datas() {
       this.parse();
     },
-    value () {
+    value() {
       this.parse();
     },
-    disabled () {
+    disabled() {
       if (this.dropdown) {
         if (this.disabled) {
           this.dropdown.disabled();
@@ -165,10 +165,10 @@ export default {
         }
       }
     },
-    searchInput () {
+    searchInput() {
       this.nowSelected = -1;
     },
-    nowSelected () {
+    nowSelected() {
       this.$nextTick(() => {
         if (this.content && this.nowSelected > -1) {
           let dom = this.content.querySelector('.h-select-item-picked');
@@ -188,10 +188,10 @@ export default {
       });
     }
   },
-  beforeMount () {
+  beforeMount() {
     this.parse();
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -201,7 +201,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       let el = this.el = this.$el.querySelector('.h-select-show');
       let content = this.content = this.$el.querySelector('.h-select-group');
@@ -213,7 +213,7 @@ export default {
         trigger: 'click foucs',
         triggerOnce: this.filterable,
         events: {
-          show () {
+          show() {
             that.isShow = true;
           }
         }
@@ -221,10 +221,10 @@ export default {
     });
   },
   methods: {
-    focusSearchInput () {
+    focusSearchInput() {
       this.$el.querySelector('.h-select-search-input').focus();
     },
-    handle (event) {
+    handle(event) {
       let code = event.keyCode || event.which || event.charCode;
       if (code == 38) {
         if (this.nowSelected > 0) {
@@ -236,7 +236,7 @@ export default {
         }
       }
     },
-    enterHandle (event) {
+    enterHandle(event) {
       event.preventDefault();
       if (this.nowSelected >= 0) {
         this.setvalue(this.filterOptions[this.nowSelected], 'enter');
@@ -245,16 +245,16 @@ export default {
         }
       }
     },
-    blurHandle (event) {
+    blurHandle(event) {
       this.nowSelected = -1;
       setTimeout(() => {
         this.searchInput = '';
       }, 300);
     },
-    search (value) {
+    search(value) {
       this.searchInput = value;
     },
-    setObjects () {
+    setObjects() {
       if (this.multiple) {
         let os = [];
         for (let code of this.codes) {
@@ -268,7 +268,7 @@ export default {
         this.objects = this.optionsMap[this.codes];
       }
     },
-    parse () {
+    parse() {
       if (this.multiple) {
         let values = this.value || [];
         this.codes = values.map((item) => {
@@ -287,10 +287,10 @@ export default {
       }
       this.setObjects();
     },
-    getValue (value) {
+    getValue(value) {
       return utils.isNull(value) ? null : value;
     },
-    setvalue (option, trigger) {
+    setvalue(option, trigger) {
       if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
       let code = option[this.key];
@@ -323,10 +323,10 @@ export default {
         }, 100);
       }
     },
-    isIncludes (code) {
+    isIncludes(code) {
       return this.codes.some(item => item == code);
     },
-    getLiCls (option, index) {
+    getLiCls(option, index) {
       let code = option[this.key];
       if (option.isLabel) {
         return {
@@ -343,41 +343,41 @@ export default {
     }
   },
   filters: {
-    showText (key, value) {
+    showText(key, value) {
       return value.includes(key);
     }
   },
   computed: {
-    hasValue () {
+    hasValue() {
       if (this.multiple) {
         return this.codes.length > 0;
       } else {
         return !utils.isNull(this.codes) && this.objects;
       }
     },
-    singleValue () {
+    singleValue() {
       if (this.hasValue) {
         return this.objects[this.title];
       } else {
         return null;
       }
     },
-    showEmptyContent () {
+    showEmptyContent() {
       return this.emptyContent || this.t('h.select.emptyContent');
     },
-    hasLabel () {
+    hasLabel() {
       return this.options.some(item => item.isLabel);
     },
-    showNullOptionText () {
+    showNullOptionText() {
       return this.nullOptionText || this.t('h.select.nullOptionText');
     },
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.select.placeholder');
     },
     // showSearchPlaceHolder() {
     //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
     // },
-    selectCls () {
+    selectCls() {
       let autosize = this.autosize || !!this.noBorder;
       return {
         [`${prefix}`]: true,
@@ -388,13 +388,13 @@ export default {
         [`${prefix}-disabled`]: this.disabled
       };
     },
-    showCls () {
+    showCls() {
       return {
         [`${prefix}-show`]: true,
         [`${this.className}-show`]: !!this.className
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${prefix}-group`]: true,
         [`${prefix}-group-has-label`]: this.hasLabel,
@@ -403,12 +403,12 @@ export default {
         [`${this.className}-dropdown`]: !!this.className
       };
     },
-    optionsMap () {
+    optionsMap() {
       let optionsMap = utils.toObject(this.options, this.key);
       delete optionsMap.null;
       return optionsMap;
     },
-    filterOptions () {
+    filterOptions() {
       if (this.searchInput) {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
@@ -418,7 +418,7 @@ export default {
       }
       return this.options;
     },
-    options () {
+    options() {
       if (!this.datas && !this.dict) {
         console.error('Select Component: Datas or dict parameters need to be defined at least.');
         return [];

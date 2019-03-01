@@ -22,19 +22,19 @@ export default {
     text: String,
     minHeight: Number
   },
-  data () {
+  data() {
     return {
       isSetStyle: false
     };
   },
-  unbind () {
+  unbind() {
 
   },
-  mounted () {
+  mounted() {
     this.initStyle();
   },
   methods: {
-    initStyle () {
+    initStyle() {
       if (this.loading) {
         this.$nextTick(() => {
           utils.addClass(this.$el, 'h-loading-loading');
@@ -57,22 +57,22 @@ export default {
     }
   },
   watch: {
-    loading () {
+    loading() {
       this.initStyle();
     }
   },
   computed: {
-    circularCls () {
+    circularCls() {
       return {
         [`${prefix}-circular`]: true
       };
     },
-    textCls () {
+    textCls() {
       return {
         [`${prefix}-text`]: true
       };
     },
-    loadingCls () {
+    loadingCls() {
       return {
         [`${prefix}`]: true
       };

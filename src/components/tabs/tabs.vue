@@ -31,14 +31,14 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  data () {
+  data() {
     return {
       key: this.keyName,
       title: this.titleName
     };
   },
   methods: {
-    trigger (data, index) {
+    trigger(data, index) {
       if (this.value != data[this.key]) {
         this.$emit('input', data[this.key]);
         this.$emit('change', data, index);
@@ -47,13 +47,13 @@ export default {
     }
   },
   computed: {
-    tabsCls () {
+    tabsCls() {
       return {
         [`${prefix}`]: true,
         [this.className]: !!this.className
       };
     },
-    arr () {
+    arr() {
       if (!this.datas && !this.dict) {
         console.error('Tabs Component: Datas or dict parameters need to be defined at least.');
         return [];

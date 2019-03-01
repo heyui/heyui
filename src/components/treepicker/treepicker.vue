@@ -80,7 +80,7 @@ export default {
     config: String,
     className: String
   },
-  data () {
+  data() {
     return {
       objects: [],
       object: null,
@@ -88,7 +88,7 @@ export default {
       valuebak: null
     };
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -98,7 +98,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     this.parse();
     this.$nextTick(() => {
       if (this.inline) return;
@@ -120,55 +120,55 @@ export default {
     });
   },
   watch: {
-    value () {
+    value() {
       this.parse();
     }
   },
   methods: {
-    refresh () {
+    refresh() {
       if (this.$refs.tree) {
         return this.$refs.tree.refresh();
       }
     },
-    loadDataSuccess () {
+    loadDataSuccess() {
       this.parse();
       this.$emit('loadDataSuccess');
     },
-    getChoose () {
+    getChoose() {
       if (this.$refs.tree) {
         return this.$refs.tree.getChoose();
       }
       return [];
     },
-    getFullChoose () {
+    getFullChoose() {
       if (this.$refs.tree) {
         return this.$refs.tree.getFullChoose();
       }
       return [];
     },
-    select (data) {
+    select(data) {
       this.object = data;
       this.$emit('select', data);
       if (!this.multiple) this.setvalue();
     },
-    choose (data) {
+    choose(data) {
       this.objects = data;
       this.$emit('choose', data);
       if (this.multiple) this.setvalue();
     },
-    chooseAll () {
+    chooseAll() {
       if (this.$refs.tree) {
         this.$refs.tree.chooseAll();
       }
     },
-    remove (obj) {
+    remove(obj) {
       let index = this.objects.indexOf(obj);
       this.objects.splice(index, 1);
       this.valuebak.splice(index, 1);
       this.setvalue();
       this.triggerChange();
     },
-    updateShow (data) {
+    updateShow(data) {
       if (utils.isObject(data) && !this.multiple) {
         this.object = data;
       }
@@ -177,7 +177,7 @@ export default {
       }
       this.setvalue();
     },
-    parse () {
+    parse() {
       if (this.type == 'key') {
         this.valuebak = utils.copy(this.value);
       } else {
@@ -192,7 +192,7 @@ export default {
         }
       }
     },
-    dispose () {
+    dispose() {
       if (this.multiple) {
         return this.objects.map(item => this.type == 'key' ? item[this.param.keyName] : item).filter(item => {
           return item !== undefined;
@@ -202,7 +202,7 @@ export default {
       }
       return null;
     },
-    clear () {
+    clear() {
       this.object = null;
       this.objects = [];
       this.setvalue();
@@ -210,12 +210,12 @@ export default {
       this.$refs.tree.searchTree(null);
       this.dropdown.hide();
     },
-    confirm () {
+    confirm() {
       this.setvalue();
       this.triggerChange();
       this.dropdown.hide();
     },
-    setvalue () {
+    setvalue() {
       let value = this.dispose();
       this.$emit('input', value);
       let event = document.createEvent('CustomEvent');
@@ -225,7 +225,7 @@ export default {
         if (this.dropdown) this.dropdown.update();
       });
     },
-    triggerChange () {
+    triggerChange() {
       this.$nextTick(() => {
         this.$emit(
           'change',
@@ -235,7 +235,7 @@ export default {
     }
   },
   computed: {
-    param () {
+    param() {
       if (this.config) {
         return utils.extend({},
           config.getOption('tree.default'),
@@ -246,17 +246,17 @@ export default {
         return utils.extend({}, config.getOption('tree.default'), this.option);
       }
     },
-    showCls () {
+    showCls() {
       return {
         [`${this.className}-show`]: !!this.className
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${this.className}-dropdown`]: !!this.className
       };
     },
-    treepickerCls () {
+    treepickerCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: true,

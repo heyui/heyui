@@ -54,7 +54,7 @@ const DEFAULT = {
 };
 
 class Validator {
-  constructor (rules) {
+  constructor(rules) {
     if (!utils.isObject(rules)) {
       console.error('validator: please pass the correct validation parameters');
     }
@@ -64,7 +64,7 @@ class Validator {
     this.initRules(rules);
   }
 
-  initRules (rules) {
+  initRules(rules) {
     let genRules = {};
     utils.extend(true, genRules, DEFAULT, rules);
     let keys = Object.keys(typeValids);
@@ -90,11 +90,11 @@ class Validator {
     this.initCombineRules(genRules.combineRules);
   }
 
-  updateRule (rules) {
+  updateRule(rules) {
     this.initRules(rules || {});
   }
 
-  initCombineRules (rules) {
+  initCombineRules(rules) {
     let genRules = {};
     for (let rule of rules) {
       rule.id = utils.uuid();
@@ -112,13 +112,13 @@ class Validator {
     this.combineRules = genRules;
   }
 
-  valid (data, next, allNext) {
+  valid(data, next, allNext) {
     let loadings = [];
     let uuid = utils.uuid();
     let result = this.validData(
       data, {
         uuid,
-        next (r) {
+        next(r) {
           for (let key in r) {
             if (loadings.indexOf(key) > -1) {
               loadings.splice(loadings.indexOf(key), 1);
@@ -144,7 +144,7 @@ class Validator {
     return result;
   }
 
-  validData (data, { next, prop = '', sourceData, uuid } = {}) {
+  validData(data, { next, prop = '', sourceData, uuid } = {}) {
     let result = {};
     if (prop != '') {
       result = this.validField(prop, sourceData, { next, uuid });
@@ -164,7 +164,7 @@ class Validator {
     return result;
   }
 
-  getConfig (prop) {
+  getConfig(prop) {
     let ruleKey = prop;
     if (prop.indexOf('[') > -1 && !this.rules[prop]) {
       ruleKey = prop.replace(/\[\w+\]/, '[]');
@@ -172,12 +172,12 @@ class Validator {
     return this.rules[ruleKey];
   }
 
-  setConfig (prop, options) {
+  setConfig(prop, options) {
     let ruleKey = prop;
     this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
   }
 
-  validFieldBase ({ rule, value, parent }) {
+  validFieldBase({ rule, value, parent }) {
     if (rule && Object.keys(rule).length > 0) {
       let result = ruleExecute(baseValids.required, [value]);
 
@@ -213,7 +213,7 @@ class Validator {
     return true;
   }
 
-  validField (prop, data, { next, uuid } = {}) {
+  validField(prop, data, { next, uuid } = {}) {
     if (utils.isNull(prop)) {
       return returnArgs(prop);
     }
@@ -253,7 +253,7 @@ class Validator {
     return utils.extend(baseResult, result);
   }
 
-  combineRulesValid (rules, value, parent, parentProp, uuid) {
+  combineRulesValid(rules, value, parent, parentProp, uuid) {
     if (!rules) return true;
     let refValids = {};
     let count = 0;
@@ -303,7 +303,7 @@ class Validator {
     }
   }
 
-  destroy () {
+  destroy() {
     this.rules = null;
     this.combineRules = null;
     this.combineRuleResults = null;

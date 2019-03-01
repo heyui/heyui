@@ -18,20 +18,20 @@ export default {
     color: String,
     icon: String
   },
-  data () {
+  data() {
     return {
       prefix
     };
   },
   computed: {
-    itemCls () {
+    itemCls() {
       return {
         [`${prefix}-item`]: true,
         'has-icon': !!this.icon,
         [`${prefix}-item-${this.color}-color`]: !!this.color
       };
     },
-    circleSC () {
+    circleSC() {
       let styles = {};
       let classes = {
         [`${prefix}-item-circle`]: true
@@ -41,7 +41,7 @@ export default {
         classes
       };
     },
-    timeSC () {
+    timeSC() {
       let width = this.$parent.timeWidth || 100;
       return {
         classes: {

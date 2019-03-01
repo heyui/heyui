@@ -1,6 +1,6 @@
 import utils from './utils';
 
-function debounce (func, wait = 0, options) {
+function debounce(func, wait = 0, options) {
   const nativeMax = Math.max;
   const nativeMin = Math.min;
 
@@ -40,7 +40,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 执行要被触发的函数
-  function invokeFunc (time) {
+  function invokeFunc(time) {
     let args = lastArgs;
 
     let thisArg = lastThis;
@@ -51,7 +51,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 在leading edge阶段执行函数
-  function leadingEdge (time) {
+  function leadingEdge(time) {
     // Reset any `maxWait` timer.
     lastInvokeTime = time;
     // 为 trailing edge 触发函数调用设定定时器
@@ -61,7 +61,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 剩余时间
-  function remainingWait (time) {
+  function remainingWait(time) {
     // 距离上次debounced函数被调用的时间
     let timeSinceLastCall = time - lastCallTime;
 
@@ -79,7 +79,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 根据时间判断 func 能否被执行
-  function shouldInvoke (time) {
+  function shouldInvoke(time) {
     let timeSinceLastCall = time - lastCallTime;
 
     let timeSinceLastInvoke = time - lastInvokeTime;
@@ -91,7 +91,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 在 trailing edge 且时间符合条件时，调用 trailingEdge函数，否则重启定时器
-  function timerExpired () {
+  function timerExpired() {
     let time = new Date()
       .getTime();
     if (shouldInvoke(time)) {
@@ -102,7 +102,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // 在trailing edge阶段执行函数
-  function trailingEdge (time) {
+  function trailingEdge(time) {
     timerId = undefined;
     // 有lastArgs才执行，
     // 意味着只有 func 已经被 debounced 过一次以后才会在 trailing edge 执行
@@ -116,7 +116,7 @@ function debounce (func, wait = 0, options) {
   }
 
   // cancel方法
-  function cancel () {
+  function cancel() {
     if (timerId !== undefined) {
       clearTimeout(timerId);
     }
@@ -125,12 +125,12 @@ function debounce (func, wait = 0, options) {
   }
 
   // flush方法--立即调用
-  function flush () {
+  function flush() {
     return timerId === undefined ? result : trailingEdge(new Date()
       .getTime());
   }
 
-  function debounced () {
+  function debounced() {
     let time = new Date()
       .getTime();
 

@@ -21,7 +21,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       isFixed: false,
       fixPosition: 'top',
@@ -30,7 +30,7 @@ export default {
       y: 0
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       if (this.container) {
         this.containerDom = this.container.call();
@@ -40,24 +40,24 @@ export default {
       this.refresh();
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('scroll', this.trigger, true);
     window.removeEventListener('resize', this.trigger);
   },
   watch: {
-    offsetTop () {
+    offsetTop() {
       this.refresh();
     },
-    offsetBottom () {
+    offsetBottom() {
       this.refresh();
     },
-    fixedOffsetTop () {
+    fixedOffsetTop() {
       this.refresh();
     },
-    fixedOffsetBottom () {
+    fixedOffsetBottom() {
       this.refresh();
     },
-    disabled () {
+    disabled() {
       if (this.disabled) {
         this.isFixed = false;
         this.isAbsolute = false;
@@ -67,12 +67,12 @@ export default {
     }
   },
   methods: {
-    refresh () {
+    refresh() {
       let evObj = document.createEvent('HTMLEvents');
       evObj.initEvent('scroll', true, true);
       document.body.dispatchEvent(evObj);
     },
-    trigger (event) {
+    trigger(event) {
       if (this.disabled) return;
       let el = this.$el.firstChild;
       if (event.target == el) return false;
@@ -168,19 +168,19 @@ export default {
     }
   },
   computed: {
-    cFixedOffsetTop () {
+    cFixedOffsetTop() {
       return this.fixedOffsetTop || this.offsetTop;
     },
-    cFixedOffsetBottom () {
+    cFixedOffsetBottom() {
       return this.fixedOffsetBottom || this.offsetBottom;
     },
-    affixCls () {
+    affixCls() {
       return {
         [prefix]: this.isFixed,
         [`${prefix}-absolute`]: this.isAbsolute
       };
     },
-    affixStyle () {
+    affixStyle() {
       let param = {};
       if (this.isFixed) {
         if (this.fixPosition == 'top') {

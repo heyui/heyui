@@ -18,13 +18,13 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       mouseValue: false
     };
   },
   methods: {
-    setvalue (value) {
+    setvalue(value) {
       if (this.readonly) return;
       this.$emit('input', value);
       this.$emit('change', value);
@@ -32,15 +32,15 @@ export default {
       event.initCustomEvent('setvalue', true, true, this.value);
       this.$el.dispatchEvent(event);
     },
-    mouseover (n) {
+    mouseover(n) {
       if (this.readonly) return;
       this.mouseValue = n;
     },
-    mouseleave () {
+    mouseleave() {
       if (this.readonly) return;
       this.mouseValue = false;
     },
-    starCls (n) {
+    starCls(n) {
       let v = this.mouseValue || Number(this.value);
       return {
         'h-rate-on': v >= n,
@@ -49,7 +49,7 @@ export default {
     }
   },
   filters: {
-    isInclude (key, value) {
+    isInclude(key, value) {
       return value.includes(key);
     }
   },

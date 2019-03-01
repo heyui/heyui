@@ -24,7 +24,7 @@ export default {
     },
     size: {
       type: String,
-      validator (value) {
+      validator(value) {
         return Props.size.has(value);
       }
     },
@@ -39,11 +39,11 @@ export default {
     text: Boolean,
     iconCircle: Boolean
   },
-  data () {
+  data() {
     return {};
   },
   methods: {
-    trigger (event) {
+    trigger(event) {
       if (this.stop) {
         event.stopPropagation();
       }
@@ -54,14 +54,14 @@ export default {
     }
   },
   computed: {
-    hasText () {
+    hasText() {
       let slot = this.$slots.default;
       if (slot && slot.length > 0) {
         return true;
       }
       return false;
     },
-    buttonCls () {
+    buttonCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-circle`]: !!this.circle || !!this.iconCircle,
@@ -75,10 +75,10 @@ export default {
         [`${prefix}-no-border`]: this.noBorder === true
       };
     },
-    iconCode () {
+    iconCode() {
       return this.loading ? 'h-icon-loading' : this.icon;
     },
-    iconCls () {
+    iconCls() {
       const iconCode = this.loading ? 'h-icon-loading' : this.icon;
       return {
         [`${iconCode}`]: !!iconCode

@@ -44,7 +44,7 @@ export default {
       type: Number
     }
   },
-  data () {
+  data() {
     return {
       focusing: false,
       editValue: this.value,
@@ -52,7 +52,7 @@ export default {
     };
   },
   watch: {
-    value () {
+    value() {
       // this.editValue = this.value;
       if (this.valueBak != this.value) {
         this.editValue = this.value;
@@ -60,20 +60,20 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    plus () {
+    plus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
       this.setvalue(utils.add(value || 0, this.step), 'handler');
     },
-    minus () {
+    minus() {
       if (this.disabled) return false;
       let value = this.getValue(this.value);
       this.setvalue(utils.add(value || 0, -this.step), 'handler');
     },
-    input (event) {
+    input(event) {
       if (isNaN(Number(event.target.value))) return false;
       let value = this.getValue(event.target.value);
       if (utils.isNumber(this.value) && Math.abs(value - this.value) <= 1 && this.precision) {
@@ -81,12 +81,12 @@ export default {
       }
       this.setvalue(value, 'input');
     },
-    blur (event) {
+    blur(event) {
       this.focusing = false;
       let value = this.getValue(event.target.value);
       this.setvalue(value, 'blur');
     },
-    getValue (value) {
+    getValue(value) {
       if (value === '') return null;
       if (this.useInt) {
         let v = parseInt(value);
@@ -96,7 +96,7 @@ export default {
         return isNaN(v) ? null : v;
       }
     },
-    setvalue (value, trigger) {
+    setvalue(value, trigger) {
       if (this.disabled) return false;
       if (this.max !== undefined && value !== null) {
         value = Math.min(this.max, value);
@@ -122,7 +122,7 @@ export default {
     }
   },
   computed: {
-    numberinputCls () {
+    numberinputCls() {
       return {
         [prefix]: true,
         [`${prefix}-disabled`]: !!this.disabled

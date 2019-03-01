@@ -32,28 +32,28 @@ export default {
     },
     position: {
       type: String,
-      validator (value) {
+      validator(value) {
         return Props.position.has(value);
       }
     }
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
   },
   computed: {
-    showCount () {
+    showCount() {
       return this.dot ? '' : (this.count > this.maxCount ? `${this.maxCount}+` : this.count);
     },
-    badgeCls () {
+    badgeCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-position-right`]: this.position == 'right'
       };
     },
-    badgeCountCls () {
+    badgeCountCls() {
       return {
         [`${prefix}-count`]: true,
         [`${prefix}-count-show`]: this.count > 0 || this.showZero,

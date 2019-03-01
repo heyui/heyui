@@ -3,19 +3,19 @@ const map = (typeof Map === 'function') ? new Map() : (function () {
   const values = [];
 
   return {
-    has (key) {
+    has(key) {
       return keys.indexOf(key) > -1;
     },
-    get (key) {
+    get(key) {
       return values[keys.indexOf(key)];
     },
-    set (key, value) {
+    set(key, value) {
       if (keys.indexOf(key) === -1) {
         keys.push(key);
         values.push(value);
       }
     },
-    delete (key) {
+    delete(key) {
       const index = keys.indexOf(key);
       if (index > -1) {
         keys.splice(index, 1);
@@ -31,14 +31,14 @@ const createEvent = (name) => {
   return evt;
 };
 
-function assign (ta) {
+function assign(ta) {
   if (!ta || !ta.nodeName || ta.nodeName !== 'TEXTAREA' || map.has(ta)) return;
 
   let heightOffset = null;
   let clientWidth = ta.clientWidth;
   let cachedHeight = null;
 
-  function init () {
+  function init() {
     const style = window.getComputedStyle(ta, null);
 
     if (style.resize === 'vertical') {
@@ -59,7 +59,7 @@ function assign (ta) {
     update();
   }
 
-  function changeOverflow (value) {
+  function changeOverflow(value) {
     {
       const width = ta.style.width;
       ta.style.width = '0px';
@@ -69,7 +69,7 @@ function assign (ta) {
     ta.style.overflowY = value;
   }
 
-  function getParentOverflows (el) {
+  function getParentOverflows(el) {
     const arr = [];
 
     while (el && el.parentNode && el.parentNode instanceof Element) {
@@ -85,7 +85,7 @@ function assign (ta) {
     return arr;
   }
 
-  function resize () {
+  function resize() {
     const originalHeight = ta.style.height;
     const overflows = getParentOverflows(ta);
     const docTop = document.documentElement && document.documentElement.scrollTop;
@@ -112,7 +112,7 @@ function assign (ta) {
     }
   }
 
-  function update () {
+  function update() {
     resize();
 
     const styleHeight = Math.round(parseFloat(ta.style.height));
@@ -188,14 +188,14 @@ function assign (ta) {
   init();
 }
 
-function destroy (ta) {
+function destroy(ta) {
   const methods = map.get(ta);
   if (methods) {
     methods.destroy();
   }
 }
 
-function update (ta) {
+function update(ta) {
   const methods = map.get(ta);
   if (methods) {
     methods.update();

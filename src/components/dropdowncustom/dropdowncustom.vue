@@ -51,14 +51,14 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       isShow: false,
       dropdown: null,
       el: null
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       let el = (this.el = this.$el.querySelector('.h-dropdowncustom-show'));
       let content = this.$el.querySelector('.h-dropdowncustom-group');
@@ -73,7 +73,7 @@ export default {
         disabled: this.disabled,
         delay: this.delay,
         events: {
-          show (event) {
+          show(event) {
             that.isShow = true;
             that.$emit('show', event);
           },
@@ -85,7 +85,7 @@ export default {
     });
   },
   watch: {
-    disabled () {
+    disabled() {
       if (this.disabled) {
         this.dropdown.disabled();
       } else {
@@ -93,7 +93,7 @@ export default {
       }
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -104,13 +104,13 @@ export default {
     }
   },
   computed: {
-    dropdowncustomCls () {
+    dropdowncustomCls() {
       return {
         [`${prefix}`]: true,
         'h-btn': this.button
       };
     },
-    showCls () {
+    showCls() {
       return {
         [`${prefix}-show`]: true,
         [`${prefix}-disabled`]: !!this.disabled,
@@ -119,20 +119,20 @@ export default {
         [this.showClass]: !!this.showClass
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${prefix}-group`]: true
       };
     }
   },
   methods: {
-    update () {
+    update() {
       this.dropdown.update();
     },
-    hide () {
+    hide() {
       this.dropdown.hide();
     },
-    show () {
+    show() {
       this.dropdown.show();
     }
   }

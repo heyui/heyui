@@ -114,7 +114,7 @@ export default {
       type: Number
     }
   },
-  data () {
+  data() {
     return {
       nowDate: '',
       showDate: '',
@@ -123,24 +123,24 @@ export default {
     };
   },
   watch: {
-    value () {
+    value() {
       this.parse(this.value);
     },
-    disabled () {
+    disabled() {
       if (this.disabled) {
         this.dropdown.disabled();
       } else {
         this.dropdown.enabled();
       }
     },
-    type () {
+    type() {
       this.parse(this.value);
     }
   },
-  beforeMount () {
+  beforeMount() {
     this.parse(this.value);
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -150,7 +150,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     let that = this;
     this.$nextTick(() => {
       if (this.inline) return;
@@ -164,7 +164,7 @@ export default {
         disabled: this.disabled,
         placement: this.placement,
         events: {
-          show () {
+          show() {
             that.isShow = true;
             that.$nextTick(() => {
               that.parse(that.value);
@@ -182,37 +182,37 @@ export default {
     });
   },
   methods: {
-    setShortcutValue (s) {
+    setShortcutValue(s) {
       let value = s.value.call(null);
       this.parse(value);
       this.setvalue(this.nowDate);
       this.hide();
     },
-    clear () {
+    clear() {
       this.$emit('clear');
       this.setvalue('');
       this.hide();
     },
-    confirm () {
+    confirm() {
       this.$emit('confirm');
       this.hide();
     },
-    updateView (value) {
+    updateView(value) {
       this.nowView = manba(value);
       this.$nextTick(() => {
         this.updateDropdown();
       });
     },
-    updateDropdown () {
+    updateDropdown() {
       if (this.dropdown) this.dropdown.update();
     },
-    inputEvent (event) {
+    inputEvent(event) {
       let value = event.target.value;
       try { manba(value); } catch (evt) { return; }
       // this.parse(value, false);
       this.setvalue(value);
     },
-    changeEvent (event) {
+    changeEvent(event) {
       let value = event.target.value;
       this.parse(value);
       if (this.nowDate && utils.isObject(this.option) && this.type != 'time') {
@@ -228,7 +228,7 @@ export default {
       }
       this.setvalue(this.nowDate);
     },
-    parse (value, initShow = true) {
+    parse(value, initShow = true) {
       if (value != '' && !utils.isNull(value)) {
         try {
           if (this.type == 'time') {
@@ -255,10 +255,10 @@ export default {
       this.nowDate = '';
       if (initShow) this.showDate = '';
     },
-    hide () {
+    hide() {
       if (this.dropdown) this.dropdown.hide();
     },
-    setvalue (string, isEnd = true) {
+    setvalue(string, isEnd = true) {
       // log(string);
       let value = string;
       if (string != '') {
@@ -276,20 +276,20 @@ export default {
     }
   },
   computed: {
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
-    nowFormat () {
+    nowFormat() {
       let format = this.format || options.format[this.type];
       if (this.type == 'datetime' && this.hasSeconds) {
         format = options.format.datetimesecond;
       }
       return format;
     },
-    hasConfirm () {
+    hasConfirm() {
       return this.type == 'datetime' || this.type == 'datehour' || this.hasButtons;
     },
-    shortcuts () {
+    shortcuts() {
       let shortcuts = [];
       let shortcutsConfig = null;
       if (this.option && this.option.shortcuts) {
@@ -306,7 +306,7 @@ export default {
       }
       return shortcuts;
     },
-    dateCls () {
+    dateCls() {
       return {
         [`${prefix}`]: !this.inline,
         [`${prefix}-inline`]: this.inline,
@@ -314,7 +314,7 @@ export default {
         [`${prefix}-disabled`]: this.disabled
       };
     },
-    datePickerCls () {
+    datePickerCls() {
       return {
         [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
       };

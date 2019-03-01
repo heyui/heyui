@@ -73,7 +73,7 @@ export default {
       default: 'scroll'
     }
   },
-  data () {
+  data() {
     return {
       activeIndex: 1,
       scrollTimeout: null,
@@ -82,54 +82,54 @@ export default {
     };
   },
   computed: {
-    carouselList () {
+    carouselList() {
       if (this.datas.length == 0) {
         return [];
       }
       let datas = this.datas;
       return [datas[this.datas.length - 1], ...datas, datas[0]];
     },
-    carouselItem () {
+    carouselItem() {
       return this.datas[this.activeIndex - 1];
     },
-    paginationCls () {
+    paginationCls() {
       return `h-carousel-pagination-${this.pageTheme}`;
     },
-    arrowCls () {
+    arrowCls() {
       return `h-carousel-arrow-${this.arrow}`;
     }
   },
   watch: {
-    autoplay () {
+    autoplay() {
       if (this.autoplay) {
         this.startAutoplay(true);
       } else {
         this.stopAutoplay(true);
       }
     },
-    effect () {
+    effect() {
       clearTimeout(this.scrollTimeout);
       clearTimeout(this.redirectTimeout1);
       clearTimeout(this.redirectTimeout2);
       this.init();
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.init();
     });
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearTimeout(this.scrollTimeout);
     clearTimeout(this.redirectTimeout1);
     clearTimeout(this.redirectTimeout2);
     window.removeEventListener('resize', this.resizeEvent);
   },
   methods: {
-    clickTrigger (index, data) {
+    clickTrigger(index, data) {
       this.$emit('click', index, data);
     },
-    isActive (index) {
+    isActive(index) {
       let datas = this.datas;
       let activeIndex = this.activeIndex;
       return (
@@ -138,7 +138,7 @@ export default {
         (activeIndex == datas.length + 1 && index == 0)
       );
     },
-    init () {
+    init() {
       this.startAutoplay(true);
       setTimeout(() => {
         this.change({
@@ -148,12 +148,12 @@ export default {
       }, 300);
       window.addEventListener('resize', this.resizeEvent, false);
     },
-    stopAutoplay (force = false) {
+    stopAutoplay(force = false) {
       if (this.isHoverStop || force) {
         clearTimeout(this.scrollTimeout);
       }
     },
-    startAutoplay (force = false) {
+    startAutoplay(force = false) {
       if ((this.isHoverStop || force) && this.autoplay) {
         clearTimeout(this.scrollTimeout);
         this.scrollTimeout = setTimeout(() => {
@@ -161,13 +161,13 @@ export default {
         }, this.speed);
       }
     },
-    resizeEvent () {
+    resizeEvent() {
       this.change({
         index: this.activeIndex,
         immediately: true
       });
     },
-    scroll (index, immediately) {
+    scroll(index, immediately) {
       this.activeIndex = index;
       let itemWidth = this.$el.clientWidth;
       let width = index * itemWidth;
@@ -185,7 +185,7 @@ export default {
           break;
       }
     },
-    change ({
+    change({
       index = 1,
       immediately = false
     }) {
@@ -215,7 +215,7 @@ export default {
       }
       this.startAutoplay(true);
     },
-    changePageByStep (step) {
+    changePageByStep(step) {
       let activeIndex = this.activeIndex + step;
       if (activeIndex >= this.carouselList.length) {
         activeIndex = 2;
@@ -226,17 +226,17 @@ export default {
         index: activeIndex
       });
     },
-    triggerChange (triggerType, index) {
+    triggerChange(triggerType, index) {
       if (this.paginationTrigger == triggerType) {
         this.change({
           index
         });
       }
     },
-    prev () {
+    prev() {
       this.changePageByStep(-1);
     },
-    next () {
+    next() {
       this.changePageByStep(1);
     }
   }

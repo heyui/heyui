@@ -41,10 +41,10 @@ const init = function (el, binding, vnode) {
   el.tooltip = new Tooltip(el, param);
 };
 export default {
-  inserted (el, binding, vnode) {
+  inserted(el, binding, vnode) {
     init(el, binding, vnode);
   },
-  update (el, binding, vnode) {
+  update(el, binding, vnode) {
     if (el.tooltip) {
       vnode.context.$nextTick(() => {
         if (binding.value === false) {
@@ -63,7 +63,7 @@ export default {
       init(el, binding, vnode);
     }
   },
-  unbind (el) {
+  unbind(el) {
     if (el.tooltip) {
       el.tooltip.destory();
       delete el.tooltip;

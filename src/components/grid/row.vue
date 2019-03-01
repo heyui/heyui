@@ -22,22 +22,22 @@ export default {
   name: 'hRow',
   props: {
     type: {
-      validator (value) {
+      validator(value) {
         return Props.type.has(value);
       }
     },
     align: {
-      validator (value) {
+      validator(value) {
         return Props.align.has(value);
       }
     },
     justify: {
-      validator (value) {
+      validator(value) {
         return Props.justify.has(value);
       }
     },
     direction: {
-      validator (value) {
+      validator(value) {
         return Props.direction.has(value);
       }
     },
@@ -55,7 +55,7 @@ export default {
     }
   },
   computed: {
-    classes () {
+    classes() {
       return [{
         [`${prefixCls}`]: !this.type,
         [`${prefixCls}-${this.type}`]: !!this.type,
@@ -64,7 +64,7 @@ export default {
         [`${prefixCls}-${this.type}-${this.justify}`]: !!this.justify
       }];
     },
-    styles () {
+    styles() {
       let style = {};
       if (this.space !== 0) {
         const leftTop = getHalf(this.space, true);

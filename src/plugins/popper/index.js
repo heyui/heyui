@@ -32,7 +32,7 @@ for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
   }
 }
 
-function microtaskDebounce (fn) {
+function microtaskDebounce(fn) {
   var called = false;
   return function () {
     if (called) {
@@ -46,7 +46,7 @@ function microtaskDebounce (fn) {
   };
 }
 
-function taskDebounce (fn) {
+function taskDebounce(fn) {
   var scheduled = false;
   return function () {
     if (!scheduled) {
@@ -79,7 +79,7 @@ var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
  * @argument {Any} functionToCheck - variable to check
  * @returns {Boolean} answer to: is a function?
  */
-function isFunction (functionToCheck) {
+function isFunction(functionToCheck) {
   var getType = {};
   return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 }
@@ -91,7 +91,7 @@ function isFunction (functionToCheck) {
  * @argument {Eement} element
  * @argument {String} property
  */
-function getStyleComputedProperty (element, property) {
+function getStyleComputedProperty(element, property) {
   if (element.nodeType !== 1) {
     return [];
   }
@@ -107,7 +107,7 @@ function getStyleComputedProperty (element, property) {
  * @argument {Element} element
  * @returns {Element} parent
  */
-function getParentNode (element) {
+function getParentNode(element) {
   if (element.nodeName === 'HTML') {
     return element;
   }
@@ -121,7 +121,7 @@ function getParentNode (element) {
  * @argument {Element} element
  * @returns {Element} scroll parent
  */
-function getScrollParent (element) {
+function getScrollParent(element) {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
   if (!element) {
     return document.body;
@@ -194,7 +194,7 @@ var isIE = function () {
  * @argument {Element} element
  * @returns {Element} offset parent
  */
-function getOffsetParent (element) {
+function getOffsetParent(element) {
   if (!element) {
     return document.documentElement;
   }
@@ -224,7 +224,7 @@ function getOffsetParent (element) {
   return offsetParent;
 }
 
-function isOffsetContainer (element) {
+function isOffsetContainer(element) {
   var nodeName = element.nodeName;
 
   if (nodeName === 'BODY') {
@@ -240,7 +240,7 @@ function isOffsetContainer (element) {
  * @argument {Element} node
  * @returns {Element} root node
  */
-function getRoot (node) {
+function getRoot(node) {
   if (node.parentNode !== null) {
     return getRoot(node.parentNode);
   }
@@ -256,7 +256,7 @@ function getRoot (node) {
  * @argument {Element} element2
  * @returns {Element} common offset parent
  */
-function findCommonOffsetParent (element1, element2) {
+function findCommonOffsetParent(element1, element2) {
   // This check is needed to avoid errors in case one of the elements isn't defined for any reason
   if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
     return document.documentElement;
@@ -300,7 +300,7 @@ function findCommonOffsetParent (element1, element2) {
  * @argument {String} side `top` or `left`
  * @returns {number} amount of scrolled pixels
  */
-function getScroll (element) {
+function getScroll(element) {
   var side = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'top';
 
   var upperSide = side === 'top' ? 'scrollTop' : 'scrollLeft';
@@ -324,7 +324,7 @@ function getScroll (element) {
  * @param {Boolean} subtract - set to true if you want to subtract the scroll values
  * @return {Object} rect - The modifier rect object
  */
-function includeScroll (rect, element) {
+function includeScroll(rect, element) {
   var subtract = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
   var scrollTop = getScroll(element, 'top');
@@ -347,19 +347,19 @@ function includeScroll (rect, element) {
  * @return {number} borders - The borders size of the given axis
  */
 
-function getBordersSize (styles, axis) {
+function getBordersSize(styles, axis) {
   var sideA = axis === 'x' ? 'Left' : 'Top';
   var sideB = sideA === 'Left' ? 'Right' : 'Bottom';
 
   return parseFloat(styles['border' + sideA + 'Width'], 10) + parseFloat(styles['border' + sideB + 'Width'], 10);
 }
 
-function getSize (axis, body, html, computedStyle) {
+function getSize(axis, body, html, computedStyle) {
   return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis],
     html[ 'scroll' + axis ], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
 }
 
-function getWindowSizes () {
+function getWindowSizes() {
   var body = document.body;
   var html = document.documentElement;
   var computedStyle = isIE(10) && getComputedStyle(html);
@@ -377,7 +377,7 @@ var classCallCheck = function (instance, Constructor) {
 };
 
 var createClass = (function () {
-  function defineProperties (target, props) {
+  function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
       descriptor.enumerable = descriptor.enumerable || false;
@@ -430,7 +430,7 @@ var _extends = Object.assign || function (target) {
  * @argument {Object} offsets
  * @returns {Object} ClientRect like output
  */
-function getClientRect (offsets) {
+function getClientRect(offsets) {
   return _extends({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
@@ -444,7 +444,7 @@ function getClientRect (offsets) {
  * @param {HTMLElement} element
  * @return {Object} client rect
  */
-function getBoundingClientRect (element) {
+function getBoundingClientRect(element) {
   var rect = {};
 
   // IE10 10 FIX: Please, don't ask, the element isn't
@@ -493,7 +493,7 @@ function getBoundingClientRect (element) {
   return getClientRect(result);
 }
 
-function getOffsetRectRelativeToArbitraryNode (children, parent) {
+function getOffsetRectRelativeToArbitraryNode(children, parent) {
   var fixedPosition = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
   var isIE10 = isIE(10);
@@ -546,7 +546,7 @@ function getOffsetRectRelativeToArbitraryNode (children, parent) {
   return offsets;
 }
 
-function getViewportOffsetRectRelativeToArtbitraryNode (element) {
+function getViewportOffsetRectRelativeToArtbitraryNode(element) {
   var excludeScroll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
   var html = element.ownerDocument.documentElement;
@@ -575,7 +575,7 @@ function getViewportOffsetRectRelativeToArtbitraryNode (element) {
  * @argument {Element} customContainer
  * @returns {Boolean} answer to "isFixed?"
  */
-function isFixed (element) {
+function isFixed(element) {
   var nodeName = element.nodeName;
   if (nodeName === 'BODY' || nodeName === 'HTML') {
     return false;
@@ -594,7 +594,7 @@ function isFixed (element) {
  * @returns {Element} first transformed parent or documentElement
  */
 
-function getFixedPositionOffsetParent (element) {
+function getFixedPositionOffsetParent(element) {
   // This check is needed to avoid errors in case one of the elements isn't defined for any reason
   if (!element || !element.parentElement || isIE()) {
     return document.documentElement;
@@ -617,7 +617,7 @@ function getFixedPositionOffsetParent (element) {
  * @param {Boolean} fixedPosition - Is in fixed position mode
  * @returns {Object} Coordinates of the boundaries
  */
-function getBoundaries (popper, reference, padding, boundariesElement) {
+function getBoundaries(popper, reference, padding, boundariesElement) {
   var fixedPosition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
   // NOTE: 1 DOM access here
@@ -674,7 +674,7 @@ function getBoundaries (popper, reference, padding, boundariesElement) {
   return boundaries;
 }
 
-function getArea (_ref) {
+function getArea(_ref) {
   var width = _ref.width;
 
   var height = _ref.height;
@@ -691,7 +691,7 @@ function getArea (_ref) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function computeAutoPlacement (placement, refRect, popper, reference, boundariesElement) {
+function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
   var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
 
   if (placement.indexOf('auto') === -1) {
@@ -753,7 +753,7 @@ function computeAutoPlacement (placement, refRect, popper, reference, boundaries
  * @param {Element} fixedPosition - is in fixed position mode
  * @returns {Object} An object containing the offsets which will be applied to the popper
  */
-function getReferenceOffsets (state, popper, reference) {
+function getReferenceOffsets(state, popper, reference) {
   var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
   var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper,
@@ -768,7 +768,7 @@ function getReferenceOffsets (state, popper, reference) {
  * @argument {Element} element
  * @returns {Object} object containing width and height properties
  */
-function getOuterSizes (element) {
+function getOuterSizes(element) {
   var styles = getComputedStyle(element);
   var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
   var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
@@ -786,7 +786,7 @@ function getOuterSizes (element) {
  * @argument {String} placement
  * @returns {String} flipped placement
  */
-function getOppositePlacement (placement) {
+function getOppositePlacement(placement) {
   var hash = {
     left: 'right',
     right: 'left',
@@ -808,7 +808,7 @@ function getOppositePlacement (placement) {
  * @param {String} placement - one of the valid placement options
  * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
  */
-function getPopperOffsets (popper, referenceOffsets, placement) {
+function getPopperOffsets(popper, referenceOffsets, placement) {
   placement = placement.split('-')[0];
 
   // Get popper node sizes
@@ -847,7 +847,7 @@ function getPopperOffsets (popper, referenceOffsets, placement) {
  * @argument value
  * @returns index or -1
  */
-function find (arr, check) {
+function find(arr, check) {
   // use native find if supported
   if (Array.prototype.find) {
     return arr.find(check);
@@ -866,7 +866,7 @@ function find (arr, check) {
  * @argument value
  * @returns index or -1
  */
-function findIndex (arr, prop, value) {
+function findIndex(arr, prop, value) {
   // use native findIndex if supported
   if (Array.prototype.findIndex) {
     return arr.findIndex(function (cur) {
@@ -891,7 +891,7 @@ function findIndex (arr, prop, value) {
  * @param {String} ends - Optional modifier name used as stopper
  * @returns {dataObject}
  */
-function runModifiers (modifiers, data, ends) {
+function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
   modifiersToRun.forEach(function (modifier) {
@@ -919,7 +919,7 @@ function runModifiers (modifiers, data, ends) {
  * @method
  * @memberof Popper
  */
-function updateModifiers () {
+function updateModifiers() {
   if (this.state.isDestroyed) {
     return;
   }
@@ -959,7 +959,7 @@ function updateModifiers () {
  * @method
  * @memberof Popper
  */
-function update () {
+function update() {
   // if popper is destroyed, don't perform any further update
   if (this.state.isDestroyed) {
     return;
@@ -1011,7 +1011,7 @@ function update () {
  * @memberof Popper.Utils
  * @returns {Boolean}
  */
-function isModifierEnabled (modifiers, modifierName) {
+function isModifierEnabled(modifiers, modifierName) {
   return modifiers.some(function (_ref) {
     var name = _ref.name;
 
@@ -1027,7 +1027,7 @@ function isModifierEnabled (modifiers, modifierName) {
  * @argument {String} property (camelCase)
  * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
  */
-function getSupportedPropertyName (property) {
+function getSupportedPropertyName(property) {
   var prefixes = [false, 'ms', 'Webkit', 'Moz', 'O'];
   var upperProp = property.charAt(0).toUpperCase() + property.slice(1);
 
@@ -1046,7 +1046,7 @@ function getSupportedPropertyName (property) {
  * @method
  * @memberof Popper
  */
-function destroy () {
+function destroy() {
   this.state.isDestroyed = true;
 
   // touch DOM only if `applyStyle` modifier is enabled
@@ -1076,12 +1076,12 @@ function destroy () {
  * @argument {Element} element
  * @returns {Window}
  */
-function getWindow (element) {
+function getWindow(element) {
   var ownerDocument = element.ownerDocument;
   return ownerDocument ? ownerDocument.defaultView : window;
 }
 
-function attachToScrollParents (scrollParent, event, callback, scrollParents) {
+function attachToScrollParents(scrollParent, event, callback, scrollParents) {
   var isBody = scrollParent.nodeName === 'BODY';
   var target = isBody ? scrollParent.ownerDocument.defaultView : scrollParent;
   target.addEventListener(event, callback, {
@@ -1100,7 +1100,7 @@ function attachToScrollParents (scrollParent, event, callback, scrollParents) {
  * @memberof Popper.Utils
  * @private
  */
-function setupEventListeners (reference, options, state, updateBound) {
+function setupEventListeners(reference, options, state, updateBound) {
   // Resize event listener on window
   state.updateBound = updateBound;
   getWindow(reference).addEventListener('resize', state.updateBound, {
@@ -1122,7 +1122,7 @@ function setupEventListeners (reference, options, state, updateBound) {
  * @method
  * @memberof Popper
  */
-function enableEventListeners () {
+function enableEventListeners() {
   if (!this.state.eventsEnabled) {
     this.state = setupEventListeners(this.reference, this.options, this.state, this.scheduleUpdate);
   }
@@ -1134,7 +1134,7 @@ function enableEventListeners () {
  * @memberof Popper.Utils
  * @private
  */
-function removeEventListeners (reference, state) {
+function removeEventListeners(reference, state) {
   // Remove resize event listener on window
   getWindow(reference).removeEventListener('resize', state.updateBound);
 
@@ -1158,7 +1158,7 @@ function removeEventListeners (reference, state) {
  * @method
  * @memberof Popper
  */
-function disableEventListeners () {
+function disableEventListeners() {
   if (this.state.eventsEnabled) {
     if (window.cancelAnimationFrame) {
       cancelAnimationFrame(this.scheduleUpdate);
@@ -1174,7 +1174,7 @@ function disableEventListeners () {
  * @param {*} input to check
  * @return {Boolean}
  */
-function isNumeric (n) {
+function isNumeric(n) {
   return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
 }
 
@@ -1186,7 +1186,7 @@ function isNumeric (n) {
  * @argument {Object} styles
  * Object with a list of properties and values which will be applied to the element
  */
-function setStyles (element, styles) {
+function setStyles(element, styles) {
   Object.keys(styles).forEach(function (prop) {
     var unit = '';
     // add unit if the value is numeric and is one of the following
@@ -1205,7 +1205,7 @@ function setStyles (element, styles) {
  * @argument {Object} styles
  * Object with a list of properties and values which will be applied to the element
  */
-function setAttributes (element, attributes) {
+function setAttributes(element, attributes) {
   Object.keys(attributes).forEach(function (prop) {
     var value = attributes[prop];
     if (value !== false) {
@@ -1225,7 +1225,7 @@ function setAttributes (element, attributes) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The same data object
  */
-function applyStyle (data) {
+function applyStyle(data) {
   // any property present in `data.styles` will be applied to the popper,
   // in this way we can make the 3rd party modifiers add custom styles to it
   // Be aware, modifiers could override the properties defined in the previous
@@ -1254,7 +1254,7 @@ function applyStyle (data) {
  * @param {HTMLElement} popper - The HTML element used as popper
  * @param {Object} options - Popper.js options
  */
-function applyStyleOnLoad (reference, popper, options, modifierOptions, state) {
+function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
   // compute reference element offsets
   var referenceOffsets = getReferenceOffsets(state, popper, reference, options.positionFixed);
 
@@ -1282,7 +1282,7 @@ function applyStyleOnLoad (reference, popper, options, modifierOptions, state) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function computeStyle (data, options) {
+function computeStyle(data, options) {
   var x = options.x;
 
   var y = options.y;
@@ -1383,7 +1383,7 @@ function computeStyle (data, options) {
  * @param {String} requestedName - name of requested modifier
  * @returns {Boolean}
  */
-function isModifierRequired (modifiers, requestingName, requestedName) {
+function isModifierRequired(modifiers, requestingName, requestedName) {
   var requesting = find(modifiers, function (_ref) {
     var name = _ref.name;
     return name === requestingName;
@@ -1409,7 +1409,7 @@ function isModifierRequired (modifiers, requestingName, requestedName) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function arrow (data, options) {
+function arrow(data, options) {
   var _data$offsets$arrow;
 
   // arrow depends on keepTogether in order to work
@@ -1493,7 +1493,7 @@ function arrow (data, options) {
  * @argument {String} placement variation
  * @returns {String} flipped placement variation
  */
-function getOppositeVariation (variation) {
+function getOppositeVariation(variation) {
   if (variation === 'end') {
     return 'start';
   } else if (variation === 'start') {
@@ -1549,7 +1549,7 @@ var validPlacements = placements.slice(3);
  * @argument {Boolean} counter - Set to true to walk the placements counterclockwise
  * @returns {Array} placements including their variations
  */
-function clockwise (placement) {
+function clockwise(placement) {
   var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
   var index = validPlacements.indexOf(placement);
@@ -1570,7 +1570,7 @@ var BEHAVIORS = {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function flip (data, options) {
+function flip(data, options) {
   // if `inner` modifier is enabled, we can't use the `flip` modifier
   if (isModifierEnabled(data.instance.modifiers, 'inner')) {
     return data;
@@ -1667,7 +1667,7 @@ function flip (data, options) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function keepTogether (data) {
+function keepTogether(data) {
   var _data$offsets = data.offsets;
 
   var popper = _data$offsets.popper;
@@ -1703,7 +1703,7 @@ function keepTogether (data) {
  * @returns {Number|String}
  * Value in pixels, or original string if no values were extracted
  */
-function toValue (str, measurement, popperOffsets, referenceOffsets) {
+function toValue(str, measurement, popperOffsets, referenceOffsets) {
   // separate value from unit
   var split = str.match(/((?:-|\+)?\d*\.?\d*)(.*)/);
   var value = +split[1];
@@ -1755,7 +1755,7 @@ function toValue (str, measurement, popperOffsets, referenceOffsets) {
  * @argument {String} basePlacement
  * @returns {Array} a two cells array with x and y offsets in numbers
  */
-function parseOffset (offset, popperOffsets, referenceOffsets, basePlacement) {
+function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   var offsets = [0, 0];
 
   // Use height if placement is left or right and index is 0 otherwise use width
@@ -1831,7 +1831,7 @@ function parseOffset (offset, popperOffsets, referenceOffsets, basePlacement) {
  * The offset value as described in the modifier description
  * @returns {Object} The data object, properly modified
  */
-function offset (data, _ref) {
+function offset(data, _ref) {
   var offset = _ref.offset;
   var placement = data.placement;
 
@@ -1875,7 +1875,7 @@ function offset (data, _ref) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function preventOverflow (data, options) {
+function preventOverflow(data, options) {
   var boundariesElement = options.boundariesElement || getOffsetParent(data.instance.popper);
 
   // If offsetParent is the reference element, we really want to
@@ -1893,14 +1893,14 @@ function preventOverflow (data, options) {
   var popper = data.offsets.popper;
 
   var check = {
-    primary: function primary (placement) {
+    primary: function primary(placement) {
       var value = popper[placement];
       if (popper[placement] < boundaries[placement] && !options.escapeWithReference) {
         value = Math.max(popper[placement], boundaries[placement]);
       }
       return defineProperty({}, placement, value);
     },
-    secondary: function secondary (placement) {
+    secondary: function secondary(placement) {
       var mainSide = placement === 'right' ? 'left' : 'top';
       var value = popper[mainSide];
       if (popper[placement] > boundaries[placement] && !options.escapeWithReference) {
@@ -1927,7 +1927,7 @@ function preventOverflow (data, options) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function shift (data) {
+function shift(data) {
   var placement = data.placement;
   var basePlacement = placement.split('-')[0];
   var shiftvariation = placement.split('-')[1];
@@ -1962,7 +1962,7 @@ function shift (data) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function hide (data) {
+function hide(data) {
   if (!isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
     return data;
   }
@@ -2000,7 +2000,7 @@ function hide (data) {
  * @argument {Object} options - Modifiers configuration and options
  * @returns {Object} The data object, properly modified
  */
-function inner (data) {
+function inner(data) {
   var placement = data.placement;
   var basePlacement = placement.split('-')[0];
   var _data$offsets = data.offsets;
@@ -2412,7 +2412,7 @@ var Defaults = {
    * Access Popper.js instance with `data.instance`.
    * @prop {onCreate}
    */
-  onCreate: function onCreate () {},
+  onCreate: function onCreate() {},
 
   /**
    * Callback called when the popper is updated, this callback is not called
@@ -2422,7 +2422,7 @@ var Defaults = {
    * Access Popper.js instance with `data.instance`.
    * @prop {onUpdate}
    */
-  onUpdate: function onUpdate () {},
+  onUpdate: function onUpdate() {},
 
   /**
    * List of modifiers used to modify the offsets before they are applied to the popper.
@@ -2442,7 +2442,7 @@ var Defaults = {
  * @param {dataObject} data
  */
 
-function requestAnimation (task) {
+function requestAnimation(task) {
   if ('requestAnimationFrame' in window) {
     return window.requestAnimationFrame(task);
   }
@@ -2461,7 +2461,7 @@ var Popper = (function () {
    * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
    * @return {Object} instance - The generated Popper.js instance
    */
-  function Popper (reference, popper) {
+  function Popper(reference, popper) {
     var _this = this;
 
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
@@ -2508,27 +2508,27 @@ var Popper = (function () {
 
   createClass(Popper, [{
     key: 'updateModifiers',
-    value: function updateModifiers$$1 () {
+    value: function updateModifiers$$1() {
       return updateModifiers.call(this);
     }
   }, {
     key: 'update',
-    value: function update$$1 () {
+    value: function update$$1() {
       return update.call(this);
     }
   }, {
     key: 'destroy',
-    value: function destroy$$1 () {
+    value: function destroy$$1() {
       return destroy.call(this);
     }
   }, {
     key: 'enableEventListeners',
-    value: function enableEventListeners$$1 () {
+    value: function enableEventListeners$$1() {
       return enableEventListeners.call(this);
     }
   }, {
     key: 'disableEventListeners',
-    value: function disableEventListeners$$1 () {
+    value: function disableEventListeners$$1() {
       return disableEventListeners.call(this);
     }
 

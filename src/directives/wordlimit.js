@@ -11,7 +11,7 @@ const wordlimit = function (el, total, vnode) {
   }
 };
 export default {
-  inserted (el, binding, vnode) {
+  inserted(el, binding, vnode) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       wordlimit(el, total);

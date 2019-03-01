@@ -24,7 +24,7 @@ export default {
     tooltipTheme: String,
     placement: String
   },
-  data () {
+  data() {
     return {
       keyIndex: 0,
       oversize: false,
@@ -32,21 +32,21 @@ export default {
     };
   },
   watch: {
-    isLimitHeight () {
+    isLimitHeight() {
       this.init();
     },
-    text () {
+    text() {
       this.init();
     },
-    height () {
+    height() {
       this.init();
     }
   },
-  mounted () {
+  mounted() {
     this.init();
   },
   methods: {
-    init () {
+    init() {
       this.oversize = false;
       this.keyIndex += 1;
       let more = this.$el.querySelector('.h-text-ellipsis-more');
@@ -55,7 +55,7 @@ export default {
         this.limitShow();
       }
     },
-    limitShow () {
+    limitShow() {
       this.$nextTick(() => {
         let textDom = this.$el.querySelector('.text-ellipsis-limit-text');
         let title = this.$el;

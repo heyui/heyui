@@ -35,30 +35,30 @@ export default {
       default: 120
     }
   },
-  data () {
+  data() {
     return {};
   },
   computed: {
-    circleStyle () {
+    circleStyle() {
       return {
         height: `${this.circleSize}px`
       };
     },
-    circleSize () {
+    circleSize() {
       return this.size + (this.strokeWidth / 2);
     },
-    radius () {
+    radius() {
       return this.circleSize - this.strokeWidth / 2;
     },
-    pathString () {
+    pathString() {
       return `M ${this.circleSize},${this.circleSize} m 0,-${this.radius}
         a ${this.radius},${this.radius} 0 1 1 0,${2 * this.radius}
         a ${this.radius},${this.radius} 0 1 1 0,-${2 * this.radius}`;
     },
-    len () {
+    len() {
       return Math.PI * 2 * this.radius;
     },
-    pathStyle () {
+    pathStyle() {
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
         'stroke-dashoffset': `${((100 - this.percent) / 100 * this.len)}px`,

@@ -52,26 +52,26 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       isChecked: null,
       key: this.keyName,
       title: this.titleName
     };
   },
-  mounted () {
+  mounted() {
     this.updateChecked();
   },
   watch: {
-    checked () {
+    checked() {
       this.updateChecked();
     },
-    checkStatus () {
+    checkStatus() {
       this.updateChecked();
     }
   },
   methods: {
-    updateChecked () {
+    updateChecked() {
       if (this.isSingle) {
         if (!utils.isNull(this.value)) {
           this.isChecked = this.checkList.indexOf(this.value) != -1;
@@ -86,7 +86,7 @@ export default {
         }
       }
     },
-    setvalue (option) {
+    setvalue(option) {
       if (this.disabled) return;
       let value = null;
       if (this.isSingle) {
@@ -110,28 +110,28 @@ export default {
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
     },
-    check (key) {
+    check(key) {
       let value = this.checkList.map(item => String(item));
       return value.indexOf(String(key));
     },
-    isInclude (option) {
+    isInclude(option) {
       let value = this.checkList.map(item => String(item));
       let index = value.indexOf(String(option[this.key]));
       return index > -1;
     }
   },
   computed: {
-    checkList () {
+    checkList() {
       let checkStatus = this.checkStatus || [];
       if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(checkStatus)) {
         console.warn(`Checkbox: It's not allowed to use v-model with non-array value.`);
       }
       return utils.isArray(checkStatus) ? checkStatus : [];
     },
-    isSingle () {
+    isSingle() {
       return this.arr.length == 0;
     },
-    arr () {
+    arr() {
       if (!this.datas && !this.dict) {
         return [];
       }

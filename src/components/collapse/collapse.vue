@@ -10,39 +10,39 @@ export default {
   props: {
     value: {
       type: [Array, String],
-      default () {
+      default() {
         return [];
       }
     },
     accordion: {
       type: Boolean,
-      default () {
+      default() {
         return false;
       }
     }
   },
-  data () {
+  data() {
     return {
       activedKeys: [].concat(this.value)
     };
   },
-  provide () {
+  provide() {
     return {
       collapse: this
     };
   },
-  mounted () {
+  mounted() {
     this.setActives();
   },
   methods: {
-    setActives () {
+    setActives() {
       this.$children.forEach(($item, index) => {
         let name = $item.name || index;
         $item.isActive = this.activedKeys.includes(name);
         $item.index = index;
       });
     },
-    toggle (value) {
+    toggle(value) {
       if (this.accordion) {
         let index = this.activedKeys.indexOf(value);
         if (index > -1) {

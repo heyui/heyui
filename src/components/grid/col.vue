@@ -25,7 +25,7 @@ export default {
     xl: [Number, Object]
   },
   computed: {
-    classes () {
+    classes() {
       let width = this.width;
       let classList = [`${prefixCls}`];
       classList.push({
@@ -46,7 +46,7 @@ export default {
 
       return classList;
     },
-    styles () {
+    styles() {
       let style = {};
       let styletype = 'padding';
       if (this.flex) {

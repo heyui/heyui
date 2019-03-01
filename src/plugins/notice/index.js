@@ -24,7 +24,7 @@ const iconColor = {
 
 let noticeDom = null;
 
-function Notice (originalParam) {
+function Notice(originalParam) {
   if (!noticeDom) {
     noticeDom = document.createElement('div');
     utils.addClass(noticeDom, `${prefixCls}-container`);
@@ -49,7 +49,7 @@ function Notice (originalParam) {
   return Notify(param);
 }
 
-function notice (param, timeout) {
+function notice(param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout });
   } else if (utils.isObject(param)) {
@@ -70,7 +70,7 @@ notice.config = (options) => {
   }
 };
 
-function noticeWithType (type, param, timeout) {
+function noticeWithType(type, param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout, type });
   } else if (utils.isObject(param)) {

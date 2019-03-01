@@ -66,11 +66,11 @@ export default {
     }
   },
   watch: {
-    value () {
+    value() {
       this.parse(this.value);
     }
   },
-  data () {
+  data() {
     let format = config.getOption('datepicker.format');
     return {
       nowFormat: this.hasTime ? format.datetime : format.date,
@@ -96,10 +96,10 @@ export default {
       isShow: false
     };
   },
-  beforeMount () {
+  beforeMount() {
     this.parse(this.value);
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
@@ -109,7 +109,7 @@ export default {
       this.dropdown.destory();
     }
   },
-  mounted () {
+  mounted() {
     let that = this;
     this.$nextTick(() => {
       let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
@@ -118,7 +118,7 @@ export default {
         trigger: 'click',
         content,
         events: {
-          show () {
+          show() {
             that.isShow = true;
             that.$nextTick(() => {
               that.initNowView();
@@ -129,24 +129,24 @@ export default {
     });
   },
   methods: {
-    setShortcutValue (s) {
+    setShortcutValue(s) {
       let value = s.value.call(null);
       this.parse(value);
       this.updateValue(this.nowDate);
       this.hide();
     },
-    changeView () {
+    changeView() {
       this.initNowView();
       this.updateDropdown();
     },
-    updateView (value) {
+    updateView(value) {
       this.nowView.start = manba(value);
       this.dropdown.update();
     },
-    updateDropdown () {
+    updateDropdown() {
       this.dropdown.update();
     },
-    parseSingle (value, range) {
+    parseSingle(value, range) {
       if (utils.isObject(value) && value[this.paramName[range]]) {
         try {
           let nowValue = manba(value[this.paramName[range]]);
@@ -159,11 +159,11 @@ export default {
       }
       this.nowDate[range] = '';
     },
-    parse (value) {
+    parse(value) {
       this.parseSingle(value, 'start');
       this.parseSingle(value, 'end');
     },
-    initNowView () {
+    initNowView() {
       let start = manba();
       if (this.nowDate.start) {
         start = manba(this.nowDate.start);
@@ -177,20 +177,20 @@ export default {
         end
       };
     },
-    hide () {
+    hide() {
       this.dropdown.hide();
     },
-    confirm () {
+    confirm() {
       this.$emit('confirm');
       this.hide();
     },
-    clear () {
+    clear() {
       this.$emit('clear');
       this.updateValue({});
       this.initNowView();
       this.hide();
     },
-    setvalue (string, isEnd = false) {
+    setvalue(string, isEnd = false) {
       string = string || '';
       if (this.view == 'customize') {
         let value = utils.copy(this.nowDate);
@@ -239,7 +239,7 @@ export default {
         this.hide();
       }
     },
-    updateValue (value) {
+    updateValue(value) {
       value = {
         [this.paramName.start]: value.start,
         [this.paramName.end]: value.end,
@@ -255,10 +255,10 @@ export default {
     }
   },
   computed: {
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
-    showValue () {
+    showValue() {
       if (!utils.isObject(this.value)) {
         return '';
       }
@@ -286,7 +286,7 @@ export default {
       if (!this.value.start && !this.value.end) return '';
       return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end ? manba(this.value.end).add(-1).format(this.nowFormat) : this.t('h.datepicker.end')}`;
     },
-    shortcuts () {
+    shortcuts() {
       let shortcuts = [];
       let shortcutsConfig = null;
       if (this.option && this.option.shortcuts) {
@@ -303,22 +303,22 @@ export default {
       }
       return shortcuts;
     },
-    dateCls () {
+    dateCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-full-range`]: true,
         [`${prefix}-input-border`]: !this.noBorder
       };
     },
-    datePickerCls () {
+    datePickerCls() {
       return {
         [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
       };
     },
-    startOption () {
+    startOption() {
       return this.option;
     },
-    endOption () {
+    endOption() {
       return this.option;
     }
   },

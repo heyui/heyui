@@ -56,7 +56,7 @@ export default {
     propsData: [Boolean, Object, String, Array]
   },
   watch: {
-    value () {
+    value() {
       if (this.value) {
         this.el.style.display = 'block';
         this.nowComponent = this.$options.propsData.component;
@@ -82,18 +82,18 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
       nowComponent: '',
       isOpened: this.value
     };
   },
-  beforeDestroy () {
+  beforeDestroy() {
     let el = this.el;
     el.style.display = 'none';
     this.$el.appendChild(el);
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       this.el = this.$el.firstChild;
       document.body.appendChild(this.el);
@@ -103,10 +103,10 @@ export default {
     });
   },
   methods: {
-    trigger (name, data) {
+    trigger(name, data) {
       this.$emit(name, data);
     },
-    close () {
+    close() {
       this.isOpened = false;
       setTimeout(() => {
         this.el.style.display = 'none';
@@ -114,26 +114,26 @@ export default {
       }, 200);
       this.$emit('input', false);
     },
-    setvalue (fromMask) {
+    setvalue(fromMask) {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('input', !this.value);
       }
     }
   },
   computed: {
-    contentCls () {
+    contentCls() {
       return {
         [`${notifyprefix}-content`]: true,
         [`${notifyprefix}-content-component`]: true
       };
     },
-    containerCls () {
+    containerCls() {
       return {
         [`${notifyprefix}-container`]: true,
         [`${notifyprefix}-container-center`]: !!this.middle
       };
     },
-    noticeCls () {
+    noticeCls() {
       return {
         [prefix]: true,
         [notifyprefix]: true,

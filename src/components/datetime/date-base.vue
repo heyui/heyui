@@ -122,7 +122,7 @@ export default {
       default: () => config.getOption('datepicker.startWeek')
     }
   },
-  data () {
+  data() {
     return {
       options: utils.extend({}, options.datetimeOptions, this.option),
       today: manba(),
@@ -130,17 +130,17 @@ export default {
     };
   },
   filters: {
-    hoursString (d) {
+    hoursString(d) {
       return `${utils.padLeft(d.hours(), 2)}:00`;
     }
   },
   watch: {
-    type () {
+    type() {
       this.options = utils.extend({}, options.datetimeOptions, this.option);
       this.view = startView[this.type];
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       if (this.range) {
         this.$el.addEventListener('mouseenter', (event) => {
@@ -161,14 +161,14 @@ export default {
     });
   },
   methods: {
-    changeView (view) {
+    changeView(view) {
       this.view = view;
       this.$emit('changeView');
     },
-    resetView () {
+    resetView() {
       this.view = startView[this.type];
     },
-    updateView (typeString, num) {
+    updateView(typeString, num) {
       let type = manba.DAY;
       let nowView = manba(this.nowView);
       if (typeString == 'month') {
@@ -190,7 +190,7 @@ export default {
       nowView.add(num, type);
       this.$emit('updateView', nowView.time(), this.range);
     },
-    getDateCls (d) {
+    getDateCls(d) {
       let isStartSelected = false;
       let isEndSelected = false;
       let isRangeSelected = false;
@@ -217,7 +217,7 @@ export default {
         'h-date-disabled': d.disabled
       };
     },
-    chooseDate (d) {
+    chooseDate(d) {
       if (this.view == endView[this.type]) {
         this.setvalue(d.date, true);
       } else {
@@ -285,7 +285,7 @@ export default {
         this.$emit('updateView', manba(date).time(), this.range);
       }
     },
-    setvalue (date, isEnd = false) {
+    setvalue(date, isEnd = false) {
       let value = '';
       if (!utils.isNull(date)) {
         value = manba(date).format(this.format);
@@ -294,13 +294,13 @@ export default {
     }
   },
   computed: {
-    dateBodyCls () {
+    dateBodyCls() {
       return {
         [`${dateprefix}-body`]: true,
         [`${dateprefix}-body-${this.view}`]: true
       };
     },
-    weeks () {
+    weeks() {
       let weeks = [
         this.t('h.date.weeks.monday'),
         this.t('h.date.weeks.tuesday'),
@@ -314,7 +314,7 @@ export default {
       weeks.push(...days);
       return weeks;
     },
-    months () {
+    months() {
       return [
         this.t('h.date.months.january'),
         this.t('h.date.months.february'),
@@ -330,7 +330,7 @@ export default {
         this.t('h.date.months.december')
       ];
     },
-    dates () {
+    dates() {
       let nowDate = this.nowView;
       if (this.view == 'date') {
         let lastdayofmonth = nowDate.endOf(manba.MONTH);

@@ -1,7 +1,7 @@
 import autosize from '../plugins/autosize';
 
 export default {
-  inserted (el, binding, vnode) {
+  inserted(el, binding, vnode) {
     autosize(el);
     for (let d of vnode.data.directives) {
       if (d.name == 'model') {

@@ -34,7 +34,7 @@ const notifyShowCls = 'h-notify-show';
 const closeIcon = 'h-icon-close';
 
 class Notify {
-  constructor (orignalparam) {
+  constructor(orignalparam) {
     const that = this;
     this.mouseOver = false;
     this.closeTimeout = false;
@@ -115,7 +115,7 @@ class Notify {
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
-        render (createElement) {
+        render(createElement) {
           return createElement(
             'div', {}, [createElement('plugin', {
               props: this.propsData,
@@ -126,7 +126,7 @@ class Notify {
             })]
           );
         },
-        data () {
+        data() {
           return {
             propsData: utils.extend({}, param.component.datas, {
               param: param.component.data,
@@ -136,10 +136,10 @@ class Notify {
           };
         },
         methods: {
-          trigger (name, data) {
+          trigger(name, data) {
             that.trigger(name, data);
           },
-          close () {
+          close() {
             that.close();
           }
         },
@@ -247,14 +247,14 @@ class Notify {
     }
   }
 
-  trigger (event, data) {
+  trigger(event, data) {
     let param = this.param;
     if (param.events && utils.isFunction(param.events[event])) {
       param.events[event].call(null, this, data);
     }
   }
 
-  close () {
+  close() {
     let that = this;
     const $body = this.$body;
     if (this.vm) {

@@ -45,7 +45,7 @@ export default {
     value: [Number, String, Array, Object],
     config: String
   },
-  data () {
+  data() {
     return {
       globalloading: false,
       loading: true,
@@ -56,11 +56,11 @@ export default {
       searchValue: null
     };
   },
-  mounted () {
+  mounted() {
     this.initCategoryDatas();
   },
   watch: {
-    value () {
+    value() {
       this.parse();
     },
     'option.datas': function () {
@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    openPicker () {
+    openPicker() {
       let that = this;
       if (this.disabled) return;
       this.$Modal({
@@ -88,7 +88,7 @@ export default {
           }
         },
         events: {
-          setvalue (modal, data) {
+          setvalue(modal, data) {
             that.objects = data.objects;
             that.object = data.object;
             that.setvalue();
@@ -96,11 +96,11 @@ export default {
         }
       });
     },
-    remove (obj) {
+    remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
       this.setvalue();
     },
-    parse () {
+    parse() {
       if (this.multiple) {
         let os = [];
         if (utils.isArray(this.value) && this.value.length > 0) {
@@ -113,7 +113,7 @@ export default {
         this.object = this.getValue(this.value);
       }
     },
-    getValue (item) {
+    getValue(item) {
       if (utils.isNull(item)) {
         return null;
       }
@@ -125,7 +125,7 @@ export default {
         return obj;
       }
     },
-    dispose () {
+    dispose() {
       if (this.multiple) {
         return this.objects.map(item => this.type == 'key' ? item.key : item.value).filter(item => {
           return item !== undefined;
@@ -135,7 +135,7 @@ export default {
       }
       return null;
     },
-    setvalue () {
+    setvalue() {
       let value = this.dispose();
       this.$emit('input', value);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
@@ -143,7 +143,7 @@ export default {
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
     },
-    initCategoryDatas () {
+    initCategoryDatas() {
       let datas = [];
       let isInited = false;
       if (this.config) {
@@ -169,14 +169,14 @@ export default {
       }
       this.parse();
     },
-    initDatas (datas) {
+    initDatas(datas) {
       let list = utils.copy(datas);
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(list, this.param);
       }
       return this.initTreeModeData(list);
     },
-    initTreeModeData (list, parentKey) {
+    initTreeModeData(list, parentKey) {
       let datas = [];
       for (let data of list) {
         let obj = {
@@ -199,10 +199,10 @@ export default {
     }
   },
   computed: {
-    showPlaceholder () {
+    showPlaceholder() {
       return this.placeholder || this.t('h.category.placeholder');
     },
-    param () {
+    param() {
       if (this.config) {
         return utils.extend({}, config.getOption('category.default'), config.getOption(
           `category.configs.${this.config}`), this.option);
@@ -210,7 +210,7 @@ export default {
         return utils.extend({}, config.getOption('category.default'), this.option);
       }
     },
-    categoryCls () {
+    categoryCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: true,

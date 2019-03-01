@@ -32,12 +32,12 @@ export default {
     type: String
   },
   methods: {
-    click (event) {
+    click(event) {
       this.$emit('click', event);
     }
   },
   computed: {
-    imageStyle () {
+    imageStyle() {
       if (this.src) {
         return {
           'background-image': `url(${config.getOption('avatar').handleSrc.call(this, this.src)})`
@@ -45,13 +45,13 @@ export default {
       }
       return {};
     },
-    avatarClass () {
+    avatarClass() {
       return {
         [`h-avatar-type-${this.type}`]: !!this.type,
         [`h-avatar-shape-${this.shape}`]: !!this.shape
       };
     },
-    avatarImageClass () {
+    avatarImageClass() {
       if (!this.imageTop) {
         return {
           'h-avatar-middle': true
@@ -59,7 +59,7 @@ export default {
       }
       return {};
     },
-    avatarImageStyle () {
+    avatarImageStyle() {
       let s = {
         width: `${this.width}px`,
         height: `${this.width}px`
@@ -69,7 +69,7 @@ export default {
       }
       return s;
     },
-    infoStyle () {
+    infoStyle() {
       return {
         'padding-left': `${this.width + this.distance}px`,
         'min-height': `${this.width}px`

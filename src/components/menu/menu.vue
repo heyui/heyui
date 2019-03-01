@@ -76,7 +76,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     let param = {};
     param = utils.extend({}, config.getOption('menu'), this.option);
     return {
@@ -88,7 +88,7 @@ export default {
     };
   },
   computed: {
-    classes () {
+    classes() {
       return {
         [`${prefix}`]: true,
         [this.className]: true,
@@ -97,25 +97,25 @@ export default {
         [`${prefix}-size-collapse`]: this.inlineCollapsed
       };
     },
-    isDropdownMenu () {
+    isDropdownMenu() {
       return this.mode === 'vertical' || this.inlineCollapsed;
     },
-    menuobj () {
+    menuobj() {
       return getObj(this.menuDatas);
     },
-    menuDatas () {
+    menuDatas() {
       return initStatus(this.datas, this.param);
     }
   },
   methods: {
-    select (key) {
+    select(key) {
       let selected = this.menuobj[key];
       if (selected) {
         this.status.selected = key;
         this.status.opened = updateOpened(selected);
       }
     },
-    trigger (data) {
+    trigger(data) {
       if (data.type == 'togglemenuEvent') {
         let menu = data.data;
         this.status.opened = utils.toggleValue(this.status.opened, menu.key);

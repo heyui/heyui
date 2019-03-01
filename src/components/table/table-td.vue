@@ -15,16 +15,16 @@ export default {
     unit: String,
     render: Function
   },
-  data () {
+  data() {
     return {};
   },
   computed: {
-    cls () {
+    cls() {
       return {
         [`text-${this.align}`]: !!this.align
       };
     },
-    show () {
+    show() {
       if (this.prop == '$index') return this.index;
       if (this.render) {
         return this.render.call(null, this.data);

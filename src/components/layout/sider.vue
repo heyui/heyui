@@ -13,19 +13,19 @@ export default {
     theme: String
   },
   computed: {
-    classes () {
+    classes() {
       return {
         [`${prefixCls}`]: true,
         [`${prefixCls}-theme-${this.theme}`]: this.theme
       };
     },
-    styles () {
+    styles() {
       let style = {
       };
       return style;
     }
   },
-  beforeDestroyed () {
+  beforeDestroyed() {
     if (this.$parent && this.$parent.updateSider) {
       this.$parent.updateSider();
     }

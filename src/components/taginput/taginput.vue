@@ -45,25 +45,25 @@ export default {
     },
     value: [Array, String, Number]
   },
-  data () {
+  data() {
     return {
       focusing: false,
       tagvalue: ''
     };
   },
   methods: {
-    removeLast (event) {
+    removeLast(event) {
       if (event.target.value === '' && this.values.length) {
         this.remove(this.values.length - 1);
       }
     },
-    remove (index) {
+    remove(index) {
       if (this.readonly) return;
       let value = utils.copy(this.values);
       value.splice(index, 1);
       this.setvalue(value);
     },
-    add () {
+    add() {
       if (this.limit <= this.values.length) {
         this.$Message.error(this.t('h.taginput.limitWords'));
         return false;
@@ -74,7 +74,7 @@ export default {
       value.push(this.tagvalue);
       this.setvalue(value);
     },
-    setvalue (value) {
+    setvalue(value) {
       if (this.type == 'string') {
         if (value.length == 0) {
           value = null;
@@ -89,13 +89,13 @@ export default {
       this.$el.dispatchEvent(event);
       this.tagvalue = '';
     },
-    blur () {
+    blur() {
       this.add();
       this.focusing = false;
     }
   },
   computed: {
-    taginputCls () {
+    taginputCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-input-border`]: !this.noBorder && !this.readonly,
@@ -103,7 +103,7 @@ export default {
         focusing: this.focusing
       };
     },
-    values () {
+    values() {
       if (this.type == 'Array') {
         return this.value || [];
       } else {

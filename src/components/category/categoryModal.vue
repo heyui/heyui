@@ -48,7 +48,7 @@ export default {
   props: {
     param: Object
   },
-  data () {
+  data() {
     return {
       params: this.param.param,
       list: this.param.categoryDatas,
@@ -61,16 +61,16 @@ export default {
       tabIndex: 0
     };
   },
-  mounted () {},
+  mounted() {},
   methods: {
-    isChecked (data) {
+    isChecked(data) {
       if (this.param.multiple) {
         return this.param.objects.some(item => item.key == data.key);
       } else {
         return this.param.object ? (this.param.object.key == data.key) : false;
       }
     },
-    change (data, event) {
+    change(data, event) {
       if (event) {
         event.stopPropagation();
         event.preventDefault();
@@ -90,7 +90,7 @@ export default {
         this.param.object = data;
       }
     },
-    openNew (data) {
+    openNew(data) {
       if (data.children && data.children.length) {
         this.tabIndex = this.tabIndex + 1;
         this.tabs.splice(this.tabIndex);
@@ -101,10 +101,10 @@ export default {
         this.change(data);
       }
     },
-    remove (obj) {
+    remove(obj) {
       this.param.objects.splice(this.param.objects.indexOf(obj), 1);
     },
-    focusTab (tab, index) {
+    focusTab(tab, index) {
       this.tab = tab.key;
       this.tabIndex = index;
       if (tab.key === topMenu) {
@@ -113,25 +113,25 @@ export default {
         this.list = tab.children;
       }
     },
-    confirm () {
+    confirm() {
       this.$emit('event', 'setvalue', this.param);
       this.close();
     },
-    close () {
+    close() {
       this.$emit('close');
     }
   },
   computed: {
-    cancelWord () {
+    cancelWord() {
       return this.t('h.common.cancel');
     },
-    confirmWord () {
+    confirmWord() {
       return this.t('h.common.confirm');
     },
-    showEmptyContent () {
+    showEmptyContent() {
       return this.t('h.categoryModal.emptyContent');
     },
-    searchlist () {
+    searchlist() {
       let list = [];
       for (let key in this.param.categoryObj) {
         let item = this.param.categoryObj[key];

@@ -3,7 +3,7 @@ import utils from '../../utils/utils';
 const loadingCls = 'h-loading';
 let LoadingDom = null;
 
-function Loading (content = '') {
+function Loading(content = '') {
   if (!LoadingDom) {
     let template = `<div class="${loadingCls} ${loadingCls}-full-screen">
       <div class="${loadingCls}-circular">
@@ -24,7 +24,7 @@ function Loading (content = '') {
   utils.addClass(LoadingDom, `${loadingCls}-visible`);
 }
 
-function loading (content) {
+function loading(content) {
   Loading(content);
 }
 

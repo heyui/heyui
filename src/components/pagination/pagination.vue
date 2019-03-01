@@ -81,7 +81,7 @@ export default {
       default: () => config.getOption('page.layout')
     }
   },
-  data () {
+  data() {
     let layoutList = this.layout.replace(' ', '').split(',');
     let orders = { total: -1, pager: -1, jumper: -1, sizes: -1 };
     for (let o in orders) {
@@ -102,23 +102,23 @@ export default {
     };
   },
   watch: {
-    cur () {
+    cur() {
       this.curNow = this.cur;
     },
-    size () {
+    size() {
       this.sizeNow = this.size;
     }
   },
   methods: {
-    prev () {
+    prev() {
       if (this.curNow == 1) return;
       this.change(this.curNow - 1);
     },
-    next () {
+    next() {
       if (this.curNow == this.count) return;
       this.change(this.curNow + 1);
     },
-    jump (event) {
+    jump(event) {
       let value = parseInt(event.target.value, 10);
       // log(value);
       if (isNaN(value)) {
@@ -132,7 +132,7 @@ export default {
       this.curNow = parseInt(event.target.value, 10);
       this.$emit('change', { cur: this.curNow, size: this.sizeNow });
     },
-    change (cur) {
+    change(cur) {
       if (this.curNow == cur) return;
       this.curNow = cur;
       let onChange = config.getOption('page.onChange');
@@ -141,7 +141,7 @@ export default {
       }
       this.$emit('change', { cur: this.curNow, size: this.sizeNow });
     },
-    changesize () {
+    changesize() {
       this.curNow = 1;
       this.$emit('change', { cur: 1, size: this.sizeNow });
       this.$emit('changeSize', this.sizeNow);
@@ -150,7 +150,7 @@ export default {
         onChangeSize(this.sizeNow);
       }
     },
-    genPagerCls (num) {
+    genPagerCls(num) {
       return {
         [`${prefix}-pager`]: true,
         [`${prefix}-pager-selected`]: this.curNow == num
@@ -158,10 +158,10 @@ export default {
     }
   },
   computed: {
-    count () {
+    count() {
       return Math.ceil(this.total / this.sizeNow);
     },
-    pagers () {
+    pagers() {
       if (this.count < 3) {
         return [];
       }
@@ -177,37 +177,37 @@ export default {
       }
       return list;
     },
-    prefix () {
+    prefix() {
       return prefix;
     },
-    prevCls () {
+    prevCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == 1,
         'h-page-pager': true
       };
     },
-    nextCls () {
+    nextCls() {
       return {
         [`${prefix}-pager-disabled`]: this.curNow == this.count,
         'h-page-pager': true
       };
     },
-    pagerCls () {
+    pagerCls() {
       return {
         [`${prefix}-pager`]: true
       };
     },
-    pageCls () {
+    pageCls() {
       return {
         [`${prefix}`]: true,
         [`${prefix}-small`]: this.small,
         [`${prefix}-align-${this.align}`]: !!this.align
       };
     },
-    containerCls () {
+    containerCls() {
       return {};
     },
-    noticeCls () {
+    noticeCls() {
       return {};
     }
   }

@@ -34,26 +34,26 @@ export default {
       default: 0
     }
   },
-  mounted () {
+  mounted() {
     this.init();
   },
   methods: {
-    show () {
+    show() {
       if (this.tooltip) {
         this.tooltip.show();
       }
     },
-    hide () {
+    hide() {
       if (this.tooltip) {
         this.tooltip.hide();
       }
     },
-    update () {
+    update() {
       if (this.tooltip) {
         this.tooltip.update();
       }
     },
-    init () {
+    init() {
       this.$nextTick(() => {
         let el = this.$el;
         let content = this.$el.querySelector('.h-tooltip-inner-content');
@@ -80,7 +80,7 @@ export default {
     }
   },
   watch: {
-    disabled () {
+    disabled() {
       if (!this.tooltip) return;
       if (!this.disabled) {
         this.tooltip.enabled();
@@ -88,23 +88,23 @@ export default {
         this.tooltip.disabled();
       }
     },
-    content () {
+    content() {
       if (!this.tooltip) return;
       this.tooltip.update();
     }
   },
   computed: {
-    tooltipCls () {
+    tooltipCls() {
       return {
         [`${prefix}`]: true
       };
     },
-    showCls () {
+    showCls() {
       return {
         [`${prefix}-show`]: true
       };
     },
-    groupCls () {
+    groupCls() {
       return {
         [`${prefix}`]: true
       };

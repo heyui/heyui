@@ -33,16 +33,16 @@ export default {
       default: 10
     }
   },
-  data () {
+  data() {
     return {};
   },
   computed: {
-    progressInnerStyle () {
+    progressInnerStyle() {
       let s = {};
       s.height = `${this.strokeWidth}px`;
       return s;
     },
-    progressBgStyle () {
+    progressBgStyle() {
       let s = {};
       if (!colors.includes(this.color)) {
         s['background-color'] = this.color;
@@ -51,7 +51,7 @@ export default {
       s.height = `${this.strokeWidth}px`;
       return s;
     },
-    progressBgClass () {
+    progressBgClass() {
       let s = {};
       if (colors.includes(this.color)) {
         s[`bg-${this.color}-color`] = true;

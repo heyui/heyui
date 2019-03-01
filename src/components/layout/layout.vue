@@ -22,16 +22,16 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       hasSiderChild: false
     };
   },
-  mounted () {
+  mounted() {
     this.updateSider();
   },
   methods: {
-    updateSider () {
+    updateSider() {
       const siderTag = new Set(['hSider', 'Sider', 'h-sider']);
       this.$nextTick(() => {
         for (let c of this.$children) {
@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: {
-    classes () {
+    classes() {
       let classList = {
         [`${prefixCls}`]: true,
         [`${prefixCls}-has-sider`]: this.hasSiderChild,
@@ -55,7 +55,7 @@ export default {
       };
       return classList;
     },
-    styles () {
+    styles() {
       let style = {};
 
       return style;

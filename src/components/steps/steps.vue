@@ -46,19 +46,19 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  data () {
+  data() {
     return {
       key: this.keyName,
       title: this.titleName
     };
   },
   computed: {
-    stepsCls () {
+    stepsCls() {
       return {
         [`${prefix}`]: true
       };
     },
-    stepIndex () {
+    stepIndex() {
       if (utils.isNumber(this.step)) {
         return this.step;
       }
@@ -71,7 +71,7 @@ export default {
       }
       return index;
     },
-    arr () {
+    arr() {
       if (!this.datas && !this.dict) {
         console.error('Steps Component: Datas or dict parameters need to be defined at least.');
         return [];

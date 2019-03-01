@@ -165,7 +165,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       isMounted: false,
       update: {
@@ -192,7 +192,7 @@ export default {
   },
   watch: {
     datas: {
-      handler () {
+      handler() {
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
         }
@@ -211,7 +211,7 @@ export default {
       deep: true
     },
     columns: {
-      handler () {
+      handler() {
         this.initColumns();
         if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
           this.resize();
@@ -221,16 +221,16 @@ export default {
       deep: true
     },
     checks: {
-      handler () {
+      handler() {
         this.$emit('select', this.checks);
       },
       deep: true
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.resize);
   },
-  mounted () {
+  mounted() {
     this.isMounted = true;
     this.initColumns();
     this.$nextTick(() => {
@@ -298,26 +298,26 @@ export default {
     });
   },
   methods: {
-    isChecked (d) {
+    isChecked(d) {
       return this.checks.indexOf(d) > -1 || (this.selectRow && d == this.rowSelected);
     },
-    setRowSelect (data) {
+    setRowSelect(data) {
       this.rowSelected = data;
     },
-    clearRowSelect () {
+    clearRowSelect() {
       this.rowSelected = null;
     },
-    invereSelection () {
+    invereSelection() {
       this.checks = this.datas.filter(item => this.checks.indexOf(item) == -1);
     },
-    clearSelection () {
+    clearSelection() {
       this.checks = [];
     },
-    clearSort () {
+    clearSort() {
       this.sortStatus.prop = null;
       this.sortStatus.type = null;
     },
-    triggerSort (sortStatus, triggerType) {
+    triggerSort(sortStatus, triggerType) {
       this.sortStatus.prop = sortStatus.prop;
       this.sortStatus.type = sortStatus.type;
       if (triggerType === true) {
@@ -331,15 +331,15 @@ export default {
         });
       }
     },
-    setSelection (data) {
+    setSelection(data) {
       if (utils.isArray(data)) {
         this.checks = [...data];
       }
     },
-    getSelection () {
+    getSelection() {
       return [...(this.checks || [])];
     },
-    checkAll () {
+    checkAll() {
       if (this.checks.length == this.datas.length) {
         this.checks.splice(0, this.datas.length);
       } else {
@@ -347,14 +347,14 @@ export default {
       }
       this.$emit('selectAll', this.checks);
     },
-    getWidth (column) {
+    getWidth(column) {
       if (utils.isObject(column) && column.width) {
         return column.width;
       } else {
         return '';
       }
     },
-    resize () {
+    resize() {
       this.$nextTick(() => {
         let body = this.$el.querySelector('.h-table-body');
         if (body) {
@@ -365,13 +365,13 @@ export default {
         this.initFixedWidth();
       });
     },
-    mouseover (data) {
+    mouseover(data) {
       this.hoveredTr = data;
     },
-    mouseout () {
+    mouseout() {
       this.hoveredTr = null;
     },
-    initFixedWidth () {
+    initFixedWidth() {
       let ths = this.$el.querySelectorAll('.h-table-header table>tr>th');
       let fixedColumnLeftLength = this.fixedColumnLeft.length + (this.checkbox ? 1 : 0);
       let leftWidth = 0;
@@ -387,7 +387,7 @@ export default {
       }
       this.rightWidth = rightWidth;
     },
-    refresh () {
+    refresh() {
       if (this.isMounted) {
         debounce(() => {
           this.initColumns();
@@ -397,7 +397,7 @@ export default {
         }, 10)();
       }
     },
-    initColumns () {
+    initColumns() {
       if (this.columns.length) {
         this.computeColumns = this.columns;
         return;
@@ -413,7 +413,7 @@ export default {
       }
       this.computeColumns = columns;
     },
-    triggerTrClicked (data, index, event) {
+    triggerTrClicked(data, index, event) {
       if (this.selectRow && !data._disabledSelect) {
         this.rowSelected = data;
         this.$emit('rowSelect', data);
@@ -430,19 +430,19 @@ export default {
 
       this.$emit('trclick', data, event, index);
     },
-    triggerTrDblclicked (data, index, event) {
+    triggerTrDblclicked(data, index, event) {
       this.$emit('trdblclick', data, event, index);
     }
   },
   computed: {
-    isTemplateMode () {
+    isTemplateMode() {
       let defaultSlot = this.$scopedSlots.default;
       return defaultSlot && (defaultSlot.name == 'normalized' || !this.$slots.default);
     },
-    totalCol () {
+    totalCol() {
       return (this.checkbox ? 1 : 0) + this.computeColumns.length;
     },
-    fixedColumnLeft () {
+    fixedColumnLeft() {
       let columns = [];
       for (let c of this.computeColumns) {
         if (c.fixed == 'left') {
@@ -451,7 +451,7 @@ export default {
       }
       return columns;
     },
-    fixedColumnRight () {
+    fixedColumnRight() {
       let columns = [];
       for (let c of this.computeColumns) {
         if (c.fixed == 'right') {
@@ -460,14 +460,14 @@ export default {
       }
       return columns;
     },
-    tableCls () {
+    tableCls() {
       return {
         [prefix]: true,
         [`${prefix}-border`]: !!this.border,
         [`${prefix}-stripe`]: this.stripe
       };
     },
-    fixedBodyStyle () {
+    fixedBodyStyle() {
       let s = {};
       s['bottom'] = `${this.scrollHeight}px`;
       if (this.height) {
@@ -475,7 +475,7 @@ export default {
       }
       return s;
     },
-    fixedRightBodyStyle () {
+    fixedRightBodyStyle() {
       let s = {};
       s['margin-right'] = `${this.scrollWidth}px`;
       s['bottom'] = `${this.scrollHeight}px`;
@@ -484,7 +484,7 @@ export default {
       }
       return s;
     },
-    bodyStyle () {
+    bodyStyle() {
       let s = {};
       if (this.height) {
         s.maxHeight = `${this.height}px`;

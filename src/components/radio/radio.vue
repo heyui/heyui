@@ -34,14 +34,14 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  data () {
+  data() {
     return {
       key: this.keyName,
       title: this.titleName
     };
   },
   methods: {
-    setvalue (value) {
+    setvalue(value) {
       if (this.disabled) return;
       let result = null;
       if (this.isSingle) {
@@ -57,10 +57,10 @@ export default {
     }
   },
   computed: {
-    isSingle () {
+    isSingle() {
       return !utils.isNull(this.value) && this.arr.length == 0;
     },
-    arr () {
+    arr() {
       if (!this.datas && !this.dict) {
         return [];
       }

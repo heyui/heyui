@@ -19,7 +19,7 @@ export default {
     }
   },
   computed: {
-    classes () {
+    classes() {
       return [
         `${prefixCls}`, {
           [`${prefixCls}-pending`]: this.pending,

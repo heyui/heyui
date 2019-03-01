@@ -99,7 +99,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     let param = {};
     if (this.config) {
       param = utils.extend({}, config.getOption('uploader'), this.option);
@@ -114,33 +114,33 @@ export default {
     };
   },
   methods: {
-    clickfile (file, index) {
+    clickfile(file, index) {
       this.$emit('fileclick', file, index);
     },
-    clickImage (index, file) {
+    clickImage(index, file) {
       if (this.readonly) {
         this.$ImagePreview(this.fileList, index);
       } else {
         this.$emit('imageclick', file);
       }
     },
-    previewImage (index) {
+    previewImage(index) {
       this.$ImagePreview(this.fileList, index);
     },
-    getBrowseButton () {
+    getBrowseButton() {
       return this.$el.querySelector('.h-uploader-browse-button');
     },
-    getDropElement () {
+    getDropElement() {
       return this.$el.querySelector('.h-uploader-drop-element');
     },
-    getBackgroundImage (file) {
+    getBackgroundImage(file) {
       let param = {};
       if (file.thumbUrl || file.url) {
         param['background-image'] = `url(${file.thumbUrl || file.url})`;
       }
       return param;
     },
-    getFileList () {
+    getFileList() {
       if (this.isSingle) {
         return this.file ? dispose(this.file, this.dataType, this.param) : null;
       }
@@ -151,32 +151,32 @@ export default {
       }
       return list;
     },
-    deleteFile (index) {
+    deleteFile(index) {
       this.$emit('deletefile', index);
     }
   },
   computed: {
-    showUploadButton () {
+    showUploadButton() {
       if (this.readonly) return false;
       return (!this.isSingle && (!this.limit || this.limit > this.files.length)) || (this.isSingle && !this.files);
     },
-    showReUploadWord () {
+    showReUploadWord() {
       return this.t('h.uploader.reUpload');
     },
-    showUploadWord () {
+    showUploadWord() {
       return this.t('h.uploader.upload');
     },
-    isSingle () {
+    isSingle() {
       return this.type == 'image' || this.type == 'file';
     },
-    uploaderCls () {
+    uploaderCls() {
       return {
         [prefix]: true,
         [`${prefix}-${this.type}-container`]: true,
         [this.className]: this.className
       };
     },
-    fileList () {
+    fileList() {
       let list = [];
       if (utils.isArray(this.files)) {
         for (let v of this.files) {
@@ -195,7 +195,7 @@ export default {
       }
       return list;
     },
-    file () {
+    file() {
       return this.fileList.length ? this.fileList[0] : null;
     }
   }
