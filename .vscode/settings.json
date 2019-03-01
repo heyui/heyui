@@ -1,9 +1,22 @@
 {
+  "editor.formatOnType": true,
   "editor.detectIndentation": false,
   //js-beautify-html格式化配置，属性强制换行
   "vetur.format.defaultFormatterOptions": {
-    "js-beautify-html": {
-      "wrap_attributes": "force"
+    "prettyhtml": {
+      "printWidth": 150
+    },
+    "prettier": {
+      "printWidth": 150,
+      "eslintIntegration": true,
+      "tabWidth": 2, 
+      "useTabs": false,
+      "singleQuote": true,
+      "semi": true,
+      "trailingComma": "none",
+      "bracketSpacing": true,
+      "jsxBracketSameLine": false,
+      "arrowParens": "avoid"
     }
   },
   //根据文件后缀名定义vue文件类型
@@ -11,6 +24,7 @@
     "*.vue": "vue"
   },
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
   //  #让prettier使用eslint的代码格式进行校验 
   "prettier.eslintIntegration": true,
   //配置 ESLint 检查的文件类型
