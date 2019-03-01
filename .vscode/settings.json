@@ -5,18 +5,6 @@
   "vetur.format.defaultFormatterOptions": {
     "prettyhtml": {
       "printWidth": 150
-    },
-    "prettier": {
-      "printWidth": 150,
-      "eslintIntegration": true,
-      "tabWidth": 2, 
-      "useTabs": false,
-      "singleQuote": true,
-      "semi": true,
-      "trailingComma": "none",
-      "bracketSpacing": true,
-      "jsxBracketSameLine": false,
-      "arrowParens": "avoid"
     }
   },
   //根据文件后缀名定义vue文件类型
