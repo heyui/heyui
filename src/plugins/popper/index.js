@@ -355,9 +355,8 @@ function getBordersSize (styles, axis) {
 }
 
 function getSize (axis, body, html, computedStyle) {
-  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html[
-    'scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top'
-    : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis],
+    html[ 'scroll' + axis ], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
 }
 
 function getWindowSizes () {
@@ -1617,24 +1616,24 @@ function flip (data, options) {
 
     // using floor because the reference offsets may contain decimals we are not going to consider here
     var floor = Math.floor;
-    var overlapsRef = placement === 'left' && floor(popperOffsets.right) > floor(refOffsets.left) || placement ===
-      'right' && floor(popperOffsets.left) < floor(refOffsets.right) || placement === 'top' && floor(popperOffsets.bottom) >
-      floor(refOffsets.top) || placement === 'bottom' && floor(popperOffsets.top) < floor(refOffsets.bottom);
+    var overlapsRef = (placement === 'left' && floor(popperOffsets.right) > floor(refOffsets.left)) || (placement ===
+      'right' && floor(popperOffsets.left) < floor(refOffsets.right)) || (placement === 'top' && floor(popperOffsets.bottom)) >
+      floor(refOffsets.top) || (placement === 'bottom' && floor(popperOffsets.top)) < floor(refOffsets.bottom);
 
     var overflowsLeft = floor(popperOffsets.left) < floor(boundaries.left);
     var overflowsRight = floor(popperOffsets.right) > floor(boundaries.right);
     var overflowsTop = floor(popperOffsets.top) < floor(boundaries.top);
     var overflowsBottom = floor(popperOffsets.bottom) > floor(boundaries.bottom);
 
-    var overflowsBoundaries = placement === 'left' && overflowsLeft || placement === 'right' && overflowsRight ||
-      placement === 'top' && overflowsTop || placement === 'bottom' && overflowsBottom;
+    var overflowsBoundaries = (placement === 'left' && overflowsLeft) || (placement === 'right' && overflowsRight) ||
+      (placement === 'top' && overflowsTop) || (placement === 'bottom' && overflowsBottom);
 
     // flip the variation if required
     var isVertical = ['top', 'bottom'].indexOf(placement) !== -1;
-    var flippedVariation = !!options.flipVariations && (isVertical && variation === 'start' && overflowsLeft ||
-      variation === 'start' && !overflowsLeft && overflowsRight || isVertical && variation === 'end' &&
-      overflowsRight || !isVertical && variation === 'start' && overflowsTop || !isVertical && variation ===
-      'end' && overflowsBottom);
+    var flippedVariation = !!options.flipVariations && ((isVertical && variation === 'start' && overflowsLeft) ||
+      (variation === 'start' && !overflowsLeft && overflowsRight) || (isVertical && variation === 'end' &&
+      overflowsRight) || (!isVertical && variation === 'start' && overflowsTop) || (!isVertical && variation ===
+      'end' && overflowsBottom));
 
     if (overlapsRef || overflowsBoundaries || flippedVariation) {
       // this boolean to detect any flip loop
@@ -1706,7 +1705,7 @@ function keepTogether (data) {
  */
 function toValue (str, measurement, popperOffsets, referenceOffsets) {
   // separate value from unit
-  var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
+  var split = str.match(/((?:-|\+)?\d*\.?\d*)(.*)/);
   var value = +split[1];
   var unit = split[2];
 
@@ -1766,7 +1765,7 @@ function parseOffset (offset, popperOffsets, referenceOffsets, basePlacement) {
 
   // Split the offset string to obtain a list of values and operands
   // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
-  var fragments = offset.split(/(\+|\-)/).map(function (frag) {
+  var fragments = offset.split(/(\+|-)/).map(function (frag) {
     return frag.trim();
   });
 
