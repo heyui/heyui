@@ -9,7 +9,7 @@ export default (el, url, vm) => {
     // let menus = [];
 
     // $("#left").append(lis);
-    // 完成代码高亮
+    // Completion code highlighting
     $('code', container).map(function () {
       $(this).addClass('javascript');
       // Prism.highlightElement(this);

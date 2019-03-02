@@ -1,15 +1,15 @@
 <template>
   <div>
-      <button class="h-btn" @click="open">Js打开弹出框</button>
-      <button class="h-btn" @click="opened = true">Vue打开弹出框</button>
-      <Modal v-model="opened" :hasDivider="true">
-        <div slot="header">Vue</div>
-        <div v-width="600" v-height="800">
-          这是一个Vue的弹出框
-          <Select dict="simple" v-width="100"></Select>
-        </div>
-        <div slot="footer"><button class="h-btn" @click="close">取消</button></div>
-      </Modal>
+    <button class="h-btn" @click="open">Js opens the popup</button>
+    <button class="h-btn" @click="opened = true">Vue opens the popup</button>
+    <Modal v-model="opened" :hasDivider="true">
+      <div slot="header">Vue</div>
+      <div v-width="600" v-height="800">
+        This is a Vue popup
+        <Select dict="simple" v-width="100"></Select>
+      </div>
+      <div slot="footer"><button class="h-btn" @click="close">cancel</button></div>
+    </Modal>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     close() {
@@ -26,11 +26,11 @@ export default {
     },
     open() {
       this.$Modal({
-        title: 'Js',
+        title: "Js",
         hasDivider: true,
-        content: '这是一个居中的弹出框'
-      })
+        content: "This is a centered popup"
+      });
     }
   }
-}
+};
 </script>

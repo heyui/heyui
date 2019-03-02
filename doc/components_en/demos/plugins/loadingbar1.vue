@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Button color="primary" @click="start">开始</Button>
-    <Button color="green" @click="success">成功</Button>
-    <Button color="red" @click="fail">失败</Button>
+    <Button color="primary" @click="start">start</Button>
+    <Button color="green" @click="success">success</Button>
+    <Button color="red" @click="fail">failure</Button>
   </div>
 </template>
 <script>
@@ -18,5 +18,5 @@ export default {
       this.$LoadingBar.fail();
     }
   }
-}
+};
 </script>

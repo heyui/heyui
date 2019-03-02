@@ -1,20 +1,20 @@
 <template>
-  <p><button class='h-btn' @click="message()">显示加载中</button></p>
+  <p><button class='h-btn' @click="message()">Display loading</button></p>
 </template>
 <script>
 export default {
   methods: {
     message() {
-      let message = this.$Message.loading(`正在加载中`, 0);
+      let message = this.$Message.loading(`Loading`, 0);
       // this.$Message({
       //   type: 'loading',
-      //   text:`正在加载中`, 
+      //   text:`Loading`,
       //   timeout: 0
       // })
-      setTimeout(()=>{
+      setTimeout(() => {
         message.close();
       }, 4000);
     }
   }
-}
+};
 </script>

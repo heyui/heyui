@@ -1,6 +1,6 @@
 <template>
   <div>
-      <button class="h-btn" @click="confirm">Confirm</button>
+    <button class="h-btn" @click="confirm">Confirm</button>
   </div>
 </template>
 
@@ -8,14 +8,16 @@
 export default {
   methods: {
     confirm() {
-      //heyui.$Confirm js调用也可以
-      //title为空的时候无头部
-      this.$Confirm("确定删除？", "自定义title").then(() => {
-        this.$Message.success('确定删除！');
-      }).catch(()=>{
-        this.$Message.error('取消');
-      })
+      //heyui.$Confirm Js call can also
+      //No head when title is empty
+      this.$Confirm("confirm delete?", "Custom title")
+        .then(() => {
+          this.$Message.success("confirm delete!");
+        })
+        .catch(() => {
+          this.$Message.error("cancel");
+        });
     }
   }
-}
+};
 </script>

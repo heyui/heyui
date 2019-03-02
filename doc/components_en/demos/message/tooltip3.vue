@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button class="h-btn h-btn-text" v-tooltip trigger="click" content="这是一个详情">点我一下</button>
-    <button class="h-btn h-btn-text" v-tooltip trigger="click" theme="white" content="这是一个详情2">再点我一下</button>
-    <Tooltip content="Component调用" trigger="click"><button class="h-btn h-btn-text">Component click 调用</button></Tooltip>
-    <Tooltip content="Component调用|白色风格" trigger="click" theme="white"><button class="h-btn h-btn-text">Component click 白色风格</button></Tooltip>
+    <button class="h-btn h-btn-text" v-tooltip trigger="click" content="This is a detail">Click on me</button>
+    <button class="h-btn h-btn-text" v-tooltip trigger="click" theme="white" content="This is detail 2">Let me know more.</button>
+    <Tooltip content="Component call" trigger="click"><button class="h-btn h-btn-text">Component click transfer</button></Tooltip>
+    <Tooltip content="Component call and white style" trigger="click" theme="white"><button class="h-btn h-btn-text">Component click and white style</button></Tooltip>
   </div>
 </template>

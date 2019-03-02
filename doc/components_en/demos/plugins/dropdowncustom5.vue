@@ -4,7 +4,7 @@
       <textarea v-model="text" v-autosize rows="1"></textarea>
       <div slot="content" v-width="200">
         <div v-padding="20">
-          <Button @click="hide">关闭</Button>
+          <Button @click="hide">hide</Button>
         </div>
       </div>
     </DropdownCustom>
@@ -15,14 +15,14 @@ export default {
   data() {
     return {
       text: ""
-    }
+    };
   },
   watch: {
     text() {
       this.update();
     }
   },
-  methods:{
+  methods: {
     update() {
       this.$refs.dropdown.update();
     },
@@ -30,6 +30,6 @@ export default {
       this.$refs.dropdown.hide();
     }
   }
-}
+};
 </script>
 

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       param: {
         module1: "module1",
@@ -17,8 +17,8 @@ export default {
     }
   },
   methods: {
-    change(data) {
-      this.$Message.info(`切换至${data.title}`, 1000);
+    change (data) {
+      this.$Message.info(`Switch to ${data.title}`, 1000);
     }
   }
 }

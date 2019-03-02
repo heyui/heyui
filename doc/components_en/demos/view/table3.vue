@@ -1,21 +1,20 @@
 <template>
   <div>
     <p>
-      <button class="h-btn h-btn-s h-btn-blue"
-              @click="add(datas)"><i class="h-icon-plus"></i><span>添加一行</span></button>
+      <button class="h-btn h-btn-s h-btn-blue" @click="add(datas)"><i class="h-icon-plus"></i><span>Add a line</span></button>
     </p>
     <Table :datas="datas" :height="400">
-      <TableItem title="姓名" prop="name" :width="150"></TableItem>
-      <TableItem title="年龄" prop="age" :width="150"></TableItem>
-      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
-      <TableItem title="姓名" prop="name" :width="150"></TableItem>
-      <TableItem title="年龄" prop="age" :width="150"></TableItem>
-      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
-      <TableItem title="姓名" prop="name" :width="150"></TableItem>
-      <TableItem title="年龄" prop="age" :width="150"></TableItem>
-      <TableItem title="地址" prop="address" align="center" :width="150"></TableItem>
-      <TableItem title="操作" :width="100" fixed="right"><template slot-scope="{data}"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, data)"><i class="h-icon-trash"></i></button></template></TableItem>
-      <div slot="empty">自定义提醒：暂时无数据</div>
+      <TableItem title="name" prop="name" :width="150"></TableItem>
+      <TableItem title="age" prop="age" :width="150"></TableItem>
+      <TableItem title="address" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="name" prop="name" :width="150"></TableItem>
+      <TableItem title="age" prop="age" :width="150"></TableItem>
+      <TableItem title="address" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="Name" prop="name" :width="150"></TableItem>
+      <TableItem title="age" prop="age" :width="150"></TableItem>
+      <TableItem title="address" prop="address" align="center" :width="150"></TableItem>
+      <TableItem title="operating" :width="100" fixed="right"><template slot-scope="{data}"><button class="h-btn h-btn-s h-btn-red" @click="remove(datas, data)"><i class="h-icon-trash"></i></button></template></TableItem>
+      <div slot="empty">Custom reminder: no data at this time</div>
     </Table>
   </div>
 </template>
@@ -25,31 +24,31 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-      ],
-    }
+        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
+        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
+        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
+        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
+        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
+        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
+        { id: 7, name: "test 7", age: 12, address: "Shanghai" }
+      ]
+    };
   },
   methods: {
     remove(datas, data) {
       datas.splice(datas.indexOf(data), 1);
     },
     add(datas) {
-      datas.push({ id: 7, name: '添加', age: 12, address: "然后添加的" });
+      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
     }
   }
-}
+};
 </script>

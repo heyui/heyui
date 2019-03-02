@@ -1,10 +1,10 @@
 <template>
   <p>
-    <button class='h-btn' @click="noticeButton()">打开Notice</button>
+    <button class='h-btn' @click="noticeButton()">Open Notice</button>
   </p>
 </template>
 <script>
-import noticeTest from './noticeTest';
+import noticeTest from "./noticeTest";
 export default {
   methods: {
     noticeButton() {
@@ -16,14 +16,13 @@ export default {
           }
         },
         events: {
-          fromchild:(modal, data)=>{
+          fromchild: (modal, data) => {
             this.$Message(data);
           }
         }
-      }
+      };
       this.$Notice(info);
-    },
-
+    }
   }
-}
+};
 </script>

@@ -1,45 +1,55 @@
 <template>
   <div>
-    <blockquote>普通通知</blockquote>
+    <blockquote>Ordinary notice</blockquote>
     <p>
-      <Button color='blue' @click="notice('info')">消息</Button>
-      <Button color='green' @click="notice('success')">成功</Button>
-      <Button color='yellow' @click="notice('warn')">警告</Button>
-      <Button color='red' @click="notice('error')">错误</Button>
-      <Button color='primary' icon="h-icon-bell" @click="noticeIcon(false)">自定义Icon</Button>
+      <Button color='blue' @click="notice('info')">info</Button>
+      <Button color='green' @click="notice('success')">success</Button>
+      <Button color='yellow' @click="notice('warn')">warn</Button>
+      <Button color='red' @click="notice('error')">error</Button>
+      <Button color='primary' icon="h-icon-bell" @click="noticeIcon(false)">Custom Icon</Button>
     </p>
-    <blockquote>标题通知</blockquote>
-  <p>
-    <Button color='blue' @click="noticeTitle('info')">消息</Button>
-    <Button color='green' @click="noticeTitle('success')">成功</Button>
-    <Button color='yellow' @click="noticeTitle('warn')">警告</Button>
-    <Button color='red' @click="noticeTitle('error')">错误</Button>
-    <Button color='primary' icon="h-icon-bell" @click="noticeIcon(true)">自定义Icon</Button>
-  </p>
+    <blockquote>Title notification</blockquote>
+    <p>
+      <Button color='blue' @click="noticeTitle('info')">info</Button>
+      <Button color='green' @click="noticeTitle('success')">success</Button>
+      <Button color='yellow' @click="noticeTitle('warn')">warn</Button>
+      <Button color='red' @click="noticeTitle('error')">error</Button>
+      <Button color='primary' icon="h-icon-bell" @click="noticeIcon(true)">Custom Icon</Button>
+    </p>
   </div>
 </template>
 <script>
 export default {
   methods: {
     notice(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
-      this.$Notice[type](`这是一个${text}的通知`);
+      let text = {
+        info: "Message",
+        success: "success",
+        warn: "caveat",
+        error: "error"
+      }[type];
+      this.$Notice[type](`This is a ${text} notification`);
     },
     noticeIcon(hasTitle) {
       this.$Notice({
-        icon: 'h-icon-bell',
-        title: hasTitle ? '自定义Icon' : null,
-        content: `这是一个自定义Icon的通知`
+        icon: "h-icon-bell",
+        title: hasTitle ? "Custom Icon" : null,
+        content: `This is a custom Icon notification`
       });
     },
     noticeTitle(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
+      let text = {
+        info: "Messageinfo",
+        success: "success",
+        warn: "warn",
+        error: "error"
+      }[type];
       this.$Notice({
         type,
         title: text,
-        content: `这是一个${text}的通知`
+        content: `This is a ${text} notification`
       });
-    },
+    }
   }
-}
+};
 </script>

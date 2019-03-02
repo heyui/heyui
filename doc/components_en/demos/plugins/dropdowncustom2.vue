@@ -8,7 +8,7 @@
       <DropdownCustom button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
-          自定义
+          customize
         </div>
       </DropdownCustom>
     </ButtonGroup>
@@ -17,27 +17,23 @@
       <DropdownCustom class="h-btn-primary" button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
-          自定义
+          customize
         </div>
       </DropdownCustom>
     </ButtonGroup>
     <DropdownCustom button class="h-btn-primary">
-      <span>开始</span>
+      <span>Start</span>
       <div slot="content" v-width="200" v-height="200">
-        自定义
+        customize
       </div>
     </DropdownCustom>
   </div>
 </template>
 <script>
-
 export default {
   data() {
-    return {
-      
-    }
+    return {};
   },
-  methods: {
-  },
+  methods: {}
 };
 </script>

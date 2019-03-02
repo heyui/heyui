@@ -2,8 +2,8 @@
   <div>
     <p>{{value | dictMapping('simple')}}</p>
     <p>
-      <button class="h-btn" @click="open(false)">Js打开弹出框</button>
-      <button class="h-btn" @click="openModal = true">Vue打开弹出框</button>
+      <button class="h-btn" @click="open(false)">Js opens the popup</button>
+      <button class="h-btn" @click="openModal = true">Vue opens the popup</button>
       <Modal v-model="openModal">
         <ModalTest :param2="value" :params="{a: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
       </Modal>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ModalTest from './modalTest';
+import ModalTest from "./modalTest";
 
 export default {
   components: {
@@ -22,7 +22,7 @@ export default {
     return {
       value: null,
       openModal: false
-    }
+    };
   },
   methods: {
     event(type, data) {
@@ -32,21 +32,21 @@ export default {
       let that = this;
       this.$Modal({
         component: {
-          // 这里也可以定义异步调用
+          // Here you can also define asynchronous calls.
           // vue: (resolve) => {
           //   require(['./modalTest'], resolve);
           // },
           vue: ModalTest,
-          data: { a: 'test1' }, // 子组件使用props params参数获取数据，建议使用datas
-          datas: { param2: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
+          data: { a: "test1" }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
+          datas: { param2: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {
-          update: (modal, data)=>{
+          update: (modal, data) => {
             this.value = data;
           }
         }
       });
     }
   }
-}
+};
 </script>

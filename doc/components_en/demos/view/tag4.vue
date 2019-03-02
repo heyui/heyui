@@ -1,8 +1,8 @@
 <template>
   <ul class="list">
-    <li><span class="h-tag-circle h-tag-bg-red">各</span>信息说明</li>
-    <li><span class="h-tag-circle h-tag-bg-green">种</span>信息说明</li>
-    <li><span class="h-tag-circle h-tag-bg-yellow">类</span>信息说明</li>
-    <li><span class="h-tag-circle h-tag-bg-blue">型</span>信息说明</li>
+    <li><span class="h-tag-circle h-tag-bg-red">h-icon-user</span>Information description</li>
+    <li><span class="h-tag-circle h-tag-bg-green">h-icon-link</span>Information description</li>
+    <li><span class="h-tag-circle h-tag-bg-yellow">h-icon-star</span>Information description</li>
+    <li><span class="h-tag-circle h-tag-bg-blue">h-icon-setting</span>Information description</li>
   </ul>
 </template>

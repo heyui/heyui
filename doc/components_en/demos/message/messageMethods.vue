@@ -7,30 +7,29 @@
   </p>
 </template>
 <script>
-
 export default {
   methods: {
     message() {
-      this.$Message('这是一个普通的提醒');
+      this.$Message("This is a normal reminder");
     },
     notice() {
       this.$Notice({
-        type: 'success',
-        title: '成功',
-        content: `这是一个成功的通知`
+        type: "success",
+        title: "success",
+        content: `This is a successful notice`
       });
     },
     modal() {
       this.$Modal({
-        title: 'Js',
-        content: '这是使用Js调用的弹出框'
+        title: "Js",
+        content: "This is a popup called with Js"
       });
     },
     confirm() {
-      this.$Confirm("确定删除？", "自定义title").then(() => {
-        this.$Message.success('确定删除！');
-      })
+      this.$Confirm("Confirm delete?", "Custom title").then(() => {
+        this.$Message.success("Confirm delete!");
+      });
     }
   }
-}
+};
 </script>

@@ -1,20 +1,24 @@
 <style lang="less">
- .menu-demo-1-vue{
-   transition: 0.2s width cubic-bezier(0.01, 0.71, 0.54, 1);
- }
+.menu-demo-1-vue {
+  transition: 0.2s width cubic-bezier(0.01, 0.71, 0.54, 1);
+}
 </style>
 
 <template>
   <div>
     <p>
-      <SwitchList v-model="theme" :datas="{'h-menu-white': '白色', 'h-menu-dark': '黑色'}"></SwitchList>
+      <SwitchList v-model="theme" :datas="{'h-menu-white': 'white', 'h-menu-dark': 'black'}"></SwitchList>
     </p>
-    <p><h-switch v-model="accordion" small>手风琴模式</h-switch></p>
-    <p><h-switch v-model="inlineCollapsed" small>收起菜单</h-switch></p>
     <p>
-      <button class="h-btn h-btn-s" @click="select('favor2-3')">选中"收藏-2-3"</button>
-      <button class="h-btn h-btn-s" @click="select('task1-1')">选中"任务-1"</button>
-      <button class="h-btn h-btn-s" @click="select('welcome')">选中"首页"</button>
+      <h-switch v-model="accordion" small>Accordion mode</h-switch>
+    </p>
+    <p>
+      <h-switch v-model="inlineCollapsed" small>Collapse menu</h-switch>
+    </p>
+    <p>
+      <button class="h-btn h-btn-s" @click="select('favor2-3')">Check "Collection-2-3"</button>
+      <button class="h-btn h-btn-s" @click="select('task1-1')">Check "Task-1"</button>
+      <button class="h-btn h-btn-s" @click="select('welcome')">Check "Home"</button>
     </p>
     <div class="bg-gray2-color" v-padding="20">
       <div class="menu-demo-1-vue" :style="{width: inlineCollapsed?'70px':'250px'}">
@@ -30,65 +34,64 @@ export default {
     return {
       accordion: false,
       inlineCollapsed: false,
-      theme: 'h-menu-dark',
+      theme: "h-menu-dark",
       // mode: 'false',
       data: [
         {
-          title: '首页',
-          key: 'welcome',
-          icon: 'h-icon-home'
+          title: "Home",
+          key: "welcome",
+          icon: "h-icon-home"
         },
         {
-          title: '查询',
-          key: 'search',
-          icon: 'h-icon-search'
+          title: "Inquire",
+          key: "search",
+          icon: "h-icon-search"
         },
         {
-          title: '收藏',
-          key: 'favor',
-          icon: 'h-icon-star',
+          title: "Collection",
+          key: "favor",
+          icon: "h-icon-star",
           count: 100,
           children: [
             {
-              title: '收藏-1',
-              key: 'favor2-1',
+              title: "Collection-1",
+              key: "favor2-1"
             },
             {
-              title: '收藏-2',
-              key: 'favor3-2',
+              title: "Collection-2",
+              key: "favor3-2",
               children: [
                 {
-                  title: '收藏-2-3',
-                  key: 'favor2-3'
+                  title: "Collection-2-3",
+                  key: "favor2-3"
                 },
                 {
-                  title: '收藏-2-4',
-                  key: 'favor3-4'
+                  title: "Collection-2-4",
+                  key: "favor3-4"
                 }
               ]
             }
           ]
-
         },
         {
-          title: '任务',
-          icon: 'h-icon-task',
-          key: 'task',
+          title: "task",
+          icon: "h-icon-task",
+          key: "task",
           children: [
             {
-              title: '任务-1',
-              icon: 'h-icon-bell',
-              key: 'task1-1'
+              title: "task-1",
+              icon: "h-icon-bell",
+              key: "task1-1"
             },
             {
-              title: '任务-2',
-              icon: 'h-icon-home',
-              key: 'task1-2'
+              title: "task-2",
+              icon: "h-icon-home",
+              key: "task1-2"
             }
           ]
         }
       ]
-    }
+    };
   },
   methods: {
     select(key) {
@@ -98,8 +101,8 @@ export default {
       console.log(data);
     },
     triggerSelect(menu) {
-      this.$Message.info(`选中${menu.title}`);
+      this.$Message.info(`Selected ${menu.title}`);
     }
   }
-}
+};
 </script>

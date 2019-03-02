@@ -1,12 +1,12 @@
 <template>
   <div>
-      <button class="h-btn" @click="open">Js调用全屏Modal</button>
-      <button class="h-btn" @click="opened=true">Vue调用全屏Modal</button>
-      <Modal v-model="opened" fullScreen>
-        <div slot="header">Vue</div>
-        <div >这是使用vue调用的全屏弹出框</div>
-        <div slot="footer"><button class="h-btn" @click="close">取消</button><button class="h-btn h-btn-primary" @click="confirm">确定</button></div>
-      </Modal>
+    <button class="h-btn" @click="open">Js calls full screen Modal</button>
+    <button class="h-btn" @click="opened=true">Vue calls full screen Modal</button>
+    <Modal v-model="opened" fullScreen>
+      <div slot="header">Vue</div>
+      <div>This is a full-screen popup called with vue</div>
+      <div slot="footer"><button class="h-btn" @click="close">cancel</button><button class="h-btn h-btn-primary" @click="confirm">determine</button></div>
+    </Modal>
   </div>
 </template>
 
@@ -15,23 +15,23 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     open() {
       this.$Modal({
-        title: 'Js',
+        title: "Js",
         fullScreen: true,
-        content: '这是使用Js调用的全屏弹出框',
+        content: "This is a full-screen popup called with Js"
       });
     },
     confirm() {
-      this.$Message("点击确定了。");
+      this.$Message("Click OK.");
       this.close();
     },
     close() {
       this.opened = false;
     }
   }
-}
+};
 </script>

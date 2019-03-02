@@ -1,25 +1,25 @@
 <template>
   <div>
     <p>
-      <Button @click="add(datas)" icon="h-icon-plus">添加一行</Button>
+      <Button @click="add(datas)" icon="h-icon-plus">Add a line</Button>
     </p>
     <Table :datas="datas" stripe checkbox>
-      <TableItem title="序号"><template slot-scope="{index}">{{index}}</template></TableItem>
-      <TableItem title="姓名" prop="name"></TableItem>
-      <TableItem title="年龄" prop="age"></TableItem>
-      <TableItem title="地址" prop="address"></TableItem>
-      <TableItem title="操作">
+      <TableItem title="Serial number"><template slot-scope="{index}">{{index}}</template></TableItem>
+      <TableItem title="Name" prop="name"></TableItem>
+      <TableItem title="age" prop="age"></TableItem>
+      <TableItem title="address" prop="address"></TableItem>
+      <TableItem title="operating">
         <template slot-scope="{data}">
-          <span class="text-hover" @click="open(data)">{{data._expand?'收起':'展开'}}</span>
-          <span class="text-hover" @click="remove(data)">删除</span>
+          <span class="text-hover" @click="open(data)">{{data._expand?'Collapse':'Expand'}}</span>
+          <span class="text-hover" @click="remove(data)">delete</span>
         </template>
       </TableItem>
       <template slot="expand" slot-scope="{index, data}">
         <Form readonly mode="twocolumn">
-          <FormItem label="序号">{{index}}</FormItem>
-          <FormItem label="姓名">{{data.name}}</FormItem>
-          <FormItem label="年龄">{{data.age}}</FormItem>
-          <FormItem label="地址">{{data.address}}</FormItem>
+          <FormItem label="Serial number">{{index}}</FormItem>
+          <FormItem label="Name">{{data.name}}</FormItem>
+          <FormItem label="age">{{data.age}}</FormItem>
+          <FormItem label="address">{{data.address}}</FormItem>
         </Form>
         <Loading :loading="data.loading"></Loading>
       </template>
@@ -32,28 +32,28 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: '测试5', age: 12, address: "上海", _expand: false },
-        { id: 6, name: '测试6', age: 12, address: "上海", _expand: true },
-        { id: 7, name: '测试7', age: 12, address: "上海", _expand: false },
-        { id: 5, name: '测试5', age: 12, address: "上海", _expand: false },
-        { id: 6, name: '测试6', age: 12, address: "上海", _expand: true },
-        { id: 7, name: '测试7', age: 12, address: "上海", _expand: false },
+        { id: 5, name: "Test 5", age: 12, address: "Shanghai", _expand: false },
+        { id: 6, name: "Test 6", age: 12, address: "Shanghai", _expand: true },
+        { id: 7, name: "Test 7", age: 12, address: "Shanghai", _expand: false },
+        { id: 5, name: "Test 5", age: 12, address: "Shanghai", _expand: false },
+        { id: 6, name: "Test 6", age: 12, address: "Shanghai", _expand: true },
+        { id: 7, name: "Test 7", age: 12, address: "Shanghai", _expand: false }
       ]
-    }
+    };
   },
   methods: {
     remove(data) {
       this.datas.splice(this.datas.indexOf(data), 1);
     },
     open(data) {
-      this.$set(data, '_expand', !data._expand)
+      this.$set(data, "_expand", !data._expand);
     },
     add(datas) {
-      datas.push({ id: 7, name: '添加', age: 12, address: "然后添加的" });
+      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
     },
     onselect(data) {
       log(data);
     }
   }
-}
+};
 </script>

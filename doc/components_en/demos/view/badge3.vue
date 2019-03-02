@@ -1,5 +1,7 @@
 <template>
   <div>
-    <Badge :count="0" :show-zero="true"><div class="text-center">消息</div></Badge>
+    <Badge :count="0" :show-zero="true">
+      <div class="text-center">Message</div>
+    </Badge>
   </div>
 </template>

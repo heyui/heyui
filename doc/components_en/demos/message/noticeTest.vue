@@ -1,10 +1,10 @@
 <template>
   <div>
-    <header class="h-notice-header">测试</header>
-    <div v-padding="15">传递的参数：{{params.a}}</div>
+    <header class="h-notice-header">test</header>
+    <div v-padding="15">Passed parameters:{{params.a}}</div>
     <footer class="h-notice-footer">
-      <button class="h-btn" @click="close">关闭</button>
-      <button class="h-btn h-btn-primary" @click="triggerEvent">去处理</button>
+      <button class="h-btn" @click="close">cancel</button>
+      <button class="h-btn h-btn-primary" @click="triggerEvent">open</button>
     </footer>
   </div>
 </template>
@@ -14,8 +14,8 @@ export default {
   data() {
     return {
       value1: 1,
-      param1: { 1: '选择1', 2: '选择2', 3: '选择3' }
-    }
+      param1: { 1: "Option 1", 2: "Option 2", 3: "Choose 3" }
+    };
   },
   props: {
     params: Object
@@ -23,11 +23,11 @@ export default {
   methods: {
     triggerEvent() {
       this.close();
-      this.$emit("event", "fromchild", "测试");
+      this.$emit("event", "fromchild", "test");
     },
     close() {
       this.$emit("close");
     }
   }
-}
+};
 </script>

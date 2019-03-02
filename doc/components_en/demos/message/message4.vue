@@ -1,16 +1,16 @@
 <template>
-  <p><button class='h-btn' @click="message()">不自动关闭</button></p>
+  <p><button class='h-btn' @click="message()">Do not close automatically</button></p>
 </template>
 <script>
 export default {
   methods: {
     message() {
-      this.$Message(`这是一个不会自动关闭的消息`, 0);
+      this.$Message(`This is a message that does not automatically close.`, 0);
       //this.$Message({
-      //   text:`这是一个不会自动关闭的消息`, 
+      //   text:`This is a message that does not automatically close.`,
       //   timeout: 0
       // })
     }
   }
-}
+};
 </script>

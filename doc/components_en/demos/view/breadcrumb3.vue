@@ -1,7 +1,7 @@
 <style lang="less">
-.breadcrumb-demo3{
-  .h-breadcrumb-item-separator{
-    color: #44C97B;
+.breadcrumb-demo3 {
+  .h-breadcrumb-item-separator {
+    color: #44c97b;
   }
 }
 </style>
@@ -16,21 +16,25 @@
 export default {
   data() {
     return {
-      datas: [{
-        title: 'Home',
-        route: {name: 'Home'}
-      },{
-        title: 'Component',
-        route: {name: 'Component'}
-      },{
-        title: 'Breadcrumb'
-      }]
-    }
+      datas: [
+        {
+          title: "Home",
+          route: { name: "Home" }
+        },
+        {
+          title: "Component",
+          route: { name: "Component" }
+        },
+        {
+          title: "Breadcrumb"
+        }
+      ]
+    };
   },
   methods: {
     click(data) {
-      this.$Message.info(`处理访问${data.title}`, 1000);
+      this.$Message.info(`Processing access ${data.title}`, 1000);
     }
   }
-}
+};
 </script>

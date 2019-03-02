@@ -1,10 +1,10 @@
 <template>
   <div>
-      <button class="h-btn" @click="opened = true">打开弹出框</button>
-      <Modal v-model="opened" :has-close-icon="false">
-        <div >这是一个自定义的弹出框</div>
-        <div><Button @click="openModal">打开新的弹框</Button></div>
-      </Modal>
+    <button class="h-btn" @click="opened = true">Open popup</button>
+    <Modal v-model="opened" :has-close-icon="false">
+      <div>This is a custom popup</div>
+      <div><Button @click="openModal">Open a new frame</Button></div>
+    </Modal>
   </div>
 </template>
 
@@ -13,16 +13,16 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     openModal() {
       this.$Modal({
-        title: '自定义的弹出框',
-        content: '<p>自定义的弹出框测试</p><p>自定义的弹出框测试</p>',
+        title: "Custom pop-up",
+        content: "<p>Custom pop-up test</p><p>Custom pop-up test</p>",
         hasMask: false
-      })
+      });
     }
   }
-}
+};
 </script>

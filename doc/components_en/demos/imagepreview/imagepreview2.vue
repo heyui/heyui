@@ -2,7 +2,7 @@
   <div class="imagepreview-1-vue">
     <Button @click="openPreview(0)">Open image preview</Button>
     <p>
-      <img v-for="(d, index) of datas" :src="d.thumbUrl" @click="openPreview(index)">
+      <img v-for="(d, index) of datas" :key="index" :src="d.thumbUrl" @click="openPreview(index)">
     </p>
   </div>
 </template>

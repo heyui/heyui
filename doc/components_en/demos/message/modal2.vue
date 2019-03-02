@@ -1,12 +1,12 @@
 <template>
   <div>
-      <button class="h-btn" @click="open">Js打开弹出框</button>
-      <button class="h-btn" @click="opened = true">Vue打开弹出框</button>
-      <Modal v-model="opened" :hasMask="false">
-        <div slot="header">Vue</div>
-        <div >这是一个Vue的弹出框</div>
-        <div slot="footer"><button class="h-btn" @click="opened = false">取消</button></div>
-      </Modal>
+    <button class="h-btn" @click="open">Js opens the popup</button>
+    <button class="h-btn" @click="opened = true">Vue opens the popup</button>
+    <Modal v-model="opened" :hasMask="false">
+      <div slot="header">Vue</div>
+      <div>This is a Vue popup</div>
+      <div slot="footer"><button class="h-btn" @click="opened = false">cancel</button></div>
+    </Modal>
   </div>
 </template>
 
@@ -15,16 +15,16 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     open() {
       this.$Modal({
-        title: 'Js',
+        title: "Js",
         hasMask: false,
-        content: '这是一个Js的弹出框'
-      })
+        content: "This is a Js popup"
+      });
     }
   }
-}
+};
 </script>

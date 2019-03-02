@@ -1,22 +1,22 @@
 <template>
   <Timeline :pending='true'>
     <TimelineItem>
-      北京
+      Beijing
     </TimelineItem>
     <TimelineItem color="green">
-      长春
+      Changchun
     </TimelineItem>
     <TimelineItem>
-      到达呼伦贝尔
+      Arriving at Hulunbuir
     </TimelineItem>
     <TimelineItem icon="h-icon-task">
-      蒙古的草原
+      Mongolian grassland
     </TimelineItem>
     <TimelineItem icon="h-icon-complete" color="green">
-      满洲里，外面的俄罗斯是什么样子的世界？
+      What is the world of Russia outside Manchuria?
     </TimelineItem>
     <TimelineItem>
-      <a href="">加载更多</a>
+      <a href="">load more</a>
     </TimelineItem>
   </Timeline>
 </template>
