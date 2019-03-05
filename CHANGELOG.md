@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.16.1-alpha.3"></a>
+## [1.16.1-alpha.3](https://github.com/heyui/heyui/compare/v1.16.1-alpha.2...v1.16.1-alpha.3) (2019-03-05)
+
+
+### Bug Fixes
+
+* **Carousel:** remove unused codes ([dd71d06](https://github.com/heyui/heyui/commit/dd71d06))
+* **Loading:** 开启的时候删除关闭的timeout ([83d00ed](https://github.com/heyui/heyui/commit/83d00ed))
+
+
+
 <a name="1.16.1-alpha.2"></a>
 ## [1.16.1-alpha.2](https://github.com/heyui/heyui/compare/v1.16.1-alpha.1...v1.16.1-alpha.2) (2019-02-27)
 
