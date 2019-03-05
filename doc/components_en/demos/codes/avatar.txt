@@ -1,0 +1,14 @@
+
+// The global processing mode of src can be set by configuration, for example, setting different image sizes according to the width parameter.
+HeyUI.config("avatar.handleSrc", (src) {
+   // this.width 可以获取组件的参数
+   return src;
+});
+
+// For example, the following processing:
+handleSrc(src) {
+  let width = this.width;
+  if (!src) return '';
+  if (width == undefined) return src;
+  return `${src}?imageView2/1/w/${width*2}/h/${width*2}`;
+}

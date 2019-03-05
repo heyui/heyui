@@ -1,0 +1,100 @@
+import Pluploadjs from 'plupload-es6';
+
+
+// Reference hey-global to set global parameters
+G.set('customUploadToken', {
+  value: null
+});
+
+const getUploadToken = () => {
+  return new Promise((resolve) => {
+    // System-defined asynchronous request
+    R.Common.uploadToken().then((resp) => { // Get upload token
+      if (resp.ok) {
+        G.set('customUploadToken', resp.body);
+        resolve();
+      }
+    });
+  });
+};
+
+export default function initUploader({
+  perm = 'PRIVATE', // Public or private
+  browserButton,
+  dragdropElement,
+  url = G.get('env').fileOsAddr, // Upload server address
+  multiSelection = false,
+  maxFileSize = '10mb',
+  filters = {},
+  params = {},
+  fnFilesAdded = () => {},
+  fnBeforeUpload = () => {},
+  fnUploadProgress = () => {},
+  fnFileUploaded = () => {},
+  fnUploadComplete = () => {},
+  fnError = () => {},
+}) {
+  filters.max_file_size = maxFileSize;
+  const domain = G.get('env').fileOsAddr;
+  const param = {
+    runtimes: 'html5',
+    browse_button: browserButton,
+    url: `${url}?token=${G.get('customUploadToken').value}&permission=${perm}`,
+    domain: G.get('env').fileOsAddr,
+    chunk_size: '1mb',
+    unique_names: true,
+    multi_selection: multiSelection,
+    filters,
+    init: {
+      FilesAdded(up, files) {
+        let result = fnFilesAdded(up, files);
+        // Exceeded upload limit
+        if (result === false) {
+          return false;
+        }
+        up.fileLength = files.length;
+        getUploadToken().then(() => { // Get upload token, if not you can skip directly call up.start();
+          up.start();
+        });
+      },
+      BeforeUpload(up, file) {
+        // Upload token settings
+        up.setOption('url', `${url}?token=${G.get('customUploadToken').value}&permission=${perm}`);
+        fnBeforeUpload(up, file);
+      },
+      UploadProgress(up, file) {
+        fnUploadProgress(up, file);
+      },
+      FileUploaded(up, file, info) {
+        const res = JSON.parse(info.response);
+        up.fileLength -= 1;
+        fnFileUploaded(up, file, info, `${domain}${res.key}`);
+        if (up.fileLength === 0) {
+          fnUploadComplete();
+        }
+      },
+      UploadComplete() {},
+      Error(up, err, errTip) {
+        if (err.code === -600) {
+          let max = up.settings.max_file_size || up.settings.filters.max_file_size;
+          errTip = `File size cannot exceed ${max.substring(0, max.length - 1).toUpperCase()}`;
+        } else if (err.code == -601) {
+          errTip = "File format is not supported";
+        } else {
+          errTip = err.message;
+        }
+        fnError(up, err, errTip);
+      },
+    },
+  };
+
+  // Whether to allow drag and drop
+  if (dragdropElement) {
+    param.dragdrop = true;
+    param.drop_element = dragdropElement;
+  }
+  Utils.extend(param, params);
+  const uploader = new Pluploadjs.plupload.Uploader(param);
+  uploader.init();
+  return uploader;
+}

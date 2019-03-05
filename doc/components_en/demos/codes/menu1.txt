@@ -1,0 +1,14 @@
+//Excerpt fragment
+watch: {
+  $route() {
+    if (this.$route.name) {
+      //The name of the router corresponds to the key of the menu
+      this.$refs.menu.select(this.$route.name);
+    }
+  }
+},
+methods: {
+  onclick(data) {
+    this.$router.push({ name: data.key });
+  }
+}
