@@ -33,9 +33,19 @@ export default {
   mounted() {
     this.initStyle();
   },
+  beforeDestroyed() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
+  },
   methods: {
     initStyle() {
       if (this.loading) {
+        if (this.timeout) {
+          clearTimeout(this.timeout);
+          this.timeout = null;
+        }
         this.$nextTick(() => {
           utils.addClass(this.$el, 'h-loading-loading');
           utils.addClass(this.$el, 'h-loading-visible');
@@ -46,7 +56,7 @@ export default {
         });
       } else {
         utils.removeClass(this.$el, 'h-loading-loading');
-        setTimeout(() => {
+        this.timeout = setTimeout(() => {
           utils.removeClass(this.$el, 'h-loading-visible');
           let parent = this.$el.parentNode;
           if (parent) {
