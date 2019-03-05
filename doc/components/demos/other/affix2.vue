@@ -8,12 +8,12 @@ export default {
   data() {
     return {
       fixed: false
-    }
+    };
   },
   methods: {
     onchange(fixed) {
       this.fixed = fixed;
     }
   }
-}
+};
 </script>

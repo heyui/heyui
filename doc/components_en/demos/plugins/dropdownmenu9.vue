@@ -38,10 +38,10 @@ export default {
   data() {
     return {
       param: [
-        { title: "Home", key: "Home", icon: "h-icon-home" },
-        { title: "Message", key: "message", icon: "h-icon-bell", count: 8 },
+        { title: 'Home', key: 'Home', icon: 'h-icon-home' },
+        { title: 'Message', key: 'message', icon: 'h-icon-bell', count: 8 },
         { divider: true },
-        { title: "task", key: "task", icon: "h-icon-complete", disabled: true }
+        { title: 'task', key: 'task', icon: 'h-icon-complete', disabled: true }
       ]
     };
   },

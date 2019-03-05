@@ -38,7 +38,7 @@
       <li><code>HeyUI.getDict(key)</code> get dictionary</li>
     </ul>
 
-    <h4>Application Dictionary</h4>    
+    <h4>Application Dictionary</h4>
     <p>In some of the data shown, we need to use <code>key/keys</code> to get the corresponding text.</p>
     <ul class="text-ul">
       <li>use filter<code v-html="'{{value | dictMapping(key)}}'"></code>: Display Corresponding Text</li>
@@ -51,13 +51,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

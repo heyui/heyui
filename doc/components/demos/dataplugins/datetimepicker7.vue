@@ -6,21 +6,21 @@
 </template>
 
 <script>
-import manba from 'manba'
+import manba from 'manba';
 
 export default {
   data() {
     return {
       value: '',
-      param:{
-        shortcuts:[{
+      param: {
+        shortcuts: [{
           title: '下一轮面试',
-          value(){
+          value() {
             return manba().add(3, manba.DAY);
           }
         }]
       }
-    }
+    };
   }
-}
+};
 </script>

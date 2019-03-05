@@ -6,15 +6,15 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      select: "a1",
+      select: 'a1',
       param: [
-        { title: "Grouping bar", isLabel: true },
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Choose 3", key: "a2" },
-        { title: "Disable selection", key: "a3", disabled: true },
-        { title: "Hide selection", key: "a4", hidden: true }
+        { title: 'Grouping bar', isLabel: true },
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Choose 3', key: 'a2' },
+        { title: 'Disable selection', key: 'a3', disabled: true },
+        { title: 'Hide selection', key: 'a4', hidden: true }
       ]
     };
   }

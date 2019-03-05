@@ -17,9 +17,9 @@ export default {
       value: null,
       value2: null,
       param: [
-        { title: "select 1", key: "a1", other: "Other values" },
-        { title: "select 2", key: "a2" },
-        { title: "select 3", key: "a3" }
+        { title: 'select 1', key: 'a1', other: 'Other values' },
+        { title: 'select 2', key: 'a2' },
+        { title: 'select 3', key: 'a3' }
       ]
     };
   }

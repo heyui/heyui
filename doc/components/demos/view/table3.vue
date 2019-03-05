@@ -25,31 +25,31 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 12, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
-      ],
-    }
+        { id: 5, name: '测试5', age: 12, address: '上海' },
+        { id: 6, name: '测试6', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 5, name: '测试5', age: 12, address: '上海' },
+        { id: 6, name: '测试6', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 5, name: '测试5', age: 12, address: '上海' },
+        { id: 6, name: '测试6', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' },
+        { id: 5, name: '测试5', age: 12, address: '上海' },
+        { id: 6, name: '测试6', age: 12, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' }
+      ]
+    };
   },
   methods: {
     remove(datas, data) {
       datas.splice(datas.indexOf(data), 1);
     },
     add(datas) {
-      datas.push({ id: 7, name: '添加', age: 12, address: "然后添加的" });
+      datas.push({ id: 7, name: '添加', age: 12, address: '然后添加的' });
     }
   }
-}
+};
 </script>

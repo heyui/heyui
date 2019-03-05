@@ -6,7 +6,7 @@
         <i class="h-split"></i>
         <Checkbox v-model="showErrorTip">Whether to use the tip prompt error</Checkbox>
       </FormItem>
-      <!-- 
+      <!--
           The required attribute defined here applies to the validation rules and applies to some variability required fields.
          -->
       <FormItem label="Custom array" prop="list[0]" :required="required">
@@ -44,7 +44,7 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
       }
     },
     reset() {

@@ -123,7 +123,7 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       loading1: false,
       loading2: false

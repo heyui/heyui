@@ -16,7 +16,7 @@
 
     <h3>隐藏提示项</h3>
     <example demo="form/slider5"></example>
-    
+
     <h3>Silder 参数</h3>
     <table class="table">
       <tr>

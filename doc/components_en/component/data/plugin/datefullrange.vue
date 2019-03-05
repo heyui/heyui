@@ -2,11 +2,10 @@
   <div class="doc">
     <h2>DateFullRangePicker</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datefullpicker</code>. </p>
-    
+
     <h4>Super date picker</h4>
     <exampleEn demo="dataplugins/daterangepicker8"></exampleEn>
 
-    
     <h3>DateFullRangePicker Property</h3>
     <table class="table">
       <tr>
@@ -60,7 +59,6 @@
       </tr>
     </table>
 
-
     <h3>DateRangePicker Event</h3>
     <table class="table">
       <tr>
@@ -105,52 +103,46 @@ export default {
       },
       value6: {},
       param6: {
-        hours(){
+        hours() {
           let hours = [];
-          for(let i = 9; i <= 20; i++){
+          for (let i = 9; i <= 20; i++) {
             hours.push(i);
           }
           return hours;
         },
-        minutes(hour){
+        minutes(hour) {
           let minutes = [];
-          if(hour<12){
+          if (hour < 12) {
             minutes.push(7, 15, 23, 17, 34, 47, 58);
-          }else{
+          } else {
             minutes.push(1, 3, 34, 45, 46, 47, 52);
           }
           return minutes;
         }
       },
       value5: {},
-      param2: {
-        paramName:{
-          start: 'min',
-          end: 'max'
-        }
-      },
       param3: {
         start: manba().add(-1, manba.DAY),
         end: manba().add(46, manba.DAY)
       },
       param2: {
-        shortcuts:[{
+        shortcuts: [{
           title: '近三天',
-          value(){
+          value() {
             return {
               start: manba().add(-3, manba.DAY),
-              end: manba(),
+              end: manba()
             };
           }
         }]
       }
-    }
+    };
   },
-  methods:{
-    changeParam(){
-      this.param.start = "2017-02-01 12:34"; 
-      this.param.end = "2017-06-03 12:34"; 
+  methods: {
+    changeParam() {
+      this.param.start = '2017-02-01 12:34';
+      this.param.end = '2017-06-03 12:34';
     }
   }
-}
+};
 </script>

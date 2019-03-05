@@ -33,25 +33,25 @@ export default {
       siderFixed: false,
       siderCollapsed: false,
       menuDatas: [
-        { title: "Home", key: "welcome", icon: "h-icon-home" },
-        { title: "Inquire", key: "search", icon: "h-icon-search" },
+        { title: 'Home', key: 'welcome', icon: 'h-icon-home' },
+        { title: 'Inquire', key: 'search', icon: 'h-icon-search' },
         {
-          title: "Collection",
-          key: "favor",
-          icon: "h-icon-star",
+          title: 'Collection',
+          key: 'favor',
+          icon: 'h-icon-star',
           count: 100,
-          children: [{ title: "Collection-1", key: "favor2-1" }]
+          children: [{ title: 'Collection-1', key: 'favor2-1' }]
         },
-        { title: "task", icon: "h-icon-task", key: "task" }
+        { title: 'task', icon: 'h-icon-task', key: 'task' }
       ],
       datas: [
-        { icon: "h-icon-home" },
+        { icon: 'h-icon-home' },
         {
-          title: "Component",
-          icon: "h-icon-complete",
-          route: { name: "Component" }
+          title: 'Component',
+          icon: 'h-icon-complete',
+          route: { name: 'Component' }
         },
-        { title: "Breadcrumb", icon: "h-icon-star" }
+        { title: 'Breadcrumb', icon: 'h-icon-star' }
       ]
     };
   },

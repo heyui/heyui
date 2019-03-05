@@ -112,7 +112,6 @@
       </tr>
     </table>
 
-
     <h3>DropdownCustom Method</h3>
     <table class="table">
       <tr>
@@ -154,13 +153,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

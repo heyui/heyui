@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import components from "../demos/demos";
+import components from '../demos/demos';
 export default {
   props: {
     demo: String,
@@ -18,17 +18,17 @@ export default {
   },
   data() {
     let com = this.demo;
-    let index = com.indexOf("/");
-    com = com.replace("/", "");
+    let index = com.indexOf('/');
+    com = com.replace('/', '');
     com =
       com.substr(0, index) +
       com.charAt(index).toUpperCase() +
       com.substr(index + 1);
-      
+
     return {
       com,
       path: this.demo,
-      sourcecode: "",
+      sourcecode: '',
       expand: false,
       iframePath: `/frame/example?path=${encodeURIComponent(this.demo)}`
     };

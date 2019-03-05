@@ -11,10 +11,10 @@ const genList = (parentTitle, parentId, size, keyName, titleName) => {
     list.push({
       [keyName]: parseInt(`${parentId}${i}`),
       [titleName]: `${parentTitle}-${i}`
-    })
+    });
   }
   return list;
-}
+};
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
               resolve([
                 { id: 1, title: '一级', disabled: true },
                 { id: 2, title: '二级' },
-                { id: 3, title: '三级' }])
+                { id: 3, title: '三级' }]);
             } else if (parent.id % 2 == 0) {
               resolve([]);
             } else {
@@ -38,7 +38,7 @@ export default {
           }, 100);
         }
       }
-    }
+    };
   },
   methods: {
   }

@@ -2,7 +2,7 @@
   <div class="doc">
     <h2>Button 按钮</h2>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-button</code>。</p>
-    
+
     <h3>组件调用</h3>
     <p>使用基本的Button组件实现各种button的样式。</p>
     <p class="tip">如果需要使用<code>stop</code>等事件处理方案，请使用<code>stop</code>参数</p>
@@ -147,7 +147,6 @@
         <td>false</td>
       </tr>
     </table>
-
 
     <h3>Button 事件</h3>
     <table class="table">

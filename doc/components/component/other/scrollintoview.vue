@@ -18,7 +18,6 @@
     return defaultIsScrollable(target) || ~target.className.indexOf('scrollable');
   }
 });</codes>
-    
 
     <h3>ScrollIntoView 参数</h3>
     <table class="table">

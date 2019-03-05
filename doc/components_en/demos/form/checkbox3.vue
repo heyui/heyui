@@ -22,24 +22,24 @@ export default {
     return {
       value1: [],
       value2: null,
-      value3: ["a1"],
+      value3: ['a1'],
       value4: [1],
       value5: false,
       value6: null,
       value7: null,
       value8: null,
-      param1: ["Option 1", "Option 2", "Choose 3"],
-      param2: { 1: "Option 1", 2: "Option 2", 3: "Choose 3" },
+      param1: ['Option 1', 'Option 2', 'Choose 3'],
+      param2: { 1: 'Option 1', 2: 'Option 2', 3: 'Choose 3' },
       param3: [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ],
       param4: [
-        { name: "Choose 0", code: 0 },
-        { name: "Option 1", code: "a1", other: "Other values" },
-        { name: "Option 2", code: "a2" },
-        { name: "Choose 3", code: "a3" }
+        { name: 'Choose 0', code: 0 },
+        { name: 'Option 1', code: 'a1', other: 'Other values' },
+        { name: 'Option 2', code: 'a2' },
+        { name: 'Choose 3', code: 'a3' }
       ]
     };
   },
@@ -48,7 +48,7 @@ export default {
       if (this.value1.length == 3) {
         this.value1.splice(0, 3);
       } else {
-        this.value1 = ["Select 1", "Select 2", "Select 3"];
+        this.value1 = ['Select 1', 'Select 2', 'Select 3'];
       }
     }
   }

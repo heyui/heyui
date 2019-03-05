@@ -22,16 +22,16 @@ export default {
         key: '1',
         title: '选择1',
         icon: 'h-icon-home'
-      },{
+      }, {
         key: '2',
         title: '选择2',
         icon: 'h-icon-task'
-      },{
+      }, {
         key: '3',
         title: '选择3',
         icon: 'h-icon-users'
       }]
-    }
+    };
   }
 };
 </script>

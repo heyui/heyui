@@ -11,11 +11,11 @@ export default {
   methods: {
     message(type) {
       let text = {
-        info: "info",
-        success: "success",
-        warn: "caveat",
-        error: "error",
-        loading: "loading"
+        info: 'info',
+        success: 'success',
+        warn: 'caveat',
+        error: 'error',
+        loading: 'loading'
       }[type];
       this.$Message[type](`This is an ${text} message`);
     }

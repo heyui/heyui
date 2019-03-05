@@ -16,16 +16,16 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       value: '1'
     };
   },
   methods: {
-    onChange (data, trigger) {
+    onChange(data, trigger) {
       log(data, trigger);
     },
-    update () {
+    update() {
       this.value = '2';
     }
   }

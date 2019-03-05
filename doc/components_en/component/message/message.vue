@@ -20,7 +20,6 @@
     <h3>Set global auto-off time</h3>
     <exampleEn demo="message/message6"></exampleEn>
 
-
     <h3>Message Property</h3>
     <table class="table">
       <tr>

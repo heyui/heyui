@@ -75,7 +75,7 @@
       <FormItem label="Fuzzy" prop="autocompleteData">
         <AutoComplete v-model="data.autocompleteData" config="simple"></AutoComplete>
       </FormItem>
-      <!-- 
+      <!--
           The required attribute defined here also applies to the validation rules.
          -->
       <FormItem label="Custom" prop="thingsData[0]" required>
@@ -84,18 +84,18 @@
       <FormItemList>
         <FormItem v-for="(item, index) of data.inputsData" :key="index" :label="'Custom'+(index+1)" :prop="'inputsData['+index+'].value'">
           <Row type="flex">
-            <Col class="flex1">
+            <Cell class="flex1">
             <input type="text" v-model="item.value" />
-            </Col>
-            <Col class="text-right" v-width="50">
+            </Cell>
+            <Cell class="text-right" v-width="50">
             <Poptip @confirm="remove(index)" content="Confirm delete?">
               <Button text-color="red" :no-border="true" icon="h-icon-trash"></Button>
             </Poptip>
-            </Col>
+            </Cell>
           </Row>
         </FormItem>
       </FormItemList>
-      <FormItem :single="true" single>
+      <FormItem single>
         <Button size="s" text-color="blue" @click="add">Add input box</Button>
       </FormItem>
       <FormItem :no-padding="true" single>
@@ -113,7 +113,7 @@
 export default {
   data() {
     return {
-      mode: "single",
+      mode: 'single',
       data: {
         intData: null,
         numberData: null,
@@ -121,13 +121,13 @@ export default {
         emailData: null,
         telData: null,
         mobileData: null,
-        inputData: "",
-        textareaData: "test",
+        inputData: '',
+        textareaData: 'test',
         radioData: 1,
         rateData: null,
         checkboxData: [1],
-        select1Data: "Renminbi",
-        select2Data: "",
+        select1Data: 'Renminbi',
+        select2Data: '',
         select3Data: [],
         taginputsData: [],
         autocompleteData: null,
@@ -137,20 +137,20 @@ export default {
         },
         dateData: null,
         inputsData: [],
-        thingsData: [""]
+        thingsData: ['']
       },
       dataParam: {
-        1: "male",
-        2: "Female",
-        3: "other"
+        1: 'male',
+        2: 'Female',
+        3: 'other'
       },
-      param1: ["US dollar", "Renminbi", "ruble"],
+      param1: ['US dollar', 'Renminbi', 'ruble'],
       isLoading: false,
       modeParam: {
-        single: "One column per line",
-        twocolumn: "Two columns and one row",
-        threecolumn: "Three columns and one row",
-        block: "Independent title"
+        single: 'One column per line',
+        twocolumn: 'Two columns and one row',
+        threecolumn: 'Three columns and one row',
+        block: 'Independent title'
       },
       isInputAsyncError: false,
       validationRules: {
@@ -160,55 +160,55 @@ export default {
             minLen: 10
           },
           inputData: {
-            //The judgment here does not affect the final valid result, so it can also be used as some validation hints.
+            // The judgment here does not affect the final valid result, so it can also be used as some validation hints.
             validAsync(value, next, parent, data) {
               log(value);
               setTimeout(() => {
                 if (value == 15) {
                   next();
                 } else {
-                  next("ID is not equal to 15");
+                  next('ID is not equal to 15');
                 }
               }, 10);
             }
           }
         },
         required: [
-          "autocompleteData",
-          "select2Data",
-          "select3Data",
-          "inputsData[].value",
-          "inputData",
-          "radioData",
-          "rateData",
-          "checkboxData",
-          "moneyData",
-          "dateData",
-          "taginputsData",
-          "money.minData",
-          "money.maxData",
-          "intData",
-          "numberData",
-          "urlData",
-          "emailData",
-          "telData",
-          "mobileData",
-          "textareaData"
+          'autocompleteData',
+          'select2Data',
+          'select3Data',
+          'inputsData[].value',
+          'inputData',
+          'radioData',
+          'rateData',
+          'checkboxData',
+          'moneyData',
+          'dateData',
+          'taginputsData',
+          'money.minData',
+          'money.maxData',
+          'intData',
+          'numberData',
+          'urlData',
+          'emailData',
+          'telData',
+          'mobileData',
+          'textareaData'
         ],
-        int: ["intData"],
-        number: ["numberData", "money.minData", "money.maxData"],
-        url: ["urlData"],
-        email: ["emailData"],
-        tel: ["telData"],
-        mobile: ["mobileData"],
+        int: ['intData'],
+        number: ['numberData', 'money.minData', 'money.maxData'],
+        url: ['urlData'],
+        email: ['emailData'],
+        tel: ['telData'],
+        mobile: ['mobileData'],
         combineRules: [
           {
-            parentRef: "money",
-            refs: ["minData", "maxData"],
+            parentRef: 'money',
+            refs: ['minData', 'maxData'],
             valid: {
-              valid: "lessThan",
+              valid: 'lessThan',
               message:
-                "The starting amount cannot be greater than the ending amount"
+                'The starting amount cannot be greater than the ending amount'
             }
           }
         ]
@@ -220,7 +220,7 @@ export default {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);
@@ -232,7 +232,7 @@ export default {
       this.isLoading = true;
       this.$refs.form.validAsync().then(result => {
         if (result.result) {
-          this.$Message("Successful verification");
+          this.$Message('Successful verification');
           setTimeout(() => {
             this.isLoading = false;
           }, 1000);
@@ -243,8 +243,8 @@ export default {
     },
     open() {
       this.$Modal({
-        title: "deal with",
-        content: "I am going to do a special treatment."
+        title: 'deal with',
+        content: 'I am going to do a special treatment.'
       });
     },
     reset() {
@@ -255,7 +255,7 @@ export default {
       this.$refs.datapicker.reset();
     },
     add() {
-      this.data.inputsData.push({ value: "" });
+      this.data.inputsData.push({ value: '' });
     },
     remove(index) {
       this.data.inputsData.splice(index, 1);

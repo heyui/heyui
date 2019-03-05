@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       value1: 1,
-      param1: { 1: "Option 1", 2: "Option 2", 3: "Choose 3" }
+      param1: { 1: 'Option 1', 2: 'Option 2', 3: 'Choose 3' }
     };
   },
   props: {
@@ -23,10 +23,10 @@ export default {
   methods: {
     triggerEvent() {
       this.close();
-      this.$emit("event", "fromchild", "test");
+      this.$emit('event', 'fromchild', 'test');
     },
     close() {
-      this.$emit("close");
+      this.$emit('close');
     }
   }
 };

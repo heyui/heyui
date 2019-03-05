@@ -29,13 +29,13 @@ export default {
         newpassword2: null
       },
       rules: {
-        required: ["oldpassword", "newpassword1", "newpassword2"],
+        required: ['oldpassword', 'newpassword1', 'newpassword2'],
         combineRules: [
           {
-            refs: ["newpassword1", "newpassword2"],
+            refs: ['newpassword1', 'newpassword2'],
             valid: {
-              valid: "equal",
-              message: "Inconsistent password entered twice"
+              valid: 'equal',
+              message: 'Inconsistent password entered twice'
             }
           }
         ]
@@ -46,7 +46,7 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
         this.isLoading = true;
         setTimeout(() => {
           this.isLoading = false;

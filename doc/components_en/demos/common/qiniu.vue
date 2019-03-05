@@ -6,10 +6,9 @@
   </div>
 </template>
 <script>
-//Since the package of Qi Niu and plupload is not es6 mode, we have encapsulated two corresponding es6 packages.
-import qiniujs from "qiniu-js-es6";
-import pluploadjs from "plupload-es6";
-import utils from "hey-utils";
+// Since the package of Qi Niu and plupload is not es6 mode, we have encapsulated two corresponding es6 packages.
+import qiniujs from 'qiniu-js-es6';
+import utils from 'hey-utils';
 
 export default {
   props: {
@@ -19,7 +18,7 @@ export default {
     },
     type: {
       type: String,
-      default: "image"
+      default: 'image'
     },
     dataType: String,
     dragdrop: {
@@ -40,25 +39,25 @@ export default {
   methods: {
     deletefile(index) {
       let value = null;
-      if (this.type == "images" || this.type == "files") {
+      if (this.type == 'images' || this.type == 'files') {
         value = utils.copy(this.value);
         value.splice(index, 1);
       } else {
         value = null;
         this.uploadList = [];
       }
-      this.$emit("input", value);
+      this.$emit('input', value);
     },
     init() {
       let that = this;
-      //Seven cattle documents please refer to https://developer.qiniu.com/kodo/sdk/1283/javascript
-      //Uploader documentation please refer to http://www.cnblogs.com/2050/p/3913184.html
+      // Seven cattle documents please refer to https://developer.qiniu.com/kodo/sdk/1283/javascript
+      // Uploader documentation please refer to http://www.cnblogs.com/2050/p/3913184.html
       let param = {
-        runtimes: "html5",
+        runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
-        uptoken_url: "https://www.heyui.top/api/uptoken",
-        domain: "//oroc6hc3j.bkt.clouddn.com",
-        chunk_size: "4mb",
+        uptoken_url: 'https://www.heyui.top/api/uptoken',
+        domain: '//oroc6hc3j.bkt.clouddn.com',
+        chunk_size: '4mb',
         unique_names: true,
         auto_start: false,
         filters: {},
@@ -87,9 +86,9 @@ export default {
           },
           FileUploaded(up, file, info) {
             // log('FileUploaded', file.status);
-            let domain = up.getOption("domain");
+            let domain = up.getOption('domain');
             let res = JSON.parse(info.response);
-            let sourceLink = `${domain}/${res.key}`; //Get the Url of the file after successful upload
+            let sourceLink = `${domain}/${res.key}`; // Get the Url of the file after successful upload
             file.url = sourceLink;
           },
           Error(up, err, errTip) {
@@ -97,15 +96,15 @@ export default {
             that.$Message.error(errTip);
           },
           UploadComplete() {
-            that.$emit("completeUpload");
+            that.$emit('completeUpload');
             let fileList = that.$refs.uploader.getFileList();
             //   fileList.map(item=>{
             //     // Final assembly of the returned data
             //     // item.type = 5;
             //     // item.fileType = ...
             //   })
-            that.$emit("input", fileList);
-            if (that.type == "files" || that.type == "images") {
+            that.$emit('input', fileList);
+            if (that.type == 'files' || that.type == 'images') {
               that.uploadList.splice(0, that.uploadList.length);
             }
           }
@@ -124,13 +123,13 @@ export default {
       }
 
       utils.extend(param, this.options);
-      let muti = this.type == "files" || this.type == "images";
+      let muti = this.type == 'files' || this.type == 'images';
       param.multi_selection = muti;
       qiniujs.Qiniu.uploader(param);
     },
     fileclick(file) {
       this.$Modal({
-        title: "Preview or download",
+        title: 'Preview or download',
         content: `Customize file preview or download`
       });
     }

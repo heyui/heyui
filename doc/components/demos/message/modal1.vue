@@ -14,16 +14,16 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     confirm() {
-      this.$Message("点击确定了。");
+      this.$Message('点击确定了。');
       this.close();
     },
     close() {
       this.opened = false;
     }
   }
-}
+};
 </script>

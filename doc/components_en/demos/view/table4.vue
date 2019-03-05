@@ -31,21 +31,21 @@ export default {
   mounted() {
     setTimeout(() => {
       this.datas = [
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" }
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' }
       ];
     }, 100);
   },
@@ -59,19 +59,19 @@ export default {
       datas.splice(datas.indexOf(data), 1);
     },
     add(datas) {
-      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
+      datas.push({ id: 7, name: 'Add to', age: 12, address: 'Then added' });
     },
     invereSelection() {
       this.$refs.table.invereSelection();
     },
     onselect(data, event) {
-      log("onselect", data, event);
+      log('onselect', data, event);
     },
     trClick(data, event) {
-      log("trClick", data, event);
+      log('trClick', data, event);
     },
     trdblclick(data, event) {
-      log("trdblclick", data, event);
+      log('trdblclick', data, event);
     }
   }
 };

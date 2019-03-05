@@ -17,28 +17,28 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       datas: [
-        { id: 5, name: 'Test 5', dictData: null, age: 12, address: "Shanghai" },
-        { id: 6, name: 'Prohibit selection', dictData: 2, age: 13, address: "Prohibit selection", _disabledSelect: true },
-        { id: 7, name: 'Test 7', dictData: 3, age: 0, address: "Shanghai" },
-        { id: 5, name: 'Test 5', dictData: 4, age: undefined, address: "Shanghai" },
-        { id: 6, name: 'Test 6', dictData: 5, age: -1, address: "Shanghai" },
-        { id: 7, name: 'Test 7', dictData: 6, age: null, address: "Shanghai" },
+        { id: 5, name: 'Test 5', dictData: null, age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Prohibit selection', dictData: 2, age: 13, address: 'Prohibit selection', _disabledSelect: true },
+        { id: 7, name: 'Test 7', dictData: 3, age: 0, address: 'Shanghai' },
+        { id: 5, name: 'Test 5', dictData: 4, age: undefined, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', dictData: 5, age: -1, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', dictData: 6, age: null, address: 'Shanghai' }
       ]
-    }
+    };
   },
-  mounted () {
+  mounted() {
     this.$refs.table.setRowSelect(this.datas[0]);
   },
   methods: {
-    clear () {
+    clear() {
       this.$refs.table.clearRowSelect();
     },
-    rowSelect (data) {
-      log(data)
+    rowSelect(data) {
+      log(data);
     }
   }
-}
+};
 </script>

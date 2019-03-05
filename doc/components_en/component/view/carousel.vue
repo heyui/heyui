@@ -108,7 +108,6 @@
       </tr>
     </table>
 
-
     <h3>Carousel Method</h3>
     <table class="table">
       <tr>

@@ -9,12 +9,12 @@ export default {
   data() {
     return {
       value: []
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

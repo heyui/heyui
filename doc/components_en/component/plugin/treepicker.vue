@@ -1,11 +1,11 @@
 <template>
   <div class="doc">
     <h2>TreePicker</h2>
-  
+
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-treepicker</code>. </p>
     <h3>Basic</h3>
     <exampleEn demo="plugins/treepicker1"></exampleEn>
-  
+
     <h3>Multiple</h3>
     <exampleEn demo="plugins/treepicker2"></exampleEn>
 
@@ -15,7 +15,6 @@
     <h3>Global configuration</h3>
     <blockquote>Using the configuration items in treeconfig</blockquote>
     <exampleEn demo="plugins/treepicker3"></exampleEn>
-
 
     <h3>TreePicker Property</h3>
     <blockquote>multiple, option, config, filterable, etc. configuration reference tree configuration</blockquote>
@@ -70,7 +69,6 @@
         <td></td>
       </tr>
     </table>
-    
 
     <h3>TreePicker Method</h3>
     <table class="table">
@@ -92,11 +90,11 @@
       </tr>
       <tr>
         <td>getFullChoose</td>
-        <td>Get all selected values ​​(multiple choices)</td>
+        <td>Get all selected values (multiple choices)</td>
       </tr>
       <tr>
         <td>chooseAll</td>
-        <td>Select all values ​​(multiple choices)</td>
+        <td>Select all values (multiple choices)</td>
         <td></td>
       </tr>
       <tr>

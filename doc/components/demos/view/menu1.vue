@@ -51,7 +51,7 @@ export default {
           children: [
             {
               title: '收藏-1',
-              key: 'favor2-1',
+              key: 'favor2-1'
             },
             {
               title: '收藏-2',
@@ -88,7 +88,7 @@ export default {
           ]
         }
       ]
-    }
+    };
   },
   methods: {
     select(key) {
@@ -101,5 +101,5 @@ export default {
       this.$Message.info(`选中${menu.title}`);
     }
   }
-}
+};
 </script>

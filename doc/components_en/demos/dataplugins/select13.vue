@@ -26,13 +26,13 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       select: null,
       param: [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ]
     };
   },

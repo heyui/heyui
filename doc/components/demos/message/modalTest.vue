@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import store from 'js/store'
-import { mapGetters } from 'vuex'
+import store from 'js/store';
+import { mapGetters } from 'vuex';
 export default {
   props: {
     params: Object,
@@ -24,8 +24,8 @@ export default {
   },
   data() {
     return {
-      value: this.param2,
-    }
+      value: this.param2
+    };
   },
   store,
   computed: {
@@ -37,16 +37,16 @@ export default {
     triggerEvent() {
       this.close();
       // 向外层触发事件
-      this.$emit("event", "update", this.value);
+      this.$emit('event', 'update', this.value);
     },
     go() {
-      //注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。
-      this.$router.push({name: 'Home'});
+      // 注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。
+      this.$router.push({ name: 'Home' });
       this.$emit('close');
     },
     close() {
-      this.$emit("close");
+      this.$emit('close');
     }
   }
-}
+};
 </script>

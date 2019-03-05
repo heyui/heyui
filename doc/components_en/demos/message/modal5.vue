@@ -8,14 +8,14 @@
 export default {
   methods: {
     confirm() {
-      //heyui.$Confirm Js call can also
-      //No head when title is empty
-      this.$Confirm("confirm delete?", "Custom title")
+      // heyui.$Confirm Js call can also
+      // No head when title is empty
+      this.$Confirm('confirm delete?', 'Custom title')
         .then(() => {
-          this.$Message.success("confirm delete!");
+          this.$Message.success('confirm delete!');
         })
         .catch(() => {
-          this.$Message.error("cancel");
+          this.$Message.error('cancel');
         });
     }
   }

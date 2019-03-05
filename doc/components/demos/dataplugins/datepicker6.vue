@@ -6,22 +6,22 @@
 </template>
 
 <script>
-import manba from 'manba'
+import manba from 'manba';
 
 export default {
   data() {
     return {
       value: '',
       param: {
-        //具体配置在"config.datepicker.shortcuts"中
-        shortcuts:[{
+        // 具体配置在"config.datepicker.shortcuts"中
+        shortcuts: [{
           title: '下一轮面试',
-          value(){
+          value() {
             return manba().add(3, manba.DAY);
           }
         }]
       }
-    }
+    };
   }
-}
+};
 </script>

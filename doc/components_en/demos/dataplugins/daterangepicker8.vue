@@ -14,14 +14,13 @@
 </template>
 
 <script>
-import manba from "manba";
 
 export default {
   data() {
     return {
       value: {
-        start: "2017-01-01",
-        end: "2017-08-01"
+        start: '2017-01-01',
+        end: '2017-08-01'
       },
       value2: null
     };

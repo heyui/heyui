@@ -32,10 +32,10 @@ export default {
       this.a = this.a + 1;
     },
     show() {
-      this.$Message("show");
+      this.$Message('show');
     },
     hide() {
-      this.$Message("hide");
+      this.$Message('hide');
     }
   }
 };

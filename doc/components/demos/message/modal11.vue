@@ -22,14 +22,13 @@ export default {
     return {
       value: null,
       openModal: false
-    }
+    };
   },
   methods: {
     event(type, data) {
       this.value = data;
     },
     open() {
-      let that = this;
       this.$Modal({
         component: {
           // 这里也可以定义异步调用
@@ -41,12 +40,12 @@ export default {
           datas: { param2: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
         },
         events: {
-          update: (modal, data)=>{
+          update: (modal, data) => {
             this.value = data;
           }
         }
       });
     }
   }
-}
+};
 </script>

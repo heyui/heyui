@@ -20,9 +20,9 @@ export default {
   methods: {
     open() {
       this.$Modal({
-        title: "Js",
+        title: 'Js',
         hasMask: false,
-        content: "This is a Js popup"
+        content: 'This is a Js popup'
       });
     }
   }

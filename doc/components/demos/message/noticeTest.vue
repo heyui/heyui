@@ -15,7 +15,7 @@ export default {
     return {
       value1: 1,
       param1: { 1: '选择1', 2: '选择2', 3: '选择3' }
-    }
+    };
   },
   props: {
     params: Object
@@ -23,11 +23,11 @@ export default {
   methods: {
     triggerEvent() {
       this.close();
-      this.$emit("event", "fromchild", "测试");
+      this.$emit('event', 'fromchild', '测试');
     },
     close() {
-      this.$emit("close");
+      this.$emit('close');
     }
   }
-}
+};
 </script>

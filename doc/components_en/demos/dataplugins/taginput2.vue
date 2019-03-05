@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      value: ["Tag 1", "Tag 2", "Tag 3", "Tag 4"]
+      value: ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']
     };
   }
 };

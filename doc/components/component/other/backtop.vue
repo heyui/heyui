@@ -6,7 +6,7 @@
 
     <h3>基本调用</h3>
     <example demo="other/backtotop1"></example>
-    
+
     <h3>自定义样式与内容</h3>
     <example demo="other/backtotop2"></example>
     <p>样式：</p>
@@ -55,12 +55,12 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
     getTarget() {
       return document.querySelector('.right-frame');
     }
   }
-}
+};
 </script>

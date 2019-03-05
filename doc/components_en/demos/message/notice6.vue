@@ -4,7 +4,7 @@
   </p>
 </template>
 <script>
-import noticeTest from "./noticeTest";
+import noticeTest from './noticeTest';
 export default {
   methods: {
     noticeButton() {

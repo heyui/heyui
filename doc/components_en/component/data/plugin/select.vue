@@ -19,10 +19,10 @@
 
     <h3>Custom content</h3>
     <exampleEn demo="dataplugins/select7"></exampleEn>
-    
+
     <h3>Disabled</h3>
     <exampleEn demo="dataplugins/select10"></exampleEn>
-    
+
     <h3>There is no default "Please select" option</h3>
     <exampleEn demo="dataplugins/select2"></exampleEn>
 
@@ -208,10 +208,10 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
   },
   components: {}
-}
+};
 </script>

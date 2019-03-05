@@ -138,9 +138,9 @@
 <script>
 export default {
   data() {
-      return {}
-    },
-    methods: {},
-    components: {}
-}
+    return {};
+  },
+  methods: {},
+  components: {}
+};
 </script>

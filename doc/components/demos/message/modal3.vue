@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     open() {
@@ -23,8 +23,8 @@ export default {
         title: 'Js',
         closeOnMask: false,
         content: '这是一个Js的弹出框'
-      })
+      });
     }
   }
-}
+};
 </script>

@@ -11,8 +11,8 @@ export default {
   data() {
     return {
       texts: [
-        "Super long super long company name super long super long super long super long",
-        "Creative company name"
+        'Super long super long company name super long super long super long super long',
+        'Creative company name'
       ]
     };
   },

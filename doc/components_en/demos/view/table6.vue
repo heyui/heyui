@@ -32,12 +32,12 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai", _expand: false },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai", _expand: true },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai", _expand: false },
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai", _expand: false },
-        { id: 6, name: "Test 6", age: 12, address: "Shanghai", _expand: true },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai", _expand: false }
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai', _expand: false },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai', _expand: true },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai', _expand: false },
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai', _expand: false },
+        { id: 6, name: 'Test 6', age: 12, address: 'Shanghai', _expand: true },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai', _expand: false }
       ]
     };
   },
@@ -46,10 +46,10 @@ export default {
       this.datas.splice(this.datas.indexOf(data), 1);
     },
     open(data) {
-      this.$set(data, "_expand", !data._expand);
+      this.$set(data, '_expand', !data._expand);
     },
     add(datas) {
-      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
+      datas.push({ id: 7, name: 'Add to', age: 12, address: 'Then added' });
     },
     onselect(data) {
       log(data);

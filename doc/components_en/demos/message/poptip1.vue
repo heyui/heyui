@@ -8,7 +8,7 @@
 export default {
   methods: {
     confirm() {
-      this.$Message.success("successfully deleted");
+      this.$Message.success('successfully deleted');
     }
   }
 };

@@ -9,11 +9,11 @@
       撑高页面
     </div>
     <example demo="other/affix2"></example>
-    
+
     <h3>affix 固定在容器内</h3>
     <p>如果遇到固定的dom比容器高，务必添加 overflow: hidden; 的样式，并且targetDom必须position: relative|absoulte。</p>
     <example demo="other/affix3"></example>
-    
+
     <h3>affix 参数</h3>
     <table class="table">
       <tr>
@@ -60,7 +60,6 @@
       </tr>
     </table>
 
-
     <h3>affix 事件</h3>
     <table class="table">
       <tr>
@@ -93,9 +92,9 @@ export default {
   data() {
     return {
       fixed: false
-    }
+    };
   },
   methods: {
   }
-}
+};
 </script>

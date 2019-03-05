@@ -23,26 +23,26 @@ export default {
   methods: {
     notice(type) {
       let text = {
-        info: "Message",
-        success: "success",
-        warn: "caveat",
-        error: "error"
+        info: 'Message',
+        success: 'success',
+        warn: 'caveat',
+        error: 'error'
       }[type];
       this.$Notice[type](`This is a ${text} notification`);
     },
     noticeIcon(hasTitle) {
       this.$Notice({
-        icon: "h-icon-bell",
-        title: hasTitle ? "Custom Icon" : null,
+        icon: 'h-icon-bell',
+        title: hasTitle ? 'Custom Icon' : null,
         content: `This is a custom Icon notification`
       });
     },
     noticeTitle(type) {
       let text = {
-        info: "Messageinfo",
-        success: "success",
-        warn: "warn",
-        error: "error"
+        info: 'Messageinfo',
+        success: 'success',
+        warn: 'warn',
+        error: 'error'
       }[type];
       this.$Notice({
         type,

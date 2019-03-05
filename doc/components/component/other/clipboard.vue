@@ -5,7 +5,6 @@
 
     <h3>基本调用</h3>
     <example demo="other/clipboard1"></example>
-    
 
     <h3>Clipboard 参数</h3>
     <table class="table">

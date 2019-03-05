@@ -8,9 +8,9 @@ export default {
   data() {
     return {
       param: [
-        { title: "Test 1", key: "test1" },
-        { title: "Test 2", key: "test2" },
-        { title: "Test 3", key: "test3" }
+        { title: 'Test 1', key: 'test1' },
+        { title: 'Test 2', key: 'test2' },
+        { title: 'Test 3', key: 'test3' }
       ]
     };
   },
@@ -19,10 +19,10 @@ export default {
       this.$Message.info(`You clicked ${code}`);
     },
     show() {
-      this.$Message.info("Expand");
+      this.$Message.info('Expand');
     },
     hide() {
-      this.$Message.info("shut down");
+      this.$Message.info('shut down');
     }
   }
 };

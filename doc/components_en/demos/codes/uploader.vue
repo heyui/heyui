@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import InitUploader from "js/plugin/uploader/customUploader";
-import pluploadjs from "plupload-es6";
+import InitUploader from 'js/plugin/uploader/customUploader';
+import pluploadjs from 'plupload-es6';
 export default {
   props: {
     options: {
@@ -17,7 +17,7 @@ export default {
     },
     type: {
       type: String,
-      default: "image"
+      default: 'image'
     },
     dataType: String,
     dragdrop: {
@@ -29,7 +29,7 @@ export default {
     },
     perm: {
       type: String,
-      default: "PRIVATE"
+      default: 'PRIVATE'
     },
     limit: Number,
     className: String,
@@ -43,7 +43,7 @@ export default {
   methods: {
     deletefile(index) {
       this.value.splice(index, 1);
-      this.$emit("input", this.value);
+      this.$emit('input', this.value);
     },
     initUploader() {
       const that = this;
@@ -51,7 +51,7 @@ export default {
         perm: this.perm,
         browserButton: this.$refs.uploader.getBrowseButton(),
         dragdropElement: this.dragdrop && this.$refs.uploader.getDropElement(),
-        multiSelection: this.type == "files" || this.type == "images",
+        multiSelection: this.type == 'files' || this.type == 'images',
         overwriteParam: this.options,
         fnFilesAdded(up, files) {
           if (that.value.length + files.length > that.limit) {
@@ -61,7 +61,7 @@ export default {
             return false;
           }
           pluploadjs.plupload.each(files, file => {
-            file.fileType = file.name.split(".").reverse()[0];
+            file.fileType = file.name.split('.').reverse()[0];
             if (FileReader) {
               let reader = new FileReader();
               reader.onload = event => {
@@ -74,21 +74,21 @@ export default {
         },
         fnBeforeUpload(up, file) {
           // log('BeforeUpload', file.status);
-          that.$emit("startUpload");
+          that.$emit('startUpload');
         },
         // fnUploadProgress: () => {},
         fnFileUploaded(up, file, info) {
           // log('FileUploaded', file.status);
-          let domain = up.getOption("domain");
+          let domain = up.getOption('domain');
           let res = JSON.parse(info.response);
-          let sourceLink = `${domain}${res.key}`; //Get the Url of the file after successful upload
+          let sourceLink = `${domain}${res.key}`; // Get the Url of the file after successful upload
           file.url = sourceLink;
           file.key = res.key;
         },
         fnUploadComplete() {
-          that.$emit("completeUpload");
+          that.$emit('completeUpload');
           let fileList = that.$refs.uploader.getFileList();
-          if (that.dataType === "file") {
+          if (that.dataType === 'file') {
             fileList = fileList.map(f => {
               if (f.file) {
                 return {
@@ -103,7 +103,7 @@ export default {
               }
             });
           }
-          that.$emit("input", fileList);
+          that.$emit('input', fileList);
           that.uploadList.splice(0, that.uploadList.length);
         },
         fnError(up, err, errTip) {
@@ -115,22 +115,22 @@ export default {
     fileclick(file) {
       let originalType = file.original.fileType || file.original.file.type;
       if (
-        originalType == "image/jpeg" ||
-        originalType == "image/png" ||
-        originalType == "png" ||
-        originalType == "jpg" ||
-        originalType == "jpeg"
+        originalType == 'image/jpeg' ||
+        originalType == 'image/png' ||
+        originalType == 'png' ||
+        originalType == 'jpg' ||
+        originalType == 'jpeg'
       ) {
         this.$Modal({
-          title: this.options.fileClickModelTitle || "",
+          title: this.options.fileClickModelTitle || '',
           content: `<img style="max-width:900px"  src="${file.url}"></img>`,
           hasCloseIcon: false,
           buttons: []
         });
       } else if (
-        originalType == "aac" ||
-        originalType == "mp3" ||
-        originalType == "wav"
+        originalType == 'aac' ||
+        originalType == 'mp3' ||
+        originalType == 'wav'
       ) {
         this.$Modal({
           buttons: [],
@@ -142,8 +142,8 @@ export default {
     }
   },
   mounted() {
-    //Please refer to https for documentation.
-    //developer.qiniu.com/kodo/sdk/1283/javascript
+    // Please refer to https for documentation.
+    // developer.qiniu.com/kodo/sdk/1283/javascript
     let that = this;
     this.$nextTick(() => {
       that.initUploader();

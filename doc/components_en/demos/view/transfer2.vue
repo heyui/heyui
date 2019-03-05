@@ -7,13 +7,13 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       option: {
         ltHeadText: 'First-tier city',
         rtHeadText: 'Open city',
         filterable: true,
-        placeholder: "Input address search",
+        placeholder: 'Input address search',
         render: function (op) {
           return `${op.text}(${op.code})`;
         }
@@ -31,8 +31,8 @@ export default {
         { code: 1009, text: 'Shenzhen' },
         { code: 1010, text: 'Zhengzhou' },
         { code: 1011, text: 'Yangquan' },
-        { code: 1012, text: 'Tianjin' },
-      ],
+        { code: 1012, text: 'Tianjin' }
+      ]
     };
   }
 };

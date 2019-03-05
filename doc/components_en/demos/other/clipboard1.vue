@@ -15,8 +15,8 @@
 export default {
   data() {
     return {
-      text: "",
-      textarea: ""
+      text: '',
+      textarea: ''
     };
   },
   methods: {
@@ -27,8 +27,8 @@ export default {
     },
     copy() {
       this.$Clipboard({
-        text: "Copy to clipboard text",
-        showSuccessTip: "Copy Success"
+        text: 'Copy to clipboard text',
+        showSuccessTip: 'Copy Success'
       });
     }
   }

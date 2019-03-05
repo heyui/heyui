@@ -16,7 +16,7 @@
 
     <h3>Hide prompts</h3>
     <exampleEn demo="form/slider5"></exampleEn>
-    
+
     <h3>Silder Property</h3>
     <table class="table">
       <tr>

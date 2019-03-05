@@ -14,8 +14,8 @@ export default {
       value2: {
         start: 0,
         end: 20
-      },
-    }
+      }
+    };
   }
 };
 </script>

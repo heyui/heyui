@@ -7,8 +7,8 @@
         <div style="height:80px;margin-left:90px;line-height:80px;">LAN</div>
       </div>
       <Row style="line-height:40px;border-top:1px solid #EEE;">
-        <Col width=12 class="text-center" style="border-right:1px solid #EEE;"><a>Personal information</a></Col>
-        <Col width=12 class="text-center"><a>Logout</a></Col>
+        <Cell width=12 class="text-center" style="border-right:1px solid #EEE;"><a>Personal information</a></Cell>
+        <Cell width=12 class="text-center"><a>Logout</a></Cell>
       </Row>
     </div>
   </DropdownCustom>

@@ -15,23 +15,23 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     open() {
       this.$Modal({
         title: 'Js',
         fullScreen: true,
-        content: '这是使用Js调用的全屏弹出框',
+        content: '这是使用Js调用的全屏弹出框'
       });
     },
     confirm() {
-      this.$Message("点击确定了。");
+      this.$Message('点击确定了。');
       this.close();
     },
     close() {
       this.opened = false;
     }
   }
-}
+};
 </script>

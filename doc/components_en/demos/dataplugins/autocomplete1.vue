@@ -12,7 +12,7 @@
 export default {
   data() {
     return {
-      value: "1"
+      value: '1'
     };
   },
   methods: {
@@ -20,7 +20,7 @@ export default {
       log(data, trigger);
     },
     update() {
-      this.value = "2";
+      this.value = '2';
     }
   }
 };

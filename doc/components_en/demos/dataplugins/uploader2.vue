@@ -8,15 +8,15 @@
 </template>
 
 <script>
-import qiniu from "../../demos/common/qiniu";
+import qiniu from '../../demos/common/qiniu';
 
 export default {
   data() {
     return {
       options: {
-        max_file_size: "1mb",
+        max_file_size: '1mb',
         filters: {
-          mime_types: [{ title: "Image files", extensions: "jpg,gif,png" }]
+          mime_types: [{ title: 'Image files', extensions: 'jpg,gif,png' }]
         }
       },
       images: []

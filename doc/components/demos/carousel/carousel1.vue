@@ -49,7 +49,7 @@ export default {
         { title: 'Page 3', color: '#b6cf4d' },
         { title: 'Page 4', color: '#cf5e4d' }
       ]
-    }
+    };
   }
-}
+};
 </script>

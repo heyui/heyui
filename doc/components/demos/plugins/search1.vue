@@ -12,13 +12,13 @@ export default {
   data() {
     return {
       searchText1: null,
-      searchText2: null,
-    }
+      searchText2: null
+    };
   },
   methods: {
     search(data) {
-      this.$Message.info(`查询“${data}”`)
+      this.$Message.info(`查询“${data}”`);
     }
   }
-}
+};
 </script>

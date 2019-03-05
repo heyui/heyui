@@ -12,15 +12,15 @@
 export default {
   data() {
     return {
-      value: ""
+      value: ''
     };
   },
   methods: {
     setvalue() {
-      this.value = "1\n2\n3\n4\n5\n6";
+      this.value = '1\n2\n3\n4\n5\n6';
     },
     removevalue() {
-      this.value = "";
+      this.value = '';
     }
   }
 };

@@ -5,7 +5,6 @@
 
     <h3>Basic</h3>
     <exampleEn demo="other/clipboard1"></exampleEn>
-  
 
     <h3>Clipboard Property</h3>
     <table class="table">

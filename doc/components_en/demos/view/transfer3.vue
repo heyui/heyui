@@ -9,7 +9,7 @@
       <template slot="targetHeader">
         <div class="h-transfer-header">Open city</div>
       </template>
-      <template slot-scope="{option, checked}" slot="item">
+      <template slot-scope="{option}" slot="item">
         {{option.text}}({{option.code}})
       </template>
     </Transfer>
@@ -19,11 +19,11 @@
 <script>
 export default {
   methods: {
-    test () {
+    test() {
       console.log(arguments);
     }
   },
-  data () {
+  data() {
     return {
       value: [1003, 1011],
       sourceDatas: [
@@ -38,8 +38,8 @@ export default {
         { code: 1009, text: 'Shenzhen' },
         { code: 1010, text: 'Zhengzhou' },
         { code: 1011, text: 'Yangquan' },
-        { code: 1012, text: 'Tianjin' },
-      ],
+        { code: 1012, text: 'Tianjin' }
+      ]
     };
   }
 };

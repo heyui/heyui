@@ -13,7 +13,7 @@ export default {
     return {
       select: null,
       select1: [],
-      param: ["Option 1", "Option 2", "Choose 3"],
+      param: ['Option 1', 'Option 2', 'Choose 3'],
       disabled: true
     };
   }

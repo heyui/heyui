@@ -10,28 +10,25 @@
 
     <h3>Single image upload-file object</h3>
     <exampleEn demo="dataplugins/uploader1"></exampleEn>
-  
+
     <h3>Multiple image upload - array of file objects</h3>
     <p>Add the limit parameter to limit the total number of uploads</p>
     <exampleEn demo="dataplugins/uploader2"></exampleEn>
 
-    <h3>Single image upload - url</h3>    
+    <h3>Single image upload - url</h3>
     <exampleEn demo="dataplugins/uploader3"></exampleEn>
 
-  
     <h3>Multiple image upload - url array</h3>
     <exampleEn demo="dataplugins/uploader4"></exampleEn>
 
     <h3>Single file upload</h3>
     <exampleEn demo="dataplugins/uploader5"></exampleEn>
-  
+
     <h3>Multi-file upload</h3>
     <exampleEn demo="dataplugins/uploader6"></exampleEn>
 
-  
     <h3>Drag and drop upload</h3>
     <exampleEn demo="dataplugins/uploader7"></exampleEn>
-
 
     <h3>Uploader Property</h3>
     <table class="table">
@@ -109,9 +106,9 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
     goDown() {
@@ -123,5 +120,5 @@ export default {
       });
     }
   }
-}
+};
 </script>

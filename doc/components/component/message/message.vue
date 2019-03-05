@@ -20,7 +20,6 @@
     <h3>设置全局自动关闭时间</h3>
     <example demo="message/message6"></example>
 
-
     <h3>Message 参数</h3>
     <table class="table">
       <tr>

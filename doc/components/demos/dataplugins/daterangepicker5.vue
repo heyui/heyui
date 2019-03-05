@@ -14,12 +14,12 @@ export default {
       value: {},
       param: {
         start: manba().add(-1, manba.DAY),
-        end: manba().add(46, manba.DAY),
+        end: manba().add(46, manba.DAY)
         // disabled: (value) => {
         //   return value.date()%10 == 0;
         // }
       }
-    }
+    };
   }
-}
+};
 </script>

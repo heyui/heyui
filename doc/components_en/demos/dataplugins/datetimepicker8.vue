@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import manba from "manba";
+import manba from 'manba';
 
 export default {
   data() {
     return {
-      value: "",
+      value: '',
       param: {
         start: manba().add(-1, manba.DAY),
         end: manba().add(46, manba.DAY),
@@ -23,8 +23,8 @@ export default {
   },
   methods: {
     changeParam() {
-      this.param.start = "2017-02-01 12:34";
-      this.param.end = "2017-06-03 12:34";
+      this.param.start = '2017-02-01 12:34';
+      this.param.end = '2017-06-03 12:34';
       this.$Message(
         `The selection range becomes ${this.param.start} to ${this.param.end}`,
         5000

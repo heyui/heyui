@@ -15,12 +15,12 @@ export default {
     return {
       value: '',
       disabled: true
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

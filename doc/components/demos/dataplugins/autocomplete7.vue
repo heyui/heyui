@@ -18,11 +18,11 @@ const loadData = function (filter, callback) {
       callback(d.result.map((r) => {
         return {
           title: r[0],
-          key: r[1] + Math.random(),
+          key: r[1] + Math.random()
         };
       }));
     });
-}
+};
 
 export default {
   data() {
@@ -32,7 +32,7 @@ export default {
         loadData,
         minWord: 1
       }
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {

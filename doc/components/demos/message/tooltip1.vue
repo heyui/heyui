@@ -11,12 +11,12 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        enable: true,
-        content: '1'
-      }
-    }
+export default {
+  data() {
+    return {
+      enable: true,
+      content: '1'
+    };
   }
+};
 </script>

@@ -7,14 +7,14 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        pass: '',
-        error: false
-      }
-    },
-    methods: {},
-    components: {}
-  }
+export default {
+  data() {
+    return {
+      pass: '',
+      error: false
+    };
+  },
+  methods: {},
+  components: {}
+};
 </script>

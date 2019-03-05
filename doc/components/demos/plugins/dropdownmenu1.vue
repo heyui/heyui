@@ -12,14 +12,14 @@ export default {
   data() {
     return {
       disabled: false,
-      param: ["测试1", "测试2", "测试3"]
-    }
+      param: ['测试1', '测试2', '测试3']
+    };
   },
   methods: {
     trigger(code, data, event) {
       this.$Message.info(`您点击了${code}`);
-      log(data, event)
+      log(data, event);
     }
-  },
+  }
 };
 </script>

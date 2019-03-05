@@ -10,24 +10,24 @@
 export default {
   methods: {
     message() {
-      this.$Message("This is a normal reminder");
+      this.$Message('This is a normal reminder');
     },
     notice() {
       this.$Notice({
-        type: "success",
-        title: "success",
+        type: 'success',
+        title: 'success',
         content: `This is a successful notice`
       });
     },
     modal() {
       this.$Modal({
-        title: "Js",
-        content: "This is a popup called with Js"
+        title: 'Js',
+        content: 'This is a popup called with Js'
       });
     },
     confirm() {
-      this.$Confirm("Confirm delete?", "Custom title").then(() => {
-        this.$Message.success("Confirm delete!");
+      this.$Confirm('Confirm delete?', 'Custom title').then(() => {
+        this.$Message.success('Confirm delete!');
       });
     }
   }

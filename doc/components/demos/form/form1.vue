@@ -22,14 +22,14 @@ export default {
   data() {
     return {
       isLoading: false,
-      labelPosition: "left",
+      labelPosition: 'left',
       labels: {
         left: 'Label左对齐',
-        right: 'Label右对齐',
+        right: 'Label右对齐'
       },
       model: {
-        name: "",
-        password: ""
+        name: '',
+        password: ''
       },
       validationRules: {
         required: [
@@ -37,14 +37,14 @@ export default {
           'password'
         ]
       }
-    }
+    };
   },
   methods: {
     submit() {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message('验证成功');
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);

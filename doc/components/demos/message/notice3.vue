@@ -15,7 +15,7 @@ export default {
         buttons: [ {
           name: '忽略',
           type: 'cancel'
-        },{
+        }, {
           name: '去看看',
           color: 'primary',
           type: 'confirm'
@@ -30,13 +30,13 @@ export default {
             e.close();
           }
         }
-      }
+      };
       if (hasTitle) {
-        info.title = "自定义通知";
+        info.title = '自定义通知';
       }
       this.$Notice(info);
-    },
+    }
 
   }
-}
+};
 </script>

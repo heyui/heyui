@@ -12,8 +12,8 @@ export default {
     message(type) {
       let text = { info: '消息', success: '成功', warn: '警告', error: '错误', loading: '加载中' }[type];
       this.$Message[type](`这是一个${text}的消息`);
-      //this.$Message.info("这是一个消息的消息");
-    },
+      // this.$Message.info("这是一个消息的消息");
+    }
   }
-}
+};
 </script>

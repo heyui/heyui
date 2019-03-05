@@ -7,16 +7,15 @@
     <p>注意2：由于该样式应用在组件中，所以在调用的<code>vue</code>文件中，<code>style</code>的<code>scope</code>属性将无效。</p>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-dropdownmenu</code>。</p>
 
-
     <h3>基本调用</h3>
     <example demo="plugins/dropdownmenu1"></example>
-  
+
     <h3>不同样式组合调用</h3>
     <example demo="plugins/dropdownmenu2"></example>
-  
+
     <h3>组合调用</h3>
     <example demo="plugins/dropdownmenu9"></example>
-  
+
     <h3>不同位置</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <example demo="plugins/dropdownmenu3"></example>
@@ -28,19 +27,19 @@
     <h3>右键触发</h3>
     <p><code>trigger</code>: contextMenu</p>
     <example demo="plugins/dropdownmenu10"></example>
-  
+
     <h3>不默认添加右侧的icon</h3>
     <example demo="plugins/dropdownmenu5"></example>
 
     <h3>和dom同样宽度</h3>
     <example demo="plugins/dropdownmenu6"></example>
-  
+
     <h3>自定义宽度</h3>
     <example demo="plugins/dropdownmenu7"></example>
-  
+
     <h3>添加未读数</h3>
     <example demo="plugins/dropdownmenu8"></example>
-  
+
     <h3>DropdownMenu 参数</h3>
     <table class="table">
       <tr>
@@ -170,7 +169,6 @@
         <td>false</td>
       </tr>
     </table>
-
 
     <h3>DropdownMenu 事件</h3>
     <table class="table">

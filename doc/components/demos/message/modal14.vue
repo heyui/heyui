@@ -14,12 +14,11 @@ import ModalTest from './modalTest';
 
 export default {
   components: {
-    ModalTest
   },
   data() {
     return {
-      value: null,
-    }
+      value: null
+    };
   },
   methods: {
     openSelfDefine() {
@@ -27,10 +26,9 @@ export default {
         transparent: true, // 背景透明
         content: `<img src='/static/images/demo.png' width='300'/>`,
         buttons: []
-      })
+      });
     },
     open(place) {
-      let that = this;
       this.$Modal({
         type: `drawer-${place}`,
         width: 400,
@@ -40,12 +38,12 @@ export default {
           datas: { param2: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
         },
         events: {
-          update:(modal, data)=>{
+          update: (modal, data) => {
             this.value = data;
           }
         }
       });
     }
   }
-}
+};
 </script>

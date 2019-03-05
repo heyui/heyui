@@ -11,25 +11,25 @@ export default {
   data() {
     return {
       param: [{
-        key: "module1",
-        title: "module1",
+        key: 'module1',
+        title: 'module1',
         count: 12
       }, {
-        key: "module2",
-        title: "module2",
+        key: 'module2',
+        title: 'module2',
         count: 14
       }, {
-        key: "module3",
-        title: "module3",
+        key: 'module3',
+        title: 'module3',
         count: 2
       }],
       selected: 'module1'
-    }
+    };
   },
   methods: {
     change(data) {
       this.$Message.info(`change to ${data.title}`, 1000);
     }
   }
-}
+};
 </script>

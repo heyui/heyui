@@ -42,7 +42,6 @@
       </tr>
     </table>
 
-
     <h3>Transfer 事件</h3>
     <table class="table">
       <tr>
@@ -114,7 +113,6 @@
         <td>h-icon-left, h-icon-right</td>
       </tr>
     </table>
-
 
     <h3>Slot 配置</h3>
     <table class="table">

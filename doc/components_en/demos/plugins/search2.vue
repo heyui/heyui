@@ -15,9 +15,9 @@
 export default {
   data() {
     return {
-      searchText1: "",
-      searchText2: "",
-      searchText3: ""
+      searchText1: '',
+      searchText2: '',
+      searchText3: ''
     };
   },
   methods: {

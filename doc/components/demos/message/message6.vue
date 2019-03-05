@@ -6,9 +6,9 @@ export default {
   methods: {
     config() {
       this.$Message.config({
-        timeout: 1000,
+        timeout: 1000
       });
-    },
+    }
   }
-}
+};
 </script>

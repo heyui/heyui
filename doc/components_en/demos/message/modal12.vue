@@ -20,13 +20,13 @@ export default {
   methods: {
     open() {
       this.$Modal({
-        title: "Js",
+        title: 'Js',
         fullScreen: true,
-        content: "This is a full-screen popup called with Js"
+        content: 'This is a full-screen popup called with Js'
       });
     },
     confirm() {
-      this.$Message("Click OK.");
+      this.$Message('Click OK.');
       this.close();
     },
     close() {

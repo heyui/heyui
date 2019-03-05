@@ -12,11 +12,11 @@
     <blockquote>type="title"</blockquote>
     <p>value:{{value3}} <span class="link" @click="update3">Modified value</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" v-model="value3" @change="onChange"></AutoComplete></div>
-    
+
     <p v-height="10"></p>
     <p>value:{{value4}} <span class="link" @click="update4">Modified value</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" multiple v-model="value4" @change="onChange"></AutoComplete></div>
-    
+
     <p v-height="10"></p>
     <blockquote>type="object"</blockquote>
     <p>value:{{value5}} <span class="link" @click="update5">Modified value</span> </p>
@@ -28,9 +28,9 @@
   </div>
 </template>
 <script>
-import jsonp from "fetch-jsonp";
+import jsonp from 'fetch-jsonp';
 
-const loadData = function(filter, callback) {
+const loadData = function (filter, callback) {
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
     .then(d => {
@@ -49,15 +49,15 @@ export default {
   data() {
     return {
       value1: 1,
-      show1: "initialization",
+      show1: 'initialization',
       value2: [],
-      value3: "initialization",
-      value4: ["initialization"],
-      value5: { code: 123, name: "initialization" },
-      value6: [{ code: 123, name: "initialization" }],
+      value3: 'initialization',
+      value4: ['initialization'],
+      value5: { code: 123, name: 'initialization' },
+      value6: [{ code: 123, name: 'initialization' }],
       param: {
-        keyName: "code",
-        titleName: "name",
+        keyName: 'code',
+        titleName: 'name',
         loadData,
         minWord: 1
       }
@@ -75,20 +75,20 @@ export default {
       }
     },
     update1() {
-      this.show1 = "Modified value";
+      this.show1 = 'Modified value';
       this.value1 = 123;
     },
     update3() {
-      this.value3 = "modify";
+      this.value3 = 'modify';
     },
     update4() {
-      this.value4 = ["Revision 1", "Modify 2"];
+      this.value4 = ['Revision 1', 'Modify 2'];
     },
     update5() {
-      this.value5 = { code: 123, name: "modify" };
+      this.value5 = { code: 123, name: 'modify' };
     },
     update6() {
-      this.value6 = [{ code: 123, name: "modify" }];
+      this.value6 = [{ code: 123, name: 'modify' }];
     }
   }
 };

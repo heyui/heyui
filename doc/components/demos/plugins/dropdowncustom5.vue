@@ -14,15 +14,15 @@
 export default {
   data() {
     return {
-      text: ""
-    }
+      text: ''
+    };
   },
   watch: {
     text() {
       this.update();
     }
   },
-  methods:{
+  methods: {
     update() {
       this.$refs.dropdown.update();
     },
@@ -30,6 +30,5 @@ export default {
       this.$refs.dropdown.hide();
     }
   }
-}
+};
 </script>
-

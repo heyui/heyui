@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import manba from 'manba';
 
 export default {
   data() {
@@ -24,7 +23,7 @@ export default {
         end: '2017-08-01'
       },
       value2: null
-    }
+    };
   }
-}
+};
 </script>

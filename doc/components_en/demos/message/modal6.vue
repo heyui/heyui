@@ -20,8 +20,8 @@ export default {
   methods: {
     open() {
       this.$Modal({
-        title: "Js",
-        content: "This is a popup called with Js"
+        title: 'Js',
+        content: 'This is a popup called with Js'
       });
     }
   }

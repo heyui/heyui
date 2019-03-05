@@ -7,10 +7,10 @@
 
     <h3>String split</h3>
     <exampleEn demo="dataplugins/taginput3"></exampleEn>
-  
+
     <h3>Readonly</h3>
     <exampleEn demo="dataplugins/taginput2"></exampleEn>
-  
+
     <h3>TagInput Property</h3>
     <table class="table">
       <tr>

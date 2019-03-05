@@ -22,17 +22,17 @@ export default {
   data() {
     return {
       isLoading: false,
-      labelPosition: "left",
+      labelPosition: 'left',
       labels: {
-        left: "Label left aligned",
-        right: "Label right aligned"
+        left: 'Label left aligned',
+        right: 'Label right aligned'
       },
       model: {
-        name: "",
-        password: ""
+        name: '',
+        password: ''
       },
       validationRules: {
-        required: ["name", "password"]
+        required: ['name', 'password']
       }
     };
   },
@@ -41,7 +41,7 @@ export default {
       this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);

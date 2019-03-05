@@ -6,17 +6,17 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      select: "Option 1",
+      select: 'Option 1',
       param: [
-        { title: "Group 1", isLabel: true },
-        { title: "Choose 0", key: "23" },
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Group 3", isLabel: true },
-        { title: "Option 2", key: "a2" },
-        { title: "Group 3", isLabel: true },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Group 1', isLabel: true },
+        { title: 'Choose 0', key: '23' },
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Group 3', isLabel: true },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Group 3', isLabel: true },
+        { title: 'Choose 3', key: 'a3' }
       ]
     };
   }

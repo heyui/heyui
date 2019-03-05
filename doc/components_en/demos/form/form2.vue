@@ -11,10 +11,10 @@ export default {
   data() {
     return {
       data: {
-        name: "Harward",
+        name: 'Harward',
         age: 18,
-        school: "A university in USA",
-        sex: "Female"
+        school: 'A university in USA',
+        sex: 'Female'
       }
     };
   }

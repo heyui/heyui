@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     open() {
@@ -73,5 +73,5 @@ export default {
       this.opened = false;
     }
   }
-}
+};
 </script>

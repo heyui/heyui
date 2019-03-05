@@ -24,21 +24,21 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" },
-        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 12, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 12, address: "Shanghai" }
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' }
       ]
     };
   },
@@ -47,7 +47,7 @@ export default {
       datas.splice(datas.indexOf(data), 1);
     },
     add(datas) {
-      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
+      datas.push({ id: 7, name: 'Add to', age: 12, address: 'Then added' });
     }
   }
 };

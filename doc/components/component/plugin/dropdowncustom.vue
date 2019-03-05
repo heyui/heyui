@@ -7,7 +7,6 @@
     <p>注意2：由于该样式应用在组件中，所以在调用的<code>vue</code>文件中，<code>style</code>的<code>scope</code>属性将无效。</p>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-dropdowncustom</code>。</p>
 
-
     <h3>基本调用</h3>
     <example demo="plugins/dropdowncustom1"></example>
 
@@ -112,7 +111,6 @@
       </tr>
     </table>
 
-
     <h3>DropdownCustom 方法</h3>
     <table class="table">
       <tr>
@@ -157,13 +155,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

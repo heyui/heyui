@@ -8,13 +8,13 @@ export default {
       let message = this.$Message.loading(`正在加载中`, 0);
       // this.$Message({
       //   type: 'loading',
-      //   text:`正在加载中`, 
+      //   text:`正在加载中`,
       //   timeout: 0
       // })
-      setTimeout(()=>{
+      setTimeout(() => {
         message.close();
       }, 4000);
     }
   }
-}
+};
 </script>

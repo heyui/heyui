@@ -18,23 +18,23 @@ const loadData = function (filter, callback) {
         return r[0];
       }));
     });
-}
+};
 
 export default {
   data() {
     return {
       value: '测试',
       param: {
-        orgId: 1, //自定义参数传递
+        orgId: 1, // 自定义参数传递
         loadData,
         minWord: 1
       }
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

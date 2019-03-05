@@ -2,14 +2,14 @@
   <div class="doc">
     <h2>Checkbox</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-checkbox</code>. </p>
-    
+
     <h3>Basic</h3>
     <exampleEn demo="form/checkbox1"></exampleEn>
 
     <h3>Single Component</h3>
     <p>当使用<code>value</code>属性时，<code>checkbox</code>将作为单个<code>checkbox</code>使用。</p>
     <exampleEn demo="form/checkbox2"></exampleEn>
-    
+
     <h3>Component</h3>
     <p>It is recommended to use the data mode radio selector, and use js to implement the entire interaction with higher compatibility. </p>
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>

@@ -12,7 +12,7 @@ export default {
     return {
       value1: 2,
       value2: 2.3
-    }
+    };
   }
-}
+};
 </script>

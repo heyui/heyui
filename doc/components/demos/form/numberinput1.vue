@@ -14,7 +14,7 @@ export default {
     return {
       value: 0,
       value2: 0
-    }
+    };
   }
 };
 </script>

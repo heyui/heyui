@@ -121,7 +121,7 @@
         <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/component/config">全局配置</router-link></td>
       </tr>
     </table>
-    
+
     <h3>option 配置</h3>
     <table class="table">
       <tr>

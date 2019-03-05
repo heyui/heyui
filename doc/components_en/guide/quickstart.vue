@@ -7,14 +7,14 @@
     <p>The sample supports both<code>hey-cli</code>as well<code>vue-cli</code>。</p>
     <p><a target="_blank" href="https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/">https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/</a></p>
     <p>If you can't access this example, you can try it open directly at <a target="_blank" href="https://github.com/vvpvvp/hey-demos">https://github.com/vvpvvp/hey-demos</a>进行尝试。</p>
-    
+
     <h3>Reference JS and CSS</h3>
     <p class="tip">If you are a backend developer, or have just started on the front end, we recommend using the simplest js, css direct reference.</p>
     <p>The easiest way to try HeyUI is to use <a href="https://codepen.io/vvpvvp/pen/WJYKyq" target="_blank">Hello World on CodePen</a>, You can open it in your browser's new tab and follow the examples to learn some basic usage.</p>
     <p>Or you can create a <code>.html</code> file, and then use HeyUI by:</p>
     <codes type="html" src="/codes/jscss.txt"></codes>
     <p>Here, we provide an html example: <a target="_blank" href="/simple.html">simple.html</a>, you can view the source code by "viewing the source of the page". </p>
-    
+
     <h3>Use <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> scaffold (recommended)</h3>
     <p class="tip">Suppose you already know intermediate knowledge about HTML, CSS, and JavaScript, and you already know enough about NPM, ES6, and WEBPACK.</p>
     <p>hey-cli is our open source scaffolding, supports simple ES6 project development, and supports Vue, React project development. Integrated development and packaging and other functions.</p>
@@ -74,13 +74,13 @@ new Vue({
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

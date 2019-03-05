@@ -17,10 +17,10 @@ export default {
         { key: 'a', title: 'step1', icon: 'h-icon-home', desc: 'step1 Description' },
         { key: 'b', title: 'step2', icon: 'h-icon-user', desc: 'step2 Description' },
         { key: 'c', title: 'step3', icon: 'h-icon-star-on', desc: 'step3 Description' },
-        { key: 'd', title: 'step4', icon: 'h-icon-complete', desc: 'step4 Description' },
+        { key: 'd', title: 'step4', icon: 'h-icon-complete', desc: 'step4 Description' }
       ],
-      step: 0,
-    }
+      step: 0
+    };
   }
 };
 </script>

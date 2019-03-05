@@ -5,9 +5,9 @@
   </div>
 </template>
 <script>
-import jsonp from "fetch-jsonp";
+import jsonp from 'fetch-jsonp';
 
-const loadData = function(filter, callback) {
+const loadData = function (filter, callback) {
   // This is configured for option
   // this.orgId Use the passed parameters to get the data, for example: Search for employees under a company
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
@@ -24,9 +24,9 @@ const loadData = function(filter, callback) {
 export default {
   data() {
     return {
-      value: "test",
+      value: 'test',
       param: {
-        orgId: 1, //Custom parameter passing
+        orgId: 1, // Custom parameter passing
         loadData,
         minWord: 1
       }

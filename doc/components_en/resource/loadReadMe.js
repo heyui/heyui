@@ -4,7 +4,7 @@ const hljs = require('highlight.js');
 export default (el, url, vm) => {
   $.get(url, function (data) {
     let content = $(marked(data));
-    let container = $(".readme", el);
+    let container = $('.readme', el);
     container.append(content);
     // let menus = [];
 
@@ -33,4 +33,4 @@ export default (el, url, vm) => {
     // })
     vm.$parent.initLeftMenu(true);
   });
-}
+};

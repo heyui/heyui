@@ -19,8 +19,8 @@ export default {
         timeout: timeout,
         buttons: [
           {
-            name: "shut down",
-            type: "cancel"
+            name: 'shut down',
+            type: 'cancel'
           }
         ]
       });

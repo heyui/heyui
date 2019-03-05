@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      text: ""
+      text: ''
     };
   },
   watch: {
@@ -32,4 +32,3 @@ export default {
   }
 };
 </script>
-

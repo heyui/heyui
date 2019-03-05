@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import test from "./modalTest";
+import test from './modalTest';
 
 export default {
   data() {
     return {
       opened: false,
-      test //Define a reference here
+      test // Define a reference here
     };
   },
   methods: {

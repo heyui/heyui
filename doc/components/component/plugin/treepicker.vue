@@ -2,20 +2,19 @@
   <div class="doc">
     <h2>TreePicker 树下拉选择</h2>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-treepicker</code>。</p>
-  
+
     <h3>基本调用</h3>
     <example demo="plugins/treepicker1"></example>
-  
+
     <h3>多选</h3>
     <example demo="plugins/treepicker2"></example>
-  
+
     <h3>自定义样式</h3>
     <example demo="plugins/treepicker4"></example>
 
     <h3>全局</h3>
     <blockquote>使用的是treeconfig中的配置项</blockquote>
     <example demo="plugins/treepicker3"></example>
-
 
     <h3>TreePicker 参数</h3>
     <blockquote>multiple, option, config, filterable, disabled等配置参照Tree的配置</blockquote>
@@ -70,7 +69,6 @@
         <td></td>
       </tr>
     </table>
-    
 
     <h3>TreePicker 方法</h3>
     <table class="table">
@@ -106,7 +104,6 @@
       </tr>
     </table>
 
-
     <h3>TreePicker 事件</h3>
     <table class="table">
       <tr>
@@ -130,7 +127,6 @@
         <td>当异步数据请求加载成功的时候</td>
       </tr>
     </table>
-
 
     <h3>option 配置</h3>
     <table class="table">

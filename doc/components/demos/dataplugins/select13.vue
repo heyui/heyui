@@ -24,14 +24,14 @@
   </div>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
-        select: null,
-        param: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }]
-      }
-    },
-    methods: {
-    },
+export default {
+  data: function () {
+    return {
+      select: null,
+      param: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }]
+    };
+  },
+  methods: {
   }
+};
 </script>

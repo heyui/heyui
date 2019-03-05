@@ -13,16 +13,16 @@
 import loadReadMe from './loadReadMe';
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
   mounted() {
     loadReadMe(this.$el, 'https://raw.githubusercontent.com/heyui/heyui-snippets/master/README.md', this);
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

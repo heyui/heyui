@@ -12,5 +12,5 @@ export default {
       return document.querySelector('.right-frame');
     }
   }
-}
+};
 </script>

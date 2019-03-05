@@ -23,14 +23,13 @@
 <script>
 import comHead from './common/header.vue';
 import comFoot from './common/footer.vue';
-import comFrame from './common/frame.vue';
 
 export default {
   data() {
     return {
       pass: '',
       error: false
-    }
+    };
   },
   methods: {
     goLink(params) {
@@ -43,27 +42,26 @@ export default {
       let old = document.getElementById('loadcss');
       var head = document.getElementsByTagName('head')[0];
       var link = document.createElement('link');
-      link.type='text/css';
+      link.type = 'text/css';
       link.rel = 'stylesheet';
       link.href = `/themes/${type}/index.css`;
       link.id = 'loadcss';
       head.appendChild(link);
-      if(old) {
+      if (old) {
         head.removeChild(old);
       }
-    },
+    }
   },
   created() {
-    this.$nextTick(()=>{
-      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        return;
+    this.$nextTick(() => {
+      if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+
       }
-    })
+    });
   },
   components: {
     comHead,
-    comFoot,
-    comFrame
+    comFoot
   }
-}
+};
 </script>

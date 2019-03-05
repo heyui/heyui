@@ -7,9 +7,8 @@
   </div>
 </template>
 <script>
-import jsonp from "fetch-jsonp";
 
-const loadData = function(filter, callback) {
+const loadData = function (filter, callback) {
   let input = this.input;
   let list = [];
   for (let i = 0; i < 10; i++) {
@@ -24,8 +23,8 @@ const loadData = function(filter, callback) {
 export default {
   data() {
     return {
-      input: "parameter",
-      value: "",
+      input: 'parameter',
+      value: '',
       loadData
     };
   },
@@ -34,7 +33,7 @@ export default {
       log(data, trigger);
     },
     update() {
-      this.value = [{ key: 123, title: "modify" }];
+      this.value = [{ key: 123, title: 'modify' }];
     }
   }
 };

@@ -4,18 +4,18 @@
     <div><Radio v-model="value" dict="simple"></Radio></div>
   </div>
 </template>
-<!-- 
+<!--
   系统初始化的时候
   HeyUI.initDict({
     simple: { 1: '选择1', 2: '选择2', 3: '选择3' }
-  }); 
+  });
 -->
 <script>
 export default {
   data() {
     return {
       value: '1'
-    }
+    };
   }
 };
 </script>

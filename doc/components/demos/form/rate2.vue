@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       value: 2.5
-    }
+    };
   }
-}
+};
 </script>

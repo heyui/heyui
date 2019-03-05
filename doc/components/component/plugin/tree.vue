@@ -2,16 +2,16 @@
   <div class="doc">
     <h2>Tree 树</h2>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-tree</code>。</p>
-  
+
     <h3>基本调用</h3>
     <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型(parent可以是数组对应)，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
     <example demo="plugins/tree1"></example>
-  
+
     <h3>多选，选择模式为ALL</h3>
     <p><code>chooseMode</code>: all, 只有子集全选的时候，才会选中父级，如果父级选择，返回数据则只返回父级，子集不返回。</p>
     <example demo="plugins/tree2"></example>
-  
+
     <h3>多选，选择模式为SOME</h3>
     <p><code>chooseMode</code>: some, 只要子集选中，父级即选中，返回数据为所有选中数据。</p>
     <example demo="plugins/tree3"></example>
@@ -20,10 +20,9 @@
     <p><code>chooseMode</code>: independent, 父级子级的选择不相关，最终中返回已选择的数据。</p>
     <example demo="plugins/tree8"></example>
 
-  
     <h3>搜索</h3>
     <example demo="plugins/tree4"></example>
-  
+
     <h3>全部数据异步加载</h3>
     <p>在传递的param参数中，定义字段：<code>getTotalDatas</code>获取异步返回的数据，这里的数据属于一次性返回。</p>
     <example demo="plugins/tree5"></example>
@@ -164,7 +163,7 @@
         <td>当异步数据加载成功的时候触发，应用与有一些数据按照tree加载的数据执行的场景</td>
       </tr>
     </table>
-    
+
     <h3>option 配置</h3>
     <table class="table">
       <tr>

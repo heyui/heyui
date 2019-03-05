@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       fixed: false
-    }
+    };
   },
   methods: {
     onchange(fixed) {
@@ -32,5 +32,5 @@ export default {
       return this.$el;
     }
   }
-}
+};
 </script>

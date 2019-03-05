@@ -19,9 +19,9 @@ export default {
   data() {
     return {
       param: [
-        { title: "Test 1", key: "test1" },
-        { title: "Test 2", key: "test2" },
-        { title: "Test 3", key: "test3" }
+        { title: 'Test 1', key: 'test1' },
+        { title: 'Test 2', key: 'test2' },
+        { title: 'Test 3', key: 'test3' }
       ]
     };
   },

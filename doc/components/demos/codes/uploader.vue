@@ -38,12 +38,12 @@ export default {
   data() {
     return {
       uploadList: []
-    }
+    };
   },
   methods: {
     deletefile(index) {
       this.value.splice(index, 1);
-      this.$emit("input", this.value);
+      this.$emit('input', this.value);
     },
     initUploader() {
       const that = this;
@@ -72,14 +72,14 @@ export default {
         },
         fnBeforeUpload(up, file) {
           // log('BeforeUpload', file.status);
-          that.$emit("startUpload");
+          that.$emit('startUpload');
         },
         // fnUploadProgress: () => {},
         fnFileUploaded(up, file, info) {
           // log('FileUploaded', file.status);
           let domain = up.getOption('domain');
           let res = JSON.parse(info.response);
-          let sourceLink = `${domain}${res.key}`; //获取上传成功后的文件的Url
+          let sourceLink = `${domain}${res.key}`; // 获取上传成功后的文件的Url
           file.url = sourceLink;
           file.key = res.key;
         },
@@ -94,7 +94,7 @@ export default {
                   name: f.name,
                   type: that.bizType,
                   fileType: f.file.fileType,
-                  url: f.url,
+                  url: f.url
                 };
               } else {
                 return f;
@@ -107,32 +107,32 @@ export default {
         fnError(up, err, errTip) {
           that.uploadList.splice(0, that.uploadList.length);
           that.$Message.error(errTip);
-        },
+        }
       });
     },
     fileclick(file) {
       let originalType = file.original.fileType || file.original.file.type;
-      if(originalType == "image/jpeg" || originalType == "image/png" || originalType == "png" || originalType == "jpg" || originalType == "jpeg") {
+      if (originalType == 'image/jpeg' || originalType == 'image/png' || originalType == 'png' || originalType == 'jpg' || originalType == 'jpeg') {
         this.$Modal({
           title: this.options.fileClickModelTitle || '',
           content: `<img style="max-width:900px"  src="${file.url}"></img>`,
           hasCloseIcon: false,
-          buttons:[]
-        })
-      }else if(originalType=='aac'||originalType=='mp3'||originalType=='wav'){
+          buttons: []
+        });
+      } else if (originalType == 'aac' || originalType == 'mp3' || originalType == 'wav') {
         this.$Modal({
           buttons: [],
-          content: `<audio class="audio-play" preload="none" src="${file.url}" controls="controls"></audio>`,
-        })
+          content: `<audio class="audio-play" preload="none" src="${file.url}" controls="controls"></audio>`
+        });
       }
-    },
+    }
   },
   mounted() {
-    //文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+    // 文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
     let that = this;
     this.$nextTick(() => {
       that.initUploader();
     });
   }
-}
+};
 </script>

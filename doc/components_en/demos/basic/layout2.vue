@@ -17,17 +17,17 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       headerFixed: false,
       datas: [
-        { icon: "h-icon-home" },
+        { icon: 'h-icon-home' },
         {
-          title: "Component",
-          icon: "h-icon-complete",
-          route: { name: "Component" }
+          title: 'Component',
+          icon: 'h-icon-complete',
+          route: { name: 'Component' }
         },
-        { title: "Breadcrumb", icon: "h-icon-star" }
+        { title: 'Breadcrumb', icon: 'h-icon-star' }
       ]
     };
   }

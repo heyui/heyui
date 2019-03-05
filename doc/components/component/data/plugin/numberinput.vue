@@ -16,7 +16,7 @@
 
     <h3>disabled</h3>
     <example demo="form/numberinput4"></example>
-  
+
     <h3>NumberInput 参数</h3>
     <table class="table">
       <tr>
@@ -77,7 +77,6 @@
       </tr>
     </table>
 
-
     <h3>NumberInput 事件</h3>
     <table class="table">
       <tr>
@@ -104,9 +103,7 @@
 export default {
   data() {
     return {
-    }
+    };
   }
-}
+};
 </script>
-
-

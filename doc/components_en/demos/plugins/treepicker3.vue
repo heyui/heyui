@@ -10,12 +10,12 @@
 export default {
   data() {
     return {
-      value: [{ id: 1, title: "First level" }, { id: 2, title: "Secondary" }]
+      value: [{ id: 1, title: 'First level' }, { id: 2, title: 'Secondary' }]
     };
   },
   methods: {
     change() {
-      //Triggered when the selector is closed
+      // Triggered when the selector is closed
     },
     choose(data) {
       log(data);

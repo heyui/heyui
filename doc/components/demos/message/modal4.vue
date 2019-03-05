@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     close() {
@@ -26,8 +26,8 @@ export default {
         title: 'Js',
         middle: true,
         content: '这是一个居中的弹出框'
-      })
+      });
     }
   }
-}
+};
 </script>

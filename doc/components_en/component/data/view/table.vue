@@ -27,14 +27,14 @@
     <h3>Table open/hide row</h3>
     <p>To a setting rows of data <code>_expand</code> is true, the current row can be expanded by default</p>
     <exampleEn demo="view/table6"></exampleEn>
-<!--     
+<!--
     <h3>自定义模式</h3>
     <exampleEn demo="view/table5"></exampleEn> -->
 
     <h3>Table fixed column</h3>
     <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
     <exampleEn demo="view/table3"></exampleEn>
-  
+
     <h3>Table choose lines</h3>
     <exampleEn demo="view/table4"></exampleEn>
 
@@ -44,10 +44,8 @@
     <h3>Table bubble tips and border, stripe style</h3>
     <exampleEn demo="view/table7"></exampleEn>
 
-
     <h3>Custom table header</h3>
     <exampleEn demo="view/table8"></exampleEn>
-
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -122,7 +120,6 @@
         <td></td>
       </tr>
     </table>
-
 
     <h3>TableItem / Column Property</h3>
     <table class="table">
@@ -312,9 +309,9 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
   }
-}
+};
 </script>

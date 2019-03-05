@@ -10,9 +10,9 @@ export default {
     return {
       select: [0],
       param: {
-        0: "Option 1",
-        2: "Option 2",
-        3: "Choose 3"
+        0: 'Option 1',
+        2: 'Option 2',
+        3: 'Choose 3'
       }
     };
   },

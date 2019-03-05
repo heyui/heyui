@@ -8,19 +8,19 @@
 export default {
   data() {
     return {
-      select: [{ title: "Option 1", key: "a1", other: "Other values" }],
+      select: [{ title: 'Option 1', key: 'a1', other: 'Other values' }],
       param: [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ]
     };
   },
   methods: {
     update() {
       this.select = [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' }
       ];
     }
   }

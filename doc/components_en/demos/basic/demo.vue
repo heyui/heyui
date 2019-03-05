@@ -8,11 +8,10 @@
 </template>
 <script>
 export default {
-  data(){
+  data() {
     return {
       visible: false
-    }
+    };
   }
-}
+};
 </script>
-

@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       disabled: false,
-      param: ["Test 1", "Test 2", "Test 3"]
+      param: ['Test 1', 'Test 2', 'Test 3']
     };
   },
   methods: {

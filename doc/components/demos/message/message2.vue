@@ -15,7 +15,7 @@ export default {
         type,
         text: `这是一个${text}的消息`
       });
-    },
+    }
   }
-}
+};
 </script>

@@ -15,11 +15,11 @@ const loadData = function (filter, callback) {
       callback(d.result.map((r) => {
         return {
           name: r[0],
-          id: r[1] + Math.random(),
+          id: r[1] + Math.random()
         };
       }));
     });
-}
+};
 
 export default {
   data() {
@@ -31,7 +31,7 @@ export default {
         loadData,
         minWord: 1
       }
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {

@@ -13,7 +13,7 @@ export default {
       value: '',
       disabled: true,
       readonly: true
-    }
+    };
   }
-}
+};
 </script>

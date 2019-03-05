@@ -13,8 +13,8 @@ export default {
     return {
       loading: false,
       list: [],
-      index: 1,
-    }
+      index: 1
+    };
   },
   mounted() {
     this.updateList();
@@ -23,10 +23,10 @@ export default {
     updateList2() {
       this.index += 1;
       // this.loading = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.list = [{
           id: 1
-        },{
+        }, {
           id: 2
         }];
         // this.loading = false;
@@ -34,17 +34,17 @@ export default {
     },
     updateList() {
       this.loading = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.loading = false;
         this.list = [{
           id: 1
-        },{
+        }, {
           id: 2
-        },{
+        }, {
           id: 3
         }];
       }, 100);
     }
   }
-}
+};
 </script>

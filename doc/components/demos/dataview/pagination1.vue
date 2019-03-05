@@ -10,13 +10,13 @@ export default {
   data() {
     return {
       current: 1,
-      total: 40,
-    }
+      total: 40
+    };
   },
   methods: {
     currentChange(value) {
       console.log(value.cur, value.size);
     }
   }
-}
+};
 </script>

@@ -16,10 +16,10 @@ export default {
   },
   methods: {
     show() {
-      this.$Message("show");
+      this.$Message('show');
     },
     hide() {
-      this.$Message("hide");
+      this.$Message('hide');
     }
   }
 };

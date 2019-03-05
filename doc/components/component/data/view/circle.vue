@@ -7,7 +7,7 @@
 
     <h3>组合形式</h3>
     <example demo="view/circle2"></example>
-    
+
     <h3>Circle 参数</h3>
     <table class="table">
       <tr>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       value: 10
-    }
+    };
   }
-}
+};
 </script>

@@ -4,7 +4,7 @@
     <p>全局配置是属于<code>HeyUI</code>最大的一个特性。</p>
     <p>在系统开发过程中，设定完整的字典库，在业务开发中，只需要使用key就能完成调用。</p>
     <p>集中配置autocomplet，tree等复杂组件，具体页面中，我们只需要使用key就能完成调用。</p>
-    
+
     <h3>全局字典</h3>
     <p>我们的整体设计是从数据驱动交互，而在数据的交互过程中，去除简单的input输入，最多的是字典的选择。</p>
     <h4>配置字典</h4>
@@ -18,13 +18,13 @@
       <li><code>HeyUI.getDict(key)</code>: 获取字典值</li>
     </ul>
 
-    <h4>应用字典</h4>    
+    <h4>应用字典</h4>
     <p>在一些展示的数据中，我们需要通过<code>key/keys</code>获取对应的文本。</p>
     <ul class="text-ul">
       <li>通过 filter <code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
       <li><code v-html="'HeyUI.dictMapping(value, key, connector)'"></code>: 获取对应的文本</li>
     </ul>
-    
+
     <h3>组件</h3>
     <p>我们将字典标准化，控件可以通过字典的key驱动，而交互无非是在通过不同的数据量选择不同的交互类型。</p>
     <ul class="text-ul">
@@ -69,13 +69,13 @@ HeyUI.config('dict.titleName', "title");</codes>
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

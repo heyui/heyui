@@ -29,8 +29,8 @@
 export default {
   data() {
     return {
-      value: "1",
-      show: "apple"
+      value: '1',
+      show: 'apple'
     };
   },
   methods: {

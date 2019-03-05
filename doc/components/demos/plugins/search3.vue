@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       searchText: null
-    }
+    };
   },
   methods: {
     search(data) {

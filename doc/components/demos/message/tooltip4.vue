@@ -21,22 +21,22 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        a: 1
-      }
+export default {
+  data() {
+    return {
+      a: 1
+    };
+  },
+  methods: {
+    change() {
+      this.a = this.a + 1;
     },
-    methods: {
-      change(){
-        this.a = this.a+1;
-      },
-      show() {
-        this.$Message('show');
-      },
-      hide() {
-        this.$Message('hide');
-      }
+    show() {
+      this.$Message('show');
+    },
+    hide() {
+      this.$Message('hide');
     }
   }
+};
 </script>

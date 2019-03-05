@@ -22,9 +22,9 @@ export default {
       status: {
         fixed1: false,
         fixed2: false,
-        fixed3: false,
+        fixed3: false
       }
-    }
+    };
   },
   methods: {
     onchange1(fixed) {
@@ -37,5 +37,5 @@ export default {
       this.status.fixed3 = fixed;
     }
   }
-}
+};
 </script>

@@ -6,7 +6,6 @@
 }
 </style>
 
-
 <template>
   <TextEllipsis class="textellipsis-demo4" :text="text" :height="100" v-width="200" :isLimitHeight="isLimitHeight">
     <span slot="before" class="h-tag h-tag-red">new</span>

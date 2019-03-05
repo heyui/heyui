@@ -27,11 +27,11 @@ export default {
   data() {
     return {
       select1: 1,
-      param1: {1:'人民币', 2:'美金', 3:'卢布'}
-    }
+      param1: { 1: '人民币', 2: '美金', 3: '卢布' }
+    };
   },
   methods: {
   },
   components: {}
-}
+};
 </script>

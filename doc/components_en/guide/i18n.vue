@@ -15,7 +15,6 @@ Vue.use(HeyUI);
 HeyUI.locale(en);
     </codes>
 
-
     <h3>Use vue-i18n</h3>
     <codes type="javascript">
 import Vue from 'vue';
@@ -60,9 +59,9 @@ i18n.locale = 'en';
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
   }
-}
+};
 </script>

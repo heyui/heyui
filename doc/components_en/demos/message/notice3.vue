@@ -9,33 +9,33 @@ export default {
   methods: {
     noticeButton(hasTitle = false) {
       let info = {
-        type: "info",
+        type: 'info',
         content: `This is a notification that you can turn it off yourself.`,
         timeout: 0,
         buttons: [
           {
-            name: "ignore",
-            type: "cancel"
+            name: 'ignore',
+            type: 'cancel'
           },
           {
-            name: "Go and see",
-            color: "primary",
-            type: "confirm"
+            name: 'Go and see',
+            color: 'primary',
+            type: 'confirm'
           }
         ],
         events: {
           confirm: e => {
-            this.$Message("Go and take a look");
+            this.$Message('Go and take a look');
             e.close();
           },
           cancel: e => {
-            this.$Message("I have already ignored it.");
+            this.$Message('I have already ignored it.');
             e.close();
           }
         }
       };
       if (hasTitle) {
-        info.title = "Custom notification";
+        info.title = 'Custom notification';
       }
       this.$Notice(info);
     }

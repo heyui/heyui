@@ -49,7 +49,10 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
-    "build": "hey b"
+    "build": "hey b",
+    "eslintfix": "eslint --fix --ext .js,.vue components",
+    "eslintfixjs": "eslint --fix --ext .js,.vue js",
+    "eslintfixen": "eslint --fix --ext .js,.vue components_en"
   },
   "browserslist": [
     "ie >= 9"

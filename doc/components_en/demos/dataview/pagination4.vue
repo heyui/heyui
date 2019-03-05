@@ -8,7 +8,7 @@ export default {
     return {
       current: 1,
       total: 200
-    }
+    };
   },
   methods: {
     currentChange(value) {
@@ -16,5 +16,5 @@ export default {
       console.log(value.cur, value.size);
     }
   }
-}
+};
 </script>

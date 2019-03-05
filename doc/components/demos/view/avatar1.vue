@@ -15,17 +15,17 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        src: 'https://pic.52112.com/icon/256/20180507/15471/722194.png'
-      }
-    },
-    methods: {
-      click(event) {
-        log(event)
-      }
+export default {
+  data() {
+    return {
+      src: 'https://pic.52112.com/icon/256/20180507/15471/722194.png'
+    };
+  },
+  methods: {
+    click(event) {
+      log(event);
     }
   }
+};
 
 </script>

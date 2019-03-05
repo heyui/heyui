@@ -8,10 +8,10 @@ export default {
   data() {
     return {
       param: [
-        { title: "Test 1", key: "test1", count: 4 },
-        { title: "Test 2", key: "test2", disabled: true, count: 100 },
+        { title: 'Test 1', key: 'test1', count: 4 },
+        { title: 'Test 2', key: 'test2', disabled: true, count: 100 },
         { divider: true },
-        { title: "Test 3", key: "test3", count: 90 }
+        { title: 'Test 3', key: 'test3', count: 90 }
       ]
     };
   },

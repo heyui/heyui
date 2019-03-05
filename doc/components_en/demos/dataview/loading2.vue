@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import heyui from "../../../../src"; //Demo test path
+import heyui from '../../../../src'; // Demo test path
 // import heyui from 'heyui'; Actual call
 
 export default {
@@ -19,7 +19,7 @@ export default {
       }, 3000);
     },
     pageloadJs() {
-      heyui.$Loading("Loading");
+      heyui.$Loading('Loading');
       setTimeout(() => {
         heyui.$Loading.close();
       }, 3000);

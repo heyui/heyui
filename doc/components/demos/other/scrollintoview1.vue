@@ -16,11 +16,11 @@ export default {
       this.$ScrollIntoView(this.$el.querySelector('.middle-center'), {
         time: 500,
         align: {
-          top: position == 'top' ? 0 : 0.5, //视图比例 0 to 1, 默认 0.5 (center)
-          topOffset: position == 'top' ? 80 : 0, //视图位移 pixels to offset top alignment
-        },
+          top: position == 'top' ? 0 : 0.5, // 视图比例 0 to 1, 默认 0.5 (center)
+          topOffset: position == 'top' ? 80 : 0 // 视图位移 pixels to offset top alignment
+        }
       });
     }
   }
-}
+};
 </script>

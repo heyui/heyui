@@ -7,9 +7,8 @@
 </template>
 <script>
 
-//由于七牛和plupload的封装不是es6模式的，所以我们自己封装了两个对应的es6包
+// 由于七牛和plupload的封装不是es6模式的，所以我们自己封装了两个对应的es6包
 import qiniujs from 'qiniu-js-es6';
-import pluploadjs from 'plupload-es6';
 import utils from 'hey-utils';
 
 export default {
@@ -36,24 +35,24 @@ export default {
   data() {
     return {
       uploadList: []
-    }
+    };
   },
   methods: {
     deletefile(index) {
       let value = null;
-      if(this.type == 'images' || this.type == 'files') {
+      if (this.type == 'images' || this.type == 'files') {
         value = utils.copy(this.value);
         value.splice(index, 1);
       } else {
         value = null;
         this.uploadList = [];
       }
-      this.$emit("input", value);
+      this.$emit('input', value);
     },
     init() {
       let that = this;
-      //七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
-      //uploader文档请参考http://www.cnblogs.com/2050/p/3913184.html
+      // 七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+      // uploader文档请参考http://www.cnblogs.com/2050/p/3913184.html
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
@@ -83,7 +82,7 @@ export default {
             up.start();
           },
           BeforeUpload(up, file) {
-            
+
           },
           UploadProgress(up, file) {
             // log(file.percent);
@@ -92,7 +91,7 @@ export default {
             // log('FileUploaded', file.status);
             let domain = up.getOption('domain');
             let res = JSON.parse(info.response);
-            let sourceLink = `${domain}/${res.key}`; //获取上传成功后的文件的Url
+            let sourceLink = `${domain}/${res.key}`; // 获取上传成功后的文件的Url
             file.url = sourceLink;
           },
           Error(up, err, errTip) {
@@ -100,18 +99,18 @@ export default {
             that.$Message.error(errTip);
           },
           UploadComplete() {
-            that.$emit("completeUpload");
+            that.$emit('completeUpload');
             let fileList = that.$refs.uploader.getFileList();
             //   fileList.map(item=>{
             //     // 对返回的数据做最后的组装
             //     // item.type = 5;
             //     // item.fileType = ...
             //   })
-            that.$emit("input", fileList);
-            if(that.type == 'files' || that.type == 'images'){
+            that.$emit('input', fileList);
+            if (that.type == 'files' || that.type == 'images') {
               that.uploadList.splice(0, that.uploadList.length);
             }
-          },
+          }
           // Key(up, file) {
           //     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
           //     // 该配置必须要在unique_names: false，save_key: false时才生效
@@ -135,7 +134,7 @@ export default {
       this.$Modal({
         title: '预览或者下载',
         content: `自定义处理文件预览或者下载`
-      })
+      });
     }
   },
   mounted() {
@@ -143,5 +142,5 @@ export default {
       this.init();
     });
   }
-}
+};
 </script>

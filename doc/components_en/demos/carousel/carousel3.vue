@@ -27,20 +27,20 @@ export default {
       value: false,
       params: [
         {
-          title: "Page 1",
-          image: ""
+          title: 'Page 1',
+          image: ''
         },
         {
-          title: "Page 2",
-          image: ""
+          title: 'Page 2',
+          image: ''
         },
         {
-          title: "Page 3",
-          image: ""
+          title: 'Page 3',
+          image: ''
         },
         {
-          title: "Page 4",
-          image: ""
+          title: 'Page 4',
+          image: ''
         }
       ]
     };

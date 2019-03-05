@@ -12,7 +12,6 @@
 </template>
 <script>
 
-
 // let list = [
 //   { id: 1, title: "一级" },
 //   { id: 2, title: "二级" },
@@ -50,11 +49,11 @@
 // });
 
 export default {
-  data(){
+  data() {
     return {
       value: 101,
-      value2: [],
-    }
+      value2: []
+    };
   }
-}
+};
 </script>

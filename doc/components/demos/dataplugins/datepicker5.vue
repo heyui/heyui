@@ -12,7 +12,7 @@ export default {
     return {
       value: '',
       type: 'date'
-    }
+    };
   }
-}
+};
 </script>

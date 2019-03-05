@@ -26,7 +26,7 @@
 export default {
   data() {
     return {
-      menus: ['Operate1','Operate2','Operate3'],
+      menus: ['Operate1', 'Operate2', 'Operate3'],
       selectAll: false,
       page: {
         cur: 3,
@@ -34,20 +34,20 @@ export default {
       },
       columns: [
         { title: '序号', prop: '$index', width: 100 },
-        { title: 'ID', prop: 'id', width: 100},
-        { title: '姓名', prop: 'name'},
-        { title: '年龄', prop: 'age'},
-        { title: '地址', prop: 'address' },
+        { title: 'ID', prop: 'id', width: 100 },
+        { title: '姓名', prop: 'name' },
+        { title: '年龄', prop: 'age' },
+        { title: '地址', prop: 'address' }
       ],
       datas: [
-        { id: 5, name: '测试5', age: 12, address: "上海" },
-        { id: 6, name: '测试6', age: 13, address: "上海" },
-        { id: 7, name: '测试7', age: 14, address: "上海" },
-        { id: 5, name: '测试5', age: 17, address: "上海" },
-        { id: 6, name: '测试6', age: 18, address: "上海" },
-        { id: 7, name: '测试7', age: 12, address: "上海" },
+        { id: 5, name: '测试5', age: 12, address: '上海' },
+        { id: 6, name: '测试6', age: 13, address: '上海' },
+        { id: 7, name: '测试7', age: 14, address: '上海' },
+        { id: 5, name: '测试5', age: 17, address: '上海' },
+        { id: 6, name: '测试6', age: 18, address: '上海' },
+        { id: 7, name: '测试7', age: 12, address: '上海' }
       ]
-    }
+    };
   },
   methods: {
     currentChange(page) {
@@ -56,5 +56,5 @@ export default {
   },
   components: {
   }
-}
+};
 </script>

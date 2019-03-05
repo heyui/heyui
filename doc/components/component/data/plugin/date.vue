@@ -43,7 +43,7 @@
     <div>
       <example demo="dataplugins/datepicker9"></example>
     </div>
-    
+
     <h3>DatePicker 参数</h3>
     <table class="table">
       <tr>
@@ -118,7 +118,6 @@
       </tr>
     </table>
 
-
     <h3>DatePicker 事件</h3>
     <table class="table">
       <tr>
@@ -142,7 +141,7 @@
         <td>点击清除按钮</td>
       </tr>
     </table>
-    
+
     <h3>option 配置</h3>
     <table class="table">
       <tr>

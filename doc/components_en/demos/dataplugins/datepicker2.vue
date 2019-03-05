@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      value: "2017-01-01",
+      value: '2017-01-01',
       disabled: true,
       readonly: true
     };

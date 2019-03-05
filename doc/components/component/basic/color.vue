@@ -43,7 +43,6 @@
       </Cell>
     </Row>
 
-
     <h3>灰色</h3>
     <Row :space='20' class="color-spans">
       <Cell :width='12'>
@@ -88,7 +87,6 @@
       </Cell>
     </Row>
 
-
     <h3>文本</h3>
     <div>
       <p v-color:dark v-font='18'>标题@dark-color</p>
@@ -103,9 +101,9 @@
 <script>
 export default {
   data() {
-      return {}
-    },
-    methods: {},
-    components: {}
-}
+    return {};
+  },
+  methods: {},
+  components: {}
+};
 </script>

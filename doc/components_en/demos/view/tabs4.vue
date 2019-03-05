@@ -6,20 +6,20 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       param: {
-        module1: "module1",
-        module2: "module2",
-        module3: "module3",
+        module1: 'module1',
+        module2: 'module2',
+        module3: 'module3'
       },
       selected: 'module1'
-    }
+    };
   },
   methods: {
-    change (data) {
+    change(data) {
       this.$Message.info(`Switch to ${data.title}`, 1000);
     }
   }
-}
+};
 </script>

@@ -44,7 +44,7 @@
     <div>
       <exampleEn demo="dataplugins/datepicker9"></exampleEn>
     </div>
-    
+
     <h3>DatePicker Property</h3>
     <table class="table">
       <tr>
@@ -119,7 +119,6 @@
       </tr>
     </table>
 
-
     <h3>DatePicker Event</h3>
     <table class="table">
       <tr>
@@ -143,7 +142,7 @@
         <td>Click on the clear button</td>
       </tr>
     </table>
-    
+
     <h3>Option Property</h3>
     <table class="table">
       <tr>

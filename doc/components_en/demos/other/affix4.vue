@@ -8,7 +8,7 @@
 export default {
   methods: {
     getTarget() {
-      return document.querySelector(".right-frame");
+      return document.querySelector('.right-frame');
     }
   }
 };

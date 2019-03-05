@@ -51,7 +51,7 @@
 </template>
 <script>
 
-import scrollIntoView from '../../../src/plugins/scrollIntoView'
+import scrollIntoView from '../../../src/plugins/scrollIntoView';
 export default {
   data() {
     return {
@@ -59,7 +59,7 @@ export default {
       error: false,
       menus: [],
       routeName: null
-    }
+    };
   },
   watch: {
     '$route'() {
@@ -74,29 +74,29 @@ export default {
       window.location.hash = this.menus[index];
       scrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
         time: 500,
-        align:{
-          top: .1,
+        align: {
+          top: 0.1,
           topOffset: 0
         }
       });
     },
     initLeftMenu(force = false) {
-      if(this.routeName == this.$route.name && !force) {
+      if (this.routeName == this.$route.name && !force) {
         return;
       }
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
           time: 500,
-          align:{
+          align: {
             // top: 10,
             topOffset: 0
           }
         });
-        let menus = $(".doc h2,.doc h3");
+        let menus = $('.doc h2,.doc h3');
         this.menus = [...menus].map(item => item.innerText);
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);
-          link.on('click', (event)=>{
+          link.on('click', (event) => {
             event.preventDefault();
             this.goMenu(index);
           });
@@ -104,10 +104,10 @@ export default {
         });
         setTimeout(() => {
           let hash = decodeURI(window.location.hash);
-          if(hash) {
+          if (hash) {
             let keyword = hash.substring(1);
             let index = this.menus.indexOf(keyword);
-            if(index > -1) {
+            if (index > -1) {
               this.goMenu(index);
             }
           }
@@ -118,7 +118,7 @@ export default {
     }
   },
   mounted() {
-    this.initLeftMenu()
+    this.initLeftMenu();
   }
-}
+};
 </script>

@@ -4,13 +4,13 @@
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-taginput</code>。</p>
     <h3>基本</h3>
     <example demo="dataplugins/taginput1"></example>
-    
+
     <h3>字符串分割</h3>
     <example demo="dataplugins/taginput3"></example>
-  
+
     <h3>只读</h3>
     <example demo="dataplugins/taginput2"></example>
-  
+
     <h3>TagInput 参数</h3>
     <table class="table">
       <tr>

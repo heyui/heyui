@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       select1: 1,
-      param1: { 1: "Renminbi", 2: "US dollar", 3: "Ruble" }
+      param1: { 1: 'Renminbi', 2: 'US dollar', 3: 'Ruble' }
     };
   },
   methods: {},

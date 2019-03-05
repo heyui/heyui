@@ -27,7 +27,7 @@ export default {
         loadData: this.loadData
       },
       keyword: ''
-    }
+    };
   },
   methods: {
     loadData(filter, callback) {
@@ -35,9 +35,9 @@ export default {
         this.keyword = filter;
         this.pagination.page = 1;
       }
-      setTimeout(()=>{
-        callback(Array.apply(null, Array(6)).map((item, index)=>`page_${filter}_${this.pagination.page}_${index}`));
-      }, 100)
+      setTimeout(() => {
+        callback(Array.apply(null, Array(6)).map((item, index) => `page_${filter}_${this.pagination.page}_${index}`));
+      }, 100);
     },
     changePage(page) {
       this.pagination.page = page.cur;
@@ -45,7 +45,7 @@ export default {
     },
     onChange(data, trigger) {
       log(data, trigger);
-    },
+    }
   }
 };
 </script>

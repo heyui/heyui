@@ -16,14 +16,14 @@ export default {
           }
         },
         events: {
-          fromchild:(modal, data)=>{
+          fromchild: (modal, data) => {
             this.$Message(data);
           }
         }
-      }
+      };
       this.$Notice(info);
-    },
+    }
 
   }
-}
+};
 </script>

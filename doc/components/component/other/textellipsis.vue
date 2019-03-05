@@ -6,10 +6,10 @@
 
     <h3>基本调用</h3>
     <example demo="other/textellipsis1"></example>
-    
+
     <h3>自定义前缀后缀</h3>
     <example demo="other/textellipsis2"></example>
-    
+
     <h3>自定义更多</h3>
     <example demo="other/textellipsis3"></example>
 
@@ -18,7 +18,6 @@
 
     <h3>当被隐藏文字的时候，使用tooltip提示</h3>
     <example demo="other/textellipsis5"></example>
-    
 
     <h3>TextEllipsis 参数</h3>
     <table class="table">
@@ -96,12 +95,12 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
     getTarget() {
       return document.querySelector('.right-frame');
     }
   }
-}
+};
 </script>

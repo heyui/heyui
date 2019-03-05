@@ -11,26 +11,25 @@
   </div>
 </template>
 
-
 <script>
 export default {
   data() {
     return {
-      value1: "Option 1",
-      value2: "1",
+      value1: 'Option 1',
+      value2: '1',
       value3: null,
-      param1: ["Option 1", "Option 2", "Choose 3"],
-      param2: { 1: "Option 1", 2: "Option 2", 3: "Choose 3" },
+      param1: ['Option 1', 'Option 2', 'Choose 3'],
+      param2: { 1: 'Option 1', 2: 'Option 2', 3: 'Choose 3' },
       param3: [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ]
     };
   },
   methods: {
     change(data) {
-      log("change", data);
+      log('change', data);
     }
   }
 };

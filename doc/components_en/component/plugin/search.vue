@@ -66,7 +66,6 @@
       </tr>
     </table>
 
-
     <h3>Search Event</h3>
     <table class="table">
       <tr>

@@ -35,7 +35,7 @@
 @import (less) "自己的less文件";
 </codes>
     <p>注意：使用这种引用方式，在 Vue 文件中将无法使用 var.less 文件中的变量。</p>
-    
+
     <h3>全局变量说明</h3>
     <p>我们的原始全局变量文件你可以在<a href="https://github.com/heyui/heyui/blob/master/themes/var.less" target="_blank">github</a>上查看。</p>
     <p>下面代码中的参数，你可以按照自己的设计修改，达成设定系统主题的目的。</p>
@@ -70,7 +70,6 @@
 @font-size-input : @font-size-mini;
 @font-size-input-tag : 12px;
 @font-size-badge : 12px;
-
 
 @font-family : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 @line-height : 1.5;
@@ -113,13 +112,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

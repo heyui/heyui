@@ -16,7 +16,7 @@ export default {
     return {
       value: '',
       value2: ''
-    }
+    };
   }
 };
 </script>

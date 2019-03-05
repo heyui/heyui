@@ -6,10 +6,10 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
-      select: "Option 1",
-      param: ["Option 1", "Option 2", "Choose 3"]
+      select: 'Option 1',
+      param: ['Option 1', 'Option 2', 'Choose 3']
     };
   }
 };

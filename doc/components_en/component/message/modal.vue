@@ -33,10 +33,9 @@
     <h3>use component content</h3>
     <p>Use js to call the pop-up component Modal, which not only facilitates the use of parameters, but also integrates calls to js code.</p>
     <exampleEn demo="message/modal11"></exampleEn>
-    
+
     <blockquote>The code used in the popup box</blockquote>
     <codes src="/message/modalTest.vue" type="html"></codes>
-
 
     <h3>Modal Property</h3>
     <table class="table">

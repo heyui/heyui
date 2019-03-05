@@ -10,8 +10,8 @@
 export default {
   data() {
     return {
-      value: "",
-      type: "date"
+      value: '',
+      type: 'date'
     };
   }
 };

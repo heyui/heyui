@@ -33,38 +33,38 @@ export default {
   data() {
     return {
       select: null,
-      param: ["Option 1", "Option 2", "Choose 3"],
+      param: ['Option 1', 'Option 2', 'Choose 3'],
       select2: null,
       param2: [
-        { title: "Choose 0", key: 0 },
-        { title: "Disable selection", key: 1, disabled: true },
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Choose 0', key: 0 },
+        { title: 'Disable selection', key: 1, disabled: true },
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ],
       select3: null,
-      param3: { 0: "Choose 0", a1: "Option 1", a2: "Option 2", a3: "Choose 3" },
+      param3: { 0: 'Choose 0', a1: 'Option 1', a2: 'Option 2', a3: 'Choose 3' },
       select4: null,
       param4: [
-        { name: "Choose 0", code: 0 },
-        { name: "Option 1", code: "a1", other: "Other values" },
-        { name: "Option 2", code: "a2" },
-        { name: "Choose 3", code: "a3" }
+        { name: 'Choose 0', code: 0 },
+        { name: 'Option 1', code: 'a1', other: 'Other values' },
+        { name: 'Option 2', code: 'a2' },
+        { name: 'Choose 3', code: 'a3' }
       ]
     };
   },
   methods: {
     update() {
-      this.select = "Option 2";
+      this.select = 'Option 2';
     },
     update2() {
-      this.select2 = "a2";
+      this.select2 = 'a2';
     },
     update3() {
-      this.select3 = "a2";
+      this.select3 = 'a2';
     },
     change(data) {
-      log("changeData:", data);
+      log('changeData:', data);
     }
   }
 };

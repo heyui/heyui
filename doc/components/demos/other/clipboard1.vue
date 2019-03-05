@@ -12,25 +12,25 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        text: '',
-        textarea: ''
-      }
+export default {
+  data() {
+    return {
+      text: '',
+      textarea: ''
+    };
+  },
+  methods: {
+    copyText() {
+      this.$Clipboard({
+        text: this.text
+      });
     },
-    methods: {
-      copyText() {
-        this.$Clipboard({
-          text: this.text
-        });
-      },
-      copy() {
-        this.$Clipboard({
-          text: '测试==复制至剪切板的文本==测试',
-          showSuccessTip: 'Copy Success',
-        });
-      }
+    copy() {
+      this.$Clipboard({
+        text: '测试==复制至剪切板的文本==测试',
+        showSuccessTip: 'Copy Success'
+      });
     }
   }
+};
 </script>

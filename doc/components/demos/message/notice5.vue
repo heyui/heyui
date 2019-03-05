@@ -6,9 +6,9 @@ export default {
   methods: {
     config() {
       this.$Notice.config({
-        timeout: 1000,
+        timeout: 1000
       });
-    },
+    }
   }
-}
+};
 </script>

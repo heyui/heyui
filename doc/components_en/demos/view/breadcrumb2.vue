@@ -10,15 +10,15 @@ export default {
     return {
       datas: [{
         icon: 'h-icon-home'
-      },{
+      }, {
         title: 'Component',
         icon: 'h-icon-complete',
-        route: {name: 'Component'}
-      },{
+        route: { name: 'Component' }
+      }, {
         title: 'Breadcrumb',
-        icon: 'h-icon-star',
+        icon: 'h-icon-star'
       }]
-    }
+    };
   }
-}
+};
 </script>

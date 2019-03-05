@@ -31,7 +31,7 @@ export default {
     return {
       value: '1',
       show: '苹果'
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {

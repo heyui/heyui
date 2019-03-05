@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ModalTest from "./modalTest";
+import ModalTest from './modalTest';
 
 export default {
   components: {
@@ -29,7 +29,6 @@ export default {
       this.value = data;
     },
     open() {
-      let that = this;
       this.$Modal({
         component: {
           // Here you can also define asynchronous calls.
@@ -37,7 +36,7 @@ export default {
           //   require(['./modalTest'], resolve);
           // },
           vue: ModalTest,
-          data: { a: "test1" }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
+          data: { a: 'test1' }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
           datas: { param2: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {

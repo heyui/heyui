@@ -48,11 +48,11 @@
 // });
 
 export default {
-  data(){
+  data() {
     return {
       value1: null,
       value2: []
-    }
+    };
   }
-}
+};
 </script>

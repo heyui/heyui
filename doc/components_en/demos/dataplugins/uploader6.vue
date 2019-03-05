@@ -14,10 +14,10 @@ export default {
         max_file_size: '1mb'
       },
       file: []
-    }
+    };
   },
   components: {
     Qiniu: qiniu
   }
-}
+};
 </script>

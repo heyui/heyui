@@ -27,26 +27,26 @@
 export default {
   data() {
     return {
-      menus: ["Operate1", "Operate2", "Operate3"],
+      menus: ['Operate1', 'Operate2', 'Operate3'],
       selectAll: false,
       page: {
         cur: 3,
         total: 58
       },
       columns: [
-        { title: "Serial number", prop: "$index", width: 100 },
-        { title: "ID", prop: "id", width: 100 },
-        { title: "Name", prop: "name" },
-        { title: "age", prop: "age" },
-        { title: "address", prop: "address" }
+        { title: 'Serial number', prop: '$index', width: 100 },
+        { title: 'ID', prop: 'id', width: 100 },
+        { title: 'Name', prop: 'name' },
+        { title: 'age', prop: 'age' },
+        { title: 'address', prop: 'address' }
       ],
       datas: [
-        { id: 5, name: "Test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 13, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 14, address: "Shanghai" },
-        { id: 5, name: "Test 5", age: 17, address: "Shanghai" },
-        { id: 6, name: "Test 6", age: 18, address: "Shanghai" },
-        { id: 7, name: "Test 7", age: 12, address: "Shanghai" }
+        { id: 5, name: 'Test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 13, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 14, address: 'Shanghai' },
+        { id: 5, name: 'Test 5', age: 17, address: 'Shanghai' },
+        { id: 6, name: 'Test 6', age: 18, address: 'Shanghai' },
+        { id: 7, name: 'Test 7', age: 12, address: 'Shanghai' }
       ]
     };
   },

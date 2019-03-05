@@ -7,13 +7,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
       pass: '',
       error: false
-    }
+    };
   },
   methods: {
   }
-}
+};
 </script>

@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       enable: true,
-      content: "1"
+      content: '1'
     };
   }
 };

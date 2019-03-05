@@ -16,8 +16,8 @@ export default {
   data() {
     return {
       value: null,
-      param: [{ icon:'h-icon-home', title: '选择1', key: 'a1', other: '其他值' }, { icon:'h-icon-user', title: '选择2', key: 'a2' }, { icon:'h-icon-task', title: '选择3', key: 'a3' }],
-    }
+      param: [{ icon: 'h-icon-home', title: '选择1', key: 'a1', other: '其他值' }, { icon: 'h-icon-user', title: '选择2', key: 'a2' }, { icon: 'h-icon-task', title: '选择3', key: 'a3' }]
+    };
   }
 };
 </script>

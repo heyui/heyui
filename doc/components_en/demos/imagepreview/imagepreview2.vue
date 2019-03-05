@@ -9,7 +9,7 @@
 <script>
 export default {
   data() {
-    const link = "https://lokeshdhakar.com/projects/lightbox2/images/";
+    const link = 'https://lokeshdhakar.com/projects/lightbox2/images/';
     return {
       datas: [
         { thumbUrl: `${link}thumb-4.jpg`, url: `${link}image-4.jpg` },

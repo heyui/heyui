@@ -16,53 +16,53 @@ export default {
     let list = [
       {
         id: 1,
-        title: "First level",
+        title: 'First level',
         children: [
-          { id: 10, title: "First level-0" },
-          { id: 11, title: "First level-1" },
-          { id: 12, title: "First level-2" },
-          { id: 13, title: "First level-3" },
-          { id: 14, title: "First level-4" }
+          { id: 10, title: 'First level-0' },
+          { id: 11, title: 'First level-1' },
+          { id: 12, title: 'First level-2' },
+          { id: 13, title: 'First level-3' },
+          { id: 14, title: 'First level-4' }
         ]
       },
       {
         id: 2,
-        title: "Secondary",
+        title: 'Secondary',
         children: [
           {
             id: 20,
-            title: "Secondary-0",
+            title: 'Secondary-0',
             children: [
-              { id: 201, title: "Secondary-0-1" },
-              { id: 202, title: "Secondary-0-2" },
-              { id: 203, title: "Secondary-0-3" }
+              { id: 201, title: 'Secondary-0-1' },
+              { id: 202, title: 'Secondary-0-2' },
+              { id: 203, title: 'Secondary-0-3' }
             ]
           },
-          { id: 21, title: "Secondary-1" },
-          { id: 22, title: "Secondary-2" },
-          { id: 23, title: "Secondary-3" },
-          { id: 24, title: "Secondary-4" }
+          { id: 21, title: 'Secondary-1' },
+          { id: 22, title: 'Secondary-2' },
+          { id: 23, title: 'Secondary-3' },
+          { id: 24, title: 'Secondary-4' }
         ]
       },
       {
         id: 3,
-        title: "Third level",
+        title: 'Third level',
         checkable: false,
         children: [
-          { id: 30, title: "Third level-0" },
-          { id: 31, title: "Third level-1" },
-          { id: 32, title: "Third level-2" },
-          { id: 33, title: "Third level-3" },
-          { id: 34, title: "Third level-4" }
+          { id: 30, title: 'Third level-0' },
+          { id: 31, title: 'Third level-1' },
+          { id: 32, title: 'Third level-2' },
+          { id: 33, title: 'Third level-3' },
+          { id: 34, title: 'Third level-4' }
         ]
       }
     ];
     return {
       value: [202],
       param: {
-        keyName: "id",
-        titleName: "title",
-        dataMode: "tree",
+        keyName: 'id',
+        titleName: 'title',
+        dataMode: 'tree',
         datas: list
       }
     };

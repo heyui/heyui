@@ -4,7 +4,7 @@
     <p>Global configuration is the most powerful feature of <code>HeyUI</code>.</p>
     <p>In the process of development, set a complete dictionary library. In business development, you only need to use the key of the dictionary.</p>
     <p>Centralized configuration of autocomplete, tree and other complex components. In the specific page, we only need to use the config key to complete the call.</p>
-    
+
     <h3>Global dictionary</h3>
     <p>Our overall design is driven by data-driven interaction. In the interactive process of data, simple input inputs are removed, and most of them are dictionary selections.</p>
     <h4>Configure the dictionary</h4>
@@ -19,13 +19,13 @@
       <li><code>HeyUI.getDict(key)</code>: Get dictionary value</li>
     </ul>
 
-    <h4>Application Dictionary</h4>    
+    <h4>Application Dictionary</h4>
     <p>In some of the data shown, we need to use <code>key/keys</code> to get the corresponding text.</p>
     <ul class="text-ul">
       <li>use filter<code v-html="'{{value | dictMapping(key)}}'"></code>: Display Corresponding Text</li>
       <li><code v-html="'HeyUI.dictMapping(value, key, connector)'"></code>: Display Corresponding Text</li>
     </ul>
-    
+
     <h4>Dictionary Apps - Components</h4>
     <p>We standardize the dictionary, controls can be driven by the dictionary's key, and the interaction is nothing more than to select different types of interaction through different amounts of data.</p>
     <ul class="text-ul">
@@ -68,13 +68,13 @@ HeyUI.config('dict.titleName', "title");</codes>
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

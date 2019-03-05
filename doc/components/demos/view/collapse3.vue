@@ -19,21 +19,21 @@
 <script>
 export default {
   components: {
-      
+
   },
   data() {
     return {
       value: [0]
-    }
+    };
   },
   computed: {
-    
+
   },
   created() {
-    
+
   },
   methods: {
-      
-  },
-}
+
+  }
+};
 </script>

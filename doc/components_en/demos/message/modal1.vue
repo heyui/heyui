@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     confirm() {
-      this.$Message("Click OK.");
+      this.$Message('Click OK.');
       this.close();
     },
     close() {

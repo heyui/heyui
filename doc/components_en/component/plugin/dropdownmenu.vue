@@ -10,13 +10,13 @@
 
     <h3>Basic</h3>
     <exampleEn demo="plugins/dropdownmenu1"></exampleEn>
-  
+
     <h3>Different style</h3>
     <exampleEn demo="plugins/dropdownmenu2"></exampleEn>
-  
+
     <h3>Combination</h3>
     <exampleEn demo="plugins/dropdownmenu9"></exampleEn>
-  
+
     <h3>Different positions</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
     <exampleEn demo="plugins/dropdownmenu3"></exampleEn>
@@ -28,19 +28,19 @@
     <h3>Right-click trigger</h3>
     <p><code>trigger</code>: contextMenu</p>
     <exampleEn demo="plugins/dropdownmenu10"></exampleEn>
-  
+
     <h3>Do not add the right icon by default</h3>
     <exampleEn demo="plugins/dropdownmenu5"></exampleEn>
 
     <h3>Same width as dom</h3>
     <exampleEn demo="plugins/dropdownmenu6"></exampleEn>
-  
+
     <h3>Custom width</h3>
     <exampleEn demo="plugins/dropdownmenu7"></exampleEn>
-  
+
     <h3>Add unread</h3>
     <exampleEn demo="plugins/dropdownmenu8"></exampleEn>
-  
+
     <h3>DropdownMenu Property</h3>
     <table class="table">
       <tr>

@@ -45,11 +45,11 @@ export default {
       error: false,
       search: null,
       showModel: false
-    }
+    };
   },
   created() {
-    this.$nextTick(()=>{
-      if(utils.getLocal('wenxinNotice')) return;
+    this.$nextTick(() => {
+      if (utils.getLocal('wenxinNotice')) return;
       utils.saveLocal('wenxinNotice', 1);
       this.$Notice({
         timeout: 0,
@@ -61,18 +61,18 @@ export default {
           name: '查看'
         }],
         events: {
-          confirm: (notice)=> {
+          confirm: (notice) => {
             this.openWeixin();
             notice.close();
           }
         }
-      })
-    })
+      });
+    });
   },
   methods: {
     changeLang() {
       this.$i18n.locale = 'en';
-      this.$router.push({name: `en_${this.$route.name}`});
+      this.$router.push({ name: `en_${this.$route.name}` });
     },
     goLink(params) {
       this.$router.push(params);
@@ -81,18 +81,18 @@ export default {
       this.$router.go(link);
     },
     goGithub() {
-      window.open('https://github.com/heyui/heyui')
+      window.open('https://github.com/heyui/heyui');
     },
     openWeixin() {
       this.showModel = true;
     },
     goSearch(data) {
-      if(!data.key) return;
-      this.$router.push({name: data.key});
+      if (!data.key) return;
+      this.$router.push({ name: data.key });
       this.$nextTick(() => {
         this.search = null;
-      })
+      });
     }
   }
-}
+};
 </script>

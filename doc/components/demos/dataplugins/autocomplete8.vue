@@ -12,11 +12,11 @@
     <blockquote>type="title"</blockquote>
     <p>value:{{value3}} <span class="link" @click="update3">修改值</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" v-model="value3" @change="onChange"></AutoComplete></div>
-    
+
     <p v-height="10"></p>
     <p>value:{{value4}} <span class="link" @click="update4">修改值</span></p>
     <div v-width="300"><AutoComplete :option="param" type="title" multiple v-model="value4" @change="onChange"></AutoComplete></div>
-    
+
     <p v-height="10"></p>
     <blockquote>type="object"</blockquote>
     <p>value:{{value5}} <span class="link" @click="update5">修改值</span> </p>
@@ -42,7 +42,7 @@ const loadData = function (filter, callback) {
         };
       }));
     });
-}
+};
 
 export default {
   data() {
@@ -52,22 +52,22 @@ export default {
       value2: [],
       value3: '初始化',
       value4: ['初始化'],
-      value5: {code: 123, name: '初始化'},
-      value6: [{code: 123, name: '初始化'}],
+      value5: { code: 123, name: '初始化' },
+      value6: [{ code: 123, name: '初始化' }],
       param: {
         keyName: 'code',
         titleName: 'name',
         loadData,
         minWord: 1
       }
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {
       log(data, trigger);
     },
     onChange1(data, trigger) {
-      if(data.value) {
+      if (data.value) {
         this.show1 = data.value.title;
       } else {
         this.show1 = null;
@@ -78,16 +78,16 @@ export default {
       this.value1 = 123;
     },
     update3() {
-      this.value3 = '修改'
+      this.value3 = '修改';
     },
     update4() {
-      this.value4 = ['修改1', '修改2']
+      this.value4 = ['修改1', '修改2'];
     },
     update5() {
-      this.value5 = { code: 123, name: '修改' }
+      this.value5 = { code: 123, name: '修改' };
     },
     update6() {
-      this.value6 = [{ code: 123, name: '修改' }]
+      this.value6 = [{ code: 123, name: '修改' }];
     }
   }
 };

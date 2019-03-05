@@ -5,15 +5,15 @@
   </p>
 </template>
 <script>
-import heyui from "../../../../src"; //Demo test path
+import heyui from '../../../../src'; // Demo test path
 // import heyui from 'heyui'; Actual call
 export default {
   methods: {
     vueinfo() {
-      this.$Message("This is a normal reminder");
+      this.$Message('This is a normal reminder');
     },
     jsinfo() {
-      heyui.$Message("This is a normal reminder");
+      heyui.$Message('This is a normal reminder');
     }
   }
 };

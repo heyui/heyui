@@ -46,7 +46,6 @@
       </Cell>
     </Row>
 
-
     <h3>Gray</h3>
     <Row :space='20' class="color-spans">
       <Cell :width='12'>
@@ -91,7 +90,6 @@
       </Cell>
     </Row>
 
-
     <h3>Text</h3>
     <div>
       <p v-color:dark v-font='18'>Title @dark-color</p>
@@ -104,12 +102,12 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {}
-    },
-    methods: {},
-    components: {}
-  }
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+  components: {}
+};
 
 </script>

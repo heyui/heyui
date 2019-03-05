@@ -18,8 +18,8 @@ export default {
     return {
       param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       value6: null,
-      value7: null,
-    }
+      value7: null
+    };
   }
-}
+};
 </script>

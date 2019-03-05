@@ -9,20 +9,20 @@
 
     <h3>单图片上传-file对象</h3>
     <example demo="dataplugins/uploader1"></example>
-  
+
     <h3>多图片上传-file对象数组</h3>
     <p>添加limit参数可以限制上传的总数量</p>
     <example demo="dataplugins/uploader2"></example>
 
-    <h3>单图片上传-url</h3>    
+    <h3>单图片上传-url</h3>
     <example demo="dataplugins/uploader3"></example>
-  
+
     <h3>多图片上传-url数组</h3>
     <example demo="dataplugins/uploader4"></example>
 
     <h3>单文件上传</h3>
     <example demo="dataplugins/uploader5"></example>
-  
+
     <h3>多文件上传</h3>
     <example demo="dataplugins/uploader6"></example>
 
@@ -31,7 +31,6 @@
 
     <h3>只读展示</h3>
     <example demo="dataplugins/uploader8"></example>
-
 
     <h3>Uploader 参数</h3>
     <table class="table">
@@ -86,7 +85,6 @@
       </tr>
     </table>
 
-
     <h3>Uploader 事件</h3>
     <table class="table">
       <tr>
@@ -105,7 +103,6 @@
     <p>本示例写明了通用的上传处理方案，如果使用自己服务器上传的方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
     <codes src="/codes/uploader.txt" type="javascript"></codes>
 
-
     <h3 class="democodes">七牛上传的通用示例</h3>
     <p>本示例写明了七牛上传的处理方案。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
     <codes src="/common/qiniu.vue" type="html"></codes>
@@ -115,9 +112,9 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
     goDown() {
@@ -129,5 +126,5 @@ export default {
       });
     }
   }
-}
+};
 </script>

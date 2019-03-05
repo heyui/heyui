@@ -8,8 +8,8 @@
 export default {
   data() {
     return {
-      value: 1300,
-    }
+      value: 1300
+    };
   },
   methods: {
     show(value) {

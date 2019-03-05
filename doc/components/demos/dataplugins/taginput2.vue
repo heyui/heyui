@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       value: ['测试1', '测试2', '测试3', '测试4']
-    }
+    };
   }
-}
+};
 </script>

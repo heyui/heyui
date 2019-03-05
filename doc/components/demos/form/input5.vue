@@ -9,19 +9,19 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        value: ''
-      }
+export default {
+  data() {
+    return {
+      value: ''
+    };
+  },
+  methods: {
+    setvalue() {
+      this.value = '1\n2\n3\n4\n5\n6';
     },
-    methods: {
-      setvalue() {
-        this.value = "1\n2\n3\n4\n5\n6";
-      },
-      removevalue() {
-        this.value = '';
-      }
+    removevalue() {
+      this.value = '';
     }
   }
+};
 </script>

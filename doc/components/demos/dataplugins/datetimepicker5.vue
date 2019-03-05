@@ -10,10 +10,10 @@ export default {
   data() {
     return {
       value: '',
-      param:{
+      param: {
         minuteStep: 4
       }
-    }
+    };
   }
-}
+};
 </script>

@@ -7,9 +7,9 @@
   </div>
 </template>
 <script>
-import jsonp from "fetch-jsonp";
+import jsonp from 'fetch-jsonp';
 
-const loadData = function(filter, callback) {
+const loadData = function (filter, callback) {
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
     .then(d => {
@@ -27,7 +27,7 @@ const loadData = function(filter, callback) {
 export default {
   data() {
     return {
-      value: ["test"],
+      value: ['test'],
       param: {
         loadData,
         minWord: 1

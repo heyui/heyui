@@ -19,21 +19,21 @@ export default {
   data() {
     return {
       param: {
-        keyName: "id",
-        titleName: "title",
-        dataMode: "list",
+        keyName: 'id',
+        titleName: 'title',
+        dataMode: 'list',
         getDatas: (parent, resolve) => {
           setTimeout(() => {
             if (!parent) {
               resolve([
-                { id: 1, title: "First level", disabled: true },
-                { id: 2, title: "Secondary" },
-                { id: 3, title: "Third level" }
+                { id: 1, title: 'First level', disabled: true },
+                { id: 2, title: 'Secondary' },
+                { id: 3, title: 'Third level' }
               ]);
             } else if (parent.id % 2 == 0) {
               resolve([]);
             } else {
-              resolve(genList(parent.title, parent.id, 5, "id", "title"));
+              resolve(genList(parent.title, parent.id, 5, 'id', 'title'));
             }
           }, 100);
         }

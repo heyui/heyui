@@ -27,10 +27,10 @@ export default {
       });
     },
     confirm() {
-      this.$Confirm("确定删除？", "自定义title").then(() => {
+      this.$Confirm('确定删除？', '自定义title').then(() => {
         this.$Message.success('确定删除！');
-      })
+      });
     }
   }
-}
+};
 </script>

@@ -11,8 +11,6 @@
     <h3>控件选择范围控制</h3>
     <example demo="dataplugins/timepicker3"></example>
 
-
-
     <h3>DatePicker 参数</h3>
     <table class="table">
       <tr>
@@ -72,7 +70,7 @@
         <td>请选择</td>
       </tr>
     </table>
-    
+
     <h3>option 配置</h3>
     <table class="table">
       <tr>

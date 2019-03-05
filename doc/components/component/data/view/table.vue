@@ -28,14 +28,14 @@
     <h3>Table open/hide row</h3>
     <p>给行数据 data 的某项设置 <code>_expand</code> 为 true，可以默认展开当前行</p>
     <example demo="view/table6"></example>
-<!--     
+<!--
     <h3>自定义模式</h3>
     <example demo="view/table5"></example> -->
 
     <h3>Table fixed column</h3>
     <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
     <example demo="view/table3"></example>
-  
+
     <h3>Table 多选</h3>
     <p>设定<code>selectWhenClickTr</code>属性可以点击整行选中。</p>
     <example demo="view/table4"></example>
@@ -115,7 +115,6 @@
         <td>false</td>
       </tr>
     </table>
-
 
     <h3>TableItem / Column 参数</h3>
     <table class="table">
@@ -312,9 +311,9 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
   }
-}
+};
 </script>

@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       select: [],
-      param: ["Option 1", "Option 2", "Choose 3"]
+      param: ['Option 1', 'Option 2', 'Choose 3']
     };
   }
 };

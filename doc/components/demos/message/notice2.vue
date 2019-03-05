@@ -22,7 +22,7 @@
 export default {
   methods: {
     notice(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
+      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
       this.$Notice[type](`这是一个${text}的通知`);
     },
     noticeIcon(hasTitle) {
@@ -33,13 +33,13 @@ export default {
       });
     },
     noticeTitle(type) {
-      let text = { info: '消息', success: '成功', warn: '警告', error: '错误'}[type];
+      let text = { info: '消息', success: '成功', warn: '警告', error: '错误' }[type];
       this.$Notice({
         type,
         title: text,
         content: `这是一个${text}的通知`
       });
-    },
+    }
   }
-}
+};
 </script>

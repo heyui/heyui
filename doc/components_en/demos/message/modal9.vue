@@ -26,9 +26,9 @@ export default {
     },
     open() {
       this.$Modal({
-        title: "Js",
+        title: 'Js',
         hasDivider: true,
-        content: "This is a centered popup"
+        content: 'This is a centered popup'
       });
     }
   }

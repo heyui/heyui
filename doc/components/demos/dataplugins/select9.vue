@@ -5,11 +5,11 @@
   </div>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
-        select: null
-      }
-    }
+export default {
+  data: function () {
+    return {
+      select: null
+    };
   }
+};
 </script>

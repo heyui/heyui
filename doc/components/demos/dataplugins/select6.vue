@@ -5,12 +5,12 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        select: [],
-        param: ['选择1', '选择2', '选择3']
-      }
-    }
+export default {
+  data() {
+    return {
+      select: [],
+      param: ['选择1', '选择2', '选择3']
+    };
   }
+};
 </script>

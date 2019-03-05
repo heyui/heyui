@@ -8,13 +8,13 @@
 
 <script>
 export default {
-	data() {
-		return {
-			pass: "",
-			error: false
-		};
-	},
-	methods: {},
-	components: {}
+  data() {
+    return {
+      pass: '',
+      error: false
+    };
+  },
+  methods: {},
+  components: {}
 };
 </script>

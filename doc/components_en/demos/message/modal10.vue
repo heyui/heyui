@@ -18,8 +18,8 @@ export default {
   methods: {
     openModal() {
       this.$Modal({
-        title: "Custom pop-up",
-        content: "<p>Custom pop-up test</p><p>Custom pop-up test</p>",
+        title: 'Custom pop-up',
+        content: '<p>Custom pop-up test</p><p>Custom pop-up test</p>',
         hasMask: false
       });
     }

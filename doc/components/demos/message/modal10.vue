@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       opened: false
-    }
+    };
   },
   methods: {
     openModal() {
@@ -21,8 +21,8 @@ export default {
         title: '自定义的弹出框',
         content: '<p>自定义的弹出框测试</p><p>自定义的弹出框测试</p>',
         hasMask: false
-      })
+      });
     }
   }
-}
+};
 </script>

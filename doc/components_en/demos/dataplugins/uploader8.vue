@@ -12,7 +12,7 @@
 <script>
 export default {
   data() {
-    const link = "https://lokeshdhakar.com/projects/lightbox2/images/";
+    const link = 'https://lokeshdhakar.com/projects/lightbox2/images/';
     return {
       images: [
         `${link}image-1.jpg`,

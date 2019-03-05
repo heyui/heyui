@@ -18,7 +18,7 @@ export default {
       value2: '是',
       value1: 1,
       value: false
-    }
+    };
   }
-}
+};
 </script>

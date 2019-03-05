@@ -16,14 +16,14 @@
 </template>
 
 <script>
-  export default {
-    data: function () {
-      return {
-        headerFixed: false,
-        datas: [{ icon: 'h-icon-home' },{ title: 'Component', icon: 'h-icon-complete', route: {name: 'Component'} },{ title: 'Breadcrumb', icon: 'h-icon-star', }]
-      }
-    }
+export default {
+  data: function () {
+    return {
+      headerFixed: false,
+      datas: [{ icon: 'h-icon-home' }, { title: 'Component', icon: 'h-icon-complete', route: { name: 'Component' } }, { title: 'Breadcrumb', icon: 'h-icon-star' }]
+    };
   }
+};
 </script>
 <style lang="less">
   .layout-demo-2-vue {

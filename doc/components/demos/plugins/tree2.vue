@@ -15,31 +15,40 @@
 export default {
   data() {
     let list = [
-      { id: 1, title: "一级", children: [
-        { id: 10, title: "一级-0" },
-        { id: 11, title: "一级-1" },
-        { id: 12, title: "一级-2" },
-        { id: 13, title: "一级-3", },
-        { id: 14, title: "一级-4", },
-      ]},
-      { id: 2, title: "二级", children: [
-        { id: 20, title: "二级-0", children: [
-          { id: 201, title: "二级-0-1", },
-          { id: 202, title: "二级-0-2", },
-          { id: 203, title: "二级-0-3", },
-        ]},
-        { id: 21, title: "二级-1", },
-        { id: 22, title: "二级-2", },
-        { id: 23, title: "二级-3", },
-        { id: 24, title: "二级-4", },
-      ]},
-      { id: 3, title: "三级", checkable: false, children: [
-        { id: 30, title: "三级-0", },
-        { id: 31, title: "三级-1", },
-        { id: 32, title: "三级-2", },
-        { id: 33, title: "三级-3", },
-        { id: 34, title: "三级-4", }
-      ]},
+      { id: 1,
+        title: '一级',
+        children: [
+          { id: 10, title: '一级-0' },
+          { id: 11, title: '一级-1' },
+          { id: 12, title: '一级-2' },
+          { id: 13, title: '一级-3' },
+          { id: 14, title: '一级-4' }
+        ] },
+      { id: 2,
+        title: '二级',
+        children: [
+          { id: 20,
+            title: '二级-0',
+            children: [
+              { id: 201, title: '二级-0-1' },
+              { id: 202, title: '二级-0-2' },
+              { id: 203, title: '二级-0-3' }
+            ] },
+          { id: 21, title: '二级-1' },
+          { id: 22, title: '二级-2' },
+          { id: 23, title: '二级-3' },
+          { id: 24, title: '二级-4' }
+        ] },
+      { id: 3,
+        title: '三级',
+        checkable: false,
+        children: [
+          { id: 30, title: '三级-0' },
+          { id: 31, title: '三级-1' },
+          { id: 32, title: '三级-2' },
+          { id: 33, title: '三级-3' },
+          { id: 34, title: '三级-4' }
+        ] }
     ];
     return {
       value: [202],
@@ -49,7 +58,7 @@ export default {
         dataMode: 'tree',
         datas: list
       }
-    }
+    };
   },
   methods: {
     choose(data) {

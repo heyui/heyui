@@ -33,9 +33,9 @@ export default {
         mobile: null
       },
       rules: {
-        number: ["number"],
-        mobile: ["mobile"],
-        required: ["number", "mobile"]
+        number: ['number'],
+        mobile: ['mobile'],
+        required: ['number', 'mobile']
       }
     };
   },
@@ -49,7 +49,7 @@ export default {
       let validResult = this.$refs.form.validField(field);
       log(validResult);
       if (validResult.valid) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
@@ -58,7 +58,7 @@ export default {
       let validResult = this.$refs.form.validFieldJs(field);
       log(validResult);
       if (validResult.valid) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
@@ -66,7 +66,7 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("Successful verification");
+        this.$Message('Successful verification');
       }
     },
     reset() {

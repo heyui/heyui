@@ -2,14 +2,14 @@
   <div class="doc">
     <h2>AutoComplete 模糊匹配</h2>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-autocomplete</code>。</p>
-  
+
     <h3>异步数据请求</h3>
     <p><code>autocomplete</code>有三种数据类型：<code>key</code>,<code>title</code>,<code>object</code>，如果需求更复杂，请监听<code>change</code>事件手动处理。</p>
     <example demo="dataplugins/autocomplete4"></example>
-    
+
     <h3>选择模式</h3>
     <example demo="dataplugins/autocomplete8"></example>
-  
+
     <h3>可以任意输入模式</h3>
     <p class="tip">使用<code>mustMatch</code>参数即可。</p>
     <p>此种方式只能选择使用<code>title</code>与<code>object</code>类型的数据。</p>
@@ -23,7 +23,7 @@
     <h3>自定义内容</h3>
     <p>通过<code>top</code>以及<code>bottom</code>的<code>slot</code>，自定义其他的内容。</p>
     <example demo="dataplugins/autocomplete6"></example>
-  
+
     <h3>传递外部参数</h3>
     <example demo="dataplugins/autocomplete10"></example>
 
@@ -33,15 +33,15 @@
     <h3>静态数据列表</h3>
     <p>可以使用<code>dict</code>调用系统全局配置的字典，或者通过<code>datas</code>传递数据。</p>
     <example demo="dataplugins/autocomplete1"></example>
-<!--   
+<!--
     <h3>多选</h3>
     <example demo="dataplugins/autocomplete3"></example> -->
-  
+
     <!-- <h3>远程</h3>
     <p>通过<code>options</code>的<code>loadData</code>方法执行远程数据查询，执行完毕后调用<code>callback</code>方法返回数据。</p>
     <p>下面的用例使用的只是单纯的title值，请使用<code>type="title"</code>。</p>
     <example demo="dataplugins/autocomplete4"></example>
-  
+
     <h3>选择模式</h3>
     <example demo="dataplugins/autocomplete5"></example> -->
 
@@ -51,11 +51,11 @@
 
     <!-- <h3>可以任意输入对象多选</h3> -->
     <!-- <example demo="dataplugins/autocomplete12"></example> -->
-  
+
     <h3>全局配置</h3>
     <p>可以通过全局配置<code>autocomplete.default</code>参数设置控件默认的参数值。</p>
     <example demo="dataplugins/autocomplete13"></example>
-    
+
     <h3>AutoComplete 参数</h3>
     <table class="table">
       <tr>
@@ -172,8 +172,6 @@
       </tr>
     </table>
 
-    
-
     <h3>AutoComplete 事件</h3>
     <table class="table">
       <tr>
@@ -211,7 +209,7 @@
         <td>无</td>
       </tr>
     </table>
-    
+
     <h3>option 配置</h3>
     <table class="table">
       <tr>
@@ -265,7 +263,6 @@
       </tr>
     </table>
 
-
     <h3>Slot top/bottom</h3>
     <table class="table">
       <tr>
@@ -285,7 +282,7 @@
 export default {
   data() {
     return {
-    }
+    };
   }
-}
+};
 </script>

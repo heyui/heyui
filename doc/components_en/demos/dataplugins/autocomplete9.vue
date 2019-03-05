@@ -16,7 +16,7 @@
     <div v-width="300">
       <AutoComplete :option="param" v-model="value3" type="object" :must-match="false" @change="onChange"></AutoComplete>
     </div>
-    
+
     <p v-height="10"></p>
     <p>Save object multiple selection：value:{{value4}} <span class="link" @click="update4">Modified value</span></p>
     <div v-width="300">
@@ -25,9 +25,9 @@
   </div>
 </template>
 <script>
-import jsonp from "fetch-jsonp";
+import jsonp from 'fetch-jsonp';
 
-const loadData = function(filter, callback) {
+const loadData = function (filter, callback) {
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
     .then(d => {
@@ -45,13 +45,13 @@ const loadData = function(filter, callback) {
 export default {
   data() {
     return {
-      value1: "23",
-      value2: ["23", "45"],
-      value3: { code: "1", name: "initialization" },
-      value4: [{ code: "1", name: "initialization" }],
+      value1: '23',
+      value2: ['23', '45'],
+      value3: { code: '1', name: 'initialization' },
+      value4: [{ code: '1', name: 'initialization' }],
       param: {
-        keyName: "code",
-        titleName: "name",
+        keyName: 'code',
+        titleName: 'name',
         loadData,
         minWord: 1
       }
@@ -62,16 +62,16 @@ export default {
       log(data, trigger);
     },
     update1() {
-      this.value1 = "new value";
+      this.value1 = 'new value';
     },
     update2() {
-      this.value2 = ["value1", "value2"];
+      this.value2 = ['value1', 'value2'];
     },
     update3() {
-      this.value3 = { code: 123, name: "modify" };
+      this.value3 = { code: 123, name: 'modify' };
     },
     update4() {
-      this.value4 = [{ code: 123, name: "modify" }];
+      this.value4 = [{ code: 123, name: 'modify' }];
     }
   }
 };

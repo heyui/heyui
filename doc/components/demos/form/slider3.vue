@@ -15,7 +15,7 @@ export default {
         start: 0,
         end: 20
       }
-    }
+    };
   }
 };
 </script>

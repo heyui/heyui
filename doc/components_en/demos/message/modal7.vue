@@ -24,22 +24,22 @@ export default {
   methods: {
     open() {
       this.$Modal({
-        title: "Js",
-        content: "This is a popup called with Js",
+        title: 'Js',
+        content: 'This is a popup called with Js',
         buttons: [
           {
-            type: "ok",
-            name: "confirm",
-            color: "primary"
+            type: 'ok',
+            name: 'confirm',
+            color: 'primary'
           },
           {
-            type: "cancel",
-            name: "cancel"
+            type: 'cancel',
+            name: 'cancel'
           },
           {
-            type: "delete",
-            name: "delete",
-            color: "red"
+            type: 'delete',
+            name: 'delete',
+            color: 'red'
           }
         ],
         events: {
@@ -51,29 +51,29 @@ export default {
           },
           delete: modal => {
             modal.close();
-            this.$Message.error("Clicked the delete button");
+            this.$Message.error('Clicked the delete button');
           },
           ok: modal => {
-            this.$Message.info("Clicked the confirmation button");
+            this.$Message.info('Clicked the confirmation button');
             modal.close();
           },
           cancel: modal => {
-            this.$Message.warn("Clicked the cancel button");
+            this.$Message.warn('Clicked the cancel button');
             modal.close();
           }
         }
       });
     },
     modalConfirm() {
-      this.$Message.info("Clicked the confirmation button");
+      this.$Message.info('Clicked the confirmation button');
       this.opened = false;
     },
     modalClose() {
-      this.$Message.warn("Clicked the cancel button");
+      this.$Message.warn('Clicked the cancel button');
       this.opened = false;
     },
     modalDelete() {
-      this.$Message.error("Clicked the delete button");
+      this.$Message.error('Clicked the delete button');
       this.opened = false;
     }
   }

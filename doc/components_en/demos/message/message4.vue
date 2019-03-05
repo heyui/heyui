@@ -6,7 +6,7 @@ export default {
   methods: {
     message() {
       this.$Message(`This is a message that does not automatically close.`, 0);
-      //this.$Message({
+      // this.$Message({
       //   text:`This is a message that does not automatically close.`,
       //   timeout: 0
       // })

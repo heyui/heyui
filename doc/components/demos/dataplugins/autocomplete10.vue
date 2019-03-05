@@ -8,19 +8,17 @@
 </template>
 <script>
 
-import jsonp from 'fetch-jsonp';
-
 const loadData = function (filter, callback) {
   let input = this.input;
   let list = [];
-  for(let i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++) {
     list.push({
       key: `${i}`,
       title: `${input}-结果${filter}${i}`
-    })
+    });
   }
-  callback(list)
-}
+  callback(list);
+};
 
 export default {
   data() {
@@ -28,7 +26,7 @@ export default {
       input: '参数',
       value: '',
       loadData
-    }
+    };
   },
   methods: {
     onChange(data, trigger) {

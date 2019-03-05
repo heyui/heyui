@@ -18,15 +18,15 @@ export default {
     return {
       datas: [
         {
-          title: "Home",
-          route: { name: "Home" }
+          title: 'Home',
+          route: { name: 'Home' }
         },
         {
-          title: "Component",
-          route: { name: "Component" }
+          title: 'Component',
+          route: { name: 'Component' }
         },
         {
-          title: "Breadcrumb"
+          title: 'Breadcrumb'
         }
       ]
     };

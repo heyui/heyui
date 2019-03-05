@@ -17,15 +17,15 @@ export default {
         max_file_size: '1mb',
         filters: {
           mime_types: [
-            { title: "Image files", extensions: "jpg,gif,png" }
+            { title: 'Image files', extensions: 'jpg,gif,png' }
           ]
         }
       },
       images: []
-    }
+    };
   },
   components: {
     Qiniu: qiniu
   }
-}
+};
 </script>

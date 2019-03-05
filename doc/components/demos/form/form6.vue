@@ -37,7 +37,7 @@ export default {
         mobile: ['mobile'],
         required: ['number', 'mobile']
       }
-    }
+    };
   },
   watch: {
     required() {
@@ -47,18 +47,18 @@ export default {
   methods: {
     valid(field) {
       let validResult = this.$refs.form.validField(field);
-      log(validResult)
+      log(validResult);
       if (validResult.valid) {
-        this.$Message("验证成功");
+        this.$Message('验证成功');
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
     },
     validJs(field) {
       let validResult = this.$refs.form.validFieldJs(field);
-      log(validResult)
+      log(validResult);
       if (validResult.valid) {
-        this.$Message("验证成功");
+        this.$Message('验证成功');
       } else {
         this.$Message.error(`${validResult.label}${validResult.message}`);
       }
@@ -66,12 +66,12 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message('验证成功');
       }
     },
     reset() {
       this.$refs.form.reset();
-    },
+    }
   }
 };
 </script>

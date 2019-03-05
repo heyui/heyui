@@ -13,8 +13,8 @@ export default {
   data() {
     return {
       check1: false,
-      check2: false,
-    }
+      check2: false
+    };
   }
-}
+};
 </script>

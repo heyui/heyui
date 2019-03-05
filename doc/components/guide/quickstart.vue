@@ -7,14 +7,14 @@
     <p>示例同时支持<code>hey-cli</code>，以及<code>vue-cli</code>。</p>
     <p><a target="_blank" href="https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/">https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/</a></p>
     <p>如果搭建示例访问不了，可以直接访问<a target="_blank" href="https://github.com/vvpvvp/hey-demos">https://github.com/vvpvvp/hey-demos</a>进行尝试。</p>
-    
+
     <h3>引用js与css方式使用</h3>
     <p class="tip">如果你是一位后端的开发者，或者刚刚入门前端的人，我们建议从最简单的js，css直接引用的方式使用。</p>
     <p>尝试 HeyUI 最简单的方法是使用 <a href="https://codepen.io/vvpvvp/pen/WJYKyq" target="_blank">CodePen 上的 Hello World</a> 例子。你可以在浏览器新标签页中打开它，跟着例子学习一些基础用法。</p>
     <p>或者你也可以创建一个 <code>.html</code> 文件，然后通过如下方式引入 HeyUI：</p>
     <codes type="html" src="/codes/jscss.txt"></codes>
     <p>这里，我们提供了一个完整html的调用示例：<a target="_blank" href="/simple.html">simple.html</a>，你可以通过“查看网页源代码”的方式查看调用方式 。</p>
-    
+
     <h3>使用 <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> 脚手架(推荐)</h3>
     <p class="tip">假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识，并且对于NPM，ES6，WEBPACK已经有了足够的了解</p>
     <p>hey-cli 是我们开源的脚手架，支持单纯的ES6项目开发，也支持Vue, React项目开发。集成了开发与打包等一系列功能。</p>
@@ -85,13 +85,13 @@ new Vue({
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

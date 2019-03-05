@@ -121,12 +121,12 @@
   </div>
 </template>
 <script>
-  export default {
-    data: function () {
-      return {
-        loading1:false,
-        loading2:false
-      }
-    }
+export default {
+  data: function () {
+    return {
+      loading1: false,
+      loading2: false
+    };
   }
+};
 </script>

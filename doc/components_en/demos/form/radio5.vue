@@ -18,13 +18,13 @@ export default {
       value: null,
       param: [
         {
-          icon: "h-icon-home",
-          title: "select 1",
-          key: "a1",
-          other: "Other values"
+          icon: 'h-icon-home',
+          title: 'select 1',
+          key: 'a1',
+          other: 'Other values'
         },
-        { icon: "h-icon-user", title: "select 2", key: "a2" },
-        { icon: "h-icon-task", title: "select 3", key: "a3" }
+        { icon: 'h-icon-user', title: 'select 2', key: 'a2' },
+        { icon: 'h-icon-task', title: 'select 3', key: 'a3' }
       ]
     };
   }

@@ -15,7 +15,7 @@ export default {
     return {
       min: null,
       max: null
-    }
+    };
   }
-}
+};
 </script>

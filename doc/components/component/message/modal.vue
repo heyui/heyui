@@ -38,10 +38,9 @@
     <p>使用js调用弹出的组件式Modal，这样不仅方便参数的使用，还可以将js代码集成调用。</p>
     <!-- <blockquote>弹出框中使用的组件和上方Vue调用的组件是同一个，两种方式都能兼容。</blockquote> -->
     <example demo="message/modal11"></example>
-    
+
     <blockquote>弹出框中使用的代码</blockquote>
     <codes src="/message/modalTest.vue" type="html"></codes>
-
 
     <h3>Modal 参数</h3>
     <table class="table">

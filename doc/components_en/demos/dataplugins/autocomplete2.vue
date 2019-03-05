@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      value: "",
+      value: '',
       disabled: true
     };
   },

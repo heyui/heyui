@@ -32,7 +32,7 @@ vueHighlightJS.install = function install(Vue) {
           hljs.highlightBlock(target);
         }
       }
-    },
+    }
   });
 };
 

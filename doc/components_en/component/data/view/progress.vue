@@ -4,10 +4,9 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-progress</code>. </p>
     <h3>Basic</h3>
     <exampleEn demo="view/progress1"></exampleEn>
-    
+
     <h3>Dynamic</h3>
     <exampleEn demo="view/progress2"></exampleEn>
-
 
     <h3>Progress Property</h3>
     <table class="table">

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import store from "js/store";
-import { mapGetters } from "vuex";
+import store from 'js/store';
+import { mapGetters } from 'vuex';
 export default {
   props: {
     params: Object,
@@ -30,22 +30,22 @@ export default {
   store,
   computed: {
     ...mapGetters({
-      test: "getTest"
+      test: 'getTest'
     })
   },
   methods: {
     triggerEvent() {
       this.close();
       // Trigger event to outer layer
-      this.$emit("event", "update", this.value);
+      this.$emit('event', 'update', this.value);
     },
     go() {
-      //Note: If you call it using HeyUI.$Modal, you will not be able to use vure dependencies such as $router.
-      this.$router.push({ name: "Home" });
-      this.$emit("close");
+      // Note: If you call it using HeyUI.$Modal, you will not be able to use vure dependencies such as $router.
+      this.$router.push({ name: 'Home' });
+      this.$emit('close');
     },
     close() {
-      this.$emit("close");
+      this.$emit('close');
     }
   }
 };

@@ -5,21 +5,21 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        select: [0],
-        param: {
-          0:'选择1' ,
-          2:'选择2',
-          3:'选择3'
-        }
+export default {
+  data() {
+    return {
+      select: [0],
+      param: {
+        0: '选择1',
+        2: '选择2',
+        3: '选择3'
       }
-    },
-    methods: {
-      update() {
-        this.select = [0, 4];
-      }
+    };
+  },
+  methods: {
+    update() {
+      this.select = [0, 4];
     }
   }
+};
 </script>

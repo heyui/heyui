@@ -10,15 +10,15 @@ export default {
     return {
       select: null,
       param: [
-        { title: "Option 1", key: "a1", other: "Other values" },
-        { title: "Option 2", key: "a2" },
-        { title: "Choose 3", key: "a3" }
+        { title: 'Option 1', key: 'a1', other: 'Other values' },
+        { title: 'Option 2', key: 'a2' },
+        { title: 'Choose 3', key: 'a3' }
       ]
     };
   },
   methods: {
     update() {
-      this.select = { title: "Option 1", key: "a1", other: "Other values" };
+      this.select = { title: 'Option 1', key: 'a1', other: 'Other values' };
     }
   }
 };

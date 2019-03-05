@@ -23,7 +23,7 @@
     <example demo="basic/layout3" iframe></example>
     <h3>左上下布局</h3>
     <example demo="basic/layout4" iframe></example>
-    
+
     <h3>Layout 参数</h3>
     <table class="table">
       <tr>
@@ -55,7 +55,6 @@
         <td>-</td>
       </tr>
     </table>
-
 
     <h3>Header 参数</h3>
     <table class="table">

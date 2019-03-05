@@ -36,9 +36,9 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      list:[
+      list: [
         'h-icon-info',
         'h-icon-warn',
         'h-icon-success',
@@ -77,9 +77,9 @@ export default {
         'h-icon-upload',
         'h-icon-github',
         'h-icon-location',
-        'h-icon-help',
+        'h-icon-help'
       ]
-    }
+    };
   }
-}
+};
 </script>

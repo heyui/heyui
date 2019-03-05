@@ -34,59 +34,59 @@ export default {
     return {
       accordion: false,
       inlineCollapsed: false,
-      theme: "h-menu-dark",
+      theme: 'h-menu-dark',
       // mode: 'false',
       data: [
         {
-          title: "Home",
-          key: "welcome",
-          icon: "h-icon-home"
+          title: 'Home',
+          key: 'welcome',
+          icon: 'h-icon-home'
         },
         {
-          title: "Inquire",
-          key: "search",
-          icon: "h-icon-search"
+          title: 'Inquire',
+          key: 'search',
+          icon: 'h-icon-search'
         },
         {
-          title: "Collection",
-          key: "favor",
-          icon: "h-icon-star",
+          title: 'Collection',
+          key: 'favor',
+          icon: 'h-icon-star',
           count: 100,
           children: [
             {
-              title: "Collection-1",
-              key: "favor2-1"
+              title: 'Collection-1',
+              key: 'favor2-1'
             },
             {
-              title: "Collection-2",
-              key: "favor3-2",
+              title: 'Collection-2',
+              key: 'favor3-2',
               children: [
                 {
-                  title: "Collection-2-3",
-                  key: "favor2-3"
+                  title: 'Collection-2-3',
+                  key: 'favor2-3'
                 },
                 {
-                  title: "Collection-2-4",
-                  key: "favor3-4"
+                  title: 'Collection-2-4',
+                  key: 'favor3-4'
                 }
               ]
             }
           ]
         },
         {
-          title: "task",
-          icon: "h-icon-task",
-          key: "task",
+          title: 'task',
+          icon: 'h-icon-task',
+          key: 'task',
           children: [
             {
-              title: "task-1",
-              icon: "h-icon-bell",
-              key: "task1-1"
+              title: 'task-1',
+              icon: 'h-icon-bell',
+              key: 'task1-1'
             },
             {
-              title: "task-2",
-              icon: "h-icon-home",
-              key: "task1-2"
+              title: 'task-2',
+              icon: 'h-icon-home',
+              key: 'task1-2'
             }
           ]
         }

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import manba from "manba";
+import manba from 'manba';
 
 export default {
   data() {
@@ -15,7 +15,7 @@ export default {
       param: {
         shortcuts: [
           {
-            title: "Nearly three days",
+            title: 'Nearly three days',
             value() {
               return {
                 start: manba().add(-3, manba.DAY),

@@ -6,7 +6,7 @@
         <i class="h-split"></i>
         <Checkbox v-model="showErrorTip">是否使用tip提示错误</Checkbox>
       </FormItem>
-      <!-- 
+      <!--
           这里定义的required属性会应用与验证规则中，适用于一些变动性的必填项。
          -->
       <FormItem label="自定义数组" prop="list[0]" :required="required">
@@ -33,7 +33,7 @@ export default {
         value: null
       },
       rules: {}
-    }
+    };
   },
   watch: {
     required() {
@@ -44,12 +44,12 @@ export default {
     submit() {
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
-        this.$Message("验证成功");
+        this.$Message('验证成功');
       }
     },
     reset() {
       this.$refs.form.reset();
-    },
+    }
   }
 };
 </script>

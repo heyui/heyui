@@ -21,18 +21,18 @@ export default {
   data() {
     return {
       datas: [
-        { id: 5, name: "test 5", age: 12, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 13, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 14, address: "Shanghai" },
-        { id: 5, name: "test 5", age: 15, address: "Shanghai" },
-        { id: 6, name: "test 6", age: 16, address: "Shanghai" },
-        { id: 7, name: "test 7", age: 17, address: "Shanghai" }
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 13, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 14, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 15, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 16, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 17, address: 'Shanghai' }
       ]
     };
   },
   methods: {
     add(datas) {
-      datas.push({ id: 7, name: "Add to", age: 12, address: "Then added" });
+      datas.push({ id: 7, name: 'Add to', age: 12, address: 'Then added' });
     }
   }
 };

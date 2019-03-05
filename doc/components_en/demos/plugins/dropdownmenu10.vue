@@ -16,9 +16,9 @@ export default {
   data() {
     return {
       param: [
-        { title: "Add", key: "add", icon: "h-icon-plus" },
-        { title: "Edit", key: "edit", icon: "h-icon-edit" },
-        { title: "Delete", key: "delete", icon: "h-icon-trash" }
+        { title: 'Add', key: 'add', icon: 'h-icon-plus' },
+        { title: 'Edit', key: 'edit', icon: 'h-icon-edit' },
+        { title: 'Delete', key: 'delete', icon: 'h-icon-trash' }
       ]
     };
   },

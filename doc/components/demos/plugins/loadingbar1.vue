@@ -18,5 +18,5 @@ export default {
       this.$LoadingBar.fail();
     }
   }
-}
+};
 </script>

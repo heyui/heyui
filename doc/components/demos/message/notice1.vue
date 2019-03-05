@@ -5,7 +5,7 @@
   </p>
 </template>
 <script>
-import heyui from '../../../../src'; //demo测试路径
+import heyui from '../../../../src'; // demo测试路径
 // import heyui from 'heyui'; 实际调用
 export default {
   methods: {
@@ -16,5 +16,5 @@ export default {
       heyui.$Notice('这是一个普通的通知');
     }
   }
-}
+};
 </script>

@@ -8,14 +8,14 @@
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        select: null,
-        select1: [],
-        param: ['选择1', '选择2', '选择3'],
-        disabled: true
-      }
-    }
+export default {
+  data() {
+    return {
+      select: null,
+      select1: [],
+      param: ['选择1', '选择2', '选择3'],
+      disabled: true
+    };
   }
+};
 </script>

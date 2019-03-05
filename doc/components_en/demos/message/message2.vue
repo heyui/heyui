@@ -11,10 +11,10 @@ export default {
   methods: {
     message(type) {
       let text = {
-        info: "info",
-        success: "success",
-        warn: "warn",
-        error: "error"
+        info: 'info',
+        success: 'success',
+        warn: 'warn',
+        error: 'error'
       }[type];
       this.$Message({
         type,

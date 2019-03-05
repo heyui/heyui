@@ -1,7 +1,9 @@
 <template>
   <div class="doc">
     <h2>TimePicker</h2>
-    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datepicker</code>. </p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use
+      <code>h-datepicker</code>.
+    </p>
     <h3>Basic</h3>
     <exampleEn demo="dataplugins/timepicker1"></exampleEn>
 
@@ -10,7 +12,7 @@
 
     <h3>Control selection range</h3>
     <exampleEn demo="dataplugins/timepicker3"></exampleEn>
-    
+
     <h3>DatePicker Property</h3>
     <table class="table">
       <tr>
@@ -74,7 +76,10 @@
         <td>When choosing a week, set the starting day of the week</td>
         <td>Number</td>
         <td>1, 2, 3, 4, 5, 6, 7</td>
-        <td>Global Configuration <code>datepicker.startWeek</code>, For details, please go to <router-link to="/en/component/config">Global Configuration</router-link></td>
+        <td>Global Configuration
+          <code>datepicker.startWeek</code>, For details, please go to
+          <router-link to="/en/component/config">Global Configuration</router-link>
+        </td>
       </tr>
       <tr>
         <td>readonly</td>
@@ -138,7 +143,7 @@
       </tr>
       <tr>
         <td>minutes</td>
-        <td>Custom optional minutes	</td>
+        <td>Custom optional minutes</td>
         <td>Function</td>
         <td>-</td>
         <td>-</td>

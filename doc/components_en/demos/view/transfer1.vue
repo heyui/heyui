@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     let sourceDatas1 = this.generateDemoData('key');
     let sourceDatas2 = this.generateDemoData('id');
     return {
@@ -18,23 +18,23 @@ export default {
       sourceDatas1,
       option1: {
         ltText: 'Shift left',
-        rtText: 'Right shift',
+        rtText: 'Right shift'
       },
       value2: [1, 2],
       option2: {
         rtIcon: 'h-icon-plus',
-        ltIcon: 'h-icon-minus',
+        ltIcon: 'h-icon-minus'
       },
-      sourceDatas2,
+      sourceDatas2
     };
   },
   methods: {
-    generateDemoData (propKey) {
+    generateDemoData(propKey) {
       let data = [];
       for (let i = 0; i < 10; i++) {
         data.push({
           [propKey]: i + 1,
-          text: `Option ${i + 1}`,
+          text: `Option ${i + 1}`
         });
       }
       return data;

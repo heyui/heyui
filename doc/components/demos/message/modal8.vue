@@ -12,13 +12,13 @@ export default {
   data() {
     return {
       opened: false,
-      test //在这里定义引用
-    }
+      test // 在这里定义引用
+    };
   },
   methods: {
     trigger(data) {
       this.$Message.success(data);
     }
   }
-}
+};
 </script>

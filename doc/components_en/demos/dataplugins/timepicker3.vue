@@ -10,25 +10,25 @@ export default {
   data() {
     return {
       value: '',
-      param:{
-        hours(){
+      param: {
+        hours() {
           let hours = [];
-          for(let i = 9; i <= 20; i++){
+          for (let i = 9; i <= 20; i++) {
             hours.push(i);
           }
           return hours;
         },
-        minutes(hour){
+        minutes(hour) {
           let minutes = [];
-          if(hour<12){
+          if (hour < 12) {
             minutes.push(7, 15, 23, 17, 34, 47, 58);
-          }else{
+          } else {
             minutes.push(1, 3, 34, 45, 46, 47, 52);
           }
           return minutes;
         }
       }
-    }
+    };
   }
-}
+};
 </script>

@@ -14,10 +14,10 @@ export default {
   data() {
     return {
       data: {
-        a: "step1",
-        b: "step2",
-        c: "step3",
-        d: "step4"
+        a: 'step1',
+        b: 'step2',
+        c: 'step3',
+        d: 'step4'
       },
       step: 0
     };

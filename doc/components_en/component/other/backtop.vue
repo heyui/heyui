@@ -5,7 +5,7 @@
 
     <h3>Basic</h3>
     <exampleEn demo="other/backtotop1"></exampleEn>
-    
+
     <h3>Custom styles and content</h3>
     <exampleEn demo="other/backtotop2"></exampleEn>
     <p>style:</p>
@@ -54,12 +54,12 @@
 export default {
   data() {
     return {
-    }
+    };
   },
   methods: {
     getTarget() {
       return document.querySelector('.right-frame');
     }
   }
-}
+};
 </script>

@@ -32,14 +32,14 @@ export default {
       param2: { 1: '选择1', 2: '选择2', 3: '选择3' },
       param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
       param4: [{ name: '选择0', code: 0 }, { name: '选择1', code: 'a1', other: '其他值' }, { name: '选择2', code: 'a2' }, { name: '选择3', code: 'a3' }]
-    }
+    };
   },
   methods: {
     checkAll() {
       if (this.value1.length == 3) {
         this.value1.splice(0, 3);
       } else {
-        this.value1 = ["选择1", "选择2", "选择3"];
+        this.value1 = ['选择1', '选择2', '选择3'];
       }
     }
   }

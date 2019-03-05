@@ -13,17 +13,17 @@ export default {
     return {
       value: {},
       param: {
-        shortcuts:[{
+        shortcuts: [{
           title: '近三天',
-          value(){
+          value() {
             return {
               start: manba().add(-3, manba.DAY),
-              end: manba(),
+              end: manba()
             };
           }
         }]
       }
-    }
+    };
   }
-}
+};
 </script>

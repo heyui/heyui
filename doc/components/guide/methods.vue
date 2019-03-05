@@ -31,15 +31,15 @@
       <li><code>HeyUI.config(key, value)</code>: 设置配置，<code>key</code>可以是路径方式，例：<code>tree.default</code></li>
       <li><code>HeyUI.getOption(key)</code>: 获取配置。</li>
     </ul>
-    
+
     <h4>配置字典</h4>
     <p>系统中使用的字典，我们有两种方式可以定义字典。</p>
     <ul class="text-ul">
       <li><code>HeyUI.initDict({key: value})</code>: 初始化字典对象</li>
       <li><code>HeyUI.addDict(key, value)</code> 添加字典</li>
     </ul>
-    
-    <h4>应用字典</h4>    
+
+    <h4>应用字典</h4>
     <p>在一些展示的数据中，我们需要通过<code>key/keys</code>获取对应的文本。</p>
     <ul class="text-ul">
       <li>通过 filter <code v-html="'{{value | dictMapping(key)}}'"></code>: 展示对应的文本</li>
@@ -52,13 +52,13 @@
 <script>
 
 export default {
-  data () {
+  data() {
     return {
-    }
+    };
   },
   methods: {
   },
-  components:{
+  components: {
   }
-}
+};
 </script>

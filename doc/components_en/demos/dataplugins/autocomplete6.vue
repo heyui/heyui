@@ -25,7 +25,7 @@ export default {
         minWord: 0,
         loadData: this.loadData
       },
-      keyword: ""
+      keyword: ''
     };
   },
   methods: {

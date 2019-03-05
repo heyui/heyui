@@ -4,7 +4,7 @@
 
     <h3>Basic</h3>
     <exampleEn demo="other/scrollintoview1"></exampleEn>
-    
+
     <codes type="javascript">scrollIntoView(someElement, {
   time: 500, // half a second
   align:{
