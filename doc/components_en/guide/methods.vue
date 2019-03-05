@@ -8,20 +8,20 @@
     <p><code>v-wordlimit</code>: limit word length</p>
     <p><code>v-autosize</code>: auto setting textarea height</p>
 
-    <example demo="other/directive"></example>
+    <exampleEn demo="other/directive"></exampleEn>
 
     <h3>$Message,$Notice,$Modal,$Confirm</h3>
-    <example demo="message/messageMethods"></example>
+    <exampleEn demo="message/messageMethods"></exampleEn>
     <h3>$Clipboard</h3>
-    <example demo="other/clipboard1"></example>
+    <exampleEn demo="other/clipboard1"></exampleEn>
     <h3>$ImagePreview</h3>
-    <example demo="imagepreview/imagepreview1"></example>
+    <exampleEn demo="imagepreview/imagepreview1"></exampleEn>
     <h3>$LoadingBar</h3>
-    <example demo="plugins/loadingbar1"></example>
+    <exampleEn demo="plugins/loadingbar1"></exampleEn>
     <h3>$Loading</h3>
-    <example demo="dataview/loading2"></example>
+    <exampleEn demo="dataview/loading2"></exampleEn>
     <h3>$ScrollIntoView</h3>
-    <example demo="other/scrollintoview1"></example>
+    <exampleEn demo="other/scrollintoview1"></exampleEn>
 
     <h3>Global configuration parameters</h3>
     <p>By <code>HeyUI</code> configured globally for some parameters, specific reference configuration items: <a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></p>

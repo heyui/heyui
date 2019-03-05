@@ -4,35 +4,35 @@
 
     <h3>Confirm</h3>
     <!-- <h4>使用方法调用Confirm</h4> -->
-    <example demo="message/modal5"></example>
+    <exampleEn demo="message/modal5"></exampleEn>
 
     <h3>Basic</h3>
-    <example demo="message/modal6"></example>
+    <exampleEn demo="message/modal6"></exampleEn>
 
     <h3>Custom Modal</h3>
-    <example demo="message/modal14"></example>
+    <exampleEn demo="message/modal14"></exampleEn>
 
     <h3>Fullscreen modal</h3>
-    <example demo="message/modal12"></example>
+    <exampleEn demo="message/modal12"></exampleEn>
 
     <h3>Define buttons</h3>
-    <example demo="message/modal7"></example>
+    <exampleEn demo="message/modal7"></exampleEn>
 
     <h3>Click mask cannot be closed</h3>
-    <example demo="message/modal3"></example>
+    <exampleEn demo="message/modal3"></exampleEn>
 
     <h3>Vertical center modal</h3>
-    <example demo="message/modal4"></example>
+    <exampleEn demo="message/modal4"></exampleEn>
 
     <h3>Maskless modal</h3>
-    <example demo="message/modal2"></example>
+    <exampleEn demo="message/modal2"></exampleEn>
 
     <h3>Divider line modal</h3>
-    <example demo="message/modal9"></example>
+    <exampleEn demo="message/modal9"></exampleEn>
 
     <h3>use component content</h3>
     <p>Use js to call the pop-up component Modal, which not only facilitates the use of parameters, but also integrates calls to js code.</p>
-    <example demo="message/modal11"></example>
+    <exampleEn demo="message/modal11"></exampleEn>
     
     <blockquote>The code used in the popup box</blockquote>
     <codes src="/message/modalTest.vue" type="html"></codes>

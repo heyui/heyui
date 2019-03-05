@@ -5,10 +5,10 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-timeline</code>, <code>h-timelineitem</code>. </p>
     <h3>Example</h3>
     <p>Show the timeline, you can use <code>color</code>customize the logo color, <code>icon</code> custom icon, the parent <code>pending</code> set the last loading style.</p>
-    <example demo="view/timeline1"></example>
+    <exampleEn demo="view/timeline1"></exampleEn>
     <h3>Example 2</h3>
     <p>To display the timeline with the time on the left, you can <code>:time="true"</code> set the left-hand style and <code>:time-width="200"</code> set the left-hand width.</p>
-    <example demo="view/timeline2"></example>
+    <exampleEn demo="view/timeline2"></exampleEn>
 
     <h3>Timeline Property</h3>
     <table class="table">

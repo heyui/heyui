@@ -4,13 +4,13 @@
 
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-steps</code>. </p>
     <h3>Basic</h3>
-    <example demo="plugins/step1"></example>
+    <exampleEn demo="plugins/step1"></exampleEn>
 
     <h3>Custom Icon, Description</h3>
-    <example demo="plugins/step2"></example>
+    <exampleEn demo="plugins/step2"></exampleEn>
 
     <h3>Identify key steps using key values</h3>
-    <example demo="plugins/step3"></example>
+    <exampleEn demo="plugins/step3"></exampleEn>
 
     <h3>Steps Property</h3>
     <table class="table">

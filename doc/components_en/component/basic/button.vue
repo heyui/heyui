@@ -6,11 +6,11 @@
     <h3>Component</h3>
     <p>Use basic Button components to implement various button styles.</p>
     <p class="tip">If you need to use special event handler such as <code>stop</code>, please use <code>stop</code> parameter.</p>
-    <example demo="basic/button2"></example>
+    <exampleEn demo="basic/button2"></exampleEn>
 
     <h3>Native class</h3>
     <p>Using the basic class to achieve a variety of button styles</p>
-    <example demo="basic/button1"></example>
+    <exampleEn demo="basic/button1"></exampleEn>
 
     <h3>class list</h3>
     <table class="table">

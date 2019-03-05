@@ -3,19 +3,19 @@
     <h2>Tooltip</h2>
     <blockquote>Note: if tooltip is on the right side of the page and the display is abnormal, please use the style to set the fixed width for the content.</blockquote>
     <h3>Basic</h3>
-    <example demo="message/tooltip1"></example>
+    <exampleEn demo="message/tooltip1"></exampleEn>
 
     <h3>Tips for different locations</h3>
-    <example demo="message/tooltip2"></example>
+    <exampleEn demo="message/tooltip2"></exampleEn>
 
     <h3>Triggered by a click</h3>
-    <example demo="message/tooltip3"></example>
+    <exampleEn demo="message/tooltip3"></exampleEn>
 
     <h3>Custom content</h3>
-    <example demo="message/tooltip4"></example>
+    <exampleEn demo="message/tooltip4"></exampleEn>
 
     <h3>Custom style</h3>
-    <example demo="message/tooltip5"></example>
+    <exampleEn demo="message/tooltip5"></exampleEn>
 
     <h3>Tooltip Property</h3>
     <table class="table">

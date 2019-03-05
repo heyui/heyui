@@ -9,27 +9,27 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-dropdowncustom</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="plugins/dropdowncustom1"></example>
+    <exampleEn demo="plugins/dropdowncustom1"></exampleEn>
 
     <h3>Different style</h3>
-    <example demo="plugins/dropdowncustom2"></example>
+    <exampleEn demo="plugins/dropdowncustom2"></exampleEn>
 
     <h3>Whether to show the switch icon</h3>
-    <example demo="plugins/dropdowncustom3"></example>
+    <exampleEn demo="plugins/dropdowncustom3"></exampleEn>
 
     <h3>Content display location</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
-    <example demo="plugins/dropdowncustom4"></example>
+    <exampleEn demo="plugins/dropdowncustom4"></exampleEn>
 
     <h3>Custom content location</h3>
     <p>Separately control the displacement of left, top.</p>
-    <example demo="plugins/dropdowncustom6"></example>
+    <exampleEn demo="plugins/dropdowncustom6"></exampleEn>
 
     <h3>Right click trigger frame</h3>
-    <example demo="plugins/dropdowncustom7"></example>
+    <exampleEn demo="plugins/dropdowncustom7"></exampleEn>
 
     <h3>Custom drop control</h3>
-    <example demo="plugins/dropdowncustom5"></example>
+    <exampleEn demo="plugins/dropdowncustom5"></exampleEn>
 
     <h3>DropdownCustom Property</h3>
     <table class="table">

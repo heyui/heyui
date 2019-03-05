@@ -4,22 +4,22 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-radio</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="form/radio2"></example>
+    <exampleEn demo="form/radio2"></exampleEn>
 
     <h3>Component</h3>
     <p>It is recommended to use the data mode radio selector, and use js to implement the entire interaction with higher compatibility. </p>
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>
-    <example demo="form/radio1"></example>
+    <exampleEn demo="form/radio1"></exampleEn>
 
     <h3>Custom key, title</h3>
-    <example demo="form/radio3"></example>
+    <exampleEn demo="form/radio3"></exampleEn>
 
     <h3>Custom Show</h3>
-    <example demo="form/radio5"></example>
+    <exampleEn demo="form/radio5"></exampleEn>
 
     <h3>Use dictionary</h3>
     <p>Hey UI will provide a data dictionary system call, and built-in <code>dictMapping</code>methods to display. For details, go to <router-link to="/en/component/config">Global Configuration</router-link>。</p>
-    <example demo="form/radio4"></example>
+    <exampleEn demo="form/radio4"></exampleEn>
 
     <h3>Radio Property</h3>
     <table class="table">

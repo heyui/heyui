@@ -3,22 +3,22 @@
     <h2>Message</h2>
     <h3>Basic</h3>
     <blockquote>There are two kinds of calls written here, which are actually the same method object. The following use cases use the vue call to make an example. The js call mode is the same as the vue call.</blockquote>
-    <example demo="message/message1"></example>
+    <exampleEn demo="message/message1"></exampleEn>
 
     <h3>Different types of message prompts</h3>
-    <example demo="message/message2"></example>
+    <exampleEn demo="message/message2"></exampleEn>
 
     <h3>Different types of Message hints</h3>
-    <example demo="message/message3"></example>
+    <exampleEn demo="message/message3"></exampleEn>
 
     <h3>Do not close automatically</h3>
-    <example demo="message/message4"></example>
+    <exampleEn demo="message/message4"></exampleEn>
 
     <h3>Loading</h3>
-    <example demo="message/message5"></example>
+    <exampleEn demo="message/message5"></exampleEn>
 
     <h3>Set global auto-off time</h3>
-    <example demo="message/message6"></example>
+    <exampleEn demo="message/message6"></exampleEn>
 
 
     <h3>Message Property</h3>

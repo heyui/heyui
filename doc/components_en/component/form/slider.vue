@@ -3,19 +3,19 @@
     <h2>Slider</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-slider</code>. </p>
     <h3>Basic</h3>
-    <example demo="form/slider1"></example>
+    <exampleEn demo="form/slider1"></exampleEn>
 
     <h3>Readonly</h3>
-    <example demo="form/slider2"></example>
+    <exampleEn demo="form/slider2"></exampleEn>
 
     <h3>Step</h3>
-    <example demo="form/slider3"></example>
+    <exampleEn demo="form/slider3"></exampleEn>
 
     <h3>Custom display</h3>
-    <example demo="form/slider4"></example>
+    <exampleEn demo="form/slider4"></exampleEn>
 
     <h3>Hide prompts</h3>
-    <example demo="form/slider5"></example>
+    <exampleEn demo="form/slider5"></exampleEn>
     
     <h3>Silder Property</h3>
     <table class="table">

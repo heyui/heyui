@@ -8,13 +8,13 @@
   </div>
 </template>
 <script>
-import components from "../demos/demos";
+import components from '../demos/demos';
 export default {
-  props: ["demo", "noDemo"],
+  props: ['demo', 'noDemo'],
   data() {
     let com = this.demo;
-    let index = com.indexOf("/");
-    com = com.replace("/", "");
+    let index = com.indexOf('/');
+    com = com.replace('/', '');
     com =
       com.substr(0, index) +
       com.charAt(index).toUpperCase() +
@@ -22,13 +22,13 @@ export default {
     return {
       com,
       path: this.demo,
-      sourcecode: "",
+      sourcecode: '',
       expand: false
     };
   },
   methods: {},
   mounted() {
-    $.get(`/components/demos/${this.path}.vue`, resp => {
+    $.get(`/components_en/demos/${this.path}.vue`, resp => {
       this.sourcecode = resp;
     });
   },

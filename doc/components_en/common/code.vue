@@ -9,13 +9,13 @@ export default {
   props: ['src', 'type'],
   data() {
     return {
-      sourcecode: '',
-    }
+      sourcecode: ''
+    };
   },
   mounted() {
-    $.get(`/components/demos${this.src}`, (resp) => {
+    $.get(`/components_en/demos${this.src}`, (resp) => {
       this.sourcecode = resp;
-    })
+    });
   }
-}
+};
 </script>

@@ -3,16 +3,16 @@
     <h2>Panel</h2>
   
     <h3>Basic</h3>
-    <example demo="view/panel1"></example>
+    <exampleEn demo="view/panel1"></exampleEn>
     
     <h3>Panel head customization</h3>
-    <example demo="view/panel2"></example>
+    <exampleEn demo="view/panel2"></exampleEn>
   
     <h3>Rimless</h3>
-    <example demo="view/panel3"></example>
+    <exampleEn demo="view/panel3"></exampleEn>
 
     <h3>Complex typesetting</h3>
-    <example demo="view/panel4"></example>
+    <exampleEn demo="view/panel4"></exampleEn>
     
   </div>
 </template>

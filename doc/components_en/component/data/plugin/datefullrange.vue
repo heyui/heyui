@@ -4,7 +4,7 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datefullpicker</code>. </p>
     
     <h4>Super date picker</h4>
-    <example demo="dataplugins/daterangepicker8"></example>
+    <exampleEn demo="dataplugins/daterangepicker8"></exampleEn>
 
     
     <h3>DateFullRangePicker Property</h3>

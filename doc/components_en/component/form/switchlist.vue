@@ -4,18 +4,18 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-switchlist</code>. </p>
     <h3>Basic</h3>
     <p>Use <code>v-model</code> and <code>datas</code> parameters to complete the whole call.</p>
-    <example demo="form/switchlist1"></example>
+    <exampleEn demo="form/switchlist1"></exampleEn>
 
     <h3>Disabled</h3>
-    <example demo="form/switchlist2"></example>
+    <exampleEn demo="form/switchlist2"></exampleEn>
 
     <h3>Smaller size</h3>
     <p>Use <code>small</code> parameter defines a smaller size SwitchList.</p>
-    <example demo="form/switchlist3"></example>
+    <exampleEn demo="form/switchlist3"></exampleEn>
 
     <h3>Data dictionary</h3>
     <p>Hey UI will provide a data dictionary call model, and built-in <code>dictMapping</code> methods to display. For details, go to <router-link to="/en/component/config">Global Configuration</router-link>.</p>
-    <example demo="form/switchlist4"></example>
+    <exampleEn demo="form/switchlist4"></exampleEn>
 
     <h3>SwitchList Property</h3>
     <table class="table">

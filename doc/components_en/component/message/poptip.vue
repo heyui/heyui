@@ -2,7 +2,7 @@
   <div class="doc">
     <h2>Poptip</h2>
     <h3>Basic</h3>
-    <example demo="message/poptip1"></example>
+    <exampleEn demo="message/poptip1"></exampleEn>
 
     <h3>Poptip Property</h3>
     <table class="table">

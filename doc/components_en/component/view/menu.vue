@@ -4,17 +4,17 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-menu</code>. </p>
     <h3>Basic</h3>
     <p>The selected method is mainly focused on <code>vue-router</code> the selection logic of a single page application. </p>
-    <example demo="view/menu1"></example>
+    <exampleEn demo="view/menu1"></exampleEn>
 
     <p>code with <code>vue-router</code>：</p>
     <codes src="/codes/menu1.txt" type="javascript"></codes>
 
     <h3>White Theme</h3>
-    <example demo="view/menu2"></example>
+    <exampleEn demo="view/menu2"></exampleEn>
 
     <h3>Customize</h3>
     <p>This style is your own set of class, you can make any adjustments.</p>
-    <example demo="view/menu3"></example>
+    <exampleEn demo="view/menu3"></exampleEn>
     <p>style：</p>
     <codes src="/codes/menu.txt" type="less"></codes>
 

@@ -4,10 +4,10 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-backtop</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="other/backtotop1"></example>
+    <exampleEn demo="other/backtotop1"></exampleEn>
     
     <h3>Custom styles and content</h3>
-    <example demo="other/backtotop2"></example>
+    <exampleEn demo="other/backtotop2"></exampleEn>
     <p>style:</p>
     <codes src="/codes/backtop1.txt" type="less"></codes>
     <div v-height="10"></div>

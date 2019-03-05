@@ -4,7 +4,7 @@
     <blockquote>1.13.0+</blockquote>
 
     <h3>Basic</h3>
-    <example demo="other/clipboard1"></example>
+    <exampleEn demo="other/clipboard1"></exampleEn>
   
 
     <h3>Clipboard Property</h3>

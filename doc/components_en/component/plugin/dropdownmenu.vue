@@ -9,37 +9,37 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-dropdownmenu</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="plugins/dropdownmenu1"></example>
+    <exampleEn demo="plugins/dropdownmenu1"></exampleEn>
   
     <h3>Different style</h3>
-    <example demo="plugins/dropdownmenu2"></example>
+    <exampleEn demo="plugins/dropdownmenu2"></exampleEn>
   
     <h3>Combination</h3>
-    <example demo="plugins/dropdownmenu9"></example>
+    <exampleEn demo="plugins/dropdownmenu9"></exampleEn>
   
     <h3>Different positions</h3>
     <p><code>placement</code>: top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end</p>
-    <example demo="plugins/dropdownmenu3"></example>
+    <exampleEn demo="plugins/dropdownmenu3"></exampleEn>
 
     <h3>Different trigger methods</h3>
     <p><code>trigger</code>: hover, click</p>
-    <example demo="plugins/dropdownmenu4"></example>
+    <exampleEn demo="plugins/dropdownmenu4"></exampleEn>
 
     <h3>Right-click trigger</h3>
     <p><code>trigger</code>: contextMenu</p>
-    <example demo="plugins/dropdownmenu10"></example>
+    <exampleEn demo="plugins/dropdownmenu10"></exampleEn>
   
     <h3>Do not add the right icon by default</h3>
-    <example demo="plugins/dropdownmenu5"></example>
+    <exampleEn demo="plugins/dropdownmenu5"></exampleEn>
 
     <h3>Same width as dom</h3>
-    <example demo="plugins/dropdownmenu6"></example>
+    <exampleEn demo="plugins/dropdownmenu6"></exampleEn>
   
     <h3>Custom width</h3>
-    <example demo="plugins/dropdownmenu7"></example>
+    <exampleEn demo="plugins/dropdownmenu7"></exampleEn>
   
     <h3>Add unread</h3>
-    <example demo="plugins/dropdownmenu8"></example>
+    <exampleEn demo="plugins/dropdownmenu8"></exampleEn>
   
     <h3>DropdownMenu Property</h3>
     <table class="table">

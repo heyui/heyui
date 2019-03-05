@@ -4,17 +4,17 @@
   
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-treepicker</code>. </p>
     <h3>Basic</h3>
-    <example demo="plugins/treepicker1"></example>
+    <exampleEn demo="plugins/treepicker1"></exampleEn>
   
     <h3>Multiple</h3>
-    <example demo="plugins/treepicker2"></example>
+    <exampleEn demo="plugins/treepicker2"></exampleEn>
 
     <h3>Custom theme</h3>
-    <example demo="plugins/treepicker4"></example>
+    <exampleEn demo="plugins/treepicker4"></exampleEn>
 
     <h3>Global configuration</h3>
     <blockquote>Using the configuration items in treeconfig</blockquote>
-    <example demo="plugins/treepicker3"></example>
+    <exampleEn demo="plugins/treepicker3"></exampleEn>
 
 
     <h3>TreePicker Property</h3>

@@ -6,34 +6,34 @@
     <h3>Basic</h3>
     <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>Set the data mode: <code>dataMode</code>, When the data passed is a list with key and parent fields, then the <code>list</code>component will automatically calculate the tree model according to the key and parent fields (parent can be an array correspondence). If the data passed is a tree model, Then pass it <code>tree</code>。</p>
-    <example demo="plugins/tree1"></example>
+    <exampleEn demo="plugins/tree1"></exampleEn>
   
     <h3>Multiple selection, select mode ALL</h3>
     <p><code>chooseMode</code>: all, only the parent is selected when the subset is selected. If the parent selects, the return data only returns the parent and the subset does not return.</p>
-    <example demo="plugins/tree2"></example>
+    <exampleEn demo="plugins/tree2"></exampleEn>
   
     <h3>Multiple choices, the selection mode is SOME</h3>
     <p><code>chooseMode</code>: some, as long as the subset is selected, the parent is selected and the returned data is all the selected data.</p>
-    <example demo="plugins/tree3"></example>
+    <exampleEn demo="plugins/tree3"></exampleEn>
 
     <h3>Multiple selections, the selection mode is INDEPENDENT</h3>
     <p><code>chooseMode</code>: independent, The choice of the parent's children is irrelevant, and the selected data is returned in the end.</p>
-    <example demo="plugins/tree8"></example>
+    <exampleEn demo="plugins/tree8"></exampleEn>
   
     <h3>Search</h3>
-    <example demo="plugins/tree4"></example>
+    <exampleEn demo="plugins/tree4"></exampleEn>
   
     <h3>All data is loaded asynchronously</h3>
     <p>In the passed param parameter, define the field: <code>getTotalDatas</code>, Get the data returned asynchronously, where the data is returned once.</p>
-    <example demo="plugins/tree5"></example>
+    <exampleEn demo="plugins/tree5"></exampleEn>
 
     <h3>Step-by-step asynchronous loading</h3>
     <p>In the passed param parameter, define the field: <code>getDatas</code>. Get the data returned asynchronously, where the data belongs to each level returned.</p>
     <p>Asynchronous step-by-step loading is not recommended <code>multiple</code>. For step-by-step asynchronous loading, use a single selection mode.</p>
-    <example demo="plugins/tree6"></example>
+    <exampleEn demo="plugins/tree6"></exampleEn>
 
     <h3>Global configuration</h3>
-    <example demo="plugins/tree7"></example>
+    <exampleEn demo="plugins/tree7"></exampleEn>
 
     <h3>Tree Property</h3>
     <table class="table">

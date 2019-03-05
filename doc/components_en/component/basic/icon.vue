@@ -21,7 +21,7 @@
     <p>We have adopted a basic set of icon libraries.</p>
     <h3>Simple</h3>
     <p>Using the basic class <code>.h-icon-{name}</code>.</p>
-    <example demo="basic/icon"></example>
+    <exampleEn demo="basic/icon"></exampleEn>
 
     <h3>Icon Library</h3>
     <Row :space="15">
@@ -36,9 +36,9 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      list:[
+      list: [
         'h-icon-info',
         'h-icon-warn',
         'h-icon-success',
@@ -77,9 +77,9 @@ export default {
         'h-icon-upload',
         'h-icon-github',
         'h-icon-location',
-        'h-icon-help',
+        'h-icon-help'
       ]
-    }
+    };
   }
-}
+};
 </script>

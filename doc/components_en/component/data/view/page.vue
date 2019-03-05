@@ -4,28 +4,28 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-pagination</code>. </p>
     <h3>Basic</h3>
     <div>
-      <example demo="dataview/pagination1"></example>
+      <exampleEn demo="dataview/pagination1"></exampleEn>
     </div>
     <h3>Mini</h3>
     <div>
-      <example demo="dataview/pagination2"></example>
+      <exampleEn demo="dataview/pagination2"></exampleEn>
     </div>
     <h3>Custom</h3>
     <p>The paging control consists of four parts: <code>total</code>,<code>sizes</code>,<code>pager</code>,<code>jumper</code>, custom <code>layout</code> attribute definition components, and sort order.</p>
     <div>
-      <example demo="dataview/pagination3"></example>
+      <exampleEn demo="dataview/pagination3"></exampleEn>
     </div>
     <h3>Custom example</h3>
     <div>
-      <example demo="dataview/pagination4"></example>
+      <exampleEn demo="dataview/pagination4"></exampleEn>
     </div>
     <h3>Center alignment</h3>
     <div>
-      <example demo="dataview/pagination5"></example>
+      <exampleEn demo="dataview/pagination5"></exampleEn>
     </div>
     <h3>Right alignment</h3>
     <div>
-      <example demo="dataview/pagination6"></example>
+      <exampleEn demo="dataview/pagination6"></exampleEn>
     </div>
 
     <h3>Pagination Property</h3>

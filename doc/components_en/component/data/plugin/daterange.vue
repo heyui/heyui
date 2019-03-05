@@ -5,32 +5,32 @@
     <h3>Basic</h3>
     <p>By default, the data uses {start,end} objects and can also customize parameters. For details, refer to <router-link to="/en/component/config">Global Configuration</router-link></p>
     <div>
-      <example demo="dataplugins/daterangepicker1"></example>
+      <exampleEn demo="dataplugins/daterangepicker1"></exampleEn>
     </div>
     <h3>Disabled</h3>
     <div>
-      <example demo="dataplugins/daterangepicker4"></example>
+      <exampleEn demo="dataplugins/daterangepicker4"></exampleEn>
     </div>
     <h3>Control selection range</h3>
     <div>
-      <example demo="dataplugins/daterangepicker5"></example>
+      <exampleEn demo="dataplugins/daterangepicker5"></exampleEn>
     </div>
     <!-- <h3>选择周控件</h3>
     <div>
-      <example demo="dataplugins/daterangepicker7"></example>
+      <exampleEn demo="dataplugins/daterangepicker7"></exampleEn>
     </div> -->
     <h3>Shortcut</h3>
     <div>
-      <example demo="dataplugins/daterangepicker6"></example>
+      <exampleEn demo="dataplugins/daterangepicker6"></exampleEn>
     </div>
     <h3>Date control alone chooses to end</h3>
     <p>The requirements for some optional start or end date can be controlled by the start and end parameters.</p>
     <div>
-      <example demo="dataplugins/daterangepicker2"></example>
+      <exampleEn demo="dataplugins/daterangepicker2"></exampleEn>
     </div>
     <h3>Select date and time range controls</h3>
     <div>
-      <example demo="dataplugins/daterangepicker3"></example>
+      <exampleEn demo="dataplugins/daterangepicker3"></exampleEn>
     </div>
 
     <h3>DateRangePicker Property</h3>

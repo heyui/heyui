@@ -37,7 +37,7 @@
     </ul>
 
     <h4>Example</h4>
-    <example demo="basic/demo2"></example>
+    <exampleEn demo="basic/demo2"></exampleEn>
 
     <h3>Global configuration parameters</h3>
     <p>By <code>HeyUI</code> configured globally for some parameters, specific reference configuration items: <a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></p>
@@ -52,11 +52,11 @@
 HeyUI.config('dict.titleName', "title");</codes>
     <h4>Example Tree</h4>
     <p>For system configuration, please refer to demo's <a target="_blank" href="https://github.com/heyui/heyui-admin/blob/master/src/js/config/tree-config.js">tree-config.js</a>。</p>
-    <example demo="plugins/tree7"></example>
+    <exampleEn demo="plugins/tree7"></exampleEn>
 
     <h4>Example Autocomplete</h4>
     <p>For system configuration, please refer to demo's <a target="_blank" href="https://github.com/heyui/heyui-admin/blob/master/src/js/config/autocomplete-config.js">autocomplete-config.js</a>。</p>
-    <example demo="dataplugins/autocomplete13"></example>
+    <exampleEn demo="dataplugins/autocomplete13"></exampleEn>
 
     <h4>uploader, menu, modal, page, datepicker</h4>
     <p>These components, we have provided some parameters can be configured, please check the <code><a href="https://github.com/heyui/heyui/blob/master/src/utils/config.js" target="_blank">config.js</a></code></p>

@@ -9,28 +9,28 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-uploader</code>. </p>
 
     <h3>Single image upload-file object</h3>
-    <example demo="dataplugins/uploader1"></example>
+    <exampleEn demo="dataplugins/uploader1"></exampleEn>
   
     <h3>Multiple image upload - array of file objects</h3>
     <p>Add the limit parameter to limit the total number of uploads</p>
-    <example demo="dataplugins/uploader2"></example>
+    <exampleEn demo="dataplugins/uploader2"></exampleEn>
 
     <h3>Single image upload - url</h3>    
-    <example demo="dataplugins/uploader3"></example>
+    <exampleEn demo="dataplugins/uploader3"></exampleEn>
 
   
     <h3>Multiple image upload - url array</h3>
-    <example demo="dataplugins/uploader4"></example>
+    <exampleEn demo="dataplugins/uploader4"></exampleEn>
 
     <h3>Single file upload</h3>
-    <example demo="dataplugins/uploader5"></example>
+    <exampleEn demo="dataplugins/uploader5"></exampleEn>
   
     <h3>Multi-file upload</h3>
-    <example demo="dataplugins/uploader6"></example>
+    <exampleEn demo="dataplugins/uploader6"></exampleEn>
 
   
     <h3>Drag and drop upload</h3>
-    <example demo="dataplugins/uploader7"></example>
+    <exampleEn demo="dataplugins/uploader7"></exampleEn>
 
 
     <h3>Uploader Property</h3>

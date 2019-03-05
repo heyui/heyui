@@ -15,7 +15,7 @@
 
     <h3>Example</h3>
     <p>By referring to HeyUI, we can simply write an application interface.</p>
-    <example demo="basic/demo"></example>
+    <exampleEn demo="basic/demo"></exampleEn>
 
     <h3>Support Environment</h3>
     <p>Modern browsers and IE9 and above.</p>

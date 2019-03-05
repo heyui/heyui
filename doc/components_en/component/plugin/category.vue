@@ -7,15 +7,15 @@
     <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
     <p>Set the data mode: <code>dataMode</code>, When the data passed is a list with key and parent fields, then the <code>list</code>component will automatically calculate the tree model according to the key and parent fields (parent can be an array correspondence). If the data passed is a tree model, Then pass it <code>tree</code>。</p>
     
-    <example demo="plugins/category1"></example> 
+    <exampleEn demo="plugins/category1"></exampleEn> 
 
     <h3>Object Data</h3>
     <p>Set <code>checkable: false</code> parameter in data object to control checkable。</p>
-    <example demo="plugins/category2"></example> 
+    <exampleEn demo="plugins/category2"></exampleEn> 
   
     <h3>Dict configuration</h3>
     
-    <example demo="plugins/category3"></example> 
+    <exampleEn demo="plugins/category3"></exampleEn> 
 
     <h3>Category Property</h3>
     <table class="table">

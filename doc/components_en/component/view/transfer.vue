@@ -2,13 +2,13 @@
   <div class="doc">
     <h2>Transfer</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-transfer</code>. </p>
-    
+
     <h3>Basic use</h3>
-    <example demo="view/transfer1"></example>
+    <exampleEn demo="view/transfer1"></exampleEn>
     <h3>Filter</h3>
-    <example demo="view/transfer2"></example>
+    <exampleEn demo="view/transfer2"></exampleEn>
     <h3>Custom definition</h3>
-    <example demo="view/transfer3"></example>
+    <exampleEn demo="view/transfer3"></exampleEn>
 
     <h3>Transfer Property</h3>
     <table class="table">
@@ -42,7 +42,6 @@
         <td>-</td>
       </tr>
     </table>
-
 
     <h3>Transfer Event</h3>
     <table class="table">
@@ -115,7 +114,6 @@
         <td>h-icon-left, h-icon-right</td>
       </tr>
     </table>
-
 
     <h3>Slot Property</h3>
     <table class="table">

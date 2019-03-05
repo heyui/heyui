@@ -5,22 +5,22 @@
     <blockquote>1.10.0+</blockquote>
 
     <h3>Basic</h3>
-    <example demo="carousel/carousel2"></example>
+    <exampleEn demo="carousel/carousel2"></exampleEn>
 
     <h3>Params</h3>
-    <example demo="carousel/carousel1"></example>
+    <exampleEn demo="carousel/carousel1"></exampleEn>
 
     <!-- <h3>带arrow 走马灯</h3>
-    <example demo="carousel/carousel2"></example>
+    <exampleEn demo="carousel/carousel2"></exampleEn>
 
     <h3>arrow的hover方式 无autoplay走马灯</h3>
-    <example demo="carousel/carousel3"></example>
+    <exampleEn demo="carousel/carousel3"></exampleEn>
 
     <h3>loop为false的自定义导航走马灯</h3>
-    <example demo="carousel/carousel4"></example>
+    <exampleEn demo="carousel/carousel4"></exampleEn>
 
     <h3>只有一张图的情况,请自定义不需要下标</h3>
-    <example demo="carousel/carousel5"></example> -->
+    <exampleEn demo="carousel/carousel5"></exampleEn> -->
 
     <h3>Carousel Property</h3>
     <table class="table">

@@ -4,39 +4,39 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datepicker</code>. </p>
     <h3>Basic</h3>
     <div>
-      <example demo="dataplugins/datetimepicker1"></example>
+      <exampleEn demo="dataplugins/datetimepicker1"></exampleEn>
     </div>
     <h3>Disabled</h3>
     <div>
-      <example demo="dataplugins/datetimepicker2"></example>
+      <exampleEn demo="dataplugins/datetimepicker2"></exampleEn>
     </div>
     <h3>Date format customization</h3>
     <div>
-      <example demo="dataplugins/datetimepicker9"></example>
+      <exampleEn demo="dataplugins/datetimepicker9"></exampleEn>
     </div>
     <h3>Select hour</h3>
     <div>
-      <example demo="dataplugins/datetimepicker3"></example>
+      <exampleEn demo="dataplugins/datetimepicker3"></exampleEn>
     </div>
     <h3>Date and time control, can be to the second</h3>
     <div>
-      <example demo="dataplugins/datetimepicker4"></example>
+      <exampleEn demo="dataplugins/datetimepicker4"></exampleEn>
     </div>
     <h3>Custom minutes step</h3>
     <div>
-      <example demo="dataplugins/datetimepicker5"></example>
+      <exampleEn demo="dataplugins/datetimepicker5"></exampleEn>
     </div>
     <h3>Custom minutes list</h3>
     <div>
-      <example demo="dataplugins/datetimepicker6"></example>
+      <exampleEn demo="dataplugins/datetimepicker6"></exampleEn>
     </div>
     <h3>Shortcut</h3>
     <div>
-      <example demo="dataplugins/datetimepicker7"></example>
+      <exampleEn demo="dataplugins/datetimepicker7"></exampleEn>
     </div>
     <h3>Control selection range</h3>
     <div>
-      <example demo="dataplugins/datetimepicker8"></example>
+      <exampleEn demo="dataplugins/datetimepicker8"></exampleEn>
     </div>
 
     <h3>DatePicker Property</h3>

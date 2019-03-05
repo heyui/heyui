@@ -5,19 +5,19 @@
     <blockquote>1.2.0+ added</blockquote>
 
     <h3>Basic</h3>
-    <example demo="other/textellipsis1"></example>
+    <exampleEn demo="other/textellipsis1"></exampleEn>
     
     <h3>Custom prefix suffix</h3>
-    <example demo="other/textellipsis2"></example>
+    <exampleEn demo="other/textellipsis2"></exampleEn>
     
     <h3>Customize more</h3>
-    <example demo="other/textellipsis3"></example>
+    <exampleEn demo="other/textellipsis3"></exampleEn>
 
     <h3>Adapt to line breaks</h3>
-    <example demo="other/textellipsis4"></example>
+    <exampleEn demo="other/textellipsis4"></exampleEn>
 
     <h3>use tooltip when hide</h3>
-    <example demo="other/textellipsis5"></example>
+    <exampleEn demo="other/textellipsis5"></exampleEn>
     
 
     <h3>TextEllipsis Property</h3>

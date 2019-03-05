@@ -6,21 +6,21 @@
     <h3>Basic</h3>
     <p>The Tabs control only supports simple tab generation and click toggle. Default use <code>h-tabs-default</code> class, you can do custom Tabs.</p>
     <p>When tab selected add class <code>h-tabs-selected</code></p>
-    <example demo="view/tabs1"></example>
+    <exampleEn demo="view/tabs1"></exampleEn>
 
     <h3>Use built-in class 2</h3>
-    <example demo="view/tabs2"></example>
+    <exampleEn demo="view/tabs2"></exampleEn>
 
     <h3>Use built-in class 3</h3>
-    <example demo="view/tabs3"></example>
+    <exampleEn demo="view/tabs3"></exampleEn>
 
     <h3>Custom style</h3>
-    <example demo="view/tabs4"></example>
+    <exampleEn demo="view/tabs4"></exampleEn>
     <p>style：</p>
     <codes src="/codes/tabs.txt" type="less"></codes>
 
     <h3>Custom Tabs</h3>
-    <example demo="view/tabs5"></example>
+    <exampleEn demo="view/tabs5"></exampleEn>
 
     <h3>Tabs Property</h3>
     <table class="table">

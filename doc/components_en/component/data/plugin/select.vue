@@ -5,52 +5,52 @@
     <h3>Normal</h3>
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>
     <blockquote>Note: If datas is passed with <code>{ 1:'a', 2:'b' }</code>this number key, the selected key value will be converted to String. It is recommended to use the <code>[{ key: 1, title: 'a' }]</code>object data mode.</blockquote>
-    <example demo="dataplugins/select1"></example>
+    <exampleEn demo="dataplugins/select1"></exampleEn>
 
     <h3>Custom style</h3>
     <p>Define<code>className</code> parameter.</p>
-    <example demo="dataplugins/select13"></example>
+    <exampleEn demo="dataplugins/select13"></exampleEn>
 
     <h3>Special options</h3>
-    <example demo="dataplugins/select15"></example>
+    <exampleEn demo="dataplugins/select15"></exampleEn>
 
     <h3>Select Group</h3>
-    <example demo="dataplugins/select14"></example>
+    <exampleEn demo="dataplugins/select14"></exampleEn>
 
     <h3>Custom content</h3>
-    <example demo="dataplugins/select7"></example>
+    <exampleEn demo="dataplugins/select7"></exampleEn>
     
     <h3>Disabled</h3>
-    <example demo="dataplugins/select10"></example>
+    <exampleEn demo="dataplugins/select10"></exampleEn>
     
     <h3>There is no default "Please select" option</h3>
-    <example demo="dataplugins/select2"></example>
+    <exampleEn demo="dataplugins/select2"></exampleEn>
 
     <h3>Multiple</h3>
-    <example demo="dataplugins/select3"></example>
+    <exampleEn demo="dataplugins/select3"></exampleEn>
 
     <h3>Select object value</h3>
-    <example demo="dataplugins/select4"></example>
+    <exampleEn demo="dataplugins/select4"></exampleEn>
 
     <h3>Multiple choice object values</h3>
-    <example demo="dataplugins/select5"></example>
+    <exampleEn demo="dataplugins/select5"></exampleEn>
 
     <h3>Limit</h3>
     <p>Up to 2 selected</p>
-    <example demo="dataplugins/select6"></example>
+    <exampleEn demo="dataplugins/select6"></exampleEn>
 
     <h3>Filterable</h3>
-    <example demo="dataplugins/select11"></example>
+    <exampleEn demo="dataplugins/select11"></exampleEn>
 
     <h3>Filterable Multiple choice</h3>
-    <example demo="dataplugins/select12"></example>
+    <exampleEn demo="dataplugins/select12"></exampleEn>
 
     <h3>Use dictionary</h3>
     <p>Hey UI will provide a data dictionary system call, and built-in <code>dictMapping</code>methods to display. For details, go to <router-link to="/en/component/config">Global Configuration</router-link>。</p>
-    <example demo="dataplugins/select8"></example>
+    <exampleEn demo="dataplugins/select8"></exampleEn>
 
     <h3>Text Style</h3>
-    <example demo="dataplugins/select9"></example>
+    <exampleEn demo="dataplugins/select9"></exampleEn>
 
     <h3>Select Property</h3>
     <table class="table">

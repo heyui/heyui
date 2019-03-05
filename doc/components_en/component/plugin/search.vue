@@ -5,13 +5,13 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-search</code>. </p>
     <h3>Basic</h3>
     <p>Provides a simple search component package for many places.</p>
-    <example demo="plugins/search1"></example>
+    <exampleEn demo="plugins/search1"></exampleEn>
 
     <h3>Query component with search button</h3>
-    <example demo="plugins/search2"></example>
+    <exampleEn demo="plugins/search2"></exampleEn>
 
     <h3>Block</h3>
-    <example demo="plugins/search3"></example>
+    <exampleEn demo="plugins/search3"></exampleEn>
 
     <h3>Search Property</h3>
     <table class="table">

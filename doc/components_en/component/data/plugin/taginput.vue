@@ -3,13 +3,13 @@
     <h2>TagInput</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-taginput</code>. </p>
     <h3>Basic</h3>
-    <example demo="dataplugins/taginput1"></example>
+    <exampleEn demo="dataplugins/taginput1"></exampleEn>
 
     <h3>String split</h3>
-    <example demo="dataplugins/taginput3"></example>
+    <exampleEn demo="dataplugins/taginput3"></exampleEn>
   
     <h3>Readonly</h3>
-    <example demo="dataplugins/taginput2"></example>
+    <exampleEn demo="dataplugins/taginput2"></exampleEn>
   
     <h3>TagInput Property</h3>
     <table class="table">

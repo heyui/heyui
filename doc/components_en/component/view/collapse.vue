@@ -6,15 +6,15 @@
 
     <h3>Basic</h3>
     <p>Multiple panels can be expanded simultaneously without affecting each other.</p>
-    <example demo="view/collapse1"></example>
+    <exampleEn demo="view/collapse1"></exampleEn>
 
     <h3>Accordion</h3>
     <p>In this mode, you can only spread one panel each time.</p>
-    <example demo="view/collapse2"></example>
+    <exampleEn demo="view/collapse2"></exampleEn>
 
     <h3>Custom title</h3>
     <p>Besides using the <code>title</code> attribute, you can customize panel title with named slots, which makes adding custom content, e.g. icons, possible.</p>
-    <example demo="view/collapse3"></example>
+    <exampleEn demo="view/collapse3"></exampleEn>
 
     <h3>Collapse Property</h3>
     <table class="table">

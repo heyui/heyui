@@ -3,13 +3,13 @@
     <h2>Switch</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-switch</code>, generally use <code>hSwitch</code>. </p>
     <h3>Basic</h3>
-    <example demo="form/switch2"></example>
+    <exampleEn demo="form/switch2"></exampleEn>
 
     <h3>self defined true and false value</h3>
-    <example demo="form/switch1"></example>
+    <exampleEn demo="form/switch1"></exampleEn>
 
     <h3>Disabled</h3>
-    <example demo="form/switch3"></example>
+    <exampleEn demo="form/switch3"></exampleEn>
 
     <h3>Switch Property</h3>
     <table class="table">

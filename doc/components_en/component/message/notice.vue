@@ -3,24 +3,24 @@
     <h2>Notice</h2>
     <h3>Basic</h3>
     <blockquote>There are two kinds of calls written here, which are actually the same method object. The following use cases use the vue call to make an example. The js call mode is the same as the vue call.</blockquote>
-    <example demo="message/notice1"></example>
+    <exampleEn demo="message/notice1"></exampleEn>
 
     <h3>Different types of notifications</h3>
-    <example demo="message/notice2"></example>
+    <exampleEn demo="message/notice2"></exampleEn>
 
     <h3>Set timeout time</h3>
-    <example demo="message/notice4"></example>
+    <exampleEn demo="message/notice4"></exampleEn>
 
     <h3>Custom notification</h3>
-    <example demo="message/notice3"></example>
+    <exampleEn demo="message/notice3"></exampleEn>
 
     <h3>Notice Component</h3>
-    <example demo="message/notice6"></example>
+    <exampleEn demo="message/notice6"></exampleEn>
     <blockquote>The code used in the popup box</blockquote>
     <codes src="/message/noticeTest.vue" type="html"></codes>
 
     <h3>Set global auto-off time</h3>
-    <example demo="message/notice5"></example>
+    <exampleEn demo="message/notice5"></exampleEn>
 
     <h3>Notice Property</h3>
     <table class="table">

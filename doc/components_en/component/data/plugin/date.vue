@@ -6,43 +6,43 @@
 
     <h3>Basic</h3>
     <div>
-      <example demo="dataplugins/datepicker1"></example>
+      <exampleEn demo="dataplugins/datepicker1"></exampleEn>
     </div>
     <h3>Disabled</h3>
     <div>
-      <example demo="dataplugins/datepicker2"></example>
+      <exampleEn demo="dataplugins/datepicker2"></exampleEn>
     </div>
     <h3>Date format customization</h3>
     <div>
-      <example demo="dataplugins/datepicker3"></example>
+      <exampleEn demo="dataplugins/datepicker3"></exampleEn>
     </div>
     <h3>Different types of selection controls</h3>
     <div>
-      <example demo="dataplugins/datepicker5"></example>
+      <exampleEn demo="dataplugins/datepicker5"></exampleEn>
     </div>
     <h3>Select Weekly</h3>
     <div>
-      <example demo="dataplugins/datepicker10"></example>
+      <exampleEn demo="dataplugins/datepicker10"></exampleEn>
     </div>
     <!-- <h3>选择季度控件</h3>
     <div>
-      <example demo="dataplugins/datepicker11"></example>
+      <exampleEn demo="dataplugins/datepicker11"></exampleEn>
     </div> -->
     <h3>Shortcuts</h3>
     <div>
-      <example demo="dataplugins/datepicker6"></example>
+      <exampleEn demo="dataplugins/datepicker6"></exampleEn>
     </div>
     <h3>Date range control</h3>
     <div>
-      <example demo="dataplugins/datepicker7"></example>
+      <exampleEn demo="dataplugins/datepicker7"></exampleEn>
     </div>
     <h3>Text selection</h3>
     <div>
-      <example demo="dataplugins/datepicker8"></example>
+      <exampleEn demo="dataplugins/datepicker8"></exampleEn>
     </div>
     <h3>Inline mode</h3>
     <div>
-      <example demo="dataplugins/datepicker9"></example>
+      <exampleEn demo="dataplugins/datepicker9"></exampleEn>
     </div>
     
     <h3>DatePicker Property</h3>

@@ -4,19 +4,19 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-badge</code>. </p>
     <h3>Basic</h3>
     <p>Normally <code>count</code> 0 does not show</p>
-    <example demo="view/badge1"></example>
+    <exampleEn demo="view/badge1"></exampleEn>
 
     <h3>Maximum number</h3>
-    <example demo="view/badge2"></example>
+    <exampleEn demo="view/badge2"></exampleEn>
 
     <h3>When the number is 0, it also shows</h3>
-    <example demo="view/badge3"></example>
+    <exampleEn demo="view/badge3"></exampleEn>
 
     <h3>Tip red dot</h3>
-    <example demo="view/badge4"></example>
+    <exampleEn demo="view/badge4"></exampleEn>
 
     <h3>Different display methods</h3>
-    <example demo="view/badge5"></example>
+    <exampleEn demo="view/badge5"></exampleEn>
 
     <h3>Badge Property</h3>
     <table class="table">

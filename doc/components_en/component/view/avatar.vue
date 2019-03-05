@@ -5,10 +5,10 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-avatar</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="view/avatar1"></example>
+    <exampleEn demo="view/avatar1"></exampleEn>
 
     <h3>Shape and type</h3>
-    <example demo="view/avatar2"></example>
+    <exampleEn demo="view/avatar2"></exampleEn>
 
     <h3>Avatar Property</h3>
     <table class="table">

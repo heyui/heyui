@@ -3,7 +3,7 @@
     <h2>Form</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-form</code>. </p>
     <h3>Basic</h3>
-    <example demo="form/form1"></example>
+    <exampleEn demo="form/form1"></exampleEn>
 
     <h3>Three types of layout and verification</h3>
     <p>The Form provides four sorts of arrangement: </p>
@@ -15,19 +15,19 @@
     </ul>
     <p>In the arrangement mode of <code>twocolumn</code> or <code>threecolumn</code>, adding <code>single</code> parameters on <code>FormItem</code>can be listed as a row.</p>
     <blockquote>Note: When using a <code>for</code>looping component, you have to add <code>key</code> on <code>FormItem</code> component, It prevents <code>FormItem</code> from using key as a unique value reference in the same parent.</blockquote>
-    <example demo="form/form3"></example>
+    <exampleEn demo="form/form3"></exampleEn>
 
     <h3>Parameter required setting</h3>
-    <example demo="form/form5"></example>
+    <exampleEn demo="form/form5"></exampleEn>
 
     <h3>Call the verification method</h3>
-    <example demo="form/form6"></example>
+    <exampleEn demo="form/form6"></exampleEn>
 
     <h3>Readonly</h3>
-    <example demo="form/form2"></example>
+    <exampleEn demo="form/form2"></exampleEn>
 
     <h3>Change password verification</h3>
-    <example demo="form/form4"></example>
+    <exampleEn demo="form/form4"></exampleEn>
 
     <h3>Form Property</h3>
     <table class="table">

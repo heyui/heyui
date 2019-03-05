@@ -3,20 +3,20 @@
     <h2>NumberInput</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-numberinput</code>. </p>
     <h3>Basic</h3>
-    <example demo="form/numberinput1"></example>
+    <exampleEn demo="form/numberinput1"></exampleEn>
 
     <h3>Maximum and minimum value</h3>
-    <example demo="form/numberinput2"></example>
+    <exampleEn demo="form/numberinput2"></exampleEn>
 
     <h3>Use control</h3>
-    <example demo="form/numberinput3"></example>
+    <exampleEn demo="form/numberinput3"></exampleEn>
 
     <h3>Step</h3>
-    <example demo="form/numberinput5"></example>
+    <exampleEn demo="form/numberinput5"></exampleEn>
 
     <h3>Disabled</h3>
-    <example demo="form/numberinput4"></example>
-  
+    <exampleEn demo="form/numberinput4"></exampleEn>
+
     <h3>NumberInput Property</h3>
     <table class="table">
       <tr>
@@ -77,7 +77,6 @@
       </tr>
     </table>
 
-
     <h3>NumberInput Event</h3>
     <table class="table">
       <tr>
@@ -104,9 +103,7 @@
 export default {
   data() {
     return {
-    }
+    };
   }
-}
+};
 </script>
-
-

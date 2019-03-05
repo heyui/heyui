@@ -6,54 +6,54 @@
     <h3>Asynchronous data request</h3>
     <p>You can <code>autocomplete.default</code> set the control's default parameter values through global configuration parameters.</p>
     <p>There are three types of data: <code>key</code>,<code>title</code>,<code>object</code>, if the demand for more complex and listen for the <code>change</code> event manual processing.</p>
-    <example demo="dataplugins/autocomplete4"></example>
+    <exampleEn demo="dataplugins/autocomplete4"></exampleEn>
     
     <h3>Selection mode</h3>
-    <example demo="dataplugins/autocomplete8"></example>
+    <exampleEn demo="dataplugins/autocomplete8"></exampleEn>
   
     <h3>Can enter any mode</h3>
     <p class="tip">Use <code>mustMatch</code> parameters.</p>
     <p>This method can only choose to use <code>title</code>与<code>object</code> type of data.</p>
-    <example demo="dataplugins/autocomplete9"></example>
+    <exampleEn demo="dataplugins/autocomplete9"></exampleEn>
 
     <h3>Custom style</h3>
     <p>Define your own style with custom parameters <code>className</code>.</p>
-    <example demo="dataplugins/autocomplete14"></example>
+    <exampleEn demo="dataplugins/autocomplete14"></exampleEn>
 
     <h3>Custom content</h3>
     <p>Through the <code>slot</code> of <code>top</code> and <code>bottom</code>, custom the content.</p>
-    <example demo="dataplugins/autocomplete6"></example>
+    <exampleEn demo="dataplugins/autocomplete6"></exampleEn>
   
     <h3>Pass external parameters</h3>
-    <example demo="dataplugins/autocomplete10"></example>
+    <exampleEn demo="dataplugins/autocomplete10"></exampleEn>
 
     <h3>disabled</h3>
-    <example demo="dataplugins/autocomplete2"></example>
+    <exampleEn demo="dataplugins/autocomplete2"></exampleEn>
 
     <h3>Static data</h3>
     <p>You can use <code>dict</code> call the system's global configuration, or by <code>datas</code>passing data.</p>
-    <example demo="dataplugins/autocomplete1"></example>
+    <exampleEn demo="dataplugins/autocomplete1"></exampleEn>
 <!--   
     <h3>多选</h3>
-    <example demo="dataplugins/autocomplete3"></example> -->
+    <exampleEn demo="dataplugins/autocomplete3"></exampleEn> -->
   
     <!-- <h3>远程</h3>
     <p>通过<code>options</code>的<code>loadData</code>方法执行远程数据查询，执行完毕后调用<code>callback</code>方法返回数据。</p>
     <p>下面的用例使用的只是单纯的title值，请使用<code>type="title"</code>。</p>
-    <example demo="dataplugins/autocomplete4"></example>
+    <exampleEn demo="dataplugins/autocomplete4"></exampleEn>
   
     <h3>选择模式</h3>
-    <example demo="dataplugins/autocomplete5"></example> -->
+    <exampleEn demo="dataplugins/autocomplete5"></exampleEn> -->
 
     <!-- <h3>自定义返回数据的结构</h3>
     <p></p>
-    <example demo="dataplugins/autocomplete11"></example> -->
+    <exampleEn demo="dataplugins/autocomplete11"></exampleEn> -->
 
     <!-- <h3>可以任意输入对象多选</h3> -->
-    <!-- <example demo="dataplugins/autocomplete12"></example> -->
+    <!-- <exampleEn demo="dataplugins/autocomplete12"></exampleEn> -->
   
     <h3>Global configuration</h3>
-    <example demo="dataplugins/autocomplete13"></example>
+    <exampleEn demo="dataplugins/autocomplete13"></exampleEn>
     
     <h3>AutoComplete Property</h3>
     <table class="table">

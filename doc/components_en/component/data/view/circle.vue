@@ -3,10 +3,10 @@
     <h2>Circle Progress</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-circle</code>, generally use <code>hCircle</code>. </p>
     <h3>Basic</h3>
-    <example demo="view/circle1"></example>
+    <exampleEn demo="view/circle1"></exampleEn>
 
     <h3>Combination</h3>
-    <example demo="view/circle2"></example>
+    <exampleEn demo="view/circle2"></exampleEn>
     
     <h3>Circle Property</h3>
     <table class="table">

@@ -4,13 +4,13 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-breadcrumb</code>. </p>
 
     <h3>Basic</h3>
-    <example demo="view/breadcrumb1"></example>
+    <exampleEn demo="view/breadcrumb1"></exampleEn>
 
     <h3>Icon</h3>
-    <example demo="view/breadcrumb2"></example>
+    <exampleEn demo="view/breadcrumb2"></exampleEn>
 
     <h3>Style and Function</h3>
-    <example demo="view/breadcrumb3"></example>
+    <exampleEn demo="view/breadcrumb3"></exampleEn>
 
     <h3>Breadcrumb Property</h3>
     <table class="table">

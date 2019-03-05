@@ -3,13 +3,13 @@
     <h2>TimePicker</h2>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-datepicker</code>. </p>
     <h3>Basic</h3>
-    <example demo="dataplugins/timepicker1"></example>
+    <exampleEn demo="dataplugins/timepicker1"></exampleEn>
 
     <h3>Disabled</h3>
-    <example demo="dataplugins/timepicker2"></example>
+    <exampleEn demo="dataplugins/timepicker2"></exampleEn>
 
     <h3>Control selection range</h3>
-    <example demo="dataplugins/timepicker3"></example>
+    <exampleEn demo="dataplugins/timepicker3"></exampleEn>
     
     <h3>DatePicker Property</h3>
     <table class="table">

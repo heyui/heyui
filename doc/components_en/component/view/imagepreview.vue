@@ -4,10 +4,10 @@
     <blockquote>1.15.0+</blockquote>
 
     <h3>Basic</h3>
-    <example demo="imagepreview/imagepreview1"></example>
+    <exampleEn demo="imagepreview/imagepreview1"></exampleEn>
 
     <h3>With Uploader readonly</h3>
-    <example demo="dataplugins/uploader8"></example>
+    <exampleEn demo="dataplugins/uploader8"></exampleEn>
 
     <h3>ImagePreview Method</h3>
     <table class="table">
