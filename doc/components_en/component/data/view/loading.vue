@@ -27,13 +27,6 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>minHeight</td>
-        <td>minHeight of loading</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>loading</td>
         <td>Loading status</td>
         <td>Boolean</td>

@@ -27,13 +27,6 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>minHeight</td>
-        <td>最小高度</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>loading</td>
         <td>loading状态</td>
         <td>Boolean</td>

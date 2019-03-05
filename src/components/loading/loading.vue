@@ -19,8 +19,7 @@ export default {
       type: Boolean,
       default: false
     },
-    text: String,
-    minHeight: Number
+    text: String
   },
   data() {
     return {
