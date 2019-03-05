@@ -5,6 +5,8 @@ import 'highlight.js/styles/github-gist.css';
 // import HeyUI from 'heyui';
 import App from './App.vue';
 
+import utils from 'hey-utils';
+
 import HeyUI from './../src/index';
 // import titleConfig from './js/config/title-config';
 import heyuiConfig from './js/config/heyui-config';
@@ -20,11 +22,17 @@ import zh from '../src/locale/lang/zh-CN';
 
 require('./css/index.less');
 
-Vue.use(VueHighlightJS);
+let language = (navigator.language || navigator.browserLanguage).toLowerCase();
 
 let lang = window.location.pathname.indexOf('/en') == -1 ? 'zh' : 'en';
 
-// HeyUI.locale(zh);
+if (utils.getLocal('LANGUAGE') == null && window.location.pathname.indexOf('/en') == -1) {
+  if (language.indexOf('zh') == -1) {
+    window.location.href = '/en';
+  }
+}
+
+Vue.use(VueHighlightJS);
 
 Vue.use(VueI18n);
 const messages = {

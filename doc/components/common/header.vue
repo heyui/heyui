@@ -72,6 +72,7 @@ export default {
   methods: {
     changeLang() {
       this.$i18n.locale = 'en';
+      utils.saveLocal('LANGUAGE', 'en');
       this.$router.push({ name: `en_${this.$route.name}` });
     },
     goLink(params) {

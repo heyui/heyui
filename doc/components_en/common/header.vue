@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import utils from 'hey-utils';
 
 export default {
   data() {
@@ -38,6 +39,7 @@ export default {
   methods: {
     changeLang() {
       this.$i18n.locale = 'zh';
+      utils.saveLocal('LANGUAGE', 'zh');
       this.$router.push({ name: `${this.$route.name.substring(3)}` });
     },
     goLink(params) {
