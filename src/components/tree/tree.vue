@@ -2,8 +2,22 @@
   <div :class="treeCls">
     <Search v-if="filterable" v-model="searchValue" @onsearch="searchTree" block></Search>
     <ul class="h-tree-body">
-      <treeItem v-for="tree of treeDatas" :data="tree" :param="param" :key="tree.key" :multiple="multiple" :status="status"
-        @trigger="trigger" :choose-mode="chooseMode" :toggleOnSelect="toggleOnSelect" :selectOnClick="selectOnClick"><template slot="item" slot-scope="{item}"><slot name="item" :item="item"></slot></template></treeItem>
+      <treeItem
+        v-for="tree of treeDatas"
+        :data="tree"
+        :param="param"
+        :key="tree.key"
+        :multiple="multiple"
+        :status="status"
+        @trigger="trigger"
+        :choose-mode="chooseMode"
+        :toggleOnSelect="toggleOnSelect"
+        :selectOnClick="selectOnClick"
+      >
+        <!-- <template slot="treeItem" slot-scope="{item}">
+          <slot name="item" :item="item"></slot>
+        </template> -->
+      </treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -33,7 +47,7 @@ const updateParentStatus = (objs, data, column, value) => {
   }
 };
 
-const updateModeAllChildChooseStatus = (data) => {
+const updateModeAllChildChooseStatus = data => {
   if (data.children) {
     let isIndeterminateStatus = false;
     let isChoose = !!data.children.length;
@@ -67,7 +81,7 @@ const getChooseNode = (data, options) => {
   return options;
 };
 
-const updateModeSomeChildChooseStatus = (data) => {
+const updateModeSomeChildChooseStatus = data => {
   if (data.children) {
     let isChoose = false;
     for (let child of data.children) {
@@ -216,14 +230,19 @@ export default {
       } else if (type == 'loadDataEvent') {
         if (utils.isFunction(this.param.getDatas)) {
           data.status.loading = true;
-          this.param.getDatas.call(this.param, data.value, (result) => {
-            data.children = this.initTreeModeData(result, true);
-            data.status.isWait = false;
-            data.status.loading = false;
-            data.status.opened = true;
-          }, () => {
-            data.status.loading = false;
-          });
+          this.param.getDatas.call(
+            this.param,
+            data.value,
+            result => {
+              data.children = this.initTreeModeData(result, true);
+              data.status.isWait = false;
+              data.status.loading = false;
+              data.status.opened = true;
+            },
+            () => {
+              data.status.loading = false;
+            }
+          );
         }
       } else if (type == 'selectEvent') {
         if (!this.multiple) {
@@ -252,14 +271,17 @@ export default {
         datas = [];
         this.globalloading = true;
         let loadData = this.param.getTotalDatas || this.param.getDatas;
-        let param = [(result) => {
-          this.treeDatas = this.initDatas(utils.copy(result));
-          this.parse();
-          this.globalloading = false;
-          this.$emit('loadDataSuccess');
-        }, () => {
-          this.globalloading = false;
-        }];
+        let param = [
+          result => {
+            this.treeDatas = this.initDatas(utils.copy(result));
+            this.parse();
+            this.globalloading = false;
+            this.$emit('loadDataSuccess');
+          },
+          () => {
+            this.globalloading = false;
+          }
+        ];
         if (this.param.getDatas) {
           param.unshift(null);
         }
@@ -269,7 +291,7 @@ export default {
       this.parse();
     },
     initDatas(datas) {
-      let list = datas = utils.copy(datas);
+      let list = (datas = utils.copy(datas));
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(datas, this.param);
       }
@@ -419,8 +441,7 @@ export default {
   computed: {
     param() {
       if (this.config) {
-        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`),
-          this.option);
+        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
       } else {
         return utils.extend({}, config.getOption('tree.default'), this.option);
       }
