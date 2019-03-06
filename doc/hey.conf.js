@@ -4,6 +4,7 @@ module.exports = {
   dist: 'dist',
   console: true,
   webpack: {
+    compress: false,
     console: true,
     publicPath: '/',
     output: {
