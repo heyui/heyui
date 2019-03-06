@@ -7168,6 +7168,28 @@ var dateprefix = 'h-date'; //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var viewType = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 var weekViewType = ['year', 'month', 'week'];
@@ -7609,7 +7631,6 @@ exports.default = {
           date = date.add(7, _manba2.default.DATE).startOf(_manba2.default.WEEK, this.startWeek);
         }
         var month = date.month();
-        var index = date.getWeekOfYear(this.startWeek);
         var _nextMonth = monthSpace + month;
         _nextMonth = _nextMonth > 12 ? 1 : _nextMonth;
         while (date.month() == month || date.month() == _nextMonth) {
@@ -7618,32 +7639,26 @@ exports.default = {
             type: _manba2.default.WEEK,
             show: this.t('h.date.show.week', {
               year: date.year(),
-              weeknum: index,
+              weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
               dayend: (0, _manba2.default)(date).add(6).format('MM-DD')
             }),
             vm: this,
             isNowDays: true
           }));
-          var oldYear = date.year();
           date = date.add(7);
-          if (oldYear != date.year()) {
-            index = 1;
-          } else {
-            index += 1;
-          }
         }
         return _dates5;
       } else if (this.view == 'quarter') {
         var _dates6 = [];
         var _date = nowDate.startOf(_manba2.default.YEAR);
-        for (var _index = 1; _index < 5; _index++) {
+        for (var index = 1; index < 5; index++) {
           _dates6.push(genData({
             date: (0, _manba2.default)(_date.time()),
             type: _manba2.default.MONTH,
             show: this.t('h.date.show.quarter', {
               year: _date.year(),
-              quarter: _index
+              quarter: index
             }),
             vm: this,
             isNowDays: true,
@@ -7755,6 +7770,12 @@ exports.default = {
     value: Object,
     startWeek: {
       type: Number
+    },
+    layout: {
+      type: Array,
+      default: function _default() {
+        return ['year', 'quarter', 'month', 'week', 'date', 'customize'];
+      }
     }
   },
   watch: {
@@ -7765,6 +7786,14 @@ exports.default = {
   data: function data() {
     var format = _config2.default.getOption('datepicker.format');
     return {
+      allviews: {
+        year: this.t('h.date.year'),
+        quarter: this.t('h.date.quarter'),
+        month: this.t('h.date.month'),
+        week: this.t('h.date.week'),
+        date: this.t('h.date.day'),
+        customize: this.t('h.datepicker.customize')
+      },
       nowFormat: this.hasTime ? format.datetime : format.date,
       paramName: _config2.default.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
@@ -7774,14 +7803,6 @@ exports.default = {
       nowView: {
         start: (0, _manba2.default)(),
         end: (0, _manba2.default)().add(1, _manba2.default.MONTH)
-      },
-      views: {
-        year: this.t('h.date.year'),
-        quarter: this.t('h.date.quarter'),
-        month: this.t('h.date.month'),
-        week: this.t('h.date.week'),
-        date: this.t('h.date.day'),
-        customize: this.t('h.datepicker.customize')
       },
       view: this.defaultType || 'year',
       rangeEnd: '',
@@ -7950,6 +7971,39 @@ exports.default = {
     }
   },
   computed: {
+    views: function views() {
+      var v = {};
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = (0, _getIterator3.default)(this.layout), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var l = _step.value;
+
+          if (!this.allviews[l]) {
+            console.warn('WARNING(DateFullRangePicker): props ' + l + ' for layout don\'t exsits.');
+          } else {
+            v[l] = this.allviews[l];
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return v;
+    },
     showPlaceholder: function showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
@@ -7972,7 +8026,7 @@ exports.default = {
           case 'week':
             return this.t('h.date.show.week', {
               year: date.year(),
-              weeknum: date.getWeekOfYear(_manba2.default.MONDAY),
+              weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
               dayend: (0, _manba2.default)(date).add(6).format('MM-DD')
             });
@@ -7988,13 +8042,13 @@ exports.default = {
         shortcutsConfig = this.option.shortcuts;
       }
       if (_utils2.default.isArray(shortcutsConfig)) {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
         try {
-          for (var _iterator = (0, _getIterator3.default)(shortcutsConfig), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var s = _step.value;
+          for (var _iterator2 = (0, _getIterator3.default)(shortcutsConfig), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var s = _step2.value;
 
             if (_utils2.default.isString(s)) {
               shortcuts.push(_config2.default.getOption('datepicker.shortcuts')[s]);
@@ -8003,16 +8057,16 @@ exports.default = {
             }
           }
         } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
             }
           } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
+            if (_didIteratorError2) {
+              throw _iteratorError2;
             }
           }
         }
@@ -8323,7 +8377,7 @@ exports.default = {
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(_manba2.default.MONDAY) });
+              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startWeek) });
             } else if (this.type == 'quarter') {
               this.showDate = this.t('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
             } else {
@@ -10364,8 +10418,7 @@ exports.default = {
       type: Boolean,
       default: false
     },
-    text: String,
-    minHeight: Number
+    text: String
   },
   data: function data() {
     return {
@@ -14557,7 +14610,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'hTreeItem',
@@ -14567,13 +14642,19 @@ exports.default = {
     multiple: Boolean,
     status: Object,
     chooseMode: String,
-    toggleOnSelect: Boolean
+    toggleOnSelect: Boolean,
+    selectOnClick: Boolean
   },
   data: function data() {
     return {};
   },
 
   methods: {
+    clickShow: function clickShow() {
+      if (this.selectOnClick) {
+        this.select();
+      }
+    },
     select: function select() {
       if (this.toggleOnSelect || this.multiple) {
         this.toggleTree();
@@ -14879,6 +14960,14 @@ exports.default = {
     toggleOnSelect: {
       type: Boolean,
       default: true
+    },
+    selectOnClick: {
+      type: Boolean,
+      default: false
+    },
+    className: {
+      type: String,
+      default: 'h-tree-theme-item-selected'
     }
   },
   data: function data() {
@@ -14924,20 +15013,21 @@ exports.default = {
         this.updateSelect(this.value, false);
       }
     },
-    searchTree: function searchTree(value) {
-      this.searchValue = value;
-      if (!_utils2.default.isNull(this.searchValue) && this.searchValue !== '') {
-        var searchValue = this.searchValue.toLowerCase();
+    updateTreeItem: function updateTreeItem(key, value) {
+      var item = this.treeObj[key];
+      if (item) {
         var _iteratorNormalCompletion5 = true;
         var _didIteratorError5 = false;
         var _iteratorError5 = undefined;
 
         try {
-          for (var _iterator5 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-            var key = _step5.value;
+          for (var _iterator5 = (0, _getIterator3.default)((0, _keys2.default)(value)), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+            var v = _step5.value;
 
-            var tree = this.treeObj[key];
-            tree.status.hide = (tree.html || tree.title || '').toLowerCase().indexOf(searchValue) == -1;
+            this.$set(item.value, v, value[v]);
+            if (v == this.param.titleName) {
+              item.title = value[v];
+            }
           }
         } catch (err) {
           _didIteratorError5 = true;
@@ -14953,19 +15043,47 @@ exports.default = {
             }
           }
         }
-
-        this.expandAll();
+      }
+    },
+    appendTreeItem: function appendTreeItem(key, value) {
+      var parent = this.treeObj[key];
+      var obj = this.initTreeNode(value, key);
+      if (parent) {
+        parent.children.push(obj);
       } else {
+        this.treeDatas.push(obj);
+      }
+      this.treeObj[obj.key] = obj;
+    },
+    removeTreeItem: function removeTreeItem(key) {
+      var item = this.treeObj[key];
+      if (item) {
+        var index = this.treeDatas.indexOf(item);
+        if (index > -1) {
+          this.treeDatas.splice(index, 1);
+        } else if (item.parentKey && this.treeObj[item.parentKey]) {
+          var parent = this.treeObj[item.parentKey];
+          if (parent.children.indexOf(item) > -1) {
+            parent.children.splice(parent.children.indexOf(item), 1);
+          }
+        }
+        delete this.treeObj[key];
+      }
+    },
+    searchTree: function searchTree(value) {
+      this.searchValue = value;
+      if (!_utils2.default.isNull(this.searchValue) && this.searchValue !== '') {
+        var searchValue = this.searchValue.toLowerCase();
         var _iteratorNormalCompletion6 = true;
         var _didIteratorError6 = false;
         var _iteratorError6 = undefined;
 
         try {
           for (var _iterator6 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-            var _key = _step6.value;
+            var key = _step6.value;
 
-            var _tree = this.treeObj[_key];
-            _tree.status.hide = false;
+            var tree = this.treeObj[key];
+            tree.status.hide = (tree.html || tree.title || '').toLowerCase().indexOf(searchValue) == -1;
           }
         } catch (err) {
           _didIteratorError6 = true;
@@ -14978,6 +15096,34 @@ exports.default = {
           } finally {
             if (_didIteratorError6) {
               throw _iteratorError6;
+            }
+          }
+        }
+
+        this.expandAll();
+      } else {
+        var _iteratorNormalCompletion7 = true;
+        var _didIteratorError7 = false;
+        var _iteratorError7 = undefined;
+
+        try {
+          for (var _iterator7 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+            var _key = _step7.value;
+
+            var _tree = this.treeObj[_key];
+            _tree.status.hide = false;
+          }
+        } catch (err) {
+          _didIteratorError7 = true;
+          _iteratorError7 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion7 && _iterator7.return) {
+              _iterator7.return();
+            }
+          } finally {
+            if (_didIteratorError7) {
+              throw _iteratorError7;
             }
           }
         }
@@ -15058,67 +15204,19 @@ exports.default = {
     },
     initTreeModeData: function initTreeModeData(list, isWait, parentKey) {
       var datas = [];
-      var _iteratorNormalCompletion7 = true;
-      var _didIteratorError7 = false;
-      var _iteratorError7 = undefined;
-
-      try {
-        for (var _iterator7 = (0, _getIterator3.default)(list), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-          var data = _step7.value;
-
-          var obj = {
-            key: data[this.param.keyName],
-            title: data[this.param.titleName],
-            value: data,
-            parentKey: parentKey,
-            icon: data.treeIcon,
-            status: {
-              hide: false,
-              opened: false,
-              loading: false,
-              checkable: data.checkable !== false,
-              isWait: isWait,
-              selected: false,
-              indeterminate: false,
-              choose: false,
-              disabled: !!data.disabled
-            }
-          };
-          var children = data[this.param.childrenName] || [];
-          obj.children = this.initTreeModeData(children, isWait, obj.key);
-          this.treeObj[obj.key] = obj;
-          datas.push(obj);
-        }
-      } catch (err) {
-        _didIteratorError7 = true;
-        _iteratorError7 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion7 && _iterator7.return) {
-            _iterator7.return();
-          }
-        } finally {
-          if (_didIteratorError7) {
-            throw _iteratorError7;
-          }
-        }
-      }
-
-      return datas;
-    },
-    refresh: function refresh() {
-      this.initTreeDatas();
-    },
-    expandAll: function expandAll() {
       var _iteratorNormalCompletion8 = true;
       var _didIteratorError8 = false;
       var _iteratorError8 = undefined;
 
       try {
-        for (var _iterator8 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-          var tree = _step8.value;
+        for (var _iterator8 = (0, _getIterator3.default)(list), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+          var data = _step8.value;
 
-          this.treeObj[tree].status.opened = true;
+          var obj = this.initTreeNode(data, parentKey, isWait);
+          var children = data[this.param.childrenName] || [];
+          obj.children = this.initTreeModeData(children, isWait, obj.key);
+          this.treeObj[obj.key] = obj;
+          datas.push(obj);
         }
       } catch (err) {
         _didIteratorError8 = true;
@@ -15134,8 +15232,36 @@ exports.default = {
           }
         }
       }
+
+      return datas;
     },
-    foldAll: function foldAll() {
+    initTreeNode: function initTreeNode(data, parentKey) {
+      var isWait = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      return {
+        key: data[this.param.keyName],
+        title: data[this.param.titleName],
+        value: data,
+        parentKey: parentKey,
+        icon: data.treeIcon,
+        status: {
+          hide: false,
+          opened: false,
+          loading: false,
+          checkable: data.checkable !== false,
+          isWait: isWait,
+          selected: false,
+          indeterminate: false,
+          choose: false,
+          disabled: !!data.disabled
+        },
+        children: []
+      };
+    },
+    refresh: function refresh() {
+      this.initTreeDatas();
+    },
+    expandAll: function expandAll() {
       var _iteratorNormalCompletion9 = true;
       var _didIteratorError9 = false;
       var _iteratorError9 = undefined;
@@ -15144,7 +15270,7 @@ exports.default = {
         for (var _iterator9 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
           var tree = _step9.value;
 
-          this.treeObj[tree].status.opened = false;
+          this.treeObj[tree].status.opened = true;
         }
       } catch (err) {
         _didIteratorError9 = true;
@@ -15157,6 +15283,32 @@ exports.default = {
         } finally {
           if (_didIteratorError9) {
             throw _iteratorError9;
+          }
+        }
+      }
+    },
+    foldAll: function foldAll() {
+      var _iteratorNormalCompletion10 = true;
+      var _didIteratorError10 = false;
+      var _iteratorError10 = undefined;
+
+      try {
+        for (var _iterator10 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+          var tree = _step10.value;
+
+          this.treeObj[tree].status.opened = false;
+        }
+      } catch (err) {
+        _didIteratorError10 = true;
+        _iteratorError10 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion10 && _iterator10.return) {
+            _iterator10.return();
+          }
+        } finally {
+          if (_didIteratorError10) {
+            throw _iteratorError10;
           }
         }
       }
@@ -15191,53 +15343,18 @@ exports.default = {
 
       if (!this.multiple) return;
       choose = choose || [];
-      var _iteratorNormalCompletion10 = true;
-      var _didIteratorError10 = false;
-      var _iteratorError10 = undefined;
-
-      try {
-        for (var _iterator10 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-          var key = _step10.value;
-
-          var tree = this.treeObj[key];
-          tree.status.choose = false;
-          tree.status.indeterminate = false;
-          tree.status.opened = false;
-        }
-      } catch (err) {
-        _didIteratorError10 = true;
-        _iteratorError10 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion10 && _iterator10.return) {
-            _iterator10.return();
-          }
-        } finally {
-          if (_didIteratorError10) {
-            throw _iteratorError10;
-          }
-        }
-      }
-
       var _iteratorNormalCompletion11 = true;
       var _didIteratorError11 = false;
       var _iteratorError11 = undefined;
 
       try {
-        for (var _iterator11 = (0, _getIterator3.default)(choose), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-          var _key2 = _step11.value;
+        for (var _iterator11 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+          var key = _step11.value;
 
-          var tree = this.treeObj[_key2];
-          if (tree) {
-            tree.status.choose = choose.indexOf(tree.key) != -1;
-            if (tree.status.choose) {
-              tree.status.opened = true;
-              updateParentStatus(this.treeObj, tree, 'opened', true);
-              if (this.chooseMode == 'all') {
-                updateChildStatus(tree, 'choose', true);
-              }
-            }
-          }
+          var tree = this.treeObj[key];
+          tree.status.choose = false;
+          tree.status.indeterminate = false;
+          tree.status.opened = false;
         }
       } catch (err) {
         _didIteratorError11 = true;
@@ -15254,28 +15371,63 @@ exports.default = {
         }
       }
 
+      var _iteratorNormalCompletion12 = true;
+      var _didIteratorError12 = false;
+      var _iteratorError12 = undefined;
+
+      try {
+        for (var _iterator12 = (0, _getIterator3.default)(choose), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+          var _key2 = _step12.value;
+
+          var tree = this.treeObj[_key2];
+          if (tree) {
+            tree.status.choose = choose.indexOf(tree.key) != -1;
+            if (tree.status.choose) {
+              tree.status.opened = true;
+              updateParentStatus(this.treeObj, tree, 'opened', true);
+              if (this.chooseMode == 'all') {
+                updateChildStatus(tree, 'choose', true);
+              }
+            }
+          }
+        }
+      } catch (err) {
+        _didIteratorError12 = true;
+        _iteratorError12 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion12 && _iterator12.return) {
+            _iterator12.return();
+          }
+        } finally {
+          if (_didIteratorError12) {
+            throw _iteratorError12;
+          }
+        }
+      }
+
       if (this.chooseMode == 'all') {
-        var _iteratorNormalCompletion12 = true;
-        var _didIteratorError12 = false;
-        var _iteratorError12 = undefined;
+        var _iteratorNormalCompletion13 = true;
+        var _didIteratorError13 = false;
+        var _iteratorError13 = undefined;
 
         try {
-          for (var _iterator12 = (0, _getIterator3.default)(this.treeDatas), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
-            var tree = _step12.value;
+          for (var _iterator13 = (0, _getIterator3.default)(this.treeDatas), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+            var tree = _step13.value;
 
             updateModeAllChildChooseStatus(tree);
           }
         } catch (err) {
-          _didIteratorError12 = true;
-          _iteratorError12 = err;
+          _didIteratorError13 = true;
+          _iteratorError13 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion12 && _iterator12.return) {
-              _iterator12.return();
+            if (!_iteratorNormalCompletion13 && _iterator13.return) {
+              _iterator13.return();
             }
           } finally {
-            if (_didIteratorError12) {
-              throw _iteratorError12;
+            if (_didIteratorError13) {
+              throw _iteratorError13;
             }
           }
         }
@@ -15307,13 +15459,13 @@ exports.default = {
     },
     getFullChoose: function getFullChoose() {
       var options = [];
-      var _iteratorNormalCompletion13 = true;
-      var _didIteratorError13 = false;
-      var _iteratorError13 = undefined;
+      var _iteratorNormalCompletion14 = true;
+      var _didIteratorError14 = false;
+      var _iteratorError14 = undefined;
 
       try {
-        for (var _iterator13 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
-          var key = _step13.value;
+        for (var _iterator14 = (0, _getIterator3.default)((0, _keys2.default)(this.treeObj)), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
+          var key = _step14.value;
 
           var tree = this.treeObj[key];
           if (tree.status.choose) {
@@ -15321,16 +15473,16 @@ exports.default = {
           }
         }
       } catch (err) {
-        _didIteratorError13 = true;
-        _iteratorError13 = err;
+        _didIteratorError14 = true;
+        _iteratorError14 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion13 && _iterator13.return) {
-            _iterator13.return();
+          if (!_iteratorNormalCompletion14 && _iterator14.return) {
+            _iterator14.return();
           }
         } finally {
-          if (_didIteratorError13) {
-            throw _iteratorError13;
+          if (_didIteratorError14) {
+            throw _iteratorError14;
           }
         }
       }
@@ -15344,27 +15496,27 @@ exports.default = {
         return this.getFullChoose();
       } else {
         var options = [];
-        var _iteratorNormalCompletion14 = true;
-        var _didIteratorError14 = false;
-        var _iteratorError14 = undefined;
+        var _iteratorNormalCompletion15 = true;
+        var _didIteratorError15 = false;
+        var _iteratorError15 = undefined;
 
         try {
-          for (var _iterator14 = (0, _getIterator3.default)(this.treeDatas), _step14; !(_iteratorNormalCompletion14 = (_step14 = _iterator14.next()).done); _iteratorNormalCompletion14 = true) {
-            var data = _step14.value;
+          for (var _iterator15 = (0, _getIterator3.default)(this.treeDatas), _step15; !(_iteratorNormalCompletion15 = (_step15 = _iterator15.next()).done); _iteratorNormalCompletion15 = true) {
+            var data = _step15.value;
 
             options = getChooseNode(data, options);
           }
         } catch (err) {
-          _didIteratorError14 = true;
-          _iteratorError14 = err;
+          _didIteratorError15 = true;
+          _iteratorError15 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion14 && _iterator14.return) {
-              _iterator14.return();
+            if (!_iteratorNormalCompletion15 && _iterator15.return) {
+              _iterator15.return();
             }
           } finally {
-            if (_didIteratorError14) {
-              throw _iteratorError14;
+            if (_didIteratorError15) {
+              throw _iteratorError15;
             }
           }
         }
@@ -15384,7 +15536,7 @@ exports.default = {
     treeCls: function treeCls() {
       var _ref;
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, prefix, true), (0, _defineProperty3.default)(_ref, prefix + '-multiple', this.multiple), (0, _defineProperty3.default)(_ref, prefix + '-single', !this.multiple), _ref;
+      return _ref = {}, (0, _defineProperty3.default)(_ref, prefix, true), (0, _defineProperty3.default)(_ref, prefix + '-multiple', this.multiple), (0, _defineProperty3.default)(_ref, prefix + '-single', !this.multiple), (0, _defineProperty3.default)(_ref, this.className, !!this.className), _ref;
     }
   },
   components: {
@@ -26348,7 +26500,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "h-tree-show",
     class: {
-      'h-tree-show-disabled': _vm.data.status.disabled, 'h-tree-show-choose': _vm.data.status.choose, 'h-tree-show-indeterminate': _vm.data.status.indeterminate
+      'h-tree-show-disabled': _vm.data.status.disabled, 'h-tree-show-choose': _vm.data.status.choose, 'h-tree-show-indeterminate': _vm.data.status.indeterminate, 'h-tree-show-selected': _vm.status.selected == _vm.data.key
+    },
+    on: {
+      "click": _vm.clickShow
     }
   }, [_c('span', {
     staticClass: "h-tree-show-expand"
@@ -26398,7 +26553,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.data.icon) ? _c('span', {
     staticClass: "h-tree-show-icon",
     class: _vm.data.icon
-  }) : _vm._e(), _vm._v(" "), (_vm.data.title != null) ? _c('span', [_vm._v(_vm._s(_vm.data.title))]) : _c('span', [_vm._v(_vm._s(_vm._f("hlang")('h.common.empty')))])])], 1), _vm._v(" "), (_vm.data.children && _vm.data.children.length > 0) ? _c('ul', {
+  }) : _vm._e(), _vm._v(" "), (_vm.data.title != null) ? _c('span', [_vm._v(_vm._s(_vm.data.title))]) : _c('span', [_vm._v(_vm._s(_vm._f("hlang")('h.common.empty')))])]), _vm._v(" "), _vm._t("item", null, {
+    item: _vm.data.value
+  })], 2), _vm._v(" "), (_vm.data.children && _vm.data.children.length > 0) ? _c('ul', {
     staticClass: "h-tree-ul"
   }, _vm._l((_vm.data.children), function(child) {
     return _c('hTreeItem', {
@@ -26409,11 +26566,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "status": _vm.status,
         "multiple": _vm.multiple,
         "choose-mode": _vm.chooseMode,
-        "toggleOnSelect": _vm.toggleOnSelect
+        "toggleOnSelect": _vm.toggleOnSelect,
+        "selectOnClick": _vm.selectOnClick
       },
       on: {
         "trigger": _vm.trigger
-      }
+      },
+      scopedSlots: _vm._u([{
+        key: "item",
+        fn: function(ref) {
+          var item = ref.item;
+
+          return [_vm._t("item", null, {
+            item: item
+          })]
+        }
+      }])
     })
   })) : _vm._e()])
 },staticRenderFns: []}
@@ -27333,7 +27501,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "h-icon-left"
-  }), _c('i', {
+  }), _vm._v(" "), _c('i', {
     staticClass: "h-icon-left"
   })]), _vm._v(" "), _c('span', {
     directives: [{
@@ -27359,9 +27527,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.changeView('year')
       }
     }
-  }, [_vm._v(_vm._s(_vm.nowView.year()) + _vm._s(_vm._f("hlang")('h.date.header.year')))]) : _vm._e(), _vm._v(" "), (_vm.view == 'year') ? _c('span', {
+  }, [_vm._v("\n      " + _vm._s(_vm.nowView.year()) + _vm._s(_vm._f("hlang")('h.date.header.year')) + "\n    ")]) : _vm._e(), _vm._v(" "), (_vm.view == 'year') ? _c('span', {
     staticClass: "h-date-header-show"
-  }, [_vm._v(_vm._s(_vm.nowView.year() - 6) + "  -  " + _vm._s(_vm.nowView.year() + 5) + _vm._s(_vm._f("hlang")('h.date.header.year')))]) : _vm._e(), _vm._v(" "), _c('span', {
+  }, [_vm._v("\n      " + _vm._s(_vm.nowView.year() - 6) + "  -  " + _vm._s(_vm.nowView.year() + 5) + _vm._s(_vm._f("hlang")('h.date.header.year')) + "\n    ")]) : _vm._e(), _vm._v(" "), _c('span', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -27375,8 +27543,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.changeView('month')
       }
     }
-  }, [_vm._v(_vm._s(_vm.months[_vm.nowView.month() -
-    1]))]), _vm._v(" "), _c('span', {
+  }, [_vm._v("\n      " + _vm._s(_vm.months[_vm.nowView.month() -
+    1]) + "\n    ")]), _vm._v(" "), _c('span', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -27390,7 +27558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.changeView('date')
       }
     }
-  }, [_vm._v(_vm._s(_vm.nowView.date()) + _vm._s(_vm._f("hlang")('h.date.header.day')))]), _vm._v(" "), _c('span', {
+  }, [_vm._v("\n      " + _vm._s(_vm.nowView.date()) + _vm._s(_vm._f("hlang")('h.date.header.day')) + "\n    ")]), _vm._v(" "), _c('span', {
     staticClass: "h-date-year-right-picker",
     on: {
       "click": function($event) {
@@ -27400,7 +27568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "h-icon-right"
-  }), _c('i', {
+  }), _vm._v(" "), _c('i', {
     staticClass: "h-icon-right"
   })]), _vm._v(" "), _c('span', {
     directives: [{
@@ -28626,11 +28794,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "multiple": _vm.multiple,
         "status": _vm.status,
         "choose-mode": _vm.chooseMode,
-        "toggleOnSelect": _vm.toggleOnSelect
+        "toggleOnSelect": _vm.toggleOnSelect,
+        "selectOnClick": _vm.selectOnClick
       },
       on: {
         "trigger": _vm.trigger
-      }
+      },
+      scopedSlots: _vm._u([{
+        key: "item",
+        fn: function(ref) {
+          var item = ref.item;
+
+          return [_vm._t("item", null, {
+            item: item
+          })]
+        }
+      }])
     })
   })), _vm._v(" "), _c('Loading', {
     attrs: {
