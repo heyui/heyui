@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0-alpha.0"></a>
+# [1.17.0-alpha.0](https://github.com/heyui/heyui/compare/v1.16.1-alpha.3...v1.17.0-alpha.0) (2019-03-06)
+
+
+### Bug Fixes
+
+* **DateFullRangePicker:** week calculations fixed ([2430b7f](https://github.com/heyui/heyui/commit/2430b7f))
+* **Loading:** 开启的时候删除关闭的timeout ([06f52a8](https://github.com/heyui/heyui/commit/06f52a8))
+
+
+### Features
+
+* **DateFullRangePicker:** add prop layout ([8cce8f8](https://github.com/heyui/heyui/commit/8cce8f8))
+* **Tree:**  enhance Tree component ([2d805d7](https://github.com/heyui/heyui/commit/2d805d7))
+
+
+
 <a name="1.16.1-alpha.3"></a>
 ## [1.16.1-alpha.3](https://github.com/heyui/heyui/compare/v1.16.1-alpha.2...v1.16.1-alpha.3) (2019-03-05)
 
