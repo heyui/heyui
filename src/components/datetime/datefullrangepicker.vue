@@ -277,7 +277,7 @@ export default {
           case 'week':
             return this.t('h.date.show.week', {
               year: date.year(),
-              weeknum: date.getWeekOfYear(manba.MONDAY),
+              weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
               dayend: manba(date).add(6).format('MM-DD')
             });

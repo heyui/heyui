@@ -1,31 +1,53 @@
 <template>
   <div class="h-date-content">
     <div class="h-date-header" v-if="type != 'time'">
-      <span class="h-date-year-left-picker" @click.stop="updateView('default', -1)"><i class="h-icon-left"></i><i class="h-icon-left"></i></span>
-      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'"><i
-          class="h-icon-left"></i></span>
-      <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">{{nowView.year()}}{{'h.date.header.year'
-        | hlang}}</span>
-      <span class="h-date-header-show" v-if="view == 'year'">{{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year'
-        | hlang}}</span>
-      <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">{{months[nowView.month()
-        - 1]}}</span>
-      <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">{{nowView.date()}}{{'h.date.header.day'
-        | hlang}}</span>
-      <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)"><i class="h-icon-right"></i><i
-          class="h-icon-right"></i></span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'"><i
-          class="h-icon-right"></i></span>
+      <span class="h-date-year-left-picker" @click.stop="updateView('default', -1)">
+        <i class="h-icon-left"></i>
+        <i class="h-icon-left"></i>
+      </span>
+      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'">
+        <i class="h-icon-left"></i>
+      </span>
+      <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
+        {{nowView.year()}}{{'h.date.header.year'
+        | hlang}}
+      </span>
+      <span class="h-date-header-show" v-if="view == 'year'">
+        {{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year'
+        | hlang}}
+      </span>
+      <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
+        {{months[nowView.month()
+        - 1]}}
+      </span>
+      <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
+        {{nowView.date()}}{{'h.date.header.day'
+        | hlang}}
+      </span>
+      <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
+        <i class="h-icon-right"></i>
+        <i class="h-icon-right"></i>
+      </span>
+      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'">
+        <i class="h-icon-right"></i>
+      </span>
     </div>
     <div class="h-date-header" v-show="view=='minute'">
-      <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)"><i class="h-icon-left"></i></span>
+      <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)">
+        <i class="h-icon-left"></i>
+      </span>
       <span class="h-date-header-show" @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('hour', 1)"><i class="h-icon-right"></i></span>
+      <span class="h-date-month-right-picker" @click.stop="updateView('hour', 1)">
+        <i class="h-icon-right"></i>
+      </span>
     </div>
     <div :class="dateBodyCls">
-      <div class="h-date-body-weeks" v-if="view=='date'"><span v-for="w of weeks" :key="w">{{w}}</span></div>
+      <div class="h-date-body-weeks" v-if="view=='date'">
+        <span v-for="w of weeks" :key="w">{{w}}</span>
+      </div>
       <div class="h-date-body-pickers">
-        <span v-for="d of dates" :key="d.string" :string="d.string" :class="getDateCls(d)" @click.stop="chooseDate(d)">{{d.show}}</span></div>
+        <span v-for="d of dates" :key="d.string" :string="d.string" :class="getDateCls(d)" @click.stop="chooseDate(d)">{{d.show}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -74,15 +96,8 @@ const DateJudgeLength = {
   minute: 16
 };
 
-const genData = (param) => {
-  let {
-    date,
-    type,
-    show,
-    vm,
-    isNowDays,
-    view
-  } = param;
+const genData = param => {
+  let { date, type, show, vm, isNowDays, view } = param;
   let disabled = false;
   if (utils.isObject(vm.option)) {
     if (vm.option.start) disabled = date.distance(vm.option.start, type) < 0;
@@ -143,20 +158,28 @@ export default {
   mounted() {
     this.$nextTick(() => {
       if (this.range) {
-        this.$el.addEventListener('mouseenter', (event) => {
-          if (this.view == 'date' && !!this.value.start && !this.value.end) {
-            let target = event.target;
-            if (target.tagName == 'SPAN') {
-              let string = target.getAttribute('string');
-              if (string) this.$emit('updateRangeEnd', string);
+        this.$el.addEventListener(
+          'mouseenter',
+          event => {
+            if (this.view == 'date' && !!this.value.start && !this.value.end) {
+              let target = event.target;
+              if (target.tagName == 'SPAN') {
+                let string = target.getAttribute('string');
+                if (string) this.$emit('updateRangeEnd', string);
+              }
             }
-          }
-        }, true);
-        this.$el.addEventListener('mouseout', () => {
-          if (this.view == 'date' && !!this.value.start && !this.value.end) {
-            this.$emit('updateRangeEnd', '');
-          }
-        }, true);
+          },
+          true
+        );
+        this.$el.addEventListener(
+          'mouseout',
+          () => {
+            if (this.view == 'date' && !!this.value.start && !this.value.end) {
+              this.$emit('updateRangeEnd', '');
+            }
+          },
+          true
+        );
       }
     });
   },
@@ -203,9 +226,7 @@ export default {
         isSelected = this.value.substring(0, length) == d.string.substring(0, length);
       }
       if (this.range && utils.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
-        isRangeSelected = (this.value.start < d.string && this.rangeEnd > d.string) || (this.value.start > d.string &&
-          this.rangeEnd <
-          d.string);
+        isRangeSelected = (this.value.start < d.string && this.rangeEnd > d.string) || (this.value.start > d.string && this.rangeEnd < d.string);
       }
       return {
         'h-date-not-now-day': !d.isNowDays,
@@ -341,64 +362,74 @@ export default {
         } else if (this.startWeek > startDay) {
           startDay = 7 - (this.startWeek - startDay) - 1;
         } else {
-          startDay = (startDay - this.startWeek) - 1;
+          startDay = startDay - this.startWeek - 1;
         }
         let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
         let dates = [];
         let lastMonthDays = lastdayoflastmonth.date() - startDay;
         for (let i = lastMonthDays; i <= lastdayoflastmonth.date(); i++) {
-          dates.push(genData({
-            date: manba([lastdayoflastmonth.year(), lastdayoflastmonth.month(), i]),
-            type: manba.DAY,
-            show: i,
-            vm: this,
-            isNowDays: false
-          }));
+          dates.push(
+            genData({
+              date: manba([lastdayoflastmonth.year(), lastdayoflastmonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: false
+            })
+          );
         }
         for (let i = 1; i <= lastdayofmonth.date(); i++) {
-          dates.push(genData({
-            date: manba([lastdayofmonth.year(), lastdayofmonth.month(), i]),
-            type: manba.DAY,
-            show: i,
-            vm: this,
-            isNowDays: true
-          }));
+          dates.push(
+            genData({
+              date: manba([lastdayofmonth.year(), lastdayofmonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: true
+            })
+          );
         }
         let nextMonth = lastdayofmonth.add(1, manba.DAY);
-        let nextMonthDays = (7 * 6 - dates.length);
+        let nextMonthDays = 7 * 6 - dates.length;
         for (let i = 1; i <= nextMonthDays; i++) {
-          dates.push(genData({
-            date: manba([nextMonth.year(), nextMonth.month(), i]),
-            type: manba.DAY,
-            show: i,
-            vm: this,
-            isNowDays: false
-          }));
+          dates.push(
+            genData({
+              date: manba([nextMonth.year(), nextMonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: false
+            })
+          );
         }
         return dates;
       } else if (this.view == 'month') {
         let dates = [];
         for (let i = 1; i <= 12; i++) {
-          dates.push(genData({
-            date: manba([nowDate.year(), i, 1]),
-            type: manba.MONTH,
-            show: this.months[i - 1],
-            vm: this,
-            isNowDays: true
-          }));
+          dates.push(
+            genData({
+              date: manba([nowDate.year(), i, 1]),
+              type: manba.MONTH,
+              show: this.months[i - 1],
+              vm: this,
+              isNowDays: true
+            })
+          );
         }
         return dates;
       } else if (this.view == 'year') {
         let dates = [];
         let nowYear = nowDate.year();
         for (let i = nowYear - 6; i <= nowYear + 5; i++) {
-          dates.push(genData({
-            date: manba([i, 1, 1]),
-            type: manba.YEAR,
-            show: i,
-            vm: this,
-            isNowDays: true
-          }));
+          dates.push(
+            genData({
+              date: manba([i, 1, 1]),
+              type: manba.YEAR,
+              show: i,
+              vm: this,
+              isNowDays: true
+            })
+          );
         }
         return dates;
       } else if (this.view == 'hour') {
@@ -410,13 +441,17 @@ export default {
           list = utils.numList(0, 24, 1);
         }
         for (let i of list) {
-          dates.push(genData({
-            date: manba(nowDate.time()).hours(i).minutes(0),
-            type: manba.HOUR,
-            show: utils.padLeft(i, 2) + ':00',
-            vm: this,
-            isNowDays: true
-          }));
+          dates.push(
+            genData({
+              date: manba(nowDate.time())
+                .hours(i)
+                .minutes(0),
+              type: manba.HOUR,
+              show: utils.padLeft(i, 2) + ':00',
+              vm: this,
+              isNowDays: true
+            })
+          );
         }
         return dates;
       } else if (this.view == 'minute') {
@@ -429,18 +464,23 @@ export default {
           list = utils.numList(0, 60, this.options.minuteStep);
         }
         for (let i of list) {
-          dates.push(genData({
-            date: manba(nowDate.time()).minutes(i),
-            type: manba.MINUTE,
-            show: utils.padLeft(hour, 2) + ':' + utils.padLeft(i, 2),
-            vm: this,
-            isNowDays: true
-          }));
+          dates.push(
+            genData({
+              date: manba(nowDate.time()).minutes(i),
+              type: manba.MINUTE,
+              show: utils.padLeft(hour, 2) + ':' + utils.padLeft(i, 2),
+              vm: this,
+              isNowDays: true
+            })
+          );
         }
         return dates;
       } else if (this.view == 'week') {
         let dates = [];
-        let date = manba(nowDate).add(-1, manba.MONTH).endOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
+        let date = manba(nowDate)
+          .add(-1, manba.MONTH)
+          .endOf(manba.MONTH)
+          .endOf(manba.WEEK, this.startWeek);
         let monthSpace = 0;
         if (date.month() == nowDate.month()) {
           date = date.startOf(manba.WEEK, this.startWeek);
@@ -449,7 +489,6 @@ export default {
           date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startWeek);
         }
         let month = date.month();
-        let index = date.getWeekOfYear(this.startWeek);
         let nextMonth = monthSpace + month;
         nextMonth = nextMonth > 12 ? 1 : nextMonth;
         while (date.month() == month || date.month() == nextMonth) {
@@ -459,20 +498,17 @@ export default {
               type: manba.WEEK,
               show: this.t('h.date.show.week', {
                 year: date.year(),
-                weeknum: index,
+                weeknum: date.getWeekOfYear(this.startWeek),
                 daystart: date.format('MM-DD'),
-                dayend: manba(date).add(6).format('MM-DD')
+                dayend: manba(date)
+                  .add(6)
+                  .format('MM-DD')
               }),
               vm: this,
               isNowDays: true
-            }));
-          let oldYear = date.year();
+            })
+          );
           date = date.add(7);
-          if (oldYear != date.year()) {
-            index = 1;
-          } else {
-            index += 1;
-          }
         }
         return dates;
       } else if (this.view == 'quarter') {
@@ -490,7 +526,8 @@ export default {
               vm: this,
               isNowDays: true,
               view: this.view
-            }));
+            })
+          );
           date = date.add(3, manba.MONTH);
         }
         return dates;
@@ -499,5 +536,4 @@ export default {
     }
   }
 };
-
 </script>
