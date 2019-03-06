@@ -52,7 +52,7 @@
       </tr>
       <tr>
         <td>layout</td>
-        <td>设置需要选择的类型</td>
+        <td>设置需要选择的类型, 1.17.0+</td>
         <td>Array</td>
         <td> 'year', 'quarter', 'month', 'week', 'date', 'customize'</td>
         <td>[ 'year', 'quarter', 'month', 'week', 'date', 'customize']</td>

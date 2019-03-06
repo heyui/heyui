@@ -95,7 +95,7 @@
       </tr>
       <tr>
         <td>className</td>
-        <td>theme</td>
+        <td>theme, 1.17.0+</td>
         <td>String</td>
         <td>h-tree-theme-item-selected, h-tree-theme-row-selected</td>
         <td>h-tree-theme-item-selected</td>
@@ -166,19 +166,19 @@
       </tr>
       <tr>
         <td>updateTreeItem</td>
-        <td>update TreeItem</td>
+        <td>update TreeItem, 1.17.0+</td>
         <td>(key, { title: '' })</td>
         <td>none</td>
       </tr>
       <tr>
         <td>appendTreeItem</td>
-        <td>append TreeItem</td>
+        <td>append TreeItem, 1.17.0+</td>
         <td>(parentkey, { id: '', title: '' })</td>
         <td>none</td>
       </tr>
       <tr>
         <td>removeTreeItem</td>
-        <td>remove TreeItem</td>
+        <td>remove TreeItem, 1.17.0+</td>
         <td>(key)</td>
         <td>none</td>
       </tr>

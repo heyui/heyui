@@ -88,14 +88,14 @@
       </tr>
       <tr>
         <td>selectOnClick</td>
-        <td>是否点击整行的时候选中</td>
+        <td>是否点击整行的时候选中，1.17.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
       </tr>
       <tr>
         <td>className</td>
-        <td>主题</td>
+        <td>主题，1.17.0+</td>
         <td>String</td>
         <td>h-tree-theme-item-selected, h-tree-theme-row-selected</td>
         <td>h-tree-theme-item-selected</td>
@@ -166,19 +166,19 @@
       </tr>
       <tr>
         <td>updateTreeItem</td>
-        <td>更新TreeItem</td>
+        <td>更新TreeItem，1.17.0+</td>
         <td>(key, { title: '' })</td>
         <td>无</td>
       </tr>
       <tr>
         <td>appendTreeItem</td>
-        <td>插入TreeItem</td>
+        <td>插入TreeItem，1.17.0+</td>
         <td>(parentkey, { id: '', title: '' })</td>
         <td>无</td>
       </tr>
       <tr>
         <td>removeTreeItem</td>
-        <td>删除TreeItem</td>
+        <td>删除TreeItem，1.17.0+</td>
         <td>(key)</td>
         <td>无</td>
       </tr>
