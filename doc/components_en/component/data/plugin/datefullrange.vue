@@ -57,6 +57,13 @@
         <td>1, 2, 3, 4, 5, 6, 7</td>
         <td>Global Configuration <code>datepicker.startWeek</code>, For details, please go to <router-link to="/en/component/config">Global Configuration</router-link></td>
       </tr>
+      <tr>
+        <td>layout</td>
+        <td>Set the types you want to select</td>
+        <td>Array</td>
+        <td> 'year', 'quarter', 'month', 'week', 'date', 'customize'</td>
+        <td>[ 'year', 'quarter', 'month', 'week', 'date', 'customize']</td>
+      </tr>
     </table>
 
     <h3>DateRangePicker Event</h3>

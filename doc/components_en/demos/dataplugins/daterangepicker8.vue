@@ -1,28 +1,30 @@
 <template>
   <div>
-    <blockquote>Basic use</blockquote>
+    <p>start of the week: <SwitchList v-model="startWeek" :datas="startWeekDatas" small></SwitchList></p>
+    <p>
+      Layout: <Checkbox v-model="layout" :datas="layoutDatas"></Checkbox>
+    </p>
+    <p style="height: 30px;"></p>
     <p>value: {{value}}</p>
     <div>
-      <DateFullRangePicker v-model="value"></DateFullRangePicker>
-    </div>
-    <blockquote>Set the day of the week as the start of the week</blockquote>
-    <p>value: {{value2}}</p>
-    <div>
-      <DateFullRangePicker v-model="value2" :start-week="7"></DateFullRangePicker>
+      <DateFullRangePicker v-model="value" :layout="layout" :startWeek="startWeek"></DateFullRangePicker>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       value: {
         start: '2017-01-01',
-        end: '2017-08-01'
+        end: '2018-01-01',
+        type: 'year'
       },
-      value2: null
+      startWeek: 1,
+      layout: ['year', 'quarter', 'month', 'week', 'date', 'customize'],
+      startWeekDatas: [{ key: 1, title: 'Monday' }, { key: 7, title: 'Sunday' }],
+      layoutDatas: ['year', 'quarter', 'month', 'week', 'date', 'customize']
     };
   }
 };

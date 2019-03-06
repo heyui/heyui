@@ -29,13 +29,6 @@
         <td>year, month, week, date</td>
         <td>week</td>
       </tr>
-      <!-- <tr>
-        <td>option</td>
-        <td>配置项，详细参见下面的option说明</td>
-        <td>Object</td>
-        <td>-</td>
-        <td></td>
-      </tr> -->
       <tr>
         <td>noBorder</td>
         <td>是否有边框，适用于文字的下拉选择</td>
@@ -56,6 +49,13 @@
         <td>Number</td>
         <td>1, 2, 3, 4, 5, 6, 7</td>
         <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/component/config">全局配置</router-link></td>
+      </tr>
+      <tr>
+        <td>layout</td>
+        <td>设置需要选择的类型</td>
+        <td>Array</td>
+        <td> 'year', 'quarter', 'month', 'week', 'date', 'customize'</td>
+        <td>[ 'year', 'quarter', 'month', 'week', 'date', 'customize']</td>
       </tr>
     </table>
 

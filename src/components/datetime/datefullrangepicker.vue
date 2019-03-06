@@ -63,6 +63,17 @@ export default {
     value: Object,
     startWeek: {
       type: Number
+    },
+    layout: {
+      type: Array,
+      default: () => ([
+        'year',
+        'quarter',
+        'month',
+        'week',
+        'date',
+        'customize'
+      ])
     }
   },
   watch: {
@@ -73,6 +84,14 @@ export default {
   data() {
     let format = config.getOption('datepicker.format');
     return {
+      allviews: {
+        year: this.t('h.date.year'),
+        quarter: this.t('h.date.quarter'),
+        month: this.t('h.date.month'),
+        week: this.t('h.date.week'),
+        date: this.t('h.date.day'),
+        customize: this.t('h.datepicker.customize')
+      },
       nowFormat: this.hasTime ? format.datetime : format.date,
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
@@ -82,14 +101,6 @@ export default {
       nowView: {
         start: manba(),
         end: manba().add(1, manba.MONTH)
-      },
-      views: {
-        year: this.t('h.date.year'),
-        quarter: this.t('h.date.quarter'),
-        month: this.t('h.date.month'),
-        week: this.t('h.date.week'),
-        date: this.t('h.date.day'),
-        customize: this.t('h.datepicker.customize')
       },
       view: this.defaultType || 'year',
       rangeEnd: '',
@@ -255,6 +266,17 @@ export default {
     }
   },
   computed: {
+    views() {
+      let v = {};
+      for (let l of this.layout) {
+        if (!this.allviews[l]) {
+          console.warn(`WARNING(DateFullRangePicker): props ${l} for layout don't exsits.`);
+        } else {
+          v[l] = this.allviews[l];
+        }
+      }
+      return v;
+    },
     showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
