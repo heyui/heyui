@@ -1,9 +1,53 @@
+<style lang="less">
+.tree4-demo-vue {
+  .h-tree-show {
+    cursor: pointer;
+    .h-tree-show-desc {
+      display: none;
+    }
+    .tree-show-custom {
+      display: inline;
+      .tree-show-title {
+        font-size: 13px;
+      }
+    }
+    .tree-edit-part {
+      float: right;
+      opacity: 0;
+      i {
+        font-size: 12px;
+        vertical-align: middle;
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover {
+          color: @primary-color;
+        }
+      }
+    }
+  }
+}
+</style>
+
 <template>
-  <div v-width="500">
-    <Tree :option="param" ref="demo" :filterable="true"></Tree>
+  <div v-width="300" class="tree4-demo-vue">
+    <Tree :option="param" ref="demo" :filterable="true" selectOnClick className="h-tree-theme-row-selected">
+      <template slot="item" slot-scope="{item}">
+        <div class="tree-show-custom">
+          <span class="tree-show-title" v-if="!item.editing">{{item.title}}</span>
+          <input v-else type="text" v-model="item.editValue" @blur="updateValue(item)" @keyup.enter="updateValue(item)">
+          <span class="tree-edit-part" v-if="!item.editing">
+            <i class="h-icon-plus" @click.stop="append(item)"></i>
+            <i class="h-icon-edit" @click.stop="edit(item)"></i>
+            <i class="h-icon-trash" @click.stop="remove(item)"></i>
+          </span>
+        </div>
+      </template>
+    </Tree>
   </div>
 </template>
 <script>
+import utils from 'hey-utils';
+
 export default {
   data() {
     let list = [
@@ -36,6 +80,21 @@ export default {
       }
     };
   },
-  methods: {}
+  methods: {
+    edit(item) {
+      this.$set(item, 'editValue', item.title);
+      this.$set(item, 'editing', true);
+    },
+    updateValue(item) {
+      this.$set(item, 'editing', false);
+      this.$refs.demo.updateTreeItem(item.id, { title: item.editValue });
+    },
+    append(item) {
+      this.$refs.demo.appendTreeItem(item.id, { id: utils.uuid(), title: 'test' });
+    },
+    remove(item) {
+      this.$refs.demo.removeTreeItem(item.id);
+    }
+  }
 };
 </script>

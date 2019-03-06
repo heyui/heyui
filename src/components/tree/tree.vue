@@ -3,7 +3,7 @@
     <Search v-if="filterable" v-model="searchValue" @onsearch="searchTree" block></Search>
     <ul class="h-tree-body">
       <treeItem v-for="tree of treeDatas" :data="tree" :param="param" :key="tree.key" :multiple="multiple" :status="status"
-        @trigger="trigger" :choose-mode="chooseMode" :toggleOnSelect="toggleOnSelect"></treeItem>
+        @trigger="trigger" :choose-mode="chooseMode" :toggleOnSelect="toggleOnSelect" :selectOnClick="selectOnClick"><template slot="item" slot-scope="{item}"><slot name="item" :item="item"></slot></template></treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>
@@ -105,6 +105,14 @@ export default {
     toggleOnSelect: {
       type: Boolean,
       default: true
+    },
+    selectOnClick: {
+      type: Boolean,
+      default: false
+    },
+    className: {
+      type: String,
+      default: 'h-tree-theme-item-selected'
     }
   },
   data() {
@@ -145,6 +153,42 @@ export default {
         this.updateChoose(this.value, false);
       } else {
         this.updateSelect(this.value, false);
+      }
+    },
+    updateTreeItem(key, value) {
+      let item = this.treeObj[key];
+      if (item) {
+        for (let v of Object.keys(value)) {
+          this.$set(item.value, v, value[v]);
+          if (v == this.param.titleName) {
+            item.title = value[v];
+          }
+        }
+      }
+    },
+    appendTreeItem(key, value) {
+      let parent = this.treeObj[key];
+      let obj = this.initTreeNode(value, key);
+      if (parent) {
+        parent.children.push(obj);
+      } else {
+        this.treeDatas.push(obj);
+      }
+      this.treeObj[obj.key] = obj;
+    },
+    removeTreeItem(key) {
+      let item = this.treeObj[key];
+      if (item) {
+        let index = this.treeDatas.indexOf(item);
+        if (index > -1) {
+          this.treeDatas.splice(index, 1);
+        } else if (item.parentKey && this.treeObj[item.parentKey]) {
+          let parent = this.treeObj[item.parentKey];
+          if (parent.children.indexOf(item) > -1) {
+            parent.children.splice(parent.children.indexOf(item), 1);
+          }
+        }
+        delete this.treeObj[key];
       }
     },
     searchTree(value) {
@@ -235,30 +279,34 @@ export default {
     initTreeModeData(list, isWait, parentKey) {
       let datas = [];
       for (let data of list) {
-        let obj = {
-          key: data[this.param.keyName],
-          title: data[this.param.titleName],
-          value: data,
-          parentKey,
-          icon: data.treeIcon,
-          status: {
-            hide: false,
-            opened: false,
-            loading: false,
-            checkable: data.checkable !== false,
-            isWait,
-            selected: false,
-            indeterminate: false,
-            choose: false,
-            disabled: !!data.disabled
-          }
-        };
+        let obj = this.initTreeNode(data, parentKey, isWait);
         let children = data[this.param.childrenName] || [];
         obj.children = this.initTreeModeData(children, isWait, obj.key);
         this.treeObj[obj.key] = obj;
         datas.push(obj);
       }
       return datas;
+    },
+    initTreeNode(data, parentKey, isWait = false) {
+      return {
+        key: data[this.param.keyName],
+        title: data[this.param.titleName],
+        value: data,
+        parentKey,
+        icon: data.treeIcon,
+        status: {
+          hide: false,
+          opened: false,
+          loading: false,
+          checkable: data.checkable !== false,
+          isWait,
+          selected: false,
+          indeterminate: false,
+          choose: false,
+          disabled: !!data.disabled
+        },
+        children: []
+      };
     },
     refresh() {
       this.initTreeDatas();
@@ -381,7 +429,8 @@ export default {
       return {
         [prefix]: true,
         [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-single`]: !this.multiple
+        [`${prefix}-single`]: !this.multiple,
+        [this.className]: !!this.className
       };
     }
   },

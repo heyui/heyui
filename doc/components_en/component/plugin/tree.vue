@@ -20,7 +20,7 @@
     <p><code>chooseMode</code>: independent, The choice of the parent's children is irrelevant, and the selected data is returned in the end.</p>
     <exampleEn demo="plugins/tree8"></exampleEn>
 
-    <h3>Search</h3>
+    <h3>Search and customization</h3>
     <exampleEn demo="plugins/tree4"></exampleEn>
 
     <h3>All data is loaded asynchronously</h3>
@@ -86,6 +86,20 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectOnClick</td>
+        <td>Whether to select when clicking on the whole line</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>theme</td>
+        <td>String</td>
+        <td>h-tree-theme-item-selected, h-tree-theme-row-selected</td>
+        <td>h-tree-theme-item-selected</td>
+      </tr>
     </table>
 
     <h3>Tree Method</h3>
@@ -93,46 +107,80 @@
       <tr>
         <th>Method</th>
         <th>Description</th>
+        <th>Parameters</th>
+        <th>Return</th>
       </tr>
       <tr>
         <td>updateChoose</td>
         <td>Update selected value (multiple selection)</td>
+        <td>(keys, updateValue = true)</td>
+        <td>none</td>
       </tr>
       <tr>
         <td>getChoose</td>
         <td>Get the selected value (multiple selection)</td>
+        <td>none</td>
+        <td>[TreeItem]</td>
       </tr>
       <tr>
         <td>updateSelect</td>
         <td>Update selected value (single selection)</td>
+        <td>(keys, updateValue = true)</td>
+        <td>none</td>
       </tr>
       <tr>
         <td>getSelect</td>
         <td>Get the selected value (single selection)</td>
+        <td>none</td>
+        <td>TreeItem</td>
       </tr>
       <tr>
         <td>getFullChoose</td>
         <td>Get all selected values (multiple choices)</td>
+        <td>none</td>
+        <td>[TreeItem]</td>
       </tr>
       <tr>
         <td>chooseAll</td>
         <td>Select all values (multiple choices)</td>
-        <td></td>
+        <td>none</td>
+        <td>none</td>
       </tr>
       <tr>
         <td>expandAll</td>
         <td>Open all folds</td>
-        <td></td>
+        <td>none</td>
+        <td>none</td>
       </tr>
       <tr>
         <td>foldAll</td>
         <td>Collapse all folds</td>
-        <td></td>
+        <td>none</td>
+        <td>none</td>
       </tr>
       <tr>
         <td>refresh</td>
-        <td>refresh view</td>
-        <td></td>
+        <td>refresh tree</td>
+        <td>none</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>updateTreeItem</td>
+        <td>update TreeItem</td>
+        <td>(key, { title: '' })</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>appendTreeItem</td>
+        <td>append TreeItem</td>
+        <td>(parentkey, { id: '', title: '' })</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>removeTreeItem</td>
+        <td>remove TreeItem</td>
+        <td>(key)</td>
+        <td>none</td>
       </tr>
     </table>
 
@@ -164,7 +212,7 @@
       </tr>
     </table>
 
-    <h3>option Property</h3>
+    <h3>Option Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>

@@ -1,6 +1,10 @@
 @tree-prefix: ~"@{prefix}tree";
 .@{tree-prefix} {
 
+  &-body {
+    position: relative;
+  }
+
   .@{prefix}search{
     margin-bottom: 5px;
   }
@@ -24,7 +28,8 @@
   &-show {
     padding: 3px 0;
     &-expand {
-      width: 14px;
+      width: 20px;
+      text-align: right;
       color: @gray-color;
       display: inline-block;
       padding: 0 2px 0 0;
@@ -43,22 +48,6 @@
       font-size: @font-size-mini;
       padding: 2px 5px;
       margin-left: -4px;
-      cursor: pointer;
-      border-radius: @border-radius;
-      .@{tree-prefix}-single &{
-        &:hover {
-          background-color: @hover-background-color;
-        }
-        &.selected {
-          background-color: @primary-color;
-          color: @white-color;
-        }
-      }
-      .@{tree-prefix}-multiple &{
-        &:hover, &.selected {
-          color: @primary-color;
-        }
-      }
     }
 
     &-icon{
@@ -66,7 +55,6 @@
     }
 
     &-disabled &-desc{
-      // cursor: default;
       color: @disabled-color;
       &:hover {
         background-color: transparent;
@@ -77,6 +65,57 @@
     transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
     max-height: 0;
     overflow: hidden;
-    margin-left: 20px;
+    margin-left: 15px;
+  }
+
+  &.h-tree-theme-item-selected {
+    .@{tree-prefix}-show-desc {
+      cursor: pointer;
+      border-radius: @border-radius;
+    }
+
+    &.@{tree-prefix}-single {
+      .@{tree-prefix}-show-desc{
+        &:hover {
+          background-color: @hover-background-color;
+        }
+      }
+      .@{tree-prefix}-show-selected .@{tree-prefix}-show-desc {
+        background-color: @primary-color;
+        color: @white-color;
+      }
+    }
+    &.@{tree-prefix}-multiple .@{tree-prefix}-show-desc{
+      &:hover{
+        color: @primary-color;
+      }
+    }
+  }
+}
+
+
+&.h-tree-theme-row-selected {
+
+  .@{tree-prefix}-show {
+    cursor: pointer;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 28px;
+      z-index: -1;
+    }
+    &:hover {
+      &:before {
+        background: @hover-background-color;
+      }
+      .tree-edit-part {
+        opacity: 1;
+      }
+    }
+    &.h-tree-show-selected:before {
+      background: @highlight-background-color;
+    }
   }
 }

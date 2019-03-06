@@ -20,7 +20,7 @@
     <p><code>chooseMode</code>: independent, 父级子级的选择不相关，最终中返回已选择的数据。</p>
     <example demo="plugins/tree8"></example>
 
-    <h3>搜索</h3>
+    <h3>搜索与自定义</h3>
     <example demo="plugins/tree4"></example>
 
     <h3>全部数据异步加载</h3>
@@ -86,6 +86,20 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>selectOnClick</td>
+        <td>是否点击整行的时候选中</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>className</td>
+        <td>主题</td>
+        <td>String</td>
+        <td>h-tree-theme-item-selected, h-tree-theme-row-selected</td>
+        <td>h-tree-theme-item-selected</td>
+      </tr>
     </table>
 
     <h3>Tree 方法</h3>
@@ -93,46 +107,80 @@
       <tr>
         <th>方法</th>
         <th>说明</th>
+        <th>参数</th>
+        <th>返回值</th>
       </tr>
       <tr>
         <td>updateChoose</td>
         <td>更新选中值(多选)</td>
+        <td>(keys, updateValue = true)</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>getChoose</td>
         <td>获取选中值(多选)</td>
+        <td>无</td>
+        <td>[TreeItem]</td>
       </tr>
       <tr>
         <td>updateSelect</td>
         <td>更新选中值(单选)</td>
+        <td>(keys, updateValue = true)</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>getSelect</td>
         <td>获取选中值(单选)</td>
+        <td>无</td>
+        <td>TreeItem</td>
       </tr>
       <tr>
         <td>getFullChoose</td>
         <td>获取所有选中的值(多选)</td>
+        <td>无</td>
+        <td>[TreeItem]</td>
       </tr>
       <tr>
         <td>chooseAll</td>
         <td>选中所有值(多选)</td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>expandAll</td>
         <td>打开所有的折叠</td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>foldAll</td>
         <td>收起所有的折叠</td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
       </tr>
       <tr>
         <td>refresh</td>
         <td>刷新数据</td>
-        <td></td>
+        <td>无</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>updateTreeItem</td>
+        <td>更新TreeItem</td>
+        <td>(key, { title: '' })</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>appendTreeItem</td>
+        <td>插入TreeItem</td>
+        <td>(parentkey, { id: '', title: '' })</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>removeTreeItem</td>
+        <td>删除TreeItem</td>
+        <td>(key)</td>
+        <td>无</td>
       </tr>
     </table>
 

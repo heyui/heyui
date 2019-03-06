@@ -1,37 +1,59 @@
 <template>
-  <li class="h-tree-li"
-      :class="{'h-tree-li-opened':data.status.opened}">
-    <div class="h-tree-show"
-      :class="{'h-tree-show-disabled':data.status.disabled, 'h-tree-show-choose': data.status.choose, 'h-tree-show-indeterminate': data.status.indeterminate}" v-show="!data.status.hide">
-      <span class='h-tree-show-expand'>
-        <span @click="toggleTree()"
-              v-if="data.status.isWait"><template v-if="!data.status.loading"><i class='h-icon-right'></i></template><template v-else><i class='h-icon-loading'></i></template></span>
-        <span @click="toggleTree()"
-              v-else-if="data.children&&data.children.length>0"><i class='h-icon-right'></i></span>
+  <li class="h-tree-li" :class="{'h-tree-li-opened':data.status.opened}">
+    <div
+      class="h-tree-show"
+      @click="clickShow"
+      :class="{'h-tree-show-disabled':data.status.disabled, 'h-tree-show-choose': data.status.choose, 'h-tree-show-indeterminate': data.status.indeterminate, 'h-tree-show-selected': status.selected == data.key}"
+      v-show="!data.status.hide"
+    >
+      <span class="h-tree-show-expand">
+        <span @click="toggleTree()" v-if="data.status.isWait">
+          <template v-if="!data.status.loading">
+            <i class="h-icon-right"></i>
+          </template>
+          <template v-else>
+            <i class="h-icon-loading"></i>
+          </template>
+        </span>
+        <span @click="toggleTree()" v-else-if="data.children&&data.children.length>0">
+          <i class="h-icon-right"></i>
+        </span>
       </span>
-      <Checkbox :disabled="data.status.disabled" v-if="multiple&&data.status.checkable" v-model="data.status.choose" :indeterminate="data.status.indeterminate" @input="choose(data)"></Checkbox>
-      <div class='h-tree-show-desc' :class="{'selected': status.selected == data.key}" @click="select">
-          <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
-          <span v-if="data.title != null">{{data.title}}</span>
-          <span v-else>{{'h.common.empty' | hlang}}</span>
+      <Checkbox
+        :disabled="data.status.disabled"
+        v-if="multiple&&data.status.checkable"
+        v-model="data.status.choose"
+        :indeterminate="data.status.indeterminate"
+        @input="choose(data)"
+      ></Checkbox>
+      <div class="h-tree-show-desc" :class="{'selected': status.selected == data.key}" @click="select">
+        <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
+        <span v-if="data.title != null">{{data.title}}</span>
+        <span v-else>{{'h.common.empty' | hlang}}</span>
       </div>
+      <slot name="item" :item="data.value"></slot>
     </div>
-    <ul v-if="data.children&&data.children.length>0"
-        class="h-tree-ul">
-      <hTreeItem v-for="child of data.children"
-                  :key="child.key"
-                  :data="child"
-                  :param="param"
-                  :status="status"
-                  :multiple="multiple"
-                  :choose-mode="chooseMode"
-                  @trigger="trigger"
-                  :toggleOnSelect="toggleOnSelect"></hTreeItem>
+    <ul v-if="data.children&&data.children.length>0" class="h-tree-ul">
+      <hTreeItem
+        v-for="child of data.children"
+        :key="child.key"
+        :data="child"
+        :param="param"
+        :status="status"
+        :multiple="multiple"
+        :choose-mode="chooseMode"
+        @trigger="trigger"
+        :toggleOnSelect="toggleOnSelect"
+        :selectOnClick="selectOnClick"
+      >
+        <template slot="item" slot-scope="{item}">
+          <slot name="item" :item="item"></slot>
+        </template>
+      </hTreeItem>
     </ul>
   </li>
 </template>
 <script>
-
 export default {
   name: 'hTreeItem',
   props: {
@@ -40,13 +62,18 @@ export default {
     multiple: Boolean,
     status: Object,
     chooseMode: String,
-    toggleOnSelect: Boolean
+    toggleOnSelect: Boolean,
+    selectOnClick: Boolean
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
+    clickShow() {
+      if (this.selectOnClick) {
+        this.select();
+      }
+    },
     select() {
       if (this.toggleOnSelect || this.multiple) {
         this.toggleTree();
