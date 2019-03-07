@@ -27,6 +27,11 @@
   }
   &-show {
     padding: 3px 0;
+    position: relative;
+    &-space {
+      display: inline-block;
+      width: 10px;
+    }
     &-expand {
       width: 20px;
       text-align: right;
@@ -65,7 +70,6 @@
     transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
     max-height: 0;
     overflow: hidden;
-    margin-left: 15px;
   }
 
   &.h-tree-theme-item-selected {
@@ -91,6 +95,9 @@
       }
     }
   }
+  &-item-slot {
+    display: inline-block;
+  }
 }
 
 
@@ -98,23 +105,10 @@
 
   .@{tree-prefix}-show {
     cursor: pointer;
-    &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 28px;
-      z-index: -1;
-    }
     &:hover {
-      &:before {
-        background: @hover-background-color;
-      }
-      .tree-edit-part {
-        opacity: 1;
-      }
+      background: @hover-background-color;
     }
-    &.h-tree-show-selected:before {
+    &.h-tree-show-selected {
       background: @highlight-background-color;
     }
   }

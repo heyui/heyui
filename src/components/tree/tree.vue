@@ -13,11 +13,8 @@
         :choose-mode="chooseMode"
         :toggleOnSelect="toggleOnSelect"
         :selectOnClick="selectOnClick"
-      >
-        <template slot="treeItem" slot-scope="{item}">
-          <slot name="item" :item="item"></slot>
-        </template>
-      </treeItem>
+        :level="0"
+      ></treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
   </div>

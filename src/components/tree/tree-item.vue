@@ -6,6 +6,7 @@
       :class="{'h-tree-show-disabled':data.status.disabled, 'h-tree-show-choose': data.status.choose, 'h-tree-show-indeterminate': data.status.indeterminate, 'h-tree-show-selected': status.selected == data.key}"
       v-show="!data.status.hide"
     >
+      <span v-for="l in level" :key="l" class="h-tree-show-space"></span>
       <span class="h-tree-show-expand">
         <span @click="toggleTree()" v-if="data.status.isWait">
           <template v-if="!data.status.loading">
@@ -31,7 +32,7 @@
         <span v-if="data.title != null">{{data.title}}</span>
         <span v-else>{{'h.common.empty' | hlang}}</span>
       </div>
-      <slot name="item" :item="data.value"></slot>
+      <TreeSlot :data="data.value"></TreeSlot>
     </div>
     <ul v-if="data.children&&data.children.length>0" class="h-tree-ul">
       <hTreeItem
@@ -45,17 +46,17 @@
         @trigger="trigger"
         :toggleOnSelect="toggleOnSelect"
         :selectOnClick="selectOnClick"
-      >
-        <template slot="treeItem" slot-scope="{item}">
-          <slot name="treeItem" :item="item"></slot>
-        </template>
-      </hTreeItem>
+        :level="level+1"
+      ></hTreeItem>
     </ul>
   </li>
 </template>
 <script>
+import TreeSlot from './tree-slot';
+
 export default {
   name: 'hTreeItem',
+  components: { TreeSlot },
   props: {
     data: Object,
     param: Object,
@@ -63,7 +64,8 @@ export default {
     status: Object,
     chooseMode: String,
     toggleOnSelect: Boolean,
-    selectOnClick: Boolean
+    selectOnClick: Boolean,
+    level: Number
   },
   data() {
     return {};

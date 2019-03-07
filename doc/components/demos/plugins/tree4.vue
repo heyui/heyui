@@ -1,7 +1,6 @@
 <style lang="less">
 .tree4-demo-vue {
   .h-tree-show {
-    cursor: pointer;
     .h-tree-show-desc {
       display: none;
     }
@@ -12,7 +11,9 @@
       }
     }
     .tree-edit-part {
-      float: right;
+      position: absolute;
+      right: 5px;
+      top: 2px;
       opacity: 0;
       i {
         font-size: 12px;
@@ -22,6 +23,11 @@
         &:hover {
           color: @primary-color;
         }
+      }
+    }
+    &:hover {
+      .tree-edit-part {
+        opacity: 1;
       }
     }
   }
