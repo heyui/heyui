@@ -39,7 +39,7 @@
 
     <h4>Import HeyUI</h4>
     <p>In general, we import HeyUI to the webpack portal page.</p>
-    <p>At the same time, HeyUI can also be set as a global reference, because HeyUI has methods that Message, Loadding, etc. can call globally.<a href="https://github.com/heyui/heyui-admin/blob/master/src/app.js" target="_blank">example link</a></p>
+    <p>At the same time, HeyUI can also be set as a global reference, because HeyUI has methods that Message, Loadding, etc. can call globally.<a href="https://github.com/heyui/heyui-admin/blob/master/src/main.js" target="_blank">example link</a></p>
     <codes type="less">import Vue from 'vue';
 import HeyUI from 'heyui';
 Vue.use(HeyUI);
