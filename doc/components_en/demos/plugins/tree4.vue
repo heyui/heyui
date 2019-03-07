@@ -2,9 +2,9 @@
 .tree4-demo-vue {
   .h-tree-show {
     cursor: pointer;
-    // .h-tree-show-desc {
-    //   display: none;
-    // }
+    .h-tree-show-desc {
+      display: none;
+    }
     .tree-show-custom {
       display: inline;
       .tree-show-title {

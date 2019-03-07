@@ -14,9 +14,9 @@
         :toggleOnSelect="toggleOnSelect"
         :selectOnClick="selectOnClick"
       >
-        <!-- <template slot="treeItem" slot-scope="{item}">
+        <template slot="treeItem" slot-scope="{item}">
           <slot name="item" :item="item"></slot>
-        </template> -->
+        </template>
       </treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>

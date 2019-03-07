@@ -31,7 +31,7 @@
         <span v-if="data.title != null">{{data.title}}</span>
         <span v-else>{{'h.common.empty' | hlang}}</span>
       </div>
-      <!-- <slot name="item" :item="data.value"></slot> -->
+      <slot name="item" :item="data.value"></slot>
     </div>
     <ul v-if="data.children&&data.children.length>0" class="h-tree-ul">
       <hTreeItem
@@ -46,9 +46,9 @@
         :toggleOnSelect="toggleOnSelect"
         :selectOnClick="selectOnClick"
       >
-        <!-- <template slot="treeItem" slot-scope="{item}">
+        <template slot="treeItem" slot-scope="{item}">
           <slot name="treeItem" :item="item"></slot>
-        </template> -->
+        </template>
       </hTreeItem>
     </ul>
   </li>
