@@ -4,7 +4,7 @@
       <FormItem>
         <Checkbox v-model="required">是否必填</Checkbox>
         <i class="h-split"></i>
-        <Checkbox v-model="showErrorTip">是否使用tip提示错误</Checkbox>
+        <Checkbox v-model="showErrorTip">是否使用Message提示错误信息</Checkbox>
       </FormItem>
       <!--
           这里定义的required属性会应用与验证规则中，适用于一些变动性的必填项。

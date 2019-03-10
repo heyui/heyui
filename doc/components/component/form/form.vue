@@ -101,6 +101,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>validOnChange</td>
+        <td>是否数据变化的时候校验, 1.17.0+</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
 
     <h3>Form 方法</h3>

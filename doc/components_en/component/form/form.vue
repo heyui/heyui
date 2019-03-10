@@ -101,6 +101,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>validOnChange</td>
+        <td>Valid on data changed, 1.17.0+</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
     </table>
 
     <h3>Form Methods</h3>

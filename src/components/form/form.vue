@@ -52,6 +52,10 @@ export default {
     showErrorTip: {
       type: Boolean,
       default: false
+    },
+    validOnChange: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -71,15 +75,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.$el.addEventListener('blur', (event) => {
-        // this.trigger(event);
         if (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
-          // log('blur', event.target)
           this.trigger(event.target);
         }
       }, true);
       this.$el.addEventListener('setvalue', (event) => {
-        // this.trigger(event);
-        // log('blur', event.target)
         this.trigger(event.target);
       });
     });
@@ -103,6 +103,9 @@ export default {
       }
     },
     trigger(target) {
+      if(!this.validOnChange) {
+        return false;
+      }
       let formItem = findDomUtil(target, this.$el);
       if (formItem && formItem.getAttribute('validable') == 'true') {
         this.validField(formItem.getAttribute('prop'));

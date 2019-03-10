@@ -1,18 +1,30 @@
 <template>
   <div v-width="400">
-    <div v-height="50">
-      <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
-    </div>
-    <Form ref="form" :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
+    <Form
+      ref="form"
+      :validOnChange="validOnChange"
+      :showErrorTip="showErrorTip"
+      :labelPosition="labelPosition"
+      :labelWidth="90"
+      :rules="validationRules"
+      :model="model"
+    >
+      <FormItem>
+        <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
+        <i class="h-split"></i>
+        <Checkbox v-model="showErrorTip">使用Message提示错误信息</Checkbox>
+        <i class="h-split"></i>
+        <Checkbox v-model="validOnChange">数据变化后做校验</Checkbox>
+      </FormItem>
       <FormItem label="用户名" prop="name">
-        <input type="text" v-model="model.name" />
+        <input type="text" v-model="model.name">
       </FormItem>
       <FormItem label="密码" prop="password">
-        <input type="password" v-model="model.password" />
+        <input type="password" v-model="model.password">
       </FormItem>
       <FormItem>
         <Button color="primary" :loading="isLoading" @click="submit">提交</Button>&nbsp;&nbsp;&nbsp;
-        <Button @click="reset">取消</Button>
+        <Button @click="reset">重置</Button>
       </FormItem>
     </Form>
   </div>
@@ -32,11 +44,10 @@ export default {
         password: ''
       },
       validationRules: {
-        required: [
-          'name',
-          'password'
-        ]
-      }
+        required: ['name', 'password']
+      },
+      showErrorTip: true,
+      validOnChange: true
     };
   },
   methods: {

@@ -1,14 +1,26 @@
 <template>
   <div v-width="400">
-    <div v-height="50">
-      <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
-    </div>
-    <Form ref="form" :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
+    <Form
+      ref="form"
+      :validOnChange="validOnChange"
+      :showErrorTip="showErrorTip"
+      :labelPosition="labelPosition"
+      :labelWidth="120"
+      :rules="validationRules"
+      :model="model"
+    >
+      <FormItem>
+        <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
+        <i class="h-split"></i>
+        <Checkbox v-model="showErrorTip">Use Message to prompt error messages</Checkbox>
+        <i class="h-split"></i>
+        <Checkbox v-model="validOnChange">Check after data changes</Checkbox>
+      </FormItem>
       <FormItem label="username" prop="name">
-        <input type="text" v-model="model.name" />
+        <input type="text" v-model="model.name">
       </FormItem>
       <FormItem label="password" prop="password">
-        <input type="password" v-model="model.password" />
+        <input type="password" v-model="model.password">
       </FormItem>
       <FormItem>
         <Button color="primary" :loading="isLoading" @click="submit">submit</Button>&nbsp;&nbsp;&nbsp;
@@ -33,7 +45,9 @@ export default {
       },
       validationRules: {
         required: ['name', 'password']
-      }
+      },
+      showErrorTip: true,
+      validOnChange: true
     };
   },
   methods: {
