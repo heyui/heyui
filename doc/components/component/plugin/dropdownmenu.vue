@@ -40,6 +40,9 @@
     <h3>添加未读数</h3>
     <example demo="plugins/dropdownmenu8"></example>
 
+    <h3>自定义样式</h3>
+    <example demo="plugins/dropdownmenu11"></example>
+
     <h3>DropdownMenu 参数</h3>
     <table class="table">
       <tr>
