@@ -2,8 +2,9 @@
   <div>
     <p>value: {{value}}</p>
     <p>Modify the display:<Button @click="update">Update value</Button></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
     <p v-width="300">
-      <TreePicker :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+      <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     ];
     return {
       value: null,
+      disabled: false,
       param: {
         keyName: 'id',
         parentName: 'parent',

@@ -122,6 +122,17 @@ export default {
   watch: {
     value() {
       this.parse();
+    },
+    disabled() {
+      if (!this.dropdown) {
+        return false;
+      }
+
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
     }
   },
   methods: {
