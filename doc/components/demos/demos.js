@@ -230,6 +230,7 @@ export default {
   'pluginsDropdownmenu8': resolve => require.ensure([], require => require('./plugins/dropdownmenu8'), 'plugins'),
   'pluginsDropdownmenu9': resolve => require.ensure([], require => require('./plugins/dropdownmenu9'), 'plugins'),
   'pluginsDropdownmenu10': resolve => require.ensure([], require => require('./plugins/dropdownmenu10'), 'plugins'),
+  'pluginsDropdownmenu11': resolve => require.ensure([], require => require('./plugins/dropdownmenu11'), 'plugins'),
   'pluginsDropdowncustom1': resolve => require.ensure([], require => require('./plugins/dropdowncustom1'), 'plugins'),
   'pluginsDropdowncustom2': resolve => require.ensure([], require => require('./plugins/dropdowncustom2'), 'plugins'),
   'pluginsDropdowncustom3': resolve => require.ensure([], require => require('./plugins/dropdowncustom3'), 'plugins'),
