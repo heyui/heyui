@@ -43,7 +43,7 @@
       <BackTop :target="getTarget"></BackTop>
       <div class="right-frame-menu-container">
         <ul class="right-frame-menu" v-if="menus.length>0">
-          <li v-for="(m, index) of menus" :key="m" @click="goMenu(index)">{{m}}</li>
+          <li v-for="(m, index) of menus" :key="index" @click="goMenu(index)">{{m}}</li>
         </ul>
       </div>
     </div>

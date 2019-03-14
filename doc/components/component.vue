@@ -173,7 +173,7 @@
               <router-link to="/component/data/view/loading">Loading 加载中</router-link>
             </li>
             <li>
-              <router-link to="/component/data/skeleton">Skeleton 加载占位图</router-link>
+              <router-link to="/component/other/skeleton">Skeleton 加载占位图</router-link>
             </li>
             <li>
               <router-link to="/component/plugin/loadingbar">LoadingBar 加载进度条</router-link>
