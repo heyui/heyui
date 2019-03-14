@@ -44,6 +44,8 @@ import NumberInput from './components/numberinput';
 import Tooltip from './components/tooltip';
 import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
+import Input from "./components/input";
+import Textarea from "./components/textarea";
 import {
   Row,
   Col
@@ -144,7 +146,9 @@ const components = {
   HFooter,
   Content,
   Sider,
-  Layout
+  Layout,
+  Input,
+  Textarea
 };
 
 const directives = {

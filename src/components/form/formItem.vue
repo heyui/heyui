@@ -19,6 +19,11 @@ import utils from '../../utils/utils';
 const prefixCls = 'h-form-item';
 export default {
   name: 'hFormItem',
+  provide(){
+    return {
+      formItem: this
+    }
+  },
   props: {
     label: String,
     prop: String,

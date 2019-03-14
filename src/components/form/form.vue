@@ -23,6 +23,11 @@ const findDomUtil = function (target, utilDom) {
 
 export default {
   name: 'hForm',
+  provide(){
+    return {
+      form: this
+    }
+  },
   props: {
     top: {
       type: Number
