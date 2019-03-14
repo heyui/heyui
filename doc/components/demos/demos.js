@@ -273,6 +273,8 @@ export default {
   'otherScrollintoview1': resolve => require.ensure([], require => require('./other/scrollintoview1'), 'other'),
   'otherClipboard1': resolve => require.ensure([], require => require('./other/clipboard1'), 'other'),
   'otherDirective': resolve => require.ensure([], require => require('./other/directive'), 'other'),
+  'otherSkeleton1': resolve => require.ensure([], require => require('./other/skeleton1'), 'other'),
+  'otherSkeleton2': resolve => require.ensure([], require => require('./other/skeleton2'), 'other'),
   'imagepreviewImagepreview1': resolve => require.ensure([], require => require('./imagepreview/imagepreview1'), 'carousel'),
   'carouselCarousel1': resolve => require.ensure([], require => require('./carousel/carousel1'), 'carousel'),
   'carouselCarousel2': resolve => require.ensure([], require => require('./carousel/carousel2'), 'carousel'),

@@ -83,7 +83,8 @@ const menus = utils.toArray({
   otherBacktop: 'BackTop 返回顶部',
   otherTextellipsis: 'TextEllipsis 超出文本省略',
   viewCarousel: 'Carousel 走马灯',
-  viewImagePreview: 'ImagePreview 图片预览'
+  viewImagePreview: 'ImagePreview 图片预览',
+  otherSkeleton: 'Skeleton 加载占位图'
 }, 'key', 'title').sort((a, b) => a.title > b.title ? 1 : -1);
 
 const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')[0] }));

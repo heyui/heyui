@@ -526,6 +526,14 @@ const router = {
           component: () => import('components/component/other/textellipsis')
         },
         {
+          path: 'other/skeleton',
+          name: 'otherSkeleton',
+          meta: {
+            title: 'Skeleton'
+          },
+          component: () => import('components/component/other/skeleton')
+        },
+        {
           path: '',
           name: 'guide',
           meta: {

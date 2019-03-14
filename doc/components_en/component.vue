@@ -172,6 +172,9 @@
               <router-link to="/en/component/plugin/loadingbar">LoadingBar</router-link>
             </li>
             <li>
+              <router-link to="/en/component/other/skeleton">Skeleton</router-link>
+            </li>
+            <li>
               <router-link to="/en/component/other/affix">Affix</router-link>
             </li>
             <li>
