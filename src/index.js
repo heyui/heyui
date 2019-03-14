@@ -35,6 +35,7 @@ import Search from './components/search';
 import Select from './components/select';
 import Switch from './components/switch';
 import SwitchList from './components/switchlist';
+import Skeleton from './components/skeleton';
 import { Table, TableItem } from './components/table';
 import Tabs from './components/tabs';
 import TagInput from './components/taginput';
@@ -122,6 +123,7 @@ const components = {
   Steps,
   hSwitch: Switch,
   SwitchList,
+  Skeleton,
   Timeline,
   TimelineItem: Timeline.Item,
   Transfer,
