@@ -2,7 +2,7 @@
 </style>
 <template>
   <div class="">
-
+    <Skeleton></Skeleton>
   </div>
 </template>
 <script>
