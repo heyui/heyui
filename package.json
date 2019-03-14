@@ -39,6 +39,7 @@
     "pa": "sh ./scripts/publish.sh -alpha",
     "pb": "sh ./scripts/publish.sh -beta",
     "p": "sh ./scripts/publish.sh",
+    "create": "sh ./scripts/create.sh",
     "eslintfix": "eslint --fix --ext .js,.vue src",
     "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
   },
