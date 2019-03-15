@@ -279,6 +279,7 @@ class Pop {
   destory() {
     if (this.documentHandler) {
       document.removeEventListener('click', this.documentHandler);
+      document.removeEventListener('contextmenu', this.documentHandler);
     }
     if (this.popperInstance) {
       this.popperInstance.destroy();
@@ -341,7 +342,7 @@ class Pop {
       const func = (evt) => {
         if (evt.type == 'contextmenu') {
           evt.preventDefault();
-          evt.stopPropagation();
+          // evt.stopPropagation();
           if (window.getSelection) {
             window.getSelection().removeAllRanges();
           } else {
@@ -398,6 +399,7 @@ class Pop {
         this.hide();
       };
       document.addEventListener('click', this.documentHandler);
+      document.addEventListener('contextmenu', this.documentHandler);
     }
   }
 
