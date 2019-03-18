@@ -2855,13 +2855,13 @@ var Pop = function () {
 
       if (this.hideTimeout) clearTimeout(this.hideTimeout);
       if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
+      if (this.options.events && _utils2.default.isFunction(this.options.events.show)) {
+        this.options.events.show(event);
+      }
       if (this.isOpen || this.options.disabled) {
         return this;
       }
       this.isOpen = true;
-      if (this.options.events && _utils2.default.isFunction(this.options.events.show)) {
-        this.options.events.show(event);
-      }
       if (!this.popNode) {
         this.initPopNode();
       }
