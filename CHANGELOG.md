@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0-alpha.4"></a>
+# [1.17.0-alpha.4](https://github.com/heyui/heyui/compare/v1.17.0-alpha.3...v1.17.0-alpha.4) (2019-03-18)
+
+
+### Bug Fixes
+
+* **DropdownMenu:** event show add event ([abebc22](https://github.com/heyui/heyui/commit/abebc22))
+
+
+
 <a name="1.17.0-alpha.3"></a>
 # [1.17.0-alpha.3](https://github.com/heyui/heyui/compare/v1.17.0-alpha.2...v1.17.0-alpha.3) (2019-03-18)
 
