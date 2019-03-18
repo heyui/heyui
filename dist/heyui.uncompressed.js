@@ -3021,7 +3021,7 @@ var Pop = function () {
             return;
           }
           evt.usedByPop = true;
-          _this4.show(event);
+          _this4.show(evt);
         };
         _this4.triggerEvents.push({
           event: event,
@@ -12431,7 +12431,7 @@ exports.default = {
   props: {
     loading: {
       type: Boolean,
-      default: true
+      default: false
     },
     active: {
       type: Boolean,
