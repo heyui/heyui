@@ -1,7 +1,7 @@
 <template>
   <div>
-    <DropdownCustom ref="dropdown" trigger="click" @show="$Message('show')" @hide="$Message('hide')">
-      <textarea v-model="text" v-autosize rows="1"></textarea>
+    <DropdownCustom ref="dropdown" trigger="manual" @show="showEvent" @hide="hideEvent">
+      <textarea v-model="text" @focus="show" v-autosize rows="1"></textarea>
       <div slot="content" v-width="200">
         <div v-padding="20">
           <Button @click="hide">关闭</Button>
@@ -23,8 +23,17 @@ export default {
     }
   },
   methods: {
+    showEvent(event) {
+      this.$Message('show');
+    },
+    hideEvent() {
+      this.$Message('hide');
+    },
     update() {
       this.$refs.dropdown.update();
+    },
+    show() {
+      this.$refs.dropdown.show();
     },
     hide() {
       this.$refs.dropdown.hide();

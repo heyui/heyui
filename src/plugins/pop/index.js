@@ -363,7 +363,7 @@ class Pop {
           return;
         }
         evt.usedByPop = true;
-        this.show(event);
+        this.show(evt);
       };
       this.triggerEvents.push({
         event,
