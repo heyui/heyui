@@ -9177,6 +9177,12 @@ exports.default = {
       this.$emit('onclick', option[this.key], option, event);
       this.$emit('click', option[this.key], option, event);
       this.$refs.dropdown.hide();
+    },
+    showEvent: function showEvent(event) {
+      this.$emit('show', event);
+    },
+    hideEvent: function hideEvent(event) {
+      this.$emit('hide', event);
     }
   },
   computed: {
@@ -29315,12 +29321,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "showClass": "h-dropdownmenu-show"
     },
     on: {
-      "show": function($event) {
-        return _vm.$emit('show')
-      },
-      "hide": function($event) {
-        return _vm.$emit('hide')
-      }
+      "show": _vm.showEvent,
+      "hide": _vm.hideEvent
     }
   }, [_vm._t("default"), _vm._v(" "), _c('ul', {
     class: _vm.groupCls,
