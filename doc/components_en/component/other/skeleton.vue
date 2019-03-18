@@ -29,7 +29,7 @@
         <td>Display the skeleton when true</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>true</td>
+        <td>false</td>
       </tr>
       <tr>
         <td>active</td>

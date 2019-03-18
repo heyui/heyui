@@ -2,7 +2,7 @@
 </style>
 <template>
   <div class="">
-    <Skeleton></Skeleton>
+    <Skeleton loading></Skeleton>
   </div>
 </template>
 <script>

@@ -30,7 +30,7 @@
         <td>为 true 时，显示占位图，反之直接展示子组件</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>true</td>
+        <td>false</td>
       </tr>
       <tr>
         <td>active</td>

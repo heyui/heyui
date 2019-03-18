@@ -19,7 +19,7 @@ export default {
   props: {
     loading: {
       type: Boolean,
-      default: true
+      default: false
     },
     active: {
       type: Boolean,
@@ -27,11 +27,11 @@ export default {
     },
     title: {
       type: Boolean,
-      default: true,
+      default: true
     },
     paragraph: {
       type: Boolean,
-      default: true,
+      default: true
     },
     titleWidth: {
       type: String,
@@ -40,7 +40,7 @@ export default {
     rows: {
       type: Number,
       default: 3
-    },
+    }
   },
   data() {
     return {
