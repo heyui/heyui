@@ -278,5 +278,19 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>Slot</h3>
+    <table class="table">
+      <tr>
+        <th>名称</th>
+        <th>参数</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>item</td>
+        <td>item：对应的tree数据</td>
+        <td>内容的渲染, 1.17.0+</td>
+      </tr>
+    </table>
   </div>
 </template>

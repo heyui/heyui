@@ -278,5 +278,19 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>Slot</h3>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Parameters</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>item</td>
+        <td>item：TreeItem data</td>
+        <td>content render, 1.17.0+</td>
+      </tr>
+    </table>
   </div>
 </template>
