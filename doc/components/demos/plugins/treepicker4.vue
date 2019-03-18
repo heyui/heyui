@@ -2,13 +2,13 @@
 // 将placeholder文字变成红色
 .tree-picker-demo-show{
   .h-treepicker-placeholder{
-    color: @red-color;
+    color: @red-color !important;
   }
 }
 // 将tree选中的背景色变成红色
 .tree-picker-demo-dropdown{
   .h-tree-show-desc.selected {
-    background-color: @red-color;
+    background-color: @red-color !important;
   }
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <p>value: Selected{{value.length}}个</p>
     <p v-width="300">
-      <TreePicker config="simple" multiple type='object' filterable v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+      <TreePicker config="simple" multiple filterable v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      value: [{ id: 1, title: 'First level' }, { id: 2, title: 'Secondary' }]
+      value: [1, 2]
     };
   },
   methods: {
