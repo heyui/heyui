@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0-alpha.2"></a>
+# [1.17.0-alpha.2](https://github.com/heyui/heyui/compare/v1.17.0-alpha.1...v1.17.0-alpha.2) (2019-03-18)
+
+
+### Bug Fixes
+
+* **Dropdown:** when open other menu close self ([596ca94](https://github.com/heyui/heyui/commit/596ca94)), closes [#77](https://github.com/heyui/heyui/issues/77)
+* **Select:** parse add warn ([de2f012](https://github.com/heyui/heyui/commit/de2f012))
+* **TreePicker:** add disabled watch ([06a8aa9](https://github.com/heyui/heyui/commit/06a8aa9)), closes [#73](https://github.com/heyui/heyui/issues/73)
+
+
+### Features
+
+* **Skeleton:** init Skeleton ([e2e96d7](https://github.com/heyui/heyui/commit/e2e96d7))
+* **Table:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
+
+
+
 <a name="1.17.0-alpha.1"></a>
 # [1.17.0-alpha.1](https://github.com/heyui/heyui/compare/v1.17.0-alpha.0...v1.17.0-alpha.1) (2019-03-07)
 
