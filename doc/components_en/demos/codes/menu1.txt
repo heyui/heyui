@@ -8,7 +8,7 @@ watch: {
   }
 },
 methods: {
-  onclick(data) {
+  select(data) {
     this.$router.push({ name: data.key });
   }
 }
