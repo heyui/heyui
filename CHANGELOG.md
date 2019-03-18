@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0-alpha.3"></a>
+# [1.17.0-alpha.3](https://github.com/heyui/heyui/compare/v1.17.0-alpha.2...v1.17.0-alpha.3) (2019-03-18)
+
+
+### Bug Fixes
+
+* **Dropdown:** add show event object ([f2f93df](https://github.com/heyui/heyui/commit/f2f93df))
+* **Select:** parse add warn ([a1c8ab9](https://github.com/heyui/heyui/commit/a1c8ab9))
+* **Skeleton:** loading default change to false ([64e7551](https://github.com/heyui/heyui/commit/64e7551))
+
+
+### Features
+
+* **Skeleton:** init Skeleton ([3011f4f](https://github.com/heyui/heyui/commit/3011f4f))
+
+
+
 <a name="1.17.0-alpha.2"></a>
 # [1.17.0-alpha.2](https://github.com/heyui/heyui/compare/v1.17.0-alpha.1...v1.17.0-alpha.2) (2019-03-18)
 
