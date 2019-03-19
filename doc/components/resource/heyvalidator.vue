@@ -6,6 +6,8 @@
       <li><a href="https://github.com/heyui/hey-validator">github</a></li>
       <li><a href="https://www.npmjs.com/package/hey-validator">NPM</a></li>
     </ul>
+    <h3>代码示例</h3>
+    <example demo="validator/validator"></example>
   </div>
 </template>
 
