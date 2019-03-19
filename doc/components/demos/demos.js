@@ -281,5 +281,6 @@ export default {
   'carouselCarousel2': resolve => require.ensure([], require => require('./carousel/carousel2'), 'carousel'),
   'carouselCarousel3': resolve => require.ensure([], require => require('./carousel/carousel3'), 'carousel'),
   'carouselCarousel4': resolve => require.ensure([], require => require('./carousel/carousel4'), 'carousel'),
-  'carouselCarousel5': resolve => require.ensure([], require => require('./carousel/carousel5'), 'carousel')
+  'carouselCarousel5': resolve => require.ensure([], require => require('./carousel/carousel5'), 'carousel'),
+  'validatorValidator': resolve => require.ensure([], require => require('./validator/validator'), 'carousel')
 };
