@@ -48,6 +48,7 @@ export default {
       // 选择器关闭的时候触发
     },
     update() {
+      // 1.17.0+ 支持该方式更新，其他版本请使用 updateShow
       this.value = [1];
     },
     choose(data) {

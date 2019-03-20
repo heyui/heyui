@@ -51,6 +51,7 @@ export default {
       log(data);
     },
     update() {
+      // 1.17.0+ support this way of definition, use updateShow in other versions
       this.value = 12;
       // or
       // this.$refs.treepicker.updateShow({ id: 1, title: '1级' });

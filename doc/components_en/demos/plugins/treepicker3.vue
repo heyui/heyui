@@ -10,6 +10,7 @@
 export default {
   data() {
     return {
+      // 1.17.0+ support this way of definition, use [{ id: 1, title: '1级' }] in other versions
       value: [1, 2]
     };
   },

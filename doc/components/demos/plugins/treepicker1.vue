@@ -51,6 +51,7 @@ export default {
       log(data);
     },
     update() {
+      // 1.17.0+ 支持该方式更新，其他版本请使用 updateShow
       this.value = 12;
 
       // 如果数据异步分布请求
