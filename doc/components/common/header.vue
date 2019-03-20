@@ -87,19 +87,7 @@ export default {
   },
   methods: {
     dynamicLoadCss(type) {
-      let old = document.getElementById('loadcss');
-      var head = document.getElementsByTagName('head')[0];
-      var link = document.createElement('link');
-      link.type = 'text/css';
-      link.rel = 'stylesheet';
-      link.href = `/themes/${type}/index.css`;
-      link.id = 'loadcss';
-      head.appendChild(link);
-      if (old) {
-        setTimeout(() => {
-          head.removeChild(old);
-        }, 100);
-      }
+      Utils.dynamicLoadCss(type);
     },
     changeLang() {
       this.$i18n.locale = 'en';
