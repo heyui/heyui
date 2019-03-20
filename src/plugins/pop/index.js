@@ -359,7 +359,7 @@ class Pop {
             this.popperInstance.update();
           }
         }
-        if (this.isOpen === true) {
+        if (event == 'click' && this.isOpen === true) {
           return;
         }
         evt.usedByPop = true;
