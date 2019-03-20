@@ -3017,7 +3017,7 @@ var Pop = function () {
               _this4.popperInstance.update();
             }
           }
-          if (_this4.isOpen === true) {
+          if (event == 'click' && _this4.isOpen === true) {
             return;
           }
           evt.usedByPop = true;
@@ -15866,6 +15866,13 @@ exports.default = {
 
       if (this.type == 'key') {
         this.valuebak = _utils2.default.copy(this.value);
+        this.$nextTick(function () {
+          if (_this2.multiple) {
+            _this2.objects = _this2.$refs.tree.getChoose();
+          } else {
+            _this2.object = _this2.$refs.tree.getSelect();
+          }
+        });
       } else {
         if (this.multiple) {
           this.valuebak = (this.value || []).map(function (item) {
