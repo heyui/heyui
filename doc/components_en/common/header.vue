@@ -6,6 +6,12 @@
       </router-link>
       <AutoComplete v-width="180" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
+        <div class="bg-group" v-if="$route.name != 'Home'">
+          <div class="bg1" @click="dynamicLoadCss('pink')"></div>
+          <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
+          <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
+          <div class="bg4" @click="dynamicLoadCss('red')"></div>
+        </div>
         <template v-if="$route.name != 'en_Home'">
           <!-- <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
@@ -37,6 +43,21 @@ export default {
     };
   },
   methods: {
+    dynamicLoadCss(type) {
+      let old = document.getElementById('loadcss');
+      var head = document.getElementsByTagName('head')[0];
+      var link = document.createElement('link');
+      link.type = 'text/css';
+      link.rel = 'stylesheet';
+      link.href = `/themes/${type}/index.css`;
+      link.id = 'loadcss';
+      head.appendChild(link);
+      if (old) {
+        setTimeout(() => {
+          head.removeChild(old);
+        }, 100);
+      }
+    },
     changeLang() {
       this.$i18n.locale = 'zh';
       utils.saveLocal('LANGUAGE', 'zh');

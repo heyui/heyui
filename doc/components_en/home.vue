@@ -48,7 +48,9 @@ export default {
       link.id = 'loadcss';
       head.appendChild(link);
       if (old) {
-        head.removeChild(old);
+        setTimeout(() => {
+          head.removeChild(old);
+        }, 100);
       }
     }
   },
