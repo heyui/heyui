@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0-alpha.6"></a>
+# [1.17.0-alpha.6](https://github.com/heyui/heyui/compare/v1.17.0-alpha.5...v1.17.0-alpha.6) (2019-03-20)
+
+
+### Bug Fixes
+
+* **Dropdown:** optimization ([52717e3](https://github.com/heyui/heyui/commit/52717e3))
+* **TreePicker:** v-model update case show update ([7c43827](https://github.com/heyui/heyui/commit/7c43827))
+
+
+
 <a name="1.17.0-alpha.5"></a>
 # [1.17.0-alpha.5](https://github.com/heyui/heyui/compare/v1.17.0-alpha.4...v1.17.0-alpha.5) (2019-03-18)
 
