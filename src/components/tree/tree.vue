@@ -347,10 +347,14 @@ export default {
       this.setvalue();
     },
     updateSelect(key, updateValue = true) {
-      let option = this.treeObj[key];
-      if (option) {
-        this.status.selected = key;
-        updateParentStatus(this.treeObj, option, 'opened', true);
+      if (key === null) {
+        this.status.selected = null;
+      } else {
+        let option = this.treeObj[key];
+        if (option) {
+          this.status.selected = key;
+          updateParentStatus(this.treeObj, option, 'opened', true);
+        }
       }
       if (updateValue) {
         this.setvalue();
