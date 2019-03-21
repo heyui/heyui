@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",
+    "art-template": "^4.13.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.3.0",
     "eslint-plugin-html": "^5.0.3",
@@ -31,6 +32,8 @@
     "hey-log": "^0.0.8",
     "hey-utils": "^0.4.0",
     "less": "^3.9.0",
+    "commander": "^2.19.0",
+    "path": "^0.12.7",
     "standard-version": "^4.4.0"
   },
   "readmeFilename": "README.md",
@@ -39,7 +42,7 @@
     "pa": "sh ./scripts/publish.sh -alpha",
     "pb": "sh ./scripts/publish.sh -beta",
     "p": "sh ./scripts/publish.sh",
-    "create": "sh ./scripts/create.sh",
+    "create": "node ./scripts/create.js",
     "eslintfix": "eslint --fix --ext .js,.vue src",
     "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
   },

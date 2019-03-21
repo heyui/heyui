@@ -1,5 +1,3 @@
-<style lang='less'>
-</style>
 <template>
   <div class="h-skeleton">
     <div class="h-skeleton-content" v-if="loading" :class="{'h-skeleton-active' : active}">

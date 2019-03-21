@@ -1,5 +1,5 @@
 {
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "editor.detectIndentation": false,
   //js-beautify-html格式化配置，属性强制换行
   "vetur.format.defaultFormatterOptions": {
