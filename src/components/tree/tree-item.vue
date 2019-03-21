@@ -8,7 +8,7 @@
     >
       <span v-for="l in level" :key="l" class="h-tree-show-space"></span>
       <span class="h-tree-show-expand">
-        <span @click="toggleTree()" v-if="data.status.isWait">
+        <span @click.stop="toggleTree()" v-if="data.status.isWait">
           <template v-if="!data.status.loading">
             <i class="h-icon-right"></i>
           </template>
@@ -16,7 +16,7 @@
             <i class="h-icon-loading"></i>
           </template>
         </span>
-        <span @click="toggleTree()" v-else-if="data.children&&data.children.length>0">
+        <span @click.stop="toggleTree()" v-else-if="data.children&&data.children.length>0">
           <i class="h-icon-right"></i>
         </span>
       </span>
