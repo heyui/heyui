@@ -64,7 +64,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * **Skeleton:** init Skeleton ([e2e96d7](https://github.com/heyui/heyui/commit/e2e96d7))
-* **Table:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
+* **Form:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
 
 
 
