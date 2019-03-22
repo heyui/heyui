@@ -1,5 +1,5 @@
 module.exports = {
-  prefix: 'h-',
+  'prefix': 'h-',
   'primary-color': '#45b984',
   'link-color': '#45b984',
   'blue-color': '#3B91FF',
@@ -15,7 +15,7 @@ module.exports = {
   'gray2-color': '#eeeeee',
   'gray3-color': '#f3f3f3',
   'gray4-color': '#f9f9f9',
-  'hover-background-color': '#f8f8f8',
+  'hover-background-color': 'rgba(51, 51, 51, 0.08)',
   'highlight-background-color': 'rgba(69, 185, 132, 0.15)',
   'tag-background-color': '#f5f5f5',
   'tag-border-color': '#ececec',
@@ -34,7 +34,7 @@ module.exports = {
   'button-size-xs-padding': '2px 6px',
   'input-height': '30px',
   'border-color': '#eeeeee',
-  border: '1px solid #eeeeee',
+  'border': '1px solid #eeeeee',
   'disabled-cursor': 'not-allowed',
   'disabled-color': '#999999',
   'disabled-border-color': '#d3d3d3',
@@ -69,5 +69,7 @@ module.exports = {
   'layout-sider-width': '200px',
   'layout-sider-collapse-width': '70px',
   'menu-dark-color': '#333333',
-  'menu-white-background-color': '#ecf8f2'
+  'menu-white-background-color': '#ecf8f2',
+  'skeleton-bg': '#f2f2f2',
+  'skeleton-height': '16px'
 };
