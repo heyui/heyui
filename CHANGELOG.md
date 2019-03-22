@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.17.0"></a>
+# [1.17.0](https://github.com/heyui/heyui/compare/v1.16.1-alpha.3...v1.17.0) (2019-03-22)
+
+
+### Bug Fixes
+
+* **DateFullRangePicker:** week calculations fixed ([2430b7f](https://github.com/heyui/heyui/commit/2430b7f))
+* **Dropdown:** add show event object ([f2f93df](https://github.com/heyui/heyui/commit/f2f93df))
+* **Dropdown:** optimization ([52717e3](https://github.com/heyui/heyui/commit/52717e3))
+* **Dropdown:** when open other menu close self ([596ca94](https://github.com/heyui/heyui/commit/596ca94)), closes [#77](https://github.com/heyui/heyui/issues/77)
+* **DropdownMenu:** event show add event ([abebc22](https://github.com/heyui/heyui/commit/abebc22))
+* **Loading:** 开启的时候删除关闭的timeout ([06f52a8](https://github.com/heyui/heyui/commit/06f52a8))
+* 优化切换主题的过程 ([7c016ea](https://github.com/heyui/heyui/commit/7c016ea))
+* **Pop:** change show event position ([c374129](https://github.com/heyui/heyui/commit/c374129))
+* **Pop:** 修复上次格式化产生的错误 ([034dcfa](https://github.com/heyui/heyui/commit/034dcfa))
+* **Select:** parse add warn ([de2f012](https://github.com/heyui/heyui/commit/de2f012))
+* **Select:** parse add warn ([a1c8ab9](https://github.com/heyui/heyui/commit/a1c8ab9))
+* **Skeleton:** loading default change to false ([64e7551](https://github.com/heyui/heyui/commit/64e7551))
+* **tree:** Clicking expand arrow doesn't work when selectOnClick is true ([23f0e6e](https://github.com/heyui/heyui/commit/23f0e6e))
+* **Tree:** remove select when value is null ([0a46b58](https://github.com/heyui/heyui/commit/0a46b58))
+* **TreePicker:** add disabled watch ([06a8aa9](https://github.com/heyui/heyui/commit/06a8aa9)), closes [#73](https://github.com/heyui/heyui/issues/73)
+* **TreePicker:** v-model update case show update ([7c43827](https://github.com/heyui/heyui/commit/7c43827))
+
+
+### Features
+
+* **DateFullRangePicker:** add prop layout ([8cce8f8](https://github.com/heyui/heyui/commit/8cce8f8))
+* **Skeleton:** init Skeleton ([e2e96d7](https://github.com/heyui/heyui/commit/e2e96d7))
+* **Skeleton:** init Skeleton ([3011f4f](https://github.com/heyui/heyui/commit/3011f4f))
+* **Table:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
+* **Tree:**  enhance Tree component ([2d805d7](https://github.com/heyui/heyui/commit/2d805d7))
+
+
+
 <a name="1.17.0-alpha.6"></a>
 # [1.17.0-alpha.6](https://github.com/heyui/heyui/compare/v1.17.0-alpha.5...v1.17.0-alpha.6) (2019-03-20)
 
