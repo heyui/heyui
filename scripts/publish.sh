@@ -3,7 +3,8 @@ hey b -f scripts/hey.conf.js
 hey b -f scripts/hey.esm.js
 hey b -f scripts/hey.lang.js
 hey b -f scripts/hey.uncompressed.js
-lessc ./themes/index.less>./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/fonts/
+lessc ./themes/index.less > ./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/fonts/
+less-to-json --json ./themes/var.less > ./themes/var.json
 
 set -e
 echo "修正版本号"
