@@ -14,7 +14,7 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 
-import categoryModal from './categoryModal';
+import categoryModal from './category-modal';
 
 const prefix = 'h-category';
 
@@ -145,28 +145,33 @@ export default {
     },
     initCategoryDatas() {
       let datas = [];
-      let isInited = false;
-      if (this.config) {
-        let categoryObj = this.param.categoryObj;
-        if (categoryObj) {
-          isInited = true;
-          this.categoryObj = categoryObj;
-          this.categoryDatas = [...this.param.datas];
-        }
+      if (utils.isArray(this.param.datas)) {
+        datas = this.param.datas;
       }
-      if (!isInited) {
-        if (utils.isArray(this.param.datas)) {
-          datas = this.param.datas;
-        }
-        if (utils.isFunction(this.param.datas)) {
-          datas = this.param.datas.call(null);
-        }
-        this.categoryDatas = this.initDatas(datas);
-        if (this.config) {
-          config.config(`category.configs.${this.config}.categoryObj`, this.categoryObj);
-          config.config(`category.configs.${this.config}.datas`, this.categoryDatas);
-        }
+      if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.call(null);
       }
+      if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
+        datas = [];
+        this.globalloading = true;
+        let loadData = this.param.getTotalDatas || this.param.getDatas;
+        let param = [
+          result => {
+            this.categoryDatas = this.initDatas(utils.copy(result));
+            this.parse();
+            this.globalloading = false;
+            this.$emit('loadDataSuccess');
+          },
+          () => {
+            this.globalloading = false;
+          }
+        ];
+        if (this.param.getDatas) {
+          param.unshift(null);
+        }
+        loadData.apply(this.param, param);
+      }
+      this.categoryDatas = this.initDatas(datas);
       this.parse();
     },
     initDatas(datas) {
@@ -185,6 +190,7 @@ export default {
           value: data,
           parentKey,
           status: {
+            loading: false,
             opened: false,
             selected: false,
             checkable: data.checkable !== false
