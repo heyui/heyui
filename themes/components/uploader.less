@@ -1,10 +1,5 @@
 @upload-prefix: ~"@{prefix}uploader";
 .@{upload-prefix} {
-  // display: inline-block;
-  // padding: 5px;
-  // border: @border;
-  // border-radius: @border-radius;
-
   &-progress{
     .middle();
     left: 0;
@@ -26,10 +21,10 @@
     }
     &-background{
       .absolute;
-      left: 2px;
-      right: 2px;
-      top: 2px;
-      bottom: 2px;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
       z-index: 1;
       background-size: cover;
       border-radius: @border-radius;
@@ -94,12 +89,6 @@
   &-images{
     &-container{
       .clearfix();
-      .@{upload-prefix}{
-        &-image{
-          border: @border;
-        }
-      }
-
     }
   }
 
