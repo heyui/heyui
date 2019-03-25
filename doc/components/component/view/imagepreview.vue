@@ -3,6 +3,8 @@
     <h2>ImagePreview 图片预览</h2>
     <blockquote>$ImagePreview方法：1.15.0+，ImagePreview组件：1.18.0+</blockquote>
 
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-imagepreview</code>。</p>
+
     <h3>基本调用</h3>
     <example demo="imagepreview/imagepreview1"></example>
 

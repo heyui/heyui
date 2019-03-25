@@ -3,6 +3,8 @@
     <h2>ImagePreview</h2>
     <blockquote>$ImagePreview: 1.15.0+, ImagePreview Component: 1.18.0+</blockquote>
 
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-imagepreview</code>. </p>
+
     <h3>Basic</h3>
     <exampleEn demo="imagepreview/imagepreview1"></exampleEn>
 
