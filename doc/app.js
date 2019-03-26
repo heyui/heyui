@@ -2,13 +2,11 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import 'highlight.js/styles/github-gist.css';
-// import HeyUI from 'heyui';
 import App from './App.vue';
 
 import utils from 'hey-utils';
 
 import HeyUI from './../src/index';
-// import titleConfig from './js/config/title-config';
 import heyuiConfig from './js/config/heyui-config';
 import VueHighlightJS from './js/vuehighlight';
 
