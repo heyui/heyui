@@ -74,6 +74,12 @@ router.afterEach(() => {
   if (window.location.hostname != 'localhost' && window._hmt) {
     window._hmt.push(['_trackPageview', window.location.pathname]);
   }
+  if (window.location.hostname != 'localhost' && window.adsbygoogle) {
+    window.adsbygoogle.push({
+      google_ad_client: 'ca-pub-5827395187862539',
+      enable_page_level_ads: true
+    });
+  }
 });
 const app = new Vue({
   i18n,
