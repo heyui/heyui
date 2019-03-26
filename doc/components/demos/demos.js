@@ -277,6 +277,7 @@ export default {
   'otherSkeleton2': resolve => require.ensure([], require => require('./other/skeleton2'), 'other'),
   'otherSkeleton3': resolve => require.ensure([], require => require('./other/skeleton3'), 'other'),
   'imagepreviewImagepreview1': resolve => require.ensure([], require => require('./imagepreview/imagepreview1'), 'carousel'),
+  'imagepreviewImagepreview2': resolve => require.ensure([], require => require('./imagepreview/imagepreview2'), 'carousel'),
   'carouselCarousel1': resolve => require.ensure([], require => require('./carousel/carousel1'), 'carousel'),
   'carouselCarousel2': resolve => require.ensure([], require => require('./carousel/carousel2'), 'carousel'),
   'carouselCarousel3': resolve => require.ensure([], require => require('./carousel/carousel3'), 'carousel'),

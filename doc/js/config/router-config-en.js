@@ -453,7 +453,7 @@ const router = [
         path: 'view/imagepreview',
         name: 'en_viewImagePreview',
         meta: {
-          title: 'viewImagePreview'
+          title: 'ImagePreview'
         },
         component: () => import('components_en/component/view/imagepreview')
       },
@@ -461,7 +461,7 @@ const router = [
         path: 'view/carousel',
         name: 'en_viewCarousel',
         meta: {
-          title: 'viewCarousel'
+          title: 'Carousel'
         },
         component: () => import('components_en/component/view/carousel')
       },

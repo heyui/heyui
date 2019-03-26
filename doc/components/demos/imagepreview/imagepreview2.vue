@@ -1,9 +1,8 @@
 <template>
-  <div class="imagepreview-1-vue">
-    <Button @click="openPreview(0)">打开图片预览</Button>
-    <p>
-      <img v-for="(d, index) of datas" :key="d.thumbUrl" :src="d.thumbUrl" @click="openPreview(index)">
-    </p>
+  <div>
+    <p><ImagePreview :datas="datas" @click="openPreview"/></p>
+    <p><ImagePreview :width="70" :borderRadius="4" :datas="datas" @click="openPreview"/></p>
+    <p><ImagePreview :width="80" :borderRadius="5" :distance="15" :datas="datas" @click="openPreview"/></p>
   </div>
 </template>
 <script>
@@ -19,22 +18,9 @@ export default {
     };
   },
   methods: {
-    openPreview(index = 0) {
+    openPreview(index = 0, data) {
       this.$ImagePreview(this.datas, index);
     }
   }
 };
 </script>
-<style lang="less">
-.imagepreview-1-vue {
-  img {
-    width: 60px;
-    cursor: pointer;
-    margin-right: 10px;
-    border-radius: 4px;
-    &:hover {
-      box-shadow: 0 0 6px rgb(63, 63, 63);
-    }
-  }
-}
-</style>

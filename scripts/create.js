@@ -17,24 +17,10 @@ if (moduleName === undefined) {
   return;
 }
 
-// # touch themes/components/$1.less
-// # mkdir src/components/$1
-// # touch src/components/$1/$1.vue
-// # touch src/components/$1/index.js
-
-// # touch doc/components/component/${moduleName}/$1.vue
-// # touch doc/components_en/component/${moduleName}/$1.vue
-
-// # touch doc/components/demos/${moduleName}/$11.vue
-// # touch doc/components/demos/${moduleName}/$12.vue
-
-// # touch doc/components_en/demos/${moduleName}/$11.vue
-// # touch doc/components_en/demos/${moduleName}/$12.vue
-
 let params = {
   name: name,
   lowerName: name.toLowerCase(),
-  upperName: name.toUpperCase()
+  upperName: name.substr(0, 1).toUpperCase() + name.substr(1)
 };
 
 const files = [{
@@ -51,23 +37,41 @@ const files = [{
   path: `doc/components/component/${moduleName}/${params.lowerName}.vue`
 }, {
   template: './scripts/create-template/doc_en.art',
-  path: `doc/components/component_en/${moduleName}/${params.lowerName}.vue`
+  path: `doc/components_en/component/${moduleName}/${params.lowerName}.vue`
 }, {
   template: './scripts/create-template/demo.art',
-  path: `doc/components/demos/${moduleName}/${params.lowerName}1.vue`
+  path: `doc/components/demos/${params.lowerName}/${params.lowerName}1.vue`
 }, {
   template: './scripts/create-template/demo.art',
-  path: `doc/components/demos/${moduleName}/${params.lowerName}2.vue`
+  path: `doc/components/demos/${params.lowerName}/${params.lowerName}2.vue`
 }, {
   template: './scripts/create-template/demo.art',
-  path: `doc/components_en/demos/${moduleName}/${params.lowerName}1.vue`
+  path: `doc/components_en/demos/${params.lowerName}/${params.lowerName}1.vue`
 }, {
   template: './scripts/create-template/demo.art',
-  path: `doc/components_en/demos/${moduleName}/${params.lowerName}2.vue`
+  path: `doc/components_en/demos/${params.lowerName}/${params.lowerName}2.vue`
 }];
 
-fs.mkdirSync(`src/components/${params.lowerName}`);
+const paths = [
+  `src/components/${params.lowerName}`,
+  `doc/components/demos/${params.lowerName}`,
+  `doc/components_en/demos/${params.lowerName}`
+];
+
+for (let p of paths) {
+  try {
+    fs.mkdirSync(p);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 for (let f of files) {
-  fs.writeFile(f.path, template(path.resolve(f.template), params));
+  try {
+    fs.writeFile(f.path, template(path.resolve(f.template), params), function () {
+      console.log(f.path, ' create success');
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
