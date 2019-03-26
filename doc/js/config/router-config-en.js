@@ -330,6 +330,14 @@ const router = [
         component: () => import('components_en/component/plugin/search')
       },
       {
+        path: 'plugin/cascader',
+        name: 'en_pluginCascader',
+        meta: {
+          title: 'Cascader'
+        },
+        component: () => import('components_en/component/plugin/cascader')
+      },
+      {
         path: 'plugin/dropdownmenu',
         name: 'en_pluginDropdownmenu',
         meta: {

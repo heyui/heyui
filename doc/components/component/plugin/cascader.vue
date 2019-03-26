@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
-    <h2>Cascader </h2>
-    <blockquote>1.17.0+</blockquote>
+    <h2>Cascader 级联选择</h2>
+    <blockquote>1.18.0+</blockquote>
 
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-cascader</code>。</p>
 
@@ -30,7 +30,6 @@
         <td>false</td>
       </tr>
     </table>
-
 
     <h3>Cascader 方法</h3>
     <table class="table">
