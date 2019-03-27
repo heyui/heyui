@@ -5,7 +5,7 @@
       <button class="h-btn" @click="open(false)">Js打开弹出框</button>
       <button class="h-btn" @click="openModal = true">Vue打开弹出框</button>
       <Modal v-model="openModal">
-        <ModalTest :param2="value" :params="{a: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
+        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
       </Modal>
     </p>
   </div>

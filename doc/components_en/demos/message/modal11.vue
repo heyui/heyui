@@ -5,7 +5,7 @@
       <button class="h-btn" @click="open(false)">Js opens the popup</button>
       <button class="h-btn" @click="openModal = true">Vue opens the popup</button>
       <Modal v-model="openModal">
-        <ModalTest :param2="value" :params="{a: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
+        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
       </Modal>
     </p>
   </div>
