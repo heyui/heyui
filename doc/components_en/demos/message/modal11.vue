@@ -40,7 +40,8 @@ export default {
           datas: { fruit: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {
-          update: (modal, data) => {
+          // data2 parameter transfer, compatibility 1.18.0+
+          update: (modal, data, data2) => {
             this.value = data;
           },
           // data2 parameter transfer, compatibility 1.18.0+
