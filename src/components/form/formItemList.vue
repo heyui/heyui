@@ -7,14 +7,6 @@ export default {
   data() {
     return {
     };
-  },
-  computed: {
-    labelWidth() {
-      return this.$parent.labelWidth;
-    },
-    mode() {
-      return this.$parent.mode;
-    }
   }
 };
 </script>

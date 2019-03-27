@@ -47,6 +47,16 @@ export default {
       default: false
     }
   },
+  inject: [
+    'validField',
+    'removeProp',
+    'getConfig',
+    'setConfig',
+    'updateErrorMessage',
+    'getErrorMessage',
+    'labelWidth',
+    'mode'
+  ],
   data() {
     return {
       validResult: null,
@@ -56,83 +66,52 @@ export default {
   },
   beforeDestroy() {
     if (this.prop) {
-      let parent = this.getParent();
-      parent.removeProp(this.prop);
+      this.removeProp(this.prop);
     }
   },
   watch: {
     prop(prop, oldProp) {
-      let parent = this.getParent();
       if (this.prop) {
-        let message = parent.getConfig(this.prop);
+        let message = this.getConfig(this.prop);
         if (message) {
           this.configRequired = !!message.required;
         }
-        this.errorMessage = parent.updateErrorMessage(prop, oldProp);
+        this.errorMessage = this.updateErrorMessage(prop, oldProp);
       }
     },
     required() {
-      let parent = this.getParent();
-      parent.setConfig(this.prop, { required: this.required });
+      this.setConfig(this.prop, { required: this.required });
     }
   },
   mounted() {
-    let parent = this.getParent();
-
     if (this.prop) {
-      let message = parent.getConfig(this.prop);
+      let message = this.getConfig(this.prop);
       if (message) {
         this.configRequired = !!message.required;
       }
       if (this.required) {
-        parent.setConfig(this.prop, { required: true });
+        this.setConfig(this.prop, { required: true });
       }
-      this.errorMessage = parent.getErrorMessage(this.prop, this.label);
+      this.errorMessage = this.getErrorMessage(this.prop, this.label);
     }
   },
   methods: {
-    getParent() {
-      let parent = this.$parent;
-      let filterTag = new Set(['Form', 'hForm', 'h-form']);
-      while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
-        parent = parent.$parent;
-      }
-      if (!parent) {
-        console.error('Please put FormItem Component in the Form Component');
-      }
-      return parent;
-    },
-    getDirectParent() {
-      let parent = this.$parent;
-      let filterTag = new Set(['Form', 'hForm', 'h-form', 'h-form-item', 'hFormItem', 'FormItem']);
-      while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
-        parent = parent.$parent;
-      }
-      if (!parent) {
-        console.error('Please put FormItem Component in the Form Component');
-      }
-      return parent;
-    },
     reset() {
       this.errorMessage.valid = true;
     },
     trigger() {
-      let parent = this.getParent();
-      if (!parent) return false;
       let prop = this.prop;
       if (!this.validable || utils.isNull(prop)) {
         return;
       }
-      this.getParent().validField(prop);
+      this.validField(prop);
     }
   },
   computed: {
     initLabelWidth() {
-      let parent = this.getDirectParent(true);
-      // if (!parent) return 'auto';
-      let mode = this.$parent.mode;
+      let mode = this.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
-      let width = hasWidth ? (parent.labelWidth || false) : false;
+      let width = hasWidth ? (this.labelWidth || false) : false;
       return width ? `${width}px` : 'auto';
     },
     formItemCls() {

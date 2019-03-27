@@ -58,6 +58,18 @@ export default {
       default: true
     }
   },
+  provide: function () {
+    return {
+      validField: this.validField,
+      removeProp: this.removeProp,
+      getConfig: this.getConfig,
+      setConfig: this.setConfig,
+      updateErrorMessage: this.updateErrorMessage,
+      getErrorMessage: this.getErrorMessage,
+      labelWidth: this.labelWidth,
+      mode: this.mode
+    };
+  },
   data() {
     return {
       messages: {},
@@ -103,7 +115,7 @@ export default {
       }
     },
     trigger(target) {
-      if(!this.validOnChange) {
+      if (!this.validOnChange) {
         return false;
       }
       let formItem = findDomUtil(target, this.$el);
