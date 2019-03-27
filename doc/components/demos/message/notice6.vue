@@ -11,12 +11,12 @@ export default {
       let info = {
         component: {
           vue: noticeTest,
-          data: {
-            a: 1
+          datas: {
+            fruit: '苹果'
           }
         },
         events: {
-          fromchild: (modal, data) => {
+          success: (modal, data) => {
             this.$Message(data);
           }
         }

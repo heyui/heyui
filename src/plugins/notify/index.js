@@ -116,13 +116,23 @@ class Notify {
         i18n: param.$i18n,
         router: param.$router,
         render(createElement) {
+          let keys = Object.keys(param.events || {});
+          let events = {
+            event: this.trigger,
+            close: this.close
+          };
+          for (let key of keys) {
+            if (events[key]) {
+              continue;
+            }
+            events[key] = (...data) => {
+              this.trigger(key, ...data);
+            };
+          }
           return createElement(
             'div', {}, [createElement('plugin', {
               props: this.propsData,
-              on: {
-                event: this.trigger,
-                close: this.close
-              }
+              on: events
             })]
           );
         },

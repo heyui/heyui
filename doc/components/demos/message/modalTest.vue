@@ -35,10 +35,12 @@ export default {
   },
   methods: {
     triggerEvent() {
-      this.close();
       // 向外层触发事件
-      // test 第二个参数传递，兼容性 1.18.0+
-      this.$emit('event', 'update', this.value, 'test');
+      this.$emit('event', 'update', this.value);
+
+      // 直接使用emit触发外部的events监听，兼容性 1.18.0+
+      this.$emit('success', this.value, 'test');
+      this.close();
     },
     go() {
       // 注意：如果使用HeyUI.$Modal的方式调用，将无法使用$router等vue依赖组件。

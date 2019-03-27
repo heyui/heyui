@@ -35,10 +35,12 @@ export default {
   },
   methods: {
     triggerEvent() {
-      this.close();
       // Trigger event to outer layer
-      // 'test' second parameter transfer, compatibility 1.18.0+
-      this.$emit('event', 'update', this.value, 'test');
+      this.$emit('event', 'update', this.value);
+
+      // Use emit trigger events method direct，compatibility 1.18.0+
+      this.$emit('success', this.value, 'test');
+      this.close();
     },
     go() {
       // Note: If you call it using HeyUI.$Modal, you will not be able to use vure dependencies such as $router.
