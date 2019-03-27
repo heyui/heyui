@@ -9,7 +9,7 @@
 
     <example demo="plugins/category1"></example>
 
-    <h3>对象调用</h3>
+    <h3>对象调用与异步调用</h3>
     <p>设置数据中 <code>checkable: false</code> 属性，来定义选项是否可选。</p>
     <example demo="plugins/category2"></example>
 

@@ -9,7 +9,7 @@
 
     <exampleEn demo="plugins/category1"></exampleEn>
 
-    <h3>Object Data</h3>
+    <h3>Object Data and asynchronous data</h3>
     <p>Set <code>checkable: false</code> parameter in data object to control checkable。</p>
     <exampleEn demo="plugins/category2"></exampleEn>
 
