@@ -272,7 +272,7 @@ export default {
       if (this.multiple) {
         let values = this.value || [];
         if (utils.isArray(values)) {
-          console.warn(`Select: ${values} can't be a value of a multiple select`);
+          console.warn(`Select: value '${values}' can't be a value of a multiple select`);
           return;
         }
         this.codes = values.map((item) => {

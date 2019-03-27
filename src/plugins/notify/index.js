@@ -129,15 +129,18 @@ class Notify {
         data() {
           return {
             propsData: utils.extend({}, param.component.datas, {
+              // **删除**delete**
               param: param.component.data,
               params: param.component.data
             }),
             modal: that
           };
         },
+        mounted() {
+        },
         methods: {
-          trigger(name, data) {
-            that.trigger(name, data);
+          trigger(name, ...data) {
+            that.trigger(name, ...data);
           },
           close() {
             that.close();
@@ -247,10 +250,10 @@ class Notify {
     }
   }
 
-  trigger(event, data) {
+  trigger(event, ...data) {
     let param = this.param;
     if (param.events && utils.isFunction(param.events[event])) {
-      param.events[event].call(null, this, data);
+      param.events[event].call(null, this, ...data);
     }
   }
 

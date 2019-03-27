@@ -35,7 +35,7 @@
     <exampleEn demo="message/modal11"></exampleEn>
 
     <blockquote>The code used in the popup box</blockquote>
-    <codes src="/message/modalTest.vue" type="html"></codes>
+    <codesEn src="/message/modalTest.vue" type="html"></codesEn>
 
     <h3>Modal Property</h3>
     <table class="table">

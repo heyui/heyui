@@ -7,22 +7,22 @@
     <h4><a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> scaffold (recommended)</h4>
     <p>Refer to the var.less file of Heyui in the var.less file you defined, and redefine the replacement theme according to your needs. Then set the global reference file in the hey.js scaffolding configuration file.</p>
     <p>var.less, <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less" target="_blank">example link</a></p>
-    <codes type="less">@import (less) "~/heyui/themes/var.less";
+    <codesEn type="less">@import (less) "~/heyui/themes/var.less";
       //Redefine theme
       @primary-color: #FDA729;
       @red-color: #D64244;
       @green-color: #3cb357;
       @yellow-color: #EAC12C;
-      @blue-color: #77A2DC;</codes>
+      @blue-color: #77A2DC;</codesEn>
     <p v-height="10"></p>
     <p>hey-cli configuration file hey.js, <a href="https://github.com/heyui/heyui-admin/blob/master/hey.conf.js" target="_blank">example link</a></p>
-    <codes type="javascript">globalVars: './src/css/var.less',</codes>
+    <codesEn type="javascript">globalVars: './src/css/var.less',</codesEn>
     <p>Note: With this reference, these variables can also be used in the vue file.</p>
 
     <h3>vue-cli / webpack</h3>
     <p>There are some differences in the references here, mainly in style references.</p>
     <p>For the definition of the less variable, we do not write the common.less file, so we need to define a less file for reference.</p>
-    <codes type="less">@import (less) "~heyui/themes/var.less";
+    <codesEn type="less">@import (less) "~heyui/themes/var.less";
       //Redefine theme
       @primary-color: #FDA729;
       @red-color: #D64244;
@@ -33,13 +33,13 @@
 
       //Using this method, you can use the variables defined by var.less in your own less file.
       @import (less) "自己的less文件";
-    </codes>
+    </codesEn>
     <p>Note: In this way of reference, variables in var.less files cannot be used in vue files.</p>
 
     <h3>Global variable</h3>
     <p>Our original global variable file can be viewed on <a href="https://github.com/heyui/heyui/blob/master/themes/var.less" target="_blank">github</a>上查看。</p>
     <p>The parameters in the following code, you can modify according to your own design, achieve the purpose of setting the system theme.</p>
-    <codes type="less">
+    <codesEn type="less">
       // Color
       @primary-color : #3399ff;
       @link-color : @primary-color;
@@ -101,7 +101,7 @@
       //switch
       @switch-hight: 26px;
       @min-switch-height: 18px;
-    </codes>
+    </codesEn>
 
     <h3>Example</h3>
     <p><a href="http://admin.heyui.top/" target="_blank">heyui-admin</a> is a complete example, We modified the main color and adjusted some parameters. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less">example code</a>。</p>

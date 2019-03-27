@@ -3,7 +3,7 @@
     <header class="h-modal-header">test</header>
     <div style="padding:15px">
       <Select dict="simple" v-model="value"></Select>
-      <p>Passed parameters:{{params.a}}, {{param2}}</p>
+      <p>Passed parameters:{{params.subparam}}, {{fruit}}</p>
       <p>The value passed by vuex:{{test}}</p>
     </div>
     <footer class="h-modal-footer">
@@ -20,11 +20,11 @@ import { mapGetters } from 'vuex';
 export default {
   props: {
     params: Object,
-    param2: String
+    fruit: String
   },
   data() {
     return {
-      value: this.param2
+      value: this.fruit
     };
   },
   store,
@@ -37,7 +37,8 @@ export default {
     triggerEvent() {
       this.close();
       // Trigger event to outer layer
-      this.$emit('event', 'update', this.value);
+      // 'test' second parameter transfer, compatibility 1.18.0+
+      this.$emit('event', 'update', this.value, 'test');
     },
     go() {
       // Note: If you call it using HeyUI.$Modal, you will not be able to use vure dependencies such as $router.

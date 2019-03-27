@@ -17,7 +17,7 @@
     <h3>Custom style</h3>
     <exampleEn demo="view/tabs4"></exampleEn>
     <p>style：</p>
-    <codes src="/codes/tabs.txt" type="less"></codes>
+    <codesEn src="/codes/tabs.txt" type="less"></codesEn>
 
     <h3>Custom Tabs</h3>
     <exampleEn demo="view/tabs5"></exampleEn>

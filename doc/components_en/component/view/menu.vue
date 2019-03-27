@@ -7,7 +7,7 @@
     <exampleEn demo="view/menu1"></exampleEn>
 
     <p>code with <code>vue-router</code>：</p>
-    <codes src="/codes/menu1.txt" type="javascript"></codes>
+    <codesEn src="/codes/menu1.txt" type="javascript"></codesEn>
 
     <h3>White Theme</h3>
     <exampleEn demo="view/menu2"></exampleEn>
@@ -16,7 +16,7 @@
     <p>This style is your own set of class, you can make any adjustments.</p>
     <exampleEn demo="view/menu3"></exampleEn>
     <p>style：</p>
-    <codes src="/codes/menu.txt" type="less"></codes>
+    <codesEn src="/codes/menu.txt" type="less"></codesEn>
 
     <h3>Menu Property</h3>
     <table class="table">

@@ -48,8 +48,8 @@
 
     <h4>Configure the dict structure</h4>
     <p>Set the global dictionary <code>key</code>,<code>value</code> naming.</p>
-<codes type="javascript">HeyUI.config('dict.keyName', "key");
-HeyUI.config('dict.titleName', "title");</codes>
+<codesEn type="javascript">HeyUI.config('dict.keyName', "key");
+HeyUI.config('dict.titleName', "title");</codesEn>
     <h4>Example Tree</h4>
     <p>For system configuration, please refer to demo's <a target="_blank" href="https://github.com/heyui/heyui-admin/blob/master/src/js/config/tree-config.js">tree-config.js</a>。</p>
     <exampleEn demo="plugins/tree7"></exampleEn>

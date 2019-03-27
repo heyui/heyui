@@ -9,7 +9,7 @@
     <h3>Custom styles and content</h3>
     <exampleEn demo="other/backtotop2"></exampleEn>
     <p>style:</p>
-    <codes src="/codes/backtop1.txt" type="less"></codes>
+    <codesEn src="/codes/backtop1.txt" type="less"></codesEn>
     <div v-height="10"></div>
     <div v-height="1000" v-bg-color:gray4 v-padding="20" class="text-center">
       Support page

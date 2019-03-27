@@ -36,11 +36,12 @@ export default {
           //   require(['./modalTest'], resolve);
           // },
           vue: ModalTest,
-          data: { a: 'test1' }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
-          datas: { param2: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
+          data: { subparam: 'test1' }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
+          datas: { fruit: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {
-          update: (modal, data) => {
+          // data2 parameter transfer, compatibility 1.18.0+
+          update: (modal, data, data2) => {
             this.value = data;
           }
         }
