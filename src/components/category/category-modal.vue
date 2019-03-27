@@ -19,7 +19,8 @@
           <template v-if="searchText==''">
             <Cell :width="8" v-for="data of list" :key="data.key">
             <div class="text-ellipsis h-category-item" @click="openNew(data)">
-              <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
+              <i class="h-icon-loading" v-if="data.status.loading"></i>
+              <Checkbox v-else-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
                 class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span>
             </div>
             </Cell>
@@ -34,7 +35,7 @@
       </div>
     </div>
     <footer>
-      <Button Cellor="primary" @click="confirm">{{'h.common.confirm' | hlang}}</Button>
+      <Button color="primary" @click="confirm">{{'h.common.confirm' | hlang}}</Button>
       <Button @click="close">{{'h.common.cancel' | hlang}}</Button>
     </footer>
   </div>
@@ -97,6 +98,12 @@ export default {
         this.tabs.push(data);
         this.tab = data.key;
         this.list = data.children;
+      } else if (data.status.isWait) {
+        this.$emit('event', 'load', {
+          data: data,
+          callback: () => {
+            this.openNew(data);
+          } });
       } else {
         this.change(data);
       }

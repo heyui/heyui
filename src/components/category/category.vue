@@ -92,6 +92,23 @@ export default {
             that.objects = data.objects;
             that.object = data.object;
             that.setvalue();
+          },
+          load: (modal, { data, callback }) => {
+            data.status.loading = true;
+            this.param.getDatas.call(
+              this.param,
+              data.value,
+              result => {
+                data.children = this.initTreeModeData(result, data.key, true);
+                data.status.isWait = false;
+                data.status.loading = false;
+                data.status.opened = true;
+                callback();
+              },
+              () => {
+                data.status.loading = false;
+              }
+            );
           }
         }
       });
@@ -119,10 +136,9 @@ export default {
       }
       if (this.type == 'key') {
         let obj = this.categoryObj[item];
-        return obj;
+        return utils.getValue(obj, this.param);
       } else {
-        let obj = this.categoryObj[item[this.param.keyName]];
-        return obj;
+        return utils.getValue(item, this.param);
       }
     },
     dispose() {
@@ -179,9 +195,10 @@ export default {
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(list, this.param);
       }
-      return this.initTreeModeData(list);
+      let isWait = utils.isFunction(this.param.getDatas);
+      return this.initTreeModeData(list, null, isWait);
     },
-    initTreeModeData(list, parentKey) {
+    initTreeModeData(list, parentKey, isWait) {
       let datas = [];
       for (let data of list) {
         let obj = {
@@ -191,6 +208,7 @@ export default {
           parentKey,
           status: {
             loading: false,
+            isWait,
             opened: false,
             selected: false,
             checkable: data.checkable !== false

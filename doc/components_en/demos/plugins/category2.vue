@@ -7,39 +7,44 @@
   </div>
 </template>
 <script>
+
+const genList = (parentTitle, parentId, size, keyName, titleName) => {
+  let list = [];
+  for (let i = 0; i < size; i++) {
+    list.push({
+      [keyName]: parseInt(`${parentId}${i}`),
+      [titleName]: `${parentTitle}-${i}`
+    });
+  }
+  return list;
+};
+
 export default {
   data() {
-    let list = [
-      { id: 1, title: 'First level', checkable: false },
-      { id: 2, title: 'Secondary', checkable: false },
-      { id: 3, title: 'Third level', checkable: false },
-      { id: 10, title: 'First level-0', parent: 1 },
-      { id: 11, title: 'First level-1', parent: 1 },
-      { id: 12, title: 'First level-2', parent: 1 },
-      { id: 13, title: 'First level-3', parent: 1 },
-      { id: 14, title: 'First level-4', parent: 1 },
-      { id: 20, title: 'Secondary-0', parent: 2 },
-      { id: 21, title: 'Secondary-1', parent: 2 },
-      { id: 22, title: 'Secondary-2', parent: 2 },
-      { id: 23, title: 'Secondary-3', parent: 2 },
-      { id: 24, title: 'Secondary-4', parent: 2 },
-      { id: 30, title: 'Third level-0', parent: 3 },
-      { id: 31, title: 'Third level-1', parent: 3 },
-      { id: 32, title: 'Third level-2', parent: 3 },
-      { id: 33, title: 'Third level-3', parent: 3 },
-      { id: 34, title: 'Third level-4', parent: 3 }
-    ];
     return {
       value: [{ id: 34, title: 'Third level-4', parent: 3 }],
       param: {
-        title: 'test',
         keyName: 'id',
-        parentName: 'parent',
         titleName: 'title',
         dataMode: 'list',
-        datas: list
+        getDatas: (parent, resolve) => {
+          setTimeout(() => {
+            if (!parent) {
+              resolve([
+                { id: 1, title: 'First level', disabled: true },
+                { id: 2, title: 'Secondary' },
+                { id: 3, title: 'Third level' }]);
+            } else if (parent.id % 2 == 0) {
+              resolve([]);
+            } else {
+              resolve(genList(parent.title, parent.id, 5, 'id', 'title'));
+            }
+          }, 100);
+        }
       }
     };
+  },
+  methods: {
   }
 };
 </script>
