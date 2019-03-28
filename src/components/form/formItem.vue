@@ -1,15 +1,18 @@
 <template>
   <div :class="formItemCls" :prop="prop" :validable="validable">
-    <label :style="labelStyleCls"
-           class="h-form-item-label"
-           v-if="showLabel">{{label}}</label>
-    <div class="h-form-item-content"
-         :style="contentStyleCls">
+    <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">
+      <span v-if="!$scopedSlots.label">{{label}}</span>
+      <slot v-else :label="label" name="label"></slot>
+    </label>
+    <div class="h-form-item-content" :style="contentStyleCls">
       <div class="h-form-item-wrap">
         <slot></slot>
       </div>
-      <div class="h-form-item-error"
-           v-if="!errorMessage.valid"><span v-if="errorMessage.type=='base'" class="h-form-item-error-label">{{label}}</span>{{errorMessage.message}}<slot name="error" :type="errorMessage.type"></slot></div>
+      <div class="h-form-item-error" v-if="!errorMessage.valid">
+        <span v-if="errorMessage.type=='base'" class="h-form-item-error-label">{{label}}</span>
+        {{errorMessage.message}}
+        <slot name="error" :type="errorMessage.type"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -47,16 +50,7 @@ export default {
       default: false
     }
   },
-  inject: [
-    'validField',
-    'removeProp',
-    'getConfig',
-    'setConfig',
-    'updateErrorMessage',
-    'getErrorMessage',
-    'labelWidth',
-    'mode'
-  ],
+  inject: ['validField', 'removeProp', 'getConfig', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
   data() {
     return {
       validResult: null,
@@ -111,7 +105,7 @@ export default {
     initLabelWidth() {
       let mode = this.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
-      let width = hasWidth ? (this.labelWidth || false) : false;
+      let width = hasWidth ? this.labelWidth || false : false;
       return width ? `${width}px` : 'auto';
     },
     formItemCls() {

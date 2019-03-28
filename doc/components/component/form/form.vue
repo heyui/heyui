@@ -197,6 +197,20 @@
       </tr>
     </table>
 
+    <h3>FormItem Slot</h3>
+    <table class="table">
+      <tr>
+        <th>slot</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>label</td>
+        <td>自定义label, 兼容性1.18.0+</td>
+        <td>label</td>
+      </tr>
+    </table>
+
     <h3>FormItem 方法</h3>
     <table class="table">
       <tr>

@@ -17,6 +17,7 @@
         <Checkbox v-model="validOnChange">数据变化后做校验</Checkbox>
       </FormItem>
       <FormItem label="用户名" prop="name">
+        <template v-slot:label><i class="h-icon-user"></i> 用户名</template>
         <input type="text" v-model="model.name">
       </FormItem>
       <FormItem label="密码" prop="password">
