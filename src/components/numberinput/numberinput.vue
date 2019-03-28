@@ -113,7 +113,7 @@ export default {
       if (trigger != 'input') {
         this.editValue = value;
       }
-      if (trigger == 'blur') {
+      if (trigger != 'input') {
         this.$emit('change', value);
       }
       let event = document.createEvent('CustomEvent');
