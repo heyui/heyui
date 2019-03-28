@@ -112,7 +112,7 @@
         <td>The type of data provided is whether the tile needs to be parsed or whether tree data has already been generated.</td>
         <td>String</td>
         <td>list, tree</td>
-        <td>list</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>datas</td>

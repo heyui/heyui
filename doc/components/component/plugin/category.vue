@@ -105,7 +105,7 @@
         <td>提供的数据类型，是平铺需要解析的列表，还是已经生成好的tree数据</td>
         <td>String</td>
         <td>list, tree</td>
-        <td>list</td>
+        <td>-</td>
       </tr>
       <tr>
         <td>datas</td>
