@@ -18,7 +18,7 @@ const menus = [
       formCheckbox: 'Checkbox 多选',
       pluginSelect: 'Select 下拉选择',
       pluginAuto: 'AutoComplete 模糊匹配',
-      pluginNumberinput: 'NumberInput 数字输入框',
+      pluginNumberinput: 'NumberInput 数字输入',
       pluginTaginput: 'TagInput 标签输入框',
       formSwitch: 'Switch 开关',
       formSlider: 'Slider 滑块',
@@ -34,7 +34,7 @@ const menus = [
       pluginTime: 'TimePicker 时间选择',
       pluginDatetime: 'DatetimePicker 日期时间选择',
       pluginDateRange: 'DateRangePicker 日期范围选择',
-      pluginFullDateRange: 'DateFullRangePicker 超级日期范围选择'
+      pluginFullDateRange: 'DateFullRangePicker 超级日期'
     }
   },
   {
@@ -58,7 +58,7 @@ const menus = [
       viewTabs: 'Tabs 标签页',
       pluginSteps: 'Steps 步骤条',
       pluginDropdownmenu: 'DropdownMenu 下拉菜单',
-      pluginDropdowncustom: 'DropdownCustom 自定义下拉控件'
+      pluginDropdowncustom: 'DropdownCustom 自定义下拉'
     }
   },
   {

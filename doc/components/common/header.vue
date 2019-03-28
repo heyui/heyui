@@ -6,7 +6,7 @@
           <span></span>
         </div>HEY UI
       </router-link>
-      <AutoComplete v-width="180" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
+      <AutoComplete v-width="220" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class="header-nav-list">
         <div class="bg-group" v-if="$route.name != 'Home'">
           <div class="bg1" @click="dynamicLoadCss('pink')"></div>
