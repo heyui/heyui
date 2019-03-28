@@ -199,7 +199,7 @@ export default {
       return result;
     },
     tipError(result) {
-      if (!result.result) {
+      if (result && !result.result) {
         let m = result.messages[0];
         if (this.showErrorTip) {
           if (m.type == 'base') {
@@ -224,8 +224,12 @@ export default {
     },
     validAsync() {
       return new Promise((resolve) => {
-        this.valid((result) => {
-          resolve(this.renderMessage(result));
+        let returnResult = this.valid((result) => {
+          let asyncResult = this.renderMessage(result);
+          if (returnResult && returnResult.result) {
+            this.tipError(asyncResult);
+          }
+          resolve(asyncResult);
         });
       });
     },

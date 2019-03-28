@@ -169,7 +169,7 @@ export default {
                 } else {
                   next('ID is not equal to 15');
                 }
-              }, 10);
+              }, 1000);
             }
           }
         },
@@ -217,15 +217,9 @@ export default {
   },
   methods: {
     submit() {
-      this.isLoading = true;
       let validResult = this.$refs.form.valid();
       if (validResult.result) {
         this.$Message('Successful verification');
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1000);
-      } else {
-        this.isLoading = false;
       }
     },
     submitAsync() {
@@ -233,12 +227,8 @@ export default {
       this.$refs.form.validAsync().then(result => {
         if (result.result) {
           this.$Message('Successful verification');
-          setTimeout(() => {
-            this.isLoading = false;
-          }, 1000);
-        } else {
-          this.isLoading = false;
         }
+        this.isLoading = false;
       });
     },
     open() {
