@@ -2,7 +2,7 @@
   <div>
     <p>total:<NumberInput v-width="200" v-model="total" @input="changeTotal" :useOperate="true" :step="10"></NumberInput></p>
     <p><Pagination :cur="current" :total="total" @change="currentChange"></Pagination></p>
-    <blockquote>Use v-model, compatibility 1.15.0+</blockquote>
+    <blockquote>Use v-model, compatibility 1.18.0+</blockquote>
     <p><Pagination v-model="pagination" @change="currentChange"></Pagination></p>
   </div>
 </template>
