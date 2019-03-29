@@ -31,7 +31,7 @@
     "fs": "0.0.1-security",
     "headr": "0.0.4",
     "hey-log": "^0.0.8",
-    "hey-utils": "^0.4.0",
+    "hey-utils": "^1.0.0",
     "less": "^3.9.0",
     "less-to-json": "^1.2.0",
     "standard-version": "^4.4.0"
