@@ -135,8 +135,7 @@ export default {
         return null;
       }
       if (this.type == 'key') {
-        let obj = this.categoryObj[item];
-        return utils.getValue(obj, this.param);
+        return this.categoryObj[item];
       } else {
         return utils.getValue(item, this.param);
       }

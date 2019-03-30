@@ -4,7 +4,7 @@
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-category</code>。</p>
 
     <h3>基本调用</h3>
-    <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
+    <p>在传递的param参数中，定义基本的数据字段：<code>keyName</code>, <code>parentName</code>, <code>titleName</code>, <code>childrenName</code>。</p>
     <p>设定数据模式：<code>dataMode</code>, 当传递的数据为有key,parent字段的list，则传递<code>list</code>，组件会根据key,parent字段自动计算树模型(parent可以是数组对应)，如果传递的数据本身就是树模型，则传递<code>tree</code>。</p>
 
     <example demo="plugins/category1"></example>
@@ -99,6 +99,13 @@
         <td>String</td>
         <td>-</td>
         <td>全局配置<code>category.default.parentName</code></td>
+      </tr>
+      <tr>
+        <td>childrenName</td>
+        <td>数据的children对应字段</td>
+        <td>String</td>
+        <td>-</td>
+        <td>全局配置<code>category.default.childrenName</code></td>
       </tr>
       <tr>
         <td>dataMode</td>

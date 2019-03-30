@@ -4,7 +4,7 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-category</code>. </p>
 
     <h3>Basic</h3>
-    <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>。</p>
+    <p>The basic data fields: <code>keyName</code>, <code>parentName</code>, <code>titleName</code>, <code>childrenName</code>。</p>
     <p>Set the data mode: <code>dataMode</code>, When the data passed is a list with key and parent fields, then the <code>list</code>component will automatically calculate the tree model according to the key and parent fields (parent can be an array correspondence). If the data passed is a tree model, Then pass it <code>tree</code>。</p>
 
     <exampleEn demo="plugins/category1"></exampleEn>
@@ -99,6 +99,13 @@
         <td>String</td>
         <td>-</td>
         <td>Global configuration <code>tree.default.parentName</code></td>
+      </tr>
+      <tr>
+        <td>childrenName</td>
+        <td>The children field name</td>
+        <td>String</td>
+        <td>-</td>
+        <td>Global configuration <code>category.default.childrenName</code></td>
       </tr>
       <tr>
         <td>childrenName</td>
