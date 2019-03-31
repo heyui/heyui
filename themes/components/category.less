@@ -3,6 +3,17 @@
 .plugin-input(@category-prefix);
 
 .@{category-prefix}{
+
+  &-value-single {
+    >.@{prefix}icon-close{
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      z-index: 3;
+      color: @gray-color;
+      .text-hover;
+    }
+  }
   &-item{
     font-size: 90%;
     padding: 3px 5px;

@@ -1,12 +1,17 @@
 <template>
   <div :class="categoryCls" :disabled="disabled">
     <div class="h-category-show" @click="openPicker">
-      <div v-if="multiple&&objects.length" class="h-category-multiple-tags"><span v-for="obj of objects" :key="obj.key"><span>{{obj.title}}</span><i
-            class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+      <div v-if="multiple&&objects.length" class="h-category-multiple-tags">
+        <span v-for="obj of objects" :key="obj.key">
+          <span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+        </span>
       </div>
-      <div v-else-if="!multiple&&object" class="h-category-value-single">{{object.title}}</div>
+      <div v-else-if="!multiple&&object" class="h-category-value-single">
+        <span>{{object.title}}</span>
+        <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
+      </div>
       <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
-      <i class="h-icon-down"></i>
+      <!-- <i class="h-icon-down"></i> -->
     </div>
   </div>
 </template>
@@ -115,6 +120,10 @@ export default {
     },
     remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
+      this.setvalue();
+    },
+    clear() {
+      this.object = null;
       this.setvalue();
     },
     parse() {
