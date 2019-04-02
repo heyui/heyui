@@ -259,7 +259,6 @@ export default {
       if (this.dropdown) this.dropdown.hide();
     },
     setvalue(string, isEnd = true) {
-      // log(string);
       let value = string;
       if (string != '') {
         value = manba(string).format(this.nowFormat);
