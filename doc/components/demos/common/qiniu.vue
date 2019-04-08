@@ -76,7 +76,11 @@ export default {
                 };
                 reader.readAsDataURL(file.getNative());
               }
-              that.uploadList.push(file);
+              if (that.type == 'files' || that.type == 'images') {
+                that.uploadList.push(file);
+              } else {
+                that.uploadList = [file];
+              }
             });
             // that.$emit("startUpload");
             up.start();
@@ -101,6 +105,7 @@ export default {
           UploadComplete() {
             that.$emit('completeUpload');
             let fileList = that.$refs.uploader.getFileList();
+            // log(fileList);
             //   fileList.map(item=>{
             //     // 对返回的数据做最后的组装
             //     // item.type = 5;
