@@ -8,10 +8,10 @@
     <p>说明</p>
 
     <h3>基本调用</h3>
-    <example demo="other/cascader1"></example>
+    <example demo="cascader/cascader1"></example>
 
     <h3>其他</h3>
-    <example demo="other/cascader2"></example>
+    <example demo="cascader/cascader2"></example>
 
     <h3>Cascader 参数</h3>
     <table class="table">

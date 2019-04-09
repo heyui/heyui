@@ -15,6 +15,7 @@ import Breadcrumb from './components/breadcrumb';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
+import Cascader from './components/cascader';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
@@ -94,6 +95,7 @@ const components = {
   ButtonGroup,
   Breadcrumb,
   Category,
+  Cascader,
   Checkbox,
   hCircle: Circle,
   DatePicker: Datetime.DatePicker,

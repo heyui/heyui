@@ -45,8 +45,8 @@ const menus = [
       pluginTree: 'Tree 树',
       pluginTreePicker: 'TreePicker 树选择',
       pluginCategory: 'Category 分类选择',
-      viewTransfer: 'Transfer 穿梭框'
-      // pluginCascader: 'Cascader 级联选择'
+      viewTransfer: 'Transfer 穿梭框',
+      pluginCascader: 'Cascader 级联选择'
     }
   },
   {

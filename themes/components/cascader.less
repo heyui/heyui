@@ -1,5 +1,23 @@
 @cascader-prefix: ~"@{prefix}cascader";
-
+.plugin-input(@cascader-prefix);
 .@{cascader-prefix}{
 
+  &-value-single {
+    >.@{prefix}icon-close{
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      z-index: 3;
+      color: @gray-color;
+      .text-hover;
+    }
+  }
+
+  &-modal-multiple-tags{
+    min-height: @input-height;
+    padding-right: 180px;
+    >span {
+      .tag-span-func();
+    }
+  }
 }

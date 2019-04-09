@@ -8,10 +8,10 @@
     <p>description</p>
 
     <h3>Basic</h3>
-    <example demo="other/cascader1"></example>
+    <example demo="cascader/cascader1"></example>
 
     <h3>Advance</h3>
-    <example demo="other/cascader2"></example>
+    <example demo="cascader/cascader2"></example>
 
     <h3>Cascader Property</h3>
     <table class="table">
