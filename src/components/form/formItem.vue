@@ -1,6 +1,7 @@
 <template>
   <div :class="formItemCls" :prop="prop" :validable="validable">
     <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">
+      <i v-if="icon" :class="icon"></i>
       <span v-if="!$scopedSlots.label">{{label}}</span>
       <slot v-else :label="label" name="label"></slot>
     </label>
@@ -25,6 +26,7 @@ export default {
   props: {
     label: String,
     prop: String,
+    icon: String,
     required: {
       type: Boolean,
       default: false

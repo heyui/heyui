@@ -20,7 +20,7 @@
         <template v-slot:label><i class="h-icon-user"></i> 用户名</template>
         <input type="text" v-model="model.name">
       </FormItem>
-      <FormItem label="密码" prop="password">
+      <FormItem label="密码" icon="h-icon-complete" prop="password">
         <input type="password" v-model="model.password">
       </FormItem>
       <FormItem>

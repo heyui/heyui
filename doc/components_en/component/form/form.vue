@@ -195,6 +195,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>icon</td>
+        <td>show icon, 1.18.0</td>
+        <td>String</td>
+        <td></td>
+        <td>-</td>
+      </tr>
     </table>
 
     <h3>FormItem Slot</h3>
