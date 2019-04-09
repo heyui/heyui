@@ -340,6 +340,12 @@ export default {
         this.treeObj[tree].status.opened = false;
       }
     },
+    expand(ids) {
+      for (let key of Object.keys(this.treeObj)) {
+        let tree = this.treeObj[key];
+        tree.status.opened = ids.indexOf(tree.key) > -1;
+      }
+    },
     chooseAll() {
       for (let key in this.treeObj) {
         this.treeObj[key].status.choose = true;

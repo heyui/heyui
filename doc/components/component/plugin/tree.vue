@@ -148,8 +148,14 @@
       </tr>
       <tr>
         <td>expandAll</td>
-        <td>打开所有的折叠</td>
+        <td>展开所有的节点</td>
         <td>无</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>expand</td>
+        <td>展开节点，1.18.0+</td>
+        <td>([keys])</td>
         <td>无</td>
       </tr>
       <tr>

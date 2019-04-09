@@ -34,6 +34,15 @@
       <Button text-color="blue">BLUE button</Button>
       <Button text-color="gray">GRAY button</Button>
     </div>
+    <h4>Background transparent</h4>
+    <div class="buttons bg-gray3-color" style="padding: 10px 10px 0;">
+      <Button transparent text-color="primary">Main button</Button>
+      <Button transparent text-color="yellow">YELLOW button</Button>
+      <Button transparent text-color="green">GREEN button</Button>
+      <Button transparent text-color="red">RED button</Button>
+      <Button transparent text-color="blue">BLUE button</Button>
+      <Button transparent text-color="gray">GRAY button</Button>
+    </div>
     <h4>Text Button</h4>
     <div class="buttons">
       <Button noBorder text-color="primary">Main button</Button>

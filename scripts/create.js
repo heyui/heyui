@@ -20,7 +20,7 @@ if (moduleName === undefined) {
 let params = {
   name: name,
   lowerName: name.toLowerCase(),
-  upperName: name.substr(0, 1).toUpperCase() + name.substr(1)
+  upperName: name.slice(0, 1).toUpperCase() + name.slice(1)
 };
 
 const files = [{

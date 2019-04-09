@@ -6,6 +6,7 @@
     </p>
     <p>
       <Button @click="expandAll" size="xs">Expand all</Button>
+      <Button @click="expand([2, 3])" size="xs">Expand some</Button>
       <Button @click="foldAll" size="xs">Collapse all</Button>
       <Button @click="updateSelect" size="xs">Set the selected value</Button>
       <Button @click="getSelect" size="xs">Get the selected value</Button>
@@ -52,6 +53,9 @@ export default {
     };
   },
   methods: {
+    expand(ids) {
+      this.$refs.demo.expand(ids);
+    },
     expandAll() {
       this.$refs.demo.expandAll();
     },

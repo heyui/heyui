@@ -245,7 +245,6 @@ export default {
         let date = d.date;
         // In addition to the month and year clicks, the other directly complete the assignment
         if (!(this.view == 'month' && this.type != 'month') && !(this.view == 'year' && this.type != 'year')) {
-          // if ((!(this.options.disabled || this.type == 'week' || this.type == 'quarter') || this.view == 'date')) {
           if (this.value) {
             if (this.range) {
               try {
@@ -264,6 +263,8 @@ export default {
                 date.hours(d.date.hours());
                 break;
               case 'date':
+                date.year(d.date.year());
+                date.month(d.date.month());
                 date.date(d.date.date());
                 break;
               case 'month':
