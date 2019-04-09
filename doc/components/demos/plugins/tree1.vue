@@ -4,6 +4,7 @@
     <p><h-switch v-model="toggleOnSelect" small>点击内容折叠内容</h-switch></p>
     <p>
       <Button @click="expandAll" size="xs">全部展开</Button>
+      <Button @click="expand([2, 3])" size="xs">展开部分</Button>
       <Button @click="foldAll" size="xs">全部收起</Button>
       <Button @click="updateSelect" size="xs">设置选中值</Button>
       <Button @click="getSelect" size="xs">获得选中值</Button>
@@ -50,6 +51,9 @@ export default {
     };
   },
   methods: {
+    expand(ids) {
+      this.$refs.demo.expand(ids);
+    },
     expandAll() {
       this.$refs.demo.expandAll();
     },

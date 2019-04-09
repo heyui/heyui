@@ -153,6 +153,12 @@
         <td>none</td>
       </tr>
       <tr>
+        <td>expand</td>
+        <td>Open folds，1.18.0+</td>
+        <td>([keys])</td>
+        <td>none</td>
+      </tr>
+      <tr>
         <td>foldAll</td>
         <td>Collapse all folds</td>
         <td>none</td>
