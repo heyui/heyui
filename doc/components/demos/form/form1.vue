@@ -5,7 +5,7 @@
       :validOnChange="validOnChange"
       :showErrorTip="showErrorTip"
       :labelPosition="labelPosition"
-      :labelWidth="90"
+      :labelWidth="110"
       :rules="validationRules"
       :model="model"
     >

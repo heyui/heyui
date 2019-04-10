@@ -1,11 +1,11 @@
 <template>
-  <div v-width="400">
+  <div v-width="450">
     <Form
       ref="form"
       :validOnChange="validOnChange"
       :showErrorTip="showErrorTip"
       :labelPosition="labelPosition"
-      :labelWidth="120"
+      :labelWidth="130"
       :rules="validationRules"
       :model="model"
     >
