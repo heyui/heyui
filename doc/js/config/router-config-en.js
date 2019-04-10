@@ -514,6 +514,14 @@ const router = [
         component: () => import('components_en/component/other/backtop')
       },
       {
+        path: 'other/colorpicker',
+        name: 'en_otherColorPicker',
+        meta: {
+          title: 'ColorPicker'
+        },
+        component: () => import('components_en/component/other/colorpicker')
+      },
+      {
         path: 'other/scrollintoview',
         name: 'en_otherScrollintoview',
         meta: {

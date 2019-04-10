@@ -267,6 +267,8 @@ export default {
   'otherTextellipsis3': resolve => require.ensure([], require => require('./other/textellipsis3'), 'other'),
   'otherTextellipsis4': resolve => require.ensure([], require => require('./other/textellipsis4'), 'other'),
   'otherTextellipsis5': resolve => require.ensure([], require => require('./other/textellipsis5'), 'other'),
+  'colorpickerColorpicker1': resolve => require.ensure([], require => require('./colorpicker/colorpicker1'), 'other'),
+  'colorpickerColorpicker2': resolve => require.ensure([], require => require('./colorpicker/colorpicker2'), 'other'),
   'otherAffix1': resolve => require.ensure([], require => require('./other/affix1'), 'other'),
   'otherAffix2': resolve => require.ensure([], require => require('./other/affix2'), 'other'),
   'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),

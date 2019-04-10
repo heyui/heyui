@@ -1,0 +1,19 @@
+@colorpicker-prefix: ~"@{prefix}colorpicker";
+
+.@{colorpicker-prefix}{
+  &-show {
+    position: relative;
+    width: 60px;
+    .border-input();
+    .rotate-icon-down();
+  }
+  &-bg {
+    height: @input-height;
+  }
+
+  &-group {
+    outline: none;
+    user-select: none;
+    position: relative;
+  }
+}
