@@ -46,7 +46,7 @@ const menus = [
       pluginTreePicker: 'TreePicker 树选择',
       pluginCategory: 'Category 分类选择',
       viewTransfer: 'Transfer 穿梭框',
-      otherColorPicker: 'ColorPicker 颜色选择器',
+      // otherColorPicker: 'ColorPicker 颜色选择器',
       pluginCascader: 'Cascader 级联选择'
     }
   },

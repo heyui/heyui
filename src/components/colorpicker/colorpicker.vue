@@ -1,7 +1,8 @@
 <template>
   <div class="h-colorpicker">
     <div class="h-colorpicker-show">
-      <div class="h-colorpicker-bg"></div>
+      <div class="h-colorpicker-color-bg"></div>
+      <div class="h-colorpicker-color-show"></div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-colorpicker-group">
