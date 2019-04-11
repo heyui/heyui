@@ -11,13 +11,17 @@
       <div v-else class="h-cascader-placeholder">{{showPlaceholder}}</div>
     </div>
     <div :class="groupCls">
-      <ul class="h-cascader-ul" v-if="isShow">
-        <Tabs v-if="searchText == ''" v-font="13" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
-        <li v-for="(result, index) of results" :key="result.key" class="h-cascader-item" :class="{'h-cascader-item-selected': index == nowSelected}" @mousedown="picker(result)">
-          <template v-if="!$scopedSlots.item">{{result.title}}</template>
-          <slot v-else :item="result" name="item"></slot>
-        </li>
-        <li v-if="results.length==0 && showDropdownWhenNoResult" class="h-cascader-empty-content">{{showEmptyContent}}</li>
+      <ul class="h-cascader-ul">
+        <CascaderItem
+          v-for="cascader of cascaderDatas"
+          :data="cascader"
+          :param="param"
+          :key="cascader.key"
+          :multiple="multiple"
+          :status="status"
+          @trigger="trigger"
+          :level="0"
+      ></CascaderItem>
       </ul>
     </div>
   </div>
@@ -27,11 +31,16 @@ import config from '../../utils/config';
 import utils from '../../utils/utils';
 import Dropdown from '../../plugins/dropdown';
 import Locale from '../../mixins/locale';
+import CascaderItem from './cascader-item';
 
 const prefix = 'h-cascader';
 
 export default {
   name: 'hCascader',
+  mixins: [Locale],
+  components: {
+    CascaderItem
+  },
   props: {
     option: Object,
     multiple: {
@@ -59,10 +68,13 @@ export default {
   },
   data() {
     return {
-      isShow: false,
+      dropdown: null,
       globalloading: false,
       loading: true,
       objects: [],
+      status: {
+        selected: null
+      },
       object: null,
       cascaderDatas: [],
       cascaderObj: {},
@@ -73,7 +85,41 @@ export default {
     this.init();
     this.initCascaderDatas();
   },
+  watch: {
+    disabled() {
+      if (this.dropdown) {
+        if (this.disabled) {
+          this.dropdown.disabled();
+        } else {
+          this.dropdown.enabled();
+        }
+      }
+    },
+    'option.datas': function () {
+      this.initCascaderDatas();
+    }
+  },
   methods: {
+    init() {
+      this.$nextTick(() => {
+        let el = (this.el = this.$el.querySelector('.h-cascader-show'));
+        this.content = this.$el.querySelector('.h-cascader-group');
+        let that = this;
+        this.dropdown = new Dropdown(el, {
+          trigger: 'click',
+          content: this.content,
+          disabled: this.disabled,
+          events: {
+            show() {
+              that.isShow = true;
+            }
+          }
+        });
+      });
+    },
+    trigger(params) {
+
+    },
     remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
       this.setvalue();
@@ -184,23 +230,6 @@ export default {
         datas.push(obj);
       }
       return datas;
-    },
-    init() {
-      this.$nextTick(() => {
-        let el = (this.el = this.$el.querySelector('.h-cascader-show'));
-        this.content = this.$el.querySelector('.h-cascader-group');
-        let that = this;
-        this.dropdown = new Dropdown(el, {
-          trigger: '',
-          content: this.content,
-          disabled: this.disabled,
-          events: {
-            show() {
-              that.isShow = true;
-            }
-          }
-        });
-      });
     }
   },
   computed: {
