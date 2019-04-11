@@ -16,7 +16,7 @@ import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
 import Cascader from './components/cascader';
-import ColorPicker from './components/colorpicker';
+// import ColorPicker from './components/colorpicker';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
@@ -99,7 +99,7 @@ const components = {
   Cascader,
   Checkbox,
   hCircle: Circle,
-  ColorPicker,
+  // ColorPicker,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
   DateFullRangePicker: Datetime.DateFullRangePicker,
