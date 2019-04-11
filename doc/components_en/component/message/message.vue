@@ -51,5 +51,19 @@
         <td>3000ms</td>
       </tr>
     </table>
+
+    <h3>Message Method</h3>
+    <table class="table">
+      <tr>
+        <th>Method</th>
+        <th>Description</th>
+        <th>Parameters</th>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>close message</td>
+        <td>无</td>
+      </tr>
+    </table>
   </div>
 </template>
