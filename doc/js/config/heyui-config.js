@@ -3,6 +3,7 @@ import HeyUI from '../../../src/index';
 import utils from 'hey-utils';
 import jsonp from 'fetch-jsonp';
 import dict from './dict-config';
+import { CHINALOCATION } from 'js/location';
 
 const loadData = function (filter, callback) {
   log('传递的参数', this.orgId);
@@ -94,6 +95,16 @@ export default () => {
       datas() {
         return list;
       }
+    }
+  });
+
+  HeyUI.config('categoryPicker.configs', {
+    locations: {
+      datas: CHINALOCATION,
+      keyName: 'id',
+      titleName: 'title',
+      dataMode: 'list',
+      parentName: 'parentId'
     }
   });
 };

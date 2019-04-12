@@ -1,7 +1,6 @@
 <template>
   <div class="h-category-modal">
-    <header class="relative" v-if="params.title">{{params.title}}
-    </header>
+    <header class="relative" v-if="params.title">{{params.title}}</header>
     <div>
       <div class="h-panel-bar">
         <div class="h-category-modal-multiple-tags" v-if="param.multiple">
@@ -13,7 +12,7 @@
         </div>
         <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
-      <Tabs v-if="searchText == ''" v-font="13" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
+      <Tabs v-if="searchText == ''" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
         <Row :space="10">
           <template v-if="searchText==''">

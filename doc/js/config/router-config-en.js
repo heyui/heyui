@@ -530,6 +530,14 @@ const router = [
         component: () => import('components_en/component/other/scrollintoview')
       },
       {
+        path: 'other/categorypicker',
+        name: 'en_otherCategoryPicker',
+        meta: {
+          title: 'CategoryPicker'
+        },
+        component: () => import('components_en/component/other/categorypicker')
+      },
+      {
         path: 'other/clipboard',
         name: 'en_otherClipboard',
         meta: {

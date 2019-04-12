@@ -16,6 +16,7 @@ import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
 import Cascader from './components/cascader';
+import CategoryPicker from './components/categorypicker';
 // import ColorPicker from './components/colorpicker';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
@@ -97,6 +98,7 @@ const components = {
   Breadcrumb,
   Category,
   Cascader,
+  CategoryPicker,
   Checkbox,
   hCircle: Circle,
   // ColorPicker,

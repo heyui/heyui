@@ -280,6 +280,8 @@ export default {
   'otherSkeleton3': resolve => require.ensure([], require => require('./other/skeleton3'), 'other'),
   'imagepreviewImagepreview1': resolve => require.ensure([], require => require('./imagepreview/imagepreview1'), 'carousel'),
   'imagepreviewImagepreview2': resolve => require.ensure([], require => require('./imagepreview/imagepreview2'), 'carousel'),
+  'categorypickerCategorypicker1': resolve => require.ensure([], require => require('./categorypicker/categorypicker1'), 'categorypicker'),
+  'categorypickerCategorypicker2': resolve => require.ensure([], require => require('./categorypicker/categorypicker2'), 'categorypicker'),
   'cascaderCascader1': resolve => require.ensure([], require => require('./cascader/cascader1'), 'cascader'),
   'cascaderCascader2': resolve => require.ensure([], require => require('./cascader/cascader2'), 'cascader'),
   'carouselCarousel1': resolve => require.ensure([], require => require('./carousel/carousel1'), 'carousel'),

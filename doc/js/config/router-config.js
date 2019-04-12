@@ -334,6 +334,14 @@ const router = {
           component: () => import('components/component/plugin/cascader')
         },
         {
+          path: 'other/categorypicker',
+          name: 'otherCategoryPicker',
+          meta: {
+            title: 'CategoryPicker'
+          },
+          component: () => import('components/component/other/categorypicker')
+        },
+        {
           path: 'plugin/dropdownmenu',
           name: 'pluginDropdownmenu',
           meta: {
