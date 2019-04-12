@@ -13,10 +13,10 @@
     <div :class="groupCls">
       <Tabs :datas="tabs" v-model="tab"  class="h-categorypicker-tabs" keyName="key" titleName="title" @change="focusTab"></Tabs>
       <div class="h-categorypicker-ul" :class="{'h-categorypicker-single-picker': !multiple}">
-        <div v-for="data of list" :key="data.key" class="h-categorypicker-item" :class="{'h-categorypicker-item-selected': object && data.key == object.key}" @click="openNew(data, $event)">
+        <div v-for="data of list" :key="data.key" class="h-categorypicker-item" :class="{'h-categorypicker-item-selected': object && data.key == object.key}">
           <i class="h-icon-loading" v-if="data.status.loading"></i>
           <Checkbox v-else-if="data.status.checkable&&multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
-          <span class="h-categorypicker-item-title">{{data.title}}<span v-if="showChildCount && data.children.length">({{data.children.length}})</span></span>
+          <span class="h-categorypicker-item-title" @click="openNew(data, $event)">{{data.title}}<span v-if="showChildCount && data.children.length">({{data.children.length}})</span></span>
         </div>
       </div>
     </div>

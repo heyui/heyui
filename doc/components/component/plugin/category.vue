@@ -55,6 +55,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>limit</td>
+        <td>限制可以选择多少项</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>filterable</td>
         <td>是否可以搜索</td>
         <td>Boolean</td>
@@ -138,4 +145,3 @@
     </table>
   </div>
 </template>
-<script>

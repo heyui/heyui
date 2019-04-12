@@ -15,7 +15,7 @@ import Breadcrumb from './components/breadcrumb';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
-import Cascader from './components/cascader';
+// import Cascader from './components/cascader';
 import CategoryPicker from './components/categorypicker';
 // import ColorPicker from './components/colorpicker';
 import Datetime from './components/datetime';
@@ -97,7 +97,7 @@ const components = {
   ButtonGroup,
   Breadcrumb,
   Category,
-  Cascader,
+  // Cascader,
   CategoryPicker,
   Checkbox,
   hCircle: Circle,

@@ -55,6 +55,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>limit</td>
+        <td>limit choose number</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
         <td>filterable</td>
         <td></td>
         <td>Boolean</td>
@@ -70,7 +77,7 @@
       </tr>
     </table>
 
-    <h3>option Property</h3>
+    <h3>Option Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>
@@ -84,21 +91,21 @@
         <td>The key field name</td>
         <td>String</td>
         <td>-</td>
-        <td>Global configuration <code>tree.default.keyName</code></td>
+        <td>Global configuration <code>category.default.keyName</code></td>
       </tr>
       <tr>
         <td>titleName</td>
         <td>The title field name</td>
         <td>String</td>
         <td>-</td>
-        <td>Global configuration <code>tree.default.titleName</code></td>
+        <td>Global configuration <code>category.default.titleName</code></td>
       </tr>
       <tr>
         <td>parentName</td>
         <td>The parent field name</td>
         <td>String</td>
         <td>-</td>
-        <td>Global configuration <code>tree.default.parentName</code></td>
+        <td>Global configuration <code>category.default.parentName</code></td>
       </tr>
       <tr>
         <td>childrenName</td>
@@ -112,7 +119,7 @@
         <td>The children field name</td>
         <td>String</td>
         <td>-</td>
-        <td>Global configuration <code>tree.default.childrenName</code></td>
+        <td>Global configuration <code>category.default.childrenName</code></td>
       </tr>
       <tr>
         <td>dataMode</td>
@@ -145,4 +152,3 @@
     </table>
   </div>
 </template>
-<script>

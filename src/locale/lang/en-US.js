@@ -30,6 +30,12 @@ const lang = {
       emptyContent: 'No results found',
       total: 'total'
     },
+    categoryPicker: {
+      nullOptionText: 'please choose',
+      placeholder: 'select',
+      total: 'total',
+      limitSize: 'You can select up to {0} data.'
+    },
     autoComplate: {
       placeholder: 'Search Input',
       emptyContent: 'No results found'

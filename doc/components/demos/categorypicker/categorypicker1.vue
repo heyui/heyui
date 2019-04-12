@@ -20,7 +20,7 @@
 </template>
 <script>
 
-import { CHINALOCATION } from 'js/location';
+import { getTotalData } from 'js/locations/district';
 
 export default {
   data() {
@@ -48,7 +48,7 @@ export default {
     };
   },
   mounted() {
-    this.param.datas = CHINALOCATION;
+    this.param.datas = getTotalData();
   }
 };
 </script>
