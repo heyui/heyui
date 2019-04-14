@@ -13,7 +13,8 @@ const DEFAULT_OPTIONS = {
   offset: 0,
   equalWidth: false,
   type: 'dropdown',
-  preventOverflow: false
+  preventOverflow: false,
+  getContainer: null
 };
 
 /**
@@ -125,7 +126,8 @@ class Pop {
     const popNode = this.create(reference, options.template, content, options.html);
 
     popNode.setAttribute('aria-describedby', popNode.id);
-    const container = this.findContainer(options.container, reference);
+    this.reference.setAttribute('aria-describe', popNode.id);
+    const container = this.findContainer();
 
     container.appendChild(popNode);
     if (options.class) {
@@ -147,7 +149,7 @@ class Pop {
     let reference = this.reference;
     let options = this.options;
     let popNode = this.popNode;
-    const container = this.findContainer(options.container, reference);
+    const container = this.findContainer();
 
     let modifiers = {
       computeStyle: {
@@ -301,11 +303,14 @@ class Pop {
     return this;
   }
 
-  findContainer(container, reference) {
+  findContainer() {
+    let container = this.options.container;
     if (typeof container === 'string') {
       container = window.document.querySelector(container);
     } else if (container === false) {
-      container = reference.parentNode;
+      container = document.body;
+    } else if (this.options.getContainer) {
+      container = this.options.getContainer(this.reference);
     }
     return container;
   }
@@ -396,6 +401,18 @@ class Pop {
         if (reference && this.popNode.contains(targetReference)) {
           return false;
         }
+
+        let target = e.target;
+        while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby')) {
+          target = target.parentNode;
+        }
+        if (target.tagName != 'BODY') {
+          let targetTrigger = document.body.querySelector(`[aria-describe="${target.getAttribute('aria-describedby')}"]`);
+          if (targetTrigger && this.popNode.contains(targetTrigger)) {
+            return false;
+          }
+        }
+
         this.hide();
       };
       document.addEventListener('click', this.documentHandler);

@@ -6,9 +6,14 @@ class Tooltip extends Pop {
     param.template = `<div class="h-tooltip" role="tooltip"><div class="h-tooltip-arrow"></div><div class="h-tooltip-inner"></div></div>`;
     param.arrowSelector = '.h-tooltip-arrow';
     param.innerSelector = '.h-tooltip-inner';
+    let classes = [];
     if (param.theme) {
-      param.class = `h-tooltip-${param.theme}`;
+      classes.push(`h-tooltip-${param.theme}`);
     }
+    if (param.editable) {
+      classes.push(`h-tooltip-editable`);
+    }
+    param.class = classes.join(' ');
     param.closeOnClickBody = true;
     param.type = 'tooltip';
     param.trigger = param.trigger || 'hover focus';

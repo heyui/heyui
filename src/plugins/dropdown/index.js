@@ -18,13 +18,14 @@ class Dropdown extends Pop {
   constructor(el, param) {
     param = utils.extend({}, Default, {
     }, param);
-    let container = document.body;
     if (!param.container) {
-      container = el || document.body;
-      while (container && container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
-        container = container.parentNode;
-      }
-      param.container = container;
+      param.getContainer = function (el) {
+        let container = el || document.body;
+        while (container && container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
+          container = container.parentNode;
+        }
+        return container;
+      };
     }
     super(el, param);
   }
