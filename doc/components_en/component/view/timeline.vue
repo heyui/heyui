@@ -66,5 +66,29 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>TimelineItem Slot</h3>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>Description</th>
+        <th>Parameter</th>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td>Define content show</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>time</td>
+        <td>Define time show</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>Define icon show</td>
+        <td>none</td>
+      </tr>
+    </table>
   </div>
 </template>

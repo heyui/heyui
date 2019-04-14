@@ -3,6 +3,7 @@
     <TimelineItem>Beijing</TimelineItem>
     <TimelineItem color="green">Changchun</TimelineItem>
     <TimelineItem>
+      <i class="h-icon-user primary-color" slot="icon"></i>
       <div slot="time">2012-12-23</div>
       <div slot="content">Arriving at Hulunbuir</div>
     </TimelineItem>
