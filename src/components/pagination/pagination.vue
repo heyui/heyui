@@ -84,16 +84,17 @@ export default {
       orders[o] = layoutList.indexOf(o);
     }
     return {
+      sizeNow: this.value.size || this.size,
       orders,
       curValue: null
     };
   },
   watch: {
-    value() {
-
+    size() {
+      this.sizeNow = this.value.size || this.size;
     },
-    cur() {
-
+    'value.size'() {
+      this.sizeNow = this.value.size || this.size;
     }
   },
   methods: {
@@ -159,9 +160,6 @@ export default {
           [titleField]: this.t('h.pagination.sizeOfPage', { size: item })
         };
       });
-    },
-    sizeNow() {
-      return this.value.size || this.size;
     },
     curNow() {
       return this.curValue || this.value.page || this.cur;
