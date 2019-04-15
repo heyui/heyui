@@ -177,6 +177,7 @@ export default {
     },
     getShow(data) {
       if (this.showAllLevels) {
+        data = this.categoryObj[data.key] || data;
         return this.getParentTitle(data).reverse().join('/');
       } else {
         return data.title;
