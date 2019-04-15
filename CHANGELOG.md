@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.0-alpha.0"></a>
+# [1.18.0-alpha.0](https://github.com/heyui/heyui/compare/v1.17.1...v1.18.0-alpha.0) (2019-04-15)
+
+
+### Bug Fixes
+
+* **Category:** add clear icon ([e9d98e7](https://github.com/heyui/heyui/commit/e9d98e7))
+* **Category:** fix dispose function ([4c93874](https://github.com/heyui/heyui/commit/4c93874))
+* **DatePicker:** add user-select ([0c29829](https://github.com/heyui/heyui/commit/0c29829)), closes [#91](https://github.com/heyui/heyui/issues/91)
+* **DatePicker:** update date when choose time ([0d70433](https://github.com/heyui/heyui/commit/0d70433))
+* **Dropdown:** fix getContainer call ([6d394d8](https://github.com/heyui/heyui/commit/6d394d8))
+* **Form:** async valid add tip error ([5d21ac1](https://github.com/heyui/heyui/commit/5d21ac1))
+* update version ([c1c095f](https://github.com/heyui/heyui/commit/c1c095f))
+* **Form:** use provide / inject replace getParent ([80bcac0](https://github.com/heyui/heyui/commit/80bcac0))
+* **Grid:** clear float ([dc60c71](https://github.com/heyui/heyui/commit/dc60c71)), closes [#90](https://github.com/heyui/heyui/issues/90)
+* **Number:** change event trigger fixed ([b375f23](https://github.com/heyui/heyui/commit/b375f23))
+* demo 更新 ([0aa16c1](https://github.com/heyui/heyui/commit/0aa16c1))
+* **Popper:** body scroll add capture ([2160bef](https://github.com/heyui/heyui/commit/2160bef))
+* **Select:** fix select warning ([de93388](https://github.com/heyui/heyui/commit/de93388))
+* **Select:** fix warn judgement logic ([6ed8ff2](https://github.com/heyui/heyui/commit/6ed8ff2))
+* **Tooltip:** add editable prop ([0a0db59](https://github.com/heyui/heyui/commit/0a0db59)), closes [#99](https://github.com/heyui/heyui/issues/99)
+* **Tree:** optimize ([06c63b4](https://github.com/heyui/heyui/commit/06c63b4))
+* **Utils:** change utils toggleValue function ([3a1160a](https://github.com/heyui/heyui/commit/3a1160a))
+
+
+### Features
+
+* **Button:** add prop transparent ([6c52b11](https://github.com/heyui/heyui/commit/6c52b11))
+* **Category:** add asynchronous load data ([9696e6f](https://github.com/heyui/heyui/commit/9696e6f)), closes [#70](https://github.com/heyui/heyui/issues/70)
+* **Category:** add asynchronous load data ([fcc5fea](https://github.com/heyui/heyui/commit/fcc5fea)), closes [#70](https://github.com/heyui/heyui/issues/70)
+* **CategoryPicker:** init ([0cff0bd](https://github.com/heyui/heyui/commit/0cff0bd))
+* **Form:** Custom label ([b5c9e6b](https://github.com/heyui/heyui/commit/b5c9e6b)), closes [#87](https://github.com/heyui/heyui/issues/87)
+* **FormItem:** add prop icon ([0fabaa1](https://github.com/heyui/heyui/commit/0fabaa1)), closes [#87](https://github.com/heyui/heyui/issues/87)
+* **ImagePreview:** create ImagePreview ([b91443b](https://github.com/heyui/heyui/commit/b91443b))
+* **Modal:** event support multiple parameters ([5d22319](https://github.com/heyui/heyui/commit/5d22319))
+* **Modal:** event support multiple parameters ([e2ebc8c](https://github.com/heyui/heyui/commit/e2ebc8c))
+* **Modal:** use $emit direct trigger events ([dcc6612](https://github.com/heyui/heyui/commit/dcc6612))
+* **Pagination:** support v-model ([2da8513](https://github.com/heyui/heyui/commit/2da8513))
+* **Timeline:** add slot icon ([e2fb31c](https://github.com/heyui/heyui/commit/e2fb31c)), closes [#100](https://github.com/heyui/heyui/issues/100)
+* **Tree:** add method expand ([27cf7ad](https://github.com/heyui/heyui/commit/27cf7ad)), closes [#93](https://github.com/heyui/heyui/issues/93)
+
+
+
 <a name="1.17.1"></a>
 ## [1.17.1](https://github.com/heyui/heyui/compare/v1.17.0...v1.17.1) (2019-03-22)
 
