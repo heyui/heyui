@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.0-alpha.1"></a>
+# [1.18.0-alpha.1](https://github.com/heyui/heyui/compare/v1.18.0-alpha.0...v1.18.0-alpha.1) (2019-04-15)
+
+
+### Bug Fixes
+
+* size computed error ([23b23d7](https://github.com/heyui/heyui/commit/23b23d7))
+
+
+
 <a name="1.18.0-alpha.0"></a>
 # [1.18.0-alpha.0](https://github.com/heyui/heyui/compare/v1.17.1...v1.18.0-alpha.0) (2019-04-15)
 
