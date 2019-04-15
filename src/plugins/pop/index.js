@@ -307,10 +307,10 @@ class Pop {
     let container = this.options.container;
     if (typeof container === 'string') {
       container = window.document.querySelector(container);
-    } else if (container === false) {
-      container = document.body;
     } else if (this.options.getContainer) {
       container = this.options.getContainer(this.reference);
+    } else if (container === false) {
+      container = document.body;
     }
     return container;
   }
