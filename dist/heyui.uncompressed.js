@@ -11951,14 +11951,19 @@ exports.default = {
       orders[o] = layoutList.indexOf(o);
     }
     return {
+      sizeNow: this.value.size || this.size,
       orders: orders,
       curValue: null
     };
   },
 
   watch: {
-    value: function value() {},
-    cur: function cur() {}
+    size: function size() {
+      this.sizeNow = this.value.size || this.size;
+    },
+    'value.size': function valueSize() {
+      this.sizeNow = this.value.size || this.size;
+    }
   },
   methods: {
     prev: function prev() {
@@ -12023,9 +12028,6 @@ exports.default = {
 
         return _ref2 = {}, (0, _defineProperty3.default)(_ref2, keyField, item), (0, _defineProperty3.default)(_ref2, titleField, _this.t('h.pagination.sizeOfPage', { size: item })), _ref2;
       });
-    },
-    sizeNow: function sizeNow() {
-      return this.value.size || this.size;
     },
     curNow: function curNow() {
       return this.curValue || this.value.page || this.cur;
