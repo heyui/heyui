@@ -2,13 +2,13 @@
   <div>
     <p>Value：{{value}}</p>
     <p>
-      Value type：<SwitchList v-model="type" :datas="{key: 'id', object: 'object'}" small @change="value=null"></SwitchList>
+      Value type：<SwitchList v-model="type" :datas="{key: 'id', object: 'object'}" small @change="changeValue"></SwitchList>
     </p>
     <p>
-      <h-switch v-model="multiple" small @change="value=null">multiple</h-switch>
+      <h-switch v-model="multiple" small @change="changeValue">multiple</h-switch>
     </p>
     <p>
-      <h-switch v-model="showAllLevels" small @change="value=null">showAllLevels</h-switch>
+      <h-switch v-model="showAllLevels" small @change="changeValue">showAllLevels</h-switch>
     </p>
     <p>
       <h-switch v-model="showChildCount" small>showChildCount</h-switch>
@@ -47,6 +47,15 @@ export default {
   },
   mounted() {
     this.param.datas = getTotalData();
+  },
+  methods: {
+    changeValue() {
+      if (this.type == 'key') {
+        this.value = this.multiple ? [110117, 110101] : 110101;
+      } else {
+        this.value = this.multiple ? [ { 'id': '310101', 'title': '黄浦', 'traditionalTitle': '黃浦', 'pinyinTitle': 'Huangpu', 'parentId': 310000 }, { 'id': '310104', 'title': '徐汇', 'traditionalTitle': '徐匯', 'pinyinTitle': 'Xuhui', 'parentId': 310000 } ] : { 'id': '340102', 'title': '瑶海', 'traditionalTitle': '瑤海', 'pinyinTitle': 'Yaohai', 'parentId': '340100' };
+      }
+    }
   }
 };
 </script>
