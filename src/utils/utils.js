@@ -111,15 +111,8 @@ export default utils.extend({}, utils, {
   },
   toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return;
-    let index = -1;
-    for (let l of list) {
-      if (this.isNull(l[key])) {
-        continue;
-      }
-      index = list.indexOf(l);
-      break;
-    }
-    if (index > -1) {
+    let index = list.findIndex(item => item[key] === value.key);
+    if (index != -1) {
       list.splice(index, 1);
     } else {
       list.push(value);

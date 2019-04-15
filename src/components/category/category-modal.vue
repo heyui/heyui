@@ -79,13 +79,13 @@ export default {
         return;
       }
       if (this.param.multiple) {
-        if (this.param.objects.length >= this.param.limit && this.param.objects.indexOf(data) == -1) {
+        if (this.param.objects.length >= this.param.limit && !this.param.objects.some(item => item.key === data.key)) {
           this.$Message.error(this.t('h.categoryModal.limitWords', {
             size: this.param.limit
           }));
           return;
         }
-        this.param.objects = utils.toggleValue(this.param.objects, data);
+        utils.toggleValueByKey(this.param.objects, 'key', data);
       } else {
         this.param.object = data;
       }
