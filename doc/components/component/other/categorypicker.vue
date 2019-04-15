@@ -81,13 +81,6 @@
         <td>-</td>
         <td>-</td>
       </tr>
-      <tr>
-        <td>config</td>
-        <td>使用全局配置的方法</td>
-        <td>String</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
     </table>
 
     <h3>option 配置</h3>
