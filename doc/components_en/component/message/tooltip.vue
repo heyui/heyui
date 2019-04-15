@@ -71,7 +71,7 @@
       </tr>
       <tr>
         <td>editable</td>
-        <td>edit tooltip</td>
+        <td>edit tooltip, 1.18.0+</td>
         <td>Boolean</td>
         <td></td>
         <td>false</td>

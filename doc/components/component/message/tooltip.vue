@@ -73,7 +73,7 @@
       </tr>
       <tr>
         <td>editable</td>
-        <td>是否为编辑模块</td>
+        <td>是否为编辑模块, 1.18.0+</td>
         <td>Boolean</td>
         <td></td>
         <td>false</td>

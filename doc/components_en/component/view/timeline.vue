@@ -60,9 +60,9 @@
       </tr>
       <tr>
         <td>icon</td>
-        <td>icon class</td>
+        <td>icon class，1.18.0+</td>
         <td>string</td>
-        <td>icon图标</td>
+        <td></td>
         <td>-</td>
       </tr>
     </table>
