@@ -337,13 +337,13 @@ export default {
         return;
       }
       if (this.multiple) {
-        if (this.objects.length >= this.limit && this.objects.indexOf(data) == -1) {
+        if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
           this.$Message.error(this.t('h.categoryPicker.limitWords', {
             size: this.limit
           }));
           return;
         }
-        this.objects = utils.toggleValue(this.objects, data);
+        utils.toggleValueByKey(this.objects, 'key', data);
       } else {
         this.object = data;
       }
