@@ -331,20 +331,28 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
   },
   toggleValueByKey: function toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return;
-    var index = -1;
+    var index = list.findIndex(function (item) {
+      return item[key] === value.key;
+    });
+    if (index != -1) {
+      list.splice(index, 1);
+    } else {
+      list.push(value);
+    }
+  },
+  getArray: function getArray(array) {
+    var keyName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id';
+
+    var list = [];
     var _iteratorNormalCompletion2 = true;
     var _didIteratorError2 = false;
     var _iteratorError2 = undefined;
 
     try {
-      for (var _iterator2 = (0, _getIterator3.default)(list), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var l = _step2.value;
+      for (var _iterator2 = (0, _getIterator3.default)(array), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var a = _step2.value;
 
-        if (this.isNull(l[key])) {
-          continue;
-        }
-        index = list.indexOf(l);
-        break;
+        list.push(a[keyName]);
       }
     } catch (err) {
       _didIteratorError2 = true;
@@ -357,41 +365,6 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
       } finally {
         if (_didIteratorError2) {
           throw _iteratorError2;
-        }
-      }
-    }
-
-    if (index > -1) {
-      list.splice(index, 1);
-    } else {
-      list.push(value);
-    }
-  },
-  getArray: function getArray(array) {
-    var keyName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'id';
-
-    var list = [];
-    var _iteratorNormalCompletion3 = true;
-    var _didIteratorError3 = false;
-    var _iteratorError3 = undefined;
-
-    try {
-      for (var _iterator3 = (0, _getIterator3.default)(array), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-        var a = _step3.value;
-
-        list.push(a[keyName]);
-      }
-    } catch (err) {
-      _didIteratorError3 = true;
-      _iteratorError3 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion3 && _iterator3.return) {
-          _iterator3.return();
-        }
-      } finally {
-        if (_didIteratorError3) {
-          throw _iteratorError3;
         }
       }
     }
@@ -476,13 +449,13 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
     }
     var result = [];
     var dataObj = this.toObject(data, param.keyName);
-    var _iteratorNormalCompletion4 = true;
-    var _didIteratorError4 = false;
-    var _iteratorError4 = undefined;
+    var _iteratorNormalCompletion3 = true;
+    var _didIteratorError3 = false;
+    var _iteratorError3 = undefined;
 
     try {
-      for (var _iterator4 = (0, _getIterator3.default)(data), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-        var d = _step4.value;
+      for (var _iterator3 = (0, _getIterator3.default)(data), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+        var d = _step3.value;
 
         var parentCode = d[param.parentName];
         var hasParent = false;
@@ -491,13 +464,13 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
           if (_heyUtils2.default.isArray(parentCode)) {
             parentCodes = parentCode;
           }
-          var _iteratorNormalCompletion5 = true;
-          var _didIteratorError5 = false;
-          var _iteratorError5 = undefined;
+          var _iteratorNormalCompletion4 = true;
+          var _didIteratorError4 = false;
+          var _iteratorError4 = undefined;
 
           try {
-            for (var _iterator5 = (0, _getIterator3.default)(parentCodes), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-              var code = _step5.value;
+            for (var _iterator4 = (0, _getIterator3.default)(parentCodes), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+              var code = _step4.value;
 
               if (!_heyUtils2.default.isNull(dataObj[code])) {
                 hasParent = true;
@@ -509,16 +482,16 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
               }
             }
           } catch (err) {
-            _didIteratorError5 = true;
-            _iteratorError5 = err;
+            _didIteratorError4 = true;
+            _iteratorError4 = err;
           } finally {
             try {
-              if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                _iterator5.return();
+              if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                _iterator4.return();
               }
             } finally {
-              if (_didIteratorError5) {
-                throw _iteratorError5;
+              if (_didIteratorError4) {
+                throw _iteratorError4;
               }
             }
           }
@@ -528,16 +501,16 @@ exports.default = _heyUtils2.default.extend({}, _heyUtils2.default, {
         }
       }
     } catch (err) {
-      _didIteratorError4 = true;
-      _iteratorError4 = err;
+      _didIteratorError3 = true;
+      _iteratorError3 = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion4 && _iterator4.return) {
-          _iterator4.return();
+        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+          _iterator3.return();
         }
       } finally {
-        if (_didIteratorError4) {
-          throw _iteratorError4;
+        if (_didIteratorError3) {
+          throw _iteratorError3;
         }
       }
     }
@@ -6375,13 +6348,15 @@ exports.default = {
         return;
       }
       if (this.param.multiple) {
-        if (this.param.objects.length >= this.param.limit && this.param.objects.indexOf(data) == -1) {
+        if (this.param.objects.length >= this.param.limit && !this.param.objects.some(function (item) {
+          return item.key === data.key;
+        })) {
           this.$Message.error(this.t('h.categoryModal.limitWords', {
             size: this.param.limit
           }));
           return;
         }
-        this.param.objects = _utils2.default.toggleValue(this.param.objects, data);
+        _utils2.default.toggleValueByKey(this.param.objects, 'key', data);
       } else {
         this.param.object = data;
       }
@@ -7022,6 +6997,7 @@ exports.default = {
     },
     getShow: function getShow(data) {
       if (this.showAllLevels) {
+        data = this.categoryObj[data.key] || data;
         return this.getParentTitle(data).reverse().join('/');
       } else {
         return data.title;
@@ -7205,13 +7181,15 @@ exports.default = {
         return;
       }
       if (this.multiple) {
-        if (this.objects.length >= this.limit && this.objects.indexOf(data) == -1) {
+        if (this.objects.length >= this.limit && !this.param.objects.some(function (item) {
+          return item.key === data.key;
+        })) {
           this.$Message.error(this.t('h.categoryPicker.limitWords', {
             size: this.limit
           }));
           return;
         }
-        this.objects = _utils2.default.toggleValue(this.objects, data);
+        _utils2.default.toggleValueByKey(this.objects, 'key', data);
       } else {
         this.object = data;
       }
@@ -10117,8 +10095,6 @@ var _utils2 = _interopRequireDefault(_utils);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var prefixCls = 'h-form-item'; //
-//
-//
 //
 //
 //
@@ -30151,7 +30127,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "h-form-item-error"
   }, [(_vm.errorMessage.type == 'base') ? _c('span', {
     staticClass: "h-form-item-error-label"
-  }, [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _vm._v("\n      " + _vm._s(_vm.errorMessage.message) + "\n      "), _vm._t("error", null, {
+  }, [_vm._v(_vm._s(_vm.label))]) : _vm._e(), _c('span', {
+    staticClass: "h-form-item-error-message"
+  }, [_vm._v(_vm._s(_vm.errorMessage.message))]), _vm._t("error", null, {
     "type": _vm.errorMessage.type
   })], 2) : _vm._e()])])
 },staticRenderFns: []}
