@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.0-alpha.2"></a>
+# [1.18.0-alpha.2](https://github.com/heyui/heyui/compare/v1.18.0-alpha.1...v1.18.0-alpha.2) (2019-04-16)
+
+
+### Bug Fixes
+
+* **Category:** objects toggle value error ([64a4dea](https://github.com/heyui/heyui/commit/64a4dea))
+* **CategoryPicker:** fix multiple objects change ([12a3e8b](https://github.com/heyui/heyui/commit/12a3e8b))
+* **CategoryPicker:** showAllLevels with object value ([525d67b](https://github.com/heyui/heyui/commit/525d67b))
+* **FormItem:** error message style optimize ([109d489](https://github.com/heyui/heyui/commit/109d489))
+
+
+
 <a name="1.18.0-alpha.1"></a>
 # [1.18.0-alpha.1](https://github.com/heyui/heyui/compare/v1.18.0-alpha.0...v1.18.0-alpha.1) (2019-04-15)
 
