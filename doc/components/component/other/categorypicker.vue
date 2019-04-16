@@ -11,7 +11,7 @@
     <example demo="categorypicker/categorypicker1"></example>
 
     <h3>字典配置</h3>
-    <p>具体配置请参考 <a href="https://github.com/heyui/heyui/blob/master/doc/js/config/heyui-config.js" target="_blank">heyui-config.js</a></p>
+    <p>具体配置请参考 <a href="https://github.com/heyui/heyui/blob/master/doc/js/config/heyui-config.js#L102" target="_blank">heyui-config.js</a></p>
     <p>本配置中，未添加任何的 selectable, checkable 控制，所以，所有的数据都可以选择。</p>
     <p>本配置使用的是异步加载的方式，性能更佳。</p>
     <example demo="categorypicker/categorypicker2"></example>

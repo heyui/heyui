@@ -11,7 +11,7 @@
     <exampleEn demo="categorypicker/categorypicker1"></exampleEn>
 
     <h3>Config</h3>
-    <p>Refer to Specific Configuration <a href="https://github.com/heyui/heyui/blob/master/doc/js/config/heyui-config.js" target="_blank">heyui-config.js</a></p>
+    <p>Refer to Specific Configuration <a href="https://github.com/heyui/heyui/blob/master/doc/js/config/heyui-config.js#L102" target="_blank">heyui-config.js</a></p>
     <p>In this configuration, no selectable, checkable controls are added, so all data can be selected.</p>
     <p>This configuration uses the way of asynchronous loading, with better performance.</p>
     <exampleEn demo="categorypicker/categorypicker2"></exampleEn>
