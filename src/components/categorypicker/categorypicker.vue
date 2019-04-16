@@ -6,7 +6,7 @@
       </div>
       <div v-else-if="!multiple&&object" class="h-categorypicker-value-single">
         <span>{{getShow(object)}}</span>
-        <i class="h-icon-close text-hover" v-if="object&&!disabled" @mousedown="clear"></i>
+        <i class="h-icon-close" v-if="object&&!disabled" @mousedown="clear"></i>
       </div>
       <div v-else class="h-categorypicker-placeholder">{{showPlaceholder}}</div>
     </div>

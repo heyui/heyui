@@ -1,5 +1,4 @@
 @taginput: ~"@{prefix}taginput";
-@taginput-input: h-icon-close;
 .@{taginput} {
   width: 250px;
   display: inline-block;
@@ -18,7 +17,7 @@
   .@{prefix}form-item-valid-error &{
     border-color: @red-color;
     &.focusing{
-      box-shadow: 0 0 0 2px fade(@red-color, 20%);
+      box-shadow: @box-shadow-error-input;
     }
   }
 }

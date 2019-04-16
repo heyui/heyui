@@ -29,7 +29,7 @@ textarea {
   }
   &:focus {
     border-color: @primary-color;
-    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+    box-shadow: @box-shadow-input;
   }
   &[disabled],
   &[readonly] {
@@ -52,7 +52,7 @@ textarea {
   .@{prefix}form-item-valid-error &{
     border-color: @red-color;
     &:focus{
-      box-shadow: 0 0 0 2px fade(@red-color, 20%);
+      box-shadow: @box-shadow-error-input;
     }
   }
 }
@@ -62,7 +62,7 @@ input[type=password],
 input[type=search],
 input[type=number],
 input[type=tel],
-input[type=url],{
+input[type=url]{
   height: @input-height;
 }
 
@@ -77,10 +77,18 @@ textarea{
   >[class^="@{icon-prefix}"],
   >[class*=" @{icon-prefix}"] {
     position: absolute;
+    top: 50%;
     right: 8px;
-    .middle;
+    font-size: @font-size-mini;
     z-index: 3;
-    color: @gray-color;
+    transform: translate(0%, -50%);
+  }
+
+  >.h-icon-close{
+    color: @dark2-color;
+    transform-origin: center;
+    .text-hover;
+    transform: translate(0%, -50%) scale(0.9);
   }
   >input{
     width: 100%;

@@ -7,8 +7,8 @@
       <AutoComplete v-width="220" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
         <div class="bg-group" v-if="$route.name != 'Home'">
-          <div class="bg1" @click="dynamicLoadCss('pink')"></div>
           <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
+          <div class="bg1" @click="dynamicLoadCss('pink')"></div>
           <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
           <div class="bg4" @click="dynamicLoadCss('red')"></div>
         </div>

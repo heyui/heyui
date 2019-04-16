@@ -1,8 +1,7 @@
 <template>
   <div :class="taginputCls">
     <span v-for="(v, index) of values" :key="v+index">
-      <span>{{v}}</span>
-      <i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
+      <span>{{v}}</span><i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
     </span>
     <input v-if="!readonly" type="text" class="h-taginput-input" @focus="focusing=true" v-model="tagvalue" @blur="blur"
       @keyup.enter="add" @keydown.delete="removeLast" v-wordlimit="wordlimit" :placeholder="placeholder" />
