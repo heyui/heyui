@@ -3,11 +3,11 @@
     <h2>Table 表格</h2>
     <p>主要用于展示大量结构化数据。</p>
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-table</code>。</p>
-
+<!--
     <h3>Columns定义模式</h3>
-    <example demo="view/table11"></example>
+    <example demo="view/table11"></example> -->
 
-    <h3>TableItem定义模式</h3>
+  <h3>基本</h3>
     <example demo="view/table2"></example>
 
     <h3>数据渲染</h3>
