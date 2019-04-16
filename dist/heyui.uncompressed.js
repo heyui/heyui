@@ -14580,7 +14580,6 @@ var prefix = 'h-taginput'; //
 //
 //
 //
-//
 
 exports.default = {
   name: 'hTagInput',
@@ -29037,7 +29036,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._l((_vm.values), function(v, index) {
     return _c('span', {
       key: v + index
-    }, [_c('span', [_vm._v(_vm._s(v))]), _vm._v(" "), (!_vm.readonly) ? _c('i', {
+    }, [_c('span', [_vm._v(_vm._s(v))]), (!_vm.readonly) ? _c('i', {
       staticClass: "h-icon-close",
       on: {
         "click": function($event) {
@@ -31103,7 +31102,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), 0) : (!_vm.multiple && _vm.object) ? _c('div', {
     staticClass: "h-categorypicker-value-single"
   }, [_c('span', [_vm._v(_vm._s(_vm.getShow(_vm.object)))]), _vm._v(" "), (_vm.object && !_vm.disabled) ? _c('i', {
-    staticClass: "h-icon-close text-hover",
+    staticClass: "h-icon-close",
     on: {
       "mousedown": _vm.clear
     }
