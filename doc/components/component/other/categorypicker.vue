@@ -6,7 +6,7 @@
     <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-categorypicker</code>。</p>
 
     <h3>基本调用</h3>
-    <p>本示例提供的是三级地址联动示例，文件 js/locations 链接： <a href="https://github.com/heyui/heyui/master/doc/js/locations" target="_blank">js/locations</a></p>
+    <p>本示例提供的是三级地址联动示例，文件 js/locations 链接： <a href="https://github.com/heyui/heyui/tree/master/doc/js/locations" target="_blank">js/locations</a></p>
     <p>元素是否可以被选中，可以通过传递的数据中字段 selectable, checkable 做控制，也可以通过 option 参数中 selectable, checkable 方法做判断。</p>
     <example demo="categorypicker/categorypicker1"></example>
 

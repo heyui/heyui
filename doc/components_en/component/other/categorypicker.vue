@@ -6,7 +6,7 @@
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-categorypicker</code>. </p>
 
     <h3>Basic</h3>
-    <p>This example provides an example of three-level address linkage, file js/locations link: <a href="https://github.com/heyui/heyui/master/doc/js/locations" target="_blank">js/locations</a></p>
+    <p>This example provides an example of three-level address linkage, file js/locations link: <a href="https://github.com/heyui/heyui/tree/master/doc/js/locations" target="_blank">js/locations</a></p>
     <p>Whether an element can be selected can be controlled by the field selectable, checkable in the datas, or by the method of selectable and checkable in the option parameter.</p>
     <exampleEn demo="categorypicker/categorypicker1"></exampleEn>
 
