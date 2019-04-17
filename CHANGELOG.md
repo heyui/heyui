@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.0-alpha.4"></a>
+# [1.18.0-alpha.4](https://github.com/heyui/heyui/compare/v1.18.0-alpha.3...v1.18.0-alpha.4) (2019-04-17)
+
+
+### Reverts
+
+* **Grid:** 移除overflow属性 ([16e3964](https://github.com/heyui/heyui/commit/16e3964))
+
+
+
 <a name="1.18.0-alpha.3"></a>
 # [1.18.0-alpha.3](https://github.com/heyui/heyui/compare/v1.18.0-alpha.2...v1.18.0-alpha.3) (2019-04-16)
 
