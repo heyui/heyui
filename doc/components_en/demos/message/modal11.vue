@@ -5,7 +5,7 @@
       <button class="h-btn" @click="open(false)">Js opens the popup</button>
       <button class="h-btn" @click="openModal = true">Vue opens the popup</button>
       <Modal v-model="openModal">
-        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
+        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @success="success"></ModalTest>
       </Modal>
     </p>
   </div>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    event(type, data) {
+    success(data) {
       this.value = data;
     },
     open() {
@@ -40,13 +40,8 @@ export default {
           datas: { fruit: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {
-          // data2 parameter transfer, compatibility 1.18.0+
-          update: (modal, data, data2) => {
+          success: (modal, data) => {
             this.value = data;
-          },
-          // data2 parameter transfer, compatibility 1.18.0+
-          success: (modal, data, data2) => {
-            console.log(data, data2);
           }
         }
       });

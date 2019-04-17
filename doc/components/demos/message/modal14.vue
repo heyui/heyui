@@ -38,7 +38,7 @@ export default {
           datas: { fruit: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
         },
         events: {
-          update: (modal, data) => {
+          success: (modal, data) => {
             this.value = data;
           }
         }

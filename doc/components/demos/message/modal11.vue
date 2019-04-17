@@ -5,7 +5,7 @@
       <button class="h-btn" @click="open(false)">Js打开弹出框</button>
       <button class="h-btn" @click="openModal = true">Vue打开弹出框</button>
       <Modal v-model="openModal">
-        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
+        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @success="success"></ModalTest>
       </Modal>
     </p>
   </div>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    event(type, data) {
+    success(data) {
       this.value = data;
     },
     open() {
@@ -40,13 +40,8 @@ export default {
           datas: { fruit: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
         },
         events: {
-          // data2 参数，兼容性 1.18.0+
-          update: (modal, data, data2) => {
+          success: (modal, data) => {
             this.value = data;
-          },
-          // data2 参数，兼容性 1.18.0+
-          success: (modal, data, data2) => {
-            console.log(data, data2);
           }
         }
       });
