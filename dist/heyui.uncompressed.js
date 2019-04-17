@@ -10374,6 +10374,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 var prefixCls = 'h-row';
 
@@ -27983,7 +27984,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     class: _vm.classes,
     style: (_vm.styles)
-  }, [_vm._t("default")], 2)
+  }, [_vm._t("default"), _vm._v(" "), _c('div', {
+    staticClass: "h-row-clear"
+  })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
