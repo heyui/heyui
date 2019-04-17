@@ -2,6 +2,7 @@
   <div :class="classes"
        :style="styles">
     <slot></slot>
+    <div class="h-row-clear"></div>
   </div>
 </template>
 <script>
