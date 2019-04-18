@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.0-alpha.6"></a>
+# [1.18.0-alpha.6](https://github.com/heyui/heyui/compare/v1.18.0-alpha.5...v1.18.0-alpha.6) (2019-04-18)
+
+
+### Bug Fixes
+
+* **Pagination:** fix cur or page update ([0008b8a](https://github.com/heyui/heyui/commit/0008b8a))
+
+
+
 <a name="1.18.0-alpha.5"></a>
 # [1.18.0-alpha.5](https://github.com/heyui/heyui/compare/v1.18.0-alpha.4...v1.18.0-alpha.5) (2019-04-17)
 
