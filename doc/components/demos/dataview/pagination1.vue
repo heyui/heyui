@@ -1,7 +1,6 @@
 <template>
   <div>
     <p><Button @click="updateCur">返回第一条</Button><Button @click="update">更新分页数据</Button></p>
-    <p></p>
     <p><Pagination :cur="cur" :total="total" :size="size" @change="change1"></Pagination></p>
     <blockquote>使用 v-model, 兼容 1.18.0+</blockquote>
     <p>pagination: {{pagination}}</p>
