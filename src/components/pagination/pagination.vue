@@ -90,8 +90,14 @@ export default {
     };
   },
   watch: {
+    cur() {
+      this.curValue = null;
+    },
     size() {
       this.sizeNow = this.value.size || this.size;
+    },
+    'value.page'() {
+      this.curValue = null;
     },
     'value.size'() {
       this.sizeNow = this.value.size || this.size;
@@ -133,7 +139,9 @@ export default {
       Object.assign(value, params);
       this.curValue = params.cur;
       this.$emit('change', value);
-      this.$emit('input', value);
+      let inputvalue = { ...value };
+      delete inputvalue.cur;
+      this.$emit('input', inputvalue);
     },
     changesize() {
       this.setvalue({ cur: 1, size: this.sizeNow });
