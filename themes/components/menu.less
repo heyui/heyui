@@ -65,6 +65,8 @@
     transform: rotate(0deg);
   }
   .h-menu-show {
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: color @transition-time;
     &-icon{
       margin-right: 5px;
@@ -185,10 +187,14 @@
       transform-origin: left;
       .h-menu-show{
         overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
-    .h-menu-show-expand > i{
-      transform: rotate(-90deg);
+    .h-menu-show-expand {
+      right: 10px;
+      i{
+        transform: rotate(-90deg);
+      }
     }
     .h-menu-li:hover {
       > .h-menu-ul {
