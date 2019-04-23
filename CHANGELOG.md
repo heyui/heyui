@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.18.1-alpha.0"></a>
+## [1.18.1-alpha.0](https://github.com/heyui/heyui/compare/v1.18.0...v1.18.1-alpha.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* **Menu:** add overflow handler ([c2e45c4](https://github.com/heyui/heyui/commit/c2e45c4))
+* **Table:** add background color ([17a62d2](https://github.com/heyui/heyui/commit/17a62d2))
+
+
+
 <a name="1.18.0"></a>
 # [1.18.0](https://github.com/heyui/heyui/compare/v1.18.0-alpha.6...v1.18.0) (2019-04-19)
 
