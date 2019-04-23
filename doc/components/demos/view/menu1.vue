@@ -31,7 +31,6 @@ export default {
       accordion: false,
       inlineCollapsed: false,
       theme: 'h-menu-dark',
-      // mode: 'false',
       data: [
         {
           title: '首页',
