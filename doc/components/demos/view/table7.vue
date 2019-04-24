@@ -21,7 +21,7 @@ export default {
         { title: 'Index', prop: '$index', width: 100, tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">序号<hr>说明：数据的序列号</div>' },
         { title: 'ID', prop: 'id', width: 100, tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">ID<hr>说明：数据的唯一ID</div>' },
         { title: 'Name', prop: 'name', tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">姓名<hr>说明：用户的姓名</div>' },
-        { title: 'Age', prop: 'age', tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">年龄<hr>说明：用户的年龄</div>' },
+        { title: 'Age', prop: 'age', align: 'right', width: 100, tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">年龄<hr>说明：用户的年龄</div>' },
         { title: 'Address', prop: 'address', tooltip: true, placement: 'top-start', content: '<div class="table-tr-tooltip">地址<hr>说明：用户的地址</div>' }
       ],
       datas: [
