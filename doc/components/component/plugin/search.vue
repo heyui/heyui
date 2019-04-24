@@ -64,6 +64,20 @@
         <td>enter, input</td>
         <td>enter</td>
       </tr>
+      <tr>
+        <td>height</td>
+        <td>设置搜索框的高度</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>设置搜索框的高度</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Search 事件</h3>

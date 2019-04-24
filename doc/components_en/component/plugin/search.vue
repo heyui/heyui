@@ -64,6 +64,20 @@
         <td>enter, input</td>
         <td>enter</td>
       </tr>
+      <tr>
+        <td>height</td>
+        <td>Setting height of search input</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>Setting width of search input</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Search Event</h3>
