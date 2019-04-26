@@ -12449,7 +12449,9 @@ exports.default = {
     },
     searchText: {
       type: String
-    }
+    },
+    height: Number,
+    width: Number
   },
   data: function data() {
     return {
@@ -12482,6 +12484,20 @@ exports.default = {
   computed: {
     showPlaceholder: function showPlaceholder() {
       return this.placeholder || this.t('h.search.placeholder');
+    },
+    widthStyles: function widthStyles() {
+      var styles = {};
+      if (this.width) {
+        styles.width = this.width + 'px';
+      }
+      return styles;
+    },
+    heightStyles: function heightStyles() {
+      var styles = {};
+      if (this.height) {
+        styles.height = this.height + 'px';
+      }
+      return styles;
     },
     cls: function cls() {
       var _ref;
@@ -28957,7 +28973,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: _vm.cls
+    class: _vm.cls,
+    style: (_vm.widthStyles)
   }, [(_vm.position == 'front') ? _c('i', {
     staticClass: "h-icon-search"
   }) : _vm._e(), _vm._v(" "), _c('div', {
@@ -28971,6 +28988,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.inputValue),
       expression: "inputValue"
     }],
+    style: (_vm.heightStyles),
     attrs: {
       "type": "text",
       "placeholder": _vm.showPlaceholder
@@ -28998,6 +29016,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })]), _vm._v(" "), (_vm.showSearchButton) ? _c('Button', {
+    style: (_vm.heightStyles),
     attrs: {
       "color": "primary"
     },
