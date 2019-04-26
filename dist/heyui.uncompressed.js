@@ -8359,7 +8359,10 @@ exports.default = {
     },
     value: Object,
     startWeek: {
-      type: Number
+      type: Number,
+      default: function _default() {
+        return _config2.default.getOption('datepicker.startWeek');
+      }
     },
     layout: {
       type: Array,
@@ -8768,12 +8771,6 @@ var prefix = 'h-datetime'; //
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 var manbaType = {
   year: _manba2.default.YEAR,
@@ -8828,7 +8825,10 @@ exports.default = {
       default: 'bottom-start'
     },
     startWeek: {
-      type: Number
+      type: Number,
+      default: function _default() {
+        return _config2.default.getOption('datepicker.startWeek');
+      }
     }
   },
   data: function data() {
@@ -9196,7 +9196,10 @@ exports.default = {
     },
     value: Object,
     startWeek: {
-      type: Number
+      type: Number,
+      default: function _default() {
+        return _config2.default.getOption('datepicker.startWeek');
+      }
     }
   },
   watch: {
@@ -10124,8 +10127,6 @@ var _utils2 = _interopRequireDefault(_utils);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var prefixCls = 'h-form-item'; //
-//
-//
 //
 //
 //
@@ -30149,7 +30150,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: (_vm.labelStyleCls)
   }, [(_vm.icon) ? _c('i', {
     class: _vm.icon
-  }) : _vm._e(), _vm._v(" "), (!_vm.$scopedSlots.label) ? _c('span', [_vm._v(_vm._s(_vm.label))]) : _vm._t("label", null, {
+  }) : _vm._e(), (!_vm.$scopedSlots.label) ? _c('span', [_vm._v(_vm._s(_vm.label))]) : _vm._t("label", null, {
     "label": _vm.label
   })], 2) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "h-form-item-content",
