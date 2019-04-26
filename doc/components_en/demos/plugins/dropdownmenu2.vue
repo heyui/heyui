@@ -9,7 +9,7 @@
     </ButtonGroup>
     <ButtonGroup>
       <Button color="primary" icon="h-icon-inbox">Create</Button>
-      <DropdownMenu class="h-btn-primary" button @click="trigger" :datas="param"></DropdownMenu>
+      <DropdownMenu class="h-btn-primary" button @click="trigger" placement="bottom-end" :datas="param"></DropdownMenu>
     </ButtonGroup>
     <DropdownMenu button class="h-btn-primary" @click="trigger" :datas="param">Start</DropdownMenu>
   </div>
