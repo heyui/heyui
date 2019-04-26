@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.0-alpha.2"></a>
+# [1.19.0-alpha.2](https://github.com/heyui/heyui/compare/v1.19.0-alpha.1...v1.19.0-alpha.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Date:** startWeek add default value ([53e1c8e](https://github.com/heyui/heyui/commit/53e1c8e))
+* **Form:** fix label span position remove spaces ([a54de3a](https://github.com/heyui/heyui/commit/a54de3a))
+
+
+
 <a name="1.19.0-alpha.1"></a>
 # [1.19.0-alpha.1](https://github.com/heyui/heyui/compare/v1.19.0-alpha.0...v1.19.0-alpha.1) (2019-04-26)
 
