@@ -66,14 +66,14 @@
       </tr>
       <tr>
         <td>height</td>
-        <td>设置搜索框的高度</td>
+        <td>设置搜索框的高度, 1.19.0+</td>
         <td>Number</td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>width</td>
-        <td>设置搜索框的高度</td>
+        <td>设置搜索框的高度, 1.19.0+</td>
         <td>Number</td>
         <td></td>
         <td></td>

@@ -66,14 +66,14 @@
       </tr>
       <tr>
         <td>height</td>
-        <td>Setting height of search input</td>
+        <td>Setting height of search input, 1.19.0+</td>
         <td>Number</td>
         <td></td>
         <td></td>
       </tr>
       <tr>
         <td>width</td>
-        <td>Setting width of search input</td>
+        <td>Setting width of search input, 1.19.0+</td>
         <td>Number</td>
         <td></td>
         <td></td>
