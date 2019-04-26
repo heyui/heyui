@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.0-alpha.1"></a>
+# [1.19.0-alpha.1](https://github.com/heyui/heyui/compare/v1.19.0-alpha.0...v1.19.0-alpha.1) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Form:** fix label align padding ([8720d54](https://github.com/heyui/heyui/commit/8720d54))
+* **Table:** fix table align padding ([b4d2ebf](https://github.com/heyui/heyui/commit/b4d2ebf))
+
+
+
 <a name="1.19.0-alpha.0"></a>
 # [1.19.0-alpha.0](https://github.com/heyui/heyui/compare/v1.18.1...v1.19.0-alpha.0) (2019-04-26)
 
