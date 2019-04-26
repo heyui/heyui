@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.0-alpha.3"></a>
+# [1.19.0-alpha.3](https://github.com/heyui/heyui/compare/v1.19.0-alpha.2...v1.19.0-alpha.3) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Table:** optimize border table empty style ([8c19cc5](https://github.com/heyui/heyui/commit/8c19cc5)), closes [#107](https://github.com/heyui/heyui/issues/107)
+
+
+
 <a name="1.19.0-alpha.2"></a>
 # [1.19.0-alpha.2](https://github.com/heyui/heyui/compare/v1.19.0-alpha.1...v1.19.0-alpha.2) (2019-04-26)
 
