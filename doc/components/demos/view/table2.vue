@@ -5,15 +5,10 @@
       <TableItem title="Index" :tooltip="true"><template slot-scope="{index}">{{index}}</template></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age"></TableItem>
-      <TableItem title="Address" align="center" prop="address"></TableItem>
+      <TableItem title="Address" align="right" prop="address"></TableItem>
       <TableItem v-if="show"  title="Operate">
         <template slot-scope="{data}">
           {{data.name}}: 自定义展示
-        </template>
-      </TableItem>
-      <TableItem v-if="show" title="Operate2">
-        <template slot-scope="{data}">
-          {{data.name}}: 自定义展示2
         </template>
       </TableItem>
       <div slot="empty">自定义提醒：暂时无数据</div>
