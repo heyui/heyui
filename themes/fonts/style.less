@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'heyui';
-  src:  url('./heyui.eot?ka6m8');
-  src:  url('./heyui.eot?ka6m8#iefix') format('embedded-opentype'),
-    url('./heyui.ttf?ka6m8') format('truetype'),
-    url('./heyui.woff?ka6m8') format('woff'),
-    url('./heyui.svg?ka6m8#heyui') format('svg');
+  src:  url('./heyui.eot?ge3zdr');
+  src:  url('./heyui.eot?ge3zdr#iefix') format('embedded-opentype'),
+    url('./heyui.ttf?ge3zdr') format('truetype'),
+    url('./heyui.woff?ge3zdr') format('woff'),
+    url('./heyui.svg?ge3zdr#heyui') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="h-icon-"], [class*=" h-icon-"] {
-  /* use !important to prevent issues with browser extensions that change . */
+  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'heyui' !important;
   speak: none;
   font-style: normal;
@@ -24,6 +24,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.h-icon-help-solid:before {
+  content: "\e91d";
+}
+.h-icon-lock:before {
+  content: "\e91e";
+  color: #515151;
+}
+.h-icon-star:before {
+  content: "\e922";
+}
+.h-icon-star-on:before {
+  content: "\e923";
+}
 .h-icon-help:before {
   content: "\e900";
 }
@@ -59,6 +72,9 @@
 }
 .h-icon-close:before {
   content: "\e906";
+}
+.h-icon-close-min:before {
+  content: "\e924";
 }
 .h-icon-down:before {
   content: "\e907";
@@ -134,12 +150,6 @@
 }
 .h-icon-search:before {
   content: "\e91c";
-}
-.h-icon-star:before {
-  content: "\e91d";
-}
-.h-icon-star-on:before {
-  content: "\e91e";
 }
 .h-icon-setting:before {
   content: "\e926";
