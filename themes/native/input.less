@@ -121,12 +121,22 @@ textarea{
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
+    >.h-numberinput>.h-numberinput-show, >.h-btn, >.h-select>.h-select-show {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    >.h-numberinput:not(:last-child)>.h-numberinput-show, >.h-select:not(:last-child)>.h-select-show {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
     >input,>div {
-      display: inline-block;
       position: relative;
       z-index: 2;
       margin:0;
       flex: 1;
+      overflow: hidden;
     }
     >div{
       padding: 0 !important;
