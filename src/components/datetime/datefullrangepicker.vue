@@ -62,7 +62,8 @@ export default {
     },
     value: Object,
     startWeek: {
-      type: Number
+      type: Number,
+      default: () => config.getOption('datepicker.startWeek')
     },
     layout: {
       type: Array,

@@ -1,49 +1,43 @@
 <template>
   <div :class="dateCls">
     <template v-if="!inline">
-    <div v-if="noBorder"
-         class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
-    <div v-else
-         class="h-input h-datetime-show">
-             <!-- @change="changeEvent"
-             @input="inputEvent" -->
-      <input type="text"
-            @change="changeEvent"
-            @keydown.enter="changeEvent"
-             v-model="showDate"
-             :disabled="disabled"
-             :readonly="readonly || type == 'week' || type == 'quarter'"
-             :placeholder="showPlaceholder"/>
-      <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
-      <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
-    </div>
+      <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
+      <div v-else class="h-input h-datetime-show">
+        <input
+          type="text"
+          @change="changeEvent"
+          @keydown.enter="changeEvent"
+          v-model="showDate"
+          :disabled="disabled"
+          :readonly="readonly || type == 'week' || type == 'quarter'"
+          :placeholder="showPlaceholder"
+        >
+        <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
+        <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
+      </div>
     </template>
-    <div :class="datePickerCls"
-         class="h-date-picker">
+    <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container" v-if="isShow">
-        <div v-if="shortcuts.length>0"
-             class="h-date-shortcut">
-          <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
+        <div v-if="shortcuts.length>0" class="h-date-shortcut">
+          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
         </div>
-        <date-base ref="datebase"
-                   :value="nowDate"
-                   :option="option"
-                   :type="type"
-                   :startWeek = "startWeek"
-                   :now-view="nowView"
-                   format="k"
-                   @updateView="updateView"
-                   @input="setvalue"
-                   @changeView="updateDropdown"></date-base>
+        <date-base
+          ref="datebase"
+          :value="nowDate"
+          :option="option"
+          :type="type"
+          :startWeek="startWeek"
+          :now-view="nowView"
+          format="k"
+          @updateView="updateView"
+          @input="setvalue"
+          @changeView="updateDropdown"
+        ></date-base>
       </div>
 
-      <div class="h-date-footer"
-           v-if="hasConfirm & !inline">
-        <button class="h-btn h-btn-text"
-                @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s"
-                @click="hide">{{'h.common.confirm' | hlang}}</button>
+      <div class="h-date-footer" v-if="hasConfirm & !inline">
+        <button class="h-btn h-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button class="h-btn h-btn-primary h-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -111,7 +105,8 @@ export default {
       default: 'bottom-start'
     },
     startWeek: {
-      type: Number
+      type: Number,
+      default: () => config.getOption('datepicker.startWeek')
     }
   },
   data() {
@@ -154,7 +149,7 @@ export default {
     let that = this;
     this.$nextTick(() => {
       if (this.inline) return;
-      let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let el = (this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`));
       let content = this.$el.querySelector(`.h-date-picker`);
 
       this.dropdown = new Dropdown(el, {
@@ -208,7 +203,11 @@ export default {
     },
     inputEvent(event) {
       let value = event.target.value;
-      try { manba(value); } catch (evt) { return; }
+      try {
+        manba(value);
+      } catch (evt) {
+        return;
+      }
       // this.parse(value, false);
       this.setvalue(value);
     },
