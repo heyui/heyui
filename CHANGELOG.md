@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.0-alpha.4"></a>
+# [1.19.0-alpha.4](https://github.com/heyui/heyui/compare/v1.19.0-alpha.3...v1.19.0-alpha.4) (2019-04-26)
+
+
+### Features
+
+* **Icon:** supplement more icons ([77aee70](https://github.com/heyui/heyui/commit/77aee70))
+
+
+
 <a name="1.19.0-alpha.3"></a>
 # [1.19.0-alpha.3](https://github.com/heyui/heyui/compare/v1.19.0-alpha.2...v1.19.0-alpha.3) (2019-04-26)
 
