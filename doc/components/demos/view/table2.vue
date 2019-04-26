@@ -1,7 +1,12 @@
 <template>
   <div>
-    <p><Button color="primary" @click="show = !show">切换一列</Button> <Button color="blue" icon="h-icon-plus" @click="add(datas)">添加一行</Button></p>
-    <Table :datas="datas" stripe checkbox>
+    <p>
+      <Button color="blue" icon="h-icon-plus" @click="add(datas)">添加一行</Button>
+      <Button color="primary" @click="show = !show">切换一列</Button>
+      <Button color="primary" @click="datas=[]">清空数据</Button>
+      <h-switch v-model="border" small>边框</h-switch>
+    </p>
+    <Table :datas="datas" :border="border" checkbox>
       <TableItem title="Index" :tooltip="true"><template slot-scope="{index}">{{index}}</template></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age"></TableItem>
@@ -21,6 +26,7 @@ export default {
   data() {
     return {
       show: false,
+      border: false,
       datas: [
         { id: 5, name: '测试5', age: 12, address: '上海' },
         { id: 6, name: '测试6', age: 13, address: '上海' },
