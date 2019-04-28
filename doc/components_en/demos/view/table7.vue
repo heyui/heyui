@@ -17,6 +17,7 @@
 export default {
   data() {
     return {
+
       columns: [
         {
           title: 'Index',
@@ -24,43 +25,27 @@ export default {
           width: 100,
           tooltip: true,
           placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Serial number <hr> Description: Serial number of the data</div>'
+          content: '<div class="table-tr-tooltip">Serial number <hr> Description: Serial number of the data</div>'
         },
         {
           title: 'ID',
           prop: 'id',
           width: 100,
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">ID<hr>Description: The unique ID of the data</div>'
+          // 1.19.2 +
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">ID<hr>Description: The unique ID of the data</div>' }
         },
-        {
-          title: 'Name',
-          prop: 'name',
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Name <hr> Description: User\'s name</div>'
-        },
+        { title: 'Name', prop: 'name', tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Name <hr> Description: User\'s name</div>' } },
         {
           title: 'Age',
           prop: 'age',
           align: 'right',
           width: 100,
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Age <hr> Description: User\'s age</div>'
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Age <hr> Description: User\'s age</div>' }
         },
         {
           title: 'Address',
           prop: 'address',
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Address <hr> Description: User\'s address</div>'
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Address <hr> Description: User\'s address</div>' }
         }
       ],
       datas: [

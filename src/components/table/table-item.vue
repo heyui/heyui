@@ -19,7 +19,7 @@ export default {
     render: Function,
     sortProp: String,
     tooltip: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     sort: {

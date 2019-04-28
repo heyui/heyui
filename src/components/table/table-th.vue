@@ -1,6 +1,6 @@
 <template>
   <th :class="cls" @click="triggerSort()" :rowspan="rowspan" :colspan="colspan">
-    <div v-tooltip="tooltip" :placement="placement" :content="content || title">
+    <div v-tooltip="tooltipParam.enable" :placement="tooltipParam.placement" :content="tooltipParam.content || title">
       <span>{{title}}</span>
       <span class="h-table-sort-handler" v-if="sort">
         <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp" :class="{'h-table-sort-selected sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp}"><i class="h-icon-top"></i></span>
@@ -27,7 +27,7 @@ export default {
     render: Function,
     unit: String,
     tooltip: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     sortProp: String,
@@ -64,6 +64,24 @@ export default {
     }
   },
   computed: {
+    tooltipParam() {
+      if (this.tooltip === true) {
+        return {
+          enable: true,
+          content: this.content,
+          placement: this.placement
+        };
+      } else if (utils.isObject(this.tooltip)) {
+        return {
+          enable: true,
+          content: this.tooltip.content,
+          placement: this.tooltip.placement
+        };
+      }
+      return {
+        enable: false
+      };
+    },
     cls() {
       return {
         [`text-${this.align}`]: !!this.align,

@@ -43,7 +43,7 @@
     <h3>Table 单选</h3>
     <example demo="view/table10"></example>
 
-    <h3>Table 气泡提示与定义border, stripe样式</h3>
+    <h3>Table 气泡提示</h3>
     <example demo="view/table7"></example>
 
     <h3>自定义表头</h3>
@@ -164,7 +164,7 @@
       <tr>
         <td>tooltip</td>
         <td>table中的标题是否使用提示框</td>
-        <td>Boolean</td>
+        <td>Boolean, Object</td>
         <td>-</td>
         <td>false</td>
       </tr>

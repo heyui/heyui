@@ -41,7 +41,7 @@
     <h3>Table select line</h3>
     <exampleEn demo="view/table10"></exampleEn>
 
-    <h3>Table bubble tips and border, stripe style</h3>
+    <h3>Table bubble tips</h3>
     <exampleEn demo="view/table7"></exampleEn>
 
     <h3>Custom table header</h3>
@@ -168,7 +168,7 @@
       <tr>
         <td>tooltip</td>
         <td>Whether the title in the table uses a prompt box</td>
-        <td>Boolean</td>
+        <td>Boolean, Object</td>
         <td>-</td>
         <td>false</td>
       </tr>
