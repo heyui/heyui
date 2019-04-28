@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.1-alpha.0"></a>
+## [1.19.1-alpha.0](https://github.com/heyui/heyui/compare/v1.19.0...v1.19.1-alpha.0) (2019-04-28)
+
+
+### Bug Fixes
+
+* **Dropdown:** optimize documentHandler ([ffd36da](https://github.com/heyui/heyui/commit/ffd36da))
+* **var:** fix var.js error ([cc894b7](https://github.com/heyui/heyui/commit/cc894b7))
+
+
+
 <a name="1.19.0"></a>
 # [1.19.0](https://github.com/heyui/heyui/compare/v1.19.0-alpha.4...v1.19.0) (2019-04-26)
 
