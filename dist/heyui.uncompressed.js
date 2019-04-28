@@ -3124,7 +3124,7 @@ var Pop = function () {
           }
 
           var target = e.target;
-          while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby')) {
+          while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby') && target.parentNode) {
             target = target.parentNode;
           }
           if (target.tagName != 'BODY') {
