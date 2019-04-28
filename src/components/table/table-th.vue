@@ -19,6 +19,7 @@ export default {
     colspan: Number,
     title: String,
     width: Number,
+    className: String,
     fixed: String,
     label: String,
     prop: String,
@@ -85,6 +86,7 @@ export default {
     cls() {
       return {
         [`text-${this.align}`]: !!this.align,
+        [this.className]: !!this.className,
         pointer: this.sort
       };
     },

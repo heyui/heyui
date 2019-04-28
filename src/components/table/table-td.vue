@@ -13,7 +13,8 @@ export default {
     data: [Object, Array],
     align: String,
     unit: String,
-    render: Function
+    render: Function,
+    className: String
   },
   data() {
     return {};
@@ -21,7 +22,8 @@ export default {
   computed: {
     cls() {
       return {
-        [`text-${this.align}`]: !!this.align
+        [`text-${this.align}`]: !!this.align,
+        [this.className]: !!this.className
       };
     },
     show() {

@@ -7,7 +7,7 @@
 
 <template>
   <div>
-    <Table border stripe :datas="datas" :columns="columns">
+    <Table border stripe :datas="datas" :columns="columns" :getTrClass="getTrClass">
       <div slot="empty">自定义提醒：暂时无数据</div>
     </Table>
   </div>
@@ -39,6 +39,7 @@ export default {
           prop: 'age',
           align: 'right',
           width: 100,
+          className: 'red-color',
           tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">年龄<hr>说明：用户的年龄</div>' }
         },
         {
@@ -55,6 +56,12 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    getTrClass(data, index) {
+      if (index == 2) {
+        return 'bg-gray1-color';
+      }
+    }
+  }
 };
 </script>

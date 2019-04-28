@@ -7,7 +7,7 @@
 
 <template>
   <div>
-    <Table border stripe :datas="datas" :columns="columns">
+    <Table border stripe :datas="datas" :columns="columns" :getTrClass="getTrClass">
       <div slot="empty">Custom reminder: no data at this time</div>
     </Table>
   </div>
@@ -40,6 +40,7 @@ export default {
           prop: 'age',
           align: 'right',
           width: 100,
+          className: 'red-color',
           tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Age <hr> Description: User\'s age</div>' }
         },
         {
@@ -56,6 +57,12 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    getTrClass(data, index) {
+      if (index == 2) {
+        return 'bg-gray1-color';
+      }
+    }
+  }
 };
 </script>

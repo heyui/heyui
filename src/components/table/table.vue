@@ -39,7 +39,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
+                :index="index" :trIndex="index" :class="getTrCls(d, index)">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -64,7 +64,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
+                :index="index" :trIndex="index" :class="getTrCls(d, index)">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -82,7 +82,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="{'h-table-tr-selected': isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect}">
+                :index="index" :trIndex="index" :class="getTrCls(d, index)">
                 <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
               </TableTr>
             </template>
@@ -163,7 +163,8 @@ export default {
     selectRow: {
       type: Boolean,
       default: false
-    }
+    },
+    getTrClass: Function
   },
   data() {
     return {
@@ -298,6 +299,20 @@ export default {
     });
   },
   methods: {
+    getTrCls(d, index) {
+      let cls = {
+        'h-table-tr-selected': this.isChecked(d),
+        // eslint-disable-next-line comma-dangle
+        'h-table-tr-select-disabled': d._disabledSelect,
+      };
+      if (this.getTrClass) {
+        let trClass = this.getTrClass(d, index);
+        if (trClass) {
+          cls[trClass] = true;
+        }
+      }
+      return cls;
+    },
     isChecked(d) {
       return this.checks.indexOf(d) > -1 || (this.selectRow && d == this.rowSelected);
     },
