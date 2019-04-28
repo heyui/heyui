@@ -2,3 +2,5 @@ node_modules
 doc
 .DS_Store
 .github
+logs
+.vscode
