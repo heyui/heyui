@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.1"></a>
+## [1.19.1](https://github.com/heyui/heyui/compare/v1.19.1-alpha.0...v1.19.1) (2019-04-28)
+
+
+### Bug Fixes
+
+* **Input:** overflow hidden add on select not div ([e17ca72](https://github.com/heyui/heyui/commit/e17ca72))
+
+
+
 <a name="1.19.1-alpha.0"></a>
 ## [1.19.1-alpha.0](https://github.com/heyui/heyui/compare/v1.19.0...v1.19.1-alpha.0) (2019-04-28)
 
