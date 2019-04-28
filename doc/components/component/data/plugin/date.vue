@@ -7,7 +7,7 @@
     <div>
       <example demo="dataplugins/datepicker1"></example>
     </div>
-    <h3>日期控件禁用</h3>
+    <h3>日期控件参数</h3>
     <div>
       <example demo="dataplugins/datepicker2"></example>
     </div>
@@ -115,6 +115,13 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>clearable</td>
+        <td>是否有清空按钮</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
       </tr>
     </table>
 

@@ -12,7 +12,7 @@
           :readonly="readonly || type == 'week' || type == 'quarter'"
           :placeholder="showPlaceholder"
         >
-        <i class="h-icon-calendar" v-if="!showDate||disabled"></i>
+        <i class="h-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
         <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
       </div>
     </template>
@@ -107,6 +107,10 @@ export default {
     startWeek: {
       type: Number,
       default: () => config.getOption('datepicker.startWeek')
+    },
+    clearable: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

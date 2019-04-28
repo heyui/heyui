@@ -8,7 +8,7 @@
     <div>
       <exampleEn demo="dataplugins/datepicker1"></exampleEn>
     </div>
-    <h3>Disabled</h3>
+    <h3>Parameters</h3>
     <div>
       <exampleEn demo="dataplugins/datepicker2"></exampleEn>
     </div>
@@ -116,6 +116,13 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>clearable</td>
+        <td>Show clear icon</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
       </tr>
     </table>
 
