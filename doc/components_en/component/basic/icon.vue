@@ -25,12 +25,17 @@
 
     <h3>Icon Library</h3>
     <Row :space="15">
-      <Cell v-for='n of list' :xs='12' :sm='12' :md='6' :lg='4' :xl='4' :key="n">
-        <div>
-          <p><i :class="n"></i></p>
-          <p>{{n}}</p>
-        </div>
-      </Cell>
+      <template  v-for='(n, i) of list'>
+        <Cell width="24" :key="n" v-if="i == 39">
+          <blockquote>1.19.0+</blockquote>
+        </Cell>
+        <Cell :xs='12' :sm='12' :md='6' :lg='4' :xl='4' :key="n">
+          <div>
+            <p><i :class="n"></i></p>
+            <p>{{n}}</p>
+          </div>
+        </Cell>
+      </template>
     </Row>
   </div>
 </template>

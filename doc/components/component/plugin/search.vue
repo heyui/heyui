@@ -10,7 +10,7 @@
     <h3>拥有搜索按钮的查询组件</h3>
     <example demo="plugins/search2"></example>
 
-    <h3>整行</h3>
+    <h3>自定义样式</h3>
     <example demo="plugins/search3"></example>
 
     <h3>Search 参数</h3>

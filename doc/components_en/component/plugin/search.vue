@@ -10,7 +10,7 @@
     <h3>Query component with search button</h3>
     <exampleEn demo="plugins/search2"></exampleEn>
 
-    <h3>Block</h3>
+    <h3>Custom style</h3>
     <exampleEn demo="plugins/search3"></exampleEn>
 
     <h3>Search Property</h3>
