@@ -8,7 +8,6 @@
 </template>
 <script>
 import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
 
 const prefix = 'h-tabs';
 
@@ -62,7 +61,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      return utils.initOptions(datas, this);
+      return config.initOptions(datas, this);
     }
   }
 };

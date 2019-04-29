@@ -52,6 +52,7 @@
 <script>
 import utils from 'heyui/utils/utils';
 import config from 'heyui/utils/config';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-uploader';
 
@@ -75,6 +76,7 @@ const dispose = function (value, type, param) {
 
 export default {
   name: 'hUploader',
+  mixins: [Locale],
   props: {
     type: {
       type: String,

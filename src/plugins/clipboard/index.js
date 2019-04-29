@@ -1,5 +1,5 @@
-import select from '../select';
-import Message from '../message';
+import select from 'heyui/plugins/select';
+import Message from 'heyui/plugins/message';
 
 export default function ({ text, showSuccessTip = '复制成功', showFailureTip = '复制失败', successCallback, failureCallback }) {
   const container = document.body;

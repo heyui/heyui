@@ -38,11 +38,13 @@ import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 import Dropdown from 'heyui/plugins/dropdown';
 import dateBase from './date-base';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-datetime';
 
 export default {
   name: 'hDateFullRangePicker',
+  mixins: [Locale],
   props: {
     defaultType: {
       type: [String],

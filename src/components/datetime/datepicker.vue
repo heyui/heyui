@@ -49,6 +49,7 @@ import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 import Dropdown from 'heyui/plugins/dropdown';
 import dateBase from './date-base';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-datetime';
 
@@ -65,6 +66,7 @@ const options = config.getOption('datepicker');
 
 export default {
   name: 'hDatePicker',
+  mixins: [Locale],
   props: {
     disabled: {
       type: Boolean,

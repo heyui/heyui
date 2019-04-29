@@ -1,4 +1,4 @@
-import Pop from '../pop';
+import Pop from 'heyui/plugins/pop';
 import utils from 'heyui/utils/utils';
 
 const Default = {

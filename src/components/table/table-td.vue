@@ -2,7 +2,7 @@
   <td :class="cls"><template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot></td>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
+import config from 'heyui/utils/config';
 
 export default {
   name: 'hTableTd',
@@ -33,7 +33,7 @@ export default {
       }
       let value = this.data[this.prop];
       if (this.dict) {
-        return utils.dictMapping(value, this.dict);
+        return config.dictMapping(value, this.dict);
       }
       if (this.unit) {
         return value === '' || value === null || value === undefined ? '' : `${value}${this.unit}`;

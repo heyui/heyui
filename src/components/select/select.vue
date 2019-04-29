@@ -68,11 +68,13 @@
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-select';
 
 export default {
   name: 'hSelect',
+  mixins: [ Locale ],
   props: {
     multiple: {
       type: Boolean,
@@ -431,7 +433,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      datas = utils.initOptions(datas, this);
+      datas = config.initOptions(datas, this);
       if (!this.multiple && this.hasNullOption) {
         datas.unshift({
           [`${this.key}`]: null,

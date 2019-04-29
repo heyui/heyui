@@ -15,10 +15,12 @@
   </div>
 </template>
 <script>
+import Locale from 'heyui/mixins/locale';
 const prefix = 'h-search';
 
 export default {
   name: 'hSearch',
+  mixins: [Locale],
   props: {
     position: {
       type: String,

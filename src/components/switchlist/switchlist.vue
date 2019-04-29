@@ -5,7 +5,6 @@
 </template>
 <script>
 import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
 
 export default {
   name: 'hSwitchList',
@@ -59,7 +58,7 @@ export default {
         datas = config.getDict(this.dict);
       }
 
-      return utils.initOptions(datas, this);
+      return config.initOptions(datas, this);
     }
   }
 };

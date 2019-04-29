@@ -41,10 +41,12 @@
 </template>
 <script>
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 const topMenu = '-------';
 
 export default {
   name: 'hCategoryModal',
+  mixins: [Locale],
   props: {
     param: Object
   },

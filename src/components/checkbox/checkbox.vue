@@ -140,7 +140,7 @@ export default {
         datas = config.getDict(this.dict);
       }
 
-      return utils.initOptions(datas, this);
+      return config.initOptions(datas, this);
     }
   }
 };

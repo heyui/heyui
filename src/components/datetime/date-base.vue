@@ -55,6 +55,7 @@
 import manba from 'manba';
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 
 const dateprefix = 'h-date';
 
@@ -121,6 +122,7 @@ const genData = param => {
 
 export default {
   name: 'hDateBase',
+  mixins: [Locale],
   props: {
     type: {
       type: [String],

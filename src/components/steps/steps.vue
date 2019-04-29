@@ -80,7 +80,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      return utils.initOptions(datas, this);
+      return config.initOptions(datas, this);
     }
   }
 };

@@ -563,7 +563,7 @@ export default {
       if (utils.isNull(datas)) {
         datas = this.loadDatas;
       } else {
-        datas = utils.initOptions(datas, this);
+        datas = config.initOptions(datas, this);
         if (this.searchValue) {
           let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter(item => {

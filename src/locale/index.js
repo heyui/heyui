@@ -1,5 +1,5 @@
-import zhLang from './lang/zh-CN';
-import enLang from './lang/en-US';
+import zhLang from 'heyui/locale/lang/zh-CN';
+import enLang from 'heyui/locale/lang/en-US';
 import utils from 'heyui/utils/utils';
 import Format from 'heyui/utils/format';
 

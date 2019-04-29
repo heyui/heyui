@@ -9,11 +9,13 @@
 </template>
 <script>
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-taginput';
 
 export default {
   name: 'hTagInput',
+  mixins: [Locale],
   props: {
     readonly: {
       type: Boolean,

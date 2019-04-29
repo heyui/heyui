@@ -1,4 +1,4 @@
-import Notify from '../notify';
+import Notify from 'heyui/plugins/notify';
 import utils from 'heyui/utils/utils';
 import locale from 'heyui/locale';
 

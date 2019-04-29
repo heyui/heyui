@@ -85,7 +85,6 @@ import $ImagePreview from './plugins/imagepreview';
 import filters from './filters';
 import config from './utils/config';
 import locale from './locale';
-import LocaleMinxin from './mixins/locale';
 
 const components = {
   Affix,
@@ -186,7 +185,7 @@ const install = function (Vue, opts) {
     }
   }
 
-  Vue.mixin(LocaleMinxin);
+  // Vue.mixin(LocaleMinxin);
 
   Object.keys(components).forEach((key) => {
     Vue.component(key, components[key]);

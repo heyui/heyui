@@ -34,11 +34,13 @@
 <script>
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-page';
 
 export default {
   name: 'hPagination',
+  mixins: [Locale],
   props: {
     size: {
       type: Number,

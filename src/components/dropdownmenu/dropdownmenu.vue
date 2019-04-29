@@ -107,10 +107,10 @@ export default {
       this.$refs.dropdown.hide();
     },
     showEvent(event) {
-      this.$emit('show', event)
+      this.$emit('show', event);
     },
     hideEvent(event) {
-      this.$emit('hide', event)
+      this.$emit('hide', event);
     }
   },
   computed: {
@@ -148,7 +148,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      datas = utils.initOptions(datas, this);
+      datas = config.initOptions(datas, this);
       return datas;
     }
   },

@@ -1,4 +1,4 @@
-import Popper from '../popper';
+import Popper from 'heyui/plugins/popper';
 import utils from 'heyui/utils/utils';
 
 const DEFAULT_OPTIONS = {
