@@ -1,5 +1,5 @@
 import TableTd from './table-td';
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 
 export default {
   name: 'hTableTr',

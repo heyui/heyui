@@ -26,10 +26,10 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
-import Locale from '../../mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-autocomplete';
 

@@ -1,5 +1,5 @@
 import Notify from '../notify';
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-message';
 const iconPrefixCls = 'h-icon';

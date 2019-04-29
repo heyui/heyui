@@ -4,9 +4,9 @@
   </div>
 </template>
 <script>
-import Validator from '../../plugins/validator';
-import utils from '../../utils/utils';
-import scrollIntoView from '../../plugins/scrollIntoView';
+import Validator from 'heyui/plugins/validator';
+import utils from 'heyui/utils/utils';
+import scrollIntoView from 'heyui/plugins/scrollIntoView';
 
 const prefixCls = 'h-form';
 

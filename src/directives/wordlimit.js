@@ -1,5 +1,5 @@
-import utils from '../utils/utils';
-import locale from '../locale';
+import utils from 'heyui/utils/utils';
+import locale from 'heyui/locale';
 
 const wordlimit = function (el, total, vnode) {
   let v = el.value.length;

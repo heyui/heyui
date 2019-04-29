@@ -45,9 +45,9 @@
 <script>
 import manba from 'manba';
 
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
 import dateBase from './date-base';
 
 const prefix = 'h-datetime';

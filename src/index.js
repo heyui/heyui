@@ -16,8 +16,8 @@ import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
 // import Cascader from './components/cascader';
-import CategoryPicker from './components/categorypicker';
 // import ColorPicker from './components/colorpicker';
+import CategoryPicker from './components/categorypicker';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
@@ -98,10 +98,10 @@ const components = {
   Breadcrumb,
   Category,
   // Cascader,
+  // ColorPicker,
   CategoryPicker,
   Checkbox,
   hCircle: Circle,
-  // ColorPicker,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
   DateFullRangePicker: Datetime.DateFullRangePicker,
@@ -171,7 +171,6 @@ const directives = {
 
 let prototypes = {
   $Message,
-  // $Modal,
   $Confirm,
   $Loading,
   $LoadingBar
@@ -203,7 +202,6 @@ const install = function (Vue, opts) {
 
   Object.keys(directives).forEach((key) => {
     Vue.directive(key, directives[key]);
-    // that[key] = directives[key];
   });
 
   Object.keys(prototypes).forEach((key) => {
@@ -223,4 +221,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 HeyUI.install = install;
 
-module.exports = HeyUI;
+export default HeyUI;

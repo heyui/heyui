@@ -13,6 +13,7 @@ module.exports = {
   webpack: {
     umd: {
       entry,
+      // library: 'HeyUI/locale',
       filename: '[name].js'
     },
     alias: {

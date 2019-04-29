@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
+import config from 'heyui/utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';

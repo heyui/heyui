@@ -1,5 +1,5 @@
-import Tooltip from '../plugins/tooltip';
-import utils from '../utils/utils';
+import Tooltip from 'heyui/plugins/tooltip';
+import utils from 'heyui/utils/utils';
 
 const getContent = function (el, vnode) {
   let param = {};

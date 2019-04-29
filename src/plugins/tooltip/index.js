@@ -1,5 +1,5 @@
 import Pop from '../pop';
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 
 class Tooltip extends Pop {
   constructor(el, param) {

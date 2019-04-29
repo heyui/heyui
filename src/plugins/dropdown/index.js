@@ -1,5 +1,5 @@
 import Pop from '../pop';
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 
 const Default = {
   trigger: 'click',

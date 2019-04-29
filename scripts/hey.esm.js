@@ -1,15 +1,18 @@
 module.exports = {
-  root: "dist",
+  root: 'dist',
   clean: false,
   webpack: {
     umd: {
-      entry: "./src/index.js",
-      library: "HeyUI",
+      entry: './src/index.js',
+      library: 'HeyUI',
       filename: 'heyui.esm.js'
     },
     externals: {
-      vue: "vue",
-      manba: "manba"
+      vue: 'vue',
+      manba: 'manba'
+    },
+    alias: {
+      heyui: './src'
     }
   }
 };

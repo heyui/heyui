@@ -1,7 +1,7 @@
 import zhLang from './lang/zh-CN';
 import enLang from './lang/en-US';
-import utils from '../utils/utils';
-import Format from '../utils/format';
+import utils from 'heyui/utils/utils';
+import Format from 'heyui/utils/format';
 
 const format = Format();
 let lang = zhLang;

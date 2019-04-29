@@ -1,10 +1,13 @@
 module.exports = {
-  root: "dist",
+  root: 'dist',
   webpack: {
     umd: {
-      entry: "./src/index.js",
-      library: "HeyUI",
+      entry: './src/index.js',
+      library: 'HeyUI',
       filename: 'heyui.js'
+    },
+    alias: {
+      heyui: './src'
     }
   }
 };

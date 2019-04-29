@@ -12,7 +12,7 @@
 </template>
 <script>
 
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 import Loading from '../loading/loading';
 
 export default {

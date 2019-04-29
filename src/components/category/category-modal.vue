@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
+import utils from 'heyui/utils/utils';
 const topMenu = '-------';
 
 export default {

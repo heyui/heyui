@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import Dropdown from '../../plugins/dropdown';
+import Dropdown from 'heyui/plugins/dropdown';
 
 export default {
   name: 'hColorPicker',

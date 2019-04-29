@@ -24,6 +24,7 @@ module.exports = {
     alias: {
       js: './js/',
       components: './components/',
+      heyui: '../src',
       components_en: './components_en/'
     },
     globalVars: './css/var.less',
