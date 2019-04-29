@@ -4,7 +4,7 @@
       <span>{{v}}</span><i v-if="!readonly" class="h-icon-close" @click.stop="remove(index)"></i>
     </span>
     <input v-if="!readonly" type="text" class="h-taginput-input" @focus="focusing=true" v-model="tagvalue" @blur="blur"
-      @keyup.enter="add" @keydown.delete="removeLast" v-wordlimit="wordlimit" :placeholder="placeholder" />
+      @keyup.enter="add" @keydown.delete="removeLast" :placeholder="placeholder" />
   </div>
 </template>
 <script>
@@ -63,6 +63,10 @@ export default {
       this.setvalue(value);
     },
     add() {
+      if (this.wordlimit < this.tagvalue.length) {
+        this.$Message.error(this.t('h.wordlimit.warn', [this.wordlimit]));
+        return false;
+      }
       if (this.limit <= this.values.length) {
         this.$Message.error(this.t('h.taginput.limitWords'));
         return false;
