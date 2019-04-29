@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.2-alpha.0"></a>
+## [1.19.2-alpha.0](https://github.com/heyui/heyui/compare/v1.19.1...v1.19.2-alpha.0) (2019-04-29)
+
+
+### Bug Fixes
+
+* **Button:** optimize button icon bracing height ([30e2867](https://github.com/heyui/heyui/commit/30e2867))
+* **DatePicker:** add prop clearable ([cd0e52d](https://github.com/heyui/heyui/commit/cd0e52d)), closes [#110](https://github.com/heyui/heyui/issues/110)
+* **Table:** add column and row style ([5e09eb2](https://github.com/heyui/heyui/commit/5e09eb2)), closes [#109](https://github.com/heyui/heyui/issues/109)
+* **Table:** tooltip support object param ([26f7603](https://github.com/heyui/heyui/commit/26f7603))
+
+
+
 <a name="1.19.1"></a>
 ## [1.19.1](https://github.com/heyui/heyui/compare/v1.19.1-alpha.0...v1.19.1) (2019-04-28)
 
