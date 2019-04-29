@@ -8829,6 +8829,10 @@ exports.default = {
       default: function _default() {
         return _config2.default.getOption('datepicker.startWeek');
       }
+    },
+    clearable: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -13615,11 +13619,12 @@ exports.default = {
     prop: String,
     dict: String,
     align: String,
+    className: String,
     unit: String,
     render: Function,
     sortProp: String,
     tooltip: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     sort: {
@@ -13699,7 +13704,8 @@ exports.default = {
     data: [Object, Array],
     align: String,
     unit: String,
-    render: Function
+    render: Function,
+    className: String
   },
   data: function data() {
     return {};
@@ -13707,7 +13713,9 @@ exports.default = {
 
   computed: {
     cls: function cls() {
-      return (0, _defineProperty3.default)({}, 'text-' + this.align, !!this.align);
+      var _ref;
+
+      return _ref = {}, (0, _defineProperty3.default)(_ref, 'text-' + this.align, !!this.align), (0, _defineProperty3.default)(_ref, this.className, !!this.className), _ref;
     },
     show: function show() {
       if (this.prop == '$index') return this.index;
@@ -13756,6 +13764,7 @@ exports.default = {
     colspan: Number,
     title: String,
     width: Number,
+    className: String,
     fixed: String,
     label: String,
     prop: String,
@@ -13764,7 +13773,7 @@ exports.default = {
     render: Function,
     unit: String,
     tooltip: {
-      type: Boolean,
+      type: [Boolean, Object],
       default: false
     },
     sortProp: String,
@@ -13804,10 +13813,28 @@ exports.default = {
     }
   },
   computed: {
+    tooltipParam: function tooltipParam() {
+      if (this.tooltip === true) {
+        return {
+          enable: true,
+          content: this.content,
+          placement: this.placement
+        };
+      } else if (_utils2.default.isObject(this.tooltip)) {
+        return {
+          enable: true,
+          content: this.tooltip.content,
+          placement: this.tooltip.placement
+        };
+      }
+      return {
+        enable: false
+      };
+    },
     cls: function cls() {
       var _ref;
 
-      return _ref = {}, (0, _defineProperty3.default)(_ref, 'text-' + this.align, !!this.align), (0, _defineProperty3.default)(_ref, 'pointer', this.sort), _ref;
+      return _ref = {}, (0, _defineProperty3.default)(_ref, 'text-' + this.align, !!this.align), (0, _defineProperty3.default)(_ref, this.className, !!this.className), (0, _defineProperty3.default)(_ref, 'pointer', this.sort), _ref;
     },
     sortUseProp: function sortUseProp() {
       return this.sortProp || this.prop;
@@ -14031,7 +14058,8 @@ exports.default = {
     selectRow: {
       type: Boolean,
       default: false
-    }
+    },
+    getTrClass: Function
   },
   data: function data() {
     return {
@@ -14236,6 +14264,20 @@ exports.default = {
   },
 
   methods: {
+    getTrCls: function getTrCls(d, index) {
+      var cls = {
+        'h-table-tr-selected': this.isChecked(d),
+        // eslint-disable-next-line comma-dangle
+        'h-table-tr-select-disabled': d._disabledSelect
+      };
+      if (this.getTrClass) {
+        var trClass = this.getTrClass(d, index);
+        if (trClass) {
+          cls[trClass] = true;
+        }
+      }
+      return cls;
+    },
     isChecked: function isChecked(d) {
       return this.checks.indexOf(d) > -1 || this.selectRow && d == this.rowSelected;
     },
@@ -27727,12 +27769,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "tooltip",
       rawName: "v-tooltip",
-      value: (_vm.tooltip),
-      expression: "tooltip"
+      value: (_vm.tooltipParam.enable),
+      expression: "tooltipParam.enable"
     }],
     attrs: {
-      "placement": _vm.placement,
-      "content": _vm.content || _vm.title
+      "placement": _vm.tooltipParam.placement,
+      "content": _vm.tooltipParam.content || _vm.title
     }
   }, [_c('span', [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), (_vm.sort) ? _c('span', {
     staticClass: "h-table-sort-handler"
@@ -28888,7 +28930,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.showDate = $event.target.value
       }
     }
-  }), _vm._v(" "), (!_vm.showDate || _vm.disabled) ? _c('i', {
+  }), _vm._v(" "), (!_vm.showDate || _vm.disabled || !_vm.clearable) ? _c('i', {
     staticClass: "h-icon-calendar"
   }) : _c('i', {
     staticClass: "h-icon-close text-hover",
@@ -30549,9 +30591,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._l((_vm.datas), function(d, index) {
     return [_c('TableTr', {
       key: index + _vm.update.datas,
-      class: {
-        'h-table-tr-selected': _vm.isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect
-      },
+      class: _vm.getTrCls(d, index),
       attrs: {
         "datas": d,
         "index": index,
@@ -30624,9 +30664,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._l((_vm.datas), function(d, index) {
     return [_c('TableTr', {
       key: index + _vm.update.datas,
-      class: {
-        'h-table-tr-selected': _vm.isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect
-      },
+      class: _vm.getTrCls(d, index),
       attrs: {
         "datas": d,
         "index": index,
@@ -30684,9 +30722,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._l((_vm.datas), function(d, index) {
     return [_c('TableTr', {
       key: index + _vm.update.datas,
-      class: {
-        'h-table-tr-selected': _vm.isChecked(d), 'h-table-tr-select-disabled': d._disabledSelect
-      },
+      class: _vm.getTrCls(d, index),
       attrs: {
         "datas": d,
         "index": index,
