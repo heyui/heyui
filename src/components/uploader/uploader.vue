@@ -27,7 +27,7 @@
         <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{'h-uploader-image-operate-pointer': readonly}">
           <div v-if="!readonly">
             <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
-            <i class="h-split" v-width="3"></i>
+            <i class="h-split" style="width: 3px;"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
           </div>
         </div>

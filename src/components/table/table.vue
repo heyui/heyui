@@ -55,8 +55,8 @@
         </table>
       </div>
 
-      <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" v-width="leftWidth" :style="fixedBodyStyle">
-        <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
+      <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" :style="fixedBodyStyle">
+        <table :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
           <colgroup>
             <col v-if="checkbox" width="60" />
             <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
@@ -74,8 +74,8 @@
           </tbody>
         </table>
       </div>
-      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" v-width="rightWidth" :style="fixedRightBodyStyle">
-        <table :style="{'margin-top': (-scrollTop+'px')}" v-width="tableWidth">
+      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" :style="fixedRightBodyStyle">
+        <table :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
           <colgroup>
             <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
           </colgroup>
@@ -91,7 +91,7 @@
       </div>
     </div>
     <div v-if="fixedColumnLeft.length" class="h-table-fixed-header-left">
-      <table v-width="leftWidth">
+      <table :style="{width: leftWidth + 'px'}">
         <colgroup>
           <col v-if="checkbox" width="60" />
           <col v-for="(c, index) of fixedColumnLeft" :width="getWidth(c)" :key="index+update.columns" />
@@ -106,7 +106,7 @@
       </table>
     </div>
     <div v-if="fixedColumnRight.length" :style="{'margin-right': (scrollWidth+'px')}" class="h-table-fixed-header-right">
-      <table v-width="rightWidth">
+      <table :style="{width: rightWidth + 'px'}">
         <colgroup>
           <col v-for="(c, index) of fixedColumnRight" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
@@ -488,6 +488,9 @@ export default {
       if (this.height) {
         s.maxHeight = `${this.height}px`;
       }
+      if (this.leftWidth) {
+        s.width = `${this.leftWidth}px`;
+      }
       return s;
     },
     fixedRightBodyStyle() {
@@ -496,6 +499,9 @@ export default {
       s['bottom'] = `${this.scrollHeight}px`;
       if (this.height) {
         s.maxHeight = `${this.height}px`;
+      }
+      if (this.rightWidth) {
+        s.width = `${this.rightWidth}px`;
       }
       return s;
     },
