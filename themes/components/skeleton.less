@@ -1,0 +1,42 @@
+@skeleton-prefix: ~"@{prefix}skeleton";
+
+.@{skeleton-prefix}{
+  @keyframes h-skeleton-loading {
+    0% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0 50%
+    }
+  }
+
+  .h-skeleton-content {
+    .h-skeleton-title {
+      height: @skeleton-height;
+      margin-top: 16px;
+      background: @skeleton-bg;
+    }
+    .h-skeleton-paragraph {
+      margin-top: 24px;
+      > li {
+        width: 100%;
+        height: @skeleton-height;
+        list-style: none;
+        background: @skeleton-bg;
+      }
+      > li+li {
+        margin-top: 16px;
+      }
+    }
+    &.h-skeleton-active {
+      .h-skeleton-title,  .h-skeleton-paragraph>li{
+        background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+        background-size: 400% 100%;
+        animation: h-skeleton-loading 1.4s ease infinite;
+      }
+    }
+  }
+}
+
+

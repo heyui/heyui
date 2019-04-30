@@ -1,19 +1,21 @@
 <template>
-  <Pagination :cur="current" :total="total" align="right" @change="currentChange"></Pagination>
+  <Pagination v-model="pagination" align="right" @change="currentChange"></Pagination>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      current: 1,
-      total: 200
+      pagination: {
+        page: 1,
+        size: 10,
+        total: 100
+      }
     };
   },
   methods: {
     currentChange(value) {
-      this.total = this.total + 1;
-      console.log(value.cur, value.size);
+      console.log(value);
     }
   }
 };

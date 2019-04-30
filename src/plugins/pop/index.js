@@ -13,7 +13,8 @@ const DEFAULT_OPTIONS = {
   offset: 0,
   equalWidth: false,
   type: 'dropdown',
-  preventOverflow: false
+  preventOverflow: false,
+  getContainer: null
 };
 
 /**
@@ -125,7 +126,8 @@ class Pop {
     const popNode = this.create(reference, options.template, content, options.html);
 
     popNode.setAttribute('aria-describedby', popNode.id);
-    const container = this.findContainer(options.container, reference);
+    this.reference.setAttribute('aria-describe', popNode.id);
+    const container = this.findContainer();
 
     container.appendChild(popNode);
     if (options.class) {
@@ -147,7 +149,7 @@ class Pop {
     let reference = this.reference;
     let options = this.options;
     let popNode = this.popNode;
-    const container = this.findContainer(options.container, reference);
+    const container = this.findContainer();
 
     let modifiers = {
       computeStyle: {
@@ -210,13 +212,13 @@ class Pop {
   show(event) {
     if (this.hideTimeout) clearTimeout(this.hideTimeout);
     if (this.hideTimeout2) clearTimeout(this.hideTimeout2);
+    if (this.options.events && utils.isFunction(this.options.events.show)) {
+      this.options.events.show(event);
+    }
     if (this.isOpen || this.options.disabled) {
       return this;
     }
     this.isOpen = true;
-    if (this.options.events && utils.isFunction(this.options.events.show)) {
-      this.options.events.show(event);
-    }
     if (!this.popNode) {
       this.initPopNode();
     }
@@ -279,6 +281,7 @@ class Pop {
   destory() {
     if (this.documentHandler) {
       document.removeEventListener('click', this.documentHandler);
+      document.removeEventListener('contextmenu', this.documentHandler);
     }
     if (this.popperInstance) {
       this.popperInstance.destroy();
@@ -300,11 +303,14 @@ class Pop {
     return this;
   }
 
-  findContainer(container, reference) {
+  findContainer() {
+    let container = this.options.container;
     if (typeof container === 'string') {
       container = window.document.querySelector(container);
+    } else if (this.options.getContainer) {
+      container = this.options.getContainer(this.reference);
     } else if (container === false) {
-      container = reference.parentNode;
+      container = document.body;
     }
     return container;
   }
@@ -341,7 +347,7 @@ class Pop {
       const func = (evt) => {
         if (evt.type == 'contextmenu') {
           evt.preventDefault();
-          evt.stopPropagation();
+          // evt.stopPropagation();
           if (window.getSelection) {
             window.getSelection().removeAllRanges();
           } else {
@@ -358,11 +364,11 @@ class Pop {
             this.popperInstance.update();
           }
         }
-        if (this.isOpen === true) {
+        if (event == 'click' && this.isOpen === true) {
           return;
         }
         evt.usedByPop = true;
-        this.show(event);
+        this.show(evt);
       };
       this.triggerEvents.push({
         event,
@@ -395,9 +401,22 @@ class Pop {
         if (reference && this.popNode.contains(targetReference)) {
           return false;
         }
+
+        let target = e.target;
+        while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby') && target.parentNode) {
+          target = target.parentNode;
+        }
+        if (target.tagName != 'BODY') {
+          let targetTrigger = document.body.querySelector(`[aria-describe="${target.getAttribute('aria-describedby')}"]`);
+          if (targetTrigger && this.popNode.contains(targetTrigger)) {
+            return false;
+          }
+        }
+
         this.hide();
       };
       document.addEventListener('click', this.documentHandler);
+      document.addEventListener('contextmenu', this.documentHandler);
     }
   }
 

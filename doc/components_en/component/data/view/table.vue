@@ -4,10 +4,10 @@
     <p>It is mainly used to display a large amount of structured data.</p>
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-table</code>. </p>
 
-    <h3>Columns definition mode</h3>
-    <exampleEn demo="view/table1"></exampleEn>
+    <!-- <h3>Columns definition mode</h3>
+    <exampleEn demo="view/table1"></exampleEn> -->
 
-    <h3>TableItem definition mode</h3>
+    <h3>Basic</h3>
     <exampleEn demo="view/table2"></exampleEn>
 
     <h3>Data render</h3>

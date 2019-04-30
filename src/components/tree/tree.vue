@@ -132,10 +132,7 @@ export default {
       globalloading: false,
       loading: true,
       status: {
-        selected: null,
-        selects: [],
-        opens: [],
-        loadings: []
+        selected: null
       },
       treeDatas: [],
       treeObj: {},
@@ -218,9 +215,9 @@ export default {
         }
       }
     },
-    trigger(data) {
-      let type = data.type;
-      data = data.data;
+    trigger(params) {
+      let type = params.type;
+      let data = params.data;
       if (type == 'toggleTreeEvent') {
         data.status.opened = !data.status.opened;
         this.$emit('open', data.value);
@@ -340,6 +337,12 @@ export default {
         this.treeObj[tree].status.opened = false;
       }
     },
+    expand(ids) {
+      for (let key of Object.keys(this.treeObj)) {
+        let tree = this.treeObj[key];
+        tree.status.opened = ids.indexOf(tree.key) > -1;
+      }
+    },
     chooseAll() {
       for (let key in this.treeObj) {
         this.treeObj[key].status.choose = true;
@@ -347,10 +350,14 @@ export default {
       this.setvalue();
     },
     updateSelect(key, updateValue = true) {
-      let option = this.treeObj[key];
-      if (option) {
-        this.status.selected = key;
-        updateParentStatus(this.treeObj, option, 'opened', true);
+      if (key === null) {
+        this.status.selected = null;
+      } else {
+        let option = this.treeObj[key];
+        if (option) {
+          this.status.selected = key;
+          updateParentStatus(this.treeObj, option, 'opened', true);
+        }
       }
       if (updateValue) {
         this.setvalue();

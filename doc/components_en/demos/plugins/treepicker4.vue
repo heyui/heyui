@@ -8,7 +8,7 @@
 // Change the background color selected by the tree to red
 .tree-picker-demo-dropdown {
   .h-tree-show-desc.selected {
-    background-color: @red-color;
+    background-color: @red-color !important;
   }
 }
 </style>

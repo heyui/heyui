@@ -26,6 +26,14 @@ export default {
       activedKeys: [].concat(this.value)
     };
   },
+  watch: {
+    value(newVal, oldVal) {
+      this.activedKeys = newVal;
+    },
+    activedKeys(newVal, oldVal) {
+      this.setActives();
+    }
+  },
   provide() {
     return {
       collapse: this
@@ -58,7 +66,6 @@ export default {
           this.activedKeys.push(value);
         }
       }
-      this.setActives();
       this.$emit('input', this.activedKeys);
       this.$emit('change', this.activedKeys);
     }

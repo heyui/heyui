@@ -1,7 +1,10 @@
 <template>
   <div class="doc">
     <h2>Tooltip 气泡提示</h2>
+
     <blockquote>注意：如果tooltip在页面最右边，并且换行异常，请使用样式给内容设定固定宽度。</blockquote>
+    <blockquote>注意：如果使用tooltip做编辑模块，请添加参数 editable ，一般展示的tooltip的z-index属性比编辑的tooltip模块高。</blockquote>
+
     <h3>普通的提示</h3>
     <example demo="message/tooltip1"></example>
 
@@ -64,6 +67,13 @@
       <tr>
         <td>disabled</td>
         <td>是否禁用</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>editable</td>
+        <td>是否为编辑模块, 1.18.0+</td>
         <td>Boolean</td>
         <td></td>
         <td>false</td>

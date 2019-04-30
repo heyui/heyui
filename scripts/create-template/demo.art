@@ -1,0 +1,14 @@
+<template>
+  <div>
+    <<%=upperName%>></<%=upperName%>>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+
+    };
+  }
+};
+</script>

@@ -2,8 +2,9 @@
   <div>
     <p>value: {{value}}</p>
     <p>Modify the display:<Button @click="update">Update value</Button></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
     <p v-width="300">
-      <TreePicker :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+      <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     ];
     return {
       value: null,
+      disabled: false,
       param: {
         keyName: 'id',
         parentName: 'parent',
@@ -49,7 +51,10 @@ export default {
       log(data);
     },
     update() {
-      this.$refs.treepicker.updateShow({ id: 1, title: '1级' });
+      // 1.17.0+ support this way of definition, use updateShow in other versions
+      this.value = 12;
+      // or
+      // this.$refs.treepicker.updateShow({ id: 1, title: '1级' });
     },
     select(data) {
       log(data);

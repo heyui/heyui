@@ -1,11 +1,11 @@
 <template>
-  <div v-width="400">
+  <div v-width="450">
     <Form
       ref="form"
       :validOnChange="validOnChange"
       :showErrorTip="showErrorTip"
       :labelPosition="labelPosition"
-      :labelWidth="120"
+      :labelWidth="130"
       :rules="validationRules"
       :model="model"
     >
@@ -17,9 +17,10 @@
         <Checkbox v-model="validOnChange">Check after data changes</Checkbox>
       </FormItem>
       <FormItem label="username" prop="name">
+        <template v-slot:label><i class="h-icon-user"></i> username</template>
         <input type="text" v-model="model.name">
       </FormItem>
-      <FormItem label="password" prop="password">
+      <FormItem label="password" icon="h-icon-complete" prop="password">
         <input type="password" v-model="model.password">
       </FormItem>
       <FormItem>

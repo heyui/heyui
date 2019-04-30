@@ -43,7 +43,7 @@
       <BackTop :target="getTarget"></BackTop>
       <div class="right-frame-menu-container">
         <ul class="right-frame-menu" v-if="menus.length>0">
-          <li v-for="(m, index) of menus" :key="m" @click="goMenu(index)">{{m}}</li>
+          <li v-for="(m, index) of menus" :key="index" @click="goMenu(index)">{{m}}</li>
         </ul>
       </div>
     </div>
@@ -92,7 +92,7 @@ export default {
             topOffset: 0
           }
         });
-        let menus = $('.doc h2,.doc h3');
+        let menus = $('.doc h2,.doc h3').not('.demo-box h2,.demo-boxc h3');
         this.menus = [...menus].map(item => item.innerText);
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);

@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "1.17.0-alpha.1",
+  "version": "1.19.1",
   "description": "UI Toolkit for Web, Vue2.0.",
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
@@ -21,7 +21,9 @@
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",
+    "art-template": "^4.13.2",
     "babel-eslint": "^10.0.1",
+    "commander": "^2.19.0",
     "eslint": "^5.3.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
@@ -29,8 +31,9 @@
     "fs": "0.0.1-security",
     "headr": "0.0.4",
     "hey-log": "^0.0.8",
-    "hey-utils": "^0.4.0",
+    "hey-utils": "^1.0.0",
     "less": "^3.9.0",
+    "less-to-json": "^1.2.0",
     "standard-version": "^4.4.0"
   },
   "readmeFilename": "README.md",
@@ -39,6 +42,8 @@
     "pa": "sh ./scripts/publish.sh -alpha",
     "pb": "sh ./scripts/publish.sh -beta",
     "p": "sh ./scripts/publish.sh",
+    "gencss": "sh ./doc/themes/gencss.sh",
+    "create": "node ./scripts/create.js",
     "eslintfix": "eslint --fix --ext .js,.vue src",
     "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
   },

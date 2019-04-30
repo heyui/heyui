@@ -5,7 +5,7 @@
       <button class="h-btn" @click="open(false)">Js opens the popup</button>
       <button class="h-btn" @click="openModal = true">Vue opens the popup</button>
       <Modal v-model="openModal">
-        <ModalTest :param2="value" :params="{a: 'test1'}" @close="openModal=false" @event="event"></ModalTest>
+        <ModalTest :fruit="value" :params="{subparam: 'test1'}" @close="openModal=false" @success="success"></ModalTest>
       </Modal>
     </p>
   </div>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    event(type, data) {
+    success(data) {
       this.value = data;
     },
     open() {
@@ -36,11 +36,11 @@ export default {
           //   require(['./modalTest'], resolve);
           // },
           vue: ModalTest,
-          data: { a: 'test1' }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
-          datas: { param2: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
+          data: { subparam: 'test1' }, // The subcomponent uses the props params parameter to get the data. It is recommended to use datas.
+          datas: { fruit: this.value } // Subcomponents can be used directly using props, compatibility 1.15.0+
         },
         events: {
-          update: (modal, data) => {
+          success: (modal, data) => {
             this.value = data;
           }
         }

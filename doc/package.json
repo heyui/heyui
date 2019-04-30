@@ -23,7 +23,7 @@
     "fetch": "^1.1.0",
     "fetch-jsonp": "^1.0.6",
     "hey-log": "0.0.7",
-    "hey-utils": "^0.4.0",
+    "hey-utils": "^1.0.0",
     "hey-validator": "0.0.5",
     "highlight.js": "^9.10.0",
     "jquery": "^3.2.1",

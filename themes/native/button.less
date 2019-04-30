@@ -19,12 +19,12 @@
     color: @color;
   }
   &:hover {
-    border-color: lighten(@color, 10%);
-    color: lighten(@color, 10%);
+    border-color: lighten(@color, 15%);
+    color: lighten(@color, 15%);
   }
   &:active {
-    border-color: darken(@color, 10%);
-    color: darken(@color, 10%);
+    border-color: darken(@color, 15%);
+    color: darken(@color, 15%);
   }
 }
 
@@ -47,7 +47,7 @@
   background-color: #FFF;
   .btn-text-color(@primary-color, false);
   >i{
-    // font-size: 90%;
+    float: left;
     +span {
       margin-left: 5px;
     }
@@ -116,6 +116,9 @@
     &-block {
       display: block;
       width: 100%;
+    }
+    &-transparent {
+      background: transparent;
     }
   }
   &[disabled] {

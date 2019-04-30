@@ -37,7 +37,11 @@ export default {
       default: false
     },
     text: Boolean,
-    iconCircle: Boolean
+    iconCircle: Boolean,
+    transparent: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {};
@@ -72,6 +76,7 @@ export default {
         [`${prefix}-text-${this.textColor}`]: !!this.textColor,
         [`${prefix}-${this.color}`]: !!this.color,
         [`${prefix}-${this.size}`]: !!this.size,
+        [`${prefix}-transparent`]: !!this.transparent,
         [`${prefix}-no-border`]: this.noBorder === true
       };
     },

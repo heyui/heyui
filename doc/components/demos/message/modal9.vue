@@ -28,7 +28,7 @@ export default {
       this.$Modal({
         title: 'Js',
         hasDivider: true,
-        content: '这是一个居中的弹出框'
+        content: '这是一个带分割线的弹出框'
       });
     }
   }

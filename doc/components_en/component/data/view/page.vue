@@ -8,24 +8,24 @@
     </div>
     <h3>Mini</h3>
     <div>
-      <exampleEn demo="dataview/pagination2"></exampleEn>
+      <example demo="dataview/pagination2"></example>
     </div>
     <h3>Custom</h3>
     <p>The paging control consists of four parts: <code>total</code>,<code>sizes</code>,<code>pager</code>,<code>jumper</code>, custom <code>layout</code> attribute definition components, and sort order.</p>
     <div>
-      <exampleEn demo="dataview/pagination3"></exampleEn>
+      <example demo="dataview/pagination3"></example>
     </div>
     <h3>Custom example</h3>
     <div>
-      <exampleEn demo="dataview/pagination4"></exampleEn>
+      <example demo="dataview/pagination4"></example>
     </div>
     <h3>Center alignment</h3>
     <div>
-      <exampleEn demo="dataview/pagination5"></exampleEn>
+      <example demo="dataview/pagination5"></example>
     </div>
     <h3>Right alignment</h3>
     <div>
-      <exampleEn demo="dataview/pagination6"></exampleEn>
+      <example demo="dataview/pagination6"></example>
     </div>
 
     <h3>Pagination Property</h3>

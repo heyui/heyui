@@ -1,7 +1,6 @@
 <template>
   <div class="h-category-modal">
-    <header class="relative" v-if="params.title">{{params.title}}
-    </header>
+    <header class="relative" v-if="params.title">{{params.title}}</header>
     <div>
       <div class="h-panel-bar">
         <div class="h-category-modal-multiple-tags" v-if="param.multiple">
@@ -13,13 +12,14 @@
         </div>
         <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
-      <Tabs v-if="searchText == ''" v-font="13" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
+      <Tabs v-if="searchText == ''" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
         <Row :space="10">
           <template v-if="searchText==''">
             <Cell :width="8" v-for="data of list" :key="data.key">
             <div class="text-ellipsis h-category-item" @click="openNew(data)">
-              <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
+              <i class="h-icon-loading" v-if="data.status.loading"></i>
+              <Checkbox v-else-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
                 class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span>
             </div>
             </Cell>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <footer>
-      <Button Cellor="primary" @click="confirm">{{'h.common.confirm' | hlang}}</Button>
+      <Button color="primary" @click="confirm">{{'h.common.confirm' | hlang}}</Button>
       <Button @click="close">{{'h.common.cancel' | hlang}}</Button>
     </footer>
   </div>
@@ -79,13 +79,13 @@ export default {
         return;
       }
       if (this.param.multiple) {
-        if (this.param.objects.length >= this.param.limit && this.param.objects.indexOf(data) == -1) {
+        if (this.param.objects.length >= this.param.limit && !this.param.objects.some(item => item.key === data.key)) {
           this.$Message.error(this.t('h.categoryModal.limitWords', {
             size: this.param.limit
           }));
           return;
         }
-        this.param.objects = utils.toggleValue(this.param.objects, data);
+        utils.toggleValueByKey(this.param.objects, 'key', data);
       } else {
         this.param.object = data;
       }
@@ -97,6 +97,12 @@ export default {
         this.tabs.push(data);
         this.tab = data.key;
         this.list = data.children;
+      } else if (data.status.isWait) {
+        this.$emit('event', 'load', {
+          data: data,
+          callback: () => {
+            this.openNew(data);
+          } });
       } else {
         this.change(data);
       }

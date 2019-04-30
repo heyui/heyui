@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="h-notice-header">test</header>
-    <div v-padding="15">Passed parameters:{{params.a}}</div>
+    <div v-padding="15">Passed parameters:{{fruit}}</div>
     <footer class="h-notice-footer">
       <button class="h-btn" @click="close">cancel</button>
       <button class="h-btn h-btn-primary" @click="triggerEvent">open</button>
@@ -18,12 +18,12 @@ export default {
     };
   },
   props: {
-    params: Object
+    fruit: String
   },
   methods: {
     triggerEvent() {
+      this.$emit('success', 'test');
       this.close();
-      this.$emit('event', 'fromchild', 'test');
     },
     close() {
       this.$emit('close');

@@ -25,12 +25,17 @@
 
     <h3>图标库</h3>
     <Row :space="15">
-      <Cell v-for='n of list' :xs='12' :sm='12' :md='6' :lg='4' :xl='3' :key="n">
-        <div>
-          <p><i :class="n"></i></p>
-          <p>{{n}}</p>
-        </div>
-      </Cell>
+      <template  v-for='(n, i) of list'>
+        <Cell width="24" :key="n" v-if="i == 39">
+          <blockquote>1.19.0+</blockquote>
+        </Cell>
+        <Cell :xs='12' :sm='12' :md='6' :lg='4' :xl='4' :key="n">
+          <div>
+            <p><i :class="n"></i></p>
+            <p>{{n}}</p>
+          </div>
+        </Cell>
+      </template>
     </Row>
   </div>
 </template>
@@ -77,7 +82,14 @@ export default {
         'h-icon-upload',
         'h-icon-github',
         'h-icon-location',
-        'h-icon-help'
+        'h-icon-help',
+        'h-icon-help-solid',
+        'h-icon-lock',
+        'h-icon-angle-left',
+        'h-icon-angle-right',
+        'h-icon-angle-top',
+        'h-icon-angle-down',
+        'h-icon-close-min'
       ]
     };
   }

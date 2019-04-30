@@ -34,11 +34,11 @@ export default {
         width: 400,
         component: {
           vue: ModalTest,
-          data: { a: 'test1' }, // 子组件使用props params参数获取数据，建议使用datas
-          datas: { param2: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
+          data: { subparam: 'test1' }, // 子组件使用props params参数获取数据，建议使用datas
+          datas: { fruit: this.value } // 子组件直接使用 props 即可使用，兼容性 1.15.0+
         },
         events: {
-          update: (modal, data) => {
+          success: (modal, data) => {
             this.value = data;
           }
         }

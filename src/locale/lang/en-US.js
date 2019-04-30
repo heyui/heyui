@@ -20,13 +20,21 @@ const lang = {
       limitSize: 'You can select up to {0} data.'
     },
     category: {
-      placeholder: 'please choose',
-      nullOptionText: 'please choose'
+      placeholder: 'please choose'
+    },
+    cascader: {
+      placeholder: 'please choose'
     },
     categoryModal: {
       limitWords: 'You can select up to {size} data.',
       emptyContent: 'No results found',
       total: 'total'
+    },
+    categoryPicker: {
+      nullOptionText: 'please choose',
+      placeholder: 'select',
+      total: 'total',
+      limitSize: 'You can select up to {0} data.'
     },
     autoComplate: {
       placeholder: 'Search Input',

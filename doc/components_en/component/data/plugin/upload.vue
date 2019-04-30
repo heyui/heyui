@@ -99,7 +99,7 @@
 
     <h3 class="democodes">General examples of qiniu</h3>
     <p>This example shows the general processing plan. If you use another upload method, please refer to the file modification. <a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">example</a></p>
-    <codes src="/common/qiniu.vue" type="html"></codes>
+    <codesEn src="/common/qiniu.vue" type="html"></codesEn>
   </div>
 </template>
 

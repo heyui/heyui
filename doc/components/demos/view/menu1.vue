@@ -31,7 +31,6 @@ export default {
       accordion: false,
       inlineCollapsed: false,
       theme: 'h-menu-dark',
-      // mode: 'false',
       data: [
         {
           title: '首页',
@@ -54,15 +53,15 @@ export default {
               key: 'favor2-1'
             },
             {
-              title: '收藏-2',
+              title: '收藏收藏收藏收藏收藏收藏收藏收藏-2',
               key: 'favor3-2',
               children: [
                 {
-                  title: '收藏-2-3',
+                  title: '收藏收藏收藏收藏收藏收藏收藏收藏-2-3',
                   key: 'favor2-3'
                 },
                 {
-                  title: '收藏-2-4',
+                  title: '收藏收藏收藏收藏收藏收藏收藏收藏-2-4',
                   key: 'favor3-4'
                 }
               ]

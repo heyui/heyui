@@ -1,27 +1,28 @@
 <template>
-  <Modal :value="value" @input="updateValue" className="h-image-preview-modal">
-    <Preview :isShow="value" :datas="datas" :index="index"></Preview>
-  </Modal>
+  <div class="h-image-preview-list" :style="listStyles">
+    <div :style="itemStyles(data)" v-for="(data, index) of datas" :key="index" @click="click(index, data)" class="h-image-preview-item"></div>
+  </div>
 </template>
 <script>
 
-import Modal from '../modal/modal';
-import Preview from './preview.vue';
-
 export default {
-  name: 'hImagePreviewModal',
+  name: 'hImagePreview',
   props: {
-    value: {
-      type: Boolean,
-      default: false
+    width: {
+      type: Number,
+      default: 60
+    },
+    distance: {
+      type: Number,
+      default: 10
     },
     datas: {
       type: [Array],
       default: () => ([])
     },
-    index: {
+    borderRadius: {
       type: Number,
-      default: 0
+      default: 3
     }
   },
   data() {
@@ -29,13 +30,27 @@ export default {
     };
   },
   methods: {
-    updateValue(value) {
-      this.$emit('input', value);
+    click(index, value) {
+      this.$emit('click', index, value);
+    },
+    itemStyles(data) {
+      return {
+        height: `${this.width}px`,
+        width: `${this.width}px`,
+        'margin-right': `${this.distance}px`,
+        'margin-bottom': `${this.distance}px`,
+        'border-radius': `${this.borderRadius}px`,
+        'background-image': `url(${data.thumbUrl || data.url})`
+      };
     }
   },
-  components: {
-    Modal,
-    Preview
+  computed: {
+    listStyles() {
+      return {
+        'margin-right': `-${this.distance}px`,
+        'margin-bottom': `-${this.distance}px`
+      };
+    }
   }
 };
 </script>

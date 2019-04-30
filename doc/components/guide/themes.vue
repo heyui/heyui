@@ -20,7 +20,39 @@
     <p>注意：使用这种引用方式，在vue单文件中也可以使用这些变量。</p>
 
     <h3>使用 vue-cli / 自己搭建webpack</h3>
-    <p>这里的引用有一些差别，主要在于样式的引用上。</p>
+
+    <h4>方式一</h4>
+    <p>heyui定义了var.js文件，你可以通过lessLoader的globalVars参数定义全局变量</p>
+    <p>你可以参考heyui-admin项目：<a href="https://github.com/heyui/heyui-admin">链接</a></p>
+    <p>一、项目中重定义参数</p>
+<codes type="javascript">
+const vars = require('heyui/themes/var.js');
+  Object.assign(vars, {
+    'primary-color': '#3788ee',
+    'link-color': '#3788ee',
+    'blue-color': '#2d7bf4',
+    'green-color': '#0acf97',
+    'yellow-color': '#f9bc0b',
+    'red-color': '#f1556c',
+  });
+  module.exports = vars;
+</codes>
+
+    <p>二、以vue-cli3为例，定义loaderOptions。</p>
+<codes type="javascript">
+const globalVars = require('./src/css/var.js');
+export default = {
+  css: {
+    loaderOptions: {
+      less: {
+        globalVars
+      }
+    }
+  }
+}
+</codes>
+
+    <h4>方式二</h4>
     <p>对于 less 变量的定义，我们并没有写入common.less文件，所以需要自己定义一个less文件做引用。</p>
 <codes type="less">@import (less) "~heyui/themes/var.less";
 //重新定义主题

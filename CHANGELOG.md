@@ -2,6 +2,327 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.19.1"></a>
+## [1.19.1](https://github.com/heyui/heyui/compare/v1.19.1-alpha.0...v1.19.1) (2019-04-28)
+
+
+### Bug Fixes
+
+* **Input:** overflow hidden add on select not div ([e17ca72](https://github.com/heyui/heyui/commit/e17ca72))
+
+
+
+<a name="1.19.1-alpha.0"></a>
+## [1.19.1-alpha.0](https://github.com/heyui/heyui/compare/v1.19.0...v1.19.1-alpha.0) (2019-04-28)
+
+
+### Bug Fixes
+
+* **Dropdown:** optimize documentHandler ([ffd36da](https://github.com/heyui/heyui/commit/ffd36da))
+* **var:** fix var.js error ([cc894b7](https://github.com/heyui/heyui/commit/cc894b7))
+
+
+
+<a name="1.19.0"></a>
+# [1.19.0](https://github.com/heyui/heyui/compare/v1.19.0-alpha.4...v1.19.0) (2019-04-26)
+
+
+
+<a name="1.19.0-alpha.4"></a>
+# [1.19.0-alpha.4](https://github.com/heyui/heyui/compare/v1.19.0-alpha.3...v1.19.0-alpha.4) (2019-04-26)
+
+
+### Features
+
+* **Icon:** supplement more icons ([77aee70](https://github.com/heyui/heyui/commit/77aee70))
+
+
+
+<a name="1.19.0-alpha.3"></a>
+# [1.19.0-alpha.3](https://github.com/heyui/heyui/compare/v1.19.0-alpha.2...v1.19.0-alpha.3) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Table:** optimize border table empty style ([8c19cc5](https://github.com/heyui/heyui/commit/8c19cc5)), closes [#107](https://github.com/heyui/heyui/issues/107)
+
+
+
+<a name="1.19.0-alpha.2"></a>
+# [1.19.0-alpha.2](https://github.com/heyui/heyui/compare/v1.19.0-alpha.1...v1.19.0-alpha.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Date:** startWeek add default value ([53e1c8e](https://github.com/heyui/heyui/commit/53e1c8e))
+* **Form:** fix label span position remove spaces ([a54de3a](https://github.com/heyui/heyui/commit/a54de3a))
+
+
+
+<a name="1.19.0-alpha.1"></a>
+# [1.19.0-alpha.1](https://github.com/heyui/heyui/compare/v1.19.0-alpha.0...v1.19.0-alpha.1) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Form:** fix label align padding ([8720d54](https://github.com/heyui/heyui/commit/8720d54))
+* **Table:** fix table align padding ([b4d2ebf](https://github.com/heyui/heyui/commit/b4d2ebf))
+
+
+
+<a name="1.19.0-alpha.0"></a>
+# [1.19.0-alpha.0](https://github.com/heyui/heyui/compare/v1.18.1...v1.19.0-alpha.0) (2019-04-26)
+
+
+### Bug Fixes
+
+* **AutoComplete:** optimize close icon position ([8cbfd7d](https://github.com/heyui/heyui/commit/8cbfd7d))
+* **Button:** icon style add float fixed height ([b85b882](https://github.com/heyui/heyui/commit/b85b882)), closes [#106](https://github.com/heyui/heyui/issues/106)
+* **Button:** optimize text-button color ([8ed2375](https://github.com/heyui/heyui/commit/8ed2375))
+* **Input:** support select and numberinput input group ([0766ebf](https://github.com/heyui/heyui/commit/0766ebf)), closes [#105](https://github.com/heyui/heyui/issues/105)
+* **Menu:** add overflow handler ([7c60923](https://github.com/heyui/heyui/commit/7c60923))
+* **Table:** align right add padding-right ([d467bf9](https://github.com/heyui/heyui/commit/d467bf9)), closes [#105](https://github.com/heyui/heyui/issues/105)
+* **Table:** border table td, tr add padding-right ([444db4c](https://github.com/heyui/heyui/commit/444db4c)), closes [#105](https://github.com/heyui/heyui/issues/105)
+
+
+### Features
+
+* **Search:** add prop height width ([3e9b0d5](https://github.com/heyui/heyui/commit/3e9b0d5))
+
+
+
+<a name="1.18.1"></a>
+## [1.18.1](https://github.com/heyui/heyui/compare/v1.18.1-alpha.0...v1.18.1) (2019-04-23)
+
+
+
+<a name="1.18.1-alpha.0"></a>
+## [1.18.1-alpha.0](https://github.com/heyui/heyui/compare/v1.18.0...v1.18.1-alpha.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* **Menu:** add overflow handler ([c2e45c4](https://github.com/heyui/heyui/commit/c2e45c4))
+* **Table:** add background color ([17a62d2](https://github.com/heyui/heyui/commit/17a62d2))
+
+
+
+<a name="1.18.0"></a>
+# [1.18.0](https://github.com/heyui/heyui/compare/v1.18.0-alpha.6...v1.18.0) (2019-04-19)
+
+
+
+<a name="1.18.0-alpha.6"></a>
+# [1.18.0-alpha.6](https://github.com/heyui/heyui/compare/v1.18.0-alpha.5...v1.18.0-alpha.6) (2019-04-18)
+
+
+### Bug Fixes
+
+* **Pagination:** fix cur or page update ([0008b8a](https://github.com/heyui/heyui/commit/0008b8a))
+
+
+
+<a name="1.18.0-alpha.5"></a>
+# [1.18.0-alpha.5](https://github.com/heyui/heyui/compare/v1.18.0-alpha.4...v1.18.0-alpha.5) (2019-04-17)
+
+
+### Bug Fixes
+
+* **Grid:** clear float ([b82e5a1](https://github.com/heyui/heyui/commit/b82e5a1))
+
+
+
+<a name="1.18.0-alpha.4"></a>
+# [1.18.0-alpha.4](https://github.com/heyui/heyui/compare/v1.18.0-alpha.3...v1.18.0-alpha.4) (2019-04-17)
+
+
+### Reverts
+
+* **Grid:** 移除overflow属性 ([16e3964](https://github.com/heyui/heyui/commit/16e3964))
+
+
+
+<a name="1.18.0-alpha.3"></a>
+# [1.18.0-alpha.3](https://github.com/heyui/heyui/compare/v1.18.0-alpha.2...v1.18.0-alpha.3) (2019-04-16)
+
+
+### Bug Fixes
+
+* style optimize ([f67bbff](https://github.com/heyui/heyui/commit/f67bbff))
+
+
+
+<a name="1.18.0-alpha.2"></a>
+# [1.18.0-alpha.2](https://github.com/heyui/heyui/compare/v1.18.0-alpha.1...v1.18.0-alpha.2) (2019-04-16)
+
+
+### Bug Fixes
+
+* **Category:** objects toggle value error ([64a4dea](https://github.com/heyui/heyui/commit/64a4dea))
+* **CategoryPicker:** fix multiple objects change ([12a3e8b](https://github.com/heyui/heyui/commit/12a3e8b))
+* **CategoryPicker:** showAllLevels with object value ([525d67b](https://github.com/heyui/heyui/commit/525d67b))
+* **FormItem:** error message style optimize ([109d489](https://github.com/heyui/heyui/commit/109d489))
+
+
+
+<a name="1.18.0-alpha.1"></a>
+# [1.18.0-alpha.1](https://github.com/heyui/heyui/compare/v1.18.0-alpha.0...v1.18.0-alpha.1) (2019-04-15)
+
+
+### Bug Fixes
+
+* size computed error ([23b23d7](https://github.com/heyui/heyui/commit/23b23d7))
+
+
+
+<a name="1.18.0-alpha.0"></a>
+# [1.18.0-alpha.0](https://github.com/heyui/heyui/compare/v1.17.1...v1.18.0-alpha.0) (2019-04-15)
+
+
+### Bug Fixes
+
+* **Category:** add clear icon ([e9d98e7](https://github.com/heyui/heyui/commit/e9d98e7))
+* **Category:** fix dispose function ([4c93874](https://github.com/heyui/heyui/commit/4c93874))
+* **DatePicker:** add user-select ([0c29829](https://github.com/heyui/heyui/commit/0c29829)), closes [#91](https://github.com/heyui/heyui/issues/91)
+* **DatePicker:** update date when choose time ([0d70433](https://github.com/heyui/heyui/commit/0d70433))
+* **Dropdown:** fix getContainer call ([6d394d8](https://github.com/heyui/heyui/commit/6d394d8))
+* **Form:** async valid add tip error ([5d21ac1](https://github.com/heyui/heyui/commit/5d21ac1))
+* update version ([c1c095f](https://github.com/heyui/heyui/commit/c1c095f))
+* **Form:** use provide / inject replace getParent ([80bcac0](https://github.com/heyui/heyui/commit/80bcac0))
+* **Grid:** clear float ([dc60c71](https://github.com/heyui/heyui/commit/dc60c71)), closes [#90](https://github.com/heyui/heyui/issues/90)
+* **Number:** change event trigger fixed ([b375f23](https://github.com/heyui/heyui/commit/b375f23))
+* demo 更新 ([0aa16c1](https://github.com/heyui/heyui/commit/0aa16c1))
+* **Popper:** body scroll add capture ([2160bef](https://github.com/heyui/heyui/commit/2160bef))
+* **Select:** fix select warning ([de93388](https://github.com/heyui/heyui/commit/de93388))
+* **Select:** fix warn judgement logic ([6ed8ff2](https://github.com/heyui/heyui/commit/6ed8ff2))
+* **Tooltip:** add editable prop ([0a0db59](https://github.com/heyui/heyui/commit/0a0db59)), closes [#99](https://github.com/heyui/heyui/issues/99)
+* **Tree:** optimize ([06c63b4](https://github.com/heyui/heyui/commit/06c63b4))
+* **Utils:** change utils toggleValue function ([3a1160a](https://github.com/heyui/heyui/commit/3a1160a))
+
+
+### Features
+
+* **Button:** add prop transparent ([6c52b11](https://github.com/heyui/heyui/commit/6c52b11))
+* **Category:** add asynchronous load data ([9696e6f](https://github.com/heyui/heyui/commit/9696e6f)), closes [#70](https://github.com/heyui/heyui/issues/70)
+* **Category:** add asynchronous load data ([fcc5fea](https://github.com/heyui/heyui/commit/fcc5fea)), closes [#70](https://github.com/heyui/heyui/issues/70)
+* **CategoryPicker:** init ([0cff0bd](https://github.com/heyui/heyui/commit/0cff0bd))
+* **Form:** Custom label ([b5c9e6b](https://github.com/heyui/heyui/commit/b5c9e6b)), closes [#87](https://github.com/heyui/heyui/issues/87)
+* **FormItem:** add prop icon ([0fabaa1](https://github.com/heyui/heyui/commit/0fabaa1)), closes [#87](https://github.com/heyui/heyui/issues/87)
+* **ImagePreview:** create ImagePreview ([b91443b](https://github.com/heyui/heyui/commit/b91443b))
+* **Modal:** event support multiple parameters ([5d22319](https://github.com/heyui/heyui/commit/5d22319))
+* **Modal:** event support multiple parameters ([e2ebc8c](https://github.com/heyui/heyui/commit/e2ebc8c))
+* **Modal:** use $emit direct trigger events ([dcc6612](https://github.com/heyui/heyui/commit/dcc6612))
+* **Pagination:** support v-model ([2da8513](https://github.com/heyui/heyui/commit/2da8513))
+* **Timeline:** add slot icon ([e2fb31c](https://github.com/heyui/heyui/commit/e2fb31c)), closes [#100](https://github.com/heyui/heyui/issues/100)
+* **Tree:** add method expand ([27cf7ad](https://github.com/heyui/heyui/commit/27cf7ad)), closes [#93](https://github.com/heyui/heyui/issues/93)
+
+
+
+<a name="1.17.1"></a>
+## [1.17.1](https://github.com/heyui/heyui/compare/v1.17.0...v1.17.1) (2019-03-22)
+
+
+
+<a name="1.17.0"></a>
+# [1.17.0](https://github.com/heyui/heyui/compare/v1.16.1-alpha.3...v1.17.0) (2019-03-22)
+
+
+### Bug Fixes
+
+* **DateFullRangePicker:** week calculations fixed ([2430b7f](https://github.com/heyui/heyui/commit/2430b7f))
+* **Dropdown:** add show event object ([f2f93df](https://github.com/heyui/heyui/commit/f2f93df))
+* **Dropdown:** optimization ([52717e3](https://github.com/heyui/heyui/commit/52717e3))
+* **Dropdown:** when open other menu close self ([596ca94](https://github.com/heyui/heyui/commit/596ca94)), closes [#77](https://github.com/heyui/heyui/issues/77)
+* **DropdownMenu:** event show add event ([abebc22](https://github.com/heyui/heyui/commit/abebc22))
+* **Loading:** 开启的时候删除关闭的timeout ([06f52a8](https://github.com/heyui/heyui/commit/06f52a8))
+* 优化切换主题的过程 ([7c016ea](https://github.com/heyui/heyui/commit/7c016ea))
+* **Pop:** change show event position ([c374129](https://github.com/heyui/heyui/commit/c374129))
+* **Pop:** 修复上次格式化产生的错误 ([034dcfa](https://github.com/heyui/heyui/commit/034dcfa))
+* **Select:** parse add warn ([de2f012](https://github.com/heyui/heyui/commit/de2f012))
+* **Select:** parse add warn ([a1c8ab9](https://github.com/heyui/heyui/commit/a1c8ab9))
+* **Skeleton:** loading default change to false ([64e7551](https://github.com/heyui/heyui/commit/64e7551))
+* **tree:** Clicking expand arrow doesn't work when selectOnClick is true ([23f0e6e](https://github.com/heyui/heyui/commit/23f0e6e))
+* **Tree:** remove select when value is null ([0a46b58](https://github.com/heyui/heyui/commit/0a46b58))
+* **TreePicker:** add disabled watch ([06a8aa9](https://github.com/heyui/heyui/commit/06a8aa9)), closes [#73](https://github.com/heyui/heyui/issues/73)
+* **TreePicker:** v-model update case show update ([7c43827](https://github.com/heyui/heyui/commit/7c43827))
+
+
+### Features
+
+* **DateFullRangePicker:** add prop layout ([8cce8f8](https://github.com/heyui/heyui/commit/8cce8f8))
+* **Skeleton:** init Skeleton ([e2e96d7](https://github.com/heyui/heyui/commit/e2e96d7))
+* **Skeleton:** init Skeleton ([3011f4f](https://github.com/heyui/heyui/commit/3011f4f))
+* **Table:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
+* **Tree:**  enhance Tree component ([2d805d7](https://github.com/heyui/heyui/commit/2d805d7))
+
+
+
+<a name="1.17.0-alpha.6"></a>
+# [1.17.0-alpha.6](https://github.com/heyui/heyui/compare/v1.17.0-alpha.5...v1.17.0-alpha.6) (2019-03-20)
+
+
+### Bug Fixes
+
+* **Dropdown:** optimization ([52717e3](https://github.com/heyui/heyui/commit/52717e3))
+* **TreePicker:** v-model update case show update ([7c43827](https://github.com/heyui/heyui/commit/7c43827))
+
+
+
+<a name="1.17.0-alpha.5"></a>
+# [1.17.0-alpha.5](https://github.com/heyui/heyui/compare/v1.17.0-alpha.4...v1.17.0-alpha.5) (2019-03-18)
+
+
+### Bug Fixes
+
+* **Pop:** change show event position ([c374129](https://github.com/heyui/heyui/commit/c374129))
+
+
+
+<a name="1.17.0-alpha.4"></a>
+# [1.17.0-alpha.4](https://github.com/heyui/heyui/compare/v1.17.0-alpha.3...v1.17.0-alpha.4) (2019-03-18)
+
+
+### Bug Fixes
+
+* **DropdownMenu:** event show add event ([abebc22](https://github.com/heyui/heyui/commit/abebc22))
+
+
+
+<a name="1.17.0-alpha.3"></a>
+# [1.17.0-alpha.3](https://github.com/heyui/heyui/compare/v1.17.0-alpha.2...v1.17.0-alpha.3) (2019-03-18)
+
+
+### Bug Fixes
+
+* **Dropdown:** add show event object ([f2f93df](https://github.com/heyui/heyui/commit/f2f93df))
+* **Select:** parse add warn ([a1c8ab9](https://github.com/heyui/heyui/commit/a1c8ab9))
+* **Skeleton:** loading default change to false ([64e7551](https://github.com/heyui/heyui/commit/64e7551))
+
+
+### Features
+
+* **Skeleton:** init Skeleton ([3011f4f](https://github.com/heyui/heyui/commit/3011f4f))
+
+
+
+<a name="1.17.0-alpha.2"></a>
+# [1.17.0-alpha.2](https://github.com/heyui/heyui/compare/v1.17.0-alpha.1...v1.17.0-alpha.2) (2019-03-18)
+
+
+### Bug Fixes
+
+* **Dropdown:** when open other menu close self ([596ca94](https://github.com/heyui/heyui/commit/596ca94)), closes [#77](https://github.com/heyui/heyui/issues/77)
+* **Select:** parse add warn ([de2f012](https://github.com/heyui/heyui/commit/de2f012))
+* **TreePicker:** add disabled watch ([06a8aa9](https://github.com/heyui/heyui/commit/06a8aa9)), closes [#73](https://github.com/heyui/heyui/issues/73)
+
+
+### Features
+
+* **Skeleton:** init Skeleton ([e2e96d7](https://github.com/heyui/heyui/commit/e2e96d7))
+* **Form:** add prop validOnChange ([36398fe](https://github.com/heyui/heyui/commit/36398fe))
+
+
+
 <a name="1.17.0-alpha.1"></a>
 # [1.17.0-alpha.1](https://github.com/heyui/heyui/compare/v1.17.0-alpha.0...v1.17.0-alpha.1) (2019-03-07)
 

@@ -4,7 +4,7 @@
       <slot name="time"></slot>
     </div>
     <div :class="prefix + '-item-content'">
-      <div :class="circleSC.classes" :style="circleSC.styles"><i :class="icon"></i></div>
+      <div :class="circleSC.classes" :style="circleSC.styles"><i :class="icon" v-if="!this.$slots.icon"></i><slot name="icon"></slot></div>
       <slot name="content"></slot>
       <slot></slot>
     </div>
@@ -27,7 +27,7 @@ export default {
     itemCls() {
       return {
         [`${prefix}-item`]: true,
-        'has-icon': !!this.icon,
+        'has-icon': !!this.icon || !!this.$slots.icon,
         [`${prefix}-item-${this.color}-color`]: !!this.color
       };
     },

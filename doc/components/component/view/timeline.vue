@@ -61,10 +61,34 @@
       </tr>
       <tr>
         <td>icon</td>
-        <td>图标</td>
+        <td>图标，1.18.0+</td>
         <td>string</td>
-        <td>icon图标</td>
+        <td></td>
         <td>-</td>
+      </tr>
+    </table>
+
+    <h3>TimelineItem Slot</h3>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>content</td>
+        <td>定义展示内容</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>time</td>
+        <td>定义时间展示</td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>定义图标展示</td>
+        <td>无</td>
       </tr>
     </table>
   </div>

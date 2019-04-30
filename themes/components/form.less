@@ -1,4 +1,6 @@
 @form-prefix: ~"@{prefix}form";
+@form-label-padding: (@input-height - @font-size-mini)/2;
+
 .form-content-width100 {
   input[type='text'],
   input[type='password'],
@@ -39,7 +41,7 @@
         font-size: @font-size-mini;
         color: @dark1-color;
         line-height: 1;
-        padding: (@input-height - @font-size-mini)/2 15px;
+        padding: @form-label-padding 15px @form-label-padding 0;
         box-sizing: border-box;
       }
       &-required {
@@ -75,6 +77,7 @@
       &-left {
         .@{form-prefix}-item-label {
           text-align: left;
+          padding: @form-label-padding 0 @form-label-padding 15px ;
         }
 
         .@{form-prefix}-item-required {

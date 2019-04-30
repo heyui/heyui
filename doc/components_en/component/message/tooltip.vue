@@ -2,6 +2,7 @@
   <div class="doc">
     <h2>Tooltip</h2>
     <blockquote>Note: if tooltip is on the right side of the page and the display is abnormal, please use the style to set the fixed width for the content.</blockquote>
+    <blockquote>Note: If you use tooltip as the editing module, add the parameter editable. The normal z-index attribute of tooltip is higher than the edited tooltip module.</blockquote>
     <h3>Basic</h3>
     <exampleEn demo="message/tooltip1"></exampleEn>
 
@@ -64,6 +65,13 @@
       <tr>
         <td>disabled</td>
         <td></td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>editable</td>
+        <td>edit tooltip, 1.18.0+</td>
         <td>Boolean</td>
         <td></td>
         <td>false</td>

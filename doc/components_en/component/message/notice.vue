@@ -17,7 +17,7 @@
     <h3>Notice Component</h3>
     <exampleEn demo="message/notice6"></exampleEn>
     <blockquote>The code used in the popup box</blockquote>
-    <codes src="/message/noticeTest.vue" type="html"></codes>
+    <codesEn src="/message/noticeTest.vue" type="html"></codesEn>
 
     <h3>Set global auto-off time</h3>
     <exampleEn demo="message/notice5"></exampleEn>

@@ -53,6 +53,29 @@
   }
 }
 
+.h-image-preview-list {
+  .clearfix;
+  clear: both;
+  .h-image-preview-item {
+    position: relative;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    &:hover:before {
+      content: '';
+      position: absolute;
+      left: 0; 
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
+
 
 .h-image-preview-modal {
   &.h-modal {

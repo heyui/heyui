@@ -6,17 +6,17 @@
     <p>Alternatively, you need to modify some expressions, or refer to the following configuration changes.</p>
 
     <h3>Setting the language of the system</h3>
-    <codes type="javascript">
+    <codesEn type="javascript">
 import Vue from 'vue';
 import HeyUI from 'heyui';
 import en from 'heyui/dist/locale/en-US';
 
 Vue.use(HeyUI);
 HeyUI.locale(en);
-    </codes>
+    </codesEn>
 
     <h3>Use vue-i18n</h3>
-    <codes type="javascript">
+    <codesEn type="javascript">
 import Vue from 'vue';
 import HeyUI from 'heyui';
 import VueI18n from 'vue-i18n';
@@ -43,7 +43,7 @@ HeyUI.i18n(i18n);
 this.$i18n.locale = 'en';
 // or
 i18n.locale = 'en';
-    </codes>
+    </codesEn>
 
     <h3>Supported language</h3>
     <p>HeyUI has now supported the following languages:</p>

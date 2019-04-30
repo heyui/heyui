@@ -36,6 +36,15 @@
       <button class="h-btn h-btn-text-blue">BLUE button</button>
       <button class="h-btn h-btn-text-gray">GRAY button</button>
     </div>
+    <h4>Background transparent</h4>
+    <div class="buttons bg-gray3-color" style="padding: 10px 10px 0;">
+      <button class="h-btn h-btn-text-primary h-btn-transparent">Main color button</button>
+      <button class="h-btn h-btn-text-yellow h-btn-transparent">YELLOW button</button>
+      <button class="h-btn h-btn-text-green h-btn-transparent">GREEN button</button>
+      <button class="h-btn h-btn-text-red h-btn-transparent">RED button</button>
+      <button class="h-btn h-btn-text-blue h-btn-transparent">BLUE button</button>
+      <button class="h-btn h-btn-text-gray h-btn-transparent">GRAY button</button>
+    </div>
     <h4>Text color</h4>
     <div class="buttons">
       <button class="h-btn h-btn-no-border h-btn-text-primary">Main color button</button>

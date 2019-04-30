@@ -25,6 +25,10 @@ export default {
       type: Boolean,
       default: false
     },
+    editable: {
+      type: Boolean,
+      default: false
+    },
     className: {
       type: String
     },
@@ -62,6 +66,7 @@ export default {
           theme: this.theme,
           html: true,
           trigger: this.trigger,
+          editable: this.editable,
           className: this.className,
           container: document.body,
           placement: this.placement,

@@ -2,8 +2,9 @@
   <div>
     <p>value: {{value}}</p>
     <p>修改展示：<Button @click="update">更新值</Button></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
     <p v-width="300">
-       <TreePicker :option="param" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+       <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     ];
     return {
       value: null,
+      disabled: false,
       param: {
         keyName: 'id',
         parentName: 'parent',
@@ -49,7 +51,11 @@ export default {
       log(data);
     },
     update() {
-      this.$refs.treepicker.updateShow({ id: 1, title: '1级' });
+      // 1.17.0+ 支持该方式更新，其他版本请使用 updateShow
+      this.value = 12;
+
+      // 如果数据异步分布请求
+      // this.$refs.treepicker.updateShow({ id: 1, title: '1级' });
     },
     select(data) {
       log(data);

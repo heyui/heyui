@@ -11,7 +11,7 @@
     </ul>
     <h3>Installation</h3>
     <p>It is recommended to use npm for installation.</p>
-    <codes type="sh">npm install heyui</codes>
+    <codesEn type="sh">npm install heyui</codesEn>
 
     <h3>Example</h3>
     <p>By referring to HeyUI, we can simply write an application interface.</p>

@@ -50,7 +50,10 @@ export default {
       // Triggered when the selector is closed
     },
     update() {
-      this.$refs.treepicker.updateShow([{ id: 1, title: '1级' }]);
+      // 1.17.0+ support this way of definition, use updateShow in other versions
+      this.value = 12;
+      // or
+      // this.$refs.treepicker.updateShow([{ id: 1, title: '1级' }]);
     },
     choose(data) {
       log(data);

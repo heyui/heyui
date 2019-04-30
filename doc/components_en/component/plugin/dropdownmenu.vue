@@ -41,6 +41,9 @@
     <h3>Add unread</h3>
     <exampleEn demo="plugins/dropdownmenu8"></exampleEn>
 
+    <h3>Custom style</h3>
+    <exampleEn demo="plugins/dropdownmenu11"></exampleEn>
+
     <h3>DropdownMenu Property</h3>
     <table class="table">
       <tr>

@@ -10,7 +10,7 @@
     <h3>拥有搜索按钮的查询组件</h3>
     <example demo="plugins/search2"></example>
 
-    <h3>整行</h3>
+    <h3>自定义样式</h3>
     <example demo="plugins/search3"></example>
 
     <h3>Search 参数</h3>
@@ -63,6 +63,20 @@
         <td>String</td>
         <td>enter, input</td>
         <td>enter</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>设置搜索框的高度, 1.19.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>设置搜索框的高度, 1.19.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 

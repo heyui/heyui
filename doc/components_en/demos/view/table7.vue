@@ -47,6 +47,8 @@ export default {
         {
           title: 'Age',
           prop: 'age',
+          align: 'right',
+          width: 100,
           tooltip: true,
           placement: 'top-start',
           content:

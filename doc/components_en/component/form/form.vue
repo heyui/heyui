@@ -195,6 +195,27 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>icon</td>
+        <td>show icon, 1.18.0</td>
+        <td>String</td>
+        <td></td>
+        <td>-</td>
+      </tr>
+    </table>
+
+    <h3>FormItem Slot</h3>
+    <table class="table">
+      <tr>
+        <th>slot</th>
+        <th>Description</th>
+        <th>Parameter</th>
+      </tr>
+      <tr>
+        <td>label</td>
+        <td>Custom label, compatibility 1.18.0+</td>
+        <td>label</td>
+      </tr>
     </table>
 
     <h3>FormItem Methods</h3>

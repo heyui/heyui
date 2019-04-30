@@ -2,13 +2,11 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import 'highlight.js/styles/github-gist.css';
-// import HeyUI from 'heyui';
 import App from './App.vue';
 
 import utils from 'hey-utils';
 
 import HeyUI from './../src/index';
-// import titleConfig from './js/config/title-config';
 import heyuiConfig from './js/config/heyui-config';
 import VueHighlightJS from './js/vuehighlight';
 
@@ -82,4 +80,14 @@ const app = new Vue({
   render: h => h(App)
 });
 
+console.log(` %c
+ _    _  ______ __     __ _    _  _____
+| |  | ||  ____|\\ \\   / /| |  | ||_   _|
+| |__| || |__    \\ \\_/ / | |  | |  | |
+|  __  ||  __|    \\   /  | |  | |  | |
+| |  | || |____    | |   | |__| | _| |_
+|_|  |_||______|   |_|    \\____/ |_____|
+          
+             一个基于Vue.js的高质量UI组件库
+`, 'color: #45b984');
 export default app;

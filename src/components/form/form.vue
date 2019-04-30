@@ -58,6 +58,18 @@ export default {
       default: true
     }
   },
+  provide: function () {
+    return {
+      validField: this.validField,
+      removeProp: this.removeProp,
+      getConfig: this.getConfig,
+      setConfig: this.setConfig,
+      updateErrorMessage: this.updateErrorMessage,
+      getErrorMessage: this.getErrorMessage,
+      labelWidth: this.labelWidth,
+      mode: this.mode
+    };
+  },
   data() {
     return {
       messages: {},
@@ -103,7 +115,7 @@ export default {
       }
     },
     trigger(target) {
-      if(!this.validOnChange) {
+      if (!this.validOnChange) {
         return false;
       }
       let formItem = findDomUtil(target, this.$el);
@@ -187,7 +199,7 @@ export default {
       return result;
     },
     tipError(result) {
-      if (!result.result) {
+      if (result && !result.result) {
         let m = result.messages[0];
         if (this.showErrorTip) {
           if (m.type == 'base') {
@@ -212,8 +224,12 @@ export default {
     },
     validAsync() {
       return new Promise((resolve) => {
-        this.valid((result) => {
-          resolve(this.renderMessage(result));
+        let returnResult = this.valid((result) => {
+          let asyncResult = this.renderMessage(result);
+          if (returnResult && returnResult.result) {
+            this.tipError(asyncResult);
+          }
+          resolve(asyncResult);
         });
       });
     },

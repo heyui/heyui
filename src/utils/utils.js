@@ -101,8 +101,9 @@ export default utils.extend({}, utils, {
   toggleValue(list, value) {
     if (!this.isArray(list)) return [value];
     let copyList = this.extend([], list);
-    if (list.some(item => item == value)) {
-      copyList.splice(list.indexOf(value), 1);
+    let filters = list.filter(item => item == value);
+    if (filters.length > 0) {
+      copyList.splice(list.indexOf(filters[0]), 1);
     } else {
       copyList.push(value);
     }
@@ -110,15 +111,8 @@ export default utils.extend({}, utils, {
   },
   toggleValueByKey(list, key, value) {
     if (!this.isArray(list)) return;
-    let index = -1;
-    for (let l of list) {
-      if (this.isNull(l[key])) {
-        continue;
-      }
-      index = list.indexOf(l);
-      break;
-    }
-    if (index > -1) {
+    let index = list.findIndex(item => item[key] === value.key);
+    if (index != -1) {
       list.splice(index, 1);
     } else {
       list.push(value);

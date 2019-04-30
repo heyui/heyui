@@ -15,6 +15,9 @@ import Breadcrumb from './components/breadcrumb';
 import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
+// import Cascader from './components/cascader';
+import CategoryPicker from './components/categorypicker';
+// import ColorPicker from './components/colorpicker';
 import Datetime from './components/datetime';
 import Dropdown from './plugins/dropdown';
 import DropdownCustom from './components/dropdowncustom';
@@ -35,6 +38,7 @@ import Search from './components/search';
 import Select from './components/select';
 import Switch from './components/switch';
 import SwitchList from './components/switchlist';
+import Skeleton from './components/skeleton';
 import { Table, TableItem } from './components/table';
 import Tabs from './components/tabs';
 import TagInput from './components/taginput';
@@ -93,8 +97,11 @@ const components = {
   ButtonGroup,
   Breadcrumb,
   Category,
+  // Cascader,
+  CategoryPicker,
   Checkbox,
   hCircle: Circle,
+  // ColorPicker,
   DatePicker: Datetime.DatePicker,
   DateRangePicker: Datetime.DateRangePicker,
   DateFullRangePicker: Datetime.DateFullRangePicker,
@@ -122,6 +129,7 @@ const components = {
   Steps,
   hSwitch: Switch,
   SwitchList,
+  Skeleton,
   Timeline,
   TimelineItem: Timeline.Item,
   Transfer,

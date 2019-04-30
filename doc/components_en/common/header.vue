@@ -4,8 +4,14 @@
       <router-link class="logo" to="/en">
         <div class="header-logo"><span></span></div>HEY UI
       </router-link>
-      <AutoComplete v-width="180" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
+      <AutoComplete v-width="220" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
+        <div class="bg-group" v-if="$route.name != 'Home'">
+          <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
+          <div class="bg1" @click="dynamicLoadCss('pink')"></div>
+          <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
+          <div class="bg4" @click="dynamicLoadCss('red')"></div>
+        </div>
         <template v-if="$route.name != 'en_Home'">
           <!-- <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
@@ -37,6 +43,9 @@ export default {
     };
   },
   methods: {
+    dynamicLoadCss(type) {
+      Utils.dynamicLoadCss(type);
+    },
     changeLang() {
       this.$i18n.locale = 'zh';
       utils.saveLocal('LANGUAGE', 'zh');

@@ -6,7 +6,8 @@
   </div>
 </template>
 <script>
-// Since the package of Qi Niu and plupload is not es6 mode, we have encapsulated two corresponding es6 packages.
+
+// 由于七牛和plupload的封装不是es6模式的，所以我们自己封装了两个对应的es6包
 import qiniujs from 'qiniu-js-es6';
 import utils from 'hey-utils';
 
@@ -14,7 +15,7 @@ export default {
   props: {
     options: {
       type: Object,
-      default: () => {}
+      default: () => { }
     },
     type: {
       type: String,
@@ -50,8 +51,8 @@ export default {
     },
     init() {
       let that = this;
-      // Seven cattle documents please refer to https://developer.qiniu.com/kodo/sdk/1283/javascript
-      // Uploader documentation please refer to http://www.cnblogs.com/2050/p/3913184.html
+      // 七牛文档请参考https://developer.qiniu.com/kodo/sdk/1283/javascript
+      // uploader文档请参考http://www.cnblogs.com/2050/p/3913184.html
       let param = {
         runtimes: 'html5',
         browse_button: this.$refs.uploader.getBrowseButton(),
@@ -63,24 +64,30 @@ export default {
         filters: {},
         init: {
           FilesAdded(up, files) {
-            if (that.limit && files.length + that.value.length > that.limit) {
-              that.$Message.error(`You uploaded more than ${that.limit}个。`);
+            if (that.limit && (files.length + that.value.length > that.limit)) {
+              that.$Message.error(`你上传的文件超过${that.limit}个。`);
               return;
             }
-            files.forEach(file => {
+            files.forEach((file) => {
               if (FileReader) {
                 let reader = new FileReader();
-                reader.onload = event => {
+                reader.onload = (event) => {
                   file.thumbUrl = event.target.result;
                 };
                 reader.readAsDataURL(file.getNative());
               }
-              that.uploadList.push(file);
+              if (that.type == 'files' || that.type == 'images') {
+                that.uploadList.push(file);
+              } else {
+                that.uploadList = [file];
+              }
             });
             // that.$emit("startUpload");
             up.start();
           },
-          BeforeUpload(up, file) {},
+          BeforeUpload(up, file) {
+
+          },
           UploadProgress(up, file) {
             // log(file.percent);
           },
@@ -88,7 +95,7 @@ export default {
             // log('FileUploaded', file.status);
             let domain = up.getOption('domain');
             let res = JSON.parse(info.response);
-            let sourceLink = `${domain}/${res.key}`; // Get the Url of the file after successful upload
+            let sourceLink = `${domain}/${res.key}`; // 获取上传成功后的文件的Url
             file.url = sourceLink;
           },
           Error(up, err, errTip) {
@@ -98,8 +105,9 @@ export default {
           UploadComplete() {
             that.$emit('completeUpload');
             let fileList = that.$refs.uploader.getFileList();
+            // log(fileList);
             //   fileList.map(item=>{
-            //     // Final assembly of the returned data
+            //     // 对返回的数据做最后的组装
             //     // item.type = 5;
             //     // item.fileType = ...
             //   })
@@ -109,8 +117,8 @@ export default {
             }
           }
           // Key(up, file) {
-          //     // If you want to personalize the key of each file in the front end, you can configure this function.
-          //     // This configuration must be in unique_names: false，save_key: false Only take effect
+          //     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
+          //     // 该配置必须要在unique_names: false，save_key: false时才生效
           //     var key = "";
           //     // do something with key here
           //     return key
@@ -129,8 +137,8 @@ export default {
     },
     fileclick(file) {
       this.$Modal({
-        title: 'Preview or download',
-        content: `Customize file preview or download`
+        title: '预览或者下载',
+        content: `自定义处理文件预览或者下载`
       });
     }
   },

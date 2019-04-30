@@ -1,42 +1,34 @@
 <template>
   <div :class="pageCls">
-    <span :class="prefix+'-total'"
-          :style="{order:orders.total}"
-          v-if="orders.total!=-1">{{ 'h.pagination.totalBefore' | hlang}} <span :class="prefix+'-total-num'">{{total}}</span> {{ 'h.pagination.totalAfter' | hlang}}</span>
-    <Select :no-border="small"
-            :autosize="true"
-            :null-option="false"
-            :datas="sizesShow"
-            @input="changesize"
-            v-model="sizeNow"
-            :style="{order:orders.sizes}"
-            v-if="orders.sizes!=-1"></Select>
-    <span class="h-page-pager-container"
-          :style="{order:orders.pager}"
-          v-if="orders.pager!=-1 && this.count>0">
-                      <span :class="prevCls" @click="prev()"><i class="h-icon-left"></i></span>
-    <span @click="change(1)"
-          :class="genPagerCls(1)">1</span>
-    <span v-if="pagers.length > 0 && 1 < pagers[0] - 1"
-          class="h-page-pager h-page-ellipsis">...</span>
-    <span v-for="pager of pagers"
-          :key="pager"
-          @click="change(pager)"
-          :class="genPagerCls(pager)">{{pager}}</span>
-    <span class="h-page-pager h-page-ellipsis"
-          v-if="pagers.length > 0 && count > pagers[pagers.length-1] + 1">...</span>
-    <span @click="change(count)"
-          :class="genPagerCls(count)"
-          v-if="this.count>1">{{count}}</span>
-    <span :class="nextCls"
-          @click="next()"><i class="h-icon-right"></i></span>
+    <span :class="prefix+'-total'" :style="{order:orders.total}" v-if="orders.total!=-1">
+      {{ 'h.pagination.totalBefore' | hlang}}
+      <span :class="prefix+'-total-num'">{{totalNow}}</span>
+      {{ 'h.pagination.totalAfter' | hlang}}
     </span>
-    <input type="text"
-           :style="{order:orders.jumper}"
-           v-if="orders.jumper!=-1 && count > 0"
-           v-width="40"
-           :value="curNow"
-           @blur="jump" />
+    <Select
+      :no-border="small"
+      :autosize="true"
+      :null-option="false"
+      :datas="sizesShow"
+      @input="changesize"
+      v-model="sizeNow"
+      :style="{order:orders.sizes}"
+      v-if="orders.sizes!=-1"
+    ></Select>
+    <span class="h-page-pager-container" :style="{order:orders.pager}" v-if="orders.pager!=-1 && this.count>0">
+      <span :class="prevCls" @click="prev()">
+        <i class="h-icon-left"></i>
+      </span>
+      <span @click="change(1)" :class="genPagerCls(1)">1</span>
+      <span v-if="pagers.length > 0 && 1 < pagers[0] - 1" class="h-page-pager h-page-ellipsis">...</span>
+      <span v-for="pager of pagers" :key="pager" @click="change(pager)" :class="genPagerCls(pager)">{{pager}}</span>
+      <span class="h-page-pager h-page-ellipsis" v-if="pagers.length > 0 && count > pagers[pagers.length-1] + 1">...</span>
+      <span @click="change(count)" :class="genPagerCls(count)" v-if="this.count>1">{{count}}</span>
+      <span :class="nextCls" @click="next()">
+        <i class="h-icon-right"></i>
+      </span>
+    </span>
+    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" v-width="40" :value="curNow" @blur="jump" @keyup.enter="jump">
   </div>
 </template>
 <script>
@@ -79,6 +71,10 @@ export default {
     layout: {
       type: String,
       default: () => config.getOption('page.layout')
+    },
+    value: {
+      type: Object,
+      default: () => ({})
     }
   },
   data() {
@@ -87,26 +83,24 @@ export default {
     for (let o in orders) {
       orders[o] = layoutList.indexOf(o);
     }
-    const keyField = config.getOption('dict', 'keyName');
-    const titleField = config.getOption('dict', 'titleName');
     return {
-      sizesShow: this.sizes.map(item => {
-        return {
-          [keyField]: item,
-          [titleField]: this.t('h.pagination.sizeOfPage', { size: item })
-        };
-      }),
-      sizeNow: this.size,
-      curNow: this.cur,
-      orders
+      sizeNow: this.value.size || this.size,
+      orders,
+      curValue: null
     };
   },
   watch: {
     cur() {
-      this.curNow = this.cur;
+      this.curValue = null;
     },
     size() {
-      this.sizeNow = this.size;
+      this.sizeNow = this.value.size || this.size;
+    },
+    'value.page'() {
+      this.curValue = null;
+    },
+    'value.size'() {
+      this.sizeNow = this.value.size || this.size;
     }
   },
   methods: {
@@ -129,21 +123,28 @@ export default {
         this.$Message.error(this.t('h.pagination.overSize'));
         return;
       }
-      this.curNow = parseInt(event.target.value, 10);
-      this.$emit('change', { cur: this.curNow, size: this.sizeNow });
+      let cur = parseInt(event.target.value, 10);
+      this.setvalue({ cur: cur, size: this.sizeNow });
     },
     change(cur) {
       if (this.curNow == cur) return;
-      this.curNow = cur;
       let onChange = config.getOption('page.onChange');
       if (utils.isFunction(onChange)) {
-        onChange({ cur: this.curNow, size: this.sizeNow });
+        onChange({ cur: cur, size: this.sizeNow });
       }
-      this.$emit('change', { cur: this.curNow, size: this.sizeNow });
+      this.setvalue({ cur: cur, size: this.sizeNow });
+    },
+    setvalue(params) {
+      let value = { page: params.cur, total: this.totalNow };
+      Object.assign(value, params);
+      this.curValue = params.cur;
+      this.$emit('change', value);
+      let inputvalue = { ...value };
+      delete inputvalue.cur;
+      this.$emit('input', inputvalue);
     },
     changesize() {
-      this.curNow = 1;
-      this.$emit('change', { cur: 1, size: this.sizeNow });
+      this.setvalue({ cur: 1, size: this.sizeNow });
       this.$emit('changeSize', this.sizeNow);
       let onChangeSize = config.getOption('page.onChangeSize');
       if (utils.isFunction(onChangeSize)) {
@@ -158,8 +159,24 @@ export default {
     }
   },
   computed: {
+    sizesShow() {
+      const keyField = config.getOption('dict', 'keyName');
+      const titleField = config.getOption('dict', 'titleName');
+      return this.sizes.map(item => {
+        return {
+          [keyField]: item,
+          [titleField]: this.t('h.pagination.sizeOfPage', { size: item })
+        };
+      });
+    },
+    curNow() {
+      return this.curValue || this.value.page || this.cur;
+    },
+    totalNow() {
+      return this.value.total || this.total || 0;
+    },
     count() {
-      return Math.ceil(this.total / this.sizeNow);
+      return Math.ceil(this.totalNow / this.sizeNow);
     },
     pagers() {
       if (this.count < 3) {

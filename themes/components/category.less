@@ -3,6 +3,12 @@
 .plugin-input(@category-prefix);
 
 .@{category-prefix}{
+
+  &-value-single {
+    >.@{prefix}icon-close{
+      .input-right-icon;
+    }
+  }
   &-item{
     font-size: 90%;
     padding: 3px 5px;
@@ -21,5 +27,8 @@
   }
   &-modal-single-tag{
     min-height: @input-height;
+    line-height: @input-height;
+    padding-right: 200px;
+    .text-ellipsis;
   }
 }

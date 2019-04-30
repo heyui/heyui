@@ -1,0 +1,27 @@
+<template>
+  <div class="h-<%=lowerName%>">
+  </div>
+</template>
+<script>
+export default {
+  name: 'h<%=upperName%>',
+  props: {
+  },
+  data() {
+    return {
+
+    };
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+
+    }
+  },
+  computed: {
+
+  }
+};
+</script>

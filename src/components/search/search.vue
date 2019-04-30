@@ -1,12 +1,12 @@
 <template>
-  <div :class="cls">
+  <div :class="cls" :style="widthStyles">
     <i v-if="position=='front'" class="h-icon-search"></i>
     <div class="h-search-container">
       <div class="h-search-input">
-        <input type="text" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
+        <input type="text" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <Button color="primary" v-if="showSearchButton" @click="search(inputValue)">
+      <Button :style="heightStyles" color="primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
         <template v-else>{{'h.search.searchText' | hlang(null, searchText)}}</template>
       </Button>
@@ -42,7 +42,9 @@ export default {
     },
     searchText: {
       type: String
-    }
+    },
+    height: Number,
+    width: Number
   },
   data() {
     return {
@@ -74,6 +76,20 @@ export default {
   computed: {
     showPlaceholder() {
       return this.placeholder || this.t('h.search.placeholder');
+    },
+    widthStyles() {
+      let styles = {};
+      if (this.width) {
+        styles.width = `${this.width}px`;
+      }
+      return styles;
+    },
+    heightStyles() {
+      let styles = {};
+      if (this.height) {
+        styles.height = `${this.height}px`;
+      }
+      return styles;
     },
     cls() {
       return {

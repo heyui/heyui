@@ -12,7 +12,7 @@
     <p class="tip">If you are a backend developer, or have just started on the front end, we recommend using the simplest js, css direct reference.</p>
     <p>The easiest way to try HeyUI is to use <a href="https://codepen.io/vvpvvp/pen/WJYKyq" target="_blank">Hello World on CodePen</a>, You can open it in your browser's new tab and follow the examples to learn some basic usage.</p>
     <p>Or you can create a <code>.html</code> file, and then use HeyUI by:</p>
-    <codes type="html" src="/codes/jscss.txt"></codes>
+    <codesEn type="html" src="/codes/jscss.txt"></codesEn>
     <p>Here, we provide an html example: <a target="_blank" href="/simple.html">simple.html</a>, you can view the source code by "viewing the source of the page". </p>
 
     <h3>Use <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> scaffold (recommended)</h3>
@@ -22,36 +22,36 @@
     <h4>Global less variable definition</h4>
     <p>Refer to the var.less file of Heyui in the var.less file you defined, and redefine the replacement theme according to your needs. Then set the global reference file in the hey.js scaffolding configuration file.</p>
     <p>var.less，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less" target="_blank">example link</a></p>
-    <codes type="less">@import (less) "~/heyui/themes/var.less";
+    <codesEn type="less">@import (less) "~/heyui/themes/var.less";
 @primary-color: #FDA729;
 @red-color: #D64244;
 @green-color: #3cb357;
 @yellow-color: #EAC12C;
-@blue-color: #77A2DC;</codes>
+@blue-color: #77A2DC;</codesEn>
 
     <p v-height="10"></p>
     <p>hey-cli configuration file hey.js ，<a href="https://github.com/heyui/heyui-admin/blob/master/hey.conf.js" target="_blank">example link</a></p>
-    <codes type="javascript">globalVars: './src/css/var.less',</codes>
+    <codesEn type="javascript">globalVars: './src/css/var.less',</codesEn>
     <p v-height="10"></p>
     <h4>Style reference</h4>
     <p>For style references, you can import in the entry js file, or directly in app.less. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">example link</a></p>
-    <codes type="less">@import (less) "~heyui/themes/common.less";</codes>
+    <codesEn type="less">@import (less) "~heyui/themes/common.less";</codesEn>
 
     <h4>Import HeyUI</h4>
     <p>In general, we import HeyUI to the webpack portal page.</p>
     <p>At the same time, HeyUI can also be set as a global reference, because HeyUI has methods that Message, Loadding, etc. can call globally.<a href="https://github.com/heyui/heyui-admin/blob/master/src/main.js" target="_blank">example link</a></p>
-    <codes type="less">import Vue from 'vue';
+    <codesEn type="less">import Vue from 'vue';
 import HeyUI from 'heyui';
 Vue.use(HeyUI);
 new Vue({
   el: '#app',
   render: h => h(App)
-});</codes>
+});</codesEn>
 
     <h3>Use vue-cli / webpack</h3>
     <p>There are some differences in the references here, mainly in style references.</p>
     <p>For the definition of the less variable, we do not write the common.less file, so we need to define a less file for reference.</p>
-<codes type="less">@import (less) "~heyui/themes/var.less";
+<codesEn type="less">@import (less) "~heyui/themes/var.less";
 @primary-color: #FDA729;
 @red-color: #D64244;
 @green-color: #3cb357;
@@ -61,7 +61,7 @@ new Vue({
 
 //Using this method, you can use the variables defined by var.less in your own less file.
 @import (less) "index.less";
-</codes>
+</codesEn>
     <p>Note: In this way of reference, variables in var.less files cannot be used in Vue files.</p>
 
     <h3>Quickly Build</h3>

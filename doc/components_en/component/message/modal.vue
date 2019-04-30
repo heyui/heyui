@@ -9,33 +9,21 @@
     <h3>Basic</h3>
     <exampleEn demo="message/modal6"></exampleEn>
 
-    <h3>Custom Modal</h3>
-    <exampleEn demo="message/modal14"></exampleEn>
-
-    <h3>Fullscreen modal</h3>
+    <h3>Modal params</h3>
     <exampleEn demo="message/modal12"></exampleEn>
 
     <h3>Define buttons</h3>
     <exampleEn demo="message/modal7"></exampleEn>
 
-    <h3>Click mask cannot be closed</h3>
-    <exampleEn demo="message/modal3"></exampleEn>
-
-    <h3>Vertical center modal</h3>
-    <exampleEn demo="message/modal4"></exampleEn>
-
-    <h3>Maskless modal</h3>
-    <exampleEn demo="message/modal2"></exampleEn>
-
-    <h3>Divider line modal</h3>
-    <exampleEn demo="message/modal9"></exampleEn>
+    <h3>Custom Modal</h3>
+    <exampleEn demo="message/modal14"></exampleEn>
 
     <h3>use component content</h3>
     <p>Use js to call the pop-up component Modal, which not only facilitates the use of parameters, but also integrates calls to js code.</p>
     <exampleEn demo="message/modal11"></exampleEn>
 
     <blockquote>The code used in the popup box</blockquote>
-    <codes src="/message/modalTest.vue" type="html"></codes>
+    <codesEn src="/message/modalTest.vue" type="html"></codesEn>
 
     <h3>Modal Property</h3>
     <table class="table">

@@ -2,10 +2,18 @@
   <header class="comm-header">
     <div class="header-nav">
       <router-link class="logo" to="/">
-        <div class="header-logo"><span></span></div>HEY UI
+        <div class="header-logo">
+          <span></span>
+        </div>HEY UI
       </router-link>
-      <AutoComplete v-width="180" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
-      <div class='header-nav-list'>
+      <AutoComplete v-width="220" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
+      <div class="header-nav-list">
+        <div class="bg-group" v-if="$route.name != 'Home'">
+          <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
+          <div class="bg1" @click="dynamicLoadCss('pink')"></div>
+          <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
+          <div class="bg4" @click="dynamicLoadCss('red')"></div>
+        </div>
         <template v-if="$route.name != 'Home'">
           <!-- <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
@@ -14,11 +22,17 @@
           <a target="_blank" href="http://admin.heyui.top/login">Admin</a>
           <!-- <router-link to="/about">团队</router-link> -->
         </template>
-          <ButtonGroup class="change-lang">
-            <Button size="s" @click="goGithub" v-if="$route.name != 'Home'"><i class="h-icon-github link"></i></Button>
-            <Button size="s" @click="openWeixin"><span class="link">微信</span></Button>
-            <Button @click="changeLang" size="s"><span class="link">English</span></Button>
-          </ButtonGroup>
+        <ButtonGroup class="change-lang">
+          <Button size="s" @click="goGithub" v-if="$route.name != 'Home'">
+            <i class="h-icon-github link"></i>
+          </Button>
+          <Button size="s" @click="openWeixin">
+            <span class="link">微信</span>
+          </Button>
+          <Button @click="changeLang" size="s">
+            <span class="link">English</span>
+          </Button>
+        </ButtonGroup>
       </div>
     </div>
     <Modal v-model="showModel" class-name="weixin-modal">
@@ -55,13 +69,15 @@ export default {
         timeout: 0,
         title: '加入 HeyUI 微信交流群',
         content: '拥有更快速更详细的交流，加入我们的微信交流群。',
-        buttons: [{
-          type: 'confirm',
-          color: 'primary',
-          name: '查看'
-        }],
+        buttons: [
+          {
+            type: 'confirm',
+            color: 'primary',
+            name: '查看'
+          }
+        ],
         events: {
-          confirm: (notice) => {
+          confirm: notice => {
             this.openWeixin();
             notice.close();
           }
@@ -70,6 +86,9 @@ export default {
     });
   },
   methods: {
+    dynamicLoadCss(type) {
+      Utils.dynamicLoadCss(type);
+    },
     changeLang() {
       this.$i18n.locale = 'en';
       utils.saveLocal('LANGUAGE', 'en');

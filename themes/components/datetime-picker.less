@@ -4,13 +4,13 @@
 @date-picker-cells-width: 196px;
 .@{datetime-picker-prefix}-range {
   .@{datetime-picker-prefix}-show{
-    min-width: 200px;
+    min-width: @font-size-mini * 16;
   }
 }
 
 .@{datetime-picker-prefix}-full-range {
   .@{datetime-picker-prefix}-show{
-    min-width: 220px;
+    min-width: @font-size-mini * 16;
   }
 }
 
@@ -20,7 +20,7 @@
     .@{date-picker-prefix} {
       &-shortcut {
         border-radius: @border-radius 0 0 @border-radius;
-        width: 100px;
+        width: @font-size-mini * 8;
         font-size: 12px;
         line-height: 28px;
         background: lighten(@gray4-color, 1%);
@@ -110,6 +110,7 @@
           line-height: 32px;
           display: inline-block;
           text-align: center;
+          user-select: none;
         }
         &-weeks {
           font-weight: bold;
@@ -175,6 +176,8 @@
             border-radius: 5px;
             width: 100%;
             display: block;
+            padding-left: 10px;
+            padding-right: 10px;
           }
         }
         &-minute,
@@ -203,7 +206,7 @@
     .@{datetime-picker-prefix}-show:hover, .@{pop-ref-prefix} {
       > input:not([disabled]) {
         border-color: @primary-color;
-        box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+        box-shadow: @box-shadow-input;
       }
     }
   }

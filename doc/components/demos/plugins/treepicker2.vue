@@ -48,7 +48,8 @@ export default {
       // 选择器关闭的时候触发
     },
     update() {
-      this.$refs.treepicker.updateShow([{ id: 1, title: '1级' }]);
+      // 1.17.0+ 支持该方式更新，其他版本请使用 updateShow
+      this.value = [1];
     },
     choose(data) {
       log(data);

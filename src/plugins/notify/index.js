@@ -116,28 +116,41 @@ class Notify {
         i18n: param.$i18n,
         router: param.$router,
         render(createElement) {
+          let keys = Object.keys(param.events || {});
+          let events = {
+            event: this.trigger,
+            close: this.close
+          };
+          for (let key of keys) {
+            if (events[key]) {
+              continue;
+            }
+            events[key] = (...data) => {
+              this.trigger(key, ...data);
+            };
+          }
           return createElement(
             'div', {}, [createElement('plugin', {
               props: this.propsData,
-              on: {
-                event: this.trigger,
-                close: this.close
-              }
+              on: events
             })]
           );
         },
         data() {
           return {
             propsData: utils.extend({}, param.component.datas, {
+              // **删除**delete**
               param: param.component.data,
               params: param.component.data
             }),
             modal: that
           };
         },
+        mounted() {
+        },
         methods: {
-          trigger(name, data) {
-            that.trigger(name, data);
+          trigger(name, ...data) {
+            that.trigger(name, ...data);
           },
           close() {
             that.close();
@@ -247,10 +260,10 @@ class Notify {
     }
   }
 
-  trigger(event, data) {
+  trigger(event, ...data) {
     let param = this.param;
     if (param.events && utils.isFunction(param.events[event])) {
-      param.events[event].call(null, this, data);
+      param.events[event].call(null, this, ...data);
     }
   }
 

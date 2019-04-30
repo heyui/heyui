@@ -10,9 +10,9 @@
     <br>
     <div class="h-input-group" v-width="500">
       <span class="h-input-addon">公司福利</span>
-      <input type="text" placeholder="起始金额" />
+      <NumberInput v-model="value1" />
       <span class="h-input-addon">-</span>
-      <input type="text" placeholder="结束金额" />
+      <Select v-model="value2" dict="simple" />
       <span class="h-input-addon">K</span>
     </div>
     <br>
@@ -26,6 +26,8 @@
 export default {
   data() {
     return {
+      value1: null,
+      value2: null,
       select1: 1,
       param1: { 1: '人民币', 2: '美金', 3: '卢布' }
     };

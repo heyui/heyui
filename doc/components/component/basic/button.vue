@@ -146,6 +146,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>transparent</td>
+        <td>背景是否透明, 1.18.0+</td>
+        <td>boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Button 事件</h3>

@@ -10,6 +10,9 @@
   opacity: 0;
   transition: .35s cubic-bezier(.24, .22, .015, 1.56);
   transition-property:transform,opacity;
+  &&-editable {
+    z-index: @zindex-tooltip-edit;
+  }
   .@{tooltip-prefix} {
     &-arrow {
       width: 0;

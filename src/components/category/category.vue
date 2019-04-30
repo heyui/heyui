@@ -1,12 +1,17 @@
 <template>
   <div :class="categoryCls" :disabled="disabled">
     <div class="h-category-show" @click="openPicker">
-      <div v-if="multiple&&objects.length" class="h-category-multiple-tags"><span v-for="obj of objects" :key="obj.key"><span>{{obj.title}}</span><i
-            class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+      <div v-if="multiple&&objects.length" class="h-category-multiple-tags">
+        <span v-for="obj of objects" :key="obj.key">
+          <span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+        </span>
       </div>
-      <div v-else-if="!multiple&&object" class="h-category-value-single">{{object.title}}</div>
+      <div v-else-if="!multiple&&object" class="h-category-value-single">
+        <span>{{object.title}}</span>
+        <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
+      </div>
       <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
-      <i class="h-icon-down"></i>
+      <!-- <i class="h-icon-down"></i> -->
     </div>
   </div>
 </template>
@@ -14,7 +19,7 @@
 import config from '../../utils/config';
 import utils from '../../utils/utils';
 
-import categoryModal from './categoryModal';
+import categoryModal from './category-modal';
 
 const prefix = 'h-category';
 
@@ -92,12 +97,33 @@ export default {
             that.objects = data.objects;
             that.object = data.object;
             that.setvalue();
+          },
+          load: (modal, { data, callback }) => {
+            data.status.loading = true;
+            this.param.getDatas.call(
+              this.param,
+              data.value,
+              result => {
+                data.children = this.initTreeModeData(result, data.key, true);
+                data.status.isWait = false;
+                data.status.loading = false;
+                data.status.opened = true;
+                callback();
+              },
+              () => {
+                data.status.loading = false;
+              }
+            );
           }
         }
       });
     },
     remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
+      this.setvalue();
+    },
+    clear() {
+      this.object = null;
       this.setvalue();
     },
     parse() {
@@ -118,11 +144,9 @@ export default {
         return null;
       }
       if (this.type == 'key') {
-        let obj = this.categoryObj[item];
-        return obj;
+        return this.categoryObj[item];
       } else {
-        let obj = this.categoryObj[item[this.param.keyName]];
-        return obj;
+        return utils.getValue(item, this.param);
       }
     },
     dispose() {
@@ -145,28 +169,33 @@ export default {
     },
     initCategoryDatas() {
       let datas = [];
-      let isInited = false;
-      if (this.config) {
-        let categoryObj = this.param.categoryObj;
-        if (categoryObj) {
-          isInited = true;
-          this.categoryObj = categoryObj;
-          this.categoryDatas = [...this.param.datas];
-        }
+      if (utils.isArray(this.param.datas)) {
+        datas = this.param.datas;
       }
-      if (!isInited) {
-        if (utils.isArray(this.param.datas)) {
-          datas = this.param.datas;
-        }
-        if (utils.isFunction(this.param.datas)) {
-          datas = this.param.datas.call(null);
-        }
-        this.categoryDatas = this.initDatas(datas);
-        if (this.config) {
-          config.config(`category.configs.${this.config}.categoryObj`, this.categoryObj);
-          config.config(`category.configs.${this.config}.datas`, this.categoryDatas);
-        }
+      if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.call(null);
       }
+      if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
+        datas = [];
+        this.globalloading = true;
+        let loadData = this.param.getTotalDatas || this.param.getDatas;
+        let param = [
+          result => {
+            this.categoryDatas = this.initDatas(utils.copy(result));
+            this.parse();
+            this.globalloading = false;
+            this.$emit('loadDataSuccess');
+          },
+          () => {
+            this.globalloading = false;
+          }
+        ];
+        if (this.param.getDatas) {
+          param.unshift(null);
+        }
+        loadData.apply(this.param, param);
+      }
+      this.categoryDatas = this.initDatas(datas);
       this.parse();
     },
     initDatas(datas) {
@@ -174,9 +203,10 @@ export default {
       if (this.param.dataMode == 'list' && datas.length > 0) {
         list = utils.generateTree(list, this.param);
       }
-      return this.initTreeModeData(list);
+      let isWait = utils.isFunction(this.param.getDatas);
+      return this.initTreeModeData(list, null, isWait);
     },
-    initTreeModeData(list, parentKey) {
+    initTreeModeData(list, parentKey, isWait) {
       let datas = [];
       for (let data of list) {
         let obj = {
@@ -185,6 +215,8 @@ export default {
           value: data,
           parentKey,
           status: {
+            loading: false,
+            isWait,
             opened: false,
             selected: false,
             checkable: data.checkable !== false

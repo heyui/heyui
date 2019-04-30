@@ -20,7 +20,7 @@ export default {
     } else if (this.content) {
       this.sourcecode = this.content;
     } else if (this.$slots.default) {
-      this.sourcecode = this.$slots.default[0].text;
+      this.sourcecode = this.$slots.default[0].text.trim();
     }
   }
 };

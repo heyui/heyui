@@ -1,7 +1,6 @@
 @autocompleteCls: ~"@{prefix}autocomplete";
 @autocompleteClsItem: ~"@{autocompleteCls}-item";
 @autocompleteClsGroup: ~"@{autocompleteCls}-group";
-@autocompleteCls-close: h-icon-close;
 .@{autocompleteCls} {
   .@{autocompleteCls} {
     &-show{
@@ -15,10 +14,7 @@
         color: @gray-color;
       }
       .@{prefix}icon-loading, >.@{prefix}icon-close{
-        position: absolute;
-        right: 8px;
-        bottom: 8px;
-        z-index: 3;
+        .input-right-icon;
       }
 
       >span{

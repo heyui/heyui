@@ -5,6 +5,6 @@
     <exampleEn demo="plugins/loadingbar1"></exampleEn>
 
     <h3>VueRouter example</h3>
-    <codes src="/codes/loadingbar1.txt" type="js"></codes>
+    <codesEn src="/codes/loadingbar1.txt" type="js"></codesEn>
   </div>
 </template>

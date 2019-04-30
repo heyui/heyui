@@ -5,7 +5,7 @@
     <h3>Basic</h3>
     <exampleEn demo="other/scrollintoview1"></exampleEn>
 
-    <codes type="javascript">scrollIntoView(someElement, {
+    <codesEn type="javascript">scrollIntoView(someElement, {
   time: 500, // half a second
   align:{
     top: 0 to 1, // default 0.5 (center)
@@ -17,7 +17,7 @@
     // Determines whether objects can be scrolled against a multi-layer scroll parent layer.
     return defaultIsScrollable(target) || ~target.className.indexOf('scrollable');
   }
-});</codes>
+});</codesEn>
 
     <h3>ScrollIntoView Property</h3>
     <table class="table">

@@ -22,10 +22,19 @@ const lang = {
     category: {
       placeholder: '请选择'
     },
+    cascader: {
+      placeholder: '请选择'
+    },
     categoryModal: {
       limitWords: '您最多可以选择{size}条数据。',
       emptyContent: '未搜索到相关数据',
       total: '全部'
+    },
+    categoryPicker: {
+      limitWords: '您最多可以选择{size}条数据。',
+      emptyContent: '未搜索到相关数据',
+      total: '全部',
+      placeholder: '请选择'
     },
     autoComplate: {
       placeholder: '请输入',

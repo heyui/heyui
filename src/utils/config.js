@@ -24,6 +24,24 @@ const config = {
       childrenName: 'children'
     }
   },
+  categoryPicker: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
+  cascader: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
   uploader: {
     urlName: 'url',
     fileName: 'name',

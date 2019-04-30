@@ -10,7 +10,7 @@
     <h3>Query component with search button</h3>
     <exampleEn demo="plugins/search2"></exampleEn>
 
-    <h3>Block</h3>
+    <h3>Custom style</h3>
     <exampleEn demo="plugins/search3"></exampleEn>
 
     <h3>Search Property</h3>
@@ -63,6 +63,20 @@
         <td>String</td>
         <td>enter, input</td>
         <td>enter</td>
+      </tr>
+      <tr>
+        <td>height</td>
+        <td>Setting height of search input, 1.19.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>width</td>
+        <td>Setting width of search input, 1.19.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
 

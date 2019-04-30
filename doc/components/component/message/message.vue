@@ -51,5 +51,19 @@
         <td>3000ms</td>
       </tr>
     </table>
+
+    <h3>Message 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法</th>
+        <th>说明</th>
+        <th>参数</th>
+      </tr>
+      <tr>
+        <td>close</td>
+        <td>关闭Message</td>
+        <td>无</td>
+      </tr>
+    </table>
   </div>
 </template>

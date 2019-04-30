@@ -122,6 +122,17 @@ export default {
   watch: {
     value() {
       this.parse();
+    },
+    disabled() {
+      if (!this.dropdown) {
+        return false;
+      }
+
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
     }
   },
   methods: {
@@ -180,6 +191,13 @@ export default {
     parse() {
       if (this.type == 'key') {
         this.valuebak = utils.copy(this.value);
+        this.$nextTick(() => {
+          if (this.multiple) {
+            this.objects = this.$refs.tree.getChoose();
+          } else {
+            this.object = this.$refs.tree.getSelect();
+          }
+        });
       } else {
         if (this.multiple) {
           this.valuebak = (this.value || []).map(

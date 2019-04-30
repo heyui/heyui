@@ -326,6 +326,22 @@ const router = {
           component: () => import('components/component/plugin/search')
         },
         {
+          path: 'plugin/cascader',
+          name: 'pluginCascader',
+          meta: {
+            title: 'Cascader'
+          },
+          component: () => import('components/component/plugin/cascader')
+        },
+        {
+          path: 'other/categorypicker',
+          name: 'otherCategoryPicker',
+          meta: {
+            title: 'CategoryPicker'
+          },
+          component: () => import('components/component/other/categorypicker')
+        },
+        {
           path: 'plugin/dropdownmenu',
           name: 'pluginDropdownmenu',
           meta: {
@@ -449,7 +465,7 @@ const router = {
           path: 'view/imagepreview',
           name: 'viewImagePreview',
           meta: {
-            title: 'viewImagePreview'
+            title: 'ImagePreview'
           },
           component: () => import('components/component/view/imagepreview')
         },
@@ -457,7 +473,7 @@ const router = {
           path: 'view/carousel',
           name: 'viewCarousel',
           meta: {
-            title: 'viewCarousel'
+            title: 'Carousel'
           },
           component: () => import('components/component/view/carousel')
         },
@@ -502,6 +518,14 @@ const router = {
           component: () => import('components/component/other/backtop')
         },
         {
+          path: 'other/colorpicker',
+          name: 'otherColorPicker',
+          meta: {
+            title: 'ColorPicker'
+          },
+          component: () => import('components/component/other/colorpicker')
+        },
+        {
           path: 'other/scrollintoview',
           name: 'otherScrollintoview',
           meta: {
@@ -524,6 +548,14 @@ const router = {
             title: 'TextEllipsis'
           },
           component: () => import('components/component/other/textellipsis')
+        },
+        {
+          path: 'other/skeleton',
+          name: 'otherSkeleton',
+          meta: {
+            title: 'Skeleton'
+          },
+          component: () => import('components/component/other/skeleton')
         },
         {
           path: '',
