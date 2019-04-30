@@ -2,7 +2,7 @@ module.exports = {
   root: 'dist',
   clean: false,
   webpack: {
-    compress: false,
+    mode: 'development',
     umd: {
       entry: './src/index.js',
       library: 'HeyUI',
