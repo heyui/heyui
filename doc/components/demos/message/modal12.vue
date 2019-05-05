@@ -21,8 +21,8 @@
       </FormItem>
     </Form>
     <p>
-      <button class="h-btn" @click="open">Js调用全屏Modal</button>
-      <button class="h-btn" @click="opened=true">Vue调用全屏Modal</button>
+      <button class="h-btn" @click="open">Js调用Modal</button>
+      <button class="h-btn" @click="opened=true">Vue调用Modal</button>
     </p>
     <Modal v-model="opened" v-bind="params">
       <div slot="header">Vue</div>
