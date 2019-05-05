@@ -21,7 +21,7 @@
           v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable"
           :config="config"></Tree>
       </div>
-      <div class="h-treepicker-footer">
+      <div class="h-treepicker-footer" v-if="multiple">
         <button class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
         <button class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
@@ -160,7 +160,10 @@ export default {
     select(data) {
       this.object = data;
       this.$emit('select', data);
-      if (!this.multiple) this.setvalue();
+      if (!this.multiple) {
+        this.setvalue();
+        this.dropdown.hide();
+      }
     },
     choose(data) {
       this.objects = data;
