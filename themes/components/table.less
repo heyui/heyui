@@ -142,12 +142,17 @@
     }
   }
 
-  &-tr-hovered {
-    background-color: @hover-background-color !important;
-  }
+  & &-tbody tr {
+    &.h-table-tr-hovered {
+      background-color: @hover-background-color;
 
-  &-tr-selected {
-    background-color: @highlight-background-color !important;
+      &.h-table-expand-tr {
+        background-color: transparent;
+      }
+    }
+    &.h-table-tr-selected {
+      background-color: @highlight-background-color;
+    }
   }
 
   &-content-empty {
