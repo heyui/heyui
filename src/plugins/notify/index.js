@@ -255,11 +255,11 @@ class Notify {
         };
       }
     }
-    this.PopstateEvent = () => {
+    this.popstateEvent = () => {
       this.close();
     };
 
-    window.addEventListener('popstate', this.PopstateEvent);
+    window.addEventListener('popstate', this.popstateEvent);
   }
 
   trigger(event, ...data) {
@@ -282,7 +282,7 @@ class Notify {
 
     this.trigger('$close');
 
-    window.removeEventListener('popstate', this.PopstateEvent);
+    window.removeEventListener('popstate', this.popstateEvent);
 
     utils.removeClass($body, notifyShowCls);
 
