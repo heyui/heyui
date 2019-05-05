@@ -20,11 +20,13 @@ import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 
 import categoryModal from './category-modal';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-category';
 
 export default {
   name: 'hCategory',
+  mixins: [Locale],
   props: {
     option: Object,
     multiple: {
