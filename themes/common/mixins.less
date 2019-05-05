@@ -69,8 +69,16 @@
   padding: 0px 8px;
   >span {
     line-height: @input-height - 8px;
+  }
+  >.h-icon-close-min{
+    font-size: @font-size + 2px;
+    color: @dark2-color;
     display: inline-block;
-    float: left;
+    width: 14px;
+    margin-left: 2px;
+    cursor: pointer;
+    vertical-align: -2px;
+    .text-hover();
   }
   >.h-icon-close{
     line-height: @input-height - 8px;
@@ -78,8 +86,6 @@
     font-size: @font-size-mini - 1px;
     color: @dark2-color;
     margin-left: 5px;
-    transform: scale(0.9);
-    transform-origin: center;
     .text-hover();
   }
 }

@@ -2,7 +2,7 @@
   <div :class="categoryCls" :disabled="disabled">
     <div class="h-categorypicker-show">
       <div v-if="multiple&&objects.length" class="h-categorypicker-multiple-tags">
-        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object" class="h-categorypicker-value-single">
         <span>{{getShow(object)}}</span>

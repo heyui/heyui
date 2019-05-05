@@ -2,7 +2,7 @@
   <div :class="cascaderCls" :disabled="disabled">
     <div class="h-cascader-show">
       <div v-if="multiple&&objects.length" class="h-cascader-multiple-tags">
-        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object" class="h-cascader-value-single">
         <span>{{object.title}}</span>

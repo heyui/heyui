@@ -7,7 +7,7 @@
         <div v-else class="h-treepicker-multiple-tags">
           <span v-for="obj of objects" :key="obj[param.keyName]">
             <span>{{obj[param.titleName]}}</span>
-            <i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+            <i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
           </span>
         </div>
       </template>

@@ -1,7 +1,7 @@
 <template>
   <div :class="autocompleteCls">
     <div :class="showCls">
-      <template v-if="multiple"><span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+      <template v-if="multiple"><span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
         <input :disabled="disabled" ref="input" type="text" class="h-autocomplete-input" @focus="focus" v-model="tempValue" @blur.stop="blur" @paste="paste" @keyup="handle" @keydown="keydownHandle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" />
         <i class="h-icon-loading" v-if="loading"></i>
       </template>

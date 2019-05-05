@@ -4,7 +4,7 @@
       <template v-if="multiple">
         <div class="h-select-multiple-tags">
           <span v-for="obj of objects" :key="obj[key]">
-            <span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+            <span>{{obj[title]}}</span><i class="h-icon-close-min" @click.stop="setvalue(obj)" v-if="!disabled"></i>
           </span>
           <input v-if="filterable"
                 type="text"

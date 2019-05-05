@@ -3,7 +3,7 @@
     <div class="h-category-show" @click="openPicker">
       <div v-if="multiple&&objects.length" class="h-category-multiple-tags">
         <span v-for="obj of objects" :key="obj.key">
-          <span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+          <span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
         </span>
       </div>
       <div v-else-if="!multiple&&object" class="h-category-value-single">

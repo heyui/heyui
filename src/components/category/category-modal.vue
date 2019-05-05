@@ -4,7 +4,7 @@
     <div>
       <div class="h-panel-bar">
         <div class="h-category-modal-multiple-tags" v-if="param.multiple">
-          <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close"
+          <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close-min"
               @click.stop="remove(tag)"></i></span>
         </div>
         <div v-else class="h-category-modal-single-tag">
