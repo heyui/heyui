@@ -73,7 +73,7 @@ export default {
     },
     arr() {
       if (!this.datas && !this.dict) {
-        console.error('Steps Component: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI] Steps Component Error: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

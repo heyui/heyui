@@ -26,7 +26,6 @@ export default function ({ text, showSuccessTip = '复制成功', showFailureTip
       successCallback.call();
     }
   } catch (err) {
-    console.error(err);
     if (showFailureTip) {
       Message.error(showFailureTip);
     }

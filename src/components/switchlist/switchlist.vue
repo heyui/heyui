@@ -50,7 +50,7 @@ export default {
   computed: {
     arr() {
       if (!this.datas && !this.dict) {
-        console.error('Switchlist Component: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI] Switchlist Component Error: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

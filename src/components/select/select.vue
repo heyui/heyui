@@ -426,7 +426,7 @@ export default {
     },
     options() {
       if (!this.datas && !this.dict) {
-        console.error('Select Component: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI] Select Component Error: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

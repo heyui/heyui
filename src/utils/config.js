@@ -130,7 +130,7 @@ const func = {
   getDict(name) {
     const dict = config.dict.dicts[name];
     if (!dict) {
-      console.error(`Config: There is no dictionary named ${name}`);
+      console.error(`[HeyUI] Config Error: There is no dictionary named ${name}`);
       return [];
     }
     return dict;
@@ -142,7 +142,7 @@ const func = {
     }
     const value = utils.getKeyValue(config, `${key}`);
     if (utils.isNull(value)) {
-      console.error(`Config: There is no dictionary named ${key}`);
+      console.error(`[HeyUI] Config Error: There is no dictionary named ${key}`);
       return null;
     }
     return value;

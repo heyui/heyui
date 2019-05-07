@@ -252,7 +252,6 @@ export default {
           }
           return;
         } catch (err) {
-          // console.error(err);
         }
       }
 
