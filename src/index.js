@@ -1,4 +1,3 @@
-
 /*
  * HeyUI JavaScript Library
  * https://heyui.top/
@@ -48,17 +47,8 @@ import NumberInput from './components/numberinput';
 import Tooltip from './components/tooltip';
 import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
-import {
-  Row,
-  Col
-} from './components/grid';
-import {
-  HHeader,
-  HFooter,
-  Content,
-  Sider,
-  Layout
-} from './components/layout';
+import { Row, Col } from './components/grid';
+import { HHeader, HFooter, Content, Sider, Layout } from './components/layout';
 import Timeline from './components/timeline';
 import Transfer from './components/transfer';
 import { Button, ButtonGroup } from './components/button';
@@ -82,7 +72,7 @@ import $ScrollIntoView from './plugins/scrollIntoView';
 import $Clipboard from './plugins/clipboard';
 import $ImagePreview from './plugins/imagepreview';
 
-import filters from './filters';
+import { dictMapping, hlang } from './filters';
 import config from './utils/config';
 import locale from './locale';
 
@@ -168,26 +158,29 @@ const directives = {
   wordlimit
 };
 
-let prototypes = {
+const prototypes = {
+  $Modal,
+  $Notice,
   $Message,
   $Confirm,
   $Loading,
-  $LoadingBar
+  $LoadingBar,
+  $ScrollIntoView,
+  $Clipboard,
+  $ImagePreview
 };
 
-const HeyUI = Object.assign({}, components, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
+const filters = { dictMapping, hlang };
+
+const HeyUI = Object.assign({}, components, { locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
 
 const install = function (Vue, opts) {
   if (install.installed) return;
-  if (opts) {
-    if (opts.locale) {
-      locale.use(opts.locale);
-    }
+  if (opts && opts.locale) {
+    locale.use(opts.locale);
   }
 
-  // Vue.mixin(LocaleMinxin);
-
-  Object.keys(components).forEach((key) => {
+  Object.keys(components).forEach(key => {
     Vue.component(key, components[key]);
     Vue.component(`h-${key.toLocaleLowerCase()}`, components[key]);
     if (key.indexOf('h') !== 0) {
@@ -195,23 +188,17 @@ const install = function (Vue, opts) {
     }
   });
 
-  Object.keys(filters).forEach((key) => {
+  Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
   });
 
-  Object.keys(directives).forEach((key) => {
+  Object.keys(directives).forEach(key => {
     Vue.directive(key, directives[key]);
   });
 
-  Object.keys(prototypes).forEach((key) => {
+  Object.keys(prototypes).forEach(key => {
     Vue.prototype[key] = prototypes[key];
   });
-
-  HeyUI.$Modal = Vue.prototype.$Modal = $Modal(Vue);
-  HeyUI.$Notice = Vue.prototype.$Notice = $Notice(Vue);
-  HeyUI.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
-  HeyUI.$Clipboard = Vue.prototype.$Clipboard = $Clipboard;
-  HeyUI.$ImagePreview = Vue.prototype.$ImagePreview = $ImagePreview;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

@@ -17,7 +17,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "manba": "^1.2.8"
+    "manba": "^1.2.8",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/eslint-config-standard": "^4.0.0",

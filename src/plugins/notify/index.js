@@ -1,5 +1,6 @@
 import utils from 'heyui/utils/utils';
 import locale from 'heyui/locale';
+import Vue from 'vue';
 
 const Default = {
   type: 'dialog',
@@ -107,8 +108,8 @@ class Notify {
       $content.innerHTML = content;
     }
 
-    if (param.component != undefined && param.Vue) {
-      this.vue = new param.Vue({
+    if (param.component != undefined && Vue) {
+      this.vue = new Vue({
         el: $content,
         i18n: param.$i18n,
         router: param.$router,

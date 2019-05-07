@@ -60,7 +60,4 @@ modal.config = (options) => {
   }
 };
 
-export default (vue) => {
-  Vue = vue;
-  return modal;
-};
+export default modal;
