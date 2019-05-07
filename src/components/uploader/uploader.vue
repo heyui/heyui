@@ -50,9 +50,9 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
-import config from 'heyui/utils/config';
-import Locale from 'heyui/mixins/locale';
+import utils from 'heyui/src/utils/utils';
+import config from 'heyui/src/utils/config';
+import Locale from 'heyui/src/mixins/locale';
 
 const prefix = 'h-uploader';
 

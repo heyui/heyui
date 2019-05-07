@@ -120,10 +120,10 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
+import utils from 'heyui/src/utils/utils';
 import TableTr from './table-tr';
 import TableTh from './table-th';
-import debounce from 'heyui/utils/debounce';
+import debounce from 'heyui/src/utils/debounce';
 
 const prefix = 'h-table';
 

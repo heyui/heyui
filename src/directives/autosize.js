@@ -1,4 +1,4 @@
-import autosize from 'heyui/plugins/autosize';
+import autosize from 'heyui/src/plugins/autosize';
 
 export default {
   inserted(el, binding, vnode) {

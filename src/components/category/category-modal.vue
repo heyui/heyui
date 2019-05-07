@@ -40,8 +40,8 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
-import Locale from 'heyui/mixins/locale';
+import utils from 'heyui/src/utils/utils';
+import Locale from 'heyui/src/mixins/locale';
 const topMenu = '-------';
 
 export default {

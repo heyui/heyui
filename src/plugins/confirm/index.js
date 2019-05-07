@@ -1,6 +1,6 @@
-import Notify from 'heyui/plugins/notify';
-import utils from 'heyui/utils/utils';
-import locale from 'heyui/locale';
+import Notify from 'heyui/src/plugins/notify';
+import utils from 'heyui/src/utils/utils';
+import locale from 'heyui/src/locale';
 
 const prefixCls = 'h-modal';
 

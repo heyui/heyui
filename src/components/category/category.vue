@@ -16,11 +16,11 @@
   </div>
 </template>
 <script>
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
 
 import categoryModal from './category-modal';
-import Locale from 'heyui/mixins/locale';
+import Locale from 'heyui/src/mixins/locale';
 
 const prefix = 'h-category';
 

@@ -23,10 +23,10 @@
   </div>
 </template>
 <script>
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
-import Dropdown from 'heyui/plugins/dropdown';
-import Locale from 'heyui/mixins/locale';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import Dropdown from 'heyui/src/plugins/dropdown';
+import Locale from 'heyui/src/mixins/locale';
 
 const prefix = 'h-categorypicker';
 const topMenu = '-------';

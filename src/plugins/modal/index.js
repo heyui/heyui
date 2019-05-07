@@ -1,6 +1,6 @@
-import Notify from 'heyui/plugins/notify';
-import utils from 'heyui/utils/utils';
-import config from 'heyui/utils/config';
+import Notify from 'heyui/src/plugins/notify';
+import utils from 'heyui/src/utils/utils';
+import config from 'heyui/src/utils/config';
 
 const prefixCls = 'h-modal';
 const hasDivider = config.getOption('modal', 'hasDivider');

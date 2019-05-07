@@ -1,5 +1,5 @@
-import utils from 'heyui/utils/utils';
-import locale from 'heyui/locale';
+import utils from 'heyui/src/utils/utils';
+import locale from 'heyui/src/locale';
 import Vue from 'vue';
 
 const Default = {

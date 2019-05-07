@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
+import utils from 'heyui/src/utils/utils';
 
 const prefixCls = 'h-col';
 

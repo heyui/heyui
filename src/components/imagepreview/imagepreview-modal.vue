@@ -12,8 +12,8 @@
 </template>
 <script>
 
-import utils from 'heyui/utils/utils';
-import Loading from '../loading/loading';
+import utils from 'heyui/src/utils/utils';
+import Loading from 'heyui/src/components/loading';
 
 export default {
   name: 'hImagePreview',

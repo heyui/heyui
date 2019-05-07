@@ -53,9 +53,9 @@
 </template>
 <script>
 import manba from 'manba';
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
-import Locale from 'heyui/mixins/locale';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import Locale from 'heyui/src/mixins/locale';
 
 const dateprefix = 'h-date';
 

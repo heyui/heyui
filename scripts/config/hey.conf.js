@@ -11,7 +11,7 @@ module.exports = {
       vue: 'vue'
     },
     alias: {
-      heyui: './src'
+      'heyui/src': './src'
     }
   }
 };

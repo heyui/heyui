@@ -34,11 +34,11 @@
 <script>
 import manba from 'manba';
 
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
-import Dropdown from 'heyui/plugins/dropdown';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import Dropdown from 'heyui/src/plugins/dropdown';
 import dateBase from './date-base';
-import Locale from 'heyui/mixins/locale';
+import Locale from 'heyui/src/mixins/locale';
 
 const prefix = 'h-datetime';
 

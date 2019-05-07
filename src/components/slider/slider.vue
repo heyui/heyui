@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/utils/utils';
-import Tooltip from 'heyui/plugins/tooltip';
+import utils from 'heyui/src/utils/utils';
+import Tooltip from 'heyui/src/plugins/tooltip';
 
 const prefix = 'h-slider';
 

@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import Locale from 'heyui/mixins/locale';
+import Locale from 'heyui/src/mixins/locale';
 const prefix = 'h-search';
 
 export default {

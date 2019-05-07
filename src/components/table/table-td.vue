@@ -2,7 +2,7 @@
   <td :class="cls"><template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot></td>
 </template>
 <script>
-import config from 'heyui/utils/config';
+import config from 'heyui/src/utils/config';
 
 export default {
   name: 'hTableTd',

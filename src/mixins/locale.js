@@ -1,4 +1,4 @@
-import locale from 'heyui/locale';
+import locale from 'heyui/src/locale';
 
 export default {
   methods: {

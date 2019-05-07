@@ -1,5 +1,5 @@
-import Popper from 'heyui/plugins/popper';
-import utils from 'heyui/utils/utils';
+import Popper from 'heyui/src/plugins/popper';
+import utils from 'heyui/src/utils/utils';
 
 const DEFAULT_OPTIONS = {
   container: false,

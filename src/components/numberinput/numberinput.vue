@@ -12,7 +12,7 @@
 </template>
 <script>
 
-import utils from 'heyui/utils/utils';
+import utils from 'heyui/src/utils/utils';
 const prefix = 'h-numberinput';
 
 export default {

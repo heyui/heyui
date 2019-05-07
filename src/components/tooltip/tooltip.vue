@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import Tooltip from 'heyui/plugins/tooltip';
+import Tooltip from 'heyui/src/plugins/tooltip';
 
 const prefix = 'h-tooltip';
 

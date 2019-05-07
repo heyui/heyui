@@ -10,7 +10,7 @@ module.exports = {
       libraryTarget: 'default'
     },
     alias: {
-      heyui: './src'
+      'heyui/src': './src'
     }
   }
 };

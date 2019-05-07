@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import Dropdown from 'heyui/plugins/dropdown';
+import Dropdown from 'heyui/src/plugins/dropdown';
 
 const prefix = 'h-dropdowncustom';
 

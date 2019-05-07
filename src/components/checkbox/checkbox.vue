@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
 
 export default {
   name: 'hCheckbox',

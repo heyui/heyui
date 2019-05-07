@@ -23,10 +23,9 @@
   </DropdownCustom>
 </template>
 <script>
-import config from 'heyui/utils/config';
-import utils from 'heyui/utils/utils';
-import DropdownCustom from '../dropdowncustom';
-import Badge from '../badge';
+import config from 'heyui/src/utils/config';
+import DropdownCustom from 'heyui/src/components/dropdowncustom';
+import Badge from 'heyui/src/components/badge';
 
 const prefix = 'h-dropdownmenu';
 

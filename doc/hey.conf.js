@@ -8,6 +8,10 @@ module.exports = {
     console: true,
     publicPath: '/',
     output: {
+      './module/index.html': {
+        entry: './module/app',
+        commons: []
+      },
       './index.html': {
         entry: './app',
         commons: ['common']
@@ -24,7 +28,7 @@ module.exports = {
     alias: {
       js: './js/',
       components: './components/',
-      heyui: '../src',
+      'heyui/src': '../src',
       components_en: './components_en/'
     },
     globalVars: './css/var.less',

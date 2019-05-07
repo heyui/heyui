@@ -13,7 +13,7 @@ module.exports = {
       manba: 'manba'
     },
     alias: {
-      heyui: './src'
+      'heyui/src': './src'
     }
   }
 };
