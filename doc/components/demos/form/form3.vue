@@ -238,10 +238,10 @@ export default {
     },
     reset() {
       this.isLoading = false;
-      this.$refs.form.reset();
+      this.$refs.form.resetValid();
     },
     resetDatepicker() {
-      this.$refs.datapicker.reset();
+      this.$refs.datapicker.resetValid();
     },
     add() {
       this.data.inputsData.push({ value: '' });

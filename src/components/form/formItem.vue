@@ -89,6 +89,10 @@ export default {
   },
   methods: {
     reset() {
+      console.warn('HeyUI[Warn]: FormItem.reset() will be decapitated, please use method FormItem.resetValid()');
+      this.errorMessage.valid = true;
+    },
+    resetValid() {
       this.errorMessage.valid = true;
     },
     trigger() {

@@ -137,8 +137,8 @@
         <td>{valid: Boolean, message: String, label: String}</td>
       </tr>
       <tr>
-        <td>reset</td>
-        <td>Reset verification</td>
+        <td>resetValid</td>
+        <td>Reset verification, 1.20.0+, compatible with reset method</td>
         <td>Empty</td>
         <td>Empty</td>
       </tr>
@@ -225,8 +225,8 @@
         <th>Description</th>
       </tr>
       <tr>
-        <td>reset</td>
-        <td>reset validation of a FormItem</td>
+        <td>resetValid</td>
+        <td>Reset verification, 1.20.0+, compatible with reset method</td>
       </tr>
     </table>
   </div>

@@ -137,8 +137,8 @@
         <td>{valid: Boolean, message: String, label: String}</td>
       </tr>
       <tr>
-        <td>reset</td>
-        <td>重置验证</td>
+        <td>resetValid</td>
+        <td>重置验证, 1.20.0+, 兼容旧的方法 reset</td>
         <td>无</td>
         <td>无</td>
       </tr>
@@ -226,8 +226,8 @@
         <th>参数</th>
       </tr>
       <tr>
-        <td>reset</td>
-        <td>reset(): 重置验证一个FormItem</td>
+        <td>resetValid</td>
+        <td>resetValid(): 重置验证一个FormItem，1.20.0+，兼容reset()</td>
         <td>无</td>
       </tr>
     </table>
