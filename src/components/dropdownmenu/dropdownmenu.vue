@@ -141,7 +141,7 @@ export default {
     },
     options() {
       if (!this.datas && !this.dict) {
-        console.error('[HeyUI] Dropdownmenu Component Error: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI Error] Dropdownmenu Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;

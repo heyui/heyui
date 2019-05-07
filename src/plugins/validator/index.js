@@ -56,7 +56,7 @@ const DEFAULT = {
 class Validator {
   constructor(rules) {
     if (!utils.isObject(rules)) {
-      console.error('[HeyUI] Validator Error: Please provide the correct validation parameters');
+      console.error('[HeyUI Error] Validator: Please provide the correct validation parameters');
     }
     this.combineRuleResults = {};
     this.rules = {};

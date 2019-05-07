@@ -5,7 +5,7 @@ const getParent = function (vm) {
     parent = parent.$parent;
   }
   if (!parent) {
-    console.error('[HeyUI] Tree Component Error: Please put TreeItem component in the Tree Component');
+    console.error('[HeyUI Error] Tree Component: Please put TreeItem component in the Tree Component');
   }
   return parent;
 };

@@ -54,7 +54,7 @@ export default {
     },
     arr() {
       if (!this.datas && !this.dict) {
-        console.error('[HeyUI] Tabs Component Error: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI Error] Tabs Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;
