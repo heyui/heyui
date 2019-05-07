@@ -124,7 +124,7 @@ export default {
     checkList() {
       let checkStatus = this.checkStatus || [];
       if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(checkStatus)) {
-        console.warn(`Checkbox: It's not allowed to use v-model with non-array value.`);
+        console.warn(`[HeyUI WARNING] Checkbox Component: It's not allowed to use v-model with non-array value.`);
       }
       return utils.isArray(checkStatus) ? checkStatus : [];
     },

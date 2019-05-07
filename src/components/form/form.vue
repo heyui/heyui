@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     reset() {
-      console.warn('HeyUI[Warn]: form.reset() will be decapitated, please use method form.resetValid()');
+      console.warn('[HeyUI WARNING] Form Component: form.reset() will be decapitated, please use method form.resetValid()');
       for (let m in this.messages) {
         this.messages[m].valid = true;
       }

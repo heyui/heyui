@@ -273,7 +273,7 @@ export default {
       let v = {};
       for (let l of this.layout) {
         if (!this.allviews[l]) {
-          console.warn(`WARNING(DateFullRangePicker): props ${l} for layout don't exsits.`);
+          console.warn(`[HeyUI WARNING] DateFullRangePicker Component: Props ${l} for layout don't exsits.`);
         } else {
           v[l] = this.allviews[l];
         }

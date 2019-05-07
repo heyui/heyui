@@ -274,7 +274,7 @@ export default {
       if (this.multiple) {
         let values = this.value || [];
         if (!utils.isArray(values)) {
-          console.warn(`Select: value '${values}' can't be a value of a multiple select`);
+          console.warn(`[HeyUI WARNING] Select Component: value '${values}' can't be a value of a multiple select`);
           values = [];
         }
         this.codes = values.map((item) => {
