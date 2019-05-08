@@ -7,22 +7,12 @@ export default {
         el.style.height = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
       }
     },
-    update(el, binding) {
-      if (binding.value) {
-        el.style.height = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
-      }
-    },
     unbind(el) {
       el.style.height = null;
     }
   },
   width: {
     inserted(el, binding) {
-      if (binding.value) {
-        el.style.width = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
-      }
-    },
-    update(el, binding) {
       if (binding.value) {
         el.style.width = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
       }
@@ -37,11 +27,6 @@ export default {
         el.style.padding = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
       }
     },
-    update(el, binding) {
-      if (binding.value) {
-        el.style.padding = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
-      }
-    },
     unbind(el) {
       el.style.padding = null;
     }
@@ -52,22 +37,12 @@ export default {
         el.style.margin = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
       }
     },
-    update(el, binding) {
-      if (binding.value) {
-        el.style.margin = binding.value + (String(binding.value).endsWith('%') ? '' : 'px');
-      }
-    },
     unbind(el) {
       el.style.margin = null;
     }
   },
   font: {
     inserted(el, binding) {
-      if (binding && binding.value) {
-        el.style.fontSize = `${binding.value}px`;
-      }
-    },
-    update(el, binding) {
       if (binding && binding.value) {
         el.style.fontSize = `${binding.value}px`;
       }
@@ -85,28 +60,12 @@ export default {
         utils.addClass(el, `${color}-color`);
       }
     },
-    update(el, binding) {
-      let color = binding.value || binding.arg || binding.expression;
-      if (color.startsWith('#')) {
-        el.style.color = color;
-      } else {
-        utils.addClass(el, `${color}-color`);
-      }
-    },
     unbind(el) {
       el.style.color = null;
     }
   },
   bgColor: {
     inserted(el, binding) {
-      let color = binding.value || binding.arg;
-      if (color.startsWith('#')) {
-        el.style.backgroundColor = color;
-      } else {
-        utils.addClass(el, `bg-${color}-color`);
-      }
-    },
-    update(el, binding) {
       let color = binding.value || binding.arg;
       if (color.startsWith('#')) {
         el.style.backgroundColor = color;

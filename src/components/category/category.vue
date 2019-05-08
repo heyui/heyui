@@ -21,6 +21,7 @@ import utils from 'heyui/src/utils/utils';
 
 import categoryModal from './category-modal';
 import Locale from 'heyui/src/mixins/locale';
+import Modal from 'heyui/src/plugins/modal';
 
 const prefix = 'h-category';
 
@@ -78,7 +79,7 @@ export default {
     openPicker() {
       let that = this;
       if (this.disabled) return;
-      this.$Modal({
+      Modal({
         width: 600,
         hasDivider: true,
         component: {

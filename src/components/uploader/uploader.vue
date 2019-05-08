@@ -53,6 +53,7 @@
 import utils from 'heyui/src/utils/utils';
 import config from 'heyui/src/utils/config';
 import Locale from 'heyui/src/mixins/locale';
+import ImagePreview from 'heyui/src/plugins/imagepreview';
 
 const prefix = 'h-uploader';
 
@@ -121,13 +122,13 @@ export default {
     },
     clickImage(index, file) {
       if (this.readonly) {
-        this.$ImagePreview(this.fileList, index);
+        ImagePreview(this.fileList, index);
       } else {
         this.$emit('imageclick', file);
       }
     },
     previewImage(index) {
-      this.$ImagePreview(this.fileList, index);
+      ImagePreview(this.fileList, index);
     },
     getBrowseButton() {
       return this.$el.querySelector('.h-uploader-browse-button');

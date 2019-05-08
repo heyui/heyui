@@ -35,6 +35,7 @@
 import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
+import Message from 'heyui/src/plugins/message';
 
 const prefix = 'h-page';
 
@@ -118,11 +119,11 @@ export default {
       let value = parseInt(event.target.value, 10);
       // log(value);
       if (isNaN(value)) {
-        this.$Message.error(this.t('h.pagination.incorrectFormat'));
+        Message.error(this.t('h.pagination.incorrectFormat'));
         return;
       }
       if (value > this.count || value < 1) {
-        this.$Message.error(this.t('h.pagination.overSize'));
+        Message.error(this.t('h.pagination.overSize'));
         return;
       }
       let cur = parseInt(event.target.value, 10);

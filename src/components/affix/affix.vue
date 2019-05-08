@@ -109,24 +109,6 @@ export default {
           }
         }
 
-        // if ( dis >= 0 && position.top - containerPosition.top < parentOffsetTop) {
-        //   this.isFixed = false;
-        //   this.isAbsolute = true;
-        //   this.fixPosition = 'top';
-        // } else if ( dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom) {
-        //   this.isFixed = false;
-        //   this.isAbsolute = true;
-        //   this.fixPosition = 'bottom';
-        //   // (this.isAbsolute && this.fixPosition == 'bottom' && position.top > parentOffsetTop)
-        // } else if ( this.containerDom.clientHeight > el.clientHeight && this.isAbsolute &&
-        //     !(dis > 0 && this.fixPosition == 'bottom' && containerPosition.bottom < el.clientHeight + this.cFixedOffsetTop) &&
-        //     (( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom))
-        //     || (dis > 0 && position.top > parentOffsetTop && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))) {
-        //   this.isFixed = true;
-        //   this.isAbsolute = false;
-        //   this.fixPosition = 'top';
-        // }
-
         if (original != this.isFixed) {
           this.$emit('onchange', this.isFixed);
           this.$emit('change', this.isFixed);

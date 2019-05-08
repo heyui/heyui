@@ -56,10 +56,6 @@ export default {
       default: 'square'
     },
     datas: Array,
-    // loop: {
-    //   type: Boolean,
-    //   default: true
-    // },
     isHoverStop: {
       type: Boolean,
       default: true

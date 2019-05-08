@@ -5,16 +5,18 @@
       <i class="h-collapse-item-expand h-icon-right"></i>
       <slot name="title">{{title}}</slot>
     </div>
-    <h-collapse-transition>
+    <CollapseTransition>
       <div class="h-collapse-item-content" v-show="isActive">
         <div class="h-collapse-item-content-box">
           <slot></slot>
         </div>
       </div>
-    </h-collapse-transition>
+    </CollapseTransition>
   </div>
 </template>
 <script>
+
+import CollapseTransition from './collapse-transition';
 
 export default {
   name: 'hCollapseItem',
@@ -27,7 +29,7 @@ export default {
     }
   },
   components: {
-
+    CollapseTransition
   },
   data() {
     return {

@@ -27,6 +27,7 @@ import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Dropdown from 'heyui/src/plugins/dropdown';
 import Locale from 'heyui/src/mixins/locale';
+import Message from 'heyui/src/plugins/message';
 
 const prefix = 'h-categorypicker';
 const topMenu = '-------';
@@ -338,7 +339,7 @@ export default {
       }
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
-          this.$Message.error(this.t('h.categoryPicker.limitWords', {
+          Message.error(this.t('h.categoryPicker.limitWords', {
             size: this.limit
           }));
           return;

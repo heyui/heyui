@@ -1,6 +1,6 @@
 /*
  * HeyUI JavaScript Library
- * https://heyui.top/
+ * https://www.heyui.top/
  *
  * Copyright © Lan 2017-present
  * Released under the MIT license
@@ -15,14 +15,13 @@ import Checkbox from './components/checkbox';
 import Circle from './components/circle';
 import Category from './components/category';
 import CategoryPicker from './components/categorypicker';
-import Datetime from './components/datetime';
-import Dropdown from './plugins/dropdown';
+import { DatePicker, DateRangePicker, DateFullRangePicker } from './components/datetime';
 import DropdownCustom from './components/dropdowncustom';
 import DropdownMenu from './components/dropdownmenu';
 import ImagePreview from './components/imagepreview';
-import Form from './components/form';
+import { Form, FormItem, FormItemList } from './components/form';
 import Menu from './components/menu';
-import modal from './components/modal';
+import { Modal, ModalComponent } from './components/modal';
 import Pagination from './components/pagination';
 import Poptip from './components/poptip';
 import Progress from './components/progress';
@@ -47,13 +46,13 @@ import Uploader from './components/uploader';
 import AutoComplete from './components/autocomplete';
 import { Row, Col } from './components/grid';
 import { HHeader, HFooter, Content, Sider, Layout } from './components/layout';
-import Timeline from './components/timeline';
+import { Timeline, TimelineItem } from './components/timeline';
 import Transfer from './components/transfer';
 import { Button, ButtonGroup } from './components/button';
 import TextEllipsis from './components/textellipsis';
 import Carousel from './components/carousel';
 import { Collapse, CollapseItem } from './components/collapse';
-import CollapseTransition from './components/transition/collapse-transition';
+
 
 import style from './directives/style';
 import tooltip from './directives/tooltip';
@@ -69,10 +68,13 @@ import $LoadingBar from './plugins/loadingBar';
 import $ScrollIntoView from './plugins/scrollIntoView';
 import $Clipboard from './plugins/clipboard';
 import $ImagePreview from './plugins/imagepreview';
+import $Dropdown from './plugins/dropdown';
 
 import { dictMapping, hlang } from './filters';
 import config from './utils/config';
 import locale from './locale';
+
+const Cell = Col;
 
 const components = {
   Affix,
@@ -87,18 +89,18 @@ const components = {
   CategoryPicker,
   Checkbox,
   hCircle: Circle,
-  DatePicker: Datetime.DatePicker,
-  DateRangePicker: Datetime.DateRangePicker,
-  DateFullRangePicker: Datetime.DateFullRangePicker,
+  DatePicker,
+  DateRangePicker,
+  DateFullRangePicker,
   DropdownCustom,
   DropdownMenu,
   Form,
-  FormItem: Form.Item,
-  FormItemList: Form.ItemList,
+  FormItem,
+  FormItemList,
   ImagePreview,
   Menu,
-  Modal: modal.Modal,
-  ModalComponent: modal.ModalComponent,
+  Modal,
+  ModalComponent,
   NumberInput,
   Pagination,
   Poptip,
@@ -107,7 +109,7 @@ const components = {
   Rate,
   Row,
   Col,
-  Cell: Col,
+  Cell,
   Search,
   Select,
   Slider,
@@ -116,7 +118,7 @@ const components = {
   SwitchList,
   Skeleton,
   Timeline,
-  TimelineItem: Timeline.Item,
+  TimelineItem,
   Transfer,
   Loading,
   TagInput,
@@ -129,10 +131,8 @@ const components = {
   Uploader,
   TextEllipsis,
   Carousel,
-  CarouselItem: Carousel.CarouselItem,
   Collapse,
   CollapseItem,
-  CollapseTransition,
   HHeader,
   HFooter,
   Content,
@@ -163,7 +163,8 @@ const prototypes = {
   $LoadingBar,
   $ScrollIntoView,
   $Clipboard,
-  $ImagePreview
+  $ImagePreview,
+  $Dropdown
 };
 
 const filters = { dictMapping, hlang };
@@ -178,10 +179,11 @@ const install = function (Vue, opts = {}) {
   }
 
   Object.keys(components).forEach(key => {
-    Vue.component(key, components[key]);
-    Vue.component(`h-${key.toLocaleLowerCase()}`, components[key]);
+    let component = components[key];
+    Vue.component(key, component);
+    Vue.component(`h-${key.toLocaleLowerCase()}`, component);
     if (key.indexOf('h') !== 0) {
-      Vue.component(`h${key}`, components[key]);
+      Vue.component(`h${key}`, component);
     }
   });
 
@@ -202,7 +204,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const HeyUI = Object.assign({ locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
+const HeyUI = Object.assign(prototypes, config, { dictMapping });
 
 HeyUI.install = install;
 

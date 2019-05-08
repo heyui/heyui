@@ -42,6 +42,7 @@
 <script>
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
+import Message from 'heyui/src/plugins/message';
 const topMenu = '-------';
 
 export default {
@@ -82,7 +83,7 @@ export default {
       }
       if (this.param.multiple) {
         if (this.param.objects.length >= this.param.limit && !this.param.objects.some(item => item.key === data.key)) {
-          this.$Message.error(this.t('h.categoryModal.limitWords', {
+          Message.error(this.t('h.categoryModal.limitWords', {
             size: this.param.limit
           }));
           return;

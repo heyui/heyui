@@ -29,7 +29,6 @@ const Transition = {
   },
 
   afterEnter(el) {
-    // for safari: remove class then reset height is necessary
     utils.removeClass(el, 'collapse-transition');
     el.style.height = '';
     el.style.overflow = el.dataset.oldOverflow;
@@ -47,7 +46,6 @@ const Transition = {
 
   leave(el) {
     if (el.scrollHeight !== 0) {
-      // for safari: add class after set height, or it will jump to zero height suddenly, weired
       utils.addClass(el, 'collapse-transition');
       el.style.height = 0;
       el.style.paddingTop = 0;

@@ -305,7 +305,6 @@ export default {
     },
     paste(event) {
       setTimeout(() => {
-        // this.tempValue = event.target.value;
         this.search();
       }, 0);
     },
@@ -313,7 +312,6 @@ export default {
       this.focusing = false;
       if (this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
       let nowValue = event.target.value;
-      // log('blur', nowValue, this.tempValue);
       let focusValue = this.focusValue;
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
@@ -328,7 +326,6 @@ export default {
             this.tempValue = null;
           }
         } else {
-          // this.tempValue = nowValue;
           if (nowValue) {
             this.objects.push(this.getValue(nowValue));
           }

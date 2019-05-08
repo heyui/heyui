@@ -6,7 +6,8 @@
 <script>
 import Validator from 'heyui/src/plugins/validator';
 import utils from 'heyui/src/utils/utils';
-import scrollIntoView from 'heyui/src/plugins/scrollIntoView';
+import ScrollIntoView from 'heyui/src/plugins/scrollIntoView';
+import Message from 'heyui/src/plugins/message';
 
 const prefixCls = 'h-form';
 
@@ -209,15 +210,15 @@ export default {
         let m = result.messages[0];
         if (this.showErrorTip) {
           if (m.type == 'base') {
-            this.$Message.error(`${m.label}${m.message}`);
+            Message.error(`${m.label}${m.message}`);
           } else {
-            this.$Message.error(`${m.message}`);
+            Message.error(`${m.message}`);
           }
         }
         this.$nextTick(() => {
           let firstError = this.$el.querySelector(`.h-form-item-valid-error[prop='${m.prop}']`);
           if (firstError) {
-            scrollIntoView(firstError, {
+            ScrollIntoView(firstError, {
               time: 500,
               align: {
                 top: this.top,

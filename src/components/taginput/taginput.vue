@@ -10,6 +10,7 @@
 <script>
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
+import Message from 'heyui/src/plugins/message';
 
 const prefix = 'h-taginput';
 
@@ -66,11 +67,11 @@ export default {
     },
     add() {
       if (this.wordlimit < this.tagvalue.length) {
-        this.$Message.error(this.t('h.wordlimit.warn', [this.wordlimit]));
+        Message.error(this.t('h.wordlimit.warn', [this.wordlimit]));
         return false;
       }
       if (this.limit <= this.values.length) {
-        this.$Message.error(this.t('h.taginput.limitWords'));
+        Message.error(this.t('h.taginput.limitWords'));
         return false;
       }
       if (this.readonly) return false;
