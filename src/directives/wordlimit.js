@@ -9,6 +9,7 @@ const wordlimit = function (el, total) {
     if (el.getAttribute('data-alerted') == '0') {
       Message.error(locale.t('h.wordlimit.warn', [total]));
     }
+    el.dispatchEvent(new Event('input'));
     el.setAttribute('data-alerted', '1');
   }
 };
