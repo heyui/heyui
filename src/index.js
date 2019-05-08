@@ -168,12 +168,13 @@ const prototypes = {
 
 const filters = { dictMapping, hlang };
 
-const HeyUI = Object.assign({}, components, { locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
-
-const install = function (Vue, opts) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
-  if (opts && opts.locale) {
+  if (opts.locale) {
     locale.use(opts.locale);
+  }
+  if (opts.i18n) {
+    locale.i18n(opts.i18n);
   }
 
   Object.keys(components).forEach(key => {
@@ -200,6 +201,8 @@ const install = function (Vue, opts) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
+
+const HeyUI = Object.assign({ locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
 
 HeyUI.install = install;
 

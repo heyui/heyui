@@ -11,8 +11,7 @@ import Vue from 'vue';
 import HeyUI from 'heyui';
 import en from 'heyui/dist/locale/en-US';
 
-Vue.use(HeyUI);
-HeyUI.locale(en);
+Vue.use(HeyUI, {locale: en});
     </codesEn>
 
     <h3>Use vue-i18n</h3>
@@ -23,7 +22,6 @@ import VueI18n from 'vue-i18n';
 import en from 'heyui/dist/locale/en-US';
 import zh from 'heyui/dist/locale/zh-CN';
 
-Vue.use(HeyUI);
 Vue.use(VueI18n);
 const messages = {
   en: Object.assign({ message: 'hello' }, en),
@@ -36,7 +34,7 @@ const i18n = new VueI18n({
 });
 
 // init i18n with heyui
-HeyUI.i18n(i18n);
+Vue.use(HeyUI, {i18n});
 
 // change language
 // vue file

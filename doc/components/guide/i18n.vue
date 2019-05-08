@@ -7,42 +7,41 @@
 
     <h3>设置系统的语言</h3>
     <codes type="javascript">
-    import Vue from 'vue';
-    import HeyUI from 'heyui';
-    import en from 'heyui/dist/locale/en-US';
+import Vue from 'vue';
+import HeyUI from 'heyui';
+import en from 'heyui/dist/locale/en-US';
 
-    Vue.use(HeyUI);
-    HeyUI.locale(en);
+Vue.use(HeyUI);
+Vue.use(HeyUI, {locale: en});
     </codes>
 
     <h3>使用vue-i18n</h3>
     <codes type="javascript">
-    import Vue from 'vue';
-    import HeyUI from 'heyui';
-    import VueI18n from 'vue-i18n';
-    import en from 'heyui/dist/locale/en-US';
-    import zh from 'heyui/dist/locale/zh-CN';
+import Vue from 'vue';
+import HeyUI from 'heyui';
+import VueI18n from 'vue-i18n';
+import en from 'heyui/dist/locale/en-US';
+import zh from 'heyui/dist/locale/zh-CN';
 
-    Vue.use(HeyUI);
-    Vue.use(VueI18n);
-    const messages = {
-      en: Object.assign({ message: 'hello' }, en),
-      zh: Object.assign({ message: '你好' }, zh)
-    };
-    const i18n = new VueI18n({
-      locale: 'zh',  // set locale
-      fallbackLocale: 'en',
-      messages  // set locale messages
-    });
+Vue.use(VueI18n);
+const messages = {
+  en: Object.assign({ message: 'hello' }, en),
+  zh: Object.assign({ message: '你好' }, zh)
+};
+const i18n = new VueI18n({
+  locale: 'zh',  // set locale
+  fallbackLocale: 'en',
+  messages  // set locale messages
+});
 
-    // init i18n with heyui
-    HeyUI.i18n(i18n);
+// init i18n with heyui
+Vue.use(HeyUI, {i18n});
 
-    // change language
-    // vue file
-    this.$i18n.locale = 'en';
-    // or
-    i18n.locale = 'en';
+// change language
+// vue file
+this.$i18n.locale = 'en';
+// or
+i18n.locale = 'en';
     </codes>
 
     <h3>支持的语言</h3>

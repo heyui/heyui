@@ -42,11 +42,10 @@ const i18n = new VueI18n({
   fallbackLocale: 'en',
   messages // set locale messages
 });
-HeyUI.i18n(i18n);
 
 heyuiConfig();
 Vue.use(VueRouter);
-Vue.use(HeyUI);
+Vue.use(HeyUI, { i18n });
 
 Vue.component('example', example);
 Vue.component('codes', codes);
