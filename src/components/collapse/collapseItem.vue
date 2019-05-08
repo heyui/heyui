@@ -16,7 +16,7 @@
 </template>
 <script>
 
-import CollapseTransition from './collapse-transition';
+import CollapseTransition from './collapsetransition';
 
 export default {
   name: 'hCollapseItem',
