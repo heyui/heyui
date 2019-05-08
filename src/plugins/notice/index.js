@@ -53,11 +53,13 @@ function notice(param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout });
   } else if (utils.isObject(param)) {
-    if (this.$router) {
-      param.$router = this.$router;
-    }
-    if (this.$i18n) {
-      param.$i18n = this.$i18n;
+    if (this) {
+      if (this.$router) {
+        param.$router = this.$router;
+      }
+      if (this.$i18n) {
+        param.$i18n = this.$i18n;
+      }
     }
     return Notice(param);
   }

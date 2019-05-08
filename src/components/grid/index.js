@@ -1,4 +1,4 @@
-import Row from './row.vue';
-import Col from './col.vue';
+import Row from './row';
+import Cell from './col';
 
-export { Row, Col };
+export { Row, Cell };

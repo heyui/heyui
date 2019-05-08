@@ -45,11 +45,13 @@ function Modal(originalParam) {
 }
 
 function modal(param) {
-  if (this.$router) {
-    param.$router = this.$router;
-  }
-  if (this.$i18n) {
-    param.$i18n = this.$i18n;
+  if (this) {
+    if (this.$router) {
+      param.$router = this.$router;
+    }
+    if (this.$i18n) {
+      param.$i18n = this.$i18n;
+    }
   }
   return new Modal(param);
 }

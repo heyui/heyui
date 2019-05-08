@@ -270,7 +270,6 @@ export default {
   'otherAffix3': resolve => require.ensure([], require => require('./other/affix3'), 'other'),
   'otherScrollintoview1': resolve => require.ensure([], require => require('./other/scrollintoview1'), 'other'),
   'otherClipboard1': resolve => require.ensure([], require => require('./other/clipboard1'), 'other'),
-  'otherDirective': resolve => require.ensure([], require => require('./other/directive'), 'other'),
   'otherSkeleton1': resolve => require.ensure([], require => require('./other/skeleton1'), 'other'),
   'otherSkeleton2': resolve => require.ensure([], require => require('./other/skeleton2'), 'other'),
   'otherSkeleton3': resolve => require.ensure([], require => require('./other/skeleton3'), 'other'),

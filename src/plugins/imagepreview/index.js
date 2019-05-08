@@ -1,4 +1,4 @@
-import Preview from 'heyui/src/components/imagepreview/imagepreview-modal';
+import Preview from 'heyui/src/plugins/imagepreview/imagepreview-modal';
 import Modal from 'heyui/src/plugins/modal';
 
 export default function (datas, index) {

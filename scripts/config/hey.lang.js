@@ -14,7 +14,7 @@ module.exports = {
     umd: {
       entry,
       filename: '[name].js',
-      libraryTarget: 'default'
+      libraryExport: 'default'
     },
     alias: {
       'heyui/src': './src'

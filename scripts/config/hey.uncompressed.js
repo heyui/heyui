@@ -2,12 +2,12 @@ module.exports = {
   root: 'dist',
   clean: false,
   webpack: {
-    mode: 'development',
+    compress: false,
     umd: {
       entry: './src/index.js',
       library: 'HeyUI',
       filename: 'heyui.uncompressed.js',
-      libraryTarget: 'default'
+      libraryExport: 'default'
     },
     alias: {
       'heyui/src': './src'

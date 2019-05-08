@@ -6,10 +6,10 @@
         <input type="text" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <Button :style="heightStyles" color="primary" v-if="showSearchButton" @click="search(inputValue)">
+      <button :style="heightStyles" style="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
         <template v-else>{{'h.search.searchText' | hlang(null, searchText)}}</template>
-      </Button>
+      </button>
     </div>
     <i v-if="position=='end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
   </div>

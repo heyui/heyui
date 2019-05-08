@@ -8,7 +8,7 @@
     <p><code>v-wordlimit</code>: limit word length</p>
     <p><code>v-autosize</code>: auto setting textarea height</p>
 
-    <exampleEn demo="other/directive"></exampleEn>
+    <example demo="other/directive"></example>
 
     <h3>$Message,$Notice,$Modal,$Confirm</h3>
     <exampleEn demo="message/messageMethods"></exampleEn>

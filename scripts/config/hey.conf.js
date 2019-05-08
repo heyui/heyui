@@ -5,7 +5,7 @@ module.exports = {
       entry: './src/index.js',
       library: 'HeyUI',
       filename: 'heyui.js',
-      libraryTarget: 'default'
+      libraryExport: 'default'
     },
     externals: {
       vue: 'vue'
