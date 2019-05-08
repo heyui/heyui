@@ -421,7 +421,7 @@ export default {
       if (this.$slots.default) {
         for (let slot of this.$slots.default) {
           let option = slot.componentOptions;
-          if (option && (option.tag == 'TableItem' || option.tag == 'h-table-item')) {
+          if (option && (option.tag == 'TableItem' || option.tag == 'h-table-item' || option.tag == 'h-tableitem')) {
             columns.push(slot.componentOptions.propsData);
           }
         }
