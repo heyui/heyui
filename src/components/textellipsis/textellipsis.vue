@@ -1,7 +1,7 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span class="text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">{{text}}</span>
+    <span class="h-text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">{{text}}</span>
     <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
@@ -57,7 +57,7 @@ export default {
     },
     limitShow() {
       this.$nextTick(() => {
-        let textDom = this.$el.querySelector('.text-ellipsis-limit-text');
+        let textDom = this.$el.querySelector('.h-text-ellipsis-limit-text');
         let title = this.$el;
         let more = this.$el.querySelector('.h-text-ellipsis-more');
         let n = 1000;
