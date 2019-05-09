@@ -59,7 +59,10 @@ export default {
   methods: {
     getTrClass(data, index) {
       if (index == 2) {
-        return 'bg-gray1-color';
+        return ['bg-blue-color', 'white-color'];
+
+        // or
+        // return 'bg-blue-color';
       }
     }
   }

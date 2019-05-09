@@ -307,8 +307,12 @@ export default {
       };
       if (this.getTrClass) {
         let trClass = this.getTrClass(d, index);
-        if (trClass) {
+        if (utils.isString(trClass)) {
           cls[trClass] = true;
+        } else if (utils.isArray(trClass)) {
+          trClass.forEach(item => {
+            cls[item] = true;
+          });
         }
       }
       return cls;
