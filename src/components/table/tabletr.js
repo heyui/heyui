@@ -1,4 +1,4 @@
-import TableTd from './table-td';
+import TableTd from './tabletd';
 import utils from 'heyui/src/utils/utils';
 
 export default {

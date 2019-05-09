@@ -61,7 +61,7 @@ import manba from 'manba';
 import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Dropdown from 'heyui/src/plugins/dropdown';
-import dateBase from './date-base';
+import dateBase from 'heyui/src/components/datepicker/datebase';
 import Locale from 'heyui/src/mixins/locale';
 
 const prefix = 'h-datetime';

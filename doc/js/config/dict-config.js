@@ -21,7 +21,7 @@ const menus = [
       pluginAuto: 'AutoComplete 模糊匹配',
       pluginNumberinput: 'NumberInput 数字输入',
       pluginTaginput: 'TagInput 标签输入框',
-      formSwitch: 'Switch 开关',
+      formSwitch: 'HSwitch 开关',
       formSlider: 'Slider 滑块',
       formRate: 'Rate 评分',
       formSwitchlist: 'SwitchList 选项切换',

@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
-    <h2>Switch</h2>
-    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-switch</code>, generally use <code>hSwitch</code>. </p>
+    <h2>HSwitch</h2>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-HSwitch</code>, generally use <code>HSwitch</code>. </p>
     <h3>Basic</h3>
     <exampleEn demo="form/switch2"></exampleEn>
 
@@ -11,7 +11,7 @@
     <h3>Disabled</h3>
     <exampleEn demo="form/switch3"></exampleEn>
 
-    <h3>Switch Property</h3>
+    <h3>HSwitch Property</h3>
     <table class="table">
       <tr>
         <th>Property</th>
@@ -50,7 +50,7 @@
       </tr>
     </table>
 
-    <h3>Switch Event</h3>
+    <h3>HSwitch Event</h3>
     <table class="table">
       <tr>
         <th>Event</th>

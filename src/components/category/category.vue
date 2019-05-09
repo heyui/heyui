@@ -19,7 +19,7 @@
 import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 
-import categoryModal from './category-modal';
+import categoryModal from './categorymodal';
 import Locale from 'heyui/src/mixins/locale';
 import Modal from 'heyui/src/plugins/modal';
 

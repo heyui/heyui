@@ -15,13 +15,18 @@ import Checkbox from 'heyui/src/components/checkbox';
 import Circle from 'heyui/src/components/circle';
 import Category from 'heyui/src/components/category';
 import CategoryPicker from 'heyui/src/components/categorypicker';
-import { DatePicker, DateRangePicker, DateFullRangePicker } from 'heyui/src/components/datetime';
+import DatePicker from 'heyui/src/components/datepicker';
+import DateRangePicker from 'heyui/src/components/daterangepicker';
+import DateFullRangePicker from 'heyui/src/components/datefullrangepicker';
 import DropdownCustom from 'heyui/src/components/dropdowncustom';
 import DropdownMenu from 'heyui/src/components/dropdownmenu';
 import ImagePreview from 'heyui/src/components/imagepreview';
-import { Form, FormItem, FormItemList } from 'heyui/src/components/form';
+import Form from 'heyui/src/components/form';
+import FormItem from 'heyui/src/components/formitem';
+import FormItemList from 'heyui/src/components/formitemlist';
 import Menu from 'heyui/src/components/menu';
-import { Modal, ModalComponent } from 'heyui/src/components/modal';
+import Modal from 'heyui/src/components/modal';
+import ModalComponent from 'heyui/src/components/modalcomponent';
 import Pagination from 'heyui/src/components/pagination';
 import Poptip from 'heyui/src/components/poptip';
 import Progress from 'heyui/src/components/progress';
@@ -32,10 +37,11 @@ import Loading from 'heyui/src/components/loading';
 import Steps from 'heyui/src/components/steps';
 import Search from 'heyui/src/components/search';
 import Select from 'heyui/src/components/select';
-import Switch from 'heyui/src/components/switch';
+import HSwitch from 'heyui/src/components/hswitch';
 import SwitchList from 'heyui/src/components/switchlist';
 import Skeleton from 'heyui/src/components/skeleton';
-import { Table, TableItem } from 'heyui/src/components/table';
+import Table from 'heyui/src/components/table';
+import TableItem from 'heyui/src/components/tableitem';
 import Tabs from 'heyui/src/components/tabs';
 import TagInput from 'heyui/src/components/taginput';
 import Tree from 'heyui/src/components/tree';
@@ -44,15 +50,22 @@ import NumberInput from 'heyui/src/components/numberinput';
 import Tooltip from 'heyui/src/components/tooltip';
 import Uploader from 'heyui/src/components/uploader';
 import AutoComplete from 'heyui/src/components/autocomplete';
-import { Row, Cell } from 'heyui/src/components/grid';
-import { HHeader, HFooter, Content, Sider, Layout } from 'heyui/src/components/layout';
-import { Timeline, TimelineItem } from 'heyui/src/components/timeline';
+import Row from 'heyui/src/components/row';
+import Cell from 'heyui/src/components/cell';
+import HHeader from 'heyui/src/components/hheader';
+import HFooter from 'heyui/src/components/hfooter';
+import Content from 'heyui/src/components/content';
+import Sider from 'heyui/src/components/sider';
+import Layout from 'heyui/src/components/layout';
+import Timeline from 'heyui/src/components/timeline';
+import TimelineItem from 'heyui/src/components/timelineitem';
 import Transfer from 'heyui/src/components/transfer';
-import { Button, ButtonGroup } from 'heyui/src/components/button';
+import Button from 'heyui/src/components/button';
+import ButtonGroup from 'heyui/src/components/buttongroup';
 import TextEllipsis from 'heyui/src/components/textellipsis';
 import Carousel from 'heyui/src/components/carousel';
-import { Collapse, CollapseItem } from 'heyui/src/components/collapse';
-
+import Collapse from 'heyui/src/components/collapse';
+import CollapseItem from 'heyui/src/components/collapseitem';
 
 import style from 'heyui/src/directives/style';
 import tooltip from 'heyui/src/directives/tooltip';
@@ -70,7 +83,9 @@ import $Clipboard from 'heyui/src/plugins/clipboard';
 import $ImagePreview from 'heyui/src/plugins/imagepreview';
 import $Dropdown from 'heyui/src/plugins/dropdown';
 
-import { dictMapping, hlang } from 'heyui/src/filters';
+import dictMapping from 'heyui/src/filters/dictmapping';
+import hlang from 'heyui/src/filters/hlang';
+
 import config from 'heyui/src/utils/config';
 import locale from 'heyui/src/locale';
 
@@ -114,7 +129,7 @@ const components = {
   Select,
   Slider,
   Steps,
-  hSwitch: Switch,
+  HSwitch,
   SwitchList,
   Skeleton,
   Timeline,

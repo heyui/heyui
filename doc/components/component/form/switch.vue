@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
-    <h2>Switch 开关</h2>
-    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-switch</code>，一般使用  <code>hSwitch</code>。</p>
+    <h2>HSwitch 开关</h2>
+    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-HSwitch</code>，一般使用  <code>HSwitch</code>。</p>
     <h3>基本</h3>
     <example demo="form/switch2"></example>
 
@@ -11,7 +11,7 @@
     <h3>禁用</h3>
     <example demo="form/switch3"></example>
 
-    <h3>Switch 参数</h3>
+    <h3>HSwitch 参数</h3>
     <table class="table">
       <tr>
         <th>参数</th>
@@ -50,7 +50,7 @@
       </tr>
     </table>
 
-    <h3>Switch 事件</h3>
+    <h3>HSwitch 事件</h3>
     <table class="table">
       <tr>
         <th>事件</th>

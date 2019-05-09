@@ -121,8 +121,8 @@
 </template>
 <script>
 import utils from 'heyui/src/utils/utils';
-import TableTr from './table-tr';
-import TableTh from './table-th';
+import TableTr from './tabletr';
+import TableTh from './tableth';
 import debounce from 'heyui/src/utils/debounce';
 
 const prefix = 'h-table';

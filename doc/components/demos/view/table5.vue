@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      <hSwitch v-model="loading">loading</hSwitch>
+      <HSwitch v-model="loading">loading</HSwitch>
       <Button @click="updateSort">Age降序</Button>
     </p>
     <Table ref="table" :datas="datas" :loading="loading" :columns="columns" @sort="triggerSort">

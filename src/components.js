@@ -102,7 +102,7 @@ const components = {
   Select,
   Slider,
   Steps,
-  hSwitch: Switch,
+  HSwitch: Switch,
   SwitchList,
   Skeleton,
   Timeline,

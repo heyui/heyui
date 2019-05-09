@@ -52,7 +52,7 @@
   </li>
 </template>
 <script>
-import TreeSlot from './tree-slot';
+import TreeSlot from './treeslot';
 
 export default {
   name: 'hTreeItem',

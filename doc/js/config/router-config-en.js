@@ -104,7 +104,7 @@ const router = [
         path: 'form/switch',
         name: 'en_formSwitch',
         meta: {
-          title: 'Switch'
+          title: 'HSwitch'
         },
         component: () => import('components_en/component/form/switch')
       },

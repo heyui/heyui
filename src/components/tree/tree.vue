@@ -22,7 +22,7 @@
 <script>
 import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
-import treeItem from './tree-item';
+import treeItem from './treeitem';
 import Search from 'heyui/src/components/search';
 
 const prefix = 'h-tree';

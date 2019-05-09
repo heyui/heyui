@@ -81,7 +81,7 @@
       <FormItem label="Custom" prop="thingsData[0]" required>
         <input type="text" v-model="data.thingsData[0]" />
       </FormItem>
-      <FormItemList>
+      <div>
         <FormItem v-for="(item, index) of data.inputsData" :key="index" :label="'Custom'+(index+1)" :prop="'inputsData['+index+'].value'">
           <Row type="flex">
             <Cell class="flex1">
@@ -94,7 +94,7 @@
             </Cell>
           </Row>
         </FormItem>
-      </FormItemList>
+      </div>
       <FormItem single>
         <Button size="s" text-color="blue" @click="add">添加输入框</Button>
       </FormItem>

@@ -7,7 +7,7 @@
 import config from 'heyui/src/utils/config';
 
 export default {
-  name: 'hSwitchList',
+  name: 'HSwitchList',
   props: {
     small: {
       type: Boolean,
