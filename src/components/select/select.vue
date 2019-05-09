@@ -8,7 +8,7 @@
           </span>
           <input v-if="filterable"
                 type="text"
-                class="h-select-search-input" v-model="searchInput"
+                class="h-select-search-input h-input" v-model="searchInput"
                 :disabled="disabled"
                @keyup="handle"
                @blur="blurHandle"
@@ -26,7 +26,7 @@
                 :disabled="disabled"
                 @keypress.enter="enterHandle"
                 :class="{'h-select-search-input-value': hasValue}"
-                class="h-select-search-input h-select-single-search-input" v-model="searchInput"
+                class="h-select-search-input h-select-single-search-input h-input" v-model="searchInput"
                 :placeholder="hasValue?'':showPlaceholder" />
           <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
         </template>
@@ -39,7 +39,6 @@
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container" v-if="isShow">
-        <!-- <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search> -->
         <div class="h-select-list">
           <slot name="top" :results="filterOptions"></slot>
           <ul class="h-select-ul">

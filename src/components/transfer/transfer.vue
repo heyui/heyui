@@ -3,7 +3,7 @@
   <div class="h-transfer">
     <div class="h-transfer-source">
       <slot name="sourceHeader"><div class="h-transfer-header" v-if="option&&option.ltHeadText">{{option.ltHeadText}}</div></slot>
-      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
+      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" class="h-input" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
           <Checkbox v-model="ltChecked"  :value="op[key]" :checked="false">
@@ -32,7 +32,7 @@
 
     <div class="h-transfer-target">
       <slot name="targetHeader"><div class="h-transfer-header" v-if="option&&option.rtHeadText">{{option.rtHeadText}}</div></slot>
-      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" :placeholder="option?option.placeholder:'搜索'" v-model="rtSearchText"/></div>
+      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" class="h-input" :placeholder="option?option.placeholder:'搜索'" v-model="rtSearchText"/></div>
       <div class="h-transfer-list">
         <div class="h-transfer-item" v-for="op in targets" :key="op[key]"><label>
           <Checkbox v-model="rtChecked"  :value="op[key]">
@@ -49,7 +49,11 @@
 </template>
 
 <script>
+import Checkbox from 'heyui/src/components/checkbox';
+
 export default {
+  name: 'hTransfer',
+  components: { Checkbox },
   props: {
     value: {
       type: Array,

@@ -26,7 +26,7 @@
     <h3>图标库</h3>
     <Row :space="15">
       <template  v-for='(n, i) of list'>
-        <Cell width="24" :key="n" v-if="i == 39">
+        <Cell width="24" :key="'version'+n" v-if="i == 39">
           <blockquote>1.19.0+</blockquote>
         </Cell>
         <Cell :xs='12' :sm='12' :md='6' :lg='4' :xl='4' :key="n">

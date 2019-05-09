@@ -1,11 +1,11 @@
 @categorypicker-prefix: ~"@{prefix}categorypicker";
 
-.plugin-input(@categorypicker-prefix);
+.h-func-plugin-input(@categorypicker-prefix);
 
 .@{categorypicker-prefix}{
   &-value-single {
     >.@{prefix}icon-close{
-      .input-right-icon;
+      .h-func-input-right-icon();
     }
   }
 
@@ -13,13 +13,14 @@
     min-height: @input-height;
     padding-right: 180px;
     >span {
-      .tag-span-func();
+      .h-func-tag-span();
     }
   }
   &-ul {
     min-width: 300px;
     max-width: 500px;
     padding: 15px 10px;
+    .h-func-list-style();
   }
   &-ul &-item {
     display: inline-block;

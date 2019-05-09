@@ -1,0 +1,120 @@
+@input-prefix: ~"@{prefix}input";
+
+div.@{input-prefix} {
+  position: relative;
+  display: inline-block;
+
+  >[class^="@{icon-prefix}"],
+  >[class*=" @{icon-prefix}"] {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    font-size: @font-size-mini;
+    z-index: 3;
+    transform: translate(0%, -50%);
+  }
+
+  >.h-icon-close{
+    color: @dark2-color;
+    transform-origin: center;
+    .h-func-text-hover();
+    transform: translate(0%, -50%) scale(0.9);
+  }
+  >input{
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  &.h-input-prefix-icon {
+    >[class^="@{icon-prefix}"],
+    >[class*=" @{icon-prefix}"]{
+      right: auto;
+      left: 8px;
+    }
+    >input{
+      padding-left: 25px;
+    }
+  }
+
+  &.h-input-suffix-icon {
+    >input{
+      padding-right: 25px;
+    }
+  }
+  &-group {
+    position: relative;
+    display: flex;
+    > .h-btn {
+      padding-top: (@input-height - @font-size) / 2 - 1px;
+      padding-bottom: (@input-height - @font-size) / 2 - 1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    >.h-numberinput>.h-numberinput-show, >.h-btn, >.h-select>.h-select-show {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    >.h-numberinput:not(:last-child)>.h-numberinput-show, >.h-select:not(:last-child)>.h-select-show {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    >input,>div {
+      position: relative;
+      z-index: 2;
+      margin:0;
+      flex: 1;
+    }
+    >.h-select {
+      overflow: hidden;
+    }
+    >div{
+      padding: 0 !important;
+    }
+    >input:not(:last-child),>div:not(:last-child) input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    >span{
+        line-height: @input-height - 2px;
+    }
+    >.@{input-prefix}-addon {
+      line-height: @input-height - 2px;
+      flex: inherit;
+      text-align: center;
+      background-color: @gray3-color;
+      border-top: @border;
+      border-bottom: @border;
+      height: @input-height;
+      vertical-align: middle;
+      padding: 0px 5px;
+      min-width: 24px;
+      white-space: nowrap;
+      color: @gray-color;
+      display: inline-block;
+      &:first-child {
+        border-radius: @border-radius 0 0 @border-radius;
+        border-left: @border;
+      }
+      &:last-child,
+      &.last-child {
+        border-radius: 0 @border-radius @border-radius 0;
+        border-right: @border;
+      }
+      +input,
+      +div input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      > .h-select {
+        display: block;
+        .h-select-placeholder, .h-select-value-single {
+          height: @input-height - 2px;
+          line-height: @input-height - 2px;
+        }
+      }
+    }
+  }
+}

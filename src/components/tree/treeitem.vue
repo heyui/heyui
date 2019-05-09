@@ -53,10 +53,11 @@
 </template>
 <script>
 import TreeSlot from './treeslot';
+import Checkbox from 'heyui/src/components/checkbox';
 
 export default {
   name: 'hTreeItem',
-  components: { TreeSlot },
+  components: { TreeSlot, Checkbox },
   props: {
     data: Object,
     param: Object,

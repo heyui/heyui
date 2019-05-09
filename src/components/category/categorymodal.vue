@@ -43,11 +43,14 @@
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
 import Message from 'heyui/src/plugins/message';
+import Search from 'heyui/src/components/search';
+import Checkbox from 'heyui/src/components/checkbox';
 const topMenu = '-------';
 
 export default {
   name: 'hCategoryModal',
   mixins: [Locale],
+  components: { Search, Checkbox },
   props: {
     param: Object
   },

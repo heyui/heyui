@@ -3,7 +3,7 @@
     <i v-if="position=='front'" class="h-icon-search"></i>
     <div class="h-search-container">
       <div class="h-search-input">
-        <input type="text" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
+        <input type="text" class="h-input" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
       <button :style="heightStyles" style="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">

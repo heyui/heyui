@@ -124,11 +124,13 @@ import utils from 'heyui/src/utils/utils';
 import TableTr from './tabletr';
 import TableTh from './tableth';
 import debounce from 'heyui/src/utils/debounce';
+import Checkbox from 'heyui/src/components/checkbox';
 
 const prefix = 'h-table';
 
 export default {
   name: 'hTable',
+  components: { Checkbox },
   props: {
     columns: {
       type: Array,

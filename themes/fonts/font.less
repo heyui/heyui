@@ -6,5 +6,11 @@
   vertical-align: -1px;
 }
 .h-icon-loading, .h-icon-spinner {
-  animation: ani-load-loop 1s linear infinite;
+  animation: h-ani-loading-loop 1s linear infinite;
+}
+
+@keyframes h-ani-loading-loop {
+  from { transform: rotate(0deg);}
+  50%  { transform: rotate(180deg);}
+  to   { transform: rotate(360deg);}
 }

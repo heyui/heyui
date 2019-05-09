@@ -1,0 +1,30 @@
+@input-prefix: ~"@{prefix}input";
+@input-base-padding: @input-height / 4;
+input[type=text],
+input[type=password],
+input[type=search],
+input[type=number],
+input[type=tel],
+input[type=url], input.h-input, textarea, .h-textarea{
+  .h-func-input();
+}
+
+input[type=text],
+input[type=password],
+input[type=search],
+input[type=number],
+input[type=tel],
+input[type=url], input.h-input{
+  height: @input-height;
+}
+
+textarea, .h-textarea{
+  padding: @input-base-padding;
+}
+
+input[type=text]::-ms-clear{
+  display: none;
+}
+input::-webkit-search-cancel-button{
+  display: none;
+}

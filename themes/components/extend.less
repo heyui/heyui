@@ -1,0 +1,125 @@
+
+.h-func-generate-color(@color){
+  @var-color: ~'@{color}-color';
+  .@{var-color}{
+    color: @@var-color !important;
+  }
+  .bg-@{var-color}{
+    background-color: @@var-color !important;
+  }
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+
+.h-func-generate-color(red);
+.h-func-generate-color(blue);
+.h-func-generate-color(green);
+.h-func-generate-color(yellow);
+.h-func-generate-color(white);
+.h-func-generate-color(gray);
+.h-func-generate-color(gray1);
+.h-func-generate-color(gray2);
+.h-func-generate-color(gray3);
+.h-func-generate-color(gray4);
+.h-func-generate-color(dark);
+.h-func-generate-color(dark1);
+.h-func-generate-color(dark2);
+.h-func-generate-color(primary);
+
+.link{
+  .h-func-link();
+}
+
+.clearfix{
+  .h-func-clearfix();
+};
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.middle-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.middle-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+
+.overflow-y {
+  overflow-y: auto;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-hover{
+  .h-func-text-hover();
+}
+
+.generate-text-align(@dir){
+  .text-@{dir} {
+    text-align: @dir !important;
+  }
+}
+
+.generate-text-align(left);
+.generate-text-align(center);
+.generate-text-align(right);
+
+.bottom-line {
+  border-bottom: @border;
+}
+
+.h-split{
+  display: inline-block;
+  width: 5px;
+  height: 2px;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -8,9 +8,9 @@
   bottom: 50px;
   &.@{backtop-prefix}-show {
     display: block;
-    animation: ani-show 0.2s linear;
+    animation: h-ani-backtop-show 0.2s linear;
   }
-  animation: ani-hide 0.2s linear;
+  animation: h-ani-backtop-hide 0.2s linear;
 
   &-default &-inner {
     background-color: rgba(0, 0, 0, .6);
@@ -26,4 +26,16 @@
     font-size: 24px;
     padding: 8px 12px;
   }
+}
+
+@keyframes h-ani-backtop-show {
+  from { opacity: 0;}
+  50%  { opacity: 0.5;}
+  to   { opacity: 1;}
+}
+
+@keyframes h-ani-backtop-hide {
+  from { opacity: 1;}
+  50%  { opacity: 0.5;}
+  to   { opacity: 0;}
 }

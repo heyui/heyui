@@ -28,7 +28,7 @@
         <i class="h-icon-right"></i>
       </span>
     </span>
-    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input" :value="curNow" @blur="jump" @keyup.enter="jump">
+    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @blur="jump" @keyup.enter="jump">
   </div>
 </template>
 <script>

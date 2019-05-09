@@ -20,7 +20,7 @@
       }
     }
     &-background{
-      .absolute;
+      position: absolute;
       left: 0px;
       right: 0px;
       top: 0px;
@@ -32,7 +32,7 @@
       background-position: center;
     }
     &-operate{
-      .absolute();
+      .h-func-fullscreen();
       background: rgba(0, 0, 0, 0.6);
       z-index: 1;
       opacity: 0;
@@ -88,7 +88,7 @@
 
   &-images{
     &-container{
-      .clearfix();
+      .h-func-clearfix();
     }
   }
 
@@ -106,8 +106,8 @@
     }
     &-info{
       padding-right: 15px;
-      .text-ellipsis;
-      .li-hover();
+      .h-func-text-ellipsis();
+      .h-func-li-hover();
       padding-left: 5px;
     }
     .h-icon-trash{
