@@ -72,6 +72,7 @@ import tooltip from 'heyui/src/directives/tooltip';
 import wordcount from 'heyui/src/directives/wordcount';
 import wordlimit from 'heyui/src/directives/wordlimit';
 import autosize from 'heyui/src/directives/autosize';
+
 import $Modal from 'heyui/src/plugins/modal';
 import $Confirm from 'heyui/src/plugins/confirm';
 import $Message from 'heyui/src/plugins/message';
