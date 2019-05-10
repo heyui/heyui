@@ -35,6 +35,10 @@ module.exports = {
     devServer: {
       historyApiFallback: true
     },
+    pluginImport: {
+      libraryName: 'heyui',
+      libraryDirectory: '../lib'
+    },
     externals: {}
   },
   copy: ['./static/images/**/*', './simple.html', './components/demos/**/*.vue', './components/common/qiniu.vue', './components/demos/**/*.txt', './.well-known/pki-validation/fileauth.txt', 'themes/**/*.css', './components_en/demos/**/*.vue', './components_en/common/qiniu.vue', './components_en/demos/**/*.txt']

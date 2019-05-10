@@ -12,6 +12,12 @@ import hlang from 'heyui/src/filters/hlang';
 
 import config from 'heyui/src/utils/config';
 import locale from 'heyui/src/locale';
+import tooltip from 'heyui/src/directives/tooltip';
+
+const directives = {
+  tooltip
+};
+
 const filters = { dictMapping, hlang };
 
 const install = function (Vue, opts = {}) {
@@ -37,11 +43,9 @@ const install = function (Vue, opts = {}) {
     Vue.filter(key, filters[key]);
   });
 
-  if (opts.directives) {
-    Object.keys(opts.directives).forEach(key => {
-      Vue.directive(key, opts.directives[key]);
-    });
-  }
+  Object.keys(directives).forEach(key => {
+    Vue.directive(key, directives[key]);
+  });
 
   if (opts.prototypes) {
     Object.keys(opts.prototypes).forEach(key => {

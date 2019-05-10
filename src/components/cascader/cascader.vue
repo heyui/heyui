@@ -31,7 +31,7 @@ import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Dropdown from 'heyui/src/plugins/dropdown';
 import Locale from 'heyui/src/mixins/locale';
-import CascaderItem from 'heyui/src/components/cascader-item';
+import CascaderItem from 'heyui/src/components/cascader/cascader-item';
 
 const prefix = 'h-cascader';
 
