@@ -9,7 +9,7 @@
 ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/themes/index.css?style=flat-square&compression=gzip&label=gzip%20size:%20CSS)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-> A UI components Library.
+> An UI components library.
 
 ## Components
 
