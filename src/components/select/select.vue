@@ -32,7 +32,7 @@
         </template>
         <template v-else>
           <template v-if="hasValue">
-            <div v-if="$scopedSlots.value" class="h-select-value-single">{{singleValue}}</div>
+            <div v-if="!$scopedSlots.value" class="h-select-value-single">{{singleValue}}</div>
             <slot v-else :value="singleValue" name="value"></slot>
           </template>
           <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
