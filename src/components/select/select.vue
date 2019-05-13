@@ -3,8 +3,8 @@
     <div :class="showCls">
       <template v-if="multiple">
         <div class="h-select-multiple-tags">
-          <span v-for="obj of objects" :key="obj[key]">
-            <span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+          <span v-for="obj of objects" :key="obj[keyName]">
+            <span>{{obj[titleName]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)" v-if="!disabled"></i>
           </span>
           <input v-if="filterable"
                 type="text"
@@ -45,12 +45,12 @@
           <ul class="h-select-ul">
             <template v-for="(option, index) of filterOptions">
             <li v-if="!option.hidden"
-                :key="option[key]"
+                :key="option[keyName]"
                 @click="setvalue(option)"
                 :class="getLiCls(option, index)">
               <div v-if="!!optionRender"
                   v-html="option[html]"></div>
-              <template v-else-if="!$scopedSlots.item">{{option[title]}}</template>
+              <template v-else-if="!$scopedSlots.item">{{option[titleName]}}</template>
               <slot v-else :item="option" name="item"></slot>
               <i v-if="multiple"
                 class="h-icon-check"></i>
@@ -137,8 +137,6 @@ export default {
   },
   data() {
     return {
-      key: this.keyName,
-      title: this.titleName,
       html: 'select_render_html',
       codes: [],
       objects: {},
@@ -276,14 +274,14 @@ export default {
           values = [];
         }
         this.codes = values.map((item) => {
-          return this.type == 'key' ? this.getValue(item) : item[this.key];
+          return this.type == 'key' ? this.getValue(item) : item[this.keyName];
         }).filter(item => item !== null);
       } else {
         if (this.type == 'key') {
           this.codes = this.getValue(this.value);
         } else {
           if (utils.isObject(this.value)) {
-            this.codes = this.value[this.key];
+            this.codes = this.value[this.keyName];
           } else {
             this.codes = null;
           }
@@ -297,7 +295,7 @@ export default {
     setvalue(option, trigger) {
       if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
-      let code = option[this.key];
+      let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
           this.$Message.error(this.t('h.select.limitSize', [this.limit]));
@@ -331,7 +329,7 @@ export default {
       return this.codes.some(item => item == code);
     },
     getLiCls(option, index) {
-      let code = option[this.key];
+      let code = option[this.keyName];
       if (option.isLabel) {
         return {
           [`${prefix}-item-label`]: option.isLabel
@@ -361,7 +359,7 @@ export default {
     },
     singleValue() {
       if (this.hasValue) {
-        return this.objects[this.title];
+        return this.objects[this.titleName];
       } else {
         return null;
       }
@@ -408,7 +406,7 @@ export default {
       };
     },
     optionsMap() {
-      let optionsMap = utils.toObject(this.options, this.key);
+      let optionsMap = utils.toObject(this.options, this.keyName);
       delete optionsMap.null;
       return optionsMap;
     },
@@ -417,7 +415,7 @@ export default {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
         return this.options.filter((item) => {
-          return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
+          return (item[this.html] || item[this.titleName]).toLocaleLowerCase().indexOf(searchValue) != -1;
         });
       }
       return this.options;
@@ -434,8 +432,8 @@ export default {
       datas = utils.initOptions(datas, this);
       if (!this.multiple && this.hasNullOption) {
         datas.unshift({
-          [`${this.key}`]: null,
-          [`${this.title}`]: this.showNullOptionText,
+          [`${this.keyName}`]: null,
+          [`${this.titleName}`]: this.showNullOptionText,
           [`${this.html}`]: this.showNullOptionText
         });
       }
