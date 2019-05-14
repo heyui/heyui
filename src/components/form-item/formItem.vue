@@ -48,11 +48,10 @@ export default {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'getConfig', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
   data() {
     return {
       validResult: null,
-      configRequired: false,
       errorMessage: { valid: true }
     };
   },
@@ -64,10 +63,6 @@ export default {
   watch: {
     prop(prop, oldProp) {
       if (this.prop) {
-        let message = this.getConfig(this.prop);
-        if (message) {
-          this.configRequired = !!message.required;
-        }
         this.errorMessage = this.updateErrorMessage(prop, oldProp);
       }
     },
@@ -77,12 +72,8 @@ export default {
   },
   mounted() {
     if (this.prop) {
-      let message = this.getConfig(this.prop);
-      if (message) {
-        this.configRequired = !!message.required;
-      }
       if (this.required) {
-        this.setConfig(this.prop, { required: true });
+        this.setConfig(this.prop, { required: this.required });
       }
       this.errorMessage = this.getErrorMessage(this.prop, this.label);
     }
@@ -104,6 +95,10 @@ export default {
     }
   },
   computed: {
+    configRequired() {
+      if (!this.prop) return false;
+      return this.requireds.indexOf(this.prop) > -1;
+    },
     initLabelWidth() {
       let mode = this.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');

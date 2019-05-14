@@ -62,8 +62,8 @@ export default {
   provide: function () {
     return {
       validField: this.validField,
+      requireds: this.requireds,
       removeProp: this.removeProp,
-      getConfig: this.getConfig,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
       getErrorMessage: this.getErrorMessage,
@@ -162,10 +162,6 @@ export default {
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getConfig(prop) {
-      if (!this.validator) return false;
-      return this.validator.getConfig(prop);
-    },
     getErrorMessage(prop, label) {
       if (this.messages[prop]) return this.messages[prop];
       let message = {
@@ -260,6 +256,13 @@ export default {
     }
   },
   computed: {
+    requireds() {
+      if (this.rules) {
+        let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
+        return Object.assign([], this.rules.required || [], validRequiredProps);
+      }
+      return [];
+    },
     formCls() {
       return {
         [`${prefixCls}`]: true,
