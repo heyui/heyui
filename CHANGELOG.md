@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.0"></a>
+# [1.20.0-alpha.0](https://github.com/heyui/heyui/compare/v1.19.2-alpha.0...v1.20.0-alpha.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **DatePicker:** increase width ([697712a](https://github.com/heyui/heyui/commit/697712a))
+* **Form:** reset -> resetValid ([d33323e](https://github.com/heyui/heyui/commit/d33323e)), closes [#123](https://github.com/heyui/heyui/issues/123)
+* **Notify:** add popstate event handler ([0362916](https://github.com/heyui/heyui/commit/0362916)), closes [#122](https://github.com/heyui/heyui/issues/122)
+* **Table:** getTrClass support array result ([adbc13c](https://github.com/heyui/heyui/commit/adbc13c))
+* **Table:** optimize tableitem computed ([cc18629](https://github.com/heyui/heyui/commit/cc18629))
+* **Table:** remove background-color of h-table-expand-tr ([d878b3a](https://github.com/heyui/heyui/commit/d878b3a)), closes [#120](https://github.com/heyui/heyui/issues/120)
+* **TagInput:** remove v-wordlimit ([da6687d](https://github.com/heyui/heyui/commit/da6687d))
+* **TextEllipsis:** add word-break ([c5f1bfc](https://github.com/heyui/heyui/commit/c5f1bfc)), closes [#129](https://github.com/heyui/heyui/issues/129)
+* **TreePicker:** close when use single select ([827d24c](https://github.com/heyui/heyui/commit/827d24c)), closes [#111](https://github.com/heyui/heyui/issues/111)
+* **wordlimit:** no effect on v-model value ([3b19326](https://github.com/heyui/heyui/commit/3b19326))
+* add locale ([821d2e4](https://github.com/heyui/heyui/commit/821d2e4))
+* **Wordlimit:** optimize trigger ([3a561bf](https://github.com/heyui/heyui/commit/3a561bf))
+* change locale use ([55547af](https://github.com/heyui/heyui/commit/55547af))
+* optimizing error-reporting statements ([2149b06](https://github.com/heyui/heyui/commit/2149b06))
+* optimizing error-reporting statements ([13a6a86](https://github.com/heyui/heyui/commit/13a6a86))
+* optimizing warning-reporting statements ([6dc3099](https://github.com/heyui/heyui/commit/6dc3099))
+* remove unused codes ([2d8a693](https://github.com/heyui/heyui/commit/2d8a693))
+* remove v-width in codes ([1c9a9b4](https://github.com/heyui/heyui/commit/1c9a9b4))
+
+
+### Features
+
+* **Tags:** optimize tag list close icon ([0086d02](https://github.com/heyui/heyui/commit/0086d02)), closes [#114](https://github.com/heyui/heyui/issues/114)
+
+
+
 <a name="1.19.2-alpha.0"></a>
 ## [1.19.2-alpha.0](https://github.com/heyui/heyui/compare/v1.19.1...v1.19.2-alpha.0) (2019-04-29)
 
