@@ -1,4 +1,4 @@
 node_modules
 .DS_Store
 lib
-dist
+dist/stat.json
