@@ -6168,8 +6168,8 @@ var _default = {
   provide: function provide() {
     return {
       validField: this.validField,
+      requireds: this.requireds,
       removeProp: this.removeProp,
-      getConfig: this.getConfig,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
       getErrorMessage: this.getErrorMessage,
@@ -6279,10 +6279,6 @@ var _default = {
     setConfig: function setConfig(prop, options) {
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
-    },
-    getConfig: function getConfig(prop) {
-      if (!this.validator) return false;
-      return this.validator.getConfig(prop);
     },
     getErrorMessage: function getErrorMessage(prop, label) {
       if (this.messages[prop]) return this.messages[prop];
@@ -6397,6 +6393,19 @@ var _default = {
     }
   },
   computed: {
+    requireds: function requireds() {
+      if (this.rules) {
+        var validRequiredProps = _utils.default.toArray(this.rules.rules, 'key').filter(function (item) {
+          return item.required === true;
+        }).map(function (item) {
+          return item.key;
+        });
+
+        return Object.assign([], this.rules.required || [], validRequiredProps);
+      }
+
+      return [];
+    },
     formCls: function formCls() {
       var _ref;
 
@@ -6482,11 +6491,10 @@ var _default = {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'getConfig', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
   data: function data() {
     return {
       validResult: null,
-      configRequired: false,
       errorMessage: {
         valid: true
       }
@@ -6500,12 +6508,6 @@ var _default = {
   watch: {
     prop: function prop(_prop, oldProp) {
       if (this.prop) {
-        var message = this.getConfig(this.prop);
-
-        if (message) {
-          this.configRequired = !!message.required;
-        }
-
         this.errorMessage = this.updateErrorMessage(_prop, oldProp);
       }
     },
@@ -6517,15 +6519,9 @@ var _default = {
   },
   mounted: function mounted() {
     if (this.prop) {
-      var message = this.getConfig(this.prop);
-
-      if (message) {
-        this.configRequired = !!message.required;
-      }
-
       if (this.required) {
         this.setConfig(this.prop, {
-          required: true
+          required: this.required
         });
       }
 
@@ -6551,6 +6547,10 @@ var _default = {
     }
   },
   computed: {
+    configRequired: function configRequired() {
+      if (!this.prop) return false;
+      return this.requireds.indexOf(this.prop) > -1;
+    },
     initLabelWidth: function initLabelWidth() {
       var mode = this.mode;
       var hasWidth = !(mode == 'block' || mode == 'inline') || this.single && mode == 'twocolumn';
@@ -8558,6 +8558,11 @@ var _message = _interopRequireDefault(__webpack_require__(8));
 //
 //
 //
+//
+//
+//
+//
+//
 var prefix = 'h-select';
 var _default2 = {
   name: 'hSelect',
@@ -8595,9 +8600,6 @@ var _default2 = {
     placeholder: {
       type: String
     },
-    // searchPlaceHolder: {
-    //   type: String,
-    // },
     emptyContent: {
       type: String
     },
@@ -8631,12 +8633,9 @@ var _default2 = {
   },
   data: function data() {
     return {
-      key: this.keyName,
-      title: this.titleName,
       html: 'select_render_html',
       codes: [],
       objects: {},
-      hasNullOption: this.nullOption && !this.multiple,
       searchInput: '',
       nowSelected: -1,
       isShow: false,
@@ -8808,7 +8807,7 @@ var _default2 = {
         }
 
         this.codes = values.map(function (item) {
-          return _this4.type == 'key' ? _this4.getValue(item) : item[_this4.key];
+          return _this4.type == 'key' ? _this4.getValue(item) : item[_this4.keyName];
         }).filter(function (item) {
           return item !== null;
         });
@@ -8817,7 +8816,7 @@ var _default2 = {
           this.codes = this.getValue(this.value);
         } else {
           if (_utils.default.isObject(this.value)) {
-            this.codes = this.value[this.key];
+            this.codes = this.value[this.keyName];
           } else {
             this.codes = null;
           }
@@ -8834,7 +8833,7 @@ var _default2 = {
 
       if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
-      var code = option[this.key];
+      var code = option[this.keyName];
 
       if (this.multiple) {
         if (!_utils.default.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
@@ -8875,7 +8874,7 @@ var _default2 = {
       });
     },
     getLiCls: function getLiCls(option, index) {
-      var code = option[this.key];
+      var code = option[this.keyName];
 
       if (option.isLabel) {
         return (0, _defineProperty2.default)({}, "".concat(prefix, "-item-label"), option.isLabel);
@@ -8892,6 +8891,9 @@ var _default2 = {
     }
   },
   computed: {
+    hasNullOption: function hasNullOption() {
+      return this.nullOption && !this.multiple;
+    },
     hasValue: function hasValue() {
       if (this.multiple) {
         return this.codes.length > 0;
@@ -8901,7 +8903,7 @@ var _default2 = {
     },
     singleValue: function singleValue() {
       if (this.hasValue) {
-        return this.objects[this.title];
+        return this.objects[this.titleName];
       } else {
         return null;
       }
@@ -8940,7 +8942,7 @@ var _default2 = {
       return _ref5 = {}, (0, _defineProperty2.default)(_ref5, "".concat(prefix, "-group"), true), (0, _defineProperty2.default)(_ref5, "".concat(prefix, "-group-has-label"), this.hasLabel), (0, _defineProperty2.default)(_ref5, "".concat(prefix, "-multiple"), this.multiple), (0, _defineProperty2.default)(_ref5, "".concat(prefix, "-single"), !this.multiple), (0, _defineProperty2.default)(_ref5, "".concat(this.className, "-dropdown"), !!this.className), _ref5;
     },
     optionsMap: function optionsMap() {
-      var optionsMap = _utils.default.toObject(this.options, this.key);
+      var optionsMap = _utils.default.toObject(this.options, this.keyName);
 
       delete optionsMap.null;
       return optionsMap;
@@ -8952,7 +8954,7 @@ var _default2 = {
         if (this.dropdown) this.dropdown.update();
         var searchValue = this.searchInput.toLocaleLowerCase();
         return this.options.filter(function (item) {
-          return (item[_this6.html] || item[_this6.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
+          return (item[_this6.html] || item[_this6.titleName]).toLocaleLowerCase().indexOf(searchValue) != -1;
         });
       }
 
@@ -8975,7 +8977,7 @@ var _default2 = {
       if (!this.multiple && this.hasNullOption) {
         var _datas$unshift;
 
-        datas.unshift((_datas$unshift = {}, (0, _defineProperty2.default)(_datas$unshift, "".concat(this.key), null), (0, _defineProperty2.default)(_datas$unshift, "".concat(this.title), this.showNullOptionText), (0, _defineProperty2.default)(_datas$unshift, "".concat(this.html), this.showNullOptionText), _datas$unshift));
+        datas.unshift((_datas$unshift = {}, (0, _defineProperty2.default)(_datas$unshift, "".concat(this.keyName), null), (0, _defineProperty2.default)(_datas$unshift, "".concat(this.titleName), this.showNullOptionText), (0, _defineProperty2.default)(_datas$unshift, "".concat(this.html), this.showNullOptionText), _datas$unshift));
       }
 
       return datas;
@@ -15177,8 +15179,8 @@ var render = function() {
                 { staticClass: "h-select-multiple-tags" },
                 [
                   _vm._l(_vm.objects, function(obj) {
-                    return _c("span", { key: obj[_vm.key] }, [
-                      _c("span", [_vm._v(_vm._s(obj[_vm.title]))]),
+                    return _c("span", { key: obj[_vm.keyName] }, [
+                      _c("span", [_vm._v(_vm._s(obj[_vm.titleName]))]),
                       !_vm.disabled
                         ? _c("i", {
                             staticClass: "h-icon-close-min",
@@ -15308,9 +15310,28 @@ var render = function() {
                   ]
                 : [
                     _vm.hasValue
-                      ? _c("div", { staticClass: "h-select-value-single" }, [
-                          _vm._v(_vm._s(_vm.singleValue))
-                        ])
+                      ? _c(
+                          "div",
+                          { staticClass: "h-select-value-single" },
+                          [
+                            _vm.hasValue
+                              ? [
+                                  !_vm.$scopedSlots.show
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass: "h-select-value-single"
+                                        },
+                                        [_vm._v(_vm._s(_vm.singleValue))]
+                                      )
+                                    : _vm._t("show", null, {
+                                        value: _vm.objects
+                                      })
+                                ]
+                              : _vm._e()
+                          ],
+                          2
+                        )
                       : _c("div", { staticClass: "h-select-placeholder" }, [
                           _vm._v(_vm._s(_vm.showPlaceholder))
                         ])
@@ -15341,7 +15362,7 @@ var render = function() {
                           ? _c(
                               "li",
                               {
-                                key: option[_vm.key],
+                                key: option[_vm.keyName],
                                 class: _vm.getLiCls(option, index),
                                 on: {
                                   click: function($event) {
@@ -15357,7 +15378,7 @@ var render = function() {
                                       }
                                     })
                                   : !_vm.$scopedSlots.item
-                                  ? [_vm._v(_vm._s(option[_vm.title]))]
+                                  ? [_vm._v(_vm._s(option[_vm.titleName]))]
                                   : _vm._t("item", null, { item: option }),
                                 _vm._v(" "),
                                 _vm.multiple
