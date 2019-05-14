@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.1"></a>
+# [1.20.0-alpha.1](https://github.com/heyui/heyui/compare/v1.20.0-alpha.0...v1.20.0-alpha.1) (2019-05-14)
+
+
+### Bug Fixes
+
+* add locale.use to heyui ([d97a45c](https://github.com/heyui/heyui/commit/d97a45c))
+
+
+
 <a name="1.20.0-alpha.0"></a>
 # [1.20.0-alpha.0](https://github.com/heyui/heyui/compare/v1.19.2-alpha.0...v1.20.0-alpha.0) (2019-05-14)
 
