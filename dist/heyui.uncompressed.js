@@ -22382,6 +22382,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 var HeyUI = Object.assign(prototypes, _config.default, {
   dictMapping: _dictmapping.default
+}, {
+  locale: _locale.default.use
 });
 HeyUI.install = install;
 var _default = HeyUI;
