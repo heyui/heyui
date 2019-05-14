@@ -50,7 +50,34 @@ new Vue({
 
     <h3>使用 vue-cli / 自己搭建webpack</h3>
     <p>这里的引用有一些差别，主要在于样式的引用上。</p>
-    <p>对于 less 变量的定义，我们并没有写入common.less文件，所以需要自己定义一个less文件做引用。</p>
+    <h4>var.js 全局变量</h4>
+    <p>对于 less 变量的定义，我们提供了var.js文件方便引用。</p>
+<codes type="javascript">
+const vars = require('heyui/themes/var.js');
+Object.assign(vars, {
+  'primary-color': '#3788ee',
+  'link-color': '#3788ee',
+  'blue-color': '#2d7bf4',
+  'green-color': '#0acf97',
+  'yellow-color': '#f9bc0b',
+  'red-color': '#f1556c'
+});
+module.exports = vars;
+</codes>
+<p>以vue-cli3为例，vue.config.js配置如下：</p>
+<codes type="javascript">
+const globalVars = require('./src/css/var.js');
+module.exports = {
+  css: {
+    loaderOptions: {
+      less: {
+        globalVars
+      }
+    }
+  },
+}
+</codes>
+<h4>无全局变量</h4>
 <codes type="less">@import (less) "~heyui/themes/var.less";
 //重新定义主题
 @primary-color: #FDA729;
@@ -64,16 +91,57 @@ new Vue({
 @import (less) "自己的less文件";
 </codes>
 
-    <p>注意：使用这种引用方式，在 Vue 文件中将无法使用 var.less 文件中的变量。</p>
-    <h4>引入 HeyUI</h4>
-    <p>与使用hey-cli脚手架引入HeyUI的方式相同。</p>
-    <codes type="less">import Vue from 'vue';
-import HeyUI from 'heyui';
-Vue.use(HeyUI);
-new Vue({
+    <h3>按需加载</h3>
+    <p>借助插件 <a href="https://github.com/ant-design/babel-plugin-import" target="_blank">babel-plugin-import</a> 可以实现按需加载组件，减少文件体积。</p>
+    <h4>vue-cli / webpack</h4>
+<codes>
+npm install babel-plugin-import --save-dev
+// .babelrc
+{
+  "plugins": [["import", {
+    "libraryName": "heyui",
+    "libraryDirectory": "lib/components"
+  }]]
+}
+</codes>
+    <h4>hey-cli</h4>
+    <p>需要使用 hey-cli@2.3.0+</p>
+<codes>
+pluginImport: {
+  libraryName: 'heyui',
+  libraryDirectory: 'lib/components'
+},
+</codes>
+    <p>按需引入组件：</p>
+<codes type="javascript">
+import Vue from 'vue';
+import App from './app.vue';
+import { install, Prototypes, Button, DropdownMenu } from 'heyui';
+
+require('../css/module.less');
+
+Vue.use(install, { components: { Button, DropdownMenu }, prototypes: Prototypes });
+
+const app = new Vue({
   el: '#app',
   render: h => h(App)
-});</codes>
+});
+export default app;
+</codes>
+<p>其中，components 参考以下文件：<a href="https://github.com/heyui/heyui/blob/master/src/index.js" target="_blank">index.js</a>，Prototypes参考 <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
+
+<h4>按需加载样式</h4>
+<p>样式，系统提供了基本的调用，如果还需要有组件的加载，请补充需要加载组件的样式。</p>
+<p>全局样式定义的配置请参考上面说明。</p>
+<codes>
+// 若无全局变量
+@import (less) "~heyui/themes/var.less";
+
+@import (less) "~heyui/themes/common.base.less";
+@import (less) "~heyui/themes/components/dropdownmenu.less";
+</codes>
+<p>其中common.base.less引用的样式请参考：<a href="https://github.com/heyui/heyui/blob/master/themes/components/index.base.less" target="_blank">index.base.js</a></p>
+<p>若需要引用加载的组件样式，请参考文件夹：<a href="https://github.com/heyui/heyui/tree/master/themes/components" target="_blank">themes/components</a></p>
 
     <h3>快速搭建</h3>
     <p>如果你需要搭建一个新的项目，我们建议你直接使用我们的heyui-admin进行基础搭建。</p>

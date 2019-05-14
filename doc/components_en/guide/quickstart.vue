@@ -50,8 +50,36 @@ new Vue({
 
     <h3>Use vue-cli / webpack</h3>
     <p>There are some differences in the references here, mainly in style references.</p>
-    <p>For the definition of the less variable, we do not write the common.less file, so we need to define a less file for reference.</p>
-<codesEn type="less">@import (less) "~heyui/themes/var.less";
+    <h4>Var.js global variable</h4>
+    <p>For the definition of the less variable, we provide a convenient reference to the var.js file.</p>
+<codes type="javascript">
+const vars = require('heyui/themes/var.js');
+Object.assign(vars, {
+  'primary-color': '#3788ee',
+  'link-color': '#3788ee',
+  'blue-color': '#2d7bf4',
+  'green-color': '#0acf97',
+  'yellow-color': '#f9bc0b',
+  'red-color': '#f1556c'
+});
+module.exports = vars;
+</codes>
+<p>Taking vue-cli as an example, vue.config.js is configured as follows:</p>
+<codes type="javascript">
+const globalVars = require('./src/css/var.js');
+module.exports = {
+  css: {
+    loaderOptions: {
+      less: {
+        globalVars
+      }
+    }
+  },
+}
+</codes>
+<h4>No global variables</h4>
+<codes type="less">@import (less) "~heyui/themes/var.less";
+//重新定义主题
 @primary-color: #FDA729;
 @red-color: #D64244;
 @green-color: #3cb357;
@@ -59,10 +87,61 @@ new Vue({
 @blue-color: #77A2DC;
 @import (less) "~heyui/themes/common.less";
 
-//Using this method, you can use the variables defined by var.less in your own less file.
-@import (less) "index.less";
-</codesEn>
-    <p>Note: In this way of reference, variables in var.less files cannot be used in Vue files.</p>
+//使用这种方式引用，可以在自己的less文件中使用var.less定义的变量。
+@import (less) "自己的less文件";
+</codes>
+
+    <h3>Load on demand</h3>
+    <p>With the plug-in <a href="https://github.com/ant-design/babel-plugin-import" target="_blank">babel-plugin-import</a>, you can load components on demand and reduce file size.</p>
+    <h4>vue-cli / webpack</h4>
+<codes>
+npm install babel-plugin-import --save-dev
+// .babelrc
+{
+  "plugins": [["import", {
+    "libraryName": "heyui",
+    "libraryDirectory": "lib/components"
+  }]]
+}
+</codes>
+    <h4>hey-cli</h4>
+    <p>Need to use hey-cli@2.3.0+</p>
+<codes>
+pluginImport: {
+  libraryName: 'heyui',
+  libraryDirectory: 'lib/components'
+},
+</codes>
+    <p>Import components:</p>
+<codes type="javascript">
+import Vue from 'vue';
+import App from './app.vue';
+import { install, Prototypes, Button, DropdownMenu } from 'heyui';
+
+require('../css/module.less');
+
+Vue.use(install, { components: { Button, DropdownMenu }, prototypes: Prototypes });
+
+const app = new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+export default app;
+</codes>
+<p>Components refer to the following file: <a href="https://github.com/heyui/heyui/blob/master/src/index.js" target="_blank">index.js</a>，Prototypes reference <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
+
+<h4>Load styles on demand</h4>
+<p>System provides the basic style, if you need to load the component, add the style of the component you need to load.</p>
+<p>For the configuration of the global style definition, please refer to the above description.</p>
+<codes>
+// 若无全局变量
+@import (less) "~heyui/themes/var.less";
+
+@import (less) "~heyui/themes/common.base.less";
+@import (less) "~heyui/themes/components/dropdownmenu.less";
+</codes>
+<p>For the style referenced by common.base.less, please refer to: <a href="https://github.com/heyui/heyui/blob/master/themes/components/index.base.less" target="_blank">index.base.js</a></p>
+<p>If you need to reference the loaded component style, please refer to the folder: <a href="https://github.com/heyui/heyui/tree/master/themes/components" target="_blank">themes/components</a></p>
 
     <h3>Quickly Build</h3>
     <p>If you need to build a new project, we suggest that you use our heyui-admin directly to build the foundation.</p>
