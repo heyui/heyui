@@ -27,12 +27,12 @@ fi
 # git commit -m 'publish new version'
 set -e
 echo "git push"
-git push origin master
+git push
 set -e
 
 if [ "$1" = '' ] ; then
 echo "git push tags"
-git push --follow-tags origin master
+git push --follow-tags
 fi
 
 echo "发布至npm"
