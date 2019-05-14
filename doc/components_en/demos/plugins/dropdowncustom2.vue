@@ -4,7 +4,7 @@
 <template>
   <div>
     <ButtonGroup>
-      <Button icon="h-icon-inbox">Create</Button>
+      <Button>Create</Button>
       <DropdownCustom button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
@@ -13,7 +13,7 @@
       </DropdownCustom>
     </ButtonGroup>
     <ButtonGroup>
-      <Button color="primary" icon="h-icon-inbox">Create</Button>
+      <Button color="primary">Create</Button>
       <DropdownCustom class="h-btn-primary" button>
         <span>Edit</span>
         <div slot="content" v-width="200" v-height="200">
