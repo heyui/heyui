@@ -17,7 +17,7 @@
         }
         &-show {
           .@{tree-prefix}-show-expand {
-            .h-icon-right {
+            .h-icon-angle-right {
               transform: rotate(90deg);
             }
           }
@@ -39,11 +39,14 @@
       display: inline-block;
       padding: 0 2px 0 0;
       .h-func-text-hover();
-      .h-icon-right,
       .h-icon-loading {
         font-size: 12px;
         line-height: @font-size;
         vertical-align: middle;
+      }
+      .h-icon-angle-right {
+        line-height: @font-size;
+        vertical-align: -1px;
       }
     }
     

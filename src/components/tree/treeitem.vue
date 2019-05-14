@@ -10,14 +10,14 @@
       <span class="h-tree-show-expand">
         <span @click.stop="toggleTree()" v-if="data.status.isWait">
           <template v-if="!data.status.loading">
-            <i class="h-icon-right"></i>
+            <i class="h-icon-angle-right"></i>
           </template>
           <template v-else>
             <i class="h-icon-loading"></i>
           </template>
         </span>
         <span @click.stop="toggleTree()" v-else-if="data.children&&data.children.length>0">
-          <i class="h-icon-right"></i>
+          <i class="h-icon-angle-right"></i>
         </span>
       </span>
       <Checkbox
