@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.3"></a>
+# [1.20.0-alpha.3](https://github.com/heyui/heyui/compare/v1.20.0-alpha.2...v1.20.0-alpha.3) (2019-05-14)
+
+
+### Bug Fixes
+
+* **Button:** optimze button icon show ([a7868cb](https://github.com/heyui/heyui/commit/a7868cb)), closes [#132](https://github.com/heyui/heyui/issues/132)
+
+
+
 <a name="1.20.0-alpha.2"></a>
 # [1.20.0-alpha.2](https://github.com/heyui/heyui/compare/v1.20.0-alpha.1...v1.20.0-alpha.2) (2019-05-14)
 
