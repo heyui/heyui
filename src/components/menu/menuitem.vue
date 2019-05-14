@@ -7,7 +7,7 @@
       <span class='h-menu-show-desc'>{{data.title}}</span>
       <span class='h-menu-show-count' v-if="data.count"><Badge :count="data.count" :max-count="99"></Badge></span>
       <span class='h-menu-show-expand' v-if="data.children&&data.children.length>0">
-        <i class='h-icon-down'></i>
+        <i class='h-icon-angle-down'></i>
       </span>
     </div>
     <ul v-if="data.children&&data.children.length>0"
