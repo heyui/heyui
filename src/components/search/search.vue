@@ -6,7 +6,7 @@
         <input type="text" class="h-input" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <button :style="heightStyles" style="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
+      <button :style="heightStyles" class="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
         <template v-else>{{'h.search.searchText' | hlang(null, searchText)}}</template>
       </button>
