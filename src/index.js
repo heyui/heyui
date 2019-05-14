@@ -220,7 +220,7 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-const HeyUI = Object.assign(prototypes, config, { dictMapping });
+const HeyUI = Object.assign(prototypes, config, { dictMapping }, { locale: locale.use });
 
 HeyUI.install = install;
 
