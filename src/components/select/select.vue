@@ -142,7 +142,6 @@ export default {
       html: 'select_render_html',
       codes: [],
       objects: {},
-      hasNullOption: this.nullOption && !this.multiple,
       searchInput: '',
       nowSelected: -1,
       isShow: false,
@@ -352,6 +351,9 @@ export default {
     }
   },
   computed: {
+    hasNullOption() {
+      return this.nullOption && !this.multiple;
+    },
     hasValue() {
       if (this.multiple) {
         return this.codes.length > 0;
