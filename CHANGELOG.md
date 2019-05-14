@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.2"></a>
+# [1.20.0-alpha.2](https://github.com/heyui/heyui/compare/v1.20.0-alpha.1...v1.20.0-alpha.2) (2019-05-14)
+
+
+### Bug Fixes
+
+* **Form:** refactor required show ([b046d58](https://github.com/heyui/heyui/commit/b046d58))
+* **Select:** opimize hasNullOption to use computed ([d44affc](https://github.com/heyui/heyui/commit/d44affc))
+* **Select:** optimize keyName, titleName ([00f2ab5](https://github.com/heyui/heyui/commit/00f2ab5))
+
+
+### Features
+
+* **Select:** add slot show ([c10b55d](https://github.com/heyui/heyui/commit/c10b55d))
+
+
+
 <a name="1.20.0-alpha.1"></a>
 # [1.20.0-alpha.1](https://github.com/heyui/heyui/compare/v1.20.0-alpha.0...v1.20.0-alpha.1) (2019-05-14)
 
