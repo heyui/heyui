@@ -200,6 +200,35 @@
         <td>v-model value</td>
       </tr>
     </table>
+
+    <h3>Select slot</h3>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>说明</th>
+        <th>传递值</th>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>Custom value show, 1.20.0+</td>
+        <td>{ value }</td>
+      </tr>
+      <tr>
+        <td>top</td>
+        <td>Custom header</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>bottom</td>
+        <td>Custom footer</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>item</td>
+        <td>Custom list item</td>
+        <td>{ item }</td>
+      </tr>
+    </table>
   </div>
 </template>
 

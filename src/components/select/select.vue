@@ -31,7 +31,12 @@
           <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
         </template>
         <template v-else>
-          <div class="h-select-value-single" v-if="hasValue">{{singleValue}}</div>
+          <div class="h-select-value-single" v-if="hasValue">
+            <template v-if="hasValue">
+              <div v-if="!$scopedSlots.show" class="h-select-value-single">{{singleValue}}</div>
+              <slot v-else :value="objects" name="show"></slot>
+            </template>
+          </div>
           <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
         </template>
       </template>
@@ -107,9 +112,6 @@ export default {
     placeholder: {
       type: String
     },
-    // searchPlaceHolder: {
-    //   type: String,
-    // },
     emptyContent: {
       type: String
     },

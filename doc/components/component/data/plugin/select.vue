@@ -139,13 +139,6 @@
         <td>-</td>
         <td>请选择</td>
       </tr>
-      <!-- <tr>
-        <td>searchPlaceHolder</td>
-        <td>搜索默认提示语</td>
-        <td>String</td>
-        <td>-</td>
-        <td>请输入筛选文本</td>
-      </tr> -->
       <tr>
         <td>equalWidth</td>
         <td>下拉的宽度是否和输入框一致</td>
@@ -199,6 +192,35 @@
         <td>input</td>
         <td>当数据产生变动的时候触发</td>
         <td>当前绑定的v-model值</td>
+      </tr>
+    </table>
+
+    <h3>Select slot</h3>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>说明</th>
+        <th>传递值</th>
+      </tr>
+      <tr>
+        <td>show</td>
+        <td>自定义值的展示, 1.20.0+</td>
+        <td>{ value }</td>
+      </tr>
+      <tr>
+        <td>top</td>
+        <td>自定义头部</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>bottom</td>
+        <td>自定义尾部</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>item</td>
+        <td>自定义列表</td>
+        <td>{ item }</td>
       </tr>
     </table>
   </div>
