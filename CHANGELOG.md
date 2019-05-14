@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.4"></a>
+# [1.20.0-alpha.4](https://github.com/heyui/heyui/compare/v1.20.0-alpha.3...v1.20.0-alpha.4) (2019-05-14)
+
+
+### Bug Fixes
+
+* **Dropdown:** optimize right icon ([07189e4](https://github.com/heyui/heyui/commit/07189e4))
+* **MenuItem:** optimize right icon ([c9c1e8d](https://github.com/heyui/heyui/commit/c9c1e8d))
+* **Search:** button style change to class ([6828f5a](https://github.com/heyui/heyui/commit/6828f5a))
+* **Tree:** optimize tree style ([f76b966](https://github.com/heyui/heyui/commit/f76b966))
+
+
+
 <a name="1.20.0-alpha.3"></a>
 # [1.20.0-alpha.3](https://github.com/heyui/heyui/compare/v1.20.0-alpha.2...v1.20.0-alpha.3) (2019-05-14)
 
