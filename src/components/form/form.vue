@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       messages: {},
+      requireds: [],
       validator: null
     };
   },
@@ -86,6 +87,7 @@ export default {
     }
   },
   mounted() {
+    this.initRequires();
     this.$nextTick(() => {
       this.$el.addEventListener('blur', (event) => {
         if (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
@@ -105,11 +107,19 @@ export default {
         } else if (this.model && this.rules) {
           this.validator = new Validator(this.rules);
         }
+        this.initRequires();
       },
       deep: true
     }
   },
   methods: {
+    initRequires() {
+      this.requireds.splice(0);
+      if (this.rules) {
+        let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
+        this.requireds.push(...(this.rules.required || []), ...validRequiredProps);
+      }
+    },
     reset() {
       console.warn('[HeyUI WARNING] Form Component: form.reset() will be decapitated, please use method form.resetValid()');
       for (let m in this.messages) {
@@ -256,13 +266,6 @@ export default {
     }
   },
   computed: {
-    requireds() {
-      if (this.rules) {
-        let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
-        return Object.assign([], this.rules.required || [], validRequiredProps);
-      }
-      return [];
-    },
     formCls() {
       return {
         [`${prefixCls}`]: true,
