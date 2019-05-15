@@ -38988,11 +38988,7 @@ notice.info = function (param, timeout) {
   return noticeWithType('info', param, timeout);
 };
 
-var _default = function _default(vue) {
-  Vue = vue;
-  return notice;
-};
-
+var _default = notice;
 exports.default = _default;
 
 /***/ }),
