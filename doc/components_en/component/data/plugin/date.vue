@@ -119,7 +119,7 @@
       </tr>
       <tr>
         <td>clearable</td>
-        <td>Show clear icon</td>
+        <td>Show clear icon, 1.20.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>

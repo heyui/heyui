@@ -118,7 +118,7 @@
       </tr>
       <tr>
         <td>clearable</td>
-        <td>是否有清空按钮</td>
+        <td>是否有清空按钮, 1.20.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>true</td>
