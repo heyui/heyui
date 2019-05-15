@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.0-alpha.8"></a>
+# [1.20.0-alpha.8](https://github.com/heyui/heyui/compare/v1.20.0-alpha.7...v1.20.0-alpha.8) (2019-05-15)
+
+
+### Bug Fixes
+
+* **Carousel:** fix carouselItem computed ([dfb88fd](https://github.com/heyui/heyui/commit/dfb88fd))
+* **Nofity:** optimize close icon ([762a463](https://github.com/heyui/heyui/commit/762a463))
+* **TextEllipsis:** fix class name ([91b4714](https://github.com/heyui/heyui/commit/91b4714))
+
+
+
 <a name="1.20.0-alpha.7"></a>
 # [1.20.0-alpha.7](https://github.com/heyui/heyui/compare/v1.20.0-alpha.6...v1.20.0-alpha.7) (2019-05-15)
 
