@@ -14517,7 +14517,7 @@ var _default = {
       return [datas[this.datas.length - 1]].concat((0, _toConsumableArray2.default)(datas), [datas[0]]);
     },
     carouselItem: function carouselItem() {
-      return this.datas[this.activeIndex - 1];
+      return this.carouselList[this.activeIndex - 1];
     },
     paginationCls: function paginationCls() {
       return "h-carousel-pagination-".concat(this.pageTheme);
