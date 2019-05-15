@@ -23,6 +23,7 @@ export default {
   methods: {
     triggerEvent() {
       this.$emit('success', '测试');
+      this.$router.push({ name: 'Home' });
       this.close();
     },
     close() {

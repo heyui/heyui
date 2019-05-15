@@ -87,7 +87,4 @@ notice.warn = (param, timeout) => noticeWithType('warn', param, timeout);
 notice.success = (param, timeout) => noticeWithType('success', param, timeout);
 notice.info = (param, timeout) => noticeWithType('info', param, timeout);
 
-export default (vue) => {
-  Vue = vue;
-  return notice;
-};
+export default notice;
