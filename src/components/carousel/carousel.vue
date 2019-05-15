@@ -86,7 +86,7 @@ export default {
       return [datas[this.datas.length - 1], ...datas, datas[0]];
     },
     carouselItem() {
-      return this.datas[this.activeIndex - 1];
+      return this.carouselList[this.activeIndex - 1];
     },
     paginationCls() {
       return `h-carousel-pagination-${this.pageTheme}`;
