@@ -1,7 +1,7 @@
 <template>
   <div class="doc">
     <h2>HSwitch</h2>
-    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-HSwitch</code>, generally use <code>HSwitch</code>. </p>
+    <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-switch</code>, generally use <code>HSwitch</code>. </p>
     <h3>Basic</h3>
     <exampleEn demo="form/switch2"></exampleEn>
 
