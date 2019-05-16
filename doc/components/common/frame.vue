@@ -51,7 +51,6 @@
 </template>
 <script>
 
-import scrollIntoView from '../../../src/plugins/scrollIntoView';
 export default {
   data() {
     return {
@@ -72,7 +71,7 @@ export default {
     },
     goMenu(index) {
       window.location.hash = this.menus[index];
-      scrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
+      this.$ScrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
         time: 500,
         align: {
           top: 0.1,
@@ -85,7 +84,7 @@ export default {
         return;
       }
       this.$nextTick(() => {
-        scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
+        this.$ScrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
           time: 500,
           align: {
             // top: 10,

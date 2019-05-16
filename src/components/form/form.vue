@@ -6,7 +6,7 @@
 <script>
 import Validator from 'heyui/src/plugins/validator';
 import utils from 'heyui/src/utils/utils';
-import ScrollIntoView from 'heyui/src/plugins/scrollIntoView';
+import ScrollIntoView from 'heyui/src/plugins/scroll-into-view';
 import Message from 'heyui/src/plugins/message';
 
 const prefixCls = 'h-form';

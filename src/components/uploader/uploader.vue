@@ -53,7 +53,7 @@
 import utils from 'heyui/src/utils/utils';
 import config from 'heyui/src/utils/config';
 import Locale from 'heyui/src/mixins/locale';
-import ImagePreview from 'heyui/src/plugins/imagepreview';
+import ImagePreview from 'heyui/src/plugins/image-preview';
 
 const prefix = 'h-uploader';
 
