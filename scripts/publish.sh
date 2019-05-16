@@ -25,6 +25,8 @@ fi
 # echo "commit"
 # git add -A
 # git commit -m 'publish new version'
+
+
 set -e
 echo "git push"
 git push
