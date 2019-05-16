@@ -138,7 +138,7 @@ export default app;
 @import (less) "~heyui/themes/var.less";
 
 @import (less) "~heyui/themes/common.base.less";
-@import (less) "~heyui/themes/components/dropdownmenu.less";
+@import (less) "~heyui/themes/components/dropdown-menu.less";
 </codes>
 <p>For the style referenced by common.base.less, please refer to: <a href="https://github.com/heyui/heyui/blob/master/themes/components/index.base.less" target="_blank">index.base.js</a></p>
 <p>If you need to reference the loaded component style, please refer to the folder: <a href="https://github.com/heyui/heyui/tree/master/themes/components" target="_blank">themes/components</a></p>

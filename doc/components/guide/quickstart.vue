@@ -138,7 +138,7 @@ export default app;
 @import (less) "~heyui/themes/var.less";
 
 @import (less) "~heyui/themes/common.base.less";
-@import (less) "~heyui/themes/components/dropdownmenu.less";
+@import (less) "~heyui/themes/components/dropdown-menu.less";
 </codes>
 <p>其中common.base.less引用的样式请参考：<a href="https://github.com/heyui/heyui/blob/master/themes/components/index.base.less" target="_blank">index.base.js</a></p>
 <p>若需要引用加载的组件样式，请参考文件夹：<a href="https://github.com/heyui/heyui/tree/master/themes/components" target="_blank">themes/components</a></p>
