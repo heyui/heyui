@@ -11664,8 +11664,7 @@ var _default = {
       this.$emit('select', data);
 
       if (!this.multiple) {
-        this.setvalue();
-        this.dropdown.hide();
+        this.confirm();
       }
     },
     choose: function choose(data) {
@@ -11738,10 +11737,8 @@ var _default = {
     clear: function clear() {
       this.object = null;
       this.objects = [];
-      this.setvalue();
-      this.triggerChange();
       this.$refs.tree.searchTree(null);
-      this.dropdown.hide();
+      this.confirm();
     },
     confirm: function confirm() {
       this.setvalue();
