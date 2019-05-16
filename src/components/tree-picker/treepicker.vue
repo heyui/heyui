@@ -161,8 +161,7 @@ export default {
       this.object = data;
       this.$emit('select', data);
       if (!this.multiple) {
-        this.setvalue();
-        this.dropdown.hide();
+        this.confirm();
       }
     },
     choose(data) {
@@ -226,10 +225,8 @@ export default {
     clear() {
       this.object = null;
       this.objects = [];
-      this.setvalue();
-      this.triggerChange();
       this.$refs.tree.searchTree(null);
-      this.dropdown.hide();
+      this.confirm();
     },
     confirm() {
       this.setvalue();
