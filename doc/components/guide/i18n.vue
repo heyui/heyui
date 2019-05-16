@@ -11,7 +11,6 @@ import Vue from 'vue';
 import HeyUI from 'heyui';
 import en from 'heyui/dist/locale/en-US';
 
-Vue.use(HeyUI);
 Vue.use(HeyUI, {locale: en});
     </codes>
 
