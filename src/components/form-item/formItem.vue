@@ -48,7 +48,7 @@ export default {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'params'],
   data() {
     return {
       validResult: null,
@@ -100,7 +100,7 @@ export default {
       return this.requireds.indexOf(this.prop) > -1;
     },
     initLabelWidth() {
-      let mode = this.mode;
+      let mode = this.params.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
       let width = hasWidth ? this.labelWidth || false : false;
       return width ? `${width}px` : 'auto';
@@ -121,15 +121,21 @@ export default {
       };
     },
     labelStyleCls() {
-      let param = {
-        width: this.initLabelWidth
-      };
+      let param = {};
+      if (this.params.mode != 'block') {
+        param.width = this.initLabelWidth;
+      } else {
+        param.width = '100%';
+      }
       return param;
     },
     contentStyleCls() {
-      let param = {
-        'margin-left': this.showLabel ? this.initLabelWidth : '0px'
-      };
+      let param = {};
+      if (this.params.mode == 'block' || !this.showLabel) {
+        param['margin-left'] = '0px';
+      } else {
+        param['margin-left'] = this.initLabelWidth;
+      }
       return param;
     }
   }

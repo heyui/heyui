@@ -68,14 +68,17 @@ export default {
       updateErrorMessage: this.updateErrorMessage,
       getErrorMessage: this.getErrorMessage,
       labelWidth: this.labelWidth,
-      mode: this.mode
+      params: this.childParams
     };
   },
   data() {
     return {
       messages: {},
       requireds: [],
-      validator: null
+      validator: null,
+      childParams: {
+        mode: this.mode
+      }
     };
   },
   beforeMount() {
@@ -100,6 +103,9 @@ export default {
     });
   },
   watch: {
+    mode() {
+      this.childParams.mode = this.mode;
+    },
     rules: {
       handler() {
         if (this.validator) {
