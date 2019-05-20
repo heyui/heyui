@@ -6176,14 +6176,17 @@ var _default = {
       updateErrorMessage: this.updateErrorMessage,
       getErrorMessage: this.getErrorMessage,
       labelWidth: this.labelWidth,
-      mode: this.mode
+      params: this.childParams
     };
   },
   data: function data() {
     return {
       messages: {},
       requireds: [],
-      validator: null
+      validator: null,
+      childParams: {
+        mode: this.mode
+      }
     };
   },
   beforeMount: function beforeMount() {
@@ -6211,6 +6214,9 @@ var _default = {
     });
   },
   watch: {
+    mode: function mode() {
+      this.childParams.mode = this.mode;
+    },
     rules: {
       handler: function handler() {
         if (this.validator) {
@@ -6499,7 +6505,7 @@ var _default = {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'mode'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'params'],
   data: function data() {
     return {
       validResult: null,
@@ -6560,7 +6566,7 @@ var _default = {
       return this.requireds.indexOf(this.prop) > -1;
     },
     initLabelWidth: function initLabelWidth() {
-      var mode = this.mode;
+      var mode = this.params.mode;
       var hasWidth = !(mode == 'block' || mode == 'inline') || this.single && mode == 'twocolumn';
       var width = hasWidth ? this.labelWidth || false : false;
       return width ? "".concat(width, "px") : 'auto';
@@ -6574,15 +6580,25 @@ var _default = {
       return (0, _defineProperty2.default)({}, "".concat(prefixCls, "-label"), true);
     },
     labelStyleCls: function labelStyleCls() {
-      var param = {
-        width: this.initLabelWidth
-      };
+      var param = {};
+
+      if (this.params.mode != 'block') {
+        param.width = this.initLabelWidth;
+      } else {
+        param.width = '100%';
+      }
+
       return param;
     },
     contentStyleCls: function contentStyleCls() {
-      var param = {
-        'margin-left': this.showLabel ? this.initLabelWidth : '0px'
-      };
+      var param = {};
+
+      if (this.params.mode == 'block' || !this.showLabel) {
+        param['margin-left'] = '0px';
+      } else {
+        param['margin-left'] = this.initLabelWidth;
+      }
+
       return param;
     }
   }
