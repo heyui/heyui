@@ -25,7 +25,7 @@ export default {
           width: 100,
           tooltip: true,
           placement: 'top-start',
-          content: '<div class="table-tr-tooltip">Serial number <hr> Description: Serial number of the data</div>'
+          content: '<div class="table-tr-tooltip">Serial <hr> Description: Serial number of the data</div>'
         },
         {
           title: 'ID',

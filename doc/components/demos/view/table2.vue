@@ -10,7 +10,8 @@
       <Button color="primary" @click="datas=[]">清空数据</Button>
     </p>
     <Table :datas="datas" :border="border" checkbox :stripe="stripe">
-      <TableItem title="Index" :tooltip="true"><template slot-scope="{index}">{{index}}</template></TableItem>
+      <TableItem title="Index" prop="$index"></TableItem>
+      <TableItem title="Serial" prop="$serial"></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age"></TableItem>
       <TableItem title="Address" align="right" prop="address"></TableItem>

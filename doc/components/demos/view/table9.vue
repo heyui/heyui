@@ -2,6 +2,7 @@
   <div>
     <Table :datas="datas" stripe>
       <TableItem title="Index" prop="$index"></TableItem>
+      <TableItem title="Serial" prop="$serial"></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age" unit="年"></TableItem>
       <TableItem title="Dict" prop="dictData" dict="simple"></TableItem>

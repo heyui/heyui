@@ -17,6 +17,7 @@ export default {
       loading: false,
       columns: [
         { title: 'Index', prop: '$index', width: 100 },
+        { title: 'Serial', prop: '$serial', width: 100 },
         { title: 'ID', prop: 'id', width: 100, sort: true },
         { title: 'Name', prop: 'name', sort: true },
         { title: 'Age', render: item => `年龄：${item.age}`, sortProp: 'age', sort: true },

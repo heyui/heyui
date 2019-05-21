@@ -4,7 +4,7 @@
       <Button @click="add(datas)" icon="h-icon-plus">Add a line</Button>
     </p>
     <Table :datas="datas" stripe checkbox>
-      <TableItem title="Serial number"><template slot-scope="{index}">{{index}}</template></TableItem>
+      <TableItem title="Serial"><template slot-scope="{index}">{{index+1}}</template></TableItem>
       <TableItem title="Name" prop="name"></TableItem>
       <TableItem title="age" prop="age"></TableItem>
       <TableItem title="address" prop="address"></TableItem>
@@ -16,7 +16,7 @@
       </TableItem>
       <template slot="expand" slot-scope="{index, data}">
         <Form readonly mode="twocolumn">
-          <FormItem label="Serial number">{{index}}</FormItem>
+          <FormItem label="Serial">{{index+1}}</FormItem>
           <FormItem label="Name">{{data.name}}</FormItem>
           <FormItem label="age">{{data.age}}</FormItem>
           <FormItem label="address">{{data.address}}</FormItem>

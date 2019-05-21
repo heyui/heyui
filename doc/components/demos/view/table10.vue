@@ -3,6 +3,7 @@
     <p><Button @click="clear" color="primary">清空选中</Button></p>
     <Table ref="table" :datas="datas" selectRow @rowSelect="rowSelect">
       <TableItem title="Index" prop="$index"></TableItem>
+      <TableItem title="Serial" prop="$serial"></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age" unit="年"></TableItem>
       <TableItem title="Dict" prop="dictData" dict="simple"></TableItem>

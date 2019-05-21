@@ -3,6 +3,7 @@
     <p><Button @click="clear" color="primary">Clear selected</Button></p>
     <Table ref="table" :datas="datas" selectRow @rowSelect="rowSelect">
       <TableItem title="Index" prop="$index"></TableItem>
+      <TableItem title="Serial" prop="$serial"></TableItem>
       <TableItem title="Name" prop="name" sort="auto"></TableItem>
       <TableItem title="Age" prop="age" unit="year"></TableItem>
       <TableItem title="Dict" prop="dictData" dict="simple"></TableItem>

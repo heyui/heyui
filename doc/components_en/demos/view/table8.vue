@@ -12,7 +12,7 @@ export default {
     return {
       ths: [
         [
-          { title: 'serial number', rowspan: 2 },
+          { title: 'serial', rowspan: 2 },
           { title: 'coding', tooltip: true },
           { title: 'information', colspan: 2 },
           { title: 'address', rowspan: 2 }

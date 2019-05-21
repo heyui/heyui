@@ -28,6 +28,7 @@ export default {
     },
     show() {
       if (this.prop == '$index') return this.index;
+      if (this.prop == '$serial') return this.index + 1;
       if (this.render) {
         return this.render.call(null, this.data);
       }
