@@ -1,7 +1,7 @@
 /**
   * heyui - UI Toolkit for Web, Vue2.0.
   *
-  * @version v1.20.1-alpha.0
+  * @version v1.20.1
   * @homepage http://www.heyui.top
   * @copyright Copyright © 2017-present Lan
   * @license MIT
