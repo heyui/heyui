@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.4-alpha.1"></a>
+## [1.20.4-alpha.1](https://github.com/heyui/heyui/compare/v1.20.4-alpha.0...v1.20.4-alpha.1) (2019-05-21)
+
+
+
 <a name="1.20.4-alpha.0"></a>
 ## [1.20.4-alpha.0](https://github.com/heyui/heyui/compare/v1.20.3...v1.20.4-alpha.0) (2019-05-21)
 
