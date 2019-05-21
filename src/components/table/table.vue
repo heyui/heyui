@@ -39,7 +39,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="getTrCls(d, index)">
+                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -64,7 +64,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="getTrCls(d, index)">
+                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
                 <td v-if="checkbox" class="h-table-td-checkbox">
                   <Checkbox v-model="checks" :value="d"></Checkbox>
                 </td>
@@ -82,7 +82,7 @@
           <tbody class="h-table-tbody">
             <template v-for="(d, index) of datas">
               <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="index" :class="getTrCls(d, index)">
+                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
                 <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
               </TableTr>
             </template>
@@ -170,6 +170,7 @@ export default {
   },
   data() {
     return {
+      uuid: `uuid-${utils.uuid()}`,
       isMounted: false,
       update: {
         datas: 0,
@@ -278,7 +279,9 @@ export default {
           let tr = null;
           let target = event.target;
           while (target.parentNode != window.document.body) {
-            if (target.tagName == 'TR') {
+            if (target.tagName == 'TH') {
+              return;
+            } else if (target.tagName == 'TR') {
               tr = target;
               break;
             }
