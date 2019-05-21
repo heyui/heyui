@@ -1089,7 +1089,7 @@ function (_Pop) {
       param.getContainer = function (el) {
         var container = el || document.body;
 
-        while (container && container.tagName != 'BODY' && !_utils.default.hasClass(container, 'h-dropdown-common-container')) {
+        while (container && container.tagName != 'BODY' && container.tagName != 'HTML' && !_utils.default.hasClass(container, 'h-dropdown-common-container')) {
           container = container.parentNode;
         }
 
@@ -9461,6 +9461,7 @@ var _default2 = (0, _defineProperty2.default)({
   },
   data: function data() {
     return {
+      uuid: "uuid-".concat(_utils.default.uuid()),
       isMounted: false,
       update: {
         datas: 0,
@@ -9596,7 +9597,9 @@ var _default2 = (0, _defineProperty2.default)({
             var target = event.target;
 
             while (target.parentNode != window.document.body) {
-              if (target.tagName == 'TR') {
+              if (target.tagName == 'TH') {
+                return;
+              } else if (target.tagName == 'TR') {
                 tr = target;
                 break;
               }
@@ -10055,6 +10058,7 @@ var _default = {
     },
     show: function show() {
       if (this.prop == '$index') return this.index;
+      if (this.prop == '$serial') return this.index + 1;
 
       if (this.render) {
         return this.render.call(null, this.data);
@@ -10345,7 +10349,7 @@ var _default2 = {
   props: {
     dict: String,
     datas: [Object, Array],
-    value: [String, Number, Symbol],
+    value: [String, Number],
     className: {
       type: String,
       default: 'h-tabs-default'
@@ -19117,7 +19121,11 @@ var render = function() {
                         {
                           key: index + _vm.update.datas,
                           class: _vm.getTrCls(d, index),
-                          attrs: { datas: d, index: index, trIndex: index },
+                          attrs: {
+                            datas: d,
+                            index: index,
+                            trIndex: _vm.uuid + index
+                          },
                           on: {
                             click: _vm.triggerTrClicked,
                             dblclick: _vm.triggerTrDblclicked
@@ -19232,7 +19240,7 @@ var render = function() {
                                 attrs: {
                                   datas: d,
                                   index: index,
-                                  trIndex: index
+                                  trIndex: _vm.uuid + index
                                 },
                                 on: {
                                   click: _vm.triggerTrClicked,
@@ -19322,7 +19330,7 @@ var render = function() {
                                 attrs: {
                                   datas: d,
                                   index: index,
-                                  trIndex: index
+                                  trIndex: _vm.uuid + index
                                 },
                                 on: {
                                   click: _vm.triggerTrClicked,
@@ -21463,7 +21471,7 @@ function () {
         };
       }
 
-      if (this.options.preventOverflow && container.tagName != 'BODY') {
+      if (this.options.preventOverflow && container.tagName != 'BODY' && container.tagName != 'HTML') {
         modifiers.hide = {
           enabled: false
         };
@@ -21749,11 +21757,11 @@ function () {
 
           var target = e.target;
 
-          while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby') && target.parentNode) {
+          while (target && target.tagName != 'BODY' && target.tagName != 'HTML' && !target.getAttribute('aria-describedby') && target.parentNode) {
             target = target.parentNode;
           }
 
-          if (target.tagName != 'BODY') {
+          if (target.tagName != 'BODY' && target.tagName != 'HTML') {
             var targetTrigger = document.body.querySelector("[aria-describe=\"".concat(target.getAttribute('aria-describedby'), "\"]"));
 
             if (targetTrigger && _this4.popNode.contains(targetTrigger)) {
