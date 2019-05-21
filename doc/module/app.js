@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import Vue from 'vue';
 import App from './app.vue';
 import { install, Prototypes, Button, DropdownMenu } from 'heyui/lib';
