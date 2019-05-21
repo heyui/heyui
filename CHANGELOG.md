@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.2"></a>
+## [1.20.2](https://github.com/heyui/heyui/compare/v1.20.1...v1.20.2) (2019-05-21)
+
+
+### Bug Fixes
+
+* **Dropdown:** add html container judgement ([2b6b4e2](https://github.com/heyui/heyui/commit/2b6b4e2))
+* **Table:** add $serial prop ([21aadb9](https://github.com/heyui/heyui/commit/21aadb9))
+* **Table:** mouseover use uuid trindex ([f063912](https://github.com/heyui/heyui/commit/f063912)), closes [#139](https://github.com/heyui/heyui/issues/139)
+* **Tabs:** remove Symbol ([0acf53f](https://github.com/heyui/heyui/commit/0acf53f))
+
+
+
 <a name="1.20.1"></a>
 ## [1.20.1](https://github.com/heyui/heyui/compare/v1.20.1-alpha.0...v1.20.1) (2019-05-21)
 
