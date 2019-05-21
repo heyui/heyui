@@ -16,7 +16,7 @@ export default {
   props: {
     dict: String,
     datas: [Object, Array],
-    value: [String, Number, Symbol],
+    value: [String, Number],
     className: {
       type: String,
       default: 'h-tabs-default'
