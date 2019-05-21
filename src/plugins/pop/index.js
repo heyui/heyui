@@ -174,7 +174,7 @@ class Pop {
       };
     }
 
-    if (this.options.preventOverflow && container.tagName != 'BODY') {
+    if (this.options.preventOverflow && container.tagName != 'BODY' && container.tagName != 'HTML') {
       modifiers.hide = {
         enabled: false
       };
@@ -403,10 +403,10 @@ class Pop {
         }
 
         let target = e.target;
-        while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby') && target.parentNode) {
+        while (target && target.tagName != 'BODY' && target.tagName != 'HTML' && !target.getAttribute('aria-describedby') && target.parentNode) {
           target = target.parentNode;
         }
-        if (target.tagName != 'BODY') {
+        if (target.tagName != 'BODY' && target.tagName != 'HTML') {
           let targetTrigger = document.body.querySelector(`[aria-describe="${target.getAttribute('aria-describedby')}"]`);
           if (targetTrigger && this.popNode.contains(targetTrigger)) {
             return false;
