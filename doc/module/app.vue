@@ -2,8 +2,12 @@
 </style>
 <template>
   <div id="app">
-    <Button @click="tip">测试</Button>
-    <DropdownMenu :datas="['dsf']">哈哈哈</DropdownMenu>
+    <p>
+      <Button @click="tip">点我</Button>
+    </p>
+    <p>
+      <DropdownMenu :datas="['菜单1','菜单2']" @click="menuTip" button>菜单</DropdownMenu>
+    </p>
   </div>
 </template>
 <script>
@@ -14,11 +18,10 @@ export default {
     };
   },
   mounted() {
-    this.init();
   },
   methods: {
-    init() {
-
+    menuTip(key) {
+      this.$Message(key);
     },
     tip() {
       this.$Message('测试');

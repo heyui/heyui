@@ -9,16 +9,11 @@ module.exports = {
     publicPath: '/',
     output: {
       './module/index.html': {
-        entry: './module/app',
-        commons: []
+        entry: './module/app'
       },
       './index.html': {
-        entry: './app',
-        commons: ['common']
+        entry: './app'
       }
-    },
-    commonTrunk: {
-      common: ['babel-polyfill', 'jquery', 'vue', 'vue-router', 'hey-utils', 'hey-log']
     },
     global: {
       $: 'jquery',
