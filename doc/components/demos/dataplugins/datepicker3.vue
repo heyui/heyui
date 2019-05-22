@@ -1,7 +1,7 @@
 <template>
   <div>
       <p>value:{{value}}</p>
-      <DatePicker v-model="value" format="YYYY/MM/DD"></DatePicker>
+      <DatePicker v-model="value" format="YYYYMMDD"></DatePicker>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '20190501'
     };
   }
 };

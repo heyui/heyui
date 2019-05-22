@@ -60,7 +60,6 @@ export default {
   'formNumberinput5': resolve => require.ensure([], require => require('./form/numberinput5.vue'), 'form'),
   'datapluginsDatepicker1': resolve => require.ensure([], require => require('./dataplugins/datepicker1.vue'), 'dataplugins'),
   'datapluginsDatepicker2': resolve => require.ensure([], require => require('./dataplugins/datepicker2.vue'), 'dataplugins'),
-  'datapluginsDatepicker3': resolve => require.ensure([], require => require('./dataplugins/datepicker3.vue'), 'dataplugins'),
   'datapluginsDatepicker4': resolve => require.ensure([], require => require('./dataplugins/datepicker4.vue'), 'dataplugins'),
   'datapluginsDatepicker5': resolve => require.ensure([], require => require('./dataplugins/datepicker5.vue'), 'dataplugins'),
   'datapluginsDatepicker6': resolve => require.ensure([], require => require('./dataplugins/datepicker6.vue'), 'dataplugins'),

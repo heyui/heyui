@@ -14,7 +14,7 @@
     </div>
     <h3>Date format customization</h3>
     <div>
-      <exampleEn demo="dataplugins/datepicker3"></exampleEn>
+      <example demo="dataplugins/datepicker3"></example>
     </div>
     <h3>Different types of selection controls</h3>
     <div>

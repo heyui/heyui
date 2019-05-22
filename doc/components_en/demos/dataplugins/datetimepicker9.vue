@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      value: ''
+      value: '2019/05/09 02:10:00'
     };
   }
 };
