@@ -113,6 +113,9 @@ export default {
       if (selected) {
         this.status.selected = key;
         this.status.opened = updateOpened(selected);
+      } else {
+        this.status.selected = null;
+        this.status.opened = [];
       }
     },
     trigger(data) {
