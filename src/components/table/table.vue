@@ -1,7 +1,7 @@
 <template>
   <div :class="tableCls">
     <div class="h-table-header" :style="{'padding-right': (scrollWidth+'px')}">
-      <table :style="{'margin-left': (-scrollLeft+'px')}">
+      <table class="h-table-header-table" :style="{'margin-left': (-scrollLeft+'px')}">
         <colgroup>
           <col v-if="checkbox" width="60" />
           <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
@@ -26,12 +26,15 @@
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
     </div>
     <div class="h-table-container">
-      <div class="h-table-content-empty" v-if="datas.length == 0">
-        <slot name='empty'></slot>
-        <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
-      </div>
-      <div class="h-table-body" v-show="datas.length" :style="bodyStyle">
-        <table>
+      <div class="h-table-body" :style="bodyStyle">
+        <template>
+          <div class="h-table-content-empty" v-if="datas.length == 0" >
+            <slot name='empty'></slot>
+            <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
+          </div>
+          <div class="h-table-content-empty-width" :style="{width: emptyWidth + 'px'}"></div>
+        </template>
+        <table class="h-table-body-table" v-show="datas.length">
           <colgroup>
             <col v-if="checkbox" width="60" />
             <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
@@ -56,7 +59,7 @@
       </div>
 
       <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" :style="fixedBodyStyle">
-        <table :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
+        <table class="h-table-fixed-left-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
           <colgroup>
             <col v-if="checkbox" width="60" />
             <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
@@ -75,7 +78,7 @@
         </table>
       </div>
       <div v-if="fixedColumnRight.length" class="h-table-fixed-right" :style="fixedRightBodyStyle">
-        <table :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
+        <table class="h-table-fixed-right-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
           <colgroup>
             <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
           </colgroup>
@@ -191,7 +194,8 @@ export default {
         type: null,
         prop: null
       },
-      rowSelected: null
+      rowSelected: null,
+      emptyWidth: 0
     };
   },
   watch: {
@@ -385,6 +389,7 @@ export default {
           this.scrollWidth = body.offsetWidth - body.clientWidth;
           this.scrollHeight = body.offsetHeight - body.clientHeight;
         }
+        this.emptyWidth = this.$el.querySelector('.h-table-header-table').clientWidth;
         this.tableWidth = this.$el.querySelector('.h-table-container').clientWidth;
         this.initFixedWidth();
       });
