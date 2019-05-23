@@ -92,7 +92,10 @@ export default {
           }
         });
         let menus = $('.doc h2,.doc h3').not('.demo-box h2,.demo-boxc h3');
-        this.menus = [...menus].map(item => item.innerText);
+        this.menus = [];
+        menus.each((index, item) => {
+          this.menus.push(item.innerText);
+        });
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);
           link.on('click', (event) => {
