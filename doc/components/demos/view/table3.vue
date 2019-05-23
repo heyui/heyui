@@ -25,6 +25,21 @@ export default {
   data() {
     return {
       datas: [
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' },
+        { id: 5, name: 'test 5', age: 12, address: 'Shanghai' },
+        { id: 6, name: 'test 6', age: 12, address: 'Shanghai' },
+        { id: 7, name: 'test 7', age: 12, address: 'Shanghai' }
       ]
     };
   },
