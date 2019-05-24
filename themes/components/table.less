@@ -57,6 +57,10 @@
     position: relative;
     margin-top: -1px;
     background: #fff;
+    &.h-loading-parent {
+      min-height: 40px;
+    }
+
     table {
       width: 100%;
     }
@@ -183,14 +187,13 @@
     }
   }
 
-  &.h-loading-parent {
-    min-height: 50px;
-  }
-
   &-tr-select-disabled {
     background: @disabled-background-color;
   }
   &-content-empty-width{
     height: 1px;
+  }
+  &-tree-icon {
+    .h-func-text-hover();
   }
 }

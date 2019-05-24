@@ -16,6 +16,7 @@ export default {
     dict: String,
     align: String,
     className: String,
+    treeOpener: Boolean,
     unit: String,
     render: Function,
     sortProp: String,

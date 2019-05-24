@@ -1,5 +1,9 @@
 <template>
-  <td :class="cls"><template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot></td>
+  <td :class="cls">
+    <i v-for="index of level" :key="index"></i>
+    <span v-if="treeOpener" class="h-table-tree-expand" @click="openTree"><i class="h-table-tree-icon h-icon-angle-right"></i></span>
+    <template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot>
+  </td>
 </template>
 <script>
 import config from 'heyui/src/utils/config';
@@ -14,12 +18,21 @@ export default {
     align: String,
     unit: String,
     render: Function,
+    treeOpener: Boolean,
     className: String
   },
   data() {
     return {};
   },
+  methods: {
+    openTree() {
+      this.$emit('openTree', this.data);
+    }
+  },
   computed: {
+    level() {
+      return this.data._level || 0;
+    },
     cls() {
       return {
         [`text-${this.align}`]: !!this.align,

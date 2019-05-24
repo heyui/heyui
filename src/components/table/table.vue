@@ -9,16 +9,16 @@
         <template v-if="ths">
           <tr v-for="(thdata, thindex) of ths" :key="thindex+update.columns">
             <th v-if="checkbox&&thindex==0" class="h-table-th-checkbox" :rowspan="ths.length">
-              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length"
-                :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
+              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
+                :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
             </th>
             <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
           </tr>
         </template>
         <tr v-else>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<datas.length"
-              :checked="checks.length>0&&checks.length == datas.length" @click.native="checkAll"></Checkbox>
+            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
+              :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
           </th>
           <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
         </tr>
@@ -26,72 +26,75 @@
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
     </div>
     <div class="h-table-container">
-      <div class="h-table-body" :style="bodyStyle">
-        <template>
-          <div class="h-table-content-empty" v-if="datas.length == 0" >
-            <slot name='empty'></slot>
-            <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
-          </div>
-          <div class="h-table-content-empty-width" :style="{width: emptyWidth + 'px'}"></div>
-        </template>
-        <table class="h-table-body-table" v-show="datas.length">
-          <colgroup>
-            <col v-if="checkbox" width="60" />
-            <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
-          </colgroup>
-          <tbody class="h-table-tbody">
-            <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
-                <td v-if="checkbox" class="h-table-td-checkbox">
-                  <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
-                </td>
-                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
-              </TableTr>
-              <tr :key="index+update.datas+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
-                <td class="h-table-expand-cell" :colspan="totalCol">
-                  <slot :data="d" :index="index" name="expand"></slot>
-                </td>
-              </tr>
-            </template>
-          </tbody>
-        </table>
-      </div>
+      <div class="relative">
+        <div class="h-table-body" :style="bodyStyle">
+          <template>
+            <div class="h-table-content-empty" v-if="tableDatas.length == 0" >
+              <slot name='empty'></slot>
+              <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
+            </div>
+            <div class="h-table-content-empty-width" :style="{width: emptyWidth + 'px'}"></div>
+          </template>
+          <table class="h-table-body-table" v-show="tableDatas.length">
+            <colgroup>
+              <col v-if="checkbox" width="60" />
+              <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
+            </colgroup>
+            <tbody class="h-table-tbody">
+              <template v-for="(d, index) of tableDatas">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
+                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                  <td v-if="checkbox" class="h-table-td-checkbox">
+                    <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
+                  </td>
+                  <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
+                </TableTr>
+                <tr :key="index+update.datas+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
+                  <td class="h-table-expand-cell" :colspan="totalCol">
+                    <slot :data="d" :index="index" name="expand"></slot>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
 
-      <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" :style="fixedBodyStyle">
-        <table class="h-table-fixed-left-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
-          <colgroup>
-            <col v-if="checkbox" width="60" />
-            <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
-          </colgroup>
-          <tbody class="h-table-tbody">
-            <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
-                <td v-if="checkbox" class="h-table-td-checkbox">
-                  <Checkbox v-model="checks" :value="d"></Checkbox>
-                </td>
-                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
-              </TableTr>
-            </template>
-          </tbody>
-        </table>
+        <div v-if="fixedColumnLeft.length" class="h-table-fixed-left" :style="fixedBodyStyle">
+          <table class="h-table-fixed-left-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
+            <colgroup>
+              <col v-if="checkbox" width="60" />
+              <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
+            </colgroup>
+            <tbody class="h-table-tbody">
+              <template v-for="(d, index) of tableDatas">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
+                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                  <td v-if="checkbox" class="h-table-td-checkbox">
+                    <Checkbox v-model="checks" :value="d"></Checkbox>
+                  </td>
+                  <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
+                </TableTr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+        <div v-if="fixedColumnRight.length" class="h-table-fixed-right" :style="fixedRightBodyStyle">
+          <table class="h-table-fixed-right-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
+            <colgroup>
+              <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
+            </colgroup>
+            <tbody class="h-table-tbody">
+              <template v-for="(d, index) of tableDatas">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
+                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                  <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
+                </TableTr>
+              </template>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div v-if="fixedColumnRight.length" class="h-table-fixed-right" :style="fixedRightBodyStyle">
-        <table class="h-table-fixed-right-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
-          <colgroup>
-            <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
-          </colgroup>
-          <tbody class="h-table-tbody">
-            <template v-for="(d, index) of datas">
-              <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" :datas="d" :key="index+update.datas"
-                :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
-                <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
-              </TableTr>
-            </template>
-          </tbody>
-        </table>
-      </div>
+      <Loading :loading="loading"></Loading>
     </div>
     <div v-if="fixedColumnLeft.length" class="h-table-fixed-header-left">
       <table :style="{width: leftWidth + 'px'}">
@@ -101,7 +104,7 @@
         </colgroup>
         <tr>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox :indeterminate="checks.length>0&&checks.length<datas.length" :checked="datas.length > 0 && checks.length == datas.length"
+            <Checkbox :indeterminate="checks.length>0&&checks.length<tableDatas.length" :checked="tableDatas.length > 0 && checks.length == tableDatas.length"
               @click.native="checkAll"></Checkbox>
           </th>
           <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
@@ -119,7 +122,6 @@
       </table>
     </div>
     <div class="h-table-items" v-if="!isTemplateMode"><slot></slot></div>
-    <Loading :loading="loading"></Loading>
   </div>
 </template>
 <script>
@@ -194,6 +196,7 @@ export default {
         type: null,
         prop: null
       },
+      tableDatas: [...this.datas],
       rowSelected: null,
       emptyWidth: 0
     };
@@ -213,6 +216,7 @@ export default {
         if (changed) {
           this.update.datas += 1;
           this.checks.splice(0, this.checks.length);
+          this.tableDatas = [...this.datas];
         }
         this.datasBak = [...this.datas];
       },
@@ -308,6 +312,12 @@ export default {
     });
   },
   methods: {
+    openTree(data) {
+      let index = this.tableDatas.indexOf(data);
+      if (index > -1) {
+        this.tableDatas.splice(index, 0, ...data.children);
+      }
+    },
     getTrCls(d, index) {
       let cls = {
         'h-table-tr-selected': this.isChecked(d),
@@ -336,7 +346,7 @@ export default {
       this.rowSelected = null;
     },
     invereSelection() {
-      this.checks = this.datas.filter(item => this.checks.indexOf(item) == -1);
+      this.checks = this.tableDatas.filter(item => this.checks.indexOf(item) == -1);
     },
     clearSelection() {
       this.checks = [];
@@ -351,7 +361,7 @@ export default {
       if (triggerType === true) {
         this.$emit('sort', utils.copy(sortStatus));
       } else if (triggerType == 'auto') {
-        this.datas.sort((a, b) => {
+        this.tableDatas.sort((a, b) => {
           let ad = a[sortStatus.prop];
           let bd = b[sortStatus.prop];
           let index = ad == bd ? 0 : (ad > bd) ? 1 : -1;
@@ -368,10 +378,10 @@ export default {
       return [...(this.checks || [])];
     },
     checkAll() {
-      if (this.checks.length == this.datas.length) {
-        this.checks.splice(0, this.datas.length);
+      if (this.checks.length == this.tableDatas.length) {
+        this.checks.splice(0, this.tableDatas.length);
       } else {
-        this.checks = utils.extend([], this.datas);
+        this.checks = utils.extend([], this.tableDatas);
       }
       this.$emit('selectAll', this.checks);
     },
