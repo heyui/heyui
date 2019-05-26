@@ -130,12 +130,13 @@ import TableTr from './tabletr';
 import TableTh from './tableth';
 import debounce from 'heyui/src/utils/debounce';
 import Checkbox from 'heyui/src/components/checkbox';
+import Loading from 'heyui/src/components/loading';
 
 const prefix = 'h-table';
 
 export default {
   name: 'hTable',
-  components: { Checkbox },
+  components: { Checkbox, Loading },
   props: {
     columns: {
       type: Array,
