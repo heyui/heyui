@@ -97,7 +97,8 @@ export default {
   computed: {
     configRequired() {
       if (!this.prop) return false;
-      return this.requireds.indexOf(this.prop) > -1;
+      const ruleKey = this.prop.replace(/\[\w+\]/, '[]');
+      return this.requireds.indexOf(this.prop) > -1 || this.requireds.indexOf(ruleKey) > -1;
     },
     initLabelWidth() {
       let mode = this.params.mode;
