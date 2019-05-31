@@ -315,8 +315,22 @@ export default {
   methods: {
     openTree(data) {
       let index = this.tableDatas.indexOf(data);
-      if (index > -1) {
-        this.tableDatas.splice(index, 0, ...data.children);
+      if (data.children && data.children.length) {
+        if (data._opened) {
+          data.children.forEach(item => {
+            let cindex = this.tableDatas.indexOf(item);
+            if (cindex > -1) {
+              this.tableDatas.splice(cindex, 1);
+            }
+          });
+          this.$set(data, '_opened', false);
+        } else {
+          data.children.forEach(item => {
+            this.$set(item, '_level', (data._level || 0) + 1);
+          });
+          this.$set(data, '_opened', true);
+          this.tableDatas.splice(index + 1, 0, ...data.children);
+        }
       }
     },
     getTrCls(d, index) {

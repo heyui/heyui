@@ -1,7 +1,10 @@
 <template>
   <td :class="cls">
-    <i v-for="index of level" :key="index"></i>
-    <span v-if="treeOpener" class="h-table-tree-expand" @click="openTree"><i class="h-table-tree-icon h-icon-angle-right"></i></span>
+    <span class="h-table-tree-expand" v-if="treeOpener">
+      <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
+      <i class="h-table-tree-icon h-icon-angle-right" @click="openTree" v-if="data.children && data.children.length"></i>
+      <i class="h-table-tree-empty" v-else ></i>
+    </span>
     <template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot>
   </td>
 </template>
