@@ -19,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "axios": "^0.16.2",
     "fetch": "^1.1.0",
     "fetch-jsonp": "^1.0.6",
     "hey-log": "0.0.7",
