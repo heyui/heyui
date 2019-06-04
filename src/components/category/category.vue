@@ -11,7 +11,6 @@
         <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
       </div>
       <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
-      <!-- <i class="h-icon-down"></i> -->
     </div>
   </div>
 </template>

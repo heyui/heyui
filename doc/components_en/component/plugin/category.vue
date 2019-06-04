@@ -66,7 +66,7 @@
         <td></td>
         <td>Boolean</td>
         <td>-</td>
-        <td>false</td>
+        <td>true</td>
       </tr>
       <tr>
         <td>config</td>

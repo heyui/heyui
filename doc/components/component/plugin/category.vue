@@ -66,7 +66,7 @@
         <td>是否可以搜索</td>
         <td>Boolean</td>
         <td>-</td>
-        <td>false</td>
+        <td>true</td>
       </tr>
       <tr>
         <td>config</td>

@@ -24,7 +24,7 @@
             </div>
             </Cell>
           </template>
-          <Cell v-else :width="8" v-for="data of searchlist" :key="data">
+          <Cell v-else :width="8" v-for="data of searchlist" :key="data.key">
           <div class="text-ellipsis h-category-item" @click.stop="change(data)">
             <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
               class="h-split"></i>{{data.title}}
