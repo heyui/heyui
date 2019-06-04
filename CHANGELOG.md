@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.20.4"></a>
+## [1.20.4](https://github.com/heyui/heyui/compare/v1.20.4-alpha.3...v1.20.4) (2019-06-04)
+
+
+### Bug Fixes
+
+* **$ImagePreview:** update vue import ([7f9b559](https://github.com/heyui/heyui/commit/7f9b559)), closes [#151](https://github.com/heyui/heyui/issues/151)
+* **Form:** add array required judge ([5d2044c](https://github.com/heyui/heyui/commit/5d2044c)), closes [#148](https://github.com/heyui/heyui/issues/148)
+* **Form:** add array required judge ([2f31ce9](https://github.com/heyui/heyui/commit/2f31ce9))
+
+
+
 <a name="1.20.4-alpha.3"></a>
 ## [1.20.4-alpha.3](https://github.com/heyui/heyui/compare/v1.20.4-alpha.1...v1.20.4-alpha.3) (2019-05-29)
 
