@@ -107,9 +107,9 @@ class Notify {
     } else {
       $content.innerHTML = content;
     }
-
-    if (param.component != undefined && Vue) {
-      this.vue = new Vue({
+    const VueInstance = Vue || window.Vue;
+    if (param.component != undefined && VueInstance) {
+      this.vue = new VueInstance({
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
