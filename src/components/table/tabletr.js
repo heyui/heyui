@@ -27,8 +27,8 @@ export default {
           }
           const self = this;
           param.on = {
-            openTree(data) {
-              self.$emit('openTree', data);
+            toggleTree(data) {
+              self.$emit('toggleTree', data);
             }
           };
           tds.push(h(TableTd, param));
@@ -41,8 +41,8 @@ export default {
         param.props.index = this.index;
         const self = this;
         param.on = {
-          openTree(data) {
-            self.$emit('openTree', data);
+          toggleTree(data) {
+            self.$emit('toggleTree', data);
           }
         };
         tds.push(h(TableTd, param));

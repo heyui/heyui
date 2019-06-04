@@ -1,8 +1,15 @@
 <template>
   <div>
-    <Table ref="table" :datas="datas">
+    <Table ref="table" :datas="datas" checkbox>
       <TableItem title="Serial" prop="$serial"></TableItem>
-      <TableItem title="Name" prop="name" sort="auto" treeOpener></TableItem>
+      <TableItem title="Name" prop="name" treeOpener></TableItem>
+      <TableItem title="Age" prop="age" unit="年"></TableItem>
+      <TableItem title="Address2" prop="address"></TableItem>
+    </Table>
+    <blockquote>异步加载</blockquote>
+    <Table ref="table" :datas="datas" checkbox>
+      <TableItem title="Serial" prop="$serial"></TableItem>
+      <TableItem title="Name" prop="name" treeOpener></TableItem>
       <TableItem title="Age" prop="age" unit="年"></TableItem>
       <TableItem title="Address2" prop="address"></TableItem>
     </Table>

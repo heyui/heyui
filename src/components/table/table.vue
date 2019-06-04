@@ -42,14 +42,14 @@
             </colgroup>
             <tbody class="h-table-tbody">
               <template v-for="(d, index) of tableDatas">
-                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
-                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @toggleTree="toggleTree" :datas="d" :key="d._heyui_uuid"
+                  :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
-                    <Checkbox v-if="fixedColumnLeft.length==0" v-model="checks" :value="d"></Checkbox>
+                    <Checkbox v-if="fixedColumnLeft.length==0" :key="d._heyui_uuid" v-model="checks" :value="d"></Checkbox>
                   </td>
                   <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
                 </TableTr>
-                <tr :key="index+update.datas+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
+                <tr :key="d._heyui_uuid+'expand'" class="h-table-expand-tr" v-if="$scopedSlots.expand && d._expand">
                   <td class="h-table-expand-cell" :colspan="totalCol">
                     <slot :data="d" :index="index" name="expand"></slot>
                   </td>
@@ -67,10 +67,10 @@
             </colgroup>
             <tbody class="h-table-tbody">
               <template v-for="(d, index) of tableDatas">
-                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
-                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @toggleTree="toggleTree" :datas="d" :key="d._heyui_uuid"
+                  :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
-                    <Checkbox v-model="checks" :value="d"></Checkbox>
+                    <Checkbox v-model="checks" :key="d._heyui_uuid" :value="d"></Checkbox>
                   </td>
                   <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
                 </TableTr>
@@ -85,8 +85,8 @@
             </colgroup>
             <tbody class="h-table-tbody">
               <template v-for="(d, index) of tableDatas">
-                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @openTree="openTree" :datas="d" :key="index+update.datas"
-                  :index="index" :trIndex="uuid+index" :class="getTrCls(d, index)">
+                <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @toggleTree="toggleTree" :datas="d" :key="d._heyui_uuid"
+                  :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
                 </TableTr>
               </template>
@@ -215,6 +215,7 @@ export default {
           n += 1;
         }
         if (changed) {
+          this.labelDatas(this.datas);
           this.update.datas += 1;
           this.checks.splice(0, this.checks.length);
           this.tableDatas = [...this.datas];
@@ -242,6 +243,9 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resize);
+  },
+  beforeMount() {
+    this.labelDatas(this.datas);
   },
   mounted() {
     this.isMounted = true;
@@ -313,22 +317,35 @@ export default {
     });
   },
   methods: {
-    openTree(data) {
-      let index = this.tableDatas.indexOf(data);
+    labelDatas(datas) {
+      for (let d of datas) {
+        if (!d._heyui_uuid) {
+          this.$set(d, '_heyui_uuid', utils.uuid());
+        }
+      }
+    },
+    toggleTree(data, fold) {
       if (data.children && data.children.length) {
-        if (data._opened) {
+        if (data._opened || fold) {
           data.children.forEach(item => {
+            this.toggleTree(item, true);
             let cindex = this.tableDatas.indexOf(item);
+            let checkIndex = this.checks.indexOf(item);
             if (cindex > -1) {
               this.tableDatas.splice(cindex, 1);
+            }
+            if (checkIndex > -1) {
+              this.checks.splice(checkIndex, 1);
             }
           });
           this.$set(data, '_opened', false);
         } else {
+          this.labelDatas(data.children);
           data.children.forEach(item => {
             this.$set(item, '_level', (data._level || 0) + 1);
           });
           this.$set(data, '_opened', true);
+          let index = this.tableDatas.indexOf(data);
           this.tableDatas.splice(index + 1, 0, ...data.children);
         }
       }

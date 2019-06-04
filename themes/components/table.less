@@ -194,14 +194,20 @@
     height: 1px;
   }
   &-tree-icon {
+    font-size: 14px;
     .h-func-text-hover();
   }
   &-tree-empty {
     display: inline-block;
-    width: 13px;
+    width: 14px;
   }
   &-tree-expand-space {
     display: inline-block;
-    width: 5px;
+    width: 8px;
+  }
+  &-tree-opened {
+    .h-table-tree-icon{
+      transform: rotate(90deg);
+    }
   }
 }

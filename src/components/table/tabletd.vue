@@ -1,8 +1,8 @@
 <template>
   <td :class="cls">
-    <span class="h-table-tree-expand" v-if="treeOpener">
+    <span class="h-table-tree-expand" v-if="treeOpener" :class="{'h-table-tree-opened': data._opened}">
       <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
-      <i class="h-table-tree-icon h-icon-angle-right" @click="openTree" v-if="data.children && data.children.length"></i>
+      <i class="h-table-tree-icon h-icon-angle-right" @click="toggleTree" v-if="data.children && data.children.length"></i>
       <i class="h-table-tree-empty" v-else ></i>
     </span>
     <template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot>
@@ -28,8 +28,8 @@ export default {
     return {};
   },
   methods: {
-    openTree() {
-      this.$emit('openTree', this.data);
+    toggleTree() {
+      this.$emit('toggleTree', this.data);
     }
   },
   computed: {
