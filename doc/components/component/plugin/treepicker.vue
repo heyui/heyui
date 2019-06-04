@@ -68,6 +68,13 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>useConfirm</td>
+        <td>是否使用确定按钮</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>TreePicker 方法</h3>

@@ -68,6 +68,13 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>useConfirm</td>
+        <td>Whether to use confirm button</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>TreePicker Method</h3>
