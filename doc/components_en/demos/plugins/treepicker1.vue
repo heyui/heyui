@@ -2,9 +2,9 @@
   <div>
     <p>value: {{value}}</p>
     <p>Modify the display:<Button @click="update">Update value</Button></p>
-    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch> <h-switch v-model="useConfirm" small>Use Confirm</h-switch></p>
     <p v-width="300">
-      <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+      <TreePicker :option="param" :useConfirm="useConfirm" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
       { id: 34, title: 'Third level-4', parent: 3 }
     ];
     return {
+      useConfirm: false,
       value: null,
       disabled: false,
       param: {

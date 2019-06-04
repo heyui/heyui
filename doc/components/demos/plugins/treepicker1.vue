@@ -2,9 +2,9 @@
   <div>
     <p>value: {{value}}</p>
     <p>修改展示：<Button @click="update">更新值</Button></p>
-    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch> <h-switch v-model="useConfirm" small>使用确定按钮</h-switch></p>
     <p v-width="300">
-       <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+       <TreePicker :option="param" :useConfirm="useConfirm" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
     return {
       value: null,
       disabled: false,
+      useConfirm: false,
       param: {
         keyName: 'id',
         parentName: 'parent',
