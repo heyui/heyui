@@ -16,7 +16,7 @@ import utils from 'heyui/src/utils/utils';
 import Loading from 'heyui/src/components/loading';
 
 export default {
-  name: 'hImagePreview',
+  name: 'hImagePreviewModal',
   props: {
     isShow: {
       type: Boolean,
