@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.21.0-alpha.0"></a>
+# [1.21.0-alpha.0](https://github.com/heyui/heyui/compare/v1.20.4...v1.21.0-alpha.0) (2019-06-05)
+
+
+### Bug Fixes
+
+* optimize install ([63900d8](https://github.com/heyui/heyui/commit/63900d8))
+* **Category:** optimize codes ([3aad13e](https://github.com/heyui/heyui/commit/3aad13e)), closes [#150](https://github.com/heyui/heyui/issues/150)
+* **Icon:** change to angle ([199ef7c](https://github.com/heyui/heyui/commit/199ef7c))
+* **Menu:** when key not exsit, clear select ([798c1d9](https://github.com/heyui/heyui/commit/798c1d9))
+* **Pop:** add manual trigger ([c0225f7](https://github.com/heyui/heyui/commit/c0225f7))
+* **Table:** add scroll when no data ([df078ec](https://github.com/heyui/heyui/commit/df078ec)), closes [#143](https://github.com/heyui/heyui/issues/143)
+* **Table:** change Loading import ([064079a](https://github.com/heyui/heyui/commit/064079a))
+* **Tree:** add prop useConfirm to control select ([4e5af55](https://github.com/heyui/heyui/commit/4e5af55)), closes [#111](https://github.com/heyui/heyui/issues/111)
+
+
+### Features
+
+* **Table:** tree data ([f205bf4](https://github.com/heyui/heyui/commit/f205bf4))
+
+
+
 <a name="1.20.4"></a>
 ## [1.20.4](https://github.com/heyui/heyui/compare/v1.20.4-alpha.3...v1.20.4) (2019-06-04)
 
