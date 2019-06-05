@@ -32,11 +32,12 @@
     <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
     <example demo="view/table3"></example>
 
-    <h3>Table 单选, 多选</h3>
+    <h3>Tree 树形数据</h3>
     <example demo="view/table10"></example>
 
-    <h3>Table 多选</h3>
+    <h3>Table 单选, 多选</h3>
     <p>设定<code>selectWhenClickTr</code>属性可以点击整行选中。</p>
+    <p><code>_disabledSelect</code>将会禁止选择</p>
     <example demo="view/table4"></example>
 
     <h3>Table 气泡提示以及自定义行列样式</h3>
@@ -156,7 +157,6 @@
         <td>-</td>
         <td></td>
       </tr>
-
       <tr>
         <td>align</td>
         <td>table中的标题对齐方式</td>
@@ -226,6 +226,13 @@
         <td>String</td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>treeOpener</td>
+        <td>自定义为tree展开列</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
       </tr>
     </table>
 

@@ -239,6 +239,11 @@ export default {
         this.$emit('select', this.checks);
       },
       deep: true
+    },
+    checkbox() {
+      if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
+        this.resize();
+      }
     }
   },
   beforeDestroy() {

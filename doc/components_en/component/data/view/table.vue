@@ -35,11 +35,13 @@
     <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
     <exampleEn demo="view/table3"></exampleEn>
 
-    <h3>Table choose lines</h3>
-    <exampleEn demo="view/table4"></exampleEn>
+    <h3>Tree table</h3>
+    <example demo="view/table10"></example>
 
-    <h3>Table select line</h3>
-    <exampleEn demo="view/table10"></exampleEn>
+    <h3>Table selectRow, checkbox</h3>
+    <p><code>selectWhenClickTr</code> can be selected by clicking the entire line.</p>
+    <p><code>_disabledSelect</code> Prohibition of choice</p>
+    <example demo="view/table4"></example>
 
     <h3>Table bubble tips and custom style</h3>
     <exampleEn demo="view/table7"></exampleEn>
@@ -227,6 +229,13 @@
         <td>String</td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>treeOpener</td>
+        <td>open tree column</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
       </tr>
     </table>
 
