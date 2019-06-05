@@ -1,10 +1,10 @@
 <template>
   <div>
     <p><SwitchList v-model="mode" small :datas="{'checkbox': '多选', 'rowSelect': '单选'}"></SwitchList></p>
-    <div v-if="mode=='rowSelect'">
+    <p v-if="mode=='rowSelect'">
       <Button size="s" @click="setRowSelect">选中第一行 / Select the first line</Button>
       <Button size="s" @click="reset">清空选择 / Clear</Button>
-    </div>
+    </p>
     <p v-else>
       <Button size="s" @click="invereSelection">反向选择 / Inverse selection</Button>
       <Button size="s" @click="setOddSelection">选择奇数列 / Select odd columns</Button>
