@@ -19,6 +19,10 @@
     <codes type="javascript">globalVars: './src/css/var.less',</codes>
     <p>注意：使用这种引用方式，在vue单文件中也可以使用这些变量。</p>
 
+    <h4>样式引用</h4>
+    <p>您可以在入口js文件中import，也可以直接在app.less中引用。 <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">示例</a></p>
+    <codes type="less">import "~heyui/themes/common.less";</codes>
+
     <h3>使用 vue-cli / 自己搭建webpack</h3>
 
     <h4>方式一</h4>
@@ -51,6 +55,9 @@ export default = {
   }
 }
 </codes>
+    <h4>样式引用</h4>
+    <p>您可以在入口js文件中import，也可以直接在app.less中引用。 <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">示例</a></p>
+    <codes type="less">import "~heyui/themes/common.less";</codes>
 
     <h4>方式二</h4>
     <p>对于 less 变量的定义，我们并没有写入common.less文件，所以需要自己定义一个less文件做引用。</p>

@@ -15,27 +15,13 @@
     <codesEn type="html" src="/codes/jscss.txt"></codesEn>
     <p>Here, we provide an html example: <a target="_blank" href="/simple.html">simple.html</a>, you can view the source code by "viewing the source of the page". </p>
 
-    <h3>Use <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> scaffold (recommended)</h3>
+    <h3>Use <a href="https://github.com/heyui/hey-cli" target="_blank">hey-cli</a> scaffold (recommended) / vue-cli / webpack</h3>
     <p class="tip">Suppose you already know intermediate knowledge about HTML, CSS, and JavaScript, and you already know enough about NPM, ES6, and WEBPACK.</p>
     <p>hey-cli is our open source scaffolding, supports simple ES6 project development, and supports Vue, React project development. Integrated development and packaging and other functions.</p>
-    <p>it can be set using the global <code>var.less</code> files, variables defined in the file can be used in any of the less file, and also the vue's style less label.</p>
-    <h4>Global less variable definition</h4>
-    <p>Refer to the var.less file of Heyui in the var.less file you defined, and redefine the replacement theme according to your needs. Then set the global reference file in the hey.js scaffolding configuration file.</p>
-    <p>var.less，<a href="https://github.com/heyui/heyui-admin/blob/master/src/css/var.less" target="_blank">example link</a></p>
-    <codesEn type="less">@import (less) "~/heyui/themes/var.less";
-@primary-color: #FDA729;
-@red-color: #D64244;
-@green-color: #3cb357;
-@yellow-color: #EAC12C;
-@blue-color: #77A2DC;</codesEn>
 
-    <p v-height="10"></p>
-    <p>hey-cli configuration file hey.js ，<a href="https://github.com/heyui/heyui-admin/blob/master/hey.conf.js" target="_blank">example link</a></p>
-    <codesEn type="javascript">globalVars: './src/css/var.less',</codesEn>
-    <p v-height="10"></p>
     <h4>Style reference</h4>
     <p>For style references, you can import in the entry js file, or directly in app.less. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">example link</a></p>
-    <codesEn type="less">@import (less) "~heyui/themes/common.less";</codesEn>
+    <codesEn type="less">@import (less) "~heyui/themes/index.less";</codesEn>
 
     <h4>Import HeyUI</h4>
     <p>In general, we import HeyUI to the webpack portal page.</p>
@@ -47,49 +33,6 @@ new Vue({
   el: '#app',
   render: h => h(App)
 });</codesEn>
-
-    <h3>Use vue-cli / webpack</h3>
-    <p>There are some differences in the references here, mainly in style references.</p>
-    <h4>Var.js global variable</h4>
-    <p>For the definition of the less variable, we provide a convenient reference to the var.js file.</p>
-<codes type="javascript">
-const vars = require('heyui/themes/var.js');
-Object.assign(vars, {
-  'primary-color': '#3788ee',
-  'link-color': '#3788ee',
-  'blue-color': '#2d7bf4',
-  'green-color': '#0acf97',
-  'yellow-color': '#f9bc0b',
-  'red-color': '#f1556c'
-});
-module.exports = vars;
-</codes>
-<p>Taking vue-cli as an example, vue.config.js is configured as follows:</p>
-<codes type="javascript">
-const globalVars = require('./src/css/var.js');
-module.exports = {
-  css: {
-    loaderOptions: {
-      less: {
-        globalVars
-      }
-    }
-  },
-}
-</codes>
-<h4>No global variables</h4>
-<codes type="less">@import (less) "~heyui/themes/var.less";
-//重新定义主题
-@primary-color: #FDA729;
-@red-color: #D64244;
-@green-color: #3cb357;
-@yellow-color: #EAC12C;
-@blue-color: #77A2DC;
-@import (less) "~heyui/themes/common.less";
-
-//使用这种方式引用，可以在自己的less文件中使用var.less定义的变量。
-@import (less) "自己的less文件";
-</codes>
 
     <h3>Load on demand</h3>
     <p>With the plug-in <a href="https://github.com/ant-design/babel-plugin-import" target="_blank">babel-plugin-import</a>, you can load components on demand and reduce file size.</p>

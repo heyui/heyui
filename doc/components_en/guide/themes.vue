@@ -19,6 +19,10 @@
     <codesEn type="javascript">globalVars: './src/css/var.less',</codesEn>
     <p>Note: With this reference, these variables can also be used in the vue file.</p>
 
+    <h4>Style reference</h4>
+    <p>You can import in the entry js file, or directly in app.less. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">example link</a></p>
+    <codesEn type="less">@import (less) "~heyui/themes/common.less";</codesEn>
+
     <h3>vue-cli / webpack</h3>
     <h4>var.js</h4>
     <p>HeyUI defines the var. JS file, and you can define global variables through the globalVars parameter of lessLoader.</p>
@@ -50,6 +54,9 @@ export default = {
   }
 }
 </codes>
+<p>Style reference</p>
+    <p>You can import in the entry js file, or directly in app.less. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">example link</a></p>
+    <codesEn type="less">@import (less) "~heyui/themes/common.less";</codesEn>
 
     <h4>var.less</h4>
     <p>For the definition of the less variable, we do not write the common.less file, so we need to define a less file for reference.</p>
