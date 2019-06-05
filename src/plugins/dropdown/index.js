@@ -3,7 +3,6 @@ import utils from 'heyui/src/utils/utils';
 
 const Default = {
   trigger: 'click',
-  closeOnClickBody: true,
   html: true,
   placement: 'bottom-start',
   template: `<div role="select" class="h-dropdown"><div class="h-dropdown-inner"></div></div>`,
