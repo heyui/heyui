@@ -59,7 +59,7 @@
         <td>trigger</td>
         <td>trigger event</td>
         <td>String</td>
-        <td>hover, click, focus</td>
+        <td>hover, click, focus, manual</td>
         <td>info</td>
       </tr>
       <tr>

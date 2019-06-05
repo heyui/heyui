@@ -61,7 +61,7 @@
         <td>trigger</td>
         <td>触发事件</td>
         <td>String</td>
-        <td>hover, click, focus</td>
+        <td>hover, click, focus, manual</td>
         <td>info</td>
       </tr>
       <tr>
