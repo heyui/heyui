@@ -25,15 +25,15 @@ module.exports = {
       components: './components/',
       'heyui/src': '../src',
       components_en: './components_en/',
-      'heyui/lib': '../lib'
+      'heyuiNative': 'heyui'
     },
     globalVars: './css/var.less',
     devServer: {
       historyApiFallback: true
     },
     pluginImport: {
-      libraryName: 'heyui/lib',
-      libraryDirectory: 'components'
+      libraryName: 'heyuiNative',
+      libraryDirectory: 'lib/components'
     },
     externals: {}
   },
