@@ -10,14 +10,12 @@ body {
   font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
   color: #34495e;
   margin: 0px;
-  font-size: 15px;
-  // overflow: hidden;
 }
 
 h2,
 h3,
 h4 {
-  font-weight: 600;
+  font-weight: normal;
   color: #2c3e50;
   letter-spacing: 1px;
 }
@@ -223,10 +221,9 @@ h2 {
     line-height: 2.5;
     >div>ul {
       >li.title {
-        font-size: 18px;
-        margin: 15px 0;
-        padding-left: 30px;
-        color: @primary-color;
+        margin: 10px 0;
+        padding-left: 40px;
+        color: #b1b1b1;
       }
       >ul {
         padding-left: 25px;
@@ -239,7 +236,7 @@ h2 {
           line-height: 1;
           a {
             padding: 12px 0;
-            padding-left: 20px;
+            padding-left: 10px;
             border-left: 5px solid transparent;
             display: block;
           }
@@ -249,7 +246,7 @@ h2 {
     a {
       line-height: 1;
       padding: 2px 4px;
-      color: #868fa4;
+      color: @dark3-color;
       &:hover{
         color: @primary-color;
       }
@@ -626,7 +623,7 @@ h2 {
   // font-size: 16px;
   h1, h2, h3 {
     margin: 40px 0 20px;
-    font-weight: 600;
+    font-weight: normal;
     color: #2c3e50;
     letter-spacing: 1px;
   }
@@ -849,6 +846,7 @@ h2 {
     font-size: 14px;
     padding: 5px 15px;
     line-height: 20px;
+    color: @dark2-color;
     word-break: break-all;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -856,7 +854,6 @@ h2 {
     cursor: pointer;
     &:hover{
       color: @primary-color;
-      background-color: @hover-background-color;
     }
   }
 }

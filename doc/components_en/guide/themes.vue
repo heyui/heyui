@@ -93,7 +93,6 @@ export default = {
 @gray1-color: #d3d3d3;
 @gray2-color: #eeeeee;
 @gray3-color: #f3f3f3;
-@gray4-color: #f9f9f9;
 
 //hover
 @hover-background-color: lighten(@primary-color, 37%);

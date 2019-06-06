@@ -11,6 +11,7 @@ export default {
   'basicLayout4': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/layout4.vue')); }, 'basic'); },
   'basicLayout5': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/layout5.vue')); }, 'basic'); },
   'basicIcon': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/icon.vue')); }, 'basic'); },
+  'basicColor': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/color.vue')); }, 'basic'); },
   'basicDemo': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/demo.vue')); }, 'basic'); },
   'basicDemo2': function (resolve) { require.ensure([], function (require) { resolve(require('./basic/demo2.vue')); }, 'basic'); },
   'basicExtend1': resolve => require.ensure([], require => require('./basic/extend1.vue'), 'basic'),
