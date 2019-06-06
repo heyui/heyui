@@ -52,6 +52,9 @@ function modal(param) {
     if (this.$i18n) {
       param.$i18n = this.$i18n;
     }
+    if (this.$store) {
+      param.$store = this.$store;
+    }
   }
   return new Modal(param);
 }

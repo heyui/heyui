@@ -113,6 +113,7 @@ class Notify {
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
+        store: param.$store,
         render(createElement) {
           let keys = Object.keys(param.events || {});
           let events = {

@@ -1,5 +1,6 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import store from 'js/store';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
@@ -77,6 +78,7 @@ router.afterEach(() => {
 const app = new Vue({
   i18n,
   router,
+  store,
   el: '#app',
   render: h => h(App)
 });

@@ -60,6 +60,9 @@ function notice(param, timeout) {
       if (this.$i18n) {
         param.$i18n = this.$i18n;
       }
+      if (this.$store) {
+        param.$store = this.$store;
+      }
     }
     return Notice(param);
   }
