@@ -71,7 +71,7 @@ const app = new Vue({
 });
 export default app;
 </codes>
-<p>其中，components 参考以下文件：<a href="https://github.com/heyui/heyui/blob/master/src/index.js" target="_blank">index.js</a>，Prototypes参考 <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
+<p>完整的加载参考以下文件：<a href="https://github.com/heyui/heyui/blob/master/components.js" target="_blank">components.js</a>，Prototypes参考 <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
 
 <h4>按需加载样式</h4>
 <p>样式，系统提供了基本的调用，如果还需要有组件的加载，请补充需要加载组件的样式。</p>

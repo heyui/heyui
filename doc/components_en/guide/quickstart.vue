@@ -71,7 +71,7 @@ const app = new Vue({
 });
 export default app;
 </codes>
-<p>Components refer to the following file: <a href="https://github.com/heyui/heyui/blob/master/src/index.js" target="_blank">index.js</a>，Prototypes reference <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
+<p>Components refer to the following file: <a href="https://github.com/heyui/heyui/blob/master/components.js" target="_blank">index.js</a>，Prototypes reference <a href="https://github.com/heyui/heyui/blob/master/src/components/prototypes/index.js" target="_blank">prototypes/index.js</a></p>
 
 <h4>Load styles on demand</h4>
 <p>System provides the basic style, if you need to load the component, add the style of the component you need to load.</p>
