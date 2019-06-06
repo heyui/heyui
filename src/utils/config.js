@@ -57,7 +57,7 @@ const config = {
   autocomplete: {
     configs: {},
     default: {
-      maxList: 20,
+      maxLength: 20,
       delay: 100,
       loadData: null,
       minWord: 0,

@@ -256,13 +256,6 @@
         </td>
       </tr>
       <tr>
-        <td>getValue</td>
-        <td>Define the standard output format through data</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>minWord</td>
         <td>The minimum number of words to start the query</td>
         <td>Number</td>
@@ -282,6 +275,13 @@
         <td>Number</td>
         <td>-</td>
         <td>100</td>
+      </tr>
+      <tr>
+        <td>maxLength</td>
+        <td>Max length of result list</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>20</td>
       </tr>
     </table>
 

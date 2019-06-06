@@ -46,10 +46,6 @@ export default () => {
       keyName: 'id',
       titleName: 'name',
       minWord: 1
-    },
-    pageFilter: {
-      keyName: 'key',
-      titleName: 'title'
     }
   });
 

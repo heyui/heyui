@@ -119,10 +119,6 @@ HeyUI.config('autocomplete.configs', {
     keyName: 'id',
     titleName: 'name',
     minWord: 1
-  },
-  pageFilter: {
-    keyName: 'key',
-    titleName: 'title'
   }
 });
 </codes>

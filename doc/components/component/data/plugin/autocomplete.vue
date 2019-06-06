@@ -234,13 +234,6 @@
         <td>全局配置<code>autocomplete.default.title</code></td>
       </tr>
       <tr>
-        <td>getValue</td>
-        <td>通过数据定义出标准的输出格式</td>
-        <td>Function</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-      <tr>
         <td>minWord</td>
         <td>开始查询的最低单词数量</td>
         <td>Number</td>
@@ -260,6 +253,13 @@
         <td>Number</td>
         <td>-</td>
         <td>100</td>
+      </tr>
+      <tr>
+        <td>maxLength</td>
+        <td>搜索结果最多展示条目</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>20</td>
       </tr>
     </table>
 
