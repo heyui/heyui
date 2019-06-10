@@ -36,6 +36,7 @@
     <blockquote>General call</blockquote>
     <div>
       <span class="text-hover">Clickable text</span>
+      <span class="dark-text-hover">Dark clickable text</span>
       <span class="link">Linked text</span>
       <span class="float-right">Floating to the right</span>
     </div>

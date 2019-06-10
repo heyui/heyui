@@ -39,12 +39,36 @@
   transition: color @transition-time ease;
 
   &:hover {
-    color: @primary-color;
+    color: @link-color;
+  }
+  
+  &:active {
+    color: darken(@link-color, 15%);
   }
   
   &.@{pop-ref-prefix} &{
     color: darken(@link-color, 10%) !important;
   }
+  &[disabled] {
+    color: @disabled-color;
+    cursor: default;
+  }
+}
+
+.h-func-dark-text-hover() {
+  cursor: pointer;
+  transition: color @transition-time ease;
+
+  color: @dark4-color;
+
+  &:hover {
+    color: @dark2-color;
+  }
+
+  &:active {
+    color: darken(@dark2-color, 10%);
+  }
+
   &[disabled] {
     color: @disabled-color;
     cursor: default;
