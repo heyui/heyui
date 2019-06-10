@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.21.0-alpha.1"></a>
+# [1.21.0-alpha.1](https://github.com/heyui/heyui/compare/v1.21.0-alpha.0...v1.21.0-alpha.1) (2019-06-10)
+
+
+### Bug Fixes
+
+* **AutoComplete:** optimize ([94b6c4b](https://github.com/heyui/heyui/commit/94b6c4b))
+* **Color:** optimize color ([d24404f](https://github.com/heyui/heyui/commit/d24404f))
+* **Color:** optimize colors ([0746ecf](https://github.com/heyui/heyui/commit/0746ecf))
+* add dark-text-hover class ([5ec5d3e](https://github.com/heyui/heyui/commit/5ec5d3e))
+* remove lib ([808cf75](https://github.com/heyui/heyui/commit/808cf75))
+* **ImagePreview:** increase max-height ([aed8f54](https://github.com/heyui/heyui/commit/aed8f54))
+* **ImagePreview:** optimize ([c0442ab](https://github.com/heyui/heyui/commit/c0442ab))
+* **Modal:** js modal add $store ([0f91db8](https://github.com/heyui/heyui/commit/0f91db8))
+* **Radio:** update border-color ([332ee15](https://github.com/heyui/heyui/commit/332ee15))
+
+
+
 <a name="1.21.0-alpha.0"></a>
 # [1.21.0-alpha.0](https://github.com/heyui/heyui/compare/v1.20.4...v1.21.0-alpha.0) (2019-06-05)
 
