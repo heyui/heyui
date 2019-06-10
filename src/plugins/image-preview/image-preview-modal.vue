@@ -59,7 +59,7 @@ export default {
       let width = this.$refs.img.width;
       let height = this.$refs.img.height;
       if (width > 800 || height > 12000) {
-        let percent = Math.min(width / 800, height / 12000);
+        let percent = Math.max(width / 800, height / 12000);
         width = width / percent;
         height = height / percent;
       }
