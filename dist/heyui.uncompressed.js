@@ -616,7 +616,7 @@ var _config = {
   autocomplete: {
     configs: {},
     default: {
-      maxList: 20,
+      maxLength: 20,
       delay: 100,
       loadData: null,
       minWord: 0,
@@ -1359,6 +1359,7 @@ function () {
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
+        store: param.$store,
         render: function render(createElement) {
           var _this = this;
 
@@ -12654,8 +12655,8 @@ var _default2 = {
       var width = this.$refs.img.width;
       var height = this.$refs.img.height;
 
-      if (width > 800 || height > 800) {
-        var percent = Math.max(width, height) / 800;
+      if (width > 800 || height > 12000) {
+        var percent = Math.max(width / 800, height / 12000);
         width = width / percent;
         height = height / percent;
       }
@@ -12927,9 +12928,6 @@ var _default = {
     });
   },
   methods: {
-    getKey: function getKey(key) {
-      return key + Math.random();
-    },
     parse: function parse() {
       var _this3 = this;
 
@@ -13011,22 +13009,8 @@ var _default = {
 
       this.oldValue = this.value;
     },
-    getDisposeValue: function getDisposeValue() {
-      var inputValue = null;
-
-      if (this.type == 'key' || this.type == 'title') {
-        inputValue = this.tempValue;
-      } else if (!_utils.default.isBlank(this.tempValue)) {
-        inputValue = (0, _defineProperty2.default)({}, this.param.titleName, this.tempValue);
-      } else {
-        inputValue = null;
-      }
-
-      return inputValue;
-    },
     dispose: function dispose() {
       var value = null;
-      var inputValue = this.getDisposeValue();
 
       if (this.multiple) {
         value = [];
@@ -13062,17 +13046,21 @@ var _default = {
         if (this.mustMatch) {
           value = this.getV(this.object);
         } else {
-          if (!_utils.default.isNull(this.object.key) && this.object.key !== '') {
-            if (this.type == 'key') {
-              value = this.object.key;
-            } else if (this.type == 'title') {
-              value = this.object.title;
-            } else {
-              value = _utils.default.copy(this.object.value);
+          if (!_utils.default.isBlank(this.object.key)) {
+            value = this.getV(this.object);
+          } else {
+            if (!_utils.default.isBlank(this.tempValue)) {
+              var inputValue = null;
+
+              if (this.type == 'title') {
+                inputValue = this.tempValue;
+              } else {
+                inputValue = (0, _defineProperty2.default)({}, this.param.titleName, this.tempValue);
+              }
+
+              value = inputValue;
+              this.object.title = this.tempValue;
             }
-          } else if (!_utils.default.isNull(inputValue)) {
-            value = inputValue;
-            this.object.title = this.tempValue;
           }
         }
 
@@ -13089,14 +13077,10 @@ var _default = {
       }
     },
     getValue: function getValue(item) {
-      if (_utils.default.isFunction(this.param.getValue)) {
-        return this.param.getValue.call(this.param, item);
+      if (!_utils.default.isObject(item) && this.type == 'object') {
+        return _utils.default.getValue((0, _defineProperty2.default)({}, this.param.titleName, item), this.param);
       } else {
-        if (!_utils.default.isObject(item) && this.type == 'object') {
-          return _utils.default.getValue((0, _defineProperty2.default)({}, this.param.titleName, item), this.param);
-        } else {
-          return _utils.default.getValue(item, this.param);
-        }
+        return _utils.default.getValue(item, this.param);
       }
     },
     focus: function focus(event) {
@@ -13125,7 +13109,7 @@ var _default = {
 
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
-          if (this.focusValue != '' && !this.multiple) {
+          if (!this.multiple && this.object.key != null) {
             this.object = {
               key: null,
               title: null,
@@ -13136,7 +13120,7 @@ var _default = {
             this.tempValue = null;
           }
         } else {
-          if (nowValue) {
+          if (this.multiple && nowValue) {
             this.objects.push(this.getValue(nowValue));
           }
 
@@ -13181,7 +13165,7 @@ var _default = {
       event.preventDefault();
 
       if (this.nowSelected >= 0) {
-        this.add(this.results[this.nowSelected]);
+        this.update(this.results[this.nowSelected]);
         this.setvalue('enter');
       } else {
         if (!this.mustMatch && this.multiple && nowValue) {
@@ -13195,7 +13179,8 @@ var _default = {
       var _this5 = this;
 
       var target = this.$refs.input;
-      var value = target.value;
+      var value = target.value; // log('this.tempValue', this.tempValue, 'value', value);
+
       this.tempValue = value || null;
 
       if (value != this.object.title && this.object.title) {
@@ -13254,7 +13239,7 @@ var _default = {
         }
       });
     },
-    add: function add(data) {
+    update: function update(data) {
       if (this.multiple) {
         this.objects.push(_utils.default.copy(data));
       } else {
@@ -13276,14 +13261,13 @@ var _default = {
       this.setvalue('remove');
     },
     picker: function picker(data) {
-      this.add(data);
+      this.update(data);
       this.setvalue('picker');
     },
     setvalue: function setvalue(trigger) {
       var _this7 = this;
 
-      if (this.disabled) return; // log('setvalue', trigger)
-
+      if (this.disabled) return;
       this.lastTrigger = trigger;
       this.nowSelected = -1;
       var value = this.oldValue = this.dispose();
@@ -13294,11 +13278,7 @@ var _default = {
         this.tempValue = null;
       } else {
         this.tempValue = this.object.title;
-      } // if (this.mustMatch || this.object.key || this.multiple) {
-      // }
-      // this.focusValue = this.showValue;
-      // if (this.object.key === null) this.object.title = this.showValue
-
+      }
 
       this.$emit('input', value, trigger);
       this.$emit('change', _utils.default.copy(this.multiple ? this.objects : this.object), trigger);
@@ -13338,11 +13318,7 @@ var _default = {
       return this.emptyContent || this.t('h.autoComplate.emptyContent');
     },
     param: function param() {
-      if (this.config) {
-        return _utils.default.extend({}, _config.default.getOption('autocomplete.default'), _config.default.getOption("autocomplete.configs.".concat(this.config)), this.option);
-      } else {
-        return _utils.default.extend({}, _config.default.getOption('autocomplete.default'), this.option);
-      }
+      return _utils.default.extend({}, _config.default.getOption('autocomplete.default'), this.config ? _config.default.getOption("autocomplete.configs.".concat(this.config)) : {}, this.option);
     },
     autocompleteCls: function autocompleteCls() {
       var _ref;
@@ -13395,10 +13371,11 @@ var _default = {
         datas = datas.filter(function (item) {
           return keyArray.indexOf(item[_this8.param.keyName]) == -1;
         });
-      }
+      } // maxLength
 
-      if (this.maxList) {
-        datas.splice(0, this.maxList);
+
+      if (this.param.maxLength) {
+        datas.splice(this.param.maxLength);
       }
 
       var results = [];
@@ -15114,6 +15091,10 @@ function modal(param) {
 
     if (this.$i18n) {
       param.$i18n = this.$i18n;
+    }
+
+    if (this.$store) {
+      param.$store = this.$store;
     }
   }
 
@@ -39157,6 +39138,10 @@ function notice(param, timeout) {
 
       if (this.$i18n) {
         param.$i18n = this.$i18n;
+      }
+
+      if (this.$store) {
+        param.$store = this.$store;
       }
     }
 
