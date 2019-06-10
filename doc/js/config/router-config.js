@@ -624,6 +624,11 @@ const router = {
       ]
     },
     {
+      path: '/theme',
+      name: 'systheme',
+      component: resolve => require(['components/theme/index'], resolve)
+    },
+    {
       path: '/resource',
       component: resolve => require(['components/resource'], resolve),
       children: [
