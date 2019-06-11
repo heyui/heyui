@@ -19208,9 +19208,9 @@ var render = function() {
             "div",
             { staticClass: "h-table-body", style: _vm.bodyStyle },
             [
-              [
-                _vm.tableDatas.length == 0
-                  ? _c(
+              _vm.tableDatas.length == 0
+                ? [
+                    _c(
                       "div",
                       { staticClass: "h-table-content-empty" },
                       [
@@ -19223,14 +19223,14 @@ var render = function() {
                           : _vm._e()
                       ],
                       2
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", {
-                  staticClass: "h-table-content-empty-width",
-                  style: { width: _vm.emptyWidth + "px" }
-                })
-              ],
+                    ),
+                    _vm._v(" "),
+                    _c("div", {
+                      staticClass: "h-table-content-empty-width",
+                      style: { width: _vm.emptyWidth + "px" }
+                    })
+                  ]
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "table",
