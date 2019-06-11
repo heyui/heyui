@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.21.1"></a>
+## [1.21.1](https://github.com/heyui/heyui/compare/v1.21.0...v1.21.1) (2019-06-11)
+
+
+### Bug Fixes
+
+* **Table:** fix emtpy show judgement ([90140f6](https://github.com/heyui/heyui/commit/90140f6))
+
+
+
 <a name="1.21.0"></a>
 # [1.21.0](https://github.com/heyui/heyui/compare/v1.21.0-alpha.1...v1.21.0) (2019-06-10)
 
