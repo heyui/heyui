@@ -21,7 +21,13 @@
 
     <h4>Style reference</h4>
     <p>For style references, you can import in the entry js file, or directly in app.less. <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">example link</a></p>
-    <codesEn type="less">@import (less) "~heyui/themes/index.less";</codesEn>
+    <codes type="javascript">
+// css
+import (less) "~heyui/themes/index.less";
+// or
+// js
+import "heyui/themes/index.less";
+    </codes>
 
     <h4>Import HeyUI</h4>
     <p>In general, we import HeyUI to the webpack portal page.</p>

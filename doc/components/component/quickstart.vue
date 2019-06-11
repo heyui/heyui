@@ -22,7 +22,13 @@
     <p v-height="10"></p>
     <h4>样式引用</h4>
     <p>对于样式引用，您可以在入口js文件中import，也可以直接在app.less中引用。 <a href="https://github.com/heyui/heyui-admin/blob/master/src/css/app.less" target="_blank">示例</a></p>
-    <codes type="less">import "~heyui/themes/index.less";</codes>
+    <codes type="javascript">
+// css引用
+import (less) "~heyui/themes/index.less";
+// 或者
+// js引用
+import "heyui/themes/index.less";
+    </codes>
     <h4>引入 HeyUI</h4>
     <p>一般，我们在webpack 入口页面引用。</p>
     <p>同时，HeyUI 也可以设置为全局引用，因为 HeyUI 拥有Message, Loadding等全局可以调用的方法。<a href="https://github.com/heyui/heyui-admin/blob/master/src/main.js" target="_blank">示例</a></p>
