@@ -628,6 +628,11 @@ const router = [
     ]
   },
   {
+    path: '/en/theme',
+    name: 'en_systheme',
+    component: resolve => require(['components_en/theme/index'], resolve)
+  },
+  {
     path: '/en/resource',
     component: resolve => require(['components_en/resource'], resolve),
     children: [

@@ -11,7 +11,7 @@
 </template>
 <script>
 import comHead from '../common/header.vue';
-import components from './components.vue';
+import components from '../../components/theme/components.vue';
 export default {
   methods: {},
   components: {

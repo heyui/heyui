@@ -4,7 +4,7 @@
       <router-link class="logo" to="/">
         <div class="header-logo">
           <span></span>
-        </div>HEY UI
+        </div><span>HEY UI</span>
       </router-link>
       <AutoComplete v-width="220" dict="menus" autoSelectFirst v-model="search" @change="goSearch" placeholder="搜索..."></AutoComplete>
       <div class="header-nav-list">
@@ -14,7 +14,7 @@
           <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
           <div class="bg4" @click="dynamicLoadCss('red')"></div>
         </div>
-        <template v-if="$route.name != 'Home'">
+        <template>
           <!-- <a @click="goLink({name: 'Home'})" :class="{'router-link-active': $route.name == 'Home'}">首页</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
           <router-link to="/component">组件</router-link>
@@ -88,6 +88,7 @@ export default {
   methods: {
     dynamicLoadCss(type) {
       Utils.dynamicLoadCss(type);
+      G.set('GLOBAL_COLOR', type);
     },
     changeLang() {
       this.$i18n.locale = 'en';
