@@ -88,7 +88,6 @@ export default {
   methods: {
     dynamicLoadCss(type) {
       Utils.dynamicLoadCss(type);
-      G.set('GLOBAL_COLOR', type);
     },
     changeLang() {
       this.$i18n.locale = 'en';

@@ -25,6 +25,7 @@
   <div class="page-theme-show page-body com-frame">
     <div class="left-frame">
       <div class="theme-setting">
+        <info></info>
       </div>
     </div>
     <div class="right-frame">
@@ -167,7 +168,11 @@
   </div>
 </template>
 <script>
+import info from './info.vue';
 export default {
+  components: {
+    info
+  },
   data() {
     return {
       color: null,

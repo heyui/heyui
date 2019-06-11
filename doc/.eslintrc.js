@@ -14,7 +14,8 @@ module.exports = {
   },
   "globals": {
     "$": true,
-    "log": true
+    "log": true,
+    "G": true
   },
   'extends': [
     'plugin:vue/essential',

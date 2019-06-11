@@ -14,5 +14,7 @@ module.exports = utils.extend({}, utils, {
       }
     };
     head.appendChild(link);
+    let globalConfig = G.get('globalConfig');
+    globalConfig.theme = type;
   }
 });

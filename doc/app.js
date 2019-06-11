@@ -75,6 +75,10 @@ router.afterEach(() => {
     window._hmt.push(['_trackPageview', window.location.pathname]);
   }
 });
+
+G.set('globalConfig', {
+  theme: 'default'
+});
 const app = new Vue({
   i18n,
   router,
