@@ -28,8 +28,8 @@
     <div class="h-table-container">
       <div class="relative">
         <div class="h-table-body" :style="bodyStyle">
-          <template>
-            <div class="h-table-content-empty" v-if="tableDatas.length == 0" >
+          <template v-if="tableDatas.length == 0">
+            <div class="h-table-content-empty" >
               <slot name='empty'></slot>
               <div v-if="!$slots.empty">{{'h.table.empty' | hlang}}</div>
             </div>
