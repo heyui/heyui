@@ -12747,6 +12747,8 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(6));
+
 var _config = _interopRequireDefault(__webpack_require__(4));
 
 var _utils = _interopRequireDefault(__webpack_require__(2));
@@ -12942,20 +12944,24 @@ var _default = {
           var _iteratorError = undefined;
 
           try {
-            for (var _iterator = this.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var _loop = function _loop() {
               var v = _step.value;
 
-              if (this.type == 'key' && !_utils.default.isNull(v) && (this.dict || this.datas) && this.results) {
-                var result = this.results.filter(function (item) {
-                  return item[_this3.param.keyName] == _this3.value;
+              if (_this3.type == 'key' && !_utils.default.isNull(v) && (_this3.dict || _this3.datas)) {
+                var result = [].concat((0, _toConsumableArray2.default)(_this3.results), (0, _toConsumableArray2.default)(_this3.objects)).filter(function (item) {
+                  return item.key == v;
                 });
 
-                if (result.length > 0) {
+                if (result.length) {
                   v = result[0].value;
                 }
               }
 
-              os.push(this.getValue(v));
+              os.push(_this3.getValue(v));
+            };
+
+            for (var _iterator = this.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              _loop();
             }
           } catch (err) {
             _didIteratorError = true;
@@ -12980,12 +12986,12 @@ var _default = {
         if (this.type == 'key') {
           if (!_utils.default.isNull(this.value)) {
             if (!this.show && (this.dict || this.datas) && this.results) {
-              var _result = this.results.filter(function (item) {
+              var result = this.results.filter(function (item) {
                 return item[_this3.param.keyName] == _this3.value;
               });
 
-              if (_result.length > 0) {
-                value = _result[0];
+              if (result.length > 0) {
+                value = result[0].value;
               }
             }
 
