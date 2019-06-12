@@ -177,11 +177,11 @@ export default {
         let os = [];
         if (utils.isArray(this.value) && this.value.length > 0) {
           for (let v of this.value) {
-            if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas) && this.results) {
-              let result = this.results.filter(
-                item => item[this.param.keyName] == this.value
+            if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas)) {
+              let result = [...this.results, ...this.objects].filter(
+                item => item.key == v
               );
-              if (result.length > 0) {
+              if (result.length) {
                 v = result[0].value;
               }
             }
@@ -198,7 +198,7 @@ export default {
                 item => item[this.param.keyName] == this.value
               );
               if (result.length > 0) {
-                value = result[0];
+                value = result[0].value;
               }
             }
             if (utils.isNull(value)) {

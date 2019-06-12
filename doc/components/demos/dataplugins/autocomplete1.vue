@@ -43,7 +43,7 @@ export default {
       this.value = '2';
     },
     update2() {
-      this.value2 = ['2'];
+      this.value2 = ['1', '2'];
     }
   }
 };
