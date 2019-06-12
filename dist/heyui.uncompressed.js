@@ -12944,6 +12944,17 @@ var _default = {
           try {
             for (var _iterator = this.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
               var v = _step.value;
+
+              if (this.type == 'key' && !_utils.default.isNull(v) && (this.dict || this.datas) && this.results) {
+                var result = this.results.filter(function (item) {
+                  return item[_this3.param.keyName] == _this3.value;
+                });
+
+                if (result.length > 0) {
+                  v = result[0].value;
+                }
+              }
+
               os.push(this.getValue(v));
             }
           } catch (err) {
@@ -12969,16 +12980,16 @@ var _default = {
         if (this.type == 'key') {
           if (!_utils.default.isNull(this.value)) {
             if (!this.show && (this.dict || this.datas) && this.results) {
-              var result = this.results.filter(function (item) {
+              var _result = this.results.filter(function (item) {
                 return item[_this3.param.keyName] == _this3.value;
               });
 
-              if (result.length > 0) {
-                value = result[0];
+              if (_result.length > 0) {
+                value = _result[0];
               }
             }
 
-            if (!value) {
+            if (_utils.default.isNull(value)) {
               var _value;
 
               value = (_value = {}, (0, _defineProperty2.default)(_value, this.param.keyName, this.value), (0, _defineProperty2.default)(_value, this.param.titleName, this.show), _value);
@@ -13585,17 +13596,18 @@ var _default = {
       var classList = ["".concat(prefixCls)];
       classList.push((_classList$push = {}, (0, _defineProperty2.default)(_classList$push, "".concat(prefixCls, "-").concat(width), width), (0, _defineProperty2.default)(_classList$push, "".concat(this.className), !!this.className), _classList$push)); // let noOtherWidth = width==undefined&&this.flex == undefined;
 
-      for (var _i = 0, _arr = ['xs', 'sm', 'md', 'lg', 'xl']; _i < _arr.length; _i++) {
+      var lastSize = null;
+
+      for (var _i = 0, _arr = ['xl', 'lg', 'md', 'sm', 'xs']; _i < _arr.length; _i++) {
         var size = _arr[_i];
 
         if (_utils.default.isNumber(this[size])) {
-          // noOtherWidth = false;
+          lastSize = this[size];
           classList.push("".concat(prefixCls, "-").concat(size, "-").concat(this[size]));
+        } else if (lastSize) {
+          classList.push("".concat(prefixCls, "-").concat(size, "-").concat(lastSize));
         }
-      } // if(noOtherWidth){
-      //   width = 24;
-      // }
-
+      }
 
       return classList;
     },
