@@ -177,6 +177,14 @@ export default {
         let os = [];
         if (utils.isArray(this.value) && this.value.length > 0) {
           for (let v of this.value) {
+            if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas) && this.results) {
+              let result = this.results.filter(
+                item => item[this.param.keyName] == this.value
+              );
+              if (result.length > 0) {
+                v = result[0].value;
+              }
+            }
             os.push(this.getValue(v));
           }
         }
@@ -193,7 +201,7 @@ export default {
                 value = result[0];
               }
             }
-            if (!value) {
+            if (utils.isNull(value)) {
               value = {
                 [this.param.keyName]: this.value,
                 [this.param.titleName]: this.show
