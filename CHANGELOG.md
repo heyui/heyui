@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.21.2-alpha.0"></a>
+## [1.21.2-alpha.0](https://github.com/heyui/heyui/compare/v1.21.1...v1.21.2-alpha.0) (2019-06-12)
+
+
+### Bug Fixes
+
+* **AutoComplete:** optimize key array parse ([1f95dbd](https://github.com/heyui/heyui/commit/1f95dbd))
+* **Cell:** different size use between value ([5e6e915](https://github.com/heyui/heyui/commit/5e6e915))
+* **Color:** add primary1-color primary2-color ([6bca206](https://github.com/heyui/heyui/commit/6bca206))
+* **Table:** empty width add judgement ([eb3d260](https://github.com/heyui/heyui/commit/eb3d260))
+
+
+
 <a name="1.21.1"></a>
 ## [1.21.1](https://github.com/heyui/heyui/compare/v1.21.0...v1.21.1) (2019-06-11)
 
