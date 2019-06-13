@@ -37,8 +37,8 @@
       </div>
 
       <div class="h-date-footer" v-if="hasConfirm & !inline">
-        <button class="h-btn h-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>

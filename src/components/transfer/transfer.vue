@@ -18,12 +18,12 @@
     </div>
 
     <div class="h-transfer-switch">
-      <button class="h-btn h-btn-s" @click="move(-1)">
+      <button class="h-btn h-btn-s" type="button" @click="move(-1)">
         <template v-if="option&&option.ltText">{{option.ltText}}</template>
         <i v-else-if="option&&option.ltIcon" :class="option.ltIcon"></i>
         <i v-else class="h-icon-left"></i>
       </button>
-      <button class="h-btn h-btn-s" @click="move(1)">
+      <button class="h-btn h-btn-s" type="button" @click="move(1)">
         <template v-if="option&&option.rtText">{{option.rtText}}</template>
         <i v-else-if="option&&option.rtIcon" :class="option.rtIcon"></i>
         <i v-else class="h-icon-right"></i>

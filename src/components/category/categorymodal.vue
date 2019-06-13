@@ -34,8 +34,8 @@
       </div>
     </div>
     <footer>
-      <button class="h-btn h-btn-primary" @click="confirm">{{'h.common.confirm' | hlang}}</button>
-      <button class="h-btn" @click="close">{{'h.common.cancel' | hlang}}</button>
+      <button class="h-btn h-btn-primary" type="button" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+      <button class="h-btn" type="button" @click="close">{{'h.common.cancel' | hlang}}</button>
     </footer>
   </div>
 </template>

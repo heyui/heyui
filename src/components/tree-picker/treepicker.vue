@@ -22,8 +22,8 @@
           :config="config"></Tree>
       </div>
       <div class="h-treepicker-footer" v-if="multiple || useConfirm">
-        <button class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>

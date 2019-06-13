@@ -71,7 +71,7 @@ class Notify {
           color = b.color;
         }
         if (color) color = `h-btn-${color}`;
-        footeHtml += `<button class="h-btn ${color}" attr="${attr}" >${name}</button>`;
+        footeHtml += `<button type="button" class="h-btn ${color}" attr="${attr}" >${name}</button>`;
       }
       html += `<footer class="${param.type}-footer">${footeHtml}</footer>`;
     }
