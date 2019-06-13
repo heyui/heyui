@@ -8,10 +8,9 @@
       <Button color="primary" @click="datas=[]">清空数据</Button>
     </p>
     <Table :datas="datas" :border="border" :checkbox="checkbox" :stripe="stripe" :loading="loading">
-      <!-- <TableItem title="Index" prop="$index"></TableItem> -->
       <TableItem title="序号" prop="$serial" v-if="serial"></TableItem>
       <TableItem title="Name" prop="name"></TableItem>
-      <TableItem title="Age" prop="age" sort="auto"></TableItem>
+      <TableItem align="center" title="Age" prop="age" sort="auto"></TableItem>
       <TableItem title="Address1" prop="address"></TableItem>
       <TableItem title="Address2" prop="address"></TableItem>
       <TableItem v-if="show" title="Address-切换显示" align="right" prop="address"></TableItem>
