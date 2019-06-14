@@ -1294,7 +1294,7 @@ function () {
           }
 
           if (color) color = "h-btn-".concat(color);
-          footeHtml += "<button class=\"h-btn ".concat(color, "\" attr=\"").concat(attr, "\" >").concat(name, "</button>");
+          footeHtml += "<button type=\"button\" class=\"h-btn ".concat(color, "\" attr=\"").concat(attr, "\" >").concat(name, "</button>");
         }
       } catch (err) {
         _didIteratorError = true;
@@ -16269,7 +16269,7 @@ var render = function() {
     "button",
     {
       class: _vm.buttonCls,
-      attrs: { disabled: !!this.disabled },
+      attrs: { type: "button", disabled: !!this.disabled },
       on: { click: _vm.trigger }
     },
     [
@@ -16465,6 +16465,7 @@ var render = function() {
         "button",
         {
           staticClass: "h-btn h-btn-s",
+          attrs: { type: "button" },
           on: {
             click: function($event) {
               return _vm.move(-1)
@@ -16485,6 +16486,7 @@ var render = function() {
         "button",
         {
           staticClass: "h-btn h-btn-s",
+          attrs: { type: "button" },
           on: {
             click: function($event) {
               return _vm.move(1)
@@ -16750,6 +16752,7 @@ var render = function() {
             {
               staticClass: "h-btn h-btn-primary",
               style: _vm.heightStyles,
+              attrs: { type: "button" },
               on: {
                 click: function($event) {
                   return _vm.search(_vm.inputValue)
@@ -17129,7 +17132,11 @@ var render = function() {
           ? _c("div", { staticClass: "h-date-footer" }, [
               _c(
                 "button",
-                { staticClass: "h-btn h-btn-text", on: { click: _vm.clear } },
+                {
+                  staticClass: "h-btn h-btn-text",
+                  attrs: { type: "button" },
+                  on: { click: _vm.clear }
+                },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.clear")))]
               ),
               _vm._v(" "),
@@ -17137,6 +17144,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "h-btn h-btn-primary h-btn-s",
+                  attrs: { type: "button" },
                   on: { click: _vm.hide }
                 },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
@@ -17330,7 +17338,11 @@ var render = function() {
       _c("div", { staticClass: "h-date-footer" }, [
         _c(
           "button",
-          { staticClass: "h-btn h-btn-text h-btn-s", on: { click: _vm.clear } },
+          {
+            staticClass: "h-btn h-btn-text h-btn-s",
+            attrs: { type: "button" },
+            on: { click: _vm.clear }
+          },
           [_vm._v(_vm._s(_vm._f("hlang")("h.common.clear")))]
         ),
         _vm._v(" "),
@@ -17338,6 +17350,7 @@ var render = function() {
           "button",
           {
             staticClass: "h-btn h-btn-primary h-btn-s",
+            attrs: { type: "button" },
             on: { click: _vm.confirm }
           },
           [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
@@ -17527,7 +17540,11 @@ var render = function() {
       _c("div", { staticClass: "h-date-footer" }, [
         _c(
           "button",
-          { staticClass: "h-btn h-btn-text h-btn-s", on: { click: _vm.clear } },
+          {
+            staticClass: "h-btn h-btn-text h-btn-s",
+            attrs: { type: "button" },
+            on: { click: _vm.clear }
+          },
           [_vm._v(_vm._s(_vm._f("hlang")("h.common.clear")))]
         ),
         _vm._v(" "),
@@ -17535,6 +17552,7 @@ var render = function() {
           "button",
           {
             staticClass: "h-btn h-btn-primary h-btn-s",
+            attrs: { type: "button" },
             on: { click: _vm.confirm }
           },
           [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
@@ -18177,7 +18195,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "h-btn h-uploader-browse-button",
-                      attrs: { icon: "h-icon-upload" }
+                      attrs: { type: "button", icon: "h-icon-upload" }
                     },
                     [_vm._v(_vm._s(_vm.showUploadWord))]
                   )
@@ -18602,6 +18620,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "h-btn h-btn-text h-btn-s",
+                  attrs: { type: "button" },
                   on: { click: _vm.clear }
                 },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.clear")))]
@@ -18611,6 +18630,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "h-btn h-btn-primary h-btn-s",
+                  attrs: { type: "button" },
                   on: { click: _vm.confirm }
                 },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
@@ -19954,6 +19974,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "h-btn h-btn-text h-btn-xs",
+                  attrs: { type: "button" },
                   on: { click: _vm.close }
                 },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.cancel")))]
@@ -19962,6 +19983,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "h-btn h-btn-text h-btn-xs h-btn-primary",
+                  attrs: { type: "button" },
                   on: { click: _vm.trigger }
                 },
                 [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
@@ -20621,13 +20643,23 @@ var render = function() {
     _c("footer", [
       _c(
         "button",
-        { staticClass: "h-btn h-btn-primary", on: { click: _vm.confirm } },
+        {
+          staticClass: "h-btn h-btn-primary",
+          attrs: { type: "button" },
+          on: { click: _vm.confirm }
+        },
         [_vm._v(_vm._s(_vm._f("hlang")("h.common.confirm")))]
       ),
       _vm._v(" "),
-      _c("button", { staticClass: "h-btn", on: { click: _vm.close } }, [
-        _vm._v(_vm._s(_vm._f("hlang")("h.common.cancel")))
-      ])
+      _c(
+        "button",
+        {
+          staticClass: "h-btn",
+          attrs: { type: "button" },
+          on: { click: _vm.close }
+        },
+        [_vm._v(_vm._s(_vm._f("hlang")("h.common.cancel")))]
+      )
     ])
   ])
 }
