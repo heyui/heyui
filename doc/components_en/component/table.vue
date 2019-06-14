@@ -32,7 +32,8 @@
     <exampleEn demo="view/table5"></exampleEn> -->
 
     <h3>Table fixed column</h3>
-    <p class="tip">Fixed height and width, automatic scrolling when internal content is exceeded.</p>
+    <p>If you need to scroll horizontally, you need to set width parameters for each TableItem</p>
+    <p>If you need to scroll longitudinally, you need to set the height parameter for Table</p>
     <exampleEn demo="view/table3"></exampleEn>
 
     <h3>Tree table</h3>

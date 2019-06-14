@@ -28,8 +28,9 @@
     <p>给行数据 data 的某项设置 <code>_expand</code> 为 true，可以默认展开当前行</p>
     <example demo="view/table6"></example>
 
-    <h3>Table 固定行列</h3>
-    <p class="tip">固定的高度和宽度，内部内容超出时自动scroll。</p>
+    <h3>Table 内容滚动</h3>
+    <p>如果需要横向滚动，需要给每个 <code>TableItem</code> 设置 <code>width</code> 参数</p>
+    <p>如果需要纵向滚动，则需要给 <code>Table</code> 设置 <code>height</code> 参数</p>
     <example demo="view/table3"></example>
 
     <h3>Tree 树形数据</h3>
