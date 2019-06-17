@@ -53,6 +53,9 @@
     "message": "chore(release): %s",
     "skip": {
       "tag": true
+    },
+    "scripts": {
+      "precommit": "sh ./scripts/headr.sh"
     }
   },
   "browserslist": [
