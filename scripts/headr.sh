@@ -3,5 +3,3 @@ headr ./dist/heyui.esm.js -o=dist/heyui.esm.js --version --homepage --copyright 
 
 git add dist
 git add themes
-git add lib
-git commit -m 'build dist'
