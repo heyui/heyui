@@ -66,7 +66,7 @@ export default {
       removeProp: this.removeProp,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
-      getErrorMessage: this.getErrorMessage,
+      updateProp: this.updateProp,
       labelWidth: this.labelWidth,
       params: this.childParams
     };
@@ -178,8 +178,7 @@ export default {
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getErrorMessage(prop, label) {
-      if (this.messages[prop]) return this.messages[prop];
+    updateErrorMessage(prop, label) {
       let message = {
         valid: true,
         message: null,
@@ -188,7 +187,7 @@ export default {
       this.messages[prop] = message;
       return message;
     },
-    updateErrorMessage(prop, oldProp) {
+    updateProp(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
       if (utils.isNull(message)) {
         message = {
@@ -201,6 +200,8 @@ export default {
     },
     removeProp(prop) {
       delete this.messages[prop];
+      delete this.requireds[prop];
+      this.setConfig(prop, { required: false });
     },
     renderMessage(returnResult) {
       let isSuccess = true;

@@ -48,7 +48,7 @@ export default {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'params'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateProp', 'updateErrorMessage', 'labelWidth', 'params'],
   data() {
     return {
       validResult: null,
@@ -56,14 +56,14 @@ export default {
     };
   },
   beforeDestroy() {
-    if (this.prop) {
+    if (this.prop && this.required) {
       this.removeProp(this.prop);
     }
   },
   watch: {
     prop(prop, oldProp) {
       if (this.prop) {
-        this.errorMessage = this.updateErrorMessage(prop, oldProp);
+        this.errorMessage = this.updateProp(prop, oldProp);
       }
     },
     required() {
@@ -75,7 +75,7 @@ export default {
       if (this.required) {
         this.setConfig(this.prop, { required: this.required });
       }
-      this.errorMessage = this.getErrorMessage(this.prop, this.label);
+      this.errorMessage = this.updateErrorMessage(this.prop, this.label);
     }
   },
   methods: {
