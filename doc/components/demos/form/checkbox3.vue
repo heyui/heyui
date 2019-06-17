@@ -6,7 +6,7 @@
     </p>
     <p><Checkbox v-model="value1" :datas="param1" ></Checkbox></p>
     <p>值：{{value2}}</p>
-    <p><Checkbox v-model="value2" :datas="param2" ></Checkbox></p>
+    <p><Checkbox v-model="value2" :limit="2" :datas="param2" ></Checkbox></p>
     <p>值：{{value3}}</p>
     <p><Checkbox v-model="value3" :datas="param3" ></Checkbox></p>
     <p>禁用</p>

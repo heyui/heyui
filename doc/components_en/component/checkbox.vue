@@ -94,6 +94,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>limit</td>
+        <td>Limit how many can only be selected</td>
+        <td>Number</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Radio Event</h3>

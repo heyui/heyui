@@ -14,9 +14,12 @@
 <script>
 import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
+import Message from 'heyui/src/plugins/message';
+import Locale from 'heyui/src/mixins/locale';
 
 export default {
   name: 'hCheckbox',
+  mixins: [ Locale ],
   model: {
     prop: 'checkStatus',
     event: 'input'
@@ -45,6 +48,7 @@ export default {
       type: String,
       default: () => config.getOption('dict', 'titleName')
     },
+    limit: Number,
     trueValue: {
       default: true
     },
@@ -103,6 +107,10 @@ export default {
         value = utils.copy(this.checkStatus);
         let key = option[this.key];
         value = utils.toggleValue(value, key);
+        if (this.limit && this.limit < value.length) {
+          Message.error(this.t('h.checkbox.limitSize', { limitSize: this.limit }));
+          return;
+        }
       }
       this.$emit('change', value);
       this.$emit('input', value);

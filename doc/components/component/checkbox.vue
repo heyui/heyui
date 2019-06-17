@@ -94,6 +94,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>limit</td>
+        <td>限制只能选择多少个</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
 
     <h3>Checkbox 事件</h3>

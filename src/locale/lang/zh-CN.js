@@ -12,12 +12,15 @@ const lang = {
     confirm: {
       title: '提示'
     },
+    checkbox: {
+      limitSize: '您最多可以选择{limitSize}个选项'
+    },
     select: {
       nullOptionText: '请选择',
       emptyContent: '未搜索到相关数据',
       placeholder: '请选择',
       searchPlaceHolder: '请输入筛选文本',
-      limitSize: '您最多可以选择{0}个选项'
+      limitSize: '您最多可以选择{limitSize}个选项'
     },
     category: {
       placeholder: '请选择'
