@@ -1,6 +1,6 @@
 {
   "name": "heyui",
-  "version": "1.21.3-alpha.0",
+  "version": "1.21.3-alpha.1",
   "description": "UI Toolkit for Web, Vue2.0.",
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
@@ -51,9 +51,6 @@
   "standard-version": {
     "commitAll": true,
     "message": "chore(release): %s",
-    "scripts": {
-      "precommit": "sh ./scripts/headr.sh"
-    },
     "skip": {
       "tag": true
     }
