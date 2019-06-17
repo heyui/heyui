@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.21.3-alpha.0"></a>
+## [1.21.3-alpha.0](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v1.21.3-alpha.0) (2019-06-17)
+
+
+### Bug Fixes
+
+* **Button:** add prop type="button" ([be1812d](https://github.com/heyui/heyui/commit/be1812d))
+* **Button:** add type button ([94112e0](https://github.com/heyui/heyui/commit/94112e0))
+* **DatePicker:** remove duplicate type ([fc99898](https://github.com/heyui/heyui/commit/fc99898))
+* **Form:** optimize required handler ([c2f1f02](https://github.com/heyui/heyui/commit/c2f1f02)), closes [#155](https://github.com/heyui/heyui/issues/155)
+* **Table:** checkbox fix position ([9dcbb4b](https://github.com/heyui/heyui/commit/9dcbb4b))
+* **Table:** fix text center style ([6bf2d06](https://github.com/heyui/heyui/commit/6bf2d06))
+
+
+
 <a name="1.21.2"></a>
 ## [1.21.2](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v1.21.2) (2019-06-14)
 
