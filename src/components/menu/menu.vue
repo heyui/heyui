@@ -13,7 +13,7 @@
 <script>
 import utils from 'heyui/src/utils/utils';
 import config from 'heyui/src/utils/config';
-import hMenuItem from './menuitem';
+import hMenuItem from './menu-item';
 
 const prefix = 'h-menu';
 

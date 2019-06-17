@@ -28,7 +28,7 @@
         <td>menu的数据</td>
         <td>Array</td>
         <td>-</td>
-        <td>[]</td>
+        <td>[ <code>Data</code> ]</td>
       </tr>
       <tr>
         <td>option</td>
@@ -57,6 +57,45 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Data 属性</h3>
+    <table class="table">
+      <tr>
+        <th>属性</th>
+        <th>类型</th>
+        <th>说明</th>
+      </tr>
+      <tr>
+        <td>key</td>
+        <td>String</td>
+        <td>数据key, 必须有且唯一</td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>String</td>
+        <td>Menu展示的内容</td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>String</td>
+        <td>Menu展示的icon</td>
+      </tr>
+      <tr>
+        <td>href</td>
+        <td>String | Object</td>
+        <td>Menu中的a标签链接href属性，可以是route值</td>
+      </tr>
+      <tr>
+        <td>target</td>
+        <td>String</td>
+        <td>Menu中的a标签链接target属性</td>
+      </tr>
+      <tr>
+        <td>nativeLink</td>
+        <td>Boolean</td>
+        <td>是否保留原生link的行为</td>
       </tr>
     </table>
 

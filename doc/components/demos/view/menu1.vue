@@ -75,14 +75,18 @@ export default {
           key: 'task',
           children: [
             {
-              title: '任务-1',
+              title: 'Baidu',
               icon: 'h-icon-bell',
-              key: 'task1-1'
+              key: 'task1-1',
+              href: 'http://www.baidu.com',
+              nativeLink: true,
+              target: '_blank'
             },
             {
-              title: '任务-2',
+              title: '首页',
               icon: 'h-icon-home',
-              key: 'task1-2'
+              key: 'task1-2',
+              href: { name: 'Home' }
             }
           ]
         }

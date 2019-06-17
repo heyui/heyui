@@ -32,7 +32,7 @@
         <td>Data of menu</td>
         <td>Array</td>
         <td>-</td>
-        <td>[]</td>
+        <td>[ <code>Data</code> ]</td>
       </tr>
       <tr>
         <td>option</td>
@@ -61,6 +61,45 @@
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+    </table>
+
+    <h3>Data Props</h3>
+    <table class="table">
+      <tr>
+        <th>Prop</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>key</td>
+        <td>String</td>
+        <td>Data key, must have and be unique</td>
+      </tr>
+      <tr>
+        <td>title</td>
+        <td>String</td>
+        <td>Menu's presentation</td>
+      </tr>
+      <tr>
+        <td>icon</td>
+        <td>String</td>
+        <td>Menu's Icon</td>
+      </tr>
+      <tr>
+        <td>href</td>
+        <td>String | Object</td>
+        <td>The href attribute of Menu links , which can be a route value</td>
+      </tr>
+      <tr>
+        <td>target</td>
+        <td>String</td>
+        <td>The target attribute of Menu links</td>
+      </tr>
+      <tr>
+        <td>nativeLink</td>
+        <td>Boolean</td>
+        <td>Whether to retain native link behavior</td>
       </tr>
     </table>
 
