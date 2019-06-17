@@ -6201,7 +6201,7 @@ var _default = {
       removeProp: this.removeProp,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
-      getErrorMessage: this.getErrorMessage,
+      updateProp: this.updateProp,
       labelWidth: this.labelWidth,
       params: this.childParams
     };
@@ -6334,8 +6334,7 @@ var _default = {
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getErrorMessage: function getErrorMessage(prop, label) {
-      if (this.messages[prop]) return this.messages[prop];
+    updateErrorMessage: function updateErrorMessage(prop, label) {
       var message = {
         valid: true,
         message: null,
@@ -6344,7 +6343,7 @@ var _default = {
       this.messages[prop] = message;
       return message;
     },
-    updateErrorMessage: function updateErrorMessage(prop, oldProp) {
+    updateProp: function updateProp(prop, oldProp) {
       var message = _utils.default.copy(this.messages[oldProp]);
 
       if (_utils.default.isNull(message)) {
@@ -6359,6 +6358,10 @@ var _default = {
     },
     removeProp: function removeProp(prop) {
       delete this.messages[prop];
+      delete this.requireds[prop];
+      this.setConfig(prop, {
+        required: false
+      });
     },
     renderMessage: function renderMessage(returnResult) {
       var isSuccess = true;
@@ -6532,7 +6535,7 @@ var _default = {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateErrorMessage', 'getErrorMessage', 'labelWidth', 'params'],
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateProp', 'updateErrorMessage', 'labelWidth', 'params'],
   data: function data() {
     return {
       validResult: null,
@@ -6542,14 +6545,14 @@ var _default = {
     };
   },
   beforeDestroy: function beforeDestroy() {
-    if (this.prop) {
+    if (this.prop && this.required) {
       this.removeProp(this.prop);
     }
   },
   watch: {
     prop: function prop(_prop, oldProp) {
       if (this.prop) {
-        this.errorMessage = this.updateErrorMessage(_prop, oldProp);
+        this.errorMessage = this.updateProp(_prop, oldProp);
       }
     },
     required: function required() {
@@ -6566,7 +6569,7 @@ var _default = {
         });
       }
 
-      this.errorMessage = this.getErrorMessage(this.prop, this.label);
+      this.errorMessage = this.updateErrorMessage(this.prop, this.label);
     }
   },
   methods: {
