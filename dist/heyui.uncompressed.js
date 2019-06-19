@@ -6263,8 +6263,15 @@ var _default = {
     },
     rules: {
       handler: function handler() {
+        var _this2 = this;
+
         if (this.validator) {
           if (this.rules) this.validator.updateRule(this.rules);
+          this.dynamicRequireds.forEach(function (item) {
+            _this2.validator.setConfig(item, {
+              required: true
+            });
+          });
         } else if (this.model && this.rules) {
           this.validator = new _validator.default(this.rules);
         }
@@ -6314,7 +6321,7 @@ var _default = {
       }
     },
     validField: function validField(prop) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (!prop || !this.validator || !this.model) {
         return {
@@ -6324,7 +6331,7 @@ var _default = {
 
       var returnResult = this.validator.validField(prop, this.model, {
         next: function next(result) {
-          _utils.default.extend(true, _this2.messages, result);
+          _utils.default.extend(true, _this3.messages, result);
         }
       });
 
@@ -6348,8 +6355,6 @@ var _default = {
       return _utils.default.extend({}, defaultM, returnResult[prop]);
     },
     setConfig: function setConfig(prop, options) {
-      var _this3 = this;
-
       var index = this.dynamicRequireds.indexOf(prop);
 
       if (options.required) {
@@ -6362,9 +6367,7 @@ var _default = {
 
       this.initRequires();
       if (!this.validator) return false;
-      this.$nextTick(function () {
-        _this3.validator.setConfig(prop, options);
-      });
+      this.validator.setConfig(prop, options);
     },
     updateErrorMessage: function updateErrorMessage(prop, label) {
       var message = {
@@ -6395,7 +6398,12 @@ var _default = {
       return message;
     },
     removeProp: function removeProp(prop) {
-      delete this.dynamicRequireds[prop];
+      var index = this.dynamicRequireds.indexOf(prop);
+
+      if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+
       this.setConfig(prop, {
         required: false
       });
