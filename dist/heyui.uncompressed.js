@@ -6225,6 +6225,7 @@ var _default = {
   data: function data() {
     return {
       messages: {},
+      dynamicRequireds: [],
       requireds: [],
       validator: null,
       childParams: {
@@ -6286,7 +6287,7 @@ var _default = {
           return item.key;
         });
 
-        (_this$requireds = this.requireds).push.apply(_this$requireds, (0, _toConsumableArray2.default)(this.rules.required || []).concat((0, _toConsumableArray2.default)(validRequiredProps)));
+        (_this$requireds = this.requireds).push.apply(_this$requireds, (0, _toConsumableArray2.default)(this.rules.required || []).concat((0, _toConsumableArray2.default)(validRequiredProps), (0, _toConsumableArray2.default)(this.dynamicRequireds)));
       }
     },
     reset: function reset() {
@@ -6347,8 +6348,23 @@ var _default = {
       return _utils.default.extend({}, defaultM, returnResult[prop]);
     },
     setConfig: function setConfig(prop, options) {
+      var _this3 = this;
+
+      var index = this.dynamicRequireds.indexOf(prop);
+
+      if (options.required) {
+        if (index == -1) {
+          this.dynamicRequireds.push(prop);
+        }
+      } else if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+
+      this.initRequires();
       if (!this.validator) return false;
-      this.validator.setConfig(prop, options);
+      this.$nextTick(function () {
+        _this3.validator.setConfig(prop, options);
+      });
     },
     updateErrorMessage: function updateErrorMessage(prop, label) {
       var message = {
@@ -6379,8 +6395,7 @@ var _default = {
       return message;
     },
     removeProp: function removeProp(prop) {
-      delete this.messages[prop];
-      delete this.requireds[prop];
+      delete this.dynamicRequireds[prop];
       this.setConfig(prop, {
         required: false
       });
@@ -6406,7 +6421,7 @@ var _default = {
       return result;
     },
     tipError: function tipError(result) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (result && !result.result) {
         var m = result.messages[0];
@@ -6420,14 +6435,14 @@ var _default = {
         }
 
         this.$nextTick(function () {
-          var firstError = _this3.$el.querySelector(".h-form-item-valid-error[prop='".concat(m.prop, "']"));
+          var firstError = _this4.$el.querySelector(".h-form-item-valid-error[prop='".concat(m.prop, "']"));
 
           if (firstError) {
             (0, _scrollIntoView.default)(firstError, {
               time: 500,
               align: {
-                top: _this3.top,
-                topOffset: _this3.topOffset
+                top: _this4.top,
+                topOffset: _this4.topOffset
               }
             });
           }
@@ -6435,14 +6450,14 @@ var _default = {
       }
     },
     validAsync: function validAsync() {
-      var _this4 = this;
+      var _this5 = this;
 
       return new Promise(function (resolve) {
-        var returnResult = _this4.valid(function (result) {
-          var asyncResult = _this4.renderMessage(result);
+        var returnResult = _this5.valid(function (result) {
+          var asyncResult = _this5.renderMessage(result);
 
           if (returnResult && returnResult.result) {
-            _this4.tipError(asyncResult);
+            _this5.tipError(asyncResult);
           }
 
           resolve(asyncResult);
@@ -6450,7 +6465,7 @@ var _default = {
       });
     },
     valid: function valid(next) {
-      var _this5 = this;
+      var _this6 = this;
 
       if (!this.validator || !this.model) {
         return {
@@ -6460,7 +6475,7 @@ var _default = {
       }
 
       var returnResult = this.validator.valid(this.model, function (result) {
-        _utils.default.extend(true, _this5.messages, result);
+        _utils.default.extend(true, _this6.messages, result);
       }, function (result) {
         if (next) {
           next.call(null, result);
@@ -35320,7 +35335,7 @@ function () {
     key: "setConfig",
     value: function setConfig(prop, options) {
       var ruleKey = prop;
-      this.rules[ruleKey] = _heyUtils.default.extend(true, this.rules[ruleKey], options);
+      this.rules[ruleKey] = _heyUtils.default.extend(true, this.rules[ruleKey] || {}, options);
     }
   }, {
     key: "validFieldBase",
