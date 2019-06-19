@@ -29,7 +29,6 @@
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-vue": "^5.2.2",
-    "fs": "0.0.1-security",
     "headr": "0.0.4",
     "hey-log": "^0.0.8",
     "hey-utils": "^1.0.0",
