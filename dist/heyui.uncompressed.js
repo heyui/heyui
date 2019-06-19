@@ -555,7 +555,7 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
-var _extends2 = _interopRequireDefault(__webpack_require__(12));
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
 
 var _utils = _interopRequireDefault(__webpack_require__(2));
 
@@ -1053,7 +1053,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(229));
 
@@ -1109,37 +1109,6 @@ exports.default = _default;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(0);
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _checkbox = _interopRequireDefault(__webpack_require__(248));
-
-var _default = _checkbox.default;
-exports.default = _default;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports) {
 
 function _extends() {
@@ -1161,6 +1130,37 @@ function _extends() {
 }
 
 module.exports = _extends;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(0);
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _checkbox = _interopRequireDefault(__webpack_require__(248));
+
+var _default = _checkbox.default;
+exports.default = _default;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
 
 /***/ }),
 /* 13 */
@@ -1198,7 +1198,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _default;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(13));
 
@@ -2957,7 +2957,7 @@ var _message = _interopRequireDefault(__webpack_require__(7));
 
 var _search = _interopRequireDefault(__webpack_require__(153));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 //
 //
@@ -3290,7 +3290,7 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
-var _extends2 = _interopRequireDefault(__webpack_require__(12));
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
 
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(6));
 
@@ -3304,7 +3304,7 @@ var _locale = _interopRequireDefault(__webpack_require__(5));
 
 var _message = _interopRequireDefault(__webpack_require__(7));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 //
 //
@@ -6138,6 +6138,8 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
+
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(6));
 
 var _validator = _interopRequireDefault(__webpack_require__(283));
@@ -6354,6 +6356,12 @@ var _default = {
         message: null,
         label: label
       };
+
+      if (this.messages[prop]) {
+        (0, _extends2.default)(this.messages[prop], message);
+        return message;
+      }
+
       this.messages[prop] = message;
       return message;
     },
@@ -7471,7 +7479,7 @@ exports.default = void 0;
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
-var _extends2 = _interopRequireDefault(__webpack_require__(12));
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
 
 var _config = _interopRequireDefault(__webpack_require__(4));
 
@@ -9417,7 +9425,7 @@ var _tableth = _interopRequireDefault(__webpack_require__(326));
 
 var _debounce = _interopRequireDefault(__webpack_require__(327));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 var _loading = _interopRequireDefault(__webpack_require__(157));
 
@@ -11544,7 +11552,7 @@ exports.default = void 0;
 
 var _treeslot = _interopRequireDefault(__webpack_require__(336));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 //
 //
@@ -14207,7 +14215,7 @@ exports.default = void 0;
 
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(6));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 //
 //
@@ -15273,7 +15281,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(13));
 
@@ -21648,7 +21656,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(13));
 
@@ -22483,7 +22491,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(__webpack_require__(12));
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
 
 var _affix = _interopRequireDefault(__webpack_require__(239));
 
@@ -22495,7 +22503,7 @@ var _badge = _interopRequireDefault(__webpack_require__(227));
 
 var _breadcrumb = _interopRequireDefault(__webpack_require__(246));
 
-var _checkbox = _interopRequireDefault(__webpack_require__(10));
+var _checkbox = _interopRequireDefault(__webpack_require__(11));
 
 var _circle = _interopRequireDefault(__webpack_require__(256));
 
@@ -34977,7 +34985,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(13));
 
@@ -36690,7 +36698,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _extends2 = _interopRequireDefault(__webpack_require__(12));
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
 
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(6));
 
@@ -39500,7 +39508,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(12));
 
 var _createClass2 = _interopRequireDefault(__webpack_require__(13));
 
