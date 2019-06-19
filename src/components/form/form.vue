@@ -111,6 +111,9 @@ export default {
       handler() {
         if (this.validator) {
           if (this.rules) this.validator.updateRule(this.rules);
+          this.dynamicRequireds.forEach(item => {
+            this.validator.setConfig(item, { required: true });
+          });
         } else if (this.model && this.rules) {
           this.validator = new Validator(this.rules);
         }
@@ -186,9 +189,7 @@ export default {
       }
       this.initRequires();
       if (!this.validator) return false;
-      this.$nextTick(() => {
-        this.validator.setConfig(prop, options);
-      });
+      this.validator.setConfig(prop, options);
     },
     updateErrorMessage(prop, label) {
       let message = {
@@ -215,7 +216,10 @@ export default {
       return message;
     },
     removeProp(prop) {
-      delete this.dynamicRequireds[prop];
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
       this.setConfig(prop, { required: false });
     },
     renderMessage(returnResult) {
