@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       messages: {},
+      dynamicRequireds: [],
       requireds: [],
       validator: null,
       childParams: {
@@ -123,7 +124,7 @@ export default {
       this.requireds.splice(0);
       if (this.rules) {
         let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
-        this.requireds.push(...(this.rules.required || []), ...validRequiredProps);
+        this.requireds.push(...(this.rules.required || []), ...validRequiredProps, ...this.dynamicRequireds);
       }
     },
     reset() {
@@ -175,8 +176,19 @@ export default {
       return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (options.required) {
+        if (index == -1) {
+          this.dynamicRequireds.push(prop);
+        }
+      } else if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+      this.initRequires();
       if (!this.validator) return false;
-      this.validator.setConfig(prop, options);
+      this.$nextTick(() => {
+        this.validator.setConfig(prop, options);
+      });
     },
     updateErrorMessage(prop, label) {
       let message = {
@@ -203,8 +215,7 @@ export default {
       return message;
     },
     removeProp(prop) {
-      delete this.messages[prop];
-      delete this.requireds[prop];
+      delete this.dynamicRequireds[prop];
       this.setConfig(prop, { required: false });
     },
     renderMessage(returnResult) {

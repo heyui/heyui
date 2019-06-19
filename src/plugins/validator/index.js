@@ -174,7 +174,7 @@ class Validator {
 
   setConfig(prop, options) {
     let ruleKey = prop;
-    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
+    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey] || {}, options);
   }
 
   validFieldBase({ rule, value, parent }) {
