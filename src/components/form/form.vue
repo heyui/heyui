@@ -184,6 +184,10 @@ export default {
         message: null,
         label
       };
+      if (this.messages[prop]) {
+        Object.assign(this.messages[prop], message);
+        return message;
+      }
       this.messages[prop] = message;
       return message;
     },
