@@ -1,10 +1,10 @@
 <template>
-  <div class="h-checkbox" :disabled="disabled" :class="{'h-checkbox-disabled': disabled}">
+  <div class="h-checkbox" :disabled="disabled">
     <template v-if="!isSingle">
-      <label v-for="option of arr" @click="setvalue(option)" :key="option[key]" :class="{'h-checkbox-checked': isInclude(option)}"><span
-          :checked="isInclude(option)" :disabled="disabled" class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="!$scopedSlots.item">{{option[title]}}</span><slot v-else :item="option" name="item"></slot></label>
+      <label v-for="option of arr" @click="setvalue(option)" :key="option[key]" :class="{'h-checkbox-checked': isInclude(option), 'h-checkbox-disabled': disabled || option.disabled}"><span
+          :checked="isInclude(option)" :disabled="disabled || option.disabled" class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="!$scopedSlots.item">{{option[title]}}</span><slot v-else :item="option" name="item"></slot></label>
     </template>
-    <label v-else @click="setvalue()" :class="{'h-checkbox-checked': isChecked, 'h-checkbox-indeterminate': !isChecked&&indeterminate}"><span
+    <label v-else @click="setvalue()" :class="{'h-checkbox-checked': isChecked, 'h-checkbox-indeterminate': !isChecked&&indeterminate, 'h-checkbox-disabled': disabled}"><span
         :checked="isChecked" :indeterminate="!isChecked&&indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span
         v-if="$slots.default" class="h-checkbox-text">
         <slot></slot>
@@ -91,7 +91,7 @@ export default {
       }
     },
     setvalue(option) {
-      if (this.disabled) return;
+      if (this.disabled || option.disabled) return;
       let value = null;
       if (this.isSingle) {
         if (!utils.isNull(this.value)) {

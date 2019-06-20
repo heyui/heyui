@@ -13,7 +13,7 @@
     <h3>Component</h3>
     <p>It is recommended to use the data mode radio selector, and use js to implement the entire interaction with higher compatibility. </p>
     <p>For the resolution of the object array, the system uses <code>key</code>, <code>title</code> by default. Two parameter names can be modified through global configuration. For details, see <router-link to="/en/component/config">Global Configuration</router-link>.</p>
-    <exampleEn demo="form/checkbox3"></exampleEn>
+    <example demo="form/checkbox3"></example>
 
     <h3>Custom Show</h3>
     <exampleEn demo="form/checkbox5"></exampleEn>
