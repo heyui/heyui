@@ -85,6 +85,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>radio</td>
+        <td>是否使用radio选择器</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>border</td>
         <td>table是否有竖线分割</td>
         <td>Boolean</td>

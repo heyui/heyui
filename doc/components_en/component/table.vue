@@ -88,6 +88,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>radio</td>
+        <td>Whether to use the radio selector</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>border</td>
         <td>table has border</td>
         <td>Boolean</td>
