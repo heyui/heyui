@@ -91,7 +91,7 @@ export default {
       }
     },
     setvalue(option) {
-      if (this.disabled || option.disabled) return;
+      if (this.disabled || (option && option.disabled)) return;
       let value = null;
       if (this.isSingle) {
         if (!utils.isNull(this.value)) {
