@@ -2,6 +2,7 @@
   <div>
     <p><SwitchList v-model="mode" small :datas="{'checkbox': '多选', 'rowSelect': '单选'}"></SwitchList></p>
     <p v-if="mode=='rowSelect'">
+      <h-switch v-model="useRadio" small>使用Radio / Use radio</h-switch>
       <Button size="s" @click="setRowSelect">选中第一行 / Select the first line</Button>
       <Button size="s" @click="reset">清空选择 / Clear</Button>
     </p>
@@ -10,7 +11,7 @@
       <Button size="s" @click="setOddSelection">选择奇数列 / Select odd columns</Button>
       <Button size="s" @click="reset">清空选择 / Clear</Button>
     </p>
-    <Table :datas="datas" ref="table" :height="400" @select="onselect" :checkbox="mode=='checkbox'" :selectRow="mode=='rowSelect'" selectWhenClickTr>
+    <Table :datas="datas" ref="table" :height="400" @select="onselect" :checkbox="mode=='checkbox'" :selectRow="mode=='rowSelect'" :radio="mode=='rowSelect' && useRadio" selectWhenClickTr>
       <TableItem title="ID" prop="id" align="center" :width="80" fixed="left"></TableItem>
       <TableItem title="age" prop="age" :width="150"></TableItem>
       <TableItem title="address" prop="address" align="center" :width="150"></TableItem>
@@ -31,6 +32,7 @@ export default {
   data() {
     return {
       datas: [],
+      useRadio: false,
       mode: 'checkbox'
     };
   },

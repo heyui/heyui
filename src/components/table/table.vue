@@ -3,7 +3,7 @@
     <div class="h-table-header" :style="{'padding-right': (scrollWidth+'px')}">
       <table class="h-table-header-table" :style="{'margin-left': (-scrollLeft+'px')}">
         <colgroup>
-          <col v-if="checkbox" width="60" />
+          <col v-if="checkbox||radio" width="60" />
           <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <template v-if="ths">
@@ -12,6 +12,7 @@
               <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
                 :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
             </th>
+            <th v-if="radio&&thindex==0" class="h-table-th-radio" :rowspan="ths.length"></th>
             <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
           </tr>
         </template>
@@ -20,6 +21,7 @@
             <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
               :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
           </th>
+          <th v-else-if="radio" class="h-table-th-radio"></th>
           <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
         </tr>
       </table>
@@ -38,6 +40,7 @@
           <table class="h-table-body-table" v-show="tableDatas.length">
             <colgroup>
               <col v-if="checkbox" width="60" />
+              <col v-if="radio" width="60" />
               <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
             </colgroup>
             <tbody class="h-table-tbody">
@@ -46,6 +49,9 @@
                   :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
                     <Checkbox v-if="fixedColumnLeft.length==0" :key="d._heyui_uuid" v-model="checks" :value="d"></Checkbox>
+                  </td>
+                  <td v-if="radio" class="h-table-td-radio">
+                    <Radio v-if="fixedColumnLeft.length==0" :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
                   </td>
                   <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
                 </TableTr>
@@ -63,6 +69,7 @@
           <table class="h-table-fixed-left-table" :style="{'margin-top': (-scrollTop+'px'), width: (tableWidth + 'px')}">
             <colgroup>
               <col v-if="checkbox" width="60" />
+              <col v-if="radio" width="60" />
               <col v-for="(c, index) of computeColumns" :width="getWidth(c)" :key="index+update.columns" />
             </colgroup>
             <tbody class="h-table-tbody">
@@ -71,6 +78,9 @@
                   :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
                     <Checkbox v-model="checks" :key="d._heyui_uuid" :value="d"></Checkbox>
+                  </td>
+                  <td v-if="radio" class="h-table-td-radio">
+                    <Radio :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
                   </td>
                   <slot :data="d" :index="index" v-if="isTemplateMode"></slot>
                 </TableTr>
@@ -100,6 +110,7 @@
       <table :style="{width: leftWidth + 'px'}">
         <colgroup>
           <col v-if="checkbox" width="60" />
+          <col v-if="radio" width="60" />
           <col v-for="(c, index) of fixedColumnLeft" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
@@ -107,6 +118,7 @@
             <Checkbox :indeterminate="checks.length>0&&checks.length<tableDatas.length" :checked="tableDatas.length > 0 && checks.length == tableDatas.length"
               @click.native="checkAll"></Checkbox>
           </th>
+          <th v-if="radio" class="h-table-th-radio"> </th>
           <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
         </tr>
       </table>
@@ -130,13 +142,14 @@ import TableTr from './tabletr';
 import TableTh from './tableth';
 import debounce from 'heyui/src/utils/debounce';
 import Checkbox from 'heyui/src/components/checkbox';
+import Radio from 'heyui/src/components/radio';
 import Loading from 'heyui/src/components/loading';
 
 const prefix = 'h-table';
 
 export default {
   name: 'hTable',
-  components: { Checkbox, Loading },
+  components: { Checkbox, Radio, Loading },
   props: {
     columns: {
       type: Array,
@@ -152,6 +165,10 @@ export default {
     },
     height: Number,
     checkbox: {
+      type: Boolean,
+      default: false
+    },
+    radio: {
       type: Boolean,
       default: false
     },
@@ -241,6 +258,11 @@ export default {
       deep: true
     },
     checkbox() {
+      if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
+        this.resize();
+      }
+    },
+    radio() {
       if (this.height || this.fixedColumnLeft.length || this.fixedColumnRight.length) {
         this.resize();
       }
@@ -449,7 +471,7 @@ export default {
     },
     initFixedWidth() {
       let ths = this.$el.querySelectorAll('.h-table-header table>tr>th');
-      let fixedColumnLeftLength = this.fixedColumnLeft.length + (this.checkbox ? 1 : 0);
+      let fixedColumnLeftLength = this.fixedColumnLeft.length + (this.checkbox || this.radio ? 1 : 0);
       let leftWidth = 0;
       for (let i = 0; i < fixedColumnLeftLength; i++) {
         leftWidth += ths[i].clientWidth || 0;
@@ -516,7 +538,7 @@ export default {
       return defaultSlot && (defaultSlot.name == 'normalized' || !this.$slots.default);
     },
     totalCol() {
-      return (this.checkbox ? 1 : 0) + this.computeColumns.length;
+      return (this.checkbox || this.radio ? 1 : 0) + this.computeColumns.length;
     },
     fixedColumnLeft() {
       let columns = [];
