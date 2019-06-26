@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.22.0-alpha.5"></a>
+# [1.22.0-alpha.5](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v1.22.0-alpha.5) (2019-06-26)
+
+
+### Bug Fixes
+
+* **AutoComplete:** remove maxlength ([a8b4d43](https://github.com/heyui/heyui/commit/a8b4d43))
+* **Button:** add prop type="button" ([be1812d](https://github.com/heyui/heyui/commit/be1812d))
+* **Button:** add type button ([94112e0](https://github.com/heyui/heyui/commit/94112e0))
+* **Checkbox:** add more judgement ([6f7834a](https://github.com/heyui/heyui/commit/6f7834a))
+* **Checkbox:** add Partially Disabled Mechanisms ([35da976](https://github.com/heyui/heyui/commit/35da976)), closes [#162](https://github.com/heyui/heyui/issues/162)
+* **Checkbox:** add prop limit ([3d284af](https://github.com/heyui/heyui/commit/3d284af)), closes [#158](https://github.com/heyui/heyui/issues/158)
+* **DatePicker:** remove duplicate type ([fc99898](https://github.com/heyui/heyui/commit/fc99898))
+* **Form:** add dynamicRequireds when update rules ([ddb4829](https://github.com/heyui/heyui/commit/ddb4829))
+* **Form:** optimize required handler ([c2f1f02](https://github.com/heyui/heyui/commit/c2f1f02)), closes [#155](https://github.com/heyui/heyui/issues/155)
+* **Form:** optimize required mechanism ([0d474bc](https://github.com/heyui/heyui/commit/0d474bc))
+* **Form:** update updateErrorMessage mechanism ([8f7b55e](https://github.com/heyui/heyui/commit/8f7b55e))
+* **Step:** add progress state ([46bb1b0](https://github.com/heyui/heyui/commit/46bb1b0)), closes [#159](https://github.com/heyui/heyui/issues/159)
+* **Table:** add radio mode ([28b87c4](https://github.com/heyui/heyui/commit/28b87c4)), closes [#161](https://github.com/heyui/heyui/issues/161)
+* **Table:** checkbox fix position ([9dcbb4b](https://github.com/heyui/heyui/commit/9dcbb4b))
+* **Table:** fix text center style ([6bf2d06](https://github.com/heyui/heyui/commit/6bf2d06))
+
+
+### Features
+
+* **Menu:** add link handler ([c554d07](https://github.com/heyui/heyui/commit/c554d07)), closes [#153](https://github.com/heyui/heyui/issues/153)
+
+
+
 <a name="1.22.0-alpha.4"></a>
 # [1.22.0-alpha.4](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v1.22.0-alpha.4) (2019-06-27)
 

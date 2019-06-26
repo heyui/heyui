@@ -18174,17 +18174,15 @@ var render = function() {
         {
           key: index,
           class: {
-            "h-steps-actived": index <= _vm.stepIndex,
+            "h-steps-process": index == _vm.stepIndex,
+            "h-steps-actived": index < _vm.stepIndex,
             "h-steps-item": true,
             "h-steps-item-first": index == 0,
             "h-steps-item-last": index + 1 == _vm.arr.length
           }
         },
         [
-          _c("div", {
-            staticClass: "h-steps-tail",
-            class: { "h-steps-tail-actived": index + 1 <= _vm.stepIndex }
-          }),
+          _c("div", { staticClass: "h-steps-tail" }),
           _vm._v(" "),
           _c("div", { staticClass: "h-steps-content" }, [
             _c("div", { staticClass: "h-steps-icon" }, [
