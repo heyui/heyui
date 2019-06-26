@@ -1,7 +1,7 @@
 <template>
   <div :class="stepsCls">
-    <div v-for="(a, index) of arr" :key="index" :class="{'h-steps-actived':index <= stepIndex, 'h-steps-item': true, 'h-steps-item-first': index==0, 'h-steps-item-last': index+1 == arr.length}">
-      <div class="h-steps-tail" :class="{'h-steps-tail-actived': index+1 <= stepIndex}"></div>
+    <div v-for="(a, index) of arr" :key="index" :class="{'h-steps-process':index == stepIndex, 'h-steps-actived':index < stepIndex, 'h-steps-item': true, 'h-steps-item-first': index==0, 'h-steps-item-last': index+1 == arr.length}">
+      <div class="h-steps-tail"></div>
       <div class="h-steps-content">
         <div class="h-steps-icon">
           <span v-if="a.icon" class="h-steps-icon-custom"><i :class="a.icon"></i></span>
