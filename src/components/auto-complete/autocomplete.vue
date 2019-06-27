@@ -556,10 +556,6 @@ export default {
           return keyArray.indexOf(item[this.param.keyName]) == -1;
         });
       }
-      // maxLength
-      if (this.param.maxLength) {
-        datas.splice(this.param.maxLength);
-      }
       let results = [];
       for (let data of datas) {
         results.push(this.getValue(data));

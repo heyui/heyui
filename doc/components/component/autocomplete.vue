@@ -254,13 +254,6 @@
         <td>-</td>
         <td>100</td>
       </tr>
-      <tr>
-        <td>maxLength</td>
-        <td>搜索结果最多展示条目</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>20</td>
-      </tr>
     </table>
 
     <h3>Slot top/bottom</h3>

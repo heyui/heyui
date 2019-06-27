@@ -276,13 +276,6 @@
         <td>-</td>
         <td>100</td>
       </tr>
-      <tr>
-        <td>maxLength</td>
-        <td>Max length of result list</td>
-        <td>Number</td>
-        <td>-</td>
-        <td>20</td>
-      </tr>
     </table>
 
     <h3>Slot top/bottom</h3>
