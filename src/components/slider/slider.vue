@@ -2,9 +2,9 @@
   <div :class="sliderCls">
     <div class="h-slider-container">
       <div class="h-slider-line"></div>
-      <div class="h-slider-track" :style="trackStyle"></div>
-      <div class="h-slider-node h-slider-start-node" @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
-      <div class="h-slider-node h-slider-end-node" @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
+      <div class="h-slider-track" @click.stop :style="computedTrackStyle"></div>
+      <div class="h-slider-node h-slider-start-node" @click.stop @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
+      <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
       <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
       <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip&&hasStart">{{showContent(values.start)}}</span>
     </div>
@@ -45,7 +45,8 @@ export default {
         start: 0,
         end: 100
       })
-    }
+    },
+    trackStyle: Object
   },
   data() {
     return {
@@ -101,6 +102,7 @@ export default {
       this.eventControl.init = this.values[type];
       document.body.addEventListener('mousemove', this.mousemove);
       document.body.addEventListener('mouseup', this.mouseup);
+      document.body.addEventListener('click', this.click);
       if (this.tooltip[type]) this.tooltip[type].show();
     },
     mousemove(event) {
@@ -155,27 +157,34 @@ export default {
         this.tooltip[type].update();
       }
     },
-    mouseup() {
+    mouseup(event) {
+      event.stopPropagation();
       if (this.readonly) return;
       document.body.removeEventListener('mousemove', this.mousemove);
       document.body.removeEventListener('mouseup', this.mouseup);
+      setTimeout(() => {
+        document.body.removeEventListener('click', this.click);
+      }, 200);
       utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
       let type = this.eventControl.type;
       if (this.tooltip[type]) {
         this.tooltip[type].hide();
       }
+    },
+    click(event) {
+      event.stopPropagation();
     }
   },
   computed: {
     hasStart() {
       return this.multiple;
     },
-    trackStyle() {
+    computedTrackStyle() {
       let dis = this.range.end - this.range.start;
-      return {
+      return Object.assign({
         left: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
         right: `${parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`
-      };
+      }, this.trackStyle);
     },
     nodePosition() {
       let dis = this.range.end - this.range.start;
