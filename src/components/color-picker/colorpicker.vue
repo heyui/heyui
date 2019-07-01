@@ -7,8 +7,8 @@
     </div>
     <div class="h-colorpicker-group">
       <div class="h-colorpicker-panel-picker" ></div>
-      <Slider class="h-colorpicker-hue-picker" :range="{start: 0, end: 360}" :showtip="false" v-model="color.hue"></Slider>
-      <Slider :trackStyle="alphaTrackStyle" class="h-colorpicker-alpha-picker" v-model="color.alpha" v-if="enableAlpha" :showtip="false"></Slider>
+      <Slider class="h-colorpicker-hue-picker" @change="calculate" :range="{start: 0, end: 360}" :showtip="false" v-model="color.hue"></Slider>
+      <Slider :trackStyle="alphaTrackStyle" @change="calculate" class="h-colorpicker-alpha-picker" v-model="color.alpha" v-if="enableAlpha" :showtip="false"></Slider>
       <div class="h-colorpicker-panel-footer">
         <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString"/>
         <div class="h-colorpicker-panel-buttons">
@@ -43,7 +43,8 @@ export default {
   data() {
     const color = new Color({
       enableAlpha: this.enableAlpha,
-      format: this.colorType
+      format: this.colorType,
+      string: this.value
     });
     return {
       color,
@@ -63,14 +64,6 @@ export default {
     },
     value(val) {
       this.color.parse(val);
-    },
-    'color.hue'() {
-      this.color.calculate();
-      this.changed = true;
-    },
-    'color.alpha'() {
-      this.color.calculate();
-      this.changed = true;
     }
   },
   mounted() {
@@ -102,6 +95,10 @@ export default {
     updateString() {
       this.color.parse(this.color.string);
     },
+    calculate() {
+      this.color.calculate();
+      this.changed = true;
+    },
     setvalue(value) {
       this.$emit('input', value);
       this.$emit('change', value);
@@ -118,6 +115,7 @@ export default {
       this.setvalue(value);
     },
     clear() {
+      this.color.clear();
       this.setvalue();
     }
   },

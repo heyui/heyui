@@ -155,7 +155,7 @@ export default class Color {
 
     this.enableAlpha = false;
     this.format = 'hex';
-    this.string = '';
+    this.string = options.string;
 
     options = options || {};
 
@@ -164,8 +164,9 @@ export default class Color {
         this[option] = options[option];
       }
     }
-
-    this.calculate();
+    if (this.string) {
+      this.calculate();
+    }
   }
 
   set(prop, value) {
@@ -189,13 +190,16 @@ export default class Color {
     return toHex(hsv2rgb(this.hue, this.saturation, this.value));
   }
 
+  clear() {
+    this.hue = 0;
+    this.saturation = 100;
+    this.value = 100;
+    this.string = null;
+  }
+
   parse(value) {
     if (!value) {
-      this.hue = 0;
-      this.saturation = 100;
-      this.value = 100;
-
-      this.calculate();
+      this.clear();
       return;
     }
 
