@@ -1,8 +1,8 @@
 <template>
   <div :class="sliderCls">
     <div class="h-slider-container">
-      <div class="h-slider-line"></div>
-      <div class="h-slider-track" @click.stop :style="computedTrackStyle"></div>
+      <div class="h-slider-line" @click.stop="choosePosition"></div>
+      <div class="h-slider-track" @click.stop="choosePosition" :style="computedTrackStyle"></div>
       <div class="h-slider-node h-slider-start-node" @click.stop @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
       <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
       <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
@@ -87,6 +87,14 @@ export default {
     });
   },
   methods: {
+    choosePosition(event) {
+      // log(event);
+      this.eventControl.type = 'end';
+      let nodePosition = this.$el.querySelector('.h-slider-end-node').getBoundingClientRect();
+      this.eventControl.x = nodePosition.left + (nodePosition.width / 2);
+      this.eventControl.init = this.values['end'];
+      this.mousemove(event);
+    },
     showContent(value) {
       if (this.show) {
         return this.show.call(null, value);
