@@ -1,9 +1,13 @@
 <template>
   <div class="doc">
     <h2>ColorPicker </h2>
-    <blockquote>1.18.0+</blockquote>
+    <blockquote>1.23.0+</blockquote>
 
-    <p class="component-name-tip">非 template/render 模式下，请使用 <code>h-colorpicker</code>。</p>
+    <p class="component-name-tip">ColorPicker 不默认加载，如果你使用的是按需加载，则无需关注。如果你使用的是全量加载，请使用以下代码：</p>
+<codes type="javascript">
+import ColorPicker from 'heyui/lib/components/color-picker';
+Vue.component('ColorPicker', ColorPicker);
+</codes>
 
     <p>说明</p>
 

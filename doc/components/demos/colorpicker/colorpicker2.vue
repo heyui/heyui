@@ -1,13 +1,13 @@
 <template>
   <div>
-    <ColorPicker></ColorPicker>
+    <ColorPicker v-model="value" enableAlpha></ColorPicker>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-
+      value: null
     };
   }
 };

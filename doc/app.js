@@ -10,6 +10,7 @@ import App from './App.vue';
 import utils from 'hey-utils';
 
 import HeyUI from './../src/index';
+import ColorPicker from '../src/components/color-picker';
 import heyuiConfig from './js/config/heyui-config';
 import VueHighlightJS from './js/vuehighlight';
 
@@ -20,6 +21,8 @@ import codesEn from './components_en/common/codes.vue';
 import routerParam from './js/config/router-config';
 import en from '../src/locale/lang/en-US';
 import zh from '../src/locale/lang/zh-CN';
+
+Vue.component('ColorPicker', ColorPicker);
 
 require('./css/index.less');
 
