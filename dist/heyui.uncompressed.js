@@ -8142,6 +8142,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _extends2 = _interopRequireDefault(__webpack_require__(10));
+
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(3));
 
 var _utils = _interopRequireDefault(__webpack_require__(2));
@@ -8192,7 +8194,8 @@ var _default2 = {
           end: 100
         };
       }
-    }
+    },
+    trackStyle: Object
   },
   data: function data() {
     return {
@@ -8239,6 +8242,14 @@ var _default2 = {
     });
   },
   methods: {
+    choosePosition: function choosePosition(event) {
+      // log(event);
+      this.eventControl.type = 'end';
+      var nodePosition = this.$el.querySelector('.h-slider-end-node').getBoundingClientRect();
+      this.eventControl.x = nodePosition.left + nodePosition.width / 2;
+      this.eventControl.init = this.values['end'];
+      this.mousemove(event);
+    },
     showContent: function showContent(value) {
       if (this.show) {
         return this.show.call(null, value);
@@ -8256,13 +8267,36 @@ var _default2 = {
       this.eventControl.init = this.values[type];
       document.body.addEventListener('mousemove', this.mousemove);
       document.body.addEventListener('mouseup', this.mouseup);
+      document.body.addEventListener('click', this.click);
       if (this.tooltip[type]) this.tooltip[type].show();
+    },
+    mouseup: function mouseup(event) {
+      var _this2 = this;
+
+      event.stopPropagation();
+      if (this.readonly) return;
+      document.body.removeEventListener('mousemove', this.mousemove);
+      document.body.removeEventListener('mouseup', this.mouseup);
+      setTimeout(function () {
+        document.body.removeEventListener('click', _this2.click);
+      }, 200);
+
+      _utils.default.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
+
+      var type = this.eventControl.type;
+
+      if (this.tooltip[type]) {
+        this.tooltip[type].hide();
+      }
+    },
+    click: function click(event) {
+      event.stopPropagation();
     },
     mousemove: function mousemove(event) {
       if (this.readonly) return;
-      var postition = event.clientX - this.eventControl.x;
-      if (postition == 0) return;
-      var nowPosition = postition / this.$el.querySelector('.h-slider-line').clientWidth;
+      var position = event.clientX - this.eventControl.x;
+      if (position == 0) return;
+      var nowPosition = position / this.$el.querySelector('.h-slider-line').clientWidth;
       nowPosition = parseInt(nowPosition * (this.range.end - this.range.start), 10);
       nowPosition = this.eventControl.init + nowPosition;
       var positionStep = nowPosition % this.step;
@@ -8323,31 +8357,18 @@ var _default2 = {
         this.tooltip[type].show();
         this.tooltip[type].update();
       }
-    },
-    mouseup: function mouseup() {
-      if (this.readonly) return;
-      document.body.removeEventListener('mousemove', this.mousemove);
-      document.body.removeEventListener('mouseup', this.mouseup);
-
-      _utils.default.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
-
-      var type = this.eventControl.type;
-
-      if (this.tooltip[type]) {
-        this.tooltip[type].hide();
-      }
     }
   },
   computed: {
     hasStart: function hasStart() {
       return this.multiple;
     },
-    trackStyle: function trackStyle() {
+    computedTrackStyle: function computedTrackStyle() {
       var dis = this.range.end - this.range.start;
-      return {
+      return (0, _extends2.default)({
         left: "".concat(parseInt((this.values.start - this.range.start) / dis * 100, 10), "%"),
         right: "".concat(parseInt((this.range.end - this.values.end) / dis * 100, 10), "%")
-      };
+      }, this.trackStyle);
     },
     nodePosition: function nodePosition() {
       var dis = this.range.end - this.range.start;
@@ -18064,15 +18085,35 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { class: _vm.sliderCls }, [
     _c("div", { staticClass: "h-slider-container" }, [
-      _c("div", { staticClass: "h-slider-line" }),
+      _c("div", {
+        staticClass: "h-slider-line",
+        on: {
+          click: function($event) {
+            $event.stopPropagation()
+            return _vm.choosePosition($event)
+          }
+        }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "h-slider-track", style: _vm.trackStyle }),
+      _c("div", {
+        staticClass: "h-slider-track",
+        style: _vm.computedTrackStyle,
+        on: {
+          click: function($event) {
+            $event.stopPropagation()
+            return _vm.choosePosition($event)
+          }
+        }
+      }),
       _vm._v(" "),
       _vm.hasStart
         ? _c("div", {
             staticClass: "h-slider-node h-slider-start-node",
             style: { left: _vm.nodePosition.start },
             on: {
+              click: function($event) {
+                $event.stopPropagation()
+              },
               mousedown: function($event) {
                 return _vm.mousedown("start", $event)
               }
@@ -18084,6 +18125,9 @@ var render = function() {
         staticClass: "h-slider-node h-slider-end-node",
         style: { left: _vm.nodePosition.end },
         on: {
+          click: function($event) {
+            $event.stopPropagation()
+          },
           mousedown: function($event) {
             return _vm.mousedown("end", $event)
           }
@@ -20276,7 +20320,8 @@ var render = function() {
                 attrs: {
                   disabled: _vm.disabled,
                   type: "text",
-                  placeholder: _vm.showPlaceholder
+                  placeholder: _vm.showPlaceholder,
+                  autocomplete: "off"
                 },
                 domProps: { value: _vm.tempValue },
                 on: {
@@ -20328,7 +20373,8 @@ var render = function() {
                 attrs: {
                   type: "text",
                   disabled: _vm.disabled,
-                  placeholder: _vm.showPlaceholder
+                  placeholder: _vm.showPlaceholder,
+                  autocomplete: "off"
                 },
                 domProps: { value: _vm.tempValue },
                 on: {
