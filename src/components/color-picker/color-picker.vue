@@ -6,11 +6,13 @@
       <i class="h-icon-down"></i>
     </div>
     <div class="h-colorpicker-group">
-      <div class="h-colorpicker-panel-picker" ></div>
+      <div class="h-colorpicker-panel-picker" >
+        <ColorSlider v-model="colorValue" :hue="color.hue" @input="updateColor"></ColorSlider>
+      </div>
       <Slider class="h-colorpicker-hue-picker" @change="calculate" :range="{start: 0, end: 360}" :showtip="false" v-model="color.hue"></Slider>
       <Slider :trackStyle="alphaTrackStyle" @change="calculate" class="h-colorpicker-alpha-picker" v-model="color.alpha" v-if="enableAlpha" :showtip="false"></Slider>
       <div class="h-colorpicker-panel-footer">
-        <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString"/>
+        <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString" @keydown.enter="updateString"/>
         <div class="h-colorpicker-panel-buttons">
           <button type="button" class="h-btn h-btn-s h-btn-text" @click="clear">清空</button>
           <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">确定</button>
@@ -22,9 +24,13 @@
 <script>
 import Dropdown from 'heyui/src/plugins/dropdown';
 import Color from './utils/color';
+import ColorSlider from './color-slider';
 
 export default {
   name: 'hColorPicker',
+  components: {
+    ColorSlider
+  },
   props: {
     value: String,
     disabled: {
@@ -38,6 +44,10 @@ export default {
     colorType: {
       type: String,
       default: 'hex'
+    },
+    useConfirm: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -48,6 +58,10 @@ export default {
     });
     return {
       color,
+      colorValue: {
+        saturation: color.saturation,
+        value: 100 - color.value
+      },
       dropdown: null,
       changed: false
     };
@@ -62,8 +76,8 @@ export default {
         }
       }
     },
-    value(val) {
-      this.color.parse(val);
+    value() {
+      this.reset();
     }
   },
   mounted() {
@@ -79,18 +93,30 @@ export default {
       this.$nextTick(() => {
         let el = this.el = this.$el.querySelector('.h-colorpicker-show');
         let content = this.content = this.$el.querySelector('.h-colorpicker-group');
-        let that = this;
         this.dropdown = new Dropdown(el, {
           content,
           disabled: this.disabled,
           trigger: 'click',
           events: {
-            hide() {
-              that.changed = false;
+            hide: () => {
+              if (this.useConfirm) {
+                this.reset();
+              }
             }
           }
         });
       });
+    },
+    reset() {
+      this.changed = false;
+      this.color.parse(this.value);
+      this.initColorValue();
+    },
+    initColorValue() {
+      this.colorValue = {
+        saturation: this.color.saturation,
+        value: 100 - this.color.value
+      };
     },
     updateString() {
       this.color.parse(this.color.string);
@@ -98,6 +124,9 @@ export default {
     calculate() {
       this.color.calculate();
       this.changed = true;
+      if (!this.useConfirm) {
+        this.setvalue(this.color.toString());
+      }
     },
     setvalue(value) {
       this.$emit('input', value);
@@ -106,17 +135,24 @@ export default {
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.dropdown) {
+      if (this.dropdown && this.useConfirm) {
         this.dropdown.hide();
       }
     },
     confirm() {
-      let value = this.color.toString();
-      this.setvalue(value);
+      this.setvalue(this.color.toString());
+      if (this.dropdown) {
+        this.dropdown.hide();
+      }
     },
     clear() {
       this.color.clear();
       this.setvalue();
+    },
+    updateColor() {
+      this.color.set('saturation', this.colorValue.saturation);
+      this.color.set('value', 100 - this.colorValue.value);
+      this.calculate();
     }
   },
   computed: {

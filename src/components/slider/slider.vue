@@ -113,11 +113,28 @@ export default {
       document.body.addEventListener('click', this.click);
       if (this.tooltip[type]) this.tooltip[type].show();
     },
+    mouseup(event) {
+      event.stopPropagation();
+      if (this.readonly) return;
+      document.body.removeEventListener('mousemove', this.mousemove);
+      document.body.removeEventListener('mouseup', this.mouseup);
+      setTimeout(() => {
+        document.body.removeEventListener('click', this.click);
+      }, 200);
+      utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
+      let type = this.eventControl.type;
+      if (this.tooltip[type]) {
+        this.tooltip[type].hide();
+      }
+    },
+    click(event) {
+      event.stopPropagation();
+    },
     mousemove(event) {
       if (this.readonly) return;
-      let postition = event.clientX - this.eventControl.x;
-      if (postition == 0) return;
-      let nowPosition = postition / this.$el.querySelector('.h-slider-line').clientWidth;
+      let position = event.clientX - this.eventControl.x;
+      if (position == 0) return;
+      let nowPosition = position / this.$el.querySelector('.h-slider-line').clientWidth;
       nowPosition = parseInt(nowPosition * (this.range.end - this.range.start), 10);
       nowPosition = this.eventControl.init + nowPosition;
       let positionStep = nowPosition % this.step;
@@ -164,23 +181,6 @@ export default {
         this.tooltip[type].show();
         this.tooltip[type].update();
       }
-    },
-    mouseup(event) {
-      event.stopPropagation();
-      if (this.readonly) return;
-      document.body.removeEventListener('mousemove', this.mousemove);
-      document.body.removeEventListener('mouseup', this.mouseup);
-      setTimeout(() => {
-        document.body.removeEventListener('click', this.click);
-      }, 200);
-      utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
-      let type = this.eventControl.type;
-      if (this.tooltip[type]) {
-        this.tooltip[type].hide();
-      }
-    },
-    click(event) {
-      event.stopPropagation();
     }
   },
   computed: {

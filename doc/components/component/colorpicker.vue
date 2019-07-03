@@ -14,7 +14,7 @@ Vue.component('ColorPicker', ColorPicker);
     <h3>基本调用</h3>
     <example demo="colorpicker/colorpicker1"></example>
 
-    <h3>其他</h3>
+    <h3>透明度</h3>
     <example demo="colorpicker/colorpicker2"></example>
 
     <h3>ColorPicker 参数</h3>
@@ -27,7 +27,28 @@ Vue.component('ColorPicker', ColorPicker);
         <th>默认值</th>
       </tr>
       <tr>
-        <td></td>
+        <td>useConfirm</td>
+        <td>是否使用确认按钮触发变化</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>colorType</td>
+        <td>颜色类型</td>
+        <td>string</td>
+        <td>hsl / hsv / hex / rgb</td>
+        <td>hex（ enableAlpha = false ）/ rgb（ enableAlpha = true ）</td>
+      </tr>
+      <tr>
+        <td>enableAlpha</td>
+        <td>是否使用透明度</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>disabled</td>
         <td></td>
         <td>Boolean</td>
         <td>-</td>
@@ -35,33 +56,22 @@ Vue.component('ColorPicker', ColorPicker);
       </tr>
     </table>
 
-    <h3>ColorPicker 方法</h3>
-    <table class="table">
-      <tr>
-        <th>方法</th>
-        <th>说明</th>
-        <th>参数</th>
-        <th>返回值</th>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-
     <h3>ColorPicker 事件</h3>
     <table class="table">
       <tr>
-        <th>参数</th>
+        <th>事件</th>
         <th>说明</th>
-        <th>返回值</th>
+        <th>返回数据</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>change</td>
+        <td>当数据产生变动的时候触发</td>
+        <td>完整对象</td>
+      </tr>
+      <tr>
+        <td>input</td>
+        <td>当数据产生变动的时候触发</td>
+        <td>当前绑定的v-model值</td>
       </tr>
     </table>
   </div>

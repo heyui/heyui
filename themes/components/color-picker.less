@@ -14,6 +14,12 @@
       z-index: 3;
     }
   }
+  &-disabled &-show {
+    border-color: @disabled-color !important;
+    > .h-icon-down {
+      color: @disabled-color !important;
+    }
+  }
   &-color-bg {
     height: @input-height - 6px;
     position: absolute;
@@ -31,8 +37,12 @@
     outline: none;
     user-select: none;
     position: relative;
-    width: 300px;
+    width: 250px;
     padding: 10px;
+  }
+
+  &-panel-input {
+    width: 120px;
   }
 
   &-panel-footer {
@@ -53,8 +63,9 @@
     .h-slider-node {
       background: @gray2-color;
       transform: scale(1.1);
-      &-dragging {
-        box-shadow: none;
+      box-shadow: none;
+      &:hover, &-dragging {
+        box-shadow: 0 0 3px 1px @gray1-color;
       }
     }
   }
@@ -71,10 +82,42 @@
     }
     .h-slider-node {
       background: @gray2-color;
+      box-shadow: none;
       transform: scale(1.1);
-      &-dragging {
-        box-shadow: none;
+      &:hover, &-dragging {
+        box-shadow: 0 0 3px 0 @gray1-color;
       }
+    }
+  }
+}
+
+
+.h-color-slider {
+  &-container {
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+  }
+  &-bg-white {
+    .h-func-fullscreen();
+    background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+  }
+  &-bg-black {
+    .h-func-fullscreen();
+    background: linear-gradient(0deg,#000,transparent);
+  }
+  @colorNodeWidth: 7px;
+  &-node {
+    position: absolute;
+    width: @colorNodeWidth * 2;
+    height: @colorNodeWidth * 2;
+    border-radius: @colorNodeWidth;
+    margin-left: -@colorNodeWidth;
+    margin-top: -@colorNodeWidth;
+    border: @border;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 0 3px 0 @gray1-color;
     }
   }
 }
