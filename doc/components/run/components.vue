@@ -1,5 +1,10 @@
 <style lang="less">
 .page-run-page {
+  .right-frame {
+    display: flex;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
 
 }
 </style>
@@ -18,6 +23,7 @@
 
 import Preview from './components/preview';
 import Code from './components/code';
+import './js/codemirror.js';
 
 export default {
   components: {

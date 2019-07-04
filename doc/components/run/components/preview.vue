@@ -1,3 +1,4 @@
+
 <template>
   <!-- 效果预览 -->
   <div class="run-preview-vue">
@@ -9,7 +10,7 @@
 
 import Vue from 'vue';
 import Less from 'less';
-import vars from '../css/var.js';
+import vars from '../../../../themes/var.js';
 
 export default {
   props: {
@@ -117,5 +118,6 @@ export default {
 .run-preview-vue {
   padding: 10px;
   border-left: 1px solid #eee;
+  flex: 1;
 }
 </style>

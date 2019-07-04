@@ -1,6 +1,12 @@
+<style lang="less">
+.run-code-vue{
+  width: 50%;
+  position: relative;
+}
+</style>
 <template>
-  <div class="run-code-vue">
-    <textarea class="form-control" id="code"></textarea>
+  <div class="run-code-vue" style="width: 50%;position: relative;">
+    <textarea class="form-control"></textarea>
   </div>
 </template>
 
@@ -16,20 +22,14 @@ export default {
     };
   },
   mounted() {
-    this.initCode();
+    setTimeout(() => {
+      this.initCode();
+    }, 100);
   },
 
   methods: {
     initCode() {
-      var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('code'), {
-        // mode: "htmlmixed", // 支持 vue
-        // lineNumbers: true, //显示行号
-        // theme: "dracula", //设置主题
-        // lineWrapping: true, //代码折叠
-        // foldGutter: true,
-        // gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-        // matchBrackets: true //括号匹配
-
+      var myCodeMirror = CodeMirror.fromTextArea(this.$el.firstChild, {
         mode: 'htmlmixed',
         lineNumbers: true,
         // scrollbarStyle: "simple",
@@ -43,14 +43,6 @@ export default {
         autofocus: true,
         styleActiveLine: true
       });
-      // myCodeMirror.setSize("400px", "600px"); //设置代码框的长宽
-
-      // myCodeMirror.setOption("extraKeys", {
-      // 		Tab: function(e) {
-      // 				var t = Array(e.getOption("indentUnit") + 1).join(" ");
-      // 				e.replaceSelection(t)
-      // 		}
-      // })
       this.myCodeMirror = myCodeMirror;
     },
     getValue() {
