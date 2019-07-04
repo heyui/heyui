@@ -100,12 +100,12 @@
     </table>
 
     <h3 class="democodes">上传的通用示例</h3>
-    <p>本示例写明了通用的上传处理方案，如果使用自己服务器上传的方式，请参照该文件修改。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
+    <p>本示例写明了通用的上传处理方案，如果使用自己服务器上传的方式，请参照该文件修改。</p>
     <p>uploader文档请参考： <a href="http://www.cnblogs.com/2050/p/3913184.html">pluploader插件文档</a></p>
     <codes src="/codes/uploader.txt" type="javascript"></codes>
 
     <h3 class="democodes">七牛上传的通用示例</h3>
-    <p>七牛文档请参考：  <a href="https://developer.qiniu.com/kodo/sdk/1283/javascript">七牛上传文档</a></p>
+    <p>七牛文档请参考：<a href="https://developer.qiniu.com/kodo/sdk/1283/javascript">七牛上传文档</a></p>
     <p>本示例写明了七牛上传的处理方案。<a href="https://github.com/heyui/heyui/blob/master/doc/components/demos/common/qiniu.vue" target="_blank">文件链接</a></p>
     <codes src="/common/qiniu.vue" type="html"></codes>
   </div>
