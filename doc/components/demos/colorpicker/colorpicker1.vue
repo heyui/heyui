@@ -2,7 +2,7 @@
   <div>
     <p>value: {{value}}</p>
     <p>
-      <Button size="s" @click="value = '#252377'" color="primary">更新值 / Update Value</Button>
+      <Button size="s" @click="value = '#252377'" color="primary">更新 / Update</Button>
     </p>
     <p>
       <h-switch small v-model="useConfirm">使用确认按钮变更数据 / use confirm update value</h-switch>

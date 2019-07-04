@@ -17,6 +17,9 @@ Vue.component('ColorPicker', ColorPicker);
     <h3>透明度</h3>
     <example demo="colorpicker/colorpicker2"></example>
 
+    <h3>预定义颜色</h3>
+    <example demo="colorpicker/colorpicker3"></example>
+
     <h3>ColorPicker 参数</h3>
     <table class="table">
       <tr>
@@ -53,6 +56,13 @@ Vue.component('ColorPicker', ColorPicker);
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>colors</td>
+        <td>自定义颜色预设</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>[]</td>
       </tr>
     </table>
 

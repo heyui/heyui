@@ -17,6 +17,9 @@ Vue.component('ColorPicker', ColorPicker);
     <h3>Enable Alpha</h3>
     <example demo="colorpicker/colorpicker2"></example>
 
+    <h3>Predefined colors</h3>
+    <example demo="colorpicker/colorpicker3"></example>
+
     <h3>ColorPicker Property</h3>
     <table class="table">
       <tr>
@@ -53,6 +56,13 @@ Vue.component('ColorPicker', ColorPicker);
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>colors</td>
+        <td>Customize color presets.</td>
+        <td>Array</td>
+        <td>-</td>
+        <td>[]</td>
       </tr>
     </table>
 

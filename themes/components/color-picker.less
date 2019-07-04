@@ -1,6 +1,10 @@
 @colorpicker-prefix: ~"@{prefix}colorpicker";
 
 .@{colorpicker-prefix}{
+  display: inline-block;
+  position: relative;
+  width: @input-height;
+  height: @input-height;
   &-show {
     position: relative;
     width: @input-height;
@@ -37,20 +41,23 @@
     outline: none;
     user-select: none;
     position: relative;
-    width: 250px;
+    width: 270px;
     padding: 10px;
   }
 
   &-panel-input {
-    width: 120px;
+    width: 150px;
   }
 
   &-panel-footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   &-panel-buttons{
     padding-top: 2px;
+    .h-colorpicker-clear-button {
+      padding: 5px;
+    }
   }
   &-hue-picker {
     .h-slider-line {
@@ -65,7 +72,7 @@
       transform: scale(1.1);
       box-shadow: none;
       &:hover, &-dragging {
-        box-shadow: 0 0 3px 1px @gray1-color;
+        box-shadow: 0 0 2px 0px @gray-color;
       }
     }
   }
@@ -85,9 +92,28 @@
       box-shadow: none;
       transform: scale(1.1);
       &:hover, &-dragging {
-        box-shadow: 0 0 3px 0 @gray1-color;
+        box-shadow: 0 0 2px 0 @gray-color;
       }
     }
+  }
+  &-colors {
+    margin-top: 5px;
+    margin-right: -5px;
+  }
+  &-colors &-color {
+    display: inline-block;
+    border-radius: @border-radius;
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &-colors &-color&-color-choosed {
+    box-shadow: 0 0 2px 0 @dark-color;
   }
 }
 

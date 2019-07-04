@@ -1,6 +1,6 @@
 <template>
   <div class="h-color-slider">
-    <div class="h-color-slider-container" @click.stop="choosePosition" :style="containerStyle">
+    <div class="h-color-slider-container" :style="containerStyle">
       <div class="h-color-slider-bg-white"></div>
       <div class="h-color-slider-bg-black"></div>
       <div class="h-color-slider-node" :style="{'left': `${value.saturation}%`, 'top': `${value.value}%`}"></div>
@@ -40,9 +40,6 @@ export default {
     });
   },
   methods: {
-    choosePosition(event) {
-      this.setvalue(event);
-    },
     setvalue(event) {
       let containerPosition = this.$el.querySelector('.h-color-slider-container').getBoundingClientRect();
       let saturation = parseInt(Math.max(0, Math.min((event.clientX - containerPosition.left), containerPosition.width)) * 100 / containerPosition.width);

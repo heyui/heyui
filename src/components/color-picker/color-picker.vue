@@ -11,10 +11,13 @@
       </div>
       <Slider class="h-colorpicker-hue-picker" @change="calculate" :range="{start: 0, end: 360}" :showtip="false" v-model="color.hue"></Slider>
       <Slider :trackStyle="alphaTrackStyle" @change="calculate" class="h-colorpicker-alpha-picker" v-model="color.alpha" v-if="enableAlpha" :showtip="false"></Slider>
+      <div class="h-colorpicker-colors" v-if="colors.length">
+        <span class="h-colorpicker-color" v-for="color of colors" :key="color" :class="{'h-colorpicker-color-choosed': value == color}" @click="chooseColor(color)" :style="{ background: color }"></span>
+      </div>
       <div class="h-colorpicker-panel-footer">
         <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString" @keydown.enter="updateString"/>
         <div class="h-colorpicker-panel-buttons">
-          <button type="button" class="h-btn h-btn-s h-btn-text" @click="clear">清空</button>
+          <button type="button" class="h-btn h-btn-s h-btn-text h-colorpicker-clear-button" @click="clear">清空</button>
           <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">确定</button>
         </div>
       </div>
@@ -48,6 +51,10 @@ export default {
     useConfirm: {
       type: Boolean,
       default: false
+    },
+    colors: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
@@ -57,6 +64,7 @@ export default {
       string: this.value
     });
     return {
+      changeSelf: false,
       color,
       colorValue: {
         saturation: color.saturation,
@@ -77,7 +85,13 @@ export default {
       }
     },
     value() {
-      this.reset();
+      if (!this.changeSelf) {
+        this.reset();
+      }
+      this.changeSelf = false;
+    },
+    colorType() {
+      this.color.set('format', this.colorType);
     }
   },
   mounted() {
@@ -128,7 +142,11 @@ export default {
         this.setvalue(this.color.toString());
       }
     },
-    setvalue(value) {
+    setvalue(value, changeSelf = true) {
+      if (value == this.value) {
+        return;
+      }
+      this.changeSelf = changeSelf;
       this.$emit('input', value);
       this.$emit('change', value);
       this.changed = false;
@@ -153,6 +171,9 @@ export default {
       this.color.set('saturation', this.colorValue.saturation);
       this.color.set('value', 100 - this.colorValue.value);
       this.calculate();
+    },
+    chooseColor(color) {
+      this.setvalue(color, false);
     }
   },
   computed: {
