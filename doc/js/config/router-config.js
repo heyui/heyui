@@ -629,6 +629,11 @@ const router = {
       component: resolve => require(['components/theme/index'], resolve)
     },
     {
+      path: '/run',
+      name: 'sysrun',
+      component: resolve => require(['components/run/index'], resolve)
+    },
+    {
       path: '/resource',
       component: resolve => require(['components/resource'], resolve),
       children: [
