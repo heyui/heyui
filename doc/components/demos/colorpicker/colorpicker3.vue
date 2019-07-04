@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       value: null,
-      colors: ['#311B92', '#512DA8', '#322F38', 'rgb(255, 120, 0)', 'hsv(51, 100, 98)', '#673AB7', '#9575CD', '#D1C4E9']
+      colors: ['#D14949', '#D1C649', '#7BD149', '#49BFD1', '#4959D1', '#B449D1', '#9575CD', '#D1C4E9']
     };
   }
 };
