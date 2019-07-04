@@ -8243,12 +8243,18 @@ var _default2 = {
   },
   methods: {
     choosePosition: function choosePosition(event) {
-      // log(event);
+      if (this.multiple) {
+        return;
+      }
+
       this.eventControl.type = 'end';
       var nodePosition = this.$el.querySelector('.h-slider-end-node').getBoundingClientRect();
       this.eventControl.x = nodePosition.left + nodePosition.width / 2;
       this.eventControl.init = this.values['end'];
       this.mousemove(event);
+      document.body.addEventListener('mousemove', this.mousemove);
+      document.body.addEventListener('mouseup', this.mouseup);
+      document.body.addEventListener('click', this.click);
     },
     showContent: function showContent(value) {
       if (this.show) {
@@ -8280,8 +8286,11 @@ var _default2 = {
       setTimeout(function () {
         document.body.removeEventListener('click', _this2.click);
       }, 200);
+      var draggingNode = this.$el.querySelector('.h-slider-node-dragging');
 
-      _utils.default.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
+      if (draggingNode) {
+        _utils.default.removeClass(draggingNode, 'h-slider-node-dragging');
+      }
 
       var type = this.eventControl.type;
 
@@ -18087,23 +18096,13 @@ var render = function() {
     _c("div", { staticClass: "h-slider-container" }, [
       _c("div", {
         staticClass: "h-slider-line",
-        on: {
-          click: function($event) {
-            $event.stopPropagation()
-            return _vm.choosePosition($event)
-          }
-        }
+        on: { mousedown: _vm.choosePosition }
       }),
       _vm._v(" "),
       _c("div", {
         staticClass: "h-slider-track",
         style: _vm.computedTrackStyle,
-        on: {
-          click: function($event) {
-            $event.stopPropagation()
-            return _vm.choosePosition($event)
-          }
-        }
+        on: { mousedown: _vm.choosePosition }
       }),
       _vm._v(" "),
       _vm.hasStart
