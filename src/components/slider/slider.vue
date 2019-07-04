@@ -1,8 +1,8 @@
 <template>
   <div :class="sliderCls">
     <div class="h-slider-container">
-      <div class="h-slider-line" @click.stop="choosePosition"></div>
-      <div class="h-slider-track" @click.stop="choosePosition" :style="computedTrackStyle"></div>
+      <div class="h-slider-line" @mousedown="choosePosition"></div>
+      <div class="h-slider-track" @mousedown="choosePosition" :style="computedTrackStyle"></div>
       <div class="h-slider-node h-slider-start-node" @click.stop @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
       <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
       <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
@@ -88,12 +88,17 @@ export default {
   },
   methods: {
     choosePosition(event) {
-      // log(event);
+      if (this.multiple) {
+        return;
+      }
       this.eventControl.type = 'end';
       let nodePosition = this.$el.querySelector('.h-slider-end-node').getBoundingClientRect();
       this.eventControl.x = nodePosition.left + (nodePosition.width / 2);
       this.eventControl.init = this.values['end'];
       this.mousemove(event);
+      document.body.addEventListener('mousemove', this.mousemove);
+      document.body.addEventListener('mouseup', this.mouseup);
+      document.body.addEventListener('click', this.click);
     },
     showContent(value) {
       if (this.show) {
@@ -121,7 +126,10 @@ export default {
       setTimeout(() => {
         document.body.removeEventListener('click', this.click);
       }, 200);
-      utils.removeClass(this.$el.querySelector('.h-slider-node-dragging'), 'h-slider-node-dragging');
+      let draggingNode = this.$el.querySelector('.h-slider-node-dragging');
+      if (draggingNode) {
+        utils.removeClass(draggingNode, 'h-slider-node-dragging');
+      }
       let type = this.eventControl.type;
       if (this.tooltip[type]) {
         this.tooltip[type].hide();
