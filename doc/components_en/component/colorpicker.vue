@@ -40,7 +40,7 @@ Vue.component('ColorPicker', ColorPicker);
         <td>colorType</td>
         <td>color type</td>
         <td>string</td>
-        <td>hsl / hsv / hex / rgb</td>
+        <td>hex / rgb</td>
         <td>hex（ enableAlpha = false ）/ rgb（ enableAlpha = true ）</td>
       </tr>
       <tr>
