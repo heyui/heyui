@@ -64,7 +64,6 @@ export default {
       string: this.value
     });
     return {
-      changeSelf: false,
       color,
       colorValue: {
         saturation: color.saturation,
@@ -85,10 +84,9 @@ export default {
       }
     },
     value() {
-      if (!this.changeSelf) {
+      if (this.color.string != this.value) {
         this.reset();
       }
-      this.changeSelf = false;
     },
     colorType() {
       this.color.set('format', this.colorType);
@@ -142,18 +140,14 @@ export default {
         this.setvalue(this.color.toString());
       }
     },
-    setvalue(value, changeSelf = true) {
-      if (value == this.value) {
-        return;
-      }
-      this.changeSelf = changeSelf;
+    setvalue(value, { closeDropDown = false } = {}) {
       this.$emit('input', value);
       this.$emit('change', value);
       this.changed = false;
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
-      if (this.dropdown && this.useConfirm) {
+      if (this.dropdown && (this.useConfirm || closeDropDown)) {
         this.dropdown.hide();
       }
     },
@@ -165,7 +159,7 @@ export default {
     },
     clear() {
       this.color.clear();
-      this.setvalue();
+      this.setvalue(null, { closeDropDown: true });
     },
     updateColor() {
       this.color.set('saturation', this.colorValue.saturation);
@@ -173,7 +167,7 @@ export default {
       this.calculate();
     },
     chooseColor(color) {
-      this.setvalue(color, false);
+      this.setvalue(color);
     }
   },
   computed: {
