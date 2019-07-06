@@ -31,7 +31,7 @@ import "heyui/themes/index.less";
     </codes>
     <h4>引入 HeyUI</h4>
     <p>一般，我们在webpack 入口页面引用。</p>
-    <p>同时，HeyUI 也可以设置为全局引用，因为 HeyUI 拥有Message, Loadding等全局可以调用的方法。<a href="https://github.com/heyui/heyui-admin/blob/master/src/main.js" target="_blank">示例</a></p>
+    <p>同时，HeyUI 也可以设置为全局引用，因为 HeyUI 拥有Message, Loadding等全局可以调用的方法。<a href="https://github.com/heyui/heyui-admin/blob/master/src/app.js" target="_blank">示例</a></p>
     <codes type="less">import Vue from 'vue';
 import HeyUI from 'heyui';
 Vue.use(HeyUI);
