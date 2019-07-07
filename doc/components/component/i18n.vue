@@ -48,6 +48,8 @@ i18n.locale = 'en';
     <ul class="text-ul">
       <li>简体中文(zh-CN)</li>
       <li>English(en-US)</li>
+      <li>西班牙语(es-ES)</li>
+      <li>巴西葡萄牙语(pt-BR)</li>
     </ul>
   </div>
 </template>

@@ -46,9 +46,12 @@ i18n.locale = 'en';
     <h3>Supported language</h3>
     <p>HeyUI has now supported the following languages:</p>
     <ul class="text-ul">
-      <li>简体中文(zh-CN)</li>
+      <li>Chinese Simplified(zh-CN)</li>
       <li>English(en-US)</li>
+      <li>Spanish(es-ES)</li>
+      <li>Brazilian Portuguese(pt-BR)</li>
     </ul>
+    <p>If your target language is not included, you are more than welcome to contribute: just add another language config <a href="https://github.com/heyui/heyui/tree/master/src/locale/lang" target="_blank">here</a> and create a pull request.</p>
   </div>
 </template>
 
