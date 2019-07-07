@@ -26,7 +26,8 @@ module.exports = {
       components: './components/',
       'heyui/src': '../src',
       components_en: './components_en/',
-      'heyuiNative': 'heyui'
+      'heyuiNative': 'heyui',
+      vue: 'vue/dist/vue.min.js'
     },
     globalVars: './css/var.less',
     devServer: {

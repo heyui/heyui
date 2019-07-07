@@ -1,7 +1,9 @@
 <style lang="less">
 .run-code-vue{
   width: 50%;
+  overflow: auto;
   position: relative;
+  font-size: 13px;
 }
 </style>
 <template>

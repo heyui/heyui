@@ -2,7 +2,6 @@
 <template>
   <!-- 效果预览 -->
   <div class="run-preview-vue">
-    <div ref="display"></div>
   </div>
 </template>
 
@@ -21,7 +20,7 @@ export default {
   },
   data() {
     return {
-      id: '',
+      id: 'runAppShow',
       js: '',
       css: '',
       html: '',
@@ -39,6 +38,7 @@ export default {
   },
   methods: {
     getSource: function (e, t) {
+      if (e == null) return '';
       var n = new RegExp('<' + t + '[^>]*>');
 
       var r = e.match(n);
@@ -50,7 +50,7 @@ export default {
     splitCode: function (callback) {
       let js = this.getSource(this.code, 'script').replace(/export default/, 'return ');
       let css = this.getSource(this.code, 'style');
-      let html = '<div id="appShow" class="doc">' + this.getSource(this.code, 'template') + '</div>';
+      let html = '<div id="runAppShow" class="doc">' + this.getSource(this.code, 'template') + '</div>';
 
       Less.render(css, {
         globalVars: vars
@@ -83,7 +83,7 @@ export default {
           vueObj.template = this.html;
           var NewVue = Vue.extend(vueObj);
           this.component = new NewVue().$mount();
-          this.$refs.display.appendChild(this.component.$el);
+          this.$el.appendChild(this.component.$el);
 
           if (this.css !== '') {
             let styleDom = document.getElementById('style_test');
@@ -100,15 +100,11 @@ export default {
       });
     },
     destroyCode: function () {
-      var e = document.getElementById(this.id);
-      if (e) {
-        e.parentNode.removeChild(e);
-      }
       if (this.component) {
-        this.$refs.display.removeChild(this.component.$el);
         this.component.$destroy();
         this.component = null;
       }
+      this.$el.innerHTML = '';
     }
   }
 };
@@ -119,5 +115,6 @@ export default {
   padding: 10px;
   border-left: 1px solid #eee;
   flex: 1;
+  overflow: auto;
 }
 </style>

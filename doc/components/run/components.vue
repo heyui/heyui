@@ -2,10 +2,21 @@
 .page-run-page {
   .right-frame {
     display: flex;
+    flex-direction: column;
     padding-right: 0;
     padding-bottom: 0;
+    padding-top: 60px;
+  }
+  .code-top-menu {
+    border-bottom: 1px solid #EEE;
+    padding: 10px 0;
   }
 
+  .code-frame {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
 }
 </style>
 <template>
@@ -14,8 +25,13 @@
 
     </div>
     <div class="right-frame">
-      <Code ref="codePage"></Code>
-      <Preview ref="previewPage" :code="code"></Preview>
+      <div class="code-top-menu">
+        <Button color="primary" @click="run">运行Run</Button>
+      </div>
+      <div class="code-frame">
+        <Code ref="codePage"></Code>
+        <Preview ref="previewPage" :code="code"></Preview>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +40,7 @@
 import Preview from './components/preview';
 import Code from './components/code';
 import './js/codemirror.js';
+import sample from './js/example';
 
 export default {
   components: {
@@ -40,7 +57,13 @@ export default {
   },
   methods: {
     init() {
-
+      setTimeout(() => {
+        this.$refs.codePage.setValue(sample);
+      }, 300);
+    },
+    run() {
+      this.code = this.$refs.codePage.getValue();
+      this.$refs.previewPage.renderCode();
     }
   },
   computed: {
