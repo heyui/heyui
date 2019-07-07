@@ -2,6 +2,7 @@
 <template>
   <!-- 效果预览 -->
   <div class="run-preview-vue">
+    <component :is="componentName" v-if="componentName" :key="uuid"></component>
   </div>
 </template>
 
@@ -24,7 +25,9 @@ export default {
       js: '',
       css: '',
       html: '',
-      component: null
+      componentName: null,
+      component: null,
+      uuid: null
     };
   },
   watch: {
@@ -81,9 +84,12 @@ export default {
           // eslint-disable-next-line no-new-func
           var vueObj = new Function(this.js)();
           vueObj.template = this.html;
-          var NewVue = Vue.extend(vueObj);
-          this.component = new NewVue().$mount();
-          this.$el.appendChild(this.component.$el);
+          // var NewVue = Vue.extend(vueObj);
+          // this.component = new NewVue().$mount();
+          // this.$el.appendChild(this.component.$el);
+          Vue.component('run-example', vueObj);
+          this.componentName = 'run-example';
+          this.uuid = Utils.uuid();
 
           if (this.css !== '') {
             let styleDom = document.getElementById('style_test');
@@ -100,11 +106,11 @@ export default {
       });
     },
     destroyCode: function () {
-      if (this.component) {
-        this.component.$destroy();
-        this.component = null;
-      }
-      this.$el.innerHTML = '';
+      // if (this.component) {
+      // this.component.$destroy();
+      // this.component = null;
+      // }
+      this.componentName = '';
     }
   }
 };
