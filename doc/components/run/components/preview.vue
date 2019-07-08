@@ -2,7 +2,7 @@
 <template>
   <!-- 效果预览 -->
   <div class="run-preview-vue">
-    <component :is="componentName" v-if="componentName" :key="uuid"></component>
+    <component :is="componentName" v-if="componentName" :err="err" :key="uuid"></component>
   </div>
 </template>
 
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       componentName: null,
-      uuid: null
+      uuid: null,
+      err: null
     };
   },
   watch: {
@@ -36,6 +37,10 @@ export default {
     }
   },
   mounted() {
+  },
+  errorCaptured(err, vm, info) {
+    this.err = err;
+    this.componentName = 'run-error';
   },
   methods: {
     getSource: function (e, t) {
@@ -74,6 +79,7 @@ export default {
       }
     },
     renderCode: function () {
+      this.err = null;
       this.destroyCode();
       Utils.saveLocal('RUN_CODE', this.code);
       let { html, js } = this.splitCode();

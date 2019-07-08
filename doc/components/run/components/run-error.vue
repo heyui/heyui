@@ -2,8 +2,11 @@
 </style>
 <template>
   <div class="">
-    <p>编译出现错误，请检查您的代码是否存在问题。</p>
+    <p>编译出现错误，请检查您的代码是否存在问题。 </p>
     <p>An error occurred in the compilation. Please check if there is a problem with your code.</p>
+    <p v-if="err" class="red-color">报错信息 Error Message：</p>
+    <pre v-if="err" class="red-color">{{err}}</pre>
+    <template v-else>
     <h3>Run系统使用注意事项：</h3>
     <p>Notes for Run System Use:</p>
     <p>编写的代码，请严格按照style, template, script模式编写。</p>
@@ -41,10 +44,14 @@ jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     );
   });
 };</codes>
+</template>
   </div>
 </template>
 <script>
 export default {
+  props: {
+    err: String
+  },
   data() {
     return {
 
