@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.23.0"></a>
+# [1.23.0](https://github.com/heyui/heyui/compare/v1.22.0...v1.23.0) (2019-07-08)
+
+
+### Bug Fixes
+
+* **AutoComplete:** add  autocomplete="off" on input ([e744898](https://github.com/heyui/heyui/commit/e744898))
+* **ColorPicker:** optimize ([128cc75](https://github.com/heyui/heyui/commit/128cc75))
+* **Lang:** fix Spanish language ([3a58cb3](https://github.com/heyui/heyui/commit/3a58cb3))
+* **Slider:** optimize interaction processing ([4d6abaf](https://github.com/heyui/heyui/commit/4d6abaf))
+
+
+### Features
+
+* **ColorPicker:** add colors ([898b4f6](https://github.com/heyui/heyui/commit/898b4f6))
+* **ColorPicker:** ColorPicker Component ([b72b1b9](https://github.com/heyui/heyui/commit/b72b1b9)), closes [#95](https://github.com/heyui/heyui/issues/95)
+* **i18n:** add pt_BR ([03774a5](https://github.com/heyui/heyui/commit/03774a5)), closes [#168](https://github.com/heyui/heyui/issues/168)
+* **slider:** add click control ([2db1171](https://github.com/heyui/heyui/commit/2db1171))
+* **Slider:** add prop trackStyle ([48fb48e](https://github.com/heyui/heyui/commit/48fb48e))
+
+
+
 <a name="1.23.0-alpha.1"></a>
 # [1.23.0-alpha.1](https://github.com/heyui/heyui/compare/v1.22.0...v1.23.0-alpha.1) (2019-07-04)
 
