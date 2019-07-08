@@ -34,7 +34,7 @@
     "hey-utils": "^1.0.0",
     "less": "^3.9.0",
     "less-to-json": "^1.2.0",
-    "standard-version": "^4.4.0"
+    "standard-version": "^6.0.1"
   },
   "readmeFilename": "README.md",
   "scripts": {
