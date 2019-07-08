@@ -1,11 +1,13 @@
 <style lang="less">
-.page-run-page {
+.page-run-page.com-frame {
   .right-frame {
     display: flex;
     flex-direction: column;
-    padding-right: 0;
+    padding-right: 20px;
     padding-bottom: 0;
     padding-top: 60px;
+    padding-left: 20px;
+    left: 0;
   }
   .code-top-menu {
     border-bottom: 1px solid #EEE;
@@ -21,12 +23,14 @@
 </style>
 <template>
   <div class="page-run-page page-body com-frame">
-    <div class="left-frame">
+    <!-- <div class="left-frame">
 
-    </div>
+    </div> -->
     <div class="right-frame">
       <div class="code-top-menu">
         <Button color="primary" @click="run">运行Run</Button>
+        <Button @click="copy">复制Copy</Button>
+        <Button @click="reset">重置Reset</Button>
       </div>
       <div class="code-frame">
         <Code ref="codePage"></Code>
@@ -58,12 +62,21 @@ export default {
   methods: {
     init() {
       setTimeout(() => {
-        this.$refs.codePage.setValue(sample);
+        let localCode = Utils.getLocal('RUN_CODE', this.sourcecode);
+        this.$refs.codePage.setValue(localCode || sample);
+        this.run();
       }, 300);
     },
     run() {
       this.code = this.$refs.codePage.getValue();
       this.$refs.previewPage.renderCode();
+    },
+    copy() {
+      this.$Clipboard({ text: this.$refs.codePage.getValue() });
+    },
+    reset() {
+      this.$refs.codePage.setValue(sample);
+      this.run();
     }
   },
   computed: {

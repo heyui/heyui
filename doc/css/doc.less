@@ -13,29 +13,6 @@ body {
   font-size: 15px;
 }
 
-h2,
-h3,
-h4 {
-  font-weight: normal;
-  color: #1f2f3d;
-  letter-spacing: 1px;
-}
-
-h4 {
-  font-size: 17px;
-  margin: 30px 0 10px;
-}
-
-h3 {
-  font-size: 19px;
-  margin: 50px 0 10px;
-}
-
-h2 {
-  margin: 10px 0;
-  font-size: 26px;
-}
-
 .comm-header {
   position: fixed;
   // color: @white-color;
@@ -521,6 +498,28 @@ h2 {
     }
   }
 
+  h2,
+  h3,
+  h4 {
+    font-weight: normal;
+    color: #1f2f3d;
+    letter-spacing: 1px;
+  }
+  
+  h4 {
+    font-size: 17px;
+    margin: 30px 0 10px;
+  }
+  
+  h3 {
+    font-size: 19px;
+    margin: 50px 0 10px;
+  }
+  
+  h2 {
+    margin: 10px 0;
+    font-size: 26px;
+  }
 }
 
 .demo-box {
@@ -573,6 +572,19 @@ h2 {
     &:hover {
       color: @primary-color;
       // background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+
+  .demo-operate {
+    position: absolute;
+    right: 10px;
+    z-index: 3;
+    margin-top: 8px;
+    font-size: 13px;
+    span {
+      color: @dark3-color;
+      .text-hover;
+      margin-left: 10px;
     }
   }
 }

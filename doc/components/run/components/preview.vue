@@ -11,8 +11,12 @@
 import Vue from 'vue';
 import Less from 'less';
 import vars from '../../../../themes/var.js';
+import runError from './run-error';
 
 export default {
+  components: {
+    runError
+  },
   props: {
     code: {
       type: String,
@@ -21,12 +25,7 @@ export default {
   },
   data() {
     return {
-      id: 'runAppShow',
-      js: '',
-      css: '',
-      html: '',
       componentName: null,
-      component: null,
       uuid: null
     };
   },
@@ -37,7 +36,6 @@ export default {
     }
   },
   mounted() {
-
   },
   methods: {
     getSource: function (e, t) {
@@ -50,66 +48,59 @@ export default {
         e.slice(e.indexOf(r) + r.length, e.lastIndexOf('</' + t + '>')))
         : '';
     },
-    splitCode: function (callback) {
+    splitCode: function () {
       let js = this.getSource(this.code, 'script').replace(/export default/, 'return ');
-      let css = this.getSource(this.code, 'style');
-      let html = '<div id="runAppShow" class="doc">' + this.getSource(this.code, 'template') + '</div>';
-
-      Less.render(css, {
-        globalVars: vars
-      }).then(output => {
-        css = output.css;
-
-        this.js = js;
-        this.css = css;
-        this.html = html;
-
-        callback && callback();
-      });
+      let html = '<div id="runAppShow">' + this.getSource(this.code, 'template') + '</div>';
+      return { js, html };
     },
-    r(e, t) {
-      return (
-        Object.keys(t).forEach(function (n) {
-          e = e
-            .replace(new RegExp('<' + n + '(\\W+)', 'g'), '<' + t[n] + '$1')
-            .replace(new RegExp('</' + n + '>', 'g'), '</' + t[n] + '>');
-        }),
-        e
-      );
+    genCss() {
+      let css = this.getSource(this.code, 'style');
+
+      if (this.css !== '') {
+        Less.render(css, {
+          globalVars: vars
+        }).then(output => {
+          css = output.css;
+          let styleDom = document.getElementById('style_test');
+          if (!styleDom) {
+            styleDom = document.createElement('style');
+            styleDom.rel = 'stylesheet/less';
+            styleDom.type = 'text/css';
+            styleDom.id = 'style_test';
+            document.getElementsByTagName('head')[0].appendChild(styleDom);
+          }
+          styleDom.innerHTML = css;
+        });
+      }
     },
     renderCode: function () {
       this.destroyCode();
-      this.splitCode(() => {
-        if (this.html !== '' && this.js !== '') {
-          // eslint-disable-next-line no-new-func
-          var vueObj = new Function(this.js)();
-          vueObj.template = this.html;
-          // var NewVue = Vue.extend(vueObj);
-          // this.component = new NewVue().$mount();
-          // this.$el.appendChild(this.component.$el);
-          Vue.component('run-example', vueObj);
-          this.componentName = 'run-example';
-          this.uuid = Utils.uuid();
-
-          if (this.css !== '') {
-            let styleDom = document.getElementById('style_test');
-            if (!styleDom) {
-              styleDom = document.createElement('style');
-              styleDom.rel = 'stylesheet/less';
-              styleDom.type = 'text/css';
-              styleDom.id = 'style_test';
-              document.getElementsByTagName('head')[0].appendChild(styleDom);
-            }
-            styleDom.innerHTML = this.css;
-          }
+      Utils.saveLocal('RUN_CODE', this.code);
+      let { html, js } = this.splitCode();
+      var vueObj = {
+        data: function () {
+          return {};
         }
-      });
+      };
+      if (js) {
+        try {
+          // eslint-disable-next-line no-new-func
+          vueObj = new Function(js)();
+        } catch (error) {
+          this.componentName = 'run-error';
+          return;
+        }
+      }
+      vueObj.template = '<div></div>';
+      if (html) {
+        vueObj.template = html;
+      }
+      Vue.component('run-example', vueObj);
+      this.componentName = 'run-example';
+      this.uuid = Utils.uuid();
+      this.genCss();
     },
     destroyCode: function () {
-      // if (this.component) {
-      // this.component.$destroy();
-      // this.component = null;
-      // }
       this.componentName = '';
     }
   }
@@ -122,5 +113,6 @@ export default {
   border-left: 1px solid #eee;
   flex: 1;
   overflow: auto;
+  border-right: 1px solid #EEE;
 }
 </style>

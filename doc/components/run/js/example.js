@@ -1,6 +1,6 @@
 export default `<style lang="less">
 .welcome{
-  
+  color: @red-color;
 }
 </style>
 
@@ -13,8 +13,6 @@ export default `<style lang="less">
   export default {
     data: function () {
       return {
-        loading1:false,
-        loading2:false
       }
     }
   }
