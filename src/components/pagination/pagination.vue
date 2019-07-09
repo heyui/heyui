@@ -141,9 +141,14 @@ export default {
       let value = { page: params.cur, total: this.totalNow };
       Object.assign(value, params);
       this.curValue = params.cur;
-      this.$emit('change', value);
+      if (!this.value.page) {
+        this.$emit('change', value);
+      }
       let inputvalue = { ...value };
       delete inputvalue.cur;
+      if (this.value.page) {
+        this.$emit('change', inputvalue);
+      }
       this.$emit('input', inputvalue);
     },
     changesize() {
