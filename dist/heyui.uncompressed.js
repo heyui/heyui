@@ -7684,19 +7684,10 @@ var _default2 = {
       };
       (0, _extends2.default)(value, params);
       this.curValue = params.cur;
-
-      if (!this.value.page) {
-        this.$emit('change', value);
-      }
-
       var inputvalue = (0, _extends2.default)({}, value);
       delete inputvalue.cur;
-
-      if (this.value.page) {
-        this.$emit('change', inputvalue);
-      }
-
       this.$emit('input', inputvalue);
+      this.$emit('change', value);
     },
     changesize: function changesize() {
       this.setvalue({
