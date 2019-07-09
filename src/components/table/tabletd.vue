@@ -21,6 +21,7 @@ export default {
     align: String,
     unit: String,
     render: Function,
+    format: Function,
     treeOpener: Boolean,
     className: String
   },
@@ -54,6 +55,9 @@ export default {
       }
       if (this.unit) {
         return value === '' || value === null || value === undefined ? '' : `${value}${this.unit}`;
+      }
+      if (this.format) {
+        return this.format(value);
       }
       return value;
     }

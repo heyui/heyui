@@ -18,6 +18,7 @@ export default {
     className: String,
     treeOpener: Boolean,
     unit: String,
+    format: Function,
     render: Function,
     sortProp: String,
     tooltip: {

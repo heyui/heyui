@@ -23,9 +23,6 @@
 </style>
 <template>
   <div class="page-run-page page-body com-frame">
-    <!-- <div class="left-frame">
-
-    </div> -->
     <div class="right-frame">
       <div class="code-top-menu">
         <Button color="primary" @click="run">运行Run</Button>
@@ -42,14 +39,13 @@
 <script>
 
 import Preview from './components/preview';
-import Code from './components/code';
 import './js/codemirror.js';
 import sample from './js/example';
 
 export default {
   components: {
     Preview,
-    Code
+    Code: resolve => require(['./components/code'], resolve)
   },
   data() {
     return {

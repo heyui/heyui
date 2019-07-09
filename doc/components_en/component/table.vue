@@ -14,6 +14,7 @@
     <ul class="text-ul">
       <li><code>unit</code>: setting data unit</li>
       <li><code>dict</code>: use dict render data</li>
+      <li><code>format</code>: Define field formatting methods, 1.23.1+</li>
       <li><code>render</code>: define render function</li>
     </ul>
     <exampleEn demo="view/table9"></exampleEn>
@@ -221,6 +222,13 @@
         <td>unit</td>
         <td>setting data unit</td>
         <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>format</td>
+        <td>Define field formatting methods, 1.23.1+</td>
+        <td>Function</td>
         <td></td>
         <td></td>
       </tr>

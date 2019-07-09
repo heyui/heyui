@@ -25,6 +25,7 @@ export default {
     prop: String,
     dict: String,
     align: String,
+    format: Function,
     render: Function,
     unit: String,
     tooltip: {

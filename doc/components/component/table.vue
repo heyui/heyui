@@ -15,6 +15,7 @@
     <ul class="text-ul">
       <li><code>unit</code>: 定义字段的单位</li>
       <li><code>dict</code>: 定义字段使用字典渲染</li>
+      <li><code>format</code>: 定义字段格式化方法, 1.23.1+</li>
       <li><code>render</code>: 自定义字段渲染方法</li>
     </ul>
     <example demo="view/table9"></example>
@@ -211,6 +212,13 @@
         <td>unit</td>
         <td>字段显示单位</td>
         <td>String</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>format</td>
+        <td>定义字段格式化方法, 1.23.1+</td>
+        <td>Function</td>
         <td></td>
         <td></td>
       </tr>
