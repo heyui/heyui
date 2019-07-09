@@ -27,7 +27,7 @@ module.exports = {
       'heyui/src': '../src',
       components_en: './components_en/',
       'heyuiNative': 'heyui',
-      vue: 'vue/dist/vue.min.js'
+      vue: 'vue/dist/vue.esm.browser'
     },
     globalVars: './css/var.less',
     devServer: {
