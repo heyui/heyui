@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.23.1-alpha.0](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.1-alpha.0) (2019-07-09)
+
+
+### Bug Fixes
+
+* **TableItem:** add prop format ([e3953a7](https://github.com/heyui/heyui/commit/e3953a7))
+
+
 
 <a name="1.23.0"></a>
 # [1.23.0](https://github.com/heyui/heyui/compare/v1.22.0...v1.23.0) (2019-07-08)

@@ -10350,6 +10350,7 @@ var _default = {
     align: String,
     unit: String,
     render: Function,
+    format: Function,
     treeOpener: Boolean,
     className: String
   },
@@ -10386,6 +10387,10 @@ var _default = {
 
       if (this.unit) {
         return value === '' || value === null || value === undefined ? '' : "".concat(value).concat(this.unit);
+      }
+
+      if (this.format) {
+        return this.format(value);
       }
 
       return value;
@@ -10448,6 +10453,7 @@ var _default2 = {
     prop: String,
     dict: String,
     align: String,
+    format: Function,
     render: Function,
     unit: String,
     tooltip: {
@@ -10567,6 +10573,7 @@ var _default = {
     className: String,
     treeOpener: Boolean,
     unit: String,
+    format: Function,
     render: Function,
     sortProp: String,
     tooltip: {
