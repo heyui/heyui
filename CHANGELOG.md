@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.23.2-alpha.1](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.2-alpha.1) (2019-07-10)
+
+
+### Bug Fixes
+
+* **Icon:** remove lock color ([7eddb4a](https://github.com/heyui/heyui/commit/7eddb4a))
+* **Pagination:** set change after input ([548a381](https://github.com/heyui/heyui/commit/548a381))
+* **Pagination:** update change ([5e6bb10](https://github.com/heyui/heyui/commit/5e6bb10))
+* **Table:** _disabledSelect for checkbox ([7f0e68f](https://github.com/heyui/heyui/commit/7f0e68f))
+* **Table:** optimize checkbox use ([e96f91a](https://github.com/heyui/heyui/commit/e96f91a))
+* **TableItem:** add prop format ([e3953a7](https://github.com/heyui/heyui/commit/e3953a7))
+
+
+
 ### [1.23.2-alpha.0](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.2-alpha.0) (2019-07-10)
 
 
