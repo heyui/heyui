@@ -53,7 +53,11 @@ export default {
     };
   },
   mounted() {
+    document.addEventListener('keydown', this.keyDownHandler, false);
     this.init();
+  },
+  destoryed() {
+    document.removeEventListener('keydown', this.keyDownHandler, false);
   },
   methods: {
     init() {
@@ -73,6 +77,14 @@ export default {
     reset() {
       this.$refs.codePage.setValue(sample);
       this.run();
+    },
+    keyDownHandler(e) {
+      // 可以判断是不是mac，如果是mac,ctrl变为花键
+      // event.preventDefault() 方法阻止元素发生默认的行为。
+      if (e.keyCode == 83 && (navigator.platform.match('Mac') ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+        this.run();
+      }
     }
   },
   computed: {
