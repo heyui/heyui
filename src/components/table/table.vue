@@ -9,8 +9,8 @@
         <template v-if="ths">
           <tr v-for="(thdata, thindex) of ths" :key="thindex+update.columns">
             <th v-if="checkbox&&thindex==0" class="h-table-th-checkbox" :rowspan="ths.length">
-              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
-                :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
+              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<checkableDatas.length"
+                :checked="checks.length>0&&checks.length == checkableDatas.length" @click.native="checkAll"></Checkbox>
             </th>
             <th v-if="radio&&thindex==0" class="h-table-th-radio" :rowspan="ths.length"></th>
             <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
@@ -18,8 +18,8 @@
         </template>
         <tr v-else>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<tableDatas.length"
-              :checked="checks.length>0&&checks.length == tableDatas.length" @click.native="checkAll"></Checkbox>
+            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<checkableDatas.length"
+              :checked="checks.length>0&&checks.length == checkableDatas.length" @click.native="checkAll"></Checkbox>
           </th>
           <th v-else-if="radio" class="h-table-th-radio"></th>
           <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
@@ -48,7 +48,7 @@
                 <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @toggleTree="toggleTree" :datas="d" :key="d._heyui_uuid"
                   :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
-                    <Checkbox v-if="fixedColumnLeft.length==0" :key="d._heyui_uuid" v-model="checks" :value="d"></Checkbox>
+                    <Checkbox v-if="fixedColumnLeft.length==0" :disabled="d._disabledSelect" :key="d._heyui_uuid" v-model="checks" :value="d"></Checkbox>
                   </td>
                   <td v-if="radio" class="h-table-td-radio">
                     <Radio v-if="fixedColumnLeft.length==0" :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
@@ -77,7 +77,7 @@
                 <TableTr @click="triggerTrClicked" @dblclick="triggerTrDblclicked" @toggleTree="toggleTree" :datas="d" :key="d._heyui_uuid"
                   :index="index" :trIndex="d._heyui_uuid" :class="getTrCls(d, index)">
                   <td v-if="checkbox" class="h-table-td-checkbox">
-                    <Checkbox v-model="checks" :key="d._heyui_uuid" :value="d"></Checkbox>
+                    <Checkbox v-model="checks" :key="d._heyui_uuid" :disabled="d._disabledSelect" :value="d"></Checkbox>
                   </td>
                   <td v-if="radio" class="h-table-td-radio">
                     <Radio :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
@@ -115,7 +115,7 @@
         </colgroup>
         <tr>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox :indeterminate="checks.length>0&&checks.length<tableDatas.length" :checked="tableDatas.length > 0 && checks.length == tableDatas.length"
+            <Checkbox :indeterminate="checks.length>0&&checks.length<checkableDatas.length" :checked="tableDatas.length > 0 && checks.length == checkableDatas.length"
               @click.native="checkAll"></Checkbox>
           </th>
           <th v-if="radio" class="h-table-th-radio"> </th>
@@ -437,10 +437,10 @@ export default {
       return [...(this.checks || [])];
     },
     checkAll() {
-      if (this.checks.length == this.tableDatas.length) {
-        this.checks.splice(0, this.tableDatas.length);
+      if (this.checks.length == this.checkableDatas.length) {
+        this.checks.splice(0, this.checkableDatas.length);
       } else {
-        this.checks = utils.extend([], this.tableDatas);
+        this.checks = utils.extend([], this.checkableDatas);
       }
       this.$emit('selectAll', this.checks);
     },
@@ -533,6 +533,9 @@ export default {
     }
   },
   computed: {
+    checkableDatas() {
+      return this.tableDatas.filter(item => !item._disabledSelect);
+    },
     isTemplateMode() {
       let defaultSlot = this.$scopedSlots.default;
       return defaultSlot && (defaultSlot.name == 'normalized' || !this.$slots.default);
