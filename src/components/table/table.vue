@@ -9,8 +9,7 @@
         <template v-if="ths">
           <tr v-for="(thdata, thindex) of ths" :key="thindex+update.columns">
             <th v-if="checkbox&&thindex==0" class="h-table-th-checkbox" :rowspan="ths.length">
-              <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<checkableDatas.length"
-                :checked="checks.length>0&&checks.length == checkableDatas.length" @click.native="checkAll"></Checkbox>
+              <CheckboxAll v-if="fixedColumnLeft.length==0" :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
             </th>
             <th v-if="radio&&thindex==0" class="h-table-th-radio" :rowspan="ths.length"></th>
             <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
@@ -18,8 +17,7 @@
         </template>
         <tr v-else>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox v-if="fixedColumnLeft.length==0" :indeterminate="checks.length>0&&checks.length<checkableDatas.length"
-              :checked="checks.length>0&&checks.length == checkableDatas.length" @click.native="checkAll"></Checkbox>
+            <CheckboxAll v-if="fixedColumnLeft.length==0" :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
           </th>
           <th v-else-if="radio" class="h-table-th-radio"></th>
           <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
@@ -115,8 +113,7 @@
         </colgroup>
         <tr>
           <th v-if="checkbox" class="h-table-th-checkbox">
-            <Checkbox :indeterminate="checks.length>0&&checks.length<checkableDatas.length" :checked="tableDatas.length > 0 && checks.length == checkableDatas.length"
-              @click.native="checkAll"></Checkbox>
+            <CheckboxAll :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
           </th>
           <th v-if="radio" class="h-table-th-radio"> </th>
           <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
@@ -145,11 +142,20 @@ import Checkbox from 'heyui/src/components/checkbox';
 import Radio from 'heyui/src/components/radio';
 import Loading from 'heyui/src/components/loading';
 
+import CheckboxAll from './table-checkbox';
+
 const prefix = 'h-table';
 
 export default {
   name: 'hTable',
-  components: { Checkbox, Radio, Loading },
+  components: {
+    TableTr,
+    TableTh,
+    Checkbox,
+    Radio,
+    Loading,
+    CheckboxAll
+  },
   props: {
     columns: {
       type: Array,
@@ -599,10 +605,6 @@ export default {
       }
       return s;
     }
-  },
-  components: {
-    TableTr,
-    TableTh
   }
 };
 </script>
