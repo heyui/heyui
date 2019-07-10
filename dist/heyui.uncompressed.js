@@ -10046,10 +10046,10 @@ var _default2 = (0, _defineProperty2.default)({
       return (0, _toConsumableArray2.default)(this.checks || []);
     },
     checkAll: function checkAll() {
-      if (this.checks.length == this.tableDatas.length) {
-        this.checks.splice(0, this.tableDatas.length);
+      if (this.checks.length == this.checkableDatas.length) {
+        this.checks.splice(0, this.checkableDatas.length);
       } else {
-        this.checks = _utils.default.extend([], this.tableDatas);
+        this.checks = _utils.default.extend([], this.checkableDatas);
       }
 
       this.$emit('selectAll', this.checks);
@@ -10181,6 +10181,11 @@ var _default2 = (0, _defineProperty2.default)({
     }
   },
   computed: {
+    checkableDatas: function checkableDatas() {
+      return this.tableDatas.filter(function (item) {
+        return !item._disabledSelect;
+      });
+    },
     isTemplateMode: function isTemplateMode() {
       var defaultSlot = this.$scopedSlots.default;
       return defaultSlot && (defaultSlot.name == 'normalized' || !this.$slots.default);
@@ -18507,11 +18512,11 @@ var render = function() {
                                       indeterminate:
                                         _vm.checks.length > 0 &&
                                         _vm.checks.length <
-                                          _vm.tableDatas.length,
+                                          _vm.checkableDatas.length,
                                       checked:
                                         _vm.checks.length > 0 &&
                                         _vm.checks.length ==
-                                          _vm.tableDatas.length
+                                          _vm.checkableDatas.length
                                     },
                                     nativeOn: {
                                       click: function($event) {
@@ -18563,10 +18568,12 @@ var render = function() {
                                   attrs: {
                                     indeterminate:
                                       _vm.checks.length > 0 &&
-                                      _vm.checks.length < _vm.tableDatas.length,
+                                      _vm.checks.length <
+                                        _vm.checkableDatas.length,
                                     checked:
                                       _vm.checks.length > 0 &&
-                                      _vm.checks.length == _vm.tableDatas.length
+                                      _vm.checks.length ==
+                                        _vm.checkableDatas.length
                                   },
                                   nativeOn: {
                                     click: function($event) {
@@ -18709,7 +18716,10 @@ var render = function() {
                                       _vm.fixedColumnLeft.length == 0
                                         ? _c("Checkbox", {
                                             key: d._heyui_uuid,
-                                            attrs: { value: d },
+                                            attrs: {
+                                              disabled: d._disabledSelect,
+                                              value: d
+                                            },
                                             model: {
                                               value: _vm.checks,
                                               callback: function($$v) {
@@ -18862,7 +18872,10 @@ var render = function() {
                                         [
                                           _c("Checkbox", {
                                             key: d._heyui_uuid,
-                                            attrs: { value: d },
+                                            attrs: {
+                                              disabled: d._disabledSelect,
+                                              value: d
+                                            },
                                             model: {
                                               value: _vm.checks,
                                               callback: function($$v) {
@@ -19027,10 +19040,10 @@ var render = function() {
                           attrs: {
                             indeterminate:
                               _vm.checks.length > 0 &&
-                              _vm.checks.length < _vm.tableDatas.length,
+                              _vm.checks.length < _vm.checkableDatas.length,
                             checked:
                               _vm.tableDatas.length > 0 &&
-                              _vm.checks.length == _vm.tableDatas.length
+                              _vm.checks.length == _vm.checkableDatas.length
                           },
                           nativeOn: {
                             click: function($event) {
