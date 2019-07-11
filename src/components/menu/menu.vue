@@ -7,7 +7,6 @@
       :status="status"
       :inlineCollapsed="inlineCollapsed"
       @trigger="trigger"></hMenuItem>
-
   </ul>
 </template>
 <script>
@@ -74,6 +73,10 @@ export default {
     inlineCollapsed: {
       type: Boolean,
       default: false
+    },
+    activeAll: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -134,9 +137,11 @@ export default {
         }
 
         this.$emit('click', menu);
-        if (menu.children && menu.children.length > 0) {
+        let isParent = menu.children && menu.children.length > 0;
+        if (isParent && (!this.activeAll || this.status.selected == menu.key)) {
           return;
         }
+
         this.status.selected = menu.key;
         this.$emit('select', menu.value);
         this.$emit('onclick', menu.value);
