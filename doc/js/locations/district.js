@@ -2867,11 +2867,11 @@ function toCityData(data) {
 
 const DISTRICT = toCityData(DISTRICT_DATA);
 
-exports.getTotalData = function () {
+export const getTotalData = function () {
   return [...getCity().filter(item => !municipality[item.id]), ...DISTRICT];
 };
 
-exports.getData = function (parent) {
+export const getData = function (parent) {
   if (parent == null) {
     return getCity().filter(item => !municipality[item.id]);
   } else {

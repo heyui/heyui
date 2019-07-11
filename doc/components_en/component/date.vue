@@ -6,16 +6,16 @@
 
     <h3>Basic</h3>
     <div>
-      <exampleEn demo="dataplugins/datepicker1"></exampleEn>
+      <example demo="dataplugins/datepicker1"></example>
     </div>
     <h3>Parameters</h3>
     <div>
       <exampleEn demo="dataplugins/datepicker2"></exampleEn>
     </div>
-    <h3>Date format customization</h3>
+    <!-- <h3>Date format customization</h3>
     <div>
       <example demo="dataplugins/datepicker3"></example>
-    </div>
+    </div> -->
     <h3>Different types of selection controls</h3>
     <div>
       <exampleEn demo="dataplugins/datepicker5"></exampleEn>
