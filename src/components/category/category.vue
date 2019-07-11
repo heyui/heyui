@@ -101,6 +101,7 @@ export default {
             that.setvalue();
           },
           load: (modal, { data, callback }) => {
+            if (data.status.loading) return;
             data.status.loading = true;
             this.param.getDatas.call(
               this.param,
