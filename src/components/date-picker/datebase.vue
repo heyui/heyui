@@ -220,6 +220,7 @@ export default {
       let isEndSelected = false;
       let isRangeSelected = false;
       let isSelected = false;
+      let datetime = d.date.time();
       if (utils.isObject(this.value)) {
         isStartSelected = this.value.start == d.string;
         isEndSelected = this.value.end == d.string;
@@ -228,7 +229,7 @@ export default {
         isSelected = this.value.substring(0, length) == d.string.substring(0, length);
       }
       if (this.range && utils.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
-        isRangeSelected = (this.value.start < d.string && this.rangeEnd > d.string) || (this.value.start > d.string && this.rangeEnd < d.string);
+        isRangeSelected = (this.valueTime.start < datetime && this.rangeEndTime > datetime) || (this.valueTime.start > datetime && this.rangeEndTime < datetime);
       }
       return {
         'h-date-not-now-day': !d.isNowDays,
@@ -318,6 +319,21 @@ export default {
     }
   },
   computed: {
+    valueTime() {
+      if (!this.value) {
+        return {
+          start: null,
+          end: null
+        };
+      };
+      return {
+        start: this.value.start ? manba(this.value.start, this.format).time() : null,
+        end: this.value.end ? manba(this.value.end, this.format).time() : null
+      };
+    },
+    rangeEndTime() {
+      return this.rangeEnd ? manba(this.rangeEnd, this.format).time() : null;
+    },
     dateBodyCls() {
       return {
         [`${dateprefix}-body`]: true,

@@ -11,10 +11,10 @@
     <div>
       <example demo="dataplugins/datepicker2"></example>
     </div>
-    <h3>日期格式自定义</h3>
+    <!-- <h3>日期格式自定义</h3>
     <div>
       <example demo="dataplugins/datepicker3"></example>
-    </div>
+    </div> -->
     <h3>不同类型的选择控件</h3>
     <div>
       <example demo="dataplugins/datepicker5"></example>

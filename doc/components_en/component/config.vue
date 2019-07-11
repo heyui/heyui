@@ -4,7 +4,118 @@
     <p>Global configuration is the most powerful feature of <code>HeyUI</code>.</p>
     <p>In the process of development, set a complete dictionary library. In business development, you only need to use the key of the dictionary.</p>
     <p>Centralized configuration of autocomplete, tree and other complex components. In the specific page, we only need to use the config key to complete the call.</p>
-
+    <p>Some configurations of the system can be found in the following documents:</p>
+<codes type="javascript">
+const config = {
+  dict: {
+    keyName: 'key',
+    titleName: 'title',
+    dicts: {}
+  },
+  tree: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
+  category: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
+  categoryPicker: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
+  cascader: {
+    configs: {},
+    default: {
+      titleName: 'title',
+      keyName: 'key',
+      parentName: 'parent',
+      childrenName: 'children'
+    }
+  },
+  uploader: {
+    urlName: 'url',
+    fileName: 'name',
+    thumbUrl(url) {
+      return url;
+    }
+  },
+  menu: {
+    titleName: 'title',
+    keyName: 'key',
+    childrenName: 'children'
+  },
+  autocomplete: {
+    configs: {},
+    default: {
+      maxLength: 20,
+      delay: 100,
+      loadData: null,
+      minWord: 0,
+      titleName: 'title',
+      keyName: 'key',
+      render: null
+    }
+  },
+  modal: {
+    hasDivider: false
+  },
+  page: {
+    small: false,
+    size: 10,
+    sizes: [10, 20, 50, 100],
+    layout: 'total,pager,jumper,sizes',
+    onChangeSize() {
+      // The need to deal with the global paging page number
+    },
+    init() {
+      // The need to deal with the global paging page number
+    },
+    onChange() {}
+  },
+  avatar: {
+    handleSrc(src) {
+      return src;
+    }
+  },
+  datepicker: {
+    startWeek: 1,
+    format: {
+      date: 'YYYY-MM-DD',
+      month: 'YYYY-MM',
+      year: 'YYYY',
+      time: 'HH:mm',
+      datetime: 'YYYY-MM-DD HH:mm',
+      datehour: 'YYYY-MM-DD HH:mm',
+      datetimesecond: 'YYYY-MM-DD HH:mm:ss'
+    },
+    datetimeOptions: {
+      minuteStep: 5
+    },
+    daterangeOptions: {
+      paramName: {
+        start: 'start',
+        end: 'end'
+      }
+    }
+  }
+};
+</codes>
     <h3>Global dictionary</h3>
     <p>Our overall design is driven by data-driven interaction. In the interactive process of data, simple input inputs are removed, and most of them are dictionary selections.</p>
     <h4>Configure the dictionary</h4>
