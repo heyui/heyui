@@ -4457,6 +4457,7 @@ var _default2 = {
       var isEndSelected = false;
       var isRangeSelected = false;
       var isSelected = false;
+      var datetime = d.date.time();
 
       if (_utils.default.isObject(this.value)) {
         isStartSelected = this.value.start == d.string;
@@ -4467,7 +4468,7 @@ var _default2 = {
       }
 
       if (this.range && _utils.default.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
-        isRangeSelected = this.value.start < d.string && this.rangeEnd > d.string || this.value.start > d.string && this.rangeEnd < d.string;
+        isRangeSelected = this.valueTime.start < datetime && this.rangeEndTime > datetime || this.valueTime.start > datetime && this.rangeEndTime < datetime;
       }
 
       return {
@@ -4571,6 +4572,23 @@ var _default2 = {
     }
   },
   computed: {
+    valueTime: function valueTime() {
+      if (!this.value) {
+        return {
+          start: null,
+          end: null
+        };
+      }
+
+      ;
+      return {
+        start: this.value.start ? (0, _manba.default)(this.value.start, this.format).time() : null,
+        end: this.value.end ? (0, _manba.default)(this.value.end, this.format).time() : null
+      };
+    },
+    rangeEndTime: function rangeEndTime() {
+      return this.rangeEnd ? (0, _manba.default)(this.rangeEnd, this.format).time() : null;
+    },
     dateBodyCls: function dateBodyCls() {
       var _ref;
 
@@ -4915,7 +4933,6 @@ var _locale = _interopRequireDefault(__webpack_require__(5));
 //
 //
 //
-//
 var prefix = 'h-datetime';
 var _default2 = {
   name: 'hDateRangePicker',
@@ -4964,12 +4981,6 @@ var _default2 = {
     }
   },
   data: function data() {
-    var format = this.format || _config.default.getOption('datepicker.format')[this.type];
-
-    if (this.type == 'datetime' && this.hasSeconds) {
-      format = _config.default.getOption('datepicker.format.datetimesecond');
-    }
-
     return {
       paramName: _config.default.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
@@ -4981,7 +4992,6 @@ var _default2 = {
         end: (0, _manba.default)().add(1, _manba.default.MONTH)
       },
       rangeEnd: '',
-      nowFormat: format,
       isShow: false
     };
   },
@@ -5035,13 +5045,13 @@ var _default2 = {
       this.hide();
     },
     updateView: function updateView(value, rangeType) {
-      this.nowView[rangeType] = (0, _manba.default)(value);
+      this.nowView[rangeType] = (0, _manba.default)(value, this.nowFormat);
 
       if (this.nowView.start.time() >= this.nowView.end.time()) {
         if (rangeType == 'end') {
-          this.nowView.start = (0, _manba.default)(value).add(-1, _manba.default.MONTH);
+          this.nowView.start = (0, _manba.default)(value, this.nowFormat).add(-1, _manba.default.MONTH);
         } else {
-          this.nowView.end = (0, _manba.default)(value).add(1, _manba.default.MONTH);
+          this.nowView.end = (0, _manba.default)(value, this.nowFormat).add(1, _manba.default.MONTH);
         }
       }
 
@@ -5050,23 +5060,10 @@ var _default2 = {
     changeView: function changeView() {
       this.dropdown.update();
     },
-    changeEvent: function changeEvent(event) {// let value = event.target.value;
-      // this.parse(value);
-      // if (utils.isObject(this.option) && this.type != "time") {
-      //   let disabled = false;
-      //   let type = manbaType[this.type];
-      //   if (this.option.start && this.nowView.distance(this.option.start, type) < 0) disabled = this.option.start;
-      //   if (this.option.end && !disabled && this.nowView.distance(this.option.end, type) > 0) disabled = this.option.end;
-      //   if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowView)) disabled = '';
-      //   if (disabled !== false) {
-      //     this.parse(disabled);
-      //   }
-      // }
-    },
     parseSingle: function parseSingle(value, range) {
       if (_utils.default.isObject(value) && value[this.paramName[range]]) {
         try {
-          var nowValue = (0, _manba.default)(value[this.paramName[range]]);
+          var nowValue = (0, _manba.default)(value[this.paramName[range]], this.nowFormat);
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
         } catch (evt) {}
@@ -5083,13 +5080,13 @@ var _default2 = {
       var start = (0, _manba.default)();
 
       if (this.nowDate.start) {
-        start = (0, _manba.default)(this.nowDate.start);
+        start = (0, _manba.default)(this.nowDate.start, this.nowFormat);
       }
 
       var endRange = 1;
       this.nowView = {
         start: start,
-        end: (0, _manba.default)(start).add(endRange, _manba.default.MONTH)
+        end: (0, _manba.default)(start, this.nowFormat).add(endRange, _manba.default.MONTH)
       };
       this.$refs.start.resetView();
       this.$refs.end.resetView();
@@ -5131,7 +5128,7 @@ var _default2 = {
         }
       }
 
-      if (isEnd && lastDate.start && lastDate.end && lastDate.start > lastDate.end) {
+      if (isEnd && lastDate.start && lastDate.end && (0, _manba.default)(lastDate.start, this.nowFormat).time() > (0, _manba.default)(lastDate.end, this.nowFormat).time()) {
         var start = lastDate.start;
         lastDate.start = lastDate.end;
         lastDate.end = start;
@@ -5155,6 +5152,15 @@ var _default2 = {
   computed: {
     showPlaceholder: function showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
+    },
+    nowFormat: function nowFormat() {
+      var format = this.format || _config.default.getOption('datepicker.format')[this.type];
+
+      if (this.type == 'datetime' && this.hasSeconds) {
+        format = _config.default.getOption('datepicker.format.datetimesecond');
+      }
+
+      return format;
     },
     show: function show() {
       if (!_utils.default.isObject(this.value)) {
@@ -17457,8 +17463,7 @@ var render = function() {
               placeholder: _vm.showPlaceholder,
               disabled: _vm.disabled
             },
-            domProps: { value: _vm.show },
-            on: { change: _vm.changeEvent }
+            domProps: { value: _vm.show }
           }),
           _vm._v(" "),
           _c("i", { staticClass: "h-icon-calendar" })
