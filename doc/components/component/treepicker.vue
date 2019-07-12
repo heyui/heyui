@@ -70,7 +70,7 @@
       </tr>
       <tr>
         <td>useConfirm</td>
-        <td>是否使用确定按钮</td>
+        <td>是否使用确定按钮, 1.21.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>

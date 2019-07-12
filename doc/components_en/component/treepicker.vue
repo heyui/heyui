@@ -70,7 +70,7 @@
       </tr>
       <tr>
         <td>useConfirm</td>
-        <td>Whether to use confirm button</td>
+        <td>Whether to use confirm button, 1.21.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
