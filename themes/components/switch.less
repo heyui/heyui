@@ -19,7 +19,6 @@
   }
   line-height: @height+2px;
 }
-
 .@{switch-prefix} .@{switch-prefix}-span {
   display: inline-block;
   margin: 0px;
@@ -53,12 +52,26 @@
     border-radius: 15px;
     transition: transform .3s;
   }
+
+  .@{switch-prefix}-inner {
+    font-size: @font-size-mini;
+    line-height: @switch-hight;
+    position: absolute;
+    left: 29px;
+  }
+
   &:checked,&[checked] {
     border-color: @primary-color;
     background: @primary-color;
     &:before {
       transform: scale(0);
     }
+
+    .@{switch-prefix}-inner {
+      left: 5px;
+      color: #FFF;
+    }
+
     &[disabled]{
       background-color: @disabled-background-color;
     }
@@ -80,6 +93,7 @@
 
 .@{switch-prefix}{
   display: inline-block;
+  position: relative;
   cursor: pointer;
   >.h-switch-text{
     display: inline-block;
@@ -87,5 +101,8 @@
   .switchset(@switch-hight);
   &.@{switch-prefix}-small {
     .switchset(@min-switch-height);
+    .@{switch-prefix}-inner {
+      display: none;
+    }
   }
 }
