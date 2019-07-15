@@ -51,7 +51,9 @@ export default {
       return this.myCodeMirror ? this.myCodeMirror.getValue() : '';
     },
     setValue(value) {
-      this.myCodeMirror.setValue(value);
+      if (this.myCodeMirror) {
+        this.myCodeMirror.setValue(value);
+      }
     },
     handleRun: function () {
       this.value = this.getValue();

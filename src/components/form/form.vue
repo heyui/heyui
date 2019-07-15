@@ -199,10 +199,10 @@ export default {
       };
       if (this.messages[prop]) {
         Object.assign(this.messages[prop], message);
-        return message;
+        return this.messages[prop];
       }
       this.messages[prop] = message;
-      return message;
+      return this.messages[prop];
     },
     updateProp(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
