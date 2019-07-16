@@ -66,6 +66,11 @@ export default {
         this.errorMessage = this.updateProp(prop, oldProp);
       }
     },
+    label() {
+      if (this.prop) {
+        this.errorMessage = this.updateErrorMessage(this.prop, this.label);
+      }
+    },
     required() {
       this.setConfig(this.prop, { required: this.required });
     }
