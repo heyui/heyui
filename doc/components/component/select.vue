@@ -98,7 +98,14 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>nullOption</td>
+        <td>deletable</td>
+        <td>是否可删除</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>nullOption <span class="red-color">deprecated</span></td>
         <td>是否有“请选择”选项</td>
         <td>Boolean</td>
         <td>-</td>

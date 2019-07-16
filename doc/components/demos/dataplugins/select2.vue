@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>选中值：{{select}}</p>
-    <div v-width="300"><Select v-model="select" :datas="param"  :null-option="false"></Select></div>
+    <div v-width="300"><Select v-model="select" :datas="param"  :deletable="false"></Select></div>
   </div>
 </template>
 <script>

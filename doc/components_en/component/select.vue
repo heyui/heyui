@@ -97,7 +97,14 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>nullOption</td>
+        <td>deletable</td>
+        <td>Is there a delete button</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>nullOption <span class="red-color">deprecated</span></td>
         <td>Is there a "Please select" option</td>
         <td>Boolean</td>
         <td>-</td>
