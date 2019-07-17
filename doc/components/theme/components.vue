@@ -39,8 +39,8 @@
           </Row>
           <Row :space="10">
             <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-green-color">Green</div></Cell>
-            <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-blue-color">Yellow</div></Cell>
-            <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-yellow-color">Warning</div></Cell>
+            <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-blue-color">Blue</div></Cell>
+            <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-yellow-color">Yellow</div></Cell>
             <Cell :width="4" :md='8' :xs="12"><div class="white-color bg-red-color">Red</div></Cell>
           </Row>
           <Row :space="10">

@@ -24,7 +24,7 @@
     <h3>禁用</h3>
     <example demo="dataplugins/select10"></example>
 
-    <h3>没有默认“请选择”选项</h3>
+    <h3>是否可以清空</h3>
     <example demo="dataplugins/select2"></example>
 
     <h3>多选</h3>
@@ -98,7 +98,7 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>deletable</td>
+        <td>deletable, 1.23.3+</td>
         <td>是否可删除</td>
         <td>Boolean</td>
         <td>-</td>

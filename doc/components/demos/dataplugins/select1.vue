@@ -1,12 +1,5 @@
 <template>
   <div>
-    <p>选中值：{{select}}<i class="h-split"></i>
-      <button class="h-btn h-btn-s" @click="update">修改值</button>
-    </p>
-    <div v-width="300">
-      <Select v-model="select" :datas="param" placeholder="自定义placeholder" null-option-text="自定义请选择项" @change="change"></Select>
-    </div>
-    <br/>
     <p>选中值：{{select2}}<i class="h-split"></i>
       <button class="h-btn h-btn-s" @click="update2">修改值</button>
     </p>

@@ -23,7 +23,7 @@
     <h3>Disabled</h3>
     <exampleEn demo="dataplugins/select10"></exampleEn>
 
-    <h3>There is no default "Please select" option</h3>
+    <h3>Setting whether you can delete</h3>
     <exampleEn demo="dataplugins/select2"></exampleEn>
 
     <h3>Multiple</h3>
@@ -97,7 +97,7 @@
         <td>-</td>
       </tr>
       <tr>
-        <td>deletable</td>
+        <td>deletable, 1.23.3+</td>
         <td>Is there a delete button</td>
         <td>Boolean</td>
         <td>-</td>
