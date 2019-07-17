@@ -6,7 +6,7 @@
 
     <p>使用 null-option 清空选择 / Empty the content with the null-option option</p>
     <div v-width="300">
-      <Select v-model="select" :datas="param" null-option-text="不限 / Unlimited" @change="change"></Select>
+      <Select v-model="select" :datas="param" null-option-text="不限 / Unlimited"></Select>
     </div>
   </div>
 </template>
