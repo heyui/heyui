@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.23.3-alpha.0](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.3-alpha.0) (2019-07-17)
+
+
+### Bug Fixes
+
+* **Category:** add loading judge ([604370b](https://github.com/heyui/heyui/commit/604370b)), closes [#181](https://github.com/heyui/heyui/issues/181)
+* **DateRangePicker:** fix use format ([987d07c](https://github.com/heyui/heyui/commit/987d07c)), closes [#175](https://github.com/heyui/heyui/issues/175)
+* **Form:** update form message ([904a94b](https://github.com/heyui/heyui/commit/904a94b)), closes [#182](https://github.com/heyui/heyui/issues/182)
+* **FormItem:** add label watch ([b9512ef](https://github.com/heyui/heyui/commit/b9512ef))
+* **Icon:** remove lock color ([7eddb4a](https://github.com/heyui/heyui/commit/7eddb4a))
+* **Menu:** add prop activeAll ([98bd474](https://github.com/heyui/heyui/commit/98bd474)), closes [#180](https://github.com/heyui/heyui/issues/180)
+* **Pagination:** set change after input ([548a381](https://github.com/heyui/heyui/commit/548a381))
+* **Pagination:** update change ([5e6bb10](https://github.com/heyui/heyui/commit/5e6bb10))
+* **Select:** use delete button mode ([68797eb](https://github.com/heyui/heyui/commit/68797eb)), closes [#171](https://github.com/heyui/heyui/issues/171)
+* **Switch:** add slot open and close ([7a75961](https://github.com/heyui/heyui/commit/7a75961)), closes [#184](https://github.com/heyui/heyui/issues/184)
+* **Table:** _disabledSelect for checkbox ([7f0e68f](https://github.com/heyui/heyui/commit/7f0e68f))
+* **Table:** optimize checkbox use ([e96f91a](https://github.com/heyui/heyui/commit/e96f91a))
+* **TableItem:** add prop format ([e3953a7](https://github.com/heyui/heyui/commit/e3953a7))
+
+
+### Build System
+
+* **deps:** bump lodash from 4.17.11 to 4.17.14 ([2a828f4](https://github.com/heyui/heyui/commit/2a828f4))
+* **deps:** bump lodash from 4.17.11 to 4.17.14 in /doc ([b83eb1c](https://github.com/heyui/heyui/commit/b83eb1c))
+* **deps:** bump lodash.template from 4.4.0 to 4.5.0 ([7cd4a4a](https://github.com/heyui/heyui/commit/7cd4a4a))
+
+
+
 ### [1.23.2](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.2) (2019-07-11)
 
 
