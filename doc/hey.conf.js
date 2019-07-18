@@ -3,6 +3,7 @@ module.exports = {
   timestamp: true,
   dist: 'dist',
   console: true,
+  stat: false,
   webpack: {
     // compress: false,
     console: true,
