@@ -111,6 +111,8 @@
     width: 150px;
     opacity: 0.8;
     max-height: 0;
+    margin-top: 5px;
+    border-radius: 4px;
     // transition: max-height 0.2s ease-out;
     transition: 0.1s cubic-bezier(0.78, 0.17, 0.43, 1);
     transform-origin: top;
@@ -195,14 +197,22 @@
       // transform: scale(1);
       // display: block;
       // overflow: visible;
-      // &:before{
-      //   content: '';
-      //   position: absolute;
-      //   height: 100%;
-      //   top: 0;
-      //   left: -10px;
-      //   width: 10px;
-      // }
+      &:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        top: -10px;
+        left: 0;
+        height: 10px;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -10px;
+        width: 10px;
+      }
     }
   }
 
