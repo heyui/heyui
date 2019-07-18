@@ -259,6 +259,21 @@ export default {
           utils.copy(this.multiple ? this.objects : this.object)
         );
       });
+    },
+    expandAll() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.expandAll();
+      }
+    },
+    expand(data) {
+      if (this.$refs.tree) {
+        return this.$refs.tree.expand(data);
+      }
+    },
+    foldAll() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.foldAll();
+      }
     }
   },
   computed: {

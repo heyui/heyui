@@ -1,6 +1,11 @@
 <template>
   <div>
     <p>value: {{value}}</p>
+    <p>
+      <Button @click="expandAll" size="xs">Expand all</Button>
+      <Button @click="expand([2, 3])" size="xs">Expand some</Button>
+      <Button @click="foldAll" size="xs">Collapse all</Button>
+    </p>
     <p>Modify the display:<Button @click="update">Update value</Button></p>
     <p><h-switch v-model="disabled" small>Disabled</h-switch> <h-switch v-model="useConfirm" small>Use Confirm</h-switch></p>
     <p v-width="300">
@@ -45,6 +50,15 @@ export default {
     };
   },
   methods: {
+    expand(ids) {
+      this.$refs.treepicker.expand(ids);
+    },
+    expandAll() {
+      this.$refs.treepicker.expandAll();
+    },
+    foldAll() {
+      this.$refs.treepicker.foldAll();
+    },
     change() {
       // Triggered when the selector is closed
     },

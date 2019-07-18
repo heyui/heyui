@@ -109,6 +109,24 @@
         <td>refresh view</td>
         <td></td>
       </tr>
+      <tr>
+        <td>expandAll</td>
+        <td>Open all folds, 1.23.4+</td>
+        <td>none</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>expand</td>
+        <td>Open folds, 1.23.4+</td>
+        <td>([keys])</td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td>foldAll</td>
+        <td>Collapse all folds, 1.23.4+</td>
+        <td>none</td>
+        <td>none</td>
+      </tr>
     </table>
 
     <h3>option Property</h3>
