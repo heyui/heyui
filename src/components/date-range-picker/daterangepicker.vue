@@ -6,7 +6,6 @@
         class="h-input"
         :value="show"
         readonly
-        @change="changeEvent"
         :placeholder="showPlaceholder"
         :disabled="disabled" />
       <i class="h-icon-calendar"></i>
@@ -48,9 +47,9 @@
       </div>
 
       <div class="h-date-footer">
-        <button class="h-btn h-btn-text h-btn-s"
+        <button type="button" class="h-btn h-btn-text h-btn-s"
                 @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s"
+        <button type="button" class="h-btn h-btn-primary h-btn-s"
                 @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
@@ -111,10 +110,6 @@ export default {
     }
   },
   data() {
-    let format = this.format || config.getOption('datepicker.format')[this.type];
-    if (this.type == 'datetime' && this.hasSeconds) {
-      format = config.getOption('datepicker.format.datetimesecond');
-    }
     return {
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
       nowDate: {
@@ -126,7 +121,6 @@ export default {
         end: manba().add(1, manba.MONTH)
       },
       rangeEnd: '',
-      nowFormat: format,
       isShow: false
     };
   },
@@ -174,12 +168,12 @@ export default {
       this.hide();
     },
     updateView(value, rangeType) {
-      this.nowView[rangeType] = manba(value);
+      this.nowView[rangeType] = manba(value, this.nowFormat);
       if (this.nowView.start.time() >= this.nowView.end.time()) {
         if (rangeType == 'end') {
-          this.nowView.start = manba(value).add(-1, manba.MONTH);
+          this.nowView.start = manba(value, this.nowFormat).add(-1, manba.MONTH);
         } else {
-          this.nowView.end = manba(value).add(1, manba.MONTH);
+          this.nowView.end = manba(value, this.nowFormat).add(1, manba.MONTH);
         }
       }
       this.dropdown.update();
@@ -187,24 +181,10 @@ export default {
     changeView() {
       this.dropdown.update();
     },
-    changeEvent(event) {
-      // let value = event.target.value;
-      // this.parse(value);
-      // if (utils.isObject(this.option) && this.type != "time") {
-      //   let disabled = false;
-      //   let type = manbaType[this.type];
-      //   if (this.option.start && this.nowView.distance(this.option.start, type) < 0) disabled = this.option.start;
-      //   if (this.option.end && !disabled && this.nowView.distance(this.option.end, type) > 0) disabled = this.option.end;
-      //   if (this.option.disabled && this.option.disabled.call(null, disabled || this.nowView)) disabled = '';
-      //   if (disabled !== false) {
-      //     this.parse(disabled);
-      //   }
-      // }
-    },
     parseSingle(value, range) {
       if (utils.isObject(value) && value[this.paramName[range]]) {
         try {
-          let nowValue = manba(value[this.paramName[range]]);
+          let nowValue = manba(value[this.paramName[range]], this.nowFormat);
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
         } catch (evt) {
@@ -220,12 +200,12 @@ export default {
     initNowView() {
       let start = manba();
       if (this.nowDate.start) {
-        start = manba(this.nowDate.start);
+        start = manba(this.nowDate.start, this.nowFormat);
       }
       let endRange = 1;
       this.nowView = {
         start,
-        end: manba(start).add(endRange, manba.MONTH)
+        end: manba(start, this.nowFormat).add(endRange, manba.MONTH)
       };
       this.$refs.start.resetView();
       this.$refs.end.resetView();
@@ -262,7 +242,7 @@ export default {
           lastDate.end = '';
         }
       }
-      if (isEnd && lastDate.start && lastDate.end && lastDate.start > lastDate.end) {
+      if (isEnd && lastDate.start && lastDate.end && manba(lastDate.start, this.nowFormat).time() > manba(lastDate.end, this.nowFormat).time()) {
         let start = lastDate.start;
         lastDate.start = lastDate.end;
         lastDate.end = start;
@@ -287,6 +267,13 @@ export default {
   computed: {
     showPlaceholder() {
       return this.placeholder || this.t('h.datepicker.placeholder');
+    },
+    nowFormat() {
+      let format = this.format || config.getOption('datepicker.format')[this.type];
+      if (this.type == 'datetime' && this.hasSeconds) {
+        format = config.getOption('datepicker.format.datetimesecond');
+      }
+      return format;
     },
     show() {
       if (!utils.isObject(this.value)) {

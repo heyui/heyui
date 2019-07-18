@@ -7,13 +7,12 @@
       :status="status"
       :inlineCollapsed="inlineCollapsed"
       @trigger="trigger"></hMenuItem>
-
   </ul>
 </template>
 <script>
 import utils from 'heyui/src/utils/utils';
 import config from 'heyui/src/utils/config';
-import hMenuItem from './menuitem';
+import hMenuItem from './menu-item';
 
 const prefix = 'h-menu';
 
@@ -74,6 +73,10 @@ export default {
     inlineCollapsed: {
       type: Boolean,
       default: false
+    },
+    activeAll: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -113,6 +116,9 @@ export default {
       if (selected) {
         this.status.selected = key;
         this.status.opened = updateOpened(selected);
+      } else {
+        this.status.selected = null;
+        this.status.opened = [];
       }
     },
     trigger(data) {
@@ -131,9 +137,11 @@ export default {
         }
 
         this.$emit('click', menu);
-        if (menu.children && menu.children.length > 0) {
+        let isParent = menu.children && menu.children.length > 0;
+        if (isParent && (!this.activeAll || this.status.selected == menu.key)) {
           return;
         }
+
         this.status.selected = menu.key;
         this.$emit('select', menu.value);
         this.$emit('onclick', menu.value);

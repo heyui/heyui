@@ -1,25 +1,21 @@
 @switch-prefix: ~"@{prefix}switch";
 .switchset(@height) {
   >.@{switch-prefix}-span{
-    width: @height*1.8+2px;
+    min-width: @height*1.8+2px;
     height: @height+2px;
     &:after {
       width: @height - 2px;
       height: @height - 2px;
     }
-    &:before {
-      width: @height*1.8;
-      height: @height;
-    }
     &:checked,&[checked] {
       &:after {
-        transform: translateX(@height*0.8);
+        left: 100%;
+        margin-left: -@height + 1px;
       }
     }
   }
   line-height: @height+2px;
 }
-
 .@{switch-prefix} .@{switch-prefix}-span {
   display: inline-block;
   margin: 0px;
@@ -32,7 +28,7 @@
   background: @gray1-color;
   float: left;
   margin-right: 5px;
-  transition: all .3s; 
+  transition: all 0.3s; 
   &:after {
     background-color: @white-color;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
@@ -45,20 +41,41 @@
     background-color: @gray1-color;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
   }
   &:after,
   &:before {
     content: " ";
     position: absolute;
     border-radius: 15px;
-    transition: transform .3s;
+    transition: all 0.3s;
   }
+
+  .@{switch-prefix}-inner {
+    font-size: @font-size-mini;
+    line-height: @switch-hight;
+    height: @switch-hight;
+    margin-right: 8px;
+    margin-left: 30px;
+    color: @dark2-color;
+    position: relative;
+    vertical-align: 2px;
+  }
+
   &:checked,&[checked] {
     border-color: @primary-color;
     background: @primary-color;
     &:before {
       transform: scale(0);
     }
+
+    .@{switch-prefix}-inner {
+      margin-right: 30px;
+      margin-left: 8px;
+      color: #FFF;
+    }
+
     &[disabled]{
       background-color: @disabled-background-color;
     }
@@ -80,6 +97,7 @@
 
 .@{switch-prefix}{
   display: inline-block;
+  position: relative;
   cursor: pointer;
   >.h-switch-text{
     display: inline-block;
@@ -87,5 +105,8 @@
   .switchset(@switch-hight);
   &.@{switch-prefix}-small {
     .switchset(@min-switch-height);
+    .@{switch-prefix}-inner {
+      display: none;
+    }
   }
 }

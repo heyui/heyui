@@ -71,7 +71,7 @@ class Notify {
           color = b.color;
         }
         if (color) color = `h-btn-${color}`;
-        footeHtml += `<button class="h-btn ${color}" attr="${attr}" >${name}</button>`;
+        footeHtml += `<button type="button" class="h-btn ${color}" attr="${attr}" >${name}</button>`;
       }
       html += `<footer class="${param.type}-footer">${footeHtml}</footer>`;
     }
@@ -107,12 +107,13 @@ class Notify {
     } else {
       $content.innerHTML = content;
     }
-
-    if (param.component != undefined && Vue) {
-      this.vue = new Vue({
+    const VueInstance = Vue || window.Vue;
+    if (param.component != undefined && VueInstance) {
+      this.vue = new VueInstance({
         el: $content,
         i18n: param.$i18n,
         router: param.$router,
+        store: param.$store,
         render(createElement) {
           let keys = Object.keys(param.events || {});
           let events = {

@@ -17,7 +17,7 @@
     ></Select>
     <span class="h-page-pager-container" :style="{order:orders.pager}" v-if="orders.pager!=-1 && this.count>0">
       <span :class="prevCls" @click="prev()">
-        <i class="h-icon-left"></i>
+        <i class="h-icon-angle-left"></i>
       </span>
       <span @click="change(1)" :class="genPagerCls(1)">1</span>
       <span v-if="pagers.length > 0 && 1 < pagers[0] - 1" class="h-page-pager h-page-ellipsis">...</span>
@@ -25,7 +25,7 @@
       <span class="h-page-pager h-page-ellipsis" v-if="pagers.length > 0 && count > pagers[pagers.length-1] + 1">...</span>
       <span @click="change(count)" :class="genPagerCls(count)" v-if="this.count>1">{{count}}</span>
       <span :class="nextCls" @click="next()">
-        <i class="h-icon-right"></i>
+        <i class="h-icon-angle-right"></i>
       </span>
     </span>
     <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @blur="jump" @keyup.enter="jump">
@@ -141,10 +141,10 @@ export default {
       let value = { page: params.cur, total: this.totalNow };
       Object.assign(value, params);
       this.curValue = params.cur;
-      this.$emit('change', value);
       let inputvalue = { ...value };
       delete inputvalue.cur;
       this.$emit('input', inputvalue);
+      this.$emit('change', value);
     },
     changesize() {
       this.setvalue({ cur: 1, size: this.sizeNow });

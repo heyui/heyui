@@ -16,7 +16,9 @@ export default {
     dict: String,
     align: String,
     className: String,
+    treeOpener: Boolean,
     unit: String,
+    format: Function,
     render: Function,
     sortProp: String,
     tooltip: {

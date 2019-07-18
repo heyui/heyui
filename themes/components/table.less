@@ -25,11 +25,22 @@
       padding-right: 8px;
       padding-left: 0;
     }
+    &.text-center {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
   th&-th-checkbox,
   td&-td-checkbox {
     text-align: center;
     text-overflow: clip;
+    padding-left: 0;
+  }
+  th&-th-radio,
+  td&-td-radio {
+    text-align: center;
+    text-overflow: clip;
+    padding-left: 0;
   }
   td {
     font-size: @font-size-mini;
@@ -57,6 +68,10 @@
     position: relative;
     margin-top: -1px;
     background: #fff;
+    &.h-loading-parent {
+      min-height: 40px;
+    }
+
     table {
       width: 100%;
     }
@@ -67,6 +82,7 @@
     z-index: 1;
     position: absolute;
     top: 0;
+    background: #FFF;
     bottom: 0;
     overflow: hidden;
     table {
@@ -156,7 +172,7 @@
   }
 
   &-content-empty {
-    color: @gray-color;
+    color: @dark4-color;
     text-align: center;
     box-sizing: border-box;
     padding: 20px;
@@ -169,7 +185,7 @@
     color: @gray1-color;
     transition: color @transition-time;
     th:hover & {
-      color: @gray-color;
+      color: @dark4-color;
     }
     > span {
       cursor: pointer;
@@ -182,11 +198,27 @@
     }
   }
 
-  &.h-loading-parent {
-    min-height: 50px;
-  }
-
   &-tr-select-disabled {
     background: @disabled-background-color;
+  }
+  &-content-empty-width{
+    height: 1px;
+  }
+  &-tree-icon {
+    font-size: 14px;
+    .h-func-text-hover();
+  }
+  &-tree-empty {
+    display: inline-block;
+    width: 14px;
+  }
+  &-tree-expand-space {
+    display: inline-block;
+    width: 8px;
+  }
+  &-tree-opened {
+    .h-table-tree-icon{
+      transform: rotate(90deg);
+    }
   }
 }

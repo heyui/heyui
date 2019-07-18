@@ -7,7 +7,7 @@
       </HHeader>
       <Layout :siderFixed="siderFixed" :siderCollapsed="siderCollapsed">
         <Sider theme="white">
-          <Menu style="margin-top: 40px;" class="h-menu-white" :datas="menuDatas" :inlineCollapsed="siderCollapsed"></Menu>
+          <Menu style="margin-top: 40px;" className="h-menu-white" :datas="menuDatas" :inlineCollapsed="siderCollapsed"></Menu>
         </Sider>
         <Content style="padding: 0px 30px;">
           <Breadcrumb :datas="datas" style="margin: 16px 0px;"></Breadcrumb>

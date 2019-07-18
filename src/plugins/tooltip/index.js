@@ -14,7 +14,6 @@ class Tooltip extends Pop {
       classes.push(`h-tooltip-editable`);
     }
     param.class = classes.join(' ');
-    param.closeOnClickBody = true;
     param.type = 'tooltip';
     param.trigger = param.trigger || 'hover focus';
     super(el, param);

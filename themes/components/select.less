@@ -9,6 +9,9 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    >.@{prefix}icon-close{
+      .h-func-input-right-icon();
+    }
   }
   & &-search-input {
     .h-func-border-input-inside-input();
@@ -60,14 +63,14 @@
     position: relative;
 
     &-disabled {
-      color: @gray-color;
+      color: @disabled-color;
       cursor: not-allowed;
       &:hover{
         background: none;
       }
     }
     &-label {
-      color: @gray-color;
+      color: @dark4-color;
       font-size: 12px;
       padding: 8px 10px;
     }
@@ -115,7 +118,7 @@
     .h-func-list-style();
   }
   .h-select-ul-empty {
-    color: @gray-color;
+    color: @dark4-color;
     line-height: 24px;
     padding: 0 10px;
   }

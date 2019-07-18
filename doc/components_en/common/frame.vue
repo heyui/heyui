@@ -1,24 +1,4 @@
 <style lang="less">
-  ul.right-frame-menu {
-    overflow: auto;
-    padding: 70px 0;
-    width: 180px;
-    background-color: #FFF;
-    li{
-      font-size: 14px;
-      padding: 5px 15px;
-      line-height: 20px;
-      word-break: break-all;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      cursor: pointer;
-      &:hover{
-        color: @primary-color;
-        background-color: @hover-background-color;
-      }
-    }
-  }
   .right-frame-menu-container{
     top: 20px;
     position: fixed;
@@ -92,7 +72,10 @@ export default {
           }
         });
         let menus = $('.doc h2,.doc h3').not('.demo-box h2,.demo-boxc h3');
-        this.menus = [...menus].map(item => item.innerText);
+        this.menus = [];
+        menus.each((index, item) => {
+          this.menus.push(item.innerText);
+        });
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);
           link.on('click', (event) => {

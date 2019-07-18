@@ -1,18 +1,21 @@
 <template>
   <div>
-    <p>值：{{value1}}</p>
+    <p>value：{{value1}}</p>
     <p>
-      <Checkbox :indeterminate="value1.length>0&&value1.length<3" :checked="value1.length == 3" @click.native="checkAll">全选</Checkbox>
+      <Checkbox :indeterminate="value1.length>0&&value1.length<3" :checked="value1.length == 3" @click.native="checkAll">全选 / Choose All</Checkbox>
     </p>
     <p><Checkbox v-model="value1" :datas="param1" ></Checkbox></p>
-    <p>值：{{value2}}</p>
-    <p><Checkbox v-model="value2" :datas="param2" ></Checkbox></p>
-    <p>值：{{value3}}</p>
-    <p><Checkbox v-model="value3" :datas="param3" ></Checkbox></p>
-    <p>禁用</p>
-    <p><Checkbox v-model="value4" :datas="param2" :disabled="true"></Checkbox></p>
-    <p>自定义key, title字段名</p>
-    <p><Checkbox v-model="value8" :datas="param4"  keyName="code" titleName="name"></Checkbox></p>
+
+    <blockquote>基础 / Basic</blockquote>
+    <p>value：{{value2}}</p>
+    <p><Checkbox v-model="value2" :limit="2" :datas="param3" ></Checkbox></p>
+
+    <blockquote>全部禁用 / Disabled</blockquote>
+    <p><Checkbox v-model="value2" :datas="param3" disabled></Checkbox></p>
+
+    <blockquote>自定义key, title字段名 / Custom key, title field name</blockquote>
+    <p>value：{{value8}}</p>
+    <p><Checkbox v-model="value8" :datas="param2"  keyName="code" titleName="name"></Checkbox></p>
   </div>
 </template>
 
@@ -21,17 +24,11 @@ export default {
   data() {
     return {
       value1: [],
-      value2: null,
-      value3: ['a1'],
-      value4: [1],
-      value5: false,
-      value6: null,
-      value7: null,
-      value8: null,
-      param1: ['选择1', '选择2', '选择3'],
-      param2: { 1: '选择1', 2: '选择2', 3: '选择3' },
-      param3: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-      param4: [{ name: '选择0', code: 0 }, { name: '选择1', code: 'a1', other: '其他值' }, { name: '选择2', code: 'a2' }, { name: '选择3', code: 'a3' }]
+      param1: ['choose1', 'choose2', 'choose3'],
+      value2: ['a1'],
+      value8: ['0'],
+      param3: [{ title: 'choose1', key: 'a1', other: 'other value' }, { title: 'choose2', key: 'a2' }, { title: 'choose3', key: 'a3' }],
+      param2: [{ name: 'choose0', code: 0 }, { name: 'choose1', code: 'a1', other: 'other value' }, { name: 'choose2', code: 'a2' }, { name: 'choose3', code: 'a3', disabled: true }]
     };
   },
   methods: {
@@ -39,7 +36,7 @@ export default {
       if (this.value1.length == 3) {
         this.value1.splice(0, 3);
       } else {
-        this.value1 = ['选择1', '选择2', '选择3'];
+        this.value1 = ['choose1', 'choose2', 'choose3'];
       }
     }
   }

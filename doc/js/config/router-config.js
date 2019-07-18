@@ -22,7 +22,7 @@ const router = {
           meta: {
             title: 'Guide'
           },
-          component: () => import('components/guide/guide')
+          component: () => import('components/component/guide')
         },
         {
           path: 'basic/grid',
@@ -30,7 +30,7 @@ const router = {
           meta: {
             title: 'Grid'
           },
-          component: () => import('components/component/basic/grid')
+          component: () => import('components/component/grid')
         },
         {
           path: 'basic/layout',
@@ -38,7 +38,7 @@ const router = {
           meta: {
             title: 'Layout'
           },
-          component: () => import('components/component/basic/layout')
+          component: () => import('components/component/layout')
         },
         {
           path: 'basic/color',
@@ -46,7 +46,7 @@ const router = {
           meta: {
             title: 'Color'
           },
-          component: () => import('components/component/basic/color')
+          component: () => import('components/component/color')
         },
         {
           path: 'basic/icon',
@@ -54,7 +54,7 @@ const router = {
           meta: {
             title: 'Icon'
           },
-          component: () => import('components/component/basic/icon')
+          component: () => import('components/component/icon')
         },
         {
           path: 'basic/extend',
@@ -62,7 +62,7 @@ const router = {
           meta: {
             title: 'Extend'
           },
-          component: () => import('components/component/basic/extend')
+          component: () => import('components/component/extend')
         },
         {
           path: 'basic/button',
@@ -70,7 +70,7 @@ const router = {
           meta: {
             title: 'Button'
           },
-          component: () => import('components/component/basic/button')
+          component: () => import('components/component/button')
         },
         {
           path: 'form/input',
@@ -78,7 +78,7 @@ const router = {
           meta: {
             title: 'Input'
           },
-          component: () => import('components/component/form/input')
+          component: () => import('components/component/input')
         },
         {
           path: 'form/textarea',
@@ -86,7 +86,7 @@ const router = {
           meta: {
             title: 'Textarea'
           },
-          component: () => import('components/component/form/textarea')
+          component: () => import('components/component/textarea')
         },
         {
           path: 'form/radio',
@@ -94,7 +94,7 @@ const router = {
           meta: {
             title: 'Radio'
           },
-          component: () => import('components/component/form/radio')
+          component: () => import('components/component/radio')
         },
         {
           path: 'form/switchlist',
@@ -102,7 +102,7 @@ const router = {
           meta: {
             title: 'Switchlist'
           },
-          component: () => import('components/component/form/switchlist')
+          component: () => import('components/component/switchlist')
         },
         {
           path: 'form/switch',
@@ -110,7 +110,7 @@ const router = {
           meta: {
             title: 'HSwitch'
           },
-          component: () => import('components/component/form/switch')
+          component: () => import('components/component/switch')
         },
         {
           path: 'form/checkbox',
@@ -118,7 +118,7 @@ const router = {
           meta: {
             title: 'Checkbox'
           },
-          component: () => import('components/component/form/checkbox')
+          component: () => import('components/component/checkbox')
         },
         {
           path: 'form/slider',
@@ -126,7 +126,7 @@ const router = {
           meta: {
             title: 'Slider'
           },
-          component: () => import('components/component/form/slider')
+          component: () => import('components/component/slider')
         },
         {
           path: 'form/rate',
@@ -134,7 +134,7 @@ const router = {
           meta: {
             title: 'Rate'
           },
-          component: () => import('components/component/form/rate')
+          component: () => import('components/component/rate')
         },
         {
           path: 'form/form',
@@ -142,7 +142,7 @@ const router = {
           meta: {
             title: 'Form'
           },
-          component: () => import('components/component/form/form')
+          component: () => import('components/component/form')
         },
         {
           path: 'data/plugin/select',
@@ -150,7 +150,7 @@ const router = {
           meta: {
             title: 'Select'
           },
-          component: () => import('components/component/data/plugin/select')
+          component: () => import('components/component/select')
         },
         {
           path: 'data/plugin/autocomplete',
@@ -158,7 +158,7 @@ const router = {
           meta: {
             title: 'AutoComplete'
           },
-          component: () => import('components/component/data/plugin/autocomplete')
+          component: () => import('components/component/autocomplete')
         },
         {
           path: 'data/plugin/date',
@@ -166,7 +166,7 @@ const router = {
           meta: {
             title: 'Date'
           },
-          component: () => import('components/component/data/plugin/date')
+          component: () => import('components/component/date')
         },
         {
           path: 'data/plugin/time',
@@ -174,7 +174,7 @@ const router = {
           meta: {
             title: 'Time'
           },
-          component: () => import('components/component/data/plugin/time')
+          component: () => import('components/component/time')
         },
         {
           path: 'data/plugin/datetime',
@@ -182,7 +182,7 @@ const router = {
           meta: {
             title: 'DateTime'
           },
-          component: () => import('components/component/data/plugin/datetime')
+          component: () => import('components/component/datetime')
         },
         {
           path: 'data/plugin/daterange',
@@ -190,7 +190,7 @@ const router = {
           meta: {
             title: 'DateRange'
           },
-          component: () => import('components/component/data/plugin/daterange')
+          component: () => import('components/component/daterange')
         },
         {
           path: 'data/plugin/datefullrange',
@@ -198,12 +198,12 @@ const router = {
           meta: {
             title: 'DateFullRange'
           },
-          component: () => import('components/component/data/plugin/datefullrange')
+          component: () => import('components/component/datefullrange')
         },
         {
           path: 'data/plugin/city',
           name: 'pluginCity',
-          component: () => import('components/component/data/plugin/city')
+          component: () => import('components/component/city')
         },
         {
           path: 'data/plugin/taginput',
@@ -211,7 +211,7 @@ const router = {
           meta: {
             title: 'TagInput'
           },
-          component: () => import('components/component/data/plugin/taginput')
+          component: () => import('components/component/taginput')
         },
         {
           path: 'data/plugin/numberinput',
@@ -219,7 +219,7 @@ const router = {
           meta: {
             title: 'NumberInput'
           },
-          component: () => import('components/component/data/plugin/numberinput')
+          component: () => import('components/component/numberinput')
         },
         {
           path: 'data/plugin/upload',
@@ -227,7 +227,7 @@ const router = {
           meta: {
             title: 'Upload'
           },
-          component: () => import('components/component/data/plugin/upload')
+          component: () => import('components/component/upload')
         },
         {
           path: 'data/plugin/valid',
@@ -235,7 +235,7 @@ const router = {
           meta: {
             title: 'Valid'
           },
-          component: () => import('components/component/data/plugin/valid')
+          component: () => import('components/component/valid')
         },
         {
           path: 'data/view/searchinput',
@@ -243,7 +243,7 @@ const router = {
           meta: {
             title: 'SearchInput'
           },
-          component: () => import('components/component/data/view/searchinput')
+          component: () => import('components/component/searchinput')
         },
         {
           path: 'data/view/table',
@@ -251,7 +251,7 @@ const router = {
           meta: {
             title: 'Table'
           },
-          component: () => import('components/component/data/view/table')
+          component: () => import('components/component/table')
         },
         {
           path: 'data/view/page',
@@ -259,7 +259,7 @@ const router = {
           meta: {
             title: 'Page'
           },
-          component: () => import('components/component/data/view/page')
+          component: () => import('components/component/page')
         },
         {
           path: 'data/view/loading',
@@ -267,7 +267,7 @@ const router = {
           meta: {
             title: 'Loading'
           },
-          component: () => import('components/component/data/view/loading')
+          component: () => import('components/component/loading')
         },
         {
           path: 'data/view/progress',
@@ -275,7 +275,7 @@ const router = {
           meta: {
             title: 'Progress'
           },
-          component: () => import('components/component/data/view/progress')
+          component: () => import('components/component/progress')
         },
         {
           path: 'data/view/circle',
@@ -283,7 +283,7 @@ const router = {
           meta: {
             title: 'Circle'
           },
-          component: () => import('components/component/data/view/circle')
+          component: () => import('components/component/circle')
         },
         {
           path: 'plugin/tree',
@@ -291,7 +291,7 @@ const router = {
           meta: {
             title: 'Tree'
           },
-          component: () => import('components/component/plugin/tree')
+          component: () => import('components/component/tree')
         },
         {
           path: 'plugin/treepicker',
@@ -299,7 +299,7 @@ const router = {
           meta: {
             title: 'TreePicker'
           },
-          component: () => import('components/component/plugin/treepicker')
+          component: () => import('components/component/treepicker')
         },
         {
           path: 'plugin/dropdowncustom',
@@ -307,7 +307,7 @@ const router = {
           meta: {
             title: 'DropdownCustom'
           },
-          component: () => import('components/component/plugin/dropdowncustom')
+          component: () => import('components/component/dropdowncustom')
         },
         {
           path: 'plugin/category',
@@ -315,7 +315,7 @@ const router = {
           meta: {
             title: 'Category'
           },
-          component: () => import('components/component/plugin/category')
+          component: () => import('components/component/category')
         },
         {
           path: 'plugin/search',
@@ -323,7 +323,7 @@ const router = {
           meta: {
             title: 'Search'
           },
-          component: () => import('components/component/plugin/search')
+          component: () => import('components/component/search')
         },
         {
           path: 'plugin/cascader',
@@ -331,7 +331,7 @@ const router = {
           meta: {
             title: 'Cascader'
           },
-          component: () => import('components/component/plugin/cascader')
+          component: () => import('components/component/cascader')
         },
         {
           path: 'other/categorypicker',
@@ -339,7 +339,7 @@ const router = {
           meta: {
             title: 'CategoryPicker'
           },
-          component: () => import('components/component/other/categorypicker')
+          component: () => import('components/component/categorypicker')
         },
         {
           path: 'plugin/dropdownmenu',
@@ -347,7 +347,7 @@ const router = {
           meta: {
             title: 'DropdownMenu'
           },
-          component: () => import('components/component/plugin/dropdownmenu')
+          component: () => import('components/component/dropdownmenu')
         },
         {
           path: 'plugin/loadingbar',
@@ -355,7 +355,7 @@ const router = {
           meta: {
             title: 'LoadingBar'
           },
-          component: () => import('components/component/plugin/loadingbar')
+          component: () => import('components/component/loadingbar')
         },
         {
           path: 'plugin/steps',
@@ -363,7 +363,7 @@ const router = {
           meta: {
             title: 'Steps'
           },
-          component: () => import('components/component/plugin/steps')
+          component: () => import('components/component/steps')
         },
         {
           path: 'message/message',
@@ -371,7 +371,7 @@ const router = {
           meta: {
             title: 'Tip'
           },
-          component: () => import('components/component/message/message')
+          component: () => import('components/component/message')
         },
         {
           path: 'message/notice',
@@ -379,7 +379,7 @@ const router = {
           meta: {
             title: 'Notice'
           },
-          component: () => import('components/component/message/notice')
+          component: () => import('components/component/notice')
         },
         {
           path: 'message/modal',
@@ -387,7 +387,7 @@ const router = {
           meta: {
             title: 'Modal'
           },
-          component: () => import('components/component/message/modal')
+          component: () => import('components/component/modal')
         },
         {
           path: 'message/tooltip',
@@ -395,7 +395,7 @@ const router = {
           meta: {
             title: 'Tooltip'
           },
-          component: () => import('components/component/message/tooltip')
+          component: () => import('components/component/tooltip')
         },
         {
           path: 'message/poptip',
@@ -403,7 +403,7 @@ const router = {
           meta: {
             title: 'Poptip'
           },
-          component: () => import('components/component/message/poptip')
+          component: () => import('components/component/poptip')
         },
         {
           path: 'view/badge',
@@ -411,7 +411,7 @@ const router = {
           meta: {
             title: 'Badge'
           },
-          component: () => import('components/component/view/badge')
+          component: () => import('components/component/badge')
         },
         {
           path: 'view/panel',
@@ -419,7 +419,7 @@ const router = {
           meta: {
             title: 'Panel'
           },
-          component: () => import('components/component/view/panel')
+          component: () => import('components/component/panel')
         },
         {
           path: 'view/collapse',
@@ -427,7 +427,7 @@ const router = {
           meta: {
             title: 'Collapse'
           },
-          component: () => import('components/component/view/collapse')
+          component: () => import('components/component/collapse')
         },
         {
           path: 'view/tag',
@@ -435,7 +435,7 @@ const router = {
           meta: {
             title: 'Tag'
           },
-          component: () => import('components/component/view/tag')
+          component: () => import('components/component/tag')
         },
         {
           path: 'view/tabs',
@@ -443,7 +443,7 @@ const router = {
           meta: {
             title: 'Tabs'
           },
-          component: () => import('components/component/view/tabs')
+          component: () => import('components/component/tabs')
         },
         {
           path: 'view/menu',
@@ -451,7 +451,7 @@ const router = {
           meta: {
             title: 'Menu'
           },
-          component: () => import('components/component/view/menu')
+          component: () => import('components/component/menu')
         },
         {
           path: 'view/timeline',
@@ -459,7 +459,7 @@ const router = {
           meta: {
             title: 'Timeline'
           },
-          component: () => import('components/component/view/timeline')
+          component: () => import('components/component/timeline')
         },
         {
           path: 'view/imagepreview',
@@ -467,7 +467,7 @@ const router = {
           meta: {
             title: 'ImagePreview'
           },
-          component: () => import('components/component/view/imagepreview')
+          component: () => import('components/component/imagepreview')
         },
         {
           path: 'view/carousel',
@@ -475,7 +475,7 @@ const router = {
           meta: {
             title: 'Carousel'
           },
-          component: () => import('components/component/view/carousel')
+          component: () => import('components/component/carousel')
         },
         {
           path: 'view/transfer',
@@ -483,7 +483,7 @@ const router = {
           meta: {
             title: 'Tranfer'
           },
-          component: () => import('components/component/view/transfer')
+          component: () => import('components/component/transfer')
         },
         {
           path: 'view/breadcrumb',
@@ -491,7 +491,7 @@ const router = {
           meta: {
             title: 'Breadcrumb'
           },
-          component: () => import('components/component/view/breadcrumb')
+          component: () => import('components/component/breadcrumb')
         },
         {
           path: 'view/avatar',
@@ -499,7 +499,7 @@ const router = {
           meta: {
             title: 'Avatar'
           },
-          component: () => import('components/component/view/avatar')
+          component: () => import('components/component/avatar')
         },
         {
           path: 'other/affix',
@@ -507,7 +507,7 @@ const router = {
           meta: {
             title: 'Affix'
           },
-          component: () => import('components/component/other/affix')
+          component: () => import('components/component/affix')
         },
         {
           path: 'other/backtop',
@@ -515,7 +515,7 @@ const router = {
           meta: {
             title: 'Backtop'
           },
-          component: () => import('components/component/other/backtop')
+          component: () => import('components/component/backtop')
         },
         {
           path: 'other/colorpicker',
@@ -523,7 +523,7 @@ const router = {
           meta: {
             title: 'ColorPicker'
           },
-          component: () => import('components/component/other/colorpicker')
+          component: () => import('components/component/colorpicker')
         },
         {
           path: 'other/scrollintoview',
@@ -531,7 +531,7 @@ const router = {
           meta: {
             title: 'ScrollIntoView'
           },
-          component: () => import('components/component/other/scrollintoview')
+          component: () => import('components/component/scrollintoview')
         },
         {
           path: 'other/clipboard',
@@ -539,7 +539,7 @@ const router = {
           meta: {
             title: 'Clipboard'
           },
-          component: () => import('components/component/other/clipboard')
+          component: () => import('components/component/clipboard')
         },
         {
           path: 'other/textellipsis',
@@ -547,7 +547,7 @@ const router = {
           meta: {
             title: 'TextEllipsis'
           },
-          component: () => import('components/component/other/textellipsis')
+          component: () => import('components/component/textellipsis')
         },
         {
           path: 'other/skeleton',
@@ -555,7 +555,7 @@ const router = {
           meta: {
             title: 'Skeleton'
           },
-          component: () => import('components/component/other/skeleton')
+          component: () => import('components/component/skeleton')
         },
         {
           path: '',
@@ -563,7 +563,7 @@ const router = {
           meta: {
             title: 'Guide'
           },
-          component: () => import('components/guide/guide')
+          component: () => import('components/component/guide')
         },
         {
           path: 'guide',
@@ -571,7 +571,7 @@ const router = {
           meta: {
             title: 'Guide'
           },
-          component: () => import('components/guide/guide')
+          component: () => import('components/component/guide')
         },
         {
           path: 'quickstart',
@@ -579,7 +579,7 @@ const router = {
           meta: {
             title: 'QuickStart'
           },
-          component: () => import('components/guide/quickstart')
+          component: () => import('components/component/quickstart')
         },
         {
           path: 'themes',
@@ -587,7 +587,7 @@ const router = {
           meta: {
             title: 'Themes'
           },
-          component: () => import('components/guide/themes')
+          component: () => import('components/component/themes')
         },
         {
           path: 'i18n',
@@ -595,7 +595,7 @@ const router = {
           meta: {
             title: 'I18n'
           },
-          component: () => import('components/guide/i18n')
+          component: () => import('components/component/i18n')
         },
         {
           path: 'config',
@@ -603,7 +603,7 @@ const router = {
           meta: {
             title: 'Config'
           },
-          component: () => import('components/guide/config')
+          component: () => import('components/component/config')
         },
         {
           path: 'methods',
@@ -611,7 +611,7 @@ const router = {
           meta: {
             title: 'Methods'
           },
-          component: () => import('components/guide/methods')
+          component: () => import('components/component/methods')
         },
         {
           path: 'guideheysnippets',
@@ -622,6 +622,16 @@ const router = {
           component: () => import('components/resource/heysnippets')
         }
       ]
+    },
+    {
+      path: '/theme',
+      name: 'systheme',
+      component: resolve => require(['components/theme/index'], resolve)
+    },
+    {
+      path: '/run',
+      name: 'sysrun',
+      component: resolve => require(['components/run/index'], resolve)
     },
     {
       path: '/resource',
@@ -692,11 +702,6 @@ const router = {
           component: () => import('components/resource/heysnippets')
         }
       ]
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: resolve => require(['components/about'], resolve)
     },
     {
       path: '/frame/example',

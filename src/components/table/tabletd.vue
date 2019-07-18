@@ -1,5 +1,12 @@
 <template>
-  <td :class="cls"><template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot></td>
+  <td :class="cls">
+    <span class="h-table-tree-expand" v-if="treeOpener" :class="{'h-table-tree-opened': data._opened}">
+      <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
+      <i class="h-table-tree-icon h-icon-angle-right" @click="toggleTree" v-if="data.children && data.children.length"></i>
+      <i class="h-table-tree-empty" v-else ></i>
+    </span>
+    <template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot>
+  </td>
 </template>
 <script>
 import config from 'heyui/src/utils/config';
@@ -14,12 +21,22 @@ export default {
     align: String,
     unit: String,
     render: Function,
+    format: Function,
+    treeOpener: Boolean,
     className: String
   },
   data() {
     return {};
   },
+  methods: {
+    toggleTree() {
+      this.$emit('toggleTree', this.data);
+    }
+  },
   computed: {
+    level() {
+      return this.data._level || 0;
+    },
     cls() {
       return {
         [`text-${this.align}`]: !!this.align,
@@ -38,6 +55,9 @@ export default {
       }
       if (this.unit) {
         return value === '' || value === null || value === undefined ? '' : `${value}${this.unit}`;
+      }
+      if (this.format) {
+        return this.format(value);
       }
       return value;
     }

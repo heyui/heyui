@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import store from 'js/store';
 import { mapGetters } from 'vuex';
 export default {
   props: {
@@ -29,7 +28,6 @@ export default {
       value: this.fruit
     };
   },
-  store,
   computed: {
     ...mapGetters({
       test: 'getTest'

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './app.vue';
-import { install, Prototypes, Button, DropdownMenu } from 'heyui/lib';
+import { install, Prototypes, Button, DropdownMenu } from 'heyuiNative';
 
 require('../css/module.less');
 

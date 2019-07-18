@@ -40,7 +40,8 @@
           <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
         </template>
       </template>
-      <i class="h-icon-down"></i>
+      <i class="h-icon-close text-hover" v-show="hasClose" @click.stop="clear"></i>
+      <i class="h-icon-down" v-show="!hasClose"></i>
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container" v-if="isShow">
@@ -99,6 +100,10 @@ export default {
       type: Number
     },
     nullOption: {
+      type: Boolean,
+      default: true
+    },
+    deletable: {
       type: Boolean,
       default: true
     },
@@ -255,6 +260,11 @@ export default {
     search(value) {
       this.searchInput = value;
     },
+    clear() {
+      this.setvalue({
+        [`${this.keyName}`]: null
+      }, 'clear');
+    },
     setObjects() {
       if (this.multiple) {
         let os = [];
@@ -301,7 +311,7 @@ export default {
       let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          Message.error(this.t('h.select.limitSize', [this.limit]));
+          Message.error(this.t('h.select.limitSize', { limitSize: this.limit }));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
@@ -353,8 +363,11 @@ export default {
     }
   },
   computed: {
+    hasClose() {
+      return !this.nullOptionText && this.nullOption && this.deletable && !this.multiple && this.hasValue && !this.disabled;
+    },
     hasNullOption() {
-      return this.nullOption && !this.multiple;
+      return this.nullOptionText;
     },
     hasValue() {
       if (this.multiple) {

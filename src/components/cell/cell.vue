@@ -34,15 +34,15 @@ export default {
       });
 
       // let noOtherWidth = width==undefined&&this.flex == undefined;
-      for (let size of ['xs', 'sm', 'md', 'lg', 'xl']) {
+      let lastSize = null;
+      for (let size of [ 'xl', 'lg', 'md', 'sm', 'xs' ]) {
         if (utils.isNumber(this[size])) {
-          // noOtherWidth = false;
+          lastSize = this[size];
           classList.push(`${prefixCls}-${size}-${this[size]}`);
+        } else if (lastSize) {
+          classList.push(`${prefixCls}-${size}-${lastSize}`);
         }
       }
-      // if(noOtherWidth){
-      //   width = 24;
-      // }
 
       return classList;
     },

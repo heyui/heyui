@@ -30,8 +30,8 @@ const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')
 // HeyUI.config('dict.titleName', "name");
 export default () => {
   HeyUI.initDict({
-    select: [{ title: '选择1', key: 'a1', other: '其他值' }, { title: '选择2', key: 'a2' }, { title: '选择3', key: 'a3' }],
-    simple: { 1: '苹果', 2: '梨子', 3: '香蕉', 4: '橙子', 5: '樱桃', 6: '超长超长超长超长超长超长超长超长超长超长超长超长超长' },
+    select: [{ title: 'choose1', key: 'a1', other: '其他值' }, { title: 'choose2', key: 'a2' }, { title: 'choose3', key: 'a3' }],
+    simple: { 1: 'Apple', 2: 'Pear', 3: 'Banana', 4: 'Orange', 5: 'Cherry', 6: 'Ultra-long Ultra-long Ultra-long Ultra-long' },
     menus,
     enMenus
   });
@@ -46,10 +46,6 @@ export default () => {
       keyName: 'id',
       titleName: 'name',
       minWord: 1
-    },
-    pageFilter: {
-      keyName: 'key',
-      titleName: 'title'
     }
   });
 

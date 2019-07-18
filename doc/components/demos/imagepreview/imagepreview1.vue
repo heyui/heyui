@@ -13,7 +13,7 @@ export default {
     return {
       datas: [
         { thumbUrl: `${link}thumb-4.jpg`, url: `${link}image-4.jpg` },
-        { thumbUrl: `${link}thumb-5.jpg`, url: `${link}image-5.jpg` },
+        { thumbUrl: `https://5b0988e595225.cdn.sohucs.com/images/20170905/f6a2c1dafab944d2a75b9798c8ea0f7d.png`, url: `https://5b0988e595225.cdn.sohucs.com/images/20170905/f6a2c1dafab944d2a75b9798c8ea0f7d.png` },
         { thumbUrl: `${link}thumb-6.jpg`, url: `${link}image-6.jpg` }
       ]
     };

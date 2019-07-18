@@ -66,7 +66,7 @@ export default {
       removeProp: this.removeProp,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
-      getErrorMessage: this.getErrorMessage,
+      updateProp: this.updateProp,
       labelWidth: this.labelWidth,
       params: this.childParams
     };
@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       messages: {},
+      dynamicRequireds: [],
       requireds: [],
       validator: null,
       childParams: {
@@ -110,6 +111,9 @@ export default {
       handler() {
         if (this.validator) {
           if (this.rules) this.validator.updateRule(this.rules);
+          this.dynamicRequireds.forEach(item => {
+            this.validator.setConfig(item, { required: true });
+          });
         } else if (this.model && this.rules) {
           this.validator = new Validator(this.rules);
         }
@@ -123,7 +127,7 @@ export default {
       this.requireds.splice(0);
       if (this.rules) {
         let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
-        this.requireds.push(...(this.rules.required || []), ...validRequiredProps);
+        this.requireds.push(...(this.rules.required || []), ...validRequiredProps, ...this.dynamicRequireds);
       }
     },
     reset() {
@@ -175,20 +179,32 @@ export default {
       return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (options.required) {
+        if (index == -1) {
+          this.dynamicRequireds.push(prop);
+        }
+      } else if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+      this.initRequires();
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getErrorMessage(prop, label) {
-      if (this.messages[prop]) return this.messages[prop];
+    updateErrorMessage(prop, label) {
       let message = {
         valid: true,
         message: null,
         label
       };
+      if (this.messages[prop]) {
+        Object.assign(this.messages[prop], message);
+        return this.messages[prop];
+      }
       this.messages[prop] = message;
-      return message;
+      return this.messages[prop];
     },
-    updateErrorMessage(prop, oldProp) {
+    updateProp(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
       if (utils.isNull(message)) {
         message = {
@@ -200,7 +216,11 @@ export default {
       return message;
     },
     removeProp(prop) {
-      delete this.messages[prop];
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+      this.setConfig(prop, { required: false });
     },
     renderMessage(returnResult) {
       let isSuccess = true;

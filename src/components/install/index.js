@@ -32,10 +32,6 @@ const install = function (Vue, opts = {}) {
     Object.keys(opts.components).forEach(key => {
       let component = opts.components[key];
       Vue.component(key, component);
-      Vue.component(`h-${key.toLocaleLowerCase()}`, component);
-      if (key.indexOf('h') !== 0) {
-        Vue.component(`h${key}`, component);
-      }
     });
   }
 

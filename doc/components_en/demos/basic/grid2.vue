@@ -7,7 +7,6 @@
 </style>
 <template>
   <Row>
-    <Cell><div v-bg-color:gray></div></Cell>
     <Cell width="6"><div class="bg-gray-color"></div></Cell>
     <Cell width="6"><div class="bg-gray1-color"></div></Cell>
     <Cell width="6"><div class="bg-gray2-color"></div></Cell>

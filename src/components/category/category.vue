@@ -11,7 +11,6 @@
         <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
       </div>
       <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
-      <!-- <i class="h-icon-down"></i> -->
     </div>
   </div>
 </template>
@@ -102,6 +101,7 @@ export default {
             that.setvalue();
           },
           load: (modal, { data, callback }) => {
+            if (data.status.loading) return;
             data.status.loading = true;
             this.param.getDatas.call(
               this.param,

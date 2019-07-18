@@ -2,8 +2,8 @@
   position: relative;
   transition: height 0.3s, width 0.3s;
 
-  & &-index{
-    color: #FFF;
+  & &-index {
+    color: #fff;
     text-shadow: 0px 0 10px #000;
     font-size: 18px;
     position: absolute;
@@ -11,17 +11,18 @@
     right: 20px;
     z-index: 2;
   }
-  >.h-image-preview-image {
-    max-width:800px;
-    max-height:800px;
+  > .h-image-preview-image {
+    max-width: 800px;
+    max-height: 12000px;
     display: block;
   }
 
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s;
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s;
   }
-  .fade-enter, .fade-leave-to {
+  .fade-enter,
+  .fade-leave-to {
     opacity: 0;
   }
 
@@ -31,9 +32,9 @@
     top: 0;
     bottom: 0;
     font-size: 40px;
-    color: #FFF;
+    color: #fff;
     opacity: 0;
-    transition: .2s opacity;
+    transition: 0.2s opacity;
     cursor: pointer;
     width: 50%;
     display: flex;
@@ -67,7 +68,7 @@
     &:hover:before {
       content: '';
       position: absolute;
-      left: 0; 
+      left: 0;
       right: 0;
       top: 0;
       bottom: 0;
@@ -75,7 +76,6 @@
     }
   }
 }
-
 
 .h-image-preview-modal {
   &.h-modal {

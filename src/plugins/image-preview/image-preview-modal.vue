@@ -16,7 +16,7 @@ import utils from 'heyui/src/utils/utils';
 import Loading from 'heyui/src/components/loading';
 
 export default {
-  name: 'hImagePreview',
+  name: 'hImagePreviewModal',
   props: {
     isShow: {
       type: Boolean,
@@ -58,8 +58,8 @@ export default {
     initStyle(e) {
       let width = this.$refs.img.width;
       let height = this.$refs.img.height;
-      if (width > 800 || height > 800) {
-        let percent = Math.max(width, height) / 800;
+      if (width > 800 || height > 12000) {
+        let percent = Math.max(width / 800, height / 12000);
         width = width / percent;
         height = height / percent;
       }

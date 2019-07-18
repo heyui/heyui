@@ -1,10 +1,15 @@
 <template>
   <div>
     <p>value: {{value}}</p>
+    <p>
+      <Button @click.native.stop="expandAll" size="xs">全部展开</Button>
+      <Button @click.native.stop="expand([2, 3])" size="xs">展开部分</Button>
+      <Button @click.native.stop="foldAll" size="xs">全部收起</Button>
+    </p>
     <p>修改展示：<Button @click="update">更新值</Button></p>
-    <p><h-switch v-model="disabled" small>Disabled</h-switch></p>
+    <p><h-switch v-model="disabled" small>Disabled</h-switch> <h-switch v-model="useConfirm" small>使用确定按钮</h-switch></p>
     <p v-width="300">
-       <TreePicker :option="param" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
+       <TreePicker :option="param" :useConfirm="useConfirm" :disabled="disabled" ref="treepicker" v-model="value" @change="change" @choose="choose" @select="select"></TreePicker>
     </p>
   </div>
 </template>
@@ -34,6 +39,7 @@ export default {
     return {
       value: null,
       disabled: false,
+      useConfirm: false,
       param: {
         keyName: 'id',
         parentName: 'parent',
@@ -44,6 +50,15 @@ export default {
     };
   },
   methods: {
+    expand(ids) {
+      this.$refs.treepicker.expand(ids);
+    },
+    expandAll() {
+      this.$refs.treepicker.expandAll();
+    },
+    foldAll() {
+      this.$refs.treepicker.foldAll();
+    },
     change() {
       // 选择器关闭的时候触发
     },

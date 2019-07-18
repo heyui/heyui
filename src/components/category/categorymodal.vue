@@ -24,7 +24,7 @@
             </div>
             </Cell>
           </template>
-          <Cell v-else :width="8" v-for="data of searchlist" :key="data">
+          <Cell v-else :width="8" v-for="data of searchlist" :key="data.key">
           <div class="text-ellipsis h-category-item" @click.stop="change(data)">
             <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
               class="h-split"></i>{{data.title}}
@@ -34,8 +34,8 @@
       </div>
     </div>
     <footer>
-      <button class="h-btn h-btn-primary" @click="confirm">{{'h.common.confirm' | hlang}}</button>
-      <button class="h-btn" @click="close">{{'h.common.cancel' | hlang}}</button>
+      <button class="h-btn h-btn-primary" type="button" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+      <button class="h-btn" type="button" @click="close">{{'h.common.cancel' | hlang}}</button>
     </footer>
   </div>
 </template>

@@ -1,4 +1,6 @@
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import store from 'js/store';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
@@ -8,6 +10,7 @@ import App from './App.vue';
 import utils from 'hey-utils';
 
 import HeyUI from './../src/index';
+import ColorPicker from '../src/components/color-picker';
 import heyuiConfig from './js/config/heyui-config';
 import VueHighlightJS from './js/vuehighlight';
 
@@ -18,6 +21,8 @@ import codesEn from './components_en/common/codes.vue';
 import routerParam from './js/config/router-config';
 import en from '../src/locale/lang/en-US';
 import zh from '../src/locale/lang/zh-CN';
+
+Vue.component('ColorPicker', ColorPicker);
 
 require('./css/index.less');
 
@@ -73,9 +78,14 @@ router.afterEach(() => {
     window._hmt.push(['_trackPageview', window.location.pathname]);
   }
 });
+
+G.set('globalConfig', {
+  theme: 'default'
+});
 const app = new Vue({
   i18n,
   router,
+  store,
   el: '#app',
   render: h => h(App)
 });

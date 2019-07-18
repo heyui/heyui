@@ -6,6 +6,7 @@ logs
 .vscode
 .editorconfig
 .eslintrc.js
+.eslintignore
 .gitlab-ci.yml
 .gitlab-deploy.sh
 .prettierrc.js

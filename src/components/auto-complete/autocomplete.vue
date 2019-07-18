@@ -2,11 +2,11 @@
   <div :class="autocompleteCls">
     <div :class="showCls">
       <template v-if="multiple"><span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
-        <input :disabled="disabled" ref="input" type="text" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @blur.stop="blur" @paste="paste" @keyup="handle" @keydown="keydownHandle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" />
+        <input :disabled="disabled" ref="input" type="text" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @blur.stop="blur" @paste="paste" @keyup="handle" @keydown="keydownHandle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" autocomplete="off" />
         <i class="h-icon-loading" v-if="loading"></i>
       </template>
       <template v-if="!multiple">
-        <input type="text" ref="input" :disabled="disabled" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @paste="paste" @blur.stop="blur" @keyup="handle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" />
+        <input type="text" ref="input" :disabled="disabled" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @paste="paste" @blur.stop="blur" @keyup="handle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" autocomplete="off" />
         <i class="h-icon-loading" v-if="loading"></i>
         <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
       </template>
@@ -171,15 +171,20 @@ export default {
     });
   },
   methods: {
-    getKey(key) {
-      return key + Math.random();
-    },
     parse() {
       this.tempValue = null;
       if (this.multiple) {
         let os = [];
         if (utils.isArray(this.value) && this.value.length > 0) {
           for (let v of this.value) {
+            if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas)) {
+              let result = [...this.results, ...this.objects].filter(
+                item => item.key == v
+              );
+              if (result.length) {
+                v = result[0].value;
+              }
+            }
             os.push(this.getValue(v));
           }
         }
@@ -193,10 +198,10 @@ export default {
                 item => item[this.param.keyName] == this.value
               );
               if (result.length > 0) {
-                value = result[0];
+                value = result[0].value;
               }
             }
-            if (!value) {
+            if (utils.isNull(value)) {
               value = {
                 [this.param.keyName]: this.value,
                 [this.param.titleName]: this.show
@@ -226,22 +231,8 @@ export default {
       }
       this.oldValue = this.value;
     },
-    getDisposeValue() {
-      let inputValue = null;
-      if (this.type == 'key' || this.type == 'title') {
-        inputValue = this.tempValue;
-      } else if (!utils.isBlank(this.tempValue)) {
-        inputValue = {
-          [this.param.titleName]: this.tempValue
-        };
-      } else {
-        inputValue = null;
-      }
-      return inputValue;
-    },
     dispose() {
       let value = null;
-      let inputValue = this.getDisposeValue();
       if (this.multiple) {
         value = [];
         if (utils.isArray(this.objects) && this.objects.length > 0) {
@@ -254,17 +245,21 @@ export default {
         if (this.mustMatch) {
           value = this.getV(this.object);
         } else {
-          if (!utils.isNull(this.object.key) && this.object.key !== '') {
-            if (this.type == 'key') {
-              value = this.object.key;
-            } else if (this.type == 'title') {
-              value = this.object.title;
-            } else {
-              value = utils.copy(this.object.value);
+          if (!utils.isBlank(this.object.key)) {
+            value = this.getV(this.object);
+          } else {
+            if (!utils.isBlank(this.tempValue)) {
+              let inputValue = null;
+              if (this.type == 'title') {
+                inputValue = this.tempValue;
+              } else {
+                inputValue = {
+                  [this.param.titleName]: this.tempValue
+                };
+              }
+              value = inputValue;
+              this.object.title = this.tempValue;
             }
-          } else if (!utils.isNull(inputValue)) {
-            value = inputValue;
-            this.object.title = this.tempValue;
           }
         }
         return value;
@@ -280,16 +275,12 @@ export default {
       }
     },
     getValue(item) {
-      if (utils.isFunction(this.param.getValue)) {
-        return this.param.getValue.call(this.param, item);
+      if (!utils.isObject(item) && this.type == 'object') {
+        return utils.getValue({
+          [this.param.titleName]: item
+        }, this.param);
       } else {
-        if (!utils.isObject(item) && this.type == 'object') {
-          return utils.getValue({
-            [this.param.titleName]: item
-          }, this.param);
-        } else {
-          return utils.getValue(item, this.param);
-        }
+        return utils.getValue(item, this.param);
       }
     },
     focus(event) {
@@ -315,7 +306,7 @@ export default {
       let focusValue = this.focusValue;
       if (focusValue !== nowValue) {
         if (this.mustMatch) {
-          if (this.focusValue != '' && !this.multiple) {
+          if (!this.multiple && this.object.key != null) {
             this.object = {
               key: null,
               title: null,
@@ -326,7 +317,7 @@ export default {
             this.tempValue = null;
           }
         } else {
-          if (nowValue) {
+          if (this.multiple && nowValue) {
             this.objects.push(this.getValue(nowValue));
           }
           this.setvalue('blur');
@@ -366,7 +357,7 @@ export default {
       let nowValue = (this.tempValue = event.target.value);
       event.preventDefault();
       if (this.nowSelected >= 0) {
-        this.add(this.results[this.nowSelected]);
+        this.update(this.results[this.nowSelected]);
         this.setvalue('enter');
       } else {
         if (!this.mustMatch && this.multiple && nowValue) {
@@ -378,6 +369,7 @@ export default {
     search() {
       let target = this.$refs.input;
       let value = target.value;
+      // log('this.tempValue', this.tempValue, 'value', value);
       this.tempValue = value || null;
       if (value != this.object.title && this.object.title) {
         this.object.key = null;
@@ -430,7 +422,7 @@ export default {
         }
       });
     },
-    add(data) {
+    update(data) {
       if (this.multiple) {
         this.objects.push(utils.copy(data));
       } else {
@@ -451,12 +443,11 @@ export default {
       this.setvalue('remove');
     },
     picker(data) {
-      this.add(data);
+      this.update(data);
       this.setvalue('picker');
     },
     setvalue(trigger) {
       if (this.disabled) return;
-      // log('setvalue', trigger)
       this.lastTrigger = trigger;
       this.nowSelected = -1;
       let value = (this.oldValue = this.dispose());
@@ -467,10 +458,6 @@ export default {
       } else {
         this.tempValue = this.object.title;
       }
-      // if (this.mustMatch || this.object.key || this.multiple) {
-      // }
-      // this.focusValue = this.showValue;
-      // if (this.object.key === null) this.object.title = this.showValue
       this.$emit('input', value, trigger);
       this.$emit(
         'change',
@@ -511,18 +498,11 @@ export default {
       return this.emptyContent || this.t('h.autoComplate.emptyContent');
     },
     param() {
-      if (this.config) {
-        return utils.extend({},
-          config.getOption('autocomplete.default'),
-          config.getOption(`autocomplete.configs.${this.config}`),
-          this.option
-        );
-      } else {
-        return utils.extend({},
-          config.getOption('autocomplete.default'),
-          this.option
-        );
-      }
+      return utils.extend({},
+        config.getOption('autocomplete.default'),
+        this.config ? config.getOption(`autocomplete.configs.${this.config}`) : {},
+        this.option
+      );
     },
     autocompleteCls() {
       let autosize = !!this.noBorder;
@@ -575,9 +555,6 @@ export default {
         datas = datas.filter(item => {
           return keyArray.indexOf(item[this.param.keyName]) == -1;
         });
-      }
-      if (this.maxList) {
-        datas.splice(0, this.maxList);
       }
       let results = [];
       for (let data of datas) {

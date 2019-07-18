@@ -7,14 +7,19 @@
     transition: @transition-time;
     position: relative;
   }
+  &-index{
+    transition: background .2s;
+  }
+  &-icon {
+    transition: color .3s;
+  }
   &-success {
     opacity: 0;
   }
 
   &-actived{
-    color: @primary-color;
     .@{steps-prefix}{
-      &-icon, &-desc{
+      &-icon{
         color: @primary-color;
       }
       &-success{
@@ -27,13 +32,33 @@
           opacity: 0;
         }
       }
+      &-tail{
+        border-color: @primary-color;
+      }
     }
 
   }
 
+  &-process{
+    .@{steps-prefix}{
+      &-icon{
+        color: @primary-color;
+      }
+      &-title{
+        font-weight: bold;
+      }
+      &-index{
+        background-color: @primary-color;
+        border-color: @primary-color;
+        color: #FFF;
+        font-weight: bold;
+      }
+    }
+  }
+
   &-icon{
     font-size: 16px;
-    color: @gray-color;
+    color: @dark4-color;
   
     &-custom{
       font-size: 25px;
@@ -48,9 +73,6 @@
     left: 0;
     right: 0;
     top: 15px;
-    &-actived{
-      border-color: @primary-color;
-    }
   }
 
   &-item-first &-tail{

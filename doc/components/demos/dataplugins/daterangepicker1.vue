@@ -1,18 +1,16 @@
 <template>
   <div>
       <p>value:{{value}}</p>
-      <DateRangePicker v-model="value"></DateRangePicker>
+      <p><SwitchList v-model="format" :datas="['YYYY-MM-DD', 'DDMMYYYY']" @change="value = {}"></SwitchList></p>
+      <DateRangePicker v-model="value" :format="format"></DateRangePicker>
   </div>
 </template>
 
 <script>
-// HeyUI.config("datepicker.daterangeOptions.paramName", {
-//   start: 'min',
-//   end: 'max'
-// });
 export default {
   data() {
     return {
+      format: 'YYYY-MM-DD',
       value: {}
     };
   }

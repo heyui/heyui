@@ -25,6 +25,12 @@ export default {
           if (td.data.scopedSlots) {
             param.scopedSlots = td.data.scopedSlots;
           }
+          const self = this;
+          param.on = {
+            toggleTree(data) {
+              self.$emit('toggleTree', data);
+            }
+          };
           tds.push(h(TableTd, param));
         }
       }
@@ -33,6 +39,12 @@ export default {
         let param = utils.copy({ props: td });
         param.props.data = this.datas;
         param.props.index = this.index;
+        const self = this;
+        param.on = {
+          toggleTree(data) {
+            self.$emit('toggleTree', data);
+          }
+        };
         tds.push(h(TableTd, param));
       }
     }

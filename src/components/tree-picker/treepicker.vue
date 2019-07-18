@@ -21,9 +21,9 @@
           v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable"
           :config="config"></Tree>
       </div>
-      <div class="h-treepicker-footer" v-if="multiple">
-        <button class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+      <div class="h-treepicker-footer" v-if="multiple || useConfirm">
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
       </div>
     </div>
   </div>
@@ -78,14 +78,19 @@ export default {
     },
     value: [Number, String, Array, Object],
     config: String,
-    className: String
+    className: String,
+    useConfirm: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
       objects: [],
       object: null,
       dropdown: null,
-      valuebak: null
+      valuebak: null,
+      stashObject: null
     };
   },
   beforeDestroy() {
@@ -158,10 +163,9 @@ export default {
       return [];
     },
     select(data) {
-      this.object = data;
-      this.$emit('select', data);
-      if (!this.multiple) {
-        this.confirm();
+      this.stashObject = data;
+      if (!this.multiple && !this.useConfirm) {
+        this.confirm(data);
       }
     },
     choose(data) {
@@ -223,12 +227,16 @@ export default {
       return null;
     },
     clear() {
-      this.object = null;
+      this.stashObject = null;
       this.objects = [];
       this.$refs.tree.searchTree(null);
       this.confirm();
     },
     confirm() {
+      if (!this.multiple) {
+        this.object = this.stashObject;
+        this.$emit('select', this.object);
+      }
       this.setvalue();
       this.triggerChange();
       this.dropdown.hide();
@@ -236,6 +244,7 @@ export default {
     setvalue() {
       let value = this.dispose();
       this.$emit('input', value);
+      this.stashObject = this.object;
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
@@ -250,6 +259,21 @@ export default {
           utils.copy(this.multiple ? this.objects : this.object)
         );
       });
+    },
+    expandAll() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.expandAll();
+      }
+    },
+    expand(data) {
+      if (this.$refs.tree) {
+        return this.$refs.tree.expand(data);
+      }
+    },
+    foldAll() {
+      if (this.$refs.tree) {
+        return this.$refs.tree.foldAll();
+      }
     }
   },
   computed: {

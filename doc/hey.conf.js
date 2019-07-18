@@ -3,6 +3,7 @@ module.exports = {
   timestamp: true,
   dist: 'dist',
   console: true,
+  stat: false,
   webpack: {
     // compress: false,
     console: true,
@@ -18,24 +19,26 @@ module.exports = {
     global: {
       $: 'jquery',
       log: 'hey-log',
-      Utils: 'js/utils'
+      Utils: 'js/utils',
+      G: 'hey-global'
     },
     alias: {
       js: './js/',
       components: './components/',
       'heyui/src': '../src',
       components_en: './components_en/',
-      'heyui/lib': '../lib'
+      'heyuiNative': 'heyui',
+      vue: 'vue/dist/vue.esm.browser'
     },
     globalVars: './css/var.less',
     devServer: {
       historyApiFallback: true
     },
     pluginImport: {
-      libraryName: 'heyui/lib',
-      libraryDirectory: 'components'
+      libraryName: 'heyuiNative',
+      libraryDirectory: 'lib/components'
     },
     externals: {}
   },
-  copy: ['./static/images/**/*', './simple.html', './components/demos/**/*.vue', './components/common/qiniu.vue', './components/demos/**/*.txt', './.well-known/pki-validation/fileauth.txt', 'themes/**/*.css', './components_en/demos/**/*.vue', './components_en/common/qiniu.vue', './components_en/demos/**/*.txt']
+  copy: ['./static/images/**/*', './simple.html', './components/demos/**/*.vue', './components/common/qiniu.vue', './components/demos/**/*.txt', './.well-known/pki-validation/fileauth.txt', 'themes/**/*', './components_en/demos/**/*.vue', './components_en/common/qiniu.vue', './components_en/demos/**/*.txt']
 };

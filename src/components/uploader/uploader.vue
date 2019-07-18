@@ -35,7 +35,7 @@
     </template>
     <template v-if="type=='file'||type=='files'">
       <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
-      <div v-else><button icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{showUploadWord}}</button></div>
+      <div v-else><button type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{showUploadWord}}</button></div>
       <div class="h-uploader-files">
         <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
           <div class="h-uploader-file-progress" v-if="file.status==2">
