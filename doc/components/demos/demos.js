@@ -186,6 +186,7 @@ export default {
   'viewMenu1': resolve => require.ensure([], require => require('./view/menu1.vue'), 'view'),
   'viewMenu2': resolve => require.ensure([], require => require('./view/menu2.vue'), 'view'),
   'viewMenu3': resolve => require.ensure([], require => require('./view/menu3.vue'), 'view'),
+  'viewMenu4': resolve => require.ensure([], require => require('./view/menu4.vue'), 'view'),
   'viewPanel1': resolve => require.ensure([], require => require('./view/panel1.vue'), 'view'),
   'viewPanel2': resolve => require.ensure([], require => require('./view/panel2.vue'), 'view'),
   'viewPanel3': resolve => require.ensure([], require => require('./view/panel3.vue'), 'view'),
