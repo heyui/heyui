@@ -7,8 +7,8 @@
     <div>{{check3}}</div>
     <div>
       <h-switch v-model="check3">
-        <span slot="open">开</span>
-        <span slot="close">关</span>
+        <span slot="open">开启</span>
+        <span slot="close">关闭</span>
       </h-switch>
     </div>
     <div>{{check4}}</div>
