@@ -13,7 +13,8 @@
     <example demo="view/menu3"></example>
     <p>样式：</p>
     <codes src="/codes/menu.txt" type="less"></codes>
-
+    <h3>水平 Menu 菜单</h3>
+    <example demo="view/menu4"></example>
     <h3>Menu 参数</h3>
     <table class="table">
       <tr>
