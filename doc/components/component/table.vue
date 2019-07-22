@@ -87,7 +87,7 @@
       </tr>
       <tr>
         <td>radio</td>
-        <td>是否使用radio选择器</td>
+        <td>是否使用radio选择器, 1.22.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>

@@ -90,7 +90,7 @@
       </tr>
       <tr>
         <td>radio</td>
-        <td>Whether to use the radio selector</td>
+        <td>Whether to use the radio selector, 1.22.0+</td>
         <td>Boolean</td>
         <td>-</td>
         <td>false</td>
