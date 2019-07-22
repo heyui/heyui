@@ -5,6 +5,7 @@
     <div>{{check2}}</div>
     <div><h-switch v-model="check2" trueValue="yes" falseValue="no" :small="true">yes/no</h-switch></div>
     <div>{{check3}}</div>
+    <blockquote>自定义展示，1.23.3+</blockquote>
     <div>
       <h-switch v-model="check3">
         <span slot="open">开启</span>
