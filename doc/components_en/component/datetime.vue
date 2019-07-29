@@ -116,6 +116,17 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>placement</td>
+        <td></td>
+        <td>-</td>
+        <td>
+          top, top-start, top-end, <br/>
+          bottom, bottom-start, bottom-end, <br/>
+          left, left-start, left-end, <br/>
+          right, right-start, right-end</td>
+        <td>bottom-start</td>
+      </tr>
     </table>
 
     <h3>Option Property</h3>

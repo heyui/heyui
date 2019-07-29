@@ -59,7 +59,7 @@
       </tr>
       <tr>
         <td>placement</td>
-        <td>menu显示的位置</td>
+        <td>内容显示的位置, 1.24.0+</td>
         <td>Stirng</td>
         <td>
           top, top-start, top-end, <br/>

@@ -86,7 +86,7 @@
       </tr>
       <tr>
         <td>placement</td>
-        <td>Menu display position</td>
+        <td>Content display position, 1.24.0+</td>
         <td>Stirng</td>
         <td>
           top, top-start, top-end, <br/>

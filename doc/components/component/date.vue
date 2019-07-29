@@ -123,6 +123,17 @@
         <td>-</td>
         <td>true</td>
       </tr>
+      <tr>
+        <td>placement</td>
+        <td>日期选择器位置</td>
+        <td>-</td>
+        <td>
+          top, top-start, top-end, <br/>
+          bottom, bottom-start, bottom-end, <br/>
+          left, left-start, left-end, <br/>
+          right, right-start, right-end</td>
+        <td>bottom-start</td>
+      </tr>
     </table>
 
     <h3>DatePicker 事件</h3>
