@@ -51,6 +51,7 @@ export default {
       default: 'week' // year, month, week
     },
     option: Object,
+    placement: String,
     noBorder: {
       type: Boolean,
       default: false
@@ -131,6 +132,7 @@ export default {
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         content,
+        placement: this.placement,
         events: {
           show() {
             that.isShow = true;
