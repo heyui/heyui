@@ -76,6 +76,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>maxWidth</td>
+        <td>max width of content, 1.24.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Tooltip Event</h3>

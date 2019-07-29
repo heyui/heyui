@@ -78,6 +78,13 @@
         <td></td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>maxWidth</td>
+        <td>设定最大宽度, 1.24.0+</td>
+        <td>Number</td>
+        <td></td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>Tooltip 事件</h3>
