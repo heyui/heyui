@@ -8602,6 +8602,17 @@ var _utils = _interopRequireDefault(__webpack_require__(2));
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var prefix = 'h-steps';
 var _default2 = {
   name: 'hSteps',
@@ -8611,10 +8622,6 @@ var _default2 = {
     step: {
       type: [String, Number],
       default: 0
-    },
-    className: {
-      type: String,
-      default: 'h-tabs-default'
     },
     keyName: {
       type: String,
@@ -8627,6 +8634,11 @@ var _default2 = {
       default: function _default() {
         return _config.default.getOption('dict', 'titleName');
       }
+    },
+    contentLayout: {
+      type: String,
+      default: 'vertical' // transverse
+
     }
   },
   data: function data() {
@@ -8637,7 +8649,9 @@ var _default2 = {
   },
   computed: {
     stepsCls: function stepsCls() {
-      return (0, _defineProperty2.default)({}, "".concat(prefix), true);
+      var _ref;
+
+      return _ref = {}, (0, _defineProperty2.default)(_ref, "".concat(prefix), true), (0, _defineProperty2.default)(_ref, "".concat(prefix, "-").concat(this.contentLayout), true), _ref;
     },
     stepIndex: function stepIndex() {
       if (_utils.default.isNumber(this.step)) {
@@ -20514,35 +20528,66 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "h-steps-tail" }),
-          _vm._v(" "),
           _c("div", { staticClass: "h-steps-content" }, [
-            _c("div", { staticClass: "h-steps-icon" }, [
-              a.icon
-                ? _c("span", { staticClass: "h-steps-icon-custom" }, [
-                    _c("i", { class: a.icon })
-                  ])
-                : _c("span", { staticClass: "h-steps-index" }, [
-                    _c("i", { staticClass: "h-steps-index-num" }, [
-                      _vm._v(_vm._s(index + 1))
-                    ]),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "h-icon-check h-steps-success" })
-                  ])
-            ]),
+            _c(
+              "div",
+              { staticClass: "h-steps-icon" },
+              [
+                _vm.$scopedSlots.icon
+                  ? _vm._t("icon", null, { item: a, index: index })
+                  : a.icon
+                  ? _c("span", { staticClass: "h-steps-icon-custom" }, [
+                      _c("i", { class: a.icon })
+                    ])
+                  : _c("span", { staticClass: "h-steps-index" }, [
+                      _c("i", { staticClass: "h-steps-index-num" }, [
+                        _vm._v(_vm._s(index + 1))
+                      ]),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "h-icon-check h-steps-success" })
+                    ])
+              ],
+              2
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "h-steps-words" }, [
-              _c("div", { staticClass: "h-steps-title" }, [
-                _vm._v(_vm._s(a[_vm.title]))
-              ]),
+              _c(
+                "div",
+                { staticClass: "h-steps-title" },
+                [
+                  _vm.$scopedSlots.title
+                    ? _vm._t("title", null, { item: a, index: index })
+                    : [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(a[_vm.title]) +
+                            "\n          "
+                        )
+                      ]
+                ],
+                2
+              ),
               _vm._v(" "),
-              a.desc
-                ? _c("div", { staticClass: "h-steps-desc" }, [
-                    _vm._v(_vm._s(a.desc))
-                  ])
-                : _vm._e()
+              _c(
+                "div",
+                { staticClass: "h-steps-desc" },
+                [
+                  _vm.$scopedSlots.desc
+                    ? _vm._t("desc", null, { item: a, index: index })
+                    : a.desc
+                    ? [
+                        _vm._v(
+                          "\n            " + _vm._s(a.desc) + "\n          "
+                        )
+                      ]
+                    : _vm._e()
+                ],
+                2
+              )
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "h-steps-tail" })
         ]
       )
     }),
