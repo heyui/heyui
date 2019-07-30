@@ -56,6 +56,13 @@
         <td>-</td>
         <td>全局config <code>dict.titleName</code></td>
       </tr>
+      <tr>
+        <td>contentLayout</td>
+        <td>内容排列方式, 1.24.0+</td>
+        <td>String</td>
+        <td>vertical</td>
+        <td>vertical, transverse</td>
+      </tr>
     </table>
   </div>
 </template>
