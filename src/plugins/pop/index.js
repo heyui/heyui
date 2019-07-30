@@ -139,7 +139,6 @@ class Pop {
     }
 
     const contentNode = popNode.querySelector(this.innerSelector);
-    log(contentNode, options.maxWidth);
     if (contentNode && options.maxWidth) {
       contentNode.style.maxWidth = `${options.maxWidth}px`;
     }
