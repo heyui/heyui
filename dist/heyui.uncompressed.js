@@ -22191,7 +22191,6 @@ function () {
       }
 
       var contentNode = popNode.querySelector(this.innerSelector);
-      log(contentNode, options.maxWidth);
 
       if (contentNode && options.maxWidth) {
         contentNode.style.maxWidth = "".concat(options.maxWidth, "px");
