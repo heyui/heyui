@@ -47,7 +47,7 @@ export default {
       if (!colors.includes(this.color)) {
         s['background-color'] = this.color;
       }
-      s.width = `${this.percent}%`;
+      s.width = `${Math.min(this.percent, 100)}%`;
       s.height = `${this.strokeWidth}px`;
       return s;
     },
