@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0-alpha.3](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.3) (2019-07-31)
+
+
+### Bug Fixes
+
+* **Circle:** max percent 100 ([c1b295c](https://github.com/heyui/heyui/commit/c1b295c))
+* **DatePicker:** add prop placement ([af6da6b](https://github.com/heyui/heyui/commit/af6da6b)), closes [#195](https://github.com/heyui/heyui/issues/195)
+* **Progress:** max percent 100 ([d9510ae](https://github.com/heyui/heyui/commit/d9510ae))
+* **Switch:** mark width autosize ([564fc24](https://github.com/heyui/heyui/commit/564fc24))
+* **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7e)), closes [#187](https://github.com/heyui/heyui/issues/187)
+
+
+### Features
+
+* **Rate:** add prop iconClass ([d6b4d44](https://github.com/heyui/heyui/commit/d6b4d44))
+* **Step:** add prop contentLayout and slots ([1f4ddc6](https://github.com/heyui/heyui/commit/1f4ddc6))
+* **Tooltip:** change max width ([94e98c6](https://github.com/heyui/heyui/commit/94e98c6)), closes [#192](https://github.com/heyui/heyui/issues/192)
+
+
+
 ## [1.24.0-alpha.2](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.2) (2019-07-30)
 
 
