@@ -78,6 +78,25 @@
         <td>1, 2, 3, 4, 5, 6, 7</td>
         <td>全局配置<code>datepicker.startWeek</code>，详情至<router-link to="/component/config">全局配置</router-link></td>
       </tr>
+      <tr>
+        <td>readonly</td>
+        <td></td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>placement</td>
+        <td>内容显示的位置, 1.24.0+</td>
+        <td>Stirng</td>
+        <td>
+          top, top-start, top-end, <br/>
+          bottom, bottom-start, bottom-end, <br/>
+          left, left-start, left-end, <br/>
+          right, right-start, right-end
+        </td>
+        <td>bottom-start</td>
+      </tr>
     </table>
 
     <h3>DateRangePicker 事件</h3>

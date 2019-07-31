@@ -2,6 +2,59 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0-alpha.2](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.2) (2019-07-30)
+
+
+### Bug Fixes
+
+* **DatePicker:** add prop placement ([af6da6b](https://github.com/heyui/heyui/commit/af6da6b)), closes [#195](https://github.com/heyui/heyui/issues/195)
+* **Switch:** mark width autosize ([564fc24](https://github.com/heyui/heyui/commit/564fc24))
+* **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7e)), closes [#187](https://github.com/heyui/heyui/issues/187)
+
+
+### Features
+
+* **Rate:** add prop iconClass ([d6b4d44](https://github.com/heyui/heyui/commit/d6b4d44))
+* **Step:** add prop contentLayout and slots ([1f4ddc6](https://github.com/heyui/heyui/commit/1f4ddc6))
+* **Tooltip:** change max width ([94e98c6](https://github.com/heyui/heyui/commit/94e98c6)), closes [#192](https://github.com/heyui/heyui/issues/192)
+
+
+
+## [1.24.0-alpha.1](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.1) (2019-07-30)
+
+
+### Bug Fixes
+
+* **DatePicker:** add prop placement ([af6da6b](https://github.com/heyui/heyui/commit/af6da6b)), closes [#195](https://github.com/heyui/heyui/issues/195)
+* **Switch:** mark width autosize ([564fc24](https://github.com/heyui/heyui/commit/564fc24))
+* **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7e)), closes [#187](https://github.com/heyui/heyui/issues/187)
+
+
+### Features
+
+* **Rate:** add prop iconClass ([d6b4d44](https://github.com/heyui/heyui/commit/d6b4d44))
+* **Step:** add prop contentLayout and slots ([1f4ddc6](https://github.com/heyui/heyui/commit/1f4ddc6))
+* **Tooltip:** change max width ([94e98c6](https://github.com/heyui/heyui/commit/94e98c6)), closes [#192](https://github.com/heyui/heyui/issues/192)
+
+
+
+## [1.24.0-alpha.0](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.0) (2019-07-29)
+
+
+### Bug Fixes
+
+* **DatePicker:** add prop placement ([af6da6b](https://github.com/heyui/heyui/commit/af6da6b)), closes [#195](https://github.com/heyui/heyui/issues/195)
+* **Switch:** mark width autosize ([564fc24](https://github.com/heyui/heyui/commit/564fc24))
+* **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7e)), closes [#187](https://github.com/heyui/heyui/issues/187)
+
+
+### Features
+
+* **Rate:** add prop iconClass ([d6b4d44](https://github.com/heyui/heyui/commit/d6b4d44))
+* **Tooltip:** change max width ([94e98c6](https://github.com/heyui/heyui/commit/94e98c6)), closes [#192](https://github.com/heyui/heyui/issues/192)
+
+
+
 ### [1.23.3](https://github.com/heyui/heyui/compare/v1.23.0...v1.23.3) (2019-07-17)
 
 

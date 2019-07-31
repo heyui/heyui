@@ -17,6 +17,25 @@
     opacity: 0;
   }
 
+  &-transverse {
+    .@{steps-prefix}-content {
+      display: inline-block;
+      position: relative;
+      .@{steps-prefix}-title {
+        background: #FFF;
+        display: inline-block;
+        padding-right: 10px;
+      }
+      .@{steps-prefix}-icon {
+        float: left;
+        vertical-align: top;
+      }
+      .@{steps-prefix}-words {
+        display: inline-block;
+      }
+    }
+  }
+
   &-actived{
     .@{steps-prefix}{
       &-icon{
@@ -59,7 +78,9 @@
   &-icon{
     font-size: 16px;
     color: @dark4-color;
-  
+    background: #FFF;
+    display: inline-block;
+    padding-right: 10px;
     &-custom{
       font-size: 25px;
       line-height: 1;
@@ -71,7 +92,7 @@
     border-top: 1px solid @gray1-color;
     position: absolute;
     left: 0;
-    right: 0;
+    right: 10px;
     top: 15px;
   }
 

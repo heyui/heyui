@@ -14,7 +14,8 @@ const DEFAULT_OPTIONS = {
   equalWidth: false,
   type: 'dropdown',
   preventOverflow: false,
-  getContainer: null
+  getContainer: null,
+  maxWidth: null
 };
 
 /**
@@ -135,6 +136,11 @@ class Pop {
     }
     if (options.className) {
       utils.addClass(popNode, options.className);
+    }
+
+    const contentNode = popNode.querySelector(this.innerSelector);
+    if (contentNode && options.maxWidth) {
+      contentNode.style.maxWidth = `${options.maxWidth}px`;
     }
 
     this.popNode = popNode;

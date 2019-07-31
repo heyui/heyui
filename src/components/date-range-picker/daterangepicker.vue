@@ -74,6 +74,7 @@ export default {
       type: Boolean,
       default: false
     },
+    placement: String,
     type: {
       type: [String],
       default: 'date' // year, month, week
@@ -145,6 +146,7 @@ export default {
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
         content,
+        placement: this.placement,
         disabled: this.disabled,
         events: {
           show() {
@@ -308,6 +310,7 @@ export default {
     },
     datePickerCls() {
       return {
+        [`${prefix}-range-picker`]: true,
         [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
       };
     },

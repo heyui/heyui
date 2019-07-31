@@ -4,10 +4,10 @@
 
     <p class="component-name-tip">In non-string templates，it is necessary to use <code>h-steps</code>. </p>
     <h3>Basic</h3>
-    <exampleEn demo="plugins/step1"></exampleEn>
+    <example demo="plugins/step1"></example>
 
     <h3>Custom Icon, Description</h3>
-    <exampleEn demo="plugins/step2"></exampleEn>
+    <example demo="plugins/step2"></example>
 
     <h3>Identify key steps using key values</h3>
     <exampleEn demo="plugins/step3"></exampleEn>
@@ -55,6 +55,13 @@
         <td>String</td>
         <td>-</td>
         <td>config <code>dict.titleName</code></td>
+      </tr>
+      <tr>
+        <td>contentLayout</td>
+        <td>content layout, 1.24.0+</td>
+        <td>String</td>
+        <td>vertical</td>
+        <td>vertical, transverse</td>
       </tr>
     </table>
   </div>

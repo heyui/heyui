@@ -36,7 +36,8 @@ export default {
     delay: {
       type: Number,
       default: 0
-    }
+    },
+    maxWidth: Number
   },
   mounted() {
     this.init();
@@ -71,6 +72,7 @@ export default {
           container: document.body,
           placement: this.placement,
           disabled: this.disabled,
+          maxWidth: this.maxWidth,
           delay: this.delay,
           events: {
             show: () => {

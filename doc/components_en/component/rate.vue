@@ -31,6 +31,13 @@
         <td>-</td>
         <td>false</td>
       </tr>
+      <tr>
+        <td>iconClass</td>
+        <td></td>
+        <td>String</td>
+        <td>-</td>
+        <td>h-icon-star-on</td>
+      </tr>
     </table>
 
     <h3>Rate Event</h3>
