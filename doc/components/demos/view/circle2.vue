@@ -1,6 +1,6 @@
 <template>
   <div v-width="600">
-    <p><NumberInput v-model="value" :step="10" :min="0" :max="100" useOperate></NumberInput></p>
+    <p><NumberInput v-model="value" :step="10" :min="0" :max="200" useOperate></NumberInput></p>
     <p>
       <h-circle :percent="value" :stroke-width="18" :size="200">
         <p class="gray-color" v-font="28">122,332,98</p>
