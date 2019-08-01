@@ -1,5 +1,5 @@
 <template>
-  <div class="h-avatar" :class="avatarClass">
+  <div class="h-avatar" :class="avatarClass" :style="avatarStyle">
     <div :style="avatarImageStyle" @click="click" :class="avatarImageClass" class="h-avatar-image-container">
       <div class="h-avatar-image" :style="imageStyle"></div>
     </div>
@@ -29,7 +29,12 @@ export default {
       default: 15
     },
     imageTop: Number,
-    type: String
+    type: String,
+    noInfo: {
+      type: Boolean,
+      default: false
+    },
+    fit: String
   },
   methods: {
     click(event) {
@@ -48,8 +53,20 @@ export default {
     avatarClass() {
       return {
         [`h-avatar-type-${this.type}`]: !!this.type,
-        [`h-avatar-shape-${this.shape}`]: !!this.shape
+        [`h-avatar-shape-${this.shape}`]: !!this.shape,
+        [`h-avatar-no-info`]: this.noInfo,
+        [`h-avatar-fit-${this.fit}`]: !!this.fit
       };
+    },
+    avatarStyle() {
+      let param = {};
+      if (this.noInfo) {
+        param = {
+          width: `${this.width}px`,
+          height: `${this.width}px`
+        };
+      }
+      return param;
     },
     avatarImageClass() {
       if (!this.imageTop) {

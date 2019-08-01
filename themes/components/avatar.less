@@ -24,4 +24,19 @@
   &&-shape-square &-image {
     border-radius: @border-radius;
   }
+  &&-no-info {
+    display: inline-block;
+  }
+  &&-fit-contain &-image-container &-image{
+    background-size: contain;
+  }
+  &&-fit-cover &-image-container &-image{
+    background-size: cover;
+  }
+  &&-fit-fill &-image-container &-image{
+    background-size: 100% 100%;
+  }
+  &&-fit-none &-image-container &-image{
+    background-size: initial;
+  }
 }

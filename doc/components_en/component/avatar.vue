@@ -7,8 +7,12 @@
     <h3>Basic</h3>
     <exampleEn demo="view/avatar1"></exampleEn>
 
+    <h3>Setting up different usages</h3>
+    <example demo="view/avatar3"></example>
+
     <h3>Shape and type</h3>
-    <exampleEn demo="view/avatar2"></exampleEn>
+    <p>When some users do not have image information, they can display the default image.</p>
+    <example demo="view/avatar2"></example>
 
     <h3>Avatar Property</h3>
     <table class="table">
@@ -53,6 +57,20 @@
         <td>String</td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>fit</td>
+        <td>Show the adaptation type with different pictures</td>
+        <td>String</td>
+        <td></td>
+        <td>fill, contain, cover, none</td>
+      </tr>
+      <tr>
+        <td>noInfo</td>
+        <td>No description information is displayed</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
       </tr>
     </table>
 

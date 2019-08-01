@@ -216,6 +216,7 @@ export default {
   'viewBreadcrumb3': resolve => require.ensure([], require => require('./view/breadcrumb3.vue'), 'view'),
   'viewAvatar1': resolve => require.ensure([], require => require('./view/avatar1.vue'), 'view'),
   'viewAvatar2': resolve => require.ensure([], require => require('./view/avatar2.vue'), 'view'),
+  'viewAvatar3': resolve => require.ensure([], require => require('./view/avatar3.vue'), 'view'),
   'viewTag1': resolve => require.ensure([], require => require('./view/tag1.vue'), 'view'),
   'viewTag2': resolve => require.ensure([], require => require('./view/tag2.vue'), 'view'),
   'viewTag3': resolve => require.ensure([], require => require('./view/tag3.vue'), 'view'),

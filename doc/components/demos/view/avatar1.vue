@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      src: '/static/images/avatar-female.png'
+      src: 'https://i1.go2yd.com/image.php?url=0Kvq81cKR1'
     };
   },
   methods: {

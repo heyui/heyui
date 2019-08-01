@@ -8,7 +8,11 @@
     <h3>基本调用</h3>
     <example demo="view/avatar1"></example>
 
+    <h3>设置不同用法</h3>
+    <example demo="view/avatar3"></example>
+
     <h3>设置默认类型与形状</h3>
+    <p>当一些用户没有图像信息时，可以显示默认的图片。</p>
     <example demo="view/avatar2"></example>
 
     <h3>全局配置</h3>
@@ -57,6 +61,20 @@
         <td>String</td>
         <td></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>fit</td>
+        <td>使用不同的图片展示适配类型</td>
+        <td>String</td>
+        <td></td>
+        <td>fill, contain, cover, none</td>
+      </tr>
+      <tr>
+        <td>noInfo</td>
+        <td>不显示说明信息</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
       </tr>
     </table>
 
