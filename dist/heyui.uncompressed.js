@@ -2502,10 +2502,6 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
 var _default = {
   name: 'hCircle',
   props: {
@@ -2550,31 +2546,10 @@ var _default = {
     pathStyle: function pathStyle() {
       return {
         'stroke-dasharray': "".concat(this.len, "px ").concat(this.len, "px"),
-        'stroke-dashoffset': "".concat((100 - this.percent) / 100 * this.len, "px"),
+        'stroke-dashoffset': "".concat((100 - Math.min(this.percent, 100)) / 100 * this.len, "px"),
         'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
       };
-    } // circleInnerStyle() {
-    //   let s = {};
-    //   s.height = `${this.strokeWidth}px`;
-    //   return s;
-    // },
-    // circleBgStyle() {
-    //   let s = {};
-    //   if (!colors.includes(this.color)) {
-    //     s['background-color'] = this.color;
-    //   }
-    //   s.width = `${this.percent}%`;
-    //   s.height = `${this.strokeWidth}px`;
-    //   return s;
-    // },
-    // circleBgClass() {
-    //   let s = {};
-    //   if (colors.includes(this.color)) {
-    //     s[`bg-${this.color}-color`] = true
-    //   }
-    //   return s;
-    // }
-
+    }
   }
 };
 exports.default = _default;
@@ -7932,7 +7907,7 @@ var _default = {
         s['background-color'] = this.color;
       }
 
-      s.width = "".concat(this.percent, "%");
+      s.width = "".concat(Math.min(this.percent, 100), "%");
       s.height = "".concat(this.strokeWidth, "px");
       return s;
     },

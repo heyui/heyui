@@ -240,7 +240,7 @@ export default {
           if (this.type == 'time') {
             value = `1980-01-01 ${value}`;
           }
-          this.nowView = manba(value, this.format);
+          this.nowView = manba(value, this.nowFormat);
           this.nowDate = this.nowView.format('k');
           if (initShow) {
             if (this.type == 'week') {
@@ -284,9 +284,12 @@ export default {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
     nowFormat() {
-      let format = this.format || options.format[this.type];
-      if (this.type == 'datetime' && this.hasSeconds) {
-        format = options.format.datetimesecond;
+      let format = this.format;
+      if (!format) {
+        format = options.format[this.type];
+        if (this.type == 'datetime' && this.hasSeconds) {
+          format = options.format.datetimesecond;
+        }
       }
       return format;
     },
