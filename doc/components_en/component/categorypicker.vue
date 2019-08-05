@@ -177,5 +177,21 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>CategoryPicker Methods</h3>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Parameters</th>
+        <th>Description</th>
+        <th>Return Value</th>
+      </tr>
+      <tr>
+        <td>getFullData</td>
+        <td>Get a complete data structure</td>
+        <td>-</td>
+        <td>Array</td>
+      </tr>
+    </table>
   </div>
 </template>

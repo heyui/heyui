@@ -163,5 +163,22 @@
         <td>-</td>
       </tr>
     </table>
+
+    <h3>CategoryPicker 方法</h3>
+    <table class="table">
+      <tr>
+        <th>方法</th>
+        <th>说明</th>
+        <th>参数</th>
+        <th>返回值</th>
+      </tr>
+      <tr>
+        <td>getFullData</td>
+        <td>获取完整的数据结构</td>
+        <td>-</td>
+        <td>Array</td>
+      </tr>
+    </table>
+
   </div>
 </template>
