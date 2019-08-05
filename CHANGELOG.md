@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0-alpha.5](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.5) (2019-08-05)
+
+
+### Bug Fixes
+
+* **Circle:** max percent 100 ([c1b295c](https://github.com/heyui/heyui/commit/c1b295c))
+* **DatePicker:** add prop placement ([af6da6b](https://github.com/heyui/heyui/commit/af6da6b)), closes [#195](https://github.com/heyui/heyui/issues/195)
+* **DatetimePicker:** fix date format error ([8ffc835](https://github.com/heyui/heyui/commit/8ffc835)), closes [#191](https://github.com/heyui/heyui/issues/191)
+* **Progress:** max percent 100 ([d9510ae](https://github.com/heyui/heyui/commit/d9510ae))
+* **Switch:** mark width autosize ([564fc24](https://github.com/heyui/heyui/commit/564fc24))
+* **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7e)), closes [#187](https://github.com/heyui/heyui/issues/187)
+
+
+### Features
+
+* update menu ([d96273f](https://github.com/heyui/heyui/commit/d96273f))
+* update menu ([45ca3cb](https://github.com/heyui/heyui/commit/45ca3cb))
+* **Avatar:** add prop fit and noInfo ([7a0e6e1](https://github.com/heyui/heyui/commit/7a0e6e1)), closes [#196](https://github.com/heyui/heyui/issues/196)
+* **CategoryPicker:** add method getFullData ([d7b06c0](https://github.com/heyui/heyui/commit/d7b06c0)), closes [#202](https://github.com/heyui/heyui/issues/202)
+* **Rate:** add prop iconClass ([d6b4d44](https://github.com/heyui/heyui/commit/d6b4d44))
+* **Step:** add prop contentLayout and slots ([1f4ddc6](https://github.com/heyui/heyui/commit/1f4ddc6))
+* **Tooltip:** change max width ([94e98c6](https://github.com/heyui/heyui/commit/94e98c6)), closes [#192](https://github.com/heyui/heyui/issues/192)
+
+
+
 ## [1.24.0-alpha.4](https://github.com/heyui/heyui/compare/v1.23.3...v1.24.0-alpha.4) (2019-08-05)
 
 

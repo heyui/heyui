@@ -3516,6 +3516,52 @@ var _default = {
 
       return list;
     },
+    getFullData: function getFullData() {
+      if (this.multiple) {
+        var datas = [];
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = this.objects[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var o = _step2.value;
+            var data = this.categoryObj[o.key] || this.object;
+            datas.push(this.getParent(data));
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        return datas;
+      } else if (this.object) {
+        var _data = this.categoryObj[this.object.key] || this.object;
+
+        return this.getParent(_data);
+      }
+
+      return null;
+    },
+    getParent: function getParent(data) {
+      var list = [_utils.default.copy(data.value)];
+
+      if (data.parentKey != null && this.categoryObj[data.parentKey]) {
+        list.push.apply(list, (0, _toConsumableArray2.default)(this.getParent(this.categoryObj[data.parentKey])));
+      }
+
+      return list;
+    },
     dispose: function dispose() {
       var _this2 = this;
 
@@ -3603,13 +3649,13 @@ var _default = {
     },
     initTreeModeData: function initTreeModeData(list, parentKey, isWait, level) {
       var datas = [];
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
       try {
-        for (var _iterator2 = list[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var data = _step2.value;
+        for (var _iterator3 = list[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var data = _step3.value;
           var obj = {
             key: data[this.param.keyName],
             title: data[this.param.titleName],
@@ -3631,16 +3677,16 @@ var _default = {
           datas.push(obj);
         }
       } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+            _iterator3.return();
           }
         } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
+          if (_didIteratorError3) {
+            throw _iteratorError3;
           }
         }
       }
