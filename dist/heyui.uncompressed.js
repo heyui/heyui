@@ -4107,10 +4107,6 @@ var _default2 = {
 
       if (value != '' && !_utils.default.isNull(value)) {
         try {
-          if (this.type == 'time') {
-            value = "1980-01-01 ".concat(value);
-          }
-
           this.nowView = (0, _manba.default)(value, this.nowFormat);
           this.nowDate = this.nowView.format('k');
 
@@ -5356,7 +5352,7 @@ var _default2 = {
   mixins: [_locale.default],
   props: {
     defaultType: {
-      type: [String],
+      type: String,
       default: 'week' // year, month, week
 
     },
@@ -5395,6 +5391,7 @@ var _default2 = {
   data: function data() {
     var format = _config.default.getOption('datepicker.format');
 
+    var defaultType = this.value && this.value.type ? this.value.type : this.defaultType;
     return {
       allviews: {
         year: this.t('h.date.year'),
@@ -5414,7 +5411,7 @@ var _default2 = {
         start: (0, _manba.default)(),
         end: (0, _manba.default)().add(1, _manba.default.MONTH)
       },
-      view: this.defaultType || 'year',
+      view: defaultType,
       rangeEnd: '',
       isShow: false
     };
@@ -5493,6 +5490,10 @@ var _default2 = {
       this.nowDate[range] = '';
     },
     parse: function parse(value) {
+      if (this.value && this.value.type) {
+        this.view = this.value.type;
+      }
+
       this.parseSingle(value, 'start');
       this.parseSingle(value, 'end');
     },
