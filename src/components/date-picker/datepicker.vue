@@ -237,9 +237,6 @@ export default {
     parse(value, initShow = true) {
       if (value != '' && !utils.isNull(value)) {
         try {
-          if (this.type == 'time') {
-            value = `1980-01-01 ${value}`;
-          }
           this.nowView = manba(value, this.nowFormat);
           this.nowDate = this.nowView.format('k');
           if (initShow) {
