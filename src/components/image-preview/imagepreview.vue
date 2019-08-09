@@ -1,10 +1,18 @@
 <template>
   <div class="h-image-preview-list" :style="listStyles">
-    <div :style="itemStyles(data)" v-for="(data, index) of datas" :key="index" @click="click(index, data)" class="h-image-preview-item"></div>
+    <div :style="itemStyles(data)" v-for="(data, index) of computedList" :key="index" @click="click(index, data)" class="h-image-preview-item"></div>
   </div>
 </template>
 <script>
-
+import utils from 'heyui/src/utils/utils';
+const genObject = function (data) {
+  if (utils.isString(data)) {
+    return { url: data };
+  } else if (utils.isObject(data)) {
+    return { url: data.thumbUrl || data.url };
+  }
+  return { url: null };
+};
 export default {
   name: 'hImagePreview',
   props: {
@@ -17,7 +25,7 @@ export default {
       default: 10
     },
     datas: {
-      type: [Array],
+      type: [Array, String],
       default: () => ([])
     },
     borderRadius: {
@@ -25,13 +33,13 @@ export default {
       default: 3
     }
   },
-  data() {
-    return {
-    };
-  },
   methods: {
     click(index, value) {
-      this.$emit('click', index, value);
+      if (this.isSingle) {
+        this.$emit('click', this.datas);
+      } else {
+        this.$emit('click', index, value);
+      }
     },
     itemStyles(data) {
       return {
@@ -40,7 +48,7 @@ export default {
         'margin-right': `${this.distance}px`,
         'margin-bottom': `${this.distance}px`,
         'border-radius': `${this.borderRadius}px`,
-        'background-image': `url(${data.thumbUrl || data.url})`
+        'background-image': `url(${data.url})`
       };
     }
   },
@@ -50,6 +58,19 @@ export default {
         'margin-right': `-${this.distance}px`,
         'margin-bottom': `-${this.distance}px`
       };
+    },
+    isSingle() {
+      return utils.isString(this.datas);
+    },
+    computedList() {
+      if (this.isSingle) {
+        return [genObject(this.datas)];
+      } else if (utils.isArray(this.datas)) {
+        return this.datas.map(item => {
+          return genObject(item);
+        });
+      }
+      return [];
     }
   }
 };

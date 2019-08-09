@@ -1,12 +1,12 @@
 <template>
   <div class="h-image-preview" :style="previewStyle">
-    <span class="h-image-preview-index"> {{showIndex + 1}} / {{datas.length}} </span>
+    <span class="h-image-preview-index" v-if="isShowIndex"> {{showIndex + 1}} / {{computedDatas.length}} </span>
     <span v-if="showIndex != 0" class="h-image-preview-icon h-image-preview-left-icon" @click="change(showIndex - 1)"><i class="h-icon-left"></i></span>
     <transition name="fade">
       <img :src="previewFile.url" v-show="!changeing" ref="img" @load="initStyle" class="h-image-preview-image" :alt="previewFile.name"/>
     </transition>
     <slot :data="previewFile" name="item" :index="index"></slot>
-    <span v-if="showIndex != datas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"><i class="h-icon-right"></i></span>
+    <span v-if="showIndex != computedDatas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"><i class="h-icon-right"></i></span>
     <Loading :loading="changeing"></Loading>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
       default: false
     },
     datas: {
-      type: [Array],
+      type: [Array, String],
       default: () => ([])
     },
     index: {
@@ -70,7 +70,7 @@ export default {
       }, 300);
     },
     change(index) {
-      if (index < 0 || index > this.datas.length - 1) {
+      if (index < 0 || index > this.computedDatas.length - 1) {
         return false;
       }
       this.changeing = true;
@@ -80,10 +80,10 @@ export default {
       }, 300);
     },
     updatePreview() {
-      if (this.datas.length == 0 || this.isShow === false) {
+      if (this.computedDatas.length == 0 || this.isShow === false) {
         return {};
       }
-      let data = this.datas[this.showIndex];
+      let data = this.computedDatas[this.showIndex];
       let previewFile = utils.isString(data) ? { url: data } : data;
       if (previewFile.url == this.previewFile.url) {
         this.$nextTick(() => {
@@ -103,6 +103,17 @@ export default {
         height: `${this.height}px`,
         width: `${this.width}px`
       };
+    },
+    computedDatas() {
+      if (utils.isString(this.datas)) {
+        return [this.datas];
+      } else if (utils.isArray(this.datas)) {
+        return this.datas;
+      }
+      return [];
+    },
+    isShowIndex() {
+      return !utils.isString(this.datas);
     }
   },
   components: {
