@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td>iconClass</td>
-        <td></td>
+        <td>1.24.0+</td>
         <td>String</td>
         <td>-</td>
         <td>h-icon-star-on</td>
