@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.24.2](https://github.com/heyui/heyui/compare/v1.24.0...v1.24.2) (2019-08-14)
+
+
+### Bug Fixes
+
+* **DateFullRangePicker:** update view with data type ([eb9b13e](https://github.com/heyui/heyui/commit/eb9b13e))
+* **ImagePreview:** support single page preview ([7f04d04](https://github.com/heyui/heyui/commit/7f04d04))
+* **TimePicker:** remove date handler when use correct parse ([253c6e7](https://github.com/heyui/heyui/commit/253c6e7)), closes [#209](https://github.com/heyui/heyui/issues/209)
+
+
+
 ### [1.24.1](https://github.com/heyui/heyui/compare/v1.24.0...v1.24.1) (2019-08-09)
 
 

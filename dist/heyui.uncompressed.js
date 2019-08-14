@@ -6107,15 +6107,36 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(0);
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _utils = _interopRequireDefault(__webpack_require__(2));
+
 //
 //
 //
 //
 //
+var genObject = function genObject(data) {
+  if (_utils.default.isString(data)) {
+    return {
+      url: data
+    };
+  } else if (_utils.default.isObject(data)) {
+    return {
+      url: data.thumbUrl || data.url
+    };
+  }
+
+  return {
+    url: null
+  };
+};
+
 var _default2 = {
   name: 'hImagePreview',
   props: {
@@ -6128,7 +6149,7 @@ var _default2 = {
       default: 10
     },
     datas: {
-      type: [Array],
+      type: [Array, String],
       default: function _default() {
         return [];
       }
@@ -6138,12 +6159,13 @@ var _default2 = {
       default: 3
     }
   },
-  data: function data() {
-    return {};
-  },
   methods: {
     click: function click(index, value) {
-      this.$emit('click', index, value);
+      if (this.isSingle) {
+        this.$emit('click', this.datas);
+      } else {
+        this.$emit('click', index, value);
+      }
     },
     itemStyles: function itemStyles(data) {
       return {
@@ -6152,7 +6174,7 @@ var _default2 = {
         'margin-right': "".concat(this.distance, "px"),
         'margin-bottom': "".concat(this.distance, "px"),
         'border-radius': "".concat(this.borderRadius, "px"),
-        'background-image': "url(".concat(data.thumbUrl || data.url, ")")
+        'background-image': "url(".concat(data.url, ")")
       };
     }
   },
@@ -6162,6 +6184,20 @@ var _default2 = {
         'margin-right': "-".concat(this.distance, "px"),
         'margin-bottom': "-".concat(this.distance, "px")
       };
+    },
+    isSingle: function isSingle() {
+      return _utils.default.isString(this.datas);
+    },
+    computedList: function computedList() {
+      if (this.isSingle) {
+        return [genObject(this.datas)];
+      } else if (_utils.default.isArray(this.datas)) {
+        return this.datas.map(function (item) {
+          return genObject(item);
+        });
+      }
+
+      return [];
     }
   }
 };
@@ -12991,7 +13027,7 @@ var _default2 = {
       default: false
     },
     datas: {
-      type: [Array],
+      type: [Array, String],
       default: function _default() {
         return [];
       }
@@ -13046,7 +13082,7 @@ var _default2 = {
     change: function change(index) {
       var _this2 = this;
 
-      if (index < 0 || index > this.datas.length - 1) {
+      if (index < 0 || index > this.computedDatas.length - 1) {
         return false;
       }
 
@@ -13060,11 +13096,11 @@ var _default2 = {
     updatePreview: function updatePreview() {
       var _this3 = this;
 
-      if (this.datas.length == 0 || this.isShow === false) {
+      if (this.computedDatas.length == 0 || this.isShow === false) {
         return {};
       }
 
-      var data = this.datas[this.showIndex];
+      var data = this.computedDatas[this.showIndex];
       var previewFile = _utils.default.isString(data) ? {
         url: data
       } : data;
@@ -13088,6 +13124,18 @@ var _default2 = {
         height: "".concat(this.height, "px"),
         width: "".concat(this.width, "px")
       };
+    },
+    computedDatas: function computedDatas() {
+      if (_utils.default.isString(this.datas)) {
+        return [this.datas];
+      } else if (_utils.default.isArray(this.datas)) {
+        return this.datas;
+      }
+
+      return [];
+    },
+    isShowIndex: function isShowIndex() {
+      return !_utils.default.isString(this.datas);
     }
   },
   components: {
@@ -15636,7 +15684,7 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "h-image-preview-list", style: _vm.listStyles },
-    _vm._l(_vm.datas, function(data, index) {
+    _vm._l(_vm.computedList, function(data, index) {
       return _c("div", {
         key: index,
         staticClass: "h-image-preview-item",
@@ -18308,15 +18356,17 @@ var render = function() {
     "div",
     { staticClass: "h-image-preview", style: _vm.previewStyle },
     [
-      _c("span", { staticClass: "h-image-preview-index" }, [
-        _vm._v(
-          " " +
-            _vm._s(_vm.showIndex + 1) +
-            " / " +
-            _vm._s(_vm.datas.length) +
-            " "
-        )
-      ]),
+      _vm.isShowIndex
+        ? _c("span", { staticClass: "h-image-preview-index" }, [
+            _vm._v(
+              " " +
+                _vm._s(_vm.showIndex + 1) +
+                " / " +
+                _vm._s(_vm.computedDatas.length) +
+                " "
+            )
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _vm.showIndex != 0
         ? _c(
@@ -18352,7 +18402,7 @@ var render = function() {
       _vm._v(" "),
       _vm._t("item", null, { data: _vm.previewFile, index: _vm.index }),
       _vm._v(" "),
-      _vm.showIndex != _vm.datas.length - 1
+      _vm.showIndex != _vm.computedDatas.length - 1
         ? _c(
             "span",
             {
