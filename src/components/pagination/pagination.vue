@@ -14,6 +14,7 @@
       v-model="sizeNow"
       :style="{order:orders.sizes}"
       v-if="orders.sizes!=-1"
+      class="h-page-select-size"
     ></Select>
     <span class="h-page-pager-container" :style="{order:orders.pager}" v-if="orders.pager!=-1 && this.count>0">
       <span :class="prevCls" @click="prev()">
