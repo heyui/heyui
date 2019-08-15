@@ -114,7 +114,6 @@ export default {
 
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
-        triggerOnce: true,
         content,
         disabled: this.disabled
       });
