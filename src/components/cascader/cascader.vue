@@ -173,9 +173,8 @@ export default {
       let datas = [];
       if (utils.isArray(this.param.datas)) {
         datas = this.param.datas;
-      }
-      if (utils.isFunction(this.param.datas)) {
-        datas = this.param.datas.call(null);
+      } else if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.apply(this.param);
       }
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];

@@ -43,10 +43,11 @@ export default {
         parentName: 'parent',
         titleName: 'title',
         dataMode: 'list',
-        datas: list
-        // datas() { 可以使用方法
-        //   return list;
-        // }
+        // datas: list
+        datas() {
+          // 可以使用方法
+          return list;
+        }
       }
     };
   },
