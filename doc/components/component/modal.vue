@@ -10,6 +10,8 @@
     <example demo="message/modal6"></example>
 
     <h3>Modal参数</h3>
+    <p><code>h-modal-header</code>: 将自带modal头部样式，拖拽会识别拥有该样式的dom来执行。</p>
+    <p><code>h-modal-footer</code>: 将自带modal底部样式</p>
     <example demo="message/modal12"></example>
 
     <h3>自定义操作按钮</h3>

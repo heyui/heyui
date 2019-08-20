@@ -10,6 +10,8 @@
     <exampleEn demo="message/modal6"></exampleEn>
 
     <h3>Modal params</h3>
+    <p><code>h-modal-header</code>: With modal header style, drag and drop identifies the DOM that owns the style to execute.</p>
+    <p><code>h-modal-footer</code>: With modal footer style.</p>
     <exampleEn demo="message/modal12"></exampleEn>
 
     <h3>Define buttons</h3>

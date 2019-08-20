@@ -7,6 +7,9 @@
       <FormItem label="全屏">
         <h-switch small v-model="params.fullScreen" @change="revert('middle', 'height')">fullScreen</h-switch>
       </FormItem>
+      <FormItem label="关闭Icon">
+        <h-switch small v-model="params.hasCloseIcon">hasCloseIcon</h-switch>
+      </FormItem>
       <FormItem label="垂直居中">
         <h-switch small v-model="params.middle" @change="revert('fullScreen', 'height')">middle</h-switch>
       </FormItem>
@@ -15,6 +18,9 @@
       </FormItem>
       <FormItem label="有分割线">
         <h-switch small v-model="params.hasDivider">hasDivider</h-switch>
+      </FormItem>
+      <FormItem label="可拖拽">
+        <h-switch small v-model="params.draggable" @change="revert('fullScreen','hasMask')">draggable，只支持js调用的方式，1.25.0+。</h-switch>
       </FormItem>
       <FormItem label="测试超长弹框">
         <h-switch small v-model="height" @change="revert('fullScreen', 'middle', 'hasMask')"></h-switch>
@@ -44,7 +50,9 @@ const DEFAULT_VALUE = {
   fullScreen: false,
   middle: false,
   hasMask: true,
-  hasDivider: false
+  hasDivider: false,
+  hasCloseIcon: false,
+  draggable: false
 };
 export default {
   data() {

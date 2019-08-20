@@ -1,5 +1,5 @@
 class Draggable {
-  constructor(element, options) {
+  constructor(element, options = {}) {
     this.isDragging = false;
     this.options = options;
     this.element = element;
