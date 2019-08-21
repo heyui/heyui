@@ -2,7 +2,7 @@
   <div :class="classes"
        :style="styles">
     <slot></slot>
-    <div class="h-row-clear"></div>
+    <div class="h-row-clear" v-if="type!='flex'"></div>
   </div>
 </template>
 <script>
