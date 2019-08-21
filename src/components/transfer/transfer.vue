@@ -2,18 +2,22 @@
 <template>
   <div class="h-transfer">
     <div class="h-transfer-source">
-      <slot name="sourceHeader"><div class="h-transfer-header" v-if="option&&option.ltHeadText">{{option.ltHeadText}}</div></slot>
-      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" class="h-input" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText"/></div>
-      <div class="h-transfer-list">
+      <slot name="sourceHeader">
+        <div class="h-transfer-header" v-if="option&&option.ltHeadText">{{option.ltHeadText}}</div>
+      </slot>
+      <div v-if="option.filterable && ( sources.length || ltSearchText)" class="h-transfer-filter">
+        <Search position="front" :placeholder="option?option.placeholder:'搜索'" v-model="ltSearchText" />
+      </div>
+      <div class="h-transfer-list" :style="transferListStyle">
         <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
-          <Checkbox v-model="ltChecked"  :value="op[key]" :checked="false">
-            <slot name="item" :option="op">
+          <Checkbox v-model="ltChecked" :value="op[key]" :checked="false">
+            <slot name="item" :option="op" type="source">
               <template v-if="option&&option.render">{{option.render(op)}}</template>
               <template v-else>{{op.text}}</template>
             </slot>
           </Checkbox>
         </div>
-        <div class="h-transfer-item text-center"  v-if="sources.length===0">无数据</div>
+        <div class="h-transfer-item text-center" v-if="sources.length===0">无数据</div>
       </div>
     </div>
 
@@ -31,19 +35,25 @@
     </div>
 
     <div class="h-transfer-target">
-      <slot name="targetHeader"><div class="h-transfer-header" v-if="option&&option.rtHeadText">{{option.rtHeadText}}</div></slot>
-      <div v-if="option.filterable" class="h-transfer-filter"><input type="text" class="h-input" :placeholder="option?option.placeholder:'搜索'" v-model="rtSearchText"/></div>
-      <div class="h-transfer-list">
-        <div class="h-transfer-item" v-for="op in targets" :key="op[key]"><label>
-          <Checkbox v-model="rtChecked"  :value="op[key]">
-            <slot name="item" :option="op">
-              <template v-if="option&&option.render">{{option.render(op)}}</template>
-              <template v-else>{{op.text}}</template>
-            </slot>
-          </Checkbox>
-        </label></div>
+      <slot name="targetHeader">
+        <div class="h-transfer-header" v-if="option&&option.rtHeadText">{{option.rtHeadText}}</div>
+      </slot>
+      <div v-if="option.filterable && ( targets.length || rtSearchText)" class="h-transfer-filter">
+        <Search position="front" :placeholder="option?option.placeholder:'搜索'" v-model="rtSearchText" />
       </div>
-      <div class="h-transfer-item text-center"  v-if="targets.length===0">无数据</div>
+      <div class="h-transfer-list" :style="transferListStyle">
+        <div class="h-transfer-item" v-for="op in targets" :key="op[key]">
+          <label>
+            <Checkbox v-model="rtChecked" :value="op[key]" >
+              <slot name="item" :option="op" type="target">
+                <template v-if="option&&option.render">{{option.render(op)}}</template>
+                <template v-else>{{op.text}}</template>
+              </slot>
+            </Checkbox>
+          </label>
+        </div>
+        <div class="h-transfer-item text-center" v-if="targets.length===0">无数据</div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +77,7 @@ export default {
       type: String,
       default: 'key'
     },
+    height: Number,
     option: {
       type: Object,
       default: () => ({})
@@ -104,6 +115,13 @@ export default {
     }
   },
   computed: {
+    transferListStyle() {
+      let param = {};
+      if (this.height) {
+        param['height'] = `${this.height}px`;
+      }
+      return param;
+    },
     sources() {
       let value = this.value || [];
       let key = this.keyName || 'key';

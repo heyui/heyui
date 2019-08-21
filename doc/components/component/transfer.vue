@@ -40,6 +40,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>height</td>
+        <td>穿梭器高度, 1.25.0+</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
 
     <h3>Transfer 事件</h3>

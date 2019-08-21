@@ -41,6 +41,13 @@
         <td>-</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>height</td>
+        <td>Transfer height, 1.25.0+</td>
+        <td>Number</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
     </table>
 
     <h3>Transfer Event</h3>
