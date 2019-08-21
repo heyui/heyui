@@ -48,8 +48,8 @@
     <h3>Table bubble tips and custom style</h3>
     <exampleEn demo="view/table7"></exampleEn>
 
-    <h3>Custom table header</h3>
-    <exampleEn demo="view/table8"></exampleEn>
+    <h3>Custom table header, colspan, rowspan</h3>
+    <example demo="view/table8"></example>
 
     <h3>Table 参数</h3>
     <table class="table">
@@ -133,6 +133,13 @@
       <tr>
         <td>getTrClass</td>
         <td>get row style,1.19.2+</td>
+        <td>Function(data, index)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>attrs</td>
+        <td>Computed td attributes,1.25.0+</td>
         <td>Function(data, index)</td>
         <td></td>
         <td></td>

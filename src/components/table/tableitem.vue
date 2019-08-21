@@ -13,6 +13,7 @@ export default {
     fixed: String,
     label: String,
     prop: String,
+    attrs: Function,
     dict: String,
     align: String,
     className: String,

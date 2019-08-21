@@ -45,7 +45,7 @@
     <h3>Table 气泡提示以及自定义行列样式</h3>
     <example demo="view/table7"></example>
 
-    <h3>自定义表头</h3>
+    <h3>自定义表头，合并行/列</h3>
     <example demo="view/table8"></example>
 
     <h3>Table 参数</h3>
@@ -123,6 +123,13 @@
       <tr>
         <td>getTrClass</td>
         <td>获取行的样式,1.19.2+</td>
+        <td>Function(data, index)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>attrs</td>
+        <td>计算 td 的属性, 1.25.0+</td>
         <td>Function(data, index)</td>
         <td></td>
         <td></td>
