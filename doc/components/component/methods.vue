@@ -37,6 +37,7 @@
     <ul class="text-ul">
       <li><code>HeyUI.initDict({key: value})</code>: 初始化字典对象</li>
       <li><code>HeyUI.addDict(key, value)</code> 添加字典</li>
+      <li><code>HeyUI.getDict(key, value)</code> 获取字典</li>
     </ul>
 
     <h4>应用字典</h4>
