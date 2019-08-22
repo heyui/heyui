@@ -45,7 +45,7 @@ const lang = {
     },
     validation: {
       base: {
-        required: ' can not be empty',
+        required: ' não pode ser vazio',
         maxLen: ' o comprimento do texto não pode exceder {value} bits',
         minLen: ' comprimento do texto não pode ser inferior a {value} bits',
         max: ' não maior que {value}',
@@ -139,8 +139,8 @@ const lang = {
       incorrectFormat: 'O formato do valor digitado está incorreto',
       overSize: 'O valor que você inseriu excede o intervalo',
       totalBefore: 'Total',
-      totalAfter: 'items',
-      sizeOfPage: '{size} items/página'
+      totalAfter: 'itens',
+      sizeOfPage: '{size} itens/página'
     }
   }
 };
