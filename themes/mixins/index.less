@@ -13,17 +13,17 @@
   outline: none;
   transition: color @transition-time ease;
   &:hover {
-    color: darken(@link-color, 10%);
+    color: darken(@link-color, 10%) !important;
   }
   &:active {
-    color: darken(@link-color, 20%);
+    color: darken(@link-color, 20%) !important;
   }
   &:active, &:hover{
     outline: 0;
     text-decoration: none;
   }
   &[disabled] {
-    color: @disabled-color;
+    color: @disabled-color !important;
     cursor: default;
   }
 }
@@ -39,18 +39,18 @@
   transition: color @transition-time ease;
 
   &:hover {
-    color: @link-color;
+    color: @link-color !important;
   }
   
   &:active {
-    color: darken(@link-color, 15%);
+    color: darken(@link-color, 15%) !important;
   }
   
   &.@{pop-ref-prefix} &{
     color: darken(@link-color, 10%) !important;
   }
   &[disabled] {
-    color: @disabled-color;
+    color: @disabled-color !important;
     cursor: default;
   }
 }
@@ -62,15 +62,15 @@
   color: @dark4-color;
 
   &:hover {
-    color: @dark2-color;
+    color: @dark2-color !important;
   }
 
   &:active {
-    color: darken(@dark2-color, 10%);
+    color: darken(@dark2-color, 10%) !important;
   }
 
   &[disabled] {
-    color: @disabled-color;
+    color: @disabled-color !important;
     cursor: default;
   }
 }
