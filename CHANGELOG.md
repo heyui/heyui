@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.25.0-alpha.0](https://github.com/heyui/heyui/compare/v1.24.0...v1.25.0-alpha.0) (2019-08-23)
+
+
+### Bug Fixes
+
+* **DateFullRangePicker:** update view with data type ([eb9b13e](https://github.com/heyui/heyui/commit/eb9b13e))
+* **i18n:** adjust points of translate ([1a1db1c](https://github.com/heyui/heyui/commit/1a1db1c))
+* **ImagePreview:** support single page preview ([7f04d04](https://github.com/heyui/heyui/commit/7f04d04))
+* **Pagination:** optimize select style ([6477dcb](https://github.com/heyui/heyui/commit/6477dcb))
+* **Pagination:** page input use change event ([c659e19](https://github.com/heyui/heyui/commit/c659e19))
+* **Row:** remove row clear when use flex ([e13feb3](https://github.com/heyui/heyui/commit/e13feb3))
+* **TimePicker:** remove date handler when use correct parse ([253c6e7](https://github.com/heyui/heyui/commit/253c6e7)), closes [#209](https://github.com/heyui/heyui/issues/209)
+* **Tree:** optimize use ([81c0b9a](https://github.com/heyui/heyui/commit/81c0b9a))
+* **TreePicker:** optimize trigger ([09b0d3e](https://github.com/heyui/heyui/commit/09b0d3e))
+* link style add !important ([5171714](https://github.com/heyui/heyui/commit/5171714))
+
+
+### Features
+
+* **Modal:** Add drag and drop function ([e7040b6](https://github.com/heyui/heyui/commit/e7040b6)), closes [#165](https://github.com/heyui/heyui/issues/165)
+* **table:** add prop attrs ([4639c00](https://github.com/heyui/heyui/commit/4639c00)), closes [#186](https://github.com/heyui/heyui/issues/186)
+* **Transfer:** optimze ([d979e99](https://github.com/heyui/heyui/commit/d979e99)), closes [#210](https://github.com/heyui/heyui/issues/210)
+
+
+
 ### [1.24.2](https://github.com/heyui/heyui/compare/v1.24.0...v1.24.2) (2019-08-14)
 
 
