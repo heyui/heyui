@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import App from './app.vue';
-import { install, Prototypes, Button, DropdownMenu } from 'heyuiNative';
+import { install, Prototypes, Button, Pagination, DropdownMenu } from 'heyuiNative';
 
 require('../css/module.less');
 
-Vue.use(install, { components: { Button, DropdownMenu }, prototypes: Prototypes });
+Vue.use(install, { components: { Button, DropdownMenu, Pagination }, prototypes: Prototypes });
 
 const app = new Vue({
   el: '#app',

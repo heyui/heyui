@@ -60,10 +60,11 @@
 
 <script>
 import Checkbox from 'heyui/src/components/checkbox';
+import Search from 'heyui/src/components/search';
 
 export default {
   name: 'hTransfer',
-  components: { Checkbox },
+  components: { Checkbox, Search },
   props: {
     value: {
       type: Array,

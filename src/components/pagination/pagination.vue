@@ -37,12 +37,16 @@ import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
 import Message from 'heyui/src/plugins/message';
+import Select from 'heyui/src/components/select';
 
 const prefix = 'h-page';
 
 export default {
   name: 'hPagination',
   mixins: [Locale],
+  components: {
+    Select
+  },
   props: {
     size: {
       type: Number,

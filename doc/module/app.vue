@@ -5,6 +5,7 @@
     <p>
       <Button @click="tip">点我</Button>
     </p>
+    <Pagination ></Pagination>
     <p>
       <DropdownMenu :datas="['菜单1','菜单2']" @click="menuTip" button>菜单</DropdownMenu>
     </p>
