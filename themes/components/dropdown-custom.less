@@ -10,10 +10,15 @@
     .h-func-rotate-icon-down(false);
     &-content {
       display: inline-block;
-      // padding-right: 26px;
-      // transition: all 0.2s;
-      &.h-dropdowncustom-show-empty {
-        padding-right: 0 !important;
+    }
+    &.h-dropdowncustom-empty {
+      // .h-dropdowncustom-show-content {
+      //   padding-right: 0 !important;
+      // }
+      .h-icon-down {
+        right: auto;
+        left: 50%;
+        margin-left: -5px;
       }
     }
   }
@@ -28,13 +33,15 @@
 
   &.h-btn {
     padding: 0;
-    .h-dropdowncustom-show-content {
-      padding-right: 12px;
-    }
     .h-dropdowncustom-show {
-      padding: 8px 15px;
-      padding-bottom: 9px;
-      margin-bottom: -1px;
+      padding: @button-size-normal-padding;
+      padding-right: 0;
+      &.h-dropdowncustom-empty {
+        width: 30px;
+      }
+      .h-icon-down {
+        color: inherit;
+      }
     }
   }
 }

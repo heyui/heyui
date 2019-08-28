@@ -294,6 +294,31 @@
   }
 }
 
+.h-func-rotate-middle-icon-down(@hasColor: true) {
+  >.h-icon-down {
+    color: @dark2-color;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: transform @transition-time;
+  }
+  &:hover when (@hasColor){
+    >.h-icon-down {
+      color: @primary-color;
+    }
+  }
+  &.@{pop-ref-prefix}>.h-icon-down {
+    transform: rotate(-180deg) translate(50%, 50%) scale(0.8);
+    & when (@hasColor){
+      color: @primary-color;
+    }
+  }
+}
+
 .h-func-tag-color(@color){
   color: darken(@color, 10%);
   background: lighten(average(@color, #FFF), 10%);
