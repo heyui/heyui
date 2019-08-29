@@ -1,5 +1,5 @@
 <template>
-  <Tooltip ref="tooltip" :theme="theme" :placement="placement" trigger="click">
+  <Tooltip ref="tooltip" :theme="theme" :disabled="disabled" :placement="placement" trigger="click">
     <slot></slot>
     <div slot="content" class="h-poptip">
       <div class="h-poptip-content"><i class="yellow-color h-icon-warn"></i><i class="h-split"></i>{{content}}</div>
@@ -20,6 +20,10 @@ export default {
     theme: {
       type: String,
       default: 'white'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

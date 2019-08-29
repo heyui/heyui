@@ -34,6 +34,13 @@
         <td>white</td>
         <td>-</td>
       </tr>
+      <tr>
+        <td>disabled</td>
+        <td>是否禁用, 1.25.0+</td>
+        <td>Boolean</td>
+        <td></td>
+        <td>false</td>
+      </tr>
     </table>
 
     <h3>Poptip 事件</h3>
