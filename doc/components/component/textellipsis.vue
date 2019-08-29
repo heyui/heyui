@@ -70,6 +70,27 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>more</td>
+        <td>Text displayed when defining abbreviations, 1.25.0+</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>textStyle</td>
+        <td>文字的style, 1.25.0+</td>
+        <td>String, Object, Array</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>textClass</td>
+        <td>文字的class, 1.25.0+</td>
+        <td>String, Object, Array</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>TextEllipsis 事件</h3>

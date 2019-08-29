@@ -1,7 +1,6 @@
 <template>
   <div>
-    <TextEllipsis v-for="text of texts" :key="text" :text="text" :height="40" v-width="300" useTooltip tooltipTheme="white" placement="right">
-      <template slot="more">...</template>
+    <TextEllipsis v-for="text of texts" textClass="link" @click="go" :key="text" :text="text" more="..." :height="40" v-width="300" useTooltip tooltipTheme="white" placement="right">
     </TextEllipsis>
   </div>
 </template>
@@ -18,7 +17,9 @@ export default {
     };
   },
   methods: {
-
+    go() {
+      this.$Message('跳转');
+    }
   }
 };
 </script>
