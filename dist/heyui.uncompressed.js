@@ -5930,7 +5930,7 @@ var _default = {
     showCls: function showCls() {
       var _ref2;
 
-      return _ref2 = {}, (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-show"), true), (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-disabled"), !!this.disabled), (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-show-toggle"), !!this.toggleIcon), (0, _defineProperty2.default)(_ref2, this.className, !!this.className), (0, _defineProperty2.default)(_ref2, this.showClass, !!this.showClass), _ref2;
+      return _ref2 = {}, (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-show"), true), (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-disabled"), !!this.disabled), (0, _defineProperty2.default)(_ref2, "".concat(prefix, "-show-toggle"), !!this.toggleIcon), (0, _defineProperty2.default)(_ref2, this.className, !!this.className), (0, _defineProperty2.default)(_ref2, this.showClass, !!this.showClass), (0, _defineProperty2.default)(_ref2, 'h-dropdowncustom-empty', !this.$slots.default), _ref2;
     },
     groupCls: function groupCls() {
       return (0, _defineProperty2.default)({}, "".concat(prefix, "-group"), true);
@@ -8535,6 +8535,10 @@ var _default = {
     theme: {
       type: String,
       default: 'white'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -11336,46 +11340,6 @@ var getChooseNode = function getChooseNode(data, options) {
   return options;
 };
 
-var updateModeSomeChildChooseStatus = function updateModeSomeChildChooseStatus(data) {
-  if (data.children) {
-    var isChoose = false;
-    var _iteratorNormalCompletion4 = true;
-    var _didIteratorError4 = false;
-    var _iteratorError4 = undefined;
-
-    try {
-      for (var _iterator4 = data.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-        var child = _step4.value;
-
-        // updateChildStatus(child);
-        if (child.status.choose) {
-          isChoose = true;
-        }
-
-        updateModeSomeChildChooseStatus(child);
-      }
-    } catch (err) {
-      _didIteratorError4 = true;
-      _iteratorError4 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-          _iterator4.return();
-        }
-      } finally {
-        if (_didIteratorError4) {
-          throw _iteratorError4;
-        }
-      }
-    }
-
-    if (isChoose) {
-      data.status.choose = true;
-      data.status.opened = true;
-    }
-  }
-};
-
 var _default = {
   name: 'hTree',
   props: {
@@ -11600,13 +11564,13 @@ var _default = {
     },
     initTreeModeData: function initTreeModeData(list, isWait, parentKey) {
       var datas = [];
-      var _iteratorNormalCompletion5 = true;
-      var _didIteratorError5 = false;
-      var _iteratorError5 = undefined;
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
 
       try {
-        for (var _iterator5 = list[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-          var data = _step5.value;
+        for (var _iterator4 = list[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var data = _step4.value;
           var obj = this.initTreeNode(data, parentKey, isWait);
           var children = data[this.param.childrenName] || [];
           obj.children = this.initTreeModeData(children, isWait, obj.key);
@@ -11614,16 +11578,16 @@ var _default = {
           datas.push(obj);
         }
       } catch (err) {
-        _didIteratorError5 = true;
-        _iteratorError5 = err;
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-            _iterator5.return();
+          if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+            _iterator4.return();
           }
         } finally {
-          if (_didIteratorError5) {
-            throw _iteratorError5;
+          if (_didIteratorError4) {
+            throw _iteratorError4;
           }
         }
       }
@@ -11720,13 +11684,13 @@ var _default = {
         _tree2.status.opened = false;
       }
 
-      var _iteratorNormalCompletion6 = true;
-      var _didIteratorError6 = false;
-      var _iteratorError6 = undefined;
+      var _iteratorNormalCompletion5 = true;
+      var _didIteratorError5 = false;
+      var _iteratorError5 = undefined;
 
       try {
-        for (var _iterator6 = choose[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-          var _key2 = _step6.value;
+        for (var _iterator5 = choose[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+          var _key2 = _step5.value;
           var _tree3 = this.treeObj[_key2];
 
           if (_tree3) {
@@ -11743,41 +11707,41 @@ var _default = {
           }
         }
       } catch (err) {
-        _didIteratorError6 = true;
-        _iteratorError6 = err;
+        _didIteratorError5 = true;
+        _iteratorError5 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion6 && _iterator6.return != null) {
-            _iterator6.return();
+          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+            _iterator5.return();
           }
         } finally {
-          if (_didIteratorError6) {
-            throw _iteratorError6;
+          if (_didIteratorError5) {
+            throw _iteratorError5;
           }
         }
       }
 
       if (this.chooseMode == 'all') {
-        var _iteratorNormalCompletion7 = true;
-        var _didIteratorError7 = false;
-        var _iteratorError7 = undefined;
+        var _iteratorNormalCompletion6 = true;
+        var _didIteratorError6 = false;
+        var _iteratorError6 = undefined;
 
         try {
-          for (var _iterator7 = this.treeDatas[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-            var tree = _step7.value;
+          for (var _iterator6 = this.treeDatas[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+            var tree = _step6.value;
             updateModeAllChildChooseStatus(tree);
           }
         } catch (err) {
-          _didIteratorError7 = true;
-          _iteratorError7 = err;
+          _didIteratorError6 = true;
+          _iteratorError6 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion7 && _iterator7.return != null) {
-              _iterator7.return();
+            if (!_iteratorNormalCompletion6 && _iterator6.return != null) {
+              _iterator6.return();
             }
           } finally {
-            if (_didIteratorError7) {
-              throw _iteratorError7;
+            if (_didIteratorError6) {
+              throw _iteratorError6;
             }
           }
         }
@@ -11831,26 +11795,26 @@ var _default = {
         return this.getFullChoose();
       } else {
         var options = [];
-        var _iteratorNormalCompletion8 = true;
-        var _didIteratorError8 = false;
-        var _iteratorError8 = undefined;
+        var _iteratorNormalCompletion7 = true;
+        var _didIteratorError7 = false;
+        var _iteratorError7 = undefined;
 
         try {
-          for (var _iterator8 = this.treeDatas[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-            var data = _step8.value;
+          for (var _iterator7 = this.treeDatas[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+            var data = _step7.value;
             options = getChooseNode(data, options);
           }
         } catch (err) {
-          _didIteratorError8 = true;
-          _iteratorError8 = err;
+          _didIteratorError7 = true;
+          _iteratorError7 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion8 && _iterator8.return != null) {
-              _iterator8.return();
+            if (!_iteratorNormalCompletion7 && _iterator7.return != null) {
+              _iterator7.return();
             }
           } finally {
-            if (_didIteratorError8) {
-              throw _iteratorError8;
+            if (_didIteratorError7) {
+              throw _iteratorError7;
             }
           }
         }
@@ -14972,6 +14936,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   name: 'hTextEllipsis',
   props: {
@@ -14986,7 +14951,10 @@ var _default = {
       default: false
     },
     tooltipTheme: String,
-    placement: String
+    placement: String,
+    textStyle: [String, Object, Array],
+    textClass: [String, Object, Array],
+    more: String
   },
   data: function data() {
     return {
@@ -15019,6 +14987,9 @@ var _default = {
       if (this.isLimitHeight) {
         this.limitShow();
       }
+    },
+    textClick: function textClick() {
+      this.$emit('click');
     },
     limitShow: function limitShow() {
       var _this = this;
@@ -16323,32 +16294,38 @@ var render = function() {
               expression: "useTooltip&&isHide"
             }
           ],
-          key: _vm.keyIndex,
-          staticClass: "h-text-ellipsis-limit-text",
+          class: _vm.textClass,
+          style: _vm.textStyle,
           attrs: {
             theme: _vm.tooltipTheme,
             placement: _vm.placement,
             content: _vm.text
-          }
+          },
+          on: { click: _vm.textClick }
         },
-        [_vm._v(_vm._s(_vm.text))]
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          directives: [
+        [
+          _c(
+            "span",
+            { key: _vm.keyIndex, staticClass: "h-text-ellipsis-limit-text" },
+            [_vm._v(_vm._s(_vm.text))]
+          ),
+          _c(
+            "span",
             {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.oversize,
-              expression: "oversize"
-            }
-          ],
-          staticClass: "h-text-ellipsis-more"
-        },
-        [_vm._t("more")],
-        2
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.oversize,
+                  expression: "oversize"
+                }
+              ],
+              staticClass: "h-text-ellipsis-more"
+            },
+            [_vm._v(_vm._s(_vm.more)), _vm._t("more")],
+            2
+          )
+        ]
       ),
       _vm._v(" "),
       _vm._t("after")
@@ -17888,10 +17865,7 @@ var render = function() {
     _c("div", { class: _vm.showCls }, [
       _c(
         "div",
-        {
-          staticClass: "h-dropdowncustom-show-content",
-          class: { "h-dropdowncustom-show-empty": !_vm.$slots.default }
-        },
+        { staticClass: "h-dropdowncustom-show-content" },
         [_vm._t("default")],
         2
       ),
@@ -20753,7 +20727,12 @@ var render = function() {
     "Tooltip",
     {
       ref: "tooltip",
-      attrs: { theme: _vm.theme, placement: _vm.placement, trigger: "click" }
+      attrs: {
+        theme: _vm.theme,
+        disabled: _vm.disabled,
+        placement: _vm.placement,
+        trigger: "click"
+      }
     },
     [
       _vm._t("default"),
