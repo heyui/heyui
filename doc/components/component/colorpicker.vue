@@ -9,8 +9,6 @@ import ColorPicker from 'heyui/lib/components/color-picker';
 Vue.component('ColorPicker', ColorPicker);
 </codes>
 
-    <p>说明</p>
-
     <h3>基本调用</h3>
     <example demo="colorpicker/colorpicker1"></example>
 
