@@ -19,6 +19,38 @@
     flex: 1;
     overflow: hidden;
   }
+
+  .split-trigger {
+      border: 1px solid #dcdee2;
+    }
+    .split-trigger-vertical {
+      width: 6px;
+      // height: 100%;
+      background: #f8f8f9;
+      border-top: none;
+      border-bottom: none;
+      cursor: col-resize;
+      @media (max-width: 600px){
+        &:not(:last-of-type) {
+          display: none;
+        }
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .split-trigger-bar-con.vertical {
+      display: flex;
+      flex-direction: column;
+      height: 32px;
+    }
+    .split-trigger-bar {
+      width: 4px;
+      height: 1px;
+      background: rgba(23,35,61,.25);
+      float: left;
+      margin-top: 3px;
+    }
 }
 </style>
 <template>
@@ -30,8 +62,18 @@
         <Button @click="reset">重置Reset</Button>
       </div>
       <div class="code-frame">
-        <Code ref="codePage"></Code>
-        <Preview ref="previewPage" :code="code"></Preview>
+        <Code ref="codePage" id="left-item"></Code>
+        <div id="split-trigger" class="split-trigger split-trigger-vertical">
+          <div class="split-trigger-bar-con vertical">
+            <i class="split-trigger-bar"></i>
+            <i class="split-trigger-bar"></i>
+            <i class="split-trigger-bar"></i>
+            <i class="split-trigger-bar"></i>
+            <i class="split-trigger-bar"></i>
+            <i class="split-trigger-bar"></i>
+          </div>
+        </div>
+        <Preview ref="previewPage" id="right-item" :code="code"></Preview>
       </div>
     </div>
   </div>
@@ -65,6 +107,7 @@ export default {
         let localCode = Utils.getLocal('RUN_CODE', this.sourcecode);
         this.$refs.codePage.setValue(localCode || sample);
         this.run();
+        this.splitMove()
       }, 300);
     },
     run() {
@@ -85,6 +128,32 @@ export default {
         e.preventDefault();
         this.run();
       }
+    },
+    splitMove() {
+      const splitTriggerEle= document.getElementById('split-trigger');
+      const cb = function name (_event){
+        const  event = _event || window.event;
+        const disX = event.offsetX;
+        document.onmousemove = function (_event){
+          const event = _event || window.event ;
+          let leftItemWidth = event.x;
+          if (leftItemWidth < 100) {
+            leftItemWidth = 100;
+          } else if (leftItemWidth > document.body.clientWidth - 100) {
+            leftItemWidth = document.body.clientWidth - 100;
+          }
+          document.getElementById('left-item')
+          .setAttribute('style', 'width: ' + leftItemWidth + 'px');
+          const rightWidth = document.body.clientWidth - leftItemWidth - 6;
+          document.getElementById('right-item')
+          .setAttribute('style', 'width: ' + rightWidth + 'px');
+        };
+        document.onmouseup = function() {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        };
+      };
+      splitTriggerEle && (splitTriggerEle.onmousedown = cb);
     }
   },
   computed: {
