@@ -6,7 +6,7 @@
 <script>
 const prefix = 'h-btn-group';
 const Props = {
-  size: new Set(['l', 's', 'xs'])
+  size: ['l', 's', 'xs']
 };
 export default {
   name: 'hButtonGroup',
@@ -15,7 +15,7 @@ export default {
     size: {
       type: String,
       validator(value) {
-        return Props.size.has(value);
+        return Props.size.indexOf(value) != -1;
       }
     }
   },

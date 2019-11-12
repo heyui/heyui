@@ -9,10 +9,10 @@
 const prefixCls = 'h-row';
 
 const Props = {
-  type: new Set(['flex']),
-  align: new Set(['top', 'middle', 'bottom']),
-  justify: new Set(['start', 'end', 'center', 'space-around', 'space-between']),
-  direction: new Set(['row', 'row-reverse', 'column', 'column-reverse'])
+  type: ['flex'],
+  align: ['top', 'middle', 'bottom'],
+  justify: ['start', 'end', 'center', 'space-around', 'space-between'],
+  direction: ['row', 'row-reverse', 'column', 'column-reverse']
 };
 
 const getHalf = (width, hasRemainder) => {
@@ -24,22 +24,22 @@ export default {
   props: {
     type: {
       validator(value) {
-        return Props.type.has(value);
+        return Props.type.indexOf(value) != -1;
       }
     },
     align: {
       validator(value) {
-        return Props.align.has(value);
+        return Props.align.indexOf(value) != -1;
       }
     },
     justify: {
       validator(value) {
-        return Props.justify.has(value);
+        return Props.justify.indexOf(value) != -1;
       }
     },
     direction: {
       validator(value) {
-        return Props.direction.has(value);
+        return Props.direction.indexOf(value) != -1;
       }
     },
     space: {

@@ -6,7 +6,7 @@
 <script>
 const prefix = 'h-btn';
 const Props = {
-  size: new Set(['l', 's', 'xs'])
+  size: ['l', 's', 'xs']
 };
 export default {
   name: 'hButton',
@@ -25,7 +25,7 @@ export default {
     size: {
       type: String,
       validator(value) {
-        return Props.size.has(value);
+        return Props.size.indexOf(value) != -1;
       }
     },
     stop: {

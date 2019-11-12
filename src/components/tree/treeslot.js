@@ -1,9 +1,10 @@
 const getParent = function (vm) {
   let parent = vm.$parent;
-  let filterTag = new Set(['Tree', 'hTree', 'h-tree']);
-  while (parent != null && !filterTag.has(parent.$options._componentTag || parent.$options.name)) {
+  let filterTag = ['Tree', 'hTree', 'h-tree'];
+  while (parent && parent.$parent && filterTag.indexOf(parent.$options._componentTag || parent.$options.name) == -1) {
     parent = parent.$parent;
   }
+  console.log(parent);
   if (!parent) {
     console.error('[HeyUI Error] Tree Component: Please put TreeItem component in the Tree Component');
   }
@@ -17,7 +18,7 @@ export default {
   },
   render(h) {
     let parent = getParent(this);
-    if (parent.$scopedSlots && parent.$scopedSlots.item) {
+    if (parent && parent.$scopedSlots && parent.$scopedSlots.item) {
       return h('div', {
         class: 'h-tree-item-slot'
       }, [
