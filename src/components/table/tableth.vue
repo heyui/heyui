@@ -33,6 +33,7 @@ export default {
       default: false
     },
     sortProp: String,
+    sortInit: String,
     sort: {
       type: [Boolean, String],
       default: false
@@ -56,7 +57,11 @@ export default {
       if (this.sortStatus.type && this.sortStatus.prop == this.sortUseProp) {
         sortStatus.type = this.sortStatus.type == 'asc' ? 'desc' : 'asc';
       } else {
-        sortStatus.type = 'desc';
+        if (this.sortInit && (this.sortInit == 'asc' || this.sortInit == 'desc')) {
+          sortStatus.type = this.sortInit;
+        } else {
+          sortStatus.type = 'desc';
+        }
         sortStatus.prop = this.sortUseProp;
       }
       let parent = this.$parent;

@@ -12,7 +12,7 @@
               <CheckboxAll v-if="fixedColumnLeft.length==0" :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
             </th>
             <th v-if="radio&&thindex==0" class="h-table-th-radio" :rowspan="ths.length"></th>
-            <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
+            <TableTh v-for="(thdata, index) of thdata" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus" :sortInit="sortInit"></TableTh>
           </tr>
         </template>
         <tr v-else>
@@ -20,7 +20,7 @@
             <CheckboxAll v-if="fixedColumnLeft.length==0" :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
           </th>
           <th v-else-if="radio" class="h-table-th-radio"></th>
-          <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus"></TableTh>
+          <TableTh v-for="(c, index) of computeColumns" :key="index+update.columns" v-bind="c" :sortStatus="sortStatus" :sortInit="sortInit"></TableTh>
         </tr>
       </table>
       <div class="h-table-fixed-cover" :style="{'width': (scrollWidth+'px')}"></div>
@@ -116,7 +116,7 @@
             <CheckboxAll :checks="checks" :checkableDatas="checkableDatas" @checkAll="checkAll"></CheckboxAll>
           </th>
           <th v-if="radio" class="h-table-th-radio"> </th>
-          <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
+          <TableTh v-for="(thdata, index) of fixedColumnLeft" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus" :sortInit="sortInit"></TableTh>
         </tr>
       </table>
     </div>
@@ -126,7 +126,7 @@
           <col v-for="(c, index) of fixedColumnRight" :width="getWidth(c)" :key="index+update.columns" />
         </colgroup>
         <tr>
-          <TableTh v-for="(thdata, index) of fixedColumnRight" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus"></TableTh>
+          <TableTh v-for="(thdata, index) of fixedColumnRight" :key="index+update.columns" v-bind="thdata" :sortStatus="sortStatus" :sortInit="sortInit"></TableTh>
         </tr>
       </table>
     </div>
@@ -195,7 +195,11 @@ export default {
       type: Boolean,
       default: false
     },
-    getTrClass: Function
+    getTrClass: Function,
+    sortInit: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
