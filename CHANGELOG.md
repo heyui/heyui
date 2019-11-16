@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.25.1](https://github.com/heyui/heyui/compare/v1.25.0...v1.25.1) (2019-11-16)
+
+
+### Bug Fixes
+
+* **ColorPicker:** init color show ([336ece3](https://github.com/heyui/heyui/commit/336ece3)), closes [#232](https://github.com/heyui/heyui/issues/232)
+* 删除Set的处理，使用indexOf ([dc5e78e](https://github.com/heyui/heyui/commit/dc5e78e)), closes [#248](https://github.com/heyui/heyui/issues/248)
+* **Pagination:** remove duplicate jump event ([8754502](https://github.com/heyui/heyui/commit/8754502)), closes [#242](https://github.com/heyui/heyui/issues/242)
+* **Select:** optimize value equal calculation ([fd109f9](https://github.com/heyui/heyui/commit/fd109f9)), closes [#231](https://github.com/heyui/heyui/issues/231)
+
+
+
 ## [1.25.0](https://github.com/heyui/heyui/compare/v1.24.0...v1.25.0) (2019-09-23)
 
 
