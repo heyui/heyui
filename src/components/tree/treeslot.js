@@ -4,7 +4,6 @@ const getParent = function (vm) {
   while (parent && parent.$parent && filterTag.indexOf(parent.$options._componentTag || parent.$options.name) == -1) {
     parent = parent.$parent;
   }
-  console.log(parent);
   if (!parent) {
     console.error('[HeyUI Error] Tree Component: Please put TreeItem component in the Tree Component');
   }
