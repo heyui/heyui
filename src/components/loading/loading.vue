@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
+import utils from 'heyui/src/utils/utils';
 
 const prefix = 'h-loading';
 export default {

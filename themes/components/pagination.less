@@ -1,12 +1,15 @@
 @page-cls: ~"@{prefix}page";
 .@{page-cls} {
-  .clearfix();
+  .h-func-clearfix();
   display: flex;
   align-items: center;
   >span,
   >input,
   >div {
     margin: 0 5px;
+  }
+  >.h-page-select-size {
+    margin-right: 0;
   }
   &&-align-right {
     justify-content: flex-end;
@@ -66,5 +69,8 @@
       height: 25px;
       line-height: 25px;
     }
+  }
+  &-jumper-input {
+    width: 40px;
   }
 }

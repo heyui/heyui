@@ -1,0 +1,20 @@
+{
+	"primary-color": "#cf5e4d",
+	"link-color": "#cf5e4d",
+	"blue-color": "#39afd1",
+	"green-color": "#0acf97",
+	"yellow-color": "#ffbc00",
+	"red-color": "#fa5c7c",
+	"button-size-l-padding": "12px 23px",
+	"button-size-normal-padding": "10px 20px",
+	"button-size-m-padding": "8px 20px",
+	"button-size-s-padding": "6px 10px",
+	"button-size-xs-padding": "2px 8px",
+	"input-height": "40px",
+	"font-size": "15px",
+	"font-size-mini": "14px",
+	"font-size-input": "14px",
+	"font-size-input-tag": "14px",
+	"border-radius": "0px",
+	"btn-border-radius": "0px"
+}

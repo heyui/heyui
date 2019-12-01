@@ -1,12 +1,12 @@
 <template>
-  <button :class="buttonCls" :disabled="!!this.disabled" @click="trigger">
+  <button :class="buttonCls" type="button" :disabled="!!this.disabled" @click="trigger">
     <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
 <script>
 const prefix = 'h-btn';
 const Props = {
-  size: new Set(['l', 's', 'xs'])
+  size: ['l', 's', 'xs']
 };
 export default {
   name: 'hButton',
@@ -25,7 +25,7 @@ export default {
     size: {
       type: String,
       validator(value) {
-        return Props.size.has(value);
+        return Props.size.indexOf(value) != -1;
       }
     },
     stop: {

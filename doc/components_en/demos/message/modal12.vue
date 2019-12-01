@@ -7,6 +7,9 @@
       <FormItem label="full screen">
         <h-switch small v-model="params.fullScreen" @change="revert('middle', 'height')">fullScreen</h-switch>
       </FormItem>
+      <FormItem label="close icon">
+        <h-switch small v-model="params.hasCloseIcon">hasCloseIcon</h-switch>
+      </FormItem>
       <FormItem label="middle popup">
         <h-switch small v-model="params.middle" @change="revert('fullScreen', 'height')">middle</h-switch>
       </FormItem>
@@ -15,6 +18,9 @@
       </FormItem>
       <FormItem label="has divider">
         <h-switch small v-model="params.hasDivider">hasDivider</h-switch>
+      </FormItem>
+      <FormItem label="draggable">
+        <h-switch small v-model="params.draggable" @change="revert('fullScreen','hasMask')">draggable，only support JS calls，1.25.0+。</h-switch>
       </FormItem>
       <FormItem label="test large popup">
         <h-switch small v-model="height" @change="revert('fullScreen', 'middle', 'hasMask')"></h-switch>
@@ -44,7 +50,8 @@ const DEFAULT_VALUE = {
   fullScreen: false,
   middle: false,
   hasMask: true,
-  hasDivider: false
+  hasDivider: false,
+  draggable: false
 };
 export default {
   data() {

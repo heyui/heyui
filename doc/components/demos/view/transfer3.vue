@@ -2,11 +2,16 @@
 <template>
   <div>
     <p>值：{{value}}</p>
-    <Transfer v-model="value" :datas="sourceDatas" keyName="code" @transfer="test">
+    <Transfer v-model="value" :datas="sourceDatas" keyName="code" @transfer="test" :height="300">
       <template slot="sourceHeader"><div class="h-transfer-header">一线城市</div></template>
       <template slot="targetHeader"><div class="h-transfer-header">开通城市</div></template>
-      <template slot-scope="{option}" slot="item">
-        {{option.text}}({{option.code}})
+      <template slot-scope="{option, type}" slot="item">
+        <template v-if="type == 'source'">
+          {{option.text}}({{option.code}})
+        </template>
+        <template v-if="type == 'target'">
+          {{option.text}}【{{option.code}}】
+        </template>
       </template>
     </Transfer>
   </div>

@@ -6,13 +6,13 @@
       :param="param"
       :status="status"
       :inlineCollapsed="inlineCollapsed"
+      :mode="mode"
       @trigger="trigger"></hMenuItem>
-
   </ul>
 </template>
 <script>
-import utils from '../../utils/utils';
-import config from '../../utils/config';
+import utils from 'heyui/src/utils/utils';
+import config from 'heyui/src/utils/config';
 import hMenuItem from './menu-item';
 
 const prefix = 'h-menu';
@@ -50,7 +50,9 @@ const updateOpened = (obj) => {
   }
   return openedList;
 };
-
+const Props = {
+  mode: ['normal', 'horizontal']
+}
 export default {
   name: 'hMenu',
   props: {
@@ -69,9 +71,16 @@ export default {
     },
     mode: {
       type: String,
+      validator(value) {
+        return Props.mode.includes(value);
+      },
       default: 'normal' // normal, vertical
     },
     inlineCollapsed: {
+      type: Boolean,
+      default: false
+    },
+    activeAll: {
       type: Boolean,
       default: false
     }
@@ -113,6 +122,9 @@ export default {
       if (selected) {
         this.status.selected = key;
         this.status.opened = updateOpened(selected);
+      } else {
+        this.status.selected = null;
+        this.status.opened = [];
       }
     },
     trigger(data) {
@@ -131,9 +143,11 @@ export default {
         }
 
         this.$emit('click', menu);
-        if (menu.children && menu.children.length > 0) {
+        let isParent = menu.children && menu.children.length > 0;
+        if (isParent && (!this.activeAll || this.status.selected == menu.key)) {
           return;
         }
+
         this.status.selected = menu.key;
         this.$emit('select', menu.value);
         this.$emit('onclick', menu.value);

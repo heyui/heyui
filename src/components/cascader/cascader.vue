@@ -2,7 +2,7 @@
   <div :class="cascaderCls" :disabled="disabled">
     <div class="h-cascader-show">
       <div v-if="multiple&&objects.length" class="h-cascader-multiple-tags">
-        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
       </div>
       <div v-else-if="!multiple&&object" class="h-cascader-value-single">
         <span>{{object.title}}</span>
@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
-import Locale from '../../mixins/locale';
-import CascaderItem from './cascader-item';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import Dropdown from 'heyui/src/plugins/dropdown';
+import Locale from 'heyui/src/mixins/locale';
+import CascaderItem from 'heyui/src/components/cascader/cascader-item';
 
 const prefix = 'h-cascader';
 
@@ -173,9 +173,8 @@ export default {
       let datas = [];
       if (utils.isArray(this.param.datas)) {
         datas = this.param.datas;
-      }
-      if (utils.isFunction(this.param.datas)) {
-        datas = this.param.datas.call(null);
+      } else if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.apply(this.param);
       }
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];

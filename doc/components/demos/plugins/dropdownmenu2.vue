@@ -4,11 +4,11 @@
 <template>
   <div>
     <ButtonGroup>
-      <Button icon="h-icon-inbox">Create</Button>
+      <Button>Create</Button>
       <DropdownMenu button @click="trigger" :datas="param">Edit</DropdownMenu>
     </ButtonGroup>
     <ButtonGroup>
-      <Button color="primary" icon="h-icon-inbox">Create</Button>
+      <Button color="primary">Create</Button>
       <DropdownMenu class="h-btn-primary" button @click="trigger" placement="bottom-end" :datas="param"></DropdownMenu>
     </ButtonGroup>
     <DropdownMenu button class="h-btn-primary" @click="trigger" :datas="param">开始</DropdownMenu>

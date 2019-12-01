@@ -44,7 +44,6 @@
   </li>
 </template>
 <script>
-
 export default {
   name: 'hCascaderItem',
   props: {

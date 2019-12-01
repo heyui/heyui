@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>值：{{value}}</p>
+    <p>值：{{value}} <Button @click="getFullData">获取完整数据</Button></p>
     <p>
       值类型：<SwitchList v-model="type" :datas="{key: 'id', object: 'object'}" small @change="changeValue"></SwitchList>
     </p>
@@ -51,6 +51,9 @@ export default {
     this.param.datas = getTotalData();
   },
   methods: {
+    getFullData() {
+      console.log(this.$refs.CategoryPicker.getFullData());
+    },
     changeValue() {
       if (this.type == 'key') {
         this.value = this.multiple ? [110117, 110101] : 110101;

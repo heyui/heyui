@@ -6,17 +6,18 @@
       </router-link>
       <AutoComplete v-width="220" dict="enMenus" autoSelectFirst v-model="search" @change="goSearch" placeholder="search..."></AutoComplete>
       <div class='header-nav-list'>
-        <div class="bg-group" v-if="$route.name != 'Home'">
+        <div class="bg-group">
           <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
           <div class="bg1" @click="dynamicLoadCss('pink')"></div>
           <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
           <div class="bg4" @click="dynamicLoadCss('red')"></div>
         </div>
-        <template v-if="$route.name != 'en_Home'">
+        <template>
           <!-- <a @click="goLink({name: 'en_Home'})" :class="{'router-link-active': $route.name == 'en_Home'}">Home</a> -->
           <!-- <router-link to="/guide">入门</router-link> -->
           <router-link to="/en/component">Component</router-link>
-          <router-link to="/en/resource">Ecosystem</router-link>
+          <router-link to="/en/theme">Theme</router-link>
+          <router-link to="/en/run">Run</router-link>
           <a target="_blank" href="http://admin.heyui.top/login">Admin</a>
           <!-- <router-link to="/about">团队</router-link> -->
         </template>

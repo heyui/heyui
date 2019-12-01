@@ -1,10 +1,10 @@
 @cascader-prefix: ~"@{prefix}cascader";
-.plugin-input(@cascader-prefix);
+.h-func-plugin-input(@cascader-prefix);
 .@{cascader-prefix}{
 
   &-value-single {
     >.@{prefix}icon-close{
-      .input-right-icon;
+      .h-func-input-right-icon();
     }
   }
 
@@ -12,7 +12,7 @@
     min-height: @input-height;
     padding-right: 180px;
     >span {
-      .tag-span-func();
+      .h-func-tag-span();
     }
   }
 }

@@ -1,8 +1,9 @@
 echo "打包hey build"
-hey b -f scripts/hey.conf.js
-hey b -f scripts/hey.esm.js
-hey b -f scripts/hey.lang.js
-hey b -f scripts/hey.uncompressed.js
+hey b -f scripts/config/hey.conf.js
+hey b -f scripts/config/hey.esm.js
+hey b -f scripts/config/hey.lang.js
+hey b -f scripts/config/hey.uncompressed.js
+hey b -f scripts/config/hey.components.js
 lessc ./themes/index.less > ./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/fonts/
 lessto --js ./themes/var.less ./themes/var.js
 lessto --json ./themes/var.less ./themes/var.json
@@ -24,14 +25,16 @@ fi
 # echo "commit"
 # git add -A
 # git commit -m 'publish new version'
+
+
 set -e
 echo "git push"
-git push origin master
+git push
 set -e
 
 if [ "$1" = '' ] ; then
 echo "git push tags"
-git push --follow-tags origin master
+git push --follow-tags
 fi
 
 echo "发布至npm"

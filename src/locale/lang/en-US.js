@@ -12,12 +12,15 @@ const lang = {
     confirm: {
       title: 'Confirm'
     },
+    checkbox: {
+      limitSize: 'You can select up to {limitSize} data.'
+    },
     select: {
       nullOptionText: 'please choose',
       placeholder: 'select',
       emptyContent: 'no results found',
       searchPlaceHolder: 'search',
-      limitSize: 'You can select up to {0} data.'
+      limitSize: 'You can select up to {limitSize} data.'
     },
     category: {
       placeholder: 'please choose'

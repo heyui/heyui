@@ -1,10 +1,10 @@
 <template>
-  <Row v-height="300" type="flex">
-    <Cell :width="12" class="overflow-y" v-padding="10">
+  <Row type="flex">
+    <Cell v-height="300" :width="12" class="overflow-y" v-padding="10">
       <p>value: {{value1}}</p>
       <Tree config="simple" v-model="value1"></Tree>
     </Cell>
-    <Cell :width="12" class="overflow-y" v-padding="10">
+    <Cell v-height="300" :width="12" class="overflow-y" v-padding="10">
       <p>value: {{value2}}</p>
       <Tree config="simple" multiple v-model="value2"></Tree>
     </Cell>

@@ -1,91 +1,96 @@
-
 /*
  * HeyUI JavaScript Library
- * https://heyui.top/
+ * https://www.heyui.top/
  *
  * Copyright © Lan 2017-present
  * Released under the MIT license
  *
  */
-import Affix from './components/affix';
-import Avatar from './components/avatar';
-import BackTop from './components/backtop';
-import Badge from './components/badge';
-import Breadcrumb from './components/breadcrumb';
-import Checkbox from './components/checkbox';
-import Circle from './components/circle';
-import Category from './components/category';
-// import Cascader from './components/cascader';
-import CategoryPicker from './components/categorypicker';
-// import ColorPicker from './components/colorpicker';
-import Datetime from './components/datetime';
-import Dropdown from './plugins/dropdown';
-import DropdownCustom from './components/dropdowncustom';
-import DropdownMenu from './components/dropdownmenu';
-import ImagePreview from './components/imagepreview';
-import Form from './components/form';
-import Menu from './components/menu';
-import modal from './components/modal';
-import Pagination from './components/pagination';
-import Poptip from './components/poptip';
-import Progress from './components/progress';
-import Radio from './components/radio';
-import Rate from './components/rate';
-import Slider from './components/slider';
-import Loading from './components/loading';
-import Steps from './components/steps';
-import Search from './components/search';
-import Select from './components/select';
-import Switch from './components/switch';
-import SwitchList from './components/switchlist';
-import Skeleton from './components/skeleton';
-import { Table, TableItem } from './components/table';
-import Tabs from './components/tabs';
-import TagInput from './components/taginput';
-import Tree from './components/tree';
-import TreePicker from './components/treepicker';
-import NumberInput from './components/numberinput';
-import Tooltip from './components/tooltip';
-import Uploader from './components/uploader';
-import AutoComplete from './components/autocomplete';
-import {
-  Row,
-  Col
-} from './components/grid';
-import {
-  HHeader,
-  HFooter,
-  Content,
-  Sider,
-  Layout
-} from './components/layout';
-import Timeline from './components/timeline';
-import Transfer from './components/transfer';
-import { Button, ButtonGroup } from './components/button';
-import TextEllipsis from './components/textellipsis';
-import Carousel from './components/carousel';
-import { Collapse, CollapseItem } from './components/collapse';
-import CollapseTransition from './components/transition/collapse-transition';
+import Affix from 'heyui/src/components/affix';
+import Avatar from 'heyui/src/components/avatar';
+import BackTop from 'heyui/src/components/back-top';
+import Badge from 'heyui/src/components/badge';
+import Breadcrumb from 'heyui/src/components/breadcrumb';
+import Checkbox from 'heyui/src/components/checkbox';
+import Circle from 'heyui/src/components/circle';
+import Category from 'heyui/src/components/category';
+import CategoryPicker from 'heyui/src/components/category-picker';
+import DatePicker from 'heyui/src/components/date-picker';
+import DateRangePicker from 'heyui/src/components/date-range-picker';
+import DateFullRangePicker from 'heyui/src/components/date-full-range-picker';
+import DropdownCustom from 'heyui/src/components/dropdown-custom';
+import DropdownMenu from 'heyui/src/components/dropdown-menu';
+import ImagePreview from 'heyui/src/components/image-preview';
+import Form from 'heyui/src/components/form';
+import FormItem from 'heyui/src/components/form-item';
+import FormItemList from 'heyui/src/components/form-item-list';
+import Menu from 'heyui/src/components/menu';
+import Modal from 'heyui/src/components/modal';
+import ModalComponent from 'heyui/src/components/modal-component';
+import Pagination from 'heyui/src/components/pagination';
+import Poptip from 'heyui/src/components/poptip';
+import Progress from 'heyui/src/components/progress';
+import Radio from 'heyui/src/components/radio';
+import Rate from 'heyui/src/components/rate';
+import Slider from 'heyui/src/components/slider';
+import Loading from 'heyui/src/components/loading';
+import Steps from 'heyui/src/components/steps';
+import Search from 'heyui/src/components/search';
+import Select from 'heyui/src/components/select';
+import HSwitch from 'heyui/src/components/h-switch';
+import SwitchList from 'heyui/src/components/switch-list';
+import Skeleton from 'heyui/src/components/skeleton';
+import Table from 'heyui/src/components/table';
+import TableItem from 'heyui/src/components/table-item';
+import Tabs from 'heyui/src/components/tabs';
+import TagInput from 'heyui/src/components/tag-input';
+import Tree from 'heyui/src/components/tree';
+import TreePicker from 'heyui/src/components/tree-picker';
+import NumberInput from 'heyui/src/components/number-input';
+import Tooltip from 'heyui/src/components/tooltip';
+import Uploader from 'heyui/src/components/uploader';
+import AutoComplete from 'heyui/src/components/auto-complete';
+import Row from 'heyui/src/components/row';
+import Cell from 'heyui/src/components/cell';
+import HHeader from 'heyui/src/components/h-header';
+import HFooter from 'heyui/src/components/h-footer';
+import Content from 'heyui/src/components/content';
+import Sider from 'heyui/src/components/sider';
+import Layout from 'heyui/src/components/layout';
+import Timeline from 'heyui/src/components/timeline';
+import TimelineItem from 'heyui/src/components/timeline-item';
+import Transfer from 'heyui/src/components/transfer';
+import Button from 'heyui/src/components/button';
+import ButtonGroup from 'heyui/src/components/button-group';
+import TextEllipsis from 'heyui/src/components/text-ellipsis';
+import Carousel from 'heyui/src/components/carousel';
+import Collapse from 'heyui/src/components/collapse';
+import CollapseItem from 'heyui/src/components/collapse-item';
 
-import style from './directives/style';
-import tooltip from './directives/tooltip';
-import wordcount from './directives/wordcount';
-import wordlimit from './directives/wordlimit';
-import autosize from './directives/autosize';
-import $Modal from './plugins/modal';
-import $Confirm from './plugins/confirm';
-import $Message from './plugins/message';
-import $Notice from './plugins/notice';
-import $Loading from './plugins/loading';
-import $LoadingBar from './plugins/loadingBar';
-import $ScrollIntoView from './plugins/scrollIntoView';
-import $Clipboard from './plugins/clipboard';
-import $ImagePreview from './plugins/imagepreview';
+import style from 'heyui/src/directives/style';
+import tooltip from 'heyui/src/directives/tooltip';
+import wordcount from 'heyui/src/directives/wordcount';
+import wordlimit from 'heyui/src/directives/wordlimit';
+import autosize from 'heyui/src/directives/autosize';
 
-import filters from './filters';
-import config from './utils/config';
-import locale from './locale';
-import LocaleMinxin from './mixins/locale';
+import $Modal from 'heyui/src/plugins/modal';
+import $Confirm from 'heyui/src/plugins/confirm';
+import $Message from 'heyui/src/plugins/message';
+import $Notice from 'heyui/src/plugins/notice';
+import $Loading from 'heyui/src/plugins/loading';
+import $LoadingBar from 'heyui/src/plugins/loading-bar';
+import $ScrollIntoView from 'heyui/src/plugins/scroll-into-view';
+import $Clipboard from 'heyui/src/plugins/clipboard';
+import $ImagePreview from 'heyui/src/plugins/image-preview';
+import $Dropdown from 'heyui/src/plugins/dropdown';
+
+import dictMapping from 'heyui/src/filters/dictmapping';
+import hlang from 'heyui/src/filters/hlang';
+
+import config from 'heyui/src/utils/config';
+import locale from 'heyui/src/locale';
+
+const Col = Cell;
 
 const components = {
   Affix,
@@ -97,23 +102,21 @@ const components = {
   ButtonGroup,
   Breadcrumb,
   Category,
-  // Cascader,
   CategoryPicker,
   Checkbox,
   hCircle: Circle,
-  // ColorPicker,
-  DatePicker: Datetime.DatePicker,
-  DateRangePicker: Datetime.DateRangePicker,
-  DateFullRangePicker: Datetime.DateFullRangePicker,
+  DatePicker,
+  DateRangePicker,
+  DateFullRangePicker,
   DropdownCustom,
   DropdownMenu,
   Form,
-  FormItem: Form.Item,
-  FormItemList: Form.ItemList,
+  FormItem,
+  FormItemList,
   ImagePreview,
   Menu,
-  Modal: modal.Modal,
-  ModalComponent: modal.ModalComponent,
+  Modal,
+  ModalComponent,
   NumberInput,
   Pagination,
   Poptip,
@@ -122,16 +125,16 @@ const components = {
   Rate,
   Row,
   Col,
-  Cell: Col,
+  Cell,
   Search,
   Select,
   Slider,
   Steps,
-  hSwitch: Switch,
+  HSwitch,
   SwitchList,
   Skeleton,
   Timeline,
-  TimelineItem: Timeline.Item,
+  TimelineItem,
   Transfer,
   Loading,
   TagInput,
@@ -144,10 +147,8 @@ const components = {
   Uploader,
   TextEllipsis,
   Carousel,
-  CarouselItem: Carousel.CarouselItem,
   Collapse,
   CollapseItem,
-  CollapseTransition,
   HHeader,
   HFooter,
   Content,
@@ -169,58 +170,58 @@ const directives = {
   wordlimit
 };
 
-let prototypes = {
+const prototypes = {
+  $Modal,
+  $Notice,
   $Message,
-  // $Modal,
   $Confirm,
   $Loading,
-  $LoadingBar
+  $LoadingBar,
+  $ScrollIntoView,
+  $Clipboard,
+  $ImagePreview,
+  $Dropdown
 };
 
-const HeyUI = Object.assign({}, components, { $Modal: $Modal(), $Notice: $Notice(), locale: locale.use, i18n: locale.i18n }, prototypes, config, { Dropdown }, filters);
+const filters = { dictMapping, hlang };
 
-const install = function (Vue, opts) {
+const install = function (Vue, opts = {}) {
   if (install.installed) return;
-  if (opts) {
-    if (opts.locale) {
-      locale.use(opts.locale);
-    }
+  if (opts.locale) {
+    locale.use(opts.locale);
+  }
+  if (opts.i18n) {
+    locale.i18n(opts.i18n);
   }
 
-  Vue.mixin(LocaleMinxin);
-
-  Object.keys(components).forEach((key) => {
-    Vue.component(key, components[key]);
-    Vue.component(`h-${key.toLocaleLowerCase()}`, components[key]);
+  Object.keys(components).forEach(key => {
+    let component = components[key];
+    Vue.component(key, component);
+    Vue.component(`h-${key.toLocaleLowerCase()}`, component);
     if (key.indexOf('h') !== 0) {
-      Vue.component(`h${key}`, components[key]);
+      Vue.component(`h${key}`, component);
     }
   });
 
-  Object.keys(filters).forEach((key) => {
+  Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
   });
 
-  Object.keys(directives).forEach((key) => {
+  Object.keys(directives).forEach(key => {
     Vue.directive(key, directives[key]);
-    // that[key] = directives[key];
   });
 
-  Object.keys(prototypes).forEach((key) => {
+  Object.keys(prototypes).forEach(key => {
     Vue.prototype[key] = prototypes[key];
   });
-
-  HeyUI.$Modal = Vue.prototype.$Modal = $Modal(Vue);
-  HeyUI.$Notice = Vue.prototype.$Notice = $Notice(Vue);
-  HeyUI.$ScrollIntoView = Vue.prototype.$ScrollIntoView = $ScrollIntoView;
-  HeyUI.$Clipboard = Vue.prototype.$Clipboard = $Clipboard;
-  HeyUI.$ImagePreview = Vue.prototype.$ImagePreview = $ImagePreview;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
+const HeyUI = Object.assign(prototypes, config, { dictMapping }, { locale: locale.use });
+
 HeyUI.install = install;
 
-module.exports = HeyUI;
+export default HeyUI;

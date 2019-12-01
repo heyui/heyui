@@ -1,5 +1,5 @@
-import Popper from '../popper';
-import utils from '../../utils/utils';
+import Popper from 'heyui/src/plugins/popper';
+import utils from 'heyui/src/utils/utils';
 
 const DEFAULT_OPTIONS = {
   container: false,
@@ -14,7 +14,8 @@ const DEFAULT_OPTIONS = {
   equalWidth: false,
   type: 'dropdown',
   preventOverflow: false,
-  getContainer: null
+  getContainer: null,
+  maxWidth: null
 };
 
 /**
@@ -55,7 +56,7 @@ class Pop {
     this.options = options;
 
     const triggerEvents = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
-      return ['click', 'hover', 'focus', 'contextMenu'].indexOf(trigger) !== -1;
+      return ['click', 'hover', 'focus', 'manual', 'contextMenu'].indexOf(trigger) !== -1;
     }) : [];
 
     this.isOpen = false;
@@ -137,6 +138,11 @@ class Pop {
       utils.addClass(popNode, options.className);
     }
 
+    const contentNode = popNode.querySelector(this.innerSelector);
+    if (contentNode && options.maxWidth) {
+      contentNode.style.maxWidth = `${options.maxWidth}px`;
+    }
+
     this.popNode = popNode;
     this.popNode.setAttribute('aria-hidden', 'true');
 
@@ -174,7 +180,7 @@ class Pop {
       };
     }
 
-    if (this.options.preventOverflow && container.tagName != 'BODY') {
+    if (this.options.preventOverflow && container.tagName != 'BODY' && container.tagName != 'HTML') {
       modifiers.hide = {
         enabled: false
       };
@@ -391,7 +397,7 @@ class Pop {
       reference.addEventListener(event, func, event == 'blur');
     });
 
-    if (options.closeOnClickBody) {
+    if (triggerEvents.indexOf('manual') == -1) {
       this.documentHandler = (e) => {
         if (!this.popNode || e.target.parentNode == null) return;
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
@@ -403,10 +409,10 @@ class Pop {
         }
 
         let target = e.target;
-        while (target && target.tagName != 'BODY' && !target.getAttribute('aria-describedby') && target.parentNode) {
+        while (target && target.tagName != 'BODY' && target.tagName != 'HTML' && !target.getAttribute('aria-describedby') && target.parentNode) {
           target = target.parentNode;
         }
-        if (target.tagName != 'BODY') {
+        if (target.tagName != 'BODY' && target.tagName != 'HTML') {
           let targetTrigger = document.body.querySelector(`[aria-describe="${target.getAttribute('aria-describedby')}"]`);
           if (targetTrigger && this.popNode.contains(targetTrigger)) {
             return false;

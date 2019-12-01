@@ -22,7 +22,7 @@
 }
 
 .@{loading-cls} {
-  .absolute();
+  .h-func-fullscreen();
   background-color: fade(@white-color, 60%);
   z-index: -1;
   visibility: hidden;
@@ -31,7 +31,6 @@
   transition: opacity 0.5s;
   & &-circular {
     .middle-center();
-    // width: 42px;
     height: 42px;
     >svg {
       opacity: 0;

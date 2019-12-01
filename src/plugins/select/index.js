@@ -38,4 +38,4 @@ function select(element) {
   return selectedText;
 }
 
-module.exports = select;
+export default select;

@@ -1,5 +1,5 @@
-import utils from '../utils/utils';
-import locale from '../locale';
+import utils from 'heyui/src/utils/utils';
+import locale from 'heyui/src/locale';
 
 const wordcount = function (total, el, remainDom) {
   let v = el.value.length;
@@ -38,12 +38,6 @@ export default {
       }
     }
   },
-  // update(el, binding, vnode, voldnode) {
-  //   let total = binding.value;
-  //   if (el.remainDom && vnode && voldnode && vnode.data.domProps.value != voldnode.data.domProps.value) {
-  //     wordcount(total, el, el.remainDom);
-  //   }
-  // },
   unbind(el) {
     let previousnode = el.previousSibling;
     if (previousnode && utils.hasClass(previousnode, 'h-wordcount')) {

@@ -7,8 +7,8 @@
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
-import config from '../../utils/config';
+import utils from 'heyui/src/utils/utils';
+import config from 'heyui/src/utils/config';
 
 export default {
   name: 'hRadio',
@@ -68,7 +68,7 @@ export default {
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      return utils.initOptions(datas, this);
+      return config.initOptions(datas, this);
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-rate" :readonly="readonly" @mouseleave="mouseleave()"><span v-for="n in 5" :key="n" @click="setvalue(n)" :class="starCls(n)" @mouseover="mouseover(n)"><i class="h-icon-star-on"></i></span><span v-if="showText" class="h-rate-value">{{value}}</span></div>
+  <div class="h-rate" :readonly="readonly" @mouseleave="mouseleave()"><span v-for="n in 5" :key="n" @click="setvalue(n)" :class="starCls(n)" @mouseover="mouseover(n)"><i :class="iconClass"></i></span><span v-if="showText" class="h-rate-value">{{value}}</span></div>
 </template>
 <script>
 export default {
@@ -12,6 +12,10 @@ export default {
     showText: {
       type: Boolean,
       default: false
+    },
+    iconClass: {
+      type: String,
+      default: 'h-icon-star-on'
     },
     value: {
       type: [String, Number],

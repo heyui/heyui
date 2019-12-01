@@ -3,12 +3,12 @@
     <div :class="showCls">
       <template v-if="multiple">
         <div class="h-select-multiple-tags">
-          <span v-for="obj of objects" :key="obj[key]">
-            <span>{{obj[title]}}</span><i class="h-icon-close" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+          <span v-for="obj of objects" :key="obj[keyName]">
+            <span>{{obj[titleName]}}</span><i class="h-icon-close-min" @click.stop="setvalue(obj)" v-if="!disabled"></i>
           </span>
           <input v-if="filterable"
                 type="text"
-                class="h-select-search-input" v-model="searchInput"
+                class="h-select-search-input h-input" v-model="searchInput"
                 :disabled="disabled"
                @keyup="handle"
                @blur="blurHandle"
@@ -26,31 +26,36 @@
                 :disabled="disabled"
                 @keypress.enter="enterHandle"
                 :class="{'h-select-search-input-value': hasValue}"
-                class="h-select-search-input h-select-single-search-input" v-model="searchInput"
+                class="h-select-search-input h-select-single-search-input h-input" v-model="searchInput"
                 :placeholder="hasValue?'':showPlaceholder" />
           <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
         </template>
         <template v-else>
-          <div class="h-select-value-single" v-if="hasValue">{{singleValue}}</div>
+          <div class="h-select-value-single" v-if="hasValue">
+            <template v-if="hasValue">
+              <div v-if="!$scopedSlots.show" class="h-select-value-single">{{singleValue}}</div>
+              <slot v-else :value="objects" name="show"></slot>
+            </template>
+          </div>
           <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
         </template>
       </template>
-      <i class="h-icon-down"></i>
+      <i class="h-icon-close text-hover" v-show="hasClose" @click.stop="clear"></i>
+      <i class="h-icon-down" v-show="!hasClose"></i>
     </div>
     <div :class="groupCls">
       <div class="h-select-group-container" v-if="isShow">
-        <!-- <Search v-if="filterable" class="h-select-search-input" :placeholder="showSearchPlaceHolder" trigger-type="input" @onsearch="search" position="front"></Search> -->
         <div class="h-select-list">
           <slot name="top" :results="filterOptions"></slot>
           <ul class="h-select-ul">
             <template v-for="(option, index) of filterOptions">
             <li v-if="!option.hidden"
-                :key="option[key]"
+                :key="option[keyName]"
                 @click="setvalue(option)"
                 :class="getLiCls(option, index)">
               <div v-if="!!optionRender"
                   v-html="option[html]"></div>
-              <template v-else-if="!$scopedSlots.item">{{option[title]}}</template>
+              <template v-else-if="!$scopedSlots.item">{{option[titleName]}}</template>
               <slot v-else :item="option" name="item"></slot>
               <i v-if="multiple"
                 class="h-icon-check"></i>
@@ -65,14 +70,17 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import Dropdown from '../../plugins/dropdown';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import Dropdown from 'heyui/src/plugins/dropdown';
+import Locale from 'heyui/src/mixins/locale';
+import Message from 'heyui/src/plugins/message';
 
 const prefix = 'h-select';
 
 export default {
   name: 'hSelect',
+  mixins: [ Locale ],
   props: {
     multiple: {
       type: Boolean,
@@ -95,6 +103,10 @@ export default {
       type: Boolean,
       default: true
     },
+    deletable: {
+      type: Boolean,
+      default: true
+    },
     nullOptionText: {
       type: String
     },
@@ -105,9 +117,6 @@ export default {
     placeholder: {
       type: String
     },
-    // searchPlaceHolder: {
-    //   type: String,
-    // },
     emptyContent: {
       type: String
     },
@@ -137,12 +146,9 @@ export default {
   },
   data() {
     return {
-      key: this.keyName,
-      title: this.titleName,
       html: 'select_render_html',
       codes: [],
       objects: {},
-      hasNullOption: this.nullOption && !this.multiple,
       searchInput: '',
       nowSelected: -1,
       isShow: false,
@@ -254,6 +260,11 @@ export default {
     search(value) {
       this.searchInput = value;
     },
+    clear() {
+      this.setvalue({
+        [`${this.keyName}`]: null
+      }, 'clear');
+    },
     setObjects() {
       if (this.multiple) {
         let os = [];
@@ -272,18 +283,18 @@ export default {
       if (this.multiple) {
         let values = this.value || [];
         if (!utils.isArray(values)) {
-          console.warn(`Select: value '${values}' can't be a value of a multiple select`);
+          console.warn(`[HeyUI WARNING] Select Component: value '${values}' can't be a value of a multiple select`);
           values = [];
         }
         this.codes = values.map((item) => {
-          return this.type == 'key' ? this.getValue(item) : item[this.key];
+          return this.type == 'key' ? this.getValue(item) : item[this.keyName];
         }).filter(item => item !== null);
       } else {
         if (this.type == 'key') {
           this.codes = this.getValue(this.value);
         } else {
           if (utils.isObject(this.value)) {
-            this.codes = this.value[this.key];
+            this.codes = this.value[this.keyName];
           } else {
             this.codes = null;
           }
@@ -297,10 +308,10 @@ export default {
     setvalue(option, trigger) {
       if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
-      let code = option[this.key];
+      let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          this.$Message.error(this.t('h.select.limitSize', [this.limit]));
+          Message.error(this.t('h.select.limitSize', { limitSize: this.limit }));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
@@ -328,10 +339,13 @@ export default {
       }
     },
     isIncludes(code) {
-      return this.codes.some(item => item == code);
+      return this.codes.some(item => this.isEqual(item, code));
+    },
+    isEqual(item, code) {
+      return item == code && String(item) == String(code);
     },
     getLiCls(option, index) {
-      let code = option[this.key];
+      let code = option[this.keyName];
       if (option.isLabel) {
         return {
           [`${prefix}-item-label`]: option.isLabel
@@ -340,8 +354,8 @@ export default {
         return {
           [`${prefix}-item-disabled`]: option.disabled,
           [`${prefix}-item`]: true,
-          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code),
-          [`${prefix}-item-picked`]: (this.nowSelected == index)
+          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.isEqual(this.codes, code)),
+          [`${prefix}-item-picked`]: (this.nowSelected === index)
         };
       }
     }
@@ -352,6 +366,12 @@ export default {
     }
   },
   computed: {
+    hasClose() {
+      return !this.nullOptionText && this.nullOption && this.deletable && !this.multiple && this.hasValue && !this.disabled;
+    },
+    hasNullOption() {
+      return this.nullOptionText;
+    },
     hasValue() {
       if (this.multiple) {
         return this.codes.length > 0;
@@ -361,7 +381,7 @@ export default {
     },
     singleValue() {
       if (this.hasValue) {
-        return this.objects[this.title];
+        return this.objects[this.titleName];
       } else {
         return null;
       }
@@ -408,7 +428,7 @@ export default {
       };
     },
     optionsMap() {
-      let optionsMap = utils.toObject(this.options, this.key);
+      let optionsMap = utils.toObject(this.options, this.keyName);
       delete optionsMap.null;
       return optionsMap;
     },
@@ -417,25 +437,25 @@ export default {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
         return this.options.filter((item) => {
-          return (item[this.html] || item[this.title]).toLocaleLowerCase().indexOf(searchValue) != -1;
+          return (item[this.html] || item[this.titleName]).toLocaleLowerCase().indexOf(searchValue) != -1;
         });
       }
       return this.options;
     },
     options() {
       if (!this.datas && !this.dict) {
-        console.error('Select Component: Datas or dict parameters need to be defined at least.');
+        console.error('[HeyUI Error] Select Component: Datas or dict parameters need to be defined at least.');
         return [];
       }
       let datas = this.datas;
       if (this.dict) {
         datas = config.getDict(this.dict);
       }
-      datas = utils.initOptions(datas, this);
+      datas = config.initOptions(datas, this);
       if (!this.multiple && this.hasNullOption) {
         datas.unshift({
-          [`${this.key}`]: null,
-          [`${this.title}`]: this.showNullOptionText,
+          [`${this.keyName}`]: null,
+          [`${this.titleName}`]: this.showNullOptionText,
           [`${this.html}`]: this.showNullOptionText
         });
       }

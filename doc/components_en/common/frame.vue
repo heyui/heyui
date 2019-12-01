@@ -1,24 +1,4 @@
 <style lang="less">
-  ul.right-frame-menu {
-    overflow: auto;
-    padding: 70px 0;
-    width: 180px;
-    background-color: #FFF;
-    li{
-      font-size: 14px;
-      padding: 5px 15px;
-      line-height: 20px;
-      word-break: break-all;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      cursor: pointer;
-      &:hover{
-        color: @primary-color;
-        background-color: @hover-background-color;
-      }
-    }
-  }
   .right-frame-menu-container{
     top: 20px;
     position: fixed;
@@ -51,7 +31,6 @@
 </template>
 <script>
 
-import scrollIntoView from '../../../src/plugins/scrollIntoView';
 export default {
   data() {
     return {
@@ -72,7 +51,7 @@ export default {
     },
     goMenu(index) {
       window.location.hash = this.menus[index];
-      scrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
+      this.$ScrollIntoView($(`.doc h2,.doc h3`, this.$el).eq(index)[0], {
         time: 500,
         align: {
           top: 0.1,
@@ -85,7 +64,7 @@ export default {
         return;
       }
       this.$nextTick(() => {
-        scrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
+        this.$ScrollIntoView($('.left-frame .router-link-active', this.$el)[0], {
           time: 500,
           align: {
             // top: 10,
@@ -93,7 +72,10 @@ export default {
           }
         });
         let menus = $('.doc h2,.doc h3').not('.demo-box h2,.demo-boxc h3');
-        this.menus = [...menus].map(item => item.innerText);
+        this.menus = [];
+        menus.each((index, item) => {
+          this.menus.push(item.innerText);
+        });
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);
           link.on('click', (event) => {

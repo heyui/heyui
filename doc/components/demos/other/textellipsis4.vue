@@ -1,6 +1,6 @@
 <style lang="less">
 .textellipsis-demo4 {
-  .text-ellipsis-limit-text {
+  .h-text-ellipsis-limit-text {
     white-space: pre-wrap;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-color:gray>{{value}}:{{value | dictMapping('simple')}}</p>
+    <p>{{value}}:{{value | dictMapping('simple')}}</p>
     <div><Checkbox v-model="value" dict="simple"></Checkbox></div>
   </div>
 </template>

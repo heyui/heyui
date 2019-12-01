@@ -1,12 +1,12 @@
 @category-prefix: ~"@{prefix}category";
 
-.plugin-input(@category-prefix);
+.h-func-plugin-input(@category-prefix);
 
 .@{category-prefix}{
 
   &-value-single {
     >.@{prefix}icon-close{
-      .input-right-icon;
+      .h-func-input-right-icon();
     }
   }
   &-item{
@@ -22,13 +22,13 @@
     min-height: @input-height;
     padding-right: 180px;
     >span {
-      .tag-span-func();
+      .h-func-tag-span();
     }
   }
   &-modal-single-tag{
     min-height: @input-height;
     line-height: @input-height;
     padding-right: 200px;
-    .text-ellipsis;
+    .h-func-text-ellipsis();
   }
 }

@@ -881,7 +881,6 @@ function findIndex(arr, prop, value) {
  */
 function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
-
   modifiersToRun.forEach(function (modifier) {
     if (modifier['function']) {
       // eslint-disable-line dot-notation

@@ -3,7 +3,7 @@
     <div class="h-category-show" @click="openPicker">
       <div v-if="multiple&&objects.length" class="h-category-multiple-tags">
         <span v-for="obj of objects" :key="obj.key">
-          <span>{{obj.title}}</span><i class="h-icon-close" @click.stop="remove(obj)" v-if="!disabled"></i>
+          <span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
         </span>
       </div>
       <div v-else-if="!multiple&&object" class="h-category-value-single">
@@ -11,20 +11,22 @@
         <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
       </div>
       <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
-      <!-- <i class="h-icon-down"></i> -->
     </div>
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
 
-import categoryModal from './category-modal';
+import categoryModal from './categorymodal';
+import Locale from 'heyui/src/mixins/locale';
+import Modal from 'heyui/src/plugins/modal';
 
 const prefix = 'h-category';
 
 export default {
   name: 'hCategory',
+  mixins: [Locale],
   props: {
     option: Object,
     multiple: {
@@ -76,7 +78,7 @@ export default {
     openPicker() {
       let that = this;
       if (this.disabled) return;
-      this.$Modal({
+      Modal({
         width: 600,
         hasDivider: true,
         component: {
@@ -99,6 +101,7 @@ export default {
             that.setvalue();
           },
           load: (modal, { data, callback }) => {
+            if (data.status.loading) return;
             data.status.loading = true;
             this.param.getDatas.call(
               this.param,
@@ -171,9 +174,8 @@ export default {
       let datas = [];
       if (utils.isArray(this.param.datas)) {
         datas = this.param.datas;
-      }
-      if (utils.isFunction(this.param.datas)) {
-        datas = this.param.datas.call(null);
+      } else if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.apply(this.param);
       }
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];

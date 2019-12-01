@@ -1,5 +1,5 @@
-import Pop from '../pop';
-import utils from '../../utils/utils';
+import Pop from 'heyui/src/plugins/pop';
+import utils from 'heyui/src/utils/utils';
 
 class Tooltip extends Pop {
   constructor(el, param) {
@@ -14,7 +14,6 @@ class Tooltip extends Pop {
       classes.push(`h-tooltip-editable`);
     }
     param.class = classes.join(' ');
-    param.closeOnClickBody = true;
     param.type = 'tooltip';
     param.trigger = param.trigger || 'hover focus';
     super(el, param);

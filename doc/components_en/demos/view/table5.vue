@@ -1,10 +1,9 @@
 <template>
   <div>
     <p>
-      <hSwitch v-model="loading">loading</hSwitch>
-      <Button @click="updateSort">Age descending</Button>
+      <Button @click="updateSort">Age descending/降序</Button>
     </p>
-    <Table ref="table" :datas="datas" :loading="loading" :columns="columns" @sort="triggerSort">
+    <Table ref="table" :datas="datas" :columns="columns" @sort="triggerSort">
       <div slot="empty">Custom reminder: no data at this time</div>
     </Table>
   </div>
@@ -14,14 +13,14 @@
 export default {
   data() {
     return {
-      loading: false,
       columns: [
         { title: 'Index', prop: '$index', width: 100 },
+        { title: 'Serial', prop: '$serial', width: 100 },
         { title: 'ID', prop: 'id', width: 100, sort: true },
         { title: 'Name', prop: 'name', sort: true },
         {
           title: 'Age',
-          render: item => `年龄：${item.age}`,
+          render: item => `age：${item.age}`,
           sortProp: 'age',
           sort: true
         },
@@ -38,12 +37,6 @@ export default {
     };
   },
   methods: {
-    loadData() {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 5000);
-    },
     updateSort() {
       this.$refs.table.triggerSort({ prop: 'age', type: 'desc' }, true);
     },

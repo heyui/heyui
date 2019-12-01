@@ -4,3 +4,16 @@ doc
 .github
 logs
 .vscode
+.editorconfig
+.eslintrc.js
+.eslintignore
+.gitlab-ci.yml
+.gitlab-deploy.sh
+.prettierrc.js
+CHANGELOG.md
+index.html
+scripts
+src
+dist/stat.json
+lib/stat.json
+CHANGELOG.md

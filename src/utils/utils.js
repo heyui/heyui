@@ -1,5 +1,4 @@
 import utils from 'hey-utils';
-import config from './config';
 
 const rclass = /[\t\r\n\f]/g;
 const rnotwhite = (/\S+/g);
@@ -132,72 +131,9 @@ export default utils.extend({}, utils, {
     }
     return data;
   },
-  dictMapping(value, key, connector) {
-    let dict = config.getDict(key);
-    if (!dict || utils.isNull(value)) return '';
-    if (utils.isString(value) && connector) {
-      value = value.split(connector);
-    }
-    if (!utils.isNull(value) && value !== '' && key) {
-      if (!utils.isArray(value)) {
-        value = [value];
-      }
-    }
-    if (value.length <= 0) {
-      return '';
-    }
-
-    const keyField = config.getOption('dict', 'keyName');
-    const titleField = config.getOption('dict', 'titleName');
-
-    if (utils.isArray(dict)) {
-      dict = utils.toObject(dict, keyField);
-    }
-    let result = value.map((ele) => {
-      if (utils.isObject(ele)) {
-        return ele[titleField];
-      }
-      const d = dict[ele];
-      if (utils.isObject(d)) {
-        return d[titleField];
-      }
-      return d;
-    });
-    return result.filter(ele => (ele && ele !== '')).join(connector || ', ');
-  },
-  initOptions(datas, param) {
-    let key = config.getOption('dict.keyName');
-    let title = config.getOption('dict.titleName');
-    let options = [];
-    if (this.isObject(datas)) {
-      options = this.toArray(datas, key, title);
-    } else if (this.isArray(datas)) {
-      if (datas.length == 0) {
-        options = [];
-      } else {
-        let data0 = datas[0];
-        if (this.isObject(data0)) {
-          options = this.copy(datas);
-        } else {
-          options = datas.map((item) => {
-            return {
-              [`${key}`]: item,
-              [`${title}`]: item
-            };
-          });
-        }
-      }
-    }
-    if (param.render) {
-      options.forEach((item) => {
-        item[param.html] = param.render.call(null, item);
-      });
-    }
-    return options;
-  },
   generateTree(data, param) {
     if (!this.isArray(data)) {
-      console.error('generateTree：data must be Array。');
+      console.error('[HeyUI Error] GenerateTree Error：Data must be array。');
       return null;
     }
     let result = [];

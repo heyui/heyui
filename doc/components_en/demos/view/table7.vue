@@ -7,7 +7,7 @@
 
 <template>
   <div>
-    <Table border stripe :datas="datas" :columns="columns">
+    <Table border stripe :datas="datas" :columns="columns" :getTrClass="getTrClass">
       <div slot="empty">Custom reminder: no data at this time</div>
     </Table>
   </div>
@@ -17,6 +17,7 @@
 export default {
   data() {
     return {
+
       columns: [
         {
           title: 'Index',
@@ -24,43 +25,28 @@ export default {
           width: 100,
           tooltip: true,
           placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Serial number <hr> Description: Serial number of the data</div>'
+          content: '<div class="table-tr-tooltip">Serial <hr> Description: Serial number of the data</div>'
         },
         {
           title: 'ID',
           prop: 'id',
           width: 100,
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">ID<hr>Description: The unique ID of the data</div>'
+          // 1.19.2 +
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">ID<hr>Description: The unique ID of the data</div>' }
         },
-        {
-          title: 'Name',
-          prop: 'name',
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Name <hr> Description: User\'s name</div>'
-        },
+        { title: 'Name', prop: 'name', tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Name <hr> Description: User\'s name</div>' } },
         {
           title: 'Age',
           prop: 'age',
           align: 'right',
           width: 100,
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Age <hr> Description: User\'s age</div>'
+          className: 'red-color',
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Age <hr> Description: User\'s age</div>' }
         },
         {
           title: 'Address',
           prop: 'address',
-          tooltip: true,
-          placement: 'top-start',
-          content:
-            '<div class="table-tr-tooltip">Address <hr> Description: User\'s address</div>'
+          tooltip: { placement: 'top-start', content: '<div class="table-tr-tooltip">Address <hr> Description: User\'s address</div>' }
         }
       ],
       datas: [
@@ -71,6 +57,12 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    getTrClass(data, index) {
+      if (index == 2) {
+        return 'bg-gray1-color';
+      }
+    }
+  }
 };
 </script>

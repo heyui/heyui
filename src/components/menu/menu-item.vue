@@ -1,15 +1,9 @@
 <template>
   <li class="h-menu-li" :class="{'h-menu-li-opened':(status.opened.indexOf(data.key) != -1)}">
-    <div class="h-menu-show" v-tooltip="inlineCollapsed&&!data.children.length" :content="data.title" placement="right"
-         @click="togglemenu(data)"
-         :class="{'h-menu-show-disabled':data.status.disabled, 'h-menu-li-selected': data.key&&status.selected == data.key}">
-      <span class='h-menu-show-icon' v-show='data.icon'><i :class="data.icon"></i></span>
-      <span class='h-menu-show-desc'>{{data.title}}</span>
-      <span class='h-menu-show-count' v-if="data.count"><Badge :count="data.count" :max-count="99"></Badge></span>
-      <span class='h-menu-show-expand' v-if="data.children&&data.children.length>0">
-        <i class='h-icon-down'></i>
-      </span>
-    </div>
+    <a :target="data.value.target" @click="triggerClick" v-if="data.value.href" class="h-menu-link" :href="href" >
+      <MenuItemShow v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
+    </a>
+    <MenuItemShow v-else v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
     <ul v-if="data.children&&data.children.length>0"
         class="h-menu-ul">
       <hMenuItem v-for="child of data.children"
@@ -22,9 +16,14 @@
   </li>
 </template>
 <script>
+import utils from 'heyui/src/utils/utils';
+import MenuItemShow from './menu-item-show';
 
 export default {
   name: 'hMenuItem',
+  components: {
+    MenuItemShow
+  },
   props: {
     data: Object,
     param: Object,
@@ -32,7 +31,8 @@ export default {
     inlineCollapsed: {
       type: Boolean,
       default: false
-    }
+    },
+    mode: String
   },
   data() {
     return {
@@ -42,8 +42,24 @@ export default {
     trigger(data) {
       this.$emit('trigger', data);
     },
-    togglemenu(data) {
-      this.$emit('trigger', { type: 'togglemenuEvent', data });
+    triggerClick(event) {
+      if (this.data.value.nativeLink !== true && !(event.altKey || event.ctrlKey || event.shiftKey || event.metaKey)) {
+        event.preventDefault();
+      }
+      this.trigger(this.data);
+    }
+  },
+  computed: {
+    href() {
+      let href = this.data.value.href;
+      if (href) {
+        if (utils.isString(href)) {
+          return href;
+        } else if (this.$router) {
+          return this.$router.resolve(href).href;
+        }
+      }
+      return null;
     }
   }
 };

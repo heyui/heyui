@@ -1,26 +1,25 @@
 <template>
   <div>
-    <Button @click="openPreview(0)">Open image preview</Button>
-    <p>
-      <ImagePreview :datas="datas" @click="openPreview"/>
-    </p>
+    <Button @click="openPreview1">Preview a single picture</Button>
+    <Button @click="openPreview2">Preview multiple pictures</Button>
   </div>
 </template>
 <script>
 export default {
   data() {
-    const link = 'https://lokeshdhakar.com/projects/lightbox2/images/';
-    return {
-      datas: [
-        { thumbUrl: `${link}thumb-4.jpg`, url: `${link}image-4.jpg` },
-        { thumbUrl: `${link}thumb-5.jpg`, url: `${link}image-5.jpg` },
-        { thumbUrl: `${link}thumb-6.jpg`, url: `${link}image-6.jpg` }
-      ]
-    };
+    return {};
   },
   methods: {
-    openPreview(index = 0, data) {
-      this.$ImagePreview(this.datas, index);
+    openPreview1() {
+      // compatible 1.24.2+
+      this.$ImagePreview(`https://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg`);
+    },
+    openPreview2() {
+      this.$ImagePreview([
+        `https://lokeshdhakar.com/projects/lightbox2/images/image-4.jpg`,
+        `https://5b0988e595225.cdn.sohucs.com/images/20170905/f6a2c1dafab944d2a75b9798c8ea0f7d.png`,
+        `https://lokeshdhakar.com/projects/lightbox2/images/image-6.jpg`
+      ], 0);
     }
   }
 };

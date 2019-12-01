@@ -21,7 +21,7 @@ const menus = [
       pluginAuto: 'AutoComplete 模糊匹配',
       pluginNumberinput: 'NumberInput 数字输入',
       pluginTaginput: 'TagInput 标签输入框',
-      formSwitch: 'Switch 开关',
+      formSwitch: 'HSwitch 开关',
       formSlider: 'Slider 滑块',
       formRate: 'Rate 评分',
       formSwitchlist: 'SwitchList 选项切换',
@@ -48,7 +48,7 @@ const menus = [
       pluginCategory: 'Category 分类选择',
       otherCategoryPicker: 'CategoryPicker 选择',
       viewTransfer: 'Transfer 穿梭框',
-      // otherColorPicker: 'ColorPicker 颜色选择器',
+      otherColorPicker: 'ColorPicker 颜色选择器'
       // pluginCascader: 'Cascader 级联选择'
     }
   },

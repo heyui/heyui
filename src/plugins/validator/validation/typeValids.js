@@ -1,4 +1,4 @@
-import locale from '../../../locale';
+import locale from 'heyui/src/locale';
 
 let valids = {
   int: {

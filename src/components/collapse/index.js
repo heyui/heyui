@@ -1,4 +1,3 @@
-import Collapse from './collapse.vue';
-import CollapseItem from './collapseItem.vue';
+import Collapse from './collapse';
 
-export { Collapse, CollapseItem };
+export default Collapse;

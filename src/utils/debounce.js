@@ -1,4 +1,4 @@
-import utils from './utils';
+import utils from 'heyui/src/utils/utils';
 
 function debounce(func, wait = 0, options) {
   const nativeMax = Math.max;

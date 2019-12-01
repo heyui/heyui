@@ -1,9 +1,8 @@
-import Pop from '../pop';
-import utils from '../../utils/utils';
+import Pop from 'heyui/src/plugins/pop';
+import utils from 'heyui/src/utils/utils';
 
 const Default = {
   trigger: 'click',
-  closeOnClickBody: true,
   html: true,
   placement: 'bottom-start',
   template: `<div role="select" class="h-dropdown"><div class="h-dropdown-inner"></div></div>`,
@@ -21,7 +20,7 @@ class Dropdown extends Pop {
     if (!param.container) {
       param.getContainer = function (el) {
         let container = el || document.body;
-        while (container && container.tagName != 'BODY' && !utils.hasClass(container, 'h-dropdown-common-container')) {
+        while (container && container.tagName != 'BODY' && container.tagName != 'HTML' && !utils.hasClass(container, 'h-dropdown-common-container')) {
           container = container.parentNode;
         }
         return container;

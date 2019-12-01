@@ -1,0 +1,202 @@
+@btn-prefix: ~"@{prefix}btn";
+.btn-color(@color, @percent: 10%) {
+  background-color: @color;
+  border-color: darken(@color, 2%);
+  color: @white-color;
+  &:hover {
+    border-color: lighten(@color, @percent);
+    background-color: lighten(@color, @percent);
+  }
+  &:active {
+    border-color: darken(@color, 8%);
+    background-color: darken(@color, 8%);
+  }
+}
+
+.btn-text-color(@color, @default: true) {
+  & when(@default){
+    border-color: @color;
+    color: @color;
+  }
+  &:hover {
+    border-color: lighten(@color, 15%);
+    color: lighten(@color, 15%);
+  }
+  &:active {
+    border-color: darken(@color, 15%);
+    color: darken(@color, 15%);
+  }
+}
+
+.@{btn-prefix} {
+  border: none;
+  outline: none;
+  padding: @button-size-normal-padding;
+  font-family: inherit;
+  display: inline-block;
+  border-radius: @btn-border-radius;
+  color: inherit;
+  font-size: @font-size-mini;
+  line-height: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all @transition-time;
+  background-color: transparent;
+  border: 1px solid @gray1-color;
+  box-shadow: @box-shadow-button;
+  background-color: #FFF;
+  .btn-text-color(@primary-color, false);
+  >i{
+    +span {
+      margin-left: 5px;
+    }
+  }
+  >span {
+    +i{
+      margin-left: 5px;
+    }
+  }
+  &.@{btn-prefix} {
+    &-primary {
+      .btn-color(@primary-color);
+    }
+    &-red {
+      .btn-color(@red-color);
+    }
+    &-gray {
+      .btn-color(@gray-color);
+    }
+    &-yellow {
+      .btn-color(@yellow-color);
+    }
+    &-green {
+      .btn-color(@green-color, 5%);
+    }
+    &-blue {
+      .btn-color(@blue-color);
+    }
+    &-text {
+      box-shadow: none;
+      border-color: transparent;
+      &-primary {
+        .btn-text-color(@primary-color);
+      }
+      &-red {
+        .btn-text-color(@red-color);
+      }
+      &-gray {
+        .btn-text-color(@gray-color);
+      }
+      &-yellow {
+        .btn-text-color(@yellow-color);
+      }
+      &-green {
+        .btn-text-color(@green-color);
+      }
+      &-blue {
+        .btn-text-color(@blue-color);
+      }
+    }
+    &-no-border{
+      box-shadow: none;
+      border-color: transparent !important;
+    }
+    &-circle {
+      border-radius: 20px;
+    }
+    &-icon-circle {
+      border-radius: 20px;
+      padding: 8px;
+    }
+    &-loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    &-block {
+      display: block;
+      width: 100%;
+    }
+    &-transparent {
+      background: transparent;
+    }
+  }
+  &[disabled] {
+    cursor: @disabled-cursor;
+    background-color: @disabled-background-color;
+    border-color: @disabled-border-color;
+    color: @disabled-color;
+    &:hover {
+      background-color: @disabled-background-color;
+      border-color: @disabled-border-color;
+      color: @disabled-color;
+    }
+    &.@{btn-prefix}-text {
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+  +.@{btn-prefix} {
+    margin-left: 4px;
+  }
+  &.@{btn-prefix}-l {
+    padding: @button-size-l-padding;
+  }
+  &.@{btn-prefix}-m {
+    padding: @button-size-m-padding;
+  }
+  &.@{btn-prefix}-s {
+    padding: @button-size-s-padding;
+  }
+  &.@{btn-prefix}-xs {
+    padding: @button-size-xs-padding;
+  }
+  &-group {
+    display: inline-block;
+    vertical-align: middle;
+    .@{btn-prefix} {
+      border-radius: 0;
+      float: left;
+      +.@{btn-prefix} {
+        margin-left: -1px;
+      }
+      position: relative;
+      &:hover {
+        z-index: 2;
+      }
+      &:first-child {
+        border-top-left-radius: @border-radius;
+        border-bottom-left-radius: @border-radius;
+      }
+      &:last-child {
+        border-top-right-radius: @border-radius;
+        border-bottom-right-radius: @border-radius;
+      }
+    }
+    &.@{btn-prefix}-group {
+      &-circle {
+        >:first-of-type {
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        >:last-of-type {
+          border-bottom-right-radius: 20px;
+          border-top-right-radius: 20px;
+        }
+      }
+      .@{btn-prefix}[disabled]{
+        z-index: -1;
+      }
+      &-l .@{btn-prefix} {
+        font-size: 110%;
+        padding: 10px 20px;
+      }
+      &-s .@{btn-prefix} {
+        padding: 5px 8px;
+      }
+      &-xs .@{btn-prefix} {
+        padding: 2px 6px;
+        font-size: 90%;
+      }
+    }
+  }
+}

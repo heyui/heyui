@@ -17,7 +17,7 @@
         }
         &-show {
           .@{tree-prefix}-show-expand {
-            .h-icon-right {
+            .h-icon-angle-right {
               transform: rotate(90deg);
             }
           }
@@ -38,12 +38,16 @@
       color: @gray-color;
       display: inline-block;
       padding: 0 2px 0 0;
-      .text-hover();
-      .h-icon-right,
+      .h-func-text-hover();
       .h-icon-loading {
         font-size: 12px;
         line-height: @font-size;
         vertical-align: middle;
+      }
+      .h-icon-angle-right {
+        line-height: @font-size;
+        transition: 0.2s;
+        vertical-align: -1px;
       }
     }
     
@@ -67,6 +71,7 @@
     }
   }
   &-ul {
+    .h-func-list-style();
     transition: max-height 0.2s cubic-bezier(0, 1, 0, 1);
     max-height: 0;
     overflow: hidden;

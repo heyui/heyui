@@ -1,5 +1,5 @@
-import Notify from '../notify';
-import utils from '../../utils/utils';
+import Notify from 'heyui/src/plugins/notify';
+import utils from 'heyui/src/utils/utils';
 
 const prefixCls = 'h-notice';
 const iconPrefixCls = 'h-icon';
@@ -36,7 +36,7 @@ function Notice(originalParam) {
     hasCloseIcon: true,
     parent: noticeDom
   };
-  if (new Set(Object.keys(iconNames)).has(originalParam.type)) {
+  if (Object.keys(iconNames).indexOf(originalParam.type) != -1) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
     originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`;
     delete originalParam.type;
@@ -53,11 +53,16 @@ function notice(param, timeout) {
   if (utils.isString(param)) {
     return Notice({ content: param, timeout });
   } else if (utils.isObject(param)) {
-    if (this.$router) {
-      param.$router = this.$router;
-    }
-    if (this.$i18n) {
-      param.$i18n = this.$i18n;
+    if (this) {
+      if (this.$router) {
+        param.$router = this.$router;
+      }
+      if (this.$i18n) {
+        param.$i18n = this.$i18n;
+      }
+      if (this.$store) {
+        param.$store = this.$store;
+      }
     }
     return Notice(param);
   }
@@ -85,7 +90,4 @@ notice.warn = (param, timeout) => noticeWithType('warn', param, timeout);
 notice.success = (param, timeout) => noticeWithType('success', param, timeout);
 notice.info = (param, timeout) => noticeWithType('info', param, timeout);
 
-export default (vue) => {
-  Vue = vue;
-  return notice;
-};
+export default notice;

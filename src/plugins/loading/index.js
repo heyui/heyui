@@ -1,4 +1,4 @@
-import utils from '../../utils/utils';
+import utils from 'heyui/src/utils/utils';
 
 const loadingCls = 'h-loading';
 let LoadingDom = null;

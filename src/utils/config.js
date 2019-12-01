@@ -1,4 +1,4 @@
-import utils from './utils';
+import utils from 'heyui/src/utils/utils';
 
 const config = {
   dict: {
@@ -57,7 +57,7 @@ const config = {
   autocomplete: {
     configs: {},
     default: {
-      maxList: 20,
+      maxLength: 20,
       delay: 100,
       loadData: null,
       minWord: 0,
@@ -130,7 +130,7 @@ const func = {
   getDict(name) {
     const dict = config.dict.dicts[name];
     if (!dict) {
-      console.error(`Config: There is no dictionary named ${name}`);
+      console.error(`[HeyUI] Config: There is no dictionary named ${name}`);
       return [];
     }
     return dict;
@@ -142,7 +142,7 @@ const func = {
     }
     const value = utils.getKeyValue(config, `${key}`);
     if (utils.isNull(value)) {
-      console.error(`Config: There is no dictionary named ${key}`);
+      console.error(`[HeyUI] Config: There is no dictionary named ${key}`);
       return null;
     }
     return value;
@@ -164,6 +164,69 @@ const func = {
   },
   addDict(name, value) {
     config.dict.dicts[name] = value;
+  },
+  dictMapping(value, key, connector) {
+    let dict = this.getDict(key);
+    if (!dict || utils.isNull(value)) return '';
+    if (utils.isString(value) && connector) {
+      value = value.split(connector);
+    }
+    if (!utils.isNull(value) && value !== '' && key) {
+      if (!utils.isArray(value)) {
+        value = [value];
+      }
+    }
+    if (value.length <= 0) {
+      return '';
+    }
+
+    const keyField = this.getOption('dict', 'keyName');
+    const titleField = this.getOption('dict', 'titleName');
+
+    if (utils.isArray(dict)) {
+      dict = utils.toObject(dict, keyField);
+    }
+    let result = value.map((ele) => {
+      if (utils.isObject(ele)) {
+        return ele[titleField];
+      }
+      const d = dict[ele];
+      if (utils.isObject(d)) {
+        return d[titleField];
+      }
+      return d;
+    });
+    return result.filter(ele => (ele && ele !== '')).join(connector || ', ');
+  },
+  initOptions(datas, param) {
+    let key = this.getOption('dict.keyName');
+    let title = this.getOption('dict.titleName');
+    let options = [];
+    if (utils.isObject(datas)) {
+      options = utils.toArray(datas, key, title);
+    } else if (utils.isArray(datas)) {
+      if (datas.length == 0) {
+        options = [];
+      } else {
+        let data0 = datas[0];
+        if (utils.isObject(data0)) {
+          options = utils.copy(datas);
+        } else {
+          options = datas.map((item) => {
+            return {
+              [`${key}`]: item,
+              [`${title}`]: item
+            };
+          });
+        }
+      }
+    }
+    if (param.render) {
+      options.forEach((item) => {
+        item[param.html] = param.render.call(null, item);
+      });
+    }
+    return options;
   }
 };
 

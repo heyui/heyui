@@ -12,6 +12,7 @@ export default {
     return {
       columns: [
         { title: 'Index', prop: '$index', width: 100 },
+        { title: 'Serial', prop: '$serial', width: 100 },
         { title: 'ID', prop: 'id', width: 100, sort: 'auto' },
         { title: 'Name', prop: 'name', sort: 'auto' },
         { title: 'Age', prop: 'age', sort: 'auto' },

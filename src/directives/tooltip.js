@@ -1,5 +1,5 @@
-import Tooltip from '../plugins/tooltip';
-import utils from '../utils/utils';
+import Tooltip from 'heyui/src/plugins/tooltip';
+import utils from 'heyui/src/utils/utils';
 
 const getContent = function (el, vnode) {
   let param = {};
@@ -11,6 +11,10 @@ const getContent = function (el, vnode) {
   if (attrs.className) {
     param.className = attrs.className;
   }
+  if (attrs.maxWidth) {
+    param.maxWidth = attrs.maxWidth;
+  }
+
   let ref = attrs['ref-el'];
   if (!vnode.context.$el.querySelector) {
     return false;

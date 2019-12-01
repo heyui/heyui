@@ -1,13 +1,3 @@
-import HHeader from './header.vue';
-import HFooter from './footer.vue';
-import Content from './content.vue';
-import Sider from './sider.vue';
-import Layout from './layout.vue';
+import Layout from './layout';
 
-export {
-  HHeader,
-  HFooter,
-  Content,
-  Sider,
-  Layout
-};
+export default Layout;

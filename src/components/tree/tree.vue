@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import config from '../../utils/config';
-import utils from '../../utils/utils';
-import treeItem from './tree-item';
-import Search from '../search';
+import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
+import treeItem from './treeitem';
+import Search from 'heyui/src/components/search';
 
 const prefix = 'h-tree';
 
@@ -76,23 +76,6 @@ const getChooseNode = (data, options) => {
     }
   }
   return options;
-};
-
-const updateModeSomeChildChooseStatus = data => {
-  if (data.children) {
-    let isChoose = false;
-    for (let child of data.children) {
-      // updateChildStatus(child);
-      if (child.status.choose) {
-        isChoose = true;
-      }
-      updateModeSomeChildChooseStatus(child);
-    }
-    if (isChoose) {
-      data.status.choose = true;
-      data.status.opened = true;
-    }
-  }
 };
 
 export default {
@@ -257,9 +240,8 @@ export default {
       let datas = [];
       if (utils.isArray(this.param.datas)) {
         datas = this.param.datas;
-      }
-      if (utils.isFunction(this.param.datas)) {
-        datas = this.param.datas.call(null);
+      } else if (utils.isFunction(this.param.datas)) {
+        datas = this.param.datas.apply(this.param);
       }
       if (utils.isFunction(this.param.getTotalDatas) || utils.isFunction(this.param.getDatas)) {
         datas = [];

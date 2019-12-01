@@ -5,7 +5,7 @@
       布局设置：<Checkbox v-model="layout" :datas="layoutDatas"></Checkbox>
     </p>
     <p style="height: 30px;"></p>
-    <p>value: {{value}}</p>
+    <p>value: {{value}}<Button @click="setValue">设置值</Button></p>
     <div>
       <DateFullRangePicker v-model="value" :layout="layout" :startWeek="startWeek"></DateFullRangePicker>
     </div>
@@ -26,6 +26,14 @@ export default {
       startWeekDatas: [{ key: 1, title: '周一' }, { key: 7, title: '周日' }],
       layoutDatas: ['year', 'quarter', 'month', 'week', 'date', 'customize']
     };
+  },
+  methods: {
+    setValue() {
+      this.value = {
+        start: '2017-04-01',
+        type: 'week'
+      };
+    }
   }
 };
 </script>

@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      src: 'https://pic.52112.com/icon/256/20180507/15471/722194.png'
+      src: 'https://i1.go2yd.com/image.php?url=0Kvq81cKR1'
     };
   },
   methods: {

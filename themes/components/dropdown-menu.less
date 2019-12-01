@@ -1,0 +1,35 @@
+@dropdownmenu-prefix: ~"@{prefix}dropdownmenu";
+.@{dropdownmenu-prefix} {
+  display: inline-block;
+  vertical-align: middle;
+  &-group{
+    padding: 10px 0;
+  }
+
+  &-disabled{
+    cursor: default;
+    color: @disabled-color !important;
+    >.h-icon-down{
+      color: @disabled-color !important;
+    }
+  }
+
+  &-item{
+    .h-func-li-hover();
+    padding: 5px 15px;
+    position: relative;
+    >i{
+        margin-right: 5px;
+    }
+    &-divider{    
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      margin: 3px 0;
+      border-top: @border;
+    }
+    &.disabled{
+      color: @disabled-color;
+    }
+  }
+}

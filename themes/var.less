@@ -1,6 +1,8 @@
 @prefix : h-;
 // Color
 @primary-color : #45b984;
+@primary1-color : fade(@primary-color, 45%);
+@primary2-color : fade(@primary-color, 15%);
 @link-color : @primary-color;
 @blue-color : #3B91FF; //info
 @green-color : #13CE66; //success
@@ -12,20 +14,23 @@
 @dark-color: #333333;
 @dark1-color: #555555;
 @dark2-color: #666666;
-@gray-color: #999999;
+@dark3-color: #777777;
+@dark4-color: #999999;
+
+@gray-color: #c1c1c1;
 @gray1-color: #d3d3d3;
 @gray2-color: #eeeeee;
 @gray3-color: #f3f3f3;
-@gray4-color: #f9f9f9;
+@gray4-color: #f5f5f5;
 
 //hover
-@hover-background-color: fade(@dark-color, 8%);
+@hover-background-color: @gray2-color;
 
-@highlight-background-color: fade(@primary-color, 15%);
+@highlight-background-color: @primary2-color;
 
 //tag
-@tag-background-color: #f5f5f5;
-@tag-border-color: #ececec;
+@tag-background-color: @gray4-color;
+@tag-border-color: @gray2-color;
 
 //font-size
 @font-size : 14px;
@@ -36,7 +41,6 @@
 
 @font-family : "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 @line-height : 1.5;
-@line-height-computed : floor((@font-size * @line-height));
 
 @button-size-normal-padding: 8px 15px;
 @button-size-l-padding: 10px 20px;
@@ -53,7 +57,7 @@
 
 //disabled
 @disabled-cursor: not-allowed;
-@disabled-color: @gray-color;
+@disabled-color: @dark4-color;
 @disabled-border-color: @gray1-color;
 @disabled-background-color: @gray4-color;
 
@@ -102,9 +106,9 @@
 @layout-sider-width: 200px;
 @layout-sider-collapse-width: 70px;
 
-@menu-dark-color: #333333;
-@menu-white-background-color: lighten(@primary-color, 45%);
+@menu-dark-color: @dark-color;
+@menu-white-background-color: @primary2-color;
 
 // skeleton
-@skeleton-bg: #f2f2f2;
+@skeleton-bg: @gray4-color;
 @skeleton-height: 16px;

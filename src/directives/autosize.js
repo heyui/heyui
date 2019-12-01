@@ -1,4 +1,4 @@
-import autosize from '../plugins/autosize';
+import autosize from 'heyui/src/plugins/autosize';
 
 export default {
   inserted(el, binding, vnode) {
@@ -14,9 +14,4 @@ export default {
       }
     }
   }
-  // update(el) {
-  //   const evt = document.createEvent('Event');
-  //   evt.initEvent('autosize:update', true, false);
-  //   el.dispatchEvent(evt);
-  // }
 };

@@ -27,7 +27,7 @@
         <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{'h-uploader-image-operate-pointer': readonly}">
           <div v-if="!readonly">
             <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
-            <i class="h-split" v-width="3"></i>
+            <i class="h-split" style="width: 3px;"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
           </div>
         </div>
@@ -35,7 +35,7 @@
     </template>
     <template v-if="type=='file'||type=='files'">
       <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
-      <div v-else><Button icon="h-icon-upload" class="h-uploader-browse-button" v-show="showUploadButton">{{showUploadWord}}</Button></div>
+      <div v-else><button type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{showUploadWord}}</button></div>
       <div class="h-uploader-files">
         <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
           <div class="h-uploader-file-progress" v-if="file.status==2">
@@ -50,8 +50,10 @@
   </div>
 </template>
 <script>
-import utils from '../../utils/utils';
-import config from '../../utils/config';
+import utils from 'heyui/src/utils/utils';
+import config from 'heyui/src/utils/config';
+import Locale from 'heyui/src/mixins/locale';
+import ImagePreview from 'heyui/src/plugins/image-preview';
 
 const prefix = 'h-uploader';
 
@@ -75,6 +77,7 @@ const dispose = function (value, type, param) {
 
 export default {
   name: 'hUploader',
+  mixins: [Locale],
   props: {
     type: {
       type: String,
@@ -119,13 +122,13 @@ export default {
     },
     clickImage(index, file) {
       if (this.readonly) {
-        this.$ImagePreview(this.fileList, index);
+        ImagePreview(this.fileList, index);
       } else {
         this.$emit('imageclick', file);
       }
     },
     previewImage(index) {
-      this.$ImagePreview(this.fileList, index);
+      ImagePreview(this.fileList, index);
     },
     getBrowseButton() {
       return this.$el.querySelector('.h-uploader-browse-button');

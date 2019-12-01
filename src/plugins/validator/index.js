@@ -5,7 +5,11 @@ import combineValids from './validation/combineValids';
 
 const extendResult = function (result1, result2) {
   let result = {};
-  let keys = new Set([...Object.keys(result1), ...Object.keys(result2)]);
+  let keys = Object.keys(result1);
+  let key2 = Object.keys(result2);
+  for (let key of key2) {
+    if (!result1[key]) keys.push(key);
+  }
   for (let key of keys) {
     if (result1[key] && !result2[key]) {
       result[key] = result1[key];
@@ -56,7 +60,7 @@ const DEFAULT = {
 class Validator {
   constructor(rules) {
     if (!utils.isObject(rules)) {
-      console.error('validator: please pass the correct validation parameters');
+      console.error('[HeyUI Error] Validator: Please provide the correct validation parameters');
     }
     this.combineRuleResults = {};
     this.rules = {};
@@ -174,7 +178,7 @@ class Validator {
 
   setConfig(prop, options) {
     let ruleKey = prop;
-    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey], options);
+    this.rules[ruleKey] = utils.extend(true, this.rules[ruleKey] || {}, options);
   }
 
   validFieldBase({ rule, value, parent }) {

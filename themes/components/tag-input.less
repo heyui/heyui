@@ -1,0 +1,23 @@
+@taginput: ~"@{prefix}taginput";
+.@{taginput} {
+  width: 250px;
+  display: inline-block;
+  &-input-border{
+    .h-func-border-input();
+  }
+  display: flex;
+  flex-wrap: wrap;
+  input[type=text]&-input{
+    .h-func-border-input-inside-input()
+  }
+  >span{
+    .h-func-tag-span();
+  }
+
+  .@{prefix}form-item-valid-error &{
+    border-color: @red-color;
+    &.focusing{
+      box-shadow: @box-shadow-error-input;
+    }
+  }
+}

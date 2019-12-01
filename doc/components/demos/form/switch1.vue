@@ -4,6 +4,20 @@
     <div><h-switch v-model="check1" :trueValue="1" :falseValue="2">1/2</h-switch></div>
     <div>{{check2}}</div>
     <div><h-switch v-model="check2" trueValue="yes" falseValue="no" :small="true">yes/no</h-switch></div>
+    <div>{{check3}}</div>
+    <blockquote>自定义展示，1.23.3+</blockquote>
+    <div>
+      <h-switch v-model="check3">
+        <span slot="open">开启</span>
+        <span slot="close">关闭</span>
+      </h-switch>
+    </div>
+    <div>{{check4}}</div>
+    <div>
+      <h-switch v-model="check4">
+        <span slot="open" class="h-icon-check"></span>
+        <span slot="close" class="h-icon-close"></span>
+      </h-switch></div>
   </div>
 </template>
 
@@ -13,7 +27,9 @@ export default {
   data() {
     return {
       check1: 2,
-      check2: 'no'
+      check2: 'no',
+      check3: false,
+      check4: false
     };
   }
 };

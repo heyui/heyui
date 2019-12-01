@@ -8,7 +8,7 @@
 
 const prefix = 'h-badge';
 const Props = {
-  position: new Set(['right', 'left'])
+  position: ['right', 'left']
 };
 
 export default {
@@ -33,7 +33,7 @@ export default {
     position: {
       type: String,
       validator(value) {
-        return Props.position.has(value);
+        return Props.position.indexOf(value) != -1;
       }
     }
   },

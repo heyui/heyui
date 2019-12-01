@@ -36,6 +36,7 @@
     <blockquote>通用调用</blockquote>
     <div>
       <span class="text-hover">可点击文本</span>
+      <span class="dark-text-hover">灰色可点击文本</span>
       <span class="link">链接式文本</span>
       <span class="float-right">浮动到右侧</span>
     </div>

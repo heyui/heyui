@@ -4,9 +4,10 @@
   </div>
 </template>
 <script>
-import Validator from '../../plugins/validator';
-import utils from '../../utils/utils';
-import scrollIntoView from '../../plugins/scrollIntoView';
+import Validator from 'heyui/src/plugins/validator';
+import utils from 'heyui/src/utils/utils';
+import ScrollIntoView from 'heyui/src/plugins/scroll-into-view';
+import Message from 'heyui/src/plugins/message';
 
 const prefixCls = 'h-form';
 
@@ -61,19 +62,24 @@ export default {
   provide: function () {
     return {
       validField: this.validField,
+      requireds: this.requireds,
       removeProp: this.removeProp,
-      getConfig: this.getConfig,
       setConfig: this.setConfig,
       updateErrorMessage: this.updateErrorMessage,
-      getErrorMessage: this.getErrorMessage,
+      updateProp: this.updateProp,
       labelWidth: this.labelWidth,
-      mode: this.mode
+      params: this.childParams
     };
   },
   data() {
     return {
       messages: {},
-      validator: null
+      dynamicRequireds: [],
+      requireds: [],
+      validator: null,
+      childParams: {
+        mode: this.mode
+      }
     };
   },
   beforeMount() {
@@ -85,6 +91,7 @@ export default {
     }
   },
   mounted() {
+    this.initRequires();
     this.$nextTick(() => {
       this.$el.addEventListener('blur', (event) => {
         if (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
@@ -97,19 +104,39 @@ export default {
     });
   },
   watch: {
+    mode() {
+      this.childParams.mode = this.mode;
+    },
     rules: {
       handler() {
         if (this.validator) {
           if (this.rules) this.validator.updateRule(this.rules);
+          this.dynamicRequireds.forEach(item => {
+            this.validator.setConfig(item, { required: true });
+          });
         } else if (this.model && this.rules) {
           this.validator = new Validator(this.rules);
         }
+        this.initRequires();
       },
       deep: true
     }
   },
   methods: {
+    initRequires() {
+      this.requireds.splice(0);
+      if (this.rules) {
+        let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
+        this.requireds.push(...(this.rules.required || []), ...validRequiredProps, ...this.dynamicRequireds);
+      }
+    },
     reset() {
+      console.warn('[HeyUI WARNING] Form Component: form.reset() will be decapitated, please use method form.resetValid()');
+      for (let m in this.messages) {
+        this.messages[m].valid = true;
+      }
+    },
+    resetValid() {
       for (let m in this.messages) {
         this.messages[m].valid = true;
       }
@@ -152,24 +179,32 @@ export default {
       return utils.extend({}, defaultM, returnResult[prop]);
     },
     setConfig(prop, options) {
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (options.required) {
+        if (index == -1) {
+          this.dynamicRequireds.push(prop);
+        }
+      } else if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+      this.initRequires();
       if (!this.validator) return false;
       this.validator.setConfig(prop, options);
     },
-    getConfig(prop) {
-      if (!this.validator) return false;
-      return this.validator.getConfig(prop);
-    },
-    getErrorMessage(prop, label) {
-      if (this.messages[prop]) return this.messages[prop];
+    updateErrorMessage(prop, label) {
       let message = {
         valid: true,
         message: null,
         label
       };
+      if (this.messages[prop]) {
+        Object.assign(this.messages[prop], message);
+        return this.messages[prop];
+      }
       this.messages[prop] = message;
-      return message;
+      return this.messages[prop];
     },
-    updateErrorMessage(prop, oldProp) {
+    updateProp(prop, oldProp) {
       let message = utils.copy(this.messages[oldProp]);
       if (utils.isNull(message)) {
         message = {
@@ -181,7 +216,11 @@ export default {
       return message;
     },
     removeProp(prop) {
-      delete this.messages[prop];
+      let index = this.dynamicRequireds.indexOf(prop);
+      if (index > -1) {
+        this.dynamicRequireds.splice(index, 1);
+      }
+      this.setConfig(prop, { required: false });
     },
     renderMessage(returnResult) {
       let isSuccess = true;
@@ -203,15 +242,15 @@ export default {
         let m = result.messages[0];
         if (this.showErrorTip) {
           if (m.type == 'base') {
-            this.$Message.error(`${m.label}${m.message}`);
+            Message.error(`${m.label}${m.message}`);
           } else {
-            this.$Message.error(`${m.message}`);
+            Message.error(`${m.message}`);
           }
         }
         this.$nextTick(() => {
           let firstError = this.$el.querySelector(`.h-form-item-valid-error[prop='${m.prop}']`);
           if (firstError) {
-            scrollIntoView(firstError, {
+            ScrollIntoView(firstError, {
               time: 500,
               align: {
                 top: this.top,

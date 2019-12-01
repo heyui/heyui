@@ -150,7 +150,7 @@ export default {
     },
     reset() {
       this.isLoading = false;
-      this.$refs.form.reset();
+      this.$refs.form.resetValid();
     },
     resetMobilepicker() {
       this.$refs.mobile.reset();
