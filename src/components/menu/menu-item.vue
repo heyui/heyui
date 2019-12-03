@@ -1,7 +1,7 @@
 <template>
   <li class="h-menu-li" :class="{'h-menu-li-opened':(status.opened.indexOf(data.key) != -1)}">
     <template v-if="data.value.href">
-      <router-link v-if="data.value.router" :to="data.value.href">
+      <router-link :exact="data.value.exact" v-if="data.value.router" :to="data.value.href">
         <MenuItemShow v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
       </router-link>
       <a v-else :target="data.value.target" @click="triggerClick" class="h-menu-link" :href="href">
