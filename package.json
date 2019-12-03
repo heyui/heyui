@@ -1,14 +1,14 @@
 {
-  "name": "heyui",
-  "version": "1.25.1",
+  "name": "heyui-gson",
+  "version": "1.25.2",
   "description": "UI Toolkit for Web, Vue2.0.",
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heyui/heyui.git"
+    "url": "git+https://github.com/btboys/heyui.git"
   },
-  "homepage": "http://www.heyui.top",
+  "homepage": "https://www.gson.cn",
   "keywords": [
     "heyui",
     "vue",
@@ -21,20 +21,20 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-standard": "^5.0.0",
     "art-template": "^4.13.2",
-    "babel-eslint": "^10.0.1",
-    "commander": "^2.19.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-vue": "^5.2.2",
+    "babel-eslint": "^10.0.3",
+    "commander": "^4.0.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-vue": "^6.0.1",
     "headr": "0.0.4",
     "hey-log": "^0.0.8",
     "hey-utils": "^1.0.2",
-    "less": "^3.9.0",
+    "less": "^3.10.3",
     "less-to-json": "^1.2.0",
-    "standard-version": "^6.0.1"
+    "standard-version": "^7.0.1"
   },
   "readmeFilename": "README.md",
   "scripts": {
