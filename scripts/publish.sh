@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "打包hey build"
 hey b -f scripts/config/hey.conf.js
 hey b -f scripts/config/hey.esm.js

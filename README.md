@@ -2,7 +2,7 @@
   <img height="100"  width="100" src="https://www.heyui.top/static/images/logo.png"/>
 </p>
 
-# HeyUI
+# HeyUI ____′↘夏悸增强版本
 
 [![npm package](https://img.shields.io/npm/v/heyui.svg?style=flat-square)](https://www.npmjs.org/package/heyui)
 ![JS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/dist/heyui.esm.js?style=flat-square&compression=gzip&label=gzip%20size:%20JS)
