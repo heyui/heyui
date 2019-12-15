@@ -304,6 +304,7 @@ class Notify {
     let that = this;
     const $body = this.$body;
     if (this.vm) {
+      that.vue && that.vue.$destroy();
       that.vm.$destroy();
     }
 
