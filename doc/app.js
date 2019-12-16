@@ -21,6 +21,7 @@ import codesEn from './components_en/common/codes.vue';
 import routerParam from './js/config/router-config';
 import en from '../src/locale/lang/en-US';
 import zh from '../src/locale/lang/zh-CN';
+import '@lottiefiles/lottie-player';
 
 Vue.component('ColorPicker', ColorPicker);
 
