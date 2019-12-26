@@ -13,6 +13,7 @@ const Default = {
   hasMask: false,
   closeOnMask: true,
   hasCloseIcon: false,
+  esc: false,
   timeout: 0,
   width: false,
   global: false,
@@ -286,11 +287,21 @@ class Notify {
         };
       }
     }
+
     this.popstateEvent = () => {
       this.close();
     };
 
     window.addEventListener('popstate', this.popstateEvent);
+
+    if (param.esc) {
+      this.escEvent = (e) => {
+        if (e.keyCode === 27) {
+          this.close();
+        }
+      };
+      window.addEventListener('keyup', this.escEvent);
+    }
   }
 
   trigger(event, ...data) {
@@ -321,6 +332,7 @@ class Notify {
     this.trigger('$close');
 
     window.removeEventListener('popstate', this.popstateEvent);
+    window.removeEventListener('keyup', this.escEvent);
 
     utils.removeClass($body, notifyShowCls);
 
