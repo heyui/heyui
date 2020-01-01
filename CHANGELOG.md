@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.26.0](https://github.com/btboys/heyui/compare/v1.25.0...v1.26.0) (2020-01-01)
+
+
+### Features
+
+* **NumberInput:** 优化change事件，将原来不管值有没有改变都触发blur事件改为只有值变更才触发 ([aa8bf4c](https://github.com/btboys/heyui/commit/aa8bf4c229aef5ec55eb34aa6de9fbe10869c6dd))
+
+
+### Bug Fixes
+
+* **ColorPicker:** init color show ([336ece3](https://github.com/btboys/heyui/commit/336ece30b81e52a9479d096201153038ad5cead7)), closes [#232](https://github.com/btboys/heyui/issues/232)
+* **Pagination:** remove duplicate jump event ([8754502](https://github.com/btboys/heyui/commit/87545026f739f83c017c3bb229e072297264be81)), closes [#242](https://github.com/btboys/heyui/issues/242)
+* **Select:** optimize value equal calculation ([fd109f9](https://github.com/btboys/heyui/commit/fd109f911c96f2f99a47fce434202844ccc0c032)), closes [#231](https://github.com/btboys/heyui/issues/231)
+* **Tree:** 删除无用slot ([a6fd193](https://github.com/btboys/heyui/commit/a6fd193365fbe2cab92f91fc19b0b376a78232cc))
+* 删除Set的处理，使用indexOf ([dc5e78e](https://github.com/btboys/heyui/commit/dc5e78ece6af2403f18c548651f5840dff898bc1)), closes [#248](https://github.com/btboys/heyui/issues/248)
+
 ### [1.25.8](https://github.com/btboys/heyui/compare/v1.25.0...v1.25.8) (2019-12-26)
 
 
