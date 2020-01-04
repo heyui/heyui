@@ -2,7 +2,7 @@
   <div :class="numberinputCls">
     <div class="h-numberinput-show"
          :class="{'focusing':focusing}">
-      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input h-input" v-model="editValue" @input="input" @focus="focus" @blur="blur"/>
+      <input :readonly="readonly" type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input h-input" v-model="editValue" @input="input" @focus="focus" @blur="blur"/>
       <div class="h-numberinput-operate" v-if="useOperate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
@@ -22,6 +22,10 @@ export default {
     min: Number,
     max: Number,
     disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
       type: Boolean,
       default: false
     },
