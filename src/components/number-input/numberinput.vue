@@ -69,12 +69,12 @@ export default {
   },
   methods: {
     plus() {
-      if (this.disabled) return false;
+      if (this.disabled || this.readonly) return false;
       let value = this.getValue(this.value);
       this.setvalue(utils.add(value || 0, this.step), 'handler');
     },
     minus() {
-      if (this.disabled) return false;
+      if (this.disabled || this.readonly) return false;
       let value = this.getValue(this.value);
       this.setvalue(utils.add(value || 0, -this.step), 'handler');
     },
@@ -106,7 +106,7 @@ export default {
       }
     },
     setvalue(value, trigger) {
-      if (this.disabled) return false;
+      if (this.disabled || this.readonly) return false;
       if (this.max !== undefined && value !== null) {
         value = Math.min(this.max, value);
       }
