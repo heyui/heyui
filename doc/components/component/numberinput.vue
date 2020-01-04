@@ -34,6 +34,13 @@
         <td>false</td>
       </tr>
       <tr>
+        <td>readonly</td>
+        <td>是否只读</td>
+        <td>Boolean</td>
+        <td>-</td>
+        <td>false</td>
+      </tr>
+      <tr>
         <td>min</td>
         <td>最小值</td>
         <td>Number</td>

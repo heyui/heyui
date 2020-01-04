@@ -296,6 +296,8 @@ export default {
       if (this.value.type && this.value.start) {
         let date = manba(this.value.start);
         switch (this.value.type) {
+          case 'date':
+            return date.format('YYYY-MM-DD');
           case 'year':
             return date.year();
           case 'month':
