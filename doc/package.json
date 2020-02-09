@@ -51,6 +51,7 @@
   },
   "readmeFilename": "README.md",
   "scripts": {
+    "dev": "hey dev",
     "build": "hey b",
     "eslintfix": "eslint --fix --ext .js,.vue components",
     "eslintfixjs": "eslint --fix --ext .js,.vue js",
