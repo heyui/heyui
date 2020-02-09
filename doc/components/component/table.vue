@@ -342,6 +342,18 @@
         <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>无</td>
       </tr>
+      <tr>
+        <td>expandAll</td>
+        <td>打开Tree结构的table所有的节点 <code>1.26.0+新增</code></td>
+        <td></td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>foldAll</td>
+        <td>收起Tree结构的table所有的节点 <code>1.26.0+新增</code></td>
+        <td></td>
+        <td>无</td>
+      </tr>
     </table>
   </div>
 </template>

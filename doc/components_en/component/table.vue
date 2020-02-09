@@ -345,6 +345,18 @@
         <td>sortStatus: {prop: String, type: String['asc'|'desc'] }, triggerType: true | 'auto' | false</td>
         <td>Empty</td>
       </tr>
+      <tr>
+        <td>expandAll</td>
+        <td>Expand all nodes of table of tree structure <code>1.26.0+新增</code></td>
+        <td></td>
+        <td>无</td>
+      </tr>
+      <tr>
+        <td>foldAll</td>
+        <td>Collapse all nodes of table of tree structure <code>1.26.0+新增</code></td>
+        <td></td>
+        <td>无</td>
+      </tr>
     </table>
 
   </div>

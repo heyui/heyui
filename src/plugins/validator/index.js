@@ -274,7 +274,7 @@ class Validator {
           let refProp = (rule.parentRef && parentProp ? (parentProp + '.') : '') + ref;
           // When the basic parameters are not validated, it will stop validate.
           if (this.validFieldBase({ rule: this.rules[refProp], value: v, parent }) != true) {
-            console.log('basic combine validation does not pass', refProp, this.rules[refProp], v);
+            // console.log('Validation: basic combine validation does not pass', refProp, this.rules[refProp], v);
             break;
           }
           values.push(v);
