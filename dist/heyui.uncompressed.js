@@ -10154,39 +10154,75 @@ var _default2 = {
         }
       }
     },
-    toggleTree: function toggleTree(data, fold) {
+    toggleTree: function toggleTree(data) {
+      if (data._opened) {
+        this.foldTree(data);
+      } else {
+        this.expandTree(data);
+      }
+    },
+    foldAll: function foldAll() {
       var _this2 = this;
 
+      this.tableDatas.forEach(function (item) {
+        _this2.foldTree(item);
+      });
+    },
+    expandAll: function expandAll() {
+      var _this3 = this;
+
+      this.datas.forEach(function (item) {
+        _this3.expandTree(item, {
+          expandAll: true
+        });
+      });
+    },
+    expandTree: function expandTree(data) {
+      var _this4 = this;
+
+      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      if (data._opened) return false;
+
       if (data.children && data.children.length) {
-        if (data._opened || fold) {
-          data.children.forEach(function (item) {
-            _this2.toggleTree(item, true);
+        var _this$tableDatas;
 
-            var cindex = _this2.tableDatas.indexOf(item);
+        this.labelDatas(data.children);
+        this.$set(data, '_opened', true);
+        var index = this.tableDatas.indexOf(data);
 
-            var checkIndex = _this2.checks.indexOf(item);
+        (_this$tableDatas = this.tableDatas).splice.apply(_this$tableDatas, [index + 1, 0].concat((0, _toConsumableArray2.default)(data.children)));
 
-            if (cindex > -1) {
-              _this2.tableDatas.splice(cindex, 1);
-            }
+        data.children.forEach(function (item) {
+          _this4.$set(item, '_level', (data._level || 0) + 1);
 
-            if (checkIndex > -1) {
-              _this2.checks.splice(checkIndex, 1);
-            }
-          });
-          this.$set(data, '_opened', false);
-        } else {
-          var _this$tableDatas;
+          if (params.expandAll) {
+            _this4.expandTree(item);
+          }
+        });
+      }
+    },
+    foldTree: function foldTree(data) {
+      var _this5 = this;
 
-          this.labelDatas(data.children);
-          data.children.forEach(function (item) {
-            _this2.$set(item, '_level', (data._level || 0) + 1);
-          });
-          this.$set(data, '_opened', true);
-          var index = this.tableDatas.indexOf(data);
+      if (!data._opened) return false;
 
-          (_this$tableDatas = this.tableDatas).splice.apply(_this$tableDatas, [index + 1, 0].concat((0, _toConsumableArray2.default)(data.children)));
-        }
+      if (data.children && data.children.length) {
+        data.children.forEach(function (item) {
+          _this5.foldTree(item);
+
+          var cindex = _this5.tableDatas.indexOf(item);
+
+          var checkIndex = _this5.checks.indexOf(item);
+
+          if (cindex > -1) {
+            _this5.tableDatas.splice(cindex, 1);
+          }
+
+          if (checkIndex > -1) {
+            _this5.checks.splice(checkIndex, 1);
+          }
+        });
+        this.$set(data, '_opened', false);
       }
     },
     getTrCls: function getTrCls(d, index) {
@@ -10220,10 +10256,10 @@ var _default2 = {
       this.rowSelected = null;
     },
     invereSelection: function invereSelection() {
-      var _this3 = this;
+      var _this6 = this;
 
       this.checks = this.tableDatas.filter(function (item) {
-        return _this3.checks.indexOf(item) == -1;
+        return _this6.checks.indexOf(item) == -1;
       });
     },
     clearSelection: function clearSelection() {
@@ -10273,20 +10309,20 @@ var _default2 = {
       }
     },
     resize: function resize() {
-      var _this4 = this;
+      var _this7 = this;
 
       this.$nextTick(function () {
-        var body = _this4.$el.querySelector('.h-table-body');
+        var body = _this7.$el.querySelector('.h-table-body');
 
         if (body) {
-          _this4.scrollWidth = body.offsetWidth - body.clientWidth;
-          _this4.scrollHeight = body.offsetHeight - body.clientHeight;
+          _this7.scrollWidth = body.offsetWidth - body.clientWidth;
+          _this7.scrollHeight = body.offsetHeight - body.clientHeight;
         }
 
-        _this4.emptyWidth = _this4.$el.querySelector('.h-table-header-table').clientWidth;
-        _this4.tableWidth = _this4.$el.querySelector('.h-table-container').clientWidth;
+        _this7.emptyWidth = _this7.$el.querySelector('.h-table-header-table').clientWidth;
+        _this7.tableWidth = _this7.$el.querySelector('.h-table-container').clientWidth;
 
-        _this4.initFixedWidth();
+        _this7.initFixedWidth();
       });
     },
     mouseover: function mouseover(data) {
@@ -10315,14 +10351,14 @@ var _default2 = {
       this.rightWidth = rightWidth;
     },
     refresh: function refresh() {
-      var _this5 = this;
+      var _this8 = this;
 
       if (this.isMounted) {
         (0, _debounce.default)(function () {
-          _this5.initColumns();
+          _this8.initColumns();
 
-          _this5.$nextTick(function () {
-            _this5.resize();
+          _this8.$nextTick(function () {
+            _this8.resize();
           });
         }, 10)();
       }
@@ -36169,7 +36205,7 @@ function () {
                   value: v,
                   parent: parent
                 }) != true) {
-                  console.log('basic combine validation does not pass', refProp, this.rules[refProp], v);
+                  // console.log('Validation: basic combine validation does not pass', refProp, this.rules[refProp], v);
                   break;
                 }
 
@@ -38012,8 +38048,6 @@ var getParent = function getParent(vm) {
   while (parent && parent.$parent && filterTag.indexOf(parent.$options._componentTag || parent.$options.name) == -1) {
     parent = parent.$parent;
   }
-
-  console.log(parent);
 
   if (!parent) {
     console.error('[HeyUI Error] Tree Component: Please put TreeItem component in the Tree Component');
