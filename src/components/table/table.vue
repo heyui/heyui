@@ -169,7 +169,7 @@ export default {
       type: Boolean,
       default: false
     },
-    height: Number,
+    height: [Number, String],
     checkbox: {
       type: Boolean,
       default: false
@@ -601,7 +601,7 @@ export default {
       let s = {};
       s['bottom'] = `${this.scrollHeight}px`;
       if (this.height) {
-        s.maxHeight = `${this.height}px`;
+        s.maxHeight = this.maxHeight;
       }
       if (this.leftWidth) {
         s.width = `${this.leftWidth}px`;
@@ -613,7 +613,7 @@ export default {
       s['margin-right'] = `${this.scrollWidth}px`;
       s['bottom'] = `${this.scrollHeight}px`;
       if (this.height) {
-        s.maxHeight = `${this.height}px`;
+        s.maxHeight = this.maxHeight;
       }
       if (this.rightWidth) {
         s.width = `${this.rightWidth}px`;
@@ -623,10 +623,15 @@ export default {
     bodyStyle() {
       let s = {};
       if (this.height) {
-        s.maxHeight = `${this.height}px`;
+        s.maxHeight = this.maxHeight;
         // s.overflow = 'auto';
       }
       return s;
+    },
+    maxHeight(){
+      if (this.height) {
+        return (typeof this.height === 'number') ? `${this.height}px` : this.height;
+      }
     }
   }
 };

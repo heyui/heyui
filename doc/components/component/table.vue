@@ -74,7 +74,7 @@
       <tr>
         <td>height</td>
         <td>Table固定的高度</td>
-        <td>Number</td>
+        <td>Number/String</td>
         <td>-</td>
         <td>-</td>
       </tr>
