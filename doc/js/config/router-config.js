@@ -438,6 +438,14 @@ const router = {
           component: () => import('components/component/tag')
         },
         {
+          path: 'view/list',
+          name: 'listView',
+          meta: {
+            title: 'ListView'
+          },
+          component: () => import('components/component/listview')
+        },
+        {
           path: 'view/tabs',
           name: 'viewTabs',
           meta: {

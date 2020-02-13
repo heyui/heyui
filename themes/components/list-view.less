@@ -1,0 +1,54 @@
+@list-view-prefix: ~"@{prefix}list-view";
+
+.@{list-view-prefix} {
+  &-item {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    transition: color 0.2s;
+
+    &-selected {
+      background-color: @primary2-color;
+      color: @primary-color;
+
+      &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: @primary-color;
+        width: 5px;
+        transition: 0.2s;
+      }
+    }
+
+    &:hover {
+      background-color: fade(@primary2-color, 10%);
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    padding: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  &-action-hover &-action {
+    display: none;
+  }
+
+  &-action-hover:hover &-action {
+    display: inline-block;
+  }
+}

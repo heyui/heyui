@@ -105,6 +105,7 @@ const menus = [
     category: 'View',
     components: {
       viewPanel: 'Panel 面板',
+      listView: 'List 面板',
       viewTag: 'Tag 标签'
     }
   }

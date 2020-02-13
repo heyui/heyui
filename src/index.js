@@ -66,6 +66,7 @@ import TextEllipsis from 'heyui/src/components/text-ellipsis';
 import Carousel from 'heyui/src/components/carousel';
 import Collapse from 'heyui/src/components/collapse';
 import CollapseItem from 'heyui/src/components/collapse-item';
+import ListView from 'heyui/src/components/list-view';
 
 import style from 'heyui/src/directives/style';
 import tooltip from 'heyui/src/directives/tooltip';
@@ -153,7 +154,8 @@ const components = {
   HFooter,
   Content,
   Sider,
-  Layout
+  Layout,
+  ListView
 };
 
 const directives = {
