@@ -1,6 +1,6 @@
 {
   "name": "heyui-gson",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "description": "UI Toolkit for Web, Vue2.0.[ ____′↘夏悸增强版本]",
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
