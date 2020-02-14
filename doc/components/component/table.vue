@@ -168,7 +168,7 @@
       </tr>
       <tr>
         <td>prop</td>
-        <td>按照数据的某个字段渲染数据</td>
+        <td>按照数据的某个字段渲染数据,支持深度value,例如a.b</td>
         <td>String</td>
         <td>-</td>
         <td></td>
