@@ -10,6 +10,7 @@
 </template>
 <script>
 import config from 'heyui/src/utils/config';
+import utils from 'heyui/src/utils/utils';
 
 export default {
   name: 'hTableTd',
@@ -58,6 +59,9 @@ export default {
         return this.render.call(null, this.data);
       }
       let value = this.data[this.prop];
+      if (this.prop.indexOf('.') !== -1){
+        value = utils.getKeyValue(this.data, this.prop);
+      }
       if (this.dict) {
         return config.dictMapping(value, this.dict);
       }
