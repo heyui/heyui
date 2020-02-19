@@ -1,25 +1,68 @@
 <style lang="less">
-  .right-frame-menu-container{
-    top: 20px;
-    position: fixed;
-    right: 10px;
-    width: 180px;
+.right-frame-menu-container {
+  top: 20px;
+  position: fixed;
+  right: 10px;
+  width: 180px;
+}
+.com-frame-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+}
+@media (max-width: 992px) {
+  .page-component {
+    .com-frame {
+      .left-frame {
+        position: absolute;
+        background: #fff;
+        width: 260px;
+        padding-top: 30px;
+        border-right: 2px solid #45b984;
+        box-shadow: 1px 1px 3px #c1f7dc;
+      }
+      .left-translate {
+        transform: translate(-445px, 10px);
+      }
+      .left-transition {
+        transition: all 1s;
+      }
+    }
+    .left-frame-menu {
+      position: fixed;
+      z-index: 100;
+      left: 10px;
+      bottom: 20px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #45b984;
+      color: #fff;
+      border-radius: 40px;
+    }
   }
-  .com-frame-footer{
-    text-align: center;
-    margin-top: 50px;
-    padding-top: 30px;
-  }
+}
 </style>
 
 <template>
   <div class="com-frame">
-    <div class="left-frame">
+    <div
+      class="left-frame"
+      :class="{'left-translate': !leftMenuStatus,'left-transition': leftMenuTransitionStatus}"
+    >
       <slot name="left-frame"></slot>
+    </div>
+    <div class="left-frame-menu" @click="showLeftMenu">
+      <i class="h-icon-menu" v-if="!leftMenuStatus"></i>
+      <i class="h-icon-left" v-if="leftMenuStatus"></i>
     </div>
     <div class="right-frame h-dropdown-common-container">
       <router-view></router-view>
-      <footer class="com-frame-footer">Copyright © 2019 <a href="http://www.ch-un.com" target="_blank">Lan</a></footer>
+      <footer class="com-frame-footer">
+        Copyright © 2019
+        <a href="http://www.ch-un.com" target="_blank">Lan</a>
+      </footer>
       <BackTop :target="getTarget"></BackTop>
       <div class="right-frame-menu-container">
         <ul class="right-frame-menu" v-if="menus.length>0">
@@ -30,18 +73,19 @@
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
       pass: '',
       error: false,
       menus: [],
-      routeName: null
+      routeName: null,
+      leftMenuStatus: true,
+      leftMenuTransitionStatus: false
     };
   },
   watch: {
-    '$route'() {
+    $route() {
       this.initLeftMenu();
     }
   },
@@ -58,6 +102,10 @@ export default {
           topOffset: 0
         }
       });
+    },
+    // 显示隐藏菜单
+    showLeftMenu() {
+      this.leftMenuStatus = !this.leftMenuStatus;
     },
     initLeftMenu(force = false) {
       if (this.routeName == this.$route.name && !force) {
@@ -78,7 +126,7 @@ export default {
         });
         menus.each((index, item) => {
           let link = $(`<span class="hash-link">#</span>`);
-          link.on('click', (event) => {
+          link.on('click', event => {
             event.preventDefault();
             this.goMenu(index);
           });
@@ -101,6 +149,11 @@ export default {
   },
   mounted() {
     this.initLeftMenu();
+    // 解决第一次进入界面，出现字体黑色的难看现象,做一次隐藏菜单动画，给用户增强菜单已隐藏的意识
+    setTimeout(() => {
+      this.leftMenuTransitionStatus = true;
+      this.showLeftMenu();
+    }, 1500);
   }
 };
 </script>
