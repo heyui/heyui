@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p><Button @click="expandAll">全部展开 expandAll</Button><Button @click="foldAll">全部折叠 foldAll</Button></p>
     <Table ref="table" :datas="datas" checkbox>
       <TableItem title="Serial" prop="$serial"></TableItem>
       <TableItem title="Name" prop="name" treeOpener></TableItem>
@@ -56,14 +57,13 @@ export default {
     };
   },
   mounted() {
-    this.$refs.table.setRowSelect(this.datas[0]);
   },
   methods: {
-    clear() {
-      this.$refs.table.clearRowSelect();
+    expandAll() {
+      this.$refs.table.expandAll();
     },
-    rowSelect(data) {
-      log(data);
+    foldAll(data) {
+      this.$refs.table.foldAll();
     }
   }
 };

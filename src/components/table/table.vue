@@ -357,30 +357,53 @@ export default {
         }
       }
     },
-    toggleTree(data, fold) {
+    toggleTree(data) {
+      if (data._opened) {
+        this.foldTree(data);
+      } else {
+        this.expandTree(data);
+      }
+    },
+    foldAll() {
+      this.tableDatas.forEach(item => {
+        this.foldTree(item);
+      });
+    },
+    expandAll() {
+      this.datas.forEach(item => {
+        this.expandTree(item, { expandAll: true });
+      });
+    },
+    expandTree(data, params = {}) {
+      if (data._opened) return false;
       if (data.children && data.children.length) {
-        if (data._opened || fold) {
-          data.children.forEach(item => {
-            this.toggleTree(item, true);
-            let cindex = this.tableDatas.indexOf(item);
-            let checkIndex = this.checks.indexOf(item);
-            if (cindex > -1) {
-              this.tableDatas.splice(cindex, 1);
-            }
-            if (checkIndex > -1) {
-              this.checks.splice(checkIndex, 1);
-            }
-          });
-          this.$set(data, '_opened', false);
-        } else {
-          this.labelDatas(data.children);
-          data.children.forEach(item => {
-            this.$set(item, '_level', (data._level || 0) + 1);
-          });
-          this.$set(data, '_opened', true);
-          let index = this.tableDatas.indexOf(data);
-          this.tableDatas.splice(index + 1, 0, ...data.children);
-        }
+        this.labelDatas(data.children);
+        this.$set(data, '_opened', true);
+        let index = this.tableDatas.indexOf(data);
+        this.tableDatas.splice(index + 1, 0, ...data.children);
+        data.children.forEach(item => {
+          this.$set(item, '_level', (data._level || 0) + 1);
+          if (params.expandAll) {
+            this.expandTree(item);
+          }
+        });
+      }
+    },
+    foldTree(data) {
+      if (!data._opened) return false;
+      if (data.children && data.children.length) {
+        data.children.forEach(item => {
+          this.foldTree(item);
+          let cindex = this.tableDatas.indexOf(item);
+          let checkIndex = this.checks.indexOf(item);
+          if (cindex > -1) {
+            this.tableDatas.splice(cindex, 1);
+          }
+          if (checkIndex > -1) {
+            this.checks.splice(checkIndex, 1);
+          }
+        });
+        this.$set(data, '_opened', false);
       }
     },
     getTrCls(d, index) {

@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@lottiefiles/lottie-player": "^0.3.0-rc2",
     "axios": "^0.19.0",
     "codemirror": "^5.48.0",
     "core-js": "^3.1.3",

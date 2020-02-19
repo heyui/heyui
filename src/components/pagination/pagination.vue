@@ -29,7 +29,7 @@
         <i class="h-icon-angle-right"></i>
       </span>
     </span>
-    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @change="jump" @keyup.enter="jump">
+    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @blur="jump" @keyup.enter="jump">
   </div>
 </template>
 <script>
@@ -132,6 +132,9 @@ export default {
         return;
       }
       let cur = parseInt(event.target.value, 10);
+      if (cur == (this.value.page || this.cur)) {
+        return;
+      }
       this.setvalue({ cur: cur, size: this.sizeNow });
     },
     change(cur) {

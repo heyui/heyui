@@ -36,7 +36,7 @@ function Notice(originalParam) {
     hasCloseIcon: true,
     parent: noticeDom
   };
-  if (new Set(Object.keys(iconNames)).has(originalParam.type)) {
+  if (Object.keys(iconNames).indexOf(originalParam.type) != -1) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
     originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`;
     delete originalParam.type;
