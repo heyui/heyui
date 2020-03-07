@@ -24,7 +24,7 @@
               <h-switch v-model="siderCollapsed">收起菜单</h-switch>
             </p>
           </div>
-          <HFooter class="text-center">Copyright © 2019
+          <HFooter class="text-center">Copyright © {{year}}
             <a href="http://www.ch-un.com" target="_blank">Lan</a>
           </HFooter>
         </Content>
@@ -37,6 +37,7 @@
 export default {
   data() {
     return {
+      year: (new Date()).getFullYear(),
       headerFixed: false,
       siderFixed: false,
       siderCollapsed: false,

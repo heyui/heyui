@@ -19,7 +19,7 @@
     </div>
     <div class="right-frame h-dropdown-common-container">
       <router-view></router-view>
-      <footer class="com-frame-footer">Copyright © 2019 <a href="http://www.ch-un.com" target="_blank">Lan</a></footer>
+      <footer class="com-frame-footer">Copyright © {{year}} <a href="http://www.ch-un.com" target="_blank">Lan</a></footer>
       <BackTop :target="getTarget"></BackTop>
       <div class="right-frame-menu-container">
         <ul class="right-frame-menu" v-if="menus.length>0">
@@ -34,6 +34,7 @@
 export default {
   data() {
     return {
+      year: (new Date()).getFullYear(),
       pass: '',
       error: false,
       menus: [],
