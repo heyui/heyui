@@ -14,18 +14,18 @@
   .page-component {
     .com-frame {
       .left-frame {
-        position: absolute;
+        position: fixed;
         background: #fff;
         width: 260px;
         padding-top: 30px;
-        border-right: 2px solid #45b984;
+        border-right: 2px solid @primary-color;
         box-shadow: 1px 1px 3px #c1f7dc;
+        z-index: 10;
+        -webkit-overflow-scrolling : touch;
+        transition: transform 0.4s;
       }
       .left-translate {
         transform: translate(-445px, 10px);
-      }
-      .left-transition {
-        transition: all 1s;
       }
     }
     .left-frame-menu {
@@ -33,11 +33,12 @@
       z-index: 100;
       left: 10px;
       bottom: 20px;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 20px;
       text-align: center;
-      background-color: #45b984;
+      background-color: @primary-color;
       color: #fff;
       border-radius: 40px;
     }
@@ -49,15 +50,14 @@
   <div class="com-frame">
     <div
       class="left-frame"
-      :class="{'left-translate': !leftMenuStatus,'left-transition': leftMenuTransitionStatus}"
+      :class="{'left-translate': !leftMenuStatus}"
     >
       <slot name="left-frame"></slot>
     </div>
-    <div class="left-frame-menu" @click="showLeftMenu">
-      <i class="h-icon-menu" v-if="!leftMenuStatus"></i>
-      <i class="h-icon-left" v-if="leftMenuStatus"></i>
+    <div class="left-frame-menu" @click="toggleLeftMenu">
+      <i class="h-icon-menu"></i>
     </div>
-    <div class="right-frame h-dropdown-common-container">
+    <div class="right-frame h-dropdown-common-container" @click="leftMenuStatus=false">
       <router-view></router-view>
       <footer class="com-frame-footer">
         Copyright © {{year}}
@@ -81,8 +81,7 @@ export default {
       error: false,
       menus: [],
       routeName: null,
-      leftMenuStatus: true,
-      leftMenuTransitionStatus: false
+      leftMenuStatus: false
     };
   },
   watch: {
@@ -105,7 +104,7 @@ export default {
       });
     },
     // 显示隐藏菜单
-    showLeftMenu() {
+    toggleLeftMenu() {
       this.leftMenuStatus = !this.leftMenuStatus;
     },
     initLeftMenu(force = false) {
@@ -150,11 +149,6 @@ export default {
   },
   mounted() {
     this.initLeftMenu();
-    // 解决第一次进入界面，出现字体黑色的难看现象,做一次隐藏菜单动画，给用户增强菜单已隐藏的意识
-    setTimeout(() => {
-      this.leftMenuTransitionStatus = true;
-      this.showLeftMenu();
-    }, 1500);
   }
 };
 </script>
