@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.32.0](https://github.com/btboys/heyui/compare/v1.26.0...v1.32.0) (2020-06-03)
+
+
+### Features
+
+* **ListView:** 新增List组件 ([eab1a2e](https://github.com/btboys/heyui/commit/eab1a2e97209e7b177b4aa4c9e00af92f26b9a68))
+* **NumberInput:** 优化change事件，将原来不管值有没有改变都触发blur事件改为只有值变更才触发 ([aa8bf4c](https://github.com/btboys/heyui/commit/aa8bf4c229aef5ec55eb34aa6de9fbe10869c6dd))
+
+
+### Bug Fixes
+
+* **Table:** prop增加深度value获取 ([3e9386a](https://github.com/btboys/heyui/commit/3e9386a115b5588ae032463dc0a5a2cf967f0ef0))
+* **Table:** prop增加深度value获取增加开关 ([d81b702](https://github.com/btboys/heyui/commit/d81b70247432b67dcc1bc4821a626e731af3ff8b))
+
 ## [1.31.0](https://github.com/btboys/heyui/compare/v1.25.0...v1.31.0) (2020-02-14)
 
 
