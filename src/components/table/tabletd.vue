@@ -25,6 +25,7 @@ export default {
     render: Function,
     format: Function,
     treeOpener: Boolean,
+    isObj: Boolean,
     className: String
   },
   data() {
@@ -59,7 +60,7 @@ export default {
         return this.render.call(null, this.data);
       }
       let value = this.data[this.prop];
-      if (this.prop.indexOf('.') !== -1){
+      if (this.isObj && this.prop.indexOf('.') !== -1){
         value = utils.getKeyValue(this.data, this.prop);
       }
       if (this.dict) {
