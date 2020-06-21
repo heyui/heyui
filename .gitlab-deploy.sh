@@ -8,7 +8,7 @@ npm install --production
 hey build
 set -e
 #cos-put /srv/cw-webui
-rm -rf /var/www/heyui
+rm -rf /root/www/heyui
 set -e
-mv dist /var/www/heyui
+mv dist /root/www/heyui
 set -e
