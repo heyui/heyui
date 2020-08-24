@@ -220,18 +220,18 @@
         <th>默认值</th>
       </tr>
       <tr>
-        <td>key</td>
+        <td>keyName</td>
         <td>数据的key对应字段</td>
         <td>String</td>
         <td>-</td>
-        <td>全局配置<code>autocomplete.default.key</code></td>
+        <td>全局配置<code>autocomplete.default.keyName</code></td>
       </tr>
       <tr>
-        <td>title</td>
+        <td>titleName</td>
         <td>数据的title对应字段</td>
         <td>String</td>
         <td>-</td>
-        <td>全局配置<code>autocomplete.default.title</code></td>
+        <td>全局配置<code>autocomplete.default.titleName</code></td>
       </tr>
       <tr>
         <td>minWord</td>
