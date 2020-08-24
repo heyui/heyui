@@ -52,7 +52,7 @@ const updateOpened = (obj) => {
 };
 const Props = {
   mode: ['normal', 'horizontal']
-}
+};
 export default {
   name: 'hMenu',
   props: {
@@ -72,7 +72,7 @@ export default {
     mode: {
       type: String,
       validator(value) {
-        return Props.mode.includes(value);
+        return Props.mode.indexOf(value) > -1;
       },
       default: 'normal' // normal, vertical
     },
