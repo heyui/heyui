@@ -1,9 +1,20 @@
 stages:
 - deploy
+
 deploy:
   stage: deploy
   script:
     - bash .gitlab-deploy.sh
+  only:
+    - master
+  tags:
+    - heyui
+  when: manual
+
+reset:
+  stage: deploy
+  script:
+    - bash .gitlab-reset.sh
   only:
     - master
   tags:
