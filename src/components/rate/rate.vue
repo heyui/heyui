@@ -54,7 +54,7 @@ export default {
   },
   filters: {
     isInclude(key, value) {
-      return value.includes(key);
+      return value.indexOf(key) > -1;
     }
   },
   computed: {

@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.26.1](https://github.com/heyui/heyui/compare/v1.26.0...v1.26.1) (2020-08-24)
+
+
+### Bug Fixes
+
+* includes -> indexOf ([6c6d530](https://github.com/heyui/heyui/commit/6c6d530))
+* 修改runner ([97f225f](https://github.com/heyui/heyui/commit/97f225f))
+* 删除stat.json ([ca35591](https://github.com/heyui/heyui/commit/ca35591))
+
+
+
+### [1.26.1-alpha.0](https://github.com/heyui/heyui/compare/v1.26.0...v1.26.1-alpha.0) (2020-08-24)
+
+
+### Bug Fixes
+
+* includes -> indexOf ([6c6d530](https://github.com/heyui/heyui/commit/6c6d530))
+* 修改runner ([97f225f](https://github.com/heyui/heyui/commit/97f225f))
+
+
+
 ## [1.26.0](https://github.com/heyui/heyui/compare/v1.25.0...v1.26.0) (2020-02-09)
 
 

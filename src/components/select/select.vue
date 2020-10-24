@@ -362,7 +362,7 @@ export default {
   },
   filters: {
     showText(key, value) {
-      return value.includes(key);
+      return value.indexOf(key) > -1;
     }
   },
   computed: {
