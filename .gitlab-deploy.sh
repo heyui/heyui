@@ -7,14 +7,17 @@ npm install --production
 # npm install
 hey build
 set -e
-
-if [ -d "/home/gitlab-runner/heyui-old" ]; then
+if [ -d "dist" ]; then
+  if [ -d "/home/gitlab-runner/heyui-old" ]; then
   rm -rf /home/gitlab-runner/heyui-old
-fi
+  fi
 
-if [ -d "/home/gitlab-runner/heyui" ]; then
+  if [ -d "/home/gitlab-runner/heyui" ]; then
   mv /home/gitlab-runner/heyui /home/gitlab-runner/heyui-old
-fi
+  fi
 
-cp -rf dist /home/gitlab-runner/heyui
+  cp -rf dist /home/gitlab-runner/heyui
+else
+  echo "dist不存在"
+fi
 set -e
