@@ -124,12 +124,6 @@ hey dev
   </tbody>
 </table>
 
-## Community
-
-感兴趣的朋友请添加微信号：heyui-robot
-
-我们会定期拉人入群。
-
 ## Browser Support
 
 Modern browsers and Internet Explorer 9+.
