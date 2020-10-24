@@ -72,7 +72,9 @@ export default {
     setTimeout(() => {
       const lottie = lottieList[random];
       const player = this.$el.querySelector('.lottie-player');
-      player.load(lottie);
+      if (player.load) {
+        player.load(lottie);
+      }
     }, 100);
   },
   components: {
