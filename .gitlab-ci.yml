@@ -20,3 +20,13 @@ reset:
   tags:
     - heyui
   when: manual
+
+only-deploy-file:
+  stage: deploy
+  script:
+    - bash .gitlab-only-deploy-file.sh
+  only:
+    - master
+  tags:
+    - heyui
+  when: manual

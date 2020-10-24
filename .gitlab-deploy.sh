@@ -16,6 +16,5 @@ if [ -d "/home/gitlab-runner/heyui" ]; then
   mv /home/gitlab-runner/heyui /home/gitlab-runner/heyui-old
 fi
 
-set -e
-mv dist /home/gitlab-runner/heyui
+cp -rf dist /home/gitlab-runner/heyui
 set -e
