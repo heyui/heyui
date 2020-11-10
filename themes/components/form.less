@@ -1,5 +1,5 @@
 @form-prefix: ~"@{prefix}form";
-@form-label-padding: (@input-height - @font-size-mini)/2;
+@form-label-padding: (@input-height - @font-size-mini)/4;
 
 .form-content-width100 {
   input[type='text'],
@@ -30,9 +30,9 @@
   .@{form-prefix} {
     &-item {
       padding-bottom: @input-height - 6px;
-      
+
       &-no-padding{
-        padding-bottom: 0px;
+        padding-bottom: 4px;
       }
       position: relative;
       &-label {
@@ -40,7 +40,7 @@
         text-align: right;
         font-size: @font-size-mini;
         color: @dark1-color;
-        line-height: 1;
+        /*line-height: 1;*/
         padding: @form-label-padding 15px @form-label-padding 0;
         box-sizing: border-box;
       }
