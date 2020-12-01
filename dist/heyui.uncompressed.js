@@ -2999,7 +2999,7 @@ var _default = {
       list: this.param.categoryDatas,
       searchText: '',
       tabs: [{
-        title: this.t('h.categoryModal.total'),
+        title: this.param.total || this.t('h.categoryModal.total'),
         key: topMenu
       }],
       tab: topMenu,
@@ -16291,29 +16291,17 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "h-form-item-wrap" },
+            {
+              staticClass: "h-form-item-wrap",
+              attrs: {
+                title: _vm.errorMessage.valid
+                  ? ""
+                  : _vm.label + _vm.errorMessage.message
+              }
+            },
             [_vm._t("default")],
             2
-          ),
-          _vm._v(" "),
-          !_vm.errorMessage.valid
-            ? _c(
-                "div",
-                { staticClass: "h-form-item-error" },
-                [
-                  _vm.errorMessage.type == "base"
-                    ? _c("span", { staticClass: "h-form-item-error-label" }, [
-                        _vm._v(_vm._s(_vm.label))
-                      ])
-                    : _vm._e(),
-                  _c("span", { staticClass: "h-form-item-error-message" }, [
-                    _vm._v(_vm._s(_vm.errorMessage.message))
-                  ]),
-                  _vm._t("error", null, { type: _vm.errorMessage.type })
-                ],
-                2
-              )
-            : _vm._e()
+          )
         ]
       )
     ]
