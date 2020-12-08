@@ -6457,7 +6457,7 @@ var _default = {
       return this.requireds.indexOf(this.prop) > -1 || this.requireds.indexOf(ruleKey) > -1;
     },
     initLabelWidth: function initLabelWidth() {
-      var mode = this.params.mode;
+      var mode = this.mode;
       var hasWidth = !(mode == 'block' || mode == 'inline') || this.single && mode == 'twocolumn';
       var width = hasWidth ? this.labelWidth || false : false;
       return width ? "".concat(width, "px") : 'auto';
@@ -6473,7 +6473,7 @@ var _default = {
     labelStyleCls: function labelStyleCls() {
       var param = {};
 
-      if (this.params.mode != 'block') {
+      if (this.mode != 'block') {
         param.width = this.initLabelWidth;
       } else {
         param.width = '100%';
@@ -6484,13 +6484,24 @@ var _default = {
     contentStyleCls: function contentStyleCls() {
       var param = {};
 
-      if (this.params.mode == 'block' || !this.showLabel) {
+      if (this.mode == 'block' || !this.showLabel) {
         param['margin-left'] = '0px';
       } else {
         param['margin-left'] = this.initLabelWidth;
       }
 
       return param;
+    },
+    mode: function mode() {
+      var rst = '';
+
+      try {
+        rst = this.params.mode;
+      } catch (e) {
+        rst = 'single';
+      }
+
+      return rst;
     }
   }
 };
