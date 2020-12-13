@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.28.0](https://github.com/heyui/heyui/compare/v1.26.1...v1.28.0) (2020-12-13)
+
+
+### Bug Fixes
+
+* 修正水平menu超出不显示的问题 ([967fa9c](https://github.com/heyui/heyui/commit/967fa9c))
+
+
+### Build System
+
+* **deps:** bump yargs-parser from 13.1.1 to 13.1.2 ([b289313](https://github.com/heyui/heyui/commit/b289313))
+
+
+### Features
+
+* **Skeleton:** add avatar for skeleton ([efb22c7](https://github.com/heyui/heyui/commit/efb22c7))
+
+
+
 ## 1.27.0 (2020-12-13)
 
 

@@ -9145,6 +9145,11 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   name: 'hSkeleton',
   props: {
@@ -9171,6 +9176,18 @@ var _default = {
     rows: {
       type: Number,
       default: 3
+    },
+    avatar: {
+      type: Boolean,
+      default: false
+    },
+    avatarSize: {
+      type: Number,
+      default: 48
+    },
+    avatarShape: {
+      type: String,
+      default: 'circle'
     }
   },
   data: function data() {
@@ -17644,31 +17661,44 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "h-skeleton" },
+    { staticClass: "h-skeleton", class: { "h-skeleton-active": _vm.active } },
     [
       _vm.loading
-        ? _c(
-            "div",
-            {
-              staticClass: "h-skeleton-content",
-              class: { "h-skeleton-active": _vm.active }
-            },
-            [
-              _c("h3", {
-                staticClass: "h-skeleton-title",
-                style: { width: _vm.titleWidth }
-              }),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "h-skeleton-paragraph" },
-                _vm._l(_vm.rows, function(item, index) {
-                  return _c("li", { key: index })
-                }),
-                0
-              )
-            ]
-          )
+        ? [
+            _vm.avatar
+              ? _c("div", { staticClass: "h-skeleton-avatar" }, [
+                  _c("span", {
+                    class: "h-skeleton-avatar-" + _vm.avatarShape,
+                    style: {
+                      width: _vm.avatarSize + "px",
+                      height: _vm.avatarSize + "px"
+                    }
+                  })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.title || _vm.paragraph
+              ? _c("div", { staticClass: "h-skeleton-content" }, [
+                  _vm.title
+                    ? _c("h3", {
+                        staticClass: "h-skeleton-title",
+                        style: { width: _vm.titleWidth }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.paragraph
+                    ? _c(
+                        "ul",
+                        { staticClass: "h-skeleton-paragraph" },
+                        _vm._l(_vm.rows, function(item, index) {
+                          return _c("li", { key: index })
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              : _vm._e()
+          ]
         : [_vm._t("default")]
     ],
     2
