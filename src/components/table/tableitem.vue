@@ -18,6 +18,10 @@ export default {
     align: String,
     className: String,
     treeOpener: Boolean,
+    isObj: {
+      type: Boolean,
+      default: true
+    },
     unit: String,
     format: Function,
     render: Function,
