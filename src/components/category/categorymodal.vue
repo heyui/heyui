@@ -60,7 +60,7 @@ export default {
       list: this.param.categoryDatas,
       searchText: '',
       tabs: [{
-        title: this.t('h.categoryModal.total'),
+        title: this.param.total || this.t('h.categoryModal.total'),
         key: topMenu
       }],
       tab: topMenu,

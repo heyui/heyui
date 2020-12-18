@@ -4,12 +4,12 @@
       <i v-if="icon" :class="icon"></i><span v-if="!$scopedSlots.label">{{label}}</span><slot v-else :label="label" name="label"></slot>
     </label>
     <div class="h-form-item-content" :style="contentStyleCls">
-      <div class="h-form-item-wrap">
-        <slot></slot>
-      </div>
-      <div class="h-form-item-error" v-if="!errorMessage.valid">
-        <span v-if="errorMessage.type=='base'" class="h-form-item-error-label">{{label}}</span><span class="h-form-item-error-message">{{errorMessage.message}}</span><slot name="error" :type="errorMessage.type"></slot>
-      </div>
+          <div class="h-form-item-wrap" :title="errorMessage.valid ? '' : label + errorMessage.message">
+              <slot></slot>
+          </div>
+      <!--<div class="h-form-item-error" v-if="!errorMessage.valid">-->
+        <!--<span v-if="errorMessage.type=='base'" class="h-form-item-error-label">{{label}}</span><span class="h-form-item-error-message">{{errorMessage.message}}</span><slot name="error" :type="errorMessage.type"></slot>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default {
       return this.requireds.indexOf(this.prop) > -1 || this.requireds.indexOf(ruleKey) > -1;
     },
     initLabelWidth() {
-      let mode = this.params.mode;
+      let mode = this.mode;
       let hasWidth = !(mode == 'block' || mode == 'inline') || (this.single && mode == 'twocolumn');
       let width = hasWidth ? this.labelWidth || false : false;
       return width ? `${width}px` : 'auto';
@@ -128,7 +128,7 @@ export default {
     },
     labelStyleCls() {
       let param = {};
-      if (this.params.mode != 'block') {
+      if (this.mode != 'block') {
         param.width = this.initLabelWidth;
       } else {
         param.width = '100%';
@@ -137,12 +137,21 @@ export default {
     },
     contentStyleCls() {
       let param = {};
-      if (this.params.mode == 'block' || !this.showLabel) {
+      if (this.mode == 'block' || !this.showLabel) {
         param['margin-left'] = '0px';
       } else {
         param['margin-left'] = this.initLabelWidth;
       }
       return param;
+    },
+    mode() {
+      let rst = '';
+      try {
+        rst = this.params.mode;
+      } catch (e) {
+        rst = 'single';
+      }
+      return rst;
     }
   }
 };

@@ -4,7 +4,7 @@ hey b -f scripts/config/hey.esm.js
 hey b -f scripts/config/hey.lang.js
 hey b -f scripts/config/hey.uncompressed.js
 hey b -f scripts/config/hey.components.js
-lessc ./themes/index.less > ./themes/index.css -x -rp=https://cdn.jsdelivr.net/npm/heyui/themes/fonts/
+lessc ./themes/index.less > ./themes/index.css -x -rp=./fonts/
 lessto --js ./themes/var.less ./themes/var.js
 lessto --json ./themes/var.less ./themes/var.json
 

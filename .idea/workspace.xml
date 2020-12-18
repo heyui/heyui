@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30d0aecc-08b9-4a52-8b5f-3bd4360ae99e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dist/heyui.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/heyui.esm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/heyui.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/heyui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/heyui.uncompressed.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/heyui.uncompressed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/themes/lavender/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/themes/lavender/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/themes/lavender/var.less" beforeDir="false" afterPath="$PROJECT_DIR$/doc/themes/lavender/var.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/themes/pink/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/themes/pink/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/themes/red/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/themes/red/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/themes/yellow/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/themes/yellow/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/components/form.less" beforeDir="false" afterPath="$PROJECT_DIR$/themes/components/form.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/publish.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/publish.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/categorymodal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categorymodal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form-item/formItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form-item/formItem.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,56 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/components/form.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/form-item/formItem.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="803">
-              <caret line="120" column="53" selection-start-line="120" selection-start-column="44" selection-end-line="120" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/form/form.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4998">
-              <caret line="297" column="34" selection-start-line="297" selection-start-column="30" selection-end-line="297" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/components/input.less">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/components/input-group.less">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/doc/themes/lavender/var.less">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -83,7 +35,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>padding-bottom</find>
       <find>mode</find>
+      <find>labelCls</find>
+      <find>labelStyleCls</find>
+      <find>params</find>
+      <find>show</find>
+      <find>trigger</find>
+      <find>cdn.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,14 +53,18 @@
       <list>
         <option value="$PROJECT_DIR$/doc/themes/lavender/var.less" />
         <option value="$PROJECT_DIR$/themes/components/form.less" />
+        <option value="$PROJECT_DIR$/themes/var.less" />
+        <option value="$PROJECT_DIR$/src/components/category/categorymodal.vue" />
+        <option value="$PROJECT_DIR$/src/components/form-item/formItem.vue" />
+        <option value="$PROJECT_DIR$/scripts/publish.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1920" />
     <option name="y" value="36" />
-    <option name="width" value="1910" />
-    <option name="height" value="1043" />
+    <option name="width" value="1900" />
+    <option name="height" value="1042" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -109,7 +72,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,40 +82,7 @@
             <path>
               <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
               <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="run" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="theme" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="lavender" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
@@ -163,12 +92,6 @@
             <path>
               <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
               <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -182,30 +105,47 @@
               <item name="heyui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="form" type="462c0819:PsiDirectoryNode" />
+              <item name="collapse-item" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
               <item name="heyui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="form-item" type="462c0819:PsiDirectoryNode" />
+              <item name="poptip" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
               <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="heyui" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tooltip" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heyui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heyui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="pop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="heyui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="heyui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+              <item name="tooltip" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,6 +159,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -244,17 +185,36 @@
       <updated>1604990168030</updated>
       <workItem from="1604990169317" duration="3895000" />
       <workItem from="1604994528354" duration="843000" />
+      <workItem from="1605058675940" duration="3829000" />
+      <workItem from="1605164644237" duration="1528000" />
+      <workItem from="1605855390200" duration="117000" />
+      <workItem from="1606182858743" duration="619000" />
+      <workItem from="1606200287765" duration="8000" />
+      <workItem from="1606200297440" duration="969000" />
+      <workItem from="1606286735213" duration="653000" />
+      <workItem from="1606728285978" duration="513000" />
+      <workItem from="1606782709414" duration="700000" />
+      <workItem from="1606786471103" duration="1115000" />
+      <workItem from="1606984298735" duration="686000" />
+      <workItem from="1607049749081" duration="5000" />
+      <workItem from="1607393236271" duration="1814000" />
+      <workItem from="1607409625985" duration="321000" />
+      <workItem from="1607410961659" duration="6000" />
+      <workItem from="1607419347148" duration="271000" />
+      <workItem from="1607584037315" duration="1160000" />
+      <workItem from="1608279222877" duration="96000" />
+      <workItem from="1608279563513" duration="95000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4738000" />
+    <option name="totallyTimeSpent" value="19243000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="36" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986821" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16816026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -269,6 +229,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3292683" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -332,10 +293,33 @@
     <entry file="file://$PROJECT_DIR$/scripts/config/hey.esm.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/publish.sh">
+    <entry file="file://$PROJECT_DIR$/themes/var.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="5" selection-start-line="6" selection-end-line="6" selection-end-column="5" />
+        <state relative-caret-position="51">
+          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/tree/tree.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6847" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/tree/treeitem.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1479" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/button-group/buttongroup.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/button/button.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/form.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -346,32 +330,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/components/table/table.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/dropdown-custom/dropdowncustom.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="510">
+          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/var.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/_vue@2.6.12@vue/types/options.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
+        <state relative-caret-position="542">
+          <caret line="106" column="2" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/var.less">
+    <entry file="file://$PROJECT_DIR$/src/components/category/categorymodal.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        <state relative-caret-position="306">
+          <caret line="18" column="48" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/category/category.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <folding>
+            <element signature="e#720#764#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/components/input-group.less">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/components/input.less">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="87" column="22" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doc/themes/lavender/var.less">
       <provider selected="true" editor-type-id="text-editor">
@@ -380,17 +378,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/themes/normalize/input-native.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/input.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form-item/formItem.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="120" column="53" selection-start-line="120" selection-start-column="44" selection-end-line="120" selection-end-column="53" />
+        <state relative-caret-position="531">
+          <caret line="146" column="12" selection-start-line="146" selection-start-column="12" selection-end-line="146" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/components/form.less">
+    <entry file="file://$PROJECT_DIR$/themes/var.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="34" column="28" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+        <state relative-caret-position="774">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/index.base.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/common.base.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/normalize/normalize.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3745" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/normalize/index.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/layout.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1198" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/index.extend.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/index.base.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/grid.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/mixins/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3408">
+          <caret line="148" column="14" selection-start-line="148" selection-start-column="10" selection-end-line="148" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/common.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/components/collapse.less">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/pop/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="922">
+          <caret line="400" column="6" selection-start-line="400" selection-start-column="6" selection-end-line="400" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/tooltip/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/tooltip/tooltip.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="18" lean-forward="true" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/poptip/poptip.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="199" selection-start-line="5" selection-start-column="192" selection-end-line="5" selection-end-column="199" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/collapse-item/collapseitem.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/publish.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
         </state>
       </provider>
     </entry>
