@@ -1,30 +1,27 @@
-import store from '@js/store';
-import Vue from 'vue';
+import { createApp } from 'vue';
 import VueI18n from 'vue-i18n';
-import VueRouter from 'vue-router';
 import 'highlight.js/styles/github-gist.css';
-import App from './App.vue';
+import App from '@/App.vue';
 
 import utils from 'hey-utils';
 
-import HeyUI from '../../src/index';
-import ColorPicker from '../../src/components/color-picker';
-import heyuiConfig from './js/config/heyui-config';
-import VueHighlightJS from './js/vuehighlight';
+import HeyUI from 'heyui/src/index';
+import ColorPicker from 'heyui/src/components/color-picker';
+import heyuiConfig from '@/js/config/heyui-config';
+import VueHighlightJS from '@/js/vuehighlight';
 
-import example from './src/components/common/example.vue';
-import codes from './src/components/common/codes.vue';
-import exampleEn from './src/components_en/common/example.vue';
-import codesEn from './src/components_en/common/codes.vue';
-import routerParam from './js/config/router-config';
-import en from '../../src/locale/lang/en-US';
-import zh from '../../src/locale/lang/zh-CN';
-// import '@lottiefiles/lottie-player';
-import ('@lottiefiles/lottie-player').catch(error => 'An error occurred while loading the component');
+import example from '@/components/common/example.vue';
+import codes from '@/components/common/codes.vue';
+import exampleEn from '@/components_en/common/example.vue';
+import codesEn from '@/components_en/common/codes.vue';
+import router from '@/js/config/router-config';
+import en from 'heyui/src/locale/lang/en-US';
+import zh from 'heyui/src/locale/lang/zh-CN';
+import('@lottiefiles/lottie-player').catch(error => 'An error occurred while loading the component');
 
-Vue.component('ColorPicker', ColorPicker);
+require('@/css/index.less');
 
-require('./css/index.less');
+const app = createApp(App).mount('#app');
 
 let language = (navigator.language || navigator.browserLanguage).toLowerCase();
 
@@ -36,9 +33,6 @@ if (utils.getLocal('LANGUAGE') == null && window.location.pathname.indexOf('/en'
   }
 }
 
-Vue.use(VueHighlightJS);
-
-Vue.use(VueI18n);
 const messages = {
   en: Object.assign({ message: 'hello' }, en),
   zh: Object.assign({ message: '你好' }, zh)
@@ -50,15 +44,7 @@ const i18n = new VueI18n({
 });
 
 heyuiConfig();
-Vue.use(VueRouter);
-Vue.use(HeyUI, { i18n });
 
-Vue.component('example', example);
-Vue.component('codes', codes);
-Vue.component('exampleEn', exampleEn);
-Vue.component('codesEn', codesEn);
-
-const router = new VueRouter(routerParam);
 router.beforeEach((to, from, next) => {
   if (from.name == to.name) return;
   HeyUI.$LoadingBar.start();
@@ -79,18 +65,23 @@ router.afterEach(() => {
   }
 });
 
+app.use(VueHighlightJS);
+// app.use(VueI18n);
+// app.use(router);
+// app.use(HeyUI, { i18n });
+
+// app.component('ColorPicker', ColorPicker);
+// app.component('example', example);
+// app.component('codes', codes);
+// app.component('exampleEn', exampleEn);
+// app.component('codesEn', codesEn);
+
 G.set('globalConfig', {
   theme: 'default'
 });
-const app = new Vue({
-  i18n,
-  router,
-  store,
-  el: '#app',
-  render: h => h(App)
-});
 
-console.log(` %c
+console.log(
+  ` %c
  _    _  ______ __     __ _    _  _____
 | |  | ||  ____|\\ \\   / /| |  | ||_   _|
 | |__| || |__    \\ \\_/ / | |  | |  | |
@@ -99,5 +90,7 @@ console.log(` %c
 |_|  |_||______|   |_|    \\____/ |_____|
           
              一个基于Vue.js的高质量UI组件库
-`, 'color: #45b984');
+`,
+  'color: #45b984'
+);
 export default app;

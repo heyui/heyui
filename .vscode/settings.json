@@ -13,8 +13,6 @@
     },
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
     "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-    //  #让prettier使用eslint的代码格式进行校验 
-    "prettier.eslintIntegration": true,
     //配置 ESLint 检查的文件类型
     "eslint.validate": [
         "javascript",
@@ -22,9 +20,7 @@
         "vue"
     ],
     //保存自动格式化
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     
 }

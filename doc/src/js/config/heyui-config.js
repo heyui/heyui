@@ -1,19 +1,18 @@
-
 import HeyUI from '../../../../src/index';
 import utils from 'hey-utils';
 import jsonp from 'fetch-jsonp';
 import dict from './dict-config';
-import { getData } from '@js/locations/district';
-import getCity from '@js/locations/city';
+import { getData } from '@/js/locations/district';
+import getCity from '@/js/locations/city';
 
-const loadData = function (filter, callback) {
+const loadData = function(filter, callback) {
   log('传递的参数', this.orgId);
   jsonp(`https://suggest.taobao.com/sug?code=utf-8&q=${filter}`)
     .then(response => response.json())
-    .then((d) => {
+    .then(d => {
       const result = d.result;
       const data = [];
-      result.forEach((r) => {
+      result.forEach(r => {
         data.push({
           name: r[0],
           id: r[1] + Math.random()
@@ -22,7 +21,7 @@ const loadData = function (filter, callback) {
       callback(data);
     });
 };
-const menus = utils.toArray(dict.components, 'key', 'title').sort((a, b) => a.title > b.title ? 1 : -1);
+const menus = utils.toArray(dict.components, 'key', 'title').sort((a, b) => (a.title > b.title ? 1 : -1));
 
 const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')[0] }));
 
@@ -30,7 +29,11 @@ const enMenus = menus.map(item => ({ key: item.key, title: item.title.split(' ')
 // HeyUI.config('dict.titleName', "name");
 export default () => {
   HeyUI.initDict({
-    select: [{ title: 'choose1', key: 'a1', other: '其他值' }, { title: 'choose2', key: 'a2' }, { title: 'choose3', key: 'a3' }],
+    select: [
+      { title: 'choose1', key: 'a1', other: '其他值' },
+      { title: 'choose2', key: 'a2' },
+      { title: 'choose3', key: 'a3' }
+    ],
     simple: { 1: 'Apple', 2: 'Pear', 3: 'Banana', 4: 'Orange', 5: 'Cherry', 6: 'Ultra-long Ultra-long Ultra-long Ultra-long' },
     menus,
     enMenus

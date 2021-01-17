@@ -1,19 +1,29 @@
 <template>
   <div class="uploader-vue">
-    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile" @fileclick="fileclick">
+    <Uploader
+      :type="type"
+      :files="value"
+      :data-type="dataType"
+      :uploadList="uploadList"
+      ref="uploader"
+      :dragdrop="dragdrop"
+      :class-name="className"
+      @deletefile="deletefile"
+      @fileclick="fileclick"
+    >
       <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
     </Uploader>
   </div>
 </template>
 
 <script>
-import InitUploader from '@js/plugin/uploader/customUploader';
+import InitUploader from '@/js/plugin/uploader/customUploader';
 import pluploadjs from 'plupload-es6';
 export default {
   props: {
     options: {
       type: Object,
-      default: () => { }
+      default: () => {}
     },
     type: {
       type: String,
@@ -58,11 +68,11 @@ export default {
             that.$Message.error(`你上传的文件数量已超过${that.limit}个。`);
             return false;
           }
-          pluploadjs.plupload.each(files, (file) => {
+          pluploadjs.plupload.each(files, file => {
             file.fileType = file.name.split('.').reverse()[0];
             if (FileReader) {
               let reader = new FileReader();
-              reader.onload = (event) => {
+              reader.onload = event => {
                 file.thumbUrl = event.target.result;
               };
               reader.readAsDataURL(file.getNative());
@@ -87,7 +97,7 @@ export default {
           that.$emit('completeUpload');
           let fileList = that.$refs.uploader.getFileList();
           if (that.dataType === 'file') {
-            fileList = fileList.map((f) => {
+            fileList = fileList.map(f => {
               if (f.file) {
                 return {
                   key: f.file.key,

@@ -6,7 +6,7 @@
         <ul>
           <ul>
             <li>
-              <router-link to="/component/guide" :class="{'router-link-active': $route.name =='Component'}">入门</router-link>
+              <router-link to="/component/guide" :class="{ 'router-link-active': $route.name == 'Component' }">入门</router-link>
             </li>
             <li>
               <router-link to="/component/quickstart">快速上手</router-link>
@@ -30,16 +30,16 @@
             </li>
           </ul>
           <template v-for="m of menus">
-            <li class="title" :key="m.category + 'title'">{{m.category}}</li>
+            <li class="title" :key="m.category + 'title'">{{ m.category }}</li>
             <ul :key="m.category + 'list'">
               <li v-for="(value, key) in m.components" :key="key">
-                <router-link :to="{name: key}">{{value}}</router-link>
+                <router-link :to="{ name: key }">{{ value }}</router-link>
               </li>
             </ul>
           </template>
         </ul>
       </div>
-      <div slot="right-frame" v-if="$route.matched.length>0">
+      <div slot="right-frame" v-if="$route.matched.length > 0">
         <router-view></router-view>
       </div>
     </com-frame>
@@ -48,7 +48,7 @@
 <script>
 import comHead from './common/header.vue';
 import comFrame from './common/frame.vue';
-import dict from '@js/config/dict-config';
+import dict from '@/js/config/dict-config';
 export default {
   data() {
     return {

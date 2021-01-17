@@ -203,17 +203,19 @@ const install = function (app, opts = {}) {
     }
   });
 
-  app.config.globalProperties.$filters = filters;
-
   Object.keys(directives).forEach(key => {
     app.directive(key, directives[key]);
   });
+
+  app.config.globalProperties.$filters = filters;
 
   Object.keys(prototypes).forEach(key => {
     app.config.globalProperties[key] = prototypes[key];
   });
 };
 
-const HeyUI = Object.assign({ install }, prototypes, config, { dictMapping }, { locale: locale.use });
+const HeyUI = Object.assign(prototypes, config, { dictMapping }, { locale: locale.use });
+
+HeyUI.install = install;
 
 export default HeyUI;

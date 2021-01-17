@@ -1,12 +1,11 @@
 <template>
   <div>
-
     <!-- h-modal-header: default modal header style -->
     <header class="h-modal-header">test</header>
     <div style="padding:15px">
       <Select dict="simple" v-model="value"></Select>
-      <p>Passed parameters:{{params.subparam}}, {{fruit}}</p>
-      <p>The value passed by vuex:{{test}}</p>
+      <p>Passed parameters:{{ params.subparam }}, {{ fruit }}</p>
+      <p>The value passed by vuex:{{ test }}</p>
     </div>
 
     <!-- h-modal-footer: default modal footer style -->
@@ -19,7 +18,7 @@
 </template>
 
 <script>
-import store from '@js/store';
+import store from '@/js/store';
 import { mapGetters } from 'vuex';
 export default {
   props: {

@@ -1,16 +1,15 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    <!-- <router-view></router-view> -->
+    test
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {}
 };
 </script>

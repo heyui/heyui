@@ -3,10 +3,9 @@
 const hljs = require('highlight.js');
 
 const vueHighlightJS = {};
-vueHighlightJS.install = function install(Vue) {
-  Vue.directive('highlightjs', {
-    deep: true,
-    bind: function bind(el, binding) {
+vueHighlightJS.install = function install(app) {
+  app.directive('highlightjs', {
+    mounted: function bind(el, binding) {
       // on first bind, highlight all targets
       const targets = el.querySelectorAll('code');
       for (let i = 0; i < targets.length; i++) {
@@ -21,7 +20,7 @@ vueHighlightJS.install = function install(Vue) {
         hljs.highlightBlock(target);
       }
     },
-    componentUpdated: function componentUpdated(el, binding) {
+    updated: function componentUpdated(el, binding) {
       // after an update, re-fill the content and then highlight
       const targets = el.querySelectorAll('code');
 

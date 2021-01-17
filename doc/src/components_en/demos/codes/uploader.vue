@@ -1,13 +1,23 @@
 <template>
   <div class="uploader-vue">
-    <Uploader :type="type" :files="value" :data-type="dataType" :uploadList="uploadList" ref="uploader" :dragdrop="dragdrop" :class-name="className" @deletefile="deletefile" @fileclick="fileclick">
+    <Uploader
+      :type="type"
+      :files="value"
+      :data-type="dataType"
+      :uploadList="uploadList"
+      ref="uploader"
+      :dragdrop="dragdrop"
+      :class-name="className"
+      @deletefile="deletefile"
+      @fileclick="fileclick"
+    >
       <div slot="dragdrop" v-if="$slots.dragdrop"><slot name="dragdrop"></slot></div>
     </Uploader>
   </div>
 </template>
 
 <script>
-import InitUploader from '@js/plugin/uploader/customUploader';
+import InitUploader from '@/js/plugin/uploader/customUploader';
 import pluploadjs from 'plupload-es6';
 export default {
   props: {
@@ -55,9 +65,7 @@ export default {
         overwriteParam: this.options,
         fnFilesAdded(up, files) {
           if (that.value.length + files.length > that.limit) {
-            that.$Message.error(
-              `The number of files you uploaded has exceeded ${that.limit}个。`
-            );
+            that.$Message.error(`The number of files you uploaded has exceeded ${that.limit}个。`);
             return false;
           }
           pluploadjs.plupload.each(files, file => {
@@ -114,29 +122,17 @@ export default {
     },
     fileclick(file) {
       let originalType = file.original.fileType || file.original.file.type;
-      if (
-        originalType == 'image/jpeg' ||
-        originalType == 'image/png' ||
-        originalType == 'png' ||
-        originalType == 'jpg' ||
-        originalType == 'jpeg'
-      ) {
+      if (originalType == 'image/jpeg' || originalType == 'image/png' || originalType == 'png' || originalType == 'jpg' || originalType == 'jpeg') {
         this.$Modal({
           title: this.options.fileClickModelTitle || '',
           content: `<img style="max-width:900px"  src="${file.url}"></img>`,
           hasCloseIcon: false,
           buttons: []
         });
-      } else if (
-        originalType == 'aac' ||
-        originalType == 'mp3' ||
-        originalType == 'wav'
-      ) {
+      } else if (originalType == 'aac' || originalType == 'mp3' || originalType == 'wav') {
         this.$Modal({
           buttons: [],
-          content: `<audio class="audio-play" preload="none" src="${
-            file.url
-          }" controls="controls"></audio>`
+          content: `<audio class="audio-play" preload="none" src="${file.url}" controls="controls"></audio>`
         });
       }
     }

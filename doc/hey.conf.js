@@ -19,7 +19,7 @@ module.exports = {
     global: {
       $: 'jquery',
       log: 'hey-log',
-      Utils: '@js/utils',
+      Utils: '@/js/utils',
       G: 'hey-global'
     },
     alias: {
@@ -27,7 +27,7 @@ module.exports = {
       components: './components/',
       'heyui/src': '../src',
       components_en: './components_en/',
-      'heyuiNative': 'heyui',
+      heyuiNative: 'heyui',
       vue: 'vue/dist/vue.js'
     },
     globalVars: './css/var.less',
@@ -40,5 +40,16 @@ module.exports = {
     },
     externals: {}
   },
-  copy: ['./static/**/*', './simple.html', './components/demos/**/*.vue', './components/common/qiniu.vue', './components/demos/**/*.txt', './.well-known/pki-validation/fileauth.txt', 'themes/**/*', './components_en/demos/**/*.vue', './components_en/common/qiniu.vue', './components_en/demos/**/*.txt']
+  copy: [
+    './static/**/*',
+    './simple.html',
+    './components/demos/**/*.vue',
+    './components/common/qiniu.vue',
+    './components/demos/**/*.txt',
+    './.well-known/pki-validation/fileauth.txt',
+    'themes/**/*',
+    './components_en/demos/**/*.vue',
+    './components_en/common/qiniu.vue',
+    './components_en/demos/**/*.txt'
+  ]
 };
