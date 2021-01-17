@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import heyui from '../../../../src'; // demo测试路径
+import heyui from 'heyui/src'; // demo测试路径
 // import heyui from 'heyui'; 实际调用
 
 export default {

@@ -1,4 +1,4 @@
-import HeyUI from '../../../../src/index';
+import HeyUI from 'heyui/src/index';
 import utils from 'hey-utils';
 import jsonp from 'fetch-jsonp';
 import dict from './dict-config';

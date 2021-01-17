@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const resolve = dir => path.resolve(__dirname, dir);
+const globalVars = require('./src/css/var.js');
 
 // vue.config.js
 module.exports = {
@@ -31,12 +32,20 @@ module.exports = {
     //   chunks: ['chunk-vendors', 'chunk-common', 'module']
     // },
   },
+
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: { globalVars }
+      }
+    }
+  },
   configureWebpack: {
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',
         log: 'hey-log',
-        Utils: 'src/js/utils',
+        Utils: resolve('src/js/utils'),
         G: 'hey-global'
       })
       // new CopyWebpackPlugin([
@@ -56,8 +65,7 @@ module.exports = {
       alias: {
         '@': resolve('src'),
         'heyui/src': resolve('../src'),
-        heyuiNative: 'heyui',
-        vue: 'vue/dist/vue.js'
+        heyuiNative: 'heyui'
       }
     }
   },

@@ -1,4 +1,3 @@
-
 <template>
   <!-- 效果预览 -->
   <div class="run-preview-vue">
@@ -7,10 +6,8 @@
 </template>
 
 <script>
-
-import Vue from 'vue';
 import Less from 'less';
-import vars from '../../../../themes/var.js';
+import vars from '../../../../../themes/var.js';
 import runError from './run-error';
 
 export default {
@@ -31,29 +28,25 @@ export default {
     };
   },
   watch: {
-    code: function () {
+    code: function() {
       this.destroyCode();
       this.renderCode();
     }
   },
-  mounted() {
-  },
+  mounted() {},
   errorCaptured(err, vm, info) {
     this.err = err;
     this.componentName = 'run-error';
   },
   methods: {
-    getSource: function (e, t) {
+    getSource: function(e, t) {
       if (e == null) return '';
       var n = new RegExp('<' + t + '[^>]*>');
 
       var r = e.match(n);
-      return r
-        ? ((r = r[0]),
-        e.slice(e.indexOf(r) + r.length, e.lastIndexOf('</' + t + '>')))
-        : '';
+      return r ? ((r = r[0]), e.slice(e.indexOf(r) + r.length, e.lastIndexOf('</' + t + '>'))) : '';
     },
-    splitCode: function () {
+    splitCode: function() {
       let js = this.getSource(this.code, 'script').replace(/export default/, 'return ');
       let html = '<div id="runAppShow">' + this.getSource(this.code, 'template') + '</div>';
       return { js, html };
@@ -78,13 +71,13 @@ export default {
         });
       }
     },
-    renderCode: function () {
+    renderCode: function() {
       this.err = null;
       this.destroyCode();
       Utils.saveLocal('RUN_CODE', this.code);
       let { html, js } = this.splitCode();
       var vueObj = {
-        data: function () {
+        data: function() {
           return {};
         }
       };
@@ -107,7 +100,7 @@ export default {
       this.uuid = Utils.uuid();
       this.genCss();
     },
-    destroyCode: function () {
+    destroyCode: function() {
       this.componentName = '';
     }
   }
@@ -120,6 +113,6 @@ export default {
   border-left: 1px solid #eee;
   flex: 1;
   overflow: auto;
-  border-right: 1px solid #EEE;
+  border-right: 1px solid #eee;
 }
 </style>

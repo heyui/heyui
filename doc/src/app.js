@@ -10,10 +10,8 @@ import ColorPicker from 'heyui/src/components/color-picker';
 import heyuiConfig from '@/js/config/heyui-config';
 import VueHighlightJS from '@/js/vuehighlight';
 
-import example from '@/components/common/example.vue';
-import codes from '@/components/common/codes.vue';
-import exampleEn from '@/components_en/common/example.vue';
-import codesEn from '@/components_en/common/codes.vue';
+// import example from '@/components/common/example.vue';
+// import codes from '@/components/common/codes.vue';
 import router from '@/js/config/router-config';
 import en from 'heyui/src/locale/lang/en-US';
 import zh from 'heyui/src/locale/lang/zh-CN';
@@ -65,7 +63,7 @@ router.afterEach(() => {
   }
 });
 
-app.use(VueHighlightJS);
+// app.use(VueHighlightJS);
 // app.use(VueI18n);
 // app.use(router);
 // app.use(HeyUI, { i18n });
