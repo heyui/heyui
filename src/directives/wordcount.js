@@ -14,7 +14,7 @@ const wordcount = function (total, el, remainDom) {
 };
 
 export default {
-  inserted(el, binding, vnode) {
+  mounted(el, binding, vnode) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       let wordElement = document.createElement('p');
@@ -38,7 +38,7 @@ export default {
       }
     }
   },
-  unbind(el) {
+  beforeUnmount(el) {
     let previousnode = el.previousSibling;
     if (previousnode && utils.hasClass(previousnode, 'h-wordcount')) {
       previousnode.parentNode.removeChild(previousnode);

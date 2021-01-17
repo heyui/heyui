@@ -20,7 +20,7 @@ const directives = {
 
 const filters = { dictMapping, hlang };
 
-const install = function (Vue, opts = {}) {
+const install = function (app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);
@@ -31,21 +31,19 @@ const install = function (Vue, opts = {}) {
   if (opts.components) {
     Object.keys(opts.components).forEach(key => {
       let component = opts.components[key];
-      Vue.component(key, component);
+      app.component(key, component);
     });
   }
 
-  Object.keys(filters).forEach(key => {
-    Vue.filter(key, filters[key]);
-  });
+  app.config.globalProperties.$filters = filters;
 
   Object.keys(directives).forEach(key => {
-    Vue.directive(key, directives[key]);
+    app.directive(key, directives[key]);
   });
 
   if (opts.prototypes) {
     Object.keys(opts.prototypes).forEach(key => {
-      Vue.prototype[key] = opts.prototypes[key];
+      app.config.globalProperties[key] = opts.prototypes[key];
     });
   }
 };

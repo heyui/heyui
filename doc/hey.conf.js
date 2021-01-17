@@ -19,7 +19,7 @@ module.exports = {
     global: {
       $: 'jquery',
       log: 'hey-log',
-      Utils: 'js/utils',
+      Utils: '@js/utils',
       G: 'hey-global'
     },
     alias: {

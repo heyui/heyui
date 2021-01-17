@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+          "heyui/*": ["./*"]
+        }
+    },
+    "exclude": ["node_modules"]
+}

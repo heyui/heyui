@@ -31,6 +31,7 @@ module.exports = {
       ],
       "eqeqeq": "off",
       "linebreak-style": [
+          0,
           "error",
           "unix"
       ],
@@ -39,6 +40,6 @@ module.exports = {
     },
     parserOptions: {
       parser: 'babel-eslint'
-    }
+    },
   }
   

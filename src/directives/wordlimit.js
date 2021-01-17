@@ -15,7 +15,7 @@ const wordlimit = function (el, total) {
 };
 
 export default {
-  inserted(el, binding, vnode) {
+  mounted(el, binding, vnode) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       el.setAttribute('data-alerted', '0');

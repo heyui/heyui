@@ -19,16 +19,12 @@
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        {
-            "language": "vue",
-            "autoFix": true
-        }
+        "vue"
     ],
-    //保存时eslint自动修复错误
-    "eslint.autoFixOnSave": true,
     //保存自动格式化
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    
 }

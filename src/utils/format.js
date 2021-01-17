@@ -7,7 +7,6 @@
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 
 export default function () {
-  // const { hasOwn } = Vue.util;
   function hasOwn(obj, key) {
     return Object.prototype.hasOwnProperty.call(obj, key);
   }

@@ -185,7 +185,7 @@ const prototypes = {
 
 const filters = { dictMapping, hlang };
 
-const install = function (Vue, opts = {}) {
+const install = function (app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);
@@ -196,32 +196,24 @@ const install = function (Vue, opts = {}) {
 
   Object.keys(components).forEach(key => {
     let component = components[key];
-    Vue.component(key, component);
-    Vue.component(`h-${key.toLocaleLowerCase()}`, component);
+    app.component(key, component);
+    app.component(`h-${key.toLocaleLowerCase()}`, component);
     if (key.indexOf('h') !== 0) {
-      Vue.component(`h${key}`, component);
+      app.component(`h${key}`, component);
     }
   });
 
-  Object.keys(filters).forEach(key => {
-    Vue.filter(key, filters[key]);
-  });
+  app.config.globalProperties.$filters = filters;
 
   Object.keys(directives).forEach(key => {
-    Vue.directive(key, directives[key]);
+    app.directive(key, directives[key]);
   });
 
   Object.keys(prototypes).forEach(key => {
-    Vue.prototype[key] = prototypes[key];
+    app.config.globalProperties[key] = prototypes[key];
   });
 };
 
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
-
-const HeyUI = Object.assign(prototypes, config, { dictMapping }, { locale: locale.use });
-
-HeyUI.install = install;
+const HeyUI = Object.assign({ install }, prototypes, config, { dictMapping }, { locale: locale.use });
 
 export default HeyUI;
