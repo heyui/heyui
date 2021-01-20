@@ -12,10 +12,18 @@
         </p>
       </div>
     </div>
-    <div class="bg1" @click="dynamicLoadCss('pink')"></div>
+    <lottie-player
+      class="lottie-player"
+      autoplay
+      loop
+      background="transparent"
+      mode="normal"
+    >
+    </lottie-player>
+    <!-- <div class="bg1" @click="dynamicLoadCss('pink')"></div>
     <div class="bg2" @click="dynamicLoadCss('lavender')"></div>
     <div class="bg3" @click="dynamicLoadCss('yellow')"></div>
-    <div class="bg4" @click="dynamicLoadCss('red')"></div>
+    <div class="bg4" @click="dynamicLoadCss('red')"></div> -->
     <com-foot></com-foot>
   </div>
 </template>
@@ -42,12 +50,26 @@ export default {
       Utils.dynamicLoadCss(type);
     }
   },
-  created() {
-    this.$nextTick(() => {
-      if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-
-      }
-    });
+  mounted() {
+    const lottieList = [
+      '/static/lottie/1.json',
+      '/static/lottie/2.json',
+      '/static/lottie/3.json',
+      '/static/lottie/4.json',
+      '/static/lottie/5.json',
+      '/static/lottie/6.json',
+      '/static/lottie/7.json',
+      '/static/lottie/8.json',
+      '/static/lottie/9.json',
+      '/static/lottie/10.json',
+      '/static/lottie/11.json'
+    ];
+    const random = Math.floor(Math.random() * lottieList.length);
+    setTimeout(() => {
+      const lottie = lottieList[random];
+      const player = this.$el.querySelector('.lottie-player');
+      player.load(lottie);
+    }, 100);
   },
   components: {
     comHead,

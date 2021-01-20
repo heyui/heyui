@@ -94,6 +94,7 @@ export default {
   },
   mounted() {
     this.init();
+    this.reset();
   },
   beforeDestroy() {
     if (this.dropdown) {

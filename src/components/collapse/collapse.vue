@@ -46,7 +46,7 @@ export default {
     setActives() {
       this.$children.forEach(($item, index) => {
         let name = $item.name || index;
-        $item.isActive = this.activedKeys.includes(name);
+        $item.isActive = this.activedKeys.indexOf(name) > -1;
         $item.index = index;
       });
     },

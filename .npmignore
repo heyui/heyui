@@ -14,6 +14,5 @@ CHANGELOG.md
 index.html
 scripts
 src
-dist/stat.json
-lib/stat.json
+stat.json
 CHANGELOG.md

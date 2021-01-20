@@ -5,7 +5,11 @@ import combineValids from './validation/combineValids';
 
 const extendResult = function (result1, result2) {
   let result = {};
-  let keys = new Set([...Object.keys(result1), ...Object.keys(result2)]);
+  let keys = Object.keys(result1);
+  let key2 = Object.keys(result2);
+  for (let key of key2) {
+    if (!result1[key]) keys.push(key);
+  }
   for (let key of keys) {
     if (result1[key] && !result2[key]) {
       result[key] = result1[key];
@@ -270,7 +274,7 @@ class Validator {
           let refProp = (rule.parentRef && parentProp ? (parentProp + '.') : '') + ref;
           // When the basic parameters are not validated, it will stop validate.
           if (this.validFieldBase({ rule: this.rules[refProp], value: v, parent }) != true) {
-            console.log('basic combine validation does not pass', refProp, this.rules[refProp], v);
+            // console.log('Validation: basic combine validation does not pass', refProp, this.rules[refProp], v);
             break;
           }
           values.push(v);

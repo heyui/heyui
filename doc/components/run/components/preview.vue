@@ -93,6 +93,7 @@ export default {
           // eslint-disable-next-line no-new-func
           vueObj = new Function(js)();
         } catch (error) {
+          console.error(error);
           this.componentName = 'run-error';
           return;
         }

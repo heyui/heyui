@@ -27,26 +27,27 @@
           <Button size="s" @click="goGithub" v-if="$route.name != 'Home'">
             <i class="h-icon-github link"></i>
           </Button>
-          <Button size="s" @click="openWeixin">
+          <!-- <Button size="s" @click="openWeixin">
             <span class="link">微信</span>
-          </Button>
+          </Button> -->
+          <Button size="s"><a target="_blank" href="https://github.com/heyui/heyui/issues"><i class="h-icon-message"></i></a></Button>
           <Button @click="changeLang" size="s">
             <span class="link">English</span>
           </Button>
         </ButtonGroup>
       </div>
     </div>
-    <Modal v-model="showModel" class-name="weixin-modal">
+    <!-- <Modal v-model="showModel" class-name="weixin-modal">
       <div slot="header">加入 HeyUI 微信交流群</div>
       <div>
-        <!-- <p>微信群</p> -->
+        <p>微信群</p>
         <div class="weixin-image">
           <p>由于微信群已满100人</p>
           <p>请感兴趣的朋友添加微信号：heyui-robot</p>
           <p>我们会定期拉人入群。</p>
         </div>
       </div>
-    </Modal>
+    </Modal> -->
   </header>
 </template>
 
@@ -66,24 +67,24 @@ export default {
     this.$nextTick(() => {
       if (utils.getLocal('wenxinNotice')) return;
       utils.saveLocal('wenxinNotice', 1);
-      this.$Notice({
-        timeout: 0,
-        title: '加入 HeyUI 微信交流群',
-        content: '拥有更快速更详细的交流，加入我们的微信交流群。',
-        buttons: [
-          {
-            type: 'confirm',
-            color: 'primary',
-            name: '查看'
-          }
-        ],
-        events: {
-          confirm: notice => {
-            this.openWeixin();
-            notice.close();
-          }
-        }
-      });
+    //   this.$Notice({
+    //     timeout: 0,
+    //     title: '加入 HeyUI 微信交流群',
+    //     content: '拥有更快速更详细的交流，加入我们的微信交流群。',
+    //     buttons: [
+    //       {
+    //         type: 'confirm',
+    //         color: 'primary',
+    //         name: '查看'
+    //       }
+    //     ],
+    //     events: {
+    //       confirm: notice => {
+    //         this.openWeixin();
+    //         notice.close();
+    //       }
+    //     }
+    //   });
     });
   },
   methods: {

@@ -70,6 +70,27 @@
         <td>-</td>
         <td></td>
       </tr>
+      <tr>
+        <td>more</td>
+        <td>定义缩略时展示的文字, 1.25.0+</td>
+        <td>String</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>textStyle</td>
+        <td>text style, 1.25.0+</td>
+        <td>String, Object, Array</td>
+        <td>-</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>textClass</td>
+        <td>text class, 1.25.0+</td>
+        <td>String, Object, Array</td>
+        <td>-</td>
+        <td></td>
+      </tr>
     </table>
 
     <h3>TextEllipsis Event</h3>

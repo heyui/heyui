@@ -44,7 +44,7 @@ export default {
     },
     progressBgStyle() {
       let s = {};
-      if (!colors.includes(this.color)) {
+      if (!colors.indexOf(this.color) > -1) {
         s['background-color'] = this.color;
       }
       s.width = `${Math.min(this.percent, 100)}%`;
@@ -53,7 +53,7 @@ export default {
     },
     progressBgClass() {
       let s = {};
-      if (colors.includes(this.color)) {
+      if (colors.indexOf(this.color) > -1) {
         s[`bg-${this.color}-color`] = true;
       }
       return s;

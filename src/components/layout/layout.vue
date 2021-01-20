@@ -32,10 +32,10 @@ export default {
   },
   methods: {
     updateSider() {
-      const siderTag = new Set(['hSider', 'Sider', 'h-sider']);
+      const siderTag = ['hSider', 'Sider', 'h-sider'];
       this.$nextTick(() => {
         for (let c of this.$children) {
-          if (siderTag.has(c.$options._componentTag || c.$options.name)) {
+          if (siderTag.indexOf(c.$options._componentTag || c.$options.name) != -1) {
             this.hasSiderChild = true;
             return;
           }

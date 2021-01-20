@@ -339,7 +339,10 @@ export default {
       }
     },
     isIncludes(code) {
-      return this.codes.some(item => item == code);
+      return this.codes.some(item => this.isEqual(item, code));
+    },
+    isEqual(item, code) {
+      return item == code && String(item) == String(code);
     },
     getLiCls(option, index) {
       let code = option[this.keyName];
@@ -351,15 +354,15 @@ export default {
         return {
           [`${prefix}-item-disabled`]: option.disabled,
           [`${prefix}-item`]: true,
-          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.codes == code),
-          [`${prefix}-item-picked`]: (this.nowSelected == index)
+          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.isEqual(this.codes, code)),
+          [`${prefix}-item-picked`]: (this.nowSelected === index)
         };
       }
     }
   },
   filters: {
     showText(key, value) {
-      return value.includes(key);
+      return value.indexOf(key) > -1;
     }
   },
   computed: {

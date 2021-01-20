@@ -10,7 +10,7 @@
       </div>
     </Content>
     <HFooter class="text-center">
-      Copyright © 2019 <a href="http://www.ch-un.com" target="_blank">Lan</a>
+      Copyright © {{year}} <a href="http://www.ch-un.com" target="_blank">Lan</a>
     </HFooter>
   </Layout>
 </template>
@@ -19,6 +19,7 @@
 export default {
   data: function () {
     return {
+      year: (new Date()).getFullYear(),
       headerFixed: false,
       datas: [
         { icon: 'h-icon-home' },

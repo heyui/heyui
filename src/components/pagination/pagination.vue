@@ -29,7 +29,7 @@
         <i class="h-icon-angle-right"></i>
       </span>
     </span>
-    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @change="jump" @keyup.enter="jump">
+    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @blur="jump" @keyup.enter="jump">
   </div>
 </template>
 <script>
@@ -37,12 +37,16 @@ import config from 'heyui/src/utils/config';
 import utils from 'heyui/src/utils/utils';
 import Locale from 'heyui/src/mixins/locale';
 import Message from 'heyui/src/plugins/message';
+import Select from 'heyui/src/components/select';
 
 const prefix = 'h-page';
 
 export default {
   name: 'hPagination',
   mixins: [Locale],
+  components: {
+    Select
+  },
   props: {
     size: {
       type: Number,
@@ -128,6 +132,9 @@ export default {
         return;
       }
       let cur = parseInt(event.target.value, 10);
+      if (cur == (this.value.page || this.cur)) {
+        return;
+      }
       this.setvalue({ cur: cur, size: this.sizeNow });
     },
     change(cur) {

@@ -1,8 +1,9 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span class="h-text-ellipsis-limit-text" :key="keyIndex" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">{{text}}</span>
-    <span class="h-text-ellipsis-more" v-show='oversize'><slot name="more"></slot></span>
+    <span :style="textStyle" :class="textClass" @click="textClick" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">
+      <span class="h-text-ellipsis-limit-text" :key="keyIndex">{{text}}</span><span class="h-text-ellipsis-more" v-show='oversize'>{{more}}<slot name="more"></slot></span>
+    </span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
 </template>
@@ -22,7 +23,10 @@ export default {
       default: false
     },
     tooltipTheme: String,
-    placement: String
+    placement: String,
+    textStyle: [String, Object, Array],
+    textClass: [String, Object, Array],
+    more: String
   },
   data() {
     return {
@@ -54,6 +58,9 @@ export default {
       if (this.isLimitHeight) {
         this.limitShow();
       }
+    },
+    textClick() {
+      this.$emit('click');
     },
     limitShow() {
       this.$nextTick(() => {

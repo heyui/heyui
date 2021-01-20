@@ -7,8 +7,17 @@ npm install --production
 # npm install
 hey build
 set -e
-#cos-put /srv/cw-webui
-rm -rf /var/www/heyui
-set -e
-mv dist /var/www/heyui
+if [ -d "dist" ]; then
+  if [ -d "/home/gitlab-runner/heyui-old" ]; then
+  rm -rf /home/gitlab-runner/heyui-old
+  fi
+
+  if [ -d "/home/gitlab-runner/heyui" ]; then
+  mv /home/gitlab-runner/heyui /home/gitlab-runner/heyui-old
+  fi
+
+  cp -rf dist /home/gitlab-runner/heyui
+else
+  echo "dist不存在"
+fi
 set -e

@@ -1,7 +1,7 @@
 <template>
   <div :class="dropdowncustomCls">
     <div :class="showCls">
-      <div class="h-dropdowncustom-show-content" :class="{'h-dropdowncustom-show-empty': !$slots.default}"><slot></slot></div>
+      <div class="h-dropdowncustom-show-content"><slot></slot></div>
       <i class="h-icon-down" v-if="toggleIcon"></i>
     </div>
     <div :class="groupCls">
@@ -116,7 +116,8 @@ export default {
         [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon,
         [this.className]: !!this.className,
-        [this.showClass]: !!this.showClass
+        [this.showClass]: !!this.showClass,
+        'h-dropdowncustom-empty': !this.$slots.default
       };
     },
     groupCls() {
