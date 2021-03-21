@@ -90,7 +90,7 @@ const lang = {
         august: 'sie',
         september: 'wrz',
         october: 'paź',
-        november: 'liw',
+        november: 'lip',
         december: 'gru'
       },
       weeks: {
