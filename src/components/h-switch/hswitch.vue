@@ -1,5 +1,9 @@
 <template>
-  <label class="h-switch" :class="{'h-switch-small':small}" @click="setvalue"><span class="h-switch-span" :checked="isChecked" :disabled="disabled"><span class="h-switch-inner"><slot name="open" v-if="isChecked"></slot><slot v-else name="close"></slot></span></span><span class="h-switch-text"><slot></slot></span></label>
+  <label :class="{ 'h-switch': true, 'h-switch-small': small, 'h-switch-disabled': disabled, 'h-switch-checked': isChecked }" @click="setvalue"
+    ><span class="h-switch-span"
+      ><span class="h-switch-inner"><slot name="open" v-if="isChecked"></slot><slot v-else name="close"></slot></span></span
+    ><span class="h-switch-text"><slot></slot></span
+  ></label>
 </template>
 <script>
 export default {
@@ -13,7 +17,7 @@ export default {
       type: Boolean,
       default: false
     },
-    value: {
+    modelValue: {
       type: [Boolean, String, Number],
       default: false
     },
@@ -29,7 +33,7 @@ export default {
   },
   computed: {
     isChecked() {
-      return this.value == this.trueValue;
+      return this.modelValue == this.trueValue;
     }
   },
   methods: {
@@ -37,9 +41,10 @@ export default {
       if (this.disabled) return;
       let value = this.isChecked ? this.falseValue : this.trueValue;
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
-      event.initCustomEvent('setvalue', true, true, this.value);
+      event.initCustomEvent('setvalue', true, true, this.modelValue);
       this.$el.dispatchEvent(event);
     }
   }

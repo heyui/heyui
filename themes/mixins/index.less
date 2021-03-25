@@ -1,6 +1,6 @@
 .h-func-clearfix() {
   &::after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
   }
@@ -18,7 +18,8 @@
   &:active {
     color: darken(@link-color, 20%) !important;
   }
-  &:active, &:hover{
+  &:active,
+  &:hover {
     outline: 0;
     text-decoration: none;
   }
@@ -41,12 +42,12 @@
   &:hover {
     color: @link-color !important;
   }
-  
+
   &:active {
     color: darken(@link-color, 15%) !important;
   }
-  
-  &.@{pop-ref-prefix} &{
+
+  &.@{pop-ref-prefix} & {
     color: darken(@link-color, 10%) !important;
   }
   &[disabled] {
@@ -89,7 +90,7 @@
     background-color: @hover-background-color;
   }
 
-  &.disabled{
+  &.disabled {
     cursor: default;
     &:hover {
       background-color: transparent;
@@ -118,10 +119,10 @@
   background-color: @tag-background-color;
   font-size: @font-size-input-tag;
   padding: 0px 8px;
-  >span {
+  > span {
     line-height: @input-height - 8px;
   }
-  >.h-icon-close-min{
+  > .h-icon-close-min {
     font-size: @font-size + 2px;
     color: @dark2-color;
     display: inline-block;
@@ -131,7 +132,7 @@
     vertical-align: -2px;
     .h-func-text-hover();
   }
-  >.h-icon-close{
+  > .h-icon-close {
     line-height: @input-height - 8px;
     display: inline-block;
     font-size: @font-size-mini - 1px;
@@ -140,7 +141,6 @@
     .h-func-text-hover();
   }
 }
-
 
 .h-func-border-input() {
   cursor: default;
@@ -156,19 +156,20 @@
   &:hover {
     border-color: lighten(@primary-color, 10%);
   }
-  &.@{pop-ref-prefix}, &.focusing {
+  &.@{pop-ref-prefix},
+  &.focusing {
     border-color: @primary-color;
     box-shadow: @box-shadow-input;
   }
 
-  .@{prefix}form-item-valid-error &{
+  .@{prefix}form-item-valid-error & {
     border-color: @red-color;
-    &:focus, &.focusing{
+    &:focus,
+    &.focusing {
       box-shadow: @box-shadow-error-input;
     }
   }
 }
-
 
 .h-func-border-input-inside-input() {
   flex: 1;
@@ -181,13 +182,13 @@
   height: @input-height - 6px;
   margin-bottom: 2px;
   padding-left: 5px;
-  &:focus{
+  &:focus {
     box-shadow: none !important;
   }
 }
 
 .h-func-plugin-input(@css-prefix) {
-  .@{css-prefix}{
+  .@{css-prefix} {
     display: inline-block;
     box-sizing: border-box;
     vertical-align: middle;
@@ -211,12 +212,12 @@
     &-multiple-tags {
       display: flex;
       flex-wrap: wrap;
-      >span {
+      > span {
         .h-func-tag-span();
       }
     }
     &-input-border {
-      .@{css-prefix}{
+      .@{css-prefix} {
         &-show {
           min-height: @input-height;
           .h-func-border-input();
@@ -268,9 +269,8 @@
   transform: translate(-50%, -50%);
 }
 
-
-.h-func-rotate-icon-down(@hasColor: true){
-  >.h-icon-down {
+.h-func-rotate-icon-down(@hasColor: true) {
+  > .h-icon-down {
     color: @dark2-color;
     position: absolute;
     right: 8px;
@@ -281,21 +281,21 @@
     transform: translate(0, -50%) scale(0.8);
     transition: transform @transition-time;
   }
-  &:hover when (@hasColor){
-    >.h-icon-down {
+  &:hover when (@hasColor) {
+    > .h-icon-down {
       color: @primary-color;
     }
   }
-  &.@{pop-ref-prefix}>.h-icon-down {
+  &.@{pop-ref-prefix} > .h-icon-down {
     transform: rotate(-180deg) translate(0, 50%) scale(0.8);
-    & when (@hasColor){
+    & when (@hasColor) {
       color: @primary-color;
     }
   }
 }
 
 .h-func-rotate-middle-icon-down(@hasColor: true) {
-  >.h-icon-down {
+  > .h-icon-down {
     color: @dark2-color;
     position: absolute;
     left: 50%;
@@ -306,33 +306,31 @@
     transform: translate(-50%, -50%) scale(0.8);
     transition: transform @transition-time;
   }
-  &:hover when (@hasColor){
-    >.h-icon-down {
+  &:hover when (@hasColor) {
+    > .h-icon-down {
       color: @primary-color;
     }
   }
-  &.@{pop-ref-prefix}>.h-icon-down {
+  &.@{pop-ref-prefix} > .h-icon-down {
     transform: rotate(-180deg) translate(50%, 50%) scale(0.8);
-    & when (@hasColor){
+    & when (@hasColor) {
       color: @primary-color;
     }
   }
 }
 
-.h-func-tag-color(@color){
+.h-func-tag-color(@color) {
   color: darken(@color, 10%);
-  background: lighten(average(@color, #FFF), 10%);
-  border-color: lighten(average(@color, #FFF), 10%);
+  background: lighten(average(@color, #fff), 10%);
+  border-color: lighten(average(@color, #fff), 10%);
 }
 
-.h-func-tag-bg-color(@color){
+.h-func-tag-bg-color(@color) {
   color: @white-color;
   background: lighten(@color, 3%);
   border-color: lighten(@color, 3%);
 }
 
-
-@input-base-padding: @input-height / 4;
 .h-func-input() {
   min-width: 1px;
   position: relative;
@@ -363,7 +361,7 @@
       box-shadow: none;
     }
   }
-  &[readonly]{
+  &[readonly] {
     color: @dark1-color;
     box-shadow: none;
     cursor: default;
@@ -374,9 +372,9 @@
     pointer-events: painted;
     cursor: @disabled-cursor;
   }
-  .@{prefix}form-item-valid-error &{
+  .@{prefix}form-item-valid-error & {
     border-color: @red-color;
-    &:focus{
+    &:focus {
       box-shadow: @box-shadow-error-input;
     }
   }

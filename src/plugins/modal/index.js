@@ -1,6 +1,6 @@
-import Notify from 'heyui/src/plugins/notify';
-import utils from 'heyui/src/utils/utils';
-import config from 'heyui/src/utils/config';
+import Notify from 'heyui/plugins/notify';
+import utils from 'heyui/utils/utils';
+import config from 'heyui/utils/config';
 
 const prefixCls = 'h-modal';
 const hasDivider = config.getOption('modal', 'hasDivider');
@@ -59,7 +59,7 @@ function modal(param) {
   return new Modal(param);
 }
 
-modal.config = (options) => {
+modal.config = options => {
   if (options.middle) {
     Default.middle = options.middle;
   }

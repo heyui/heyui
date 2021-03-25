@@ -1,4 +1,4 @@
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const loadingCls = 'h-loading';
 let LoadingDom = null;
@@ -37,7 +37,7 @@ loading.close = () => {
   }
 };
 
-loading.open = (content) => {
+loading.open = content => {
   Loading(content);
 };
 

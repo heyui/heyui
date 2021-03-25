@@ -1,8 +1,8 @@
-import utils from 'heyui/src/utils/utils';
-import locale from 'heyui/src/locale';
-import Message from 'heyui/src/plugins/message';
+import utils from 'heyui/utils/utils';
+import locale from 'heyui/locale';
+import Message from 'heyui/plugins/message';
 
-const wordlimit = function (el, total) {
+const wordlimit = function(el, total) {
   let v = el.value.length;
   if (v > total) {
     el.value = el.value.substring(0, total);
@@ -28,7 +28,7 @@ export default {
       });
       for (let d of vnode.data.directives) {
         if (d.name == 'model') {
-          vnode.context.$watch(d.expression, function () {
+          vnode.context.$watch(d.expression, function() {
             wordlimit(el, total);
           });
           break;

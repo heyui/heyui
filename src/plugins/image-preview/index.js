@@ -1,7 +1,7 @@
-import Preview from 'heyui/src/plugins/image-preview/image-preview-modal';
-import Modal from 'heyui/src/plugins/modal';
+import Preview from 'heyui/plugins/image-preview/image-preview-modal';
+import Modal from 'heyui/plugins/modal';
 
-export default function (datas, index) {
+export default function(datas, index) {
   return Modal({
     className: 'h-image-preview-modal',
     component: {

@@ -1,19 +1,22 @@
 <template>
   <div class="h-image-preview" :style="previewStyle">
-    <span class="h-image-preview-index" v-if="isShowIndex"> {{showIndex + 1}} / {{computedDatas.length}} </span>
-    <span v-if="showIndex != 0" class="h-image-preview-icon h-image-preview-left-icon" @click="change(showIndex - 1)"><i class="h-icon-left"></i></span>
+    <span class="h-image-preview-index" v-if="isShowIndex"> {{ showIndex + 1 }} / {{ computedDatas.length }} </span>
+    <span v-if="showIndex != 0" class="h-image-preview-icon h-image-preview-left-icon" @click="change(showIndex - 1)"
+      ><i class="h-icon-left"></i
+    ></span>
     <transition name="fade">
-      <img :src="previewFile.url" v-show="!changeing" ref="img" @load="initStyle" class="h-image-preview-image" :alt="previewFile.name"/>
+      <img :src="previewFile.url" v-show="!changeing" ref="img" @load="initStyle" class="h-image-preview-image" :alt="previewFile.name" />
     </transition>
     <slot :data="previewFile" name="item" :index="index"></slot>
-    <span v-if="showIndex != computedDatas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"><i class="h-icon-right"></i></span>
+    <span v-if="showIndex != computedDatas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"
+      ><i class="h-icon-right"></i
+    ></span>
     <Loading :loading="changeing"></Loading>
   </div>
 </template>
 <script>
-
-import utils from 'heyui/src/utils/utils';
-import Loading from 'heyui/src/components/loading';
+import utils from 'heyui/utils/utils';
+import Loading from 'heyui/components/loading';
 
 export default {
   name: 'hImagePreviewModal',
@@ -24,7 +27,7 @@ export default {
     },
     datas: {
       type: [Array, String],
-      default: () => ([])
+      default: () => []
     },
     index: {
       type: Number,

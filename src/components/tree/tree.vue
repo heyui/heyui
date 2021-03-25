@@ -20,10 +20,10 @@
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
 import treeItem from './treeitem';
-import Search from 'heyui/src/components/search';
+import Search from 'heyui/components/search';
 
 const prefix = 'h-tree';
 
@@ -130,7 +130,7 @@ export default {
       }
       this.parse();
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initTreeDatas();
     }
   },

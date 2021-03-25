@@ -6,9 +6,9 @@
         <transition :name="type">
           <div :class="containerCls" v-if="isShow">
             <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-            <header class="h-modal-header" v-if="hasHeader"><slot name='header'></slot></header>
+            <header class="h-modal-header" v-if="hasHeader"><slot name="header"></slot></header>
             <div :class="contentCls"><slot></slot></div>
-            <footer class="h-modal-footer" v-if="hasFooter"><slot name='footer'></slot></footer>
+            <footer class="h-modal-footer" v-if="hasFooter"><slot name="footer"></slot></footer>
           </div>
         </transition>
       </div>
@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
@@ -77,7 +77,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.el = this.$el.firstChild;
+      let el = (this.el = this.$el.firstChild);
       document.body.appendChild(el);
       if (!this.value) {
         el.style.display = 'none';

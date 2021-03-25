@@ -1,22 +1,16 @@
 <template>
-  <li class="h-menu-li" :class="{'h-menu-li-opened':(status.opened.indexOf(data.key) != -1)}">
-    <a :target="data.value.target" @click="triggerClick" v-if="data.value.href" class="h-menu-link" :href="href" >
+  <li class="h-menu-li" :class="{ 'h-menu-li-opened': status.opened.indexOf(data.key) != -1 }">
+    <a :target="data.value.target" @click="triggerClick" v-if="data.value.href" class="h-menu-link" :href="href">
       <MenuItemShow v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
     </a>
     <MenuItemShow v-else v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
-    <ul v-if="data.children&&data.children.length>0"
-        class="h-menu-ul">
-      <hMenuItem v-for="child of data.children"
-                  :key="child.key"
-                  :data="child"
-                  :param="param"
-                  :status="status"
-                  @trigger="trigger"></hMenuItem>
+    <ul v-if="data.children && data.children.length > 0" class="h-menu-ul">
+      <hMenuItem v-for="child of data.children" :key="child.key" :data="child" :param="param" :status="status" @trigger="trigger"></hMenuItem>
     </ul>
   </li>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 import MenuItemShow from './menu-item-show';
 
 export default {
@@ -35,8 +29,7 @@ export default {
     mode: String
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     trigger(data) {

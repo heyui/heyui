@@ -4,14 +4,14 @@
   </div>
 </template>
 <script>
-import Validator from 'heyui/src/plugins/validator';
-import utils from 'heyui/src/utils/utils';
-import ScrollIntoView from 'heyui/src/plugins/scroll-into-view';
-import Message from 'heyui/src/plugins/message';
+import Validator from 'heyui/plugins/validator';
+import utils from 'heyui/utils/utils';
+import ScrollIntoView from 'heyui/plugins/scroll-into-view';
+import Message from 'heyui/plugins/message';
 
 const prefixCls = 'h-form';
 
-const findDomUtil = function (target, utilDom) {
+const findDomUtil = function(target, utilDom) {
   let now = target;
   while (now != utilDom) {
     if (utils.hasClass(now, 'h-form-item') && now.getAttribute('prop')) {
@@ -59,7 +59,7 @@ export default {
       default: true
     }
   },
-  provide: function () {
+  provide: function() {
     return {
       validField: this.validField,
       requireds: this.requireds,
@@ -93,12 +93,16 @@ export default {
   mounted() {
     this.initRequires();
     this.$nextTick(() => {
-      this.$el.addEventListener('blur', (event) => {
-        if (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
-          this.trigger(event.target);
-        }
-      }, true);
-      this.$el.addEventListener('setvalue', (event) => {
+      this.$el.addEventListener(
+        'blur',
+        event => {
+          if (event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
+            this.trigger(event.target);
+          }
+        },
+        true
+      );
+      this.$el.addEventListener('setvalue', event => {
         this.trigger(event.target);
       });
     });
@@ -126,7 +130,10 @@ export default {
     initRequires() {
       this.requireds.splice(0);
       if (this.rules) {
-        let validRequiredProps = utils.toArray(this.rules.rules, 'key').filter(item => item.required === true).map(item => item.key);
+        let validRequiredProps = utils
+          .toArray(this.rules.rules, 'key')
+          .filter(item => item.required === true)
+          .map(item => item.key);
         this.requireds.push(...(this.rules.required || []), ...validRequiredProps, ...this.dynamicRequireds);
       }
     },
@@ -157,7 +164,7 @@ export default {
         };
       }
       let returnResult = this.validator.validField(prop, this.model, {
-        next: (result) => {
+        next: result => {
           utils.extend(true, this.messages, result);
         }
       });
@@ -262,8 +269,8 @@ export default {
       }
     },
     validAsync() {
-      return new Promise((resolve) => {
-        let returnResult = this.valid((result) => {
+      return new Promise(resolve => {
+        let returnResult = this.valid(result => {
           let asyncResult = this.renderMessage(result);
           if (returnResult && returnResult.result) {
             this.tipError(asyncResult);
@@ -279,13 +286,17 @@ export default {
           messages: []
         };
       }
-      let returnResult = this.validator.valid(this.model, (result) => {
-        utils.extend(true, this.messages, result);
-      }, (result) => {
-        if (next) {
-          next.call(null, result);
+      let returnResult = this.validator.valid(
+        this.model,
+        result => {
+          utils.extend(true, this.messages, result);
+        },
+        result => {
+          if (next) {
+            next.call(null, result);
+          }
         }
-      });
+      );
       let result = this.renderMessage(returnResult);
       this.tipError(result);
       return result;

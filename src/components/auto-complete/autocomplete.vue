@@ -1,35 +1,72 @@
 <template>
   <div :class="autocompleteCls">
     <div :class="showCls">
-      <template v-if="multiple"><span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
-        <input :disabled="disabled" ref="input" type="text" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @blur.stop="blur" @paste="paste" @keyup="handle" @keydown="keydownHandle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" autocomplete="off" />
+      <template v-if="multiple"
+        ><span v-for="(obj, index) of objects" :key="index + '' + obj.key"
+          ><span>{{ obj.title }}</span
+          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+        ></span>
+        <input
+          :disabled="disabled"
+          ref="input"
+          type="text"
+          class="h-autocomplete-input h-input"
+          @focus="focus"
+          v-model="tempValue"
+          @blur.stop="blur"
+          @paste="paste"
+          @keyup="handle"
+          @keydown="keydownHandle"
+          @keypress.enter="enterHandle"
+          :placeholder="showPlaceholder"
+          autocomplete="off"
+        />
         <i class="h-icon-loading" v-if="loading"></i>
       </template>
       <template v-if="!multiple">
-        <input type="text" ref="input" :disabled="disabled" class="h-autocomplete-input h-input" @focus="focus" v-model="tempValue" @paste="paste" @blur.stop="blur" @keyup="handle" @keypress.enter="enterHandle" :placeholder="showPlaceholder" autocomplete="off" />
+        <input
+          type="text"
+          ref="input"
+          :disabled="disabled"
+          class="h-autocomplete-input h-input"
+          @focus="focus"
+          v-model="tempValue"
+          @paste="paste"
+          @blur.stop="blur"
+          @keyup="handle"
+          @keypress.enter="enterHandle"
+          :placeholder="showPlaceholder"
+          autocomplete="off"
+        />
         <i class="h-icon-loading" v-if="loading"></i>
-        <i class="h-icon-close text-hover" v-else-if="tempValue&&!disabled" @mousedown="clear"></i>
+        <i class="h-icon-close text-hover" v-else-if="tempValue && !disabled" @mousedown="clear"></i>
       </template>
     </div>
     <div :class="groupCls">
       <ul class="h-autocomplete-ul" v-if="isShow">
         <slot name="top" :results="results"></slot>
-        <li v-for="(result, index) of results" :key="result.key" class="h-autocomplete-item" :class="{'h-autocomplete-item-selected': index == nowSelected}" @mousedown="picker(result)">
+        <li
+          v-for="(result, index) of results"
+          :key="result.key"
+          class="h-autocomplete-item"
+          :class="{ 'h-autocomplete-item-selected': index == nowSelected }"
+          @mousedown="picker(result)"
+        >
           <div v-if="!!result.html" v-html="result.html"></div>
-          <template v-else-if="!$scopedSlots.item">{{result.title}}</template>
+          <template v-else-if="!$scopedSlots.item">{{ result.title }}</template>
           <slot v-else :item="result" name="item"></slot>
         </li>
-        <li v-if="results.length==0 && showDropdownWhenNoResult" class="h-autocomplete-empty-content">{{showEmptyContent}}</li>
+        <li v-if="results.length == 0 && showDropdownWhenNoResult" class="h-autocomplete-empty-content">{{ showEmptyContent }}</li>
         <slot name="bottom" :results="results"></slot>
       </ul>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-autocomplete';
 
@@ -124,12 +161,8 @@ export default {
           let dom = this.content.querySelector('.h-autocomplete-item-selected');
           let uldom = this.content.querySelector('.h-autocomplete-ul');
           if (dom && uldom) {
-            if (
-              dom.offsetTop + dom.offsetHeight - this.content.scrollTop >
-              this.content.offsetHeight
-            ) {
-              this.content.scrollTop =
-                dom.offsetTop + dom.offsetHeight - this.content.offsetHeight;
+            if (dom.offsetTop + dom.offsetHeight - this.content.scrollTop > this.content.offsetHeight) {
+              this.content.scrollTop = dom.offsetTop + dom.offsetHeight - this.content.offsetHeight;
             } else if (dom.offsetTop - this.content.scrollTop < 0) {
               this.content.scrollTop = dom.offsetTop;
             }
@@ -178,9 +211,7 @@ export default {
         if (utils.isArray(this.value) && this.value.length > 0) {
           for (let v of this.value) {
             if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas)) {
-              let result = [...this.results, ...this.objects].filter(
-                item => item.key == v
-              );
+              let result = [...this.results, ...this.objects].filter(item => item.key == v);
               if (result.length) {
                 v = result[0].value;
               }
@@ -194,9 +225,7 @@ export default {
         if (this.type == 'key') {
           if (!utils.isNull(this.value)) {
             if (!this.show && (this.dict || this.datas) && this.results) {
-              let result = this.results.filter(
-                item => item[this.param.keyName] == this.value
-              );
+              let result = this.results.filter(item => item[this.param.keyName] == this.value);
               if (result.length > 0) {
                 value = result[0].value;
               }
@@ -276,9 +305,12 @@ export default {
     },
     getValue(item) {
       if (!utils.isObject(item) && this.type == 'object') {
-        return utils.getValue({
-          [this.param.titleName]: item
-        }, this.param);
+        return utils.getValue(
+          {
+            [this.param.titleName]: item
+          },
+          this.param
+        );
       } else {
         return utils.getValue(item, this.param);
       }
@@ -459,11 +491,7 @@ export default {
         this.tempValue = this.object.title;
       }
       this.$emit('input', value, trigger);
-      this.$emit(
-        'change',
-        utils.copy(this.multiple ? this.objects : this.object),
-        trigger
-      );
+      this.$emit('change', utils.copy(this.multiple ? this.objects : this.object), trigger);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
@@ -498,7 +526,8 @@ export default {
       return this.emptyContent || this.t('h.autoComplate.emptyContent');
     },
     param() {
-      return utils.extend({},
+      return utils.extend(
+        {},
         config.getOption('autocomplete.default'),
         this.config ? config.getOption(`autocomplete.configs.${this.config}`) : {},
         this.option
@@ -544,14 +573,12 @@ export default {
         if (this.searchValue) {
           let searchValue = this.searchValue.toLowerCase();
           datas = datas.filter(item => {
-            return ((item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1);
+            return (item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1;
           });
         }
       }
       if (this.objects.length > 0) {
-        let keyArray = utils
-          .getArray(this.objects, 'key')
-          .filter(item => !utils.isNull(item));
+        let keyArray = utils.getArray(this.objects, 'key').filter(item => !utils.isNull(item));
         datas = datas.filter(item => {
           return keyArray.indexOf(item[this.param.keyName]) == -1;
         });

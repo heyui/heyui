@@ -1,7 +1,7 @@
-import utils from 'heyui/src/utils/utils';
-import locale from 'heyui/src/locale';
-import Draggable from 'heyui/src/plugins/draggable';
-import Vue from 'vue';
+import utils from 'heyui/utils/utils';
+import locale from 'heyui/locale';
+import Draggable from 'heyui/plugins/draggable';
+// import Vue from 'vue';
 
 const Default = {
   type: 'dialog',
@@ -41,7 +41,7 @@ class Notify {
     const that = this;
     this.mouseOver = false;
     this.closeTimeout = false;
-    let param = this.param = utils.extend({}, Default, orignalparam, true);
+    let param = (this.param = utils.extend({}, Default, orignalparam, true));
     let html = '';
     if (param.hasMask) {
       html += `<div class="${notifyMaskCls}"></div>`;
@@ -96,8 +96,8 @@ class Notify {
       utils.addClass($body, param.className);
     }
     $body.innerHTML = html;
-    let $content = this.$content = $body.querySelector(`.${notifyContentCls}`);
-    let $container = this.$container = $body.querySelector(`.${notifyContainerCls}`);
+    let $content = (this.$content = $body.querySelector(`.${notifyContentCls}`));
+    let $container = (this.$container = $body.querySelector(`.${notifyContainerCls}`));
     this.$body = $body;
 
     let content = param.content;
@@ -109,59 +109,59 @@ class Notify {
     } else {
       $content.innerHTML = content;
     }
-    const VueInstance = Vue || window.Vue;
-    if (param.component != undefined && VueInstance) {
-      this.vue = new VueInstance({
-        el: $content,
-        i18n: param.$i18n,
-        router: param.$router,
-        store: param.$store,
-        render(createElement) {
-          let keys = Object.keys(param.events || {});
-          let events = {
-            event: this.trigger,
-            close: this.close
-          };
-          for (let key of keys) {
-            if (events[key]) {
-              continue;
-            }
-            events[key] = (...data) => {
-              this.trigger(key, ...data);
-            };
-          }
-          return createElement(
-            'div', {}, [createElement('plugin', {
-              props: this.propsData,
-              on: events
-            })]
-          );
-        },
-        data() {
-          return {
-            propsData: utils.extend({}, param.component.datas, {
-              // **删除**delete**
-              param: param.component.data,
-              params: param.component.data
-            }),
-            modal: that
-          };
-        },
-        mounted() {
-        },
-        methods: {
-          trigger(name, ...data) {
-            that.trigger(name, ...data);
-          },
-          close() {
-            that.close();
-          }
-        },
-        components: {
-          plugin: param.component.vue
-        }
-      });
-    }
+    // const VueInstance = Vue || window.Vue;
+    // if (param.component != undefined && VueInstance) {
+    //   this.vue = new VueInstance({
+    //     el: $content,
+    //     i18n: param.$i18n,
+    //     router: param.$router,
+    //     store: param.$store,
+    //     render(createElement) {
+    //       let keys = Object.keys(param.events || {});
+    //       let events = {
+    //         event: this.trigger,
+    //         close: this.close
+    //       };
+    //       for (let key of keys) {
+    //         if (events[key]) {
+    //           continue;
+    //         }
+    //         events[key] = (...data) => {
+    //           this.trigger(key, ...data);
+    //         };
+    //       }
+    //       return createElement(
+    //         'div', {}, [createElement('plugin', {
+    //           props: this.propsData,
+    //           on: events
+    //         })]
+    //       );
+    //     },
+    //     data() {
+    //       return {
+    //         propsData: utils.extend({}, param.component.datas, {
+    //           // **删除**delete**
+    //           param: param.component.data,
+    //           params: param.component.data
+    //         }),
+    //         modal: that
+    //       };
+    //     },
+    //     mounted() {
+    //     },
+    //     methods: {
+    //       trigger(name, ...data) {
+    //         that.trigger(name, ...data);
+    //       },
+    //       close() {
+    //         that.close();
+    //       }
+    //     },
+    //     components: {
+    //       plugin: param.component.vue
+    //     }
+    //   });
+    // }
 
     if (param.hasCloseIcon) {
       utils.addClass($body, notifyHasCloseCls);
@@ -223,14 +223,14 @@ class Notify {
       focusClicked.blur();
     }
     if (param.hasCloseIcon) {
-      $body.querySelector(`.${notifyCloseCls}`).onclick = function () {
+      $body.querySelector(`.${notifyCloseCls}`).onclick = function() {
         that.close();
       };
     }
     if (param.hasFooter) {
       let buttons = $body.querySelectorAll(`.${notifyContainerCls}>footer>button`);
       for (let button of buttons) {
-        button.onclick = function (event) {
+        button.onclick = function(event) {
           let attr = event.target.getAttribute('attr');
           if (attr) {
             if (attr == 'cancel') {
@@ -279,7 +279,7 @@ class Notify {
       };
       let modalBody = $body.querySelector(`.${notifyBodyCls}`);
       if (modalBody) {
-        modalBody.onclick = (event) => {
+        modalBody.onclick = event => {
           if (event.target == modalBody) {
             this.close();
           }
@@ -321,7 +321,7 @@ class Notify {
 
     utils.removeClass($body, notifyShowCls);
 
-    $body.addEventListener('transitionend', (event) => {
+    $body.addEventListener('transitionend', event => {
       if (event.target == this.$container) {
         utils.removeDom($body);
       }
@@ -332,6 +332,6 @@ class Notify {
   }
 }
 
-export default function (param) {
+export default function(param) {
   return new Notify(param);
 }

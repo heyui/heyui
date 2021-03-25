@@ -1,11 +1,11 @@
 <template>
   <div :class="showCls">
     <slot></slot>
-    <div class="h-tooltip-inner-content">{{content}}<slot name='content'></slot></div>
+    <div class="h-tooltip-inner-content">{{ content }}<slot name="content"></slot></div>
   </div>
 </template>
 <script>
-import Tooltip from 'heyui/src/plugins/tooltip';
+import Tooltip from 'heyui/plugins/tooltip';
 
 const prefix = 'h-tooltip';
 

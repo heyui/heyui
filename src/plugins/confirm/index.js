@@ -1,6 +1,6 @@
-import Notify from 'heyui/src/plugins/notify';
-import utils from 'heyui/src/utils/utils';
-import locale from 'heyui/src/locale';
+import Notify from 'heyui/plugins/notify';
+import utils from 'heyui/utils/utils';
+import locale from 'heyui/locale';
 
 const prefixCls = 'h-modal';
 
@@ -15,11 +15,11 @@ function Confirm(content, title) {
       content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
       buttons: ['cancel', 'ok'],
       events: {
-        ok: (n) => {
+        ok: n => {
           n.close();
           resolve();
         },
-        cancel: (n) => {
+        cancel: n => {
           n.close();
           reject(new Error('cancel'));
         }
@@ -43,7 +43,7 @@ function confirm(content, title) {
   return Confirm(content, title);
 }
 
-confirm.config = (options) => {
+confirm.config = options => {
   if (options.middle) {
     Default.middle = true;
   }

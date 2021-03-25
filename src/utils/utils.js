@@ -1,7 +1,7 @@
 import utils from 'hey-utils';
 
 const rclass = /[\t\r\n\f]/g;
-const rnotwhite = (/\S+/g);
+const rnotwhite = /\S+/g;
 
 function getClass(elem) {
   return (elem.getAttribute && elem.getAttribute('class')) || '';
@@ -19,8 +19,7 @@ export default utils.extend({}, utils, {
       classes = value.match(rnotwhite) || [];
 
       curValue = getClass(elem);
-      cur = elem.nodeType === 1 && (` ${curValue} `)
-        .replace(rclass, ' ');
+      cur = elem.nodeType === 1 && ` ${curValue} `.replace(rclass, ' ');
 
       if (cur) {
         j = 0;
@@ -49,8 +48,7 @@ export default utils.extend({}, utils, {
 
       curValue = getClass(elem);
 
-      cur = elem.nodeType === 1 && (` ${curValue} `)
-        .replace(rclass, ' ');
+      cur = elem.nodeType === 1 && ` ${curValue} `.replace(rclass, ' ');
 
       if (cur) {
         j = 0;
@@ -81,9 +79,7 @@ export default utils.extend({}, utils, {
   hasClass(elem, selector) {
     let className;
     className = ` ${selector} `;
-    if (elem.nodeType === 1 && (` ${getClass(elem)} `)
-      .replace(rclass, ' ')
-      .indexOf(className) > -1) {
+    if (elem.nodeType === 1 && ` ${getClass(elem)} `.replace(rclass, ' ').indexOf(className) > -1) {
       return true;
     }
 
@@ -181,9 +177,6 @@ export default utils.extend({}, utils, {
       title,
       value: item
     };
-    if (param.render && result.key) {
-      result.html = param.render.call(null, result);
-    }
     return result;
   }
 });

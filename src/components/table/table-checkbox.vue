@@ -1,12 +1,12 @@
 <template>
   <Checkbox
-    :indeterminate="checks.length>0&&checks.length<checkableDatas.length"
+    :indeterminate="checks.length > 0 && checks.length < checkableDatas.length"
     :checked="checkableDatas.length > 0 && checks.length == checkableDatas.length"
     @click.native="checkAll"
   ></Checkbox>
 </template>
 <script>
-import Checkbox from 'heyui/src/components/checkbox';
+import Checkbox from 'heyui/components/checkbox';
 
 export default {
   components: { Checkbox },

@@ -1,5 +1,5 @@
-import Popper from 'heyui/src/plugins/popper';
-import utils from 'heyui/src/utils/utils';
+import Popper from 'heyui/plugins/popper';
+import utils from 'heyui/utils/utils';
 
 const DEFAULT_OPTIONS = {
   container: false,
@@ -55,9 +55,12 @@ class Pop {
 
     this.options = options;
 
-    const triggerEvents = typeof options.trigger === 'string' ? options.trigger.split(' ').filter((trigger) => {
-      return ['click', 'hover', 'focus', 'manual', 'contextMenu'].indexOf(trigger) !== -1;
-    }) : [];
+    const triggerEvents =
+      typeof options.trigger === 'string'
+        ? options.trigger.split(' ').filter(trigger => {
+            return ['click', 'hover', 'focus', 'manual', 'contextMenu'].indexOf(trigger) !== -1;
+          })
+        : [];
 
     this.isOpen = false;
 
@@ -76,7 +79,9 @@ class Pop {
     const popNode = popGenerator.childNodes[0];
     const allowHtml = this.options.html;
 
-    popNode.id = `pop_${Math.random().toString(36).substr(2, 10)}`;
+    popNode.id = `pop_${Math.random()
+      .toString(36)
+      .substr(2, 10)}`;
     const contentNode = popGenerator.querySelector(this.innerSelector);
     if (content.nodeType === 1) {
       if (allowHtml) contentNode.appendChild(content);
@@ -257,7 +262,9 @@ class Pop {
   hide() {
     if (this.showTimeout) clearTimeout(this.showTimeout);
     if (this.hideTimeout) clearTimeout(this.hideTimeout);
-    if (this.isOpen === false) { return; }
+    if (this.isOpen === false) {
+      return;
+    }
     if (!document.body.contains(this.popNode)) {
       return;
     }
@@ -293,10 +300,7 @@ class Pop {
       this.popperInstance.destroy();
     }
 
-    this.triggerEvents.forEach(({
-      event,
-      func
-    }) => {
+    this.triggerEvents.forEach(({ event, func }) => {
       this.reference.removeEventListener(event, func, event == 'focus' || event == 'blur');
     });
     this.triggerEvents = [];
@@ -326,7 +330,7 @@ class Pop {
     const directtriggerEvents = [];
     const oppositetriggerEvents = [];
 
-    triggerEvents.forEach((event) => {
+    triggerEvents.forEach(event => {
       switch (event) {
         case 'hover':
           directtriggerEvents.push('mouseenter');
@@ -349,8 +353,8 @@ class Pop {
       }
     });
 
-    directtriggerEvents.forEach((event) => {
-      const func = (evt) => {
+    directtriggerEvents.forEach(event => {
+      const func = evt => {
         if (evt.type == 'contextmenu') {
           evt.preventDefault();
           // evt.stopPropagation();
@@ -383,8 +387,8 @@ class Pop {
       reference.addEventListener(event, func, event == 'focus');
     });
 
-    oppositetriggerEvents.forEach((event) => {
-      const func = (evt) => {
+    oppositetriggerEvents.forEach(event => {
+      const func = evt => {
         if (evt.usedByPop === true) {
           return;
         }
@@ -398,7 +402,7 @@ class Pop {
     });
 
     if (triggerEvents.indexOf('manual') == -1) {
-      this.documentHandler = (e) => {
+      this.documentHandler = e => {
         if (!this.popNode || e.target.parentNode == null) return;
         if (!this.isOpen || reference.contains(e.target) || this.popNode.contains(e.target)) {
           return false;
@@ -427,10 +431,10 @@ class Pop {
   }
 
   setPopNodeEvent() {
-    this.popNode.addEventListener('mouseenter', (event) => {
+    this.popNode.addEventListener('mouseenter', event => {
       this.show(event);
     });
-    this.popNode.addEventListener('mouseout', (event) => {
+    this.popNode.addEventListener('mouseout', event => {
       const relatedreference = event.relatedreference || event.toElement || event.relatedTarget;
       if (!this.popNode.contains(relatedreference) && relatedreference != this.reference && !this.reference.contains(relatedreference)) {
         this.hide();

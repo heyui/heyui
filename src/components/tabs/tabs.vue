@@ -1,13 +1,19 @@
 <template>
   <div :class="tabsCls">
-    <div v-for="(a, index) of arr" @click="trigger(a, index)" :key="a[key]" :class="{'h-tabs-selected':a[key] == value, 'h-tabs-item-selected':a[key] == value}" class="h-tabs-item">
-      <span v-if="!$scopedSlots.item">{{a[title]}}</span>
+    <div
+      v-for="(a, index) of arr"
+      @click="trigger(a, index)"
+      :key="a[key]"
+      :class="{ 'h-tabs-selected': a[key] == value, 'h-tabs-item-selected': a[key] == value }"
+      class="h-tabs-item"
+    >
+      <span v-if="!$scopedSlots.item">{{ a[title] }}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 const prefix = 'h-tabs';
 

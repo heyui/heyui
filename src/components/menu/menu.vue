@@ -1,18 +1,20 @@
 <template>
   <ul :class="classes">
-    <hMenuItem v-for="menu of menuDatas"
+    <hMenuItem
+      v-for="menu of menuDatas"
       :key="menu.key"
       :data="menu"
       :param="param"
       :status="status"
       :inlineCollapsed="inlineCollapsed"
       :mode="mode"
-      @trigger="trigger"></hMenuItem>
+      @trigger="trigger"
+    ></hMenuItem>
   </ul>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import config from 'heyui/src/utils/config';
+import utils from 'heyui/utils/utils';
+import config from 'heyui/utils/config';
 import hMenuItem from './menu-item';
 
 const prefix = 'h-menu';
@@ -20,7 +22,15 @@ const prefix = 'h-menu';
 const initStatus = (list = [], param, parent) => {
   let datas = [];
   for (let data of list) {
-    let obj = { key: data[param.keyName], title: data[param.titleName], icon: data.icon, count: data.count, value: data, status: { opened: false, disabled: !!data.disabled }, parent };
+    let obj = {
+      key: data[param.keyName],
+      title: data[param.titleName],
+      icon: data.icon,
+      count: data.count,
+      value: data,
+      status: { opened: false, disabled: !!data.disabled },
+      parent
+    };
     let children = data[param.childrenName] || [];
     obj.children = initStatus(children, param, obj);
     datas.push(obj);
@@ -42,7 +52,7 @@ const getObj = (list = [], param) => {
   }
   return obj;
 };
-const updateOpened = (obj) => {
+const updateOpened = obj => {
   let openedList = [];
   if (obj.parent) {
     openedList.push(obj.parent.key);

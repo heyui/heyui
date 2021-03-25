@@ -4,12 +4,12 @@
       <svg viewBox="25 25 50 50">
         <circle cx="50" cy="50" r="20" fill="none" class="circle"></circle>
       </svg>
-      <p :class="textCls" v-if="text">{{text}}</p>
+      <p :class="textCls" v-if="text">{{ text }}</p>
     </div>
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const prefix = 'h-loading';
 export default {
@@ -26,9 +26,7 @@ export default {
       isSetStyle: false
     };
   },
-  unbind() {
-
-  },
+  unbind() {},
   mounted() {
     this.initStyle();
   },

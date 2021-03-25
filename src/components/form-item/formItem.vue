@@ -1,20 +1,23 @@
 <template>
   <div :class="formItemCls" :prop="prop" :validable="validable">
     <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">
-      <i v-if="icon" :class="icon"></i><span v-if="!$scopedSlots.label">{{label}}</span><slot v-else :label="label" name="label"></slot>
+      <i v-if="icon" :class="icon"></i><span v-if="!$scopedSlots.label">{{ label }}</span
+      ><slot v-else :label="label" name="label"></slot>
     </label>
     <div class="h-form-item-content" :style="contentStyleCls">
       <div class="h-form-item-wrap">
         <slot></slot>
       </div>
       <div class="h-form-item-error" v-if="!errorMessage.valid">
-        <span v-if="errorMessage.type=='base'" class="h-form-item-error-label">{{label}}</span><span class="h-form-item-error-message">{{errorMessage.message}}</span><slot name="error" :type="errorMessage.type"></slot>
+        <span v-if="errorMessage.type == 'base'" class="h-form-item-error-label">{{ label }}</span
+        ><span class="h-form-item-error-message">{{ errorMessage.message }}</span
+        ><slot name="error" :type="errorMessage.type"></slot>
       </div>
     </div>
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-form-item';
 export default {

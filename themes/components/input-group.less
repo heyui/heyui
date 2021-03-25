@@ -1,11 +1,11 @@
-@input-prefix: ~"@{prefix}input";
+@input-prefix: ~'@{prefix}input';
 
 div.@{input-prefix} {
   position: relative;
   display: inline-block;
 
-  >[class^="@{icon-prefix}"],
-  >[class*=" @{icon-prefix}"] {
+  > [class^='@{icon-prefix}'],
+  > [class*=' @{icon-prefix}'] {
     position: absolute;
     top: 50%;
     right: 8px;
@@ -14,31 +14,31 @@ div.@{input-prefix} {
     transform: translate(0%, -50%);
   }
 
-  >.h-icon-close{
+  > .h-icon-close {
     color: @dark2-color;
     transform-origin: center;
     .h-func-text-hover();
     transform: translate(0%, -50%) scale(0.9);
   }
-  >input{
+  > input {
     width: 100%;
     position: relative;
     z-index: 2;
   }
 
   &.h-input-prefix-icon {
-    >[class^="@{icon-prefix}"],
-    >[class*=" @{icon-prefix}"]{
+    > [class^='@{icon-prefix}'],
+    > [class*=' @{icon-prefix}'] {
       right: auto;
       left: 8px;
     }
-    >input{
+    > input {
       padding-left: 25px;
     }
   }
 
   &.h-input-suffix-icon {
-    >input{
+    > input {
       padding-right: 25px;
     }
   }
@@ -46,41 +46,46 @@ div.@{input-prefix} {
     position: relative;
     display: flex;
     > .h-btn {
-      padding-top: (@input-height - @font-size) / 2 - 1px;
-      padding-bottom: (@input-height - @font-size) / 2 - 1px;
+      padding-top: ((@input-height - @font-size) / 2) - 1px;
+      padding-bottom: ((@input-height - @font-size) / 2) - 1px;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-    >.h-numberinput>.h-numberinput-show, >.h-btn, >.h-select>.h-select-show {
+    > .h-numberinput > .h-numberinput-show,
+    > .h-btn,
+    > .h-select > .h-select-show {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
-    >.h-numberinput:not(:last-child)>.h-numberinput-show, >.h-select:not(:last-child)>.h-select-show {
+    > .h-numberinput:not(:last-child) > .h-numberinput-show,
+    > .h-select:not(:last-child) > .h-select-show {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    >input,>div {
+    > input,
+    > div {
       position: relative;
       z-index: 2;
-      margin:0;
+      margin: 0;
       flex: 1;
     }
-    >.h-select {
+    > .h-select {
       overflow: hidden;
     }
-    >div{
+    > div {
       padding: 0 !important;
     }
-    >input:not(:last-child),>div:not(:last-child) input{
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+    > input:not(:last-child),
+    > div:not(:last-child) input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
-    >span{
-        line-height: @input-height - 2px;
+    > span {
+      line-height: @input-height - 2px;
     }
-    >.@{input-prefix}-addon {
+    > .@{input-prefix}-addon {
       line-height: @input-height - 2px;
       flex: inherit;
       text-align: center;
@@ -103,14 +108,15 @@ div.@{input-prefix} {
         border-radius: 0 @border-radius @border-radius 0;
         border-right: @border;
       }
-      +input,
-      +div input {
+      + input,
+      + div input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
       > .h-select {
         display: block;
-        .h-select-placeholder, .h-select-value-single {
+        .h-select-placeholder,
+        .h-select-value-single {
           height: @input-height - 2px;
           line-height: @input-height - 2px;
         }

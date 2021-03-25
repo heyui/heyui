@@ -1,26 +1,18 @@
 <template>
   <div>
     <div :class="noticeCls">
-      <div class="h-notify-mask"
-          v-if="hasMask"
-          @click="setvalue(true)"></div>
-      <div :class="{'h-notify-body': !!hasMask}" @click.self="setvalue(true)">
+      <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
+      <div :class="{ 'h-notify-body': !!hasMask }" @click.self="setvalue(true)">
         <div :class="containerCls">
-          <span class="h-notify-close h-icon-close"
-                @click="setvalue(false)"></span>
-          <component :is="nowComponent"
-                    :class="contentCls"
-                    :param="propsData"
-                    :params="propsData"
-                    @event="trigger"
-                    @close="close"></component>
+          <span class="h-notify-close h-icon-close" @click="setvalue(false)"></span>
+          <component :is="nowComponent" :class="contentCls" :param="propsData" :params="propsData" @event="trigger" @close="close"></component>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 const prefix = 'h-modal';
 const notifyprefix = 'h-notify';

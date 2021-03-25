@@ -1,6 +1,6 @@
-@slider-prefix: ~"@{prefix}slider";
+@slider-prefix: ~'@{prefix}slider';
 .@{slider-prefix} {
-  padding: (@input-height - 10) / 2 5px;
+  padding: ((@input-height - 10) / 2) 5px;
   &-container {
     position: relative;
     min-height: 10px;
@@ -29,11 +29,12 @@
     margin-left: -8px;
     top: -3px;
     transform: scale(0.8);
-    transition: box-shadow,transform @transition-time ease-in-out;
+    transition: box-shadow, transform @transition-time ease-in-out;
     user-select: none;
     cursor: pointer;
     cursor: -webkit-grab;
-    &:hover,&-dragging{
+    &:hover,
+    &-dragging {
       transform: scale(1.1);
     }
     &-dragging {

@@ -1,56 +1,50 @@
 <template>
   <div :class="dateCls">
-    <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
+    <div v-if="noBorder" class="h-datetime-show text-hover">{{ showDate || showPlaceholder }}</div>
     <div v-else class="h-input h-datetime-show">
-      <input type="text"
-        class="h-input"
-        :value="show"
-        readonly
-        :placeholder="showPlaceholder"
-        :disabled="disabled" />
+      <input type="text" class="h-input" :value="show" readonly :placeholder="showPlaceholder" :disabled="disabled" />
       <i class="h-icon-calendar"></i>
     </div>
-    <div :class="datePickerCls"
-         class="h-date-picker">
+    <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container h-date-range-container" v-if="isShow">
-        <div v-if="shortcuts.length>0"
-             class="h-date-shortcut">
-          <div v-for="s of shortcuts"
-               @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
+        <div v-if="shortcuts.length > 0" class="h-date-shortcut">
+          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
         </div>
-        <date-base ref="start"
-                   :value="nowDate"
-                   range="start"
-                   :option="startOption"
-                   :type="type"
-                   :now-view="nowView.start"
-                   :format="nowFormat"
-                   :startWeek = "startWeek"
-                   @updateView="updateView"
-                   @input="setvalue"
-                   @changeView="changeView"
-                   :rangeEnd="rangeEnd"
-                   @updateRangeEnd="updateRangeEnd"></date-base>
-        <date-base ref="end"
-                   :value="nowDate"
-                   range="end"
-                   :option="endOption"
-                   :type="type"
-                   :now-view="nowView.end"
-                   :format="nowFormat"
-                   :startWeek = "startWeek"
-                   @updateView="updateView"
-                   @input="setvalue"
-                   @changeView="changeView"
-                   :rangeEnd="rangeEnd"
-                   @updateRangeEnd="updateRangeEnd"></date-base>
+        <date-base
+          ref="start"
+          :value="nowDate"
+          range="start"
+          :option="startOption"
+          :type="type"
+          :now-view="nowView.start"
+          :format="nowFormat"
+          :startWeek="startWeek"
+          @updateView="updateView"
+          @input="setvalue"
+          @changeView="changeView"
+          :rangeEnd="rangeEnd"
+          @updateRangeEnd="updateRangeEnd"
+        ></date-base>
+        <date-base
+          ref="end"
+          :value="nowDate"
+          range="end"
+          :option="endOption"
+          :type="type"
+          :now-view="nowView.end"
+          :format="nowFormat"
+          :startWeek="startWeek"
+          @updateView="updateView"
+          @input="setvalue"
+          @changeView="changeView"
+          :rangeEnd="rangeEnd"
+          @updateRangeEnd="updateRangeEnd"
+        ></date-base>
       </div>
 
       <div class="h-date-footer">
-        <button type="button" class="h-btn h-btn-text h-btn-s"
-                @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s"
-                @click="confirm">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ 'h.common.clear' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
       </div>
     </div>
   </div>
@@ -58,11 +52,11 @@
 <script>
 import manba from 'manba';
 
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import dateBase from 'heyui/src/components/date-picker/datebase';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import dateBase from 'heyui/components/date-picker/datebase';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-datetime';
 
@@ -141,7 +135,7 @@ export default {
   mounted() {
     let that = this;
     this.$nextTick(() => {
-      let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let el = (this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`));
       let content = this.$el.querySelector(`.h-date-picker`);
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
@@ -189,8 +183,7 @@ export default {
           let nowValue = manba(value[this.paramName[range]], this.nowFormat);
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
-        } catch (evt) {
-        }
+        } catch (evt) {}
       }
       this.nowDate[range] = '';
     },

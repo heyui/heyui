@@ -1,5 +1,5 @@
-import Notify from 'heyui/src/plugins/notify';
-import utils from 'heyui/src/utils/utils';
+import Notify from 'heyui/plugins/notify';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-notice';
 const iconPrefixCls = 'h-icon';
@@ -38,7 +38,9 @@ function Notice(originalParam) {
   };
   if (Object.keys(iconNames).indexOf(originalParam.type) != -1) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
-    originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${originalParam.content}`;
+    originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${
+      originalParam.content
+    }`;
     delete originalParam.type;
   } else if (originalParam.icon) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
@@ -69,7 +71,7 @@ function notice(param, timeout) {
   console.error('Notice params are incorrect:', param);
 }
 
-notice.config = (options) => {
+notice.config = options => {
   if (options.timeout != undefined) {
     Default.timeout = options.timeout;
   }

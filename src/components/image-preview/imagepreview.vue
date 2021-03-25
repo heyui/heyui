@@ -4,8 +4,8 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-const genObject = function (data) {
+import utils from 'heyui/utils/utils';
+const genObject = function(data) {
   if (utils.isString(data)) {
     return { url: data };
   } else if (utils.isObject(data)) {
@@ -26,7 +26,7 @@ export default {
     },
     datas: {
       type: [Array, String],
-      default: () => ([])
+      default: () => []
     },
     borderRadius: {
       type: Number,

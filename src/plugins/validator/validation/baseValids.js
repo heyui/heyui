@@ -1,4 +1,4 @@
-import locale from 'heyui/src/locale';
+import locale from 'heyui/locale';
 
 let valids = {
   required(value) {

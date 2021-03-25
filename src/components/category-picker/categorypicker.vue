@@ -1,34 +1,44 @@
 <template>
   <div :class="categoryCls" :disabled="disabled">
     <div class="h-categorypicker-show">
-      <div v-if="multiple&&objects.length" class="h-categorypicker-multiple-tags">
-        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{getShow(obj)}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+      <div v-if="multiple && objects.length" class="h-categorypicker-multiple-tags">
+        <span v-for="(obj, index) of objects" :key="index + '' + obj.key"
+          ><span>{{ getShow(obj) }}</span
+          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+        ></span>
       </div>
-      <div v-else-if="!multiple&&object" class="h-categorypicker-value-single">
-        <span>{{getShow(object)}}</span>
-        <i class="h-icon-close" v-if="object&&!disabled" @mousedown="clear"></i>
+      <div v-else-if="!multiple && object" class="h-categorypicker-value-single">
+        <span>{{ getShow(object) }}</span>
+        <i class="h-icon-close" v-if="object && !disabled" @mousedown="clear"></i>
       </div>
-      <div v-else class="h-categorypicker-placeholder">{{showPlaceholder}}</div>
+      <div v-else class="h-categorypicker-placeholder">{{ showPlaceholder }}</div>
     </div>
     <div :class="groupCls">
-      <Tabs :datas="tabs" v-model="tab"  class="h-categorypicker-tabs" keyName="key" titleName="title" @change="focusTab"></Tabs>
-      <div class="h-categorypicker-ul" :class="{'h-categorypicker-single-picker': !multiple}">
-        <div v-for="data of list" :key="data.key" class="h-categorypicker-item" :class="{'h-categorypicker-item-selected': object && data.key == object.key}">
+      <Tabs :datas="tabs" v-model="tab" class="h-categorypicker-tabs" keyName="key" titleName="title" @change="focusTab"></Tabs>
+      <div class="h-categorypicker-ul" :class="{ 'h-categorypicker-single-picker': !multiple }">
+        <div
+          v-for="data of list"
+          :key="data.key"
+          class="h-categorypicker-item"
+          :class="{ 'h-categorypicker-item-selected': object && data.key == object.key }"
+        >
           <i class="h-icon-loading" v-if="data.status.loading"></i>
-          <Checkbox v-else-if="data.status.checkable&&multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
-          <span class="h-categorypicker-item-title" @click="openNew(data, $event)">{{data.title}}<span v-if="showChildCount && data.children.length">({{data.children.length}})</span></span>
+          <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
+          <span class="h-categorypicker-item-title" @click="openNew(data, $event)"
+            >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
+          >
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import Locale from 'heyui/src/mixins/locale';
-import Message from 'heyui/src/plugins/message';
-import Checkbox from 'heyui/src/components/checkbox';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
+import Message from 'heyui/plugins/message';
+import Checkbox from 'heyui/components/checkbox';
 
 const prefix = 'h-categorypicker';
 const topMenu = '-------';
@@ -77,10 +87,12 @@ export default {
       loading: true,
       objects: [],
       object: null,
-      tabs: [{
-        title: this.t('h.categoryModal.total'),
-        key: topMenu
-      }],
+      tabs: [
+        {
+          title: this.t('h.categoryModal.total'),
+          key: topMenu
+        }
+      ],
       tab: topMenu,
       categoryDatas: [],
       categoryObj: {},
@@ -104,17 +116,19 @@ export default {
         }
       }
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initCategoryDatas();
     },
     value() {
       if (this.valueBak != this.value) {
         this.parse();
         this.tab = topMenu;
-        this.tabs = [{
-          title: this.t('h.categoryModal.total'),
-          key: topMenu
-        }];
+        this.tabs = [
+          {
+            title: this.t('h.categoryModal.total'),
+            key: topMenu
+          }
+        ];
         this.list = this.categoryDatas;
       }
     }
@@ -139,10 +153,12 @@ export default {
     },
     refresh() {
       this.tab = topMenu;
-      this.tabs = [{
-        title: this.t('h.categoryModal.total'),
-        key: topMenu
-      }];
+      this.tabs = [
+        {
+          title: this.t('h.categoryModal.total'),
+          key: topMenu
+        }
+      ];
       this.initCategoryDatas();
     },
     remove(obj) {
@@ -181,7 +197,9 @@ export default {
     getShow(data) {
       if (this.showAllLevels) {
         data = this.categoryObj[data.key] || data;
-        return this.getParentTitle(data).reverse().join('/');
+        return this.getParentTitle(data)
+          .reverse()
+          .join('/');
       } else {
         return data.title;
       }
@@ -216,9 +234,12 @@ export default {
     },
     dispose() {
       if (this.multiple) {
-        return this.objects.map(item => this.type == 'key' ? item.key : item.value).filter(item => {
-          return item !== undefined;
-        }).map(item => this.type == 'key' ? item : this.getDisposeValue(item));
+        return this.objects
+          .map(item => (this.type == 'key' ? item.key : item.value))
+          .filter(item => {
+            return item !== undefined;
+          })
+          .map(item => (this.type == 'key' ? item : this.getDisposeValue(item)));
       } else if (this.object) {
         return this.type == 'key' ? this.object.key : this.getDisposeValue(this.object.value);
       }
@@ -361,9 +382,11 @@ export default {
       }
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
-          Message.error(this.t('h.categoryPicker.limitWords', {
-            size: this.limit
-          }));
+          Message.error(
+            this.t('h.categoryPicker.limitWords', {
+              size: this.limit
+            })
+          );
           return;
         }
         utils.toggleValueByKey(this.objects, 'key', data);
@@ -386,7 +409,7 @@ export default {
       if (this.multiple) {
         return this.objects.some(item => item.key == data.key);
       } else {
-        return this.object ? (this.object.key == data.key) : false;
+        return this.object ? this.object.key == data.key : false;
       }
     }
   },
@@ -396,8 +419,7 @@ export default {
     },
     param() {
       if (this.config) {
-        return utils.extend({}, config.getOption('categoryPicker.default'), config.getOption(
-          `categoryPicker.configs.${this.config}`), this.option);
+        return utils.extend({}, config.getOption('categoryPicker.default'), config.getOption(`categoryPicker.configs.${this.config}`), this.option);
       } else {
         return utils.extend({}, config.getOption('categoryPicker.default'), this.option);
       }

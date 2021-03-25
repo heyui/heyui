@@ -1,4 +1,4 @@
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const Transition = {
   beforeEnter(el) {

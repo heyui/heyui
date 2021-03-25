@@ -1,4 +1,4 @@
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-loadingbar';
 
@@ -88,7 +88,7 @@ loadingBar.success = () => {
   $loadingBar.success();
 };
 
-loadingBar.percent = (value) => {
+loadingBar.percent = value => {
   $loadingBar.percent(value);
 };
 

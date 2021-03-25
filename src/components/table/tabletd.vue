@@ -1,15 +1,16 @@
 <template>
-  <td :class="cls" v-bind="tdAttrs" v-if="tdAttrs.colspan !== 0 && tdAttrs.rowspan !== 0 ">
-    <span class="h-table-tree-expand" v-if="treeOpener" :class="{'h-table-tree-opened': data._opened}">
+  <td :class="cls" v-bind="tdAttrs" v-if="tdAttrs.colspan !== 0 && tdAttrs.rowspan !== 0">
+    <span class="h-table-tree-expand" v-if="treeOpener" :class="{ 'h-table-tree-opened': data._opened }">
       <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
       <i class="h-table-tree-icon h-icon-angle-right" @click="toggleTree" v-if="data.children && data.children.length"></i>
-      <i class="h-table-tree-empty" v-else ></i>
+      <i class="h-table-tree-empty" v-else></i>
     </span>
-    <template v-if="prop || render">{{show}}</template><slot :data="data" :index="index"></slot>
+    <template v-if="prop || render">{{ show }}</template
+    ><slot :data="data" :index="index"></slot>
   </td>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 export default {
   name: 'hTableTd',

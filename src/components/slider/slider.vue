@@ -3,16 +3,22 @@
     <div class="h-slider-container">
       <div class="h-slider-line" @mousedown="choosePosition"></div>
       <div class="h-slider-track" @mousedown="choosePosition" :style="computedTrackStyle"></div>
-      <div class="h-slider-node h-slider-start-node" @click.stop @mousedown="mousedown('start', $event)" v-if="hasStart" :style="{'left': nodePosition.start}"></div>
-      <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{'left': nodePosition.end}"></div>
-      <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{showContent(values.end)}}</span>
-      <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip&&hasStart">{{showContent(values.start)}}</span>
+      <div
+        class="h-slider-node h-slider-start-node"
+        @click.stop
+        @mousedown="mousedown('start', $event)"
+        v-if="hasStart"
+        :style="{ left: nodePosition.start }"
+      ></div>
+      <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{ left: nodePosition.end }"></div>
+      <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{ showContent(values.end) }}</span>
+      <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip && hasStart">{{ showContent(values.start) }}</span>
     </div>
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import Tooltip from 'heyui/src/plugins/tooltip';
+import utils from 'heyui/utils/utils';
+import Tooltip from 'heyui/plugins/tooltip';
 
 const prefix = 'h-slider';
 
@@ -93,7 +99,7 @@ export default {
       }
       this.eventControl.type = 'end';
       let nodePosition = this.$el.querySelector('.h-slider-end-node').getBoundingClientRect();
-      this.eventControl.x = nodePosition.left + (nodePosition.width / 2);
+      this.eventControl.x = nodePosition.left + nodePosition.width / 2;
       this.eventControl.init = this.values['end'];
       this.mousemove(event);
       document.body.addEventListener('mousemove', this.mousemove);
@@ -197,16 +203,19 @@ export default {
     },
     computedTrackStyle() {
       let dis = this.range.end - this.range.start;
-      return Object.assign({
-        left: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
-        right: `${parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`
-      }, this.trackStyle);
+      return Object.assign(
+        {
+          left: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
+          right: `${parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
+        },
+        this.trackStyle
+      );
     },
     nodePosition() {
       let dis = this.range.end - this.range.start;
       return {
-        start: `${parseInt((this.values.start - this.range.start) / dis * 100, 10)}%`,
-        end: `${100 - parseInt((this.range.end - this.values.end) / dis * 100, 10)}%`
+        start: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
+        end: `${100 - parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
       };
     },
     values() {
@@ -216,10 +225,13 @@ export default {
           end: this.value || this.range.start
         };
       }
-      return utils.extend({
-        start: this.range.start,
-        end: this.range.start
-      }, this.value);
+      return utils.extend(
+        {
+          start: this.range.start,
+          end: this.range.start
+        },
+        this.value
+      );
     },
     sliderCls() {
       return {

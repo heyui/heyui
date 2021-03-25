@@ -4,40 +4,46 @@
       <template v-if="multiple">
         <div class="h-select-multiple-tags">
           <span v-for="obj of objects" :key="obj[keyName]">
-            <span>{{obj[titleName]}}</span><i class="h-icon-close-min" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+            <span>{{ obj[titleName] }}</span
+            ><i class="h-icon-close-min" @click.stop="setvalue(obj)" v-if="!disabled"></i>
           </span>
-          <input v-if="filterable"
-                type="text"
-                class="h-select-search-input h-input" v-model="searchInput"
-                :disabled="disabled"
-               @keyup="handle"
-               @blur="blurHandle"
-               @keypress.enter="enterHandle"
-                :placeholder="showPlaceholder" />
+          <input
+            v-if="filterable"
+            type="text"
+            class="h-select-search-input h-input"
+            v-model="searchInput"
+            :disabled="disabled"
+            @keyup="handle"
+            @blur="blurHandle"
+            @keypress.enter="enterHandle"
+            :placeholder="showPlaceholder"
+          />
         </div>
-        <div v-if="!hasValue&&!filterable" class="h-select-placeholder">{{showPlaceholder}}</div>
+        <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ showPlaceholder }}</div>
       </template>
       <template v-else>
         <template v-if="filterable">
           <input
-                type="text"
-                @keyup="handle"
-                @blur="blurHandle"
-                :disabled="disabled"
-                @keypress.enter="enterHandle"
-                :class="{'h-select-search-input-value': hasValue}"
-                class="h-select-search-input h-select-single-search-input h-input" v-model="searchInput"
-                :placeholder="hasValue?'':showPlaceholder" />
-          <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue&&searchInput===''">{{singleValue}}</div>
+            type="text"
+            @keyup="handle"
+            @blur="blurHandle"
+            :disabled="disabled"
+            @keypress.enter="enterHandle"
+            :class="{ 'h-select-search-input-value': hasValue }"
+            class="h-select-search-input h-select-single-search-input h-input"
+            v-model="searchInput"
+            :placeholder="hasValue ? '' : showPlaceholder"
+          />
+          <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue && searchInput === ''">{{ singleValue }}</div>
         </template>
         <template v-else>
           <div class="h-select-value-single" v-if="hasValue">
             <template v-if="hasValue">
-              <div v-if="!$scopedSlots.show" class="h-select-value-single">{{singleValue}}</div>
+              <div v-if="!$scopedSlots.show" class="h-select-value-single">{{ singleValue }}</div>
               <slot v-else :value="objects" name="show"></slot>
             </template>
           </div>
-          <div v-else class="h-select-placeholder">{{showPlaceholder}}</div>
+          <div v-else class="h-select-placeholder">{{ showPlaceholder }}</div>
         </template>
       </template>
       <i class="h-icon-close text-hover" v-show="hasClose" @click.stop="clear"></i>
@@ -49,19 +55,14 @@
           <slot name="top" :results="filterOptions"></slot>
           <ul class="h-select-ul">
             <template v-for="(option, index) of filterOptions">
-            <li v-if="!option.hidden"
-                :key="option[keyName]"
-                @click="setvalue(option)"
-                :class="getLiCls(option, index)">
-              <div v-if="!!optionRender"
-                  v-html="option[html]"></div>
-              <template v-else-if="!$scopedSlots.item">{{option[titleName]}}</template>
-              <slot v-else :item="option" name="item"></slot>
-              <i v-if="multiple"
-                class="h-icon-check"></i>
-            </li>
+              <li v-if="!option.hidden" :key="option[keyName]" @click="setvalue(option)" :class="getLiCls(option, index)">
+                <div v-if="!!optionRender" v-html="option[html]"></div>
+                <template v-else-if="!$scopedSlots.item">{{ option[titleName] }}</template>
+                <slot v-else :item="option" name="item"></slot>
+                <i v-if="multiple" class="h-icon-check"></i>
+              </li>
             </template>
-            <li v-if="filterOptions.length==0" class="h-select-ul-empty">{{showEmptyContent}}</li>
+            <li v-if="filterOptions.length == 0" class="h-select-ul-empty">{{ showEmptyContent }}</li>
           </ul>
           <slot name="bottom" :results="filterOptions"></slot>
         </div>
@@ -70,17 +71,17 @@
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import Locale from 'heyui/src/mixins/locale';
-import Message from 'heyui/src/plugins/message';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
+import Message from 'heyui/plugins/message';
 
 const prefix = 'h-select';
 
 export default {
   name: 'hSelect',
-  mixins: [ Locale ],
+  mixins: [Locale],
   props: {
     multiple: {
       type: Boolean,
@@ -180,12 +181,8 @@ export default {
           let dom = this.content.querySelector('.h-select-item-picked');
           let uldom = this.content.querySelector('.h-select-list');
           if (dom && uldom) {
-            if (
-              dom.offsetTop + dom.offsetHeight - uldom.scrollTop >
-              uldom.offsetHeight
-            ) {
-              uldom.scrollTop =
-                dom.offsetTop + dom.offsetHeight - uldom.offsetHeight;
+            if (dom.offsetTop + dom.offsetHeight - uldom.scrollTop > uldom.offsetHeight) {
+              uldom.scrollTop = dom.offsetTop + dom.offsetHeight - uldom.offsetHeight;
             } else if (dom.offsetTop - uldom.scrollTop < 0) {
               uldom.scrollTop = dom.offsetTop;
             }
@@ -209,8 +206,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = this.el = this.$el.querySelector('.h-select-show');
-      let content = this.content = this.$el.querySelector('.h-select-group');
+      let el = (this.el = this.$el.querySelector('.h-select-show'));
+      let content = (this.content = this.$el.querySelector('.h-select-group'));
       let that = this;
       this.dropdown = new Dropdown(el, {
         content,
@@ -261,9 +258,12 @@ export default {
       this.searchInput = value;
     },
     clear() {
-      this.setvalue({
-        [`${this.keyName}`]: null
-      }, 'clear');
+      this.setvalue(
+        {
+          [`${this.keyName}`]: null
+        },
+        'clear'
+      );
     },
     setObjects() {
       if (this.multiple) {
@@ -286,9 +286,11 @@ export default {
           console.warn(`[HeyUI WARNING] Select Component: value '${values}' can't be a value of a multiple select`);
           values = [];
         }
-        this.codes = values.map((item) => {
-          return this.type == 'key' ? this.getValue(item) : item[this.keyName];
-        }).filter(item => item !== null);
+        this.codes = values
+          .map(item => {
+            return this.type == 'key' ? this.getValue(item) : item[this.keyName];
+          })
+          .filter(item => item !== null);
       } else {
         if (this.type == 'key') {
           this.codes = this.getValue(this.value);
@@ -354,8 +356,8 @@ export default {
         return {
           [`${prefix}-item-disabled`]: option.disabled,
           [`${prefix}-item`]: true,
-          [`${prefix}-item-selected`]: (this.multiple ? this.isIncludes(code) : this.isEqual(this.codes, code)),
-          [`${prefix}-item-picked`]: (this.nowSelected === index)
+          [`${prefix}-item-selected`]: this.multiple ? this.isIncludes(code) : this.isEqual(this.codes, code),
+          [`${prefix}-item-picked`]: this.nowSelected === index
         };
       }
     }
@@ -436,7 +438,7 @@ export default {
       if (this.searchInput) {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLocaleLowerCase();
-        return this.options.filter((item) => {
+        return this.options.filter(item => {
           return (item[this.html] || item[this.titleName]).toLocaleLowerCase().indexOf(searchValue) != -1;
         });
       }

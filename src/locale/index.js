@@ -1,7 +1,7 @@
-import zhLang from 'heyui/src/locale/lang/zh-CN';
-import enLang from 'heyui/src/locale/lang/en-US';
-import utils from 'heyui/src/utils/utils';
-import Format from 'heyui/src/utils/format';
+import zhLang from 'heyui/locale/lang/zh-CN';
+import enLang from 'heyui/locale/lang/en-US';
+import utils from 'heyui/utils/utils';
+import Format from 'heyui/utils/format';
 
 const format = Format();
 let lang = zhLang;
@@ -12,7 +12,7 @@ const langs = {
 let nowLang = null;
 let merged = {};
 let vuei18n = null;
-let i18nHandler = function () {
+let i18nHandler = function() {
   vuei18n = this.$i18n || vuei18n;
   if (vuei18n && vuei18n.locale) {
     if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
@@ -28,7 +28,7 @@ let i18nHandler = function () {
   }
 };
 
-const t = function (path, options) {
+const t = function(path, options) {
   let value = i18nHandler.apply(this, arguments);
   if (value !== null && value !== undefined) return value;
 
@@ -45,11 +45,11 @@ const t = function (path, options) {
   return '';
 };
 
-const use = function (l) {
+const use = function(l) {
   lang = l || lang;
 };
 
-const i18n = function (initI18n) {
+const i18n = function(initI18n) {
   vuei18n = initI18n;
 };
 

@@ -1,7 +1,7 @@
-import utils from 'heyui/src/utils/utils';
-import locale from 'heyui/src/locale';
+import utils from 'heyui/utils/utils';
+import locale from 'heyui/locale';
 
-const wordcount = function (total, el, remainDom) {
+const wordcount = function(total, el, remainDom) {
   let v = el.value.length;
   let remain = total - v;
   if (remain >= 0) {
@@ -30,7 +30,7 @@ export default {
       });
       for (let d of vnode.data.directives) {
         if (d.name == 'model') {
-          vnode.context.$watch(d.expression, function () {
+          vnode.context.$watch(d.expression, function() {
             wordcount(total, el, remainDom);
           });
           break;

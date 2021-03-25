@@ -1,17 +1,27 @@
 <template>
   <th :class="cls" @click="triggerSort()" :rowspan="rowspan" :colspan="colspan">
     <div v-tooltip="tooltipParam.enable" :placement="tooltipParam.placement" :content="tooltipParam.content || title">
-      <span>{{title}}</span>
+      <span>{{ title }}</span>
       <span class="h-table-sort-handler" v-if="sort">
-        <span class="h-table-sort-asc" v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp" :class="{'h-table-sort-selected sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp}"><i class="h-icon-top"></i></span>
-        <span class="h-table-sort-desc" v-else :class="{'h-table-sort-selected sort-selected': sortStatus.type == 'desc' && sortStatus.prop == sortUseProp}"><i class="h-icon-down"></i></span>
+        <span
+          class="h-table-sort-asc"
+          v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp"
+          :class="{ 'h-table-sort-selected sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp }"
+          ><i class="h-icon-top"></i
+        ></span>
+        <span
+          class="h-table-sort-desc"
+          v-else
+          :class="{ 'h-table-sort-selected sort-selected': sortStatus.type == 'desc' && sortStatus.prop == sortUseProp }"
+          ><i class="h-icon-down"></i
+        ></span>
       </span>
     </div>
   </th>
 </template>
 
 <script>
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 export default {
   name: 'hTableTh',
   props: {

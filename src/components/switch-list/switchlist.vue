@@ -1,10 +1,12 @@
 <template>
-  <div class="h-switchlist" :class="{'h-switchlist-small':small}" :disabled="disabled">
-    <span :checked="option[key]==value" :disabled="disabled" v-for="option of arr" :key="option[key]" @click="setvalue(option)"><i v-if="option.icon" :class="option.icon"></i>{{option[title]}}</span>
+  <div class="h-switchlist" :class="{ 'h-switchlist-small': small }" :disabled="disabled">
+    <span :checked="option[key] == value" :disabled="disabled" v-for="option of arr" :key="option[key]" @click="setvalue(option)"
+      ><i v-if="option.icon" :class="option.icon"></i>{{ option[title] }}</span
+    >
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 export default {
   name: 'HSwitchList',

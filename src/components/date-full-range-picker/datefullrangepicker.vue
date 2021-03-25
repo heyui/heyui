@@ -1,32 +1,54 @@
 <template>
   <div :class="dateCls">
-    <div v-if="noBorder" class="h-datetime-show text-hover">{{showValue||placeholder}}</div>
+    <div v-if="noBorder" class="h-datetime-show text-hover">{{ showValue || placeholder }}</div>
     <div v-else class="h-input h-datetime-show">
       <input type="text" :value="showValue" readonly :placeholder="showPlaceholder" />
       <i class="h-icon-calendar"></i>
     </div>
     <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container h-date-full-range-container">
-        <div v-if="shortcuts.length>0" class="h-date-shortcut">
-          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
+        <div v-if="shortcuts.length > 0" class="h-date-shortcut">
+          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
         </div>
         <div>
           <Tabs :datas="views" v-model="view" @change="changeView"></Tabs>
         </div>
         <div v-if="view == 'customize'" class="h-date-self-defined">
-          <DatePicker v-model="nowDate.start" @input="setvalue('start')" :option="{end: nowDate.end}" :type="hasTime?'datetime':'date'"
-            :placeholder="t('h.datepicker.startTime')"></DatePicker>
+          <DatePicker
+            v-model="nowDate.start"
+            @input="setvalue('start')"
+            :option="{ end: nowDate.end }"
+            :type="hasTime ? 'datetime' : 'date'"
+            :placeholder="t('h.datepicker.startTime')"
+          ></DatePicker>
           -
-          <DatePicker placement="bottom-end" v-model="nowDate.end" @input="setvalue('end')" :option="{start: nowDate.start}"
-            :type="hasTime?'datetime':'date'" :placeholder="t('h.datepicker.endTime')"></DatePicker>
+          <DatePicker
+            placement="bottom-end"
+            v-model="nowDate.end"
+            @input="setvalue('end')"
+            :option="{ start: nowDate.start }"
+            :type="hasTime ? 'datetime' : 'date'"
+            :placeholder="t('h.datepicker.endTime')"
+          ></DatePicker>
         </div>
-        <date-base v-else ref="datebase" :value="nowDate.start" :option="option" :type="view" :startWeek="startWeek"
-          :now-view="nowView.start" format="k" @updateView="updateView" @input="setvalue" @changeView="updateDropdown"></date-base>
+        <date-base
+          v-else
+          ref="datebase"
+          :value="nowDate.start"
+          :option="option"
+          :type="view"
+          :startWeek="startWeek"
+          :now-view="nowView.start"
+          format="k"
+          @updateView="updateView"
+          @input="setvalue"
+          @changeView="updateDropdown"
+        ></date-base>
       </div>
 
       <div class="h-date-footer">
-        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ 'h.common.clear' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
       </div>
     </div>
   </div>
@@ -34,11 +56,11 @@
 <script>
 import manba from 'manba';
 
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import dateBase from 'heyui/src/components/date-picker/datebase';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import dateBase from 'heyui/components/date-picker/datebase';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-datetime';
 
@@ -70,14 +92,7 @@ export default {
     },
     layout: {
       type: Array,
-      default: () => ([
-        'year',
-        'quarter',
-        'month',
-        'week',
-        'date',
-        'customize'
-      ])
+      default: () => ['year', 'quarter', 'month', 'week', 'date', 'customize']
     }
   },
   watch: {
@@ -128,7 +143,7 @@ export default {
   mounted() {
     let that = this;
     this.$nextTick(() => {
-      let el = this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`);
+      let el = (this.el = this.$el.querySelector(`.${prefix}>.h-datetime-show`));
       let content = this.$el.querySelector(`.h-date-picker`);
       this.dropdown = new Dropdown(el, {
         trigger: 'click',
@@ -215,7 +230,9 @@ export default {
       if (this.view == 'customize') {
         let value = utils.copy(this.nowDate);
         if (value.end) {
-          value.end = manba(value.end).add(1).format(this.nowFormat);
+          value.end = manba(value.end)
+            .add(1)
+            .format(this.nowFormat);
         }
         this.updateValue(value);
         return;
@@ -310,12 +327,20 @@ export default {
               year: date.year(),
               weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
-              dayend: manba(date).add(6).format('MM-DD')
+              dayend: manba(date)
+                .add(6)
+                .format('MM-DD')
             });
         }
       }
       if (!this.value.start && !this.value.end) return '';
-      return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end ? manba(this.value.end).add(-1).format(this.nowFormat) : this.t('h.datepicker.end')}`;
+      return `${this.value.start || this.t('h.datepicker.start')} - ${
+        this.value.end
+          ? manba(this.value.end)
+              .add(-1)
+              .format(this.nowFormat)
+          : this.t('h.datepicker.end')
+      }`;
     },
     shortcuts() {
       let shortcuts = [];

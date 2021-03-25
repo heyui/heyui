@@ -1,8 +1,16 @@
 <template>
   <div :class="numberinputCls">
-    <div class="h-numberinput-show"
-         :class="{'focusing':focusing}">
-      <input type="text" :placeholder="placeholder" :disabled="disabled" class="h-numberinput-input h-input" v-model="editValue" @input="input" @focus="focusing=true" @blur="blur"/>
+    <div class="h-numberinput-show" :class="{ focusing: focusing }">
+      <input
+        type="text"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        class="h-numberinput-input h-input"
+        v-model="editValue"
+        @input="input"
+        @focus="focusing = true"
+        @blur="blur"
+      />
       <div class="h-numberinput-operate" v-if="useOperate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
@@ -11,14 +19,13 @@
   </div>
 </template>
 <script>
-
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 const prefix = 'h-numberinput';
 
 export default {
   name: 'hNumberInput',
   props: {
-    value: [ Number, String ],
+    value: [Number, String],
     min: Number,
     max: Number,
     disabled: {
@@ -60,8 +67,7 @@ export default {
       }
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     plus() {
       if (this.disabled) return false;

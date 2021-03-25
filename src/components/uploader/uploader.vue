@@ -1,13 +1,13 @@
 <template>
   <div :class="uploaderCls">
-    <template v-if="type=='image'">
+    <template v-if="type == 'image'">
       <div class="h-uploader-image" v-if="file">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
-          <Progress :percent="file.percent"  :stroke-width="5"></Progress>
+        <div class="h-uploader-progress" v-if="file.status == 2 || file.status == 1">
+          <Progress :percent="file.percent" :stroke-width="5"></Progress>
         </div>
         <div class="h-uploader-image-operate h-uploader-browse-button" v-else>
-          <div>{{showReUploadWord}}</div>
+          <div>{{ showReUploadWord }}</div>
         </div>
       </div>
       <div class="h-uploader-image-empty h-uploader-browse-button" v-else>
@@ -15,16 +15,16 @@
       </div>
     </template>
 
-    <template v-if="type=='images'">
+    <template v-if="type == 'images'">
       <div class="h-uploader-image-empty h-uploader-browse-button" v-if="!readonly">
         <i class="h-icon-plus"></i>
       </div>
       <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div class="h-uploader-progress" v-if="file.status==2||file.status==1">
-          <Progress :percent="file.percent"  :stroke-width="5"></Progress>
+        <div class="h-uploader-progress" v-if="file.status == 2 || file.status == 1">
+          <Progress :percent="file.percent" :stroke-width="5"></Progress>
         </div>
-        <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{'h-uploader-image-operate-pointer': readonly}">
+        <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{ 'h-uploader-image-operate-pointer': readonly }">
           <div v-if="!readonly">
             <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
             <i class="h-split" style="width: 3px;"></i>
@@ -33,16 +33,30 @@
         </div>
       </div>
     </template>
-    <template v-if="type=='file'||type=='files'">
-      <div v-if="$slots.dragdrop" class="h-uploader-browse-button h-uploader-drop-element" :class="{'h-uploader-dragging': isdragging}" @dragover="isdragging=true" @dragleave="isdragging=false"  @drop="isdragging=false" ><slot name="dragdrop"></slot></div>
-      <div v-else><button type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{showUploadWord}}</button></div>
+    <template v-if="type == 'file' || type == 'files'">
+      <div
+        v-if="$slots.dragdrop"
+        class="h-uploader-browse-button h-uploader-drop-element"
+        :class="{ 'h-uploader-dragging': isdragging }"
+        @dragover="isdragging = true"
+        @dragleave="isdragging = false"
+        @drop="isdragging = false"
+      >
+        <slot name="dragdrop"></slot>
+      </div>
+      <div v-else>
+        <button type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{ showUploadWord }}</button>
+      </div>
       <div class="h-uploader-files">
         <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
-          <div class="h-uploader-file-progress" v-if="file.status==2">
-            <Progress :percent="file.percent"  :stroke-width="5"><span slot="title">{{file[param.fileName]}}</span></Progress>
+          <div class="h-uploader-file-progress" v-if="file.status == 2">
+            <Progress :percent="file.percent" :stroke-width="5"
+              ><span v-slot:title>{{ file[param.fileName] }}</span></Progress
+            >
           </div>
           <div class="h-uploader-file-info" v-else>
-            <span class="link" @click="clickfile(file, index)">{{file.name}}</span><i class="h-icon-trash middle-right link" v-if="!readonly" @click="deleteFile(index)"></i>
+            <span class="link" @click="clickfile(file, index)">{{ file.name }}</span
+            ><i class="h-icon-trash middle-right link" v-if="!readonly" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
@@ -50,21 +64,21 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import config from 'heyui/src/utils/config';
-import Locale from 'heyui/src/mixins/locale';
-import ImagePreview from 'heyui/src/plugins/image-preview';
+import utils from 'heyui/utils/utils';
+import config from 'heyui/utils/config';
+import Locale from 'heyui/mixins/locale';
+import ImagePreview from 'heyui/plugins/image-preview';
 
 const prefix = 'h-uploader';
 
-const parse = function (value, param) {
+const parse = function(value, param) {
   if (utils.isString(value)) {
     return { url: value, original: { [param.urlName]: value } };
   } else if (utils.isObject(value)) {
     return { url: value[param.urlName], name: value[param.fileName], thumbUrl: value.thumbUrl || param.thumbUrl.call(value), original: value };
   }
 };
-const dispose = function (value, type, param) {
+const dispose = function(value, type, param) {
   if (type == 'url') {
     return value.url;
   } else if (utils.isObject(value)) {
@@ -89,11 +103,11 @@ export default {
     },
     uploadList: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     files: {
       type: [Array, Object, String],
-      default: () => ([])
+      default: () => []
     },
     limit: Number,
     className: String,

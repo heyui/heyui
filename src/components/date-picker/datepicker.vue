@@ -1,7 +1,7 @@
 <template>
   <div :class="dateCls">
     <template v-if="!inline">
-      <div v-if="noBorder" class="h-datetime-show text-hover">{{showDate||showPlaceholder}}</div>
+      <div v-if="noBorder" class="h-datetime-show text-hover">{{ showDate || showPlaceholder }}</div>
       <div v-else class="h-input h-datetime-show">
         <input
           class="h-input"
@@ -12,15 +12,15 @@
           :disabled="disabled"
           :readonly="readonly || type == 'week' || type == 'quarter'"
           :placeholder="showPlaceholder"
-        >
-        <i class="h-icon-calendar" v-if="!showDate||disabled||!clearable"></i>
+        />
+        <i class="h-icon-calendar" v-if="!showDate || disabled || !clearable"></i>
         <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
       </div>
     </template>
     <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container" v-if="isShow">
-        <div v-if="shortcuts.length>0" class="h-date-shortcut">
-          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{s.title}}</div>
+        <div v-if="shortcuts.length > 0" class="h-date-shortcut">
+          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
         </div>
         <date-base
           ref="datebase"
@@ -37,8 +37,8 @@
       </div>
 
       <div class="h-date-footer" v-if="hasConfirm & !inline">
-        <button type="button" class="h-btn h-btn-text" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="hide">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text" @click="clear">{{ 'h.common.clear' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="hide">{{ 'h.common.confirm' | hlang }}</button>
       </div>
     </div>
   </div>
@@ -46,11 +46,11 @@
 <script>
 import manba from 'manba';
 
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import dateBase from 'heyui/src/components/date-picker/datebase';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import dateBase from 'heyui/components/date-picker/datebase';
+import Locale from 'heyui/mixins/locale';
 
 const prefix = 'h-datetime';
 
@@ -249,8 +249,7 @@ export default {
             }
           }
           return;
-        } catch (err) {
-        }
+        } catch (err) {}
       }
 
       this.nowView = manba();

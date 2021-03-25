@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
 export default {
   name: 'hAvatar',
@@ -94,5 +94,4 @@ export default {
     }
   }
 };
-
 </script>

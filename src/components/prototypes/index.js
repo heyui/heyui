@@ -1,13 +1,13 @@
-import $Modal from 'heyui/src/plugins/modal';
-import $Confirm from 'heyui/src/plugins/confirm';
-import $Message from 'heyui/src/plugins/message';
-import $Notice from 'heyui/src/plugins/notice';
-import $Loading from 'heyui/src/plugins/loading';
-import $LoadingBar from 'heyui/src/plugins/loading-bar';
-import $ScrollIntoView from 'heyui/src/plugins/scroll-into-view';
-import $Clipboard from 'heyui/src/plugins/clipboard';
-import $ImagePreview from 'heyui/src/plugins/image-preview';
-import $Dropdown from 'heyui/src/plugins/dropdown';
+import $Modal from 'heyui/plugins/modal';
+import $Confirm from 'heyui/plugins/confirm';
+import $Message from 'heyui/plugins/message';
+import $Notice from 'heyui/plugins/notice';
+import $Loading from 'heyui/plugins/loading';
+import $LoadingBar from 'heyui/plugins/loading-bar';
+import $ScrollIntoView from 'heyui/plugins/scroll-into-view';
+import $Clipboard from 'heyui/plugins/clipboard';
+import $ImagePreview from 'heyui/plugins/image-preview';
+import $Dropdown from 'heyui/plugins/dropdown';
 
 export default {
   $Modal,

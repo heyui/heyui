@@ -1,9 +1,9 @@
 <template>
   <div :class="pageCls">
-    <span :class="prefix+'-total'" :style="{order:orders.total}" v-if="orders.total!=-1">
-      {{ 'h.pagination.totalBefore' | hlang}}
-      <span :class="prefix+'-total-num'">{{totalNow}}</span>
-      {{ 'h.pagination.totalAfter' | hlang}}
+    <span :class="prefix + '-total'" :style="{ order: orders.total }" v-if="orders.total != -1">
+      {{ 'h.pagination.totalBefore' | hlang }}
+      <span :class="prefix + '-total-num'">{{ totalNow }}</span>
+      {{ 'h.pagination.totalAfter' | hlang }}
     </span>
     <Select
       :no-border="small"
@@ -12,32 +12,40 @@
       :datas="sizesShow"
       @input="changesize"
       v-model="sizeNow"
-      :style="{order:orders.sizes}"
-      v-if="orders.sizes!=-1"
+      :style="{ order: orders.sizes }"
+      v-if="orders.sizes != -1"
       class="h-page-select-size"
     ></Select>
-    <span class="h-page-pager-container" :style="{order:orders.pager}" v-if="orders.pager!=-1 && this.count>0">
+    <span class="h-page-pager-container" :style="{ order: orders.pager }" v-if="orders.pager != -1 && this.count > 0">
       <span :class="prevCls" @click="prev()">
         <i class="h-icon-angle-left"></i>
       </span>
       <span @click="change(1)" :class="genPagerCls(1)">1</span>
       <span v-if="pagers.length > 0 && 1 < pagers[0] - 1" class="h-page-pager h-page-ellipsis">...</span>
-      <span v-for="pager of pagers" :key="pager" @click="change(pager)" :class="genPagerCls(pager)">{{pager}}</span>
-      <span class="h-page-pager h-page-ellipsis" v-if="pagers.length > 0 && count > pagers[pagers.length-1] + 1">...</span>
-      <span @click="change(count)" :class="genPagerCls(count)" v-if="this.count>1">{{count}}</span>
+      <span v-for="pager of pagers" :key="pager" @click="change(pager)" :class="genPagerCls(pager)">{{ pager }}</span>
+      <span class="h-page-pager h-page-ellipsis" v-if="pagers.length > 0 && count > pagers[pagers.length - 1] + 1">...</span>
+      <span @click="change(count)" :class="genPagerCls(count)" v-if="this.count > 1">{{ count }}</span>
       <span :class="nextCls" @click="next()">
         <i class="h-icon-angle-right"></i>
       </span>
     </span>
-    <input type="text" :style="{order:orders.jumper}" v-if="orders.jumper!=-1 && count > 0" class="h-page-jumper-input h-input" :value="curNow" @blur="jump" @keyup.enter="jump">
+    <input
+      type="text"
+      :style="{ order: orders.jumper }"
+      v-if="orders.jumper != -1 && count > 0"
+      class="h-page-jumper-input h-input"
+      :value="curNow"
+      @blur="jump"
+      @keyup.enter="jump"
+    />
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Locale from 'heyui/src/mixins/locale';
-import Message from 'heyui/src/plugins/message';
-import Select from 'heyui/src/components/select';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
+import Message from 'heyui/plugins/message';
+import Select from 'heyui/components/select';
 
 const prefix = 'h-page';
 

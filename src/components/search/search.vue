@@ -1,21 +1,29 @@
 <template>
   <div :class="cls" :style="widthStyles">
-    <i v-if="position=='front'" class="h-icon-search"></i>
+    <i v-if="position == 'front'" class="h-icon-search"></i>
     <div class="h-search-container">
       <div class="h-search-input">
-        <input type="text" class="h-input" :style="heightStyles" v-model="inputValue" :placeholder="showPlaceholder" @input="inputTrigger(inputValue)" @keyup.enter="search(inputValue)"/>
+        <input
+          type="text"
+          class="h-input"
+          :style="heightStyles"
+          v-model="inputValue"
+          :placeholder="showPlaceholder"
+          @input="inputTrigger(inputValue)"
+          @keyup.enter="search(inputValue)"
+        />
         <i class="h-icon-close" @click="search('')"></i>
       </div>
       <button type="button" :style="heightStyles" class="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
-        <template v-else>{{'h.search.searchText' | hlang(null, searchText)}}</template>
+        <template v-else>{{ 'h.search.searchText' | hlang(null, searchText) }}</template>
       </button>
     </div>
-    <i v-if="position=='end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
+    <i v-if="position == 'end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
   </div>
 </template>
 <script>
-import Locale from 'heyui/src/mixins/locale';
+import Locale from 'heyui/mixins/locale';
 const prefix = 'h-search';
 
 export default {

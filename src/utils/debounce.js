@@ -1,4 +1,4 @@
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 function debounce(func, wait = 0, options) {
   const nativeMax = Math.max;
@@ -84,16 +84,12 @@ function debounce(func, wait = 0, options) {
 
     let timeSinceLastInvoke = time - lastInvokeTime;
     // 几种满足条件的情况
-    return (lastCallTime === undefined ||
-      (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) ||
-      (maxing && timeSinceLastInvoke >= maxWait)); // 超过最大等待时间
+    return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || (maxing && timeSinceLastInvoke >= maxWait); // 超过最大等待时间
   }
 
   // 在 trailing edge 且时间符合条件时，调用 trailingEdge函数，否则重启定时器
   function timerExpired() {
-    let time = new Date()
-      .getTime();
+    let time = new Date().getTime();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -126,13 +122,11 @@ function debounce(func, wait = 0, options) {
 
   // flush方法--立即调用
   function flush() {
-    return timerId === undefined ? result : trailingEdge(new Date()
-      .getTime());
+    return timerId === undefined ? result : trailingEdge(new Date().getTime());
   }
 
   function debounced() {
-    let time = new Date()
-      .getTime();
+    let time = new Date().getTime();
 
     // 是否满足时间条件
 

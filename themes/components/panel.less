@@ -1,37 +1,37 @@
-@panel-prefix: ~"@{prefix}panel";
+@panel-prefix: ~'@{prefix}panel';
 
-.@{panel-prefix}{
-    background: #fff;
-    border-radius: @border-radius;
+.@{panel-prefix} {
+  background: #fff;
+  border-radius: @border-radius;
+  position: relative;
+  border: @border;
+
+  &-no-border {
+    border: none;
+  }
+
+  &-bar {
+    padding: @panel-space (@panel-space * 2);
+    border-bottom: @border;
     position: relative;
-    border: @border;
-
-    &-no-border {
-        border: none;
+    > span {
+      vertical-align: middle;
     }
+  }
 
-    &-bar {
-        padding: @panel-space @panel-space * 2;
-        border-bottom: @border;
-        position: relative;
-        >span{
-            vertical-align: middle;
-        }
-    }
+  &-bar &-title {
+    line-height: (@panel-space * 2) + @font-size;
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-    &-bar &-title {
-        line-height: @panel-space * 2 + @font-size;
-        font-size: 18px;
-        display: inline-block;
-        vertical-align: middle;
-    }
+  &-bar &-right {
+    .middle();
+    right: (@panel-space * 2);
+  }
 
-    &-bar &-right {
-        .middle();
-        right: @panel-space * 2;
-    }
-
-    &-body {
-        padding: @panel-space * 2;
-    }
+  &-body {
+    padding: (@panel-space * 2);
+  }
 }

@@ -1,16 +1,26 @@
 <template>
   <div :class="taginputCls">
-    <span v-for="(v, index) of values" :key="v+index">
-      <span>{{v}}</span><i v-if="!readonly" class="h-icon-close-min" @click.stop="remove(index)"></i>
+    <span v-for="(v, index) of values" :key="v + index">
+      <span>{{ v }}</span
+      ><i v-if="!readonly" class="h-icon-close-min" @click.stop="remove(index)"></i>
     </span>
-    <input v-if="!readonly" type="text" class="h-taginput-input h-input" @focus="focusing=true" v-model="tagvalue" @blur="blur"
-      @keyup.enter="add" @keydown.delete="removeLast" :placeholder="placeholder" />
+    <input
+      v-if="!readonly"
+      type="text"
+      class="h-taginput-input h-input"
+      @focus="focusing = true"
+      v-model="tagvalue"
+      @blur="blur"
+      @keyup.enter="add"
+      @keydown.delete="removeLast"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import Locale from 'heyui/src/mixins/locale';
-import Message from 'heyui/src/plugins/message';
+import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
+import Message from 'heyui/plugins/message';
 
 const prefix = 'h-taginput';
 
@@ -121,5 +131,4 @@ export default {
     }
   }
 };
-
 </script>

@@ -1,22 +1,36 @@
 <template>
-  <div class="h-radio" :disabled="disabled" :class="{'h-radio-disabled': disabled}">
+  <div class="h-radio" :class="{ 'h-radio-disabled': disabled, 'h-radio-single': isSingle }">
     <template v-if="!isSingle">
-      <label v-for="option of arr" :key="option[key]" @click="setvalue(option)" :class="{'h-radio-checked': option[key]==selectStatus, 'h-radio-un-checked': option[key] != selectStatus, 'h-radio-label-disabled': disabled}"><span class="radio-icon h-radio-icon" :checked="option[key]==selectStatus" :disabled="disabled"></span><span class="h-radio-text" v-if="!$scopedSlots.item">{{option[title]}}</span><slot v-else :item="option" name="item"></slot></label>
+      <label
+        v-for="option of arr"
+        :key="option[key]"
+        @click="setvalue(option)"
+        :class="{
+          'h-radio-label': true,
+          'h-radio-checked': option[key] == modelValue,
+          'h-radio-un-checked': option[key] != modelValue,
+          'h-radio-item-disabled': option.disabled
+        }"
+        ><span class="radio-icon h-radio-icon"></span><span class="h-radio-text" v-if="!$slots.item">{{ option[title] }}</span
+        ><slot v-else :item="option" name="item"></slot
+      ></label>
     </template>
-    <label v-else @click="setvalue()" :class="{'h-radio-checked': value == selectStatus, 'h-radio-un-checked': value != selectStatus, 'h-radio-label-disabled': disabled}"><span class="radio-icon h-radio-icon" :checked="value == selectStatus" :disabled="disabled"></span><span><slot></slot></span></label>
+    <label
+      v-else
+      @click="setvalue()"
+      :class="{ 'h-radio-label': true, 'h-radio-checked': value == modelValue, 'h-radio-un-checked': value !== modelValue }"
+      ><span class="radio-icon h-radio-icon"></span><span><slot></slot></span
+    ></label>
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import config from 'heyui/src/utils/config';
+import utils from 'heyui/utils/utils';
+import config from 'heyui/utils/config';
 
 export default {
   name: 'hRadio',
-  model: {
-    prop: 'selectStatus',
-    event: 'input'
-  },
   props: {
+    modelValue: [Object, String, Boolean, Number],
     datas: [Object, Array],
     disabled: {
       type: Boolean,
@@ -24,7 +38,6 @@ export default {
     },
     value: [Object, String, Boolean, Number],
     dict: String,
-    selectStatus: [Object, String, Boolean, Number],
     keyName: {
       type: String,
       default: () => config.getOption('dict', 'keyName')
@@ -50,6 +63,7 @@ export default {
         result = value[this.key];
       }
       this.$emit('input', result);
+      this.$emit('update:modelValue', result);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, result);

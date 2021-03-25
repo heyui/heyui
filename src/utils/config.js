@@ -1,4 +1,4 @@
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const config = {
   dict: {
@@ -109,7 +109,7 @@ const config = {
         title: '昨天',
         value() {
           const date = new Date();
-          date.setTime(date.getTime() - (3600 * 1000 * 24));
+          date.setTime(date.getTime() - 3600 * 1000 * 24);
           return date;
         }
       }
@@ -186,7 +186,7 @@ const func = {
     if (utils.isArray(dict)) {
       dict = utils.toObject(dict, keyField);
     }
-    let result = value.map((ele) => {
+    let result = value.map(ele => {
       if (utils.isObject(ele)) {
         return ele[titleField];
       }
@@ -196,7 +196,7 @@ const func = {
       }
       return d;
     });
-    return result.filter(ele => (ele && ele !== '')).join(connector || ', ');
+    return result.filter(ele => ele && ele !== '').join(connector || ', ');
   },
   initOptions(datas, param) {
     let key = this.getOption('dict.keyName');
@@ -212,7 +212,7 @@ const func = {
         if (utils.isObject(data0)) {
           options = utils.copy(datas);
         } else {
-          options = datas.map((item) => {
+          options = datas.map(item => {
             return {
               [`${key}`]: item,
               [`${title}`]: item
@@ -220,11 +220,6 @@ const func = {
           });
         }
       }
-    }
-    if (param.render) {
-      options.forEach((item) => {
-        item[param.html] = param.render.call(null, item);
-      });
     }
     return options;
   }

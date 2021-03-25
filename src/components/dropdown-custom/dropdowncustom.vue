@@ -5,12 +5,12 @@
       <i class="h-icon-down" v-if="toggleIcon"></i>
     </div>
     <div :class="groupCls">
-      <slot name='content' v-if="isShow"></slot>
+      <slot name="content" v-if="isShow"></slot>
     </div>
   </div>
 </template>
 <script>
-import Dropdown from 'heyui/src/plugins/dropdown';
+import Dropdown from 'heyui/plugins/dropdown';
 
 const prefix = 'h-dropdowncustom';
 

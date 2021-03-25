@@ -1,26 +1,27 @@
 <template>
   <div :class="categoryCls" :disabled="disabled">
     <div class="h-category-show" @click="openPicker">
-      <div v-if="multiple&&objects.length" class="h-category-multiple-tags">
+      <div v-if="multiple && objects.length" class="h-category-multiple-tags">
         <span v-for="obj of objects" :key="obj.key">
-          <span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
+          <span>{{ obj.title }}</span
+          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
         </span>
       </div>
-      <div v-else-if="!multiple&&object" class="h-category-value-single">
-        <span>{{object.title}}</span>
-        <i class="h-icon-close" v-if="object.title!=null&&!disabled" @mousedown="clear"></i>
+      <div v-else-if="!multiple && object" class="h-category-value-single">
+        <span>{{ object.title }}</span>
+        <i class="h-icon-close" v-if="object.title != null && !disabled" @mousedown="clear"></i>
       </div>
-      <div v-else class="h-category-placeholder">{{showPlaceholder}}</div>
+      <div v-else class="h-category-placeholder">{{ showPlaceholder }}</div>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
 
 import categoryModal from './categorymodal';
-import Locale from 'heyui/src/mixins/locale';
-import Modal from 'heyui/src/plugins/modal';
+import Locale from 'heyui/mixins/locale';
+import Modal from 'heyui/plugins/modal';
 
 const prefix = 'h-category';
 
@@ -70,7 +71,7 @@ export default {
     value() {
       this.parse();
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initCategoryDatas();
     }
   },
@@ -154,9 +155,11 @@ export default {
     },
     dispose() {
       if (this.multiple) {
-        return this.objects.map(item => this.type == 'key' ? item.key : item.value).filter(item => {
-          return item !== undefined;
-        });
+        return this.objects
+          .map(item => (this.type == 'key' ? item.key : item.value))
+          .filter(item => {
+            return item !== undefined;
+          });
       } else if (this.object) {
         return this.type == 'key' ? this.object.key : this.object.value;
       }
@@ -238,8 +241,7 @@ export default {
     },
     param() {
       if (this.config) {
-        return utils.extend({}, config.getOption('category.default'), config.getOption(
-          `category.configs.${this.config}`), this.option);
+        return utils.extend({}, config.getOption('category.default'), config.getOption(`category.configs.${this.config}`), this.option);
       } else {
         return utils.extend({}, config.getOption('category.default'), this.option);
       }

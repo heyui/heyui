@@ -1,39 +1,48 @@
 <template>
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
-      <template v-if="multiple&&objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">{{'h.treepicker.selectDesc' |
-          hlang([valuebak.length])}}</div>
+      <template v-if="multiple && objects.length">
+        <div v-if="showCount" class="h-treepicker-value-single">{{ 'h.treepicker.selectDesc' | hlang([valuebak.length]) }}</div>
         <div v-else class="h-treepicker-multiple-tags">
           <span v-for="obj of objects" :key="obj[param.keyName]">
-            <span>{{obj[param.titleName]}}</span>
+            <span>{{ obj[param.titleName] }}</span>
             <i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
           </span>
         </div>
       </template>
-      <div v-else-if="!multiple&&object" class="h-treepicker-value-single">{{object[param.titleName]}}</div>
-      <div v-else class="h-treepicker-placeholder">{{'h.treepicker.placeholder' | hlang(null, placeholder)}}</div>
+      <div v-else-if="!multiple && object" class="h-treepicker-value-single">{{ object[param.titleName] }}</div>
+      <div v-else class="h-treepicker-placeholder">{{ 'h.treepicker.placeholder' | hlang(null, placeholder) }}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">
       <div class="h-treepicker-body">
-        <Tree ref="tree" @loadDataSuccess="loadDataSuccess" :toggleOnSelect="toggleOnSelect" :option="option" :multiple="multiple"
-          v-model="valuebak" :chooseMode="chooseMode" @select="select" @choose="choose" :filterable="filterable"
-          :config="config"></Tree>
+        <Tree
+          ref="tree"
+          @loadDataSuccess="loadDataSuccess"
+          :toggleOnSelect="toggleOnSelect"
+          :option="option"
+          :multiple="multiple"
+          v-model="valuebak"
+          :chooseMode="chooseMode"
+          @select="select"
+          @choose="choose"
+          :filterable="filterable"
+          :config="config"
+        ></Tree>
       </div>
       <div class="h-treepicker-footer" v-if="multiple || useConfirm">
-        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{'h.common.clear' | hlang}}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{'h.common.confirm' | hlang}}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ 'h.common.clear' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
       </div>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
 
-import Tree from 'heyui/src/components/tree';
+import Tree from 'heyui/components/tree';
 
 const prefix = 'h-treepicker';
 
@@ -107,9 +116,7 @@ export default {
     this.parse();
     this.$nextTick(() => {
       if (this.inline) return;
-      let el = (this.el = this.$el.querySelector(
-        `.${prefix}>.h-treepicker-show`
-      ));
+      let el = (this.el = this.$el.querySelector(`.${prefix}>.h-treepicker-show`));
       let content = this.$el.querySelector(`.h-treepicker-group`);
 
       this.dropdown = new Dropdown(el, {
@@ -205,9 +212,7 @@ export default {
         });
       } else {
         if (this.multiple) {
-          this.valuebak = (this.value || []).map(
-            item => item[this.param.keyName]
-          );
+          this.valuebak = (this.value || []).map(item => item[this.param.keyName]);
           this.objects = utils.copy(this.value);
         } else {
           this.valuebak = this.value ? this.value[this.param.keyName] : null;
@@ -217,9 +222,11 @@ export default {
     },
     dispose() {
       if (this.multiple) {
-        return this.objects.map(item => this.type == 'key' ? item[this.param.keyName] : item).filter(item => {
-          return item !== undefined;
-        });
+        return this.objects
+          .map(item => (this.type == 'key' ? item[this.param.keyName] : item))
+          .filter(item => {
+            return item !== undefined;
+          });
       } else if (this.object) {
         return this.type == 'key' ? this.object[this.param.keyName] : this.object;
       }
@@ -253,10 +260,7 @@ export default {
     },
     triggerChange() {
       this.$nextTick(() => {
-        this.$emit(
-          'change',
-          utils.copy(this.multiple ? this.objects : this.object)
-        );
+        this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       });
     },
     expandAll() {
@@ -278,11 +282,7 @@ export default {
   computed: {
     param() {
       if (this.config) {
-        return utils.extend({},
-          config.getOption('tree.default'),
-          config.getOption(`tree.configs.${this.config}`),
-          this.option
-        );
+        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
       } else {
         return utils.extend({}, config.getOption('tree.default'), this.option);
       }

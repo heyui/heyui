@@ -1,5 +1,5 @@
-import config from 'heyui/src/utils/config';
+import config from 'heyui/utils/config';
 
-export default function (value, key, connector) {
+export default function(value, key, connector) {
   return config.dictMapping(value, key, connector);
-};
+}

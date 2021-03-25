@@ -1,29 +1,35 @@
 <template>
-  <div class="h-checkbox" :disabled="disabled">
+  <div class="h-checkbox" :class="{ 'h-checkbox-disabled': disabled, 'h-checkbox-single': isSingle }">
     <template v-if="!isSingle">
-      <label v-for="option of arr" @click="setvalue(option)" :key="option[key]" :class="{'h-checkbox-checked': isInclude(option), 'h-checkbox-disabled': disabled || option.disabled}"><span
-          :checked="isInclude(option)" :disabled="disabled || option.disabled" class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="!$scopedSlots.item">{{option[title]}}</span><slot v-else :item="option" name="item"></slot></label>
+      <label
+        v-for="option of arr"
+        @click="setvalue(option)"
+        :key="option[key]"
+        :class="{
+          'h-checkbox-label': true,
+          'h-checkbox-checked': isInclude(option),
+          'h-checkbox-item-disabled': option.disabled,
+          'h-checkbox-indeterminate': option.indeterminate
+        }"
+        ><span class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="!$slots.item">{{ option[title] }}</span
+        ><slot v-else :item="option" name="item"></slot
+      ></label>
     </template>
-    <label v-else @click="setvalue()" :class="{'h-checkbox-checked': isChecked, 'h-checkbox-indeterminate': !isChecked&&indeterminate, 'h-checkbox-disabled': disabled}"><span
-        :checked="isChecked" :indeterminate="!isChecked&&indeterminate" :disabled="disabled" class="h-checkbox-native"></span><span
-        v-if="$slots.default" class="h-checkbox-text">
-        <slot></slot>
-      </span></label>
+    <label
+      v-else
+      @click="setvalue()"
+      :class="{ 'h-checkbox-label': true, 'h-checkbox-checked': isSingleChecked, 'h-checkbox-indeterminate': !isSingleChecked && indeterminate }"
+      ><span class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="$slots.default"><slot></slot></span
+    ></label>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Message from 'heyui/src/plugins/message';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import { message } from 'heyui';
 
 export default {
   name: 'hCheckbox',
-  mixins: [ Locale ],
-  model: {
-    prop: 'checkStatus',
-    event: 'input'
-  },
   props: {
     dict: String,
     datas: [Object, Array],
@@ -35,7 +41,7 @@ export default {
     checked: {
       type: Boolean
     },
-    checkStatus: [Array, Boolean, Object, Number, String],
+    modelValue: [Array, Boolean, Object, Number, String],
     indeterminate: {
       type: Boolean,
       default: false
@@ -58,7 +64,7 @@ export default {
   },
   data() {
     return {
-      isChecked: null,
+      isSingleChecked: null,
       key: this.keyName,
       title: this.titleName
     };
@@ -70,7 +76,7 @@ export default {
     checked() {
       this.updateChecked();
     },
-    checkStatus() {
+    modelValue() {
       this.updateChecked();
     }
   },
@@ -78,15 +84,15 @@ export default {
     updateChecked() {
       if (this.isSingle) {
         if (!utils.isNull(this.value)) {
-          this.isChecked = this.checkList.indexOf(this.value) != -1;
+          this.isSingleChecked = this.checkList.indexOf(this.value) != -1;
         } else if (this.checked === true) {
-          this.isChecked = this.checked;
-        } else if (this.checkStatus === this.trueValue) {
-          this.isChecked = true;
-        } else if (this.checkStatus === this.falseValue) {
-          this.isChecked = false;
+          this.isSingleChecked = this.checked;
+        } else if (this.modelValue === this.trueValue) {
+          this.isSingleChecked = true;
+        } else if (this.modelValue === this.falseValue) {
+          this.isSingleChecked = false;
         } else {
-          this.isChecked = false;
+          this.isSingleChecked = false;
         }
       }
     },
@@ -96,24 +102,25 @@ export default {
       if (this.isSingle) {
         if (!utils.isNull(this.value)) {
           value = utils.toggleValue(this.checkList, this.value);
-        } else if (!utils.isNull(this.checkStatus)) {
-          value = this.isChecked ? this.falseValue : this.trueValue;
+        } else if (!utils.isNull(this.modelValue)) {
+          value = this.isSingleChecked ? this.falseValue : this.trueValue;
         } else if (this.checked === true) {
           value = this.checked;
         } else {
-          value = this.isChecked ? this.falseValue : this.trueValue;
+          value = this.isSingleChecked ? this.falseValue : this.trueValue;
         }
       } else {
-        value = utils.copy(this.checkStatus);
+        value = utils.copy(this.modelValue);
         let key = option[this.key];
         value = utils.toggleValue(value, key);
         if (this.limit && this.limit < value.length) {
-          Message.error(this.t('h.checkbox.limitSize', { limitSize: this.limit }));
+          message.error(this.t('h.checkbox.limitSize', { limitSize: this.limit }));
           return;
         }
       }
       this.$emit('change', value);
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
@@ -130,11 +137,11 @@ export default {
   },
   computed: {
     checkList() {
-      let checkStatus = this.checkStatus || [];
-      if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(checkStatus)) {
+      let modelValue = this.modelValue || [];
+      if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(modelValue)) {
         console.warn(`[HeyUI WARNING] Checkbox Component: It's not allowed to use v-model with non-array value.`);
       }
-      return utils.isArray(checkStatus) ? checkStatus : [];
+      return utils.isArray(modelValue) ? modelValue : [];
     },
     isSingle() {
       return this.arr.length == 0;

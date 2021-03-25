@@ -1,6 +1,6 @@
-@colorpicker-prefix: ~"@{prefix}colorpicker";
+@colorpicker-prefix: ~'@{prefix}colorpicker';
 
-.@{colorpicker-prefix}{
+.@{colorpicker-prefix} {
   display: inline-block;
   position: relative;
   width: @input-height;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: space-between;
   }
-  &-panel-buttons{
+  &-panel-buttons {
     padding-top: 2px;
     .h-colorpicker-clear-button {
       padding: 5px;
@@ -70,7 +70,8 @@
       background: @gray2-color;
       transform: scale(1.1);
       box-shadow: none;
-      &:hover, &-dragging {
+      &:hover,
+      &-dragging {
         box-shadow: 0 0 2px 0px @gray-color;
       }
     }
@@ -84,13 +85,14 @@
     .h-slider-track {
       height: 10px;
       right: 0 !important;
-      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #FFF 100%);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 100%);
     }
     .h-slider-node {
       background: @gray2-color;
       box-shadow: none;
       transform: scale(1.1);
-      &:hover, &-dragging {
+      &:hover,
+      &-dragging {
         box-shadow: 0 0 2px 0 @gray-color;
       }
     }
@@ -116,7 +118,6 @@
   }
 }
 
-
 .h-color-slider {
   &-container {
     height: 150px;
@@ -125,21 +126,21 @@
   }
   &-bg-white {
     .h-func-fullscreen();
-    background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+    background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   }
   &-bg-black {
     .h-func-fullscreen();
-    background: linear-gradient(0deg,#000,transparent);
+    background: linear-gradient(0deg, #000, transparent);
   }
   @colorNodeWidth: 7px;
   &-node {
     position: absolute;
-    width: @colorNodeWidth * 2;
-    height: @colorNodeWidth * 2;
+    width: (@colorNodeWidth * 2);
+    height: (@colorNodeWidth * 2);
     border-radius: @colorNodeWidth;
     margin-left: -@colorNodeWidth;
     margin-top: -@colorNodeWidth;
-    border: 1px solid #FFF;
+    border: 1px solid #fff;
     cursor: pointer;
     box-shadow: 0 0 2px 0 #000;
   }

@@ -1,5 +1,5 @@
 import TableTd from './tabletd';
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 export default {
   name: 'hTableTr',
@@ -49,12 +49,14 @@ export default {
       }
     }
     return h(
-      'tr', {
+      'tr',
+      {
         on: {
           click: this.clickHandler,
           dblclick: this.dblclickHandler
         }
-      }, tds
+      },
+      tds
     );
   },
   methods: {

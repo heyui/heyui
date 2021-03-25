@@ -1,31 +1,34 @@
-const map = (typeof Map === 'function') ? new Map() : (function () {
-  const keys = [];
-  const values = [];
+const map =
+  typeof Map === 'function'
+    ? new Map()
+    : (function() {
+        const keys = [];
+        const values = [];
 
-  return {
-    has(key) {
-      return keys.indexOf(key) > -1;
-    },
-    get(key) {
-      return values[keys.indexOf(key)];
-    },
-    set(key, value) {
-      if (keys.indexOf(key) === -1) {
-        keys.push(key);
-        values.push(value);
-      }
-    },
-    delete(key) {
-      const index = keys.indexOf(key);
-      if (index > -1) {
-        keys.splice(index, 1);
-        values.splice(index, 1);
-      }
-    }
-  };
-})();
+        return {
+          has(key) {
+            return keys.indexOf(key) > -1;
+          },
+          get(key) {
+            return values[keys.indexOf(key)];
+          },
+          set(key, value) {
+            if (keys.indexOf(key) === -1) {
+              keys.push(key);
+              values.push(value);
+            }
+          },
+          delete(key) {
+            const index = keys.indexOf(key);
+            if (index > -1) {
+              keys.splice(index, 1);
+              values.splice(index, 1);
+            }
+          }
+        };
+      })();
 
-const createEvent = (name) => {
+const createEvent = name => {
   const evt = document.createEvent('Event');
   evt.initEvent(name, true, false);
   return evt;
@@ -138,7 +141,9 @@ function assign(ta) {
       const evt = createEvent('autosize:resized');
       try {
         ta.dispatchEvent(evt);
-      } catch (err) {}
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 

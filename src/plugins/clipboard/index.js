@@ -1,7 +1,7 @@
-import select from 'heyui/src/plugins/select';
-import Message from 'heyui/src/plugins/message';
+import select from 'heyui/plugins/select';
+import Message from 'heyui/plugins/message';
 
-export default function ({ text, showSuccessTip = '复制成功', showFailureTip = '复制失败', successCallback, failureCallback }) {
+export default function({ text, showSuccessTip = '复制成功', showFailureTip = '复制失败', successCallback, failureCallback }) {
   const container = document.body;
   const isRTL = document.documentElement.getAttribute('dir') == 'rtl';
   const fakeElem = document.createElement('textarea');

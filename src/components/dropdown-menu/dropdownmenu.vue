@@ -2,7 +2,7 @@
   <DropdownCustom :button="button" ref="dropdown" @show="showEvent" :delay="delay" @hide="hideEvent" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
   :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
     <slot></slot>
-    <ul slot="content" :class="groupCls" :style="groupStyle">
+    <ul v-slot:content" :class="groupCls" :style="groupStyle>
       <li class="h-dropdownmenu-item"
           :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
           v-for="option of options"
@@ -23,9 +23,9 @@
   </DropdownCustom>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import DropdownCustom from 'heyui/src/components/dropdown-custom';
-import Badge from 'heyui/src/components/badge';
+import config from 'heyui/utils/config';
+import DropdownCustom from 'heyui/components/dropdown-custom';
+import Badge from 'heyui/components/badge';
 
 const prefix = 'h-dropdownmenu';
 

@@ -1,111 +1,105 @@
-@switch-prefix: ~"@{prefix}switch";
 .switchset(@height) {
-  >.@{switch-prefix}-span{
-    min-width: @height*1.8+2px;
+  line-height: @height+2px;
+  > .h-switch-span {
+    min-width: (@height*1.8)+2px;
     height: @height+2px;
     &:after {
       width: @height - 2px;
       height: @height - 2px;
     }
-    &:checked,&[checked] {
-      &:after {
-        left: 100%;
-        margin-left: -@height + 1px;
-      }
+  }
+  &.h-switch-checked .h-switch-span:after {
+    left: 100%;
+    margin-left: -@height + 1px;
+  }
+}
+
+.h-switch {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  .switchset(@switch-hight);
+  .h-switch-span {
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+    font-family: inherit;
+    outline: none;
+    border: 1px solid @gray1-color;
+    border-radius: 16px;
+    box-sizing: border-box;
+    background: @gray1-color;
+    margin-right: 5px;
+    transition: all 0.3s;
+    &:after {
+      background-color: @white-color;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      border: 2px solid #ffffff;
+      border: none;
+      top: 1px;
+      left: 1px;
+    }
+    &:before {
+      background-color: @gray1-color;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    &:after,
+    &:before {
+      content: ' ';
+      position: absolute;
+      border-radius: 15px;
+      transition: all 0.3s;
+    }
+
+    .h-switch-inner {
+      font-size: @font-size-mini;
+      line-height: @switch-hight;
+      height: @switch-hight;
+      margin-right: 8px;
+      margin-left: 30px;
+      color: @dark2-color;
+      position: relative;
+      vertical-align: 2px;
     }
   }
-  line-height: @height+2px;
-}
-.@{switch-prefix} .@{switch-prefix}-span {
-  display: inline-block;
-  margin: 0px;
-  position: relative;
-  font-family: inherit;
-  outline: none;
-  border: 1px solid @gray1-color;
-  border-radius: 16px;
-  box-sizing: border-box;
-  background: @gray1-color;
-  float: left;
-  margin-right: 5px;
-  transition: all 0.3s; 
-  &:after {
-    background-color: @white-color;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
-    border: 2px solid #ffffff;
-    border: none;
-    top: 1px;
-    left: 1px;
-  }
-  &:before {
-    background-color: @gray1-color;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-  &:after,
-  &:before {
-    content: " ";
-    position: absolute;
-    border-radius: 15px;
-    transition: all 0.3s;
+  > .h-switch-text {
+    display: inline-block;
   }
 
-  .@{switch-prefix}-inner {
-    font-size: @font-size-mini;
-    line-height: @switch-hight;
-    height: @switch-hight;
-    margin-right: 8px;
-    margin-left: 30px;
-    color: @dark2-color;
-    position: relative;
-    vertical-align: 2px;
-  }
-
-  &:checked,&[checked] {
+  &&-checked .h-switch-span {
     border-color: @primary-color;
     background: @primary-color;
     &:before {
       transform: scale(0);
     }
 
-    .@{switch-prefix}-inner {
+    .h-switch-inner {
       margin-right: 30px;
       margin-left: 8px;
-      color: #FFF;
-    }
-
-    &[disabled]{
-      background-color: @disabled-background-color;
+      color: #fff;
     }
   }
-
-  &[disabled]{
+  &&-disabled .h-switch-span {
     border-color: @disabled-border-color;
     background-color: @disabled-background-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
-    &:after{
+    &:after {
       border-color: @white-color;
     }
     &:before {
       background-color: @disabled-background-color;
     }
   }
-}
-
-.@{switch-prefix}{
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  >.h-switch-text{
-    display: inline-block;
+  &.h-switch-disabled.h-switch-checked .h-switch-span {
+    background-color: @disabled-background-color;
   }
-  .switchset(@switch-hight);
-  &.@{switch-prefix}-small {
+  &.h-switch-small {
     .switchset(@min-switch-height);
-    .@{switch-prefix}-inner {
+    .h-switch-inner {
       display: none;
     }
   }

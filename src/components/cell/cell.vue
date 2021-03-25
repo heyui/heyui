@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-col';
 
@@ -35,7 +35,7 @@ export default {
 
       // let noOtherWidth = width==undefined&&this.flex == undefined;
       let lastSize = null;
-      for (let size of [ 'xl', 'lg', 'md', 'sm', 'xs' ]) {
+      for (let size of ['xl', 'lg', 'md', 'sm', 'xs']) {
         if (utils.isNumber(this[size])) {
           lastSize = this[size];
           classList.push(`${prefixCls}-${size}-${this[size]}`);

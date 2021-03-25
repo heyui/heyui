@@ -1,79 +1,84 @@
-@radio-prefix: ~"@{prefix}radio";
-.@{radio-prefix}>label>.h-radio-icon {
-  -webkit-appearance: none;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 0px;
-  border: 1px solid @gray1-color;
-  background: #FFF;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
-  vertical-align: -3px;
-  overflow: hidden;
-  margin-right: 5px;
-  transition: all linear @transition-time;
-  box-sizing: border-box;
-  font-family: inherit;
-  outline: none;
-  &:after {
-    content: "";
-    display: block;
-    background-color: @primary-color;
-    transition: all linear @transition-time;
-    transform: scale(0);
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    position: relative;
-    left: 3px;
-    top: 3px;
-  }
-  &:checked,&[checked] {
-    border-color: @primary-color;
-    &:after {
-      transform: scale(1);
+@radio-prefix: ~'@{prefix}radio';
+
+.@{radio-prefix} {
+  > .h-radio-label {
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+    height: @input-height;
+    line-height: @input-height;
+    display: inline-block;
+    &:hover > .h-radio-icon {
+      border-color: @primary-color;
+    }
+    > .h-radio-icon {
+      -webkit-appearance: none;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 0px;
+      border: 1px solid @gray1-color;
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      position: relative;
+      vertical-align: -3px;
+      overflow: hidden;
+      margin-right: 5px;
+      transition: all linear @transition-time;
+      box-sizing: border-box;
+      font-family: inherit;
+      outline: none;
+      &:after {
+        content: '';
+        display: block;
+        background-color: @primary-color;
+        transition: all linear @transition-time;
+        transform: scale(0);
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        position: relative;
+        left: 3px;
+        top: 3px;
+      }
+      &:hover {
+        border-color: @primary-color;
+      }
+    }
+    &.h-radio-checked > .h-radio-icon {
+      border-color: @primary-color;
+      &:after {
+        transform: scale(1);
+      }
     }
   }
-  &:hover {
-    border-color: @primary-color;
-  }
-  &[disabled]{
+  &.h-radio-disabled > .h-radio-label,
+  > .h-radio-label.h-radio-item-disabled {
+    color: @disabled-color;
     pointer-events: painted;
     cursor: @disabled-cursor;
-    border-color: @disabled-border-color;
-    background-color: @disabled-background-color;
-    &:checked,&[checked] {
+    &:hover > .h-radio-icon {
+      border-color: @disabled-border-color;
+    }
+
+    > .h-radio-icon {
+      pointer-events: painted;
+      cursor: @disabled-cursor;
+      border-color: @disabled-border-color;
       background-color: @disabled-background-color;
-       &:after {
+    }
+
+    &.h-radio-checked > .h-radio-icon {
+      background-color: @disabled-background-color;
+      &:after {
         background-color: @disabled-border-color;
       }
     }
   }
 }
 
-.@{radio-prefix} {
+.h-radio-single {
   display: inline-block;
-  >label {
-    margin-right: 15px;
-    &:last-child{
-      margin-right: 0;
-    }
-    height: @input-height;
-    line-height: @input-height;
-    display: inline-block;
-    &:hover>.h-radio-icon{
-      border-color: @primary-color;
-    }
-  }
-
-  &&-disabled>label{
-    color: @disabled-color;
-    pointer-events: painted;
-    cursor: @disabled-cursor;
-    &:hover>.h-radio-icon{
-      border-color: @disabled-border-color;
-    }
-  }
 }

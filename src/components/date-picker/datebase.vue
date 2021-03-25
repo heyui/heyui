@@ -5,57 +5,53 @@
         <i class="h-icon-left"></i>
         <i class="h-icon-left"></i>
       </span>
-      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view=='date'||view=='week'">
+      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view == 'date' || view == 'week'">
         <i class="h-icon-left"></i>
       </span>
       <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
-        {{nowView.year()}}{{'h.date.header.year'
-        | hlang}}
+        {{ nowView.year() }}{{ 'h.date.header.year' | hlang }}
       </span>
       <span class="h-date-header-show" v-if="view == 'year'">
-        {{nowView.year()-6}}&nbsp;&nbsp;-&nbsp;&nbsp;{{nowView.year()+5}}{{'h.date.header.year'
-        | hlang}}
+        {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }}{{ 'h.date.header.year' | hlang }}
       </span>
       <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
-        {{months[nowView.month()
-        - 1]}}
+        {{ months[nowView.month() - 1] }}
       </span>
       <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
-        {{nowView.date()}}{{'h.date.header.day'
-        | hlang}}
+        {{ nowView.date() }}{{ 'h.date.header.day' | hlang }}
       </span>
       <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
         <i class="h-icon-right"></i>
         <i class="h-icon-right"></i>
       </span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view=='date'||view=='week'">
+      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view == 'date' || view == 'week'">
         <i class="h-icon-right"></i>
       </span>
     </div>
-    <div class="h-date-header" v-show="view=='minute'">
+    <div class="h-date-header" v-show="view == 'minute'">
       <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)">
         <i class="h-icon-left"></i>
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('hour')">{{nowView | hoursString}}</span>
+      <span class="h-date-header-show" @click.stop="changeView('hour')">{{ nowView | hoursString }}</span>
       <span class="h-date-month-right-picker" @click.stop="updateView('hour', 1)">
         <i class="h-icon-right"></i>
       </span>
     </div>
     <div :class="dateBodyCls">
-      <div class="h-date-body-weeks" v-if="view=='date'">
-        <span v-for="w of weeks" :key="w">{{w}}</span>
+      <div class="h-date-body-weeks" v-if="view == 'date'">
+        <span v-for="w of weeks" :key="w">{{ w }}</span>
       </div>
       <div class="h-date-body-pickers">
-        <span v-for="d of dates" :key="d.string" :string="d.string" :class="getDateCls(d)" @click.stop="chooseDate(d)">{{d.show}}</span>
+        <span v-for="d of dates" :key="d.string" :string="d.string" :class="getDateCls(d)" @click.stop="chooseDate(d)">{{ d.show }}</span>
       </div>
     </div>
   </div>
 </template>
 <script>
 import manba from 'manba';
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Locale from 'heyui/src/mixins/locale';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 
 const dateprefix = 'h-date';
 
@@ -229,7 +225,8 @@ export default {
         isSelected = this.value.substring(0, length) == d.string.substring(0, length);
       }
       if (this.range && utils.isObject(this.value) && !!this.value.start && !!this.rangeEnd) {
-        isRangeSelected = (this.valueTime.start < datetime && this.rangeEndTime > datetime) || (this.valueTime.start > datetime && this.rangeEndTime < datetime);
+        isRangeSelected =
+          (this.valueTime.start < datetime && this.rangeEndTime > datetime) || (this.valueTime.start > datetime && this.rangeEndTime < datetime);
       }
       return {
         'h-date-not-now-day': !d.isNowDays,
@@ -325,7 +322,7 @@ export default {
           start: null,
           end: null
         };
-      };
+      }
       return {
         start: this.value.start ? manba(this.value.start, this.format).time() : null,
         end: this.value.end ? manba(this.value.end, this.format).time() : null

@@ -1,50 +1,52 @@
 <template>
   <div class="h-category-modal">
-    <header class="relative" v-if="params.title">{{params.title}}</header>
+    <header class="relative" v-if="params.title">{{ params.title }}</header>
     <div>
       <div class="h-panel-bar">
         <div class="h-category-modal-multiple-tags" v-if="param.multiple">
-          <span v-for="tag of param.objects" :key="tag.key"><span>{{tag.title}}</span><i class="h-icon-close-min"
-              @click.stop="remove(tag)"></i></span>
+          <span v-for="tag of param.objects" :key="tag.key"
+            ><span>{{ tag.title }}</span
+            ><i class="h-icon-close-min" @click.stop="remove(tag)"></i
+          ></span>
         </div>
         <div v-else class="h-category-modal-single-tag">
-          <span v-if="param.object">{{param.object.title}}</span>
+          <span v-if="param.object">{{ param.object.title }}</span>
         </div>
         <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
       <Tabs v-if="searchText == ''" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
         <Row :space="10">
-          <template v-if="searchText==''">
+          <template v-if="searchText == ''">
             <Cell :width="8" v-for="data of list" :key="data.key">
-            <div class="text-ellipsis h-category-item" @click="openNew(data)">
-              <i class="h-icon-loading" v-if="data.status.loading"></i>
-              <Checkbox v-else-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
-                class="h-split"></i>{{data.title}} <span v-if="data.children.length">({{data.children.length}})</span>
-            </div>
+              <div class="text-ellipsis h-category-item" @click="openNew(data)">
+                <i class="h-icon-loading" v-if="data.status.loading"></i>
+                <Checkbox v-else-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox
+                ><i class="h-split"></i>{{ data.title }} <span v-if="data.children.length">({{ data.children.length }})</span>
+              </div>
             </Cell>
           </template>
           <Cell v-else :width="8" v-for="data of searchlist" :key="data.key">
-          <div class="text-ellipsis h-category-item" @click.stop="change(data)">
-            <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i
-              class="h-split"></i>{{data.title}}
-          </div>
+            <div class="text-ellipsis h-category-item" @click.stop="change(data)">
+              <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i
+              >{{ data.title }}
+            </div>
           </Cell>
         </Row>
       </div>
     </div>
     <footer>
-      <button class="h-btn h-btn-primary" type="button" @click="confirm">{{'h.common.confirm' | hlang}}</button>
-      <button class="h-btn" type="button" @click="close">{{'h.common.cancel' | hlang}}</button>
+      <button class="h-btn h-btn-primary" type="button" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
+      <button class="h-btn" type="button" @click="close">{{ 'h.common.cancel' | hlang }}</button>
     </footer>
   </div>
 </template>
 <script>
-import utils from 'heyui/src/utils/utils';
-import Locale from 'heyui/src/mixins/locale';
-import Message from 'heyui/src/plugins/message';
-import Search from 'heyui/src/components/search';
-import Checkbox from 'heyui/src/components/checkbox';
+import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
+import Message from 'heyui/plugins/message';
+import Search from 'heyui/components/search';
+import Checkbox from 'heyui/components/checkbox';
 const topMenu = '-------';
 
 export default {
@@ -59,10 +61,12 @@ export default {
       params: this.param.param,
       list: this.param.categoryDatas,
       searchText: '',
-      tabs: [{
-        title: this.t('h.categoryModal.total'),
-        key: topMenu
-      }],
+      tabs: [
+        {
+          title: this.t('h.categoryModal.total'),
+          key: topMenu
+        }
+      ],
       tab: topMenu,
       tabIndex: 0
     };
@@ -73,7 +77,7 @@ export default {
       if (this.param.multiple) {
         return this.param.objects.some(item => item.key == data.key);
       } else {
-        return this.param.object ? (this.param.object.key == data.key) : false;
+        return this.param.object ? this.param.object.key == data.key : false;
       }
     },
     change(data, event) {
@@ -86,9 +90,11 @@ export default {
       }
       if (this.param.multiple) {
         if (this.param.objects.length >= this.param.limit && !this.param.objects.some(item => item.key === data.key)) {
-          Message.error(this.t('h.categoryModal.limitWords', {
-            size: this.param.limit
-          }));
+          Message.error(
+            this.t('h.categoryModal.limitWords', {
+              size: this.param.limit
+            })
+          );
           return;
         }
         utils.toggleValueByKey(this.param.objects, 'key', data);
@@ -108,7 +114,8 @@ export default {
           data: data,
           callback: () => {
             this.openNew(data);
-          } });
+          }
+        });
       } else {
         this.change(data);
       }
@@ -155,5 +162,4 @@ export default {
     }
   }
 };
-
 </script>

@@ -1,14 +1,17 @@
 <template>
   <div :class="cascaderCls" :disabled="disabled">
     <div class="h-cascader-show">
-      <div v-if="multiple&&objects.length" class="h-cascader-multiple-tags">
-        <span v-for="(obj, index) of objects" :key="index+''+obj.key"><span>{{obj.title}}</span><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i></span>
+      <div v-if="multiple && objects.length" class="h-cascader-multiple-tags">
+        <span v-for="(obj, index) of objects" :key="index + '' + obj.key"
+          ><span>{{ obj.title }}</span
+          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+        ></span>
       </div>
-      <div v-else-if="!multiple&&object" class="h-cascader-value-single">
-        <span>{{object.title}}</span>
-        <i class="h-icon-close text-hover" v-if="object&&!disabled" @mousedown="clear"></i>
+      <div v-else-if="!multiple && object" class="h-cascader-value-single">
+        <span>{{ object.title }}</span>
+        <i class="h-icon-close text-hover" v-if="object && !disabled" @mousedown="clear"></i>
       </div>
-      <div v-else class="h-cascader-placeholder">{{showPlaceholder}}</div>
+      <div v-else class="h-cascader-placeholder">{{ showPlaceholder }}</div>
     </div>
     <div :class="groupCls">
       <ul class="h-cascader-ul">
@@ -21,17 +24,17 @@
           :status="status"
           @trigger="trigger"
           :level="0"
-      ></CascaderItem>
+        ></CascaderItem>
       </ul>
     </div>
   </div>
 </template>
 <script>
-import config from 'heyui/src/utils/config';
-import utils from 'heyui/src/utils/utils';
-import Dropdown from 'heyui/src/plugins/dropdown';
-import Locale from 'heyui/src/mixins/locale';
-import CascaderItem from 'heyui/src/components/cascader/cascader-item';
+import config from 'heyui/utils/config';
+import utils from 'heyui/utils/utils';
+import Dropdown from 'heyui/plugins/dropdown';
+import Locale from 'heyui/mixins/locale';
+import CascaderItem from 'heyui/components/cascader/cascader-item';
 
 const prefix = 'h-cascader';
 
@@ -95,7 +98,7 @@ export default {
         }
       }
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initCascaderDatas();
     }
   },
@@ -117,9 +120,7 @@ export default {
         });
       });
     },
-    trigger(params) {
-
-    },
+    trigger(params) {},
     remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
       this.setvalue();
@@ -153,9 +154,11 @@ export default {
     },
     dispose() {
       if (this.multiple) {
-        return this.objects.map(item => this.type == 'key' ? item.key : item.value).filter(item => {
-          return item !== undefined;
-        });
+        return this.objects
+          .map(item => (this.type == 'key' ? item.key : item.value))
+          .filter(item => {
+            return item !== undefined;
+          });
       } else if (this.object) {
         return this.type == 'key' ? this.object.key : this.object.value;
       }
@@ -237,8 +240,7 @@ export default {
     },
     param() {
       if (this.config) {
-        return utils.extend({}, config.getOption('cascader.default'), config.getOption(
-          `cascader.configs.${this.config}`), this.option);
+        return utils.extend({}, config.getOption('cascader.default'), config.getOption(`cascader.configs.${this.config}`), this.option);
       } else {
         return utils.extend({}, config.getOption('cascader.default'), this.option);
       }

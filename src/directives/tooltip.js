@@ -1,9 +1,9 @@
-import Tooltip from 'heyui/src/plugins/tooltip';
-import utils from 'heyui/src/utils/utils';
+import Tooltip from 'heyui/plugins/tooltip';
+import utils from 'heyui/utils/utils';
 
-const getContent = function (el, vnode) {
+const getContent = function(el, vnode) {
   let param = {};
-  let attrs = vnode.data.attrs || {};
+  let attrs = vnode.props || {};
   if (attrs.content === '') return false;
   if (attrs.content) {
     param.content = attrs.content;
@@ -16,10 +16,10 @@ const getContent = function (el, vnode) {
   }
 
   let ref = attrs['ref-el'];
-  if (!vnode.context.$el.querySelector) {
+  if (!vnode.el.querySelector) {
     return false;
   }
-  let refNode = vnode.context.$el.querySelector(`[tmpl=${ref}]`);
+  let refNode = vnode.el.querySelector(`[tmpl=${ref}]`);
   if (refNode) {
     param.content = refNode;
     param.html = true;
@@ -33,13 +33,14 @@ const getContent = function (el, vnode) {
   return param;
 };
 
-const init = function (el, binding, vnode) {
+const init = function(el, binding, vnode) {
   if (binding.value === false) {
     return;
   }
   let param = getContent(el, vnode);
   if (param == false) return;
-  let attrs = vnode.data.attrs || {};
+  console.log(vnode);
+  let attrs = vnode.props || {};
   param.container = document.body;
   param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);
   el.tooltip = new Tooltip(el, param);

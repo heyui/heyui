@@ -7,12 +7,12 @@
  *
  */
 
-import dictMapping from 'heyui/src/filters/dictmapping';
-import hlang from 'heyui/src/filters/hlang';
+import dictMapping from 'heyui/filters/dictmapping';
+import hlang from 'heyui/filters/hlang';
 
-import config from 'heyui/src/utils/config';
-import locale from 'heyui/src/locale';
-import tooltip from 'heyui/src/directives/tooltip';
+import config from 'heyui/utils/config';
+import locale from 'heyui/locale';
+import tooltip from 'heyui/directives/tooltip';
 
 const directives = {
   tooltip
@@ -20,7 +20,7 @@ const directives = {
 
 const filters = { dictMapping, hlang };
 
-const install = function (app, opts = {}) {
+const install = function(app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);

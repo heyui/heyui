@@ -1,9 +1,14 @@
 <template>
-  <li class="h-tree-li" :class="{'h-tree-li-opened':data.status.opened}">
+  <li class="h-tree-li" :class="{ 'h-tree-li-opened': data.status.opened }">
     <div
       class="h-tree-show"
       @click="clickShow"
-      :class="{'h-tree-show-disabled':data.status.disabled, 'h-tree-show-choose': data.status.choose, 'h-tree-show-indeterminate': data.status.indeterminate, 'h-tree-show-selected': status.selected == data.key}"
+      :class="{
+        'h-tree-show-disabled': data.status.disabled,
+        'h-tree-show-choose': data.status.choose,
+        'h-tree-show-indeterminate': data.status.indeterminate,
+        'h-tree-show-selected': status.selected == data.key
+      }"
       v-show="!data.status.hide"
     >
       <span v-for="l in level" :key="l" class="h-tree-show-space"></span>
@@ -16,25 +21,25 @@
             <i class="h-icon-loading"></i>
           </template>
         </span>
-        <span @click.stop="toggleTree()" v-else-if="data.children&&data.children.length>0">
+        <span @click.stop="toggleTree()" v-else-if="data.children && data.children.length > 0">
           <i class="h-icon-angle-right"></i>
         </span>
       </span>
       <Checkbox
         :disabled="data.status.disabled"
-        v-if="multiple&&data.status.checkable"
+        v-if="multiple && data.status.checkable"
         v-model="data.status.choose"
         :indeterminate="data.status.indeterminate"
         @input="choose(data)"
       ></Checkbox>
-      <div class="h-tree-show-desc" :class="{'selected': status.selected == data.key}" @click="select">
+      <div class="h-tree-show-desc" :class="{ selected: status.selected == data.key }" @click="select">
         <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
-        <span v-if="data.title != null">{{data.title}}</span>
-        <span v-else>{{'h.common.empty' | hlang}}</span>
+        <span v-if="data.title != null">{{ data.title }}</span>
+        <span v-else>{{ 'h.common.empty' | hlang }}</span>
       </div>
       <TreeSlot :data="data.value"></TreeSlot>
     </div>
-    <ul v-if="data.children&&data.children.length>0" class="h-tree-ul">
+    <ul v-if="data.children && data.children.length > 0" class="h-tree-ul">
       <hTreeItem
         v-for="child of data.children"
         :key="child.key"
@@ -46,14 +51,14 @@
         @trigger="trigger"
         :toggleOnSelect="toggleOnSelect"
         :selectOnClick="selectOnClick"
-        :level="level+1"
+        :level="level + 1"
       ></hTreeItem>
     </ul>
   </li>
 </template>
 <script>
 import TreeSlot from './treeslot';
-import Checkbox from 'heyui/src/components/checkbox';
+import Checkbox from 'heyui/components/checkbox';
 
 export default {
   name: 'hTreeItem',

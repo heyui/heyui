@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonCls" type="button" :disabled="!!this.disabled" @click="trigger">
+  <button :class="buttonCls" type="button" :disabled="!!this.disabled">
     <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
@@ -47,23 +47,20 @@ export default {
     return {};
   },
   methods: {
-    trigger(event) {
-      if (this.stop) {
-        event.stopPropagation();
-      }
-      if (this.preventDefault) {
-        event.preventDefault();
-      }
-      this.$emit('click', event);
-    }
+    // trigger(event) {
+    //   if (this.stop) {
+    //     event.stopPropagation();
+    //   }
+    //   if (this.preventDefault) {
+    //     event.preventDefault();
+    //   }
+    //   this.$emit('click', event);
+    // }
   },
   computed: {
     hasText() {
       let slot = this.$slots.default;
-      if (slot && slot.length > 0) {
-        return true;
-      }
-      return false;
+      return !!slot;
     },
     buttonCls() {
       return {

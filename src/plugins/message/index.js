@@ -1,5 +1,5 @@
-import Notify from 'heyui/src/plugins/notify';
-import utils from 'heyui/src/utils/utils';
+import Notify from 'heyui/plugins/notify';
+import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-message';
 const iconPrefixCls = 'h-icon';
@@ -72,7 +72,7 @@ message.loading = (content, timeout, onClose) => {
   return Message(content, timeout, 'loading', onClose);
 };
 
-message.config = (options) => {
+message.config = options => {
   if (options.timeout != undefined) {
     Default.timeout = options.timeout;
   }

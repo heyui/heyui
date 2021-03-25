@@ -1,10 +1,13 @@
-import autosize from 'heyui/src/plugins/autosize';
+import autosize from 'heyui/plugins/autosize';
 
 export default {
-  mounted(el, binding, vnode) {
+  mounted(el) {
     autosize(el);
   },
+  updated(el) {
+    autosize.update(el);
+  },
   beforeUnmount(el) {
-    autosize.destory(el);
+    autosize.destroy(el);
   }
 };
