@@ -96,7 +96,7 @@ export default {
   },
   mounted() {
   },
-  beforeDestroy() {
+  beforeUnmount() {
   },
   methods: {
     onclick(event, option) {

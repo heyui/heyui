@@ -1,16 +1,25 @@
 <template>
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span :style="textStyle" :class="textClass" @click="textClick" v-tooltip="useTooltip&&isHide" :theme="tooltipTheme" :placement="placement" :content="text">
-      <span class="h-text-ellipsis-limit-text" :key="keyIndex">{{text}}</span><span class="h-text-ellipsis-more" v-show='oversize'>{{more}}<slot name="more"></slot></span>
+    <span
+      :style="textStyle"
+      :class="textClass"
+      @click="textClick"
+      v-tooltip="useTooltip && isHide"
+      :theme="tooltipTheme"
+      :placement="placement"
+      :content="text"
+    >
+      <span class="h-text-ellipsis-limit-text" :key="keyIndex">{{ text }}</span
+      ><span class="h-text-ellipsis-more">{{ more }}<slot name="more"></slot></span>
     </span>
     <slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
 </template>
 <script>
-
 export default {
   name: 'hTextEllipsis',
+  emits: ['textClick', 'hide', 'show'],
   props: {
     text: String,
     height: Number,
@@ -31,7 +40,6 @@ export default {
   data() {
     return {
       keyIndex: 0,
-      oversize: false,
       isHide: false
     };
   },
@@ -51,16 +59,18 @@ export default {
   },
   methods: {
     init() {
-      this.oversize = false;
       this.keyIndex += 1;
       let more = this.$el.querySelector('.h-text-ellipsis-more');
       more.style.display = 'none';
       if (this.isLimitHeight) {
         this.limitShow();
+      } else {
+        this.$emit('show');
+        this.isHide = false;
       }
     },
     textClick() {
-      this.$emit('click');
+      this.$emit('textClick');
     },
     limitShow() {
       this.$nextTick(() => {

@@ -21,7 +21,8 @@ export default {
   computed: {
     classes() {
       return [
-        `${prefixCls}`, {
+        `${prefixCls}`,
+        {
           [`${prefixCls}-pending`]: this.pending,
           [`${prefixCls}-time`]: this.time
         }

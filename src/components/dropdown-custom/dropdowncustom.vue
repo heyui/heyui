@@ -93,7 +93,7 @@ export default {
       }
     }
   },
-  beforeDestroy() {
+  beforeUnmount() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';

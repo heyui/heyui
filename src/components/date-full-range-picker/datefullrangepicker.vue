@@ -130,7 +130,7 @@ export default {
   beforeMount() {
     this.parse(this.value);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     let el = this.el;
     if (el) {
       el.style.display = 'none';

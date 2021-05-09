@@ -1,8 +1,8 @@
-@switchlist-prefix: ~"@{prefix}switchlist";
+@switchlist-prefix: ~'@{prefix}switch-list';
 .@{switchlist-prefix} {
   display: inline-block;
   vertical-align: middle;
-  >span {
+  > .h-switch-list-span {
     padding: 8px 15px;
     border-radius: 0;
     color: inherit;
@@ -11,10 +11,10 @@
     box-sizing: border-box;
     cursor: pointer;
     transition: all @transition-time;
-    background-color: #FFF;
+    background-color: #fff;
     border: @border;
     float: left;
-    +span {
+    + span {
       margin-left: -1px;
     }
     position: relative;
@@ -28,21 +28,21 @@
     &:last-of-type {
       border-radius: 0 @border-radius @border-radius 0;
     }
-    &[checked] {
+    &.h-switch-list-span-checked {
       background-color: @primary-color;
       border-color: darken(@primary-color, 2%);
       color: @white-color;
       z-index: 3;
     }
-    >i {
+    > i {
       margin-right: 5px;
     }
   }
-  &-small>span {
+  &&-small > .h-switch-list-span {
     padding: 5px 8px;
   }
-  &[disabled] {
-    >span {
+  &&-disabled {
+    > .h-switch-list-span {
       pointer-events: painted;
       cursor: @disabled-cursor;
       border-color: @disabled-border-color;

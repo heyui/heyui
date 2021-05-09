@@ -39,7 +39,6 @@ const init = function(el, binding, vnode) {
   }
   let param = getContent(el, vnode);
   if (param == false) return;
-  console.log(vnode);
   let attrs = vnode.props || {};
   param.container = document.body;
   param = utils.initParam(param, attrs, ['placement', 'theme', 'delay', 'trigger']);

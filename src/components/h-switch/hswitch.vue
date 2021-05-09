@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'HSwitch',
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     disabled: {
       type: Boolean,

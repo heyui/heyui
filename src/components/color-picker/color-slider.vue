@@ -28,15 +28,17 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let draggable = new Draggable(this.$el.querySelector('.h-color-slider-node'), {
+      this.draggable = new Draggable(this.$el.querySelector('.h-color-slider-node'), {
         start: this.setvalue,
         drag: this.setvalue,
         container: this.$el.querySelector('.h-color-slider-container')
       });
-      this.$once('hook:beforeDestroy', function() {
-        draggable.destroy();
-      });
     });
+  },
+  beforeUnmount() {
+    if (this.dropdown) {
+      this.dropdown.destory();
+    }
   },
   methods: {
     setvalue(event) {

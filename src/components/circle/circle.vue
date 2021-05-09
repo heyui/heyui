@@ -1,6 +1,6 @@
 <template>
   <div class="h-circle" :style="circleStyle">
-    <svg :width="circleSize" :height="circleSize" :viewBox="`0 0 ${circleSize*2} ${circleSize*2}`">
+    <svg :width="circleSize" :height="circleSize" :viewBox="`0 0 ${circleSize * 2} ${circleSize * 2}`">
       <path :d="pathString" stroke="#f3f3f3" :stroke-width="strokeWidth" fill-opacity="0"></path>
       <path :d="pathString" stroke-linecap="round" :stroke="color" :stroke-width="strokeWidth" fill-opacity="0" :style="pathStyle"></path>
     </svg>
@@ -10,7 +10,6 @@
   </div>
 </template>
 <script>
-
 export default {
   name: 'hCircle',
   props: {
@@ -41,7 +40,7 @@ export default {
       };
     },
     circleSize() {
-      return this.size + (this.strokeWidth / 2);
+      return this.size + this.strokeWidth / 2;
     },
     radius() {
       return this.circleSize - this.strokeWidth / 2;
@@ -57,8 +56,8 @@ export default {
     pathStyle() {
       return {
         'stroke-dasharray': `${this.len}px ${this.len}px`,
-        'stroke-dashoffset': `${((100 - Math.min(this.percent, 100)) / 100 * this.len)}px`,
-        'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
+        'stroke-dashoffset': `${((100 - Math.min(this.percent, 100)) / 100) * this.len}px`,
+        transition: 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease'
       };
     }
   }

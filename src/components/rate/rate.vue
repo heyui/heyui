@@ -1,5 +1,8 @@
 <template>
-  <div class="h-rate" :readonly="readonly" @mouseleave="mouseleave()"><span v-for="n in 5" :key="n" @click="setvalue(n)" :class="starCls(n)" @mouseover="mouseover(n)"><i :class="iconClass"></i></span><span v-if="showText" class="h-rate-value">{{value}}</span></div>
+  <div :class="{ 'h-rate': true, 'h-rate-readonly': readonly }" @mouseleave="mouseleave()">
+    <span v-for="n in 5" :key="n" @click="setvalue(n)" :class="starCls(n)" @mouseover="mouseover(n)"><i :class="iconClass"></i></span
+    ><span v-if="showText" class="h-rate-value">{{ modelValue }}</span>
+  </div>
 </template>
 <script>
 export default {
@@ -17,7 +20,7 @@ export default {
       type: String,
       default: 'h-icon-star-on'
     },
-    value: {
+    modelValue: {
       type: [String, Number],
       default: 0
     }
@@ -31,9 +34,10 @@ export default {
     setvalue(value) {
       if (this.readonly) return;
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
-      event.initCustomEvent('setvalue', true, true, this.value);
+      event.initCustomEvent('setvalue', true, true, this.modelValue);
       this.$el.dispatchEvent(event);
     },
     mouseover(n) {
@@ -45,19 +49,19 @@ export default {
       this.mouseValue = false;
     },
     starCls(n) {
-      let v = this.mouseValue || Number(this.value);
+      let v = this.mouseValue || Number(this.modelValue);
       return {
-        'h-rate-on': v >= n,
-        'h-rate-off': v < n
+        'h-rate-star': true,
+        'h-rate-star-on': v >= n,
+        'h-rate-star-off': v < n
       };
     }
   },
   filters: {
-    isInclude(key, value) {
-      return value.indexOf(key) > -1;
+    isInclude(key, modelValue) {
+      return modelValue.indexOf(key) > -1;
     }
   },
-  computed: {
-  }
+  computed: {}
 };
 </script>

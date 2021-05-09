@@ -40,7 +40,7 @@ export default {
       this.refresh();
     });
   },
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.trigger, true);
     window.removeEventListener('resize', this.trigger);
   },
@@ -92,8 +92,10 @@ export default {
         // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
         // log('top isFixed', ( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom)));
         // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < cFixedOffsetBottom && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))
-        if (containerPosition.top <= this.cFixedOffsetTop - this.offsetTop && containerPosition.bottom >= position.height +
-            this.cFixedOffsetTop + this.cFixedOffsetBottom) {
+        if (
+          containerPosition.top <= this.cFixedOffsetTop - this.offsetTop &&
+          containerPosition.bottom >= position.height + this.cFixedOffsetTop + this.cFixedOffsetBottom
+        ) {
           this.isFixed = true;
           this.isAbsolute = false;
           this.fixPosition = 'top';
@@ -110,7 +112,6 @@ export default {
         }
 
         if (original != this.isFixed) {
-          this.$emit('onchange', this.isFixed);
           this.$emit('change', this.isFixed);
         }
       } else {
@@ -123,7 +124,7 @@ export default {
             }
           }
           if (!this.isFixed && this.offsetBottom != undefined) {
-            if (window.innerHeight < (position.top + el.clientHeight + this.offsetBottom)) {
+            if (window.innerHeight < position.top + el.clientHeight + this.offsetBottom) {
               this.isFixed = true;
               this.fixPosition = 'bottom';
             }
@@ -136,7 +137,7 @@ export default {
             }
           }
           if (this.isFixed && this.offsetBottom != undefined) {
-            if (this.fixPosition == 'bottom' && window.innerHeight > (position.top + el.clientHeight + this.offsetBottom)) {
+            if (this.fixPosition == 'bottom' && window.innerHeight > position.top + el.clientHeight + this.offsetBottom) {
               this.isFixed = false;
             }
           }

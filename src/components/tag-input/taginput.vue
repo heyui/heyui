@@ -27,6 +27,7 @@ const prefix = 'h-taginput';
 export default {
   name: 'hTagInput',
   mixins: [Locale],
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     readonly: {
       type: Boolean,
@@ -55,7 +56,7 @@ export default {
       type: Number,
       default: 10000
     },
-    value: [Array, String, Number]
+    modelValue: [Array, String, Number]
   },
   data() {
     return {
@@ -99,6 +100,7 @@ export default {
         }
       }
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
@@ -121,12 +123,12 @@ export default {
     },
     values() {
       if (this.type == 'Array') {
-        return this.value || [];
+        return this.modelValue || [];
       } else {
-        if (utils.isNull(this.value) || this.value === '') {
+        if (utils.isNull(this.modelValue) || this.modelValue === '') {
           return [];
         }
-        return String(this.value).split(this.split);
+        return String(this.modelValue).split(this.split);
       }
     }
   }

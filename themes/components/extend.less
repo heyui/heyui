@@ -1,22 +1,12 @@
-
-.h-func-generate-color(@color){
+.h-func-generate-color(@color) {
   @var-color: ~'@{color}-color';
-  .@{var-color}{
+  .@{var-color} {
     color: @@var-color !important;
   }
-  .bg-@{var-color}{
+  .bg-@{var-color} {
     background-color: @@var-color !important;
   }
 }
-
-ul, ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  box-sizing: border-box;
-}
-
 
 .h-func-generate-color(red);
 .h-func-generate-color(blue);
@@ -37,20 +27,20 @@ ul, ol {
 .h-func-generate-color(primary1);
 .h-func-generate-color(primary2);
 
-.link{
+.link {
   .h-func-link();
 }
 
-.clearfix{
+.clearfix {
   .h-func-clearfix();
-};
+}
 
 .flex {
   display: flex;
 }
 
 .flex-column {
-  flex-direction: column
+  flex-direction: column;
 }
 
 .flex1 {
@@ -70,7 +60,7 @@ ul, ol {
   position: relative;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
@@ -89,7 +79,6 @@ ul, ol {
   transform: translate(0%, -50%);
 }
 
-
 .overflow-y {
   overflow-y: auto;
 }
@@ -98,15 +87,15 @@ ul, ol {
   float: right;
 }
 
-.text-hover{
+.text-hover {
   .h-func-text-hover();
 }
 
-.dark-text-hover{
+.dark-text-hover {
   .h-func-dark-text-hover();
 }
 
-.generate-text-align(@dir){
+.generate-text-align(@dir) {
   .text-@{dir} {
     text-align: @dir !important;
   }
@@ -115,16 +104,6 @@ ul, ol {
 .generate-text-align(left);
 .generate-text-align(center);
 .generate-text-align(right);
-
-.bottom-line {
-  border-bottom: @border;
-}
-
-.h-split{
-  display: inline-block;
-  width: 5px;
-  height: 2px;
-}
 
 .text-ellipsis {
   white-space: nowrap;

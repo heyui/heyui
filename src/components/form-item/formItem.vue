@@ -58,7 +58,7 @@ export default {
       errorMessage: { valid: true }
     };
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.prop && this.required) {
       this.removeProp(this.prop);
     }

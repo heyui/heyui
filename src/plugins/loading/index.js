@@ -17,11 +17,15 @@ function Loading(content = '') {
     genDom.innerHTML = template;
     LoadingDom = genDom.childNodes[0];
     document.body.appendChild(LoadingDom);
+    setTimeout(() => {
+      utils.addClass(LoadingDom, `${loadingCls}-loading`);
+      utils.addClass(LoadingDom, `${loadingCls}-visible`);
+    }, 10);
   } else {
     LoadingDom.querySelector(`.${loadingCls}-text`).innerText = content;
+    utils.addClass(LoadingDom, `${loadingCls}-loading`);
+    utils.addClass(LoadingDom, `${loadingCls}-visible`);
   }
-  utils.addClass(LoadingDom, `${loadingCls}-loading`);
-  utils.addClass(LoadingDom, `${loadingCls}-visible`);
 }
 
 function loading(content) {

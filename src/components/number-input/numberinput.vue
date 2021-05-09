@@ -4,7 +4,7 @@
       <input
         type="text"
         :placeholder="placeholder"
-        :disabled="disabled"
+        :disabled="disabled === false ? null : true"
         class="h-numberinput-input h-input"
         v-model="editValue"
         @input="input"
@@ -24,8 +24,9 @@ const prefix = 'h-numberinput';
 
 export default {
   name: 'hNumberInput',
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
-    value: [Number, String],
+    modelValue: [Number, String],
     min: Number,
     max: Number,
     disabled: {
@@ -54,16 +55,16 @@ export default {
   data() {
     return {
       focusing: false,
-      editValue: this.value,
-      valueBak: this.value
+      editValue: this.modelValue,
+      valueBak: this.modelValue
     };
   },
   watch: {
     value() {
-      // this.editValue = this.value;
-      if (this.valueBak != this.value) {
-        this.editValue = this.value;
-        this.valueBak = this.value;
+      // this.editValue = this.modelValue;
+      if (this.valueBak != this.modelValue) {
+        this.editValue = this.modelValue;
+        this.valueBak = this.modelValue;
       }
     }
   },
@@ -71,18 +72,18 @@ export default {
   methods: {
     plus() {
       if (this.disabled) return false;
-      let value = this.getValue(this.value);
+      let value = this.getValue(this.modelValue);
       this.setvalue(utils.add(value || 0, this.step), 'handler');
     },
     minus() {
       if (this.disabled) return false;
-      let value = this.getValue(this.value);
+      let value = this.getValue(this.modelValue);
       this.setvalue(utils.add(value || 0, -this.step), 'handler');
     },
     input(event) {
       if (isNaN(Number(event.target.value))) return false;
       let value = this.getValue(event.target.value);
-      if (utils.isNumber(this.value) && Math.abs(value - this.value) <= 1 && this.precision) {
+      if (utils.isNumber(this.modelValue) && Math.abs(value - this.modelValue) <= 1 && this.precision) {
         return;
       }
       this.setvalue(value, 'input');
@@ -116,6 +117,7 @@ export default {
       }
       this.valueBak = value;
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       if (trigger != 'input') {
         this.editValue = value;
       }

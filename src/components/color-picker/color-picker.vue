@@ -110,7 +110,7 @@ export default {
     this.init();
     this.reset();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.dropdown) {
       this.dropdown.destory();
     }

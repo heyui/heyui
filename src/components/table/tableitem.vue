@@ -1,8 +1,7 @@
 <template>
-<div></div>
+  <div></div>
 </template>
 <script>
-
 export default {
   name: 'hTableItem',
   props: {
@@ -36,7 +35,7 @@ export default {
   beforeMount() {
     this.init();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.init();
   },
   data() {

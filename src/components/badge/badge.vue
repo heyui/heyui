@@ -1,11 +1,10 @@
 <template>
   <div :class="badgeCls">
-    <sup :class="badgeCountCls">{{showCount}}</sup>
+    <sup :class="badgeCountCls">{{ showCount }}</sup>
     <slot></slot>
   </div>
 </template>
 <script>
-
 const prefix = 'h-badge';
 const Props = {
   position: ['right', 'left']
@@ -38,14 +37,12 @@ export default {
     }
   },
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
+  methods: {},
   computed: {
     showCount() {
-      return this.dot ? '' : (this.count > this.maxCount ? `${this.maxCount}+` : this.count);
+      return this.dot ? '' : this.count > this.maxCount ? `${this.maxCount}+` : this.count;
     },
     badgeCls() {
       return {

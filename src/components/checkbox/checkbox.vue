@@ -30,6 +30,7 @@ import { message } from 'heyui';
 
 export default {
   name: 'hCheckbox',
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     dict: String,
     datas: [Object, Array],

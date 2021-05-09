@@ -80,7 +80,7 @@ export default {
       isOpened: this.value
     };
   },
-  beforeDestroy() {
+  beforeUnmount() {
     let el = this.el;
     el.style.display = 'none';
     this.$el.appendChild(el);

@@ -3,11 +3,8 @@
     <div class="h-progress-title" v-if="$slots.title">
       <slot name="title"></slot>
     </div>
-    <div class="h-progress-inner"
-         :style="progressInnerStyle">
-      <div class="h-progress-bg"
-         :style="progressBgStyle"
-         :class="progressBgClass"></div>
+    <div class="h-progress-inner" :style="progressInnerStyle">
+      <div class="h-progress-bg" :style="progressBgStyle" :class="progressBgClass"></div>
     </div>
     <div class="h-progress-text" v-if="$slots.text">
       <slot name="text"></slot>

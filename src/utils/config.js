@@ -167,17 +167,12 @@ const func = {
   },
   dictMapping(value, key, connector) {
     let dict = this.getDict(key);
-    if (!dict || utils.isNull(value)) return '';
+    if (!dict || utils.isNull(value) || value === '') return '';
     if (utils.isString(value) && connector) {
       value = value.split(connector);
     }
-    if (!utils.isNull(value) && value !== '' && key) {
-      if (!utils.isArray(value)) {
-        value = [value];
-      }
-    }
-    if (value.length <= 0) {
-      return '';
+    if (!utils.isArray(value)) {
+      value = [value];
     }
 
     const keyField = this.getOption('dict', 'keyName');
@@ -198,7 +193,7 @@ const func = {
     });
     return result.filter(ele => ele && ele !== '').join(connector || ', ');
   },
-  initOptions(datas, param) {
+  initOptions(datas) {
     let key = this.getOption('dict.keyName');
     let title = this.getOption('dict.titleName');
     let options = [];

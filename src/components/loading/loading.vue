@@ -30,7 +30,7 @@ export default {
   mounted() {
     this.initStyle();
   },
-  beforeDestroyed() {
+  beforeUnmounted() {
     if (this.timeout) {
       clearTimeout(this.timeout);
       this.timeout = null;

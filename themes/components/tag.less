@@ -1,7 +1,7 @@
-@tag-prefix: ~"@{prefix}tag";
+@tag-prefix: ~'@{prefix}tag';
 
 .@{tag-prefix} {
-  &, &-circle{
+  & {
     display: inline-block;
     padding: 4px 10px;
     border: @border;
@@ -17,42 +17,41 @@
     padding: 4px 4px;
     border-radius: 50%;
   }
-  &-primary{
+  &-primary {
     .h-func-tag-color(@primary-color);
   }
-  &-red{
+  &-red {
     .h-func-tag-color(@red-color);
   }
-  &-blue{
+  &-blue {
     .h-func-tag-color(@blue-color);
   }
-  &-yellow{
+  &-yellow {
     .h-func-tag-color(@yellow-color);
   }
-  &-green{
+  &-green {
     .h-func-tag-color(@green-color);
   }
-  &-gray{
+  &-gray {
     .h-func-tag-color(@gray-color);
   }
 
-
-  &-bg-primary{
+  &-bg-primary {
     .h-func-tag-bg-color(@primary-color);
   }
-  &-bg-red{
+  &-bg-red {
     .h-func-tag-bg-color(@red-color);
   }
-  &-bg-blue{
+  &-bg-blue {
     .h-func-tag-bg-color(@blue-color);
   }
-  &-bg-yellow{
+  &-bg-yellow {
     .h-func-tag-bg-color(@yellow-color);
   }
-  &-bg-green{
+  &-bg-green {
     .h-func-tag-bg-color(@green-color);
   }
-  &-bg-gray{
+  &-bg-gray {
     .h-func-tag-bg-color(@gray-color);
   }
 }

@@ -14,6 +14,7 @@ import config from 'heyui/utils/config';
 
 export default {
   name: 'hAvatar',
+  emits: ['avatarClick'],
   props: {
     shape: {
       type: String,
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     click(event) {
-      this.$emit('click', event);
+      this.$emit('avatarClick', event);
     }
   },
   computed: {

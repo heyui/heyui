@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-
 const prefixCls = 'h-layout-sider';
 
 export default {
@@ -20,12 +19,11 @@ export default {
       };
     },
     styles() {
-      let style = {
-      };
+      let style = {};
       return style;
     }
   },
-  beforeDestroyed() {
+  beforeUnmounted() {
     if (this.$parent && this.$parent.updateSider) {
       this.$parent.updateSider();
     }
