@@ -1,5 +1,4 @@
-@menu-prefix: ~"@{prefix}menu";
-.@{menu-prefix} {
+.h-menu {
   width: 100%;
   display: block;
   margin: 0;
@@ -8,10 +7,10 @@
   list-style: none;
   position: relative;
   line-height: 1;
-  &-ul {
+  &-other-levels {
     .h-func-list-style();
   }
-  &-li{
+  &-li {
     position: relative;
   }
   &-show {
@@ -20,20 +19,23 @@
     cursor: pointer;
     text-overflow: clip;
     white-space: nowrap;
-    transition: padding .2s;
+    transition: padding 0.2s;
     &-expand {
       right: 20px;
       .middle();
     }
     &-desc {
-      transition: opacity .3s cubic-bezier(.645, .045, .355, 1),width .3s cubic-bezier(.645, .045, .355, 1);
+      transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       opacity: 1;
     }
-    &-count{
-      transition: right .2s;
+    &-count {
+      transition: right 0.2s;
       z-index: 2;
       right: 60px;
       .middle();
+    }
+    &-icon {
+      margin-right: 5px;
     }
   }
   & &-li a {
@@ -44,8 +46,8 @@
   }
 }
 
-.h-menu-mode-normal {
-  .h-menu-ul {
+.h-menu-mode-vertical {
+  .h-menu-other-levels {
     max-height: 0;
     transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
     overflow: hidden;
@@ -58,22 +60,19 @@
       padding-left: 70px;
     }
   }
-  .h-menu-li-opened > .h-menu-ul {
-    max-height: 1000px;
+  .h-menu-li-opened > .h-menu-other-levels {
+    max-height: 10000px;
     transition: max-height 0.8s ease-in-out;
   }
-  .h-menu-li-opened > .h-menu-show .h-menu-show-expand>i{
+  .h-menu-li-opened > .h-menu-show .h-menu-show-expand > i {
     transform: rotate(0deg);
   }
   .h-menu-show {
     overflow: hidden;
     text-overflow: ellipsis;
     transition: color @transition-time;
-    &-icon{
-      margin-right: 5px;
-    }
     &-expand {
-      >i{
+      > i {
         transition: transform @transition-time;
         transform: rotate(-90deg);
       }
@@ -81,17 +80,17 @@
   }
 }
 
-.@{menu-prefix}-dark {
+.h-menu-dark {
   background: @menu-dark-color;
   color: darken(@white-color, 30%);
-  .@{menu-prefix} {
+  .h-menu {
     &-show {
       border-right: 0px solid transparent;
       &:hover {
         color: @white-color;
       }
     }
-    &-ul {
+    &-other-levels {
       background: darken(@menu-dark-color, 5%);
     }
     &-li {
@@ -103,151 +102,129 @@
   }
 }
 
-.@{menu-prefix}-white {
+.h-menu-white {
   background: @white-color;
-  .@{menu-prefix} {
-    &-show {
-      &:hover {
-        color: @primary-color;
-      }
+  .h-menu-show:hover {
+    color: @primary-color;
+  }
+  .h-menu-other-levels {
+    background: @white-color;
+  }
+  .h-menu-li {
+    position: relative;
+    .h-menu-show:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 0px;
+      background: @primary-color;
     }
-    &-ul {
-      background: @white-color;
-    }
-    &-li {
-      position: relative;
-      .@{menu-prefix}{
-        &-show{
-          &:after {
-            position: absolute;
-            content: '';
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 0px;
-            background: @primary-color;
-          }
-        }
-        &-li-selected{
-          background-color: @menu-white-background-color;
-          color: @primary-color;
-          &:after {
-            width: 5px;
-            transition: @transition-time;
-          }
-        }
+    .h-menu-li-selected {
+      background-color: @menu-white-background-color;
+      color: @primary-color;
+      &:after {
+        width: 5px;
+        transition: @transition-time;
       }
     }
   }
 }
 
-
-.@{menu-prefix} {
-  &&-size-collapse {
-    > .h-menu-li {
-      > .h-menu-show {
-        padding-left: 28px;
-        .h-menu-show-icon{
-          margin-right: 0px;
-          font-size: 17px;
-        }
-        .h-menu-show-desc {
-          visibility: visible;
-          opacity: 0;
-          // position: absolute;
-          display: inline-block;
-          width: 0;
-          text-overflow: clip;
-        }
-        .h-menu-show-count{
-          right: 10px;
-        }
-        .h-menu-show-expand{
-          display: none;
-        }
-      }
+.h-menu.h-menu-mode-collapse {
+  .h-menu-first-level > .h-menu-show {
+    padding-left: 26px;
+    padding-right: 26px;
+    .h-menu-show-icon {
+      margin-right: 0px;
+      font-size: 17px;
     }
-    .h-menu-ul{
-      padding: 5px 0;
-      margin-left: 5px;
-      // display: none;
-      left: 100%;
-      top: 0;
-      width: 150px;
-      border-radius: 4px;
-      overflow: hidden;
-      // visibility: hidden;
-      position: absolute;
-      max-width: 0;
-      // overflow: visible;
-      transition: 0.2s cubic-bezier(0.78, 0.17, 0.43, 1);
-      white-space: nowrap;
+    .h-menu-show-desc {
+      visibility: visible;
+      opacity: 0;
       display: inline-block;
+      width: 0;
+      text-overflow: clip;
+    }
+    .h-menu-show-count {
+      right: 10px;
+    }
+    .h-menu-show-expand {
+      display: none;
+    }
+  }
+}
+
+.h-menu.h-menu-mode-collapse,
+.h-menu.h-menu-mode-half-collapse {
+  .h-menu-other-levels {
+    padding: 5px 0;
+    margin-left: 5px;
+    left: 100%;
+    top: 0;
+    width: 150px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: absolute;
+    max-width: 0;
+    transition: 0.2s cubic-bezier(0.78, 0.17, 0.43, 1);
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    opacity: 0.8;
+    transform: scale(0.8);
+    transform-origin: left;
+    .h-menu-show {
+      padding-left: 20px;
       overflow: hidden;
-      opacity: 0.8;
-      transform: scale(0.8);
-      transform-origin: left;
-      .h-menu-show{
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      text-overflow: ellipsis;
     }
     .h-menu-show-expand {
       right: 10px;
-      i{
-        transform: rotate(-90deg);
-      }
     }
-    .h-menu-li:hover {
-      > .h-menu-ul {
-        // padding: 5px 0;
-        max-width: 250%;
-        opacity: 1;
-        // visibility: visible;
-        transform: scale(1);
-        // display: block;
-        overflow: visible;
-        &:before{
-          content: '';
-          position: absolute;
-          height: 100%;
-          top: 0;
-          left: -10px;
-          width: 10px;
-        }
+  }
+  .h-menu-show-expand i {
+    transform: rotate(-90deg);
+  }
+  .h-menu-li:hover {
+    > .h-menu-other-levels {
+      max-width: 250%;
+      opacity: 1;
+      transform: scale(1);
+      overflow: visible;
+      &:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -10px;
+        width: 10px;
       }
-    }
-    .h-menu-show {
-      padding-left: 20px;
     }
   }
 }
-.@{menu-prefix}-mode-horizontal{
+
+.h-menu-mode-horizontal {
   &:after {
-    content:""; 
-    display:table; 
-    clear:both;
+    content: '';
+    display: table;
+    clear: both;
   }
   .h-menu-li {
     display: inline-block;
-    .h-menu-show.h-menu-li-selected {
-      background-color: @menu-white-background-color;
-      color: @primary-color;
-      // border-bottom: 2px solid @primary-color;
-      &:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: @primary-color;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: auto;
+  }
+
+  .h-menu-first-level {
+    > .h-menu-show {
+      .h-menu-show-count {
+        position: initial;
+        transform: none;
       }
     }
   }
-  .h-menu-ul{
+
+  .h-menu-other-levels {
     padding: 5px 0;
     left: 0;
     top: 100%;
@@ -256,7 +233,6 @@
     max-height: 0;
     margin-top: 5px;
     border-radius: 4px;
-    // transition: max-height 0.2s ease-out;
     transition: 0.1s cubic-bezier(0.78, 0.17, 0.43, 1);
     transform-origin: top;
     opacity: 0.8;
@@ -268,7 +244,7 @@
     display: inline-block;
     .h-menu-li {
       display: block;
-      .h-menu-ul {
+      .h-menu-other-levels {
         padding: 5px 0;
         left: 100%;
         margin-left: 5px;
@@ -276,12 +252,9 @@
         top: 0;
         width: 150px;
         border-radius: 4px;
-        // overflow: hidden;
         visibility: hidden;
-        // overflow: hidden;
         position: absolute;
         max-height: 0;
-        // transition: max-height 0.2s ease-out;
         transition: 0.1s cubic-bezier(0.78, 0.17, 0.43, 1);
         transform-origin: top;
         opacity: 0.8;
@@ -294,53 +267,30 @@
       overflow: hidden;
       text-overflow: ellipsis;
       transition: color @transition-time;
-      &-icon{
-        margin-right: 5px;
-      }
       &-expand {
-        >i{
+        > i {
           transition: transform @transition-time;
           transform: rotate(-90deg);
         }
       }
-      &.h-menu-li-selected {
-        background-color: @menu-white-background-color;
-        color: @primary-color;
-        &:after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          background-color: @primary-color;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          top: auto;
-        }
-      }
     }
   }
+
   .h-menu-show-expand {
     right: 10px;
-    i{
+    i {
       transform: rotate(-90deg);
     }
   }
-  .h-menu-li:hover {
-    > .h-menu-ul {
-      // padding: 5px 0;
-      // max-width: 250%;
+  .h-menu-li:hover,
+  .h-menu-li-hovered {
+    > .h-menu-other-levels {
       max-height: 10000px;
-      // transition: max-height 0.2s ease-in;
-      // height: 250%;opacity: 0.8;
       transform: scale(1);
       opacity: 1;
       visibility: visible;
       overflow: visible;
-      // transform: scale(1);
-      // display: block;
-      // overflow: visible;
-      &:before{
+      &:before {
         content: '';
         position: absolute;
         width: 100%;
@@ -348,7 +298,7 @@
         left: 0;
         height: 10px;
       }
-      &:after{
+      &:after {
         content: '';
         position: absolute;
         height: 100%;
@@ -358,15 +308,29 @@
       }
     }
   }
-
 }
-.@{menu-prefix}-mode-horizontal.@{menu-prefix}-dark {
+
+.h-menu-white.h-menu-mode-horizontal {
+  .h-menu-first-level {
+    > .h-menu-show.h-menu-li-selected {
+      &:after {
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+      }
+    }
+  }
+}
+
+.h-menu-mode-horizontal.h-menu-dark {
   .h-menu-li {
     .h-menu-show {
       &.h-menu-li-selected {
         background-color: @primary-color;
         color: #ffffff;
-        // border-bottom: 2px solid @primary-color;
         &:after {
           display: none;
         }

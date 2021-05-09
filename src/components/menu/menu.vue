@@ -1,12 +1,12 @@
 <template>
   <ul :class="classes">
     <hMenuItem
+      class="h-menu-first-level"
       v-for="menu of menuDatas"
       :key="menu.key"
       :data="menu"
       :param="param"
       :status="status"
-      :inlineCollapsed="inlineCollapsed"
       :mode="mode"
       @trigger="trigger"
     ></hMenuItem>
@@ -61,7 +61,7 @@ const updateOpened = obj => {
   return openedList;
 };
 const Props = {
-  mode: ['normal', 'horizontal']
+  mode: ['vertical', 'horizontal', 'collapse', 'half-collapse']
 };
 export default {
   name: 'hMenu',
@@ -84,11 +84,7 @@ export default {
       validator(value) {
         return Props.mode.indexOf(value) > -1;
       },
-      default: 'normal' // normal, vertical
-    },
-    inlineCollapsed: {
-      type: Boolean,
-      default: false
+      default: 'vertical' // vertical, vertical
     },
     activeAll: {
       type: Boolean,
@@ -111,13 +107,8 @@ export default {
       return {
         [`${prefix}`]: true,
         [this.className]: true,
-        [`${prefix}-mode-${this.mode}`]: !this.isDropdownMenu,
-        [`${prefix}-mode-vertical`]: this.isDropdownMenu,
-        [`${prefix}-size-collapse`]: this.inlineCollapsed
+        [`${prefix}-mode-${this.mode}`]: this.mode
       };
-    },
-    isDropdownMenu() {
-      return this.mode === 'vertical' || this.inlineCollapsed;
     },
     menuobj() {
       return getObj(this.menuDatas);
@@ -152,7 +143,7 @@ export default {
           }
         }
 
-        this.$emit('click', menu);
+        this.$emit('clickItem', menu);
         let isParent = menu.children && menu.children.length > 0;
         if (isParent && (!this.activeAll || this.status.selected == menu.key)) {
           return;
@@ -160,7 +151,6 @@ export default {
 
         this.status.selected = menu.key;
         this.$emit('select', menu.value);
-        this.$emit('onclick', menu.value);
       }
     }
   },

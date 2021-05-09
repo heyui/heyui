@@ -4,7 +4,7 @@
       <MenuItemShow v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
     </a>
     <MenuItemShow v-else v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
-    <ul v-if="data.children && data.children.length > 0" class="h-menu-ul">
+    <ul v-if="data.children && data.children.length > 0" class="h-menu-other-levels">
       <hMenuItem v-for="child of data.children" :key="child.key" :data="child" :param="param" :status="status" @trigger="trigger"></hMenuItem>
     </ul>
   </li>
@@ -22,10 +22,6 @@ export default {
     data: Object,
     param: Object,
     status: Object,
-    inlineCollapsed: {
-      type: Boolean,
-      default: false
-    },
     mode: String
   },
   data() {

@@ -1,5 +1,6 @@
 import Tooltip from 'heyui/plugins/tooltip';
 import utils from 'heyui/utils/utils';
+import { nextTick } from 'vue';
 
 const getContent = function(el, vnode) {
   let param = {};
@@ -50,7 +51,7 @@ export default {
   },
   beforeUpdate(el, binding, vnode) {
     if (el.tooltip) {
-      vnode.context.$nextTick(() => {
+      nextTick(() => {
         if (binding.value === false) {
           el.tooltip.destory();
           el.tooltip = null;

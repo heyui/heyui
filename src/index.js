@@ -27,7 +27,7 @@ import Textarea from 'heyui/components/textarea';
 // import Form from 'heyui/components/form';
 // import FormItem from 'heyui/components/form-item';
 // import FormItemList from 'heyui/components/form-item-list';
-// import Menu from 'heyui/components/menu';
+import Menu from 'heyui/components/menu';
 // import Modal from 'heyui/components/modal';
 // import ModalComponent from 'heyui/components/modal-component';
 // import Pagination from 'heyui/components/pagination';
@@ -120,7 +120,7 @@ const components = {
   Input,
   Textarea,
   Icon,
-  // Menu,
+  Menu,
   // Modal,
   // ModalComponent,
   NumberInput,
