@@ -30,7 +30,7 @@ import Textarea from 'heyui/components/textarea';
 import Menu from 'heyui/components/menu';
 // import Modal from 'heyui/components/modal';
 // import ModalComponent from 'heyui/components/modal-component';
-// import Pagination from 'heyui/components/pagination';
+import Pagination from 'heyui/components/pagination';
 // import Poptip from 'heyui/components/poptip';
 import Progress from 'heyui/components/progress';
 import Radio from 'heyui/components/radio';
@@ -124,7 +124,7 @@ const components = {
   // Modal,
   // ModalComponent,
   NumberInput,
-  // Pagination,
+  Pagination,
   // Poptip,
   Progress,
   Radio,

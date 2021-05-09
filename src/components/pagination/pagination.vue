@@ -1,9 +1,9 @@
 <template>
   <div :class="pageCls">
     <span :class="prefix + '-total'" :style="{ order: orders.total }" v-if="orders.total != -1">
-      {{ 'h.pagination.totalBefore' | hlang }}
+      {{ hlang('h.pagination.totalBefore') }}
       <span :class="prefix + '-total-num'">{{ totalNow }}</span>
-      {{ 'h.pagination.totalAfter' | hlang }}
+      {{ hlang('h.pagination.totalAfter') }}
     </span>
     <Select
       :no-border="small"
@@ -88,7 +88,7 @@ export default {
       type: String,
       default: () => config.getOption('page.layout')
     },
-    value: {
+    modelValue: {
       type: Object,
       default: () => ({})
     }
@@ -100,7 +100,7 @@ export default {
       orders[o] = layoutList.indexOf(o);
     }
     return {
-      sizeNow: this.value.size || this.size,
+      sizeNow: this.modelValue.size || this.size,
       orders,
       curValue: null
     };
@@ -110,13 +110,13 @@ export default {
       this.curValue = null;
     },
     size() {
-      this.sizeNow = this.value.size || this.size;
+      this.sizeNow = this.modelValue.size || this.size;
     },
-    'value.page'() {
+    'modelValue.page'() {
       this.curValue = null;
     },
-    'value.size'() {
-      this.sizeNow = this.value.size || this.size;
+    'modelValue.size'() {
+      this.sizeNow = this.modelValue.size || this.size;
     }
   },
   methods: {
@@ -130,7 +130,7 @@ export default {
     },
     jump(event) {
       let value = parseInt(event.target.value, 10);
-      // log(value);
+
       if (isNaN(value)) {
         Message.error(this.t('h.pagination.incorrectFormat'));
         return;
@@ -140,7 +140,7 @@ export default {
         return;
       }
       let cur = parseInt(event.target.value, 10);
-      if (cur == (this.value.page || this.cur)) {
+      if (cur == (this.modelValue.page || this.cur)) {
         return;
       }
       this.setvalue({ cur: cur, size: this.sizeNow });
@@ -189,10 +189,10 @@ export default {
       });
     },
     curNow() {
-      return this.curValue || this.value.page || this.cur;
+      return this.curValue || this.modelValue.page || this.cur;
     },
     totalNow() {
-      return this.value.total || this.total || 0;
+      return this.modelValue.total || this.total || 0;
     },
     count() {
       return Math.ceil(this.totalNow / this.sizeNow);
