@@ -4,10 +4,10 @@
       v-for="(a, index) of arr"
       @click="trigger(a, index)"
       :key="a[key]"
-      :class="{ 'h-tabs-selected': a[key] == value, 'h-tabs-item-selected': a[key] == value }"
+      :class="{ 'h-tabs-selected': a[key] == modelValue, 'h-tabs-item-selected': a[key] == modelValue }"
       class="h-tabs-item"
     >
-      <span v-if="!$scopedSlots.item">{{ a[title] }}</span>
+      <span v-if="!$slots.item">{{ a[title] }}</span>
       <slot v-else :tab="a" name="item"></slot>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
   props: {
     dict: String,
     datas: [Object, Array],
-    value: [String, Number],
+    modelValue: [String, Number],
     className: {
       type: String,
       default: 'h-tabs-default'
@@ -44,11 +44,12 @@ export default {
   },
   methods: {
     trigger(data, index) {
-      if (this.value != data[this.key]) {
+      if (this.modelValue != data[this.key]) {
         this.$emit('input', data[this.key]);
+        this.$emit('update:modelValue', data[this.key]);
         this.$emit('change', data, index);
       }
-      this.$emit('click', data, index);
+      this.$emit('clickItem', data, index);
     }
   },
   computed: {

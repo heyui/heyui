@@ -45,7 +45,7 @@ import SwitchList from 'heyui/components/switch-list';
 import Skeleton from 'heyui/components/skeleton';
 // import Table from 'heyui/components/table';
 // import TableItem from 'heyui/components/table-item';
-// import Tabs from 'heyui/components/tabs';
+import Tabs from 'heyui/components/tabs';
 import Tag from 'heyui/components/tag';
 import TagInput from 'heyui/components/tag-input';
 // import Tree from 'heyui/components/tree';
@@ -148,7 +148,7 @@ const components = {
   Loading,
   // Table,
   // TableItem,
-  // Tabs,
+  Tabs,
   // Tooltip,
   // Tree,
   // TreePicker,

@@ -160,6 +160,7 @@ export default {
       let inputvalue = { ...value };
       delete inputvalue.cur;
       this.$emit('input', inputvalue);
+      this.$emit('update:modelValue', inputvalue);
       this.$emit('change', value);
     },
     changesize() {

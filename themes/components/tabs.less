@@ -1,63 +1,34 @@
-@tabs-prefix: ~"@{prefix}tabs";
+@tabs-prefix: ~'@{prefix}tabs';
 .@{tabs-prefix} {
-  >.h-tabs-item {
+  > .h-tabs-item {
     cursor: pointer;
     display: inline-block;
     transition: @transition-time all;
     position: relative;
   }
   &-default {
-    padding: 0 20px;
     border-bottom: @border;
-    line-height:1;
-    font-size: @font-size + 1px;
-    >.h-tabs-item {
-      padding: 10px 15px;
-      margin-bottom: -4px;
-      border-bottom: 3px solid transparent;
-      +div {
-        margin-left: 20px;
+    > .h-tabs-item {
+      padding: 10px 0;
+      + .h-tabs-item {
+        margin-left: 40px;
       }
-      &:hover, &.@{tabs-prefix}-item-selected {
+      &::after {
+        position: absolute;
+        content: '';
+        left: 0;
+        right: 0;
+        height: 0;
+        top: 100%;
+        background-color: @primary-color;
+        transition: 0.05s height;
+      }
+      &:hover,
+      &.h-tabs-item-selected {
         color: @primary-color;
-        border-bottom: 3px solid @primary-color;
-      }
-    }
-  }
-
-  &-card {
-    border-bottom: 1px solid @gray1-color;
-    line-height:1;
-    >.h-tabs-item {
-      padding: 8px 16px;
-      margin-bottom: -1px;
-      border-radius: @border-radius @border-radius 0 0;
-      border: 1px solid transparent;
-      border-top:3px solid transparent;
-      +div {
-        margin-left: 5px;
-      }
-      &:hover, &.@{tabs-prefix}-item-selected {
-        color: @primary-color;
-        background: @white-color;
-        border-color: @gray1-color;
-        border-top-color:@primary-color;
-        border-bottom-color: @white-color;
-      }
-    }
-  }
-
-  &-menu {
-    line-height:1;
-    font-size: 15px;
-    >.h-tabs-item {
-      display: block;
-      padding: 12px 16px;
-      +div {
-        margin-top: 5px;
-      }
-      &:hover, &.@{tabs-prefix}-item-selected {
-        color: @primary-color;
+        &::after {
+          height: 4px;
+        }
       }
     }
   }
