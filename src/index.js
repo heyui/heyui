@@ -68,7 +68,7 @@ import TimelineItem from 'heyui/components/timeline-item';
 import Button from 'heyui/components/button';
 import ButtonGroup from 'heyui/components/button-group';
 import TextEllipsis from 'heyui/components/text-ellipsis';
-// import Carousel from 'heyui/components/carousel';
+import Carousel from 'heyui/components/carousel';
 // import Collapse from 'heyui/components/collapse';
 // import CollapseItem from 'heyui/components/collapse-item';
 
@@ -78,10 +78,10 @@ import wordcount from 'heyui/directives/wordcount';
 import wordlimit from 'heyui/directives/wordlimit';
 import autosize from 'heyui/directives/autosize';
 
-import $Modal from 'heyui/plugins/modal';
-import $Confirm from 'heyui/plugins/confirm';
+import modal from 'heyui/plugins/modal';
+import confirm from 'heyui/plugins/confirm';
 import message from 'heyui/plugins/message';
-import $Notice from 'heyui/plugins/notice';
+import notice from 'heyui/plugins/notice';
 import loading from 'heyui/plugins/loading';
 import loadingBar from 'heyui/plugins/loading-bar';
 import scrollIntoView from 'heyui/plugins/scroll-into-view';
@@ -153,8 +153,8 @@ const components = {
   // Tree,
   // TreePicker,
   // Uploader,
-  TextEllipsis
-  // Carousel,
+  TextEllipsis,
+  Carousel
   // Collapse,
   // CollapseItem,
   // HHeader,
@@ -209,10 +209,10 @@ const install = function(app, opts = {}) {
 const HeyUI = { install };
 
 export {
-  // $Modal,
-  // $Notice,
+  // modal,
+  // notice,
   message,
-  // $Confirm,
+  // confirm,
   loading,
   loadingBar,
   scrollIntoView,

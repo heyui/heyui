@@ -4,7 +4,7 @@
       <div class="h-carousel-list h-carousel-scroll-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-if="effect == 'scroll'">
         <div class="h-carousel-item" v-for="(params, index) in carouselList" :key="index" @click="clickTrigger(index, params)">
           <div
-            v-if="!$scopedSlots.item"
+            v-if="!$slots.item"
             class="h-carousel-bg"
             :class="{ 'h-carousel-bg-pointer': params.link }"
             :style="{ backgroundImage: `url(${params.image})` }"
@@ -16,7 +16,7 @@
         <transition :name="`h-carousel-effect-${effect}`">
           <div class="h-carousel-item h-carousel-effect-item" :key="activeIndex" @click="clickTrigger(activeIndex, carouselItem)">
             <div
-              v-if="!$scopedSlots.item"
+              v-if="!$slots.item"
               class="h-carousel-bg"
               :class="{ 'h-carousel-bg-pointer': carouselItem.link }"
               :style="{ backgroundImage: `url(${carouselItem.image})` }"
@@ -26,8 +26,8 @@
         </transition>
       </div>
       <div class="h-carousel-arrow" :class="arrowCls">
-        <div class="h-icon-left" @click="prev"></div>
-        <div class="h-icon-right" @click="next"></div>
+        <div class="h-carousel-arrow-left" @click="prev"><i class="h-icon-left" /></div>
+        <div class="h-carousel-arrow-right" @click="next"><i class="h-icon-right" /></div>
       </div>
     </div>
     <ul class="h-carousel-pagination" :class="paginationCls">
@@ -39,7 +39,7 @@
         @mouseover="triggerChange('hover', index + 1)"
         @click="triggerChange('click', index + 1)"
       >
-        <slot v-if="$scopedSlots.page" :carousel="p" name="page"></slot>
+        <slot v-if="$slots.page" :carousel="p" name="page"></slot>
         <span v-else></span>
       </li>
     </ul>
@@ -140,7 +140,7 @@ export default {
   },
   methods: {
     clickTrigger(index, data) {
-      this.$emit('click', index, data);
+      this.$emit('clickItem', index, data);
     },
     isActive(index) {
       let datas = this.datas;
@@ -180,18 +180,14 @@ export default {
       this.activeIndex = index;
       let itemWidth = this.$el.clientWidth;
       let width = index * itemWidth;
-      switch (this.effect) {
-        case 'scroll':
-          let listDom = this.$el.querySelector('.h-carousel-scroll-list');
-          if (immediately) {
-            listDom.style.transitionDuration = `0ms`;
-          } else {
-            listDom.style.transitionDuration = `${this.changeSpeed}ms`;
-          }
-          listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`;
-          break;
-        default:
-          break;
+      if (this.effect === 'scroll') {
+        let listDom = this.$el.querySelector('.h-carousel-scroll-list');
+        if (immediately) {
+          listDom.style.transitionDuration = `0ms`;
+        } else {
+          listDom.style.transitionDuration = `${this.changeSpeed}ms`;
+        }
+        listDom.style.transform = `translate3d(${-width}px, 0px, 0px)`;
       }
     },
     change({ index = 1, immediately = false }) {
