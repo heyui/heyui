@@ -45,11 +45,11 @@ npm install heyui --save
 ### Advanced
 
 ```js
-import Vue from "vue"
-import HeyUI from "heyui"
-require("heyui/themes/index.less")
+import Vue from 'vue';
+import HeyUI from 'heyui';
+require('heyui/themes/index.less');
 
-Vue.use(HeyUI)
+Vue.use(HeyUI);
 ```
 
 #### Advanced Online Demo
@@ -80,49 +80,6 @@ hey dev
 ## Admin Template
 
 [HeyUI Admin Template](http://admin.heyui.top)
-
-## Ecosystem
-
-<table>
-  <thead>
-    <tr>
-      <th>Project</th>
-      <th>Status</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://www.npmjs.com/package/hey-cli" rel="nofollow">hey-cli</a></td>
-      <td>
-        <a href="https://www.npmjs.org/package/hey-cli" target="_blank">
-          <img src="https://img.shields.io/npm/v/hey-cli.svg?style=flat-square">
-        </a></td>
-      <td>Webpack Scaffolding</td>
-    </tr>
-    <tr>
-      <td><a href="https://www.npmjs.com/package/hey-validator" rel="nofollow">hey-validator</a></td>
-      <td><a href="https://www.npmjs.org/package/hey-validator" target="_blank">
-          <img src="https://img.shields.io/npm/v/hey-validator.svg?style=flat-square">
-        </a></td>
-      <td>Validate Form Data</td>
-    </tr>
-    <tr>
-      <td><a href="https://www.npmjs.com/package/hey-utils" rel="nofollow">hey-utils</a></td>
-      <td><a href="https://www.npmjs.org/package/hey-utils" target="_blank">
-          <img src="https://img.shields.io/npm/v/hey-utils.svg?style=flat-square">
-        </a></td>
-      <td>Javascript Utils</td>
-    </tr>
-    <tr>
-      <td><a href="https://marketplace.visualstudio.com/items?itemName=vvpvvp.heyui-snippets" rel="nofollow">heyui-snippets</a></td>
-      <td><a href="https://marketplace.visualstudio.com/items?itemName=vvpvvp.heyui-snippets" target="_blank">
-          <img src="https://vsmarketplacebadge.apphb.com/version-short/vvpvvp.heyui-snippets.svg?style=flat-square">
-        </a></td>
-      <td>Snippet for VSCode</td>
-    </tr>
-  </tbody>
-</table>
 
 ## Browser Support
 
