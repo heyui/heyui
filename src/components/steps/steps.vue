@@ -13,8 +13,8 @@
     >
       <div class="h-steps-content">
         <div class="h-steps-icon">
-          <slot :item="a" :index="index" name="icon" v-if="$scopedSlots.icon"></slot>
-          <span v-else-if="a.icon" class="h-steps-icon-custom"><i :class="a.icon"></i></span>
+          <slot :item="a" :index="index" name="icon" v-if="$slots.icon"></slot>
+          <span v-else-if="a.icon" class="h-steps-icon-custom"><Icon :type="a.icon"></Icon></span>
           <span v-else class="h-steps-index">
             <i class="h-steps-index-num">{{ index + 1 }}</i>
             <i class="h-icon-check h-steps-success"></i>
@@ -22,13 +22,13 @@
         </div>
         <div class="h-steps-words">
           <div class="h-steps-title">
-            <slot :item="a" :index="index" name="title" v-if="$scopedSlots.title"></slot>
+            <slot :item="a" :index="index" name="title" v-if="$slots.title"></slot>
             <template v-else>
               {{ a[title] }}
             </template>
           </div>
           <div class="h-steps-desc">
-            <slot :item="a" :index="index" name="desc" v-if="$scopedSlots.desc"></slot>
+            <slot :item="a" :index="index" name="desc" v-if="$slots.desc"></slot>
             <template v-else-if="a.desc">
               {{ a.desc }}
             </template>
@@ -42,6 +42,7 @@
 <script>
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
+import Icon from 'heyui/components/icon';
 
 const prefix = 'h-steps';
 
@@ -104,6 +105,9 @@ export default {
       }
       return config.initOptions(datas, this);
     }
+  },
+  components: {
+    Icon
   }
 };
 </script>

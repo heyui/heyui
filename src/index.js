@@ -37,7 +37,7 @@ import Radio from 'heyui/components/radio';
 import Rate from 'heyui/components/rate';
 // import Slider from 'heyui/components/slider';
 import Loading from 'heyui/components/loading';
-// import Steps from 'heyui/components/steps';
+import Steps from 'heyui/components/steps';
 // import Search from 'heyui/components/search';
 // import Select from 'heyui/components/select';
 import Switch from 'heyui/components/h-switch';
@@ -134,7 +134,7 @@ const components = {
   // Search,
   // Select,
   // Slider,
-  // Steps,
+  Steps,
   HSwitch: Switch,
   Switch: Switch,
   SwitchList,

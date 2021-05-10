@@ -1,9 +1,11 @@
 <template>
   <button :class="buttonCls" type="button" :disabled="!!this.disabled">
-    <i :class="iconCls" v-if="!!iconCode"></i><span v-if="hasText"><slot></slot></span>
+    <Icon :type="iconCode" v-if="!!iconCode" /><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
 <script>
+import Icon from 'heyui/components/icon';
+
 const prefix = 'h-btn';
 const Props = {
   size: ['l', 's', 'xs']
@@ -78,14 +80,11 @@ export default {
       };
     },
     iconCode() {
-      return this.loading ? 'h-icon-loading' : this.icon;
-    },
-    iconCls() {
-      const iconCode = this.loading ? 'h-icon-loading' : this.icon;
-      return {
-        [`${iconCode}`]: !!iconCode
-      };
+      return this.loading ? 'loading' : this.icon;
     }
+  },
+  components: {
+    Icon
   }
 };
 </script>
