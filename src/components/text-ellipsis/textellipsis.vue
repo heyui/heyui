@@ -1,7 +1,7 @@
 <template>
   <div class="h-text-ellipsis">
-    <slot name="before" class="h-text-ellipsis-before"></slot>
-    <span
+    <slot name="before" class="h-text-ellipsis-before"></slot
+    ><span
       :style="textStyle"
       :class="textClass"
       @click="textClick"
@@ -11,9 +11,8 @@
       :content="text"
     >
       <span class="h-text-ellipsis-limit-text" :key="keyIndex">{{ text }}</span
-      ><span class="h-text-ellipsis-more">{{ more }}<slot name="more"></slot></span>
-    </span>
-    <slot name="after" class="h-text-ellipsis-after"></slot>
+      ><span class="h-text-ellipsis-more">{{ more }}<slot name="more"></slot></span></span
+    ><slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
 </template>
 <script>
