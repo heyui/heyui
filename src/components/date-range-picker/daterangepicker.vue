@@ -43,8 +43,8 @@
       </div>
 
       <div class="h-date-footer">
-        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ 'h.common.clear' | hlang }}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ hlang('h.common.clear') }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ hlang('h.common.confirm') }}</button>
       </div>
     </div>
   </div>

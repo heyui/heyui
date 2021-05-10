@@ -35,7 +35,7 @@
       <div class="h-tree-show-desc" :class="{ selected: status.selected == data.key }" @click="select">
         <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
         <span v-if="data.title != null">{{ data.title }}</span>
-        <span v-else>{{ 'h.common.empty' | hlang }}</span>
+        <span v-else>{{ hlang('h.common.empty') }}</span>
       </div>
       <TreeSlot :data="data.value"></TreeSlot>
     </div>

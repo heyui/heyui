@@ -9,7 +9,7 @@
       <div class="h-cascader-show-desc" :class="{'selected': status.selected == data.key}" @click="select">
         <span class="h-cascader-show-icon" :class="data.icon" v-if="data.icon"></span>
         <span v-if="data.title != null">{{data.title}}</span>
-        <span v-else>{{'h.common.empty' | hlang}}</span>
+        <span v-else>{{hlang('h.common.empty' )}}</span>
       </div>
       <span class="h-cascader-show-expand">
         <span @click.stop="toggleCascader()" v-if="data.status.isWait">

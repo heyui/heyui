@@ -32,7 +32,7 @@
           <template v-if="tableDatas.length == 0">
             <div class="h-table-content-empty">
               <slot name="empty"></slot>
-              <div v-if="!$slots.empty">{{ 'h.table.empty' | hlang }}</div>
+              <div v-if="!$slots.empty">{{ hlang('h.table.empty') }}</div>
             </div>
             <div class="h-table-content-empty-width" :style="{ width: emptyWidth + 'px' }"></div>
           </template>

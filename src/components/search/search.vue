@@ -16,7 +16,7 @@
       </div>
       <button type="button" :style="heightStyles" class="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
-        <template v-else>{{ 'h.search.searchText' | hlang(null, searchText) }}</template>
+        <template v-else>{{ hlang('h.search.searchText')(null, searchText) }}</template>
       </button>
     </div>
     <i v-if="position == 'end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>

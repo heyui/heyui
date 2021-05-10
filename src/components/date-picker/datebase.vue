@@ -9,16 +9,16 @@
         <i class="h-icon-left"></i>
       </span>
       <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
-        {{ nowView.year() }}{{ 'h.date.header.year' | hlang }}
+        {{ nowView.year() }}{{ hlang('h.date.header.year') }}
       </span>
       <span class="h-date-header-show" v-if="view == 'year'">
-        {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }}{{ 'h.date.header.year' | hlang }}
+        {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }}{{ hlang('h.date.header.year') }}
       </span>
       <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
         {{ months[nowView.month() - 1] }}
       </span>
       <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
-        {{ nowView.date() }}{{ 'h.date.header.day' | hlang }}
+        {{ nowView.date() }}{{ hlang('h.date.header.day') }}
       </span>
       <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
         <i class="h-icon-right"></i>
@@ -32,7 +32,7 @@
       <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)">
         <i class="h-icon-left"></i>
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('hour')">{{ nowView | hoursString }}</span>
+      <span class="h-date-header-show" @click.stop="changeView('hour')">{{ hoursString(nowView) }}</span>
       <span class="h-date-month-right-picker" @click.stop="updateView('hour', 1)">
         <i class="h-icon-right"></i>
       </span>

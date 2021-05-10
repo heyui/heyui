@@ -31,8 +31,8 @@
       <div class="h-colorpicker-panel-footer">
         <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString" @keydown.enter="updateString" />
         <div class="h-colorpicker-panel-buttons">
-          <button type="button" class="h-btn h-btn-s h-btn-text h-colorpicker-clear-button" @click="clear">清空</button>
-          <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">确定</button>
+          <button type="button" class="h-btn h-btn-s h-btn-text h-colorpicker-clear-button" @click="clear">{{ hlang('h.common.clear') }}</button>
+          <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">{{ hlang('h.common.confirm') }}</button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple && objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">{{ 'h.treepicker.selectDesc' | hlang([valuebak.length]) }}</div>
+        <div v-if="showCount" class="h-treepicker-value-single">{{ hlang('h.treepicker.selectDesc')([valuebak.length]) }}</div>
         <div v-else class="h-treepicker-multiple-tags">
           <span v-for="obj of objects" :key="obj[param.keyName]">
             <span>{{ obj[param.titleName] }}</span>
@@ -11,7 +11,7 @@
         </div>
       </template>
       <div v-else-if="!multiple && object" class="h-treepicker-value-single">{{ object[param.titleName] }}</div>
-      <div v-else class="h-treepicker-placeholder">{{ 'h.treepicker.placeholder' | hlang(null, placeholder) }}</div>
+      <div v-else class="h-treepicker-placeholder">{{ hlang('h.treepicker.placeholder')(null, placeholder) }}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">
@@ -31,8 +31,8 @@
         ></Tree>
       </div>
       <div class="h-treepicker-footer" v-if="multiple || useConfirm">
-        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ 'h.common.clear' | hlang }}</button>
-        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ 'h.common.confirm' | hlang }}</button>
+        <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ hlang('h.common.clear') }}</button>
+        <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ hlang('h.common.confirm') }}</button>
       </div>
     </div>
   </div>
