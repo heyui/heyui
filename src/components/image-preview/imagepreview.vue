@@ -36,9 +36,9 @@ export default {
   methods: {
     click(index, value) {
       if (this.isSingle) {
-        this.$emit('click', this.datas);
+        this.$emit('clickItem', this.datas);
       } else {
-        this.$emit('click', index, value);
+        this.$emit('clickItem', index, value);
       }
     },
     itemStyles(data) {
