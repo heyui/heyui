@@ -21,26 +21,26 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "art-template": "^4.13.2",
-    "commander": "^2.19.0",
-    "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-import": "^2.16.0",
-    "headr": "0.0.4",
-    "hey-log": "^0.0.8",
-    "hey-utils": "^1.0.2",
-    "less-to-json": "^1.2.0",
-    "standard-version": "^6.0.1",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "art-template": "^4.13.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.3",
+    "commander": "^2.19.0",
     "copy-webpack-plugin": "^7.0.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-vue": "^7.0.0-0",
+    "headr": "0.0.4",
+    "hey-log": "^0.0.8",
+    "hey-utils": "^1.0.2",
     "less": "^4.1.1",
-    "less-loader": "^7.3.0"
+    "less-loader": "^7.3.0",
+    "less-to-json": "^1.2.0",
+    "standard-version": "^9.3.0"
   },
   "readmeFilename": "README.md",
   "scripts": {
@@ -53,7 +53,8 @@
     "gencss": "sh ./doc/themes/gencss.sh",
     "create": "node ./scripts/create.js",
     "eslintfix": "eslint --fix --ext .js,.vue src",
-    "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js"
+    "min": "babel dist/heyui.js --minified --no-babelrc -o dist/heyui.min.js",
+    "release": "standard-version"
   },
   "standard-version": {
     "commitAll": true,
