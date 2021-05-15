@@ -6,24 +6,24 @@ class Draggable {
     if (this.element) {
       this.init();
     }
-    this.moveFn = (event) => {
+    this.moveFn = event => {
       this.move(event);
     };
-    this.upFn = (event) => {
+    this.upFn = event => {
       this.up(event);
     };
-    this.clickFn = (event) => {
+    this.clickFn = event => {
       this.click(event);
     };
   }
 
   init() {
     const element = this.element;
-    element.addEventListener('mousedown', (event) => {
+    element.addEventListener('mousedown', event => {
       this.mousedown(event);
     });
     if (this.options.container) {
-      this.options.container.addEventListener('mousedown', (event) => {
+      this.options.container.addEventListener('mousedown', event => {
         this.mousedown(event);
       });
     }
@@ -31,8 +31,12 @@ class Draggable {
 
   mousedown(event) {
     if (this.isDragging) return;
-    document.onselectstart = () => { return false; };
-    document.ondragstart = () => { return false; };
+    document.onselectstart = () => {
+      return false;
+    };
+    document.ondragstart = () => {
+      return false;
+    };
     document.body.addEventListener('mousemove', this.moveFn);
     document.body.addEventListener('mouseup', this.upFn);
     document.body.addEventListener('click', this.clickFn);
@@ -68,7 +72,7 @@ class Draggable {
     if (this.options.end) {
       this.options.end(event);
     }
-  };
+  }
 
   destroy() {
     document.removeEventListener('mousemove', this.moveFn);

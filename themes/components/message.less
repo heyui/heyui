@@ -1,54 +1,55 @@
-@message-prefix: ~"@{prefix}message";
-@notify-prefix: ~"@{prefix}notify";
-@icon-prefix: ~"@{prefix}icon";
+@message-prefix: ~'@{prefix}message';
+@notify-prefix: ~'@{prefix}notify';
+@icon-prefix: ~'@{prefix}icon';
 
-.@{message-prefix}{
-    &-container{
-        position: fixed;
-        top: 30px;
-        z-index: @zindex-message;
-        pointer-events: none;
-        left: 0;
-        text-align: center;
-        right: 0;
+.@{message-prefix} {
+  &-container {
+    position: fixed;
+    top: 30px;
+    z-index: @zindex-message;
+    pointer-events: none;
+    left: 0;
+    text-align: center;
+    right: 0;
+  }
+
+  .@{notify-prefix} {
+    &-container {
+      margin: 0 auto;
+      opacity: 0;
+      position: relative;
+      display: inline-block;
+      pointer-events: initial;
+      max-height: 0;
     }
 
-    .@{notify-prefix} {
-        &-container {
-            margin: 0 auto;
-            opacity: 0;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            pointer-events: initial;
-            max-height: 0;
-        }
+    &-body {
+      padding: 0px 18px;
+      transition: 0.2s;
+      [class^='h-icon'],
+      [class*=' h-icon'] {
+        margin-right: 10px;
+        display: inline-block;
+      }
+    }
+  }
+  &.@{notify-prefix}-has-close {
+    .@{notify-prefix}-body {
+      padding-right: 40px;
+    }
+  }
 
-        &-content{
-            padding: 0px 18px;
-            transition: .2s;
-            [class^="h-icon"], [class*=" h-icon"]{
-                margin-right: 10px;
-                display: inline-block;
-            }
-        }
+  &.@{notify-prefix} {
+    &-show {
+      .@{notify-prefix}-container {
+        max-height: 1000px;
+        margin-top: 10px;
+        padding-bottom: 10px;
+      }
+      .@{notify-prefix}-body {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
     }
-    &.@{notify-prefix}-has-close{
-        .@{notify-prefix}-content{
-            padding-right: 40px;
-        }
-    }
-
-    &.@{notify-prefix} {
-        &-show {
-            .@{notify-prefix}-container {
-                max-height: 1000px;
-                margin-top: 10px;
-            }
-            .@{notify-prefix}-content{
-                padding-top: 8px;
-                padding-bottom: 8px;
-            }
-        }
-    }
+  }
 }

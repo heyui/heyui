@@ -1,6 +1,7 @@
 import Notify from 'heyui/plugins/notify';
 import utils from 'heyui/utils/utils';
 import config from 'heyui/utils/config';
+import locale from 'heyui/locale';
 
 const prefixCls = 'h-modal';
 const hasDivider = config.getOption('modal', 'hasDivider');
@@ -16,7 +17,21 @@ let Default = {
 
 function Modal(originalParam) {
   let cls = prefixCls;
-  let param = utils.extend({ hasMask: true, closeOnMask: true, buttons: ['cancel'] }, Default, originalParam, true);
+  let param = utils.extend(
+    {
+      hasMask: true,
+      closeOnMask: true,
+      buttons: [
+        {
+          type: 'cancel',
+          name: locale.t('h.common.cancel')
+        }
+      ]
+    },
+    Default,
+    originalParam,
+    true
+  );
 
   if (originalParam.hasDivider || Default.hasDivider) {
     param.className += ` h-modal-has-divider`;

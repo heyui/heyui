@@ -2,19 +2,11 @@ import Notify from 'heyui/plugins/notify';
 import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-message';
-const iconPrefixCls = 'h-icon';
 
 let Default = {
   timeout: 3000
 };
 
-const iconNames = {
-  info: 'info',
-  success: 'success',
-  warn: 'warn',
-  error: 'error',
-  loading: 'loading'
-};
 const iconColor = {
   info: 'blue',
   success: 'green',
@@ -33,7 +25,7 @@ function Message(content, timeout, type, onClose) {
   }
   let param = {
     type: prefixCls,
-    content: `<div><i class="${iconPrefixCls}-${iconNames[type]} ${iconColor[type]}-color"></i>${content}</div>`,
+    content: `<div><i class="h-icon-${type} ${iconColor[type]}-color"></i>${content}</div>`,
     event: {
       close: onClose
     },

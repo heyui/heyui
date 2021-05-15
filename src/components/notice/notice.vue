@@ -1,0 +1,136 @@
+<template>
+  <div>
+    <div :class="noticeCls">
+      <div>
+        <transition>
+          <div class="h-notify-container" v-if="isShow">
+            <div class="h-notify-content">
+              <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="close"></span>
+              <div class="h-notify-body"><slot></slot></div>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+const prefix = 'h-notice';
+const notifyprefix = 'h-notify';
+import utils from 'heyui/utils/utils';
+
+export default {
+  name: 'hNotice',
+  props: {
+    hasCloseIcon: {
+      type: Boolean,
+      default: true
+    },
+    modelValue: {
+      type: Boolean,
+      default: false
+    },
+    fullScreen: {
+      type: Boolean,
+      default: false
+    },
+    className: String,
+    timeout: {
+      type: Number,
+      default: 4000
+    }
+  },
+  watch: {
+    modelValue() {
+      if (this.modelValue) {
+        this.show();
+      } else {
+        this.hide();
+      }
+    }
+  },
+  data() {
+    return {
+      isOpened: this.modelValue,
+      isShow: this.modelValue,
+      el: null
+    };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      let noticeDom = document.querySelector(`.${prefix}-container`);
+      if (!noticeDom) {
+        noticeDom = document.createElement('div');
+        utils.addClass(noticeDom, `${prefix}-container`);
+        document.body.appendChild(noticeDom);
+      }
+      this.noticeDom = noticeDom;
+      let el = (this.el = this.$el.firstChild);
+      noticeDom.appendChild(el);
+      if (!this.modelValue) {
+        el.style.display = 'none';
+      } else {
+        this.show();
+      }
+    });
+  },
+  beforeUnmount() {
+    let el = this.el;
+    if (el) {
+      el.style.display = 'none';
+      this.$el.appendChild(el);
+      this.removeDraggable();
+    }
+  },
+  methods: {
+    removeDraggable() {
+      if (this.drag) this.drag.destroy();
+    },
+    show() {
+      let el = this.el;
+      this.noticeDom.appendChild(el);
+      el.style.display = 'block';
+      this.isShow = true;
+      setTimeout(() => {
+        this.isOpened = true;
+      }, 100);
+
+      if (this.timeout) {
+        setTimeout(() => {
+          this.close();
+        }, this.timeout);
+      }
+    },
+    hide() {
+      let el = this.el;
+      this.isOpened = false;
+      setTimeout(() => {
+        el.style.display = 'none';
+        this.isShow = false;
+      }, 200);
+    },
+    close() {
+      this.$emit('update:modelValue', false);
+    }
+  },
+  computed: {
+    noticeCls() {
+      return {
+        [prefix]: true,
+        [notifyprefix]: true,
+        [`${notifyprefix}-no-mask`]: true,
+        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
+        [`${notifyprefix}-has-icon`]: true,
+        [`${notifyprefix}-show`]: this.isOpened,
+        [this.className]: !!this.className
+      };
+    },
+    hasHeader() {
+      return !!this.$slots.header;
+    },
+    hasFooter() {
+      return !!this.$slots.footer;
+    }
+  }
+};
+</script>

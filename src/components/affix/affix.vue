@@ -86,12 +86,6 @@ export default {
         let containerPosition = this.containerDom.getBoundingClientRect();
         // let dis = containerPosition.top - this.y;
         this.y = containerPosition.top;
-        // log('===========new===========')
-        // log('dis', dis);
-        // log('top isAbsolute', position.top - containerPosition.top < parentOffsetTop)
-        // log('bottom isAbsolute', dis < 0 && containerPosition.bottom - position.bottom < parentOffsetBottom)
-        // log('top isFixed', ( dis < 0 && position.top < cFixedOffsetTop && containerPosition.bottom > (cFixedOffsetTop + el.clientHeight + parentOffsetBottom)));
-        // log('bottom isFixed', ( dis > 0 && window.innerHeight - position.bottom < cFixedOffsetBottom && containerPosition.top < (cFixedOffsetTop - parentOffsetTop)))
         if (
           containerPosition.top <= this.cFixedOffsetTop - this.offsetTop &&
           containerPosition.bottom >= position.height + this.cFixedOffsetTop + this.cFixedOffsetBottom

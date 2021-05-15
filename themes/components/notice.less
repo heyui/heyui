@@ -1,77 +1,82 @@
-@notice-prefix: ~"@{prefix}notice";
+@notice-prefix: ~'@{prefix}notice';
 @notice-width: 350px;
-@notice-padding: 16px;
+@notice-padding: 20px;
 @notice-margin-bottom: 10px;
+
 .@{notice-prefix} {
-    &-container{
-        position: fixed;
-        top: 50px;
-        right: 10px;
-        z-index: @zindex-notice;
-        pointer-events: none;
+  &-container {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    z-index: @zindex-notice;
+    pointer-events: none;
+  }
+  transition: 0.7s;
+  pointer-events: initial;
+  .@{notify-prefix} {
+    &-close {
+      right: @notice-padding;
+      top: @notice-padding;
     }
-    transition: .7s;
-    pointer-events: initial;
-    .@{notify-prefix} {
-        &-container {
-            min-width: @notice-width;
-            right: -100px;
-            margin-bottom: 20px;
-            transform: none;
-            position: relative;
-            max-height: 0;
-            overflow: hidden;
+    &-container {
+      min-width: @notice-width;
+      right: -100px;
+      margin-bottom: 20px;
+      transform: none;
+      position: relative;
+      max-height: 0;
 
-            .@{notice-prefix}-header, header:first-child {
-                min-height: 20px;
-                line-height: 20px;
-                font-size: 16px;
-                padding: @notice-padding 0 0 @notice-padding;
-            }
-            .@{notice-prefix}-footer, footer:last-child {
-                padding: 10px @notice-padding;
-                text-align: left;
-            }
-        }
-        
-        &-content {
-            padding: @notice-padding - 4px @notice-padding;
-            color: @dark-color;
-            [class^="h-icon"], [class*=" h-icon"]{
-                margin-right: 10px;
-                display: inline-block;
-            }
-        }
-    }
-    
-    &.@{notice-prefix}-has-icon{
-        .@{notice-prefix}-header, header:first-child{
-            margin-left: 40px;
-        }
-        .@{notify-prefix}-content{
-            margin-left: 40px;
-
-            [class^="h-icon"], [class*=" h-icon"]{
-                margin-right: 10px;
-                float:left;
-                font-size: 30px;
-                position: absolute;
-                left: -25px;
-                top: -20px;
-            }
-        }
-        headerfooter {
-            margin-left: 40px;
-        }
+      .@{notice-prefix}-header {
+        min-height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        padding: @notice-padding 0 0 @notice-padding;
+      }
+      .@{notice-prefix}-footer {
+        padding: 10px @notice-padding;
+        text-align: left;
+      }
     }
 
-    &.@{notify-prefix} {
-
-        &-show {
-            .@{notify-prefix}-container {
-                right: 0px;
-                max-height: 1000px;
-            }
-        }
+    &-body {
+      padding: (@notice-padding - 5px) @notice-padding;
+      color: @dark-color;
+      [class^='h-icon'],
+      [class*=' h-icon'] {
+        margin-right: 10px;
+        display: inline-block;
+      }
     }
+  }
+
+  &.@{notice-prefix}-has-icon {
+    .@{notice-prefix}-header {
+      margin-left: 40px;
+    }
+    .@{notify-prefix}-body {
+      margin-left: 40px;
+
+      [class^='h-icon'],
+      [class*=' h-icon'] {
+        margin-right: 10px;
+        float: left;
+        font-size: 30px;
+        position: absolute;
+        left: -25px;
+        top: -20px;
+      }
+    }
+    .@{notice-prefix}-footer {
+      margin-left: 40px;
+    }
+  }
+
+  &.@{notify-prefix} {
+    &-show {
+      .@{notify-prefix}-container {
+        right: 0px;
+        max-height: 1000px;
+      }
+    }
+  }
 }

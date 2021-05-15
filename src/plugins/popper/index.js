@@ -35,12 +35,12 @@ for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
 
 function microtaskDebounce(fn) {
   var called = false;
-  return function () {
+  return function() {
     if (called) {
       return;
     }
     called = true;
-    window.Promise.resolve().then(function () {
+    window.Promise.resolve().then(function() {
       called = false;
       fn();
     });
@@ -49,10 +49,10 @@ function microtaskDebounce(fn) {
 
 function taskDebounce(fn) {
   var scheduled = false;
-  return function () {
+  return function() {
     if (!scheduled) {
       scheduled = true;
-      setTimeout(function () {
+      setTimeout(function() {
         scheduled = false;
         fn();
       }, timeoutDuration);
@@ -63,14 +63,14 @@ function taskDebounce(fn) {
 var supportsMicroTasks = isBrowser && window.Promise;
 
 /**
-* Create a debounced version of a method, that's asynchronously deferred
-* but called in the minimum time possible.
-*
-* @method
-* @memberof Popper.Utils
-* @argument {Function} fn
-* @returns {Function}
-*/
+ * Create a debounced version of a method, that's asynchronously deferred
+ * but called in the minimum time possible.
+ *
+ * @method
+ * @memberof Popper.Utils
+ * @argument {Function} fn
+ * @returns {Function}
+ */
 var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
 
 /**
@@ -162,7 +162,7 @@ function getScrollParent(element) {
  */
 var cache = {};
 
-var isIE = function () {
+var isIE = function() {
   var version = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
 
   version = version.toString();
@@ -182,9 +182,11 @@ var isIE = function () {
   }
 
   // Set IE
-  cache.all = cache.all || Object.keys(cache).some(function (key) {
-    return cache[key];
-  });
+  cache.all =
+    cache.all ||
+    Object.keys(cache).some(function(key) {
+      return cache[key];
+    });
   return cache[version];
 };
 
@@ -275,7 +277,7 @@ function findCommonOffsetParent(element1, element2) {
 
   // Both nodes are inside #document
 
-  if (element1 !== commonAncestorContainer && element2 !== commonAncestorContainer || start.contains(end)) {
+  if ((element1 !== commonAncestorContainer && element2 !== commonAncestorContainer) || start.contains(end)) {
     if (isOffsetContainer(commonAncestorContainer)) {
       return commonAncestorContainer;
     }
@@ -355,7 +357,18 @@ function getBordersSize(styles, axis) {
 }
 
 function getSize(axis, body, html, computedStyle) {
-  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+  return Math.max(
+    body['offset' + axis],
+    body['scroll' + axis],
+    html['client' + axis],
+    html['offset' + axis],
+    html['scroll' + axis],
+    isIE(10)
+      ? html['offset' + axis] +
+          computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] +
+          computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]
+      : 0
+  );
 }
 
 function getWindowSizes() {
@@ -369,13 +382,13 @@ function getWindowSizes() {
   };
 }
 
-var classCallCheck = function (instance, Constructor) {
+var classCallCheck = function(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError('Cannot call a class as a function');
   }
 };
 
-var createClass = (function () {
+var createClass = (function() {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -386,14 +399,14 @@ var createClass = (function () {
     }
   }
 
-  return function (Constructor, protoProps, staticProps) {
+  return function(Constructor, protoProps, staticProps) {
     if (protoProps) defineProperties(Constructor.prototype, protoProps);
     if (staticProps) defineProperties(Constructor, staticProps);
     return Constructor;
   };
-}());
+})();
 
-var defineProperty = function (obj, key, value) {
+var defineProperty = function(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -408,19 +421,21 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
+var _extends =
+  Object.assign ||
+  function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
 
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
       }
     }
-  }
 
-  return target;
-};
+    return target;
+  };
 
 /**
  * Given element offsets, generate an output similar to getBoundingClientRect
@@ -536,8 +551,12 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
     offsets.marginTop = marginTop;
     offsets.marginLeft = marginLeft;
   }
-  // log(scrollParent, parent)
-  if (isIE10 && !fixedPosition ? parent.contains(scrollParent) : ((parent.contains(scrollParent) && parent.nodeName !== 'HTML') || parent === scrollParent) && scrollParent.nodeName !== 'BODY') {
+  // console.log(scrollParent, parent)
+  if (
+    isIE10 && !fixedPosition
+      ? parent.contains(scrollParent)
+      : ((parent.contains(scrollParent) && parent.nodeName !== 'HTML') || parent === scrollParent) && scrollParent.nodeName !== 'BODY'
+  ) {
     offsets = includeScroll(offsets, parent);
   }
 
@@ -714,17 +733,23 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
     }
   };
 
-  var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends({
-      key: key
-    }, rects[key], {
-      area: getArea(rects[key])
+  var sortedAreas = Object.keys(rects)
+    .map(function(key) {
+      return _extends(
+        {
+          key: key
+        },
+        rects[key],
+        {
+          area: getArea(rects[key])
+        }
+      );
+    })
+    .sort(function(a, b) {
+      return b.area - a.area;
     });
-  }).sort(function (a, b) {
-    return b.area - a.area;
-  });
 
-  var filteredAreas = sortedAreas.filter(function (_ref2) {
+  var filteredAreas = sortedAreas.filter(function(_ref2) {
     var width = _ref2.width;
 
     var height = _ref2.height;
@@ -782,7 +807,7 @@ function getOuterSizes(element) {
  */
 function getOppositePlacement(placement) {
   var hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
-  return placement.replace(/left|right|bottom|top/g, function (matched) {
+  return placement.replace(/left|right|bottom|top/g, function(matched) {
     return hash[matched];
   });
 }
@@ -857,13 +882,13 @@ function find(arr, check) {
 function findIndex(arr, prop, value) {
   // use native findIndex if supported
   if (Array.prototype.findIndex) {
-    return arr.findIndex(function (cur) {
+    return arr.findIndex(function(cur) {
       return cur[prop] === value;
     });
   }
 
   // use `find` + `indexOf` if `findIndex` isn't supported
-  var match = find(arr, function (obj) {
+  var match = find(arr, function(obj) {
     return obj[prop] === value;
   });
   return arr.indexOf(match);
@@ -881,7 +906,7 @@ function findIndex(arr, prop, value) {
  */
 function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
-  modifiersToRun.forEach(function (modifier) {
+  modifiersToRun.forEach(function(modifier) {
     if (modifier['function']) {
       // eslint-disable-line dot-notation
       console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
@@ -914,18 +939,22 @@ function updateModifiers() {
   let options = this.defaultOptions;
   this.options.modifiers = {};
   const _this = this;
-  Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+  Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function(name) {
     _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
   });
 
   // Refactoring modifiers' list (Object => Array)
-  this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-    return _extends({
-      name: name
-    }, _this.options.modifiers[name]);
-  })
-  // sort the modifiers by order
-    .sort(function (a, b) {
+  this.modifiers = Object.keys(this.options.modifiers)
+    .map(function(name) {
+      return _extends(
+        {
+          name: name
+        },
+        _this.options.modifiers[name]
+      );
+    })
+    // sort the modifiers by order
+    .sort(function(a, b) {
       return a.order - b.order;
     });
 
@@ -933,7 +962,7 @@ function updateModifiers() {
   // such code is executed in the same order of its modifier
   // they could add new properties to their options configuration
   // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
-  this.modifiers.forEach(function (modifierOptions) {
+  this.modifiers.forEach(function(modifierOptions) {
     if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
       modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
     }
@@ -968,7 +997,14 @@ function update() {
   // compute auto placement, store placement inside the data object,
   // modifiers will be able to edit `placement` if needed
   // and refer to originalPlacement to know the original value
-  data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
+  data.placement = computeAutoPlacement(
+    this.options.placement,
+    data.offsets.reference,
+    this.popper,
+    this.reference,
+    this.options.modifiers.flip.boundariesElement,
+    this.options.modifiers.flip.padding
+  );
 
   // store the computed placement inside `originalPlacement`
   data.originalPlacement = data.placement;
@@ -999,7 +1035,7 @@ function update() {
  * @returns {Boolean}
  */
 function isModifierEnabled(modifiers, modifierName) {
-  return modifiers.some(function (_ref) {
+  return modifiers.some(function(_ref) {
     var name = _ref.name;
 
     var enabled = _ref.enabled;
@@ -1122,7 +1158,7 @@ function removeEventListeners(reference, state) {
   getWindow(reference).removeEventListener('resize', state.updateBound);
 
   // Remove scroll event listener on scroll parents
-  state.scrollParents.forEach(function (target) {
+  state.scrollParents.forEach(function(target) {
     target.removeEventListener('scroll', state.updateBound);
   });
 
@@ -1170,7 +1206,7 @@ function isNumeric(n) {
  * Object with a list of properties and values which will be applied to the element
  */
 function setStyles(element, styles) {
-  Object.keys(styles).forEach(function (prop) {
+  Object.keys(styles).forEach(function(prop) {
     var unit = '';
     // add unit if the value is numeric and is one of the following
     if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
@@ -1189,7 +1225,7 @@ function setStyles(element, styles) {
  * Object with a list of properties and values which will be applied to the element
  */
 function setAttributes(element, attributes) {
-  Object.keys(attributes).forEach(function (prop) {
+  Object.keys(attributes).forEach(function(prop) {
     var value = attributes[prop];
     if (value !== false) {
       element.setAttribute(prop, attributes[prop]);
@@ -1244,7 +1280,14 @@ function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
   // compute auto placement, store placement inside the data object,
   // modifiers will be able to edit `placement` if needed
   // and refer to originalPlacement to know the original value
-  var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
+  var placement = computeAutoPlacement(
+    options.placement,
+    referenceOffsets,
+    popper,
+    reference,
+    options.modifiers.flip.boundariesElement,
+    options.modifiers.flip.padding
+  );
 
   popper.setAttribute('x-placement', placement);
 
@@ -1270,7 +1313,7 @@ function computeStyle(data, options) {
 
   // Remove this legacy support in Popper.js v2
 
-  var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
+  var legacyGpuAccelerationOption = find(data.instance.modifiers, function(modifier) {
     return modifier.name === 'applyStyle';
   }).gpuAcceleration;
   if (legacyGpuAccelerationOption !== undefined) {
@@ -1362,19 +1405,23 @@ function computeStyle(data, options) {
  * @returns {Boolean}
  */
 function isModifierRequired(modifiers, requestingName, requestedName) {
-  var requesting = find(modifiers, function (_ref) {
+  var requesting = find(modifiers, function(_ref) {
     var name = _ref.name;
     return name === requestingName;
   });
 
-  var isRequired = !!requesting && modifiers.some(function (modifier) {
-    return modifier.name === requestedName && modifier.enabled && modifier.order < requesting.order;
-  });
+  var isRequired =
+    !!requesting &&
+    modifiers.some(function(modifier) {
+      return modifier.name === requestedName && modifier.enabled && modifier.order < requesting.order;
+    });
 
   if (!isRequired) {
     var _requesting = '`' + requestingName + '`';
     var requested = '`' + requestedName + '`';
-    console.warn(requested + ' modifier is required by ' + _requesting + ' modifier in order to work, be sure to include it before ' + _requesting + '!');
+    console.warn(
+      requested + ' modifier is required by ' + _requesting + ' modifier in order to work, be sure to include it before ' + _requesting + '!'
+    );
   }
   return isRequired;
 }
@@ -1458,7 +1505,11 @@ function arrow(data, options) {
   sideValue = Math.max(Math.min(popper[len] - arrowElementSize, sideValue), 0);
 
   data.arrowElement = arrowElement;
-  data.offsets.arrow = (_data$offsets$arrow = {}, defineProperty(_data$offsets$arrow, side, Math.round(sideValue)), defineProperty(_data$offsets$arrow, altSide, ''), _data$offsets$arrow);
+  data.offsets.arrow =
+    ((_data$offsets$arrow = {}),
+    defineProperty(_data$offsets$arrow, side, Math.round(sideValue)),
+    defineProperty(_data$offsets$arrow, altSide, ''),
+    _data$offsets$arrow);
 
   return data;
 }
@@ -1510,7 +1561,23 @@ function getOppositeVariation(variation) {
  * @method placements
  * @memberof Popper
  */
-var placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
+var placements = [
+  'auto-start',
+  'auto',
+  'auto-end',
+  'top-start',
+  'top',
+  'top-end',
+  'right-start',
+  'right',
+  'right-end',
+  'bottom-end',
+  'bottom',
+  'bottom-start',
+  'left-end',
+  'left',
+  'left-start'
+];
 
 // Get rid of `auto` `auto-start` and `auto-end`
 var validPlacements = placements.slice(3);
@@ -1579,7 +1646,7 @@ function flip(data, options) {
       flipOrder = options.behavior;
   }
 
-  flipOrder.forEach(function (step, index) {
+  flipOrder.forEach(function(step, index) {
     if (placement !== step || flipOrder.length === index + 1) {
       return data;
     }
@@ -1592,18 +1659,32 @@ function flip(data, options) {
 
     // using floor because the reference offsets may contain decimals we are not going to consider here
     var floor = Math.floor;
-    var overlapsRef = placement === 'left' && floor(popperOffsets.right) > floor(refOffsets.left) || placement === 'right' && floor(popperOffsets.left) < floor(refOffsets.right) || placement === 'top' && floor(popperOffsets.bottom) > floor(refOffsets.top) || placement === 'bottom' && floor(popperOffsets.top) < floor(refOffsets.bottom);
+    var overlapsRef =
+      (placement === 'left' && floor(popperOffsets.right) > floor(refOffsets.left)) ||
+      (placement === 'right' && floor(popperOffsets.left) < floor(refOffsets.right)) ||
+      (placement === 'top' && floor(popperOffsets.bottom) > floor(refOffsets.top)) ||
+      (placement === 'bottom' && floor(popperOffsets.top) < floor(refOffsets.bottom));
 
     var overflowsLeft = floor(popperOffsets.left) < floor(boundaries.left);
     var overflowsRight = floor(popperOffsets.right) > floor(boundaries.right);
     var overflowsTop = floor(popperOffsets.top) < floor(boundaries.top);
     var overflowsBottom = floor(popperOffsets.bottom) > floor(boundaries.bottom);
 
-    var overflowsBoundaries = placement === 'left' && overflowsLeft || placement === 'right' && overflowsRight || placement === 'top' && overflowsTop || placement === 'bottom' && overflowsBottom;
+    var overflowsBoundaries =
+      (placement === 'left' && overflowsLeft) ||
+      (placement === 'right' && overflowsRight) ||
+      (placement === 'top' && overflowsTop) ||
+      (placement === 'bottom' && overflowsBottom);
 
     // flip the variation if required
     var isVertical = ['top', 'bottom'].indexOf(placement) !== -1;
-    var flippedVariation = !!options.flipVariations && (isVertical && variation === 'start' && overflowsLeft || variation === 'start' && !overflowsLeft && overflowsRight || isVertical && variation === 'end' && overflowsRight || !isVertical && variation === 'start' && overflowsTop || !isVertical && variation === 'end' && overflowsBottom);
+    var flippedVariation =
+      !!options.flipVariations &&
+      ((isVertical && variation === 'start' && overflowsLeft) ||
+        (variation === 'start' && !overflowsLeft && overflowsRight) ||
+        (isVertical && variation === 'end' && overflowsRight) ||
+        (!isVertical && variation === 'start' && overflowsTop) ||
+        (!isVertical && variation === 'end' && overflowsBottom));
 
     if (overlapsRef || overflowsBoundaries || flippedVariation) {
       // this boolean to detect any flip loop
@@ -1696,7 +1777,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
     }
 
     var rect = getClientRect(element);
-    return rect[measurement] / 100 * value;
+    return (rect[measurement] / 100) * value;
   } else if (unit === 'vh' || unit === 'vw') {
     // if is a vh or vw, we calculate the size based on the viewport
     var size = void 0;
@@ -1705,7 +1786,7 @@ function toValue(str, measurement, popperOffsets, referenceOffsets) {
     } else {
       size = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     }
-    return size / 100 * value;
+    return (size / 100) * value;
   } else {
     // if is an explicit pixel unit, we get rid of the unit and keep the value
     // if is an implicit unit, it's px, and we return just the value
@@ -1734,15 +1815,17 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
 
   // Split the offset string to obtain a list of values and operands
   // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
-  var fragments = offset.split(/(\+|\-)/).map(function (frag) {
+  var fragments = offset.split(/(\+|\-)/).map(function(frag) {
     return frag.trim();
   });
 
   // Detect if the offset string contains a pair of values or a single one
   // they could be separated by comma or space
-  var divider = fragments.indexOf(find(fragments, function (frag) {
-    return frag.search(/,|\s/) !== -1;
-  }));
+  var divider = fragments.indexOf(
+    find(fragments, function(frag) {
+      return frag.search(/,|\s/) !== -1;
+    })
+  );
 
   if (fragments[divider] && fragments[divider].indexOf(',') === -1) {
     console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');
@@ -1751,38 +1834,46 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
   // If divider is found, we divide the list of values and operands to divide
   // them by ofset X and Y.
   var splitRegex = /\s*,\s*|\s+/;
-  var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
+  var ops =
+    divider !== -1
+      ? [
+          fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]),
+          [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))
+        ]
+      : [fragments];
 
   // Convert the values with units to absolute pixels to allow our computations
-  ops = ops.map(function (op, index) {
+  ops = ops.map(function(op, index) {
     // Most of the units rely on the orientation of the popper
     var measurement = (index === 1 ? !useHeight : useHeight) ? 'height' : 'width';
     var mergeWithPrevious = false;
-    return op
-    // This aggregates any `+` or `-` sign that aren't considered operators
-    // e.g.: 10 + +5 => [10, +, +5]
-      .reduce(function (a, b) {
-        if (a[a.length - 1] === '' && ['+', '-'].indexOf(b) !== -1) {
-          a[a.length - 1] = b;
-          mergeWithPrevious = true;
-          return a;
-        } else if (mergeWithPrevious) {
-          a[a.length - 1] += b;
-          mergeWithPrevious = false;
-          return a;
-        } else {
-          return a.concat(b);
-        }
-      }, [])
-    // Here we convert the string values into number values (in px)
-      .map(function (str) {
-        return toValue(str, measurement, popperOffsets, referenceOffsets);
-      });
+    return (
+      op
+        // This aggregates any `+` or `-` sign that aren't considered operators
+        // e.g.: 10 + +5 => [10, +, +5]
+        .reduce(function(a, b) {
+          if (a[a.length - 1] === '' && ['+', '-'].indexOf(b) !== -1) {
+            a[a.length - 1] = b;
+            mergeWithPrevious = true;
+            return a;
+          } else if (mergeWithPrevious) {
+            a[a.length - 1] += b;
+            mergeWithPrevious = false;
+            return a;
+          } else {
+            return a.concat(b);
+          }
+        }, [])
+        // Here we convert the string values into number values (in px)
+        .map(function(str) {
+          return toValue(str, measurement, popperOffsets, referenceOffsets);
+        })
+    );
   });
 
   // Loop trough the offsets arrays and execute the operations
-  ops.forEach(function (op, index) {
-    op.forEach(function (frag, index2) {
+  ops.forEach(function(op, index) {
+    op.forEach(function(frag, index2) {
       if (isNumeric(frag)) {
         offsets[index] += frag * (op[index2 - 1] === '-' ? -1 : 1);
       }
@@ -1878,7 +1969,7 @@ function preventOverflow(data, options) {
     }
   };
 
-  order.forEach(function (placement) {
+  order.forEach(function(placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
     popper = _extends({}, popper, check[side](placement));
   });
@@ -1936,7 +2027,7 @@ function hide(data) {
   }
 
   var refRect = data.offsets.reference;
-  var bound = find(data.instance.modifiers, function (modifier) {
+  var bound = find(data.instance.modifiers, function(modifier) {
     return modifier.name === 'preventOverflow';
   }).boundaries;
 
@@ -2420,7 +2511,7 @@ function requestAnimation(task) {
 
 // Utils
 // Methods
-var Popper = (function () {
+var Popper = (function() {
   /**
    * Create a new Popper.js instance
    * @class Popper
@@ -2435,7 +2526,7 @@ var Popper = (function () {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     classCallCheck(this, Popper);
 
-    this.scheduleUpdate = function () {
+    this.scheduleUpdate = function() {
       return requestAnimation(_this.update);
     };
 
@@ -2474,58 +2565,63 @@ var Popper = (function () {
   // We can't use class properties because they don't get listed in the
   // class prototype and break stuff like Sinon stubs
 
-  createClass(Popper, [{
-    key: 'updateModifiers',
-    value: function updateModifiers$$1() {
-      return updateModifiers.call(this);
-    }
-  }, {
-    key: 'update',
-    value: function update$$1() {
-      return update.call(this);
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy$$1() {
-      return destroy.call(this);
-    }
-  }, {
-    key: 'enableEventListeners',
-    value: function enableEventListeners$$1() {
-      return enableEventListeners.call(this);
-    }
-  }, {
-    key: 'disableEventListeners',
-    value: function disableEventListeners$$1() {
-      return disableEventListeners.call(this);
-    }
+  createClass(Popper, [
+    {
+      key: 'updateModifiers',
+      value: function updateModifiers$$1() {
+        return updateModifiers.call(this);
+      }
+    },
+    {
+      key: 'update',
+      value: function update$$1() {
+        return update.call(this);
+      }
+    },
+    {
+      key: 'destroy',
+      value: function destroy$$1() {
+        return destroy.call(this);
+      }
+    },
+    {
+      key: 'enableEventListeners',
+      value: function enableEventListeners$$1() {
+        return enableEventListeners.call(this);
+      }
+    },
+    {
+      key: 'disableEventListeners',
+      value: function disableEventListeners$$1() {
+        return disableEventListeners.call(this);
+      }
 
-    /**
-     * Schedule an update, it will run on the next UI update available
-     * @method scheduleUpdate
-     * @memberof Popper
-     */
+      /**
+       * Schedule an update, it will run on the next UI update available
+       * @method scheduleUpdate
+       * @memberof Popper
+       */
 
-    /**
-     * Collection of utilities useful when writing custom modifiers.
-     * Starting from version 1.7, this method is available only if you
-     * include `popper-utils.js` before `popper.js`.
-     *
-     * **DEPRECATION**: This way to access PopperUtils is deprecated
-     * and will be removed in v2! Use the PopperUtils module directly instead.
-     * Due to the high instability of the methods contained in Utils, we can't
-     * guarantee them to follow semver. Use them at your own risk!
-     * @static
-     * @private
-     * @type {Object}
-     * @deprecated since version 1.8
-     * @member Utils
-     * @memberof Popper
-     */
-
-  }]);
+      /**
+       * Collection of utilities useful when writing custom modifiers.
+       * Starting from version 1.7, this method is available only if you
+       * include `popper-utils.js` before `popper.js`.
+       *
+       * **DEPRECATION**: This way to access PopperUtils is deprecated
+       * and will be removed in v2! Use the PopperUtils module directly instead.
+       * Due to the high instability of the methods contained in Utils, we can't
+       * guarantee them to follow semver. Use them at your own risk!
+       * @static
+       * @private
+       * @type {Object}
+       * @deprecated since version 1.8
+       * @member Utils
+       * @memberof Popper
+       */
+    }
+  ]);
   return Popper;
-}());
+})();
 
 /**
  * The `referenceObject` is an object that provides an interface compatible with Popper.js

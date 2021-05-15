@@ -22,9 +22,8 @@ const iconColor = {
   error: 'red'
 };
 
-let noticeDom = null;
-
 function Notice(originalParam) {
+  let noticeDom = document.querySelector(`.${prefixCls}-container`);
   if (!noticeDom) {
     noticeDom = document.createElement('div');
     utils.addClass(noticeDom, `${prefixCls}-container`);
@@ -36,6 +35,7 @@ function Notice(originalParam) {
     hasCloseIcon: true,
     parent: noticeDom
   };
+
   if (Object.keys(iconNames).indexOf(originalParam.type) != -1) {
     if (originalParam.title) originalParam.style = `${prefixCls}-has-icon`;
     originalParam.content = `<i class="${iconPrefixCls}-${iconNames[originalParam.type]} ${iconColor[originalParam.type]}-color"></i>${

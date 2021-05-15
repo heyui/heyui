@@ -24,11 +24,12 @@ import ImagePreview from 'heyui/components/image-preview';
 import Icon from 'heyui/components/icon';
 import Input from 'heyui/components/input';
 import Textarea from 'heyui/components/textarea';
-// import Form from 'heyui/components/form';
-// import FormItem from 'heyui/components/form-item';
+import Form from 'heyui/components/form';
+import FormItem from 'heyui/components/form-item';
 // import FormItemList from 'heyui/components/form-item-list';
 import Menu from 'heyui/components/menu';
-// import Modal from 'heyui/components/modal';
+import Modal from 'heyui/components/modal';
+import Notice from 'heyui/components/notice';
 // import ModalComponent from 'heyui/components/modal-component';
 import Pagination from 'heyui/components/pagination';
 // import Poptip from 'heyui/components/poptip';
@@ -72,7 +73,6 @@ import Carousel from 'heyui/components/carousel';
 // import Collapse from 'heyui/components/collapse';
 // import CollapseItem from 'heyui/components/collapse-item';
 
-import style from 'heyui/directives/style';
 import tooltip from 'heyui/directives/tooltip';
 import wordcount from 'heyui/directives/wordcount';
 import wordlimit from 'heyui/directives/wordlimit';
@@ -113,15 +113,16 @@ const components = {
   // DateFullRangePicker,
   // DropdownCustom,
   // DropdownMenu,
-  // Form,
-  // FormItem,
+  Form,
+  FormItem,
   // FormItemList,
   ImagePreview,
   Input,
   Textarea,
   Icon,
   Menu,
-  // Modal,
+  Modal,
+  Notice,
   // ModalComponent,
   NumberInput,
   Pagination,
@@ -165,13 +166,6 @@ const components = {
 };
 
 const directives = {
-  width: style.width,
-  // color: style.color,
-  // 'bg-color': style.bgColor,
-  height: style.height,
-  // padding: style.padding,
-  // margin: style.margin,
-  // font: style.font,
   autosize,
   tooltip,
   wordcount,
@@ -208,20 +202,6 @@ const install = function(app, opts = {}) {
 
 const HeyUI = { install };
 
-export {
-  // modal,
-  // notice,
-  message,
-  // confirm,
-  loading,
-  loadingBar,
-  scrollIntoView,
-  clipboard,
-  imagePreview,
-  dropdown,
-  heyuiConfig,
-  dictMapping,
-  hlang
-};
+export { modal, notice, message, confirm, loading, loadingBar, scrollIntoView, clipboard, imagePreview, dropdown, heyuiConfig, dictMapping, hlang };
 
 export default HeyUI;

@@ -1,35 +1,34 @@
-@modal-prefix: ~"@{prefix}modal";
-@notify-prefix: ~"@{prefix}notify";
-@modal-padding: 15px;
+@modal-prefix: ~'@{prefix}modal';
+@notify-prefix: ~'@{prefix}notify';
+@modal-padding: 20px;
 .@{modal-prefix} {
   // z-index: @zindex-modal;
   // position: absolute;
   position: static;
   .@{notify-prefix} {
-    &-body {
+    &-wrap {
       position: relative;
       overflow: initial;
     }
     &-container {
       position: fixed;
-      .@{modal-prefix}-header,
-      header:first-child {
-        min-height: 40px;
-        line-height: 40px;
-        font-size: 16px;
-        padding-left: @modal-padding;
+      .@{modal-prefix}-header {
+        padding: @modal-padding @modal-padding 0 @modal-padding;
+        .@{modal-prefix}-title {
+          font-size: 16px;
+        }
       }
-      .@{modal-prefix}-footer,
-      footer:last-child {
-        padding: 10px @modal-padding;
+      .@{modal-prefix}-footer {
+        padding: 0 @modal-padding @modal-padding @modal-padding;
         text-align: right;
       }
     }
-    &-content {
-      padding: 10px @modal-padding;
-      &.@{notify-prefix}-content-component {
-        padding: 0;
-      }
+    &-body {
+      padding: @modal-padding;
+    }
+    &-close {
+      right: 20px;
+      top: 20px;
     }
   }
   &-type-default {
@@ -37,46 +36,53 @@
       left: 50%;
       transform: translate(-50%, 0%);
       top: 10px;
-      margin-bottom: 10px;
+      padding-bottom: 50px;
       min-width: 350px;
     }
   }
   &-full-screen {
     .h-notify-container {
+      .h-notify-content {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+      }
       margin-bottom: 0;
       transform: none;
       top: 30px !important;
       bottom: 30px;
       left: 30px;
       right: 30px;
-      display: flex;
-      flex-direction: column;
-      .h-notify-content {
+      .h-notify-body {
         flex: 1;
         overflow: auto;
       }
     }
   }
   &-transparent {
-    .h-notify-container {
+    .h-notify-content {
       background: none;
       box-shadow: none;
     }
   }
   &.@{modal-prefix}-has-divider .@{notify-prefix}-container {
-    .@{modal-prefix}-header,
-    header:first-child {
+    .@{modal-prefix}-header {
+      padding: (@modal-padding - 5px) @modal-padding;
       border-bottom: 1px solid @border-color;
     }
-    .@{modal-prefix}-footer,
-    footer:last-child {
+    .@{modal-prefix}-footer {
+      padding: (@modal-padding - 5px) @modal-padding;
       border-top: 1px solid @border-color;
     }
   }
   &.@{notify-prefix} {
     &-has-mask {
       .@{notify-prefix} {
-        &-body {
+        &-wrap {
           position: fixed;
           overflow: auto;
         }
@@ -96,11 +102,11 @@
       &.@{modal-prefix}-type-default .@{notify-prefix}-container {
         top: 100px;
       }
-      &.@{modal-prefix}-container-center .@{notify-prefix}-container{
+      &.@{modal-prefix}-container-center .@{notify-prefix}-container {
         top: 50%;
         transform: translate(-50%, -50%);
       }
-      &.@{modal-prefix}-full-screen .@{notify-prefix}-container{
+      &.@{modal-prefix}-full-screen .@{notify-prefix}-container {
         top: 0 !important;
         bottom: 0;
         left: 0;
@@ -109,37 +115,41 @@
     }
   }
 
-
-
-  &.@{notify-prefix}-draggable{
-    .h-modal-header, header:first-child {
+  &.@{notify-prefix}-draggable {
+    .h-modal-header {
       cursor: move;
     }
   }
 }
 
-
-
-.h-modal-type-drawer-right, .h-modal-type-drawer-left {
-  .h-notify-body {
+.h-modal-type-drawer-right,
+.h-modal-type-drawer-left {
+  .h-notify-wrap {
     overflow: hidden !important;
   }
   .h-notify-container {
     top: 0;
     bottom: 0;
-    display: flex;
-    flex-direction: column;
     .h-notify-content {
-      flex: 1;
-      overflow: auto;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      .h-notify-body {
+        flex: 1;
+        overflow: auto;
+      }
     }
   }
-  &.h-notify-show .h-notify-container{
+  &.h-notify-show .h-notify-container {
     transform: translateX(0);
   }
 }
 
-.h-modal-type-drawer-right .h-notify-container{
+.h-modal-type-drawer-right .h-notify-container {
   transform: translateX(100%);
   right: 0;
 }

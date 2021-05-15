@@ -1,7 +1,5 @@
 import utils from 'heyui/utils/utils';
-import locale from 'heyui/locale';
 import Draggable from 'heyui/plugins/draggable';
-// import Vue from 'vue';
 
 const Default = {
   type: 'dialog',
@@ -28,9 +26,10 @@ const TYPE = {
 
 const notifyCls = 'h-notify';
 const notifyHasCloseCls = 'h-notify-has-close';
-const notifyContentCls = 'h-notify-content';
-const notifyContainerCls = 'h-notify-container';
 const notifyBodyCls = 'h-notify-body';
+const notifyContainerCls = 'h-notify-container';
+const notifyWrapCls = 'h-notify-wrap';
+const contentWrapCls = 'h-notify-content';
 const notifyCloseCls = 'h-notify-close';
 const notifyMaskCls = 'h-notify-mask';
 const notifyShowCls = 'h-notify-show';
@@ -39,153 +38,89 @@ const closeIcon = 'h-icon-close';
 class Notify {
   constructor(orignalparam) {
     const that = this;
-    this.mouseOver = false;
+    this.mouseoverEvent = false;
     this.closeTimeout = false;
+
     let param = (this.param = utils.extend({}, Default, orignalparam, true));
-    let html = '';
-    if (param.hasMask) {
-      html += `<div class="${notifyMaskCls}"></div>`;
-    }
-    if (param.type === TYPE.MODAL && param.hasMask) {
-      html += `<div class="${notifyBodyCls}">`;
-    }
-    html += `<div class="${notifyContainerCls}">`;
-    if (param.hasCloseIcon) html += `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
-    if (param.title) html += `<header class="${param.type}-header">${param.title}</header>`;
-    html += `<div class="${notifyContentCls}"></div>`;
+
     param.hasFooter = utils.isArray(param.buttons) && param.buttons.length > 0 && !param.component;
+
+    let footerHtml = '';
+    let headerHtml = '';
+    let MaskHtml = '';
+    let closeIconHtml = '';
+
+    if (param.hasMask) MaskHtml = `<div class="${notifyMaskCls}"></div>`;
+    if (param.hasCloseIcon) closeIconHtml = `<span class="${notifyCloseCls} ${closeIcon}"></span>`;
+    if (param.title) headerHtml = `<header class="${param.type}-header">${param.title}</header>`;
+
     if (param.hasFooter) {
-      let footeHtml = '';
-      for (const b of param.buttons) {
-        let name = '';
-        let attr = '';
-        let color = '';
-        if (b == 'cancel') {
-          name = b.name || locale.t('h.common.cancel');
-          attr = b;
-        } else if (b == 'ok') {
-          name = b.name || locale.t('h.common.confirm');
-          attr = 'ok';
-          color = 'primary';
-        } else if (utils.isObject(b)) {
-          attr = b.type;
-          name = b.name;
-          color = b.color;
+      const buttons = [];
+      for (const button of param.buttons) {
+        if (utils.isObject(button)) {
+          let className = button.className || '';
+          if (button.color) className += ` h-btn-${button.color}`;
+          buttons.push(`<button type="button" class="h-btn ${className}" attr="${button.type}">${button.name}</button>`);
         }
-        if (color) color = `h-btn-${color}`;
-        footeHtml += `<button type="button" class="h-btn ${color}" attr="${attr}" >${name}</button>`;
       }
-      html += `<footer class="${param.type}-footer">${footeHtml}</footer>`;
+      footerHtml = `<footer class="${param.type}-footer">${buttons.join('')}</footer>`;
     }
-    if (param.type === TYPE.MODAL) {
-      html += `</div>`;
-    }
+    const elCls = param.type === TYPE.MODAL && param.hasMask ? notifyWrapCls : '';
+    const html = `
+    ${MaskHtml}
+    <div class="${elCls}">
+      <div class="${notifyContainerCls}">
+        <div class="${contentWrapCls}">
+          ${closeIconHtml}
+          ${headerHtml}
+          <div class="${notifyBodyCls}"></div>
+          ${footerHtml}
+        </div>
+      </div>
+    </div>`;
 
-    html += '</div>';
-    let $body = document.createElement(`div`);
-    utils.addClass($body, notifyCls);
+    let el = document.createElement(`div`);
+    utils.addClass(el, notifyCls);
     if (param.hasMask) {
-      utils.addClass($body, 'h-notify-has-mask');
+      utils.addClass(el, 'h-notify-has-mask');
     } else {
-      utils.addClass($body, 'h-notify-no-mask');
+      utils.addClass(el, 'h-notify-no-mask');
     }
-    if (param.class) {
-      utils.addClass($body, param.class);
-    }
-    if (param.className) {
-      utils.addClass($body, param.className);
-    }
-    $body.innerHTML = html;
-    let $content = (this.$content = $body.querySelector(`.${notifyContentCls}`));
-    let $container = (this.$container = $body.querySelector(`.${notifyContainerCls}`));
-    this.$body = $body;
 
-    let content = param.content;
-    if (content.nodeType === 1) {
-      $content.appendChild(content);
-    } else if (utils.isFunction(content)) {
-      const contentText = content.call(this);
-      $content.innerHTML = contentText;
-    } else {
-      $content.innerHTML = content;
+    if (param.className) {
+      utils.addClass(el, param.className);
     }
-    // const VueInstance = Vue || window.Vue;
-    // if (param.component != undefined && VueInstance) {
-    //   this.vue = new VueInstance({
-    //     el: $content,
-    //     i18n: param.$i18n,
-    //     router: param.$router,
-    //     store: param.$store,
-    //     render(createElement) {
-    //       let keys = Object.keys(param.events || {});
-    //       let events = {
-    //         event: this.trigger,
-    //         close: this.close
-    //       };
-    //       for (let key of keys) {
-    //         if (events[key]) {
-    //           continue;
-    //         }
-    //         events[key] = (...data) => {
-    //           this.trigger(key, ...data);
-    //         };
-    //       }
-    //       return createElement(
-    //         'div', {}, [createElement('plugin', {
-    //           props: this.propsData,
-    //           on: events
-    //         })]
-    //       );
-    //     },
-    //     data() {
-    //       return {
-    //         propsData: utils.extend({}, param.component.datas, {
-    //           // **删除**delete**
-    //           param: param.component.data,
-    //           params: param.component.data
-    //         }),
-    //         modal: that
-    //       };
-    //     },
-    //     mounted() {
-    //     },
-    //     methods: {
-    //       trigger(name, ...data) {
-    //         that.trigger(name, ...data);
-    //       },
-    //       close() {
-    //         that.close();
-    //       }
-    //     },
-    //     components: {
-    //       plugin: param.component.vue
-    //     }
-    //   });
-    // }
+    el.innerHTML = html;
+    let $notifyBody = (this.$notifyBody = el.querySelector(`.${notifyBodyCls}`));
+    let $container = (this.$container = el.querySelector(`.${notifyContainerCls}`));
+    this.el = el;
+
+    $notifyBody.innerHTML = param.content;
 
     if (param.hasCloseIcon) {
-      utils.addClass($body, notifyHasCloseCls);
+      utils.addClass(el, notifyHasCloseCls);
     }
 
     if (param.type) {
-      utils.addClass($body, param.type);
+      utils.addClass(el, param.type);
     }
 
     if (param.height) {
-      $content.style.height = `${param.height}px`;
+      $notifyBody.style.height = `${param.height}px`;
     }
     if (param.maxheight) {
-      $content.style.maxHeight = `${param.maxheight}px`;
+      $notifyBody.style.maxHeight = `${param.maxheight}px`;
     }
+
     if (param.style) {
-      utils.addClass($body, param.style);
+      utils.addClass(el, param.style);
     }
     if (param.width) {
       $container.style.width = `${param.width}px`;
     }
 
     if (param.draggable) {
-      utils.addClass($body, 'h-notify-draggable');
+      utils.addClass(el, 'h-notify-draggable');
       let x = 0;
       let y = 0;
       let rect = null;
@@ -213,9 +148,9 @@ class Notify {
 
     let parentDom = param.parent || document.body;
     if (param.type == 'h-notice' && parentDom.hasChildNodes()) {
-      parentDom.insertBefore($body, parentDom.firstChild);
+      parentDom.insertBefore(el, parentDom.firstChild);
     } else {
-      parentDom.appendChild($body);
+      parentDom.appendChild(el);
     }
     // fix: button在focus状态，enter或者空格键都会再次触发
     let focusClicked = document.querySelector(':focus');
@@ -223,12 +158,12 @@ class Notify {
       focusClicked.blur();
     }
     if (param.hasCloseIcon) {
-      $body.querySelector(`.${notifyCloseCls}`).onclick = function() {
+      el.querySelector(`.${notifyCloseCls}`).onclick = function() {
         that.close();
       };
     }
     if (param.hasFooter) {
-      let buttons = $body.querySelectorAll(`.${notifyContainerCls}>footer>button`);
+      let buttons = el.querySelectorAll(`.${notifyContainerCls} .${param.type}-footer>button`);
       for (let button of buttons) {
         button.onclick = function(event) {
           let attr = event.target.getAttribute('attr');
@@ -243,7 +178,7 @@ class Notify {
     }
 
     window.setTimeout(() => {
-      utils.addClass($body, notifyShowCls);
+      utils.addClass(el, notifyShowCls);
       if (param.hasMask) {
         let body = document.documentElement;
         let scrollWidth = window.innerWidth - body.clientWidth;
@@ -253,14 +188,14 @@ class Notify {
     }, 20);
 
     if (param.events && utils.isFunction(param.events.$init)) {
-      param.events.$init.call(null, that, $content);
+      param.events.$init.call(null, that, $notifyBody);
     }
     if (param.timeout) {
-      $body.addEventListener('mouseover', () => {
-        this.mouseOver = true;
+      el.addEventListener('mouseover', () => {
+        this.mouseoverEvent = true;
       });
-      $body.addEventListener('mouseleave', () => {
-        this.mouseOver = false;
+      el.addEventListener('mouseleave', () => {
+        this.mouseoverEvent = false;
         if (this.closeTimeout) {
           that.close();
         }
@@ -268,16 +203,16 @@ class Notify {
 
       window.setTimeout(() => {
         this.closeTimeout = true;
-        if (!this.mouseOver) {
+        if (!this.mouseoverEvent) {
           that.close();
         }
       }, param.timeout);
     }
     if (param.closeOnMask && param.hasMask) {
-      $body.querySelector(`.${notifyMaskCls}`).onclick = () => {
+      el.querySelector(`.${notifyMaskCls}`).onclick = () => {
         this.close();
       };
-      let modalBody = $body.querySelector(`.${notifyBodyCls}`);
+      let modalBody = el.querySelector(`.${notifyWrapCls}`);
       if (modalBody) {
         modalBody.onclick = event => {
           if (event.target == modalBody) {
@@ -301,11 +236,7 @@ class Notify {
   }
 
   close() {
-    let that = this;
-    const $body = this.$body;
-    if (this.vm) {
-      that.vm.$destroy();
-    }
+    const el = this.el;
 
     if (this.drag) {
       this.drag.destroy();
@@ -319,15 +250,15 @@ class Notify {
 
     window.removeEventListener('popstate', this.popstateEvent);
 
-    utils.removeClass($body, notifyShowCls);
+    utils.removeClass(el, notifyShowCls);
 
-    $body.addEventListener('transitionend', event => {
+    el.addEventListener('transitionend', event => {
       if (event.target == this.$container) {
-        utils.removeDom($body);
+        utils.removeDom(el);
       }
     });
     setTimeout(() => {
-      utils.removeDom($body);
+      utils.removeDom(el);
     }, 400);
   }
 }
