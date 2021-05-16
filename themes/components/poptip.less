@@ -1,11 +1,15 @@
-@poptip-prefix: ~"@{prefix}poptip";
+@poptip-prefix: ~'@{prefix}poptip';
 
 .@{poptip-prefix} {
   width: 160px;
   font-size: @font-size-mini;
   padding: 3px;
 
-  &-content{
+  &-content {
     padding: 10px 0px 18px;
+  }
+  &-split {
+    width: 5px;
+    display: inline-block;
   }
 }

@@ -1,14 +1,20 @@
 <template>
   <Tooltip ref="tooltip" :theme="theme" :disabled="disabled" :placement="placement" trigger="click">
     <slot></slot>
-    <div v-slot:content" class="h-poptip>
-      <div class="h-poptip-content"><i class="yellow-color h-icon-warn"></i><i class="h-split"></i>{{content}}</div>
-      <div class="clearfix"><div class="float-right"><button type="button" class="h-btn h-btn-text h-btn-xs" @click="close">{{hlang('h.common.cancel')}}</button><button type="button" @click="trigger" class="h-btn h-btn-text h-btn-xs h-btn-primary">{{hlang('h.common.confirm')}}</button></div></div>
-    </div>
+    <template v-slot:content>
+      <div class="h-poptip">
+        <div class="h-poptip-content"><i class="yellow-color h-icon-warn"></i><i class="h-poptip-split"></i>{{ content }}</div>
+        <div class="clearfix">
+          <div class="float-right">
+            <button type="button" class="h-btn h-btn-text h-btn-xs" @click="close">{{ hlang('h.common.cancel') }}</button
+            ><button type="button" @click="trigger" class="h-btn h-btn-text h-btn-xs h-btn-primary">{{ hlang('h.common.confirm') }}</button>
+          </div>
+        </div>
+      </div>
+    </template>
   </Tooltip>
 </template>
 <script>
-
 export default {
   name: 'hPoptip',
   props: {
