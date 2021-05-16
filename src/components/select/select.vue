@@ -82,6 +82,7 @@ const prefix = 'h-select';
 export default {
   name: 'hSelect',
   mixins: [Locale],
+  emits: ['update:modelValue', 'change'],
   props: {
     multiple: {
       type: Boolean,
@@ -100,16 +101,9 @@ export default {
     limit: {
       type: Number
     },
-    nullOption: {
-      type: Boolean,
-      default: true
-    },
     deletable: {
       type: Boolean,
       default: true
-    },
-    nullOptionText: {
-      type: String
     },
     noBorder: {
       type: Boolean,
@@ -142,7 +136,7 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     },
     optionRender: Function,
-    value: [Number, String, Array, Object],
+    modelValue: [Number, String, Array, Object],
     className: String
   },
   data() {
@@ -160,7 +154,7 @@ export default {
     datas() {
       this.parse();
     },
-    value() {
+    modelValue() {
       this.parse();
     },
     disabled() {
@@ -281,7 +275,7 @@ export default {
     },
     parse() {
       if (this.multiple) {
-        let values = this.value || [];
+        let values = this.modelValue || [];
         if (!utils.isArray(values)) {
           console.warn(`[HeyUI WARNING] Select Component: value '${values}' can't be a value of a multiple select`);
           values = [];
@@ -293,10 +287,10 @@ export default {
           .filter(item => item !== null);
       } else {
         if (this.type == 'key') {
-          this.codes = this.getValue(this.value);
+          this.codes = this.getValue(this.modelValue);
         } else {
-          if (utils.isObject(this.value)) {
-            this.codes = this.value[this.keyName];
+          if (utils.isObject(this.modelValue)) {
+            this.codes = this.modelValue[this.keyName];
           } else {
             this.codes = null;
           }
@@ -322,7 +316,7 @@ export default {
       }
       this.setObjects();
       let value = this.type == 'key' ? this.codes : this.objects;
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', this.objects);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, this.objects);
@@ -369,10 +363,7 @@ export default {
   },
   computed: {
     hasClose() {
-      return !this.nullOptionText && this.nullOption && this.deletable && !this.multiple && this.hasValue && !this.disabled;
-    },
-    hasNullOption() {
-      return this.nullOptionText;
+      return this.deletable && !this.multiple && this.hasValue && !this.disabled;
     },
     hasValue() {
       if (this.multiple) {
@@ -393,9 +384,6 @@ export default {
     },
     hasLabel() {
       return this.options.some(item => item.isLabel);
-    },
-    showNullOptionText() {
-      return this.nullOptionText || this.t('h.select.nullOptionText');
     },
     showPlaceholder() {
       return this.placeholder || this.t('h.select.placeholder');
@@ -454,13 +442,6 @@ export default {
         datas = config.getDict(this.dict);
       }
       datas = config.initOptions(datas, this);
-      if (!this.multiple && this.hasNullOption) {
-        datas.unshift({
-          [`${this.keyName}`]: null,
-          [`${this.titleName}`]: this.showNullOptionText,
-          [`${this.html}`]: this.showNullOptionText
-        });
-      }
       return datas;
     }
   }
