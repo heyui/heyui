@@ -52,7 +52,7 @@ import TagInput from 'heyui/components/tag-input';
 // import Tree from 'heyui/components/tree';
 // import TreePicker from 'heyui/components/tree-picker';
 import NumberInput from 'heyui/components/number-input';
-// import Tooltip from 'heyui/components/tooltip';
+import Tooltip from 'heyui/components/tooltip';
 // import Uploader from 'heyui/components/uploader';
 // import AutoComplete from 'heyui/components/auto-complete';
 import Row from 'heyui/components/row';
@@ -150,7 +150,7 @@ const components = {
   // Table,
   // TableItem,
   Tabs,
-  // Tooltip,
+  Tooltip,
   // Tree,
   // TreePicker,
   // Uploader,

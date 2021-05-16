@@ -16,15 +16,10 @@ const getContent = function(el, vnode) {
     param.maxWidth = attrs.maxWidth;
   }
 
-  let ref = attrs['ref-el'];
   if (!vnode.el.querySelector) {
     return false;
   }
-  let refNode = vnode.el.querySelector(`[tmpl=${ref}]`);
-  if (refNode) {
-    param.content = refNode;
-    param.html = true;
-  } else if (param.content) {
+  if (param.content) {
     param.content = `<div class="h-tooltip-inner-content">${param.content}</div>`;
     param.html = true;
   } else if (el.innerText) {
