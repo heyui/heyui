@@ -53,7 +53,7 @@
           @mousedown="picker(result)"
         >
           <div v-if="!!result.html" v-html="result.html"></div>
-          <template v-else-if="!$scopedSlots.item">{{ result.title }}</template>
+          <template v-else-if="!$slots.item">{{ result.title }}</template>
           <slot v-else :item="result" name="item"></slot>
         </li>
         <li v-if="results.length == 0 && showDropdownWhenNoResult" class="h-autocomplete-empty-content">{{ showEmptyContent }}</li>
@@ -99,7 +99,7 @@ export default {
     placeholder: {
       type: String
     },
-    value: [Number, String, Array, Object],
+    modelValue: [Number, String, Array, Object],
     option: Object,
     show: String,
     emptyContent: {
@@ -130,7 +130,7 @@ export default {
       nowSelected: -1,
       tempValue: null,
       searchValue: null,
-      oldValue: this.value,
+      oldValue: this.modelValue,
       focusValue: null,
       loading: false,
       content: null,
@@ -142,8 +142,8 @@ export default {
     };
   },
   watch: {
-    value() {
-      if (this.oldValue == this.value) {
+    modelValue() {
+      if (this.oldValue == this.modelValue) {
         return;
       }
       this.parse();
@@ -208,8 +208,8 @@ export default {
       this.tempValue = null;
       if (this.multiple) {
         let os = [];
-        if (utils.isArray(this.value) && this.value.length > 0) {
-          for (let v of this.value) {
+        if (utils.isArray(this.modelValue) && this.modelValue.length > 0) {
+          for (let v of this.modelValue) {
             if (this.type == 'key' && !utils.isNull(v) && (this.dict || this.datas)) {
               let result = [...this.results, ...this.objects].filter(item => item.key == v);
               if (result.length) {
@@ -223,29 +223,29 @@ export default {
       } else {
         let value = null;
         if (this.type == 'key') {
-          if (!utils.isNull(this.value)) {
+          if (!utils.isNull(this.modelValue)) {
             if (!this.show && (this.dict || this.datas) && this.results) {
-              let result = this.results.filter(item => item[this.param.keyName] == this.value);
+              let result = this.results.filter(item => item[this.param.keyName] == this.modelValue);
               if (result.length > 0) {
                 value = result[0].value;
               }
             }
             if (utils.isNull(value)) {
               value = {
-                [this.param.keyName]: this.value,
+                [this.param.keyName]: this.modelValue,
                 [this.param.titleName]: this.show
               };
             }
           }
         } else if (this.type == 'title') {
-          if (!utils.isNull(this.value)) {
+          if (!utils.isNull(this.modelValue)) {
             value = {
-              [this.param.keyName]: this.value,
-              [this.param.titleName]: this.value
+              [this.param.keyName]: this.modelValue,
+              [this.param.titleName]: this.modelValue
             };
           }
         } else {
-          value = this.value;
+          value = this.modelValue;
         }
         if (utils.isNull(value)) {
           this.object = {
@@ -258,7 +258,7 @@ export default {
         }
         this.tempValue = this.object.title;
       }
-      this.oldValue = this.value;
+      this.oldValue = this.modelValue;
     },
     dispose() {
       let value = null;
@@ -322,11 +322,11 @@ export default {
       if (this.multiple) this.searchValue = null;
       this.search();
     },
-    focusData(value) {
+    focusData() {
       this.focusValue = this.object.title;
       if (this.multiple) this.searchValue = null;
     },
-    paste(event) {
+    paste() {
       setTimeout(() => {
         this.search();
       }, 0);
@@ -428,7 +428,7 @@ export default {
                   this.nowSelected = this.autoSelectFirst ? 0 : -1;
                 }
               },
-              _ => {
+              () => {
                 this.loading = false;
               }
             );
@@ -490,7 +490,7 @@ export default {
       } else {
         this.tempValue = this.object.title;
       }
-      this.$emit('input', value, trigger);
+      this.$emit('update:modelValue', value, trigger);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object), trigger);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);

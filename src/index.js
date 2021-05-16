@@ -54,7 +54,7 @@ import TagInput from 'heyui/components/tag-input';
 import NumberInput from 'heyui/components/number-input';
 import Tooltip from 'heyui/components/tooltip';
 // import Uploader from 'heyui/components/uploader';
-// import AutoComplete from 'heyui/components/auto-complete';
+import AutoComplete from 'heyui/components/auto-complete';
 import Row from 'heyui/components/row';
 import Cell from 'heyui/components/cell';
 // import HHeader from 'heyui/components/h-header';
@@ -97,7 +97,7 @@ import locale from 'heyui/locale';
 const components = {
   Affix,
   Avatar,
-  // AutoComplete,
+  AutoComplete,
   BackTop,
   Badge,
   Button,
