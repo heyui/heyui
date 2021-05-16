@@ -1,8 +1,7 @@
 <template>
-  <div :class="showCls">
-    <slot></slot>
-    <div class="h-tooltip-inner-content">{{ content }}<slot name="content"></slot></div>
-  </div>
+  <slot v-bind="$attrs"></slot>
+  <!-- eslint-disable -->
+  <div class="h-tooltip-inner-content" ref="content">{{ content }}<slot name="content"></slot></div>
 </template>
 <script>
 import Tooltip from 'heyui/plugins/tooltip';
@@ -11,6 +10,7 @@ const prefix = 'h-tooltip';
 
 export default {
   name: 'hTooltip',
+  emits: ['show', 'hide'],
   props: {
     trigger: {
       type: String, // click,hover
@@ -60,8 +60,8 @@ export default {
     },
     init() {
       this.$nextTick(() => {
-        let el = this.$el;
-        let content = this.$el.querySelector('.h-tooltip-inner-content');
+        let el = this.$el.nextElementSibling;
+        let content = this.$refs.content;
         this.tooltip = new Tooltip(el, {
           content,
           theme: this.theme,

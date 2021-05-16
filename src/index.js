@@ -40,7 +40,7 @@ import Rate from 'heyui/components/rate';
 import Loading from 'heyui/components/loading';
 import Steps from 'heyui/components/steps';
 // import Search from 'heyui/components/search';
-// import Select from 'heyui/components/select';
+import Select from 'heyui/components/select';
 import Switch from 'heyui/components/h-switch';
 import SwitchList from 'heyui/components/switch-list';
 import Skeleton from 'heyui/components/skeleton';
@@ -73,7 +73,6 @@ import Carousel from 'heyui/components/carousel';
 // import Collapse from 'heyui/components/collapse';
 // import CollapseItem from 'heyui/components/collapse-item';
 
-import tooltip from 'heyui/directives/tooltip';
 import wordcount from 'heyui/directives/wordcount';
 import wordlimit from 'heyui/directives/wordlimit';
 import autosize from 'heyui/directives/autosize';
@@ -133,7 +132,7 @@ const components = {
   Row,
   Cell,
   // Search,
-  // Select,
+  Select,
   // Slider,
   Steps,
   HSwitch: Switch,
@@ -167,7 +166,6 @@ const components = {
 
 const directives = {
   autosize,
-  tooltip,
   wordcount,
   wordlimit
 };

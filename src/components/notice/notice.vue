@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :class="noticeCls">
+  <teleport to=".h-notice-container">
+    <div :class="noticeCls" ref="notice">
       <div>
         <transition>
           <div class="h-notify-container" v-if="isShow">
@@ -12,12 +12,19 @@
         </transition>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 <script>
 const prefix = 'h-notice';
 const notifyprefix = 'h-notify';
 import utils from 'heyui/utils/utils';
+
+let noticeDom = document.querySelector(`.${prefix}-container`);
+if (!noticeDom) {
+  noticeDom = document.createElement('div');
+  utils.addClass(noticeDom, `${prefix}-container`);
+  document.body.appendChild(noticeDom);
+}
 
 export default {
   name: 'hNotice',
@@ -58,15 +65,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let noticeDom = document.querySelector(`.${prefix}-container`);
-      if (!noticeDom) {
-        noticeDom = document.createElement('div');
-        utils.addClass(noticeDom, `${prefix}-container`);
-        document.body.appendChild(noticeDom);
-      }
-      this.noticeDom = noticeDom;
-      let el = (this.el = this.$el.firstChild);
-      noticeDom.appendChild(el);
+      let el = (this.el = this.$refs.notice);
       if (!this.modelValue) {
         el.style.display = 'none';
       } else {
@@ -78,17 +77,11 @@ export default {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
-      this.$el.appendChild(el);
-      this.removeDraggable();
     }
   },
   methods: {
-    removeDraggable() {
-      if (this.drag) this.drag.destroy();
-    },
     show() {
       let el = this.el;
-      this.noticeDom.appendChild(el);
       el.style.display = 'block';
       this.isShow = true;
       setTimeout(() => {

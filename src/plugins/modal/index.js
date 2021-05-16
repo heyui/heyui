@@ -60,17 +60,6 @@ function Modal(originalParam) {
 }
 
 function modal(param) {
-  if (this) {
-    if (this.$router) {
-      param.$router = this.$router;
-    }
-    if (this.$i18n) {
-      param.$i18n = this.$i18n;
-    }
-    if (this.$store) {
-      param.$store = this.$store;
-    }
-  }
   return new Modal(param);
 }
 

@@ -39,7 +39,7 @@
         <template v-else>
           <div class="h-select-value-single" v-if="hasValue">
             <template v-if="hasValue">
-              <div v-if="!$scopedSlots.show" class="h-select-value-single">{{ singleValue }}</div>
+              <div v-if="!$slots.show" class="h-select-value-single">{{ singleValue }}</div>
               <slot v-else :value="objects" name="show"></slot>
             </template>
           </div>
@@ -57,7 +57,7 @@
             <template v-for="(option, index) of filterOptions">
               <li v-if="!option.hidden" :key="option[keyName]" @click="setvalue(option)" :class="getLiCls(option, index)">
                 <div v-if="!!optionRender" v-html="option[html]"></div>
-                <template v-else-if="!$scopedSlots.item">{{ option[titleName] }}</template>
+                <template v-else-if="!$slots.item">{{ option[titleName] }}</template>
                 <slot v-else :item="option" name="item"></slot>
                 <i v-if="multiple" class="h-icon-check"></i>
               </li>
@@ -248,7 +248,7 @@ export default {
         }
       }
     },
-    blurHandle(event) {
+    blurHandle() {
       this.nowSelected = -1;
       setTimeout(() => {
         this.searchInput = '';
@@ -307,7 +307,7 @@ export default {
     getValue(value) {
       return utils.isNull(value) ? null : value;
     },
-    setvalue(option, trigger) {
+    setvalue(option) {
       if (this.disabled) return;
       if (option.disabled || option.isLabel) return;
       let code = option[this.keyName];

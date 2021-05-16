@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :class="noticeCls">
+  <teleport to="body">
+    <div :class="noticeCls" ref="modal">
       <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
       <div class="h-notify-wrap" @click.self="setvalue(true)">
         <transition :name="type">
@@ -18,7 +18,7 @@
         </transition>
       </div>
     </div>
-  </div>
+  </teleport>
 </template>
 <script>
 import config from 'heyui/utils/config';
@@ -91,8 +91,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let el = (this.el = this.$el.firstChild);
-      document.body.appendChild(el);
+      let el = this.$refs.modal;
       if (!this.modelValue) {
         el.style.display = 'none';
       }
@@ -103,7 +102,6 @@ export default {
     let el = this.el;
     if (el) {
       el.style.display = 'none';
-      this.$el.appendChild(el);
       this.removeDraggable();
     }
   },
@@ -143,7 +141,6 @@ export default {
     },
     show() {
       let el = this.el;
-      document.body.appendChild(el);
       el.style.display = 'block';
       this.isShow = true;
       if (this.hasMask) {
