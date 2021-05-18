@@ -147,7 +147,7 @@ export default {
       let list = [];
       for (let key in this.param.categoryObj) {
         let item = this.param.categoryObj[key];
-        if (item.status.checkable && item.title.indexOf(this.searchText) != -1) {
+        if (item.status.checkable && item.title.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1) {
           list.push(item);
         }
       }
