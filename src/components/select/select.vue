@@ -425,9 +425,9 @@ export default {
     filterOptions() {
       if (this.searchInput) {
         if (this.dropdown) this.dropdown.update();
-        let searchValue = this.searchInput.toLocaleLowerCase();
+        let searchValue = this.searchInput.toLowerCase();
         return this.options.filter(item => {
-          return (item[this.html] || item[this.titleName]).toLocaleLowerCase().indexOf(searchValue) != -1;
+          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
         });
       }
       return this.options;
