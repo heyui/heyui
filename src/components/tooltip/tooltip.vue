@@ -1,7 +1,9 @@
 <template>
   <slot v-bind="$attrs"></slot>
   <!-- eslint-disable -->
-  <div class="h-tooltip-inner-content" ref="content">{{ content }}<slot name="content"></slot></div>
+  <teleport to="body">
+    <div class="h-tooltip-inner-content" ref="content">{{ content }}<slot name="content"></slot></div>
+  </teleport>
 </template>
 <script>
 import Tooltip from 'heyui/plugins/tooltip';

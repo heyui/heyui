@@ -1,25 +1,38 @@
 <template>
-  <DropdownCustom :button="button" ref="dropdown" @show="showEvent" :delay="delay" @hide="hideEvent" :class="dropdownmenuCls" :trigger="trigger" :equalWidth="equalWidth" :toggleIcon="toggleIcon"
-  :placement="placement" :disabled="disabled" :className="className" :offset="offset" showClass="h-dropdownmenu-show">
+  <DropdownCustom
+    :button="button"
+    ref="dropdown"
+    @show="showEvent"
+    :delay="delay"
+    @hide="hideEvent"
+    :class="dropdownmenuCls"
+    :trigger="trigger"
+    :equalWidth="equalWidth"
+    :toggleIcon="toggleIcon"
+    :placement="placement"
+    :disabled="disabled"
+    :className="className"
+    :offset="offset"
+    showClass="h-dropdownmenu-show"
+  >
     <slot></slot>
-    <ul v-slot:content" :class="groupCls" :style="groupStyle>
-      <li class="h-dropdownmenu-item"
-          :class="{'h-dropdownmenu-item-divider':!!option.divider,'disabled': !!option.divider || option.disabled}"
+    <template v-slot:content>
+      <ul :class="groupCls" :style="groupStyle">
+        <li
+          class="h-dropdownmenu-item"
+          :class="{ 'h-dropdownmenu-item-divider': !!option.divider, disabled: !!option.divider || option.disabled }"
           v-for="option of options"
-          @click="onclick($event, option)" :key="option[key]">
-        <div v-if="option[html]"
-              v-html="option[html]"></div>
-        <template v-else>
-          <i v-if="option.icon"
-              :class="option.icon"></i>
-          <span>{{option[title]}}</span>
-        </template>
-        <Badge v-if="showCount&&option.count"
-                :count="option.count"
-                :max-count="maxCount"
-                position="right"></Badge>
-      </li>
-    </ul>
+          @click="onclick($event, option)"
+          :key="option[key]"
+        >
+          <div v-if="option[html]" v-html="option[html]"></div>
+          <template v-else>
+            <i v-if="option.icon" :class="option.icon"></i>
+            <span>{{ option[title] }}</span>
+          </template>
+          <Badge v-if="showCount && option.count" :count="option.count" :max-count="maxCount" position="right"></Badge>
+        </li></ul
+    ></template>
   </DropdownCustom>
 </template>
 <script>
@@ -94,15 +107,12 @@ export default {
       el: null
     };
   },
-  mounted() {
-  },
-  beforeUnmount() {
-  },
+  mounted() {},
+  beforeUnmount() {},
   methods: {
     onclick(event, option) {
       if (option.disabled) return;
-      this.$emit('onclick', option[this.key], option, event);
-      this.$emit('click', option[this.key], option, event);
+      this.$emit('clickItem', option[this.key], option, event);
       this.$refs.dropdown.hide();
     },
     showEvent(event) {

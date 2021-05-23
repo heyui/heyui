@@ -325,7 +325,7 @@ class Pop {
     return container;
   }
 
-  setEventListeners(triggerEvents, options) {
+  setEventListeners(triggerEvents) {
     let reference = this.reference;
     const directtriggerEvents = [];
     const oppositetriggerEvents = [];
