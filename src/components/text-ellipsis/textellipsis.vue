@@ -16,9 +16,12 @@
   </div>
 </template>
 <script>
+import tooltip from 'heyui/directives/tooltip';
+
 export default {
   name: 'hTextEllipsis',
   emits: ['textClick', 'hide', 'show'],
+  directives: { tooltip },
   props: {
     text: String,
     height: Number,

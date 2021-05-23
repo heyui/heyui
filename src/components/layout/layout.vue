@@ -5,6 +5,7 @@
 </template>
 <script>
 const prefixCls = 'h-layout';
+import utils from 'heyui/utils/utils';
 
 export default {
   name: 'hLayout',
@@ -32,10 +33,9 @@ export default {
   },
   methods: {
     updateSider() {
-      const siderTag = ['hSider', 'Sider', 'h-sider'];
       this.$nextTick(() => {
-        for (let c of this.$children) {
-          if (siderTag.indexOf(c.$options._componentTag || c.$options.name) != -1) {
+        for (let c of this.$el.childNodes) {
+          if (utils.hasClass(c, 'h-layout-sider')) {
             this.hasSiderChild = true;
             return;
           }

@@ -15,9 +15,9 @@ import Checkbox from 'heyui/components/checkbox';
 import Circle from 'heyui/components/circle';
 // import Category from 'heyui/components/category';
 // import CategoryPicker from 'heyui/components/category-picker';
-// import DatePicker from 'heyui/components/date-picker';
-// import DateRangePicker from 'heyui/components/date-range-picker';
-// import DateFullRangePicker from 'heyui/components/date-full-range-picker';
+import DatePicker from 'heyui/components/date-picker';
+import DateRangePicker from 'heyui/components/date-range-picker';
+import DateFullRangePicker from 'heyui/components/date-full-range-picker';
 // import DropdownCustom from 'heyui/components/dropdown-custom';
 // import DropdownMenu from 'heyui/components/dropdown-menu';
 import ImagePreview from 'heyui/components/image-preview';
@@ -107,9 +107,9 @@ const components = {
   // CategoryPicker,
   Checkbox,
   hCircle: Circle,
-  // DatePicker,
-  // DateRangePicker,
-  // DateFullRangePicker,
+  DatePicker,
+  DateRangePicker,
+  DateFullRangePicker,
   // DropdownCustom,
   // DropdownMenu,
   Form,

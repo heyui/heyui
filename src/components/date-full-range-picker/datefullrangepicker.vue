@@ -2,7 +2,7 @@
   <div :class="dateCls">
     <div v-if="noBorder" class="h-datetime-show text-hover">{{ showValue || placeholder }}</div>
     <div v-else class="h-input h-datetime-show">
-      <input type="text" :value="showValue" readonly :placeholder="showPlaceholder" />
+      <input type="text" class="h-input" :value="showValue" readonly :placeholder="showPlaceholder" />
       <i class="h-icon-calendar"></i>
     </div>
     <div :class="datePickerCls" class="h-date-picker">
@@ -41,7 +41,7 @@
           :now-view="nowView.start"
           format="k"
           @updateView="updateView"
-          @input="setvalue"
+          @updateValue="setvalue"
           @changeView="updateDropdown"
         ></date-base>
       </div>
@@ -66,6 +66,7 @@ const prefix = 'h-datetime';
 
 export default {
   name: 'hDateFullRangePicker',
+  emits: ['change', 'update:modelValue'],
   mixins: [Locale],
   props: {
     defaultType: {
@@ -85,7 +86,7 @@ export default {
     placeholder: {
       type: String
     },
-    value: Object,
+    modelValue: Object,
     startWeek: {
       type: Number,
       default: () => config.getOption('datepicker.startWeek')
@@ -96,13 +97,13 @@ export default {
     }
   },
   watch: {
-    value() {
-      this.parse(this.value);
+    modelValue() {
+      this.parse(this.modelValue);
     }
   },
   data() {
     let format = config.getOption('datepicker.format');
-    let defaultType = this.value && this.value.type ? this.value.type : this.defaultType;
+    let defaultType = this.modelValue && this.modelValue.type ? this.modelValue.type : this.defaultType;
     return {
       allviews: {
         year: this.t('h.date.year'),
@@ -128,7 +129,7 @@ export default {
     };
   },
   beforeMount() {
-    this.parse(this.value);
+    this.parse(this.modelValue);
   },
   beforeUnmount() {
     let el = this.el;
@@ -187,13 +188,15 @@ export default {
           }
           this.nowDate[range] = nowValue.format(this.nowFormat);
           return;
-        } catch (evt) {}
+        } catch (evt) {
+          console.error(evt);
+        }
       }
       this.nowDate[range] = '';
     },
     parse(value) {
-      if (this.value && this.value.type) {
-        this.view = this.value.type;
+      if (this.modelValue && this.modelValue.type) {
+        this.view = this.modelValue.type;
       }
       this.parseSingle(value, 'start');
       this.parseSingle(value, 'end');
@@ -283,7 +286,7 @@ export default {
         type: this.view
       };
       this.parse(value);
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
@@ -307,12 +310,12 @@ export default {
       return this.placeholder || this.t('h.datepicker.placeholder');
     },
     showValue() {
-      if (!utils.isObject(this.value)) {
+      if (!utils.isObject(this.modelValue)) {
         return '';
       }
-      if (this.value.type && this.value.start) {
-        let date = manba(this.value.start);
-        switch (this.value.type) {
+      if (this.modelValue.type && this.modelValue.start) {
+        let date = manba(this.modelValue.start);
+        switch (this.modelValue.type) {
           case 'year':
             return date.year();
           case 'month':
@@ -333,10 +336,10 @@ export default {
             });
         }
       }
-      if (!this.value.start && !this.value.end) return '';
-      return `${this.value.start || this.t('h.datepicker.start')} - ${
-        this.value.end
-          ? manba(this.value.end)
+      if (!this.modelValue.start && !this.modelValue.end) return '';
+      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${
+        this.modelValue.end
+          ? manba(this.modelValue.end)
               .add(-1)
               .format(this.nowFormat)
           : this.t('h.datepicker.end')

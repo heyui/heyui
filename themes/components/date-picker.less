@@ -39,9 +39,12 @@
         min-width: 260px;
         .h-tabs {
           padding: 0;
-          > .h-tabs-item + div {
+          > .h-tabs-item {
             margin-left: 5px;
             padding: 10px;
+            &:first-of-type {
+              margin-left: 0;
+            }
           }
         }
       }

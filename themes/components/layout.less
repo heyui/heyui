@@ -1,9 +1,8 @@
-@layout-prefix: ~"@{prefix}layout";
-@header-prefix: ~"@{prefix}layout-header";
-@content-prefix: ~"@{prefix}layout-content";
-@footer-prefix: ~"@{prefix}layout-footer";
-@sider-prefix: ~"@{prefix}layout-sider";
-
+@layout-prefix: ~'@{prefix}layout';
+@header-prefix: ~'@{prefix}layout-header';
+@content-prefix: ~'@{prefix}layout-content';
+@footer-prefix: ~'@{prefix}layout-footer';
+@sider-prefix: ~'@{prefix}layout-sider';
 
 .@{layout-prefix} {
   position: relative;
@@ -15,10 +14,10 @@
   overflow: hidden;
   .h-func-clearfix();
 
-  & &{
+  & & {
     overflow: hidden;
   }
-  &&-has-sider{
+  &&-has-sider {
     flex-direction: row;
   }
   &&-header-fixed {
@@ -56,7 +55,7 @@
   &&-sider-fixed&-sider-collapsed {
     padding-left: @layout-sider-collapse-width;
   }
-  
+
   &&-sider-collapsed {
     > .@{sider-prefix} {
       width: @layout-sider-collapse-width;
@@ -67,10 +66,10 @@
       z-index: 2;
     }
   }
-  &&-header-fixed > &-sider-fixed > .@{sider-prefix}{
+  &&-header-fixed > &-sider-fixed > .@{sider-prefix} {
     top: @layout-header-height;
   }
-  &&-has-sider > &-header-fixed > .@{header-prefix}{
+  &&-has-sider > &-header-fixed > .@{header-prefix} {
     left: @layout-sider-width;
   }
   &&-sider-collapsed > &-header-fixed > .@{header-prefix} {
@@ -78,21 +77,21 @@
   }
 }
 
-.@{header-prefix}{
+.@{header-prefix} {
   height: @layout-header-height;
   line-height: @layout-header-height;
   z-index: 1;
   &-theme-dark {
-    color: rgba(255,255,255,0.65);
+    color: rgba(255, 255, 255, 0.65);
     background: @menu-dark-color;
   }
   &-theme-white {
-    background: #FFF;
+    background: #fff;
   }
 }
 
 .@{sider-prefix} {
-  transition: all .2s;
+  transition: all 0.2s;
   position: relative;
   flex: 0 0 @layout-sider-width;
   max-width: @layout-sider-width;
@@ -103,7 +102,7 @@
     background: @menu-dark-color;
   }
   &-theme-white {
-    background: #FFF;
+    background: #fff;
   }
 }
 

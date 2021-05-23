@@ -16,8 +16,11 @@
   </div>
 </template>
 <script>
+import tooltip from 'heyui/directives/tooltip';
+
 export default {
   name: 'hMenuItemShow',
+  directives: { tooltip },
   props: {
     data: Object,
     param: Object,

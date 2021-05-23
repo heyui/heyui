@@ -118,6 +118,7 @@ const genData = param => {
 
 export default {
   name: 'hDateBase',
+  emits: ['updateValue', 'updateView', 'updateRangeEnd', 'changeValue'],
   mixins: [Locale],
   props: {
     type: {
@@ -141,11 +142,6 @@ export default {
       today: manba(),
       view: startView[this.type] // month //year
     };
-  },
-  filters: {
-    hoursString(d) {
-      return `${utils.padLeft(d.hours(), 2)}:00`;
-    }
   },
   watch: {
     type() {
@@ -182,6 +178,9 @@ export default {
     });
   },
   methods: {
+    hoursString(d) {
+      return `${utils.padLeft(d.hours(), 2)}:00`;
+    },
     changeView(view) {
       this.view = view;
       this.$emit('changeView');
@@ -312,7 +311,7 @@ export default {
       if (!utils.isNull(date)) {
         value = manba(date).format(this.format);
       }
-      this.$emit('input', value, isEnd, this.range);
+      this.$emit('updateValue', value, isEnd, this.range);
     }
   },
   computed: {

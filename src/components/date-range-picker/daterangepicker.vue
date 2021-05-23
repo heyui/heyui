@@ -20,7 +20,7 @@
           :format="nowFormat"
           :startWeek="startWeek"
           @updateView="updateView"
-          @input="setvalue"
+          @updateValue="setvalue"
           @changeView="changeView"
           :rangeEnd="rangeEnd"
           @updateRangeEnd="updateRangeEnd"
@@ -35,7 +35,7 @@
           :format="nowFormat"
           :startWeek="startWeek"
           @updateView="updateView"
-          @input="setvalue"
+          @updateValue="setvalue"
           @changeView="changeView"
           :rangeEnd="rangeEnd"
           @updateRangeEnd="updateRangeEnd"
@@ -63,6 +63,7 @@ const prefix = 'h-datetime';
 export default {
   name: 'hDateRangePicker',
   mixins: [Locale],
+  emits: ['confirm', 'change', 'clear'],
   props: {
     disabled: {
       type: Boolean,
@@ -86,15 +87,19 @@ export default {
     placeholder: {
       type: String
     },
-    value: Object,
+    modelValue: Object,
     startWeek: {
       type: Number,
       default: () => config.getOption('datepicker.startWeek')
+    },
+    bothChoose: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
-    value() {
-      this.parse(this.value);
+    modelValue() {
+      this.parse(this.modelValue);
     },
     disabled() {
       if (this.disabled) {
@@ -120,7 +125,7 @@ export default {
     };
   },
   beforeMount() {
-    this.parse(this.value);
+    this.parse(this.modelValue);
   },
   beforeUnmount() {
     let el = this.el;
@@ -148,6 +153,9 @@ export default {
             that.$nextTick(() => {
               that.initNowView();
             });
+          },
+          hide: () => {
+            this.hide();
           }
         }
       });
@@ -211,6 +219,9 @@ export default {
     },
     hide() {
       this.dropdown.hide();
+      setTimeout(() => {
+        this.parseValue(this.modelValue);
+      }, 400);
     },
     clear() {
       this.$emit('clear');
@@ -242,8 +253,18 @@ export default {
         lastDate.start = lastDate.end;
         lastDate.end = start;
       }
-
+      if (this.bothChoose && (!lastDate.start || !lastDate.end)) {
+        this.parseValue(lastDate);
+        return;
+      }
       this.updateValue(lastDate);
+    },
+    parseValue(value) {
+      value = {
+        [this.paramName.start]: value.start,
+        [this.paramName.end]: value.end
+      };
+      this.parse(value);
     },
     updateValue(value) {
       value = {
@@ -251,7 +272,7 @@ export default {
         [this.paramName.end]: value.end
       };
       this.parse(value);
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
@@ -271,10 +292,10 @@ export default {
       return format;
     },
     show() {
-      if (!utils.isObject(this.value)) {
+      if (!utils.isObject(this.modelValue)) {
         return '';
       }
-      return `${this.value.start || this.t('h.datepicker.start')} - ${this.value.end || this.t('h.datepicker.end')}`;
+      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${this.modelValue.end || this.t('h.datepicker.end')}`;
     },
     shortcuts() {
       let shortcuts = [];

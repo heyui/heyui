@@ -31,7 +31,7 @@
           :now-view="nowView"
           format="k"
           @updateView="updateView"
-          @input="setvalue"
+          @updateValue="setvalue"
           @changeView="updateDropdown"
         ></date-base>
       </div>
@@ -68,6 +68,7 @@ const options = config.getOption('datepicker');
 export default {
   name: 'hDatePicker',
   mixins: [Locale],
+  emits: ['update:modelValue', 'change'],
   props: {
     disabled: {
       type: Boolean,
@@ -98,7 +99,7 @@ export default {
       type: Boolean,
       default: false
     },
-    value: String,
+    modelValue: String,
     inline: {
       type: Boolean,
       default: false
@@ -125,8 +126,8 @@ export default {
     };
   },
   watch: {
-    value() {
-      this.parse(this.value);
+    modelValue() {
+      this.parse(this.modelValue);
     },
     disabled() {
       if (this.disabled) {
@@ -136,11 +137,11 @@ export default {
       }
     },
     type() {
-      this.parse(this.value);
+      this.parse(this.modelValue);
     }
   },
   beforeMount() {
-    this.parse(this.value);
+    this.parse(this.modelValue);
   },
   beforeUnmount() {
     let el = this.el;
@@ -169,7 +170,7 @@ export default {
           show() {
             that.isShow = true;
             that.$nextTick(() => {
-              that.parse(that.value);
+              that.parse(that.modelValue);
               that.$refs.datebase.resetView();
               if (that.nowDate) {
                 that.nowView = manba(that.nowDate);
@@ -185,9 +186,11 @@ export default {
   },
   methods: {
     setShortcutValue(s) {
-      let value = s.value.call(null);
-      this.parse(value);
-      this.setvalue(this.nowDate);
+      if (s.value && utils.isFunction(s.value)) {
+        let value = s.value.call(null);
+        this.parse(value);
+        this.setvalue(this.nowDate);
+      }
       this.hide();
     },
     clear() {
@@ -199,8 +202,8 @@ export default {
       this.$emit('confirm');
       this.hide();
     },
-    updateView(value) {
-      this.nowView = manba(value);
+    updateView(modelValue) {
+      this.nowView = manba(modelValue);
       this.$nextTick(() => {
         this.updateDropdown();
       });
@@ -215,30 +218,34 @@ export default {
       } catch (evt) {
         return;
       }
-      // this.parse(value, false);
       this.setvalue(value);
     },
     changeEvent(event) {
       let value = event.target.value;
       this.parse(value);
       if (this.nowDate && utils.isObject(this.option) && this.type != 'time') {
-        let disabled = false;
+        let reset = false;
         let nowDate = manba(this.nowDate);
         let type = manbaType[this.type];
-        if (this.option.start && nowDate.distance(this.option.start, type) < 0) disabled = this.option.start;
-        if (this.option.end && !disabled && nowDate.distance(this.option.end, type) > 0) disabled = this.option.end;
-        if (this.option.disabled && this.option.disabled.call(null, disabled || nowDate)) disabled = '';
-        if (disabled !== false) {
-          this.parse(disabled);
+        if (this.option.start && nowDate.distance(this.option.start, type) < 0) reset = true;
+        if (!reset && this.option.end && !disabled && nowDate.distance(this.option.end, type) > 0) reset = true;
+        if (!reset && this.option.disabled && this.option.disabled.call(null, nowDate)) reset = true;
+        if (reset) {
+          this.resetValue();
+          return;
         }
       }
       this.setvalue(this.nowDate);
+    },
+    resetValue() {
+      this.clear();
+      this.parse();
     },
     parse(value, initShow = true) {
       if (value != '' && !utils.isNull(value)) {
         try {
           this.nowView = manba(value, this.nowFormat);
-          this.nowDate = this.nowView.format('k');
+          this.nowDate = this.nowView.format('f');
           if (initShow) {
             if (this.type == 'week') {
               this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startWeek) });
@@ -249,7 +256,9 @@ export default {
             }
           }
           return;
-        } catch (err) {}
+        } catch (err) {
+          console.error(err);
+        }
       }
 
       this.nowView = manba();
@@ -260,14 +269,14 @@ export default {
       if (this.dropdown) this.dropdown.hide();
     },
     setvalue(string, isEnd = true) {
-      let value = string;
+      let modelValue = string;
       if (string != '') {
-        value = manba(string).format(this.nowFormat);
+        modelValue = manba(string).format(this.nowFormat);
       }
-      this.$emit('input', value);
-      this.$emit('change', value);
+      this.$emit('update:modelValue', modelValue);
+      this.$emit('change', modelValue);
       let event = document.createEvent('CustomEvent');
-      event.initCustomEvent('setvalue', true, true, value);
+      event.initCustomEvent('setvalue', true, true, modelValue);
       this.$el.dispatchEvent(event);
       if (isEnd) {
         this.hide();
