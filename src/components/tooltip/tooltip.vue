@@ -18,7 +18,7 @@ export default {
       type: String, // click,hover
       default: 'hover'
     },
-    content: String,
+    content: [String, Number],
     placement: {
       type: String,
       default: 'top'

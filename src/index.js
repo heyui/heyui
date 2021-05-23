@@ -36,7 +36,7 @@ import Poptip from 'heyui/components/poptip';
 import Progress from 'heyui/components/progress';
 import Radio from 'heyui/components/radio';
 import Rate from 'heyui/components/rate';
-// import Slider from 'heyui/components/slider';
+import Slider from 'heyui/components/slider';
 import Loading from 'heyui/components/loading';
 import Steps from 'heyui/components/steps';
 // import Search from 'heyui/components/search';
@@ -57,12 +57,12 @@ import Tooltip from 'heyui/components/tooltip';
 import AutoComplete from 'heyui/components/auto-complete';
 import Row from 'heyui/components/row';
 import Cell from 'heyui/components/cell';
-// import HHeader from 'heyui/components/h-header';
-// import HFooter from 'heyui/components/h-footer';
-// import Content from 'heyui/components/content';
-// import Sider from 'heyui/components/sider';
+import HHeader from 'heyui/components/h-header';
+import HFooter from 'heyui/components/h-footer';
+import Content from 'heyui/components/content';
+import Sider from 'heyui/components/sider';
 import Space from 'heyui/components/space';
-// import Layout from 'heyui/components/layout';
+import Layout from 'heyui/components/layout';
 import Timeline from 'heyui/components/timeline';
 import TimelineItem from 'heyui/components/timeline-item';
 // import Transfer from 'heyui/components/transfer';
@@ -133,7 +133,7 @@ const components = {
   Cell,
   // Search,
   Select,
-  // Slider,
+  Slider,
   Steps,
   HSwitch: Switch,
   Switch: Switch,
@@ -154,14 +154,14 @@ const components = {
   // TreePicker,
   // Uploader,
   TextEllipsis,
-  Carousel
+  Carousel,
   // Collapse,
   // CollapseItem,
-  // HHeader,
-  // HFooter,
-  // Content,
-  // Sider,
-  // Layout
+  HHeader,
+  HFooter,
+  Content,
+  Sider,
+  Layout
 };
 
 const directives = {

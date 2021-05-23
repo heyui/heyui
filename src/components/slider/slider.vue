@@ -11,8 +11,8 @@
         :style="{ left: nodePosition.start }"
       ></div>
       <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{ left: nodePosition.end }"></div>
-      <span class="h-slider-end-node-value h-tooltip-inner-content" v-if="showtip">{{ showContent(values.end) }}</span>
-      <span class="h-slider-start-node-value h-tooltip-inner-content" v-if="showtip && hasStart">{{ showContent(values.start) }}</span>
+      <span class="h-slider-end-node-modelValue h-tooltip-inner-content" v-if="showtip">{{ showContent(values.end) }}</span>
+      <span class="h-slider-start-node-modelValue h-tooltip-inner-content" v-if="showtip && hasStart">{{ showContent(values.start) }}</span>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       type: Number,
       default: 1
     },
-    value: {
+    modelValue: {
       type: [Number, Object],
       default: 0
     },
@@ -73,8 +73,7 @@ export default {
       if (this.hasStart) {
         let startNode = this.$el.querySelector('.h-slider-start-node');
         this.tooltip.start = new Tooltip(startNode, {
-          content: this.$el.querySelector('.h-slider-start-node-value'),
-          theme: this.theme,
+          content: this.$el.querySelector('.h-slider-start-node-modelValue'),
           html: true,
           trigger: 'manual hover',
           container: document.body,
@@ -83,8 +82,7 @@ export default {
       }
       let endNode = this.$el.querySelector('.h-slider-end-node');
       this.tooltip.end = new Tooltip(endNode, {
-        content: this.$el.querySelector('.h-slider-end-node-value'),
-        theme: this.theme,
+        content: this.$el.querySelector('.h-slider-end-node-modelValue'),
         html: true,
         trigger: 'manual hover',
         container: document.body,
@@ -106,11 +104,11 @@ export default {
       document.body.addEventListener('mouseup', this.mouseup);
       document.body.addEventListener('click', this.click);
     },
-    showContent(value) {
+    showContent(modelValue) {
       if (this.show) {
-        return this.show.call(null, value);
+        return this.show.call(null, modelValue);
       } else {
-        return value || this.range.start;
+        return modelValue || this.range.start;
       }
     },
     mousedown(type, event) {
@@ -161,7 +159,7 @@ export default {
       let type = this.eventControl.type;
       if (!this.hasStart) {
         nowValue = nowPosition;
-        this.$emit('input', nowValue);
+        this.$emit('update:modelValue', nowValue);
         this.$emit('change', nowValue);
         type = 'end';
       } else {
@@ -186,7 +184,7 @@ export default {
         this.eventControl.type = type;
       }
 
-      this.$emit('input', nowValue);
+      this.$emit('update:modelValue', nowValue);
       this.$emit('change', nowValue);
       let evt = document.createEvent('CustomEvent');
       evt.initCustomEvent('setvalue', true, true, nowValue);
@@ -222,7 +220,7 @@ export default {
       if (!this.multiple) {
         return {
           start: this.range.start,
-          end: this.value || this.range.start
+          end: this.modelValue || this.range.start
         };
       }
       return utils.extend(
@@ -230,7 +228,7 @@ export default {
           start: this.range.start,
           end: this.range.start
         },
-        this.value
+        this.modelValue
       );
     },
     sliderCls() {
