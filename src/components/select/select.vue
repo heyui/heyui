@@ -38,10 +38,8 @@
         </template>
         <template v-else>
           <div class="h-select-value-single" v-if="hasValue">
-            <template v-if="hasValue">
-              <div v-if="!$slots.show" class="h-select-value-single">{{ singleValue }}</div>
-              <slot v-else :value="objects" name="show"></slot>
-            </template>
+            <template v-if="!$slots.show">{{ singleValue }}</template
+            ><slot v-else :value="objects" name="show"></slot>
           </div>
           <div v-else class="h-select-placeholder">{{ showPlaceholder }}</div>
         </template>

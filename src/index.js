@@ -175,7 +175,7 @@ const filters = {
   hlang
 };
 
-const install = function(app, opts = {}) {
+const install = function (app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);

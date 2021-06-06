@@ -1,5 +1,5 @@
 @form-prefix: ~"@{prefix}form";
-@form-label-padding: (@input-height - @font-size-mini)/2;
+@form-label-padding: ((@input-height - @font-size-mini)/2);
 
 .form-content-width100 {
   input[type='text'],
@@ -29,7 +29,7 @@
   .h-func-clearfix();
   .@{form-prefix} {
     &-item {
-      padding-bottom: @input-height - 6px;
+      padding-bottom: (@input-height - 6px);
       
       &-no-padding{
         padding-bottom: 0px;
@@ -84,7 +84,7 @@
           .@{form-prefix}-item-label {
             &:before {
               position: absolute;
-              top: (@input-height)/2 - 2px;
+              top: (@input-height/2) - 2px;
               left: 6px;
             }
           }

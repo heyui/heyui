@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonCls" type="button" :disabled="!!this.disabled">
-    <Icon :type="iconCode" v-if="!!iconCode" /><span v-if="hasText"><slot></slot></span>
+    <i :class="iconClass" v-if="!!iconClass" /><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
 <script>
@@ -79,8 +79,8 @@ export default {
         [`${prefix}-no-border`]: this.noBorder === true
       };
     },
-    iconCode() {
-      return this.loading ? 'loading' : this.icon;
+    iconClass() {
+      return this.loading ? 'h-icon-loading' : this.icon;
     }
   },
   components: {

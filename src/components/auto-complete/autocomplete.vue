@@ -111,6 +111,14 @@ export default {
       type: Number,
       default: 100
     },
+    noBorder: {
+      type: Boolean,
+      default: false
+    },
+    autosize: {
+      type: Boolean,
+      default: false
+    },
     endInput: String,
     showDropdownWhenNoResult: {
       type: Boolean,

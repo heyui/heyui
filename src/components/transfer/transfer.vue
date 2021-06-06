@@ -92,7 +92,7 @@ export default {
       key: this.keyName || 'key'
     };
   },
-  created() {
+  mounted() {
     this.$emit('init', this.sources, this.targets);
   },
   methods: {

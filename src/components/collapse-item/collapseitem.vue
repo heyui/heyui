@@ -1,9 +1,9 @@
 <template>
-  <div class="h-collapse-item" :class="{'h-collapse-item-active': isActive}">
+  <div class="h-collapse-item" :class="{ 'h-collapse-item-active': isActive }">
     <div class="h-collapse-item-header" @click="toggle">
       <span class=""></span>
       <i class="h-collapse-item-expand h-icon-right"></i>
-      <slot name="title">{{title}}</slot>
+      <slot name="title">{{ title }}</slot>
     </div>
     <CollapseTransition>
       <div class="h-collapse-item-content" v-show="isActive">
@@ -15,7 +15,6 @@
   </div>
 </template>
 <script>
-
 import CollapseTransition from './collapsetransition';
 
 export default {
@@ -37,11 +36,7 @@ export default {
     };
   },
   inject: ['collapse'],
-  computed: {
-  },
-  created() {
-
-  },
+  computed: {},
   methods: {
     toggle() {
       this.collapse.toggle(this.name || this.index);

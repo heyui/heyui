@@ -127,7 +127,7 @@ export default {
   },
   watch: {
     modelValue() {
-      this.parse(this.modelValue);
+      this.initShowDate(this.modelValue);
     },
     disabled() {
       if (this.disabled) {
@@ -137,11 +137,11 @@ export default {
       }
     },
     type() {
-      this.parse(this.modelValue);
+      this.initShowDate(this.modelValue);
     }
   },
   beforeMount() {
-    this.parse(this.modelValue);
+    this.initShowDate(this.modelValue);
   },
   beforeUnmount() {
     let el = this.el;
@@ -170,7 +170,7 @@ export default {
           show() {
             that.isShow = true;
             that.$nextTick(() => {
-              that.parse(that.modelValue);
+              that.initShowDate(that.modelValue);
               that.$refs.datebase.resetView();
               if (that.nowDate) {
                 that.nowView = manba(that.nowDate);
@@ -188,7 +188,7 @@ export default {
     setShortcutValue(s) {
       if (s.value && utils.isFunction(s.value)) {
         let value = s.value.call(null);
-        this.parse(value);
+        this.initShowDate(value);
         this.setvalue(this.nowDate);
       }
       this.hide();
@@ -222,13 +222,13 @@ export default {
     },
     changeEvent(event) {
       let value = event.target.value;
-      this.parse(value);
+      this.initShowDate(value);
       if (this.nowDate && utils.isObject(this.option) && this.type != 'time') {
-        let reset = false;
         let nowDate = manba(this.nowDate);
         let type = manbaType[this.type];
+        let reset = false;
         if (this.option.start && nowDate.distance(this.option.start, type) < 0) reset = true;
-        if (!reset && this.option.end && !disabled && nowDate.distance(this.option.end, type) > 0) reset = true;
+        if (!reset && this.option.end && nowDate.distance(this.option.end, type) > 0) reset = true;
         if (!reset && this.option.disabled && this.option.disabled.call(null, nowDate)) reset = true;
         if (reset) {
           this.resetValue();
@@ -239,9 +239,9 @@ export default {
     },
     resetValue() {
       this.clear();
-      this.parse();
+      this.initShowDate();
     },
-    parse(value, initShow = true) {
+    initShowDate(value, initShow = true) {
       if (value != '' && !utils.isNull(value)) {
         try {
           this.nowView = manba(value, this.nowFormat);
