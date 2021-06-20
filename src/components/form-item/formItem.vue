@@ -1,7 +1,8 @@
 <template>
   <div :class="formItemCls" :prop="prop" :validable="validable">
     <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">
-      <i v-if="icon" :class="icon"></i><span v-if="!$slots.label">{{ label }}</span
+      <i v-if="icon" :class="{ [icon]: true, 'h-form-item-label-icon': true }"></i>
+      <span v-if="!$slots.label">{{ label }}</span
       ><slot v-else :label="label" name="label"></slot>
     </label>
     <div class="h-form-item-content" :style="contentStyleCls">

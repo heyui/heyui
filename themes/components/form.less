@@ -17,8 +17,8 @@
   }
 
   .@{prefix}radio,
-  .@{prefix}checkbox{
-    >label{
+  .@{prefix}checkbox {
+    >label {
       height: @input-height;
       line-height: @input-height;
     }
@@ -43,6 +43,9 @@
         line-height: 1;
         padding: @form-label-padding 15px @form-label-padding 0;
         box-sizing: border-box;
+        &-icon {
+          margin-right: 5px;
+        }
       }
       &-required {
         .@{form-prefix}-item-label::before {

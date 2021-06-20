@@ -11,7 +11,7 @@ import Message from 'heyui/plugins/message';
 
 const prefixCls = 'h-form';
 
-const findDomUtil = function(target, utilDom) {
+const findDomUtil = function (target, utilDom) {
   let now = target;
   while (now != utilDom) {
     if (utils.hasClass(now, 'h-form-item') && now.getAttribute('prop')) {
@@ -41,7 +41,10 @@ export default {
       type: Number,
       default: 80
     },
-    rules: Object,
+    rules: {
+      type: Object,
+      default: {}
+    },
     labelPosition: {
       type: String,
       default: 'right' // left,right
@@ -59,7 +62,7 @@ export default {
       default: true
     }
   },
-  provide: function() {
+  provide: function () {
     return {
       validField: this.validField,
       requireds: this.requireds,
@@ -73,6 +76,7 @@ export default {
   },
   data() {
     return {
+      modelStash: null,
       messages: {},
       dynamicRequireds: [],
       requireds: [],
@@ -82,8 +86,10 @@ export default {
       }
     };
   },
+
   beforeMount() {
     if (this.model && this.rules) this.validator = new Validator(this.rules);
+    if (this.model) this.modelStash = utils.copy(this.model);
   },
   unmounted() {
     if (this.validator) {
@@ -108,6 +114,9 @@ export default {
     });
   },
   watch: {
+    model() {
+      this.modelStash = utils.copy(this.model);
+    },
     mode() {
       this.childParams.mode = this.mode;
     },
@@ -137,11 +146,8 @@ export default {
         this.requireds.push(...(this.rules.required || []), ...validRequiredProps, ...this.dynamicRequireds);
       }
     },
-    reset() {
-      console.warn('[HeyUI WARNING] Form Component: form.reset() will be decapitated, please use method form.resetValid()');
-      for (let m in this.messages) {
-        this.messages[m].valid = true;
-      }
+    resetValue() {
+      return this.modelStash;
     },
     resetValid() {
       for (let m in this.messages) {
@@ -286,6 +292,7 @@ export default {
           messages: []
         };
       }
+
       let returnResult = this.validator.valid(
         this.model,
         result => {

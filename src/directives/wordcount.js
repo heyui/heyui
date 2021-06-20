@@ -14,7 +14,7 @@ const wordcount = function (total, el, remainDom) {
 };
 
 export default {
-  mounted(el, binding, vnode) {
+  mounted(el, binding) {
     if (utils.isNumber(binding.value)) {
       let total = binding.value;
       let wordElement = document.createElement('p');

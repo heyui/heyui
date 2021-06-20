@@ -119,24 +119,23 @@ class Validator {
   valid(data, next, allNext) {
     let loadings = [];
     let uuid = utils.uuid();
-    let result = this.validData(
-      data, {
-        uuid,
-        next(r) {
-          for (let key in r) {
-            if (loadings.indexOf(key) > -1) {
-              loadings.splice(loadings.indexOf(key), 1);
-            }
-          }
-          utils.extend(result, r);
-          if (next) {
-            next.call(this, r);
-          }
-          if (allNext && loadings.length == 0) {
-            allNext.call(this, result);
+    let result = this.validData(data, {
+      uuid,
+      next(r) {
+        for (let key in r) {
+          if (loadings.indexOf(key) > -1) {
+            loadings.splice(loadings.indexOf(key), 1);
           }
         }
-      });
+        utils.extend(result, r);
+        if (next) {
+          next.call(this, r);
+        }
+        if (allNext && loadings.length == 0) {
+          allNext.call(this, result);
+        }
+      }
+    });
     for (let prop in result) {
       if (result[prop].loading) {
         loadings.push(prop);
@@ -148,7 +147,7 @@ class Validator {
     return result;
   }
 
-  validData(data, { next, prop = '', sourceData, uuid } = {}) {
+  validData(data, { prop = '', next, sourceData, uuid } = {}) {
     let result = {};
     if (prop != '') {
       result = this.validField(prop, sourceData, { next, uuid });
@@ -228,8 +227,8 @@ class Validator {
     let combineRules = this.combineRules[prop] || [];
     if (prop.indexOf('[') > -1) {
       let arrayRuleKey = prop.replace(/\[\w+\]/, '[]');
-      rule = utils.extend({}, rule, this.rules[arrayRuleKey]);
-      combineRules = utils.extend([], combineRules, this.combineRules[arrayRuleKey]);
+      rule = utils.extend({}, rule, this.rules[prop], this.rules[arrayRuleKey]);
+      combineRules = utils.extend([], combineRules, this.combineRules[prop], this.combineRules[arrayRuleKey]);
     }
 
     let parent = data;
@@ -247,11 +246,17 @@ class Validator {
     result = this.combineRulesValid(combineRules, value, parent, parentProp, uuid);
     let baseResult = returnArgs(prop, undefined, 'base');
     if (result === true && utils.isFunction(next) && utils.isFunction(rule.validAsync)) {
-      rule.validAsync.call(null, value, (result1) => {
-        let n = returnArgs(prop, result1, 'async');
-        n[prop].loading = false;
-        next(n);
-      }, parent, data);
+      rule.validAsync.call(
+        null,
+        value,
+        result1 => {
+          let n = returnArgs(prop, result1, 'async');
+          n[prop].loading = false;
+          next(n);
+        },
+        parent,
+        data
+      );
       baseResult[prop].loading = true;
     }
     return utils.extend(baseResult, result);
@@ -263,15 +268,15 @@ class Validator {
     let count = 0;
     for (let rule of rules) {
       let result = null;
-      let prop = (rule.parentRef && parentProp ? (parentProp + '.') : '') + (rule.refs[rule.refs.length - 1]);
+      let prop = (rule.parentRef && parentProp ? parentProp + '.' : '') + rule.refs[rule.refs.length - 1];
       let combineRuleResult = this.combineRuleResults[rule.id] || {};
-      if (uuid && combineRuleResult.uuid == (uuid + parentProp)) {
+      if (uuid && combineRuleResult.uuid == uuid + parentProp) {
         result = combineRuleResult.result;
       } else {
         let values = [];
         for (let ref of rule.refs) {
           let v = utils.getKeyValue(parent, ref);
-          let refProp = (rule.parentRef && parentProp ? (parentProp + '.') : '') + ref;
+          let refProp = (rule.parentRef && parentProp ? parentProp + '.' : '') + ref;
           // When the basic parameters are not validated, it will stop validate.
           if (this.validFieldBase({ rule: this.rules[refProp], value: v, parent }) != true) {
             // console.log('Validation: basic combine validation does not pass', refProp, this.rules[refProp], v);
@@ -293,7 +298,7 @@ class Validator {
       let combineResult = returnArgs(prop, result, 'combine');
 
       if (uuid) {
-        this.combineRuleResults[rule.id] = { uuid: (uuid + parentProp), result };
+        this.combineRuleResults[rule.id] = { uuid: uuid + parentProp, result };
       }
 
       if (!refValids[prop] || refValids[prop].valid) {
