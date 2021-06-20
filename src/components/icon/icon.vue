@@ -2,7 +2,6 @@
   <i :class="iconCls" :style="iconStyle" v-bind="$attrs"></i>
 </template>
 <script>
-const prefix = 'h-icon';
 export default {
   name: 'hIcon',
   props: {
@@ -18,7 +17,7 @@ export default {
   computed: {
     iconCls() {
       return {
-        [`${prefix}-${this.type}`]: !!this.type,
+        [`${this.type}`]: !!this.type,
         link: this.isLink
       };
     },

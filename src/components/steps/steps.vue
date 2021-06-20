@@ -14,7 +14,7 @@
       <div class="h-steps-content">
         <div class="h-steps-icon">
           <slot :item="a" :index="index" name="icon" v-if="$slots.icon"></slot>
-          <span v-else-if="a.icon" class="h-steps-icon-custom"><Icon :type="a.icon"></Icon></span>
+          <span v-else-if="a.icon" class="h-steps-icon-custom"><i :class="a.icon"></i></span>
           <span v-else class="h-steps-index">
             <i class="h-steps-index-num">{{ index + 1 }}</i>
             <i class="h-icon-check h-steps-success"></i>
