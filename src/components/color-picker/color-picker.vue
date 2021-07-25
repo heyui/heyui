@@ -9,27 +9,27 @@
       <div class="h-colorpicker-panel-picker">
         <ColorSlider v-model="colorValue" :hue="color.hue" @input="updateColor"></ColorSlider>
       </div>
-      <Slider class="h-colorpicker-hue-picker" @change="calculate" :range="{ start: 0, end: 360 }" :showtip="false" v-model="color.hue"></Slider>
+      <Slider v-model="color.hue" class="h-colorpicker-hue-picker" :range="{ start: 0, end: 360 }" :showtip="false" @change="calculate"></Slider>
       <Slider
-        :trackStyle="alphaTrackStyle"
-        @change="calculate"
-        class="h-colorpicker-alpha-picker"
-        v-model="color.alpha"
         v-if="enableAlpha"
+        v-model="color.alpha"
+        :track-style="alphaTrackStyle"
+        class="h-colorpicker-alpha-picker"
         :showtip="false"
+        @change="calculate"
       ></Slider>
-      <div class="h-colorpicker-colors" v-if="colors.length">
+      <div v-if="colors.length" class="h-colorpicker-colors">
         <span
-          class="h-colorpicker-color"
           v-for="color of colors"
           :key="color"
+          class="h-colorpicker-color"
           :class="{ 'h-colorpicker-color-choosed': value == color }"
-          @click="chooseColor(color)"
           :style="{ background: color }"
+          @click="chooseColor(color)"
         ></span>
       </div>
       <div class="h-colorpicker-panel-footer">
-        <input type="text" class="h-colorpicker-panel-input" v-model="color.string" @blur="updateString" @keydown.enter="updateString" />
+        <input v-model="color.string" type="text" class="h-colorpicker-panel-input" @blur="updateString" @keydown.enter="updateString" />
         <div class="h-colorpicker-panel-buttons">
           <button type="button" class="h-btn h-btn-s h-btn-text h-colorpicker-clear-button" @click="clear">{{ hlang('h.common.clear') }}</button>
           <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">{{ hlang('h.common.confirm') }}</button>
@@ -44,7 +44,7 @@ import Color from './utils/color';
 import ColorSlider from './color-slider';
 
 export default {
-  name: 'hColorPicker',
+  name: 'HColorPicker',
   components: {
     ColorSlider
   },
@@ -86,6 +86,22 @@ export default {
       dropdown: null,
       changed: false
     };
+  },
+  computed: {
+    alphaTrackStyle() {
+      if (this.value || this.changed) {
+        return {
+          background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${this.color.getHex()} 100%)`
+        };
+      }
+      return {};
+    },
+    bgColorStyle() {
+      if (this.value || this.changed) {
+        return { background: this.color.toString() };
+      }
+      return {};
+    }
   },
   watch: {
     disabled() {
@@ -183,22 +199,6 @@ export default {
     },
     chooseColor(color) {
       this.setvalue(color);
-    }
-  },
-  computed: {
-    alphaTrackStyle() {
-      if (this.value || this.changed) {
-        return {
-          background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${this.color.getHex()} 100%)`
-        };
-      }
-      return {};
-    },
-    bgColorStyle() {
-      if (this.value || this.changed) {
-        return { background: this.color.toString() };
-      }
-      return {};
     }
   }
 };

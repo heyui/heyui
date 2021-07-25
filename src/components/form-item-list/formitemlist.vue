@@ -3,10 +3,9 @@
 </template>
 <script>
 export default {
-  name: 'hFormItemList',
+  name: 'HFormItemList',
   data() {
-    return {
-    };
+    return {};
   }
 };
 </script>

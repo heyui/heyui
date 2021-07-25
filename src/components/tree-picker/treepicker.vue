@@ -6,7 +6,7 @@
         <div v-else class="h-treepicker-multiple-tags">
           <span v-for="obj of objects" :key="obj[param.keyName]">
             <span>{{ obj[param.titleName] }}</span>
-            <i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
+            <i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i>
           </span>
         </div>
       </template>
@@ -18,19 +18,19 @@
       <div class="h-treepicker-body">
         <Tree
           ref="tree"
-          @loadDataSuccess="loadDataSuccess"
-          :toggleOnSelect="toggleOnSelect"
+          v-model="valuebak"
+          :toggle-on-select="toggleOnSelect"
           :option="option"
           :multiple="multiple"
-          v-model="valuebak"
-          :chooseMode="chooseMode"
-          @select="select"
-          @choose="choose"
+          :choose-mode="chooseMode"
           :filterable="filterable"
           :config="config"
+          @loadDataSuccess="loadDataSuccess"
+          @select="select"
+          @choose="choose"
         ></Tree>
       </div>
-      <div class="h-treepicker-footer" v-if="multiple || useConfirm">
+      <div v-if="multiple || useConfirm" class="h-treepicker-footer">
         <button type="button" class="h-btn h-btn-text h-btn-s" @click="clear">{{ hlang('h.common.clear') }}</button>
         <button type="button" class="h-btn h-btn-primary h-btn-s" @click="confirm">{{ hlang('h.common.confirm') }}</button>
       </div>
@@ -47,7 +47,7 @@ import Tree from 'heyui/components/tree';
 const prefix = 'h-treepicker';
 
 export default {
-  name: 'hTreePicker',
+  name: 'HTreePicker',
   component: {
     Tree
   },
@@ -102,6 +102,50 @@ export default {
       stashObject: null
     };
   },
+  computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption('tree.default'), this.option);
+      }
+    },
+    showCls() {
+      return {
+        [`${this.className}-show`]: !!this.className
+      };
+    },
+    groupCls() {
+      return {
+        [`${this.className}-dropdown`]: !!this.className
+      };
+    },
+    treepickerCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: true,
+        [`${prefix}-no-autosize`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    }
+  },
+  watch: {
+    value() {
+      this.parse();
+    },
+    disabled() {
+      if (!this.dropdown) {
+        return false;
+      }
+
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
+  },
   beforeUnmount() {
     let el = this.el;
     if (el) {
@@ -129,22 +173,6 @@ export default {
         this.dropdown.disabled();
       }
     });
-  },
-  watch: {
-    value() {
-      this.parse();
-    },
-    disabled() {
-      if (!this.dropdown) {
-        return false;
-      }
-
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
-      }
-    }
   },
   methods: {
     refresh() {
@@ -277,34 +305,6 @@ export default {
       if (this.$refs.tree) {
         return this.$refs.tree.foldAll();
       }
-    }
-  },
-  computed: {
-    param() {
-      if (this.config) {
-        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
-      } else {
-        return utils.extend({}, config.getOption('tree.default'), this.option);
-      }
-    },
-    showCls() {
-      return {
-        [`${this.className}-show`]: !!this.className
-      };
-    },
-    groupCls() {
-      return {
-        [`${this.className}-dropdown`]: !!this.className
-      };
-    },
-    treepickerCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: true,
-        [`${prefix}-no-autosize`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-disabled`]: this.disabled
-      };
     }
   }
 };

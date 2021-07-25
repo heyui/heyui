@@ -9,7 +9,7 @@
 const prefix = 'h-affix';
 
 export default {
-  name: 'hAffix',
+  name: 'HAffix',
   props: {
     offsetTop: Number,
     offsetBottom: Number,
@@ -30,19 +30,38 @@ export default {
       y: 0
     };
   },
-  mounted() {
-    this.$nextTick(() => {
-      if (this.container) {
-        this.containerDom = this.container.call();
+  computed: {
+    cFixedOffsetTop() {
+      return this.fixedOffsetTop || this.offsetTop;
+    },
+    cFixedOffsetBottom() {
+      return this.fixedOffsetBottom || this.offsetBottom;
+    },
+    affixCls() {
+      return {
+        [prefix]: this.isFixed,
+        [`${prefix}-absolute`]: this.isAbsolute
+      };
+    },
+    affixStyle() {
+      let param = {};
+      if (this.isFixed) {
+        if (this.fixPosition == 'top') {
+          param.top = `${this.cFixedOffsetTop}px`;
+        } else {
+          param.bottom = `${this.cFixedOffsetBottom}px`;
+        }
       }
-      window.addEventListener('scroll', this.trigger, true);
-      window.addEventListener('resize', this.trigger);
-      this.refresh();
-    });
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.trigger, true);
-    window.removeEventListener('resize', this.trigger);
+
+      if (this.isAbsolute) {
+        if (this.fixPosition == 'top') {
+          param.top = `${this.offsetTop}px`;
+        } else {
+          param.bottom = `${this.offsetBottom}px`;
+        }
+      }
+      return param;
+    }
   },
   watch: {
     offsetTop() {
@@ -65,6 +84,20 @@ export default {
         this.refresh();
       }
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (this.container) {
+        this.containerDom = this.container.call();
+      }
+      window.addEventListener('scroll', this.trigger, true);
+      window.addEventListener('resize', this.trigger);
+      this.refresh();
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.trigger, true);
+    window.removeEventListener('resize', this.trigger);
   },
   methods: {
     refresh() {
@@ -142,39 +175,6 @@ export default {
           this.$emit('change', this.isFixed);
         }
       }
-    }
-  },
-  computed: {
-    cFixedOffsetTop() {
-      return this.fixedOffsetTop || this.offsetTop;
-    },
-    cFixedOffsetBottom() {
-      return this.fixedOffsetBottom || this.offsetBottom;
-    },
-    affixCls() {
-      return {
-        [prefix]: this.isFixed,
-        [`${prefix}-absolute`]: this.isAbsolute
-      };
-    },
-    affixStyle() {
-      let param = {};
-      if (this.isFixed) {
-        if (this.fixPosition == 'top') {
-          param.top = `${this.cFixedOffsetTop}px`;
-        } else {
-          param.bottom = `${this.cFixedOffsetBottom}px`;
-        }
-      }
-
-      if (this.isAbsolute) {
-        if (this.fixPosition == 'top') {
-          param.top = `${this.offsetTop}px`;
-        } else {
-          param.bottom = `${this.offsetBottom}px`;
-        }
-      }
-      return param;
     }
   }
 };

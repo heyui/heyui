@@ -4,7 +4,7 @@
 <script>
 const prefix = 'h-space';
 export default {
-  name: 'hIcon',
+  name: 'HIcon',
   props: {
     width: {
       type: Number,
@@ -15,7 +15,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   computed: {
     cls() {
       return {
@@ -27,6 +26,7 @@ export default {
         width: `${this.width}px`
       };
     }
-  }
+  },
+  methods: {}
 };
 </script>

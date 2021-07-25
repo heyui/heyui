@@ -4,12 +4,12 @@
       <div v-if="multiple && objects.length" class="h-cascader-multiple-tags">
         <span v-for="(obj, index) of objects" :key="index + '' + obj.key"
           ><span>{{ obj.title }}</span
-          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+          ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i
         ></span>
       </div>
       <div v-else-if="!multiple && object" class="h-cascader-value-single">
         <span>{{ object.title }}</span>
-        <i class="h-icon-close text-hover" v-if="object && !disabled" @mousedown="clear"></i>
+        <i v-if="object && !disabled" class="h-icon-close text-hover" @mousedown="clear"></i>
       </div>
       <div v-else class="h-cascader-placeholder">{{ showPlaceholder }}</div>
     </div>
@@ -17,13 +17,13 @@
       <ul class="h-cascader-ul">
         <CascaderItem
           v-for="cascader of cascaderDatas"
+          :key="cascader.key"
           :data="cascader"
           :param="param"
-          :key="cascader.key"
           :multiple="multiple"
           :status="status"
-          @trigger="trigger"
           :level="0"
+          @trigger="trigger"
         ></CascaderItem>
       </ul>
     </div>
@@ -39,11 +39,11 @@ import CascaderItem from 'heyui/components/cascader/cascader-item';
 const prefix = 'h-cascader';
 
 export default {
-  name: 'hCascader',
-  mixins: [Locale],
+  name: 'HCascader',
   components: {
     CascaderItem
   },
+  mixins: [Locale],
   props: {
     option: Object,
     multiple: {
@@ -84,9 +84,33 @@ export default {
       searchValue: null
     };
   },
-  mounted() {
-    this.init();
-    this.initCascaderDatas();
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.cascader.placeholder');
+    },
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption('cascader.default'), config.getOption(`cascader.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption('cascader.default'), this.option);
+      }
+    },
+    cascaderCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: true,
+        [`${prefix}-no-autosize`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}-group`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
+      };
+    }
   },
   watch: {
     disabled() {
@@ -98,9 +122,13 @@ export default {
         }
       }
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initCascaderDatas();
     }
+  },
+  mounted() {
+    this.init();
+    this.initCascaderDatas();
   },
   methods: {
     init() {
@@ -232,34 +260,6 @@ export default {
         datas.push(obj);
       }
       return datas;
-    }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.cascader.placeholder');
-    },
-    param() {
-      if (this.config) {
-        return utils.extend({}, config.getOption('cascader.default'), config.getOption(`cascader.configs.${this.config}`), this.option);
-      } else {
-        return utils.extend({}, config.getOption('cascader.default'), this.option);
-      }
-    },
-    cascaderCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: true,
-        [`${prefix}-no-autosize`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-disabled`]: this.disabled
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}-group`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${this.className}-dropdown`]: !!this.className
-      };
     }
   }
 };

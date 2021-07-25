@@ -34,8 +34,7 @@ export default function () {
     return string.replace(RE_NARGS, (match, prefix, i, index) => {
       let result;
 
-      if (string[index - 1] === '{' &&
-        string[index + match.length] === '}') {
+      if (string[index - 1] === '{' && string[index + match.length] === '}') {
         return i;
       } else {
         result = hasOwn(args, i) ? args[i] : null;

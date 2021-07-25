@@ -4,12 +4,12 @@
       <div v-if="multiple && objects.length" class="h-category-multiple-tags">
         <span v-for="obj of objects" :key="obj.key">
           <span>{{ obj.title }}</span
-          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i>
+          ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i>
         </span>
       </div>
       <div v-else-if="!multiple && object" class="h-category-value-single">
         <span>{{ object.title }}</span>
-        <i class="h-icon-close" v-if="object.title != null && !disabled" @mousedown="clear"></i>
+        <i v-if="object.title != null && !disabled" class="h-icon-close" @mousedown="clear"></i>
       </div>
       <div v-else class="h-category-placeholder">{{ showPlaceholder }}</div>
     </div>
@@ -26,7 +26,7 @@ import Modal from 'heyui/plugins/modal';
 const prefix = 'h-category';
 
 export default {
-  name: 'hCategory',
+  name: 'HCategory',
   mixins: [Locale],
   props: {
     option: Object,
@@ -64,16 +64,37 @@ export default {
       searchValue: null
     };
   },
-  mounted() {
-    this.initCategoryDatas();
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.category.placeholder');
+    },
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption('category.default'), config.getOption(`category.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption('category.default'), this.option);
+      }
+    },
+    categoryCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: true,
+        [`${prefix}-no-autosize`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    }
   },
   watch: {
     value() {
       this.parse();
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initCategoryDatas();
     }
+  },
+  mounted() {
+    this.initCategoryDatas();
   },
   methods: {
     openPicker() {
@@ -233,27 +254,6 @@ export default {
         datas.push(obj);
       }
       return datas;
-    }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.category.placeholder');
-    },
-    param() {
-      if (this.config) {
-        return utils.extend({}, config.getOption('category.default'), config.getOption(`category.configs.${this.config}`), this.option);
-      } else {
-        return utils.extend({}, config.getOption('category.default'), this.option);
-      }
-    },
-    categoryCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: true,
-        [`${prefix}-no-autosize`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-disabled`]: this.disabled
-      };
     }
   }
 };

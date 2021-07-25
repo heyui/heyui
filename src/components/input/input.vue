@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'hInput',
+  name: 'HInput',
   props: {
     modelValue: String
   }

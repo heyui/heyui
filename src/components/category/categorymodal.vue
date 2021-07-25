@@ -1,9 +1,9 @@
 <template>
   <div class="h-category-modal">
-    <header class="relative" v-if="params.title">{{ params.title }}</header>
+    <header v-if="params.title" class="relative">{{ params.title }}</header>
     <div>
       <div class="h-panel-bar">
-        <div class="h-category-modal-multiple-tags" v-if="param.multiple">
+        <div v-if="param.multiple" class="h-category-modal-multiple-tags">
           <span v-for="tag of param.objects" :key="tag.key"
             ><span>{{ tag.title }}</span
             ><i class="h-icon-close-min" @click.stop="remove(tag)"></i
@@ -14,19 +14,19 @@
         </div>
         <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
-      <Tabs v-if="searchText == ''" :datas="tabs" v-model="tab" keyName="key" titleName="title" @change="focusTab"></Tabs>
+      <Tabs v-if="searchText == ''" v-model="tab" :datas="tabs" key-name="key" title-name="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
         <Row :space="10">
           <template v-if="searchText == ''">
-            <Cell :width="8" v-for="data of list" :key="data.key">
+            <Cell v-for="data of list" :key="data.key" :width="8">
               <div class="text-ellipsis h-category-item" @click="openNew(data)">
-                <i class="h-icon-loading" v-if="data.status.loading"></i>
+                <i v-if="data.status.loading" class="h-icon-loading"></i>
                 <Checkbox v-else-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox
                 ><i class="h-split"></i>{{ data.title }} <span v-if="data.children.length">({{ data.children.length }})</span>
               </div>
             </Cell>
           </template>
-          <Cell v-else :width="8" v-for="data of searchlist" :key="data.key">
+          <Cell v-for="data of searchlist" v-else :key="data.key" :width="8">
             <div class="text-ellipsis h-category-item" @click.stop="change(data)">
               <Checkbox v-if="data.status.checkable" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox><i class="h-split"></i
               >{{ data.title }}
@@ -50,9 +50,9 @@ import Checkbox from 'heyui/components/checkbox';
 const topMenu = '-------';
 
 export default {
-  name: 'hCategoryModal',
-  mixins: [Locale],
+  name: 'HCategoryModal',
   components: { Search, Checkbox },
+  mixins: [Locale],
   props: {
     param: Object
   },
@@ -70,6 +70,27 @@ export default {
       tab: topMenu,
       tabIndex: 0
     };
+  },
+  computed: {
+    cancelWord() {
+      return this.t('h.common.cancel');
+    },
+    confirmWord() {
+      return this.t('h.common.confirm');
+    },
+    showEmptyContent() {
+      return this.t('h.categoryModal.emptyContent');
+    },
+    searchlist() {
+      let list = [];
+      for (let key in this.param.categoryObj) {
+        let item = this.param.categoryObj[key];
+        if (item.status.checkable && item.title.indexOf(this.searchText) != -1) {
+          list.push(item);
+        }
+      }
+      return list;
+    }
   },
   mounted() {},
   methods: {
@@ -138,27 +159,6 @@ export default {
     },
     close() {
       this.$emit('close');
-    }
-  },
-  computed: {
-    cancelWord() {
-      return this.t('h.common.cancel');
-    },
-    confirmWord() {
-      return this.t('h.common.confirm');
-    },
-    showEmptyContent() {
-      return this.t('h.categoryModal.emptyContent');
-    },
-    searchlist() {
-      let list = [];
-      for (let key in this.param.categoryObj) {
-        let item = this.param.categoryObj[key];
-        if (item.status.checkable && item.title.indexOf(this.searchText) != -1) {
-          list.push(item);
-        }
-      }
-      return list;
     }
   }
 };

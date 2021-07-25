@@ -1,29 +1,29 @@
 <template>
   <DropdownCustom
-    :button="button"
     ref="dropdown"
-    @show="showEvent"
+    :button="button"
     :delay="delay"
-    @hide="hideEvent"
     :class="dropdownmenuCls"
     :trigger="trigger"
-    :equalWidth="equalWidth"
-    :toggleIcon="toggleIcon"
+    :equal-width="equalWidth"
+    :toggle-icon="toggleIcon"
     :placement="placement"
     :disabled="disabled"
-    :className="className"
+    :class-name="className"
     :offset="offset"
-    showClass="h-dropdownmenu-show"
+    show-class="h-dropdownmenu-show"
+    @show="showEvent"
+    @hide="hideEvent"
   >
     <slot></slot>
-    <template v-slot:content>
+    <template #content>
       <ul :class="groupCls" :style="groupStyle">
         <li
+          v-for="option of options"
+          :key="option[key]"
           class="h-dropdownmenu-item"
           :class="{ 'h-dropdownmenu-item-divider': !!option.divider, disabled: !!option.divider || option.disabled }"
-          v-for="option of options"
           @click="onclick($event, option)"
-          :key="option[key]"
         >
           <div v-if="option[html]" v-html="option[html]"></div>
           <template v-else>
@@ -43,7 +43,11 @@ import Badge from 'heyui/components/badge';
 const prefix = 'h-dropdownmenu';
 
 export default {
-  name: 'hDropdownMenu',
+  name: 'HDropdownMenu',
+  components: {
+    Badge,
+    DropdownCustom
+  },
   props: {
     dict: String,
     datas: [Array, Object],
@@ -107,21 +111,6 @@ export default {
       el: null
     };
   },
-  mounted() {},
-  beforeUnmount() {},
-  methods: {
-    onclick(event, option) {
-      if (option.disabled) return;
-      this.$emit('clickItem', option[this.key], option, event);
-      this.$refs.dropdown.hide();
-    },
-    showEvent(event) {
-      this.$emit('show', event);
-    },
-    hideEvent(event) {
-      this.$emit('hide', event);
-    }
-  },
   computed: {
     dropdownmenuCls() {
       return {
@@ -161,9 +150,20 @@ export default {
       return datas;
     }
   },
-  components: {
-    Badge,
-    DropdownCustom
+  mounted() {},
+  beforeUnmount() {},
+  methods: {
+    onclick(event, option) {
+      if (option.disabled) return;
+      this.$emit('clickItem', option[this.key], option, event);
+      this.$refs.dropdown.hide();
+    },
+    showEvent(event) {
+      this.$emit('show', event);
+    },
+    hideEvent(event) {
+      this.$emit('hide', event);
+    }
   }
 };
 </script>

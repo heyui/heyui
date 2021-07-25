@@ -4,12 +4,29 @@
 .@{table-prefix} {
   border: @border;
   position: relative;
-  th {
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: left;
-    height: 40px;
+  .h-table-th {
     position: relative;
+    background-color: @gray3-color;
+    padding: 8px 12px;
+    .h-table-th-container {
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .h-table-th-title {
+        white-space: nowrap;
+        text-align: left;
+        overflow: hidden;
+        flex: 1;
+        text-overflow: ellipsis;
+      }
+    }
+    &.h-table-th-active {
+      cursor: pointer;
+      &:hover {
+        background-color: @gray2-color;
+      }
+    }
   }
   th,
   td {
@@ -19,10 +36,10 @@
     word-break: break-all;
     box-sizing: border-box;
     min-width: 0;
-    padding: 3px 0px 3px 8px;
+    padding: 8px 0px 8px 12px;
     vertical-align: middle;
     &.text-right {
-      padding-right: 8px;
+      padding-right: 12px;
       padding-left: 0;
     }
     &.text-center {
@@ -44,7 +61,7 @@
   }
   td {
     font-size: @font-size-mini;
-    height: 40px;
+    height: 50px;
     border-top: @border;
   }
   table {
@@ -82,7 +99,7 @@
     z-index: 1;
     position: absolute;
     top: 0;
-    background: #FFF;
+    background: #fff;
     bottom: 0;
     overflow: hidden;
     table {
@@ -154,7 +171,7 @@
 
   &-stripe {
     .h-table-tbody tr:nth-child(2n) {
-      background-color: #fcfcfc;
+      background-color: fade(@hover-background-color, 30%);
     }
   }
 
@@ -178,20 +195,15 @@
     padding: 20px;
   }
   &-sort-handler {
-    display: inline-block;
-    line-height: 1;
     vertical-align: middle;
-    font-size: 12px;
     color: @gray1-color;
+    font-size: 12px;
     transition: color @transition-time;
+    margin-left: 5px;
     th:hover & {
       color: @dark4-color;
     }
-    > span {
-      cursor: pointer;
-      // &:hover {
-      //   color: @dark-color;
-      // }
+    > i {
       &.@{table-prefix}-sort-selected {
         color: @primary-color;
       }
@@ -201,24 +213,24 @@
   &-tr-select-disabled {
     background: @disabled-background-color;
   }
-  &-content-empty-width{
+  &-content-empty-width {
     height: 1px;
   }
   &-tree-icon {
-    font-size: 14px;
+    transform: scale(0.8);
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 3px;
+    border-radius: 2px;
+    border: 1px solid @gray-color;
     .h-func-text-hover();
+    &:hover {
+      border-color: @primary-color;
+    }
   }
+  &-tree-expand-space,
   &-tree-empty {
     display: inline-block;
     width: 14px;
-  }
-  &-tree-expand-space {
-    display: inline-block;
-    width: 8px;
-  }
-  &-tree-opened {
-    .h-table-tree-icon{
-      transform: rotate(90deg);
-    }
   }
 }

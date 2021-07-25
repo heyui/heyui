@@ -1,6 +1,6 @@
 <template>
   <li class="h-menu-li" :class="{ 'h-menu-li-opened': status.opened.indexOf(data.key) != -1 }">
-    <a :target="data.value.target" @click="triggerClick" v-if="data.value.href" class="h-menu-link" :href="href">
+    <a v-if="data.value.href" :target="data.value.target" class="h-menu-link" :href="href" @click="triggerClick">
       <MenuItemShow v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
     </a>
     <MenuItemShow v-else v-bind="$props" :mode="mode" @trigger="trigger"></MenuItemShow>
@@ -14,7 +14,7 @@ import utils from 'heyui/utils/utils';
 import MenuItemShow from './menu-item-show';
 
 export default {
-  name: 'hMenuItem',
+  name: 'HMenuItem',
   components: {
     MenuItemShow
   },
@@ -27,17 +27,6 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    trigger(data) {
-      this.$emit('trigger', data);
-    },
-    triggerClick(event) {
-      if (this.data.value.nativeLink !== true && !(event.altKey || event.ctrlKey || event.shiftKey || event.metaKey)) {
-        event.preventDefault();
-      }
-      this.trigger(this.data);
-    }
-  },
   computed: {
     href() {
       let href = this.data.value.href;
@@ -49,6 +38,17 @@ export default {
         }
       }
       return null;
+    }
+  },
+  methods: {
+    trigger(data) {
+      this.$emit('trigger', data);
+    },
+    triggerClick(event) {
+      if (this.data.value.nativeLink !== true && !(event.altKey || event.ctrlKey || event.shiftKey || event.metaKey)) {
+        event.preventDefault();
+      }
+      this.trigger(this.data);
     }
   }
 };

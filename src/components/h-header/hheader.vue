@@ -7,7 +7,7 @@
 const prefixCls = 'h-layout-header';
 
 export default {
-  name: 'hHeader',
+  name: 'HHeader',
   props: {
     theme: String
   },

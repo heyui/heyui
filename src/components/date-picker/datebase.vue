@@ -1,34 +1,34 @@
 <template>
   <div class="h-date-content">
-    <div class="h-date-header" v-if="type != 'time'">
+    <div v-if="type != 'time'" class="h-date-header">
       <span class="h-date-year-left-picker" @click.stop="updateView('default', -1)">
         <i class="h-icon-left"></i>
         <i class="h-icon-left"></i>
       </span>
-      <span class="h-date-month-left-picker" @click.stop="updateView('month', -1)" v-show="view == 'date' || view == 'week'">
+      <span v-show="view == 'date' || view == 'week'" class="h-date-month-left-picker" @click.stop="updateView('month', -1)">
         <i class="h-icon-left"></i>
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('year')" v-if="view != 'year'">
+      <span v-if="view != 'year'" class="h-date-header-show" @click.stop="changeView('year')">
         {{ nowView.year() }}{{ hlang('h.date.header.year') }}
       </span>
-      <span class="h-date-header-show" v-if="view == 'year'">
+      <span v-if="view == 'year'" class="h-date-header-show">
         {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }}{{ hlang('h.date.header.year') }}
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('month')" v-show="view != 'year' && view != 'month' && view != 'quarter'">
+      <span v-show="view != 'year' && view != 'month' && view != 'quarter'" class="h-date-header-show" @click.stop="changeView('month')">
         {{ months[nowView.month() - 1] }}
       </span>
-      <span class="h-date-header-show" @click.stop="changeView('date')" v-show="view == 'hour' || view == 'minute'">
+      <span v-show="view == 'hour' || view == 'minute'" class="h-date-header-show" @click.stop="changeView('date')">
         {{ nowView.date() }}{{ hlang('h.date.header.day') }}
       </span>
       <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
         <i class="h-icon-right"></i>
         <i class="h-icon-right"></i>
       </span>
-      <span class="h-date-month-right-picker" @click.stop="updateView('month', 1)" v-show="view == 'date' || view == 'week'">
+      <span v-show="view == 'date' || view == 'week'" class="h-date-month-right-picker" @click.stop="updateView('month', 1)">
         <i class="h-icon-right"></i>
       </span>
     </div>
-    <div class="h-date-header" v-show="view == 'minute'">
+    <div v-show="view == 'minute'" class="h-date-header">
       <span class="h-date-month-left-picker" @click.stop="updateView('hour', -1)">
         <i class="h-icon-left"></i>
       </span>
@@ -38,7 +38,7 @@
       </span>
     </div>
     <div :class="dateBodyCls">
-      <div class="h-date-body-weeks" v-if="view == 'date'">
+      <div v-if="view == 'date'" class="h-date-body-weeks">
         <span v-for="w of weeks" :key="w">{{ w }}</span>
       </div>
       <div class="h-date-body-pickers">
@@ -117,8 +117,7 @@ const genData = param => {
 };
 
 export default {
-  name: 'hDateBase',
-  emits: ['updateValue', 'updateView', 'updateRangeEnd', 'changeValue'],
+  name: 'HDateBase',
   mixins: [Locale],
   props: {
     type: {
@@ -136,12 +135,242 @@ export default {
       default: () => config.getOption('datepicker.startWeek')
     }
   },
+  emits: ['updateValue', 'updateView', 'updateRangeEnd', 'changeValue'],
   data() {
     return {
       options: utils.extend({}, options.datetimeOptions, this.option),
       today: manba(),
       view: startView[this.type] // month //year
     };
+  },
+  computed: {
+    valueTime() {
+      if (!this.value) {
+        return {
+          start: null,
+          end: null
+        };
+      }
+      return {
+        start: this.value.start ? manba(this.value.start, this.format).time() : null,
+        end: this.value.end ? manba(this.value.end, this.format).time() : null
+      };
+    },
+    rangeEndTime() {
+      return this.rangeEnd ? manba(this.rangeEnd, this.format).time() : null;
+    },
+    dateBodyCls() {
+      return {
+        [`${dateprefix}-body`]: true,
+        [`${dateprefix}-body-${this.view}`]: true
+      };
+    },
+    weeks() {
+      let weeks = [
+        this.t('h.date.weeks.monday'),
+        this.t('h.date.weeks.tuesday'),
+        this.t('h.date.weeks.wednesday'),
+        this.t('h.date.weeks.thursday'),
+        this.t('h.date.weeks.friday'),
+        this.t('h.date.weeks.saturday'),
+        this.t('h.date.weeks.sunday')
+      ];
+      let days = weeks.splice(0, this.startWeek - 1);
+      weeks.push(...days);
+      return weeks;
+    },
+    months() {
+      return [
+        this.t('h.date.months.january'),
+        this.t('h.date.months.february'),
+        this.t('h.date.months.march'),
+        this.t('h.date.months.april'),
+        this.t('h.date.months.may'),
+        this.t('h.date.months.june'),
+        this.t('h.date.months.july'),
+        this.t('h.date.months.august'),
+        this.t('h.date.months.september'),
+        this.t('h.date.months.october'),
+        this.t('h.date.months.november'),
+        this.t('h.date.months.december')
+      ];
+    },
+    dates() {
+      let nowDate = this.nowView;
+      if (this.view == 'date') {
+        let lastdayofmonth = nowDate.endOf(manba.MONTH);
+        let firstdayofmonth = nowDate.startOf(manba.MONTH);
+        let startDay = firstdayofmonth.day();
+        if (startDay == this.startWeek) {
+          startDay = -1;
+        } else if (this.startWeek > startDay) {
+          startDay = 7 - (this.startWeek - startDay) - 1;
+        } else {
+          startDay = startDay - this.startWeek - 1;
+        }
+        let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
+        let dates = [];
+        let lastMonthDays = lastdayoflastmonth.date() - startDay;
+        for (let i = lastMonthDays; i <= lastdayoflastmonth.date(); i++) {
+          dates.push(
+            genData({
+              date: manba([lastdayoflastmonth.year(), lastdayoflastmonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: false
+            })
+          );
+        }
+        for (let i = 1; i <= lastdayofmonth.date(); i++) {
+          dates.push(
+            genData({
+              date: manba([lastdayofmonth.year(), lastdayofmonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: true
+            })
+          );
+        }
+        let nextMonth = lastdayofmonth.add(1, manba.DAY);
+        let nextMonthDays = 7 * 6 - dates.length;
+        for (let i = 1; i <= nextMonthDays; i++) {
+          dates.push(
+            genData({
+              date: manba([nextMonth.year(), nextMonth.month(), i]),
+              type: manba.DAY,
+              show: i,
+              vm: this,
+              isNowDays: false
+            })
+          );
+        }
+        return dates;
+      } else if (this.view == 'month') {
+        let dates = [];
+        for (let i = 1; i <= 12; i++) {
+          dates.push(
+            genData({
+              date: manba([nowDate.year(), i, 1]),
+              type: manba.MONTH,
+              show: this.months[i - 1],
+              vm: this,
+              isNowDays: true
+            })
+          );
+        }
+        return dates;
+      } else if (this.view == 'year') {
+        let dates = [];
+        let nowYear = nowDate.year();
+        for (let i = nowYear - 6; i <= nowYear + 5; i++) {
+          dates.push(
+            genData({
+              date: manba([i, 1, 1]),
+              type: manba.YEAR,
+              show: i,
+              vm: this,
+              isNowDays: true
+            })
+          );
+        }
+        return dates;
+      } else if (this.view == 'hour') {
+        let dates = [];
+        let list = [];
+        if (utils.isFunction(this.options.hours)) {
+          list = this.options.hours.call(null);
+        } else {
+          list = utils.numList(0, 24, 1);
+        }
+        for (let i of list) {
+          dates.push(
+            genData({
+              date: manba(nowDate.time()).hours(i).minutes(0),
+              type: manba.HOUR,
+              show: utils.padLeft(i, 2) + ':00',
+              vm: this,
+              isNowDays: true
+            })
+          );
+        }
+        return dates;
+      } else if (this.view == 'minute') {
+        let dates = [];
+        let hour = nowDate.hours();
+        let list = [];
+        if (utils.isFunction(this.options.minutes)) {
+          list = this.options.minutes.call(null, hour);
+        } else {
+          list = utils.numList(0, 60, this.options.minuteStep);
+        }
+        for (let i of list) {
+          dates.push(
+            genData({
+              date: manba(nowDate.time()).minutes(i),
+              type: manba.MINUTE,
+              show: utils.padLeft(hour, 2) + ':' + utils.padLeft(i, 2),
+              vm: this,
+              isNowDays: true
+            })
+          );
+        }
+        return dates;
+      } else if (this.view == 'week') {
+        let dates = [];
+        let date = manba(nowDate).add(-1, manba.MONTH).endOf(manba.MONTH).endOf(manba.WEEK, this.startWeek);
+        let monthSpace = 0;
+        if (date.month() == nowDate.month()) {
+          date = date.startOf(manba.WEEK, this.startWeek);
+          monthSpace = 1;
+        } else {
+          date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startWeek);
+        }
+        let month = date.month();
+        let nextMonth = monthSpace + month;
+        nextMonth = nextMonth > 12 ? 1 : nextMonth;
+        while (date.month() == month || date.month() == nextMonth) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.WEEK,
+              show: this.t('h.date.show.week', {
+                year: date.year(),
+                weeknum: date.getWeekOfYear(this.startWeek),
+                daystart: date.format('MM-DD'),
+                dayend: manba(date).add(6).format('MM-DD')
+              }),
+              vm: this,
+              isNowDays: true
+            })
+          );
+          date = date.add(7);
+        }
+        return dates;
+      } else if (this.view == 'quarter') {
+        let dates = [];
+        let date = nowDate.startOf(manba.YEAR);
+        for (let index = 1; index < 5; index++) {
+          dates.push(
+            genData({
+              date: manba(date.time()),
+              type: manba.MONTH,
+              show: this.t('h.date.show.quarter', {
+                year: date.year(),
+                quarter: index
+              }),
+              vm: this,
+              isNowDays: true,
+              view: this.view
+            })
+          );
+          date = date.add(3, manba.MONTH);
+        }
+        return dates;
+      }
+      return [];
+    }
   },
   watch: {
     type() {
@@ -312,242 +541,6 @@ export default {
         value = manba(date).format(this.format);
       }
       this.$emit('updateValue', value, isEnd, this.range);
-    }
-  },
-  computed: {
-    valueTime() {
-      if (!this.value) {
-        return {
-          start: null,
-          end: null
-        };
-      }
-      return {
-        start: this.value.start ? manba(this.value.start, this.format).time() : null,
-        end: this.value.end ? manba(this.value.end, this.format).time() : null
-      };
-    },
-    rangeEndTime() {
-      return this.rangeEnd ? manba(this.rangeEnd, this.format).time() : null;
-    },
-    dateBodyCls() {
-      return {
-        [`${dateprefix}-body`]: true,
-        [`${dateprefix}-body-${this.view}`]: true
-      };
-    },
-    weeks() {
-      let weeks = [
-        this.t('h.date.weeks.monday'),
-        this.t('h.date.weeks.tuesday'),
-        this.t('h.date.weeks.wednesday'),
-        this.t('h.date.weeks.thursday'),
-        this.t('h.date.weeks.friday'),
-        this.t('h.date.weeks.saturday'),
-        this.t('h.date.weeks.sunday')
-      ];
-      let days = weeks.splice(0, this.startWeek - 1);
-      weeks.push(...days);
-      return weeks;
-    },
-    months() {
-      return [
-        this.t('h.date.months.january'),
-        this.t('h.date.months.february'),
-        this.t('h.date.months.march'),
-        this.t('h.date.months.april'),
-        this.t('h.date.months.may'),
-        this.t('h.date.months.june'),
-        this.t('h.date.months.july'),
-        this.t('h.date.months.august'),
-        this.t('h.date.months.september'),
-        this.t('h.date.months.october'),
-        this.t('h.date.months.november'),
-        this.t('h.date.months.december')
-      ];
-    },
-    dates() {
-      let nowDate = this.nowView;
-      if (this.view == 'date') {
-        let lastdayofmonth = nowDate.endOf(manba.MONTH);
-        let firstdayofmonth = nowDate.startOf(manba.MONTH);
-        let startDay = firstdayofmonth.day();
-        if (startDay == this.startWeek) {
-          startDay = -1;
-        } else if (this.startWeek > startDay) {
-          startDay = 7 - (this.startWeek - startDay) - 1;
-        } else {
-          startDay = startDay - this.startWeek - 1;
-        }
-        let lastdayoflastmonth = firstdayofmonth.add(-1, manba.DAY);
-        let dates = [];
-        let lastMonthDays = lastdayoflastmonth.date() - startDay;
-        for (let i = lastMonthDays; i <= lastdayoflastmonth.date(); i++) {
-          dates.push(
-            genData({
-              date: manba([lastdayoflastmonth.year(), lastdayoflastmonth.month(), i]),
-              type: manba.DAY,
-              show: i,
-              vm: this,
-              isNowDays: false
-            })
-          );
-        }
-        for (let i = 1; i <= lastdayofmonth.date(); i++) {
-          dates.push(
-            genData({
-              date: manba([lastdayofmonth.year(), lastdayofmonth.month(), i]),
-              type: manba.DAY,
-              show: i,
-              vm: this,
-              isNowDays: true
-            })
-          );
-        }
-        let nextMonth = lastdayofmonth.add(1, manba.DAY);
-        let nextMonthDays = 7 * 6 - dates.length;
-        for (let i = 1; i <= nextMonthDays; i++) {
-          dates.push(
-            genData({
-              date: manba([nextMonth.year(), nextMonth.month(), i]),
-              type: manba.DAY,
-              show: i,
-              vm: this,
-              isNowDays: false
-            })
-          );
-        }
-        return dates;
-      } else if (this.view == 'month') {
-        let dates = [];
-        for (let i = 1; i <= 12; i++) {
-          dates.push(
-            genData({
-              date: manba([nowDate.year(), i, 1]),
-              type: manba.MONTH,
-              show: this.months[i - 1],
-              vm: this,
-              isNowDays: true
-            })
-          );
-        }
-        return dates;
-      } else if (this.view == 'year') {
-        let dates = [];
-        let nowYear = nowDate.year();
-        for (let i = nowYear - 6; i <= nowYear + 5; i++) {
-          dates.push(
-            genData({
-              date: manba([i, 1, 1]),
-              type: manba.YEAR,
-              show: i,
-              vm: this,
-              isNowDays: true
-            })
-          );
-        }
-        return dates;
-      } else if (this.view == 'hour') {
-        let dates = [];
-        let list = [];
-        if (utils.isFunction(this.options.hours)) {
-          list = this.options.hours.call(null);
-        } else {
-          list = utils.numList(0, 24, 1);
-        }
-        for (let i of list) {
-          dates.push(
-            genData({
-              date: manba(nowDate.time())
-                .hours(i)
-                .minutes(0),
-              type: manba.HOUR,
-              show: utils.padLeft(i, 2) + ':00',
-              vm: this,
-              isNowDays: true
-            })
-          );
-        }
-        return dates;
-      } else if (this.view == 'minute') {
-        let dates = [];
-        let hour = nowDate.hours();
-        let list = [];
-        if (utils.isFunction(this.options.minutes)) {
-          list = this.options.minutes.call(null, hour);
-        } else {
-          list = utils.numList(0, 60, this.options.minuteStep);
-        }
-        for (let i of list) {
-          dates.push(
-            genData({
-              date: manba(nowDate.time()).minutes(i),
-              type: manba.MINUTE,
-              show: utils.padLeft(hour, 2) + ':' + utils.padLeft(i, 2),
-              vm: this,
-              isNowDays: true
-            })
-          );
-        }
-        return dates;
-      } else if (this.view == 'week') {
-        let dates = [];
-        let date = manba(nowDate)
-          .add(-1, manba.MONTH)
-          .endOf(manba.MONTH)
-          .endOf(manba.WEEK, this.startWeek);
-        let monthSpace = 0;
-        if (date.month() == nowDate.month()) {
-          date = date.startOf(manba.WEEK, this.startWeek);
-          monthSpace = 1;
-        } else {
-          date = date.add(7, manba.DATE).startOf(manba.WEEK, this.startWeek);
-        }
-        let month = date.month();
-        let nextMonth = monthSpace + month;
-        nextMonth = nextMonth > 12 ? 1 : nextMonth;
-        while (date.month() == month || date.month() == nextMonth) {
-          dates.push(
-            genData({
-              date: manba(date.time()),
-              type: manba.WEEK,
-              show: this.t('h.date.show.week', {
-                year: date.year(),
-                weeknum: date.getWeekOfYear(this.startWeek),
-                daystart: date.format('MM-DD'),
-                dayend: manba(date)
-                  .add(6)
-                  .format('MM-DD')
-              }),
-              vm: this,
-              isNowDays: true
-            })
-          );
-          date = date.add(7);
-        }
-        return dates;
-      } else if (this.view == 'quarter') {
-        let dates = [];
-        let date = nowDate.startOf(manba.YEAR);
-        for (let index = 1; index < 5; index++) {
-          dates.push(
-            genData({
-              date: manba(date.time()),
-              type: manba.MONTH,
-              show: this.t('h.date.show.quarter', {
-                year: date.year(),
-                quarter: index
-              }),
-              vm: this,
-              isNowDays: true,
-              view: this.view
-            })
-          );
-          date = date.add(3, manba.MONTH);
-        }
-        return dates;
-      }
-      return [];
     }
   }
 };

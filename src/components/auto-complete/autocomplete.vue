@@ -4,46 +4,46 @@
       <template v-if="multiple"
         ><span v-for="(obj, index) of objects" :key="index + '' + obj.key"
           ><span>{{ obj.title }}</span
-          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+          ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i
         ></span>
         <input
-          :disabled="disabled"
           ref="input"
+          v-model="tempValue"
+          :disabled="disabled"
           type="text"
           class="h-autocomplete-input h-input"
+          :placeholder="showPlaceholder"
+          autocomplete="off"
           @focus="focus"
-          v-model="tempValue"
           @blur.stop="blur"
           @paste="paste"
           @keyup="handle"
           @keydown="keydownHandle"
           @keypress.enter="enterHandle"
-          :placeholder="showPlaceholder"
-          autocomplete="off"
         />
-        <i class="h-icon-loading" v-if="loading"></i>
+        <i v-if="loading" class="h-icon-loading"></i>
       </template>
       <template v-if="!multiple">
         <input
-          type="text"
           ref="input"
+          v-model="tempValue"
+          type="text"
           :disabled="disabled"
           class="h-autocomplete-input h-input"
+          :placeholder="showPlaceholder"
+          autocomplete="off"
           @focus="focus"
-          v-model="tempValue"
           @paste="paste"
           @blur.stop="blur"
           @keyup="handle"
           @keypress.enter="enterHandle"
-          :placeholder="showPlaceholder"
-          autocomplete="off"
         />
-        <i class="h-icon-loading" v-if="loading"></i>
-        <i class="h-icon-close text-hover" v-else-if="tempValue && !disabled" @mousedown="clear"></i>
+        <i v-if="loading" class="h-icon-loading"></i>
+        <i v-else-if="tempValue && !disabled" class="h-icon-close text-hover" @mousedown="clear"></i>
       </template>
     </div>
     <div :class="groupCls">
-      <ul class="h-autocomplete-ul" v-if="isShow">
+      <ul v-if="isShow" class="h-autocomplete-ul">
         <slot name="top" :results="results"></slot>
         <li
           v-for="(result, index) of results"
@@ -71,7 +71,7 @@ import Locale from 'heyui/mixins/locale';
 const prefix = 'h-autocomplete';
 
 export default {
-  name: 'hAutoComplete',
+  name: 'HAutoComplete',
   mixins: [Locale],
   props: {
     multiple: {
@@ -148,6 +148,78 @@ export default {
       el: null,
       lastTrigger: null
     };
+  },
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.autoComplate.placeholder');
+    },
+    showEmptyContent() {
+      return this.emptyContent || this.t('h.autoComplate.emptyContent');
+    },
+    param() {
+      return utils.extend(
+        {},
+        config.getOption('autocomplete.default'),
+        this.config ? config.getOption(`autocomplete.configs.${this.config}`) : {},
+        this.option
+      );
+    },
+    autocompleteCls() {
+      let autosize = !!this.noBorder;
+      if (!autosize) {
+        autosize = this.autosize;
+      }
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-no-autosize`]: !autosize,
+        [`${prefix}-disabled`]: this.disabled,
+        focusing: this.focusing
+      };
+    },
+    showCls() {
+      return {
+        [`${prefix}-show`]: true,
+        [`${this.className}-show`]: !!this.className,
+        focusing: this.focusing
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}-group`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
+      };
+    },
+    results() {
+      let datas = this.datas;
+      if (this.dict) {
+        datas = config.getDict(this.dict);
+      }
+      if (utils.isNull(datas)) {
+        datas = this.loadDatas;
+      } else {
+        datas = config.initOptions(datas, this);
+        if (this.searchValue) {
+          let searchValue = this.searchValue.toLowerCase();
+          datas = datas.filter(item => {
+            return (item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1;
+          });
+        }
+      }
+      if (this.objects.length > 0) {
+        let keyArray = utils.getArray(this.objects, 'key').filter(item => !utils.isNull(item));
+        datas = datas.filter(item => {
+          return keyArray.indexOf(item[this.param.keyName]) == -1;
+        });
+      }
+      let results = [];
+      for (let data of datas) {
+        results.push(this.getValue(data));
+      }
+      return results;
+    }
   },
   watch: {
     modelValue() {
@@ -524,78 +596,6 @@ export default {
         value: null
       };
       this.setvalue('clear');
-    }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.autoComplate.placeholder');
-    },
-    showEmptyContent() {
-      return this.emptyContent || this.t('h.autoComplate.emptyContent');
-    },
-    param() {
-      return utils.extend(
-        {},
-        config.getOption('autocomplete.default'),
-        this.config ? config.getOption(`autocomplete.configs.${this.config}`) : {},
-        this.option
-      );
-    },
-    autocompleteCls() {
-      let autosize = !!this.noBorder;
-      if (!autosize) {
-        autosize = this.autosize;
-      }
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-no-autosize`]: !autosize,
-        [`${prefix}-disabled`]: this.disabled,
-        focusing: this.focusing
-      };
-    },
-    showCls() {
-      return {
-        [`${prefix}-show`]: true,
-        [`${this.className}-show`]: !!this.className,
-        focusing: this.focusing
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}-group`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${this.className}-dropdown`]: !!this.className
-      };
-    },
-    results() {
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
-      }
-      if (utils.isNull(datas)) {
-        datas = this.loadDatas;
-      } else {
-        datas = config.initOptions(datas, this);
-        if (this.searchValue) {
-          let searchValue = this.searchValue.toLowerCase();
-          datas = datas.filter(item => {
-            return (item.html || item[this.param.titleName] || '').toLowerCase().indexOf(searchValue) != -1;
-          });
-        }
-      }
-      if (this.objects.length > 0) {
-        let keyArray = utils.getArray(this.objects, 'key').filter(item => !utils.isNull(item));
-        datas = datas.filter(item => {
-          return keyArray.indexOf(item[this.param.keyName]) == -1;
-        });
-      }
-      let results = [];
-      for (let data of datas) {
-        results.push(this.getValue(data));
-      }
-      return results;
     }
   }
 };

@@ -1,9 +1,9 @@
 <template>
   <div :class="{ 'h-switch-list': true, 'h-switch-list-small': small, 'h-switch-list-disabled': disabled }">
     <span
-      :class="{ 'h-switch-list-span': true, 'h-switch-list-span-checked': option[key] == modelValue }"
       v-for="option of arr"
       :key="option[key]"
+      :class="{ 'h-switch-list-span': true, 'h-switch-list-span-checked': option[key] == modelValue }"
       @click="setvalue(option)"
       ><i v-if="option.icon" :class="option.icon"></i>{{ option[title] }}</span
     >
@@ -14,7 +14,6 @@ import config from 'heyui/utils/config';
 
 export default {
   name: 'HSwitchList',
-  emits: ['input', 'change', 'update:modelValue'],
   props: {
     small: {
       type: Boolean,
@@ -36,24 +35,12 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
+  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       key: this.keyName,
       title: this.titleName
     };
-  },
-  methods: {
-    setvalue(option) {
-      let key = option[this.key];
-      if (this.disabled) return;
-      if (key == this.modelValue) return;
-      this.$emit('input', key);
-      this.$emit('change', option);
-      this.$emit('update:modelValue', key);
-      let event = document.createEvent('CustomEvent');
-      event.initCustomEvent('setvalue', true, true, this.modelValue);
-      this.$el.dispatchEvent(event);
-    }
   },
   computed: {
     arr() {
@@ -67,6 +54,19 @@ export default {
       }
 
       return config.initOptions(datas, this);
+    }
+  },
+  methods: {
+    setvalue(option) {
+      let key = option[this.key];
+      if (this.disabled) return;
+      if (key == this.modelValue) return;
+      this.$emit('input', key);
+      this.$emit('change', option);
+      this.$emit('update:modelValue', key);
+      let event = document.createEvent('CustomEvent');
+      event.initCustomEvent('setvalue', true, true, this.modelValue);
+      this.$el.dispatchEvent(event);
     }
   }
 };

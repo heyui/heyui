@@ -1,9 +1,9 @@
 <template>
   <ul :class="classes">
     <hMenuItem
-      class="h-menu-first-level"
       v-for="menu of menuDatas"
       :key="menu.key"
+      class="h-menu-first-level"
       :data="menu"
       :param="param"
       :status="status"
@@ -64,7 +64,10 @@ const Props = {
   mode: ['vertical', 'horizontal', 'collapse', 'half-collapse']
 };
 export default {
-  name: 'hMenu',
+  name: 'HMenu',
+  components: {
+    hMenuItem
+  },
   props: {
     option: Object,
     datas: {
@@ -153,9 +156,6 @@ export default {
         this.$emit('select', menu.value);
       }
     }
-  },
-  components: {
-    hMenuItem
   }
 };
 </script>

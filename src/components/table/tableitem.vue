@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'hTableItem',
+  name: 'HTableItem',
   props: {
     rowspan: Number,
     colspan: Number,
@@ -16,7 +16,7 @@ export default {
     dict: String,
     align: String,
     className: String,
-    treeOpener: Boolean,
+    isTreeOpener: Boolean,
     unit: String,
     format: Function,
     render: Function,
@@ -32,22 +32,8 @@ export default {
     placement: String,
     content: String
   },
-  beforeMount() {
-    this.init();
-  },
-  beforeUnmount() {
-    this.init();
-  },
   data() {
     return {};
-  },
-  methods: {
-    init() {
-      let parent = this.$parent;
-      if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
-        parent.refresh();
-      }
-    }
   },
   watch: {
     title() {
@@ -67,6 +53,20 @@ export default {
     },
     align() {
       this.init();
+    }
+  },
+  beforeMount() {
+    this.init();
+  },
+  beforeUnmount() {
+    this.init();
+  },
+  methods: {
+    init() {
+      let parent = this.$parent;
+      if (parent.$options.name == 'HTable') {
+        parent.refresh();
+      }
     }
   }
 };

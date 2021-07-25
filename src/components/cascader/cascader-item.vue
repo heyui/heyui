@@ -1,18 +1,22 @@
 <template>
-  <li class="h-cascader-li" :class="{'h-cascader-li-opened':data.status.opened}">
+  <li class="h-cascader-li" :class="{ 'h-cascader-li-opened': data.status.opened }">
     <div
-      class="h-cascader-show"
-      @click="clickShow"
-      :class="{'h-cascader-show-disabled':data.status.disabled, 'h-cascader-show-choose': data.status.choose, 'h-cascader-show-selected': status.selected == data.key}"
       v-show="!data.status.hide"
+      class="h-cascader-show"
+      :class="{
+        'h-cascader-show-disabled': data.status.disabled,
+        'h-cascader-show-choose': data.status.choose,
+        'h-cascader-show-selected': status.selected == data.key
+      }"
+      @click="clickShow"
     >
-      <div class="h-cascader-show-desc" :class="{'selected': status.selected == data.key}" @click="select">
-        <span class="h-cascader-show-icon" :class="data.icon" v-if="data.icon"></span>
-        <span v-if="data.title != null">{{data.title}}</span>
-        <span v-else>{{hlang('h.common.empty' )}}</span>
+      <div class="h-cascader-show-desc" :class="{ selected: status.selected == data.key }" @click="select">
+        <span v-if="data.icon" class="h-cascader-show-icon" :class="data.icon"></span>
+        <span v-if="data.title != null">{{ data.title }}</span>
+        <span v-else>{{ hlang('h.common.empty') }}</span>
       </div>
       <span class="h-cascader-show-expand">
-        <span @click.stop="toggleCascader()" v-if="data.status.isWait">
+        <span v-if="data.status.isWait" @click.stop="toggleCascader()">
           <template v-if="!data.status.loading">
             <i class="h-icon-right"></i>
           </template>
@@ -20,13 +24,13 @@
             <i class="h-icon-loading"></i>
           </template>
         </span>
-        <span @click.stop="toggleCascader()" v-else-if="data.children&&data.children.length>0">
+        <span v-else-if="data.children && data.children.length > 0" @click.stop="toggleCascader()">
           <i class="h-icon-right"></i>
         </span>
       </span>
     </div>
-    <template v-if="data.children&&data.children.length>0">
-      <transition name="h-cascader-transition" v-if="data.status.opened">
+    <template v-if="data.children && data.children.length > 0">
+      <transition v-if="data.status.opened" name="h-cascader-transition">
         <ul class="h-cascader-ul">
           <hCascaderItem
             v-for="child of data.children"
@@ -34,9 +38,9 @@
             :data="child"
             :param="param"
             :multiple="multiple"
-            @trigger="trigger"
             :status="status"
-            :level="level+1"
+            :level="level + 1"
+            @trigger="trigger"
           ></hCascaderItem>
         </ul>
       </transition>
@@ -45,7 +49,7 @@
 </template>
 <script>
 export default {
-  name: 'hCascaderItem',
+  name: 'HCascaderItem',
   props: {
     data: Object,
     param: Object,

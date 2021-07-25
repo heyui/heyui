@@ -18,13 +18,17 @@ export default {
   render(h) {
     let parent = getParent(this);
     if (parent && parent.$scopedSlots && parent.$scopedSlots.item) {
-      return h('div', {
-        class: 'h-tree-item-slot'
-      }, [
-        parent.$scopedSlots.item({
-          item: this.data
-        })
-      ]);
+      return h(
+        'div',
+        {
+          class: 'h-tree-item-slot'
+        },
+        [
+          parent.$scopedSlots.item({
+            item: this.data
+          })
+        ]
+      );
     }
     return h('span');
   }

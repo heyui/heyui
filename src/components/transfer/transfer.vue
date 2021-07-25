@@ -2,13 +2,13 @@
   <div class="h-transfer">
     <div class="h-transfer-source">
       <slot name="sourceHeader">
-        <div class="h-transfer-header" v-if="option && option.ltHeadText">{{ option.ltHeadText }}</div>
+        <div v-if="option && option.ltHeadText" class="h-transfer-header">{{ option.ltHeadText }}</div>
       </slot>
       <div v-if="option.filterable && (sources.length || ltSearchText)" class="h-transfer-filter">
-        <Search position="front" :placeholder="option ? option.placeholder : '搜索'" v-model="ltSearchText" />
+        <Search v-model="ltSearchText" position="front" :placeholder="option ? option.placeholder : '搜索'" />
       </div>
       <div class="h-transfer-list" :style="transferListStyle">
-        <div class="h-transfer-item" v-for="op in sources" :key="op[key]">
+        <div v-for="op in sources" :key="op[key]" class="h-transfer-item">
           <Checkbox v-model="ltChecked" :value="op[key]" :checked="false">
             <slot name="item" :option="op" type="source">
               <template v-if="option && option.render">{{ option.render(op) }}</template>
@@ -16,7 +16,7 @@
             </slot>
           </Checkbox>
         </div>
-        <div class="h-transfer-item text-center" v-if="sources.length === 0">无数据</div>
+        <div v-if="sources.length === 0" class="h-transfer-item text-center">无数据</div>
       </div>
     </div>
 
@@ -35,13 +35,13 @@
 
     <div class="h-transfer-target">
       <slot name="targetHeader">
-        <div class="h-transfer-header" v-if="option && option.rtHeadText">{{ option.rtHeadText }}</div>
+        <div v-if="option && option.rtHeadText" class="h-transfer-header">{{ option.rtHeadText }}</div>
       </slot>
       <div v-if="option.filterable && (targets.length || rtSearchText)" class="h-transfer-filter">
-        <Search position="front" :placeholder="option ? option.placeholder : '搜索'" v-model="rtSearchText" />
+        <Search v-model="rtSearchText" position="front" :placeholder="option ? option.placeholder : '搜索'" />
       </div>
       <div class="h-transfer-list" :style="transferListStyle">
-        <div class="h-transfer-item" v-for="op in targets" :key="op[key]">
+        <div v-for="op in targets" :key="op[key]" class="h-transfer-item">
           <label>
             <Checkbox v-model="rtChecked" :value="op[key]">
               <slot name="item" :option="op" type="target">
@@ -51,7 +51,7 @@
             </Checkbox>
           </label>
         </div>
-        <div class="h-transfer-item text-center" v-if="targets.length === 0">无数据</div>
+        <div v-if="targets.length === 0" class="h-transfer-item text-center">无数据</div>
       </div>
     </div>
   </div>
@@ -62,7 +62,7 @@ import Checkbox from 'heyui/components/checkbox';
 import Search from 'heyui/components/search';
 
 export default {
-  name: 'hTransfer',
+  name: 'HTransfer',
   components: { Checkbox, Search },
   props: {
     value: {
@@ -92,28 +92,6 @@ export default {
       key: this.keyName || 'key'
     };
   },
-  mounted() {
-    this.$emit('init', this.sources, this.targets);
-  },
-  methods: {
-    move(direction) {
-      this.$emit('transfer', direction, this.sources, this.targets);
-      let value = this.value ? [...this.value] : [];
-      if (direction === 1 && this.ltChecked.length > 0) {
-        this.rtSearchText = null;
-        value.push(...this.ltChecked);
-        this.ltChecked.length = 0;
-      } else if (direction === -1 && this.rtChecked.length > 0) {
-        this.ltSearchText = null;
-        this.rtChecked.forEach(d => {
-          value.splice(value.indexOf(d), 1);
-        });
-        this.rtChecked.length = 0;
-      }
-      this.$emit('input', value);
-      this.$emit('change', value);
-    }
-  },
   computed: {
     transferListStyle() {
       let param = {};
@@ -139,6 +117,28 @@ export default {
         return result.filter(d => d.text.indexOf(this.rtSearchText.trim()) != -1);
       }
       return result;
+    }
+  },
+  mounted() {
+    this.$emit('init', this.sources, this.targets);
+  },
+  methods: {
+    move(direction) {
+      this.$emit('transfer', direction, this.sources, this.targets);
+      let value = this.value ? [...this.value] : [];
+      if (direction === 1 && this.ltChecked.length > 0) {
+        this.rtSearchText = null;
+        value.push(...this.ltChecked);
+        this.ltChecked.length = 0;
+      } else if (direction === -1 && this.rtChecked.length > 0) {
+        this.ltSearchText = null;
+        this.rtChecked.forEach(d => {
+          value.splice(value.indexOf(d), 1);
+        });
+        this.rtChecked.length = 0;
+      }
+      this.$emit('input', value);
+      this.$emit('change', value);
     }
   }
 };

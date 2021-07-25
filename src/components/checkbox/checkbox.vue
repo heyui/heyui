@@ -3,7 +3,6 @@
     <template v-if="!isSingle">
       <label
         v-for="option of arr"
-        @click="setvalue(option)"
         :key="option[key]"
         :class="{
           'h-checkbox-label': true,
@@ -11,15 +10,16 @@
           'h-checkbox-item-disabled': option.disabled,
           'h-checkbox-indeterminate': option.indeterminate
         }"
-        ><span class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="!$slots.item">{{ option[title] }}</span
+        @click="setvalue(option)"
+        ><span class="h-checkbox-native"></span><span v-if="!$slots.item" class="h-checkbox-text">{{ option[title] }}</span
         ><slot v-else :item="option" name="item"></slot
       ></label>
     </template>
     <label
       v-else
-      @click="setvalue()"
       :class="{ 'h-checkbox-label': true, 'h-checkbox-checked': isSingleChecked, 'h-checkbox-indeterminate': !isSingleChecked && indeterminate }"
-      ><span class="h-checkbox-native"></span><span class="h-checkbox-text" v-if="$slots.default"><slot></slot></span
+      @click="setvalue()"
+      ><span class="h-checkbox-native"></span><span v-if="$slots.default" class="h-checkbox-text"><slot></slot></span
     ></label>
   </div>
 </template>
@@ -27,10 +27,12 @@
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 import { message } from 'heyui';
+import Locale from 'heyui/mixins/locale';
+import { watch } from 'vue';
 
 export default {
-  name: 'hCheckbox',
-  emits: ['input', 'change', 'update:modelValue'],
+  name: 'HCheckbox',
+  mixins: [Locale],
   props: {
     dict: String,
     datas: [Object, Array],
@@ -63,40 +65,53 @@ export default {
       default: false
     }
   },
+  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
-      isSingleChecked: null,
       key: this.keyName,
       title: this.titleName
     };
   },
-  mounted() {
-    this.updateChecked();
-  },
-  watch: {
-    checked() {
-      this.updateChecked();
+  computed: {
+    checkList() {
+      let modelValue = this.modelValue || [];
+      if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(modelValue)) {
+        console.warn(`[HeyUI WARNING] Checkbox Component: It's not allowed to use v-model with non-array value.`);
+      }
+      return utils.isArray(modelValue) ? modelValue : [];
     },
-    modelValue() {
-      this.updateChecked();
+    isSingle() {
+      return this.arr.length == 0;
+    },
+    arr() {
+      if (!this.datas && !this.dict) {
+        return [];
+      }
+      let datas = this.datas;
+      if (this.dict) {
+        datas = config.getDict(this.dict);
+      }
+
+      return config.initOptions(datas, this);
+    },
+    isSingleChecked() {
+      if (this.isSingle) {
+        if (!utils.isNull(this.value)) {
+          return this.checkList.indexOf(this.value) !== -1;
+        } else if (this.checked === true) {
+          return this.checked;
+        } else if (this.modelValue === this.trueValue) {
+          return true;
+        } else if (this.modelValue === this.falseValue) {
+          return false;
+        } else {
+          return false;
+        }
+      }
+      return false;
     }
   },
   methods: {
-    updateChecked() {
-      if (this.isSingle) {
-        if (!utils.isNull(this.value)) {
-          this.isSingleChecked = this.checkList.indexOf(this.value) != -1;
-        } else if (this.checked === true) {
-          this.isSingleChecked = this.checked;
-        } else if (this.modelValue === this.trueValue) {
-          this.isSingleChecked = true;
-        } else if (this.modelValue === this.falseValue) {
-          this.isSingleChecked = false;
-        } else {
-          this.isSingleChecked = false;
-        }
-      }
-    },
     setvalue(option) {
       if (this.disabled || (option && option.disabled)) return;
       let value = null;
@@ -134,29 +149,6 @@ export default {
       let value = this.checkList.map(item => String(item));
       let index = value.indexOf(String(option[this.key]));
       return index > -1;
-    }
-  },
-  computed: {
-    checkList() {
-      let modelValue = this.modelValue || [];
-      if ((!utils.isNull(this.value) || !this.isSingle) && !utils.isArray(modelValue)) {
-        console.warn(`[HeyUI WARNING] Checkbox Component: It's not allowed to use v-model with non-array value.`);
-      }
-      return utils.isArray(modelValue) ? modelValue : [];
-    },
-    isSingle() {
-      return this.arr.length == 0;
-    },
-    arr() {
-      if (!this.datas && !this.dict) {
-        return [];
-      }
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
-      }
-
-      return config.initOptions(datas, this);
     }
   }
 };

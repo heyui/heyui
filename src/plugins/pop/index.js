@@ -79,9 +79,7 @@ class Pop {
     const popNode = popGenerator.childNodes[0];
     const allowHtml = this.options.html;
 
-    popNode.id = `pop_${Math.random()
-      .toString(36)
-      .substr(2, 10)}`;
+    popNode.id = `pop_${Math.random().toString(36).substr(2, 10)}`;
     const contentNode = popGenerator.querySelector(this.innerSelector);
     if (content.nodeType === 1) {
       if (allowHtml) contentNode.appendChild(content);

@@ -4,17 +4,17 @@
       <div v-if="multiple && objects.length" class="h-categorypicker-multiple-tags">
         <span v-for="(obj, index) of objects" :key="index + '' + obj.key"
           ><span>{{ getShow(obj) }}</span
-          ><i class="h-icon-close-min" @click.stop="remove(obj)" v-if="!disabled"></i
+          ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i
         ></span>
       </div>
       <div v-else-if="!multiple && object" class="h-categorypicker-value-single">
         <span>{{ getShow(object) }}</span>
-        <i class="h-icon-close" v-if="object && !disabled" @mousedown="clear"></i>
+        <i v-if="object && !disabled" class="h-icon-close" @mousedown="clear"></i>
       </div>
       <div v-else class="h-categorypicker-placeholder">{{ showPlaceholder }}</div>
     </div>
     <div :class="groupCls">
-      <Tabs :datas="tabs" v-model="tab" class="h-categorypicker-tabs" keyName="key" titleName="title" @change="focusTab"></Tabs>
+      <Tabs v-model="tab" :datas="tabs" class="h-categorypicker-tabs" key-name="key" title-name="title" @change="focusTab"></Tabs>
       <div class="h-categorypicker-ul" :class="{ 'h-categorypicker-single-picker': !multiple }">
         <div
           v-for="data of list"
@@ -22,7 +22,7 @@
           class="h-categorypicker-item"
           :class="{ 'h-categorypicker-item-selected': object && data.key == object.key }"
         >
-          <i class="h-icon-loading" v-if="data.status.loading"></i>
+          <i v-if="data.status.loading" class="h-icon-loading"></i>
           <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
           <span class="h-categorypicker-item-title" @click="openNew(data, $event)"
             >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
@@ -44,9 +44,9 @@ const prefix = 'h-categorypicker';
 const topMenu = '-------';
 
 export default {
-  name: 'hCategoryPicker',
-  mixins: [Locale],
+  name: 'HCategoryPicker',
   components: { Checkbox },
+  mixins: [Locale],
   props: {
     option: Object,
     multiple: {
@@ -102,9 +102,33 @@ export default {
       valueBak: null
     };
   },
-  mounted() {
-    this.init();
-    this.initCategoryDatas();
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.categoryPicker.placeholder');
+    },
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption('categoryPicker.default'), config.getOption(`categoryPicker.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption('categoryPicker.default'), this.option);
+      }
+    },
+    categoryCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: true,
+        [`${prefix}-no-autosize`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}-group`]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
+      };
+    }
   },
   watch: {
     disabled() {
@@ -116,7 +140,7 @@ export default {
         }
       }
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initCategoryDatas();
     },
     value() {
@@ -132,6 +156,10 @@ export default {
         this.list = this.categoryDatas;
       }
     }
+  },
+  mounted() {
+    this.init();
+    this.initCategoryDatas();
   },
   methods: {
     init() {
@@ -197,9 +225,7 @@ export default {
     getShow(data) {
       if (this.showAllLevels) {
         data = this.categoryObj[data.key] || data;
-        return this.getParentTitle(data)
-          .reverse()
-          .join('/');
+        return this.getParentTitle(data).reverse().join('/');
       } else {
         return data.title;
       }
@@ -411,34 +437,6 @@ export default {
       } else {
         return this.object ? this.object.key == data.key : false;
       }
-    }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.categoryPicker.placeholder');
-    },
-    param() {
-      if (this.config) {
-        return utils.extend({}, config.getOption('categoryPicker.default'), config.getOption(`categoryPicker.configs.${this.config}`), this.option);
-      } else {
-        return utils.extend({}, config.getOption('categoryPicker.default'), this.option);
-      }
-    },
-    categoryCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: true,
-        [`${prefix}-no-autosize`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-disabled`]: this.disabled
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}-group`]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${this.className}-dropdown`]: !!this.className
-      };
     }
   }
 };

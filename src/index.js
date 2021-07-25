@@ -44,8 +44,8 @@ import Select from 'heyui/components/select';
 import Switch from 'heyui/components/h-switch';
 import SwitchList from 'heyui/components/switch-list';
 import Skeleton from 'heyui/components/skeleton';
-// import Table from 'heyui/components/table';
-// import TableItem from 'heyui/components/table-item';
+import Table from 'heyui/components/table';
+import TableItem from 'heyui/components/table-item';
 import Tabs from 'heyui/components/tabs';
 import Tag from 'heyui/components/tag';
 import TagInput from 'heyui/components/tag-input';
@@ -93,6 +93,8 @@ import hlang from 'heyui/filters/hlang';
 
 import heyuiConfig from 'heyui/utils/config';
 import locale from 'heyui/locale';
+
+// import Locale from 'heyui/mixins/locale';
 
 const components = {
   Affix,
@@ -146,8 +148,8 @@ const components = {
   TimelineItem,
   // Transfer,
   Loading,
-  // Table,
-  // TableItem,
+  Table,
+  TableItem,
   Tabs,
   Tooltip,
   // Tree,
@@ -196,6 +198,8 @@ const install = function (app, opts = {}) {
   Object.keys(filters).forEach(key => {
     app.config.globalProperties[key] = filters[key];
   });
+
+  // app.mixin(Locale);
 };
 
 const HeyUI = { install };

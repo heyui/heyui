@@ -1,18 +1,16 @@
 <template>
   <div :class="backtopCls" :style="backtopStyle">
-    <div class="h-backtop-inner"
-         @click="backtop">
-         <i class="h-icon-top" v-if="!$slots.default"></i>
-         <slot v-else></slot>
+    <div class="h-backtop-inner" @click="backtop">
+      <i v-if="!$slots.default" class="h-icon-top"></i>
+      <slot v-else></slot>
     </div>
   </div>
 </template>
 <script>
-
 const prefix = 'h-backtop';
 
 export default {
-  name: 'hBackTop',
+  name: 'HBackTop',
   props: {
     target: {
       type: Function,
@@ -36,6 +34,21 @@ export default {
       show: false,
       timeout: null
     };
+  },
+  computed: {
+    backtopCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-show`]: this.show,
+        [this.className]: !!this.className
+      };
+    },
+    backtopStyle() {
+      return {
+        bottom: `${this.bottom}px`,
+        right: `${this.right}px`
+      };
+    }
   },
   watch: {
     show() {
@@ -78,21 +91,6 @@ export default {
           this.timeout = null;
         }
       }, 5);
-    }
-  },
-  computed: {
-    backtopCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-show`]: this.show,
-        [this.className]: !!this.className
-      };
-    },
-    backtopStyle() {
-      return {
-        bottom: `${this.bottom}px`,
-        right: `${this.right}px`
-      };
     }
   }
 };

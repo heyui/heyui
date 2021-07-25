@@ -9304,7 +9304,7 @@ var _default2 = {
       default: false
     },
     ths: Array,
-    selectRow: {
+    isSelectRow: {
       type: Boolean,
       default: false
     },
@@ -9631,7 +9631,7 @@ var _default2 = {
       return cls;
     },
     isChecked: function isChecked(d) {
-      return this.checks.indexOf(d) > -1 || this.selectRow && d == this.rowSelected;
+      return this.checks.indexOf(d) > -1 || this.isSelectRow && d == this.rowSelected;
     },
     setRowSelect: function setRowSelect(data) {
       this.rowSelected = data;
@@ -9778,7 +9778,7 @@ var _default2 = {
       this.computeColumns = columns;
     },
     triggerTrClicked: function triggerTrClicked(data, index, event) {
-      if (this.selectRow && !data._disabledSelect) {
+      if (this.isSelectRow && !data._disabledSelect) {
         this.rowSelected = data;
         this.$emit('rowSelect', data);
       }

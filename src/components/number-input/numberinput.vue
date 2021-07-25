@@ -2,16 +2,16 @@
   <div :class="numberinputCls">
     <div class="h-numberinput-show" :class="{ focusing: focusing }">
       <input
+        v-model="editValue"
         type="text"
         :placeholder="placeholder"
         :disabled="disabled === false ? null : true"
         class="h-numberinput-input h-input"
-        v-model="editValue"
         @input="input"
         @focus="focusing = true"
         @blur="blur"
       />
-      <div class="h-numberinput-operate" v-if="useOperate">
+      <div v-if="useOperate" class="h-numberinput-operate">
         <span @click="minus"><i class="h-icon-minus"></i></span>
         <span @click="plus"><i class="h-icon-plus"></i></span>
       </div>
@@ -23,8 +23,7 @@ import utils from 'heyui/utils/utils';
 const prefix = 'h-numberinput';
 
 export default {
-  name: 'hNumberInput',
-  emits: ['input', 'change', 'update:modelValue'],
+  name: 'HNumberInput',
   props: {
     modelValue: [Number, String],
     min: Number,
@@ -52,12 +51,21 @@ export default {
       type: Number
     }
   },
+  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       focusing: false,
       editValue: this.modelValue,
       valueBak: this.modelValue
     };
+  },
+  computed: {
+    numberinputCls() {
+      return {
+        [prefix]: true,
+        [`${prefix}-disabled`]: !!this.disabled
+      };
+    }
   },
   watch: {
     value() {
@@ -127,14 +135,6 @@ export default {
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);
       this.$el.dispatchEvent(event);
-    }
-  },
-  computed: {
-    numberinputCls() {
-      return {
-        [prefix]: true,
-        [`${prefix}-disabled`]: !!this.disabled
-      };
     }
   }
 };

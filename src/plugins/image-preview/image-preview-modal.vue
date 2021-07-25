@@ -1,11 +1,11 @@
 <template>
   <div class="h-image-preview" :style="previewStyle">
-    <span class="h-image-preview-index" v-if="isShowIndex"> {{ showIndex + 1 }} / {{ computedDatas.length }} </span>
+    <span v-if="isShowIndex" class="h-image-preview-index"> {{ showIndex + 1 }} / {{ computedDatas.length }} </span>
     <span v-if="showIndex != 0" class="h-image-preview-icon h-image-preview-left-icon" @click="change(showIndex - 1)"
       ><i class="h-icon-left"></i
     ></span>
     <transition name="fade">
-      <img :src="previewFile.url" v-show="!changeing" ref="img" @load="initStyle" class="h-image-preview-image" :alt="previewFile.name" />
+      <img v-show="!changeing" ref="img" :src="previewFile.url" class="h-image-preview-image" :alt="previewFile.name" @load="initStyle" />
     </transition>
     <slot :data="previewFile" name="item" :index="index"></slot>
     <span v-if="showIndex != computedDatas.length - 1" class="h-image-preview-icon h-image-preview-right-icon" @click="change(showIndex + 1)"
@@ -19,7 +19,10 @@ import utils from 'heyui/utils/utils';
 import Loading from 'heyui/components/loading';
 
 export default {
-  name: 'hImagePreviewModal',
+  name: 'HImagePreviewModal',
+  components: {
+    Loading
+  },
   props: {
     isShow: {
       type: Boolean,
@@ -42,6 +45,25 @@ export default {
       changeing: false,
       previewFile: {}
     };
+  },
+  computed: {
+    previewStyle() {
+      return {
+        height: `${this.height}px`,
+        width: `${this.width}px`
+      };
+    },
+    computedDatas() {
+      if (utils.isString(this.datas)) {
+        return [this.datas];
+      } else if (utils.isArray(this.datas)) {
+        return this.datas;
+      }
+      return [];
+    },
+    isShowIndex() {
+      return !utils.isString(this.datas);
+    }
   },
   watch: {
     isShow() {
@@ -99,28 +121,6 @@ export default {
       }
       this.previewFile = previewFile;
     }
-  },
-  computed: {
-    previewStyle() {
-      return {
-        height: `${this.height}px`,
-        width: `${this.width}px`
-      };
-    },
-    computedDatas() {
-      if (utils.isString(this.datas)) {
-        return [this.datas];
-      } else if (utils.isArray(this.datas)) {
-        return this.datas;
-      }
-      return [];
-    },
-    isShowIndex() {
-      return !utils.isString(this.datas);
-    }
-  },
-  components: {
-    Loading
   }
 };
 </script>

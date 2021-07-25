@@ -2,17 +2,17 @@
   <div :class="sliderCls">
     <div class="h-slider-container">
       <div class="h-slider-line" @mousedown="choosePosition"></div>
-      <div class="h-slider-track" @mousedown="choosePosition" :style="computedTrackStyle"></div>
+      <div class="h-slider-track" :style="computedTrackStyle" @mousedown="choosePosition"></div>
       <div
+        v-if="hasStart"
         class="h-slider-node h-slider-start-node"
+        :style="{ left: nodePosition.start }"
         @click.stop
         @mousedown="mousedown('start', $event)"
-        v-if="hasStart"
-        :style="{ left: nodePosition.start }"
       ></div>
-      <div class="h-slider-node h-slider-end-node" @click.stop @mousedown="mousedown('end', $event)" :style="{ left: nodePosition.end }"></div>
-      <span class="h-slider-end-node-modelValue h-tooltip-inner-content" v-if="showtip">{{ showContent(values.end) }}</span>
-      <span class="h-slider-start-node-modelValue h-tooltip-inner-content" v-if="showtip && hasStart">{{ showContent(values.start) }}</span>
+      <div class="h-slider-node h-slider-end-node" :style="{ left: nodePosition.end }" @click.stop @mousedown="mousedown('end', $event)"></div>
+      <span v-if="showtip" class="h-slider-end-node-modelValue h-tooltip-inner-content">{{ showContent(values.end) }}</span>
+      <span v-if="showtip && hasStart" class="h-slider-start-node-modelValue h-tooltip-inner-content">{{ showContent(values.start) }}</span>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ import Tooltip from 'heyui/plugins/tooltip';
 const prefix = 'h-slider';
 
 export default {
-  name: 'hSlider',
+  name: 'HSlider',
   props: {
     readonly: {
       type: Boolean,
@@ -66,6 +66,48 @@ export default {
         end: null
       }
     };
+  },
+  computed: {
+    hasStart() {
+      return this.multiple;
+    },
+    computedTrackStyle() {
+      let dis = this.range.end - this.range.start;
+      return Object.assign(
+        {
+          left: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
+          right: `${parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
+        },
+        this.trackStyle
+      );
+    },
+    nodePosition() {
+      let dis = this.range.end - this.range.start;
+      return {
+        start: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
+        end: `${100 - parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
+      };
+    },
+    values() {
+      if (!this.multiple) {
+        return {
+          start: this.range.start,
+          end: this.modelValue || this.range.start
+        };
+      }
+      return utils.extend(
+        {
+          start: this.range.start,
+          end: this.range.start
+        },
+        this.modelValue
+      );
+    },
+    sliderCls() {
+      return {
+        [`${prefix}`]: true
+      };
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -193,48 +235,6 @@ export default {
         this.tooltip[type].show();
         this.tooltip[type].update();
       }
-    }
-  },
-  computed: {
-    hasStart() {
-      return this.multiple;
-    },
-    computedTrackStyle() {
-      let dis = this.range.end - this.range.start;
-      return Object.assign(
-        {
-          left: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
-          right: `${parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
-        },
-        this.trackStyle
-      );
-    },
-    nodePosition() {
-      let dis = this.range.end - this.range.start;
-      return {
-        start: `${parseInt(((this.values.start - this.range.start) / dis) * 100, 10)}%`,
-        end: `${100 - parseInt(((this.range.end - this.values.end) / dis) * 100, 10)}%`
-      };
-    },
-    values() {
-      if (!this.multiple) {
-        return {
-          start: this.range.start,
-          end: this.modelValue || this.range.start
-        };
-      }
-      return utils.extend(
-        {
-          start: this.range.start,
-          end: this.range.start
-        },
-        this.modelValue
-      );
-    },
-    sliderCls() {
-      return {
-        [`${prefix}`]: true
-      };
     }
   }
 };

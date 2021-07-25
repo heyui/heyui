@@ -1,19 +1,19 @@
 <template>
   <div :class="treeCls">
-    <Search v-if="filterable" v-model="searchValue" @onsearch="searchTree" block></Search>
+    <Search v-if="filterable" v-model="searchValue" block @onsearch="searchTree"></Search>
     <ul class="h-tree-body">
       <treeItem
         v-for="tree of treeDatas"
+        :key="tree.key"
         :data="tree"
         :param="param"
-        :key="tree.key"
         :multiple="multiple"
         :status="status"
-        @trigger="trigger"
         :choose-mode="chooseMode"
-        :toggleOnSelect="toggleOnSelect"
-        :selectOnClick="selectOnClick"
+        :toggle-on-select="toggleOnSelect"
+        :select-on-click="selectOnClick"
         :level="0"
+        @trigger="trigger"
       ></treeItem>
     </ul>
     <Loading :loading="globalloading"></Loading>
@@ -79,7 +79,11 @@ const getChooseNode = (data, options) => {
 };
 
 export default {
-  name: 'hTree',
+  name: 'HTree',
+  components: {
+    treeItem,
+    Search
+  },
   props: {
     option: Object,
     multiple: {
@@ -122,6 +126,23 @@ export default {
       searchValue: null
     };
   },
+  computed: {
+    param() {
+      if (this.config) {
+        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
+      } else {
+        return utils.extend({}, config.getOption('tree.default'), this.option);
+      }
+    },
+    treeCls() {
+      return {
+        [prefix]: true,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-single`]: !this.multiple,
+        [this.className]: !!this.className
+      };
+    }
+  },
   watch: {
     value() {
       if (this.updateFromInput) {
@@ -130,7 +151,7 @@ export default {
       }
       this.parse();
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initTreeDatas();
     }
   },
@@ -423,27 +444,6 @@ export default {
         return options;
       }
     }
-  },
-  computed: {
-    param() {
-      if (this.config) {
-        return utils.extend({}, config.getOption('tree.default'), config.getOption(`tree.configs.${this.config}`), this.option);
-      } else {
-        return utils.extend({}, config.getOption('tree.default'), this.option);
-      }
-    },
-    treeCls() {
-      return {
-        [prefix]: true,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-single`]: !this.multiple,
-        [this.className]: !!this.className
-      };
-    }
-  },
-  components: {
-    treeItem,
-    Search
   }
 };
 </script>

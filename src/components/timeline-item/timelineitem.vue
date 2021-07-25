@@ -4,7 +4,7 @@
       <slot name="time"></slot>
     </div>
     <div :class="prefix + '-item-content'">
-      <div :class="circleSC.classes" :style="circleSC.styles"><i :class="icon" v-if="!this.$slots.icon"></i><slot name="icon"></slot></div>
+      <div :class="circleSC.classes" :style="circleSC.styles"><i v-if="!this.$slots.icon" :class="icon"></i><slot name="icon"></slot></div>
       <slot name="content"></slot>
       <slot></slot>
     </div>
@@ -13,7 +13,7 @@
 <script>
 const prefix = 'h-timeline';
 export default {
-  name: 'hTimeLineItem',
+  name: 'HTimeLineItem',
   props: {
     color: String,
     icon: String

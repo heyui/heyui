@@ -1,8 +1,8 @@
 <template>
   <div class="h-carousel">
     <div class="h-carousel-container" :style="{ height: `${height}px` }">
-      <div class="h-carousel-list h-carousel-scroll-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-if="effect == 'scroll'">
-        <div class="h-carousel-item" v-for="(params, index) in carouselList" :key="index" @click="clickTrigger(index, params)">
+      <div v-if="effect == 'scroll'" :key="effect" class="h-carousel-list h-carousel-scroll-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
+        <div v-for="(params, index) in carouselList" :key="index" class="h-carousel-item" @click="clickTrigger(index, params)">
           <div
             v-if="!$slots.item"
             class="h-carousel-bg"
@@ -12,9 +12,9 @@
           <slot :carousel="params" name="item" :index="index"></slot>
         </div>
       </div>
-      <div class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay" :key="effect" v-else>
+      <div v-else :key="effect" class="h-carousel-list" @mouseover="stopAutoplay" @mouseout="startAutoplay">
         <transition :name="`h-carousel-effect-${effect}`">
-          <div class="h-carousel-item h-carousel-effect-item" :key="activeIndex" @click="clickTrigger(activeIndex, carouselItem)">
+          <div :key="activeIndex" class="h-carousel-item h-carousel-effect-item" @click="clickTrigger(activeIndex, carouselItem)">
             <div
               v-if="!$slots.item"
               class="h-carousel-bg"
@@ -32,9 +32,9 @@
     </div>
     <ul class="h-carousel-pagination" :class="paginationCls">
       <li
-        class="h-carousel-pagination-item"
         v-for="(p, index) of datas"
         :key="index"
+        class="h-carousel-pagination-item"
         :class="{ active: isActive(index) }"
         @mouseover="triggerChange('hover', index + 1)"
         @click="triggerChange('click', index + 1)"

@@ -23,11 +23,11 @@ export default {
   data() {
     return {};
   },
+  computed: {},
   methods: {
     checkAll() {
       this.$emit('checkAll');
     }
-  },
-  computed: {}
+  }
 };
 </script>

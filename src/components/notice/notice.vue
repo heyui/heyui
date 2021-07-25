@@ -1,11 +1,11 @@
 <template>
   <teleport to=".h-notice-container">
-    <div :class="noticeCls" ref="notice">
+    <div ref="notice" :class="noticeCls">
       <div>
         <transition>
-          <div class="h-notify-container" v-if="isShow">
+          <div v-if="isShow" class="h-notify-container">
             <div class="h-notify-content">
-              <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="close"></span>
+              <span v-if="hasCloseIcon" class="h-notify-close h-icon-close" @click="close"></span>
               <div class="h-notify-body"><slot></slot></div>
             </div>
           </div>
@@ -27,7 +27,7 @@ if (!noticeDom) {
 }
 
 export default {
-  name: 'hNotice',
+  name: 'HNotice',
   props: {
     hasCloseIcon: {
       type: Boolean,
@@ -47,6 +47,32 @@ export default {
       default: 4000
     }
   },
+  data() {
+    return {
+      isOpened: this.modelValue,
+      isShow: this.modelValue,
+      el: null
+    };
+  },
+  computed: {
+    noticeCls() {
+      return {
+        [prefix]: true,
+        [notifyprefix]: true,
+        [`${notifyprefix}-no-mask`]: true,
+        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
+        [`${notifyprefix}-has-icon`]: true,
+        [`${notifyprefix}-show`]: this.isOpened,
+        [this.className]: !!this.className
+      };
+    },
+    hasHeader() {
+      return !!this.$slots.header;
+    },
+    hasFooter() {
+      return !!this.$slots.footer;
+    }
+  },
   watch: {
     modelValue() {
       if (this.modelValue) {
@@ -55,13 +81,6 @@ export default {
         this.hide();
       }
     }
-  },
-  data() {
-    return {
-      isOpened: this.modelValue,
-      isShow: this.modelValue,
-      el: null
-    };
   },
   mounted() {
     this.$nextTick(() => {
@@ -104,25 +123,6 @@ export default {
     },
     close() {
       this.$emit('update:modelValue', false);
-    }
-  },
-  computed: {
-    noticeCls() {
-      return {
-        [prefix]: true,
-        [notifyprefix]: true,
-        [`${notifyprefix}-no-mask`]: true,
-        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
-        [`${notifyprefix}-has-icon`]: true,
-        [`${notifyprefix}-show`]: this.isOpened,
-        [this.className]: !!this.className
-      };
-    },
-    hasHeader() {
-      return !!this.$slots.header;
-    },
-    hasFooter() {
-      return !!this.$slots.footer;
     }
   }
 };

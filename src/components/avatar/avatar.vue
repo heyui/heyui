@@ -1,6 +1,6 @@
 <template>
   <div class="h-avatar" :class="avatarClass" :style="avatarStyle">
-    <div :style="avatarImageStyle" @click="click" :class="avatarImageClass" class="h-avatar-image-container">
+    <div :style="avatarImageStyle" :class="avatarImageClass" class="h-avatar-image-container" @click="click">
       <div class="h-avatar-image" :style="imageStyle"></div>
     </div>
     <div class="h-avatar-info" :style="infoStyle">
@@ -13,8 +13,7 @@
 import config from 'heyui/utils/config';
 
 export default {
-  name: 'hAvatar',
-  emits: ['avatarClick'],
+  name: 'HAvatar',
   props: {
     shape: {
       type: String,
@@ -37,11 +36,7 @@ export default {
     },
     fit: String
   },
-  methods: {
-    click(event) {
-      this.$emit('avatarClick', event);
-    }
-  },
+  emits: ['avatarClick'],
   computed: {
     imageStyle() {
       if (this.src) {
@@ -92,6 +87,11 @@ export default {
         'padding-left': `${this.width + this.distance}px`,
         'min-height': `${this.width}px`
       };
+    }
+  },
+  methods: {
+    click(event) {
+      this.$emit('avatarClick', event);
     }
   }
 };

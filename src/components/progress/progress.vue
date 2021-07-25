@@ -1,12 +1,12 @@
 <template>
   <div class="h-progress">
-    <div class="h-progress-title" v-if="$slots.title">
+    <div v-if="$slots.title" class="h-progress-title">
       <slot name="title"></slot>
     </div>
     <div class="h-progress-inner" :style="progressInnerStyle">
       <div class="h-progress-bg" :style="progressBgStyle" :class="progressBgClass"></div>
     </div>
-    <div class="h-progress-text" v-if="$slots.text">
+    <div v-if="$slots.text" class="h-progress-text">
       <slot name="text"></slot>
     </div>
   </div>
@@ -15,7 +15,7 @@
 const colors = ['red', 'blue', 'primary', 'gray', 'yellow', 'green'];
 
 export default {
-  name: 'hProgress',
+  name: 'HProgress',
   props: {
     color: {
       type: String,

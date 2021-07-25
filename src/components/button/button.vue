@@ -1,6 +1,6 @@
 <template>
   <button :class="buttonCls" type="button" :disabled="!!this.disabled">
-    <i :class="iconClass" v-if="!!iconClass" /><span v-if="hasText"><slot></slot></span>
+    <i v-if="!!iconClass" :class="iconClass" /><span v-if="hasText"><slot></slot></span>
   </button>
 </template>
 <script>
@@ -11,7 +11,10 @@ const Props = {
   size: ['l', 's', 'xs']
 };
 export default {
-  name: 'hButton',
+  name: 'HButton',
+  components: {
+    Icon
+  },
   props: {
     color: String,
     textColor: String,
@@ -48,17 +51,6 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    // trigger(event) {
-    //   if (this.stop) {
-    //     event.stopPropagation();
-    //   }
-    //   if (this.preventDefault) {
-    //     event.preventDefault();
-    //   }
-    //   this.$emit('click', event);
-    // }
-  },
   computed: {
     hasText() {
       let slot = this.$slots.default;
@@ -83,8 +75,16 @@ export default {
       return this.loading ? 'h-icon-loading' : this.icon;
     }
   },
-  components: {
-    Icon
+  methods: {
+    // trigger(event) {
+    //   if (this.stop) {
+    //     event.stopPropagation();
+    //   }
+    //   if (this.preventDefault) {
+    //     event.preventDefault();
+    //   }
+    //   this.$emit('click', event);
+    // }
   }
 };
 </script>

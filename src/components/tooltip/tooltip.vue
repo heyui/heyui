@@ -11,8 +11,7 @@ import Tooltip from 'heyui/plugins/tooltip';
 const prefix = 'h-tooltip';
 
 export default {
-  name: 'hTooltip',
-  emits: ['show', 'hide'],
+  name: 'HTooltip',
   props: {
     trigger: {
       type: String, // click,hover
@@ -40,6 +39,38 @@ export default {
       default: 0
     },
     maxWidth: Number
+  },
+  emits: ['show', 'hide'],
+  computed: {
+    tooltipCls() {
+      return {
+        [`${prefix}`]: true
+      };
+    },
+    showCls() {
+      return {
+        [`${prefix}-show`]: true
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}`]: true
+      };
+    }
+  },
+  watch: {
+    disabled() {
+      if (!this.tooltip) return;
+      if (!this.disabled) {
+        this.tooltip.enabled();
+      } else {
+        this.tooltip.disabled();
+      }
+    },
+    content() {
+      if (!this.tooltip) return;
+      this.tooltip.update();
+    }
   },
   mounted() {
     this.init();
@@ -86,37 +117,6 @@ export default {
           }
         });
       });
-    }
-  },
-  watch: {
-    disabled() {
-      if (!this.tooltip) return;
-      if (!this.disabled) {
-        this.tooltip.enabled();
-      } else {
-        this.tooltip.disabled();
-      }
-    },
-    content() {
-      if (!this.tooltip) return;
-      this.tooltip.update();
-    }
-  },
-  computed: {
-    tooltipCls() {
-      return {
-        [`${prefix}`]: true
-      };
-    },
-    showCls() {
-      return {
-        [`${prefix}-show`]: true
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}`]: true
-      };
     }
   }
 };

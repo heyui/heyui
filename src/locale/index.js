@@ -12,7 +12,7 @@ const langs = {
 let nowLang = null;
 let merged = {};
 let vuei18n = null;
-let i18nHandler = function() {
+let i18nHandler = function () {
   // if (Object.keys(this).indexOf('$t') > -1) return this.$t(...arguments);
   if (vuei18n && vuei18n.locale) {
     if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
@@ -28,7 +28,7 @@ let i18nHandler = function() {
   }
 };
 
-const t = function(path, options) {
+const t = function (path, options) {
   let value = i18nHandler.apply(this, arguments);
   if (value !== null && value !== undefined) return value;
 
@@ -45,11 +45,11 @@ const t = function(path, options) {
   return '';
 };
 
-const use = function(l) {
+const use = function (l) {
   lang = l || lang;
 };
 
-const i18n = function(initI18n) {
+const i18n = function (initI18n) {
   vuei18n = initI18n;
 };
 

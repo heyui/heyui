@@ -11,7 +11,7 @@ const Props = {
 };
 
 export default {
-  name: 'hBadge',
+  name: 'HBadge',
   props: {
     count: {
       type: Number,
@@ -39,7 +39,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   computed: {
     showCount() {
       return this.dot ? '' : this.count > this.maxCount ? `${this.maxCount}+` : this.count;
@@ -57,6 +56,7 @@ export default {
         [`${prefix}-count-dot`]: this.dot
       };
     }
-  }
+  },
+  methods: {}
 };
 </script>

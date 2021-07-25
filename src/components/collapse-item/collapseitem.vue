@@ -6,7 +6,7 @@
       <slot name="title">{{ title }}</slot>
     </div>
     <CollapseTransition>
-      <div class="h-collapse-item-content" v-show="isActive">
+      <div v-show="isActive" class="h-collapse-item-content">
         <div class="h-collapse-item-content-box">
           <slot></slot>
         </div>
@@ -18,7 +18,11 @@
 import CollapseTransition from './collapsetransition';
 
 export default {
-  name: 'hCollapseItem',
+  name: 'HCollapseItem',
+  components: {
+    CollapseTransition
+  },
+  inject: ['collapse'],
   props: {
     name: {
       type: [String, Number]
@@ -27,15 +31,11 @@ export default {
       type: String
     }
   },
-  components: {
-    CollapseTransition
-  },
   data() {
     return {
       isActive: false
     };
   },
-  inject: ['collapse'],
   computed: {},
   methods: {
     toggle() {

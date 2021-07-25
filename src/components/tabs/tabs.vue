@@ -2,10 +2,10 @@
   <div :class="tabsCls">
     <div
       v-for="(a, index) of arr"
-      @click="trigger(a, index)"
       :key="a[key]"
       :class="{ 'h-tabs-selected': a[key] == modelValue, 'h-tabs-item-selected': a[key] == modelValue }"
       class="h-tabs-item"
+      @click="trigger(a, index)"
     >
       <span v-if="!$slots.item">{{ a[title] }}</span>
       <slot v-else :tab="a" name="item"></slot>
@@ -18,7 +18,7 @@ import config from 'heyui/utils/config';
 const prefix = 'h-tabs';
 
 export default {
-  name: 'hTabs',
+  name: 'HTabs',
   props: {
     dict: String,
     datas: [Object, Array],
@@ -42,16 +42,6 @@ export default {
       title: this.titleName
     };
   },
-  methods: {
-    trigger(data, index) {
-      if (this.modelValue != data[this.key]) {
-        this.$emit('input', data[this.key]);
-        this.$emit('update:modelValue', data[this.key]);
-        this.$emit('change', data, index);
-      }
-      this.$emit('clickItem', data, index);
-    }
-  },
   computed: {
     tabsCls() {
       return {
@@ -69,6 +59,16 @@ export default {
         datas = config.getDict(this.dict);
       }
       return config.initOptions(datas, this);
+    }
+  },
+  methods: {
+    trigger(data, index) {
+      if (this.modelValue != data[this.key]) {
+        this.$emit('input', data[this.key]);
+        this.$emit('update:modelValue', data[this.key]);
+        this.$emit('change', data, index);
+      }
+      this.$emit('clickItem', data, index);
     }
   }
 };

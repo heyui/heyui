@@ -2,7 +2,7 @@ import Tooltip from 'heyui/plugins/tooltip';
 import utils from 'heyui/utils/utils';
 import { nextTick } from 'vue';
 
-const getContent = function(el, vnode) {
+const getContent = function (el, vnode) {
   let param = {};
   let attrs = vnode.props || {};
   if (attrs.content === '') return false;
@@ -29,7 +29,7 @@ const getContent = function(el, vnode) {
   return param;
 };
 
-const init = function(el, binding, vnode) {
+const init = function (el, binding, vnode) {
   if (binding.value === false) {
     return;
   }

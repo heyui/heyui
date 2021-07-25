@@ -7,7 +7,7 @@
 const prefixCls = 'h-layout-sider';
 
 export default {
-  name: 'hSider',
+  name: 'HSider',
   props: {
     theme: String
   },

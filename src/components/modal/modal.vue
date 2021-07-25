@@ -1,18 +1,18 @@
 <template>
   <teleport to="body">
-    <div :class="noticeCls" ref="modal">
-      <div class="h-notify-mask" v-if="hasMask" @click="setvalue(true)"></div>
+    <div ref="modal" :class="noticeCls">
+      <div v-if="hasMask" class="h-notify-mask" @click="setvalue(true)"></div>
       <div class="h-notify-wrap" @click.self="setvalue(true)">
         <transition :name="type">
-          <div class="h-notify-container" v-if="isShow">
+          <div v-if="isShow" class="h-notify-container">
             <div class="h-notify-content">
-              <span class="h-notify-close h-icon-close" v-if="hasCloseIcon" @click="setvalue(false)"></span>
-              <header class="h-modal-header" v-if="hasHeader || title">
-                <span class="h-modal-title" v-if="title">{{ title }}</span
+              <span v-if="hasCloseIcon" class="h-notify-close h-icon-close" @click="setvalue(false)"></span>
+              <header v-if="hasHeader || title" class="h-modal-header">
+                <span v-if="title" class="h-modal-title">{{ title }}</span
                 ><slot name="header"></slot>
               </header>
               <div class="h-notify-body"><slot></slot></div>
-              <footer class="h-modal-footer" v-if="hasFooter"><slot name="footer"></slot></footer>
+              <footer v-if="hasFooter" class="h-modal-footer"><slot name="footer"></slot></footer>
             </div>
           </div>
         </transition>
@@ -28,7 +28,7 @@ const prefix = 'h-modal';
 const notifyprefix = 'h-notify';
 
 export default {
-  name: 'hModal',
+  name: 'HModal',
   props: {
     hasCloseIcon: {
       type: Boolean,
@@ -70,6 +70,39 @@ export default {
     type: String,
     title: String
   },
+  data() {
+    return {
+      isOpened: this.modelValue,
+      isShow: this.modelValue,
+      el: null
+    };
+  },
+  computed: {
+    noticeCls() {
+      return {
+        [prefix]: true,
+        [notifyprefix]: true,
+        [`${prefix}-type-default`]: !this.type,
+        [`${notifyprefix}-show`]: this.isOpened,
+        [`${notifyprefix}-has-mask`]: this.hasMask,
+        [`${notifyprefix}-no-mask`]: !this.hasMask,
+        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
+        [`${notifyprefix}-draggable`]: this.draggable,
+        [`${prefix}-has-divider`]: this.hasDivider,
+        [`${prefix}-container-center`]: !!this.middle,
+        [`${prefix}-type-${this.type}`]: this.type,
+        [`${prefix}-transparent`]: this.transparent,
+        [`${prefix}-full-screen`]: this.fullScreen,
+        [this.className]: !!this.className
+      };
+    },
+    hasHeader() {
+      return !!this.$slots.header;
+    },
+    hasFooter() {
+      return !!this.$slots.footer;
+    }
+  },
   watch: {
     modelValue() {
       if (this.modelValue) {
@@ -82,16 +115,10 @@ export default {
       this.doDraggable();
     }
   },
-  data() {
-    return {
-      isOpened: this.modelValue,
-      isShow: this.modelValue,
-      el: null
-    };
-  },
   mounted() {
+    let el = this.$refs.modal;
+    this.modelElement = el;
     this.$nextTick(() => {
-      let el = this.$refs.modal;
       if (!this.modelValue) {
         el.style.display = 'none';
       }
@@ -99,7 +126,7 @@ export default {
     });
   },
   beforeUnmount() {
-    let el = this.el;
+    let el = this.modelElement;
     if (el) {
       el.style.display = 'none';
       this.removeDraggable();
@@ -112,7 +139,7 @@ export default {
     doDraggable() {
       if (this.drag) this.drag.destroy();
       if (!this.draggable) return;
-      const $container = this.el.querySelector(`.h-notify-container`);
+      const $container = this.modelElement.querySelector(`.h-notify-container`);
       if (!$container) return;
 
       let x = 0;
@@ -140,7 +167,7 @@ export default {
       }
     },
     show() {
-      let el = this.el;
+      let el = this.modelElement;
       el.style.display = 'block';
       this.isShow = true;
       if (this.hasMask) {
@@ -155,7 +182,7 @@ export default {
       }, 100);
     },
     hide() {
-      let el = this.el;
+      let el = this.modelElement;
       this.isOpened = false;
       setTimeout(() => {
         el.style.display = 'none';
@@ -170,32 +197,6 @@ export default {
       if (!fromMask || (fromMask && this.hasMask && this.closeOnMask)) {
         this.$emit('update:modelValue', false);
       }
-    }
-  },
-  computed: {
-    noticeCls() {
-      return {
-        [prefix]: true,
-        [notifyprefix]: true,
-        [`${prefix}-type-default`]: !this.type,
-        [`${notifyprefix}-show`]: this.isOpened,
-        [`${notifyprefix}-has-mask`]: this.hasMask,
-        [`${notifyprefix}-no-mask`]: !this.hasMask,
-        [`${notifyprefix}-has-close`]: this.hasCloseIcon,
-        [`${notifyprefix}-draggable`]: this.draggable,
-        [`${prefix}-has-divider`]: this.hasDivider,
-        [`${prefix}-container-center`]: !!this.middle,
-        [`${prefix}-type-${this.type}`]: this.type,
-        [`${prefix}-transparent`]: this.transparent,
-        [`${prefix}-full-screen`]: this.fullScreen,
-        [this.className]: !!this.className
-      };
-    },
-    hasHeader() {
-      return !!this.$slots.header;
-    },
-    hasFooter() {
-      return !!this.$slots.footer;
     }
   }
 };

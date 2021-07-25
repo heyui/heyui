@@ -73,8 +73,8 @@ function getTargetScrollLocation(target, parent, align) {
     parentPosition = parent.getBoundingClientRect();
     let offsetLeft = targetPosition.left - (parentPosition.left - parent.scrollLeft);
     let offsetTop = targetPosition.top - (parentPosition.top - parent.scrollTop);
-    x = offsetLeft + (targetWidth * leftScalar) - parent.clientWidth * leftScalar;
-    y = offsetTop + (targetHeight * topScalar) - parent.clientHeight * topScalar;
+    x = offsetLeft + targetWidth * leftScalar - parent.clientWidth * leftScalar;
+    y = offsetTop + targetHeight * topScalar - parent.clientHeight * topScalar;
     x = Math.max(Math.min(x, parent.scrollWidth - parent.clientWidth), 0);
     y = Math.max(Math.min(y, parent.scrollHeight - parent.clientHeight), 0);
     x -= leftOffset;
@@ -102,9 +102,7 @@ function animate(parent) {
     let time = Date.now() - scrollSettings.startTime;
     let timeValue = Math.min((1 / scrollSettings.time) * time, 1);
 
-    if (
-      time > scrollSettings.time + 20
-    ) {
+    if (time > scrollSettings.time + 20) {
       setElementScroll(parent, location.x, location.y);
       parent.scrollOption = null;
       return scrollSettings.end(COMPLETE);
@@ -112,10 +110,7 @@ function animate(parent) {
 
     let easeValue = 1 - scrollSettings.ease(timeValue);
 
-    setElementScroll(parent,
-      location.x - (location.differenceX * easeValue),
-      location.y - (location.differenceY * easeValue)
-    );
+    setElementScroll(parent, location.x - location.differenceX * easeValue, location.y - location.differenceY * easeValue);
 
     animate(parent);
   });
@@ -160,10 +155,8 @@ function transitionScrollTo(target, parent, settings, callback) {
 function defaultIsScrollable(element) {
   return (
     element === window ||
-    ((
-      element.scrollHeight !== element.clientHeight ||
-      element.scrollWidth !== element.clientWidth
-    ) && getComputedStyle(element).overflow !== 'hidden')
+    ((element.scrollHeight !== element.clientHeight || element.scrollWidth !== element.clientWidth) &&
+      getComputedStyle(element).overflow !== 'hidden')
   );
 }
 
@@ -186,7 +179,11 @@ export default function (target, settings, callback) {
   }
 
   settings.time = isNaN(settings.time) ? 1000 : settings.time;
-  settings.ease = settings.ease || function (v) { return 1 - Math.pow(1 - v, v / 2); };
+  settings.ease =
+    settings.ease ||
+    function (v) {
+      return 1 - Math.pow(1 - v, v / 2);
+    };
 
   let parent = target.parentElement;
   let parents = 0;

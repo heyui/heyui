@@ -23,7 +23,19 @@ const findDomUtil = function (target, utilDom) {
 };
 
 export default {
-  name: 'hForm',
+  name: 'HForm',
+  provide: function () {
+    return {
+      validField: this.validField,
+      requireds: this.requireds,
+      removeProp: this.removeProp,
+      setConfig: this.setConfig,
+      updateErrorMessage: this.updateErrorMessage,
+      updateProp: this.updateProp,
+      labelWidth: this.labelWidth,
+      params: this.childParams
+    };
+  },
   props: {
     top: {
       type: Number
@@ -62,18 +74,6 @@ export default {
       default: true
     }
   },
-  provide: function () {
-    return {
-      validField: this.validField,
-      requireds: this.requireds,
-      removeProp: this.removeProp,
-      setConfig: this.setConfig,
-      updateErrorMessage: this.updateErrorMessage,
-      updateProp: this.updateProp,
-      labelWidth: this.labelWidth,
-      params: this.childParams
-    };
-  },
   data() {
     return {
       modelStash: null,
@@ -85,6 +85,38 @@ export default {
         mode: this.mode
       }
     };
+  },
+  computed: {
+    formCls() {
+      return {
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-${this.mode}`]: true,
+        [`${prefixCls}-label-${this.labelPosition}`]: !!this.labelPosition,
+        [`${prefixCls}-readonly`]: this.readonly
+      };
+    }
+  },
+  watch: {
+    model() {
+      this.modelStash = utils.copy(this.model);
+    },
+    mode() {
+      this.childParams.mode = this.mode;
+    },
+    rules: {
+      handler() {
+        if (this.validator) {
+          if (this.rules) this.validator.updateRule(this.rules);
+          this.dynamicRequireds.forEach(item => {
+            this.validator.setConfig(item, { required: true });
+          });
+        } else if (this.model && this.rules) {
+          this.validator = new Validator(this.rules);
+        }
+        this.initRequires();
+      },
+      deep: true
+    }
   },
 
   beforeMount() {
@@ -112,28 +144,6 @@ export default {
         this.trigger(event.target);
       });
     });
-  },
-  watch: {
-    model() {
-      this.modelStash = utils.copy(this.model);
-    },
-    mode() {
-      this.childParams.mode = this.mode;
-    },
-    rules: {
-      handler() {
-        if (this.validator) {
-          if (this.rules) this.validator.updateRule(this.rules);
-          this.dynamicRequireds.forEach(item => {
-            this.validator.setConfig(item, { required: true });
-          });
-        } else if (this.model && this.rules) {
-          this.validator = new Validator(this.rules);
-        }
-        this.initRequires();
-      },
-      deep: true
-    }
   },
   methods: {
     initRequires() {
@@ -307,16 +317,6 @@ export default {
       let result = this.renderMessage(returnResult);
       this.tipError(result);
       return result;
-    }
-  },
-  computed: {
-    formCls() {
-      return {
-        [`${prefixCls}`]: true,
-        [`${prefixCls}-${this.mode}`]: true,
-        [`${prefixCls}-label-${this.labelPosition}`]: !!this.labelPosition,
-        [`${prefixCls}-readonly`]: this.readonly
-      };
     }
   }
 };

@@ -4,30 +4,30 @@
       <div v-if="noBorder" class="h-datetime-show text-hover">{{ showDate || showPlaceholder }}</div>
       <div v-else class="h-input h-datetime-show">
         <input
+          v-model="showDate"
           class="h-input"
           type="text"
-          @change="changeEvent"
-          @keydown.enter="changeEvent"
-          v-model="showDate"
           :disabled="disabled"
           :readonly="readonly || type == 'week' || type == 'quarter'"
           :placeholder="showPlaceholder"
+          @change="changeEvent"
+          @keydown.enter="changeEvent"
         />
-        <i class="h-icon-calendar" v-if="!showDate || disabled || !clearable"></i>
-        <i class="h-icon-close text-hover" v-else @click.stop="clear"></i>
+        <i v-if="!showDate || disabled || !clearable" class="h-icon-calendar"></i>
+        <i v-else class="h-icon-close text-hover" @click.stop="clear"></i>
       </div>
     </template>
     <div :class="datePickerCls" class="h-date-picker">
-      <div class="h-date-container" v-if="isShow">
+      <div v-if="isShow" class="h-date-container">
         <div v-if="shortcuts.length > 0" class="h-date-shortcut">
-          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
+          <div v-for="s of shortcuts" :key="s.title" @click="setShortcutValue(s)">{{ s.title }}</div>
         </div>
         <date-base
           ref="datebase"
           :value="nowDate"
           :option="option"
           :type="type"
-          :startWeek="startWeek"
+          :start-week="startWeek"
           :now-view="nowView"
           format="k"
           @updateView="updateView"
@@ -36,7 +36,7 @@
         ></date-base>
       </div>
 
-      <div class="h-date-footer" v-if="hasConfirm & !inline">
+      <div v-if="hasConfirm & !inline" class="h-date-footer">
         <button type="button" class="h-btn h-btn-text" @click="clear">{{ hlang('h.common.clear') }}</button>
         <button type="button" class="h-btn h-btn-primary h-btn-s" @click="hide">{{ hlang('h.common.confirm') }}</button>
       </div>
@@ -66,9 +66,11 @@ const manbaType = {
 const options = config.getOption('datepicker');
 
 export default {
-  name: 'hDatePicker',
+  name: 'HDatePicker',
+  components: {
+    dateBase
+  },
   mixins: [Locale],
-  emits: ['update:modelValue', 'change'],
   props: {
     disabled: {
       type: Boolean,
@@ -117,6 +119,7 @@ export default {
       default: true
     }
   },
+  emits: ['update:modelValue', 'change'],
   data() {
     return {
       nowDate: '',
@@ -124,6 +127,54 @@ export default {
       nowView: manba(),
       isShow: this.inline
     };
+  },
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
+    nowFormat() {
+      let format = this.format;
+      if (!format) {
+        format = options.format[this.type];
+        if (this.type == 'datetime' && this.hasSeconds) {
+          format = options.format.datetimesecond;
+        }
+      }
+      return format;
+    },
+    hasConfirm() {
+      return this.type == 'datetime' || this.type == 'datehour' || this.hasButtons;
+    },
+    shortcuts() {
+      let shortcuts = [];
+      let shortcutsConfig = null;
+      if (this.option && this.option.shortcuts) {
+        shortcutsConfig = this.option.shortcuts;
+      }
+      if (utils.isArray(shortcutsConfig)) {
+        for (let s of shortcutsConfig) {
+          if (utils.isString(s)) {
+            shortcuts.push(options.shortcuts[s]);
+          } else if (utils.isObject(s)) {
+            shortcuts.push(s);
+          }
+        }
+      }
+      return shortcuts;
+    },
+    dateCls() {
+      return {
+        [`${prefix}`]: !this.inline,
+        [`${prefix}-inline`]: this.inline,
+        [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    },
+    datePickerCls() {
+      return {
+        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
+      };
+    }
   },
   watch: {
     modelValue() {
@@ -283,57 +334,6 @@ export default {
       }
       this.updateDropdown();
     }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
-    },
-    nowFormat() {
-      let format = this.format;
-      if (!format) {
-        format = options.format[this.type];
-        if (this.type == 'datetime' && this.hasSeconds) {
-          format = options.format.datetimesecond;
-        }
-      }
-      return format;
-    },
-    hasConfirm() {
-      return this.type == 'datetime' || this.type == 'datehour' || this.hasButtons;
-    },
-    shortcuts() {
-      let shortcuts = [];
-      let shortcutsConfig = null;
-      if (this.option && this.option.shortcuts) {
-        shortcutsConfig = this.option.shortcuts;
-      }
-      if (utils.isArray(shortcutsConfig)) {
-        for (let s of shortcutsConfig) {
-          if (utils.isString(s)) {
-            shortcuts.push(options.shortcuts[s]);
-          } else if (utils.isObject(s)) {
-            shortcuts.push(s);
-          }
-        }
-      }
-      return shortcuts;
-    },
-    dateCls() {
-      return {
-        [`${prefix}`]: !this.inline,
-        [`${prefix}-inline`]: this.inline,
-        [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-disabled`]: this.disabled
-      };
-    },
-    datePickerCls() {
-      return {
-        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
-      };
-    }
-  },
-  components: {
-    dateBase
   }
 };
 </script>

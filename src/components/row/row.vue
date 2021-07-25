@@ -1,8 +1,7 @@
 <template>
-  <div :class="classes"
-       :style="styles">
+  <div :class="classes" :style="styles">
     <slot></slot>
-    <div class="h-row-clear" v-if="type!='flex'"></div>
+    <div v-if="type != 'flex'" class="h-row-clear"></div>
   </div>
 </template>
 <script>
@@ -20,7 +19,7 @@ const getHalf = (width, hasRemainder) => {
 };
 
 export default {
-  name: 'hRow',
+  name: 'HRow',
   props: {
     type: {
       validator(value) {
@@ -57,13 +56,15 @@ export default {
   },
   computed: {
     classes() {
-      return [{
-        [`${prefixCls}`]: !this.type,
-        [`${prefixCls}-${this.type}`]: !!this.type,
-        [`${prefixCls}-${this.type}-${this.align}`]: !!this.align,
-        [`${prefixCls}-${this.type}-${this.direction}`]: this.direction,
-        [`${prefixCls}-${this.type}-${this.justify}`]: !!this.justify
-      }];
+      return [
+        {
+          [`${prefixCls}`]: !this.type,
+          [`${prefixCls}-${this.type}`]: !!this.type,
+          [`${prefixCls}-${this.type}-${this.align}`]: !!this.align,
+          [`${prefixCls}-${this.type}-${this.direction}`]: this.direction,
+          [`${prefixCls}-${this.type}-${this.justify}`]: !!this.justify
+        }
+      ];
     },
     styles() {
       let style = {};

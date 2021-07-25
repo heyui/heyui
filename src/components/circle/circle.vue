@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-  name: 'hCircle',
+  name: 'HCircle',
   props: {
     color: {
       type: String,

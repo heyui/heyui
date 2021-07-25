@@ -4,7 +4,7 @@
 <script>
 const prefix = 'h-tag';
 export default {
-  name: 'hTag',
+  name: 'HTag',
   props: {
     type: String,
     color: String
@@ -12,7 +12,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   computed: {
     cls() {
       const hasColor = !!this.color;
@@ -35,6 +34,7 @@ export default {
       }
       return {};
     }
-  }
+  },
+  methods: {}
 };
 </script>

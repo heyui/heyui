@@ -1,16 +1,16 @@
 <template>
   <div
-    class="h-menu-show"
     v-tooltip="mode === 'collapse' && !data.children.length"
+    class="h-menu-show"
     :content="data.title"
     placement="right"
-    @click="togglemenu(data)"
     :class="{ 'h-menu-show-disabled': data.status.disabled, 'h-menu-li-selected': data.key && status.selected == data.key }"
+    @click="togglemenu(data)"
   >
-    <span class="h-menu-show-icon" v-show="data.icon"><i :class="data.icon"></i></span>
+    <span v-show="data.icon" class="h-menu-show-icon"><i :class="data.icon"></i></span>
     <span class="h-menu-show-desc">{{ data.title }}</span>
-    <span class="h-menu-show-count" v-if="data.count"><Badge :count="data.count" :max-count="99"></Badge></span>
-    <span class="h-menu-show-expand" v-if="mode != 'horizontal' && data.children && data.children.length > 0">
+    <span v-if="data.count" class="h-menu-show-count"><Badge :count="data.count" :max-count="99"></Badge></span>
+    <span v-if="mode != 'horizontal' && data.children && data.children.length > 0" class="h-menu-show-expand">
       <i class="h-icon-angle-down"></i>
     </span>
   </div>
@@ -19,7 +19,7 @@
 import tooltip from 'heyui/directives/tooltip';
 
 export default {
-  name: 'hMenuItemShow',
+  name: 'HMenuItemShow',
   directives: { tooltip },
   props: {
     data: Object,

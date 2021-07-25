@@ -4,17 +4,17 @@
     <div class="h-search-container">
       <div class="h-search-input">
         <input
+          v-model="inputValue"
           type="text"
           class="h-input"
           :style="heightStyles"
-          v-model="inputValue"
           :placeholder="showPlaceholder"
           @input="inputTrigger(inputValue)"
           @keyup.enter="search(inputValue)"
         />
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <button type="button" :style="heightStyles" class="h-btn h-btn-primary" v-if="showSearchButton" @click="search(inputValue)">
+      <button v-if="showSearchButton" type="button" :style="heightStyles" class="h-btn h-btn-primary" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
         <template v-else>{{ hlang('h.search.searchText')(null, searchText) }}</template>
       </button>
@@ -27,7 +27,7 @@ import Locale from 'heyui/mixins/locale';
 const prefix = 'h-search';
 
 export default {
-  name: 'hSearch',
+  name: 'HSearch',
   mixins: [Locale],
   props: {
     position: {
@@ -61,28 +61,6 @@ export default {
       inputValue: this.value
     };
   },
-  watch: {
-    value() {
-      this.inputValue = this.value;
-    }
-  },
-  methods: {
-    search(value) {
-      value = value === null ? '' : value;
-      this.inputValue = value;
-      this.$emit('input', value);
-      this.$emit('onsearch', value.trim());
-      this.$emit('search', value.trim());
-      this.$emit('change', value.trim());
-    },
-    inputTrigger(value) {
-      if (this.triggerType == 'input') {
-        this.search(value);
-      } else {
-        this.$emit('input', value);
-      }
-    }
-  },
   computed: {
     showPlaceholder() {
       return this.placeholder || this.t('h.search.placeholder');
@@ -109,6 +87,28 @@ export default {
         [`${prefix}-has-button`]: this.showSearchButton,
         [`${prefix}-${this.position}`]: true
       };
+    }
+  },
+  watch: {
+    value() {
+      this.inputValue = this.value;
+    }
+  },
+  methods: {
+    search(value) {
+      value = value === null ? '' : value;
+      this.inputValue = value;
+      this.$emit('input', value);
+      this.$emit('onsearch', value.trim());
+      this.$emit('search', value.trim());
+      this.$emit('change', value.trim());
+    },
+    inputTrigger(value) {
+      if (this.triggerType == 'input') {
+        this.search(value);
+      } else {
+        this.$emit('input', value);
+      }
     }
   }
 };

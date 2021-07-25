@@ -6,14 +6,14 @@
     </span>
     <input
       v-if="!readonly"
+      v-model="tagvalue"
       type="text"
       class="h-taginput-input h-input"
+      :placeholder="placeholder"
       @focus="focusing = true"
-      v-model="tagvalue"
       @blur="blur"
       @keyup.enter="add"
       @keydown.delete="removeLast"
-      :placeholder="placeholder"
     />
   </div>
 </template>
@@ -25,9 +25,8 @@ import Message from 'heyui/plugins/message';
 const prefix = 'h-taginput';
 
 export default {
-  name: 'hTagInput',
+  name: 'HTagInput',
   mixins: [Locale],
-  emits: ['input', 'change', 'update:modelValue'],
   props: {
     readonly: {
       type: Boolean,
@@ -58,11 +57,32 @@ export default {
     },
     modelValue: [Array, String, Number]
   },
+  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       focusing: false,
       tagvalue: ''
     };
+  },
+  computed: {
+    taginputCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: !this.noBorder && !this.readonly,
+        [`${prefix}-readonly`]: this.readonly,
+        focusing: this.focusing
+      };
+    },
+    values() {
+      if (this.type == 'Array') {
+        return this.modelValue || [];
+      } else {
+        if (utils.isNull(this.modelValue) || this.modelValue === '') {
+          return [];
+        }
+        return String(this.modelValue).split(this.split);
+      }
+    }
   },
   methods: {
     removeLast(event) {
@@ -110,26 +130,6 @@ export default {
     blur() {
       this.add();
       this.focusing = false;
-    }
-  },
-  computed: {
-    taginputCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: !this.noBorder && !this.readonly,
-        [`${prefix}-readonly`]: this.readonly,
-        focusing: this.focusing
-      };
-    },
-    values() {
-      if (this.type == 'Array') {
-        return this.modelValue || [];
-      } else {
-        if (utils.isNull(this.modelValue) || this.modelValue === '') {
-          return [];
-        }
-        return String(this.modelValue).split(this.split);
-      }
     }
   }
 };

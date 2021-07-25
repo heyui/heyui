@@ -9,7 +9,7 @@ const Props = {
   size: ['l', 's', 'xs']
 };
 export default {
-  name: 'hButtonGroup',
+  name: 'HButtonGroup',
   props: {
     circle: Boolean,
     size: {

@@ -1,33 +1,33 @@
 <template>
   <div :class="uploaderCls">
     <template v-if="type == 'image'">
-      <div class="h-uploader-image" v-if="file">
+      <div v-if="file" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div class="h-uploader-progress" v-if="file.status == 2 || file.status == 1">
+        <div v-if="file.status == 2 || file.status == 1" class="h-uploader-progress">
           <Progress :percent="file.percent" :stroke-width="5"></Progress>
         </div>
-        <div class="h-uploader-image-operate h-uploader-browse-button" v-else>
+        <div v-else class="h-uploader-image-operate h-uploader-browse-button">
           <div>{{ showReUploadWord }}</div>
         </div>
       </div>
-      <div class="h-uploader-image-empty h-uploader-browse-button" v-else>
+      <div v-else class="h-uploader-image-empty h-uploader-browse-button">
         <i class="h-icon-plus"></i>
       </div>
     </template>
 
     <template v-if="type == 'images'">
-      <div class="h-uploader-image-empty h-uploader-browse-button" v-if="!readonly">
+      <div v-if="!readonly" class="h-uploader-image-empty h-uploader-browse-button">
         <i class="h-icon-plus"></i>
       </div>
       <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-image">
         <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div class="h-uploader-progress" v-if="file.status == 2 || file.status == 1">
+        <div v-if="file.status == 2 || file.status == 1" class="h-uploader-progress">
           <Progress :percent="file.percent" :stroke-width="5"></Progress>
         </div>
-        <div class="h-uploader-image-operate" v-else @click="clickImage(index, file)" :class="{ 'h-uploader-image-operate-pointer': readonly }">
+        <div v-else class="h-uploader-image-operate" :class="{ 'h-uploader-image-operate-pointer': readonly }" @click="clickImage(index, file)">
           <div v-if="!readonly">
             <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
-            <i class="h-split" style="width: 3px;"></i>
+            <i class="h-split" style="width: 3px"></i>
             <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
           </div>
         </div>
@@ -45,18 +45,18 @@
         <slot name="dragdrop"></slot>
       </div>
       <div v-else>
-        <button type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" v-show="showUploadButton">{{ showUploadWord }}</button>
+        <button v-show="showUploadButton" type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button">{{ showUploadWord }}</button>
       </div>
       <div class="h-uploader-files">
         <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
-          <div class="h-uploader-file-progress" v-if="file.status == 2">
+          <div v-if="file.status == 2" class="h-uploader-file-progress">
             <Progress :percent="file.percent" :stroke-width="5"
-              ><span v-slot:title>{{ file[param.fileName] }}</span></Progress
+              ><span #title>{{ file[param.fileName] }}</span></Progress
             >
           </div>
-          <div class="h-uploader-file-info" v-else>
+          <div v-else class="h-uploader-file-info">
             <span class="link" @click="clickfile(file, index)">{{ file.name }}</span
-            ><i class="h-icon-trash middle-right link" v-if="!readonly" @click="deleteFile(index)"></i>
+            ><i v-if="!readonly" class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
           </div>
         </div>
       </div>
@@ -71,14 +71,14 @@ import ImagePreview from 'heyui/plugins/image-preview';
 
 const prefix = 'h-uploader';
 
-const parse = function(value, param) {
+const parse = function (value, param) {
   if (utils.isString(value)) {
     return { url: value, original: { [param.urlName]: value } };
   } else if (utils.isObject(value)) {
     return { url: value[param.urlName], name: value[param.fileName], thumbUrl: value.thumbUrl || param.thumbUrl.call(value), original: value };
   }
 };
-const dispose = function(value, type, param) {
+const dispose = function (value, type, param) {
   if (type == 'url') {
     return value.url;
   } else if (utils.isObject(value)) {
@@ -90,7 +90,7 @@ const dispose = function(value, type, param) {
 };
 
 export default {
-  name: 'hUploader',
+  name: 'HUploader',
   mixins: [Locale],
   props: {
     type: {
@@ -129,48 +129,6 @@ export default {
       previewIndex: -1,
       isdragging: false
     };
-  },
-  methods: {
-    clickfile(file, index) {
-      this.$emit('fileclick', file, index);
-    },
-    clickImage(index, file) {
-      if (this.readonly) {
-        ImagePreview(this.fileList, index);
-      } else {
-        this.$emit('imageclick', file);
-      }
-    },
-    previewImage(index) {
-      ImagePreview(this.fileList, index);
-    },
-    getBrowseButton() {
-      return this.$el.querySelector('.h-uploader-browse-button');
-    },
-    getDropElement() {
-      return this.$el.querySelector('.h-uploader-drop-element');
-    },
-    getBackgroundImage(file) {
-      let param = {};
-      if (file.thumbUrl || file.url) {
-        param['background-image'] = `url(${file.thumbUrl || file.url})`;
-      }
-      return param;
-    },
-    getFileList() {
-      if (this.isSingle) {
-        return this.file ? dispose(this.file, this.dataType, this.param) : null;
-      }
-
-      let list = [];
-      for (let f of this.fileList) {
-        list.push(dispose(f, this.dataType, this.param));
-      }
-      return list;
-    },
-    deleteFile(index) {
-      this.$emit('deletefile', index);
-    }
   },
   computed: {
     showUploadButton() {
@@ -214,6 +172,48 @@ export default {
     },
     file() {
       return this.fileList.length ? this.fileList[0] : null;
+    }
+  },
+  methods: {
+    clickfile(file, index) {
+      this.$emit('fileclick', file, index);
+    },
+    clickImage(index, file) {
+      if (this.readonly) {
+        ImagePreview(this.fileList, index);
+      } else {
+        this.$emit('imageclick', file);
+      }
+    },
+    previewImage(index) {
+      ImagePreview(this.fileList, index);
+    },
+    getBrowseButton() {
+      return this.$el.querySelector('.h-uploader-browse-button');
+    },
+    getDropElement() {
+      return this.$el.querySelector('.h-uploader-drop-element');
+    },
+    getBackgroundImage(file) {
+      let param = {};
+      if (file.thumbUrl || file.url) {
+        param['background-image'] = `url(${file.thumbUrl || file.url})`;
+      }
+      return param;
+    },
+    getFileList() {
+      if (this.isSingle) {
+        return this.file ? dispose(this.file, this.dataType, this.param) : null;
+      }
+
+      let list = [];
+      for (let f of this.fileList) {
+        list.push(dispose(f, this.dataType, this.param));
+      }
+      return list;
+    },
+    deleteFile(index) {
+      this.$emit('deletefile', index);
     }
   }
 };

@@ -7,9 +7,8 @@
 const prefixCls = 'h-layout-footer';
 
 export default {
-  name: 'hFooter',
-  props: {
-  },
+  name: 'HFooter',
+  props: {},
   computed: {
     classes() {
       let classList = [`${prefixCls}`];

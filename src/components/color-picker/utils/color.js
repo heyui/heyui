@@ -1,11 +1,4 @@
-import {
-  toHex,
-  parseHexChannel,
-  hsl2hsv,
-  hsv2hsl,
-  rgb2hsv,
-  hsv2rgb
-} from './color-base';
+import { toHex, parseHexChannel, hsl2hsv, hsv2hsl, rgb2hsv, hsv2rgb } from './color-base';
 
 export default class Color {
   constructor(options) {
@@ -74,8 +67,11 @@ export default class Color {
     };
 
     if (value.indexOf('hsl') !== -1) {
-      const parts = value.replace(/hsla|hsl|\(|\)/gm, '')
-        .split(/\s|,/g).filter((val) => val !== '').map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10));
+      const parts = value
+        .replace(/hsla|hsl|\(|\)/gm, '')
+        .split(/\s|,/g)
+        .filter(val => val !== '')
+        .map((val, index) => (index > 2 ? parseFloat(val) : parseInt(val, 10)));
 
       if (parts.length === 4) {
         this.alpha = Math.floor(parseFloat(parts[3]) * 100);
@@ -87,8 +83,11 @@ export default class Color {
         fromHSV(h, s, v);
       }
     } else if (value.indexOf('hsv') !== -1) {
-      const parts = value.replace(/hsva|hsv|\(|\)/gm, '')
-        .split(/\s|,/g).filter((val) => val !== '').map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10));
+      const parts = value
+        .replace(/hsva|hsv|\(|\)/gm, '')
+        .split(/\s|,/g)
+        .filter(val => val !== '')
+        .map((val, index) => (index > 2 ? parseFloat(val) : parseInt(val, 10)));
 
       if (parts.length === 4) {
         this.alpha = Math.floor(parseFloat(parts[3]) * 100);
@@ -99,8 +98,11 @@ export default class Color {
         fromHSV(parts[0], parts[1], parts[2]);
       }
     } else if (value.indexOf('rgb') !== -1) {
-      const parts = value.replace(/rgba|rgb|\(|\)/gm, '')
-        .split(/\s|,/g).filter((val) => val !== '').map((val, index) => index > 2 ? parseFloat(val) : parseInt(val, 10));
+      const parts = value
+        .replace(/rgba|rgb|\(|\)/gm, '')
+        .split(/\s|,/g)
+        .filter(val => val !== '')
+        .map((val, index) => (index > 2 ? parseFloat(val) : parseInt(val, 10)));
 
       if (parts.length === 4) {
         this.alpha = Math.floor(parseFloat(parts[3]) * 100);
@@ -127,7 +129,7 @@ export default class Color {
       }
 
       if (hex.length === 8) {
-        this.alpha = Math.floor(parseHexChannel(hex.substring(6)) / 255 * 100);
+        this.alpha = Math.floor((parseHexChannel(hex.substring(6)) / 255) * 100);
       } else if (hex.length === 3 || hex.length === 6) {
         this.alpha = 100;
       }
@@ -138,10 +140,12 @@ export default class Color {
   }
 
   compare(color) {
-    return Math.abs(color.hue - this.hue) < 2 &&
+    return (
+      Math.abs(color.hue - this.hue) < 2 &&
       Math.abs(color.saturation - this.saturation) < 1 &&
       Math.abs(color.value - this.value) < 1 &&
-      Math.abs(color.alpha - this.alpha) < 1;
+      Math.abs(color.alpha - this.alpha) < 1
+    );
   }
 
   calculate() {
@@ -171,4 +175,4 @@ export default class Color {
   toString() {
     return this.string;
   }
-};
+}

@@ -2,15 +2,15 @@
   <div class="h-text-ellipsis">
     <slot name="before" class="h-text-ellipsis-before"></slot
     ><span
+      v-tooltip="useTooltip && isHide"
       :style="textStyle"
       :class="textClass"
-      @click="textClick"
-      v-tooltip="useTooltip && isHide"
       :theme="tooltipTheme"
       :placement="placement"
       :content="text"
+      @click="textClick"
     >
-      <span class="h-text-ellipsis-limit-text" :key="keyIndex">{{ text }}</span
+      <span :key="keyIndex" class="h-text-ellipsis-limit-text">{{ text }}</span
       ><span class="h-text-ellipsis-more">{{ more }}<slot name="more"></slot></span></span
     ><slot name="after" class="h-text-ellipsis-after"></slot>
   </div>
@@ -19,8 +19,7 @@
 import tooltip from 'heyui/directives/tooltip';
 
 export default {
-  name: 'hTextEllipsis',
-  emits: ['textClick', 'hide', 'show'],
+  name: 'HTextEllipsis',
   directives: { tooltip },
   props: {
     text: String,
@@ -39,6 +38,7 @@ export default {
     textClass: [String, Object, Array],
     more: String
   },
+  emits: ['textClick', 'hide', 'show'],
   data() {
     return {
       keyIndex: 0,

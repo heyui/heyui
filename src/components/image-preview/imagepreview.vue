@@ -1,11 +1,11 @@
 <template>
   <div class="h-image-preview-list" :style="listStyles">
-    <div :style="itemStyles(data)" v-for="(data, index) of computedList" :key="index" @click="click(index, data)" class="h-image-preview-item"></div>
+    <div v-for="(data, index) of computedList" :key="index" :style="itemStyles(data)" class="h-image-preview-item" @click="click(index, data)"></div>
   </div>
 </template>
 <script>
 import utils from 'heyui/utils/utils';
-const genObject = function(data) {
+const genObject = function (data) {
   if (utils.isString(data)) {
     return { url: data };
   } else if (utils.isObject(data)) {
@@ -14,7 +14,7 @@ const genObject = function(data) {
   return { url: null };
 };
 export default {
-  name: 'hImagePreview',
+  name: 'HImagePreview',
   props: {
     width: {
       type: Number,
@@ -31,25 +31,6 @@ export default {
     borderRadius: {
       type: Number,
       default: 3
-    }
-  },
-  methods: {
-    click(index, value) {
-      if (this.isSingle) {
-        this.$emit('clickItem', this.datas);
-      } else {
-        this.$emit('clickItem', index, value);
-      }
-    },
-    itemStyles(data) {
-      return {
-        height: `${this.width}px`,
-        width: `${this.width}px`,
-        'margin-right': `${this.distance}px`,
-        'margin-bottom': `${this.distance}px`,
-        'border-radius': `${this.borderRadius}px`,
-        'background-image': `url(${data.url})`
-      };
     }
   },
   computed: {
@@ -71,6 +52,25 @@ export default {
         });
       }
       return [];
+    }
+  },
+  methods: {
+    click(index, value) {
+      if (this.isSingle) {
+        this.$emit('clickItem', this.datas);
+      } else {
+        this.$emit('clickItem', index, value);
+      }
+    },
+    itemStyles(data) {
+      return {
+        height: `${this.width}px`,
+        width: `${this.width}px`,
+        'margin-right': `${this.distance}px`,
+        'margin-bottom': `${this.distance}px`,
+        'border-radius': `${this.borderRadius}px`,
+        'background-image': `url(${data.url})`
+      };
     }
   }
 };

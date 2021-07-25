@@ -1,12 +1,17 @@
 <template>
   <div :class="{ 'h-rate': true, 'h-rate-readonly': readonly }" @mouseleave="mouseleave()">
-    <span v-for="n in 5" :key="n" @click="setvalue(n)" :class="starCls(n)" @mouseover="mouseover(n)"><i :class="iconClass"></i></span
+    <span v-for="n in 5" :key="n" :class="starCls(n)" @click="setvalue(n)" @mouseover="mouseover(n)"><i :class="iconClass"></i></span
     ><span v-if="showText" class="h-rate-value">{{ modelValue }}</span>
   </div>
 </template>
 <script>
 export default {
-  name: 'hRate',
+  name: 'HRate',
+  filters: {
+    isInclude(key, modelValue) {
+      return modelValue.indexOf(key) > -1;
+    }
+  },
   props: {
     readonly: {
       type: Boolean,
@@ -30,6 +35,7 @@ export default {
       mouseValue: false
     };
   },
+  computed: {},
   methods: {
     setvalue(value) {
       if (this.readonly) return;
@@ -56,12 +62,6 @@ export default {
         'h-rate-star-off': v < n
       };
     }
-  },
-  filters: {
-    isInclude(key, modelValue) {
-      return modelValue.indexOf(key) > -1;
-    }
-  },
-  computed: {}
+  }
 };
 </script>

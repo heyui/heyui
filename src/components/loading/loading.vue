@@ -4,7 +4,7 @@
       <svg viewBox="25 25 50 50">
         <circle cx="50" cy="50" r="20" fill="none" class="circle"></circle>
       </svg>
-      <p :class="textCls" v-if="text">{{ text }}</p>
+      <p v-if="text" :class="textCls">{{ text }}</p>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@ import utils from 'heyui/utils/utils';
 
 const prefix = 'h-loading';
 export default {
-  name: 'hLoading',
+  name: 'HLoading',
   props: {
     loading: {
       type: Boolean,
@@ -27,6 +27,28 @@ export default {
     };
   },
   unbind() {},
+  computed: {
+    circularCls() {
+      return {
+        [`${prefix}-circular`]: true
+      };
+    },
+    textCls() {
+      return {
+        [`${prefix}-text`]: true
+      };
+    },
+    loadingCls() {
+      return {
+        [`${prefix}`]: true
+      };
+    }
+  },
+  watch: {
+    loading() {
+      this.initStyle();
+    }
+  },
   mounted() {
     this.initStyle();
   },
@@ -61,28 +83,6 @@ export default {
           }
         }, 500);
       }
-    }
-  },
-  watch: {
-    loading() {
-      this.initStyle();
-    }
-  },
-  computed: {
-    circularCls() {
-      return {
-        [`${prefix}-circular`]: true
-      };
-    },
-    textCls() {
-      return {
-        [`${prefix}-text`]: true
-      };
-    },
-    loadingCls() {
-      return {
-        [`${prefix}`]: true
-      };
     }
   }
 };

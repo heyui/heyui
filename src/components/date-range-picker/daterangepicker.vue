@@ -6,9 +6,9 @@
       <i class="h-icon-calendar"></i>
     </div>
     <div :class="datePickerCls" class="h-date-picker">
-      <div class="h-date-container h-date-range-container" v-if="isShow">
+      <div v-if="isShow" class="h-date-container h-date-range-container">
         <div v-if="shortcuts.length > 0" class="h-date-shortcut">
-          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
+          <div v-for="s of shortcuts" :key="s.title" @click="setShortcutValue(s)">{{ s.title }}</div>
         </div>
         <date-base
           ref="start"
@@ -18,11 +18,11 @@
           :type="type"
           :now-view="nowView.start"
           :format="nowFormat"
-          :startWeek="startWeek"
+          :start-week="startWeek"
+          :range-end="rangeEnd"
           @updateView="updateView"
           @updateValue="setvalue"
           @changeView="changeView"
-          :rangeEnd="rangeEnd"
           @updateRangeEnd="updateRangeEnd"
         ></date-base>
         <date-base
@@ -33,11 +33,11 @@
           :type="type"
           :now-view="nowView.end"
           :format="nowFormat"
-          :startWeek="startWeek"
+          :start-week="startWeek"
+          :range-end="rangeEnd"
           @updateView="updateView"
           @updateValue="setvalue"
           @changeView="changeView"
-          :rangeEnd="rangeEnd"
           @updateRangeEnd="updateRangeEnd"
         ></date-base>
       </div>
@@ -61,9 +61,11 @@ import Locale from 'heyui/mixins/locale';
 const prefix = 'h-datetime';
 
 export default {
-  name: 'hDateRangePicker',
+  name: 'HDateRangePicker',
+  components: {
+    dateBase
+  },
   mixins: [Locale],
-  emits: ['confirm', 'change', 'clear'],
   props: {
     disabled: {
       type: Boolean,
@@ -97,18 +99,7 @@ export default {
       default: false
     }
   },
-  watch: {
-    modelValue() {
-      this.parse(this.modelValue);
-    },
-    disabled() {
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
-      }
-    }
-  },
+  emits: ['confirm', 'change', 'clear'],
   data() {
     return {
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
@@ -123,6 +114,73 @@ export default {
       rangeEnd: '',
       isShow: false
     };
+  },
+  computed: {
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
+    nowFormat() {
+      let format = this.format || config.getOption('datepicker.format')[this.type];
+      if (this.type == 'datetime' && this.hasSeconds) {
+        format = config.getOption('datepicker.format.datetimesecond');
+      }
+      return format;
+    },
+    show() {
+      if (!utils.isObject(this.modelValue)) {
+        return '';
+      }
+      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${this.modelValue.end || this.t('h.datepicker.end')}`;
+    },
+    shortcuts() {
+      let shortcuts = [];
+      let shortcutsConfig = null;
+      if (this.option && this.option.shortcuts) {
+        shortcutsConfig = this.option.shortcuts;
+      }
+      if (utils.isArray(shortcutsConfig)) {
+        for (let s of shortcutsConfig) {
+          if (utils.isString(s)) {
+            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
+          } else if (utils.isObject(s)) {
+            shortcuts.push(s);
+          }
+        }
+      }
+      return shortcuts;
+    },
+    dateCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-range`]: true,
+        [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    },
+    datePickerCls() {
+      return {
+        [`${prefix}-range-picker`]: true,
+        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
+      };
+    },
+    startOption() {
+      return this.option;
+    },
+    endOption() {
+      return this.option;
+    }
+  },
+  watch: {
+    modelValue() {
+      this.parse(this.modelValue);
+    },
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
   },
   beforeMount() {
     this.parse(this.modelValue);
@@ -279,64 +337,6 @@ export default {
       this.$el.dispatchEvent(event);
       this.dropdown.update();
     }
-  },
-  computed: {
-    showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
-    },
-    nowFormat() {
-      let format = this.format || config.getOption('datepicker.format')[this.type];
-      if (this.type == 'datetime' && this.hasSeconds) {
-        format = config.getOption('datepicker.format.datetimesecond');
-      }
-      return format;
-    },
-    show() {
-      if (!utils.isObject(this.modelValue)) {
-        return '';
-      }
-      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${this.modelValue.end || this.t('h.datepicker.end')}`;
-    },
-    shortcuts() {
-      let shortcuts = [];
-      let shortcutsConfig = null;
-      if (this.option && this.option.shortcuts) {
-        shortcutsConfig = this.option.shortcuts;
-      }
-      if (utils.isArray(shortcutsConfig)) {
-        for (let s of shortcutsConfig) {
-          if (utils.isString(s)) {
-            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
-          } else if (utils.isObject(s)) {
-            shortcuts.push(s);
-          }
-        }
-      }
-      return shortcuts;
-    },
-    dateCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-range`]: true,
-        [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-disabled`]: this.disabled
-      };
-    },
-    datePickerCls() {
-      return {
-        [`${prefix}-range-picker`]: true,
-        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
-      };
-    },
-    startOption() {
-      return this.option;
-    },
-    endOption() {
-      return this.option;
-    }
-  },
-  components: {
-    dateBase
   }
 };
 </script>

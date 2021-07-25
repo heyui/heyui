@@ -12,7 +12,7 @@ import Draggable from 'heyui/plugins/draggable';
 import { genHex } from './utils/color-base';
 
 export default {
-  name: 'hColorSlider',
+  name: 'HColorSlider',
   props: {
     value: {
       type: Object,
@@ -25,6 +25,14 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    containerStyle() {
+      let color = genHex(this.hue, 100, 100);
+      return {
+        background: color
+      };
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -48,14 +56,6 @@ export default {
       );
       let value = parseInt((Math.max(0, Math.min(event.clientY - containerPosition.top, containerPosition.height)) * 100) / containerPosition.height);
       this.$emit('input', { saturation, value });
-    }
-  },
-  computed: {
-    containerStyle() {
-      let color = genHex(this.hue, 100, 100);
-      return {
-        background: color
-      };
     }
   }
 };

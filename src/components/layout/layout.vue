@@ -8,7 +8,7 @@ const prefixCls = 'h-layout';
 import utils from 'heyui/utils/utils';
 
 export default {
-  name: 'hLayout',
+  name: 'HLayout',
   props: {
     headerFixed: {
       type: Boolean,
@@ -28,22 +28,6 @@ export default {
       hasSiderChild: false
     };
   },
-  mounted() {
-    this.updateSider();
-  },
-  methods: {
-    updateSider() {
-      this.$nextTick(() => {
-        for (let c of this.$el.childNodes) {
-          if (utils.hasClass(c, 'h-layout-sider')) {
-            this.hasSiderChild = true;
-            return;
-          }
-        }
-        this.hasSiderChild = false;
-      });
-    }
-  },
   computed: {
     classes() {
       let classList = {
@@ -59,6 +43,22 @@ export default {
       let style = {};
 
       return style;
+    }
+  },
+  mounted() {
+    this.updateSider();
+  },
+  methods: {
+    updateSider() {
+      this.$nextTick(() => {
+        for (let c of this.$el.childNodes) {
+          if (utils.hasClass(c, 'h-layout-sider')) {
+            this.hasSiderChild = true;
+            return;
+          }
+        }
+        this.hasSiderChild = false;
+      });
     }
   }
 };

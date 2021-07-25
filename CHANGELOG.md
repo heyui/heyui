@@ -214,7 +214,7 @@ All notable changes to this project will be documented in this file. See [standa
 * module.exports ([13032ab](https://github.com/heyui/heyui/commit/13032ab))
 * optimize install ([63900d8](https://github.com/heyui/heyui/commit/63900d8))
 * remove lib ([808cf75](https://github.com/heyui/heyui/commit/808cf75))
-* selectWhenClickTr && selectRow handler ([1534b8e](https://github.com/heyui/heyui/commit/1534b8e))
+* selectWhenClickTr && isSelectRow handler ([1534b8e](https://github.com/heyui/heyui/commit/1534b8e))
 * 删除Set的处理，使用indexOf ([dc5e78e](https://github.com/heyui/heyui/commit/dc5e78e)), closes [#248](https://github.com/heyui/heyui/issues/248)
 * **Affix:** add prop disabled ([2b9bc37](https://github.com/heyui/heyui/commit/2b9bc37))
 * **Affix:** affix disabled optimize ([202173f](https://github.com/heyui/heyui/commit/202173f))
@@ -249,7 +249,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **Table:** add _disabledSelect params in data ([13cf1a5](https://github.com/heyui/heyui/commit/13cf1a5))
 * **Table:** add radio mode ([28b87c4](https://github.com/heyui/heyui/commit/28b87c4)), closes [#161](https://github.com/heyui/heyui/issues/161)
 * **Table:** add render mode ([6f144f0](https://github.com/heyui/heyui/commit/6f144f0))
-* **Table:** add selectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
+* **Table:** add isSelectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
 * **Table:** change loading min-height ([8fa3b11](https://github.com/heyui/heyui/commit/8fa3b11))
 * **Table:** mouseover use uuid trindex ([f063912](https://github.com/heyui/heyui/commit/f063912)), closes [#139](https://github.com/heyui/heyui/issues/139)
 * **Table:** optimize checkbox use ([e96f91a](https://github.com/heyui/heyui/commit/e96f91a))
@@ -2524,7 +2524,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* selectWhenClickTr && selectRow handler ([1534b8e](https://github.com/heyui/heyui/commit/1534b8e))
+* selectWhenClickTr && isSelectRow handler ([1534b8e](https://github.com/heyui/heyui/commit/1534b8e))
 * **AutoComplete:** add method search ([2096518](https://github.com/heyui/heyui/commit/2096518))
 * **Category:** fix undefined value dispose ([1a50c66](https://github.com/heyui/heyui/commit/1a50c66))
 * **ClipBoard:** fix failureCallback ([42ff47f](https://github.com/heyui/heyui/commit/42ff47f))
@@ -2834,7 +2834,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **Table:** add selectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
+* **Table:** add isSelectRow attr ([f0a69f2](https://github.com/heyui/heyui/commit/f0a69f2))
 
 
 

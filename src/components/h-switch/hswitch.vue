@@ -1,14 +1,13 @@
 <template>
   <label :class="{ 'h-switch': true, 'h-switch-small': small, 'h-switch-disabled': disabled, 'h-switch-checked': isChecked }" @click="setvalue"
     ><span class="h-switch-span"
-      ><span class="h-switch-inner"><slot name="open" v-if="isChecked"></slot><slot v-else name="close"></slot></span></span
+      ><span class="h-switch-inner"><slot v-if="isChecked" name="open"></slot><slot v-else name="close"></slot></span></span
     ><span class="h-switch-text"><slot></slot></span
   ></label>
 </template>
 <script>
 export default {
   name: 'HSwitch',
-  emits: ['input', 'change', 'update:modelValue'],
   props: {
     disabled: {
       type: Boolean,
@@ -29,6 +28,7 @@ export default {
       default: false
     }
   },
+  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {};
   },

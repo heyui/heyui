@@ -1,16 +1,16 @@
 <template>
-  <textarea class="h-textarea" v-bind="$attrs" @input="$emit('update:modelValue', $event.target.value)" :value="modelValue"></textarea>
+  <textarea class="h-textarea" v-bind="$attrs" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)"></textarea>
 </template>
 <script>
 export default {
-  name: 'hTextarea',
+  name: 'HTextarea',
   props: {
     modelValue: String
   },
   data() {
     return {};
   },
-  methods: {},
-  computed: {}
+  computed: {},
+  methods: {}
 };
 </script>

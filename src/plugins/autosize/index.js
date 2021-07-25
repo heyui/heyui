@@ -1,7 +1,7 @@
 const map =
   typeof Map === 'function'
     ? new Map()
-    : (function() {
+    : (function () {
         const keys = [];
         const values = [];
 

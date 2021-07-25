@@ -19,7 +19,7 @@ const bound01 = function (value, max) {
   }
 
   // Handle floating point rounding errors
-  if ((Math.abs(value - max) < 0.000001)) {
+  if (Math.abs(value - max) < 0.000001) {
     return 1;
   }
 
@@ -65,7 +65,7 @@ export const hsl2hsv = function (hue, sat, light) {
   let v;
 
   light *= 2;
-  sat *= (light <= 1) ? light : 2 - light;
+  sat *= light <= 1 ? light : 2 - light;
   smin *= lmin <= 1 ? lmin : 2 - lmin;
   v = (light + sat) / 2;
   sv = light === 0 ? (2 * smin) / (lmin + smin) : (2 * sat) / (light + sat);
@@ -78,11 +78,7 @@ export const hsl2hsv = function (hue, sat, light) {
 };
 
 export const hsv2hsl = function (hue, sat, val) {
-  return [
-    hue,
-    (sat * val / ((hue = (2 - sat) * val) < 1 ? hue : 2 - hue)) || 0,
-    hue / 2
-  ];
+  return [hue, (sat * val) / ((hue = (2 - sat) * val) < 1 ? hue : 2 - hue) || 0, hue / 2];
 };
 
 // `rgbToHsv`

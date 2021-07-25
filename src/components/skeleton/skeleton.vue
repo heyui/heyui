@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-  name: 'hSkeleton',
+  name: 'HSkeleton',
   props: {
     loading: {
       type: Boolean,
@@ -60,12 +60,12 @@ export default {
   data() {
     return {};
   },
+  computed: {},
   mounted() {
     this.init();
   },
   methods: {
     init() {}
-  },
-  computed: {}
+  }
 };
 </script>

@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'hIcon',
+  name: 'HIcon',
   props: {
     type: String,
     color: String,
@@ -13,7 +13,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   computed: {
     iconCls() {
       return {
@@ -27,6 +26,7 @@ export default {
         color: this.color
       };
     }
-  }
+  },
+  methods: {}
 };
 </script>

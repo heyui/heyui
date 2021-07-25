@@ -1,29 +1,38 @@
 <template>
-  <th :class="cls" @click="triggerSort()" :rowspan="rowspan" :colspan="colspan">
-    <div v-tooltip="tooltipParam.enable" :placement="tooltipParam.placement" :content="tooltipParam.content || title">
-      <span>{{ title }}</span>
-      <span class="h-table-sort-handler" v-if="sort">
-        <span
-          class="h-table-sort-asc"
-          v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp"
-          :class="{ 'h-table-sort-selected sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp }"
-          ><i class="h-icon-top"></i
+  <Tooltip v-bind="tooltipParam">
+    <th :rowspan="rowspan" :colspan="colspan" @click="triggerSort()" :class="cls">
+      <div class="h-table-th-container">
+        <div :class="{ [`text-${this.align}`]: !!this.align, 'h-table-th-title': true }">{{ title }}</div>
+        <span v-if="sort" class="h-table-sort-handler"
+          ><i
+            v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp"
+            :class="{
+              'h-table-sort-asc': true,
+              'h-table-sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp,
+              'h-icon-triangle-up': true
+            }"
+          ></i
+          ><i
+            v-else
+            :class="{
+              'h-table-sort-desc': true,
+              'h-table-sort-selected': sortStatus.type == 'desc' && sortStatus.prop == sortUseProp,
+              'h-icon-triangle-down': true
+            }"
+          ></i
         ></span>
-        <span
-          class="h-table-sort-desc"
-          v-else
-          :class="{ 'h-table-sort-selected sort-selected': sortStatus.type == 'desc' && sortStatus.prop == sortUseProp }"
-          ><i class="h-icon-down"></i
-        ></span>
-      </span>
-    </div>
-  </th>
+      </div>
+    </th>
+  </Tooltip>
 </template>
 
 <script>
 import utils from 'heyui/utils/utils';
+import Tooltip from 'heyui/components/tooltip';
+
 export default {
-  name: 'hTableTh',
+  name: 'HTableTh',
+  components: { Tooltip },
   props: {
     rowspan: Number,
     colspan: Number,
@@ -59,50 +68,50 @@ export default {
       // sortStatus: {type: null, prop: null}
     };
   },
+  computed: {
+    tooltipParam() {
+      if (this.tooltip === true) {
+        return {
+          disabled: false,
+          content: this.title
+        };
+      } else if (utils.isObject(this.tooltip)) {
+        return {
+          disabled: false,
+          content: this.title,
+          ...this.tooltip
+        };
+      }
+      return {
+        disabled: true
+      };
+    },
+    cls() {
+      return {
+        'h-table-th': true,
+        [this.className]: !!this.className,
+        'h-table-th-active': this.sort
+      };
+    },
+    sortUseProp() {
+      return this.sortProp || this.prop;
+    }
+  },
   methods: {
     triggerSort() {
       if (!this.sort) return false;
       let sortStatus = utils.copy(this.sortStatus);
-      if (this.sortStatus.type && this.sortStatus.prop == this.sortUseProp) {
-        sortStatus.type = this.sortStatus.type == 'asc' ? 'desc' : 'asc';
+      const { type } = this.sortStatus;
+      if (type && this.sortStatus.prop == this.sortUseProp) {
+        sortStatus.type = type === 'desc' ? 'asc' : type === 'asc' ? null : 'desc';
       } else {
         sortStatus.type = 'desc';
         sortStatus.prop = this.sortUseProp;
       }
       let parent = this.$parent;
-      if (parent.$options._componentTag == 'Table' || parent.$options._componentTag == 'h-table') {
+      if (parent.$options.name == 'HTable') {
         parent.triggerSort(sortStatus, this.sort);
       }
-    }
-  },
-  computed: {
-    tooltipParam() {
-      if (this.tooltip === true) {
-        return {
-          enable: true,
-          content: this.content,
-          placement: this.placement
-        };
-      } else if (utils.isObject(this.tooltip)) {
-        return {
-          enable: true,
-          content: this.tooltip.content,
-          placement: this.tooltip.placement
-        };
-      }
-      return {
-        enable: false
-      };
-    },
-    cls() {
-      return {
-        [`text-${this.align}`]: !!this.align,
-        [this.className]: !!this.className,
-        pointer: this.sort
-      };
-    },
-    sortUseProp() {
-      return this.sortProp || this.prop;
     }
   }
 };

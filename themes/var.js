@@ -19,7 +19,7 @@ module.exports = {
 	"gray2-color": "#eeeeee",
 	"gray3-color": "#f3f3f3",
 	"gray4-color": "#f5f5f5",
-	"hover-background-color": "#eeeeee",
+	"hover-background-color": "#f3f3f3",
 	"highlight-background-color": "rgba(69, 185, 132, 0.15)",
 	"tag-background-color": "#f5f5f5",
 	"tag-border-color": "#eeeeee",

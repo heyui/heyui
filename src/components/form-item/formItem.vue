@@ -1,6 +1,6 @@
 <template>
   <div :class="formItemCls" :prop="prop" :validable="validable">
-    <label :style="labelStyleCls" class="h-form-item-label" v-if="showLabel">
+    <label v-if="showLabel" :style="labelStyleCls" class="h-form-item-label">
       <i v-if="icon" :class="{ [icon]: true, 'h-form-item-label-icon': true }"></i>
       <span v-if="!$slots.label">{{ label }}</span
       ><slot v-else :label="label" name="label"></slot>
@@ -9,7 +9,7 @@
       <div class="h-form-item-wrap">
         <slot></slot>
       </div>
-      <div class="h-form-item-error" v-if="!errorMessage.valid">
+      <div v-if="!errorMessage.valid" class="h-form-item-error">
         <span v-if="errorMessage.type == 'base'" class="h-form-item-error-label">{{ label }}</span
         ><span class="h-form-item-error-message">{{ errorMessage.message }}</span
         ><slot name="error" :type="errorMessage.type"></slot>
@@ -22,7 +22,8 @@ import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-form-item';
 export default {
-  name: 'hFormItem',
+  name: 'HFormItem',
+  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateProp', 'updateErrorMessage', 'labelWidth', 'params'],
   props: {
     label: String,
     prop: String,
@@ -52,56 +53,11 @@ export default {
       default: false
     }
   },
-  inject: ['validField', 'removeProp', 'requireds', 'setConfig', 'updateProp', 'updateErrorMessage', 'labelWidth', 'params'],
   data() {
     return {
       validResult: null,
       errorMessage: { valid: true }
     };
-  },
-  beforeUnmount() {
-    if (this.prop && this.required) {
-      this.removeProp(this.prop);
-    }
-  },
-  watch: {
-    prop(prop, oldProp) {
-      if (this.prop) {
-        this.errorMessage = this.updateProp(prop, oldProp);
-      }
-    },
-    label() {
-      if (this.prop) {
-        this.errorMessage = this.updateErrorMessage(this.prop, this.label);
-      }
-    },
-    required() {
-      this.setConfig(this.prop, { required: this.required });
-    }
-  },
-  mounted() {
-    if (this.prop) {
-      if (this.required) {
-        this.setConfig(this.prop, { required: this.required });
-      }
-      this.errorMessage = this.updateErrorMessage(this.prop, this.label);
-    }
-  },
-  methods: {
-    reset() {
-      console.warn('[HeyUI WARNING] FormItem Component:  FormItem.reset() will be decapitated, please use method FormItem.resetValid()');
-      this.errorMessage.valid = true;
-    },
-    resetValid() {
-      this.errorMessage.valid = true;
-    },
-    trigger() {
-      let prop = this.prop;
-      if (!this.validable || utils.isNull(prop)) {
-        return;
-      }
-      this.validField(prop);
-    }
   },
   computed: {
     configRequired() {
@@ -147,6 +103,50 @@ export default {
         param['margin-left'] = this.initLabelWidth;
       }
       return param;
+    }
+  },
+  watch: {
+    prop(prop, oldProp) {
+      if (this.prop) {
+        this.errorMessage = this.updateProp(prop, oldProp);
+      }
+    },
+    label() {
+      if (this.prop) {
+        this.errorMessage = this.updateErrorMessage(this.prop, this.label);
+      }
+    },
+    required() {
+      this.setConfig(this.prop, { required: this.required });
+    }
+  },
+  beforeUnmount() {
+    if (this.prop && this.required) {
+      this.removeProp(this.prop);
+    }
+  },
+  mounted() {
+    if (this.prop) {
+      if (this.required) {
+        this.setConfig(this.prop, { required: this.required });
+      }
+      this.errorMessage = this.updateErrorMessage(this.prop, this.label);
+    }
+  },
+  methods: {
+    reset() {
+      console.warn('[HeyUI WARNING] FormItem Component:  FormItem.reset() will be decapitated, please use method FormItem.resetValid()');
+      this.errorMessage.valid = true;
+    },
+    resetValid() {
+      this.errorMessage.valid = true;
+    },
+    trigger() {
+      let prop = this.prop;
+      if (!this.validable || utils.isNull(prop)) {
+        return;
+      }
+      this.validField(prop);
     }
   }
 };

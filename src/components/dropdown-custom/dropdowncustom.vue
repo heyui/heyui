@@ -2,10 +2,10 @@
   <div :class="dropdowncustomCls">
     <div :class="showCls">
       <div class="h-dropdowncustom-show-content"><slot></slot></div>
-      <i class="h-icon-down" v-if="toggleIcon"></i>
+      <i v-if="toggleIcon" class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
-      <slot name="content" v-if="isShow"></slot>
+      <slot v-if="isShow" name="content"></slot>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ import Dropdown from 'heyui/plugins/dropdown';
 const prefix = 'h-dropdowncustom';
 
 export default {
-  name: 'hDropdownCustom',
+  name: 'HDropdownCustom',
   props: {
     trigger: {
       type: String, // click,hover
@@ -58,6 +58,38 @@ export default {
       el: null
     };
   },
+  computed: {
+    dropdowncustomCls() {
+      return {
+        [`${prefix}`]: true,
+        'h-btn': this.button
+      };
+    },
+    showCls() {
+      return {
+        [`${prefix}-show`]: true,
+        [`${prefix}-disabled`]: !!this.disabled,
+        [`${prefix}-show-toggle`]: !!this.toggleIcon,
+        [this.className]: !!this.className,
+        [this.showClass]: !!this.showClass,
+        'h-dropdowncustom-empty': !this.$slots.default
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}-group`]: true
+      };
+    }
+  },
+  watch: {
+    disabled() {
+      if (this.disabled) {
+        this.dropdown.disabled();
+      } else {
+        this.dropdown.enabled();
+      }
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       let el = (this.el = this.$el.querySelector('.h-dropdowncustom-show'));
@@ -84,15 +116,6 @@ export default {
       });
     });
   },
-  watch: {
-    disabled() {
-      if (this.disabled) {
-        this.dropdown.disabled();
-      } else {
-        this.dropdown.enabled();
-      }
-    }
-  },
   beforeUnmount() {
     let el = this.el;
     if (el) {
@@ -101,29 +124,6 @@ export default {
     }
     if (this.dropdown) {
       this.dropdown.destory();
-    }
-  },
-  computed: {
-    dropdowncustomCls() {
-      return {
-        [`${prefix}`]: true,
-        'h-btn': this.button
-      };
-    },
-    showCls() {
-      return {
-        [`${prefix}-show`]: true,
-        [`${prefix}-disabled`]: !!this.disabled,
-        [`${prefix}-show-toggle`]: !!this.toggleIcon,
-        [this.className]: !!this.className,
-        [this.showClass]: !!this.showClass,
-        'h-dropdowncustom-empty': !this.$slots.default
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}-group`]: true
-      };
     }
   },
   methods: {

@@ -5,18 +5,18 @@
         <div class="h-select-multiple-tags">
           <span v-for="obj of objects" :key="obj[keyName]">
             <span>{{ obj[titleName] }}</span
-            ><i class="h-icon-close-min" @click.stop="setvalue(obj)" v-if="!disabled"></i>
+            ><i v-if="!disabled" class="h-icon-close-min" @click.stop="setvalue(obj)"></i>
           </span>
           <input
             v-if="filterable"
+            v-model="searchInput"
             type="text"
             class="h-select-search-input h-input"
-            v-model="searchInput"
             :disabled="disabled"
+            :placeholder="showPlaceholder"
             @keyup="handle"
             @blur="blurHandle"
             @keypress.enter="enterHandle"
-            :placeholder="showPlaceholder"
           />
         </div>
         <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ showPlaceholder }}</div>
@@ -24,36 +24,36 @@
       <template v-else>
         <template v-if="filterable">
           <input
+            v-model="searchInput"
             type="text"
-            @keyup="handle"
-            @blur="blurHandle"
             :disabled="disabled"
-            @keypress.enter="enterHandle"
             :class="{ 'h-select-search-input-value': hasValue }"
             class="h-select-search-input h-select-single-search-input h-input"
-            v-model="searchInput"
             :placeholder="hasValue ? '' : showPlaceholder"
+            @keyup="handle"
+            @blur="blurHandle"
+            @keypress.enter="enterHandle"
           />
-          <div class="h-select-filterable-value" @click="focusSearchInput" v-if="hasValue && searchInput === ''">{{ singleValue }}</div>
+          <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">{{ singleValue }}</div>
         </template>
         <template v-else>
-          <div class="h-select-value-single" v-if="hasValue">
+          <div v-if="hasValue" class="h-select-value-single">
             <template v-if="!$slots.show">{{ singleValue }}</template
             ><slot v-else :value="objects" name="show"></slot>
           </div>
           <div v-else class="h-select-placeholder">{{ showPlaceholder }}</div>
         </template>
       </template>
-      <i class="h-icon-close text-hover" v-show="hasClose" @click.stop="clear"></i>
-      <i class="h-icon-down" v-show="!hasClose"></i>
+      <i v-show="hasClose" class="h-icon-close text-hover" @click.stop="clear"></i>
+      <i v-show="!hasClose" class="h-icon-down"></i>
     </div>
     <div :class="groupCls">
-      <div class="h-select-group-container" v-if="isShow">
+      <div v-if="isShow" class="h-select-group-container">
         <div class="h-select-list">
           <slot name="top" :results="filterOptions"></slot>
           <ul class="h-select-ul">
             <template v-for="(option, index) of filterOptions">
-              <li v-if="!option.hidden" :key="option[keyName]" @click="setvalue(option)" :class="getLiCls(option, index)">
+              <li v-if="!option.hidden" :key="option[keyName]" :class="getLiCls(option, index)" @click="setvalue(option)">
                 <div v-if="!!optionRender" v-html="option[html]"></div>
                 <template v-else-if="!$slots.item">{{ option[titleName] }}</template>
                 <slot v-else :item="option" name="item"></slot>
@@ -78,9 +78,13 @@ import Message from 'heyui/plugins/message';
 const prefix = 'h-select';
 
 export default {
-  name: 'hSelect',
+  name: 'HSelect',
+  filters: {
+    showText(key, value) {
+      return value.indexOf(key) > -1;
+    }
+  },
   mixins: [Locale],
-  emits: ['update:modelValue', 'change'],
   props: {
     multiple: {
       type: Boolean,
@@ -137,6 +141,7 @@ export default {
     modelValue: [Number, String, Array, Object],
     className: String
   },
+  emits: ['update:modelValue', 'change'],
   data() {
     return {
       html: 'select_render_html',
@@ -147,6 +152,90 @@ export default {
       isShow: false,
       content: null
     };
+  },
+  computed: {
+    hasClose() {
+      return this.deletable && !this.multiple && this.hasValue && !this.disabled;
+    },
+    hasValue() {
+      if (this.multiple) {
+        return this.codes.length > 0;
+      } else {
+        return !utils.isNull(this.codes) && this.objects;
+      }
+    },
+    singleValue() {
+      if (this.hasValue) {
+        return this.objects[this.titleName];
+      } else {
+        return null;
+      }
+    },
+    showEmptyContent() {
+      return this.emptyContent || this.t('h.select.emptyContent');
+    },
+    hasLabel() {
+      return this.options.some(item => item.isLabel);
+    },
+    showPlaceholder() {
+      return this.placeholder || this.t('h.select.placeholder');
+    },
+    // showSearchPlaceHolder() {
+    //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
+    // },
+    selectCls() {
+      let autosize = this.autosize || !!this.noBorder;
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-input-border`]: !this.noBorder,
+        [`${prefix}-input-no-border`]: this.noBorder,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-no-autosize`]: !autosize,
+        [`${prefix}-disabled`]: this.disabled
+      };
+    },
+    showCls() {
+      return {
+        [`${prefix}-show`]: true,
+        [`${this.className}-show`]: !!this.className
+      };
+    },
+    groupCls() {
+      return {
+        [`${prefix}-group`]: true,
+        [`${prefix}-group-has-label`]: this.hasLabel,
+        [`${prefix}-multiple`]: this.multiple,
+        [`${prefix}-single`]: !this.multiple,
+        [`${this.className}-dropdown`]: !!this.className
+      };
+    },
+    optionsMap() {
+      let optionsMap = utils.toObject(this.options, this.keyName);
+      delete optionsMap.null;
+      return optionsMap;
+    },
+    filterOptions() {
+      if (this.searchInput) {
+        if (this.dropdown) this.dropdown.update();
+        let searchValue = this.searchInput.toLowerCase();
+        return this.options.filter(item => {
+          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
+        });
+      }
+      return this.options;
+    },
+    options() {
+      if (!this.datas && !this.dict) {
+        console.error('[HeyUI Error] Select Component: Datas or dict parameters need to be defined at least.');
+        return [];
+      }
+      let datas = this.datas;
+      if (this.dict) {
+        datas = config.getDict(this.dict);
+      }
+      datas = config.initOptions(datas, this);
+      return datas;
+    }
   },
   watch: {
     datas() {
@@ -352,95 +441,6 @@ export default {
           [`${prefix}-item-picked`]: this.nowSelected === index
         };
       }
-    }
-  },
-  filters: {
-    showText(key, value) {
-      return value.indexOf(key) > -1;
-    }
-  },
-  computed: {
-    hasClose() {
-      return this.deletable && !this.multiple && this.hasValue && !this.disabled;
-    },
-    hasValue() {
-      if (this.multiple) {
-        return this.codes.length > 0;
-      } else {
-        return !utils.isNull(this.codes) && this.objects;
-      }
-    },
-    singleValue() {
-      if (this.hasValue) {
-        return this.objects[this.titleName];
-      } else {
-        return null;
-      }
-    },
-    showEmptyContent() {
-      return this.emptyContent || this.t('h.select.emptyContent');
-    },
-    hasLabel() {
-      return this.options.some(item => item.isLabel);
-    },
-    showPlaceholder() {
-      return this.placeholder || this.t('h.select.placeholder');
-    },
-    // showSearchPlaceHolder() {
-    //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
-    // },
-    selectCls() {
-      let autosize = this.autosize || !!this.noBorder;
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-input-border`]: !this.noBorder,
-        [`${prefix}-input-no-border`]: this.noBorder,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-no-autosize`]: !autosize,
-        [`${prefix}-disabled`]: this.disabled
-      };
-    },
-    showCls() {
-      return {
-        [`${prefix}-show`]: true,
-        [`${this.className}-show`]: !!this.className
-      };
-    },
-    groupCls() {
-      return {
-        [`${prefix}-group`]: true,
-        [`${prefix}-group-has-label`]: this.hasLabel,
-        [`${prefix}-multiple`]: this.multiple,
-        [`${prefix}-single`]: !this.multiple,
-        [`${this.className}-dropdown`]: !!this.className
-      };
-    },
-    optionsMap() {
-      let optionsMap = utils.toObject(this.options, this.keyName);
-      delete optionsMap.null;
-      return optionsMap;
-    },
-    filterOptions() {
-      if (this.searchInput) {
-        if (this.dropdown) this.dropdown.update();
-        let searchValue = this.searchInput.toLowerCase();
-        return this.options.filter(item => {
-          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
-        });
-      }
-      return this.options;
-    },
-    options() {
-      if (!this.datas && !this.dict) {
-        console.error('[HeyUI Error] Select Component: Datas or dict parameters need to be defined at least.');
-        return [];
-      }
-      let datas = this.datas;
-      if (this.dict) {
-        datas = config.getDict(this.dict);
-      }
-      datas = config.initOptions(datas, this);
-      return datas;
     }
   }
 };

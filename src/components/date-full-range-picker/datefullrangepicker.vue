@@ -8,27 +8,27 @@
     <div :class="datePickerCls" class="h-date-picker">
       <div class="h-date-container h-date-full-range-container">
         <div v-if="shortcuts.length > 0" class="h-date-shortcut">
-          <div v-for="s of shortcuts" @click="setShortcutValue(s)" :key="s.title">{{ s.title }}</div>
+          <div v-for="s of shortcuts" :key="s.title" @click="setShortcutValue(s)">{{ s.title }}</div>
         </div>
         <div>
-          <Tabs :datas="views" v-model="view" @change="changeView"></Tabs>
+          <Tabs v-model="view" :datas="views" @change="changeView"></Tabs>
         </div>
         <div v-if="view == 'customize'" class="h-date-self-defined">
           <DatePicker
             v-model="nowDate.start"
-            @input="setvalue('start')"
             :option="{ end: nowDate.end }"
             :type="hasTime ? 'datetime' : 'date'"
             :placeholder="t('h.datepicker.startTime')"
+            @input="setvalue('start')"
           ></DatePicker>
           -
           <DatePicker
-            placement="bottom-end"
             v-model="nowDate.end"
-            @input="setvalue('end')"
+            placement="bottom-end"
             :option="{ start: nowDate.start }"
             :type="hasTime ? 'datetime' : 'date'"
             :placeholder="t('h.datepicker.endTime')"
+            @input="setvalue('end')"
           ></DatePicker>
         </div>
         <date-base
@@ -37,7 +37,7 @@
           :value="nowDate.start"
           :option="option"
           :type="view"
-          :startWeek="startWeek"
+          :start-week="startWeek"
           :now-view="nowView.start"
           format="k"
           @updateView="updateView"
@@ -65,8 +65,10 @@ import Locale from 'heyui/mixins/locale';
 const prefix = 'h-datetime';
 
 export default {
-  name: 'hDateFullRangePicker',
-  emits: ['change', 'update:modelValue'],
+  name: 'HDateFullRangePicker',
+  components: {
+    dateBase
+  },
   mixins: [Locale],
   props: {
     defaultType: {
@@ -96,11 +98,7 @@ export default {
       default: () => ['year', 'quarter', 'month', 'week', 'date', 'customize']
     }
   },
-  watch: {
-    modelValue() {
-      this.parse(this.modelValue);
-    }
-  },
+  emits: ['change', 'update:modelValue'],
   data() {
     let format = config.getOption('datepicker.format');
     let defaultType = this.modelValue && this.modelValue.type ? this.modelValue.type : this.defaultType;
@@ -127,6 +125,92 @@ export default {
       rangeEnd: '',
       isShow: false
     };
+  },
+  computed: {
+    views() {
+      let v = {};
+      for (let l of this.layout) {
+        if (!this.allviews[l]) {
+          console.warn(`[HeyUI WARNING] DateFullRangePicker Component: Props ${l} for layout don't exsits.`);
+        } else {
+          v[l] = this.allviews[l];
+        }
+      }
+      return v;
+    },
+    showPlaceholder() {
+      return this.placeholder || this.t('h.datepicker.placeholder');
+    },
+    showValue() {
+      if (!utils.isObject(this.modelValue)) {
+        return '';
+      }
+      if (this.modelValue.type && this.modelValue.start) {
+        let date = manba(this.modelValue.start);
+        switch (this.modelValue.type) {
+          case 'year':
+            return date.year();
+          case 'month':
+            return date.format('YYYY-MM');
+          case 'quarter':
+            return this.t('h.date.show.quarter', {
+              year: date.year(),
+              quarter: parseInt(date.month() / 3, 10) + 1
+            });
+          case 'week':
+            return this.t('h.date.show.week', {
+              year: date.year(),
+              weeknum: date.getWeekOfYear(this.startWeek),
+              daystart: date.format('MM-DD'),
+              dayend: manba(date).add(6).format('MM-DD')
+            });
+        }
+      }
+      if (!this.modelValue.start && !this.modelValue.end) return '';
+      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${
+        this.modelValue.end ? manba(this.modelValue.end).add(-1).format(this.nowFormat) : this.t('h.datepicker.end')
+      }`;
+    },
+    shortcuts() {
+      let shortcuts = [];
+      let shortcutsConfig = null;
+      if (this.option && this.option.shortcuts) {
+        shortcutsConfig = this.option.shortcuts;
+      }
+      if (utils.isArray(shortcutsConfig)) {
+        for (let s of shortcutsConfig) {
+          if (utils.isString(s)) {
+            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
+          } else if (utils.isObject(s)) {
+            shortcuts.push(s);
+          }
+        }
+      }
+      return shortcuts;
+    },
+    dateCls() {
+      return {
+        [`${prefix}`]: true,
+        [`${prefix}-full-range`]: true,
+        [`${prefix}-input-border`]: !this.noBorder
+      };
+    },
+    datePickerCls() {
+      return {
+        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
+      };
+    },
+    startOption() {
+      return this.option;
+    },
+    endOption() {
+      return this.option;
+    }
+  },
+  watch: {
+    modelValue() {
+      this.parse(this.modelValue);
+    }
   },
   beforeMount() {
     this.parse(this.modelValue);
@@ -233,9 +317,7 @@ export default {
       if (this.view == 'customize') {
         let value = utils.copy(this.nowDate);
         if (value.end) {
-          value.end = manba(value.end)
-            .add(1)
-            .format(this.nowFormat);
+          value.end = manba(value.end).add(1).format(this.nowFormat);
         }
         this.updateValue(value);
         return;
@@ -293,96 +375,6 @@ export default {
       this.$el.dispatchEvent(event);
       this.dropdown.update();
     }
-  },
-  computed: {
-    views() {
-      let v = {};
-      for (let l of this.layout) {
-        if (!this.allviews[l]) {
-          console.warn(`[HeyUI WARNING] DateFullRangePicker Component: Props ${l} for layout don't exsits.`);
-        } else {
-          v[l] = this.allviews[l];
-        }
-      }
-      return v;
-    },
-    showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
-    },
-    showValue() {
-      if (!utils.isObject(this.modelValue)) {
-        return '';
-      }
-      if (this.modelValue.type && this.modelValue.start) {
-        let date = manba(this.modelValue.start);
-        switch (this.modelValue.type) {
-          case 'year':
-            return date.year();
-          case 'month':
-            return date.format('YYYY-MM');
-          case 'quarter':
-            return this.t('h.date.show.quarter', {
-              year: date.year(),
-              quarter: parseInt(date.month() / 3, 10) + 1
-            });
-          case 'week':
-            return this.t('h.date.show.week', {
-              year: date.year(),
-              weeknum: date.getWeekOfYear(this.startWeek),
-              daystart: date.format('MM-DD'),
-              dayend: manba(date)
-                .add(6)
-                .format('MM-DD')
-            });
-        }
-      }
-      if (!this.modelValue.start && !this.modelValue.end) return '';
-      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${
-        this.modelValue.end
-          ? manba(this.modelValue.end)
-              .add(-1)
-              .format(this.nowFormat)
-          : this.t('h.datepicker.end')
-      }`;
-    },
-    shortcuts() {
-      let shortcuts = [];
-      let shortcutsConfig = null;
-      if (this.option && this.option.shortcuts) {
-        shortcutsConfig = this.option.shortcuts;
-      }
-      if (utils.isArray(shortcutsConfig)) {
-        for (let s of shortcutsConfig) {
-          if (utils.isString(s)) {
-            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
-          } else if (utils.isObject(s)) {
-            shortcuts.push(s);
-          }
-        }
-      }
-      return shortcuts;
-    },
-    dateCls() {
-      return {
-        [`${prefix}`]: true,
-        [`${prefix}-full-range`]: true,
-        [`${prefix}-input-border`]: !this.noBorder
-      };
-    },
-    datePickerCls() {
-      return {
-        [`${prefix}-has-shortcut`]: this.shortcuts.length > 0
-      };
-    },
-    startOption() {
-      return this.option;
-    },
-    endOption() {
-      return this.option;
-    }
-  },
-  components: {
-    dateBase
   }
 };
 </script>

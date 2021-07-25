@@ -4,9 +4,13 @@
   </div>
 </template>
 <script>
-
 export default {
-  name: 'hCollapse',
+  name: 'HCollapse',
+  provide() {
+    return {
+      collapse: this
+    };
+  },
   props: {
     value: {
       type: [Array, String],
@@ -33,11 +37,6 @@ export default {
     activedKeys(newVal, oldVal) {
       this.setActives();
     }
-  },
-  provide() {
-    return {
-      collapse: this
-    };
   },
   mounted() {
     this.setActives();

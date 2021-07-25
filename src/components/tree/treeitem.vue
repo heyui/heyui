@@ -1,19 +1,19 @@
 <template>
   <li class="h-tree-li" :class="{ 'h-tree-li-opened': data.status.opened }">
     <div
+      v-show="!data.status.hide"
       class="h-tree-show"
-      @click="clickShow"
       :class="{
         'h-tree-show-disabled': data.status.disabled,
         'h-tree-show-choose': data.status.choose,
         'h-tree-show-indeterminate': data.status.indeterminate,
         'h-tree-show-selected': status.selected == data.key
       }"
-      v-show="!data.status.hide"
+      @click="clickShow"
     >
       <span v-for="l in level" :key="l" class="h-tree-show-space"></span>
       <span class="h-tree-show-expand">
-        <span @click.stop="toggleTree()" v-if="data.status.isWait">
+        <span v-if="data.status.isWait" @click.stop="toggleTree()">
           <template v-if="!data.status.loading">
             <i class="h-icon-angle-right"></i>
           </template>
@@ -21,19 +21,19 @@
             <i class="h-icon-loading"></i>
           </template>
         </span>
-        <span @click.stop="toggleTree()" v-else-if="data.children && data.children.length > 0">
+        <span v-else-if="data.children && data.children.length > 0" @click.stop="toggleTree()">
           <i class="h-icon-angle-right"></i>
         </span>
       </span>
       <Checkbox
-        :disabled="data.status.disabled"
         v-if="multiple && data.status.checkable"
         v-model="data.status.choose"
+        :disabled="data.status.disabled"
         :indeterminate="data.status.indeterminate"
         @input="choose(data)"
       ></Checkbox>
       <div class="h-tree-show-desc" :class="{ selected: status.selected == data.key }" @click="select">
-        <span class="h-tree-show-icon" :class="data.icon" v-if="data.icon"></span>
+        <span v-if="data.icon" class="h-tree-show-icon" :class="data.icon"></span>
         <span v-if="data.title != null">{{ data.title }}</span>
         <span v-else>{{ hlang('h.common.empty') }}</span>
       </div>
@@ -48,10 +48,10 @@
         :status="status"
         :multiple="multiple"
         :choose-mode="chooseMode"
-        @trigger="trigger"
-        :toggleOnSelect="toggleOnSelect"
-        :selectOnClick="selectOnClick"
+        :toggle-on-select="toggleOnSelect"
+        :select-on-click="selectOnClick"
         :level="level + 1"
+        @trigger="trigger"
       ></hTreeItem>
     </ul>
   </li>
@@ -61,7 +61,7 @@ import TreeSlot from './treeslot';
 import Checkbox from 'heyui/components/checkbox';
 
 export default {
-  name: 'hTreeItem',
+  name: 'HTreeItem',
   components: { TreeSlot, Checkbox },
   props: {
     data: Object,
