@@ -8,15 +8,15 @@
           type="text"
           class="h-input"
           :style="heightStyles"
-          :placeholder="showPlaceholder"
+          :placeholder="placeholderShow"
           @input="inputTrigger(inputValue)"
           @keyup.enter="search(inputValue)"
         />
         <i class="h-icon-close" @click="search('')"></i>
       </div>
-      <button v-if="showSearchButton" type="button" :style="heightStyles" class="h-btn h-btn-primary" @click="search(inputValue)">
+      <button v-if="showSearchButton" type="button" :style="heightStyles" :class="`h-btn ${searchButtonTheme}`" @click="search(inputValue)">
         <template v-if="$slots.default"><slot></slot></template>
-        <template v-else>{{ hlang('h.search.searchText')(null, searchText) }}</template>
+        <template v-else>{{ searchButtonTextShow }}</template>
       </button>
     </div>
     <i v-if="position == 'end'" class="h-icon-search h-icon-search-end" @click="search(inputValue)"></i>
@@ -29,6 +29,7 @@ const prefix = 'h-search';
 export default {
   name: 'HSearch',
   mixins: [Locale],
+  emits: ['change', 'search', 'update:modelValue'],
   props: {
     position: {
       type: String,
@@ -45,24 +46,31 @@ export default {
       type: String,
       default: 'enter'
     },
-    value: String,
+    modelValue: String,
     showSearchButton: {
       type: Boolean,
       default: false
     },
-    searchText: {
+    searchButtonText: {
       type: String
+    },
+    searchButtonTheme: {
+      type: String,
+      default: 'h-btn-primary'
     },
     height: Number,
     width: Number
   },
   data() {
     return {
-      inputValue: this.value
+      inputValue: this.modelValue
     };
   },
   computed: {
-    showPlaceholder() {
+    searchButtonTextShow() {
+      return this.searchButtonText || this.t('h.search.searchButtonText');
+    },
+    placeholderShow() {
       return this.placeholder || this.t('h.search.placeholder');
     },
     widthStyles() {
@@ -83,31 +91,30 @@ export default {
       return {
         [`${prefix}`]: true,
         [`${prefix}-block`]: this.block,
-        [`${prefix}-searching`]: this.value !== '' && this.value !== null && this.value !== undefined,
+        [`${prefix}-searching`]: this.modelValue !== '' && this.modelValue !== null && this.modelValue !== undefined,
         [`${prefix}-has-button`]: this.showSearchButton,
         [`${prefix}-${this.position}`]: true
       };
     }
   },
   watch: {
-    value() {
-      this.inputValue = this.value;
+    modelValue() {
+      this.inputValue = this.modelValue;
     }
   },
   methods: {
     search(value) {
-      value = value === null ? '' : value;
-      this.inputValue = value;
-      this.$emit('input', value);
-      this.$emit('onsearch', value.trim());
-      this.$emit('search', value.trim());
-      this.$emit('change', value.trim());
+      const computedValue = value === null || value === undefined ? '' : value;
+      this.inputValue = computedValue;
+      this.$emit('update:modelValue', computedValue);
+      this.$emit('search', computedValue.trim());
+      this.$emit('change', computedValue.trim());
     },
     inputTrigger(value) {
       if (this.triggerType == 'input') {
         this.search(value);
       } else {
-        this.$emit('input', value);
+        this.$emit('update:modelValue', value);
       }
     }
   }

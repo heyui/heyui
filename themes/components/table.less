@@ -200,10 +200,16 @@
     font-size: 12px;
     transition: color @transition-time;
     margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.8);
     th:hover & {
       color: @dark4-color;
     }
     > i {
+      &.@{table-prefix}-sort-desc {
+        margin-top: -2px;
+      }
       &.@{table-prefix}-sort-selected {
         color: @primary-color;
       }

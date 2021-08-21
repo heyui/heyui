@@ -123,7 +123,7 @@ const lang = {
     },
     search: {
       placeholder: 'Szukaj...',
-      searchText: 'Szukaj'
+      searchButtonText: 'Szukaj'
     },
     taginput: {
       limitWords: 'Przekroczyłeś limit'

@@ -107,7 +107,7 @@ export default {
       selectDesc: 'Ha seleccionado {0} elementos',
       placeholder: 'Seleccione'
     },
-    search: { placeholder: 'Buscando...', searchText: 'Buscar' },
+    search: { placeholder: 'Buscando...', searchButtonText: 'Buscar' },
     taginput: { limitWords: 'Has superado el límite' },
     table: { empty: 'No se han encontrado resultados' },
     uploader: { upload: 'Subir', reUpload: 'Subir otra vez' },

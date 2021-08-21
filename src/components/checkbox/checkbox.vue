@@ -28,7 +28,6 @@ import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 import { message } from 'heyui';
 import Locale from 'heyui/mixins/locale';
-import { watch } from 'vue';
 
 export default {
   name: 'HCheckbox',

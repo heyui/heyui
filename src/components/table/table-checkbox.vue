@@ -2,14 +2,15 @@
   <Checkbox
     :indeterminate="checks.length > 0 && checks.length < checkableDatas.length"
     :checked="checkableDatas.length > 0 && checks.length == checkableDatas.length"
-    @click.native="checkAll"
-  ></Checkbox>
+    @click="checkAll"
+  />
 </template>
 <script>
 import Checkbox from 'heyui/components/checkbox';
 
 export default {
   components: { Checkbox },
+  emits: ['checkAll'],
   props: {
     checks: {
       type: Array,

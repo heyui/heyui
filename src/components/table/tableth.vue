@@ -5,7 +5,6 @@
         <div :class="{ [`text-${this.align}`]: !!this.align, 'h-table-th-title': true }">{{ title }}</div>
         <span v-if="sort" class="h-table-sort-handler"
           ><i
-            v-if="sortStatus.type == 'asc' && sortStatus.prop == sortUseProp"
             :class="{
               'h-table-sort-asc': true,
               'h-table-sort-selected': sortStatus.type == 'asc' && sortStatus.prop == sortUseProp,
@@ -13,7 +12,6 @@
             }"
           ></i
           ><i
-            v-else
             :class="{
               'h-table-sort-desc': true,
               'h-table-sort-selected': sortStatus.type == 'desc' && sortStatus.prop == sortUseProp,

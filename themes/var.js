@@ -35,7 +35,7 @@ module.exports = {
 	"button-size-m-padding": "7px 16px",
 	"button-size-s-padding": "5px 10px",
 	"button-size-xs-padding": "2px 6px",
-	"input-height": "32px",
+	"input-height": "36px",
 	"input-base-padding": "10px",
 	"border-color": "#eeeeee",
 	"border": "1px solid #eeeeee",

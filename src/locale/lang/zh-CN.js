@@ -123,7 +123,7 @@ const lang = {
     },
     search: {
       placeholder: '请输入关键词查询',
-      searchText: '搜索'
+      searchButtonText: '搜索'
     },
     taginput: {
       limitWords: '您输入的已经超过限制'

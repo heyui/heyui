@@ -39,7 +39,7 @@ import Rate from 'heyui/components/rate';
 import Slider from 'heyui/components/slider';
 import Loading from 'heyui/components/loading';
 import Steps from 'heyui/components/steps';
-// import Search from 'heyui/components/search';
+import Search from 'heyui/components/search';
 import Select from 'heyui/components/select';
 import Switch from 'heyui/components/h-switch';
 import SwitchList from 'heyui/components/switch-list';
@@ -133,7 +133,7 @@ const components = {
   Rate,
   Row,
   Cell,
-  // Search,
+  Search,
   Select,
   Slider,
   Steps,
@@ -177,7 +177,7 @@ const filters = {
   hlang
 };
 
-const install = function (app, opts = {}) {
+const install = function(app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);
