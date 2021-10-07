@@ -4,7 +4,7 @@
 <script>
 const prefix = 'h-space';
 export default {
-  name: 'HIcon',
+  name: 'HSpace',
   props: {
     width: {
       type: Number,

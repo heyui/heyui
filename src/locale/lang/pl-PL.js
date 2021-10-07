@@ -133,7 +133,8 @@ const lang = {
     },
     uploader: {
       upload: 'Wyślij',
-      reUpload: 'Wyślij ponownie'
+      reUpload: 'Wyślij ponownie',
+      overLimit: 'Liczba przesłanych plików przekracza limit'
     },
     pagination: {
       incorrectFormat: 'Format wartości jest błędny',

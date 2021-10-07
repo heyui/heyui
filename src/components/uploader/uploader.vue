@@ -1,66 +1,98 @@
 <template>
   <div :class="uploaderCls">
-    <template v-if="type == 'image'">
-      <div v-if="file" class="h-uploader-image">
-        <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div v-if="file.status == 2 || file.status == 1" class="h-uploader-progress">
-          <Progress :percent="file.percent" :stroke-width="5"></Progress>
-        </div>
-        <div v-else class="h-uploader-image-operate h-uploader-browse-button">
-          <div>{{ showReUploadWord }}</div>
-        </div>
-      </div>
-      <div v-else class="h-uploader-image-empty h-uploader-browse-button">
-        <i class="h-icon-plus"></i>
-      </div>
-    </template>
-
-    <template v-if="type == 'images'">
-      <div v-if="!readonly" class="h-uploader-image-empty h-uploader-browse-button">
-        <i class="h-icon-plus"></i>
-      </div>
-      <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-image">
-        <div class="h-uploader-image-background" :style="getBackgroundImage(file)"></div>
-        <div v-if="file.status == 2 || file.status == 1" class="h-uploader-progress">
-          <Progress :percent="file.percent" :stroke-width="5"></Progress>
-        </div>
-        <div v-else class="h-uploader-image-operate" :class="{ 'h-uploader-image-operate-pointer': readonly }" @click="clickImage(index, file)">
-          <div v-if="!readonly">
-            <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"></i></span>
-            <i class="h-split" style="width: 3px"></i>
-            <span class="h-uploader-operate" @click="deleteFile(index)"><i class="h-icon-trash"></i></span>
+    <template v-if="displayType == 'image'">
+      <!-- 单图片 -->
+      <template v-if="!multiple">
+        <div v-if="singleFile" class="h-uploader-image">
+          <div class="h-uploader-image-background" :style="getBackgroundImage(singleFile)" />
+          <div v-if="singleFile.status === 'UPLOADING'" class="h-uploader-progress">
+            <Progress v-if="showPercent" :percent="singleFile.percent" :stroke-width="5" />
+            <i v-else class="h-icon-spinner" />
+          </div>
+          <div v-else class="h-uploader-image-operate h-uploader-browse-button" @click="triggerFileChoose">
+            <div>{{ showReUploadWord }}</div>
           </div>
         </div>
-      </div>
+        <div v-else-if="showUploadButton" class="h-uploader-image-empty h-uploader-browse-button" @click="triggerFileChoose">
+          <i class="h-icon-plus" />
+        </div>
+      </template>
+
+      <!-- 多图片 -->
+      <template v-else>
+        <div v-if="showUploadButton" class="h-uploader-image-empty h-uploader-browse-button" @click="triggerFileChoose">
+          <i class="h-icon-plus" />
+        </div>
+        <div
+          v-for="(file, index) of modelValue"
+          :key="file.uid"
+          :class="{
+            'h-uploader-image': true
+          }"
+        >
+          <div class="h-uploader-image-background" :style="getBackgroundImage(file)" />
+          <div v-if="file.status == 'UPLOADING'" class="h-uploader-progress">
+            <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5" />
+            <i v-else class="h-icon-spinner" />
+          </div>
+          <div
+            v-else
+            :class="{
+              'h-uploader-image-operate': true,
+              'h-uploader-image-operate-pointer': readonly
+            }"
+            @click="imageClick(index, file)"
+          >
+            <div>
+              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
+              <template v-if="!readonly">
+                <i class="h-space" style="width: 5px" />
+                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
+              </template>
+            </div>
+          </div>
+        </div>
+      </template>
     </template>
-    <template v-if="type == 'file' || type == 'files'">
+
+    <!-- 文件上传 -->
+    <template v-if="displayType == 'file'">
       <div
         v-if="$slots.dragdrop"
         class="h-uploader-browse-button h-uploader-drop-element"
         :class="{ 'h-uploader-dragging': isdragging }"
         @dragover="isdragging = true"
         @dragleave="isdragging = false"
-        @drop="isdragging = false"
+        @drop="onDrap"
       >
-        <slot name="dragdrop"></slot>
+        <slot name="dragdrop" />
       </div>
       <div v-else>
-        <button v-show="showUploadButton" type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button">{{ showUploadWord }}</button>
+        <button v-if="showUploadButton" type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" @click="triggerFileChoose">
+          {{ showUploadWord }}
+        </button>
       </div>
       <div class="h-uploader-files">
-        <div v-for="(file, index) in fileList" :key="file.id" class="h-uploader-file">
-          <div v-if="file.status == 2" class="h-uploader-file-progress">
-            <Progress :percent="file.percent" :stroke-width="5"
-              ><span #title>{{ file[param.fileName] }}</span></Progress
-            >
+        <div v-for="(file, index) of modelValue" :key="file.uid" class="h-uploader-file">
+          <div v-if="file.status == 'UPLOADING'" class="h-uploader-file-progress">
+            <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5">
+              <template #title>
+                {{ file.name }}
+              </template>
+            </Progress>
+            <div v-else class="h-uploader-file-loading">
+              <span>{{ file.name }}</span
+              ><i class="h-icon-spinner" />
+            </div>
           </div>
-          <div v-else class="h-uploader-file-info">
-            <span class="link" @click="clickfile(file, index)">{{ file.name }}</span
-            ><i v-if="!readonly" class="h-icon-trash middle-right link" @click="deleteFile(index)"></i>
+          <div v-else class="h-uploader-file-info h-uploader-file-status-{{file.status}}" @click="fileClick(file, index)">
+            <span class="link">{{ file.name }}</span
+            ><i v-if="!readonly" class="h-icon-trash middle-right link" @click="deleteFile(index, $event)" />
           </div>
         </div>
       </div>
     </template>
+    <input ref="file" type="file" :accept="accept" style="display: none;" :multiple="multiple" @change="onFileChange" />
   </div>
 </template>
 <script>
@@ -68,72 +100,71 @@ import utils from 'heyui/utils/utils';
 import config from 'heyui/utils/config';
 import Locale from 'heyui/mixins/locale';
 import ImagePreview from 'heyui/plugins/image-preview';
+import Message from 'heyui/plugins/message';
+
+function getObjectURL(file) {
+  if (file.type.toLowerCase().indexOf('image/') === -1) return null;
+  if (window.createObjectURL != undefined) {
+    // basic
+    return window.createObjectURL(file);
+  } else if (window.URL != undefined) {
+    // mozilla(firefox)
+    return window.URL.createObjectURL(file);
+  } else if (window.webkitURL != undefined) {
+    // webkit or chrome
+    return window.webkitURL.createObjectURL(file);
+  }
+  return null;
+}
 
 const prefix = 'h-uploader';
-
-const parse = function (value, param) {
-  if (utils.isString(value)) {
-    return { url: value, original: { [param.urlName]: value } };
-  } else if (utils.isObject(value)) {
-    return { url: value[param.urlName], name: value[param.fileName], thumbUrl: value.thumbUrl || param.thumbUrl.call(value), original: value };
-  }
-};
-const dispose = function (value, type, param) {
-  if (type == 'url') {
-    return value.url;
-  } else if (utils.isObject(value)) {
-    if (value.original) {
-      return value.original;
-    }
-    return { [param.urlName]: value.url, [param.fileName]: value.name, thumbUrl: value.thumbUrl, file: value };
-  }
-};
 
 export default {
   name: 'HUploader',
   mixins: [Locale],
   props: {
-    type: {
-      type: String,
-      default: 'file' // files, image, images
-    },
-    dataType: {
-      type: String,
-      default: 'file' // url
-    },
-    uploadList: {
+    accept: String,
+    modelValue: {
       type: Array,
       default: () => []
     },
-    files: {
-      type: [Array, Object, String],
-      default: () => []
+    displayType: {
+      type: String,
+      default: 'file' // file, image
+    },
+    multiple: {
+      type: Boolean,
+      default: false
     },
     limit: Number,
-    className: String,
     readonly: {
       type: Boolean,
       default: false
+    },
+    showPercent: {
+      type: Boolean,
+      default: false
+    },
+    option: {
+      type: Object,
+      default: () => {}
     }
   },
+  emits: ['delete', 'click', 'update:modelValue'],
   data() {
-    let param = {};
-    if (this.config) {
-      param = utils.extend({}, config.getOption('uploader'), this.option);
-    } else {
-      param = utils.extend({}, config.getOption('uploader'), this.option);
-    }
     return {
-      param,
       preview: false,
       previewIndex: -1,
       isdragging: false
     };
   },
   computed: {
+    singleFile() {
+      return this.modelValue.length ? this.modelValue[0] : null;
+    },
     showUploadButton() {
       if (this.readonly) return false;
-      return (!this.isSingle && (!this.limit || this.limit > this.files.length)) || (this.isSingle && !this.files);
+      return (this.multiple && (!this.limit || this.limit > this.modelValue.length)) || (!this.multiple && !this.modelValue.length);
     },
     showReUploadWord() {
       return this.t('h.uploader.reUpload');
@@ -141,58 +172,89 @@ export default {
     showUploadWord() {
       return this.t('h.uploader.upload');
     },
-    isSingle() {
-      return this.type == 'image' || this.type == 'file';
+    showOverLimit() {
+      return this.t('h.uploader.overLimit');
     },
     uploaderCls() {
       return {
         [prefix]: true,
-        [`${prefix}-${this.type}-container`]: true,
-        [this.className]: this.className
+        [`${prefix}-${this.displayType}-container`]: true
       };
-    },
-    fileList() {
-      let list = [];
-      if (utils.isArray(this.files)) {
-        for (let v of this.files) {
-          list.push(parse(v, this.param));
-        }
-      } else if (this.files) {
-        list.push(parse(this.files, this.param));
-      }
-
-      if (this.uploadList.length > 0) {
-        if (this.isSingle) {
-          list = [this.uploadList[0]];
-        } else {
-          list.push(...this.uploadList);
-        }
-      }
-      return list;
-    },
-    file() {
-      return this.fileList.length ? this.fileList[0] : null;
     }
   },
   methods: {
-    clickfile(file, index) {
-      this.$emit('fileclick', file, index);
+    triggerFileChoose() {
+      this.$refs.file.value = null;
+      this.$refs.file.click();
     },
-    clickImage(index, file) {
-      if (this.readonly) {
-        ImagePreview(this.fileList, index);
+    onDrag(event) {
+      this.isdragging = false;
+      var files = event.dataTransfer.files;
+      this.onFileUpload(files);
+    },
+    async onFileUpload(files) {
+      if (files.length === 0) return;
+      if (this.multiple) {
+        if (files.length + this.modelValue.length > this.limit) {
+          Message.error(this.showOverLimit);
+          return;
+        }
+      }
+      const timestamp = new Date().getTime();
+      const valueList = [...files]
+        .filter(item => {
+          return !this.option.onBeforeUpload || this.option.onBeforeUpload(item) !== false;
+        })
+        .map((item, index) => {
+          return {
+            name: item.name,
+            size: item.size,
+            type: item.type,
+            status: 'UPLOADING',
+            url: null,
+            thumbUrl: null,
+            uid: timestamp + index + '',
+            file: item
+          };
+        });
+      if (valueList.length === 0) return;
+      if (this.multiple) {
+        this.$emit('update:modelValue', [...this.modelValue, ...valueList]);
       } else {
-        this.$emit('imageclick', file);
+        this.$emit('update:modelValue', [valueList[0]]);
+      }
+      for (const info of valueList) {
+        this.option.onChange &&
+          this.option.onChange(info.file, info).then(newInfo => {
+            this.update(newInfo);
+          });
       }
     },
+    update(info) {
+      if (!info) return;
+      const value = [...this.modelValue];
+      const index = value.findIndex(item => item.uid === info.uid);
+      if (index > -1) {
+        if (info.status === 'ERROR') {
+          value.splice(index, 1);
+        } else {
+          value.splice(index, 1, info);
+        }
+        this.$emit('update:modelValue', value);
+      }
+    },
+    onFileChange() {
+      const files = this.$refs.file.files;
+      this.onFileUpload(files);
+    },
+    fileClick(file, index) {
+      this.$emit('click', file, index);
+    },
+    imageClick(index, file) {
+      this.$emit('click', file, index);
+    },
     previewImage(index) {
-      ImagePreview(this.fileList, index);
-    },
-    getBrowseButton() {
-      return this.$el.querySelector('.h-uploader-browse-button');
-    },
-    getDropElement() {
-      return this.$el.querySelector('.h-uploader-drop-element');
+      ImagePreview(this.modelValue, index);
     },
     getBackgroundImage(file) {
       let param = {};
@@ -201,19 +263,14 @@ export default {
       }
       return param;
     },
-    getFileList() {
-      if (this.isSingle) {
-        return this.file ? dispose(this.file, this.dataType, this.param) : null;
+    deleteFile(index, event) {
+      if (event) {
+        event.stopPropagation();
       }
-
-      let list = [];
-      for (let f of this.fileList) {
-        list.push(dispose(f, this.dataType, this.param));
-      }
-      return list;
-    },
-    deleteFile(index) {
-      this.$emit('deletefile', index);
+      this.$emit('delete', this.modelValue[index], index);
+      const value = [...this.modelValue];
+      value.splice(index, 1);
+      this.$emit('update:modelValue', value);
     }
   }
 };

@@ -20,7 +20,7 @@ import DateRangePicker from 'heyui/components/date-range-picker';
 import DateFullRangePicker from 'heyui/components/date-full-range-picker';
 // import DropdownCustom from 'heyui/components/dropdown-custom';
 // import DropdownMenu from 'heyui/components/dropdown-menu';
-import ImagePreview from 'heyui/components/image-preview';
+import ImageList from 'heyui/components/image-list';
 import Icon from 'heyui/components/icon';
 import Input from 'heyui/components/input';
 import Textarea from 'heyui/components/textarea';
@@ -49,11 +49,11 @@ import TableItem from 'heyui/components/table-item';
 import Tabs from 'heyui/components/tabs';
 import Tag from 'heyui/components/tag';
 import TagInput from 'heyui/components/tag-input';
-// import Tree from 'heyui/components/tree';
-// import TreePicker from 'heyui/components/tree-picker';
+import Tree from 'heyui/components/tree';
+import TreePicker from 'heyui/components/tree-picker';
 import NumberInput from 'heyui/components/number-input';
 import Tooltip from 'heyui/components/tooltip';
-// import Uploader from 'heyui/components/uploader';
+import Uploader from 'heyui/components/uploader';
 import AutoComplete from 'heyui/components/auto-complete';
 import Row from 'heyui/components/row';
 import Cell from 'heyui/components/cell';
@@ -117,7 +117,7 @@ const components = {
   Form,
   FormItem,
   // FormItemList,
-  ImagePreview,
+  ImageList,
   Input,
   Textarea,
   Icon,
@@ -152,9 +152,9 @@ const components = {
   TableItem,
   Tabs,
   Tooltip,
-  // Tree,
-  // TreePicker,
-  // Uploader,
+  Tree,
+  TreePicker,
+  Uploader,
   TextEllipsis,
   Carousel,
   // Collapse,

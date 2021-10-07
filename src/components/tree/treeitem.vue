@@ -27,10 +27,10 @@
       </span>
       <Checkbox
         v-if="multiple && data.status.checkable"
-        v-model="data.status.choose"
+        :modelValue="data.status.choose"
         :disabled="data.status.disabled"
         :indeterminate="data.status.indeterminate"
-        @input="choose(data)"
+        @change="choose"
       ></Checkbox>
       <div class="h-tree-show-desc" :class="{ selected: status.selected == data.key }" @click="select">
         <span v-if="data.icon" class="h-tree-show-icon" :class="data.icon"></span>
@@ -89,16 +89,16 @@ export default {
       if (this.data.status.disabled) return;
       this.$emit('trigger', { type: 'selectEvent', data: this.data });
       if (this.multiple && this.data.children.length == 0) {
-        this.data.status.choose = !this.data.status.choose;
         this.choose();
       }
     },
     choose() {
-      this.data.status.indeterminate = false;
+      console.log('choose', this.data.status.choose);
+      Object.assign(this.data.status, { choose: !this.data.status.choose, indeterminate: false });
       this.$emit('trigger', { type: 'chooseEvent', data: this.data });
     },
-    trigger(data) {
-      if (data.type == 'chooseEvent') {
+    trigger({ type, data }) {
+      if (type == 'chooseEvent') {
         if (this.chooseMode != 'independent') {
           if (this.data.children) {
             let chooseStatus = true;
@@ -107,21 +107,19 @@ export default {
               if (!child.status.choose && chooseStatus) {
                 chooseStatus = false;
               }
-              if (child.status.choose) {
+              if (child.status.choose || child.status.indeterminate) {
                 indeterminateStatus = true;
               }
             }
             if (this.chooseMode == 'all') {
-              this.data.status.choose = chooseStatus;
-              this.data.status.indeterminate = indeterminateStatus && !chooseStatus;
+              Object.assign(this.data.status, { choose: chooseStatus, indeterminate: indeterminateStatus && !chooseStatus });
             } else if (this.chooseMode == 'some') {
-              this.data.status.choose = indeterminateStatus;
-              this.data.status.indeterminate = false;
+              Object.assign(this.data.status, { choose: indeterminateStatus, indeterminate: false });
             }
           }
         }
       }
-      this.$emit('trigger', data);
+      this.$emit('trigger', { type, data });
     },
     toggleTree() {
       if (this.data.status.isWait) {

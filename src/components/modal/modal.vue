@@ -29,6 +29,7 @@ const notifyprefix = 'h-notify';
 
 export default {
   name: 'HModal',
+  events: ['open', 'close'],
   props: {
     hasCloseIcon: {
       type: Boolean,
@@ -179,6 +180,7 @@ export default {
       setTimeout(() => {
         this.isOpened = true;
         this.doDraggable();
+        this.$emit('open');
       }, 100);
     },
     hide() {
@@ -188,6 +190,7 @@ export default {
         el.style.display = 'none';
         this.isShow = false;
         this.removeDraggable();
+        this.$emit('close');
       }, 200);
       let body = document.documentElement;
       body.style.overflow = '';

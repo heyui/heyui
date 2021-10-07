@@ -31,7 +31,6 @@ module.exports = {
     //   chunks: ['chunk-vendors', 'chunk-common', 'module']
     // },
   },
-
   css: {
     loaderOptions: {
       less: {

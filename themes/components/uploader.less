@@ -1,13 +1,23 @@
-@upload-prefix: ~"@{prefix}uploader";
+@upload-prefix: ~'@{prefix}uploader';
 .@{upload-prefix} {
-  &-progress{
+  &-progress {
     .middle();
     left: 0;
     right: 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    .h-progress {
+      width: 100%;
+    }
+    .h-icon-spinner {
+      color: @gray1-color;
+    }
   }
   &-image {
-    &, &-empty{
+    border: 1px solid @gray1-color;
+    &,
+    &-empty {
       position: relative;
       float: left;
       height: 70px;
@@ -15,39 +25,71 @@
       display: inline-block;
       border-radius: @border-radius;
       margin-right: 10px;
-      &:last-of-type{
+      &:last-of-type {
         margin-right: 0px;
       }
     }
-    &-background{
+
+    &-status-ERROR {
+      border: 1px solid @red-color;
+    }
+
+    &-error {
+      color: @red-color;
+      text-align: center;
+      font-size: 13px;
+      height: 58px;
+      line-height: 58px;
+      margin-top: 5px;
+    }
+
+    &-empty {
+      border: 1px dashed @gray1-color;
+      color: @gray1-color;
+      transition: @transition-time;
+      cursor: pointer;
+      i {
+        font-size: 25px;
+        .middle-center();
+      }
+      &:hover {
+        border-color: @primary-color;
+        color: @primary-color;
+      }
+    }
+    &-background {
       position: absolute;
-      left: 0px;
-      right: 0px;
-      top: 0px;
-      bottom: 0px;
+      left: 5px;
+      right: 5px;
+      top: 5px;
+      bottom: 5px;
       z-index: 1;
       background-size: cover;
       border-radius: @border-radius;
       background-repeat: no-repeat;
       background-position: center;
     }
-    &-operate{
-      .h-func-fullscreen();
+    &-operate {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      top: 5px;
+      bottom: 5px;
       background: rgba(0, 0, 0, 0.6);
       z-index: 1;
       opacity: 0;
       text-align: center;
       border-radius: @border-radius;
-      >div{
+      > div {
         .middle();
         width: 100%;
         left: 0;
         text-align: center;
         color: @white-color;
-        >span{
+        > .h-uploader-operate {
           cursor: pointer;
-          color: @gray3-color;
-          &:hover{
+          color: @gray1-color;
+          &:hover {
             color: @white-color;
           }
         }
@@ -57,62 +99,57 @@
       }
     }
 
-    &:hover &-operate{
+    &:hover &-operate {
       transition: @transition-time;
       opacity: 1;
     }
 
-    &-empty{
-      border: 1px dashed @gray-color;
-      color: @gray-color;
-      transition: @transition-time;
-      cursor: pointer;
-      i{
-        font-size: 25px;
-        .middle-center();
-      }
-      &:hover{
-        border-color: @primary-color;
-        color: @primary-color;
-      }
-    }
-
-    &-container{
+    &-container {
       display: inline-block;
     }
 
-    &-container &-operate{
+    &-container &-operate {
       cursor: pointer;
     }
   }
 
-  &-images{
-    &-container{
+  &-browse-button {
+    font-size: 13px;
+  }
+
+  &-images {
+    &-container {
       .h-func-clearfix();
     }
   }
 
-  &-files{
+  &-files {
     position: relative;
     margin-top: 5px;
     font-size: @font-size-mini;
-    color: @gray-color;
+    color: @dark-color;
   }
-  &-file{
+  &-file {
     position: relative;
     line-height: @input-height;
-    &-progress{
+    &-progress {
       padding-left: 5px;
     }
-    &-info{
-      padding-right: 15px;
+    &-loading {
+      span {
+        display: inline-block;
+        margin-right: 10px;
+      }
+    }
+    &-info {
+      padding-right: 25px;
       .h-func-text-ellipsis();
       .h-func-li-hover();
       padding-left: 5px;
     }
-    .h-icon-trash{
+    .h-icon-trash {
       // display: none;
-      right: 5px;
+      right: 15px;
     }
 
     // &:hover .h-icon-trash{
@@ -120,18 +157,18 @@
     // }
   }
 
-  &-drop-element{
+  &-drop-element {
     padding: 15px;
     color: @dark-color;
     border-radius: @border-radius;
     border: 1px dashed @gray1-color;
     cursor: pointer;
-    &:hover{
+    &:hover {
       border-color: @primary-color;
     }
   }
 
-  &-drop-element&-dragging{
+  &-drop-element&-dragging {
     border-color: @primary-color;
   }
 }

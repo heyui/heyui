@@ -1,26 +1,23 @@
 {
-    "editor.formatOnType": false,
-    "editor.detectIndentation": false,
-    //js-beautify-html格式化配置，属性强制换行
-    "vetur.format.defaultFormatterOptions": {
-        "prettyhtml": {
-            "printWidth": 150
-        }
-    },
-    //根据文件后缀名定义vue文件类型
-    "files.associations": {
-        "*.vue": "vue"
-    },
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-    //配置 ESLint 检查的文件类型
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "vue"
-    ],
-    //保存自动格式化
-    "editor.formatOnSave": true,
+  "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
     
 }

@@ -133,7 +133,8 @@ const lang = {
     },
     uploader: {
       upload: '上传',
-      reUpload: '重新上传'
+      reUpload: '重新上传',
+      overLimit: '上传文件数量超出限制'
     },
     pagination: {
       incorrectFormat: '您输入的值格式不正确',

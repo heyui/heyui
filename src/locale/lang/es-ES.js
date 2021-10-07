@@ -110,7 +110,7 @@ export default {
     search: { placeholder: 'Buscando...', searchButtonText: 'Buscar' },
     taginput: { limitWords: 'Has superado el límite' },
     table: { empty: 'No se han encontrado resultados' },
-    uploader: { upload: 'Subir', reUpload: 'Subir otra vez' },
+    uploader: { upload: 'Subir', reUpload: 'Subir otra vez', overLimit: 'Número de archivos subidos fuera del límite' },
     pagination: {
       incorrectFormat: 'El formato del valor que ingresaste es incorrecto.',
       overSize: 'El valor que ingresaste excede el rango',

@@ -21,7 +21,6 @@
     white-space: nowrap;
     transition: padding 0.2s;
     font-size: 14px;
-    margin-bottom: 4px;
     &-expand {
       right: 20px;
       .middle();
@@ -54,12 +53,15 @@
     transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
     overflow: hidden;
   }
-  .h-menu-li .h-menu-li {
-    .h-menu-show {
-      padding-left: 50px;
-    }
-    .h-menu-li .h-menu-show {
-      padding-left: 70px;
+  .h-menu-li {
+    margin-bottom: 4px;
+    .h-menu-li {
+      .h-menu-show {
+        padding-left: 50px;
+      }
+      .h-menu-li .h-menu-show {
+        padding-left: 70px;
+      }
     }
   }
   .h-menu-li-opened > .h-menu-other-levels {

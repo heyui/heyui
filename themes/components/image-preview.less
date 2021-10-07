@@ -1,6 +1,10 @@
 .h-image-preview {
   position: relative;
   transition: height 0.3s, width 0.3s;
+  min-width: 350px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
 
   & &-index {
     color: #fff;
@@ -13,8 +17,9 @@
   }
   > .h-image-preview-image {
     max-width: 800px;
-    max-height: 12000px;
+    max-height: 8000px;
     display: block;
+    margin: 0 auto;
   }
 
   .fade-enter-active,
@@ -54,10 +59,10 @@
   }
 }
 
-.h-image-preview-list {
+.h-image-list {
   .h-func-clearfix();
   clear: both;
-  .h-image-preview-item {
+  .h-image-list-item {
     position: relative;
     cursor: pointer;
     background-size: cover;

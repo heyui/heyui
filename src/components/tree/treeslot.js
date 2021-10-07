@@ -1,7 +1,8 @@
-const getParent = function (vm) {
+import { h } from 'vue';
+
+const getParent = function(vm) {
   let parent = vm.$parent;
-  let filterTag = ['Tree', 'hTree', 'h-tree'];
-  while (parent && parent.$parent && filterTag.indexOf(parent.$options._componentTag || parent.$options.name) == -1) {
+  while (parent && parent.$parent && parent.$.type.name !== 'HTree') {
     parent = parent.$parent;
   }
   if (!parent) {
@@ -15,16 +16,16 @@ export default {
   props: {
     data: Object
   },
-  render(h) {
+  render() {
     let parent = getParent(this);
-    if (parent && parent.$scopedSlots && parent.$scopedSlots.item) {
+    if (parent && parent.$slots && parent.$slots.item) {
       return h(
         'div',
         {
           class: 'h-tree-item-slot'
         },
         [
-          parent.$scopedSlots.item({
+          parent.$slots.item({
             item: this.data
           })
         ]

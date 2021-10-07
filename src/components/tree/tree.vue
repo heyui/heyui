@@ -1,6 +1,6 @@
 <template>
   <div :class="treeCls">
-    <Search v-if="filterable" v-model="searchValue" block @onsearch="searchTree"></Search>
+    <Search v-if="filterable" v-model="searchValue" block @search="searchTree"></Search>
     <ul class="h-tree-body">
       <treeItem
         v-for="tree of treeDatas"
@@ -98,7 +98,7 @@ export default {
       type: String,
       default: 'all' // independent, some, all
     },
-    value: [Number, String, Array, Object],
+    modelValue: [Number, String, Array, Object],
     config: String,
     toggleOnSelect: {
       type: Boolean,
@@ -144,14 +144,14 @@ export default {
     }
   },
   watch: {
-    value() {
+    modelValue() {
       if (this.updateFromInput) {
         this.updateFromInput = false;
         return;
       }
       this.parse();
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initTreeDatas();
     }
   },
@@ -162,21 +162,22 @@ export default {
   methods: {
     parse() {
       if (this.multiple) {
-        this.updateChoose(this.value, false);
+        this.updateChoose(this.modelValue, false);
       } else {
-        this.updateSelect(this.value, false);
+        this.updateSelect(this.modelValue, false);
       }
     },
     updateTreeItem(key, value) {
       let item = this.treeObj[key];
       if (item) {
         for (let v of Object.keys(value)) {
-          this.$set(item.value, v, value[v]);
+          item.value[v] = value[v];
           if (v == this.param.titleName) {
             item.title = value[v];
           }
         }
       }
+      this.$forceUpdate();
     },
     appendTreeItem(key, value) {
       let parent = this.treeObj[key];
@@ -219,9 +220,8 @@ export default {
         }
       }
     },
-    trigger(params) {
-      let type = params.type;
-      let data = params.data;
+    trigger({ type, data, update }) {
+      if (update) Object.assign(data.status, update);
       if (type == 'toggleTreeEvent') {
         data.status.opened = !data.status.opened;
         this.$emit('open', data.value);
@@ -415,7 +415,7 @@ export default {
         value = select ? select[this.param.keyName] : null;
       }
       this.updateFromInput = true;
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', value);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);

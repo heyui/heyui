@@ -1,11 +1,11 @@
 <template>
-  <div class="h-image-preview-list" :style="listStyles">
-    <div v-for="(data, index) of computedList" :key="index" :style="itemStyles(data)" class="h-image-preview-item" @click="click(index, data)"></div>
+  <div class="h-image-list" :style="listStyles">
+    <div v-for="(data, index) of computedList" :key="index" :style="itemStyles(data)" class="h-image-list-item" @click="click(index, data)"></div>
   </div>
 </template>
 <script>
 import utils from 'heyui/utils/utils';
-const genObject = function (data) {
+const genObject = function(data) {
   if (utils.isString(data)) {
     return { url: data };
   } else if (utils.isObject(data)) {
@@ -14,7 +14,8 @@ const genObject = function (data) {
   return { url: null };
 };
 export default {
-  name: 'HImagePreview',
+  name: 'HImageList',
+  emits: ['clickItem'],
   props: {
     width: {
       type: Number,

@@ -1,16 +1,15 @@
-@tree-prefix: ~"@{prefix}tree";
+@tree-prefix: ~'@{prefix}tree';
 .@{tree-prefix} {
-
   &-body {
     position: relative;
   }
 
-  .@{prefix}search{
+  .@{prefix}search {
     margin-bottom: 5px;
   }
   &-li {
     &-opened {
-      >.@{tree-prefix} {
+      > .@{tree-prefix} {
         &-ul {
           max-height: 10000px;
           transition: max-height 2s ease-in-out;
@@ -50,20 +49,19 @@
         vertical-align: -1px;
       }
     }
-    
+
     &-desc {
       display: inline;
       word-break: break-all;
       font-size: @font-size-mini;
       padding: 2px 5px;
-      margin-left: -4px;
     }
 
-    &-icon{
+    &-icon {
       margin-right: 5px;
     }
 
-    &-disabled &-desc{
+    &-disabled &-desc {
       color: @disabled-color;
       &:hover {
         background-color: transparent;
@@ -84,7 +82,7 @@
     }
 
     &.@{tree-prefix}-single {
-      .@{tree-prefix}-show-desc{
+      .@{tree-prefix}-show-desc {
         &:hover {
           background-color: @hover-background-color;
         }
@@ -94,8 +92,8 @@
         color: @white-color;
       }
     }
-    &.@{tree-prefix}-multiple .@{tree-prefix}-show-desc{
-      &:hover{
+    &.@{tree-prefix}-multiple .@{tree-prefix}-show-desc {
+      &:hover {
         color: @primary-color;
       }
     }
@@ -105,9 +103,7 @@
   }
 }
 
-
 &.h-tree-theme-row-selected {
-
   .@{tree-prefix}-show {
     cursor: pointer;
     &:hover {
