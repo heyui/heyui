@@ -14,6 +14,7 @@ import config from 'heyui/utils/config';
 
 export default {
   name: 'HAvatar',
+  emits: ['avatarClick'],
   props: {
     shape: {
       type: String,

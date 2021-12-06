@@ -1,10 +1,10 @@
-@dropdowncustom-prefix: ~"@{prefix}dropdowncustom";
+@dropdowncustom-prefix: ~'@{prefix}dropdowncustom';
 .@{dropdowncustom-prefix} {
   display: inline-block;
   vertical-align: middle;
-  &-show{
+  &-show {
     position: relative;
-    &-toggle &-content{
+    &-toggle &-content {
       padding-right: 26px;
     }
     .h-func-rotate-icon-down(false);
@@ -23,10 +23,10 @@
     }
   }
 
-  &-show&-disabled{
+  &-show&-disabled {
     cursor: default;
     color: @disabled-color !important;
-    >.h-icon-down{
+    > .h-icon-down {
       color: @disabled-color !important;
     }
   }
@@ -36,7 +36,8 @@
     .h-dropdowncustom-show {
       padding: @button-size-normal-padding;
       padding-right: 0;
-      &.h-dropdowncustom-empty {
+      &.h-dropdowncustom-empty,
+      &.h-dropdownmenu-empty {
         width: 30px;
       }
       .h-icon-down {
@@ -46,13 +47,14 @@
   }
 }
 
-.h-text-dropdown{
+.h-text-dropdown {
   cursor: pointer;
-  &>span{
+  & > span {
     // transition: @transition-time;
     vertical-align: middle;
   }
-  &:hover, &.@{pop-ref-prefix}{
+  &:hover,
+  &.@{pop-ref-prefix} {
     color: @primary-color;
   }
 }

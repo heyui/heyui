@@ -16,6 +16,7 @@ const prefix = 'h-dropdowncustom';
 
 export default {
   name: 'HDropdownCustom',
+  emits: ['show', 'hide'],
   props: {
     trigger: {
       type: String, // click,hover
@@ -45,7 +46,10 @@ export default {
       default: 'h-dropdownmenu-default'
     },
     offset: [String, Number],
-    showClass: String,
+    showClass: {
+      type: Object,
+      default: () => {}
+    },
     button: {
       type: Boolean,
       default: false
@@ -71,8 +75,8 @@ export default {
         [`${prefix}-disabled`]: !!this.disabled,
         [`${prefix}-show-toggle`]: !!this.toggleIcon,
         [this.className]: !!this.className,
-        [this.showClass]: !!this.showClass,
-        'h-dropdowncustom-empty': !this.$slots.default
+        'h-dropdowncustom-empty': !this.$slots.default,
+        ...this.showClass
       };
     },
     groupCls() {

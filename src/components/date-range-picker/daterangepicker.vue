@@ -99,7 +99,7 @@ export default {
       default: false
     }
   },
-  emits: ['confirm', 'change', 'clear'],
+  emits: ['update:modelValue', 'change', 'confirm', 'clear'],
   data() {
     return {
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
@@ -133,21 +133,7 @@ export default {
       return `${this.modelValue.start || this.t('h.datepicker.start')} - ${this.modelValue.end || this.t('h.datepicker.end')}`;
     },
     shortcuts() {
-      let shortcuts = [];
-      let shortcutsConfig = null;
-      if (this.option && this.option.shortcuts) {
-        shortcutsConfig = this.option.shortcuts;
-      }
-      if (utils.isArray(shortcutsConfig)) {
-        for (let s of shortcutsConfig) {
-          if (utils.isString(s)) {
-            shortcuts.push(config.getOption('datepicker.shortcuts')[s]);
-          } else if (utils.isObject(s)) {
-            shortcuts.push(s);
-          }
-        }
-      }
-      return shortcuts;
+      return this.option && this.option.shortcuts || [];
     },
     dateCls() {
       return {

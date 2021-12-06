@@ -3,16 +3,16 @@
     <header v-if="params.title" class="relative">{{ params.title }}</header>
     <div>
       <div class="h-panel-bar">
-        <div v-if="param.multiple" class="h-category-modal-multiple-tags">
-          <span v-for="tag of param.objects" :key="tag.key"
+        <div v-if="multiple" class="h-category-modal-multiple-tags">
+          <span v-for="tag of objects" :key="tag.key"
             ><span>{{ tag.title }}</span
             ><i class="h-icon-close-min" @click.stop="remove(tag)"></i
           ></span>
         </div>
         <div v-else class="h-category-modal-single-tag">
-          <span v-if="param.object">{{ param.object.title }}</span>
+          <span v-if="object">{{ object.title }}</span>
         </div>
-        <Search v-if="param.filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
+        <Search v-if="filterable" v-model="searchText" trigger="input" class="h-panel-right"></Search>
       </div>
       <Tabs v-if="searchText == ''" v-model="tab" :datas="tabs" key-name="key" title-name="title" @change="focusTab"></Tabs>
       <div class="h-panel-body">
@@ -54,12 +54,25 @@ export default {
   components: { Search, Checkbox },
   mixins: [Locale],
   props: {
-    param: Object
+    param: Object,
+    objects: Object,
+    object: Object,
+    categoryDatas: Object,
+    categoryObj: Object,
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    limit: Number,
+    filterable: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      params: this.param.param,
-      list: this.param.categoryDatas,
+      params: this.param,
+      list: this.categoryDatas,
       searchText: '',
       tabs: [
         {
@@ -83,8 +96,8 @@ export default {
     },
     searchlist() {
       let list = [];
-      for (let key in this.param.categoryObj) {
-        let item = this.param.categoryObj[key];
+      for (let key in this.categoryObj) {
+        let item = this.categoryObj[key];
         if (item.status.checkable && item.title.indexOf(this.searchText) != -1) {
           list.push(item);
         }
@@ -95,10 +108,10 @@ export default {
   mounted() {},
   methods: {
     isChecked(data) {
-      if (this.param.multiple) {
-        return this.param.objects.some(item => item.key == data.key);
+      if (this.multiple) {
+        return this.objects.some(item => item.key == data.key);
       } else {
-        return this.param.object ? this.param.object.key == data.key : false;
+        return this.object ? this.object.key == data.key : false;
       }
     },
     change(data, event) {
@@ -109,18 +122,18 @@ export default {
       if (data.status.checkable === false) {
         return;
       }
-      if (this.param.multiple) {
-        if (this.param.objects.length >= this.param.limit && !this.param.objects.some(item => item.key === data.key)) {
+      if (this.multiple) {
+        if (this.objects.length >= this.limit && !this.objects.some(item => item.key === data.key)) {
           Message.error(
             this.t('h.categoryModal.limitWords', {
-              size: this.param.limit
+              size: this.limit
             })
           );
           return;
         }
-        utils.toggleValueByKey(this.param.objects, 'key', data);
+        utils.toggleValueByKey(this.objects, 'key', data);
       } else {
-        this.param.object = data;
+        this.object = data;
       }
     },
     openNew(data) {
@@ -142,13 +155,13 @@ export default {
       }
     },
     remove(obj) {
-      this.param.objects.splice(this.param.objects.indexOf(obj), 1);
+      this.objects.splice(this.objects.indexOf(obj), 1);
     },
     focusTab(tab, index) {
       this.tab = tab.key;
       this.tabIndex = index;
       if (tab.key === topMenu) {
-        this.list = this.param.categoryDatas;
+        this.list = this.categoryDatas;
       } else {
         this.list = tab.children;
       }

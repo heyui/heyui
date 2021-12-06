@@ -119,7 +119,7 @@ export default {
       default: true
     }
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'change', 'confirm', 'clear'],
   data() {
     return {
       nowDate: '',

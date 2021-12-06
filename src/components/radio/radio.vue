@@ -29,6 +29,7 @@ import config from 'heyui/utils/config';
 
 export default {
   name: 'HRadio',
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     modelValue: [Object, String, Boolean, Number],
     datas: [Object, Array],
@@ -47,7 +48,6 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       key: this.keyName,

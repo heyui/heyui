@@ -28,6 +28,7 @@ if (!noticeDom) {
 
 export default {
   name: 'HNotice',
+  emits: ['update:modelValue'],
   props: {
     hasCloseIcon: {
       type: Boolean,

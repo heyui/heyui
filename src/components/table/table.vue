@@ -184,6 +184,7 @@ export default {
     Loading,
     CheckboxAll
   },
+  emits: ['select', 'selectAll', 'sort', 'trClick', 'rowSelect', 'trDblClick'],
   props: {
     columns: {
       type: Array,
@@ -661,10 +662,10 @@ export default {
         }
       }
 
-      this.$emit('trclick', data, event, index);
+      this.$emit('trClick', data, event, index);
     },
     triggerTrDblclicked(data, index, event) {
-      this.$emit('trdblclick', data, event, index);
+      this.$emit('trDblClick', data, event, index);
     }
   }
 };

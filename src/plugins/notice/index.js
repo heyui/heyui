@@ -3,7 +3,6 @@ import utils from 'heyui/utils/utils';
 
 const prefixCls = 'h-notice';
 const iconPrefixCls = 'h-icon';
-let Vue = null;
 
 let Default = {
   timeout: 4000
@@ -47,7 +46,6 @@ function Notice(originalParam) {
     originalParam.content = `<i class="${originalParam.icon}"></i>${originalParam.content}`;
   }
   param = utils.extend({}, Default, param, originalParam, true);
-  param.Vue = Vue;
   return Notify(param);
 }
 

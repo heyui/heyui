@@ -84,6 +84,7 @@ export default {
     treeItem,
     Search
   },
+  emits: ['open', 'select', 'choose', 'update:modelValue', 'change', 'loadDataSuccess'],
   props: {
     option: Object,
     multiple: {

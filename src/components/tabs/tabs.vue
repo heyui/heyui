@@ -19,6 +19,7 @@ const prefix = 'h-tabs';
 
 export default {
   name: 'HTabs',
+  emits: ['update:modelValue', 'input', 'change', 'clickItem'],
   props: {
     dict: String,
     datas: [Object, Array],

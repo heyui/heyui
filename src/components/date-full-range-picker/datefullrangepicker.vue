@@ -19,7 +19,7 @@
             :option="{ end: nowDate.end }"
             :type="hasTime ? 'datetime' : 'date'"
             :placeholder="t('h.datepicker.startTime')"
-            @input="setvalue('start')"
+            @change="setvalue('start')"
           ></DatePicker>
           -
           <DatePicker
@@ -28,7 +28,7 @@
             :option="{ start: nowDate.start }"
             :type="hasTime ? 'datetime' : 'date'"
             :placeholder="t('h.datepicker.endTime')"
-            @input="setvalue('end')"
+            @change="setvalue('end')"
           ></DatePicker>
         </div>
         <date-base
@@ -69,6 +69,7 @@ export default {
   components: {
     dateBase
   },
+  emits: ['change', 'update:modelValue', 'confirm', 'clear'],
   mixins: [Locale],
   props: {
     defaultType: {
@@ -98,7 +99,7 @@ export default {
       default: () => ['year', 'quarter', 'month', 'week', 'date', 'customize']
     }
   },
-  emits: ['change', 'update:modelValue'],
+
   data() {
     let format = config.getOption('datepicker.format');
     let defaultType = this.modelValue && this.modelValue.type ? this.modelValue.type : this.defaultType;
@@ -162,13 +163,19 @@ export default {
               year: date.year(),
               weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
-              dayend: manba(date).add(6).format('MM-DD')
+              dayend: manba(date)
+                .add(6)
+                .format('MM-DD')
             });
         }
       }
       if (!this.modelValue.start && !this.modelValue.end) return '';
       return `${this.modelValue.start || this.t('h.datepicker.start')} - ${
-        this.modelValue.end ? manba(this.modelValue.end).add(-1).format(this.nowFormat) : this.t('h.datepicker.end')
+        this.modelValue.end
+          ? manba(this.modelValue.end)
+              .add(-1)
+              .format(this.nowFormat)
+          : this.t('h.datepicker.end')
       }`;
     },
     shortcuts() {
@@ -317,7 +324,9 @@ export default {
       if (this.view == 'customize') {
         let value = utils.copy(this.nowDate);
         if (value.end) {
-          value.end = manba(value.end).add(1).format(this.nowFormat);
+          value.end = manba(value.end)
+            .add(1)
+            .format(this.nowFormat);
         }
         this.updateValue(value);
         return;

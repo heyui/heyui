@@ -10,11 +10,11 @@
       v-model="sizeNow"
       :no-border="small"
       :autosize="true"
-      :null-option="false"
+      :deletable="false"
       :datas="sizesShow"
       :style="{ order: orders.sizes }"
       class="h-page-select-size"
-      @input="changesize"
+      @change="changeSize"
     ></Select>
     <span v-if="orders.pager != -1 && this.count > 0" class="h-page-pager-container" :style="{ order: orders.pager }">
       <span :class="prevCls" @click="prev()">
@@ -54,6 +54,7 @@ export default {
   components: {
     Select
   },
+  emits: ['input', 'change', 'update:modelValue', 'changeSize'],
   mixins: [Locale],
   props: {
     size: {
@@ -233,7 +234,7 @@ export default {
       this.$emit('update:modelValue', inputvalue);
       this.$emit('change', value);
     },
-    changesize() {
+    changeSize() {
       this.setvalue({ cur: 1, size: this.sizeNow });
       this.$emit('changeSize', this.sizeNow);
       let onChangeSize = config.getOption('page.onChangeSize');

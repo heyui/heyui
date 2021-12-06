@@ -29,7 +29,7 @@ const notifyprefix = 'h-notify';
 
 export default {
   name: 'HModal',
-  events: ['open', 'close'],
+  emits: ['open', 'close', 'update:modelValue'],
   props: {
     hasCloseIcon: {
       type: Boolean,

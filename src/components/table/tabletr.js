@@ -3,6 +3,7 @@ import { h } from 'vue';
 
 export default {
   name: 'hTableTr',
+  emits: ['toggleTree', 'trClick', 'trDblClick'],
   props: {
     datas: [Object, Array],
     index: Number,

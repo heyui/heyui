@@ -50,6 +50,7 @@
 <script>
 export default {
   name: 'HCascaderItem',
+  emits: ['trigger'],
   props: {
     data: Object,
     param: Object,

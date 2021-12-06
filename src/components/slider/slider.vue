@@ -24,6 +24,7 @@ const prefix = 'h-slider';
 
 export default {
   name: 'HSlider',
+  emits: ['update:modelValue', 'change'],
   props: {
     readonly: {
       type: Boolean,

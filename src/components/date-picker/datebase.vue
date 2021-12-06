@@ -9,16 +9,14 @@
         <i class="h-icon-left"></i>
       </span>
       <span v-if="view != 'year'" class="h-date-header-show" @click.stop="changeView('year')">
-        {{ nowView.year() }}{{ hlang('h.date.header.year') }}
+        {{ nowView.year() }}
       </span>
-      <span v-if="view == 'year'" class="h-date-header-show">
-        {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }}{{ hlang('h.date.header.year') }}
-      </span>
+      <span v-if="view == 'year'" class="h-date-header-show"> {{ nowView.year() - 6 }}&nbsp;&nbsp;-&nbsp;&nbsp;{{ nowView.year() + 5 }} </span>
       <span v-show="view != 'year' && view != 'month' && view != 'quarter'" class="h-date-header-show" @click.stop="changeView('month')">
         {{ months[nowView.month() - 1] }}
       </span>
       <span v-show="view == 'hour' || view == 'minute'" class="h-date-header-show" @click.stop="changeView('date')">
-        {{ nowView.date() }}{{ hlang('h.date.header.day') }}
+        {{ nowView.date() }}
       </span>
       <span class="h-date-year-right-picker" @click.stop="updateView('default', 1)">
         <i class="h-icon-right"></i>
@@ -119,6 +117,7 @@ const genData = param => {
 export default {
   name: 'HDateBase',
   mixins: [Locale],
+  emits: ['updateValue', 'updateView', 'updateRangeEnd', 'changeValue', 'changeView'],
   props: {
     type: {
       type: [String],
@@ -135,7 +134,6 @@ export default {
       default: () => config.getOption('datepicker.startWeek')
     }
   },
-  emits: ['updateValue', 'updateView', 'updateRangeEnd', 'changeValue'],
   data() {
     return {
       options: utils.extend({}, options.datetimeOptions, this.option),

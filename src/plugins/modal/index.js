@@ -6,8 +6,6 @@ import locale from 'heyui/locale';
 const prefixCls = 'h-modal';
 const hasDivider = config.getOption('modal', 'hasDivider');
 
-let Vue = null;
-
 let Default = {
   middle: false,
   hasDivider,
@@ -55,7 +53,6 @@ function Modal(originalParam) {
   }
   param.type = cls;
 
-  param.Vue = Vue;
   return Notify(param);
 }
 

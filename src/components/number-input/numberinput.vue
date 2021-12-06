@@ -24,6 +24,7 @@ const prefix = 'h-numberinput';
 
 export default {
   name: 'HNumberInput',
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     modelValue: [Number, String],
     min: Number,
@@ -51,7 +52,6 @@ export default {
       type: Number
     }
   },
-  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       focusing: false,

@@ -79,12 +79,8 @@ const prefix = 'h-select';
 
 export default {
   name: 'HSelect',
-  filters: {
-    showText(key, value) {
-      return value.indexOf(key) > -1;
-    }
-  },
   mixins: [Locale],
+  emits: ['update:modelValue', 'change'],
   props: {
     multiple: {
       type: Boolean,
@@ -141,7 +137,6 @@ export default {
     modelValue: [Number, String, Array, Object],
     className: String
   },
-  emits: ['update:modelValue', 'change'],
   data() {
     return {
       html: 'select_render_html',

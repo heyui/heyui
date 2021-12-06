@@ -3,10 +3,10 @@
   "version": "1.28.0",
   "description": "UI Toolkit for Web, Vue2.0.",
   "scripts": {
-    "buildlang": "vite build --config ./scripts/vite.lang.js",
-    "buildcom": "vite build --config ./scripts/vite.components.js",
-    "cp": "rm -rf ../heyui-dist && mkdir ../heyui-dist && mkdir ../heyui-dist/dist && mkdir ../heyui-dist/lib && mkdir ../heyui-dist/lang && cp -R ../dist/* ../heyui-dist/dist && cp -R ../lib/* ../heyui-dist/lib && cp -R ../lang/* ../heyui-dist/lang",
-    "build": "vite build",
+    "buildlang": "vite build --config ./vite.lang.js",
+    "buildcom": "vite build --config ./vite.components.js",
+    "build": "vite build --config ./vite.esm.js && vite build --config ./vite.umd.js ",
+    "cp": "rm -rf ../../heyui-dist && mkdir ../../heyui-dist && mkdir ../../heyui-dist/dist && mkdir ../../heyui-dist/lib && mkdir ../../heyui-dist/lang && cp -R ../dist/* ../../heyui-dist/dist && cp -R ../lib/* ../../heyui-dist/lib && cp -R ../lang/* ../../heyui-dist/lang",
     "create": "node ./scripts/create.js",
     "varless": "lessto --json themes/var.less themes/var.json && lessto --js themes/var.less themes/var.js",
     "p": "sh ./scripts/publish.sh",
@@ -16,6 +16,12 @@
   },
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/heyui.esm.js",
+      "require": "./dist/heyui.js"
+    }
+  },
   "dependencies": {
     "manba": "^1.3.3",
     "vue": "^3.2.16"
@@ -43,14 +49,6 @@
     "standard-version": "^9.3.0",
     "vite": "^2.6.4"
   },
-  "files": [
-    "dist",
-    "lang",
-    "themes",
-    "lib",
-    "README.md",
-    "simple.html"
-  ],
   "browserslist": [
     "> 1%",
     "last 2 versions",

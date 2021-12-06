@@ -11,25 +11,22 @@
     :disabled="disabled"
     :class-name="className"
     :offset="offset"
-    show-class="h-dropdownmenu-show"
+    :show-class="showCls"
     @show="showEvent"
     @hide="hideEvent"
   >
     <slot></slot>
-    <template #content>
+    <template v-slot:content>
       <ul :class="groupCls" :style="groupStyle">
         <li
           v-for="option of options"
           :key="option[key]"
           class="h-dropdownmenu-item"
           :class="{ 'h-dropdownmenu-item-divider': !!option.divider, disabled: !!option.divider || option.disabled }"
-          @click="onclick($event, option)"
+          @click="click($event, option)"
         >
-          <div v-if="option[html]" v-html="option[html]"></div>
-          <template v-else>
-            <i v-if="option.icon" :class="option.icon"></i>
-            <span>{{ option[title] }}</span>
-          </template>
+          <i v-if="option.icon" :class="option.icon"></i>
+          <span>{{ option[title] }}</span>
           <Badge v-if="showCount && option.count" :count="option.count" :max-count="maxCount" position="right"></Badge>
         </li></ul
     ></template>
@@ -48,6 +45,7 @@ export default {
     Badge,
     DropdownCustom
   },
+  emits: ['show', 'hide', 'clickItem'],
   props: {
     dict: String,
     datas: [Array, Object],
@@ -127,8 +125,7 @@ export default {
     showCls() {
       return {
         [`${prefix}-show`]: true,
-        [`${prefix}-disabled`]: !!this.disabled,
-        [this.className]: true
+        'h-dropdownmenu-empty': !this.$slots.default
       };
     },
     groupCls() {
@@ -153,7 +150,7 @@ export default {
   mounted() {},
   beforeUnmount() {},
   methods: {
-    onclick(event, option) {
+    click(event, option) {
       if (option.disabled) return;
       this.$emit('clickItem', option[this.key], option, event);
       this.$refs.dropdown.hide();

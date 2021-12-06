@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        <h-button color="primary" @click="show = true">Open vue modal</h-button>
+      </p>
+      <p>
+        <h-button color="primary" @click="openModal">Open js modal</h-button>
+      </p>
+      <Modal v-model="show">
+        <template v-slot:header>title</template>
+        <div>This is a modal called by vue</div>
+        <template v-slot:footer>
+          <h-button @click="show=false">cancel</h-button>
+        </template>
+      </Modal>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="./dist/heyui.js"></script>
+  <link rel="stylesheet" href="./themes/index.css" />
+  <script>
+    const App = {
+      data() {
+        return {
+          message: 'Hello Vue!',
+          show: false
+        };
+      },
+      methods: {
+        openModal: function () {
+          HeyUI.modal({
+            title: 'title',
+            content: 'This is a js modal'
+          });
+        }
+      }
+    };
+
+    const app = Vue.createApp(App);
+    app.use(HeyUI);
+    app.mount('#app');
+  </script>
+</html>

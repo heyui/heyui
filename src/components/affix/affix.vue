@@ -10,6 +10,7 @@ const prefix = 'h-affix';
 
 export default {
   name: 'HAffix',
+  emits: ['change'],
   props: {
     offsetTop: Number,
     offsetBottom: Number,
@@ -171,7 +172,6 @@ export default {
         }
 
         if (original != this.isFixed) {
-          this.$emit('onchange', this.isFixed);
           this.$emit('change', this.isFixed);
         }
       }

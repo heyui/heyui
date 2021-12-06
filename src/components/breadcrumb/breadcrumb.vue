@@ -14,6 +14,7 @@
 <script>
 export default {
   name: 'HBreadcrumb',
+  emits: ['clickItem'],
   props: {
     datas: {
       Array,

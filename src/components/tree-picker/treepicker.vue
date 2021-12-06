@@ -2,7 +2,7 @@
   <div :class="treepickerCls" :disabled="disabled">
     <div class="h-treepicker-show" :class="showCls">
       <template v-if="multiple && objects.length">
-        <div v-if="showCount" class="h-treepicker-value-single">{{ hlang('h.treepicker.selectDesc')([valuebak.length]) }}</div>
+        <div v-if="showCount" class="h-treepicker-value-single">{{ hlang('h.treepicker.selectDesc', [valuebak.length]) }}</div>
         <div v-else class="h-treepicker-multiple-tags">
           <span v-for="obj of objects" :key="obj[param.keyName]">
             <span>{{ obj[param.titleName] }}</span>
@@ -11,7 +11,7 @@
         </div>
       </template>
       <div v-else-if="!multiple && object" class="h-treepicker-value-single">{{ object[param.titleName] }}</div>
-      <div v-else class="h-treepicker-placeholder">{{ hlang('h.treepicker.placeholder')(null, placeholder) }}</div>
+      <div v-else class="h-treepicker-placeholder">{{ placeholder || hlang('h.treepicker.placeholder') }}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">
@@ -51,6 +51,7 @@ export default {
   component: {
     Tree
   },
+  emits: ['select', 'choose', 'update:modelValue', 'change', 'input', 'loadDataSuccess'],
   props: {
     option: Object,
     multiple: {
@@ -85,7 +86,7 @@ export default {
       type: Boolean,
       default: true
     },
-    value: [Number, String, Array, Object],
+    modelValue: [Number, String, Array, Object],
     config: String,
     className: String,
     useConfirm: {
@@ -131,7 +132,7 @@ export default {
     }
   },
   watch: {
-    value() {
+    modelValue() {
       this.parse();
     },
     disabled() {
@@ -230,7 +231,7 @@ export default {
     },
     parse() {
       if (this.type == 'key') {
-        this.valuebak = utils.copy(this.value);
+        this.valuebak = utils.copy(this.modelValue);
         this.$nextTick(() => {
           if (this.multiple) {
             this.objects = this.$refs.tree.getChoose();
@@ -240,11 +241,11 @@ export default {
         });
       } else {
         if (this.multiple) {
-          this.valuebak = (this.value || []).map(item => item[this.param.keyName]);
-          this.objects = utils.copy(this.value);
+          this.valuebak = (this.modelValue || []).map(item => item[this.param.keyName]);
+          this.objects = utils.copy(this.modelValue);
         } else {
-          this.valuebak = this.value ? this.value[this.param.keyName] : null;
-          this.object = utils.copy(this.value);
+          this.valuebak = this.modelValue ? this.modelValue[this.param.keyName] : null;
+          this.object = utils.copy(this.modelValue);
         }
       }
     },
@@ -278,6 +279,7 @@ export default {
     setvalue() {
       let value = this.dispose();
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.stashObject = this.object;
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);

@@ -1,5 +1,0 @@
-@<%=lowerName%>-prefix: ~"@{prefix}<%=lowerName%>";
-
-.@{<%=lowerName%>-prefix}{
-
-}

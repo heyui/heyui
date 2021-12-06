@@ -47,6 +47,7 @@ export default {
   name: 'HCategoryPicker',
   components: { Checkbox },
   mixins: [Locale],
+  emits: ['update:modelValue', 'input', 'update', 'clear', 'loadDataSuccess', 'change'],
   props: {
     option: Object,
     multiple: {
@@ -77,8 +78,9 @@ export default {
       type: Boolean,
       default: false
     },
-    value: [Number, String, Array, Object],
-    config: String
+    modelValue: [Number, String, Array, Object],
+    config: String,
+    className: String
   },
   data() {
     return {
@@ -143,8 +145,8 @@ export default {
     'option.datas': function () {
       this.initCategoryDatas();
     },
-    value() {
-      if (this.valueBak != this.value) {
+    modelValue() {
+      if (this.valueBak != this.modelValue) {
         this.parse();
         this.tab = topMenu;
         this.tabs = [
@@ -200,15 +202,15 @@ export default {
     parse() {
       if (this.multiple) {
         let os = [];
-        if (utils.isArray(this.value) && this.value.length > 0) {
-          for (let v of this.value) {
+        if (utils.isArray(this.modelValue) && this.modelValue.length > 0) {
+          for (let v of this.modelValue) {
             os.push(this.getValue(v));
           }
         }
         this.objects = os;
         this.object = null;
       } else {
-        this.object = this.getValue(this.value);
+        this.object = this.getValue(this.modelValue);
         this.objects = [];
       }
     },
@@ -279,6 +281,7 @@ export default {
     setvalue(trigger) {
       let value = this.dispose();
       this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       if (trigger != 'clear') {
         this.valueBak = value;

@@ -18,6 +18,7 @@ export default {
   components: {
     MenuItemShow
   },
+  emits: ['trigger'],
   props: {
     data: Object,
     param: Object,

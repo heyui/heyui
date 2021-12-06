@@ -7,11 +7,7 @@
 <script>
 export default {
   name: 'HRate',
-  filters: {
-    isInclude(key, modelValue) {
-      return modelValue.indexOf(key) > -1;
-    }
-  },
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     readonly: {
       type: Boolean,

@@ -21,7 +21,7 @@ function Confirm(params = {}) {
       {
         type: 'ok',
         name: locale.t('h.common.confirm'),
-        color: 'primary'
+        style: 'primary'
       }
     ],
     events: {

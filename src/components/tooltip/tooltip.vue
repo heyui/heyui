@@ -12,6 +12,7 @@ const prefix = 'h-tooltip';
 
 export default {
   name: 'HTooltip',
+  emits: ['show', 'hide'],
   props: {
     trigger: {
       type: String, // click,hover
@@ -40,7 +41,6 @@ export default {
     },
     maxWidth: Number
   },
-  emits: ['show', 'hide'],
   computed: {
     tooltipCls() {
       return {

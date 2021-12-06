@@ -68,6 +68,7 @@ export default {
   components: {
     hMenuItem
   },
+  emits: ['clickItem', 'select'],
   props: {
     option: Object,
     datas: {

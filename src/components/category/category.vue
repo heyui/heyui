@@ -13,21 +13,37 @@
       </div>
       <div v-else class="h-category-placeholder">{{ showPlaceholder }}</div>
     </div>
+
+    <Modal v-model="openModal" hasDivider>
+      <CategoryModal
+        :style="{ width: '600px' }"
+        :param="param"
+        :objects="[...objects]"
+        :object="object"
+        :categoryDatas="categoryDatas"
+        :categoryObj="categoryObj"
+        :multiple="multiple"
+        :limit="limit"
+        :filterable="filterable"
+      />
+    </Modal>
   </div>
 </template>
 <script>
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
 
-import categoryModal from './categorymodal';
+import CategoryModal from './categorymodal';
 import Locale from 'heyui/mixins/locale';
-import Modal from 'heyui/plugins/modal';
+import Modal from 'heyui/components/modal';
 
 const prefix = 'h-category';
 
 export default {
   name: 'HCategory',
   mixins: [Locale],
+  emits: ['loadDataSuccess', 'update:modelValue', 'change'],
+  components: { Modal, CategoryModal },
   props: {
     option: Object,
     multiple: {
@@ -50,7 +66,7 @@ export default {
       type: Boolean,
       default: true
     },
-    value: [Number, String, Array, Object],
+    modelValue: [Number, String, Array, Object],
     config: String
   },
   data() {
@@ -61,7 +77,8 @@ export default {
       object: null,
       categoryDatas: [],
       categoryObj: {},
-      searchValue: null
+      searchValue: null,
+      openModal: false
     };
   },
   computed: {
@@ -86,10 +103,10 @@ export default {
     }
   },
   watch: {
-    value() {
+    modelValue() {
       this.parse();
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initCategoryDatas();
     }
   },
@@ -98,50 +115,31 @@ export default {
   },
   methods: {
     openPicker() {
-      let that = this;
       if (this.disabled) return;
-      Modal({
-        width: 600,
-        hasDivider: true,
-        component: {
-          vue: categoryModal,
-          data: {
-            param: this.param,
-            objects: [...this.objects],
-            object: utils.copy(this.object),
-            categoryDatas: this.categoryDatas,
-            categoryObj: this.categoryObj,
-            multiple: this.multiple,
-            limit: this.limit,
-            filterable: this.filterable
-          }
+      this.openModal = true;
+    },
+    updateValue(data) {
+      that.objects = data.objects;
+      that.object = data.object;
+      that.setvalue();
+    },
+    load(data, callback) {
+      if (data.status.loading) return;
+      data.status.loading = true;
+      this.param.getDatas.call(
+        this.param,
+        data.value,
+        result => {
+          data.children = this.initTreeModeData(result, data.key, true);
+          data.status.isWait = false;
+          data.status.loading = false;
+          data.status.opened = true;
+          callback();
         },
-        events: {
-          setvalue(modal, data) {
-            that.objects = data.objects;
-            that.object = data.object;
-            that.setvalue();
-          },
-          load: (modal, { data, callback }) => {
-            if (data.status.loading) return;
-            data.status.loading = true;
-            this.param.getDatas.call(
-              this.param,
-              data.value,
-              result => {
-                data.children = this.initTreeModeData(result, data.key, true);
-                data.status.isWait = false;
-                data.status.loading = false;
-                data.status.opened = true;
-                callback();
-              },
-              () => {
-                data.status.loading = false;
-              }
-            );
-          }
+        () => {
+          data.status.loading = false;
         }
-      });
+      );
     },
     remove(obj) {
       this.objects.splice(this.objects.indexOf(obj), 1);
@@ -154,14 +152,14 @@ export default {
     parse() {
       if (this.multiple) {
         let os = [];
-        if (utils.isArray(this.value) && this.value.length > 0) {
-          for (let v of this.value) {
+        if (utils.isArray(this.modelValue) && this.modelValue.length > 0) {
+          for (let v of this.modelValue) {
             os.push(this.getValue(v));
           }
         }
         this.objects = os;
       } else {
-        this.object = this.getValue(this.value);
+        this.object = this.getValue(this.modelValue);
       }
     },
     getValue(item) {
@@ -188,7 +186,7 @@ export default {
     },
     setvalue() {
       let value = this.dispose();
-      this.$emit('input', value);
+      this.$emit('update:modelValue', value);
       this.$emit('change', utils.copy(this.multiple ? this.objects : this.object));
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);

@@ -14,6 +14,7 @@ import config from 'heyui/utils/config';
 
 export default {
   name: 'HSwitchList',
+  emits: ['update:modelValue', 'change', 'input'],
   props: {
     small: {
       type: Boolean,
@@ -35,7 +36,6 @@ export default {
       default: () => config.getOption('dict', 'titleName')
     }
   },
-  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       key: this.keyName,
@@ -61,9 +61,9 @@ export default {
       let key = option[this.key];
       if (this.disabled) return;
       if (key == this.modelValue) return;
+      this.$emit('update:modelValue', key);
       this.$emit('input', key);
       this.$emit('change', option);
-      this.$emit('update:modelValue', key);
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, this.modelValue);
       this.$el.dispatchEvent(event);

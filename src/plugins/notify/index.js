@@ -59,7 +59,7 @@ class Notify {
       for (const button of param.buttons) {
         if (utils.isObject(button)) {
           let className = button.className || '';
-          if (button.color) className += ` h-btn-${button.color}`;
+          if (button.style) className += ` h-btn-${button.style}`;
           buttons.push(`<button type="button" class="h-btn ${className}" attr="${button.type}">${button.name}</button>`);
         }
       }
@@ -158,14 +158,14 @@ class Notify {
       focusClicked.blur();
     }
     if (param.hasCloseIcon) {
-      el.querySelector(`.${notifyCloseCls}`).onclick = function () {
+      el.querySelector(`.${notifyCloseCls}`).onclick = function() {
         that.close();
       };
     }
     if (param.hasFooter) {
       let buttons = el.querySelectorAll(`.${notifyContainerCls} .${param.type}-footer>button`);
       for (let button of buttons) {
-        button.onclick = function (event) {
+        button.onclick = function(event) {
           let attr = event.target.getAttribute('attr');
           if (attr) {
             if (attr == 'cancel') {
@@ -263,6 +263,6 @@ class Notify {
   }
 }
 
-export default function (param) {
+export default function(param) {
   return new Notify(param);
 }

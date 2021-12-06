@@ -13,13 +13,13 @@ import Badge from 'heyui/components/badge';
 import Breadcrumb from 'heyui/components/breadcrumb';
 import Checkbox from 'heyui/components/checkbox';
 import Circle from 'heyui/components/circle';
-// import Category from 'heyui/components/category';
-// import CategoryPicker from 'heyui/components/category-picker';
+import Category from 'heyui/components/category';
+import CategoryPicker from 'heyui/components/category-picker';
 import DatePicker from 'heyui/components/date-picker';
 import DateRangePicker from 'heyui/components/date-range-picker';
 import DateFullRangePicker from 'heyui/components/date-full-range-picker';
-// import DropdownCustom from 'heyui/components/dropdown-custom';
-// import DropdownMenu from 'heyui/components/dropdown-menu';
+import DropdownCustom from 'heyui/components/dropdown-custom';
+import DropdownMenu from 'heyui/components/dropdown-menu';
 import ImageList from 'heyui/components/image-list';
 import Icon from 'heyui/components/icon';
 import Input from 'heyui/components/input';
@@ -65,7 +65,7 @@ import Space from 'heyui/components/space';
 import Layout from 'heyui/components/layout';
 import Timeline from 'heyui/components/timeline';
 import TimelineItem from 'heyui/components/timeline-item';
-// import Transfer from 'heyui/components/transfer';
+import Transfer from 'heyui/components/transfer';
 import Button from 'heyui/components/button';
 import ButtonGroup from 'heyui/components/button-group';
 import TextEllipsis from 'heyui/components/text-ellipsis';
@@ -105,15 +105,15 @@ const components = {
   Button,
   ButtonGroup,
   Breadcrumb,
-  // Category,
-  // CategoryPicker,
+  Category,
+  CategoryPicker,
   Checkbox,
   hCircle: Circle,
   DatePicker,
   DateRangePicker,
   DateFullRangePicker,
-  // DropdownCustom,
-  // DropdownMenu,
+  DropdownCustom,
+  DropdownMenu,
   Form,
   FormItem,
   // FormItemList,
@@ -146,7 +146,7 @@ const components = {
   TagInput,
   Timeline,
   TimelineItem,
-  // Transfer,
+  Transfer,
   Loading,
   Table,
   TableItem,
@@ -177,7 +177,7 @@ const filters = {
   hlang
 };
 
-const install = function(app, opts = {}) {
+const install = function (app, opts = {}) {
   if (install.installed) return;
   if (opts.locale) {
     locale.use(opts.locale);
@@ -204,6 +204,21 @@ const install = function(app, opts = {}) {
 
 const HeyUI = { install };
 
-export { modal, notice, message, confirm, loading, loadingBar, scrollIntoView, clipboard, imagePreview, dropdown, heyuiConfig, dictMapping, hlang };
+export {
+  modal,
+  notice,
+  message,
+  confirm,
+  loading,
+  loadingBar,
+  scrollIntoView,
+  clipboard,
+  imagePreview,
+  dropdown,
+  heyuiConfig,
+  dictMapping,
+  hlang,
+  install
+};
 
 export default HeyUI;

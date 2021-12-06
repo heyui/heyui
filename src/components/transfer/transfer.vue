@@ -64,8 +64,9 @@ import Search from 'heyui/components/search';
 export default {
   name: 'HTransfer',
   components: { Checkbox, Search },
+  emits: ['transfer', 'input', 'change', 'update:modelValue', 'init'],
   props: {
-    value: {
+    modelValue: {
       type: Array,
       default: () => []
     },
@@ -101,7 +102,7 @@ export default {
       return param;
     },
     sources() {
-      let value = this.value || [];
+      let value = this.modelValue || [];
       let key = this.keyName || 'key';
       let result = this.datas.filter(d => value.indexOf(d[key]) == -1);
       if (this.ltSearchText && this.ltSearchText.trim()) {
@@ -110,7 +111,7 @@ export default {
       return result;
     },
     targets() {
-      let value = this.value || [];
+      let value = this.modelValue || [];
       let key = this.keyName || 'key';
       let result = this.datas.filter(d => value.indexOf(d[key]) != -1);
       if (this.rtSearchText && this.rtSearchText.trim()) {
@@ -125,7 +126,7 @@ export default {
   methods: {
     move(direction) {
       this.$emit('transfer', direction, this.sources, this.targets);
-      let value = this.value ? [...this.value] : [];
+      let value = this.modelValue ? [...this.modelValue] : [];
       if (direction === 1 && this.ltChecked.length > 0) {
         this.rtSearchText = null;
         value.push(...this.ltChecked);
@@ -139,6 +140,7 @@ export default {
       }
       this.$emit('input', value);
       this.$emit('change', value);
+      this.$emit('update:modelValue', value);
     }
   }
 };

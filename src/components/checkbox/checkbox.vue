@@ -32,6 +32,7 @@ import Locale from 'heyui/mixins/locale';
 export default {
   name: 'HCheckbox',
   mixins: [Locale],
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     dict: String,
     datas: [Object, Array],
@@ -64,7 +65,6 @@ export default {
       default: false
     }
   },
-  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       key: this.keyName,

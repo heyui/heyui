@@ -59,10 +59,13 @@
 <script>
 import TreeSlot from './treeslot';
 import Checkbox from 'heyui/components/checkbox';
+import Locale from 'heyui/mixins/locale';
 
 export default {
   name: 'HTreeItem',
   components: { TreeSlot, Checkbox },
+  emits: ['trigger'],
+  mixins: [Locale],
   props: {
     data: Object,
     param: Object,

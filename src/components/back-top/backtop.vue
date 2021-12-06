@@ -11,6 +11,7 @@ const prefix = 'h-backtop';
 
 export default {
   name: 'HBackTop',
+  emits: ['backTop'],
   props: {
     target: {
       type: Function,
@@ -79,7 +80,7 @@ export default {
       if (target) {
         this.scrollTop(target, (target.scrollHeight - target.offsetHeight) / 10);
       }
-      this.$emit('backtop');
+      this.$emit('backTop');
     },
     scrollTop(target, step) {
       this.timeout = setTimeout(() => {

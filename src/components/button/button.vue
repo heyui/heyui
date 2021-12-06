@@ -75,16 +75,6 @@ export default {
       return this.loading ? 'h-icon-loading' : this.icon;
     }
   },
-  methods: {
-    // trigger(event) {
-    //   if (this.stop) {
-    //     event.stopPropagation();
-    //   }
-    //   if (this.preventDefault) {
-    //     event.preventDefault();
-    //   }
-    //   this.$emit('click', event);
-    // }
-  }
+  methods: {}
 };
 </script>

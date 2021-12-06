@@ -27,6 +27,7 @@ const prefix = 'h-taginput';
 export default {
   name: 'HTagInput',
   mixins: [Locale],
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
     readonly: {
       type: Boolean,
@@ -57,7 +58,6 @@ export default {
     },
     modelValue: [Array, String, Number]
   },
-  emits: ['input', 'change', 'update:modelValue'],
   data() {
     return {
       focusing: false,

@@ -43,6 +43,7 @@ export default {
   components: {
     CascaderItem
   },
+  emits: ['input', 'change', 'loadDataSuccess'],
   mixins: [Locale],
   props: {
     option: Object,
@@ -122,7 +123,7 @@ export default {
         }
       }
     },
-    'option.datas': function () {
+    'option.datas': function() {
       this.initCascaderDatas();
     }
   },

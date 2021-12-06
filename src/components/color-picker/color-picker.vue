@@ -7,7 +7,7 @@
     </div>
     <div class="h-colorpicker-group">
       <div class="h-colorpicker-panel-picker">
-        <ColorSlider v-model="colorValue" :hue="color.hue" @input="updateColor"></ColorSlider>
+        <ColorSlider v-model="colorValue" :hue="color.hue" @update:modelValue="updateColor"></ColorSlider>
       </div>
       <Slider v-model="color.hue" class="h-colorpicker-hue-picker" :range="{ start: 0, end: 360 }" :showtip="false" @change="calculate"></Slider>
       <Slider
@@ -23,13 +23,13 @@
           v-for="color of colors"
           :key="color"
           class="h-colorpicker-color"
-          :class="{ 'h-colorpicker-color-choosed': value == color }"
+          :class="{ 'h-colorpicker-color-choosed': modelValue == color }"
           :style="{ background: color }"
           @click="chooseColor(color)"
         ></span>
       </div>
       <div class="h-colorpicker-panel-footer">
-        <input v-model="color.string" type="text" class="h-colorpicker-panel-input" @blur="updateString" @keydown.enter="updateString" />
+        <input v-model="color.string" type="text" class="h-input h-colorpicker-panel-input" @blur="updateString" @keydown.enter="updateString" />
         <div class="h-colorpicker-panel-buttons">
           <button type="button" class="h-btn h-btn-s h-btn-text h-colorpicker-clear-button" @click="clear">{{ hlang('h.common.clear') }}</button>
           <button type="button" class="h-btn h-btn-s h-btn-primary" @click="confirm">{{ hlang('h.common.confirm') }}</button>
@@ -48,8 +48,9 @@ export default {
   components: {
     ColorSlider
   },
+  emits: ['input', 'change', 'update:modelValue'],
   props: {
-    value: String,
+    modelValue: String,
     disabled: {
       type: Boolean,
       default: false
@@ -75,7 +76,7 @@ export default {
     const color = new Color({
       enableAlpha: this.enableAlpha,
       format: this.colorType,
-      string: this.value
+      string: this.modelValue
     });
     return {
       color,
@@ -89,7 +90,7 @@ export default {
   },
   computed: {
     alphaTrackStyle() {
-      if (this.value || this.changed) {
+      if (this.modelValue || this.changed) {
         return {
           background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${this.color.getHex()} 100%)`
         };
@@ -97,7 +98,7 @@ export default {
       return {};
     },
     bgColorStyle() {
-      if (this.value || this.changed) {
+      if (this.modelValue || this.changed) {
         return { background: this.color.toString() };
       }
       return {};
@@ -113,8 +114,8 @@ export default {
         }
       }
     },
-    value() {
-      if (this.color.string != this.value) {
+    modelValue() {
+      if (this.color.string != this.modelValue) {
         this.reset();
       }
     },
@@ -152,7 +153,7 @@ export default {
     },
     reset() {
       this.changed = false;
-      this.color.parse(this.value);
+      this.color.parse(this.modelValue);
       this.initColorValue();
     },
     initColorValue() {
@@ -174,6 +175,7 @@ export default {
     setvalue(value, { closeDropDown = false } = {}) {
       this.$emit('input', value);
       this.$emit('change', value);
+      this.$emit('update:modelValue', value);
       this.changed = false;
       let event = document.createEvent('CustomEvent');
       event.initCustomEvent('setvalue', true, true, value);

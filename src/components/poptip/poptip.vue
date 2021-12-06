@@ -1,7 +1,7 @@
 <template>
   <Tooltip ref="tooltip" :theme="theme" :disabled="disabled" :placement="placement" trigger="click">
     <slot></slot>
-    <template #content>
+    <template v-slot:content>
       <div class="h-poptip">
         <div class="h-poptip-content"><i class="yellow-color h-icon-warn"></i><i class="h-poptip-split"></i>{{ content }}</div>
         <div class="clearfix">
@@ -20,6 +20,7 @@ import Tooltip from 'heyui/components/tooltip';
 export default {
   name: 'HPoptip',
   components: { Tooltip },
+  emits: ['confirm'],
   props: {
     content: String,
     placement: {

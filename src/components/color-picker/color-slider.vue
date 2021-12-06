@@ -3,7 +3,7 @@
     <div class="h-color-slider-container" :style="containerStyle">
       <div class="h-color-slider-bg-white"></div>
       <div class="h-color-slider-bg-black"></div>
-      <div class="h-color-slider-node" :style="{ left: `${value.saturation}%`, top: `${value.value}%` }"></div>
+      <div class="h-color-slider-node" :style="{ left: `${modelValue.saturation}%`, top: `${modelValue.value}%` }"></div>
     </div>
   </div>
 </template>
@@ -13,8 +13,9 @@ import { genHex } from './utils/color-base';
 
 export default {
   name: 'HColorSlider',
+  emits: ['input', 'update:modelValue'],
   props: {
-    value: {
+    modelValue: {
       type: Object,
       default: () => ({
         saturation: 0,
@@ -56,6 +57,7 @@ export default {
       );
       let value = parseInt((Math.max(0, Math.min(event.clientY - containerPosition.top, containerPosition.height)) * 100) / containerPosition.height);
       this.$emit('input', { saturation, value });
+      this.$emit('update:modelValue', { saturation, value });
     }
   }
 };

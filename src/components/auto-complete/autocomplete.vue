@@ -73,6 +73,7 @@ const prefix = 'h-autocomplete';
 export default {
   name: 'HAutoComplete',
   mixins: [Locale],
+  emits: ['update:modelValue', 'change', 'clear', 'picker', 'remove'],
   props: {
     multiple: {
       type: Boolean,

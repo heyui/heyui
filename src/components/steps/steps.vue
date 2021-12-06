@@ -42,15 +42,11 @@
 <script>
 import config from 'heyui/utils/config';
 import utils from 'heyui/utils/utils';
-import Icon from 'heyui/components/icon';
 
 const prefix = 'h-steps';
 
 export default {
   name: 'HSteps',
-  components: {
-    Icon
-  },
   props: {
     dict: String,
     datas: [Object, Array],

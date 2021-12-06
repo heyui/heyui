@@ -4,6 +4,7 @@
 <script>
 export default {
   name: 'HTextarea',
+  emits: ['update:modelValue'],
   props: {
     modelValue: String
   },

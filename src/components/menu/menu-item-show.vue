@@ -21,6 +21,7 @@ import tooltip from 'heyui/directives/tooltip';
 export default {
   name: 'HMenuItemShow',
   directives: { tooltip },
+  emits: ['trigger'],
   props: {
     data: Object,
     param: Object,

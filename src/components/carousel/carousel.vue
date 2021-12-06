@@ -47,6 +47,8 @@
 </template>
 <script>
 export default {
+  name: 'HCarousel',
+  emits: ['clickItem', 'change'],
   props: {
     height: {
       type: Number,

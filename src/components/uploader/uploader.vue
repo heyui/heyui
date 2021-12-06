@@ -76,7 +76,7 @@
         <div v-for="(file, index) of modelValue" :key="file.uid" class="h-uploader-file">
           <div v-if="file.status == 'UPLOADING'" class="h-uploader-file-progress">
             <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5">
-              <template #title>
+              <template v-slot:title>
                 {{ file.name }}
               </template>
             </Progress>
@@ -122,6 +122,7 @@ const prefix = 'h-uploader';
 export default {
   name: 'HUploader',
   mixins: [Locale],
+  emits: ['delete', 'click', 'update:modelValue'],
   props: {
     accept: String,
     modelValue: {
@@ -150,7 +151,6 @@ export default {
       default: () => {}
     }
   },
-  emits: ['delete', 'click', 'update:modelValue'],
   data() {
     return {
       preview: false,
