@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
 stat.json
+dist
 lib
 lang
