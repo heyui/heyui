@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>HeyUI</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css" />
+    <link rel="stylesheet" href="./themes/index.css" />
   </head>
   <body>
-    <div id="app">
-      <div>
-        <SwitchList :datas="labels" v-model="labelPosition" :small="true"></SwitchList>
-      </div>
+    <div id="app" style="padding: 20px">
       <h-form ref="form" :label-position="labelPosition" :label-width="90" :rules="validationRules" :model="model">
+        <h-formitem>
+          <h-switchlist :datas="labels" v-model="labelPosition" :small="true"></h-switchlist>
+        </h-formitem>
         <h-formitem label="用户名" prop="name">
-          <input type="text" v-model="model.name" />
+          <h-input type="text" v-model="model.name" />
         </h-formitem>
         <h-formitem label="密码" prop="password">
-          <input type="password" v-model="model.password" />
+          <h-input type="password" v-model="model.password" />
         </h-formitem>
         <h-formitem>
           <h-button color="primary" :loading="isLoading" @click="submit">提交</h-button>&nbsp;&nbsp;&nbsp;
@@ -27,32 +27,33 @@
     </div>
   </body>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
   <script src="./dist/heyui.js"></script>
   <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        isLoading: false,
-        labelPosition: 'left',
-        labels: {
-          left: 'Label左对齐',
-          right: 'Label右对齐'
-        },
-        model: {
-          name: '',
-          password: ''
-        },
-        validationRules: {
-          required: ['name', 'password']
-        }
+    var App = {
+      data() {
+        return {
+          isLoading: false,
+          labelPosition: 'left',
+          labels: {
+            left: 'Label左对齐',
+            right: 'Label右对齐'
+          },
+          model: {
+            name: '',
+            password: ''
+          },
+          validationRules: {
+            required: ['name', 'password']
+          }
+        };
       },
       methods: {
         submit() {
           this.isLoading = true;
           let validResult = this.$refs.form.valid();
           if (validResult.result) {
-            this.$Message('验证成功');
+            HeyUI.message('验证成功');
             setTimeout(() => {
               this.isLoading = false;
             }, 1000);
@@ -61,9 +62,13 @@
           }
         },
         reset() {
-          this.$refs.form.reset();
+          this.$refs.form.resetValid();
         }
       }
-    });
+    };
+
+    const app = Vue.createApp(App);
+    app.use(HeyUI);
+    app.mount('#app');
   </script>
 </html>

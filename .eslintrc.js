@@ -6,11 +6,13 @@ module.exports = {
   globals: {
     $: true
   },
-  extends: ['plugin:vue/vue3-recommended'],
+  extends: ['plugin:vue/vue3-essential'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 6,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    'vue/script-setup-uses-vars': 'off'
+  }
 };

@@ -84,7 +84,6 @@ export default {
     treeItem,
     Search
   },
-  emits: ['open', 'select', 'choose', 'update:modelValue', 'change', 'loadDataSuccess'],
   props: {
     option: Object,
     multiple: {
@@ -114,6 +113,7 @@ export default {
       default: 'h-tree-theme-item-selected'
     }
   },
+  emits: ['open', 'select', 'choose', 'update:modelValue', 'change', 'loadDataSuccess'],
   data() {
     return {
       updateFromInput: false,
