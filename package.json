@@ -1,17 +1,17 @@
 {
   "name": "heyui",
-  "version": "1.28.0",
+  "version": "2.1.0-alpha.0",
   "description": "UI Toolkit for Web, Vue2.0.",
   "scripts": {
     "buildlang": "vite build --config ./scripts/vite.lang.js",
     "buildcom": "vite build --config ./scripts/vite.components.js",
-    "cp": "rm -rf ../heyui-dist && mkdir ../heyui-dist && cp -R ./dist ../heyui-dist && cp -R ./lib ../heyui-dist && cp -R ./lang ../heyui-dist && cp -R ./themes ../heyui-dist && cp  ./package.json ../heyui-dist",
+    "cp": "rm -rf ./heyui-website/heyui && mkdir ./heyui-website/heyui && cp -R ./dist ./heyui-website/heyui && cp -R ./lib ./heyui-website/heyui && cp -R ./lang ./heyui-website/heyui && cp -R ./themes ./heyui-website/heyui && cp  ./package.json ./heyui-website/heyui",
     "build": "vite build",
+    "dev": "vite dev",
     "create": "node ./scripts/create.js",
     "varless": "lessto --json themes/var.less themes/var.json && lessto --js themes/var.less themes/var.js",
     "p": "sh ./scripts/publish.sh",
     "pa": "sh ./scripts/publish.sh -alpha",
-    "pb": "sh ./scripts/publish.sh -beta",
     "release": "standard-version"
   },
   "main": "./dist/heyui.js",
