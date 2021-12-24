@@ -1,7 +1,7 @@
 {
   "name": "heyui",
   "version": "2.1.0-alpha.2",
-  "description": "UI Toolkit for Web, Vue2.0.",
+  "description": "UI Toolkit for Web, Vue3.0.",
   "scripts": {
     "buildlang": "vite build --config ./scripts/vite.lang.js",
     "buildcom": "vite build --config ./scripts/vite.components.js",
