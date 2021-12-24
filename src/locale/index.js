@@ -12,7 +12,7 @@ const langs = {
 let nowLang = null;
 let merged = {};
 let vuei18n = null;
-let i18nHandler = function() {
+let i18nHandler = function () {
   if (this.$t) return this.$t(...arguments);
   if (vuei18n && vuei18n.locale) {
     if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
@@ -24,11 +24,11 @@ let i18nHandler = function() {
       vuei18n.setLocaleMessage(vuei18n.locale, newLocalMessage);
       nowLang = vuei18n.locale;
     }
-    return vuei18n.t(...arguments);
+    return vuei18n.hlang(...arguments);
   }
 };
 
-const t = function(path, options) {
+const hlang = function (path, options) {
   let value = i18nHandler.apply(this, arguments);
   if (value !== null && value !== undefined) return value;
 
@@ -45,16 +45,16 @@ const t = function(path, options) {
   return '';
 };
 
-const use = function(l) {
+const use = function (l) {
   lang = l || lang;
 };
 
-const i18n = function(initI18n) {
+const i18n = function (initI18n) {
   vuei18n = initI18n;
 };
 
 export default {
   use,
-  t,
+  hlang,
   i18n
 };

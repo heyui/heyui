@@ -113,7 +113,7 @@ export default {
       return this.sizes.map(item => {
         return {
           [keyField]: item,
-          [titleField]: this.t('h.pagination.sizeOfPage', { size: item })
+          [titleField]: this.hlang('h.pagination.sizeOfPage', { size: item })
         };
       });
     },
@@ -203,11 +203,11 @@ export default {
       let value = parseInt(event.target.value, 10);
 
       if (isNaN(value)) {
-        Message.error(this.t('h.pagination.incorrectFormat'));
+        Message.error(this.hlang('h.pagination.incorrectFormat'));
         return;
       }
       if (value > this.count || value < 1) {
-        Message.error(this.t('h.pagination.overSize'));
+        Message.error(this.hlang('h.pagination.overSize'));
         return;
       }
       let cur = parseInt(event.target.value, 10);

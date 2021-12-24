@@ -152,10 +152,10 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.autoComplate.placeholder');
+      return this.placeholder || this.hlang('h.autoComplate.placeholder');
     },
     showEmptyContent() {
-      return this.emptyContent || this.t('h.autoComplate.emptyContent');
+      return this.emptyContent || this.hlang('h.autoComplate.emptyContent');
     },
     param() {
       return utils.extend(

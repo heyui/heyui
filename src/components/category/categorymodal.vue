@@ -76,7 +76,7 @@ export default {
       searchText: '',
       tabs: [
         {
-          title: this.t('h.categoryModal.total'),
+          title: this.hlang('h.categoryModal.total'),
           key: topMenu
         }
       ],
@@ -86,13 +86,13 @@ export default {
   },
   computed: {
     cancelWord() {
-      return this.t('h.common.cancel');
+      return this.hlang('h.common.cancel');
     },
     confirmWord() {
-      return this.t('h.common.confirm');
+      return this.hlang('h.common.confirm');
     },
     showEmptyContent() {
-      return this.t('h.categoryModal.emptyContent');
+      return this.hlang('h.categoryModal.emptyContent');
     },
     searchlist() {
       let list = [];
@@ -125,7 +125,7 @@ export default {
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.objects.some(item => item.key === data.key)) {
           Message.error(
-            this.t('h.categoryModal.limitWords', {
+            this.hlang('h.categoryModal.limitWords', {
               size: this.limit
             })
           );

@@ -68,10 +68,10 @@ export default {
   },
   computed: {
     searchButtonTextShow() {
-      return this.searchButtonText || this.t('h.search.searchButtonText');
+      return this.searchButtonText || this.hlang('h.search.searchButtonText');
     },
     placeholderShow() {
-      return this.placeholder || this.t('h.search.placeholder');
+      return this.placeholder || this.hlang('h.search.placeholder');
     },
     widthStyles() {
       let styles = {};

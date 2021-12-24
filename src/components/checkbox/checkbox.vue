@@ -129,7 +129,7 @@ export default {
         let key = option[this.key];
         value = utils.toggleValue(value, key);
         if (this.limit && this.limit < value.length) {
-          message.error(this.t('h.checkbox.limitSize', { limitSize: this.limit }));
+          message.error(this.hlang('h.checkbox.limitSize', { limitSize: this.limit }));
           return;
         }
       }

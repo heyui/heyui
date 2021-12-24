@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.category.placeholder');
+      return this.placeholder || this.hlang('h.category.placeholder');
     },
     param() {
       if (this.config) {
@@ -106,7 +106,7 @@ export default {
     modelValue() {
       this.parse();
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initCategoryDatas();
     }
   },

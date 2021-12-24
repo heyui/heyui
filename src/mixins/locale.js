@@ -2,7 +2,7 @@ import locale from 'heyui/locale';
 
 export default {
   methods: {
-    t(...args) {
+    hlang(...args) {
       return locale.t.apply(this, args);
     }
   }

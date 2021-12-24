@@ -44,10 +44,10 @@
             @click="imageClick(index, file)"
           >
             <div>
-              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
+              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen" /></span>
               <template v-if="!readonly">
                 <i class="h-space" style="width: 5px" />
-                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
+                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash" /></span>
               </template>
             </div>
           </div>
@@ -92,7 +92,7 @@
         </div>
       </div>
     </template>
-    <input ref="file" type="file" :accept="accept" style="display: none;" :multiple="multiple" @change="onFileChange" />
+    <input ref="file" type="file" :accept="accept" style="display: none" :multiple="multiple" @change="onFileChange" />
   </div>
 </template>
 <script>
@@ -167,13 +167,13 @@ export default {
       return (this.multiple && (!this.limit || this.limit > this.modelValue.length)) || (!this.multiple && !this.modelValue.length);
     },
     showReUploadWord() {
-      return this.t('h.uploader.reUpload');
+      return this.hlang('h.uploader.reUpload');
     },
     showUploadWord() {
-      return this.t('h.uploader.upload');
+      return this.hlang('h.uploader.upload');
     },
     showOverLimit() {
-      return this.t('h.uploader.overLimit');
+      return this.hlang('h.uploader.overLimit');
     },
     uploaderCls() {
       return {

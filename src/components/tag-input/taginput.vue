@@ -98,11 +98,11 @@ export default {
     },
     add() {
       if (this.wordlimit < this.tagvalue.length) {
-        Message.error(this.t('h.wordlimit.warn', [this.wordlimit]));
+        Message.error(this.hlang('h.wordlimit.warn', [this.wordlimit]));
         return false;
       }
       if (this.limit <= this.values.length) {
-        Message.error(this.t('h.taginput.limitWords'));
+        Message.error(this.hlang('h.taginput.limitWords'));
         return false;
       }
       if (this.readonly) return false;

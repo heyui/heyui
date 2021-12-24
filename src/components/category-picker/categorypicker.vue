@@ -91,7 +91,7 @@ export default {
       object: null,
       tabs: [
         {
-          title: this.t('h.categoryModal.total'),
+          title: this.hlang('h.categoryModal.total'),
           key: topMenu
         }
       ],
@@ -106,7 +106,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.categoryPicker.placeholder');
+      return this.placeholder || this.hlang('h.categoryPicker.placeholder');
     },
     param() {
       if (this.config) {
@@ -151,7 +151,7 @@ export default {
         this.tab = topMenu;
         this.tabs = [
           {
-            title: this.t('h.categoryModal.total'),
+            title: this.hlang('h.categoryModal.total'),
             key: topMenu
           }
         ];
@@ -185,7 +185,7 @@ export default {
       this.tab = topMenu;
       this.tabs = [
         {
-          title: this.t('h.categoryModal.total'),
+          title: this.hlang('h.categoryModal.total'),
           key: topMenu
         }
       ];
@@ -412,7 +412,7 @@ export default {
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
           Message.error(
-            this.t('h.categoryPicker.limitWords', {
+            this.hlang('h.categoryPicker.limitWords', {
               size: this.limit
             })
           );

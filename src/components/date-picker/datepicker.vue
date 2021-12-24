@@ -130,7 +130,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
+      return this.placeholder || this.hlang('h.datepicker.placeholder');
     },
     nowFormat() {
       let format = this.format;
@@ -299,9 +299,9 @@ export default {
           this.nowDate = this.nowView.format('f');
           if (initShow) {
             if (this.type == 'week') {
-              this.showDate = this.t('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startWeek) });
+              this.showDate = this.hlang('h.date.show.weekInput', { year: this.nowView.year(), week: this.nowView.getWeekOfYear(this.startWeek) });
             } else if (this.type == 'quarter') {
-              this.showDate = this.t('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
+              this.showDate = this.hlang('h.date.show.quarter', { year: this.nowView.year(), quarter: Math.ceil(this.nowView.month() / 3) });
             } else {
               this.showDate = this.nowView.format(this.nowFormat);
             }

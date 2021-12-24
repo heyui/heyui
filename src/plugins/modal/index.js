@@ -22,7 +22,7 @@ function Modal(originalParam) {
       buttons: [
         {
           type: 'cancel',
-          name: locale.t('h.common.cancel')
+          name: locale.hlang('h.common.cancel')
         }
       ]
     },

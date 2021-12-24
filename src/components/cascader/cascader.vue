@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.cascader.placeholder');
+      return this.placeholder || this.hlang('h.cascader.placeholder');
     },
     param() {
       if (this.config) {
@@ -123,7 +123,7 @@ export default {
         }
       }
     },
-    'option.datas': function() {
+    'option.datas': function () {
       this.initCascaderDatas();
     }
   },

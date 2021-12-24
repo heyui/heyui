@@ -117,7 +117,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
+      return this.placeholder || this.hlang('h.datepicker.placeholder');
     },
     nowFormat() {
       let format = this.format || config.getOption('datepicker.format')[this.type];
@@ -130,10 +130,10 @@ export default {
       if (!utils.isObject(this.modelValue)) {
         return '';
       }
-      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${this.modelValue.end || this.t('h.datepicker.end')}`;
+      return `${this.modelValue.start || this.hlang('h.datepicker.start')} - ${this.modelValue.end || this.hlang('h.datepicker.end')}`;
     },
     shortcuts() {
-      return this.option && this.option.shortcuts || [];
+      return (this.option && this.option.shortcuts) || [];
     },
     dateCls() {
       return {

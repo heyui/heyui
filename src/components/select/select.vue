@@ -167,16 +167,16 @@ export default {
       }
     },
     showEmptyContent() {
-      return this.emptyContent || this.t('h.select.emptyContent');
+      return this.emptyContent || this.hlang('h.select.emptyContent');
     },
     hasLabel() {
       return this.options.some(item => item.isLabel);
     },
     showPlaceholder() {
-      return this.placeholder || this.t('h.select.placeholder');
+      return this.placeholder || this.hlang('h.select.placeholder');
     },
     // showSearchPlaceHolder() {
-    //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
+    //   return this.searchPlaceHolder || this.hlang('h.select.searchPlaceHolder');
     // },
     selectCls() {
       let autosize = this.autosize || !!this.noBorder;
@@ -389,7 +389,7 @@ export default {
       let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          Message.error(this.t('h.select.limitSize', { limitSize: this.limit }));
+          Message.error(this.hlang('h.select.limitSize', { limitSize: this.limit }));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
