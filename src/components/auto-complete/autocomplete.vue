@@ -14,12 +14,12 @@
           class="h-autocomplete-input h-input"
           :placeholder="showPlaceholder"
           autocomplete="off"
-          @focus="focus"
-          @blur.stop="blur"
-          @paste="paste"
-          @keyup="handle"
-          @keydown="keydownHandle"
-          @keypress.enter="enterHandle"
+          @focus="onFocus"
+          @blur.stop="onBlur"
+          @paste="onPaste"
+          @keyup="onKeyUp"
+          @keydown="onKeyDown"
+          @keypress.enter="onEnter"
         />
         <i v-if="loading" class="h-icon-loading"></i>
       </template>
@@ -32,11 +32,11 @@
           class="h-autocomplete-input h-input"
           :placeholder="showPlaceholder"
           autocomplete="off"
-          @focus="focus"
-          @paste="paste"
-          @blur.stop="blur"
-          @keyup="handle"
-          @keypress.enter="enterHandle"
+          @focus="onFocus"
+          @paste="onPaste"
+          @blur.stop="onBlur"
+          @keyup="onKeyUp"
+          @keypress.enter="onEnter"
         />
         <i v-if="loading" class="h-icon-loading"></i>
         <i v-else-if="tempValue && !disabled" class="h-icon-close text-hover" @mousedown="clear"></i>
@@ -73,7 +73,7 @@ const prefix = 'h-autocomplete';
 export default {
   name: 'HAutoComplete',
   mixins: [Locale],
-  emits: ['update:modelValue', 'change', 'clear', 'picker', 'remove'],
+  emits: ['update:modelValue', 'change', 'clear', 'picker', 'remove', 'enter'],
   props: {
     multiple: {
       type: Boolean,
@@ -396,7 +396,7 @@ export default {
         return utils.getValue(item, this.param);
       }
     },
-    focus(event) {
+    onFocus(event) {
       this.lastTrigger = null;
       this.focusing = true;
       this.focusValue = event.target.value;
@@ -407,12 +407,12 @@ export default {
       this.focusValue = this.object.title;
       if (this.multiple) this.searchValue = null;
     },
-    paste() {
+    onPaste() {
       setTimeout(() => {
         this.search();
       }, 0);
     },
-    blur(event) {
+    onBlur(event) {
       this.focusing = false;
       if (this.lastTrigger == 'picker' || this.lastTrigger == 'clear') return;
       let nowValue = event.target.value;
@@ -441,16 +441,16 @@ export default {
         clearTimeout(this.searchTimeout);
       }
     },
-    keydownHandle(event) {
+    onKeyDown(event) {
       let code = event.keyCode || event.which || event.charCode;
       if (code == 8 && event.target.value === '' && this.objects.length > 0) {
         this.remove(this.objects[this.objects.length - 1]);
       } else if (this.endInput && event.key == this.endInput) {
         event.preventDefault();
-        this.enterHandle(event);
+        this.onEnter(event);
       }
     },
-    handle(event) {
+    onKeyUp(event) {
       let code = event.keyCode || event.which || event.charCode;
       if (code == 38) {
         if (this.nowSelected > 0) {
@@ -461,12 +461,12 @@ export default {
           this.nowSelected += 1;
         }
       } else if (code == 13) {
-        // compatible ie，use enterHandle handle。
+        // compatible ie，use onEnter onKeyUp。
       } else {
         this.search();
       }
     },
-    enterHandle(event) {
+    onEnter(event) {
       let nowValue = (this.tempValue = event.target.value);
       event.preventDefault();
       if (this.nowSelected >= 0) {

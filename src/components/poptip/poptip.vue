@@ -16,11 +16,13 @@
 </template>
 <script>
 import Tooltip from 'heyui/components/tooltip';
+import Locale from 'heyui/mixins/locale';
 
 export default {
   name: 'HPoptip',
   components: { Tooltip },
   emits: ['confirm'],
+  mixins: [Locale],
   props: {
     content: String,
     placement: {

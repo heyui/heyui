@@ -163,6 +163,7 @@
 </template>
 <script>
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 import TableTr from './tabletr';
 import TableTh from './tableth';
 import debounce from 'heyui/utils/debounce';
@@ -185,6 +186,7 @@ export default {
     CheckboxAll
   },
   emits: ['select', 'selectAll', 'sort', 'trClick', 'rowSelect', 'trDblClick'],
+  mixins: [Locale],
   props: {
     columns: {
       type: Array,

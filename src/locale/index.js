@@ -13,7 +13,7 @@ let nowLang = null;
 let merged = {};
 let vuei18n = null;
 let i18nHandler = function () {
-  if (this.$t) return this.$t(...arguments);
+  if (Reflect.has(this, '$t')) return this.$t(...arguments);
   if (vuei18n && vuei18n.locale) {
     if (!merged[vuei18n.locale] || nowLang != vuei18n.locale) {
       merged[vuei18n.locale] = true;
