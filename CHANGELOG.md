@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [2.1.0-alpha.3](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v2.1.0-alpha.3) (2021-12-25)
+## [2.1.0-alpha.4](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v2.1.0-alpha.4) (2022-01-02)
 
 
 ### Features
@@ -125,6 +125,11 @@ All notable changes to this project will be documented in this file. See [standa
 * **Tree:** optimize use ([81c0b9a](https://github.com/heyui/heyui/commit/81c0b9a4c6ba03d1c5e59663526ae24ee6bdf69e))
 * **TreePicker:** add foldAll expand expandAll methods ([527eb7e](https://github.com/heyui/heyui/commit/527eb7ebfe12468c32b13e97fb90d04ceba9fd55)), closes [#187](https://github.com/heyui/heyui/issues/187)
 * **TreePicker:** optimize trigger ([09b0d3e](https://github.com/heyui/heyui/commit/09b0d3eb87bbaa7d6ff04efda0599064df25844a))
+
+## [2.1.0-alpha.3](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v2.1.0-alpha.3) (2021-12-25)
+### Bug Fixes
+
+* 删除Set的处理，使用indexOf ([dc5e78e](https://github.com/heyui/heyui/commit/dc5e78ece6af2403f18c548651f5840dff898bc1)), closes [#248](https://github.com/heyui/heyui/issues/248)
 
 ## [2.1.0-alpha.2](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v2.1.0-alpha.2) (2021-12-24)
 
