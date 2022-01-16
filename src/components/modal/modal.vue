@@ -3,7 +3,7 @@
     <div ref="modal" :class="noticeCls">
       <div v-if="hasMask" class="h-notify-mask" @click="setvalue(true)"></div>
       <div class="h-notify-wrap" @click.self="setvalue(true)">
-        <transition :name="type">
+        <transition :name="type" :persisted="false">
           <div v-if="isShow" class="h-notify-container">
             <div class="h-notify-content">
               <span v-if="hasCloseIcon" class="h-notify-close h-icon-close" @click="setvalue(false)"></span>

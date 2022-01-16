@@ -1,14 +1,14 @@
-@page-cls: ~"@{prefix}page";
+@page-cls: ~'@{prefix}page';
 .@{page-cls} {
   .h-func-clearfix();
   display: flex;
   align-items: center;
-  >span,
-  >input,
-  >div {
+  > span,
+  > input,
+  > div {
     margin: 0 5px;
   }
-  >.h-page-select-size {
+  > .h-page-select-size {
     margin-right: 0;
   }
   &&-align-right {
@@ -25,8 +25,12 @@
       border: @border;
       float: left;
       display: inline-block;
-      padding: 3.5px 10px;
-      margin-left: -1px;
+      border-radius: @border-radius;
+      height: @input-height;
+      width: @input-height;
+      line-height: @input-height - 2px;
+      text-align: center;
+      margin-left: 5px;
       cursor: pointer;
       &:hover {
         color: @primary-color;
@@ -36,13 +40,9 @@
       }
     }
     &-container &-selected {
-      background-color: @primary-color;
-      color: @white-color;
-      border-color:@primary-color;
+      color: @primary-color;
+      border-color: @primary-color;
       z-index: 2;
-      &:hover {
-        color: @white-color;
-      }
     }
     &-container &-disabled {
       pointer-events: none;
@@ -54,18 +54,22 @@
     }
   }
 
-  &-ellipsis{
+  &-ellipsis {
     pointer-events: none;
   }
   &-small {
     font-size: @font-size-mini;
     .@{page-cls}-pager-container {
       .@{page-cls}-pager {
+        margin-left: 2px;
         border: none;
         border-radius: @border-radius;
+        height: 25px;
+        line-height: 25px;
+        width: 25px;
       }
     }
-    input[type=text]{
+    input[type='text'] {
       height: 25px;
       line-height: 25px;
     }

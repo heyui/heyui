@@ -1,34 +1,35 @@
-@dropdownmenu-prefix: ~"@{prefix}dropdownmenu";
+@dropdownmenu-prefix: ~'@{prefix}dropdownmenu';
 .@{dropdownmenu-prefix} {
   display: inline-block;
   vertical-align: middle;
-  &-group{
+  &-group {
     padding: 10px 0;
   }
 
-  &-disabled{
+  &-disabled {
     cursor: default;
     color: @disabled-color !important;
-    >.h-icon-down{
+    > .h-icon-down {
       color: @disabled-color !important;
     }
   }
 
-  &-item{
+  &-item {
     .h-func-li-hover();
+    list-style: none;
     padding: 5px 15px;
     position: relative;
-    >i{
-        margin-right: 5px;
+    > i {
+      margin-right: 5px;
     }
-    &-divider{    
+    &-divider {
       height: 0;
       padding: 0;
       overflow: hidden;
       margin: 3px 0;
       border-top: @border;
     }
-    &.disabled{
+    &.disabled {
       color: @disabled-color;
     }
   }
