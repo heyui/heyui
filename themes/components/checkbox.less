@@ -3,10 +3,11 @@
 .h-checkbox {
   > .h-checkbox-label {
     margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
     &:last-child {
       margin-right: 0;
     }
-    display: inline-block;
     > :nth-child(2) {
       margin-left: 5px;
     }
@@ -21,7 +22,7 @@
   }
   .h-checkbox-native {
     -webkit-appearance: none;
-    display: inline-block;
+    display: block;
     width: 16px;
     height: 16px;
     margin: 0px;
@@ -29,7 +30,6 @@
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 2px;
-    vertical-align: middle;
     transition: background-color, border linear @transition-time;
     position: relative;
     font-family: inherit;
@@ -53,30 +53,6 @@
     &:hover {
       border-color: @primary-color;
     }
-
-    // &[checked],
-    // &[indeterminate] {
-    //   background-color: @primary-color;
-    //   border: 1px solid @primary-color;
-    // }
-
-    // &[indeterminate] &[checked]
-    // &[disabled] {
-    //   pointer-events: painted;
-    //   cursor: @disabled-cursor;
-    //   border-color: @disabled-border-color;
-    //   background-color: @disabled-background-color;
-    //   &:after {
-    //     border-color: @disabled-border-color;
-    //   }
-    //   &[checked],
-    //   &[indeterminate] {
-    //     background-color: @disabled-border-color;
-    //     &:after {
-    //       border-color: @white-color;
-    //     }
-    //   }
-    // }
   }
 
   > .h-checkbox-indeterminate,
@@ -129,5 +105,5 @@
 }
 
 .h-checkbox-single {
-  display: inline-block;
+  display: inline-flex;
 }

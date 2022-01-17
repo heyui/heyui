@@ -1,9 +1,6 @@
 <template>
   <div
-    v-tooltip="mode === 'collapse' && !data.children.length"
     class="h-menu-show"
-    :content="data.title"
-    placement="right"
     :class="{ 'h-menu-show-disabled': data.status.disabled, 'h-menu-li-selected': data.key && status.selected == data.key }"
     @click="togglemenu(data)"
   >

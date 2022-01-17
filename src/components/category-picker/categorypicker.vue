@@ -23,7 +23,7 @@
           :class="{ 'h-categorypicker-item-selected': object && data.key == object.key }"
         >
           <i v-if="data.status.loading" class="h-icon-loading"></i>
-          <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
+          <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @change="change(data)" @click.stop></Checkbox>
           <span class="h-categorypicker-item-title" @click="openNew(data, $event)"
             >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
           >
@@ -398,11 +398,7 @@ export default {
         this.list = tab.children;
       }
     },
-    change(data, event) {
-      if (event) {
-        event.stopPropagation();
-        event.preventDefault();
-      }
+    change(data) {
       if (!this.multiple && data.status.selectable === false) {
         return;
       }

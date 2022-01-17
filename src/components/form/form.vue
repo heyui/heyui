@@ -55,7 +55,7 @@ export default {
     },
     rules: {
       type: Object,
-      default: {}
+      default: () => {}
     },
     labelPosition: {
       type: String,

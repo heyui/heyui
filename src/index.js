@@ -13,7 +13,6 @@ import Badge from 'heyui/components/badge';
 import Breadcrumb from 'heyui/components/breadcrumb';
 import Checkbox from 'heyui/components/checkbox';
 import Circle from 'heyui/components/circle';
-import Category from 'heyui/components/category';
 import CategoryPicker from 'heyui/components/category-picker';
 import DatePicker from 'heyui/components/date-picker';
 import DateRangePicker from 'heyui/components/date-range-picker';
@@ -105,7 +104,6 @@ const components = {
   Button,
   ButtonGroup,
   Breadcrumb,
-  Category,
   CategoryPicker,
   Checkbox,
   hCircle: Circle,
