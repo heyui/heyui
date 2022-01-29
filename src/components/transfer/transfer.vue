@@ -5,7 +5,7 @@
         <div v-if="option && option.ltHeadText" class="h-transfer-header">{{ option.ltHeadText }}</div>
       </slot>
       <div v-if="option.filterable && (sources.length || ltSearchText)" class="h-transfer-filter">
-        <Search v-model="ltSearchText" position="front" :placeholder="option ? option.placeholder : '搜索'" />
+        <Search v-model="ltSearchText" position="front" :placeholder="option.placeholder" />
       </div>
       <div class="h-transfer-list" :style="transferListStyle">
         <div v-for="op in sources" :key="op[key]" class="h-transfer-item">
@@ -38,7 +38,7 @@
         <div v-if="option && option.rtHeadText" class="h-transfer-header">{{ option.rtHeadText }}</div>
       </slot>
       <div v-if="option.filterable && (targets.length || rtSearchText)" class="h-transfer-filter">
-        <Search v-model="rtSearchText" position="front" :placeholder="option ? option.placeholder : '搜索'" />
+        <Search v-model="rtSearchText" position="front" :placeholder="option.placeholder" />
       </div>
       <div class="h-transfer-list" :style="transferListStyle">
         <div v-for="op in targets" :key="op[key]" class="h-transfer-item">

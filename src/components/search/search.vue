@@ -8,7 +8,7 @@
           type="text"
           class="h-input"
           :style="heightStyles"
-          :placeholder="placeholderShow"
+          :placeholder="placeholder"
           @input="inputTrigger(inputValue)"
           @keyup.enter="search(inputValue)"
         />
@@ -69,9 +69,6 @@ export default {
   computed: {
     searchButtonTextShow() {
       return this.searchButtonText || this.hlang('h.search.searchButtonText');
-    },
-    placeholderShow() {
-      return this.placeholder || this.hlang('h.search.placeholder');
     },
     widthStyles() {
       let styles = {};
