@@ -18,7 +18,7 @@ import tooltip from 'heyui/directives/tooltip';
 export default {
   name: 'HMenuItemShow',
   directives: { tooltip },
-  emits: ['trigger'],
+  emits: ['clickItem'],
   props: {
     data: Object,
     param: Object,
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     togglemenu(data) {
-      this.$emit('trigger', { type: 'togglemenuEvent', data });
+      this.$emit('clickItem', { type: 'togglemenuEvent', data });
     }
   }
 };
