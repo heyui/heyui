@@ -18,7 +18,7 @@
             v-model="nowDate.start"
             :option="{ end: nowDate.end }"
             :type="hasTime ? 'datetime' : 'date'"
-            :placeholder="t('h.datepicker.startTime')"
+            :placeholder="hlang('h.datepicker.startTime')"
             @change="setvalue('start')"
           ></DatePicker>
           -
@@ -27,7 +27,7 @@
             placement="bottom-end"
             :option="{ start: nowDate.start }"
             :type="hasTime ? 'datetime' : 'date'"
-            :placeholder="t('h.datepicker.endTime')"
+            :placeholder="hlang('h.datepicker.endTime')"
             @change="setvalue('end')"
           ></DatePicker>
         </div>
