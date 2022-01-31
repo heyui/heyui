@@ -17,12 +17,12 @@
 
 ## Documentation
 
-visit [heyui.top](http://www.heyui.top).
+visit [heyui.top](http://v2.heyui.top).
 
 ## Install
 
 ```js
-npm install heyui --save
+npm install heyui@next --save
 ```
 
 ## Start
@@ -36,54 +36,35 @@ npm install heyui --save
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css"></link>
 
 ```
-
-#### Basic Online Demo
-
-- [codepen demo](https://codepen.io/vvpvvp/pen/WJYKyq)
-- [html demo](https://www.heyui.top/simple.html)
-
 ### Advanced
 
 ```js
-import Vue from 'vue';
-import HeyUI from 'heyui';
+import { createApp } from 'vue';
+import heyui from 'heyui';
 require('heyui/themes/index.less');
 
-Vue.use(HeyUI);
+app.use(heyui);
+app.mount('#app');
 ```
-
-#### Advanced Online Demo
-
-- [Code Sandbox](https://codesandbox.io/s/github/vvpvvp/hey-demos/tree/master/)
 
 ## Development
 
-You need install [hey-cli](https://www.npmjs.org/package/hey-cli).
-
 ```sh
-#build
-npm install
-# build complete heyui
-hey b
-# build esm version
-hey b -f hey.esm.js
-# build lang js
-hey b -f hey.lang.js
 
-# develop
-cd doc
 npm install
-hey dev
+
+# build
+npm run build
 
 ```
 
 ## Admin Template
 
-[HeyUI Admin Template](http://admin.heyui.top)
+[HeyUI Admin Template](http://admin-v2.heyui.top)
 
 ## Browser Support
 
-Modern browsers and Internet Explorer 9+.
+Modern browsers and Internet Explorer 11+.
 
 ## LICENSE
 

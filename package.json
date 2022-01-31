@@ -7,12 +7,8 @@
     "buildcom": "vite build --config ./scripts/vite.components.js",
     "builddist": "vite build",
     "cp": "rm -rf ../heyui-website/heyui && mkdir ../heyui-website/heyui && cp -R ./dist ../heyui-website/heyui && cp -R ./lib ../heyui-website/heyui && cp -R ./lang ../heyui-website/heyui && cp -R ./themes ../heyui-website/heyui && cp  ./package.json ../heyui-website/heyui",
-    "dev": "vite dev",
-    "create": "node ./scripts/create.js",
-    "varless": "lessto --json themes/var.less themes/var.json && lessto --js themes/var.less themes/var.js",
     "p": "sh ./scripts/publish.sh",
     "pa": "sh ./scripts/publish.sh -alpha",
-    "release": "standard-version",
     "build": "sh ./scripts/build.sh"
   },
   "main": "./dist/heyui.js",
