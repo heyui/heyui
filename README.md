@@ -4,16 +4,16 @@
 
 # HeyUI
 
-[![npm package](https://img.shields.io/npm/v/heyui.svg?style=flat-square)](https://www.npmjs.org/package/heyui)
-![JS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/dist/heyui.esm.js?style=flat-square&compression=gzip&label=gzip%20size:%20JS)
-![CSS gzip size](http://img.badgesize.io/https://unpkg.com/heyui/themes/index.css?style=flat-square&compression=gzip&label=gzip%20size:%20CSS)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+![npm (tag)](https://img.shields.io/npm/v/heyui/next)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/heyui)
+![npm](https://img.shields.io/npm/dm/heyui)
+![NPM](https://img.shields.io/npm/l/heyui)
 
 > An UI components library.
 
 ## Components
 
-<img src="https://raw.githubusercontent.com/heyui/heyui/master/doc/static/images/mindmap.png" style="max-width: 700px"/>
+<img src="./mindmap.png" style="max-width: 700px"/>
 
 ## Documentation
 
