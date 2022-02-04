@@ -4,17 +4,12 @@
   </button>
 </template>
 <script>
-import Icon from 'heyui/components/icon';
-
 const prefix = 'h-btn';
 const Props = {
   size: ['l', 's', 'xs']
 };
 export default {
   name: 'HButton',
-  components: {
-    Icon
-  },
   props: {
     color: String,
     textColor: String,

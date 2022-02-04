@@ -130,18 +130,15 @@
   .h-notify-container {
     top: 0;
     bottom: 0;
-    .h-notify-content {
-      top: 0;
-      bottom: 0;
-      position: absolute;
-      left: 0;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      .h-notify-body {
-        flex: 1;
-        overflow: auto;
-      }
+    display: flex;
+  }
+  .h-notify-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .h-notify-body {
+      flex: 1;
+      overflow: auto;
     }
   }
   &.h-notify-show .h-notify-container {

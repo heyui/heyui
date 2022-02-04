@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" :style="styles">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -38,11 +38,6 @@ export default {
         [`${prefixCls}-sider-collapsed`]: this.siderCollapsed
       };
       return classList;
-    },
-    styles() {
-      let style = {};
-
-      return style;
     }
   },
   mounted() {

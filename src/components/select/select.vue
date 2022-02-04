@@ -13,13 +13,13 @@
             type="text"
             class="h-select-search-input h-input"
             :disabled="disabled"
-            :placeholder="showPlaceholder"
+            :placeholder="placeholder"
             @keyup="handle"
             @blur="blurHandle"
             @keypress.enter="enterHandle"
           />
         </div>
-        <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ showPlaceholder }}</div>
+        <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ placeholder }}</div>
       </template>
       <template v-else>
         <template v-if="filterable">
@@ -29,7 +29,7 @@
             :disabled="disabled"
             :class="{ 'h-select-search-input-value': hasValue }"
             class="h-select-search-input h-select-single-search-input h-input"
-            :placeholder="hasValue ? '' : showPlaceholder"
+            :placeholder="hasValue ? '' : placeholder"
             @keyup="handle"
             @blur="blurHandle"
             @keypress.enter="enterHandle"
@@ -41,7 +41,7 @@
             <template v-if="!$slots.show">{{ singleValue }}</template
             ><slot v-else :value="objects" name="show"></slot>
           </div>
-          <div v-else class="h-select-placeholder">{{ showPlaceholder }}</div>
+          <div v-else class="h-select-placeholder">{{ placeholder }}</div>
         </template>
       </template>
       <i v-show="hasClose" class="h-icon-close text-hover" @click.stop="clear"></i>
@@ -167,17 +167,11 @@ export default {
       }
     },
     showEmptyContent() {
-      return this.emptyContent || this.t('h.select.emptyContent');
+      return this.emptyContent || this.hlang('h.select.emptyContent');
     },
     hasLabel() {
       return this.options.some(item => item.isLabel);
     },
-    showPlaceholder() {
-      return this.placeholder || this.t('h.select.placeholder');
-    },
-    // showSearchPlaceHolder() {
-    //   return this.searchPlaceHolder || this.t('h.select.searchPlaceHolder');
-    // },
     selectCls() {
       let autosize = this.autosize || !!this.noBorder;
       return {
@@ -389,7 +383,7 @@ export default {
       let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          Message.error(this.t('h.select.limitSize', { limitSize: this.limit }));
+          Message.error(this.hlang('h.select.limitSize', { limitSize: this.limit }));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);

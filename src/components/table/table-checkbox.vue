@@ -1,9 +1,11 @@
 <template>
-  <Checkbox
-    :indeterminate="checks.length > 0 && checks.length < checkableDatas.length"
-    :checked="checkableDatas.length > 0 && checks.length == checkableDatas.length"
-    @click="checkAll"
-  />
+  <div class="h-table-checkbox-wrap">
+    <Checkbox
+      :indeterminate="checks.length > 0 && checks.length < checkableDatas.length"
+      :checked="checkableDatas.length > 0 && checks.length == checkableDatas.length"
+      @click="checkAll"
+    />
+  </div>
 </template>
 <script>
 import Checkbox from 'heyui/components/checkbox';

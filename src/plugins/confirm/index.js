@@ -15,12 +15,12 @@ function Confirm(params = {}) {
     content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
     buttons: [
       {
-        name: locale.t('h.common.cancel'),
+        name: locale.hlang('h.common.cancel'),
         type: 'cancel'
       },
       {
         type: 'ok',
-        name: locale.t('h.common.confirm'),
+        name: locale.hlang('h.common.confirm'),
         style: 'primary'
       }
     ],
@@ -47,7 +47,7 @@ function Confirm(params = {}) {
 
 function confirm(content, title) {
   if (!title) {
-    title = locale.t('h.confirm.title');
+    title = locale.hlang('h.confirm.title');
   }
   return Confirm(content, title);
 }

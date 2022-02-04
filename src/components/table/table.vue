@@ -55,13 +55,15 @@
                   @toggleTree="toggleTree"
                 >
                   <td v-if="checkbox" class="h-table-td-checkbox">
-                    <Checkbox
-                      v-if="fixedColumnLeft.length == 0"
-                      :key="d._heyui_uuid"
-                      v-model="checks"
-                      :disabled="d._disabledSelect"
-                      :value="d"
-                    ></Checkbox>
+                    <div class="h-table-checkbox-wrap">
+                      <Checkbox
+                        v-if="fixedColumnLeft.length == 0"
+                        :key="d._heyui_uuid"
+                        v-model="checks"
+                        :disabled="d._disabledSelect"
+                        :value="d"
+                      ></Checkbox>
+                    </div>
                   </td>
                   <td v-if="radio" class="h-table-td-radio">
                     <Radio v-if="fixedColumnLeft.length == 0" :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
@@ -98,7 +100,9 @@
                 @toggleTree="toggleTree"
               >
                 <td v-if="checkbox" class="h-table-td-checkbox">
-                  <Checkbox :key="d._heyui_uuid" v-model="checks" :disabled="d._disabledSelect" :value="d"></Checkbox>
+                  <div class="h-table-checkbox-wrap">
+                    <Checkbox :key="d._heyui_uuid" v-model="checks" :disabled="d._disabledSelect" :value="d"></Checkbox>
+                  </div>
                 </td>
                 <td v-if="radio" class="h-table-td-radio">
                   <Radio :key="d._heyui_uuid" v-model="rowSelected" :value="d"></Radio>
@@ -163,6 +167,7 @@
 </template>
 <script>
 import utils from 'heyui/utils/utils';
+import Locale from 'heyui/mixins/locale';
 import TableTr from './tabletr';
 import TableTh from './tableth';
 import debounce from 'heyui/utils/debounce';
@@ -185,6 +190,7 @@ export default {
     CheckboxAll
   },
   emits: ['select', 'selectAll', 'sort', 'trClick', 'rowSelect', 'trDblClick'],
+  mixins: [Locale],
   props: {
     columns: {
       type: Array,

@@ -18,7 +18,7 @@
             v-model="nowDate.start"
             :option="{ end: nowDate.end }"
             :type="hasTime ? 'datetime' : 'date'"
-            :placeholder="t('h.datepicker.startTime')"
+            :placeholder="hlang('h.datepicker.startTime')"
             @change="setvalue('start')"
           ></DatePicker>
           -
@@ -27,7 +27,7 @@
             placement="bottom-end"
             :option="{ start: nowDate.start }"
             :type="hasTime ? 'datetime' : 'date'"
-            :placeholder="t('h.datepicker.endTime')"
+            :placeholder="hlang('h.datepicker.endTime')"
             @change="setvalue('end')"
           ></DatePicker>
         </div>
@@ -105,12 +105,12 @@ export default {
     let defaultType = this.modelValue && this.modelValue.type ? this.modelValue.type : this.defaultType;
     return {
       allviews: {
-        year: this.t('h.date.year'),
-        quarter: this.t('h.date.quarter'),
-        month: this.t('h.date.month'),
-        week: this.t('h.date.week'),
-        date: this.t('h.date.day'),
-        customize: this.t('h.datepicker.customize')
+        year: this.hlang('h.date.year'),
+        quarter: this.hlang('h.date.quarter'),
+        month: this.hlang('h.date.month'),
+        week: this.hlang('h.date.week'),
+        date: this.hlang('h.date.day'),
+        customize: this.hlang('h.datepicker.customize')
       },
       nowFormat: this.hasTime ? format.datetime : format.date,
       paramName: config.getOption('datepicker.daterangeOptions.paramName'),
@@ -140,7 +140,7 @@ export default {
       return v;
     },
     showPlaceholder() {
-      return this.placeholder || this.t('h.datepicker.placeholder');
+      return this.placeholder || this.hlang('h.datepicker.placeholder');
     },
     showValue() {
       if (!utils.isObject(this.modelValue)) {
@@ -154,28 +154,22 @@ export default {
           case 'month':
             return date.format('YYYY-MM');
           case 'quarter':
-            return this.t('h.date.show.quarter', {
+            return this.hlang('h.date.show.quarter', {
               year: date.year(),
               quarter: parseInt(date.month() / 3, 10) + 1
             });
           case 'week':
-            return this.t('h.date.show.week', {
+            return this.hlang('h.date.show.week', {
               year: date.year(),
               weeknum: date.getWeekOfYear(this.startWeek),
               daystart: date.format('MM-DD'),
-              dayend: manba(date)
-                .add(6)
-                .format('MM-DD')
+              dayend: manba(date).add(6).format('MM-DD')
             });
         }
       }
       if (!this.modelValue.start && !this.modelValue.end) return '';
-      return `${this.modelValue.start || this.t('h.datepicker.start')} - ${
-        this.modelValue.end
-          ? manba(this.modelValue.end)
-              .add(-1)
-              .format(this.nowFormat)
-          : this.t('h.datepicker.end')
+      return `${this.modelValue.start || this.hlang('h.datepicker.start')} - ${
+        this.modelValue.end ? manba(this.modelValue.end).add(-1).format(this.nowFormat) : this.hlang('h.datepicker.end')
       }`;
     },
     shortcuts() {
@@ -324,9 +318,7 @@ export default {
       if (this.view == 'customize') {
         let value = utils.copy(this.nowDate);
         if (value.end) {
-          value.end = manba(value.end)
-            .add(1)
-            .format(this.nowFormat);
+          value.end = manba(value.end).add(1).format(this.nowFormat);
         }
         this.updateValue(value);
         return;

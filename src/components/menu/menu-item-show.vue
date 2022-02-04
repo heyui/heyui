@@ -1,9 +1,6 @@
 <template>
   <div
-    v-tooltip="mode === 'collapse' && !data.children.length"
     class="h-menu-show"
-    :content="data.title"
-    placement="right"
     :class="{ 'h-menu-show-disabled': data.status.disabled, 'h-menu-li-selected': data.key && status.selected == data.key }"
     @click="togglemenu(data)"
   >
@@ -21,7 +18,7 @@ import tooltip from 'heyui/directives/tooltip';
 export default {
   name: 'HMenuItemShow',
   directives: { tooltip },
-  emits: ['trigger'],
+  emits: ['clickItem'],
   props: {
     data: Object,
     param: Object,
@@ -33,7 +30,7 @@ export default {
   },
   methods: {
     togglemenu(data) {
-      this.$emit('trigger', { type: 'togglemenuEvent', data });
+      this.$emit('clickItem', { type: 'togglemenuEvent', data });
     }
   }
 };

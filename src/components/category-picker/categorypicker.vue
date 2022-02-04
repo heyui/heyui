@@ -23,7 +23,7 @@
           :class="{ 'h-categorypicker-item-selected': object && data.key == object.key }"
         >
           <i v-if="data.status.loading" class="h-icon-loading"></i>
-          <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @click.native="change(data, $event)"></Checkbox>
+          <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @change="change(data)" @click.stop></Checkbox>
           <span class="h-categorypicker-item-title" @click="openNew(data, $event)"
             >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
           >
@@ -91,7 +91,7 @@ export default {
       object: null,
       tabs: [
         {
-          title: this.t('h.categoryModal.total'),
+          title: this.hlang('h.categoryModal.total'),
           key: topMenu
         }
       ],
@@ -106,7 +106,7 @@ export default {
   },
   computed: {
     showPlaceholder() {
-      return this.placeholder || this.t('h.categoryPicker.placeholder');
+      return this.placeholder || this.hlang('h.categoryPicker.placeholder');
     },
     param() {
       if (this.config) {
@@ -151,7 +151,7 @@ export default {
         this.tab = topMenu;
         this.tabs = [
           {
-            title: this.t('h.categoryModal.total'),
+            title: this.hlang('h.categoryModal.total'),
             key: topMenu
           }
         ];
@@ -185,7 +185,7 @@ export default {
       this.tab = topMenu;
       this.tabs = [
         {
-          title: this.t('h.categoryModal.total'),
+          title: this.hlang('h.categoryModal.total'),
           key: topMenu
         }
       ];
@@ -398,11 +398,7 @@ export default {
         this.list = tab.children;
       }
     },
-    change(data, event) {
-      if (event) {
-        event.stopPropagation();
-        event.preventDefault();
-      }
+    change(data) {
       if (!this.multiple && data.status.selectable === false) {
         return;
       }
@@ -412,7 +408,7 @@ export default {
       if (this.multiple) {
         if (this.objects.length >= this.limit && !this.param.objects.some(item => item.key === data.key)) {
           Message.error(
-            this.t('h.categoryPicker.limitWords', {
+            this.hlang('h.categoryPicker.limitWords', {
               size: this.limit
             })
           );

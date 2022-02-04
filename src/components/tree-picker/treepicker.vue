@@ -11,7 +11,7 @@
         </div>
       </template>
       <div v-else-if="!multiple && object" class="h-treepicker-value-single">{{ object[param.titleName] }}</div>
-      <div v-else class="h-treepicker-placeholder">{{ placeholder || hlang('h.treepicker.placeholder') }}</div>
+      <div v-else class="h-treepicker-placeholder">{{ placeholder }}</div>
       <i class="h-icon-down"></i>
     </div>
     <div class="h-treepicker-group" :class="groupCls">

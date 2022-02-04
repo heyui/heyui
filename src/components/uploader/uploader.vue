@@ -5,7 +5,7 @@
       <template v-if="!multiple">
         <div v-if="singleFile" class="h-uploader-image">
           <div class="h-uploader-image-background" :style="getBackgroundImage(singleFile)" />
-          <div v-if="singleFile.status === 'UPLOADING'" class="h-uploader-progress">
+          <div v-if="isUploading(singleFile)" class="h-uploader-progress">
             <Progress v-if="showPercent" :percent="singleFile.percent" :stroke-width="5" />
             <i v-else class="h-icon-spinner" />
           </div>
@@ -24,14 +24,14 @@
           <i class="h-icon-plus" />
         </div>
         <div
-          v-for="(file, index) of modelValue"
+          v-for="(file, index) of files"
           :key="file.uid"
           :class="{
             'h-uploader-image': true
           }"
         >
           <div class="h-uploader-image-background" :style="getBackgroundImage(file)" />
-          <div v-if="file.status == 'UPLOADING'" class="h-uploader-progress">
+          <div v-if="isUploading(file)" class="h-uploader-progress">
             <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5" />
             <i v-else class="h-icon-spinner" />
           </div>
@@ -44,10 +44,10 @@
             @click="imageClick(index, file)"
           >
             <div>
-              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
+              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen" /></span>
               <template v-if="!readonly">
                 <i class="h-space" style="width: 5px" />
-                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
+                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash" /></span>
               </template>
             </div>
           </div>
@@ -73,8 +73,8 @@
         </button>
       </div>
       <div class="h-uploader-files">
-        <div v-for="(file, index) of modelValue" :key="file.uid" class="h-uploader-file">
-          <div v-if="file.status == 'UPLOADING'" class="h-uploader-file-progress">
+        <div v-for="(file, index) of files" :key="file.uid" class="h-uploader-file">
+          <div v-if="isUploading(file)" class="h-uploader-file-progress">
             <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5">
               <template v-slot:title>
                 {{ file.name }}
@@ -92,7 +92,7 @@
         </div>
       </div>
     </template>
-    <input ref="file" type="file" :accept="accept" style="display: none;" :multiple="multiple" @change="onFileChange" />
+    <input ref="file" type="file" :accept="accept" style="display: none" :multiple="multiple" @change="onFileChange" />
   </div>
 </template>
 <script>
@@ -117,6 +117,24 @@ function getObjectURL(file) {
   return null;
 }
 
+const UPLOAD_STATUS = {
+  UPLOADING: 'UPLOADING',
+  SUCCESS: 'SUCCESS',
+  FAIL: 'FAIL'
+};
+
+const toFileObject = url => {
+  return {
+    name: null,
+    size: null,
+    type: null,
+    status: UPLOAD_STATUS.SUCCESS,
+    url: url,
+    thumbUrl: url,
+    uid: utils.uuid()
+  };
+};
+
 const prefix = 'h-uploader';
 
 export default {
@@ -126,12 +144,15 @@ export default {
   props: {
     accept: String,
     modelValue: {
-      type: Array,
-      default: () => []
+      type: [Array, Object, String]
     },
     displayType: {
       type: String,
       default: 'file' // file, image
+    },
+    dataType: {
+      type: String,
+      default: 'object'
     },
     multiple: {
       type: Boolean,
@@ -155,25 +176,50 @@ export default {
     return {
       preview: false,
       previewIndex: -1,
-      isdragging: false
+      isdragging: false,
+      stashFiles: [],
+      stashValue: null
     };
   },
+  watch: {
+    modelValue(value) {
+      if (value !== this.stashValue) {
+        this.stashFiles = [];
+      }
+    }
+  },
   computed: {
+    files() {
+      if (this.stashFiles.length) return this.stashFiles;
+      if (this.dataType === 'url') {
+        if (this.multiple) {
+          return (this.modelValue || []).map(item => toFileObject(item));
+        } else {
+          return this.modelValue ? [toFileObject(this.modelValue)] : [];
+        }
+      } else {
+        if (this.multiple) {
+          return this.modelValue || [];
+        } else {
+          return this.modelValue ? [this.modelValue] : [];
+        }
+      }
+    },
     singleFile() {
-      return this.modelValue.length ? this.modelValue[0] : null;
+      return this.files.length ? this.files[0] : null;
     },
     showUploadButton() {
       if (this.readonly) return false;
-      return (this.multiple && (!this.limit || this.limit > this.modelValue.length)) || (!this.multiple && !this.modelValue.length);
+      return (this.multiple && (!this.limit || this.limit > this.files.length)) || (!this.multiple && !this.files.length);
     },
     showReUploadWord() {
-      return this.t('h.uploader.reUpload');
+      return this.hlang('h.uploader.reUpload');
     },
     showUploadWord() {
-      return this.t('h.uploader.upload');
+      return this.hlang('h.uploader.upload');
     },
     showOverLimit() {
-      return this.t('h.uploader.overLimit');
+      return this.hlang('h.uploader.overLimit');
     },
     uploaderCls() {
       return {
@@ -183,6 +229,9 @@ export default {
     }
   },
   methods: {
+    isUploading(file) {
+      return file.status === UPLOAD_STATUS.UPLOADING;
+    },
     triggerFileChoose() {
       this.$refs.file.value = null;
       this.$refs.file.click();
@@ -195,53 +244,78 @@ export default {
     async onFileUpload(files) {
       if (files.length === 0) return;
       if (this.multiple) {
-        if (files.length + this.modelValue.length > this.limit) {
+        if (files.length + this.files.length > this.limit) {
           Message.error(this.showOverLimit);
           return;
         }
       }
-      const timestamp = new Date().getTime();
       const valueList = [...files]
         .filter(item => {
           return !this.option.onBeforeUpload || this.option.onBeforeUpload(item) !== false;
         })
-        .map((item, index) => {
+        .map(item => {
           return {
             name: item.name,
             size: item.size,
             type: item.type,
-            status: 'UPLOADING',
+            status: UPLOAD_STATUS.UPLOADING,
             url: null,
             thumbUrl: null,
-            uid: timestamp + index + '',
+            uid: utils.uuid(),
             file: item
           };
         });
       if (valueList.length === 0) return;
       if (this.multiple) {
-        this.$emit('update:modelValue', [...this.modelValue, ...valueList]);
+        this.stashFiles = [...this.files, ...valueList];
       } else {
-        this.$emit('update:modelValue', [valueList[0]]);
+        this.stashFiles = [valueList[0]];
       }
       for (const info of valueList) {
         this.option.onChange &&
-          this.option.onChange(info.file, info).then(newInfo => {
-            this.update(newInfo);
-          });
+          this.option
+            .onChange(info.file, info)
+            .then(url => {
+              this.update({ ...info, status: UPLOAD_STATUS.SUCCESS, url });
+            })
+            .catch(e => {
+              this.update({ ...info, status: UPLOAD_STATUS.FAIL });
+            });
       }
     },
     update(info) {
       if (!info) return;
-      const value = [...this.modelValue];
+      const value = [...this.files];
       const index = value.findIndex(item => item.uid === info.uid);
       if (index > -1) {
-        if (info.status === 'ERROR') {
+        if (info.status === UPLOAD_STATUS.FAIL) {
           value.splice(index, 1);
         } else {
           value.splice(index, 1, info);
         }
-        this.$emit('update:modelValue', value);
+      } else {
+        value.push(info);
       }
+      this.updateModelValue(value);
+    },
+    updateModelValue(value) {
+      this.stashFiles = value;
+      let resultValue = null;
+      if (this.dataType === 'url') {
+        if (this.multiple) {
+          resultValue = value.map(item => item.url);
+        } else {
+          resultValue = value.length ? value[0].url : [];
+        }
+      } else {
+        if (this.multiple) {
+          resultValue = value;
+        } else {
+          resultValue = value.length ? value[0] : null;
+        }
+      }
+      this.stashValue = resultValue;
+      this.$emit('update:modelValue', resultValue);
     },
     onFileChange() {
       const files = this.$refs.file.files;
@@ -254,7 +328,7 @@ export default {
       this.$emit('click', file, index);
     },
     previewImage(index) {
-      ImagePreview(this.modelValue, index);
+      ImagePreview(this.files, index);
     },
     getBackgroundImage(file) {
       let param = {};
@@ -267,10 +341,10 @@ export default {
       if (event) {
         event.stopPropagation();
       }
-      this.$emit('delete', this.modelValue[index], index);
-      const value = [...this.modelValue];
+      this.$emit('delete', this.files[index], index);
+      const value = [...this.files];
       value.splice(index, 1);
-      this.$emit('update:modelValue', value);
+      this.updateModelValue(value);
     }
   }
 };

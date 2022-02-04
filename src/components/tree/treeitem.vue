@@ -96,7 +96,6 @@ export default {
       }
     },
     choose() {
-      console.log('choose', this.data.status.choose);
       Object.assign(this.data.status, { choose: !this.data.status.choose, indeterminate: false });
       this.$emit('trigger', { type: 'chooseEvent', data: this.data });
     },

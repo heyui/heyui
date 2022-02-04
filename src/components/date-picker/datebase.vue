@@ -165,13 +165,13 @@ export default {
     },
     weeks() {
       let weeks = [
-        this.t('h.date.weeks.monday'),
-        this.t('h.date.weeks.tuesday'),
-        this.t('h.date.weeks.wednesday'),
-        this.t('h.date.weeks.thursday'),
-        this.t('h.date.weeks.friday'),
-        this.t('h.date.weeks.saturday'),
-        this.t('h.date.weeks.sunday')
+        this.hlang('h.date.weeks.monday'),
+        this.hlang('h.date.weeks.tuesday'),
+        this.hlang('h.date.weeks.wednesday'),
+        this.hlang('h.date.weeks.thursday'),
+        this.hlang('h.date.weeks.friday'),
+        this.hlang('h.date.weeks.saturday'),
+        this.hlang('h.date.weeks.sunday')
       ];
       let days = weeks.splice(0, this.startWeek - 1);
       weeks.push(...days);
@@ -179,18 +179,18 @@ export default {
     },
     months() {
       return [
-        this.t('h.date.months.january'),
-        this.t('h.date.months.february'),
-        this.t('h.date.months.march'),
-        this.t('h.date.months.april'),
-        this.t('h.date.months.may'),
-        this.t('h.date.months.june'),
-        this.t('h.date.months.july'),
-        this.t('h.date.months.august'),
-        this.t('h.date.months.september'),
-        this.t('h.date.months.october'),
-        this.t('h.date.months.november'),
-        this.t('h.date.months.december')
+        this.hlang('h.date.months.january'),
+        this.hlang('h.date.months.february'),
+        this.hlang('h.date.months.march'),
+        this.hlang('h.date.months.april'),
+        this.hlang('h.date.months.may'),
+        this.hlang('h.date.months.june'),
+        this.hlang('h.date.months.july'),
+        this.hlang('h.date.months.august'),
+        this.hlang('h.date.months.september'),
+        this.hlang('h.date.months.october'),
+        this.hlang('h.date.months.november'),
+        this.hlang('h.date.months.december')
       ];
     },
     dates() {
@@ -333,7 +333,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.WEEK,
-              show: this.t('h.date.show.week', {
+              show: this.hlang('h.date.show.week', {
                 year: date.year(),
                 weeknum: date.getWeekOfYear(this.startWeek),
                 daystart: date.format('MM-DD'),
@@ -354,7 +354,7 @@ export default {
             genData({
               date: manba(date.time()),
               type: manba.MONTH,
-              show: this.t('h.date.show.quarter', {
+              show: this.hlang('h.date.show.quarter', {
                 year: date.year(),
                 quarter: index
               }),

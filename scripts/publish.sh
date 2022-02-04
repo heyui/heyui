@@ -25,6 +25,12 @@ standard-version
 fi
 
 
+<<<<<<< HEAD
+=======
+headr ./dist/heyui.js -o=./dist/heyui.js --version --homepage --copyright --license
+headr ./dist/heyui.esm.js -o=./dist/heyui.esm.js --version --homepage --copyright --license
+
+>>>>>>> v2
 set -e
 echo "git push"
 git push

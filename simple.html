@@ -21,6 +21,7 @@
           <h-button @click="show=false">cancel</h-button>
         </template>
       </Modal>
+      <h-pagination />
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
@@ -36,6 +37,7 @@
       },
       methods: {
         openModal: function () {
+          console.log(this);
           HeyUI.modal({
             title: 'title',
             content: 'This is a js modal'
