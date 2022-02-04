@@ -2,7 +2,6 @@ node_modules
 node_modules1
 .DS_Store
 stat.json
-dist
 lib
 lang
 heyui-website
