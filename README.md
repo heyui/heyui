@@ -31,9 +31,9 @@ npm install heyui@next --save
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdn.jsdelivr.net/npm/heyui"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui/themes/index.css"></link>
+<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/heyui@next"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui@next/themes/index.css"></link>
 
 ```
 ### Advanced
@@ -60,7 +60,7 @@ npm run build
 
 ## Admin Template
 
-[HeyUI Admin Template](http://admin-v2.heyui.top)
+[HeyUI Admin Template](http://admin.heyui.top)
 
 ## Browser Support
 
