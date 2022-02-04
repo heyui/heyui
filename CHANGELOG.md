@@ -2,6 +2,64 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0-alpha.1](https://github.com/heyui/heyui/compare/v1.26.1...v2.1.0-alpha.1) (2022-02-04)
+
+
+### Features
+
+* 补充波兰语 ([4ba94a5](https://github.com/heyui/heyui/commit/4ba94a52a8755b84b17ccacc41f016b98f39e988))
+* 补充逻辑 ([d6d4e3b](https://github.com/heyui/heyui/commit/d6d4e3bd66226660cbac1d33c471a68a5f518090))
+* 调整checkbox和menu的样式 ([d9bcb6a](https://github.com/heyui/heyui/commit/d9bcb6add27fe91c09bfdfd9c55750d6fe802eaf))
+* 日期 ([ebc7fa6](https://github.com/heyui/heyui/commit/ebc7fa6c8e47a76041a9643e37ce5045d6520ed9))
+* add dist folder ([ee80ec1](https://github.com/heyui/heyui/commit/ee80ec120671e7aea56171c5adc720fceb872008))
+* add list-style control ([06d815a](https://github.com/heyui/heyui/commit/06d815a2e042b4135da598074285b241fe9adbfc))
+* AutoComplete ([f652ef3](https://github.com/heyui/heyui/commit/f652ef3fb5696435d59fd4ec6e415896456a323c))
+* build script ([c4473cb](https://github.com/heyui/heyui/commit/c4473cb5829203411c716d5feac23518af752456))
+* carousel & tag ([c4acee3](https://github.com/heyui/heyui/commit/c4acee373411f784495237e76da313e54126191b))
+* form ([7b2d1b2](https://github.com/heyui/heyui/commit/7b2d1b2eead82eac831d493ea887ad85972cdeea))
+* form ([f89a06c](https://github.com/heyui/heyui/commit/f89a06cc206a2fb2c318e56b2b202c7ace2fafac))
+* Menu ([01c9ab3](https://github.com/heyui/heyui/commit/01c9ab30956cb42709adbc6a97518343d3d3f59a))
+* modal & notice ([efdf62f](https://github.com/heyui/heyui/commit/efdf62f5dd9edcd77125f0301913183b81eb2e0c))
+* Pagination ([9df2caf](https://github.com/heyui/heyui/commit/9df2caf4c39573ce1e6cef72a877ebc12245f155))
+* poptip ([44fd148](https://github.com/heyui/heyui/commit/44fd148a9d465198eef294567d1b3eb2ac73cc3e))
+* remove heyui-website ([5c7bdc9](https://github.com/heyui/heyui/commit/5c7bdc9c88a3fc0efdee78b8cdb6ae3d18f22f75))
+* Select ([c0c733b](https://github.com/heyui/heyui/commit/c0c733bb2b4a60dacdae82782da352df9fe6248e))
+* slider ([09025bc](https://github.com/heyui/heyui/commit/09025bc300dd30af2992f57e99d092868c659ea9))
+* stash ([3d06b32](https://github.com/heyui/heyui/commit/3d06b32606260894655fdf223ff64e3bd264df20))
+* stash ([11ecfcb](https://github.com/heyui/heyui/commit/11ecfcb46b58bbd44e6f0c4328cc4586b1ee1a4f))
+* stash doc file ([640fdb4](https://github.com/heyui/heyui/commit/640fdb4fd4996e9bf79237533849973217ee84f4))
+* Step ([ed7c9d1](https://github.com/heyui/heyui/commit/ed7c9d177b9f7ef8bdcaae08baa87f3d3b6b6105))
+* table ([b0eab00](https://github.com/heyui/heyui/commit/b0eab009a516e388cf2972f984fcef5310304997))
+* table + search ([eb190ff](https://github.com/heyui/heyui/commit/eb190ff164943b194ffeffa061690d6067cc760c))
+* tabs ([c94b1c5](https://github.com/heyui/heyui/commit/c94b1c5a42e79d6ca2d0593b02daf6aba49670c4))
+* tooltip ([4305df7](https://github.com/heyui/heyui/commit/4305df797f885d661b162ea849132a3e887f62e6))
+* tooltip改革 ([49726fb](https://github.com/heyui/heyui/commit/49726fb5f26dae918a4bbdabf13bc3e990f77ef0))
+* Tree & ImagePreview ([f04ab6b](https://github.com/heyui/heyui/commit/f04ab6b9504c553c4a743d14d20c3c437a3a4980))
+* update hlang config ([08dc766](https://github.com/heyui/heyui/commit/08dc766d3efffd1f003616681ba6c52b713915b1))
+* uploader add props dataType ([60ea676](https://github.com/heyui/heyui/commit/60ea676a42b5715e85ecc20c8cbbddec6a4de794))
+* **Skeleton:** add avatar for skeleton ([efb22c7](https://github.com/heyui/heyui/commit/efb22c77b40752063dbb3d29c11e4b888f4d376b))
+
+
+### Bug Fixes
+
+* 删除无用console ([05ed30b](https://github.com/heyui/heyui/commit/05ed30bf542f1138576789cd15eba877f3fa0c09))
+* 删除placehoder默认值 ([1b70232](https://github.com/heyui/heyui/commit/1b7023259a1da8a0abb39cb6bd4e537f4b6f4e87))
+* 升级暂存 ([49b9f4d](https://github.com/heyui/heyui/commit/49b9f4d6ec700fbd616bb219c4a99377911a3768))
+* 修复hlang调用 ([10485f8](https://github.com/heyui/heyui/commit/10485f88054b89de74e9c072bba7c5cba4c8545d))
+* 修改打包命令 ([0138af8](https://github.com/heyui/heyui/commit/0138af8319b1c5e2a02c9b99ded5f06fdbbcf396))
+* 修正水平menu超出不显示的问题 ([967fa9c](https://github.com/heyui/heyui/commit/967fa9c4c4edb0450f5b17db62b14945c69e9a03))
+* 优化select toLowerCase ([62ed4d1](https://github.com/heyui/heyui/commit/62ed4d131a9af0e67772ce7d425a937c127374dd))
+* click->clickItem ([6974be3](https://github.com/heyui/heyui/commit/6974be30b9d79ea36225c31dbec6122740463d23))
+* icon纠正 ([fe573d5](https://github.com/heyui/heyui/commit/fe573d5d5283e22deeb9d0401890986196f206a3))
+* locale.t => locale.hlang ([5581aa2](https://github.com/heyui/heyui/commit/5581aa2fb75f1e7e457f7021789484eb7f80d3ed))
+* remove headr.sh ([a0e4e6f](https://github.com/heyui/heyui/commit/a0e4e6fd4e856b9b5c74f3f0898fbe2da85da835))
+* t() -> hlang() ([b342227](https://github.com/heyui/heyui/commit/b34222782e43268d22df9cb07e2bd87550364ce2))
+* **Menu:** 修复事件触发问题 ([53198c6](https://github.com/heyui/heyui/commit/53198c6bbc6079e29109325d52a06017abcfa2f3))
+* stash ([c3fb247](https://github.com/heyui/heyui/commit/c3fb247673e71136c0d852f9a40f8bd7112198b3))
+* tooltip优化位置 ([ad2e5f1](https://github.com/heyui/heyui/commit/ad2e5f125f5e2be466761831f193ab8a67b13380))
+* update headr.sh ([4526ac5](https://github.com/heyui/heyui/commit/4526ac56130785012a55d06908b88fe6d2139312))
+* **TextEllipsis:** 删除before和after之间的空格 ([01d1346](https://github.com/heyui/heyui/commit/01d1346f7df39aca2785de955a4a0468c55b5774))
+
 ## [2.1.0-alpha.0](https://github.com/heyui/heyui/compare/v1.21.2-alpha.1...v2.1.0-alpha.0) (2021-12-24)
 
 
