@@ -13,7 +13,7 @@
 
 ## Components
 
-<img src="./mindmap.png" style="max-width: 700px"/>
+<img src="https://v2.heyui.top/images/mindmap.png" style="max-width: 700px"/>
 
 ## Documentation
 
