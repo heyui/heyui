@@ -187,7 +187,7 @@ const install = function (app, opts = {}) {
   Object.keys(components).forEach(key => {
     let component = components[key];
     app.component(key, component);
-    app.component(`h-${key.toLocaleLowerCase()}`, component);
+    app.component(`h-${key.toLowerCase()}`, component);
   });
 
   Object.keys(directives).forEach(key => {
