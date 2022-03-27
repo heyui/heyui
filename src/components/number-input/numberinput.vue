@@ -68,8 +68,7 @@ export default {
     }
   },
   watch: {
-    value() {
-      // this.editValue = this.modelValue;
+    modelValue() {
       if (this.valueBak != this.modelValue) {
         this.editValue = this.modelValue;
         this.valueBak = this.modelValue;
