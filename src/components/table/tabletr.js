@@ -3,7 +3,7 @@ import { h } from 'vue';
 
 export default {
   name: 'hTableTr',
-  emits: ['toggleTree', 'trClick', 'trDblClick'],
+  emits: ['toggleTree', 'trClick', 'trDblclick'],
   props: {
     datas: [Object, Array],
     index: Number,
@@ -46,7 +46,7 @@ export default {
       'tr',
       {
         onClick: this.clickHandler,
-        onDblClick: this.dblclickHandler
+        onDblclick: this.dblclickHandler
       },
       tds
     );
