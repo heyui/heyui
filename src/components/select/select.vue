@@ -34,7 +34,10 @@
             @blur="blurHandle"
             @keypress.enter="enterHandle"
           />
-          <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">{{ singleValue }}</div>
+          <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">
+            <template v-if="!$slots.show">{{ singleValue }}</template
+            ><slot v-else :value="objects" name="show"></slot>
+          </div>
         </template>
         <template v-else>
           <div v-if="hasValue" class="h-select-value-single">
