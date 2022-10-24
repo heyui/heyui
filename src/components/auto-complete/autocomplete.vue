@@ -39,7 +39,7 @@
           @keypress.enter="onEnter"
         />
         <i v-if="loading" class="h-icon-loading"></i>
-        <i v-else-if="tempValue && !disabled" class="h-icon-close text-hover" @mousedown="clear"></i>
+        <i v-else-if="tempValue && (!disabled || deletable)" class="h-icon-close text-hover" @mousedown="clear"></i>
       </template>
     </div>
     <div :class="groupCls">
@@ -122,6 +122,10 @@ export default {
     },
     endInput: String,
     showDropdownWhenNoResult: {
+      type: Boolean,
+      default: true
+    },
+    deletable: {
       type: Boolean,
       default: true
     }
