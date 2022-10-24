@@ -63,7 +63,7 @@
         :class="{ 'h-uploader-dragging': isdragging }"
         @dragover="isdragging = true"
         @dragleave="isdragging = false"
-        @drop="onDrap"
+        @drop="onDrag"
       >
         <slot name="dragdrop" />
       </div>
