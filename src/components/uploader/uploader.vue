@@ -61,9 +61,9 @@
         v-if="$slots.dragdrop"
         class="h-uploader-browse-button h-uploader-drop-element"
         :class="{ 'h-uploader-dragging': isdragging }"
-        @dragover="isdragging = true"
-        @dragleave="isdragging = false"
-        @drop="onDrag"
+        @dragover.prevent="isdragging = true"
+        @dragleave.prevent="isdragging = false"
+        @drop.prevent.stop="onDrag"
         @click="triggerFileChoose"
       >
         <slot name="dragdrop"/>
