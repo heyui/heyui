@@ -35,14 +35,18 @@
             @keypress.enter="enterHandle"
           />
           <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">
-            <template v-if="!$slots.show">{{ singleValue }}</template
-            ><slot v-else :value="objects" name="show"></slot>
+            <template v-if="!$slots.show">{{ singleValue }}
+            </template
+            >
+            <slot v-else :value="objects" name="show"></slot>
           </div>
         </template>
         <template v-else>
           <div v-if="hasValue" class="h-select-value-single">
-            <template v-if="!$slots.show">{{ singleValue }}</template
-            ><slot v-else :value="objects" name="show"></slot>
+            <template v-if="!$slots.show">{{ singleValue }}
+            </template
+            >
+            <slot v-else :value="objects" name="show"></slot>
           </div>
           <div v-else class="h-select-placeholder">{{ placeholder }}</div>
         </template>
@@ -120,6 +124,7 @@ export default {
       type: Boolean,
       default: false
     },
+    filter: Function,
     autosize: {
       type: Boolean,
       default: false
@@ -211,6 +216,9 @@ export default {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLowerCase();
         return this.options.filter(item => {
+          if (this.filter && typeof this.filter === 'function') {
+            return this.filter.call(this, item, searchValue)
+          }
           return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
         });
       }
@@ -386,7 +394,7 @@ export default {
       let code = option[this.keyName];
       if (this.multiple) {
         if (!utils.isNull(this.limit) && !this.isIncludes(code) && this.codes.length >= this.limit) {
-          Message.error(this.hlang('h.select.limitSize', { limitSize: this.limit }));
+          Message.error(this.hlang('h.select.limitSize', {limitSize: this.limit}));
           return;
         }
         this.codes = utils.toggleValue(this.codes, code);
