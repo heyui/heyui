@@ -9,10 +9,14 @@ let Default = {
 };
 
 function Confirm(params = {}) {
-  const { content, title, onConfirm = () => {}, onCancel = () => {} } = params;
+  const {
+    content, title, onConfirm = () => {
+    }, onCancel = () => {
+    }
+  } = params;
   let param = {
     type: prefixCls,
-    content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
+    content: `<div style="display: flex"><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;margin-right: 8px"></i><div>${content}</div></div>`,
     buttons: [
       {
         name: locale.hlang('h.common.cancel'),
