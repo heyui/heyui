@@ -10,7 +10,7 @@ let Default = {
 
 function Confirm(params = {}) {
   const {
-    content, title, onConfirm = () => {
+    content, title, cancelText, okText, onConfirm = () => {
     }, onCancel = () => {
     }
   } = params;
@@ -19,12 +19,12 @@ function Confirm(params = {}) {
     content: `<div style="display: flex"><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;margin-right: 8px"></i><div>${content}</div></div>`,
     buttons: [
       {
-        name: locale.hlang('h.common.cancel'),
+        name: cancelText || locale.hlang('h.common.cancel'),
         type: 'cancel'
       },
       {
         type: 'ok',
-        name: locale.hlang('h.common.confirm'),
+        name: okText || locale.hlang('h.common.confirm'),
         style: 'primary'
       }
     ],
