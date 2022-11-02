@@ -30,8 +30,23 @@ function Confirm(params = {}) {
     ],
     events: {
       ok: n => {
-        n.close();
-        onConfirm();
+        const ret = onConfirm();
+        if (ret instanceof Promise) {
+          let cancel = n.$container.querySelector(`.${prefixCls}-footer>button[attr=cancel]`);
+          let ok = n.$container.querySelector(`.${prefixCls}-footer>button[attr=ok]`);
+          cancel.classList.add('h-btn-loading')
+          ok.classList.add('h-btn-loading')
+          ok.innerHTML = `<i class="h-icon-loading"></i> ${okText || locale.hlang('h.common.confirm')}`
+          ret.then(() => n.close()).catch((err) => {
+            console.error(err);
+          }).finally(() => {
+            cancel.classList.remove('h-btn-loading')
+            ok.classList.remove('h-btn-loading')
+            ok.innerText = okText || locale.hlang('h.common.confirm');
+          })
+        } else {
+          n.close();
+        }
       },
       cancel: n => {
         n.close();
@@ -41,7 +56,7 @@ function Confirm(params = {}) {
     title,
     className: 'h-modal-comfirm h-modal-type-default',
     hasMask: true,
-    closeOnMask: true,
+    closeOnMask: false,
     hasCloseIcon: false,
     timeout: 0
   };
