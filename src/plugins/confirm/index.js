@@ -12,7 +12,7 @@ function Confirm(params = {}) {
   const {
     content, title, cancelText, okText, onConfirm = () => {
     }, onCancel = () => {
-    }
+    }, async = false
   } = params;
   let param = {
     type: prefixCls,
@@ -30,16 +30,16 @@ function Confirm(params = {}) {
     ],
     events: {
       ok: n => {
-        const ret = onConfirm();
-        if (ret instanceof Promise) {
+        if (async) {
           let cancel = n.$container.querySelector(`.${prefixCls}-footer>button[attr=cancel]`);
           let ok = n.$container.querySelector(`.${prefixCls}-footer>button[attr=ok]`);
           cancel.classList.add('h-btn-loading')
           ok.classList.add('h-btn-loading')
           ok.innerHTML = `<i class="h-icon-loading"></i> ${okText || locale.hlang('h.common.confirm')}`
-          ret.then(() => n.close()).catch((err) => {
-            console.error(err);
-          }).finally(() => {
+          onConfirm((result) => {
+            if (result) {
+              n.close()
+            }
             cancel.classList.remove('h-btn-loading')
             ok.classList.remove('h-btn-loading')
             ok.innerText = okText || locale.hlang('h.common.confirm');
