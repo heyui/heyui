@@ -46,6 +46,7 @@ function Confirm(params = {}) {
           })
         } else {
           n.close();
+          onConfirm()
         }
       },
       cancel: n => {
