@@ -23,35 +23,37 @@
         <div v-if="showUploadButton" class="h-uploader-image-empty h-uploader-browse-button" @click="triggerFileChoose">
           <i class="h-icon-plus"/>
         </div>
-        <div
-          v-for="(file, index) of files"
-          :key="file.uid"
-          :class="{
+        <template v-if="showFileList">
+          <div
+            v-for="(file, index) of files"
+            :key="file.uid"
+            :class="{
             'h-uploader-image': true
           }"
-        >
-          <div class="h-uploader-image-background" :style="getBackgroundImage(file)"/>
-          <div v-if="isUploading(file)" class="h-uploader-progress">
-            <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5"/>
-            <i v-else class="h-icon-spinner"/>
-          </div>
-          <div
-            v-else
-            :class="{
+          >
+            <div class="h-uploader-image-background" :style="getBackgroundImage(file)"/>
+            <div v-if="isUploading(file)" class="h-uploader-progress">
+              <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5"/>
+              <i v-else class="h-icon-spinner"/>
+            </div>
+            <div
+              v-else
+              :class="{
               'h-uploader-image-operate': true,
               'h-uploader-image-operate-pointer': readonly
             }"
-            @click="imageClick(index, file)"
-          >
-            <div>
-              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
-              <template v-if="!readonly">
-                <i class="h-space" style="width: 5px"/>
-                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
-              </template>
+              @click="imageClick(index, file)"
+            >
+              <div>
+                <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
+                <template v-if="!readonly">
+                  <i class="h-space" style="width: 5px"/>
+                  <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
+                </template>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </template>
     </template>
 
@@ -76,7 +78,7 @@
           {{ showUploadWord }}
         </button>
       </div>
-      <div class="h-uploader-files">
+      <div class="h-uploader-files" v-if="showFileList">
         <div v-for="(file, index) of files" :key="file.uid" class="h-uploader-file">
           <div v-if="isUploading(file)" class="h-uploader-file-progress">
             <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5">
@@ -158,6 +160,10 @@ export default {
     dataType: {
       type: String,
       default: 'object'
+    },
+    showFileList: {
+      type: Boolean,
+      default: true
     },
     multiple: {
       type: Boolean,
