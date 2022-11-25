@@ -8,7 +8,7 @@
             ><i v-if="!disabled" class="h-icon-close-min" @click.stop="setvalue(obj)"></i>
           </span>
           <input
-            v-if="filterable"
+            v-if="filterable || filter"
             v-model="searchInput"
             type="text"
             class="h-select-search-input h-input"
@@ -19,10 +19,10 @@
             @keypress.enter="enterHandle"
           />
         </div>
-        <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ placeholder }}</div>
+        <div v-if="!hasValue && (!filterable || !filter)" class="h-select-placeholder">{{ placeholder }}</div>
       </template>
       <template v-else>
-        <template v-if="filterable">
+        <template v-if="filterable || filter">
           <input
             v-model="searchInput"
             type="text"
@@ -124,7 +124,7 @@ export default {
       type: Boolean,
       default: false
     },
-    filter: Function,
+    filter: [Function, String, Array],
     autosize: {
       type: Boolean,
       default: false
@@ -216,10 +216,20 @@ export default {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLowerCase();
         return this.options.filter(item => {
-          if (this.filter && typeof this.filter === 'function') {
-            return this.filter.call(this, item, searchValue)
+          if (this.filter) {
+            if (typeof this.filter === 'function') {
+              return this.filter.call(this, item, searchValue)
+            } else if (typeof this.filter === 'string') {
+              return !!this.filter.split(",").find(field => {
+                return item[field] && item[field].toLowerCase().indexOf(searchValue) !== -1
+              })
+            } else if (Array.isArray(this.filter)) {
+              return !!this.filter.find(field => {
+                return item[field] && item[field].toLowerCase().indexOf(searchValue) !== -1
+              })
+            }
           }
-          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
+          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) !== -1;
         });
       }
       return this.options;
@@ -295,7 +305,7 @@ export default {
         disabled: this.disabled,
         equalWidth: this.equalWidth,
         trigger: 'click foucs',
-        triggerOnce: this.filterable,
+        triggerOnce: this.filterable || this.filter,
         events: {
           show() {
             that.isShow = true;
