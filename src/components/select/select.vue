@@ -19,7 +19,7 @@
             @keypress.enter="enterHandle"
           />
         </div>
-        <div v-if="!hasValue && (!filterable || !filter)" class="h-select-placeholder">{{ placeholder }}</div>
+        <div v-if="placeholder && !hasValue && !(filterable || filter)" class="h-select-placeholder">{{ placeholder }}</div>
       </template>
       <template v-else>
         <template v-if="filterable || filter">
