@@ -3,8 +3,8 @@
     <div class="h-categorypicker-show">
       <div v-if="multiple && objects.length" class="h-categorypicker-multiple-tags">
         <span v-for="(obj, index) of objects" :key="index + '' + obj.key"
-          ><span>{{ getShow(obj) }}</span
-          ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i
+        ><span>{{ getShow(obj) }}</span
+        ><i v-if="!disabled" class="h-icon-close-min" @click.stop="remove(obj)"></i
         ></span>
       </div>
       <div v-else-if="!multiple && object" class="h-categorypicker-value-single">
@@ -25,7 +25,7 @@
           <i v-if="data.status.loading" class="h-icon-loading"></i>
           <Checkbox v-else-if="data.status.checkable && multiple" :checked="isChecked(data)" @change="change(data)" @click.stop></Checkbox>
           <span class="h-categorypicker-item-title" @click="openNew(data, $event)"
-            >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
+          >{{ data.title }}<span v-if="showChildCount && data.children.length">({{ data.children.length }})</span></span
           >
         </div>
       </div>
@@ -45,7 +45,7 @@ const topMenu = '-------';
 
 export default {
   name: 'HCategoryPicker',
-  components: { Checkbox },
+  components: {Checkbox},
   mixins: [Locale],
   emits: ['update:modelValue', 'input', 'update', 'clear', 'loadDataSuccess', 'change'],
   props: {
@@ -204,7 +204,8 @@ export default {
         let os = [];
         if (utils.isArray(this.modelValue) && this.modelValue.length > 0) {
           for (let v of this.modelValue) {
-            os.push(this.getValue(v));
+            let value = this.getValue(v);
+            value && os.push(value);
           }
         }
         this.objects = os;
@@ -274,7 +275,7 @@ export default {
       return null;
     },
     getDisposeValue(item) {
-      let obj = { ...item };
+      let obj = {...item};
       delete obj[this.param.childrenName];
       return obj;
     },
