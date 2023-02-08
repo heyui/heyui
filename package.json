@@ -1,7 +1,7 @@
 {
   "name": "heyui.ext",
   "version": "2.2.0",
-  "description": "UI Toolkit for Web, Vue2.0.",
+  "description": "UI Toolkit for Web, Vue3.0.夏悸增强bug修复扩展版本",
   "scripts": {
     "buildlang": "vite build --config ./scripts/vite.lang.js",
     "buildcom": "vite build --config ./scripts/vite.components.js",
@@ -57,7 +57,7 @@
     "not dead"
   ],
   "copyright": "Copyright © 2017-present Lan",
-  "homepage": "http://www.heyui.top",
+  "homepage": "https://v2.heyui.top/",
   "keywords": [
     "heyui",
     "vue",
@@ -68,7 +68,7 @@
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heyui/heyui.git"
+    "url": "git+https://github.com/btboys/heyui.git"
   },
   "standard-version": {
     "commitAll": true,

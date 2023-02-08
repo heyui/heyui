@@ -14,6 +14,7 @@
       <p>
         <h-button color="primary" @click="openModal">Open js modal</h-button>
       </p>
+	    <h-select multiple :datas="param3" v-model="val" />
       <Modal v-model="show">
         <template v-slot:header>title</template>
         <div>This is a modal called by vue</div>
@@ -32,7 +33,9 @@
       data() {
         return {
           message: 'Hello Vue!',
-          show: false
+	        val: null,
+          show: false,
+	        param3: { 0: '选择0', a1: '选择1', a2: '选择2', a3: '选择3' },
         };
       },
       methods: {

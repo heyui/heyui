@@ -37,7 +37,7 @@ function recursionDir(filePath, entryPath, oldAlias, NewAlias) {
   });
 }
 
-recursionDir('./src', '', 'heyui', 'heyui/lib');
+recursionDir('./src', '', 'heyui', 'heyui.ext/lib');
 
 // https://vitejs.dev/config/
 const config = defineConfig({
