@@ -1,6 +1,6 @@
 {
   "name": "heyui.ext",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "UI Toolkit for Web, Vue3.0.夏悸增强bug修复扩展版本",
   "scripts": {
     "buildlang": "vite build --config ./scripts/vite.lang.js",
