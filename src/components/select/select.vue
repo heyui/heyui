@@ -108,7 +108,7 @@ export default {
     },
     deletable: {
       type: Boolean,
-      default: config.getOption('select.deletable')
+      default: () => config.getOption('select.deletable')
     },
     noBorder: {
       type: Boolean,
