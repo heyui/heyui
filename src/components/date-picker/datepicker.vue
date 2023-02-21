@@ -116,7 +116,7 @@ export default {
     },
     clearable: {
       type: Boolean,
-      default: true
+      default: config.getOption('datepicker.clearable')
     }
   },
   emits: ['update:modelValue', 'change', 'confirm', 'clear'],
