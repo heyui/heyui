@@ -117,10 +117,10 @@ const config = {
         start: 'start',
         end: 'end'
       }
-    },
-    select: {
-      deletable: true
     }
+  },
+  select: {
+    deletable: true
   }
 };
 
