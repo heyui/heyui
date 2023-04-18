@@ -85,6 +85,9 @@ export default {
       var textLength = target.scrollWidth;  //当前文字（包括省略部分）的宽度
       if (textLength > containerLength) {
         if(this.show){
+          if(getComputedStyle(target)['text-overflow']!='ellipsis'){
+            return
+          }
           this.$refs.tp.show()
         }
      
