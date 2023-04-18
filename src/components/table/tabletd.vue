@@ -1,15 +1,17 @@
 <template>
-  <td v-if="tdAttrs.colspan !== 0 && tdAttrs.rowspan !== 0" :class="cls" v-bind="tdAttrs">
-    <span v-if="isTreeOpener" class="h-table-tree-expand" :class="{ 'h-table-tree-opened': data._opened }">
-      <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
-      <template v-if="data.children && data.children.length">
-        <i :class="{ 'h-table-tree-icon': true, 'h-icon-plus': !data._opened, 'h-icon-minus': data._opened }" @click="toggleTree"></i>
-      </template>
-      <i v-else class="h-table-tree-empty"></i>
-    </span>
-    <template v-if="prop || render">{{ show }}</template
-    ><slot :data="data" :index="index"></slot>
-  </td>
+  <Tooltip v-if="tdAttrs.colspan !== 0 && tdAttrs.rowspan !== 0" :content="show"  trigger="manual" ref="tp">
+    <td v-if="tdAttrs.colspan !== 0 && tdAttrs.rowspan !== 0" :class="cls" v-bind="tdAttrs" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+      <span v-if="isTreeOpener" class="h-table-tree-expand" :class="{ 'h-table-tree-opened': data._opened }">
+        <i v-for="index of level" :key="index" class="h-table-tree-expand-space"></i>
+        <template v-if="data.children && data.children.length">
+          <i :class="{ 'h-table-tree-icon': true, 'h-icon-plus': !data._opened, 'h-icon-minus': data._opened }" @click="toggleTree"></i>
+        </template>
+        <i v-else class="h-table-tree-empty"></i>
+      </span>
+      <template v-if="prop || render">{{ show }}</template>
+      <slot :data="data" :index="index"></slot>
+    </td>
+  </Tooltip>
 </template>
 <script>
 import config from 'heyui/utils/config';
@@ -31,7 +33,8 @@ export default {
     className: String
   },
   data() {
-    return {};
+    return {
+    };
   },
   computed: {
     tdAttrs() {
@@ -72,6 +75,25 @@ export default {
   methods: {
     toggleTree() {
       this.$emit('toggleTree', this.data);
+    },
+    onMouseEnter(e){
+      var target=e.target
+      if(!target){
+        return false
+      }
+      var containerLength = target.clientWidth;  //当前容器的宽度
+      var textLength = target.scrollWidth;  //当前文字（包括省略部分）的宽度
+      if (textLength > containerLength) {
+        if(this.show){
+          this.$refs.tp.show()
+        }
+     
+      } else {
+       
+      }
+    },
+    onMouseLeave(){
+      this.$refs.tp.hide()
     }
   }
 };
