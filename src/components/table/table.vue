@@ -584,6 +584,9 @@ export default {
       this.$emit('selectAll', this.checks);
     },
     getWidth(column) {
+      if(utils.isObject(column) && column.hidden){
+        return '0px'
+      }
       if (utils.isObject(column) && column.width) {
         return column.width;
       } else {

@@ -8,7 +8,7 @@ export default {
     rowspan: Number,
     colspan: Number,
     title: String,
-    width: Number,
+    width: [String,Number],
     fixed: String,
     label: String,
     prop: String,
@@ -29,6 +29,7 @@ export default {
       type: [Boolean, String],
       default: false
     },
+    hidden:Boolean,
     placement: String,
     content: String
   },
