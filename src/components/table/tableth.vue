@@ -35,7 +35,7 @@ export default {
     rowspan: Number,
     colspan: Number,
     title: String,
-    width: Number,
+    width: [Number,String],
     className: String,
     fixed: String,
     label: String,
