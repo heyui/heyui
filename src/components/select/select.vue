@@ -32,7 +32,6 @@
             :placeholder="hasValue ? '' : placeholder"
             @keyup="handle"
             @blur="blurHandle"
-            @keypress.enter="enterHandle"
           />
           <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">
             <template v-if="!$slots.show">{{ singleValue }}
@@ -320,14 +319,19 @@ export default {
     },
     handle(event) {
       let code = event.keyCode || event.which || event.charCode;
-      if (code == 38) {
+      if (code === 38) {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1;
         }
-      } else if (code == 40) {
+      } else if (code === 40) {
         if (this.nowSelected < this.filterOptions.length - 1) {
           this.nowSelected += 1;
         }
+      } else if (event.code === 'Enter') {
+        if (this.nowSelected < 0) {
+          this.nowSelected += 1;
+        }
+        this.enterHandle(event)
       }
     },
     enterHandle(event) {
