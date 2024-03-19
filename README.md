@@ -7,6 +7,10 @@
 
 > An UI components library.
 
+/
+
+### [HeyUI商业案例：纷析云财务软件](https://gitee.com/flyemu/public-financial)
+
 ## [2.2.0](https://github.com/heyui/heyui/compare/v1.26.1...v2.2.0) (2023-02-08)
 
 ### Features
