@@ -5,11 +5,14 @@
 ![npm](https://img.shields.io/npm/dm/heyui.ext)
 ![NPM](https://img.shields.io/npm/l/heyui.ext)
 
-> An UI components library.
-
-/
 
 ### [HeyUI商业案例：纷析云财务软件](https://gitee.com/flyemu/public-financial)
+
+### [2.3.7](https://github.com/btboys/heyui/compare/v1.26.1...v2.3.7) (2024-03-19)
+
+### Features
+
+* **select:** 分组选择交互改进 ([f63c097](https://github.com/btboys/heyui/commit/f63c097dfaaa060bafb8b81ca47adc518a0a33ea))
 
 ## [2.2.0](https://github.com/heyui/heyui/compare/v1.26.1...v2.2.0) (2023-02-08)
 
@@ -46,15 +49,6 @@ npm install heyui.ext --save
 
 ## Start
 
-### Basic
-
-```html
-
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
-<script src="https://cdn.jsdelivr.net/npm/heyui@next"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heyui@next/themes/index.css"></link>
-
-```
 ### Advanced
 
 ```js
@@ -89,4 +83,3 @@ Modern browsers and Internet Explorer 11+.
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright (c) 2017-present, Lan

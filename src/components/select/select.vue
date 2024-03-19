@@ -57,7 +57,7 @@
             <ul v-if="labels.length && !searchInput && !multiple" class="h-select-ul h-select-ul-labels">
               <li
                 class="h-select-item"
-                :class="{ 'h-select-item-selected': label[titleName] === item[titleName] }"
+                :class="{ 'h-select-item-selected': label && label[titleName] === item[titleName] }"
                 v-for="item in labels"
                 @click="changeLable(item)"
               >
