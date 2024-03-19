@@ -8,7 +8,7 @@
             ><i v-if="!disabled" class="h-icon-close-min" @click.stop="setvalue(obj)"></i>
           </span>
           <input
-            v-if="filterable"
+            v-if="filterable || filter"
             v-model="searchInput"
             type="text"
             class="h-select-search-input h-input"
@@ -19,10 +19,10 @@
             @keypress.enter="enterHandle"
           />
         </div>
-        <div v-if="!hasValue && !filterable" class="h-select-placeholder">{{ placeholder }}</div>
+        <div v-if="placeholder && !hasValue && !(filterable || filter)" class="h-select-placeholder">{{ placeholder }}</div>
       </template>
       <template v-else>
-        <template v-if="filterable">
+        <template v-if="filterable || filter">
           <input
             v-model="searchInput"
             type="text"
@@ -32,14 +32,16 @@
             :placeholder="hasValue ? '' : placeholder"
             @keyup="handle"
             @blur="blurHandle"
-            @keypress.enter="enterHandle"
           />
-          <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">{{ singleValue }}</div>
+          <div v-if="hasValue && searchInput === ''" class="h-select-filterable-value" @click="focusSearchInput">
+            <template v-if="!$slots.show">{{ singleValue }}</template>
+            <slot v-else :value="objects" name="show"></slot>
+          </div>
         </template>
         <template v-else>
           <div v-if="hasValue" class="h-select-value-single">
-            <template v-if="!$slots.show">{{ singleValue }}</template
-            ><slot v-else :value="objects" name="show"></slot>
+            <template v-if="!$slots.show">{{ singleValue }}</template>
+            <slot v-else :value="objects" name="show"></slot>
           </div>
           <div v-else class="h-select-placeholder">{{ placeholder }}</div>
         </template>
@@ -51,17 +53,29 @@
       <div v-if="isShow" class="h-select-group-container">
         <div class="h-select-list">
           <slot name="top" :results="filterOptions"></slot>
-          <ul class="h-select-ul">
-            <template v-for="(option, index) of filterOptions">
-              <li v-if="!option.hidden" :key="option[keyName]" :class="getLiCls(option, index)" @click="setvalue(option)">
-                <div v-if="!!optionRender" v-html="option[html]"></div>
-                <template v-else-if="!$slots.item">{{ option[titleName] }}</template>
-                <slot v-else :item="option" name="item"></slot>
-                <i v-if="multiple" class="h-icon-check"></i>
+          <div style="display: flex">
+            <ul v-if="labels.length && !searchInput && !multiple" class="h-select-ul h-select-ul-labels h-select-ul-scroll">
+              <li
+                class="h-select-item"
+                :class="{ 'h-select-item-selected': label && label[titleName] === item[titleName] }"
+                v-for="item in labels"
+                @click="changeLable(item)"
+              >
+                {{ item[titleName] }} <i class="h-icon-right"></i>
               </li>
-            </template>
-            <li v-if="filterOptions.length == 0" class="h-select-ul-empty">{{ showEmptyContent }}</li>
-          </ul>
+            </ul>
+            <ul style="flex: 1" class="h-select-ul" :class="{'h-select-ul-scroll':labels.length && !searchInput && !multiple}">
+              <template v-for="(option, index) of filterOptions">
+                <li v-if="!option.hidden" :key="option[keyName]" :class="getLiCls(option, index)" @click="setvalue(option)">
+                  <div v-if="!!optionRender" v-html="option[html]"></div>
+                  <template v-else-if="!$slots.item">{{ option[titleName] }}</template>
+                  <slot v-else :item="option" name="item"></slot>
+                  <i v-if="multiple" class="h-icon-check"></i>
+                </li>
+              </template>
+              <li v-if="filterOptions.length == 0" class="h-select-ul-empty">{{ showEmptyContent }}</li>
+            </ul>
+          </div>
           <slot name="bottom" :results="filterOptions"></slot>
         </div>
       </div>
@@ -101,7 +115,7 @@ export default {
     },
     deletable: {
       type: Boolean,
-      default: true
+      default: () => config.getOption('select.deletable')
     },
     noBorder: {
       type: Boolean,
@@ -117,6 +131,7 @@ export default {
       type: Boolean,
       default: false
     },
+    filter: [Function, String, Array],
     autosize: {
       type: Boolean,
       default: false
@@ -141,6 +156,7 @@ export default {
     return {
       html: 'select_render_html',
       codes: [],
+      label: null,
       objects: {},
       searchInput: '',
       nowSelected: -1,
@@ -171,6 +187,16 @@ export default {
     },
     hasLabel() {
       return this.options.some(item => item.isLabel);
+    },
+    labels() {
+      return this.multiple
+        ? []
+        : this.options
+            .filter(item => item.isLabel)
+            .map(v => {
+              v.children = this.getLabelOptions(v);
+              return v;
+            });
     },
     selectCls() {
       let autosize = this.autosize || !!this.noBorder;
@@ -208,8 +234,28 @@ export default {
         if (this.dropdown) this.dropdown.update();
         let searchValue = this.searchInput.toLowerCase();
         return this.options.filter(item => {
-          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) != -1;
+          if (item.isLabel) {
+            return true;
+          }
+
+          if (this.filter) {
+            if (typeof this.filter === 'function') {
+              return this.filter.call(this, item, searchValue);
+            } else if (typeof this.filter === 'string') {
+              return !!this.filter.split(',').find(field => {
+                return item[field] && item[field].toLowerCase().indexOf(searchValue) !== -1;
+              });
+            } else if (Array.isArray(this.filter)) {
+              return !!this.filter.find(field => {
+                return item[field] && item[field].toLowerCase().indexOf(searchValue) !== -1;
+              });
+            }
+          }
+          return (item[this.html] || item[this.titleName]).toLowerCase().indexOf(searchValue) !== -1;
         });
+      }
+      if (this.labels.length && this.label) {
+        return this.label.children;
       }
       return this.options;
     },
@@ -275,6 +321,9 @@ export default {
     }
   },
   mounted() {
+    if (this.labels.length) {
+      this.label = this.labels[0];
+    }
     this.$nextTick(() => {
       let el = (this.el = this.$el.querySelector('.h-select-show'));
       let content = (this.content = this.$el.querySelector('.h-select-group'));
@@ -284,29 +333,53 @@ export default {
         disabled: this.disabled,
         equalWidth: this.equalWidth,
         trigger: 'click foucs',
-        triggerOnce: this.filterable,
+        triggerOnce: this.filterable || this.filter,
         events: {
-          show() {
+          show: () => {
             that.isShow = true;
+            if (this.codes && !this.multiple && this.labels.length) {
+              this.label = this.labels.find(val => val.children.find(c => this.isEqual(this.codes, c[this.keyName])));
+            }
           }
         }
       });
     });
   },
   methods: {
+    getLabelOptions(label) {
+      let index = this.options.findIndex(value => value[this.titleName] === label[this.titleName] && value.isLabel);
+      let options = [];
+      for (let i = index + 1; i < this.options.length; i++) {
+        let op = this.options[i];
+        if (op.isLabel) {
+          break;
+        } else {
+          options.push(op);
+        }
+      }
+      return options;
+    },
+    changeLable(label) {
+      this.label = label;
+    },
     focusSearchInput() {
       this.$el.querySelector('.h-select-search-input').focus();
     },
     handle(event) {
       let code = event.keyCode || event.which || event.charCode;
-      if (code == 38) {
+      if (code === 38) {
         if (this.nowSelected > 0) {
           this.nowSelected -= 1;
         }
-      } else if (code == 40) {
+      } else if (code === 40) {
         if (this.nowSelected < this.filterOptions.length - 1) {
           this.nowSelected += 1;
         }
+      } else if (event.code === 'Enter') {
+        if (this.nowSelected < 0) {
+          this.nowSelected += 1;
+        }
+        this.enterHandle(event);
       }
     },
     enterHandle(event) {

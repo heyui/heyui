@@ -213,7 +213,7 @@ export default {
       let value = s.value.call(null);
       this.parse(value);
       this.updateValue(this.nowDate);
-      this.hide();
+      this.confirm();
     },
     updateView(value, rangeType) {
       this.nowView[rangeType] = manba(value, this.nowFormat);

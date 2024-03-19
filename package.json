@@ -1,7 +1,7 @@
 {
-  "name": "heyui",
-  "version": "2.2.0-alpha.1",
-  "description": "UI Toolkit for Web, Vue2.0.",
+  "name": "heyui.ext",
+  "version": "2.3.9",
+  "description": "UI Toolkit for Web, Vue3.0.夏悸增强bug修复扩展版本",
   "scripts": {
     "buildlang": "vite build --config ./scripts/vite.lang.js",
     "buildcom": "vite build --config ./scripts/vite.components.js",
@@ -16,18 +16,18 @@
   },
   "main": "./dist/heyui.js",
   "module": "./dist/heyui.esm.js",
-  "dependencies": {
+  "peerDependencies": {
     "manba": "^1.3.3",
-    "vue": "^3.0.0"
+    "vue": "^3.2.41"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.9.3",
+    "@vitejs/plugin-vue": "^3.2.0",
     "art-template": "^4.13.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-import": "^1.13.3",
     "commander": "^2.19.0",
     "copy-webpack-plugin": "^6.4.1",
-    "eslint": "^6.7.2",
+    "eslint": "^8.54.0",
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -41,7 +41,7 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "standard-version": "^9.3.0",
-    "vite": "^2.6.4"
+    "vite": "^3.2.7"
   },
   "files": [
     "dist",
@@ -57,7 +57,7 @@
     "not dead"
   ],
   "copyright": "Copyright © 2017-present Lan",
-  "homepage": "http://www.heyui.top",
+  "homepage": "https://fenxi365.com",
   "keywords": [
     "heyui",
     "vue",
@@ -68,7 +68,7 @@
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heyui/heyui.git"
+    "url": "git+https://github.com/btboys/heyui.git"
   },
   "standard-version": {
     "commitAll": true,

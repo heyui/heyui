@@ -1,5 +1,5 @@
 <template>
-  <Tooltip ref="tooltip" :theme="theme" :disabled="disabled" :placement="placement" trigger="click">
+  <Tooltip ref="tooltip" :theme="theme" :disabled="disabled" :placement="placement" :trigger="trigger">
     <slot></slot>
     <template v-slot:content>
       <div class="h-poptip">
@@ -7,7 +7,7 @@
         <div class="clearfix">
           <div class="float-right">
             <button type="button" class="h-btn h-btn-text h-btn-xs" @click="close">{{ hlang('h.common.cancel') }}</button
-            ><button type="button" class="h-btn h-btn-text h-btn-xs h-btn-primary" @click="trigger">{{ hlang('h.common.confirm') }}</button>
+            ><button type="button" class="h-btn h-btn-text h-btn-xs h-btn-primary" @click="confirm">{{ hlang('h.common.confirm') }}</button>
           </div>
         </div>
       </div>
@@ -29,6 +29,10 @@ export default {
       type: String,
       default: 'top'
     },
+    trigger: {
+      type: String,
+      default: 'click'
+    },
     theme: {
       type: String,
       default: 'white'
@@ -42,7 +46,7 @@ export default {
     close() {
       this.$refs.tooltip.hide();
     },
-    trigger() {
+    confirm() {
       this.$emit('confirm');
       this.close();
     }

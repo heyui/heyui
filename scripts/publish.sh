@@ -23,7 +23,7 @@ if [ "$1" = '-beta' ] ; then
 standard-version --prerelease beta
 fi
 if [ "$1" = '' ] ; then
-standard-version
+standard-version --release-as patch
 fi
 
 headr ./dist/heyui.js -o=./dist/heyui.js --version --homepage --copyright --license
@@ -37,12 +37,12 @@ fi
 
 echo "发布至npm"
 
-# if [ "$1" = '' ] ; then
-# npm publish
-# fi
-if [ "$1" = '-alpha' ] ; then
-npm publish --tag=next
-fi
+ if [ "$1" = '' ] ; then
+ npm publish
+ fi
+#if [ "$1" = '-alpha' ] ; then
+#npm publish --tag=next
+#fi
 
 set -e
 echo "git push"

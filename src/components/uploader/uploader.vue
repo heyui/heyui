@@ -4,54 +4,56 @@
       <!-- 单图片 -->
       <template v-if="!multiple">
         <div v-if="singleFile" class="h-uploader-image">
-          <div class="h-uploader-image-background" :style="getBackgroundImage(singleFile)" />
+          <div class="h-uploader-image-background" :style="getBackgroundImage(singleFile)"/>
           <div v-if="isUploading(singleFile)" class="h-uploader-progress">
-            <Progress v-if="showPercent" :percent="singleFile.percent" :stroke-width="5" />
-            <i v-else class="h-icon-spinner" />
+            <Progress v-if="showPercent" :percent="singleFile.percent" :stroke-width="5"/>
+            <i v-else class="h-icon-spinner"/>
           </div>
           <div v-else class="h-uploader-image-operate h-uploader-browse-button" @click="triggerFileChoose">
             <div>{{ showReUploadWord }}</div>
           </div>
         </div>
         <div v-else-if="showUploadButton" class="h-uploader-image-empty h-uploader-browse-button" @click="triggerFileChoose">
-          <i class="h-icon-plus" />
+          <i class="h-icon-plus"/>
         </div>
       </template>
 
       <!-- 多图片 -->
       <template v-else>
         <div v-if="showUploadButton" class="h-uploader-image-empty h-uploader-browse-button" @click="triggerFileChoose">
-          <i class="h-icon-plus" />
+          <i class="h-icon-plus"/>
         </div>
-        <div
-          v-for="(file, index) of files"
-          :key="file.uid"
-          :class="{
+        <template v-if="showFileList">
+          <div
+            v-for="(file, index) of files"
+            :key="file.uid"
+            :class="{
             'h-uploader-image': true
           }"
-        >
-          <div class="h-uploader-image-background" :style="getBackgroundImage(file)" />
-          <div v-if="isUploading(file)" class="h-uploader-progress">
-            <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5" />
-            <i v-else class="h-icon-spinner" />
-          </div>
-          <div
-            v-else
-            :class="{
+          >
+            <div class="h-uploader-image-background" :style="getBackgroundImage(file)"/>
+            <div v-if="isUploading(file)" class="h-uploader-progress">
+              <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5"/>
+              <i v-else class="h-icon-spinner"/>
+            </div>
+            <div
+              v-else
+              :class="{
               'h-uploader-image-operate': true,
               'h-uploader-image-operate-pointer': readonly
             }"
-            @click="imageClick(index, file)"
-          >
-            <div>
-              <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen" /></span>
-              <template v-if="!readonly">
-                <i class="h-space" style="width: 5px" />
-                <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash" /></span>
-              </template>
+              @click="imageClick(index, file)"
+            >
+              <div>
+                <span class="h-uploader-operate" @click="previewImage(index)"><i class="h-icon-fullscreen"/></span>
+                <template v-if="!readonly">
+                  <i class="h-space" style="width: 5px"/>
+                  <span class="h-uploader-operate" @click="deleteFile(index, $event)"><i class="h-icon-trash"/></span>
+                </template>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </template>
     </template>
 
@@ -61,18 +63,22 @@
         v-if="$slots.dragdrop"
         class="h-uploader-browse-button h-uploader-drop-element"
         :class="{ 'h-uploader-dragging': isdragging }"
-        @dragover="isdragging = true"
-        @dragleave="isdragging = false"
-        @drop="onDrap"
+        @dragover.prevent="isdragging = true"
+        @dragleave.prevent="isdragging = false"
+        @drop.prevent.stop="onDrag"
+        @click="triggerFileChoose"
       >
-        <slot name="dragdrop" />
+        <slot name="dragdrop"/>
+      </div>
+      <div v-else-if="$slots.button" @click="triggerFileChoose">
+        <slot name="button"/>
       </div>
       <div v-else>
         <button v-if="showUploadButton" type="button" icon="h-icon-upload" class="h-btn h-uploader-browse-button" @click="triggerFileChoose">
           {{ showUploadWord }}
         </button>
       </div>
-      <div class="h-uploader-files">
+      <div class="h-uploader-files" v-if="showFileList">
         <div v-for="(file, index) of files" :key="file.uid" class="h-uploader-file">
           <div v-if="isUploading(file)" class="h-uploader-file-progress">
             <Progress v-if="showPercent" :percent="file.percent" :stroke-width="5">
@@ -82,17 +88,17 @@
             </Progress>
             <div v-else class="h-uploader-file-loading">
               <span>{{ file.name }}</span
-              ><i class="h-icon-spinner" />
+              ><i class="h-icon-spinner"/>
             </div>
           </div>
           <div v-else class="h-uploader-file-info h-uploader-file-status-{{file.status}}" @click="fileClick(file, index)">
             <span class="link">{{ file.name }}</span
-            ><i v-if="!readonly" class="h-icon-trash middle-right link" @click="deleteFile(index, $event)" />
+            ><i v-if="!readonly" class="h-icon-trash middle-right link" @click="deleteFile(index, $event)"/>
           </div>
         </div>
       </div>
     </template>
-    <input ref="file" type="file" :accept="accept" style="display: none" :multiple="multiple" @change="onFileChange" />
+    <input ref="file" type="file" :accept="accept" style="display: none" :multiple="multiple" @change="onFileChange"/>
   </div>
 </template>
 <script>
@@ -143,6 +149,7 @@ export default {
   emits: ['delete', 'click', 'update:modelValue'],
   props: {
     accept: String,
+    buttonText: String,
     modelValue: {
       type: [Array, Object, String]
     },
@@ -153,6 +160,10 @@ export default {
     dataType: {
       type: String,
       default: 'object'
+    },
+    showFileList: {
+      type: Boolean,
+      default: true
     },
     multiple: {
       type: Boolean,
@@ -169,7 +180,8 @@ export default {
     },
     option: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
   data() {
@@ -216,7 +228,7 @@ export default {
       return this.hlang('h.uploader.reUpload');
     },
     showUploadWord() {
-      return this.hlang('h.uploader.upload');
+      return this.buttonText || this.hlang('h.uploader.upload');
     },
     showOverLimit() {
       return this.hlang('h.uploader.overLimit');
@@ -273,14 +285,14 @@ export default {
       }
       for (const info of valueList) {
         this.option.onChange &&
-          this.option
-            .onChange(info.file, info)
-            .then(url => {
-              this.update({ ...info, status: UPLOAD_STATUS.SUCCESS, url });
-            })
-            .catch(e => {
-              this.update({ ...info, status: UPLOAD_STATUS.FAIL });
-            });
+        this.option
+          .onChange(info.file, info)
+          .then(url => {
+            this.update({...info, status: UPLOAD_STATUS.SUCCESS, url});
+          })
+          .catch(e => {
+            this.update({...info, status: UPLOAD_STATUS.FAIL});
+          });
       }
     },
     update(info) {

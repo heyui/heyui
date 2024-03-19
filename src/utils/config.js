@@ -73,7 +73,8 @@ const config = {
     init() {
       // The need to deal with the global paging page number
     },
-    onChange() {}
+    onChange() {
+    }
   },
   avatar: {
     handleSrc(src) {
@@ -82,6 +83,7 @@ const config = {
   },
   datepicker: {
     startWeek: 1,
+    clearable: true,
     format: {
       date: 'YYYY-MM-DD',
       month: 'YYYY-MM',
@@ -116,6 +118,9 @@ const config = {
         end: 'end'
       }
     }
+  },
+  select: {
+    deletable: true
   }
 };
 

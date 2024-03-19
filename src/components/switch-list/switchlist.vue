@@ -5,8 +5,12 @@
       :key="option[key]"
       :class="{ 'h-switch-list-span': true, 'h-switch-list-span-checked': option[key] == modelValue }"
       @click="setvalue(option)"
-      ><i v-if="option.icon" :class="option.icon"></i>{{ option[title] }}</span
     >
+      <slot v-if="$slots.title" name="title" :item="option"/>
+      <template v-else>
+      <i v-if="option.icon" :class="option.icon"></i>{{ option[title] }}
+      </template>
+    </span>
   </div>
 </template>
 <script>

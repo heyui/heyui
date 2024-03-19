@@ -9,25 +9,45 @@ let Default = {
 };
 
 function Confirm(params = {}) {
-  const { content, title, onConfirm = () => {}, onCancel = () => {} } = params;
+  const {
+    content, title, cancelText, okText, onConfirm = () => {
+    }, onCancel = () => {
+    }, async = false
+  } = params;
   let param = {
     type: prefixCls,
-    content: `<div><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;"></i>&nbsp;&nbsp;${content}</div>`,
+    content: `<div style="display: flex"><i class="h-icon-warn yellow-color" style="font-size:28px;vertical-align: -8px;margin-right: 8px"></i><div>${content}</div></div>`,
     buttons: [
       {
-        name: locale.hlang('h.common.cancel'),
+        name: cancelText || locale.hlang('h.common.cancel'),
         type: 'cancel'
       },
       {
         type: 'ok',
-        name: locale.hlang('h.common.confirm'),
+        name: okText || locale.hlang('h.common.confirm'),
         style: 'primary'
       }
     ],
     events: {
       ok: n => {
-        n.close();
-        onConfirm();
+        if (async) {
+          let cancel = n.$container.querySelector(`.${prefixCls}-footer>button[attr=cancel]`);
+          let ok = n.$container.querySelector(`.${prefixCls}-footer>button[attr=ok]`);
+          cancel.classList.add('h-btn-loading')
+          ok.classList.add('h-btn-loading')
+          ok.innerHTML = `<i class="h-icon-loading"></i> ${okText || locale.hlang('h.common.confirm')}`
+          onConfirm((result) => {
+            if (result) {
+              n.close()
+            }
+            cancel.classList.remove('h-btn-loading')
+            ok.classList.remove('h-btn-loading')
+            ok.innerText = okText || locale.hlang('h.common.confirm');
+          })
+        } else {
+          n.close();
+          onConfirm()
+        }
       },
       cancel: n => {
         n.close();
@@ -37,7 +57,7 @@ function Confirm(params = {}) {
     title,
     className: 'h-modal-comfirm h-modal-type-default',
     hasMask: true,
-    closeOnMask: true,
+    closeOnMask: false,
     hasCloseIcon: false,
     timeout: 0
   };

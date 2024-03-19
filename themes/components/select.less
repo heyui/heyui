@@ -116,6 +116,26 @@
   }
   .h-select-ul {
     .h-func-list-style();
+
+    &-scroll {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    &-labels{
+      border-right: @border;
+
+      .h-select-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .h-icon-right{
+        font-size: 10px;
+        margin-left: 10px;
+      }
+    }
   }
   .h-select-ul-empty {
     color: @dark4-color;
