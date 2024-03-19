@@ -54,7 +54,7 @@
         <div class="h-select-list">
           <slot name="top" :results="filterOptions"></slot>
           <div style="display: flex">
-            <ul v-if="labels.length && !searchInput && !multiple" class="h-select-ul h-select-ul-labels">
+            <ul v-if="labels.length && !searchInput && !multiple" class="h-select-ul h-select-ul-labels h-select-ul-scroll">
               <li
                 class="h-select-item"
                 :class="{ 'h-select-item-selected': label && label[titleName] === item[titleName] }"
@@ -64,7 +64,7 @@
                 {{ item[titleName] }} <i class="h-icon-right"></i>
               </li>
             </ul>
-            <ul style="flex: 1" class="h-select-ul">
+            <ul style="flex: 1" class="h-select-ul" :class="{'h-select-ul-scroll':labels.length && !searchInput && !multiple}">
               <template v-for="(option, index) of filterOptions">
                 <li v-if="!option.hidden" :key="option[keyName]" :class="getLiCls(option, index)" @click="setvalue(option)">
                   <div v-if="!!optionRender" v-html="option[html]"></div>
